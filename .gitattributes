@@ -786,6 +786,7 @@ boost/libs/function/test/function_test_fail2.cpp svneol=native#text/plain
 boost/libs/function/test/mixin_test.cpp svneol=native#text/plain
 boost/libs/function/test/policy_test.cpp svneol=native#text/plain
 boost/libs/function/test/regression.cfg -text
+boost/libs/function/test/stateless_test.cpp svneol=native#text/plain
 boost/libs/functional/binders.html svneol=native#text/html
 boost/libs/functional/function_test.cpp svneol=native#text/plain
 boost/libs/functional/function_traits.html svneol=native#text/html
