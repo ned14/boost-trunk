@@ -10,7 +10,7 @@ rule Link-action
 
 actions kcc-Link-action bind NEEDLIBS
 {
-    $(kcc.bin-directory)KCC $(LINKFLAGS) -o $(<) $(UNDEFS) -L$(STDLIBPATH) $(NEEDLIBS) $(>)
+    $(kcc.bin-directory)KCC $(LINKFLAGS) -o "$(<)" $(UNDEFS) -L$(STDLIBPATH) $(NEEDLIBS) "$(>)"
 }
 
 #### Cc #####
@@ -22,7 +22,7 @@ rule Cc-action
 
 actions kcc-Cc-action
 {
-    $(kcc.bin-directory)KCC -c $(CCFLAGS) $(OPTIM) -I$(HDRS) -I$(STDHDRS) -o $(<) $(>)
+    $(kcc.bin-directory)KCC -c $(CCFLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -33,7 +33,7 @@ rule C++-action
 
 actions kcc-C++-action
 {
-    $(kcc.bin-directory)KCC -c $(C++FLAGS) $(OPTIM) -I$(HDRS) -I$(STDHDRS) -o $(<) $(>)
+    $(kcc.bin-directory)KCC -c $(C++FLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 
@@ -45,6 +45,6 @@ rule Archive-action
 
 actions updated together piecemeal kcc-Archive-action
 {
-    KCC -g -o $(<) $(>)
+    KCC -g -o "$(<)" "$(>)"
 }
 

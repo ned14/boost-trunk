@@ -37,7 +37,7 @@ rule Link-action
 # for gcc, we repeat all libraries so that dependencies are always resolved
 actions gcc-Link-action bind NEEDLIBS
 {
-    $(gcc.bin-directory)g++ $(LINKFLAGS) -o $(<) $(UNDEFS) -L$(STLPORTPATH) -L$(STDLIBPATH) $(>) $(NEEDLIBS) $(NEEDLIBS) -l$(STLPORTLIB)
+    $(gcc.bin-directory)g++ $(LINKFLAGS) -o "$(<)" $(UNDEFS) -L$(STLPORTPATH) -L$(STDLIBPATH) "$(>)" $(NEEDLIBS) $(NEEDLIBS) -l$(STLPORTLIB)
 }
 
 #### Cc #####
@@ -49,7 +49,7 @@ rule Cc-action
 
 actions gcc-Cc-action
 {
-    $(gcc.bin-directory)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(CCFLAGS) $(OPTIM) -I$(HDRS) -I$(STDHDRS) -o$(<) $(>)
+    $(gcc.bin-directory)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(CCFLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -60,7 +60,7 @@ rule C++-action
 
 actions gcc-C++-action
 {
-    $(gcc.bin-directory)g++ -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) $(OPTIM) -I$(HDRS) -I$(STDHDRS) -o$(<) $(>)
+    $(gcc.bin-directory)g++ -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### Archive ####
@@ -71,6 +71,6 @@ rule Archive-action
 
 actions updated together piecemeal gcc-Archive-action
 {
-    ar ru $(<) $(>)
+    ar ru "$(<)" "$(>)"
 }
 
