@@ -1696,6 +1696,7 @@ boost/libs/lambda/doc/detail/lambda_doc.xsl svneol=native#text/xml
 boost/libs/lambda/doc/detail/lambda_doc_chunks.xsl svneol=native#text/xml
 boost/libs/lambda/doc/index.html svneol=native#text/html
 boost/libs/lambda/doc/lambda_docs_as_one_file.html svneol=native#text/html
+boost/libs/lambda/index.html svneol=native#text/html
 boost/libs/lambda/test/Jamfile svneol=native#text/plain
 boost/libs/lambda/test/Makefile svneol=native#text/plain
 boost/libs/lambda/test/README_gcc2.9x_users -text
