@@ -5330,6 +5330,7 @@ boost/libs/program_options/example/multiple_sources.cpp svneol=native#text/plain
 boost/libs/program_options/example/options_description.cpp svneol=native#text/plain
 boost/libs/program_options/example/real.cpp svneol=native#text/plain
 boost/libs/program_options/example/regex.cpp svneol=native#text/plain
+boost/libs/program_options/index.html svneol=native#text/html
 boost/libs/program_options/src/cmdline.cpp svneol=native#text/plain
 boost/libs/program_options/src/config_file.cpp svneol=native#text/plain
 boost/libs/program_options/src/convert.cpp svneol=native#text/plain
