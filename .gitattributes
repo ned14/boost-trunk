@@ -1969,6 +1969,7 @@ boost/more/microsoft_vcpp.html svneol=native#text/html
 boost/more/moderators.html svneol=native#text/html
 boost/more/proposal.pdf -text svneol=unset#application/pdf
 boost/more/regression.html svneol=native#text/html
+boost/more/release_procedures.htm svneol=native#text/html
 boost/more/requesting_new_features.htm svneol=native#text/html
 boost/more/submission_process.htm svneol=native#text/html
 boost/more/test_policy.htm svneol=native#text/html
