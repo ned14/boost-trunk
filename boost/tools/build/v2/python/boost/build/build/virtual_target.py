@@ -121,7 +121,7 @@ class VirtualTargetRegistry:
         return result
 
     def from_file (self, file, project):
-        """ Creates a virtual target with approariate name and type from 'file'.
+        """ Creates a virtual target with appropriate name and type from 'file'.
             If a target with that name in that project was already created, returns that already
             created target.
             FIXME: more correct way would be to compute path to the file, based on name and source location
@@ -141,17 +141,17 @@ class VirtualTargetRegistry:
             # warning "cannot determine type for file $(file)" ;
             result = FileTarget (file, False, None, project)
         else:
-            v = FileTarget (name, file_type, project)
+            v = FileTarget (name, False, file_type, project)
             result = v
         
         self.files_ [project_path] = result
         return result
 
-    def add_suffix (self, specified_name, file_type, property_set):
+    def add_suffix (self, specified_name, file_type, prop_set):
         """ Appends the suffix appropriate to 'type/property_set' combination
             to the specified name and returns the result.
         """
-        suffix = type.generated_target_suffix (file_type, property_set)
+        suffix = type.generated_target_suffix (file_type, prop_set.raw ())
 
         if suffix:
             return specified_name + '.' + suffix
@@ -615,10 +615,10 @@ class Action:
         Targets and sources are passed as actual jam targets. The rule may
         not establish dependency relationship, but should do everything else.
     """
-    def __init__ (self, manager, sources, action_name, property_set):
+    def __init__ (self, manager, sources, action_name, prop_set):
         self.sources_ = sources
         self.action_name_ = action_name        
-        self.properties_ = property_set
+        self.properties_ = prop_set
 
         self.manager_ = manager
         self.engine_ = self.manager_.engine ()
@@ -683,7 +683,7 @@ class Action:
         # action for cleaning up
         self.manager_.engine ().set_update_action ('Clean', 'clean', actual_targets)
 
-    def actualize_source_type (self, sources, property_set):
+    def actualize_source_type (self, sources, prop_set):
         """ Helper for 'actualize_sources'.
             For each passed source, actualizes it with the appropriate scanner.
             Returns the actualized virtual targets.
@@ -696,13 +696,13 @@ class Action:
                 i = self.manager_.get_object (i)
                 
             if i.type ():
-                scanner = self.manager_.types.get_scanner (i.type (), property_set)
+                scanner = self.manager_.types.get_scanner (i.type (), prop_set)
 
             result.append (i.actualize (scanner))
         
         return result
     
-    def actualize_sources (self, sources, property_set):
+    def actualize_sources (self, sources, prop_set):
         """ Creates actual jam targets for sources. Initializes two member
             variables:
             'self.actual_sources_' -- sources which are passed to updating action
@@ -714,16 +714,16 @@ class Action:
         """
         dependencies = self.properties_.get ('<dependency>')
                 
-        self.dependency_only_sources_ += self.actualize_source_type (dependencies, property_set)
-        self.actual_sources_ += self.actualize_source_type (sources, property_set)
+        self.dependency_only_sources_ += self.actualize_source_type (dependencies, prop_set)
+        self.actual_sources_ += self.actualize_source_type (sources, prop_set)
 
-    def adjust_properties (self, property_set):
+    def adjust_properties (self, prop_set):
         """ Determines real properties when trying building with 'properties'.
             This is last chance to fix properties, for example to adjust includes
             to get generated headers correctly. Default implementation returns
             its argument.
         """
-        return property_set
+        return prop_set
 
 
 #   # Action class which does nothing --- it produces the targets with
@@ -826,17 +826,17 @@ def traverse (target, include_roots = False, include_sources = False):
 
 class Subvariant:
     
-    def __init__ (self, main_target, property_set, sources, build_properties, sources_usage_requirements, created_targets):
+    def __init__ (self, main_target, prop_set, sources, build_properties, sources_usage_requirements, created_targets):
         """ 
         main_target:                 The instance of MainTarget class
-        property_set:                Properties requested for this target
+        prop_set:                    Properties requested for this target
         sources:
         build_properties:            Actually used properties
         sources_usage_requirements:  Properties propagated from sources
         created_targets:             Top-level created targets
         """
         self.main_target_ = main_target
-        self.properties_ = property_set
+        self.properties_ = prop_set
         self.sources_ = sources
         self.build_properties_ = build_properties
         self.sources_usage_requirements_ = sources_usage_requirements
