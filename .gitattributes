@@ -1562,6 +1562,7 @@ boost/libs/python/doc/v2/faq.html svneol=native#text/html
 boost/libs/python/doc/v2/from_python.html svneol=native#text/html
 boost/libs/python/doc/v2/header.html svneol=native#text/html
 boost/libs/python/doc/v2/index.html svneol=native#text/html
+boost/libs/python/doc/v2/lvalue_from_python.html svneol=native#text/html
 boost/libs/python/doc/v2/make_function.html svneol=native#text/html
 boost/libs/python/doc/v2/manage_new_object.html svneol=native#text/html
 boost/libs/python/doc/v2/module.html svneol=native#text/html
