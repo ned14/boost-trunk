@@ -150,7 +150,7 @@ rule Link-DLL
       MODE on $(<[2]) = $(IMPMODE) ;
       Chmod $(<[2]) ;
     }
-    Link-DLL-action $(<) : $(>) : $(3) ;
+    Link-action $(<) : $(>) : $(3) ;
     
     Chmod $(<[1]) ;
 }
@@ -331,21 +331,14 @@ rule get-properties
     return $(result) ;
 }
     
-# get-values feature : properties
+# get-values features : properties
 #
-# Given a single gristed feature name and a list of properties, returns the
-# value(s) of that feature.
+# Given a list of gristed feature names and a list of properties, returns the
+# value(s) of the given features.
 rule get-values
 {
-    if $(<[2])
-    {
-        EXIT "Error: Expecting a single gristed feature name for $1 in get-values, got" "$(<)" ;
-    }
-    else
-    {
-        local _properties = [ get-properties $(<) : $(>) ] ;
-        return $(_properties:G=) ;
-    }
+    local _properties = [ get-properties $(<) : $(>) ] ;
+    return $(_properties:G=) ;
 }
 
 # normalize-properties properties
@@ -477,23 +470,21 @@ rule feature-default
 #   toolset:         the name of the toolset
 #   variable-name:   the name of a global variable which can be used to carry
 #                    information to a command-line
-#   condition:       one of the following:
-#                    1. zero or more <simple-feature>value[/<simple-feature>value...]
-#                    2. <free-feature>
-#   values:          non-empty in case 1 above, empty in case 2.
+#   condition:       one or more elements in the following forms:
+#                    1. property-sets of the form:
+#                          <feature>value[/<feature>value...]
+#                    2. <feature>[/<feature>...]
 #
-# Semantics only affect targets built with the specified toolset, and depend on
-# the form of condition:
+# This rule appends to the specified variable, depending on a target's build
+# configuration.
 #
-# 1. For targets whose build-properties are a superset of any element of condition
-# (or, when condition is empty, for all targets), values will be appended to
-# $(variable-name).
+#   1. if any specified property-set is a subset of the target's build properties,
+#   the values specified in $(3) will be appended once to /variable-name/.
 #
-# 2. for each free property of a built target whose feature is specified by
-# condition, the property's value will be appended to $(variable-name)
+#   2. The value of each specified feature that participates in the target's
+#   build properaties is appended to /variable-name/.
 #
-# In either case, the variable will be set "on" the target so it may be  used in
-# the build actions. 
+# The variable will be set "on" the target so it may be  used in its build actions. 
 rule flags
 {
     local toolset = $(<[1]) ;
@@ -507,49 +498,29 @@ rule flags
         $(variable) = ;
     }
 
-    if $(>)
+    local found = ;
+    local x ;
+    for x in $(condition)
     {
-        # values is non-empty: specifying simple properties
-        if ! $(condition) 
+        x = [ split-path $(x) ] ;
+        
+        # Add each feature to the set of features relevant to the toolset
+        gRELEVANT_FEATURES($(toolset)) += $(x:G) ;
+
+        # is it a property set?
+        if $(x:G=)
         {
-             $(variable) += $(>) ; # condition is empty: unconditionally add values
+             # if this property_set is a subset of the current build-properties
+             if ( ! $(found) ) && [ is-subset $(x) : $(gBUILD_PROPERTIES) ]
+             {
+                 found = true ;
+                 $(variable) += $(>) ;
+             }
         }
         else
         {
-            local found = ;
-            
-            local property_set ;
-            for property_set in $(condition)
-            {
-                local properties = [ split-path $(property_set) ] ;
-                
-                # Add each feature to the set of features relevant to the toolset
-                gRELEVANT_FEATURES($(toolset)) += $(properties:G) ;
-
-                # if this property_set is a subset of the current build-properties
-                if ( ! $(found) ) && [ is-subset $(properties) : $(gBUILD_PROPERTIES) ]
-                {
-                    found = true ;
-                    $(variable) += $(>) ;
-                }
-            }
+            $(variable) += [ get-values $(x) : $(gBUILD_PROPERTIES) ] ;
         }
-    }
-    else
-    {
-        
-        if $(condition[2])
-            || $(condition[1]:G=)
-            || ! ( $(condition[1]) in $(gFREE_FEATURES) )
-        {
-            EXIT "Error: rule flags expects only a single free feature"
-            " name when no values are supplied. "
-            "got (" $(condition) ") instead." ;
-        }
-        # Add the values of the free feature specified by condition to $(variable)
-        $(variable) += [ get-values $(condition) : $(gBUILD_PROPERTIES) ] ;
-        # Record that the feature is relevant to the toolset
-        gRELEVANT_FEATURES($(toolset)) += $(condition) ;
     }
 }
 

@@ -19,11 +19,17 @@ feature define : : ; # <define>PYTHON=foo
 feature undef : : ; # <undef>PYTHON=foo
 feature "include" : : PATH ; # <include>../foo/bar/mumble
 
+feature profiling : off on ; # Profiling feature by Toon Knapen <toon@si-lab.com>.
+
 # Can the target participate in a shared library?
 feature shared-linkable : false true ;
 
+
+##### Requirements by target type #####
+gTARGET_TYPE_REQUIREMENTS(DLL) = <shared-linkable>true ;
+
+##### Variant definitions ####
 common-properties = 
-    <profiling>off
     <struct-alignment>auto
     <eh-model>default
     <threading>single
@@ -40,6 +46,7 @@ common-properties =
     
 variant debug :
     $(common-properties)
+    <profiling>off
     <debug-symbols>on
     <runtime-build>debug
     <optimization>off
@@ -48,6 +55,7 @@ variant debug :
 
 variant release : 
     $(common-properties)
+    <profiling>off
     <debug-symbols>off
     <runtime-build>release
     <optimization>speed
@@ -55,4 +63,14 @@ variant release :
     <define>NDEBUG
     ;
 
+# Profiling variant by Toon Knapen <toon@si-lab.com>
+variant profile :
+    $(common-properties)
+    <debug-symbols>off
+    <profiling>on
+    <runtime-build>release
+    <optimization>speed
+    <inlining>full
+    <define>NDEBUG
+    ;
 

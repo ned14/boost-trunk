@@ -1,0 +1,5 @@
+Decide on permanent support file organization: where do features/variants get
+defined, etc.
+
+Add a hook function that allows output directory customization
+

@@ -650,6 +650,18 @@ actions msvc-C++-action
 </pre>
         </blockquote>
 
+        Note that <tt>Link-action</tt> may require special care: on platforms
+        where the global variable <tt>gEXPORT_SUFFIX(DLL)</tt> is defined
+        (e.g. Windows), the first argument may have two elements when linking a
+        shared library. The first is the shared library target, and the second
+        is the import library target, with suffix given by
+        <tt>$(gEXPORT_SUFFIX(DLL))</tt>. It will always have a third argument
+        which is either ``<tt>EXE</tt>'' or ``<tt>DLL</tt>''. This can be used
+        to dispatch to different actions for linking DLLs and EXEs if
+        neccessary, but usually it will be easier to take advantage of the
+        special <tt>&lt;target-type&gt;</tt> feature, which will have the same
+        value using the <tt>flags</tt> rule described below.
+
       <li>
         Translate build settings given in the global <tt>gBUILD_PROPERTIES</tt>
         variable into something that can be used by the toolset. The build
@@ -660,45 +672,41 @@ actions msvc-C++-action
 
         <blockquote>
 <pre>
-flags <i>tools-name variable-name condition</i> [: <i>value</i>...]
+flags <i>toolset variable condition</i> [: <i>value</i>...]
 </pre>
         </blockquote>
         The parameters are: 
 
-        <ol>
+        <ul>
           <li><i>toolset</i> - the name of the toolset
 
           <li><i>variable</i> - the name of a global variable which can be used
           to carry information to a command-line
 
           <li>
-            <i>condition</i> - one of the following: 
+            <i>condition</i> - one one or more elements in the following forms:
 
             <ol>
-              <li>a list of property-sets:
-              <tt>&lt;<i>simple-feature</i>&gt;<i>value</i></tt>[<tt>/&lt;<i>simple-feature</i>&gt;<i>
-              value</i></tt>...]
+              <li>a property-set of the form:
+              <tt>&lt;<i>feature</i>&gt;<i>value</i></tt>[<tt>/&lt;<i>feature</i>&gt;<i>value</i></tt>...]
 
-              <li><tt>&lt;<i>free-feature</i>&gt;</tt>
+              <li><tt>&lt;<i>feature</i>&gt;</tt>
             </ol>
 
-          <li>values - empty if <i>condition</i> is a free freature; non-empty
-          otherwise
-        </ol>
+          <li><i>values</i> - anything
+        </ul>
 
         <p>Semantics only affect targets built with the specified toolset, and
-        depend on the form of condition:
+        depend on the target's build configuration:
 
-        <ul>
-          <li>For targets whose build-properties are a superset of any element
-          of condition, values will be appended to the given <i>variable</i>.
+       <ol>
+   <li>if any specified property-set is a subset of the target's build properties,
+   the <i>values</i> specified in <tt>$(3)</tt> will be appended once to <i>variable</i>.
 
-          <li>for each free property of a built target whose feature is
-          specified by condition, the property's value will be appended to the
-          given <i>variable</i>
-        </ul>
-        In either case, the variable will be set "on" the target so it may be
-        used in the build actions.
+   
+   <li>The value of each specified feature that participates in the target's
+   build properaties is appended to <i>variable</i>.  In either case, the
+   variable will be set "on" the target so it may be used in the build actions.
     </ol>
 
     <h3>Example</h3>

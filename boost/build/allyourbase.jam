@@ -961,7 +961,7 @@ rule Object
     }
     else
     {
-        h = "" ;
+        h = $(>:D) ;
     }
 
     HDRRULE on $(>) = HdrRule ;
@@ -1203,7 +1203,11 @@ rule strip-grist
 rule split-path
 {
     local parent = $(<:P) ;
-    if ! $(parent:G=)
+    if ( ! $(<:B) ) && ( $(<) != $(DOT) ) # handle the case where $(<) is all grist.
+    {
+        return $(<:G) ;
+    }
+    else if ! $(parent:G=)
     {
         return $(<) ;
     }

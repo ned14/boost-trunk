@@ -11,12 +11,19 @@ flags gcc CFLAGS <inlining>off : -fno-inline ;
 flags gcc CFLAGS <inlining>on : -Wno-inline ;
 flags gcc CFLAGS <inlining>full : -finline-functions -Wno-inline ;
 
+flags gcc CFLAGS <profiling>on : -pg ;
+flags gcc LINKFLAGS <profiling>on : -pg ;
+
 flags gcc DEFINES <define> ;
 flags gcc UNDEFS <undef> ;
 flags gcc HDRS <include> ;
 
 flags gcc STDHDRS : $(gcc.root-directory)$(SLASH)include ;
 flags gcc STDLIBPATH : $(gcc.root-directory)$(SLASH)lib ;
+
+flags gcc CFLAGS <shared-linkable>true : -fPIC ;
+flags gcc LINKFLAGS <shared-linkable>true : -fPIC ;
+flags gcc LINKFLAGS <target-type>DLL : -shared ;
 
 #### Link ####
 

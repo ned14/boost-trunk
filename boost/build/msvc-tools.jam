@@ -41,21 +41,9 @@ rule Link-action
     msvc-Link-action $(<) : $(>) ;
 }
 
-actions msvc-Link-action bind NEEDLIBS bind pdb-name
+actions msvc-Link-action bind NEEDLIBS 
 {
-    $(MSVC_TOOL_PATH)link /nologo $(LINKFLAGS) /PDB:"$(<[1]:S=.pdb)" /out:"$(<)" $(UNDEFS) /LIBPATH:$(STDLIBPATH) $(NEEDLIBS) "$(>)"
-}
-
-#### Link-DLL ####
-
-rule Link-DLL-action
-{
-    msvc-Link-DLL-action $(<) : $(>) ;
-}
-
-actions msvc-Link-DLL-action bind NEEDLIBS bind pdb-name
-{
-    $(MSVC_TOOL_PATH)link /nologo /DLL $(LINKFLAGS) /PDB:"$(<[1]:S=.pdb)" /out:"$(<[1])" $(UNDEFS) /LIBPATH:$(STDLIBPATH) $(NEEDLIBS) "$(>)"
+    $(MSVC_TOOL_PATH)link /nologo $(LINKFLAGS) /PDB:"$(<[1]:S=.pdb)" /out:"$(<[1])" $(UNDEFS) /LIBPATH:$(STDLIBPATH) $(NEEDLIBS) "$(>)"
 }
 
 #### Cc #####

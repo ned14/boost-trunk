@@ -1,6 +1,7 @@
 * text=auto !eol
 boost/build/Jamfile svneol=native#text/plain
 boost/build/Jamrules svneol=native#text/plain
+boost/build/TODO.txt svneol=native#text/plain
 boost/build/allyourbase.jam svneol=native#text/plain
 boost/build/bar.c svneol=native#text/plain
 boost/build/bar.cpp svneol=native#text/plain
