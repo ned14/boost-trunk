@@ -37,9 +37,9 @@ template< typename Set, typename Tail > struct s_iter_impl
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     typedef typename apply_if< 
-          has_key< Set,typename Tail::base::item >
-        , identity< s_iter<Set,typename Tail::base> >
-        , next< s_iter<Set,typename Tail::base> >
+          has_key< Set,typename Tail::next_::item >
+        , identity< s_iter<Set,typename Tail::next_> >
+        , next< s_iter<Set,typename Tail::next_> >
         >::type next;        
 #endif
 };
@@ -49,9 +49,9 @@ template< typename Set, typename Tail > struct s_iter_impl
 template< typename Set, typename Tail > 
 struct next< s_iter<Set,Tail> >
     : apply_if< 
-          has_key< Set,typename Tail::base::item >
-        , identity< s_iter<Set,typename Tail::base> >
-        , next< s_iter<Set,typename Tail::base> >
+          has_key< Set,typename Tail::next_::item >
+        , identity< s_iter<Set,typename Tail::next_> >
+        , next< s_iter<Set,typename Tail::next_> >
         >
 {
 };

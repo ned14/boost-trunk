@@ -15,16 +15,11 @@
 // $Date$
 // $Revision$
 
-//#include "boost/mpl/set/aux_/at.hpp"
-//#include "boost/mpl/set/aux_/front.hpp"
-//#include "boost/mpl/set/aux_/push_front.hpp"
-//#include "boost/mpl/set/aux_/pop_front.hpp"
-//#include "boost/mpl/set/aux_/back.hpp"
-//#include "boost/mpl/set/aux_/clear.hpp"
+#include "boost/mpl/set/aux_/at_impl.hpp"
+#include "boost/mpl/set/aux_/clear_impl.hpp"
 //#include "boost/mpl/set/aux_/O1_size.hpp"
-//#include "boost/mpl/set/aux_/size.hpp"
-//#include "boost/mpl/set/aux_/empty.hpp"
-//#include "boost/mpl/set/aux_/empty.hpp"
+#include "boost/mpl/set/aux_/size_impl.hpp"
+#include "boost/mpl/set/aux_/empty_impl.hpp"
 #include "boost/mpl/set/aux_/insert_impl.hpp"
 #include "boost/mpl/set/aux_/order_impl.hpp"
 #include "boost/mpl/set/aux_/has_key_impl.hpp"

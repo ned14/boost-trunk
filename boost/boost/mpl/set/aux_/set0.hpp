@@ -15,6 +15,7 @@
 // $Date$
 // $Revision$
 
+#include "boost/mpl/long.hpp"
 #include "boost/mpl/void_fwd.hpp"
 #include "boost/mpl/set/aux_/tag.hpp"
 #include "boost/mpl/aux_/config/static_constant.hpp"
@@ -27,7 +28,8 @@ template< int dummy_ = 0 > struct set0
     typedef aux::set_tag    tag;
     typedef void_           last_masked;
     typedef void_           item;
-
+    typedef long_<0>        size;
+    
     BOOST_STATIC_CONSTANT(long, order = 0);
 };
 

@@ -39,12 +39,12 @@ struct insert_impl< aux::set_tag >
     struct apply
         : apply_if< 
               has_key_impl<aux::set_tag>::apply<Set,T>
+            , identity<Set>
             , apply_if< 
                   is_same< T,typename Set::last_masked > 
                 , base<Set>
-                , identity<Set>
+                , identity< s_item<T,Set> >
                 >
-            , identity< s_item<T,Set> >
             >
 /*
     : eval< if_<
