@@ -2165,6 +2165,7 @@ boost/c++boost.gif -text svneol=unset#image/gif
 boost/doc/Jamfile.v2 svneol=native#text/plain
 boost/doc/html/any.html svneol=native#text/html
 boost/doc/html/array.html svneol=native#text/html
+boost/doc/html/boostbook.css svneol=native#text/css
 boost/doc/html/boostbook.html svneol=native#text/html
 boost/doc/html/function.html svneol=native#text/html
 boost/doc/html/images/blank.png -text svneol=unset#image/png
