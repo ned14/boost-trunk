@@ -3007,6 +3007,7 @@ boost/libs/graph/test/reverse_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/stanford_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/subgraph.cpp svneol=native#text/plain
 boost/libs/graph/test/transitive_closure_test.cpp svneol=native#text/plain
+boost/libs/graph/test/transitive_closure_test2.cpp svneol=native#text/plain
 boost/libs/graph/test/vector_graph_cc.cpp svneol=native#text/plain
 boost/libs/index.html svneol=native#text/html
 boost/libs/integer/cstdint.htm svneol=native#text/html
