@@ -368,6 +368,7 @@ boost/libs/graph/doc/figs/undigraph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/visitor.fig -text
 boost/libs/graph/doc/figs/visitor.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/file_dependency_example.html svneol=native#text/html
+boost/libs/graph/doc/filtered_graph.html svneol=native#text/html
 boost/libs/graph/doc/graph_coloring.html svneol=native#text/html
 boost/libs/graph/doc/graph_concepts.html svneol=native#text/html
 boost/libs/graph/doc/graph_theory_review.html svneol=native#text/html
