@@ -507,7 +507,9 @@ boost/libs/regex/changes.txt svneol=native#text/plain
 boost/libs/regex/configure svneol=native#text/plain
 boost/libs/regex/configure.in -text
 boost/libs/regex/demo/c_compiler_checks/posix_api_compiler_check.c svneol=native#text/plain
+boost/libs/regex/demo/c_compiler_checks/posix_api_compiler_check.cpp svneol=native#text/plain
 boost/libs/regex/demo/c_compiler_checks/wide_posix_api_compiler_check.c svneol=native#text/plain
+boost/libs/regex/demo/c_compiler_checks/wide_posix_api_compiler_check.cpp svneol=native#text/plain
 boost/libs/regex/demo/jgrep/bc55.mak svneol=native#text/plain
 boost/libs/regex/demo/jgrep/bcb4.mak svneol=native#text/plain
 boost/libs/regex/demo/jgrep/bcb5.mak svneol=native#text/plain
