@@ -434,7 +434,6 @@ boost/libs/rational/index.html svneol=native#text/html
 boost/libs/rational/rational.html svneol=native#text/html
 boost/libs/rational/rational_example.cpp svneol=native#text/plain
 boost/libs/regex/appendix.htm svneol=native#text/html
-boost/libs/regex/c++boost.gif -text svneol=unset#image/gif
 boost/libs/regex/changes.txt svneol=native#text/plain
 boost/libs/regex/clean -text
 boost/libs/regex/compiler_tests -text
