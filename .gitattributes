@@ -5726,7 +5726,6 @@ boost/libs/test/src/unit_test_suite.cpp svneol=native#text/plain
 boost/libs/test/test/.cvsignore -text
 boost/libs/test/test/Jamfile svneol=native#text/plain
 boost/libs/test/test/auto_unit_test_test.cpp svneol=native#text/plain
-boost/libs/test/test/auto_unit_test_test_mult.cpp svneol=native#text/plain
 boost/libs/test/test/auto_unit_test_test_mult1.cpp svneol=native#text/plain
 boost/libs/test/test/auto_unit_test_test_mult2.cpp svneol=native#text/plain
 boost/libs/test/test/custom_exception_test.cpp svneol=native#text/plain
