@@ -570,6 +570,8 @@ boost/libs/config/test/no_swprintf_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_swprintf_pass.cpp svneol=native#text/plain
 boost/libs/config/test/no_using_template_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_using_template_pass.cpp svneol=native#text/plain
+boost/libs/config/test/no_void_returns_fail.cpp svneol=native#text/plain
+boost/libs/config/test/no_void_returns_pass.cpp svneol=native#text/plain
 boost/libs/config/test/no_wchar_t_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_wchar_t_pass.cpp svneol=native#text/plain
 boost/libs/config/test/regression.cfg -text
