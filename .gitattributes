@@ -10087,6 +10087,7 @@ boost/tools/build/v2/test/unused/b.cpp svneol=native#text/plain
 boost/tools/build/v2/test/unused/b.x -text
 boost/tools/build/v2/test/unused/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/use_requirements.py svneol=native#text/x-python
+boost/tools/build/v2/test/using.py svneol=native#text/x-python
 boost/tools/build/v2/test/v1-testing/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/v1-testing/a.cpp svneol=native#text/plain
 boost/tools/build/v2/test/v1-testing/b.cpp svneol=native#text/plain
