@@ -178,6 +178,7 @@ boost/boost/detail/compressed_pair.hpp svneol=native#text/plain
 boost/boost/detail/dynamic_bitset.hpp svneol=native#text/plain
 boost/boost/detail/iterator.hpp svneol=native#text/plain
 boost/boost/detail/lightweight_mutex.hpp svneol=native#text/plain
+boost/boost/detail/lightweight_test.hpp svneol=native#text/plain
 boost/boost/detail/limits.hpp svneol=native#text/plain
 boost/boost/detail/lwm_gcc.hpp svneol=native#text/plain
 boost/boost/detail/lwm_irix.hpp svneol=native#text/plain
