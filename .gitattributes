@@ -548,6 +548,7 @@ boost/libs/graph/example/bfs.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs.expected -text
 boost/libs/graph/example/bfs_basics.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs_basics.expected -text
+boost/libs/graph/example/bfs_neighbor.cpp svneol=native#text/plain
 boost/libs/graph/example/boost_web.dat -text
 boost/libs/graph/example/boost_web_graph.cpp svneol=native#text/plain
 boost/libs/graph/example/boost_web_graph.expected -text
