@@ -7005,7 +7005,6 @@ boost/tools/build/v2/test/m1-03/p1/auxillary/b.cpp svneol=native#text/plain
 boost/tools/build/v2/test/m1-03/p1/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/m1-03/p2/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/m1-03/p2/project-root.jam svneol=native#text/plain
-boost/tools/build/v2/test/main_properties.py svneol=native#text/x-python
 boost/tools/build/v2/test/make_rule.py svneol=native#text/x-python
 boost/tools/build/v2/test/module-actions/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/test/module-actions/bootstrap.jam svneol=native#text/plain
