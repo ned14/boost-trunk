@@ -1239,6 +1239,7 @@ boost/boost/python/detail/exception_handler.hpp svneol=native#text/plain
 boost/boost/python/detail/force_instantiate.hpp svneol=native#text/plain
 boost/boost/python/detail/if_else.hpp svneol=native#text/plain
 boost/boost/python/detail/indirect_traits.hpp svneol=native#text/plain
+boost/boost/python/detail/is_function_ref_tester.hpp svneol=native#text/plain
 boost/boost/python/detail/make_keyword_range_fn.hpp svneol=native#text/plain
 boost/boost/python/detail/make_tuple.hpp svneol=native#text/plain
 boost/boost/python/detail/map_entry.hpp svneol=native#text/plain
