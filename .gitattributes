@@ -5358,6 +5358,7 @@ boost/libs/test/doc/tests/unit_test_suite_ex_test.html svneol=native#text/html
 boost/libs/test/example/.cvsignore -text
 boost/libs/test/example/Jamfile svneol=native#text/plain
 boost/libs/test/example/prg_exec_example.cpp svneol=native#text/plain
+boost/libs/test/example/test_case_template_example.cpp svneol=native#text/plain
 boost/libs/test/example/test_exec_example.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example1.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example2.cpp svneol=native#text/plain
