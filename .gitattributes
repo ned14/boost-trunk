@@ -3044,7 +3044,6 @@ boost/boost/type_traits/detail/ice_not.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/ice_or.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/is_function_ptr_helper.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/is_function_ptr_tester.hpp svneol=native#text/plain
-boost/boost/type_traits/detail/is_function_type_tester.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/size_t_trait_def.hpp svneol=native#text/plain
