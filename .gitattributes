@@ -5933,6 +5933,7 @@ boost/libs/variant/doc/reference/visitor_ptr.xml svneol=native#text/xml
 boost/libs/variant/doc/sample.html svneol=native#text/html
 boost/libs/variant/doc/styles.css svneol=native#text/css
 boost/libs/variant/doc/tutorial.html svneol=native#text/html
+boost/libs/variant/doc/tutorial/advanced.xml svneol=native#text/xml
 boost/libs/variant/doc/tutorial/basic.xml svneol=native#text/xml
 boost/libs/variant/doc/tutorial/tutorial.xml svneol=native#text/xml
 boost/libs/variant/doc/variant.xml svneol=native#text/xml
