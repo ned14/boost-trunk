@@ -2804,6 +2804,7 @@ boost/libs/mpl/test/aux_/Jamfile svneol=native#text/plain
 boost/libs/mpl/test/aux_/debug_print.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/has_distance.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/has_rebind.cpp svneol=native#text/plain
+boost/libs/mpl/test/aux_/has_xxx.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/typeof.cpp svneol=native#text/plain
 boost/libs/mpl/test/back.cpp svneol=native#text/plain
 boost/libs/mpl/test/bind.cpp svneol=native#text/plain
