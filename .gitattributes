@@ -1473,6 +1473,7 @@ boost/libs/preprocessor/example/array_arithmetic.c svneol=native#text/plain
 boost/libs/preprocessor/example/catch_builtin.cpp svneol=native#text/plain
 boost/libs/preprocessor/example/count_down.c svneol=native#text/plain
 boost/libs/preprocessor/example/delay.c svneol=native#text/plain
+boost/libs/preprocessor/example/duffs_device.c svneol=native#text/plain
 boost/libs/preprocessor/example/is_integral.cpp svneol=native#text/plain
 boost/libs/preprocessor/example/linear_fib.c svneol=native#text/plain
 boost/libs/preprocessor/example/note.c svneol=native#text/plain
