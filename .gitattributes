@@ -5780,6 +5780,7 @@ boost/libs/utility/ref_ct_test.cpp svneol=native#text/plain
 boost/libs/utility/ref_test.cpp svneol=native#text/plain
 boost/libs/utility/reverse_iterator.htm svneol=native#text/html
 boost/libs/utility/reverse_iterator_example.cpp svneol=native#text/plain
+boost/libs/utility/safe_bool_testable_test.cpp svneol=native#text/plain
 boost/libs/utility/shared_container_iterator.html svneol=native#text/html
 boost/libs/utility/shared_iterator_example1.cpp svneol=native#text/plain
 boost/libs/utility/shared_iterator_example2.cpp svneol=native#text/plain
