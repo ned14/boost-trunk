@@ -9864,6 +9864,7 @@ boost/tools/build/v2/test/BoostBuild.py svneol=native#text/x-python
 boost/tools/build/v2/test/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/Jamrules svneol=native#text/plain
 boost/tools/build/v2/test/TestCmd.py svneol=native#text/x-python
+boost/tools/build/v2/test/abs_workdir.py svneol=native#text/x-python
 boost/tools/build/v2/test/absolute_sources.py svneol=native#text/x-python
 boost/tools/build/v2/test/alias.py svneol=native#text/x-python
 boost/tools/build/v2/test/alternatives.py svneol=native#text/x-python
