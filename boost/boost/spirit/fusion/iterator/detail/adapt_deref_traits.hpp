@@ -15,14 +15,14 @@ namespace boost { namespace fusion { namespace detail
     struct adapt_deref_traits
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef typename
                 result_of_deref<typename Iterator::first_type>::type
             type;
 
             static type
-            apply(Iterator const& i)
+            call(Iterator const& i)
             {
                 return *i.first;
             }

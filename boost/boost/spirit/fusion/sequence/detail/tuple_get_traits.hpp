@@ -35,12 +35,12 @@ namespace boost { namespace fusion
             type;
 
             static type
-            apply(Tuple& t);
+            call(Tuple& t);
         };
 
         template <int N, typename Tuple>
         inline typename tuple_get_traits_impl<N, Tuple>::type
-        tuple_get_traits_impl<N, Tuple>::apply(Tuple& t)
+        tuple_get_traits_impl<N, Tuple>::call(Tuple& t)
         {
             return detail::tuple_access<N>::get(t);
         }
@@ -50,7 +50,7 @@ namespace boost { namespace fusion
     struct tuple_get_traits<tuple_tag>
     {
         template <int N, typename Tuple>
-        struct algorithm : detail::tuple_get_traits_impl<N, Tuple> {};
+        struct apply : detail::tuple_get_traits_impl<N, Tuple> {};
     };
 }}
 

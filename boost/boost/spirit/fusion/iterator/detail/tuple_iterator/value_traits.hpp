@@ -23,7 +23,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Tag>
-    struct value_traits;
+    struct value_impl;
 
     namespace detail
     {
@@ -41,10 +41,10 @@ namespace boost { namespace fusion
     }
 
     template <>
-    struct value_traits<tuple_iterator_tag>
+    struct value_impl<tuple_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm : detail::tuple_iterator_value_traits_impl<Iterator> {};
+        struct apply : detail::tuple_iterator_value_traits_impl<Iterator> {};
     };
 
 }} // namespace boost::fusion

@@ -24,10 +24,10 @@ namespace boost { namespace fusion
     struct joint_view_iterator;
 
     template <>
-    struct next_traits<joint_view_iterator_tag>
+    struct next_impl<joint_view_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef typename Iterator::first_type first_type;
             typedef typename Iterator::last_type last_type;
@@ -44,21 +44,21 @@ namespace boost { namespace fusion
             type;
 
             static type
-            apply(Iterator const& i, mpl::true_)
+            call(Iterator const& i, mpl::true_)
             {
                 return i.concat;
             }
 
             static type
-            apply(Iterator const& i, mpl::false_)
+            call(Iterator const& i, mpl::false_)
             {
                 return type(fusion::next(i.first), i.concat);
             }
 
             static type
-            apply(Iterator const& i)
+            call(Iterator const& i)
             {
-                return apply(i, equal_to());
+                return call(i, equal_to());
             }
         };
     };

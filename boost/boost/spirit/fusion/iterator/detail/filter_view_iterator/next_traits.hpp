@@ -23,10 +23,10 @@ namespace boost { namespace fusion
     struct filter_iterator;
 
     template <>
-    struct next_traits<filter_view_iterator_tag>
+    struct next_impl<filter_view_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef typename Iterator::first_type first_type;
             typedef typename Iterator::last_type last_type;
@@ -49,9 +49,9 @@ namespace boost { namespace fusion
             type;
 
             static type
-            apply(Iterator const& i)
+            call(Iterator const& i)
             {
-                return type(filter::apply(i.first));
+                return type(filter::call(i.first));
             }
         };
     };

@@ -14,18 +14,18 @@
 namespace boost { namespace fusion
 {
     template <typename Tag>
-    struct deref_traits
+    struct deref_impl
     {
         template <typename Iterator>
-        struct algorithm {};
+        struct apply {};
     };
 
     template <typename Iterator>
     struct result_of_deref
     {
         typedef typename
-            deref_traits<FUSION_GET_TAG(Iterator)>::
-                template algorithm<Iterator>::type
+            deref_impl<FUSION_GET_TAG(Iterator)>::
+                template apply<Iterator>::type
         type;
     };
 
@@ -34,8 +34,8 @@ namespace boost { namespace fusion
     operator*(iterator_base<Iterator> const& i)
     {
         typename result_of_deref<Iterator>::type result =
-            deref_traits<FUSION_GET_TAG(Iterator)>::
-                template algorithm<Iterator>::apply(i.cast());
+            deref_impl<FUSION_GET_TAG(Iterator)>::
+                template apply<Iterator>::call(i.cast());
         return result;
     }
 
@@ -44,8 +44,8 @@ namespace boost { namespace fusion
     operator*(iterator_base<Iterator>& i)
     {
         typename result_of_deref<Iterator>::type result =
-            deref_traits<FUSION_GET_TAG(Iterator)>::
-                template algorithm<Iterator>::apply(i.cast());
+            deref_impl<FUSION_GET_TAG(Iterator)>::
+                template apply<Iterator>::call(i.cast());
         return result;
     }
 

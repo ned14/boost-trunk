@@ -13,18 +13,18 @@
 namespace boost { namespace fusion
 {
     template <typename Tag>
-    struct prior_traits
+    struct prior_impl
     {
         template <typename Iterator>
-        struct algorithm {};
+        struct apply {};
     };
 
     template <typename Iterator>
     struct result_of_prior
     {
         typedef typename
-            prior_traits<FUSION_GET_TAG(Iterator)>::
-                template algorithm<Iterator>::type
+            prior_impl<FUSION_GET_TAG(Iterator)>::
+                template apply<Iterator>::type
         type;
     };
 
@@ -32,8 +32,8 @@ namespace boost { namespace fusion
     inline typename result_of_prior<Iterator>::type
     prior(Iterator const& i)
     {
-        return prior_traits<FUSION_GET_TAG(Iterator)>::
-            template algorithm<Iterator>::apply(i);
+        return prior_impl<FUSION_GET_TAG(Iterator)>::
+            template apply<Iterator>::call(i);
     }
 
 }}

@@ -22,20 +22,20 @@ namespace boost { namespace fusion
     struct type_sequence;
 
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <>
-    struct begin_traits<type_sequence_tag>
+    struct begin_impl<type_sequence_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef type_sequence_iterator<
                 typename mpl::begin<typename Sequence::sequence_type>::type>
             type;
 
             static type
-            apply(Sequence)
+            call(Sequence)
             {
                 FUSION_RETURN_DEFAULT_CONSTRUCTED;
             }
@@ -43,20 +43,20 @@ namespace boost { namespace fusion
     };
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct end_traits<type_sequence_tag>
+    struct end_impl<type_sequence_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef type_sequence_iterator<
                 typename mpl::end<typename Sequence::sequence_type>::type>
             type;
 
             static type
-            apply(Sequence)
+            call(Sequence)
             {
                 FUSION_RETURN_DEFAULT_CONSTRUCTED;
             }
@@ -67,18 +67,18 @@ namespace boost { namespace fusion
 namespace boost { namespace mpl
 {
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct begin_traits<fusion::type_sequence_tag>
-        : fusion::begin_traits<fusion::type_sequence_tag> {};
+    struct begin_impl<fusion::type_sequence_tag>
+        : fusion::begin_impl<fusion::type_sequence_tag> {};
 
     template <>
-    struct end_traits<fusion::type_sequence_tag>
-        : fusion::end_traits<fusion::type_sequence_tag> {};
+    struct end_impl<fusion::type_sequence_tag>
+        : fusion::end_impl<fusion::type_sequence_tag> {};
 }}
 
 #endif

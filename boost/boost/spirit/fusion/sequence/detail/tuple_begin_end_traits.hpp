@@ -18,10 +18,10 @@ namespace boost { namespace fusion
     struct tuple_iterator;
 
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     namespace tuple_detail
     {
@@ -31,12 +31,12 @@ namespace boost { namespace fusion
             typedef tuple_iterator<0, Tuple> type;
 
             static type
-            apply(Tuple& t);
+            call(Tuple& t);
         };
 
         template <typename Tuple>
         inline typename begin_traits_impl<Tuple>::type
-        begin_traits_impl<Tuple>::apply(Tuple& t)
+        begin_traits_impl<Tuple>::call(Tuple& t)
         {
             return type(t);
         }
@@ -48,29 +48,29 @@ namespace boost { namespace fusion
             typedef tuple_iterator<FUSION_GET_VALUE(size), Tuple> type;
 
             static type
-            apply(Tuple& t);
+            call(Tuple& t);
         };
 
         template <typename Tuple>
         inline typename end_traits_impl<Tuple>::type
-        end_traits_impl<Tuple>::apply(Tuple& t)
+        end_traits_impl<Tuple>::call(Tuple& t)
         {
             return type(t);
         }
     }
 
     template <>
-    struct begin_traits<tuple_tag>
+    struct begin_impl<tuple_tag>
     {
         template <typename Tuple>
-        struct algorithm : tuple_detail::begin_traits_impl<Tuple> {};
+        struct apply : tuple_detail::begin_traits_impl<Tuple> {};
     };
 
     template <>
-    struct end_traits<tuple_tag>
+    struct end_impl<tuple_tag>
     {
         template <typename Tuple>
-        struct algorithm : tuple_detail::end_traits_impl<Tuple> {};
+        struct apply : tuple_detail::end_traits_impl<Tuple> {};
     };
 }}
 
@@ -94,27 +94,27 @@ namespace boost { namespace mpl
     // these mpl traits really ought to be placed somewhere else
 
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <>
-    struct begin_traits<fusion::tuple_tag>
-        : fusion::begin_traits<fusion::tuple_tag> {};
+    struct begin_impl<fusion::tuple_tag>
+        : fusion::begin_impl<fusion::tuple_tag> {};
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct end_traits<fusion::tuple_tag>
-        : fusion::end_traits<fusion::tuple_tag> {};
+    struct end_impl<fusion::tuple_tag>
+        : fusion::end_impl<fusion::tuple_tag> {};
 
     template <typename Tag>
-    struct clear_traits;
+    struct clear_impl;
 
     template <>
-    struct clear_traits<fusion::tuple_tag>
+    struct clear_impl<fusion::tuple_tag>
     {
         template <typename Tuple>
-        struct algorithm
+        struct apply
         {
             typedef fusion::tuple<> type;
         };
@@ -127,7 +127,7 @@ namespace boost { namespace mpl
     struct push_front_traits<fusion::tuple_tag>
     {
         template <typename Tuple, typename T>
-        struct algorithm
+        struct apply
         {
             typedef typename
                 fusion::result_of_generate<

@@ -23,7 +23,7 @@ namespace boost { namespace fusion
     }
 
     template <typename Tag>
-    struct deref_traits;
+    struct deref_impl;
 
     namespace detail
     {
@@ -39,12 +39,12 @@ namespace boost { namespace fusion
             type;
 
             static type
-            apply(Iterator const& i);
+            call(Iterator const& i);
         };
 
         template <typename Iterator>
         inline typename tuple_iterator_deref_traits_impl<Iterator>::type
-        tuple_iterator_deref_traits_impl<Iterator>::apply(Iterator const& i)
+        tuple_iterator_deref_traits_impl<Iterator>::call(Iterator const& i)
         {
             return detail::tuple_access<FUSION_GET_VALUE(index)>
                 ::get(detail::ref(i.get_tuple()));
@@ -52,10 +52,10 @@ namespace boost { namespace fusion
     }
 
     template <>
-    struct deref_traits<tuple_iterator_tag>
+    struct deref_impl<tuple_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm : detail::tuple_iterator_deref_traits_impl<Iterator> {};
+        struct apply : detail::tuple_iterator_deref_traits_impl<Iterator> {};
     };
 
 }}

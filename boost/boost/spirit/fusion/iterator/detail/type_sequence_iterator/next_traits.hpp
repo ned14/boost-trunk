@@ -16,23 +16,23 @@ namespace boost { namespace fusion
     struct type_sequence_iterator_tag;
 
     template <typename Tag>
-    struct next_traits;
+    struct next_impl;
 
     template <typename Iterator>
     struct type_sequence_iterator;
 
     template <>
-    struct next_traits<type_sequence_iterator_tag>
+    struct next_impl<type_sequence_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef type_sequence_iterator<
                 typename mpl::next<typename Iterator::iterator_type>::type
             > type;
 
             static type
-            apply(Iterator)
+            call(Iterator)
             {
                 FUSION_RETURN_DEFAULT_CONSTRUCTED;
             };

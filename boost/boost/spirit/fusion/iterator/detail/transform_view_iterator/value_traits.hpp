@@ -17,10 +17,10 @@ namespace boost { namespace fusion
     struct transform_view_iterator_tag;
 
     template <>
-    struct value_traits<transform_view_iterator_tag>
+    struct value_impl<transform_view_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef typename
                 value_of<typename Iterator::first_type>::type

@@ -16,13 +16,13 @@ namespace boost { namespace fusion
     struct type_sequence_iterator_tag;
 
     template <typename Tag>
-    struct value_traits;
+    struct value_impl;
 
     template <>
-    struct value_traits<type_sequence_iterator_tag>
+    struct value_impl<type_sequence_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef typename mpl::deref<
                 typename Iterator::iterator_type>::type

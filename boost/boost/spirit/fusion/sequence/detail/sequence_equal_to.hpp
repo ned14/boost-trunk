@@ -25,7 +25,7 @@ namespace boost { namespace fusion { namespace detail
 
         template <typename I1, typename I2>
         static bool
-        apply(I1 const&, I2 const&, mpl::true_)
+        call(I1 const&, I2 const&, mpl::true_)
         {
             BOOST_STATIC_ASSERT((equal_to<I2, end2_type>::value));
             return true;
@@ -33,17 +33,17 @@ namespace boost { namespace fusion { namespace detail
 
         template <typename I1, typename I2>
         static bool
-        apply(I1 const& a, I2 const& b, mpl::false_)
+        call(I1 const& a, I2 const& b, mpl::false_)
         {
-            return *a == *b && apply(fusion::next(a), fusion::next(b));
+            return *a == *b && call(fusion::next(a), fusion::next(b));
         }
 
         template <typename I1, typename I2>
         static bool
-        apply(I1 const& a, I2 const& b)
+        call(I1 const& a, I2 const& b)
         {
             typename equal_to<I1, end1_type>::type eq;
-            return apply(a, b, eq);
+            return call(a, b, eq);
         }
     };
 }}}

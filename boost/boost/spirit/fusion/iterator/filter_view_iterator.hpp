@@ -29,7 +29,7 @@ namespace boost { namespace fusion
         typedef filter_iterator<First, Last, Pred> self_type;
 
         filter_iterator(First const& first)
-            : first(filter::apply(first)) {}
+            : first(filter::call(first)) {}
 
         first_type first;
     };

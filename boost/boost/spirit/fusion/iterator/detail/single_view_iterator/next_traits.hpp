@@ -21,20 +21,20 @@ namespace boost { namespace fusion
     struct single_view_iterator;
 
     template <typename Tag>
-    struct next_traits;
+    struct next_impl;
 
     template <>
-    struct next_traits<single_view_iterator_tag>
+    struct next_impl<single_view_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef single_view_iterator_end<
                 FUSION_GET_VALUE_TYPE(Iterator)>
             type;
 
             static type
-            apply(Iterator)
+            call(Iterator)
             {
                 FUSION_RETURN_DEFAULT_CONSTRUCTED;
             };

@@ -16,7 +16,7 @@ namespace boost { namespace fusion
     struct filter_view_iterator_tag;
 
     template <>
-    struct value_traits<filter_view_iterator_tag>
+    struct value_impl<filter_view_iterator_tag>
         : detail::adapt_value_traits {};
 }}
 

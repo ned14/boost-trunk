@@ -25,7 +25,7 @@ namespace boost { namespace fusion
     operator==(sequence_base<Seq1> const& a, sequence_base<Seq2> const& b)
     {
         return detail::sequence_equal_to<Seq1 const, Seq2 const>::
-            apply(
+            call(
                 boost::fusion::begin(a.cast())
               , boost::fusion::begin(b.cast())
             );

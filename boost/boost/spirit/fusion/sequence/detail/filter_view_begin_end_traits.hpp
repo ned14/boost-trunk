@@ -21,10 +21,10 @@ namespace boost { namespace fusion
     struct filter_iterator;
 
     template <>
-    struct begin_traits<filter_view_tag>
+    struct begin_impl<filter_view_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef typename Sequence::first_type first_type;
             typedef typename Sequence::last_type last_type;
@@ -32,7 +32,7 @@ namespace boost { namespace fusion
             typedef filter_iterator<first_type, last_type, pred_type> type;
 
             static type
-            apply(Sequence& s)
+            call(Sequence& s)
             {
                 return type(s.first);
             }
@@ -40,17 +40,17 @@ namespace boost { namespace fusion
     };
 
     template <>
-    struct end_traits<filter_view_tag>
+    struct end_impl<filter_view_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef typename Sequence::last_type last_type;
             typedef typename Sequence::pred_type pred_type;
             typedef filter_iterator<last_type, last_type, pred_type> type;
 
             static type
-            apply(Sequence& s)
+            call(Sequence& s)
             {
                 return type(s.last);
             }
@@ -61,18 +61,18 @@ namespace boost { namespace fusion
 namespace boost { namespace mpl
 {
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct begin_traits<fusion::filter_view_tag>
-        : fusion::begin_traits<fusion::filter_view_tag> {};
+    struct begin_impl<fusion::filter_view_tag>
+        : fusion::begin_impl<fusion::filter_view_tag> {};
 
     template <>
-    struct end_traits<fusion::filter_view_tag>
-        : fusion::end_traits<fusion::filter_view_tag> {};
+    struct end_impl<fusion::filter_view_tag>
+        : fusion::end_impl<fusion::filter_view_tag> {};
 }}
 
 #endif

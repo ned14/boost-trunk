@@ -13,10 +13,10 @@
 namespace boost { namespace fusion
 {
     template <typename Tag>
-    struct value_traits
+    struct value_impl
     {
         template <typename Iterator>
-        struct algorithm;
+        struct apply;
 //        {
 //            // VC6 needs this
 //            typedef int type;
@@ -27,8 +27,8 @@ namespace boost { namespace fusion
     struct value_of
     {
         typedef typename
-            value_traits<FUSION_GET_TAG(Iterator)>::
-                template algorithm<Iterator>::type
+            value_impl<FUSION_GET_TAG(Iterator)>::
+                template apply<Iterator>::type
         type;
     };
 }}

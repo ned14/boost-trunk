@@ -60,13 +60,13 @@ namespace boost { namespace fusion { namespace detail
     {
         template <typename OS, typename First, typename Last>
         static void
-        apply(OS& os, First const&, Last const&, mpl::true_)
+        call(OS& os, First const&, Last const&, mpl::true_)
         {
         }
 
         template <typename OS, typename First, typename Last>
         static void
-        apply(OS& os, First const& first, Last const& last, mpl::false_)
+        call(OS& os, First const& first, Last const& last, mpl::false_)
         {
             equal_to<
                 BOOST_DEDUCED_TYPENAME result_of_next<First>::type
@@ -76,15 +76,15 @@ namespace boost { namespace fusion { namespace detail
 
             os << *first;
             delimiter_io<tuple_delimiter_tag>::print(os, " ", is_last);
-            apply(os, fusion::next(first), last, is_last);
+            call(os, fusion::next(first), last, is_last);
         }
 
         template <typename OS, typename First, typename Last>
         static void
-        apply(OS& os, First const& first, Last const& last)
+        call(OS& os, First const& first, Last const& last)
         {
             equal_to<First, Last> eq;
-            apply(os, first, last, eq);
+            call(os, first, last, eq);
         }
     };
 
@@ -92,13 +92,13 @@ namespace boost { namespace fusion { namespace detail
     {
         template <typename IS, typename First, typename Last>
         static void
-        apply(IS& is, First const&, Last const&, mpl::true_)
+        call(IS& is, First const&, Last const&, mpl::true_)
         {
         }
 
         template <typename IS, typename First, typename Last>
         static void
-        apply(IS& is, First const& first, Last const& last, mpl::false_)
+        call(IS& is, First const& first, Last const& last, mpl::false_)
         {
           	equal_to<
                 BOOST_DEDUCED_TYPENAME result_of_next<First>::type
@@ -108,15 +108,15 @@ namespace boost { namespace fusion { namespace detail
 
             is >> *first;
             delimiter_io<tuple_delimiter_tag>::read(is, " ", is_last);
-            apply(is, fusion::next(first), last, is_last);
+            call(is, fusion::next(first), last, is_last);
         }
 
         template <typename IS, typename First, typename Last>
         static void
-        apply(IS& is, First const& first, Last const& last)
+        call(IS& is, First const& first, Last const& last)
         {
             equal_to<First, Last> eq;
-            apply(is, first, last, eq);
+            call(is, first, last, eq);
         }
     };
 
@@ -125,7 +125,7 @@ namespace boost { namespace fusion { namespace detail
     print_sequence(OS& os, Sequence const& seq)
     {
         delimiter_io<tuple_open_tag>::print(os, "(");
-        print_sequence_loop::apply(os, fusion::begin(seq), fusion::end(seq));
+        print_sequence_loop::call(os, fusion::begin(seq), fusion::end(seq));
         delimiter_io<tuple_close_tag>::print(os, ")");
     }
 
@@ -134,7 +134,7 @@ namespace boost { namespace fusion { namespace detail
     read_sequence(IS& is, Sequence& seq)
     {
         delimiter_io<tuple_open_tag>::read(is, "(");
-        read_sequence_loop::apply(is, fusion::begin(seq), fusion::end(seq));
+        read_sequence_loop::call(is, fusion::begin(seq), fusion::end(seq));
         delimiter_io<tuple_close_tag>::read(is, ")");
     }
 }}}

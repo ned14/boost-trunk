@@ -19,10 +19,10 @@ namespace boost { namespace fusion
     struct transform_view_iterator;
 
     template <>
-    struct next_traits<transform_view_iterator_tag>
+    struct next_impl<transform_view_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef typename Iterator::first_type first_type;
             typedef typename result_of_next<first_type>::type next_type;
@@ -30,7 +30,7 @@ namespace boost { namespace fusion
             typedef transform_view_iterator<next_type, transform_type> type;
 
             static type
-            apply(Iterator const& i)
+            call(Iterator const& i)
             {
                 return type(fusion::next(i.first), i.f);
             }

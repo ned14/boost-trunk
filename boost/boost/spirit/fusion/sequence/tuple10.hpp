@@ -51,7 +51,7 @@ namespace boost { namespace fusion
 
         template <typename X>
         explicit tuple1(X const& x)
-            : m0(construct(x, detail::disambiguate<X, T0>::apply()))
+            : m0(construct(x, detail::disambiguate<X, T0>::call()))
         {}
 
         tuple1(typename detail::call_param<T0>::type _0)

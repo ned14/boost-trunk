@@ -24,12 +24,12 @@ namespace boost { namespace fusion
             type;
 
             static type
-            apply(Iterator const& i);
+            call(Iterator const& i);
         };
 
         template <typename Iterator>
         inline typename deref_traits_impl<Iterator>::type
-        deref_traits_impl<Iterator>::apply(Iterator const& i)
+        deref_traits_impl<Iterator>::call(Iterator const& i)
         {
             return detail::ref(i.val);
         }
@@ -38,13 +38,13 @@ namespace boost { namespace fusion
     struct single_view_iterator_tag;
 
     template <typename Tag>
-    struct deref_traits;
+    struct deref_impl;
 
     template <>
-    struct deref_traits<single_view_iterator_tag>
+    struct deref_impl<single_view_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm : single_view_iterator_detail::deref_traits_impl<Iterator> {};
+        struct apply : single_view_iterator_detail::deref_traits_impl<Iterator> {};
     };
 }}
 

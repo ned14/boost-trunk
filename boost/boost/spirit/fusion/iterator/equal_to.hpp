@@ -18,7 +18,7 @@ namespace boost { namespace fusion
     struct equal_to_traits
     {
         template <typename I1, typename I2>
-        struct algorithm
+        struct apply
         {
             typedef typename
                 is_same<
@@ -33,7 +33,7 @@ namespace boost { namespace fusion
     template <typename I1, typename I2>
     struct equal_to
         : equal_to_traits<FUSION_GET_TAG(I1)>::
-            template algorithm<I1, I2>::type {};
+            template apply<I1, I2>::type {};
 
 /* this code is wrong because equal_to must be convertible
    to an mpl::bool_ !!! However, VC6/7 might not like the new code above
@@ -43,7 +43,7 @@ namespace boost { namespace fusion
     {
         typedef typename
             equal_to_traits<FUSION_GET_TAG(I1)>::
-                template algorithm<I1, I2>::type
+                template apply<I1, I2>::type
         type;
         BOOST_STATIC_CONSTANT(bool, value = FUSION_GET_VALUE(type));
     };

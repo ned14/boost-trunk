@@ -19,18 +19,18 @@
 namespace boost { namespace fusion
 {
     template <typename Tag>
-    struct begin_traits
+    struct begin_impl
     {
         template <typename Sequence>
-        struct algorithm {};
+        struct apply {};
     };
 
     template <typename Sequence>
     struct result_of_begin
     {
         typedef typename
-            begin_traits<FUSION_GET_TAG(Sequence)>::
-                template algorithm<Sequence>::type
+            begin_impl<FUSION_GET_TAG(Sequence)>::
+                template apply<Sequence>::type
         type;
     };
 
@@ -38,16 +38,16 @@ namespace boost { namespace fusion
     inline typename result_of_begin<Sequence const>::type
     begin(sequence_base<Sequence> const& seq)
     {
-        return begin_traits<FUSION_GET_TAG(Sequence)>::
-            template algorithm<Sequence const>::apply(seq.cast());
+        return begin_impl<FUSION_GET_TAG(Sequence)>::
+            template apply<Sequence const>::call(seq.cast());
     }
 
     template <typename Sequence>
     inline typename result_of_begin<Sequence>::type
     begin(sequence_base<Sequence>& seq)
     {
-        return begin_traits<FUSION_GET_TAG(Sequence)>::
-            template algorithm<Sequence>::apply(seq.cast());
+        return begin_impl<FUSION_GET_TAG(Sequence)>::
+            template apply<Sequence>::call(seq.cast());
     }
 
 #ifdef FUSION_COMFORMING_COMPILER

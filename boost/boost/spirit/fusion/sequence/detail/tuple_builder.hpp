@@ -48,7 +48,7 @@ namespace boost { namespace fusion { namespace detail
     struct get_tuple_n<0>
     {
         template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_TUPLE_SIZE, typename T)>
-        struct apply
+        struct call
         {
             typedef tuple0 type;
         };
@@ -59,7 +59,7 @@ namespace boost { namespace fusion { namespace detail
     struct get_tuple_n<n>                                                       \
     {                                                                           \
         template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_TUPLE_SIZE, typename T)>      \
-        struct apply                                                            \
+        struct call                                                            \
         {                                                                       \
             typedef BOOST_PP_CAT(tuple, n)<BOOST_PP_ENUM_PARAMS(n, T)> type;    \
         };                                                                      \
@@ -81,7 +81,7 @@ namespace boost { namespace fusion { namespace detail
         typedef typename mpl::distance<begin, end>::type size;
 
         typedef typename get_tuple_n<FUSION_GET_VALUE(size)>::template
-            apply<BOOST_PP_ENUM_PARAMS(FUSION_MAX_TUPLE_SIZE, T)>::type
+            call<BOOST_PP_ENUM_PARAMS(FUSION_MAX_TUPLE_SIZE, T)>::type
         type;
     };
 }}}

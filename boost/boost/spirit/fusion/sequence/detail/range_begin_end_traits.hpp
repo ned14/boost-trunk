@@ -18,18 +18,18 @@ namespace boost { namespace fusion
     struct range;
 
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <>
-    struct begin_traits<range_tag>
+    struct begin_impl<range_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef typename Sequence::begin_type type;
 
             static type
-            apply(Sequence const& s)
+            call(Sequence const& s)
             {
                 return s.first;
             }
@@ -37,18 +37,18 @@ namespace boost { namespace fusion
     };
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct end_traits<range_tag>
+    struct end_impl<range_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef typename Sequence::end_type type;
 
             static type
-            apply(Sequence const& s)
+            call(Sequence const& s)
             {
                 return s.last;
             }
@@ -59,18 +59,18 @@ namespace boost { namespace fusion
 namespace boost { namespace mpl
 {
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct begin_traits<fusion::range_tag>
-        : fusion::begin_traits<fusion::range_tag> {};
+    struct begin_impl<fusion::range_tag>
+        : fusion::begin_impl<fusion::range_tag> {};
 
     template <>
-    struct end_traits<fusion::range_tag>
-        : fusion::end_traits<fusion::range_tag> {};
+    struct end_impl<fusion::range_tag>
+        : fusion::end_impl<fusion::range_tag> {};
 }}
 
 #endif

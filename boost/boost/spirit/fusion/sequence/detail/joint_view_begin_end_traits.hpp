@@ -23,10 +23,10 @@ namespace boost { namespace fusion
     struct joint_view_iterator;
 
     template <>
-    struct begin_traits<joint_view_tag>
+    struct begin_impl<joint_view_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef typename Sequence::first_type first_type;
             typedef typename Sequence::last_type last_type;
@@ -42,35 +42,35 @@ namespace boost { namespace fusion
             type;
 
             static type
-            apply(Sequence& s, mpl::true_)
+            call(Sequence& s, mpl::true_)
             {
                 return s.concat;
             }
 
             static type
-            apply(Sequence& s, mpl::false_)
+            call(Sequence& s, mpl::false_)
             {
                 return type(s.first, s.concat);
             }
 
             static type
-            apply(Sequence& s)
+            call(Sequence& s)
             {
-                return apply(s, equal_to());
+                return call(s, equal_to());
             }
         };
     };
 
     template <>
-    struct end_traits<joint_view_tag>
+    struct end_impl<joint_view_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef typename Sequence::concat_last_type type;
 
             static type
-            apply(Sequence& s)
+            call(Sequence& s)
             {
                 return s.concat_last;
             }
@@ -81,18 +81,18 @@ namespace boost { namespace fusion
 namespace boost { namespace mpl
 {
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct begin_traits<fusion::joint_view_tag>
-        : fusion::begin_traits<fusion::joint_view_tag> {};
+    struct begin_impl<fusion::joint_view_tag>
+        : fusion::begin_impl<fusion::joint_view_tag> {};
 
     template <>
-    struct end_traits<fusion::joint_view_tag>
-        : fusion::end_traits<fusion::joint_view_tag> {};
+    struct end_impl<fusion::joint_view_tag>
+        : fusion::end_impl<fusion::joint_view_tag> {};
 }}
 
 #endif

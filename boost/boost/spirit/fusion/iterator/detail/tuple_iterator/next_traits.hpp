@@ -21,7 +21,7 @@ namespace boost { namespace fusion
     struct tuple_iterator;
 
     template <typename Tag>
-    struct next_traits;
+    struct next_impl;
 
     namespace detail
     {
@@ -37,22 +37,22 @@ namespace boost { namespace fusion
             typedef tuple_iterator<FUSION_GET_VALUE(next), tuple_> type;
 
             static type
-            apply(Iterator const& i);
+            call(Iterator const& i);
         };
 
         template <typename Iterator>
         inline typename tuple_iterator_next_traits_impl<Iterator>::type
-        tuple_iterator_next_traits_impl<Iterator>::apply(Iterator const& i)
+        tuple_iterator_next_traits_impl<Iterator>::call(Iterator const& i)
         {
             return type(detail::ref(i.get_tuple()));
         }
     }
 
     template <>
-    struct next_traits<tuple_iterator_tag>
+    struct next_impl<tuple_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm : detail::tuple_iterator_next_traits_impl<Iterator> {};
+        struct apply : detail::tuple_iterator_next_traits_impl<Iterator> {};
     };
 }}
 

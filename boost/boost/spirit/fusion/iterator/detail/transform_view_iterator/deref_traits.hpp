@@ -16,10 +16,10 @@ namespace boost { namespace fusion
     struct transform_view_iterator_tag;
 
     template <>
-    struct deref_traits<transform_view_iterator_tag>
+    struct deref_impl<transform_view_iterator_tag>
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef typename
                 result_of_deref<typename Iterator::first_type>::type
@@ -30,7 +30,7 @@ namespace boost { namespace fusion
                 template result<deref_type>::type type;
 
             static type
-            apply(Iterator const& i)
+            call(Iterator const& i)
             {
                 return i.f(*i.first);
             }

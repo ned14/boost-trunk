@@ -21,7 +21,7 @@ namespace boost { namespace fusion
     struct single_view_iterator;
 
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     namespace single_view_detail
     {
@@ -33,12 +33,12 @@ namespace boost { namespace fusion
             type;
 
             static type
-            apply(Sequence const& s);
+            call(Sequence const& s);
         };
 
         template <typename Sequence>
         inline typename begin_traits_impl<Sequence>::type
-        begin_traits_impl<Sequence>::apply(Sequence const& s)
+        begin_traits_impl<Sequence>::call(Sequence const& s)
         {
             return type(s.val);
         }
@@ -51,50 +51,50 @@ namespace boost { namespace fusion
             type;
 
             static type
-            apply(Sequence const&);
+            call(Sequence const&);
         };
 
         template <typename Sequence>
         inline typename end_traits_impl<Sequence>::type
-        end_traits_impl<Sequence>::apply(Sequence const&)
+        end_traits_impl<Sequence>::call(Sequence const&)
         {
             FUSION_RETURN_DEFAULT_CONSTRUCTED;
         }
     }
 
     template <>
-    struct begin_traits<single_view_tag>
+    struct begin_impl<single_view_tag>
     {
         template <typename Sequence>
-        struct algorithm : single_view_detail::begin_traits_impl<Sequence> {};
+        struct apply : single_view_detail::begin_traits_impl<Sequence> {};
     };
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct end_traits<single_view_tag>
+    struct end_impl<single_view_tag>
     {
         template <typename Sequence>
-        struct algorithm : single_view_detail::end_traits_impl<Sequence> {};
+        struct apply : single_view_detail::end_traits_impl<Sequence> {};
     };
 }}
 
 namespace boost { namespace mpl
 {
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct begin_traits<fusion::single_view_tag>
-        : fusion::begin_traits<fusion::single_view_tag> {};
+    struct begin_impl<fusion::single_view_tag>
+        : fusion::begin_impl<fusion::single_view_tag> {};
 
     template <>
-    struct end_traits<fusion::single_view_tag>
-        : fusion::end_traits<fusion::single_view_tag> {};
+    struct end_impl<fusion::single_view_tag>
+        : fusion::end_impl<fusion::single_view_tag> {};
 }}
 
 #endif

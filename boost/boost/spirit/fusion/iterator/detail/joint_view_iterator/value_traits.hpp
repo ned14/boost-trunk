@@ -16,7 +16,7 @@ namespace boost { namespace fusion
     struct joint_view_iterator_tag;
 
     template <>
-    struct value_traits<joint_view_iterator_tag>
+    struct value_impl<joint_view_iterator_tag>
         : detail::adapt_value_traits {};
 }}
 

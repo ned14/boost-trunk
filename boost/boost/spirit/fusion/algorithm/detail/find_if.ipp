@@ -71,24 +71,24 @@ namespace boost { namespace fusion { namespace detail
 
         template <typename Iterator>
         static type
-        apply(Iterator const& iter, mpl::true_)
+        call(Iterator const& iter, mpl::true_)
         {
             return iter;
         };
 
         template <typename Iterator>
         static type
-        apply(Iterator const& iter, mpl::false_)
+        call(Iterator const& iter, mpl::false_)
         {
-            return apply(fusion::next(iter));
+            return call(fusion::next(iter));
         };
 
         template <typename Iterator>
         static type
-        apply(Iterator const& iter)
+        call(Iterator const& iter)
         {
             typedef equal_to<Iterator, type> found;
-            return apply(iter, found());
+            return call(iter, found());
         };
     };
 

@@ -21,23 +21,23 @@ namespace boost { namespace fusion
     struct transform_view_iterator;
 
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct begin_traits<transform_view_tag>
+    struct begin_impl<transform_view_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef typename Sequence::first_type first_type;
             typedef typename Sequence::transform_type transform_type;
             typedef transform_view_iterator<first_type, transform_type> type;
 
             static type
-            apply(Sequence& s)
+            call(Sequence& s)
             {
                 return type(s.first, s.f);
             }
@@ -45,17 +45,17 @@ namespace boost { namespace fusion
     };
 
     template <>
-    struct end_traits<transform_view_tag>
+    struct end_impl<transform_view_tag>
     {
         template <typename Sequence>
-        struct algorithm
+        struct apply
         {
             typedef typename Sequence::last_type last_type;
             typedef typename Sequence::transform_type transform_type;
             typedef transform_view_iterator<last_type, transform_type> type;
 
             static type
-            apply(Sequence& s)
+            call(Sequence& s)
             {
                 return type(s.last, s.f);
             }
@@ -66,18 +66,18 @@ namespace boost { namespace fusion
 namespace boost { namespace mpl
 {
     template <typename Tag>
-    struct begin_traits;
+    struct begin_impl;
 
     template <typename Tag>
-    struct end_traits;
+    struct end_impl;
 
     template <>
-    struct begin_traits<fusion::transform_view_tag>
-        : fusion::begin_traits<fusion::transform_view_tag> {};
+    struct begin_impl<fusion::transform_view_tag>
+        : fusion::begin_impl<fusion::transform_view_tag> {};
 
     template <>
-    struct end_traits<fusion::transform_view_tag>
-        : fusion::end_traits<fusion::transform_view_tag> {};
+    struct end_impl<fusion::transform_view_tag>
+        : fusion::end_impl<fusion::transform_view_tag> {};
 }}
 
 #endif

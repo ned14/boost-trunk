@@ -27,13 +27,13 @@ namespace boost { namespace fusion
     struct tuple_element_traits
     {
         template <typename N, typename Tuple>
-        struct algorithm {};
+        struct apply {};
     };
 
     template <int N, typename Tuple>
     struct tuple_element
         : tuple_element_traits<FUSION_GET_TAG(Tuple)>::
-            template algorithm<mpl::int_<N>, Tuple>
+            template apply<mpl::int_<N>, Tuple>
     {};
 }}
 

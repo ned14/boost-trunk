@@ -22,7 +22,7 @@ namespace boost { namespace fusion
     struct tuple_element_traits<tuple_tag>
     {
         template <typename N, typename Tuple>
-        struct algorithm
+        struct apply
         {
             typedef typename
                 mpl::at<FUSION_GET_TYPES(Tuple), N>::type

@@ -45,7 +45,7 @@ namespace boost { namespace fusion
             >
         filter;
 
-        return filter::apply(fusion::begin(seq.cast()));
+        return filter::call(fusion::begin(seq.cast()));
     }
 
 #ifdef FUSION_COMFORMING_COMPILER

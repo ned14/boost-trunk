@@ -15,7 +15,7 @@ namespace boost { namespace fusion { namespace detail
     struct adapt_value_traits
     {
         template <typename Iterator>
-        struct algorithm
+        struct apply
         {
             typedef typename
                 value_of<typename Iterator::first_type>::type
