@@ -4721,6 +4721,7 @@ boost/libs/iterator/test/iterator_adaptor_cc.cpp svneol=native#text/plain
 boost/libs/iterator/test/iterator_adaptor_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/iterator_archetype_cc.cpp svneol=native#text/plain
 boost/libs/iterator/test/iterator_facade.cpp svneol=native#text/plain
+boost/libs/iterator/test/iterator_traits_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/lvalue_concept_fail.cpp svneol=native#text/plain
 boost/libs/iterator/test/permutation_iterator_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/pointee.cpp svneol=native#text/plain
