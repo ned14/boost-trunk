@@ -438,6 +438,7 @@ boost/boost/mpl/aux_/front_impl.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/full_lambda.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/has_rebind.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/has_size.hpp svneol=native#text/plain
+boost/boost/mpl/aux_/has_xxx.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/include_preprocessed.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/insert_impl.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/insert_range_impl.hpp svneol=native#text/plain
