@@ -2941,7 +2941,6 @@ boost/boost/vector_property_map.hpp svneol=native#text/plain
 boost/boost/version.hpp svneol=native#text/plain
 boost/boost/visit_each.hpp svneol=native#text/plain
 boost/boost/weak_ptr.hpp svneol=native#text/plain
-boost/c++boost.gif -text svneol=unset#image/gif
 boost/doc/Jamfile.v2 svneol=native#text/plain
 boost/doc/html/any.html svneol=native#text/html
 boost/doc/html/array.html svneol=native#text/html
