@@ -529,6 +529,7 @@ boost/libs/graph/example/vertex_basics.expected -text
 boost/libs/graph/example/visitor.cpp svneol=native#text/plain
 boost/libs/graph/example/visitor.expected -text
 boost/libs/graph/test/adj_list_test.cpp svneol=native#text/plain
+boost/libs/graph/test/dfs.cpp svneol=native#text/plain
 boost/libs/graph/test/graph.cpp svneol=native#text/plain
 boost/libs/graph/test/graph_type.hpp svneol=native#text/plain
 boost/libs/hdr_depend.html svneol=native#text/html
