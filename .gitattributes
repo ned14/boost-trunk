@@ -5878,6 +5878,7 @@ boost/libs/variant/test/Jamfile svneol=native#text/plain
 boost/libs/variant/test/class_a.cpp svneol=native#text/plain
 boost/libs/variant/test/class_a.h svneol=native#text/plain
 boost/libs/variant/test/jobs.h svneol=native#text/plain
+boost/libs/variant/test/recursive_variant_test.cpp svneol=native#text/plain
 boost/libs/variant/test/test1.cpp svneol=native#text/plain
 boost/libs/variant/test/test2.cpp svneol=native#text/plain
 boost/libs/variant/test/test3.cpp svneol=native#text/plain
