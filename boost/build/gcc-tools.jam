@@ -40,7 +40,7 @@ rule Cc-action
 
 actions gcc-Cc-action
 {
-    $(gcc.bin-directory)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(CCFLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
+    $(gcc.bin-directory)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -51,7 +51,7 @@ rule C++-action
 
 actions gcc-C++-action
 {
-    $(gcc.bin-directory)g++ -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
+    $(gcc.bin-directory)g++ -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### Archive ####

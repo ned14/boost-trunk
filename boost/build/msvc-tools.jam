@@ -47,7 +47,7 @@ rule Cc-action
 
 actions msvc-Cc-action
 {
-    $(msvc.bin-directory)cl -nologo -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(CCFLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -Fo"$(<)" "$(>)"
+    $(msvc.bin-directory)cl -nologo -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -Fo"$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -58,7 +58,7 @@ rule C++-action
 
 actions msvc-C++-action
 {
-    $(msvc.bin-directory)cl -nologo -GX -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -Fo"$(<)" -Tp"$(>)"
+    $(msvc.bin-directory)cl -nologo -GX -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -Fo"$(<)" -Tp"$(>)"
 }
 
 #### Archive ####

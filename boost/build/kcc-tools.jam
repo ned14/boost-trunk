@@ -22,7 +22,7 @@ rule Cc-action
 
 actions kcc-Cc-action
 {
-    $(kcc.bin-directory)KCC -c $(CCFLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
+    $(kcc.bin-directory)KCC -c $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -33,7 +33,7 @@ rule C++-action
 
 actions kcc-C++-action
 {
-    $(kcc.bin-directory)KCC -c $(C++FLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
+    $(kcc.bin-directory)KCC -c $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 
