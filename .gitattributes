@@ -2412,6 +2412,12 @@ boost/tools/build/test/echo_args.jam svneol=native#text/plain
 boost/tools/build/test/empty.jam svneol=native#text/plain
 boost/tools/build/test/include_types_test.zip -text svneol=unset#application/zip
 boost/tools/build/test/nested_includes_test.zip -text svneol=unset#application/zip
+boost/tools/build/test/project-test1.jam svneol=native#text/plain
+boost/tools/build/test/project-test1/Jamfile svneol=native#text/plain
+boost/tools/build/test/project-test1/dir/Jamfile svneol=native#text/plain
+boost/tools/build/test/project-test1/dir2/Jamfile svneol=native#text/plain
+boost/tools/build/test/project-test1/dir2/project-root.jam svneol=native#text/plain
+boost/tools/build/test/project-test1/project-root.jam svneol=native#text/plain
 boost/tools/build/test/recursive.jam svneol=native#text/plain
 boost/tools/build/test/subdir1/file-to-bind -text
 boost/tools/build/test/subdir_invocation_test.zip -text svneol=unset#application/zip
@@ -2481,6 +2487,12 @@ boost/tools/build/v2/test/echo_args.jam svneol=native#text/plain
 boost/tools/build/v2/test/empty.jam svneol=native#text/plain
 boost/tools/build/v2/test/include_types_test.zip -text svneol=unset#application/zip
 boost/tools/build/v2/test/nested_includes_test.zip -text svneol=unset#application/zip
+boost/tools/build/v2/test/project-test1.jam svneol=native#text/plain
+boost/tools/build/v2/test/project-test1/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/project-test1/dir/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/project-test1/dir2/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/project-test1/dir2/project-root.jam svneol=native#text/plain
+boost/tools/build/v2/test/project-test1/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/recursive.jam svneol=native#text/plain
 boost/tools/build/v2/test/subdir1/file-to-bind -text
 boost/tools/build/v2/test/subdir_invocation_test.zip -text svneol=unset#application/zip
