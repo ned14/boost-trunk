@@ -930,6 +930,7 @@ boost/libs/smart_ptr/scoped_array.htm svneol=native#text/html
 boost/libs/smart_ptr/scoped_ptr.htm svneol=native#text/html
 boost/libs/smart_ptr/shared_array.htm svneol=native#text/html
 boost/libs/smart_ptr/shared_ptr.htm svneol=native#text/html
+boost/libs/smart_ptr/shared_ptr_example.cpp svneol=native#text/plain
 boost/libs/smart_ptr/smart_ptr.htm svneol=native#text/html
 boost/libs/smart_ptr/smart_ptr_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/smarttest.zip -text svneol=unset#application/zip
