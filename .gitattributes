@@ -8730,6 +8730,7 @@ boost/tools/build/v1/como-win32-tools.jam svneol=native#text/plain
 boost/tools/build/v1/cw-8_3-tools.jam svneol=native#text/plain
 boost/tools/build/v1/cw-9_2-tools.jam svneol=native#text/plain
 boost/tools/build/v1/cw-9_3-tools.jam svneol=native#text/plain
+boost/tools/build/v1/cw-9_4-tools.jam svneol=native#text/plain
 boost/tools/build/v1/cw-tools.html svneol=native#text/html
 boost/tools/build/v1/cw-tools.jam svneol=native#text/plain
 boost/tools/build/v1/darwin-tools.html svneol=native#text/html
