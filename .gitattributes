@@ -1969,7 +1969,6 @@ boost/boost/range/reverse_result_iterator.hpp svneol=native#text/plain
 boost/boost/range/size.hpp svneol=native#text/plain
 boost/boost/range/size_type.hpp svneol=native#text/plain
 boost/boost/range/sub_range.hpp svneol=native#text/plain
-boost/boost/range/types.hpp svneol=native#text/plain
 boost/boost/range/value_type.hpp svneol=native#text/plain
 boost/boost/rational.hpp svneol=native#text/plain
 boost/boost/ref.hpp svneol=native#text/plain
