@@ -1057,6 +1057,28 @@ rule Shell
     Chmod $(<) ;
 }
 
+# dwa 6/7/01 - added for boost
+# subproject path
+#
+# Invokes SubDir with a path description
+rule subproject
+{
+   SubDir TOP [ split-path $(<) ] ;
+}
+
+# dwa 6/7/01 - added for boost
+# subinclude path...
+#
+# Invokes SubInclude for each path
+rule subinclude
+{
+    local d ;
+    for d in $(<)
+    {
+        SubInclude TOP [ split-path d ] ;
+    }
+}
+
 # dwa 6/4/01 - modified for boost
 rule SubDir
 {
@@ -1111,7 +1133,7 @@ rule SubDir
         include $(_r) ;
 
         # determine where toolset specifications and boost-base can be found. 
-        TOOLSET_DIR ?= $($(<[1])) ;
+        BOOST_TOOLSET_DIR ?= $($(<[1])) ;
         BOOST_BASE_DIR ?= $($(<[1])) ;
         # and include boost-base
         include [ join-path $(BOOST_BASE_DIR) boost-base.jam ] ;
