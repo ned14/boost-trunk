@@ -405,6 +405,7 @@ boost/boost/python/detail/wrap_function.hpp svneol=native#text/plain
 boost/boost/python/detail/wrap_python.hpp svneol=native#text/plain
 boost/boost/python/errors.hpp svneol=native#text/plain
 boost/boost/python/from_python.hpp svneol=native#text/plain
+boost/boost/python/lvalue_from_python.hpp svneol=native#text/plain
 boost/boost/python/make_function.hpp svneol=native#text/plain
 boost/boost/python/manage_new_object.hpp svneol=native#text/plain
 boost/boost/python/module.hpp svneol=native#text/plain
