@@ -592,7 +592,6 @@ boost/boost/iostreams/detail/adapter/mode_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/output_iterator_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/random_access_container_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/range_adapter.hpp svneol=native#text/plain
-boost/boost/iostreams/detail/allocator_utilities.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/assert_convertible.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/bool_trait_def.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/broken_overload_resolution/forward.hpp svneol=native#text/plain
