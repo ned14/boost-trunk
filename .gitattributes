@@ -705,6 +705,7 @@ boost/libs/property_map/WritablePropertyMap.html svneol=native#text/html
 boost/libs/property_map/identity_property_map.html svneol=native#text/html
 boost/libs/property_map/iterator_property_map.html svneol=native#text/html
 boost/libs/property_map/property_map.html svneol=native#text/html
+boost/libs/property_map/property_map_cc.cpp svneol=native#text/plain
 boost/libs/python/build/bpl_static.dsp -text svneol=CRLF#unset
 boost/libs/python/build/build.dsw -text svneol=CRLF#unset
 boost/libs/python/build/build.opt -text
