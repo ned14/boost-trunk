@@ -395,6 +395,7 @@ boost/boost/python/detail/functions.hpp svneol=native#text/plain
 boost/boost/python/detail/indirect_traits.hpp svneol=native#text/plain
 boost/boost/python/detail/init_function.hpp svneol=native#text/plain
 boost/boost/python/detail/map_entry.hpp svneol=native#text/plain
+boost/boost/python/detail/module_base.hpp svneol=native#text/plain
 boost/boost/python/detail/msvc_typeinfo.hpp svneol=native#text/plain
 boost/boost/python/detail/none.hpp svneol=native#text/plain
 boost/boost/python/detail/python_library_include.hpp svneol=native#text/plain
