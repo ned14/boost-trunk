@@ -1098,6 +1098,7 @@ boost/libs/graph/example/figs/scc.dot -text
 boost/libs/graph/example/figs/telephone-network.dot -text
 boost/libs/graph/example/file_dependencies.cpp svneol=native#text/plain
 boost/libs/graph/example/file_dependencies.expected -text
+boost/libs/graph/example/filtered-copy-example.cpp svneol=native#text/plain
 boost/libs/graph/example/filtered_graph.cpp svneol=native#text/plain
 boost/libs/graph/example/filtered_graph.expected -text
 boost/libs/graph/example/gerdemann.cpp svneol=native#text/plain
