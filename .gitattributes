@@ -7270,6 +7270,7 @@ boost/libs/spirit/test/repeat_ast_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/rule_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/scanner_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/scoped_lock_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/select_p_with_rule.cpp svneol=native#text/plain
 boost/libs/spirit/test/sf_bug_720917.cpp svneol=native#text/plain
 boost/libs/spirit/test/shortest_alternative_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/subrule_tests.cpp svneol=native#text/plain
