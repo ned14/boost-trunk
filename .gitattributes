@@ -1694,6 +1694,7 @@ boost/libs/python/test/doctest.py svneol=native#text/x-python
 boost/libs/python/test/indirect_traits_test.cpp svneol=native#text/plain
 boost/libs/python/test/m1.cpp svneol=native#text/plain
 boost/libs/python/test/m2.cpp svneol=native#text/plain
+boost/libs/python/test/member_function_cast.cpp svneol=native#text/plain
 boost/libs/python/test/module_tail.cpp svneol=native#text/plain
 boost/libs/python/test/newtest.py svneol=native#text/x-python
 boost/libs/python/test/pointer_type_id_test.cpp svneol=native#text/plain
