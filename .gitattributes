@@ -4175,6 +4175,8 @@ boost/libs/python/pyste/example/enums.h svneol=native#text/plain
 boost/libs/python/pyste/example/enums.pyste -text
 boost/libs/python/pyste/example/header_test.h svneol=native#text/plain
 boost/libs/python/pyste/example/header_test.pyste -text
+boost/libs/python/pyste/example/inherit.h svneol=native#text/plain
+boost/libs/python/pyste/example/inherit.pyste -text
 boost/libs/python/pyste/example/nested.cpp svneol=native#text/plain
 boost/libs/python/pyste/example/nested.h svneol=native#text/plain
 boost/libs/python/pyste/example/nested.pyste -text
@@ -4225,6 +4227,7 @@ boost/libs/python/pyste/tests/SmartFileUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_basicUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_enumsUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_header_testUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_inheritUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_nested.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_opaqueUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_operatorsUT.py svneol=native#text/x-python
