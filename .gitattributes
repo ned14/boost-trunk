@@ -8845,6 +8845,7 @@ boost/tools/regression/test/run-pass-warn.cpp svneol=native#text/plain
 boost/tools/regression/test/run-pass.cpp svneol=native#text/plain
 boost/tools/regression/test/test.bat svneol=native#text/plain
 boost/tools/regression/xsl_reports/empty_expected_results.xml svneol=native#text/xml
+boost/tools/regression/xsl_reports/make_snapshot.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/merger/__init__.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/merger/merge_logs.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/report.py svneol=native#text/x-python
