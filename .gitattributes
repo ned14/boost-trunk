@@ -2040,6 +2040,7 @@ boost/libs/bind/index.html svneol=native#text/html
 boost/libs/bind/mem_fn.html svneol=native#text/html
 boost/libs/bind/ref.html svneol=native#text/html
 boost/libs/bind/test/Jamfile svneol=native#text/plain
+boost/libs/bind/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/bind/test/bind_fastcall_mf_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_fastcall_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_stdcall_mf_test.cpp svneol=native#text/plain
@@ -6070,6 +6071,7 @@ boost/project-root.jam svneol=native#text/plain
 boost/rst.css svneol=native#text/css
 boost/status/.cvsignore -text
 boost/status/Jamfile svneol=native#text/plain
+boost/status/Jamfile.v2 svneol=native#text/plain
 boost/status/borland_logo.gif -text svneol=unset#image/gif
 boost/status/compiler_status.html svneol=native#text/html
 boost/status/index.html svneol=native#text/html
