@@ -1984,6 +1984,7 @@ boost/boost/variant/detail/has_nothrow_move.hpp svneol=native#text/plain
 boost/boost/variant/detail/has_trivial_move.hpp svneol=native#text/plain
 boost/boost/variant/detail/make_variant_list.hpp svneol=native#text/plain
 boost/boost/variant/detail/move.hpp svneol=native#text/plain
+boost/boost/variant/detail/reference_content.hpp svneol=native#text/plain
 boost/boost/variant/detail/variant_io.hpp svneol=native#text/plain
 boost/boost/variant/detail/visitation_impl.hpp svneol=native#text/plain
 boost/boost/variant/get.hpp svneol=native#text/plain
