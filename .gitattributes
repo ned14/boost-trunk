@@ -460,6 +460,7 @@ boost/libs/graph/example/edge_iterator_constructor.cpp svneol=native#text/plain
 boost/libs/graph/example/edge_iterator_constructor.dat -text
 boost/libs/graph/example/edge_property.cpp svneol=native#text/plain
 boost/libs/graph/example/edge_property.expected -text
+boost/libs/graph/example/edmunds_karp_max_flow.cpp svneol=native#text/plain
 boost/libs/graph/example/exterior_properties.cpp svneol=native#text/plain
 boost/libs/graph/example/exterior_properties.expected -text
 boost/libs/graph/example/exterior_property_map.cpp svneol=native#text/plain
