@@ -9553,6 +9553,7 @@ boost/tools/build/v2/test/v1_testing/lib-err.cpp svneol=native#text/plain
 boost/tools/build/v2/test/v1_testing/lib.cpp svneol=native#text/plain
 boost/tools/build/v2/test/v1_testing/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/wrapper.py svneol=native#text/x-python
+boost/tools/build/v2/test/wrong_project.py svneol=native#text/x-python
 boost/tools/build/v2/tools/bison.jam svneol=native#text/plain
 boost/tools/build/v2/tools/boostbook.jam svneol=native#text/plain
 boost/tools/build/v2/tools/borland.jam svneol=native#text/plain
