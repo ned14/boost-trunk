@@ -2452,6 +2452,7 @@ boost/boost/thread/detail/lock.hpp svneol=native#text/plain
 boost/boost/thread/detail/read_write_lock.hpp svneol=native#text/plain
 boost/boost/thread/detail/singleton.hpp svneol=native#text/plain
 boost/boost/thread/detail/threadmon.hpp svneol=native#text/plain
+boost/boost/thread/detail/tss_hooks.hpp svneol=native#text/plain
 boost/boost/thread/exceptions.hpp svneol=native#text/plain
 boost/boost/thread/mutex.hpp svneol=native#text/plain
 boost/boost/thread/once.hpp svneol=native#text/plain
