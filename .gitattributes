@@ -723,6 +723,7 @@ boost/libs/graph/doc/EventVisitorList.html svneol=native#text/html
 boost/libs/graph/doc/Graph.html svneol=native#text/html
 boost/libs/graph/doc/IncidenceGraph.html svneol=native#text/html
 boost/libs/graph/doc/IteratorConstructibleGraph.html svneol=native#text/html
+boost/libs/graph/doc/Makefile svneol=native#text/plain
 boost/libs/graph/doc/Monoid.html svneol=native#text/html
 boost/libs/graph/doc/MutableGraph.html svneol=native#text/html
 boost/libs/graph/doc/MutablePropertyGraph.html svneol=native#text/html
