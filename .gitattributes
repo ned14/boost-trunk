@@ -3200,6 +3200,7 @@ boost/libs/config/test/boost_no_func_tmp_order.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_i64_limits.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_inline_memb_init.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_integral_int64_t.ipp svneol=native#text/plain
+boost/libs/config/test/boost_no_is_abstract.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_iter_construct.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_limits.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_limits_const_exp.ipp svneol=native#text/plain
@@ -3348,6 +3349,8 @@ boost/libs/config/test/no_inline_memb_init_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_inline_memb_init_pass.cpp svneol=native#text/plain
 boost/libs/config/test/no_integral_int64_t_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_integral_int64_t_pass.cpp svneol=native#text/plain
+boost/libs/config/test/no_is_abstract_fail.cpp svneol=native#text/plain
+boost/libs/config/test/no_is_abstract_pass.cpp svneol=native#text/plain
 boost/libs/config/test/no_iter_construct_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_iter_construct_pass.cpp svneol=native#text/plain
 boost/libs/config/test/no_limits_const_exp_fail.cpp svneol=native#text/plain
@@ -3422,8 +3425,10 @@ boost/libs/config/test/options.jam svneol=native#text/plain
 boost/libs/config/test/test.hpp svneol=native#text/plain
 boost/libs/config/test/threads/test_thread_fail1.cpp svneol=native#text/plain
 boost/libs/config/test/threads/test_thread_fail2.cpp svneol=native#text/plain
+boost/libs/config/tools/Jamfile svneol=native#text/plain
 boost/libs/config/tools/configure.in -text
 boost/libs/config/tools/generate -text
+boost/libs/config/tools/generate.cpp svneol=native#text/plain
 boost/libs/conversion/cast.htm svneol=native#text/html
 boost/libs/conversion/cast_test.cpp svneol=native#text/plain
 boost/libs/conversion/index.html svneol=native#text/html
