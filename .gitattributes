@@ -871,7 +871,6 @@ boost/boost/mpl/single_view.hpp svneol=native#text/plain
 boost/boost/mpl/size.hpp svneol=native#text/plain
 boost/boost/mpl/size_fwd.hpp svneol=native#text/plain
 boost/boost/mpl/size_t.hpp svneol=native#text/plain
-boost/boost/mpl/size_t_c.hpp svneol=native#text/plain
 boost/boost/mpl/size_t_fwd.hpp svneol=native#text/plain
 boost/boost/mpl/sizeof.hpp svneol=native#text/plain
 boost/boost/mpl/switch.hpp svneol=native#text/plain
