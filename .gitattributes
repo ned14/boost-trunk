@@ -4099,6 +4099,7 @@ boost/libs/graph/test/bellman-test.cpp svneol=native#text/plain
 boost/libs/graph/test/betweenness_centrality_test.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs_cc.cpp svneol=native#text/plain
+boost/libs/graph/test/biconnected_components_test.cpp svneol=native#text/plain
 boost/libs/graph/test/bidir_remove_edge.cpp svneol=native#text/plain
 boost/libs/graph/test/bidir_vec_remove_edge.cpp svneol=native#text/plain
 boost/libs/graph/test/bundled_properties.cpp svneol=native#text/plain
