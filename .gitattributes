@@ -178,7 +178,6 @@ boost/boost/pool/detail/pool_construct.bat svneol=native#text/plain
 boost/boost/pool/detail/pool_construct.inc -text
 boost/boost/pool/detail/pool_construct.m4 -text
 boost/boost/pool/detail/pool_construct.sh svneol=native#text/x-sh
-boost/boost/pool/detail/select_type.hpp svneol=native#text/plain
 boost/boost/pool/detail/singleton.hpp svneol=native#text/plain
 boost/boost/pool/object_pool.hpp svneol=native#text/plain
 boost/boost/pool/object_pool_fwd.hpp svneol=native#text/plain
