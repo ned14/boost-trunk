@@ -2807,7 +2807,6 @@ boost/libs/graph/doc/figs/Makefile svneol=native#text/plain
 boost/libs/graph/doc/figs/adj-list.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-list2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-matrix-graph.gif -text svneol=unset#image/gif
-boost/libs/graph/doc/figs/adj-matrix-graph2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-matrix-graph3.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-matrix.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj_list.fig -text
@@ -2856,14 +2855,12 @@ boost/libs/graph/doc/figs/search_states.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/stl_iter.fig -text
 boost/libs/graph/doc/figs/stl_iter.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/subgraph-tree.gif -text svneol=unset#image/gif
-boost/libs/graph/doc/figs/subgraph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/tree_edges.fig -text
 boost/libs/graph/doc/figs/tree_edges.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undigraph.fig -text
 boost/libs/graph/doc/figs/undigraph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-list.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix-graph.gif -text svneol=unset#image/gif
-boost/libs/graph/doc/figs/undir-adj-matrix-graph2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix-graph3.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix2.gif -text svneol=unset#image/gif
