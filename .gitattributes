@@ -253,6 +253,7 @@ boost/libs/cs-irix.html svneol=native#text/html
 boost/libs/cs-linux.html svneol=native#text/html
 boost/libs/cs-tru64.html svneol=native#text/html
 boost/libs/cs-win32.html svneol=native#text/html
+boost/libs/cs-win32.zip -text svneol=unset#application/zip
 boost/libs/dir_it/boost.h svneol=native#text/plain
 boost/libs/dir_it/dir_it.html svneol=native#text/html
 boost/libs/dir_it/dir_it.zip -text svneol=unset#application/zip
