@@ -21,6 +21,7 @@
 #include "boost/mpl/limits/arity.hpp"
 #include "boost/mpl/aux_/arity.hpp"
 #include "boost/mpl/aux_/none.hpp"
+#include "boost/type_traits/same_traits.hpp"
 
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 

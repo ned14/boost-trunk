@@ -24,6 +24,7 @@
 #include "boost/mpl/aux_/type_wrapper.hpp"
 #include "boost/mpl/aux_/yes_no.hpp"
 #include "boost/mpl/aux_/none.hpp"
+#include "boost/type_traits/same_traits.hpp"
 
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 

@@ -16,9 +16,13 @@
 
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/assert_is_same.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
+#include "boost/mpl/limits/arity.hpp"
 
+#include "boost/mpl/aux_/preprocessor/params.hpp"
+#include "boost/mpl/aux_/preprocessor/enum.hpp"
+#include "boost/mpl/aux_/preprocessor/project1st.hpp"
 #include "boost/preprocessor/repeat_2nd.hpp"
+#include "boost/preprocessor/comma_if.hpp"
 #include "boost/preprocessor/dec.hpp"
 #include "boost/preprocessor/if.hpp"
 #include "boost/preprocessor/cat.hpp"

@@ -19,6 +19,8 @@
 
 #include "boost/config.hpp"
 
+#if !defined(__ICL)
+
 namespace boost {
 namespace mpl {
 
@@ -66,5 +68,21 @@ BOOST_MPL_AUX_REGISTER_TYPE(11, unsigned long)
 BOOST_MPL_AUX_REGISTER_TYPE(12, float)
 BOOST_MPL_AUX_REGISTER_TYPE(13, double)
 BOOST_MPL_AUX_REGISTER_TYPE(14, long double)
+
+#else
+
+namespace boost {
+namespace mpl {
+
+namespace aux {
+template< long > struct typeof_c { typedef long type; };
+}
+
+} // namespace mpl
+} // namespace boost
+
+#   define BOOST_MPL_AUX_TYPEOF(x) aux::typeof_c<x>::type
+
+#endif // #if !defined(__ICL)
 
 #endif // BOOST_MPL_AUX_TYPEOF_HPP_INCLUDED

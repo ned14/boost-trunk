@@ -21,7 +21,6 @@
 
 #include "boost/preprocessor/repeat.hpp"
 #include "boost/preprocessor/expr_if.hpp"
-#include "boost/type_traits/same_traits.hpp"
 
 #define BOOST_MPL_AUX_COUNT_PARAM(i, param) \
     BOOST_PP_EXPR_IF(i, +) \
