@@ -2568,7 +2568,6 @@ boost/boost/utility/detail/result_of_iterate.hpp svneol=native#text/plain
 boost/boost/utility/enable_if.hpp svneol=native#text/plain
 boost/boost/utility/result_of.hpp svneol=native#text/plain
 boost/boost/utility/value_init.hpp svneol=native#text/plain
-boost/boost/utility_fwd.hpp svneol=native#text/plain
 boost/boost/variant.hpp svneol=native#text/plain
 boost/boost/variant/apply_visitor.hpp svneol=native#text/plain
 boost/boost/variant/bad_visit.hpp svneol=native#text/plain
