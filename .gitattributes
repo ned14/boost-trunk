@@ -521,6 +521,7 @@ boost/libs/graph/doc/known_problems.html svneol=native#text/html
 boost/libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
 boost/libs/graph/doc/leda_conversion.html svneol=native#text/html
 boost/libs/graph/doc/minimum_degree_ordering.html svneol=native#text/html
+boost/libs/graph/doc/minimum_degree_ordering.w -text
 boost/libs/graph/doc/null_visitor.html svneol=native#text/html
 boost/libs/graph/doc/opposite.html svneol=native#text/html
 boost/libs/graph/doc/predecessor_recorder.html svneol=native#text/html
@@ -535,6 +536,7 @@ boost/libs/graph/doc/reverse_graph.html svneol=native#text/html
 boost/libs/graph/doc/sparse_matrix_ordering.html svneol=native#text/html
 boost/libs/graph/doc/stanford_graph.html svneol=native#text/html
 boost/libs/graph/doc/strong_components.html svneol=native#text/html
+boost/libs/graph/doc/strong_components.w -text
 boost/libs/graph/doc/table_of_contents.html svneol=native#text/html
 boost/libs/graph/doc/tc-out.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/tc.gif -text svneol=unset#image/gif
