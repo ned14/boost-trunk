@@ -5324,6 +5324,7 @@ boost/libs/program_options/doc/rationale -text
 boost/libs/program_options/doc/rationale.dox -text
 boost/libs/program_options/doc/recipes.dox -text
 boost/libs/program_options/doc/requirements-Rozental -text
+boost/libs/program_options/doc/todo.txt svneol=native#text/plain
 boost/libs/program_options/doc/tutorial.xml svneol=native#text/xml
 boost/libs/program_options/example/Jamfile svneol=native#text/plain
 boost/libs/program_options/example/Jamfile.v2 svneol=native#text/plain
