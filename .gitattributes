@@ -187,16 +187,11 @@ boost/boost/pool/detail/pool_construct.m4 -text
 boost/boost/pool/detail/pool_construct.sh svneol=native#text/x-sh
 boost/boost/pool/detail/singleton.hpp svneol=native#text/plain
 boost/boost/pool/object_pool.hpp svneol=native#text/plain
-boost/boost/pool/object_pool_fwd.hpp svneol=native#text/plain
 boost/boost/pool/pool.hpp svneol=native#text/plain
 boost/boost/pool/pool_alloc.hpp svneol=native#text/plain
-boost/boost/pool/pool_alloc_fwd.hpp svneol=native#text/plain
-boost/boost/pool/pool_fwd.hpp svneol=native#text/plain
 boost/boost/pool/poolfwd.hpp svneol=native#text/plain
 boost/boost/pool/simple_segregated_storage.hpp svneol=native#text/plain
-boost/boost/pool/simple_segregated_storage_fwd.hpp svneol=native#text/plain
 boost/boost/pool/singleton_pool.hpp svneol=native#text/plain
-boost/boost/pool/singleton_pool_fwd.hpp svneol=native#text/plain
 boost/boost/progress.hpp svneol=native#text/plain
 boost/boost/property_map.hpp svneol=native#text/plain
 boost/boost/property_map_iterator.hpp svneol=native#text/plain
