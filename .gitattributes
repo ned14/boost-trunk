@@ -23,6 +23,7 @@ boost/boost/config.hpp svneol=native#text/plain
 boost/boost/counting_iterator.hpp svneol=native#text/plain
 boost/boost/cregex.hpp svneol=native#text/plain
 boost/boost/cstdint.hpp svneol=native#text/plain
+boost/boost/cstdlib.hpp svneol=native#text/plain
 boost/boost/detail/call_traits.hpp svneol=native#text/plain
 boost/boost/detail/catch_exceptions.hpp svneol=native#text/plain
 boost/boost/detail/compressed_pair.hpp svneol=native#text/plain
