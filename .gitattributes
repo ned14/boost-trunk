@@ -4951,6 +4951,7 @@ boost/libs/regex/src/w32_regex_traits.cpp svneol=native#text/plain
 boost/libs/regex/src/wide_posix_api.cpp svneol=native#text/plain
 boost/libs/regex/src/winstances.cpp svneol=native#text/plain
 boost/libs/regex/test/Jamfile svneol=native#text/plain
+boost/libs/regex/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/regex/test/c_compiler_checks/posix_api_check.c svneol=native#text/plain
 boost/libs/regex/test/c_compiler_checks/posix_api_check.cpp svneol=native#text/plain
 boost/libs/regex/test/c_compiler_checks/wide_posix_api_check.c svneol=native#text/plain
