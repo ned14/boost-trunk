@@ -547,6 +547,20 @@ rule include-tools
     gINCLUDED($(BOOST_BUILD_INSTALLATION)$(SLASH)$(<)-tools.jam) = true ;
 }
 
+# extends-toolset toolset
+#
+# Used in a toolset definition file; Declares that the toolset currently being
+# defined is an extension of the given toolset.
+rule extends-toolset
+{
+    {
+        local gCURRENT_TOOLSET ; # protect this from being clobbered
+        include-tools $(<) ;
+    }
+    # Add the relevant features from the base toolset
+    gRELEVANT_FEATURES($(gCURRENT_TOOLSET)) += $(gRELEVANT_FEATURES($(<))) ;
+}
+
 # relevant-features toolset
 #
 # Returns the set of unique features relevant to the given toolset; includes the

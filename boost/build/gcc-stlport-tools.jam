@@ -4,90 +4,11 @@
 # provided "as is" without express or implied warranty, and with no
 # claim as to its suitability for any purpose.
 
-# compute directories for invoking GCC
-GCC_BIN_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)bin ;
-GCC_BIN_DIRECTORY ?= "" ; # Don't clobber tool names if GCC_ROOT_DIRECTORY not set
-GCC_INCLUDE_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)include ;
-GCC_STDLIB_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)lib ;
+# this is simply an extension to the gcc toolset.
+extends-toolset gcc ;
 
-flags gcc-stlport LINKFLAGS <runtime-link>static : -static ;
-flags gcc-stlport CFLAGS <debug-symbols>on : -g ;
-flags gcc-stlport LINKFLAGS <debug-symbols>on : -g ;
-flags gcc-stlport CFLAGS <optimization>off : -O0 ;
-flags gcc-stlport CFLAGS <optimization>speed : -O3 ;
-flags gcc-stlport CFLAGS <optimization>space : -O2 ;
-flags gcc-stlport CFLAGS <inlining>off : -fno-inline ;
-flags gcc-stlport CFLAGS <inlining>on : -Wno-inline ;
-flags gcc-stlport CFLAGS <inlining>full : -finline-functions -Wno-inline ;
-
-flags gcc-stlport CFLAGS <profiling>on : -pg ;
-flags gcc-stlport LINKFLAGS <profiling>on : -pg ;
-
-flags gcc-stlport DEFINES <define> ;
-flags gcc-stlport UNDEFS <undef> ;
-flags gcc-stlport HDRS <include> ;
-
+# Reset these so that we can ensure that they're set in the appropriate order, below
+STDHDRS = ; 
+STDLIBPATH = ;
 flags gcc-stlport STDHDRS : $(STLPORT_ROOT)$(SLASH)stlport $(GCC_INCLUDE_DIRECTORY) ;
 flags gcc-stlport STDLIBPATH : $(STLPORT_ROOT)$(SLASH)lib $(GCC_STDLIB_DIRECTORY) ;
-
-flags gcc-stlport CFLAGS <shared-linkable>true : -fPIC ;
-flags gcc-stlport LINKFLAGS <shared-linkable>true : -fPIC ;
-
-flags gcc-stlport LINKFLAGS <target-type>DLL : -shared ;
-flags gcc-stlport CFLAGS     <runtime-build>debug    :  -D__STL_DEBUG ;
-# flags gcc-stlport CFLAGS     <runtime-build>release  : -D_REENTRANT ;
-
-flags gcc-stlport STLPORTLIB <runtime-build>debug    : stlport_cygwin_stldebug ;
-flags gcc-stlport STLPORTLIB <runtime-build>release  : stlport_cygwin ;
-                              
-#### Link ####
-
-rule Link-action
-{
-    # This will appear before the import library name when building a DLL, but
-    # will be "multiplied away" otherwise. The --exclude-symbols directive
-    # proved to be neccessary with some versions of Cygwin.
-    IMPLIB_COMMAND on $(<) = "-Wl,--exclude-symbols,_bss_end__:_bss_start__:_data_end__:_data_start__ -Wl,--out-implib," ;
-    gcc-stlport-Link-action $(<) : $(>) ;
-}
-
-# for gcc, we repeat all libraries so that dependencies are always resolved
-actions gcc-stlport-Link-action bind NEEDLIBS
-{
-    $(GCC_BIN_DIRECTORY)g++ $(IMPLIB_COMMAND)$(<[2]) $(LINKFLAGS) -o "$(<[1])" -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)"
-}
-
-#### Cc #####
-
-rule Cc-action
-{
-    gcc-stlport-Cc-action $(<) : $(>) ;
-}
-
-actions gcc-stlport-Cc-action
-{
-    $(GCC_BIN_DIRECTORY)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
-}
-
-#### C++ ####
-rule C++-action
-{
-    gcc-stlport-C++-action $(<) : $(>) ;
-}
-
-actions gcc-stlport-C++-action
-{
-    $(GCC_BIN_DIRECTORY)g++ -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
-}
-
-#### Archive ####
-rule Archive-action
-{
-    gcc-stlport-Archive-action $(<) : $(>) ;
-}
-
-actions updated together piecemeal gcc-stlport-Archive-action
-{
-    ar ru "$(<)" "$(>)"
-}
-

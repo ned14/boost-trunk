@@ -890,20 +890,35 @@ rule MkDir
 
     if $(<) != $(DOT) && ! $($(<)-mkdir) 
     {
+        
+        # Cygwin's ar tool gets confused by backslashes in paths, so if you are
+        # building with cygwin, you must use forward slashes in
+        # ALL_LOCATE_TARGET. On the other hand, Win32 mkdir gets confused by
+        # forward slashes, so we must fix the slashes here.
+        local p = $(<) ;
+        if $(NT)
+        {
+            path = [ join-path [ split-path $(<) ] ] ;
+            if $(path) != $(<)
+            {
+                DEPENDS $(<) : $(path) ;
+            }
+        }
+        
         local s ;
 
         # Cheesy gate to prevent multiple invocations on same dir
         # MkDir1 has the actions 
         # Arrange for jam dirs
 
-        $(<)-mkdir = true ;
-        MkDir1 $(<) ;
-        Depends dirs : $(<) ;
+        $(path)-mkdir = true ;
+        MkDir1 $(path) ;
+        Depends dirs : $(path) ;
 
         # Recursively make parent directories.
-        # $(<:P) = $(<)'s parent, & we recurse until root
+        # $(path:P) = $(path)'s parent, & we recurse until root
 
-        s = $(<:P) ;
+        s = $(path:P) ;
 
         if $(NT)
         {
@@ -914,9 +929,9 @@ rule MkDir
             }
         }
 
-        if $(s) && $(s) != $(<)
+        if $(s) && $(s) != $(path)
         {
-            Depends $(<) : $(s) ;
+            Depends $(path) : $(s) ;
             MkDir $(s) ;
         }
         else if $(s)
@@ -1232,9 +1247,11 @@ rule split-path
     local parent = $(<:P) ;
     if ( ! $(<:B) ) && ( $(<) != $(DOT) ) # handle the case where $(<) is all grist.
     {
+        local foo = $(<:D=xx) ;
         return $(<:G) ;
     }
-    else if ! $(parent:G=)
+    else if ( ! $(parent:G=) )
+#            || ( ( $(<:R=) != $(<) ) && ( $(parent:R=) = $(parent) ) )
     {
         return $(<) ;
     }

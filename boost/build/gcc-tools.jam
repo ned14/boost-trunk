@@ -10,9 +10,6 @@ GCC_BIN_DIRECTORY ?= "" ; # Don't clobber tool names if GCC_ROOT_DIRECTORY not s
 GCC_INCLUDE_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)include ;
 GCC_STDLIB_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)lib ;
 
-gcc.bin-directory = [ conditional $(gcc.root-directory) : $(gcc.root-directory)$(SLASH)bin$(SLASH) : " " ] ;
-detect-build-tools gcc : "g++ -v" ;
-
 flags gcc LINKFLAGS <runtime-link>static : -static ;
 flags gcc CFLAGS <debug-symbols>on : -g ;
 flags gcc LINKFLAGS <debug-symbols>on : -g ;
@@ -42,25 +39,17 @@ flags gcc LINKFLAGS <target-type>DLL : -shared ;
 
 rule Link-action
 {
-    if $(NT) && ( $(3) = DLL )
-    {
-        gcc-DLL-action $(<) : $(>) ;
-    }
-    else
-    {
-        gcc-Link-action $(<) : $(>) ;
-    }
+    # This will appear before the import library name when building a DLL, but
+    # will be "multiplied away" otherwise. The --exclude-symbols directive
+    # proved to be neccessary with some versions of Cygwin.
+    IMPLIB_COMMAND on $(<) = "-Wl,--exclude-symbols,_bss_end__:_bss_start__:_data_end__:_data_start__ -Wl,--out-implib," ;
+    gcc-Link-action $(<) : $(>) ;
 }
 
 # for gcc, we repeat all libraries so that dependencies are always resolved
 actions gcc-Link-action bind NEEDLIBS
 {
-    $(GCC_BIN_DIRECTORY)g++ $(LINKFLAGS) -o "$(<[1])" -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)"
-}
-
-actions gcc-DLL-action bind NEEDLIBS 
-{
-    $(GCC_BIN_DIRECTORY)g++ -Wl,--exclude-symbols,_bss_end__:_bss_start__:_data_end__:_data_start__ -Wl,--out-implib,$(<[2]) $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
+    $(GCC_BIN_DIRECTORY)g++ $(IMPLIB_COMMAND)$(<[2]) $(LINKFLAGS) -o "$(<[1])" -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)"
 }
 
 # older actions
