@@ -6821,6 +6821,7 @@ boost/libs/spirit/test/for_p_as_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/for_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/fundamental_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/grammar_mt_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/grammar_multi_instance_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/grammar_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/if_p_as_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/if_tests.cpp svneol=native#text/plain
