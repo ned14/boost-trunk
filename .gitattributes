@@ -1835,6 +1835,7 @@ boost/boost/version.hpp svneol=native#text/plain
 boost/boost/visit_each.hpp svneol=native#text/plain
 boost/boost/weak_ptr.hpp svneol=native#text/plain
 boost/c++boost.gif -text svneol=unset#image/gif
+boost/doc/src/boost.xml svneol=native#text/xml
 boost/google_logo_40wht.gif -text svneol=unset#image/gif
 boost/index.htm svneol=native#text/html
 boost/libs/any/any_test.cpp svneol=native#text/plain
