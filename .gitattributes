@@ -433,6 +433,7 @@ boost/libs/graph/example/dynamic_components.cpp svneol=native#text/plain
 boost/libs/graph/example/dynamic_components.expected -text
 boost/libs/graph/example/edge_basics.cpp svneol=native#text/plain
 boost/libs/graph/example/edge_basics.expected -text
+boost/libs/graph/example/edge_connectivity.cpp svneol=native#text/plain
 boost/libs/graph/example/edge_iterator_constructor.cpp svneol=native#text/plain
 boost/libs/graph/example/edge_iterator_constructor.dat -text
 boost/libs/graph/example/edge_property.cpp svneol=native#text/plain
