@@ -1367,6 +1367,7 @@ boost/libs/preprocessor/doc/reference/xor_8hpp.html svneol=native#text/html
 boost/libs/preprocessor/doc/references.htm svneol=native#text/html
 boost/libs/preprocessor/doc/tutorial.htm svneol=native#text/html
 boost/libs/preprocessor/test/arithmetic_test.cpp svneol=native#text/plain
+boost/libs/preprocessor/test/for_test.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/logical_test.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/preprocessor_test.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/repeat_2nd_test.cpp svneol=native#text/plain
