@@ -6042,12 +6042,6 @@ boost/tools/build/boost.css svneol=native#text/css
 boost/tools/build/build-logs-index.shtml -text
 boost/tools/build/build-logs.pl svneol=native#text/x-perl
 boost/tools/build/c++boost.gif -text svneol=unset#image/gif
-boost/tools/build/doc/architecture.html svneol=native#text/html
-boost/tools/build/doc/development_plan.html svneol=native#text/html
-boost/tools/build/doc/extending.html svneol=native#text/html
-boost/tools/build/doc/recipes.html svneol=native#text/html
-boost/tools/build/doc/tools.html svneol=native#text/html
-boost/tools/build/doc/tracker.html svneol=native#text/html
 boost/tools/build/index.html svneol=native#text/html
 boost/tools/build/jam_src/Jam.html svneol=native#text/html
 boost/tools/build/jam_src/Jambase -text
