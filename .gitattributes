@@ -8077,8 +8077,6 @@ boost/tools/boostbook/xsl/testing/testsuite.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/type.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/utility.xsl svneol=native#text/xml
 boost/tools/build/boost.css svneol=native#text/css
-boost/tools/build/build-logs-index.shtml -text
-boost/tools/build/build-logs.pl svneol=native#text/x-perl
 boost/tools/build/c++boost.gif -text svneol=unset#image/gif
 boost/tools/build/index.html svneol=native#text/html
 boost/tools/build/jam_src/Jam.html svneol=native#text/html
