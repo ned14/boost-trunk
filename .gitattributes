@@ -2618,6 +2618,7 @@ boost/libs/config/test/has_winthreads_fail.cpp svneol=native#text/plain
 boost/libs/config/test/has_winthreads_pass.cpp svneol=native#text/plain
 boost/libs/config/test/limits_test.cpp svneol=native#text/plain
 boost/libs/config/test/link/Jamfile svneol=native#text/plain
+boost/libs/config/test/link/Jamfile.v2 svneol=native#text/plain
 boost/libs/config/test/link/bc_gen.sh svneol=native#text/x-sh
 boost/libs/config/test/link/borland.mak svneol=native#text/plain
 boost/libs/config/test/link/common.sh svneol=native#text/x-sh
