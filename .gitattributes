@@ -436,6 +436,7 @@ boost/boost/python/object/pointer_holder.hpp svneol=native#text/plain
 boost/boost/python/object/value_holder.hpp svneol=native#text/plain
 boost/boost/python/objects.hpp svneol=native#text/plain
 boost/boost/python/operators.hpp svneol=native#text/plain
+boost/boost/python/ptr.hpp svneol=native#text/plain
 boost/boost/python/reference.hpp svneol=native#text/plain
 boost/boost/python/reference_existing_object.hpp svneol=native#text/plain
 boost/boost/python/return_internal_reference.hpp svneol=native#text/plain
