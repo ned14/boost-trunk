@@ -1,5 +1,4 @@
 * text=auto !eol
-boost/README svneol=native#text/plain
 boost/build/Jamfile svneol=native#text/plain
 boost/build/Jamrules svneol=native#text/plain
 boost/build/allyourbase.jam svneol=native#text/plain
@@ -30,4 +29,3 @@ boost/build/y/foo.cpp svneol=native#text/plain
 boost/build/y/foo.h svneol=native#text/plain
 boost/build/y/y.cpp svneol=native#text/plain
 boost/build/y/y.hpp svneol=native#text/plain
-boost/c++boost.gif -text svneol=unset#image/gif
