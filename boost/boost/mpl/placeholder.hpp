@@ -69,6 +69,9 @@ BOOST_PP_REPEAT(
 } // namespace mpl
 } // namespace boost 
 
+// injecting the unnumbered placeholder into global namespace
+using boost::mpl::_;
+
 #endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
 
 #endif // BOOST_MPL_PLACEHOLDER_HPP_INCLUDED

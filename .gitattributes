@@ -1,5 +1,6 @@
 * text=auto !eol
 boost/boost/mpl/advance.hpp svneol=native#text/plain
+boost/boost/mpl/alias.hpp svneol=native#text/plain
 boost/boost/mpl/always_true.hpp svneol=native#text/plain
 boost/boost/mpl/apply.hpp svneol=native#text/plain
 boost/boost/mpl/apply_if.hpp svneol=native#text/plain
@@ -172,6 +173,7 @@ boost/boost/mpl/sequence_tag.hpp svneol=native#text/plain
 boost/boost/mpl/size.hpp svneol=native#text/plain
 boost/boost/mpl/size_of.hpp svneol=native#text/plain
 boost/boost/mpl/transform.hpp svneol=native#text/plain
+boost/boost/mpl/transformed_seq.hpp svneol=native#text/plain
 boost/boost/mpl/type_traits/aux_/trait.hpp svneol=native#text/plain
 boost/boost/mpl/type_traits/is_float.hpp svneol=native#text/plain
 boost/boost/mpl/type_traits/is_not_same.hpp svneol=native#text/plain

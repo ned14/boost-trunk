@@ -43,3 +43,5 @@ using boost::mpl:: _6;
 }
 }
 }
+
+using boost::mpl::_;

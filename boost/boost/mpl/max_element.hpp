@@ -17,10 +17,12 @@
 #ifndef BOOST_MPL_MAX_ELEMENT_HPP_INCLUDED
 #define BOOST_MPL_MAX_ELEMENT_HPP_INCLUDED
 
+#include "boost/mpl/comparison/less.hpp"
 #include "boost/mpl/iter_fold.hpp"
 #include "boost/mpl/begin_end.hpp"
 #include "boost/mpl/select_if.hpp"
 #include "boost/mpl/apply.hpp"
+#include "boost/mpl/lambda.hpp"
 #include "boost/mpl/aux_/lambda_spec.hpp"
 
 namespace boost {
@@ -52,14 +54,18 @@ struct select_max
 
 template<
       typename Sequence
-    , typename Predicate
+    , typename Predicate = less<_,_>
     >
 struct max_element
 {
+ private:
+    typedef typename lambda<Predicate>::type pred_;
+
+ public:
     typedef typename iter_fold<
           Sequence
         , typename begin<Sequence>::type
-	, protect< aux::select_max<Predicate> >
+        , protect< aux::select_max<pred_> >
         >::type type;
 };
 
