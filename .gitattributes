@@ -3135,6 +3135,7 @@ boost/libs/date_time/test/posix_time/testc_local_adjustor.cpp svneol=native#text
 boost/libs/date_time/test/posix_time/testclock.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testdst_rules.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testduration.cpp svneol=native#text/plain
+boost/libs/date_time/test/posix_time/testfiletime_functions.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testformatters.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testgreg_duration_operators.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testiterator.cpp svneol=native#text/plain
