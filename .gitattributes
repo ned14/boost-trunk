@@ -3992,6 +3992,7 @@ boost/libs/python/doc/PyConDC_2003/bpl.pdf -text svneol=unset#application/pdf
 boost/libs/python/doc/PyConDC_2003/bpl.txt svneol=native#text/plain
 boost/libs/python/doc/PyConDC_2003/bpl_mods.txt svneol=native#text/plain
 boost/libs/python/doc/PyConDC_2003/default.css svneol=native#text/css
+boost/libs/python/doc/PyConDC_2003/python_cpp_mix.jpg -text svneol=unset#image/jpeg
 boost/libs/python/doc/PyConDC_2003/python_cpp_mix.png -text svneol=unset#image/png
 boost/libs/python/doc/boost.css svneol=native#text/css
 boost/libs/python/doc/building.html svneol=native#text/html
