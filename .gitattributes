@@ -2985,6 +2985,7 @@ boost/libs/graph/doc/bibliography.html svneol=native#text/html
 boost/libs/graph/doc/biconnected_components.w -text
 boost/libs/graph/doc/breadth_first_search.html svneol=native#text/html
 boost/libs/graph/doc/breadth_first_visit.html svneol=native#text/html
+boost/libs/graph/doc/bundles.html svneol=native#text/html
 boost/libs/graph/doc/challenge.html svneol=native#text/html
 boost/libs/graph/doc/connected_components.html svneol=native#text/html
 boost/libs/graph/doc/constructing_algorithms.html svneol=native#text/html
@@ -3358,6 +3359,7 @@ boost/libs/graph/test/adjacency_matrix_test.cpp svneol=native#text/plain
 boost/libs/graph/test/bellman-test.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs_cc.cpp svneol=native#text/plain
+boost/libs/graph/test/bundled_properties.cpp svneol=native#text/plain
 boost/libs/graph/test/copy.cpp svneol=native#text/plain
 boost/libs/graph/test/dfs.cpp svneol=native#text/plain
 boost/libs/graph/test/dfs_cc.cpp svneol=native#text/plain
