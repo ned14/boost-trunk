@@ -601,6 +601,7 @@ boost/libs/regex/jm_opt.in -text
 boost/libs/regex/lib/bc55.mak svneol=native#text/plain
 boost/libs/regex/lib/bcb4.mak svneol=native#text/plain
 boost/libs/regex/lib/bcb5.mak svneol=native#text/plain
+boost/libs/regex/lib/gcc-shared.mak svneol=native#text/plain
 boost/libs/regex/lib/gcc.mak svneol=native#text/plain
 boost/libs/regex/lib/makefile.in svneol=native#text/plain
 boost/libs/regex/lib/makefile.org svneol=native#text/plain
