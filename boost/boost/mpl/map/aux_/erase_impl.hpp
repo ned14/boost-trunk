@@ -1,6 +1,6 @@
 
-#ifndef BOOST_MPL_SET_AUX_ERASE_IMPL_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_ERASE_IMPL_HPP_INCLUDED
+#ifndef BOOST_MPL_MAP_AUX_ERASE_IMPL_HPP_INCLUDED
+#define BOOST_MPL_MAP_AUX_ERASE_IMPL_HPP_INCLUDED
 
 // Copyright (c) Aleksey Gurtovoy 2003-2004
 // Copyright (c) David Abrahams 2003-2004
@@ -16,35 +16,34 @@
 // $Revision$
 
 #include "boost/mpl/erase_fwd.hpp"
-#include "boost/mpl/set/aux_/has_key_impl.hpp"
-#include "boost/mpl/set/aux_/item.hpp"
-#include "boost/mpl/set/aux_/tag.hpp"
+#include "boost/mpl/map/aux_/has_key_impl.hpp"
+#include "boost/mpl/map/aux_/item.hpp"
+#include "boost/mpl/map/aux_/tag.hpp"
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/base.hpp"
 #include "boost/mpl/apply_if.hpp"
 
 #include "boost/type_traits/is_same.hpp"
 
-namespace boost {
-namespace mpl {
+namespace boost { namespace mpl {
 
 template<>
-struct erase_impl< aux::set_tag >
+struct erase_impl< aux::map_tag >
 {
     template< 
-          typename Set
-        , typename T
+          typename Map
+        , typename Key
         , typename unused_
         > 
     struct apply
         : apply_if< 
-              has_key_impl<aux::set_tag>::apply<Set,T>
+              has_key_impl<aux::map_tag>::apply<Map,Key>
             , apply_if< 
-                  is_same< T,typename Set::item_type_ > 
-                , base<Set>
-                , identity< s_mask<T,Set> >
+                  is_same< Key,typename Map::key_ > 
+                , base<Map>
+                , identity< m_mask<Key,Map> >
                 >
-            , identity<Set>
+            , identity<Map>
             >
     {
     };
@@ -52,4 +51,4 @@ struct erase_impl< aux::set_tag >
 
 }}
 
-#endif // BOOST_MPL_SET_AUX_ERASE_IMPL_HPP_INCLUDED
+#endif // BOOST_MPL_MAP_AUX_ERASE_IMPL_HPP_INCLUDED

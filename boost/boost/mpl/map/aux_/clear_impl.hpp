@@ -1,6 +1,6 @@
 
-#ifndef BOOST_MPL_HAS_KEY_FWD_HPP_INCLUDED
-#define BOOST_MPL_HAS_KEY_FWD_HPP_INCLUDED
+#ifndef BOOST_MPL_MAP_AUX_CLEAR_IMPL_HPP_INCLUDED
+#define BOOST_MPL_MAP_AUX_CLEAR_IMPL_HPP_INCLUDED
 
 // Copyright (c) Aleksey Gurtovoy 2003-2004
 // Copyright (c) David Abrahams 2003-2004
@@ -15,11 +15,21 @@
 // $Date$
 // $Revision$
 
+#include "boost/mpl/clear_fwd.hpp"
+#include "boost/mpl/map/aux_/map0.hpp"
+#include "boost/mpl/map/aux_/tag.hpp"
+
 namespace boost { namespace mpl {
 
-template< typename Tag > struct has_key_impl;
-template< typename AssociativeSequence, typename Key > struct has_key;
+template<>
+struct clear_impl< aux::map_tag >
+{
+    template< typename Map > struct apply
+    {
+        typedef map0<> type;
+    };
+};
 
 }}
 
-#endif // BOOST_MPL_HAS_KEY_FWD_HPP_INCLUDED
+#endif // BOOST_MPL_MAP_AUX_CLEAR_IMPL_HPP_INCLUDED

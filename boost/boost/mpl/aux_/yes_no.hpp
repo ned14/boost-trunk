@@ -2,10 +2,7 @@
 #ifndef BOOST_MPL_AUX_YES_NO_HPP_INCLUDED
 #define BOOST_MPL_AUX_YES_NO_HPP_INCLUDED
 
-// + file: boost/mpl/aux_/yes_no.hpp
-// + last modified: 05/nov/03
-
-// Copyright Aleksey Gurtovoy 2000-03
+// Copyright (c) Aleksey Gurtovoy 2000-2004
 //
 // Use, modification and distribution are subject to the Boost Software 
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
@@ -13,6 +10,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
+// $Source$
+// $Date$
+// $Revision$
 
 #include "boost/mpl/aux_/config/workaround.hpp"
 #include "boost/mpl/aux_/config/msvc.hpp"
@@ -43,7 +43,7 @@ template< long n > struct weighted_tag
 #endif
 };
 
-#if    BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x561)) \
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x561)) \
     || BOOST_WORKAROUND(BOOST_MSVC, == 1300)
 template<> struct weighted_tag<0>
 {
@@ -51,6 +51,6 @@ template<> struct weighted_tag<0>
 };
 #endif
 
-}}} // namespace boost::mpl::aux 
+}}}
 
 #endif // BOOST_MPL_AUX_YES_NO_HPP_INCLUDED

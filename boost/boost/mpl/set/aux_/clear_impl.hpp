@@ -2,7 +2,8 @@
 #ifndef BOOST_MPL_SET_AUX_CLEAR_IMPL_HPP_INCLUDED
 #define BOOST_MPL_SET_AUX_CLEAR_IMPL_HPP_INCLUDED
 
-// Copyright (c) 2003-04 Aleksey Gurtovoy
+// Copyright (c) Aleksey Gurtovoy 2003-2004
+// Copyright (c) David Abrahams 2003-2004
 //
 // Use, modification and distribution are subject to the Boost Software 
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 

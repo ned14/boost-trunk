@@ -20,7 +20,6 @@ namespace mpl {
 template< typename Tag > struct front_impl;
 template< typename Sequence > struct front;
 
-} // namespace mpl
-} // namespace boost
+}}
 
 #endif // BOOST_MPL_FRONT_FWD_HPP_INCLUDED

@@ -35,7 +35,6 @@ struct front
 
 BOOST_MPL_AUX_VOID_SPEC(1, front)
 
-} // namespace mpl
-} // namespace boost
+}}
 
 #endif // BOOST_MPL_FRONT_HPP_INCLUDED

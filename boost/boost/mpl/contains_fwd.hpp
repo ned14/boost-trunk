@@ -1,9 +1,9 @@
 
-#ifndef BOOST_MPL_ORDER_FWD_HPP_INCLUDED
-#define BOOST_MPL_ORDER_FWD_HPP_INCLUDED
+#ifndef BOOST_MPL_CONTAINS_FWD_HPP_INCLUDED
+#define BOOST_MPL_CONTAINS_FWD_HPP_INCLUDED
 
-// Copyright (c) Aleksey Gurtovoy 2003-2004
-// Copyright (c) David Abrahams 2003-2004
+// Copyright (c) Eric Friedman 2002
+// Copyright (c) Aleksey Gurtovoy 2004
 //
 // Use, modification and distribution are subject to the Boost Software 
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
@@ -18,9 +18,9 @@
 namespace boost {
 namespace mpl {
 
-template< typename Tag > struct order_impl;
-template< typename AssociativeSequence, typename Key > struct order;
+template< typename Tag > struct contains_impl;
+template< typename Sequence, typename T > struct contains;
 
 }}
 
-#endif // BOOST_MPL_ORDER_FWD_HPP_INCLUDED
+#endif // BOOST_MPL_CONTAINS_FWD_HPP_INCLUDED

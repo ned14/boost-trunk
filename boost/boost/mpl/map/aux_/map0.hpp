@@ -1,6 +1,6 @@
 
-#ifndef BOOST_MPL_SET_AUX_SET0_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_SET0_HPP_INCLUDED
+#ifndef BOOST_MPL_MAP_AUX_MAP0_HPP_INCLUDED
+#define BOOST_MPL_MAP_AUX_MAP0_HPP_INCLUDED
 
 // Copyright (c) Aleksey Gurtovoy 2003-2004
 // Copyright (c) David Abrahams 2003-2004
@@ -17,23 +17,22 @@
 
 #include "boost/mpl/long.hpp"
 #include "boost/mpl/void_fwd.hpp"
-#include "boost/mpl/set/aux_/tag.hpp"
+#include "boost/mpl/map/aux_/tag.hpp"
+#include "boost/mpl/aux_/type_wrapper.hpp"
 #include "boost/mpl/aux_/config/static_constant.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< int dummy_ = 0 > struct set0
+template< int dummy_ = 0 > struct map0
 {
-    typedef aux::set_tag    tag;
-    typedef void_           last_masked_;
-    typedef void_           item_type_;
-    typedef item_type_      type;
+    typedef aux::map_tag    tag;
+    typedef void_           key_;
     typedef long_<0>        size;
     
-    BOOST_STATIC_CONSTANT(long, order = 0);
+    BOOST_STATIC_CONSTANT(long, order = 1);
 };
 
 }}
 
-#endif // BOOST_MPL_SET_AUX_SET0_HPP_INCLUDED
+#endif // BOOST_MPL_MAP_AUX_MAP0_HPP_INCLUDED
