@@ -323,6 +323,7 @@ boost/boost/python/converter/type_id.hpp svneol=native#text/plain
 boost/boost/python/converter/unwrap.hpp svneol=native#text/plain
 boost/boost/python/converter/unwrapper.hpp svneol=native#text/plain
 boost/boost/python/converter/unwrapper_base.hpp svneol=native#text/plain
+boost/boost/python/converter/unwrapper_select.hpp svneol=native#text/plain
 boost/boost/python/converter/wrap.hpp svneol=native#text/plain
 boost/boost/python/converter/wrapper.hpp svneol=native#text/plain
 boost/boost/python/cross_module.hpp svneol=native#text/plain
