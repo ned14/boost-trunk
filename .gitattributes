@@ -367,6 +367,7 @@ boost/boost/python/converter/from_python.hpp svneol=native#text/plain
 boost/boost/python/converter/from_python_data.hpp svneol=native#text/plain
 boost/boost/python/converter/from_python_function.hpp svneol=native#text/plain
 boost/boost/python/converter/handle.hpp svneol=native#text/plain
+boost/boost/python/converter/pointer_type_id.hpp svneol=native#text/plain
 boost/boost/python/converter/registry.hpp svneol=native#text/plain
 boost/boost/python/converter/smart_ptr.hpp svneol=native#text/plain
 boost/boost/python/converter/target.hpp svneol=native#text/plain
