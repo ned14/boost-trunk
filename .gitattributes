@@ -2948,6 +2948,7 @@ boost/libs/iterator/doc/access2old.png -text svneol=unset#image/png
 boost/libs/iterator/doc/default.css svneol=native#text/css
 boost/libs/iterator/doc/facade-and-adaptor.html svneol=native#text/html
 boost/libs/iterator/doc/facade-and-adaptor.rst svneol=native#text/plain
+boost/libs/iterator/doc/index.html svneol=native#text/html
 boost/libs/iterator/doc/index.rst svneol=native#text/plain
 boost/libs/iterator/doc/new-iter-concepts.html svneol=native#text/html
 boost/libs/iterator/doc/new-iter-concepts.rst svneol=native#text/plain
@@ -5899,6 +5900,7 @@ boost/people/thomas_witt.html svneol=native#text/html
 boost/people/vesa_karvonen.htm svneol=native#text/html
 boost/people/william_kempf.htm svneol=native#text/html
 boost/project-root.jam svneol=native#text/plain
+boost/rst.css svneol=native#text/css
 boost/status/.cvsignore -text
 boost/status/Jamfile svneol=native#text/plain
 boost/status/borland_logo.gif -text svneol=unset#image/gif
