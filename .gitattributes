@@ -1009,6 +1009,7 @@ boost/libs/concept_check/using_concept_check.htm svneol=native#text/html
 boost/libs/config/config.htm svneol=native#text/html
 boost/libs/config/configure svneol=native#text/plain
 boost/libs/config/index.html svneol=native#text/html
+boost/libs/config/test/Jamfile svneol=native#text/plain
 boost/libs/config/test/boost_has_2arg_use_facet.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_bethreads.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_clock_gettime.ipp svneol=native#text/plain
