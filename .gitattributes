@@ -4668,6 +4668,11 @@ boost/tools/build/examples-v2/make/lib/Jamfile svneol=native#text/plain
 boost/tools/build/examples-v2/make/lib/b.cpp svneol=native#text/plain
 boost/tools/build/examples-v2/make/project-root.jam svneol=native#text/plain
 boost/tools/build/examples-v2/make/readme.txt svneol=native#text/plain
+boost/tools/build/examples-v2/qt-ui/Jamfile svneol=native#text/plain
+boost/tools/build/examples-v2/qt-ui/hello_world.pro -text
+boost/tools/build/examples-v2/qt-ui/hello_world_widget.ui -text
+boost/tools/build/examples-v2/qt-ui/main.cpp svneol=native#text/plain
+boost/tools/build/examples-v2/qt-ui/project-root.jam svneol=native#text/plain
 boost/tools/build/examples-v2/qt/Jamfile svneol=native#text/plain
 boost/tools/build/examples-v2/qt/lcdrange.cpp svneol=native#text/plain
 boost/tools/build/examples-v2/qt/lcdrange.h svneol=native#text/plain
@@ -5183,6 +5188,11 @@ boost/tools/build/v2/example/make/lib/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/make/lib/b.cpp svneol=native#text/plain
 boost/tools/build/v2/example/make/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/make/readme.txt svneol=native#text/plain
+boost/tools/build/v2/example/qt-ui/Jamfile svneol=native#text/plain
+boost/tools/build/v2/example/qt-ui/hello_world.pro -text
+boost/tools/build/v2/example/qt-ui/hello_world_widget.ui -text
+boost/tools/build/v2/example/qt-ui/main.cpp svneol=native#text/plain
+boost/tools/build/v2/example/qt-ui/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/qt/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/qt/lcdrange.cpp svneol=native#text/plain
 boost/tools/build/v2/example/qt/lcdrange.h svneol=native#text/plain
