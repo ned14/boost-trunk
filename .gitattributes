@@ -258,6 +258,7 @@ boost/libs/graph/examples/adjacency_list.expected -text
 boost/libs/graph/examples/bellman_ford.cpp svneol=native#text/plain
 boost/libs/graph/examples/bellman_ford.expected -text
 boost/libs/graph/examples/bfs.cpp svneol=native#text/plain
+boost/libs/graph/examples/bfs.expected -text
 boost/libs/graph/examples/bfs_basics.cpp svneol=native#text/plain
 boost/libs/graph/examples/bfs_basics.expected -text
 boost/libs/graph/examples/bucket_sorter.cpp svneol=native#text/plain
