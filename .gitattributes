@@ -443,8 +443,6 @@ boost/libs/rational/rational.html svneol=native#text/html
 boost/libs/rational/rational_example.cpp svneol=native#text/plain
 boost/libs/regex/appendix.htm svneol=native#text/html
 boost/libs/regex/changes.txt svneol=native#text/plain
-boost/libs/regex/clean -text
-boost/libs/regex/compiler_tests -text
 boost/libs/regex/configure svneol=native#text/plain
 boost/libs/regex/configure.in -text
 boost/libs/regex/demo/c_compiler_checks/posix_api_compiler_check.c svneol=native#text/plain
@@ -466,10 +464,8 @@ boost/libs/regex/demo/regress/bcb5.mak svneol=native#text/plain
 boost/libs/regex/demo/regress/egcs.mak svneol=native#text/plain
 boost/libs/regex/demo/regress/gcc.mak svneol=native#text/plain
 boost/libs/regex/demo/regress/makefile.in svneol=native#text/plain
-boost/libs/regex/demo/regress/out.txt svneol=native#text/plain
 boost/libs/regex/demo/regress/parse.cpp svneol=native#text/plain
 boost/libs/regex/demo/regress/r1.cpp svneol=native#text/plain
-boost/libs/regex/demo/regress/r1lm.cpp svneol=native#text/plain
 boost/libs/regex/demo/regress/r2.cpp svneol=native#text/plain
 boost/libs/regex/demo/regress/r3.cpp svneol=native#text/plain
 boost/libs/regex/demo/regress/r4.cpp svneol=native#text/plain
