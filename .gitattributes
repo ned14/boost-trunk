@@ -8915,9 +8915,8 @@ boost/tools/build/v2/example/gettext/main.cpp svneol=native#text/plain
 boost/tools/build/v2/example/gettext/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/gettext/readme.txt svneol=native#text/plain
 boost/tools/build/v2/example/gettext/russian.po -text
-boost/tools/build/v2/example/hello/Jamfile svneol=native#text/plain
+boost/tools/build/v2/example/hello/Jamroot -text
 boost/tools/build/v2/example/hello/hello.cpp svneol=native#text/plain
-boost/tools/build/v2/example/hello/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/libraries/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/libraries/app/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/libraries/app/app.cpp svneol=native#text/plain
