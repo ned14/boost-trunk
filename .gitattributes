@@ -6822,6 +6822,7 @@ boost/libs/serialization/vc7ide/demo_shared_ptr.vcproj -text
 boost/libs/serialization/vc7ide/demo_xml.vcproj -text
 boost/libs/serialization/vc7ide/demo_xml_load.vcproj -text
 boost/libs/serialization/vc7ide/demo_xml_save.vcproj -text
+boost/libs/serialization/vc7ide/readme.txt svneol=native#text/plain
 boost/libs/serialization/vc7ide/test_array.vcproj -text
 boost/libs/serialization/vc7ide/test_binary.vcproj -text
 boost/libs/serialization/vc7ide/test_class_info_save.vcproj -text
