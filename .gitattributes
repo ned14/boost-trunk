@@ -536,6 +536,7 @@ boost/libs/graph/doc/using_property_maps.html svneol=native#text/html
 boost/libs/graph/doc/visitor_concepts.html svneol=native#text/html
 boost/libs/graph/example/adjacency_list.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.expected -text
+boost/libs/graph/example/adjacency_list_io.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_matrix.cpp svneol=native#text/plain
 boost/libs/graph/example/bcsstk01 -text
 boost/libs/graph/example/bcsstk01.rsa -text
@@ -560,6 +561,9 @@ boost/libs/graph/example/container_gen.expected -text
 boost/libs/graph/example/cuthill_mckee_ordering.cpp svneol=native#text/plain
 boost/libs/graph/example/cuthill_mckee_ordering.expected -text
 boost/libs/graph/example/dag_shortest_paths.cpp svneol=native#text/plain
+boost/libs/graph/example/data1.txt svneol=native#text/plain
+boost/libs/graph/example/data2.txt svneol=native#text/plain
+boost/libs/graph/example/data3.txt svneol=native#text/plain
 boost/libs/graph/example/dave.cpp svneol=native#text/plain
 boost/libs/graph/example/dave.expected -text
 boost/libs/graph/example/dfs.cpp svneol=native#text/plain
