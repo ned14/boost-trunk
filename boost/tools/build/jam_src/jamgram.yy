@@ -272,8 +272,21 @@ listp	: /* empty */
 
 arg	: ARG 
 		{ $$.parse = plist( $1.string ); }
-	| `[` ARG lol `]`
-		{ $$.parse = prule( $2.string, $3.parse ); }
+	| `[` { yymode( SCAN_NORMAL ); } func `]`
+		{ $$.parse = $3.parse; }
+	;
+
+/*
+ * func - a function call (inside [])
+ * This needs to be split cleanly out of 'rule'
+ */
+
+func	: ARG lol
+		{ $$.parse = prule( $1.string, $2.parse ); }
+	| `on` arg ARG lol
+		{ $$.parse = pon( $2.parse, prule( $3.string, $4.parse ) ); }
+	| `on` arg `return` list 
+		{ $$.parse = pon( $2.parse, $4.parse ); }
 	;
 
 
