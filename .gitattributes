@@ -1980,6 +1980,7 @@ boost/libs/date_time/doc/local_time_adjust.html svneol=native#text/html
 boost/libs/date_time/doc/posix_time.html svneol=native#text/html
 boost/libs/date_time/doc/time_duration_inherit.png -text svneol=unset#image/png
 boost/libs/date_time/doc/time_iterators.html svneol=native#text/html
+boost/libs/date_time/example/Jamfile svneol=native#text/plain
 boost/libs/date_time/example/gregorian/Jamfile.v2 svneol=native#text/plain
 boost/libs/date_time/example/gregorian/dates_as_strings.cpp svneol=native#text/plain
 boost/libs/date_time/example/gregorian/days_alive.cpp svneol=native#text/plain
