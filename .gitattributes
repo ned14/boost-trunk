@@ -742,6 +742,7 @@ boost/libs/random/random-concepts.html svneol=native#text/html
 boost/libs/random/random-distributions.html svneol=native#text/html
 boost/libs/random/random-generators.html svneol=native#text/html
 boost/libs/random/random-misc.html svneol=native#text/html
+boost/libs/random/random-performance.html svneol=native#text/html
 boost/libs/random/random_demo.cpp svneol=native#text/plain
 boost/libs/random/random_device.cpp svneol=native#text/plain
 boost/libs/random/random_speed.cpp svneol=native#text/plain
