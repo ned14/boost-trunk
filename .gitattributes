@@ -119,6 +119,7 @@ boost/libs/random/statistic_tests.hpp svneol=native#text/plain
 boost/libs/rational/index.html svneol=native#text/html
 boost/libs/rational/rational.html svneol=native#text/html
 boost/libs/rational/rational_example.cpp svneol=native#text/plain
+boost/libs/regrtest.py svneol=native#text/x-python
 boost/libs/smart_ptr/gccspeed.gif -text svneol=unset#image/gif
 boost/libs/smart_ptr/index.htm svneol=native#text/html
 boost/libs/smart_ptr/msvcspeed.gif -text svneol=unset#image/gif
