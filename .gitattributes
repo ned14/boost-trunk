@@ -191,6 +191,7 @@ boost/boost/graph/vector_as_graph.hpp svneol=native#text/plain
 boost/boost/graph/visitors.hpp svneol=native#text/plain
 boost/boost/half_open_range.hpp svneol=native#text/plain
 boost/boost/integer.hpp svneol=native#text/plain
+boost/boost/integer_fwd.hpp svneol=native#text/plain
 boost/boost/integer_traits.hpp svneol=native#text/plain
 boost/boost/iterator.hpp svneol=native#text/plain
 boost/boost/iterator_adaptors.hpp svneol=native#text/plain
