@@ -4392,6 +4392,7 @@ boost/libs/graph/src/python/basic_graph.cpp svneol=native#text/plain
 boost/libs/graph/src/python/basic_graph.hpp svneol=native#text/plain
 boost/libs/graph/src/python/betweenness_centrality.cpp svneol=native#text/plain
 boost/libs/graph/src/python/bfs_events.hpp svneol=native#text/plain
+boost/libs/graph/src/python/biconnected_components.cpp svneol=native#text/plain
 boost/libs/graph/src/python/breadth_first_search.cpp svneol=native#text/plain
 boost/libs/graph/src/python/digraph.cpp svneol=native#text/plain
 boost/libs/graph/src/python/digraph.hpp svneol=native#text/plain
@@ -4442,6 +4443,7 @@ boost/libs/graph/test/layout_test.cpp svneol=native#text/plain
 boost/libs/graph/test/leda_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/lvalue_pmap.cpp svneol=native#text/plain
 boost/libs/graph/test/property_iter.cpp svneol=native#text/plain
+boost/libs/graph/test/python/biconnected_components.py svneol=native#text/x-python
 boost/libs/graph/test/python/py_dijkstra.py svneol=native#text/x-python
 boost/libs/graph/test/regression.cfg -text
 boost/libs/graph/test/relaxed_heap_test.cpp svneol=native#text/plain
