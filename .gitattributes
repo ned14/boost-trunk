@@ -8428,6 +8428,7 @@ boost/tools/regression/xsl_reports/merger/merge_logs.py svneol=native#text/x-pyt
 boost/tools/regression/xsl_reports/report.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/runner/__init__.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/runner/collect_and_upload_logs.py svneol=native#text/x-python
+boost/tools/regression/xsl_reports/runner/default.css svneol=native#text/css
 boost/tools/regression/xsl_reports/runner/instructions.html svneol=native#text/html
 boost/tools/regression/xsl_reports/runner/instructions.rst svneol=native#text/plain
 boost/tools/regression/xsl_reports/runner/regression.py svneol=native#text/x-python
