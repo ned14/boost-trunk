@@ -3063,6 +3063,7 @@ boost/libs/bind/test/mem_fn_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_void_test.cpp svneol=native#text/plain
 boost/libs/compatibility/generate_cpp_c_headers.py svneol=native#text/x-python
 boost/libs/compatibility/index.html svneol=native#text/html
+boost/libs/compose/index.htm svneol=native#text/html
 boost/libs/concept_check/Jamfile svneol=native#text/plain
 boost/libs/concept_check/bad_error_eg.cpp svneol=native#text/plain
 boost/libs/concept_check/bibliography.htm svneol=native#text/html
