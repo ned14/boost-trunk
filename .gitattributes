@@ -2432,6 +2432,11 @@ boost/tools/build/test/recursive.jam svneol=native#text/plain
 boost/tools/build/test/subdir1/file-to-bind -text
 boost/tools/build/test/subdir_invocation_test.zip -text svneol=unset#application/zip
 boost/tools/build/test/svn_tree.py svneol=native#text/x-python
+boost/tools/build/test/test1.py svneol=native#text/x-python
+boost/tools/build/test/test2.py svneol=native#text/x-python
+boost/tools/build/test/test2/Jamfile svneol=native#text/plain
+boost/tools/build/test/test2/Jamrules svneol=native#text/plain
+boost/tools/build/test/test2/foo.cpp svneol=native#text/plain
 boost/tools/build/test/test_nt_line_length.jam svneol=native#text/plain
 boost/tools/build/test/test_system.html svneol=native#text/html
 boost/tools/build/test/tree.py svneol=native#text/x-python
@@ -2508,6 +2513,11 @@ boost/tools/build/v2/test/subdir1/file-to-bind -text
 boost/tools/build/v2/test/subdir_invocation_test.zip -text svneol=unset#application/zip
 boost/tools/build/v2/test/svn_tree.py svneol=native#text/x-python
 boost/tools/build/v2/test/test.jam svneol=native#text/plain
+boost/tools/build/v2/test/test1.py svneol=native#text/x-python
+boost/tools/build/v2/test/test2.py svneol=native#text/x-python
+boost/tools/build/v2/test/test2/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/test2/Jamrules svneol=native#text/plain
+boost/tools/build/v2/test/test2/foo.cpp svneol=native#text/plain
 boost/tools/build/v2/test/test_nt_line_length.jam svneol=native#text/plain
 boost/tools/build/v2/test/test_system.html svneol=native#text/html
 boost/tools/build/v2/test/tree.py svneol=native#text/x-python
