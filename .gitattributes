@@ -3958,6 +3958,7 @@ boost/libs/graph/example/filtered_graph.cpp svneol=native#text/plain
 boost/libs/graph/example/filtered_graph.expected -text
 boost/libs/graph/example/filtered_graph_edge_range.cpp svneol=native#text/plain
 boost/libs/graph/example/filtered_vec_as_graph.cpp svneol=native#text/plain
+boost/libs/graph/example/fr_layout.cpp svneol=native#text/plain
 boost/libs/graph/example/gerdemann.cpp svneol=native#text/plain
 boost/libs/graph/example/gerdemann.expected -text
 boost/libs/graph/example/girth.cpp svneol=native#text/plain
