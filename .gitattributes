@@ -1,16 +1,4 @@
 * text=auto !eol
-CVSROOT/checkoutlist -text
-CVSROOT/commitinfo -text
-CVSROOT/config -text
-CVSROOT/cvswrappers -text
-CVSROOT/editinfo -text
-CVSROOT/loginfo -text
-CVSROOT/modules -text
-CVSROOT/notify -text
-CVSROOT/rcsinfo -text
-CVSROOT/syncmail -text
-CVSROOT/taginfo -text
-CVSROOT/verifymsg -text
 boost/Jamfile svneol=native#text/plain
 boost/Jamrules svneol=native#text/plain
 boost/README svneol=native#text/plain
@@ -1530,13 +1518,6 @@ boost/boost/signals/signal_template.hpp svneol=native#text/plain
 boost/boost/signals/slot.hpp svneol=native#text/plain
 boost/boost/signals/trackable.hpp svneol=native#text/plain
 boost/boost/smart_ptr.hpp svneol=native#text/plain
-boost/boost/statechart/event.hpp svneol=native#text/plain
-boost/boost/statechart/event_base.hpp svneol=native#text/plain
-boost/boost/statechart/event_receiver.hpp svneol=native#text/plain
-boost/boost/statechart/simple_exception_translator.hpp svneol=native#text/plain
-boost/boost/statechart/state.hpp svneol=native#text/plain
-boost/boost/statechart/state_base.hpp svneol=native#text/plain
-boost/boost/statechart/state_machine.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
 boost/boost/test/detail/class_properties.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_config.hpp svneol=native#text/plain
@@ -4004,8 +3985,6 @@ boost/libs/smart_ptr/smart_ptr_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/smarttest.zip -text svneol=unset#application/zip
 boost/libs/smart_ptr/smarttests.htm svneol=native#text/html
 boost/libs/smart_ptr/weak_ptr.htm svneol=native#text/html
-boost/libs/statechart/doc/FsmDiscussion.html svneol=native#text/html
-boost/libs/statechart/example/FSM.cpp svneol=native#text/plain
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/index.html svneol=native#text/html
 boost/libs/static_assert/static_assert.htm svneol=native#text/html
