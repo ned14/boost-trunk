@@ -1079,6 +1079,7 @@ boost/boost/numeric/interval/ext/integer.hpp svneol=native#text/plain
 boost/boost/numeric/interval/ext/x86_fast_rounding_control.hpp svneol=native#text/plain
 boost/boost/numeric/interval/hw_rounding.hpp svneol=native#text/plain
 boost/boost/numeric/interval/interval.hpp svneol=native#text/plain
+boost/boost/numeric/interval/io.hpp svneol=native#text/plain
 boost/boost/numeric/interval/limits.hpp svneol=native#text/plain
 boost/boost/numeric/interval/policies.hpp svneol=native#text/plain
 boost/boost/numeric/interval/rounded_arith.hpp svneol=native#text/plain
