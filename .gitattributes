@@ -5843,6 +5843,7 @@ boost/libs/utility/shared_container_iterator.html svneol=native#text/html
 boost/libs/utility/shared_iterator_example1.cpp svneol=native#text/plain
 boost/libs/utility/shared_iterator_example2.cpp svneol=native#text/plain
 boost/libs/utility/shared_iterator_example3.cpp svneol=native#text/plain
+boost/libs/utility/shared_iterator_test.cpp svneol=native#text/plain
 boost/libs/utility/test/Jamfile svneol=native#text/plain
 boost/libs/utility/throw_exception.html svneol=native#text/html
 boost/libs/utility/tie.html svneol=native#text/html
