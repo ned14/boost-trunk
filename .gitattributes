@@ -564,6 +564,7 @@ boost/boost/type_traits/cv_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/function_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/fwd.hpp svneol=native#text/plain
 boost/boost/type_traits/ice.hpp svneol=native#text/plain
+boost/boost/type_traits/is_class.hpp svneol=native#text/plain
 boost/boost/type_traits/object_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/reference_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/same_traits.hpp svneol=native#text/plain
