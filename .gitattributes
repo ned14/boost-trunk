@@ -958,7 +958,6 @@ boost/libs/graph/example/remove_edge_if_dir.expected -text
 boost/libs/graph/example/remove_edge_if_undir.cpp svneol=native#text/plain
 boost/libs/graph/example/remove_edge_if_undir.expected -text
 boost/libs/graph/example/reverse-graph-eg.cpp svneol=native#text/plain
-boost/libs/graph/example/reverse_graph.cpp svneol=native#text/plain
 boost/libs/graph/example/reverse_graph.expected -text
 boost/libs/graph/example/roget_components.cpp svneol=native#text/plain
 boost/libs/graph/example/scc.cpp svneol=native#text/plain
