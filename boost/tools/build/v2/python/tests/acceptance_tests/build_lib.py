@@ -14,11 +14,12 @@ from boost.build.util.logger import TextLogger
 
 def run ():
 
-#    from boost.build.tools import gcc
-#    gcc.init ()
+    # TODO: emulate user/site config
+    from boost.build.tools import gcc
+    gcc.init ()
 
-    from boost.build.tools import darwin
-    darwin.init ()
+#    from boost.build.tools import darwin
+#    darwin.init ()
 
     engine = BjamBuildSystem ()
     manager = Manager (engine)
@@ -37,12 +38,13 @@ def run ():
 #    lib = project.shared_lib ('direct_lib', [obj1, obj2], ['<location-prefix>test])
 #    manager.construct ([], [lib])
 
-    project.shared_lib ('direct_lib', ['x.cpp', 'y.cpp'])
+    project.shared_lib ('direct_lib', ['x.cpp', 'y.cpp', 'k.c'])
 
 #    manager.construct (['<link-runtime>static', 'debug', 'release', '<define>DEF', '<user-interface>gui', '<user-interface>console'], [project.target ()])
 #    manager.construct (['debug', '<location-prefix>test'], [project.target ()])
 #    manager.construct (['debug'], [project.target ()])
-    manager.construct (['<toolset>darwin'])
+#    manager.construct (['<toolset>darwin'])
+    manager.construct ()
 
     print engine.generate ()
     engine.build ()

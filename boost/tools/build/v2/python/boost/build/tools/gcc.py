@@ -53,8 +53,10 @@ def gcc_compile_cpp (manager, targets, sources, properties):
     # to pass -x c++.
     # We could always pass -x c++ but distcc does not work with it.
     extension = os.path.splitext (sources [0]) [1]
+    lang = ''
     if not extension in ['.cc', '.cp', '.cxx', '.cpp', '.c++', '.C']:
-        manager.engine ().set_target_variable (targets, 'LANG', "-x c++")
+        lang = '-x c++'
+    manager.engine ().set_target_variable (targets, 'LANG', lang)
 
 action.register ('gcc.compile.c++', gcc_compile_cpp, ['"$(CONFIG_COMMAND)" $(LANG) -Wall -ftemplate-depth-100 $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)"'])
 

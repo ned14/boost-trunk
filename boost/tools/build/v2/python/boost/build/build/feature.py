@@ -10,7 +10,7 @@
 import re
 
 from boost.build.util import set, utility
-from boost.build.util.utility import add_grist, get_grist, ungrist, replace_grist
+from boost.build.util.utility import add_grist, get_grist, ungrist, replace_grist, to_seq
 from boost.build.exceptions import *
 
 __re_split_subfeatures = re.compile ('<(.*):(.*)>')
@@ -164,6 +164,8 @@ def set_default (feature, value):
 def compose (composite_property, component_properties):
     """ Sets the components of the given composite property.
     """
+    component_properties = to_seq (component_properties)
+
     feature = get_grist (composite_property)
     if not 'composite' in attributes (feature):
         raise BaseException ("'%s' is not a composite feature" % feature)
