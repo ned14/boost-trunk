@@ -4258,7 +4258,7 @@ boost/libs/python/pyste/dist/.cvsignore -text
 boost/libs/python/pyste/dist/create_build.py svneol=native#text/x-python
 boost/libs/python/pyste/dist/setup.py svneol=native#text/x-python
 boost/libs/python/pyste/doc/adding_new_methods.html svneol=native#text/html
-boost/libs/python/pyste/doc/exporting_all_declarations_from_a_header.html svneol=native#text/html
+boost/libs/python/pyste/doc/exporting_an_entire_header.html svneol=native#text/html
 boost/libs/python/pyste/doc/global_variables.html svneol=native#text/html
 boost/libs/python/pyste/doc/introduction.html svneol=native#text/html
 boost/libs/python/pyste/doc/policies.html svneol=native#text/html
