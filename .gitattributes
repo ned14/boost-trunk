@@ -1478,6 +1478,7 @@ boost/boost/python/object/function.hpp svneol=native#text/plain
 boost/boost/python/object/function_handle.hpp svneol=native#text/plain
 boost/boost/python/object/function_object.hpp svneol=native#text/plain
 boost/boost/python/object/inheritance.hpp svneol=native#text/plain
+boost/boost/python/object/inheritance_query.hpp svneol=native#text/plain
 boost/boost/python/object/instance.hpp svneol=native#text/plain
 boost/boost/python/object/iterator.hpp svneol=native#text/plain
 boost/boost/python/object/iterator_core.hpp svneol=native#text/plain
