@@ -423,6 +423,7 @@ boost/libs/graph/doc/depth_first_search.html svneol=native#text/html
 boost/libs/graph/doc/depth_first_visit.html svneol=native#text/html
 boost/libs/graph/doc/dfs_visitor.html svneol=native#text/html
 boost/libs/graph/doc/dijkstra_shortest_paths.html svneol=native#text/html
+boost/libs/graph/doc/dijkstra_visitor.html svneol=native#text/html
 boost/libs/graph/doc/distance_recorder.html svneol=native#text/html
 boost/libs/graph/doc/edge_list.html svneol=native#text/html
 boost/libs/graph/doc/edmunds_karp_max_flow.html svneol=native#text/html
