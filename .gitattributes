@@ -102,6 +102,7 @@ boost/boost/graph/matrix_as_graph.hpp svneol=native#text/plain
 boost/boost/graph/named_function_params.hpp svneol=native#text/plain
 boost/boost/graph/prim_minimum_spanning_tree.hpp svneol=native#text/plain
 boost/boost/graph/properties.hpp svneol=native#text/plain
+boost/boost/graph/property_iter_range.hpp svneol=native#text/plain
 boost/boost/graph/push_relabel_max_flow.hpp svneol=native#text/plain
 boost/boost/graph/read_dimacs.hpp svneol=native#text/plain
 boost/boost/graph/relax.hpp svneol=native#text/plain
