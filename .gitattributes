@@ -453,6 +453,7 @@ boost/libs/graph/doc/incident.html svneol=native#text/html
 boost/libs/graph/doc/incremental_components.html svneol=native#text/html
 boost/libs/graph/doc/index.html svneol=native#text/html
 boost/libs/graph/doc/iscope99.pdf -text svneol=unset#application/pdf
+boost/libs/graph/doc/isomorphism.html svneol=native#text/html
 boost/libs/graph/doc/johnson_all_pairs_shortest.html svneol=native#text/html
 boost/libs/graph/doc/kevin_bacon.html svneol=native#text/html
 boost/libs/graph/doc/known_problems.html svneol=native#text/html
