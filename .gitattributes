@@ -567,6 +567,7 @@ boost/libs/graph/example/max_flow.dat -text
 boost/libs/graph/example/max_flow.expected -text
 boost/libs/graph/example/miles_span.cpp svneol=native#text/plain
 boost/libs/graph/example/miles_span.expected -text
+boost/libs/graph/example/min_max_paths.cpp svneol=native#text/plain
 boost/libs/graph/example/modify_graph.cpp svneol=native#text/plain
 boost/libs/graph/example/modify_graph.expected -text
 boost/libs/graph/example/ordered_out_edges.cpp svneol=native#text/plain
