@@ -7284,6 +7284,7 @@ boost/libs/spirit/test/traverse_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/tree_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_p_as_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_tests.cpp svneol=native#text/plain
+boost/libs/statechart/Fsm.sln -text
 boost/libs/statechart/doc/A.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/Camera.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/Camera2.gif -text svneol=unset#image/gif
@@ -7338,6 +7339,12 @@ boost/libs/statechart/example/StopWatch/StopWatch.cpp svneol=native#text/plain
 boost/libs/statechart/example/StopWatch/StopWatch.vcproj -text
 boost/libs/statechart/example/StopWatch/StopWatch2.cpp svneol=native#text/plain
 boost/libs/statechart/index.html svneol=native#text/html
+boost/libs/statechart/test/InnermostDefault.hpp svneol=native#text/plain
+boost/libs/statechart/test/Jamfile svneol=native#text/plain
+boost/libs/statechart/test/OuterOrthogonal.hpp svneol=native#text/plain
+boost/libs/statechart/test/RunTests.bat svneol=native#text/plain
+boost/libs/statechart/test/Test.vcproj -text
+boost/libs/statechart/test/TransitionTest.cpp svneol=native#text/plain
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/Jamfile.v2 svneol=native#text/plain
 boost/libs/static_assert/index.html svneol=native#text/html
