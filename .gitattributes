@@ -4793,7 +4793,6 @@ boost/libs/regex/build/vc7.mak svneol=native#text/plain
 boost/libs/regex/build/vc71-stlport.mak svneol=native#text/plain
 boost/libs/regex/build/vc71.mak svneol=native#text/plain
 boost/libs/regex/build/vc_gen.sh svneol=native#text/x-sh
-boost/libs/regex/changes.txt svneol=native#text/plain
 boost/libs/regex/doc/Attic/bad_expression.html svneol=native#text/html
 boost/libs/regex/doc/Attic/basic_regex.html svneol=native#text/html
 boost/libs/regex/doc/Attic/configuration.html svneol=native#text/html
@@ -4911,7 +4910,6 @@ boost/libs/regex/example/timer/regex_timer.cpp svneol=native#text/plain
 boost/libs/regex/example/timer/vc6-stlport.mak svneol=native#text/plain
 boost/libs/regex/example/timer/vc6.mak svneol=native#text/plain
 boost/libs/regex/index.html svneol=native#text/html
-boost/libs/regex/licence.txt svneol=native#text/plain
 boost/libs/regex/old_include/cregex -text
 boost/libs/regex/old_include/cregex.h svneol=native#text/plain
 boost/libs/regex/old_include/fileiter.h svneol=native#text/plain
