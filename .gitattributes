@@ -373,6 +373,8 @@ boost/libs/graph/examples/vertex_basics.cpp svneol=native#text/plain
 boost/libs/graph/examples/vertex_basics.expected -text
 boost/libs/graph/examples/visitor.cpp svneol=native#text/plain
 boost/libs/graph/examples/visitor.expected -text
+boost/libs/graph/test/graph.cpp svneol=native#text/plain
+boost/libs/graph/test/graph_type.hpp svneol=native#text/plain
 boost/libs/integer/cstdint.htm svneol=native#text/html
 boost/libs/integer/cstdint_test.cpp svneol=native#text/plain
 boost/libs/integer/index.htm svneol=native#text/html
