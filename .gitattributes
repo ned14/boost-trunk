@@ -4171,6 +4171,8 @@ boost/libs/python/pyste/example/nested.h svneol=native#text/plain
 boost/libs/python/pyste/example/nested.pyste -text
 boost/libs/python/pyste/example/operators.h svneol=native#text/plain
 boost/libs/python/pyste/example/operators.pyste -text
+boost/libs/python/pyste/example/smart_ptr.h svneol=native#text/plain
+boost/libs/python/pyste/example/smart_ptr.pyste -text
 boost/libs/python/pyste/example/templates.h svneol=native#text/plain
 boost/libs/python/pyste/example/templates.pyste -text
 boost/libs/python/pyste/example/unions.h svneol=native#text/plain
