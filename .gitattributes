@@ -7952,7 +7952,6 @@ boost/libs/spirit/fusion/test/remove_tests.cpp svneol=native#text/plain
 boost/libs/spirit/fusion/test/remove_tests_mpl.cpp svneol=native#text/plain
 boost/libs/spirit/fusion/test/replace_tests.cpp svneol=native#text/plain
 boost/libs/spirit/fusion/test/single_view_tests.cpp svneol=native#text/plain
-boost/libs/spirit/fusion/test/temp.tmp -text
 boost/libs/spirit/fusion/test/tie_tests.cpp svneol=native#text/plain
 boost/libs/spirit/fusion/test/transform_tests.cpp svneol=native#text/plain
 boost/libs/spirit/fusion/test/transform_view_tests.cpp svneol=native#text/plain
