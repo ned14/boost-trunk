@@ -25,7 +25,7 @@
     BOOST_PP_STRINGIZE( \
         BOOST_PP_CAT( \
               BOOST_PP_CAT(boost/mpl/list/list, BOOST_MPL_LIMIT_LIST_SIZE) \
-            , .hpp) \
+            , .##hpp) \
         ) \
 /**/
 

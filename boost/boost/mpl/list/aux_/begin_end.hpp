@@ -30,7 +30,7 @@ struct begin_algorithm_traits< aux::list_tag >
 {
     template< typename List > struct algorithm
     {
-        typedef list_iterator<List> type;
+        typedef list_iterator<typename List::type> type;
     };
 };
 
