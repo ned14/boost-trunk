@@ -523,6 +523,8 @@ boost/libs/graph/example/vertex_basics.cpp svneol=native#text/plain
 boost/libs/graph/example/vertex_basics.expected -text
 boost/libs/graph/example/visitor.cpp svneol=native#text/plain
 boost/libs/graph/example/visitor.expected -text
+boost/libs/graph/src/Makefile svneol=native#text/plain
+boost/libs/graph/src/README svneol=native#text/plain
 boost/libs/graph/src/graphviz.grammar -text
 boost/libs/graph/src/graphviz_lex.l -text
 boost/libs/graph/src/graphviz_parser.y -text
