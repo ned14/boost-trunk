@@ -3216,6 +3216,7 @@ boost/libs/iterator/example/node_iterator2.hpp svneol=native#text/plain
 boost/libs/iterator/example/permutation_iterator_example.cpp svneol=native#text/plain
 boost/libs/iterator/example/reverse_iterator.cpp svneol=native#text/plain
 boost/libs/iterator/example/reverse_iterator_example.cpp svneol=native#text/plain
+boost/libs/iterator/example/transform_iterator_example.cpp svneol=native#text/plain
 boost/libs/iterator/test/Jamfile svneol=native#text/plain
 boost/libs/iterator/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/iterator/test/concept_tests.cpp svneol=native#text/plain
