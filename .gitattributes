@@ -2058,6 +2058,7 @@ boost/boost/test/unit_test_result.hpp svneol=native#text/plain
 boost/boost/test/unit_test_suite.hpp svneol=native#text/plain
 boost/boost/test/unit_test_suite_ex.hpp svneol=native#text/plain
 boost/boost/thread.hpp svneol=native#text/plain
+boost/boost/thread/barrier.hpp svneol=native#text/plain
 boost/boost/thread/condition.hpp svneol=native#text/plain
 boost/boost/thread/detail/config.hpp svneol=native#text/plain
 boost/boost/thread/detail/force_cast.hpp svneol=native#text/plain
