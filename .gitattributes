@@ -176,6 +176,7 @@ boost/development/py_cpp/vc6_prj/test_demo.py svneol=native#text/x-python
 boost/development/py_cpp/vc6_prj/test_hello.py svneol=native#text/x-python
 boost/development/py_cpp/vc6_prj/vc6_prj.dsp -text svneol=CRLF#unset
 boost/development/py_cpp/vc6_prj/vc6_prj.dsw -text svneol=CRLF#unset
+boost/development/py_cpp/vc6_prj/vc6_prj.opt -text
 boost/development/py_cpp/wrap_python.h svneol=native#text/plain
 boost/index.htm svneol=native#text/html
 boost/libraries.htm svneol=native#text/html
