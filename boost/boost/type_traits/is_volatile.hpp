@@ -53,7 +53,7 @@ using ::boost::type_traits::no_type;
 yes_type is_volatile_tester(void const volatile*);
 no_type is_volatile_tester(void const*);
 
-template <bool is_ref = true, bool array>
+template <bool is_ref, bool array>
 struct is_volatile_helper
     : ::boost::type_traits::false_result
 {
