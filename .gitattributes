@@ -4996,6 +4996,7 @@ boost/tools/build/test/dependency-test/foo.jam svneol=native#text/plain
 boost/tools/build/test/dependency-test/project-root.jam svneol=native#text/plain
 boost/tools/build/test/dependency-test/src1/a.h svneol=native#text/plain
 boost/tools/build/test/dependency-test/src1/b.h svneol=native#text/plain
+boost/tools/build/test/dependency-test/src1/c.h svneol=native#text/plain
 boost/tools/build/test/dependency-test/src2/b.h svneol=native#text/plain
 boost/tools/build/test/dependency-test/x.foo -text
 boost/tools/build/test/dependency-test/y.foo -text
@@ -5322,6 +5323,7 @@ boost/tools/build/v2/test/dependency-test/foo.jam svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/src1/a.h svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/src1/b.h svneol=native#text/plain
+boost/tools/build/v2/test/dependency-test/src1/c.h svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/src2/b.h svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/x.foo -text
 boost/tools/build/v2/test/dependency-test/y.foo -text
