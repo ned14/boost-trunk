@@ -7318,6 +7318,7 @@ boost/libs/statechart/example/BitMachine/BitMachine.cpp svneol=native#text/plain
 boost/libs/statechart/example/BitMachine/BitMachine.vcproj -text
 boost/libs/statechart/example/BitMachine/UniqueObject.hpp svneol=native#text/plain
 boost/libs/statechart/example/BitMachine/UniqueObjectAllocator.hpp svneol=native#text/plain
+boost/libs/statechart/example/BuildExamples.bat svneol=native#text/plain
 boost/libs/statechart/example/Camera/Camera.cpp svneol=native#text/plain
 boost/libs/statechart/example/Camera/Camera.hpp svneol=native#text/plain
 boost/libs/statechart/example/Camera/Camera.vcproj -text
