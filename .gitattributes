@@ -321,6 +321,7 @@ boost/boost/preprocessor/list/enum.hpp svneol=native#text/plain
 boost/boost/preprocessor/list/filter.hpp svneol=native#text/plain
 boost/boost/preprocessor/list/first_n.hpp svneol=native#text/plain
 boost/boost/preprocessor/list/fold_left.hpp svneol=native#text/plain
+boost/boost/preprocessor/list/fold_left_2nd.hpp svneol=native#text/plain
 boost/boost/preprocessor/list/fold_right.hpp svneol=native#text/plain
 boost/boost/preprocessor/list/for_each.hpp svneol=native#text/plain
 boost/boost/preprocessor/list/for_each_product.hpp svneol=native#text/plain
