@@ -3546,6 +3546,7 @@ boost/libs/numeric/interval/doc/todo.htm svneol=native#text/html
 boost/libs/numeric/interval/examples/filter.cpp svneol=native#text/plain
 boost/libs/numeric/interval/examples/findroot_demo.cpp svneol=native#text/plain
 boost/libs/numeric/interval/examples/horner.cpp svneol=native#text/plain
+boost/libs/numeric/interval/examples/io.cpp svneol=native#text/plain
 boost/libs/numeric/interval/examples/newton-raphson.cpp svneol=native#text/plain
 boost/libs/numeric/interval/examples/rational.cpp svneol=native#text/plain
 boost/libs/numeric/interval/examples/transc.cpp svneol=native#text/plain
