@@ -34,6 +34,7 @@ boost/boost/functional.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_iterator.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_matrix.hpp svneol=native#text/plain
+boost/boost/graph/bandwidth.hpp svneol=native#text/plain
 boost/boost/graph/bellman_ford_shortest_paths.hpp svneol=native#text/plain
 boost/boost/graph/breadth_first_search.hpp svneol=native#text/plain
 boost/boost/graph/connected_components.hpp svneol=native#text/plain
