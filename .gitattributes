@@ -4475,6 +4475,7 @@ boost/libs/graph/src/python/strong_components.cpp svneol=native#text/plain
 boost/libs/graph/src/python/topological_sort.cpp svneol=native#text/plain
 boost/libs/graph/src/python/transitive_closure.cpp svneol=native#text/plain
 boost/libs/graph/src/python/visitor.hpp svneol=native#text/plain
+boost/libs/graph/src/read_graphviz_spirit.cpp svneol=native#text/plain
 boost/libs/graph/src/yystype.h svneol=native#text/plain
 boost/libs/graph/test/Jamfile svneol=native#text/plain
 boost/libs/graph/test/Jamfile.v2 svneol=native#text/plain
