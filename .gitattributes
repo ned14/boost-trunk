@@ -6661,7 +6661,6 @@ boost/libs/serialization/vc6ide/test_vector.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/test_void_cast.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc7ide/Attic/BoostSerializationLibrary.suo -text
 boost/libs/serialization/vc7ide/Boost[!!-~]Serialization[!!-~]Library.sln -text
-boost/libs/serialization/vc7ide/Boost[!!-~]Serialization[!!-~]Library.suo -text
 boost/libs/serialization/vc7ide/BoostSerializationLibrary.sln -text
 boost/libs/serialization/vc7ide/BoostSerializationLibrary.suo -text
 boost/libs/serialization/vc7ide/Library.vcproj -text
@@ -6695,8 +6694,6 @@ boost/libs/serialization/vc7ide/test_diamond.vcproj -text
 boost/libs/serialization/vc7ide/test_exported.vcproj -text
 boost/libs/serialization/vc7ide/test_iterators.vcproj -text
 boost/libs/serialization/vc7ide/test_iterators_base64.vcproj -text
-boost/libs/serialization/vc7ide/test_iterattors.vcproj -text
-boost/libs/serialization/vc7ide/test_iterattors_base64.vcproj -text
 boost/libs/serialization/vc7ide/test_list.vcproj -text
 boost/libs/serialization/vc7ide/test_list_ptrs.vcproj -text
 boost/libs/serialization/vc7ide/test_map.vcproj -text
