@@ -2944,6 +2944,7 @@ boost/libs/graph/doc/figs/undigraph.fig -text
 boost/libs/graph/doc/figs/undigraph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-list.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix-graph.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/undir-adj-matrix-graph2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix-graph3.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix2.gif -text svneol=unset#image/gif
