@@ -758,6 +758,11 @@ flags msvc HDRS &lt;include&gt; ;
     string. The build-in <tt>DEPENDS</tt> rule creates a link in the dependency
     graph between the named targets.
 
+    <li>Note that the documentation for the built-in <tt>INCLUDES</tt> rule is
+    incorrect:
+<tt>INCLUDES&nbsp;targets1&nbsp;:&nbsp;targets2&nbsp;</tt>
+    causes everything that depends on a member of <i>targets1</i> to depend on all members of <i>targets2</i>.
+
     <li>When a rule is invoked, if there are <b><tt>actions</tt></b> declared
     with the same name as the rule, the <tt>actions</tt> are added to the
     updating actions for the target identified by the rule's first argument.  It
@@ -799,15 +804,14 @@ flags msvc HDRS &lt;include&gt; ;
     href="http://public.perforce.com/public/jam/src/Jam.html#actionmods">bind</a>
     action modifier.
     
-    <blockquote>
+    <li>
        Note that the term ``binding'' as used in the Jam documentation indicates
        a phase of processing that includes three sub-phases: <i>binding</i>
-       (yes!), update determination, and header file scanning. The repetition
-       can lead to some confusion. In particular, the <a
+       (yes!), update determination, and header file scanning. The repetition of
+       the term ``binding'' can lead to some confusion. In particular, the <a
        href="http://public.perforce.com/public/jam/src/Jam.html#bindingmods">Modifying
        Binding</a> section in the Jam documentation should probably be titled
        ``Modifying Update Determination''.
-    </blockquote>
     
     <li>``<a href="#grist">Grist</a>'' is just a string prefix of the form
     <tt>&lt;</tt><i>characters</i><tt>&gt;</tt>. It is used in Jam to create

@@ -957,7 +957,7 @@ rule Object
 
     if $(SEARCH_SOURCE)
     {
-        h = $(SEARCH_SOURCE) ;
+        h = $(SEARCH_SOURCE)$(SLASH)$(>:D) ;
     }
     else
     {

@@ -94,6 +94,7 @@ rule library-file
 
 rule executable-file
 {
+    type-DEPENDS exe : $(<) ;
     main-from-objects $(<) : [ Objects $(>) ] : EXE ;
 
     # Setting RUN_ALL causes all executable targets to be run.
@@ -105,7 +106,16 @@ rule executable-file
 
 rule dll-file
 {
-    main-from-objects $(<) : [ Objects $(>) ] : DLL ;
+    type-DEPENDS dll : $(<) ;
+    
+    # Set up the import library dependency on Windows
+    if $(gEXPORT_SUFFIX(DLL))
+    {
+        INCLUDES $(<) : $(<:S=)$(gEXPORT_SUFFIX(DLL)) ;
+        INCLUDES $(<:S=)$(gEXPORT_SUFFIX(DLL)) : $(<) ;
+    }
+    
+    main-from-objects $(<) $(<:S=)$(gEXPORT_SUFFIX(DLL)) : [ Objects $(>) ] : DLL ;
 }
 
 # main-from-objects exe-target : obj-target... : ("EXE"|"DLL")
@@ -117,13 +127,32 @@ rule main-from-objects
 {
     # make compiled sources a dependency of target
 
-    type-DEPENDS exe : $(<) ;
     DEPENDS $(<) : $(>) ;
+
 	MakeLocate $(<) : $(LOCATE_TARGET) ;
 
     Clean clean : $(<) ;
 
-    Link $(<) : $(>) : $(3) ;
+    switch $(3)
+    {
+      case EXE : Link $(<) : $(>) : $(3) ;
+      case DLL : Link-DLL $(<) : $(>) : $(3) ;
+      case * : EXIT "unknown main target type $(3)" ;
+    }
+}
+
+rule Link-DLL
+{
+    MODE on $(<[1]) = $(DLLMODE) ;
+    
+    if $(<[2])
+    {
+      MODE on $(<[2]) = $(IMPMODE) ;
+      Chmod $(<[2]) ;
+    }
+    Link-DLL-action $(<) : $(>) : $(3) ;
+    
+    Chmod $(<[1]) ;
 }
 
 # A simple action to run an executable target
@@ -954,10 +983,10 @@ rule link-libraries
     local lib-target-type = $(gTARGET_TYPE($(lib-target))) ;
 
     local lib-grist = [ join-path $(SOURCE_GRIST) $(lib-path:D=) $(3) ] ;
-    local build-target = $(target:G=$(lib-grist)) ;
+    local build-target = $(lib-target:G=$(lib-grist)) ;
     
     # if build instructions for the given target have not been given, do that now.
-    if ! $(build-target) in $(gDECLARED_TARGETS)
+    if ! $(lib-grist) in $(gDECLARED_TARGETS)
     {
         declare-target $(lib-target)
             : $(gTARGET_SOURCES($(lib-target)))
@@ -966,7 +995,7 @@ rule link-libraries
     }
 
     # Get the name of the built target file
-    local target-file = [ FAppendSuffix $(build-target) : $(SUF$(lib-target-type)) ] ;
+    local target-file = [ FAppendSuffix $(build-target) : $(gIMPORT_SUFFIX($(lib-target-type))) ] ;
 
     # Set up dependencies and link instructions
     DEPENDS $(<) : $(target-file) ;
@@ -1026,6 +1055,7 @@ if $(NT)
 {
   gIMPORT_SUFFIX(DLL) = .lib ;
   gIMPORT_SUFFIX(LIB) = .lib ;
+  gEXPORT_SUFFIX(DLL) = .lib ;
 }
 else
 {
@@ -1074,23 +1104,22 @@ rule declare-target # target : sources : requirements : local-build : target-typ
           # will identify the target and subvariant, since unique versions of
           # files will be built for that combination. 
           local TARGET_GRIST = [ join-path $(SOURCE_GRIST) $(<) $(subvariant-id) ] ;
-
-          # target is the unsuffixed name of the target, with TARGET_GRIST
-          local target = $(<:G=$(TARGET_GRIST)) ;
+          local HDRGRIST = $(TARGET_GRIST) ;
 
           # Do nothing if build instructions and dependencies for this target
           # have already been generated.
-          if ! $(target) in $(gDECLARED_TARGETS)
+          if ! $(TARGET_GRIST) in $(gDECLARED_TARGETS)
           {
-            gDECLARED_TARGETS += $(target) ;
+            gDECLARED_TARGETS += $(TARGET_GRIST) ;
 
             # LOCATE_TARGET affects where built targets are generated. We move
             # it relative to the default location based on the subvariant
             local LOCATE_TARGET
               = [ join-path $(LOCATE_TARGET) $(BIN_DIRECTORY) $(<) $(subvariant-id) ] ;
 
-            local target-file = [ FAppendSuffix $(target) : $(SUF$(target-type)) ] ;
-            declare-fake-targets $(target) : $(target-file) ;
+            local main-target = $(<:G=$(TARGET_GRIST)) ;
+            local target-file = [ FAppendSuffix $(main-target) : $(SUF$(target-type)) ] ;
+            declare-fake-targets $(main-target) : $(target-file) ;
             
             # set up gBUILD_PROPERTIES for include-tools (below)
             local gBUILD_PROPERTIES = $(x-split[2-]) ;

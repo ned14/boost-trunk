@@ -1,7 +1,7 @@
 #include "xl.hpp"
 #include <iostream>
 
-void xl()
+TOP_EXPIMP void xl()
 {
     std::cout << "hello from xl" << std::endl ;
 }

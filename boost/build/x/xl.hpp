@@ -1,3 +1,3 @@
 #include "../top.hpp"
 
-void xl();
+TOP_EXPIMP void xl();
