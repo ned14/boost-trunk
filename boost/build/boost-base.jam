@@ -536,12 +536,12 @@ rule include-tools
     gTARGET_VARIABLES = ;
     gRELEVANT_FEATURES($(<)) = ; # clear relevant feature set
     
-    include $(TOOLSET_DIR)$(SLASH)$(<)-tools.jam ;
+    include $(BOOST_TOOLSET_DIR)$(SLASH)$(<)-tools.jam ;
 
     # Always maintain the list of relevant features as unique
     gRELEVANT_FEATURES($(<)) = [ unique $(gRELEVANT_FEATURES($(<))) ] ;
     
-    gINCLUDED($(TOOLSET_DIR)$(SLASH)$(<)-tools.jam) = true ;
+    gINCLUDED($(BOOST_TOOLSET_DIR)$(SLASH)$(<)-tools.jam) = true ;
 }
 
 # relevant-features toolset
@@ -622,7 +622,7 @@ rule select-properties
     return $(result) ;
 }
 # get toolset features
-include $(TOP)$(SLASH)features.jam ;
+include $(BOOST_TOOLSET_DIR)$(SLASH)features.jam ;
 if ! ( NDEBUG in $(TEST) )
 {
     TEST_PROPERTIES = <inlining>off <define>FOO <*><release><inlining>on
