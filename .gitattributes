@@ -3346,6 +3346,7 @@ boost/libs/mpl/test/aux_/has_xxx.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/no_has_xxx.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/preprocessor/is_seq.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/preprocessor/token_equal.cpp svneol=native#text/plain
+boost/libs/mpl/test/aux_/template_arity.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/test/test_case.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/typeof.cpp svneol=native#text/plain
 boost/libs/mpl/test/back.cpp svneol=native#text/plain
