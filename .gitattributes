@@ -1689,6 +1689,7 @@ boost/libs/python/doc/v2/class.html svneol=native#text/html
 boost/libs/python/doc/v2/configuration.html svneol=native#text/html
 boost/libs/python/doc/v2/copy_const_reference.html svneol=native#text/html
 boost/libs/python/doc/v2/copy_non_const_reference.html svneol=native#text/html
+boost/libs/python/doc/v2/data_members.html svneol=native#text/html
 boost/libs/python/doc/v2/default_call_policies.html svneol=native#text/html
 boost/libs/python/doc/v2/definitions.html svneol=native#text/html
 boost/libs/python/doc/v2/errors.html svneol=native#text/html
