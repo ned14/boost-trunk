@@ -722,7 +722,6 @@ boost/libs/python/example/pickle1.cpp svneol=native#text/plain
 boost/libs/python/example/pickle2.cpp svneol=native#text/plain
 boost/libs/python/example/pickle3.cpp svneol=native#text/plain
 boost/libs/python/example/rwgk1.cpp svneol=native#text/plain
-boost/libs/python/example/simple_vector.cpp svneol=native#text/plain
 boost/libs/python/example/test_abstract.py svneol=native#text/x-python
 boost/libs/python/example/test_cross_module.py svneol=native#text/x-python
 boost/libs/python/example/test_do_it_yourself_converters.py svneol=native#text/x-python
