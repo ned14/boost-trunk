@@ -377,6 +377,7 @@ boost/boost/preprocessor/comparison/not_equal.hpp svneol=native#text/plain
 boost/boost/preprocessor/dec.hpp svneol=native#text/plain
 boost/boost/preprocessor/detail/auto_rec.hpp svneol=native#text/plain
 boost/boost/preprocessor/detail/cat.hpp svneol=native#text/plain
+boost/boost/preprocessor/detail/expand.hpp svneol=native#text/plain
 boost/boost/preprocessor/empty.hpp svneol=native#text/plain
 boost/boost/preprocessor/enum.hpp svneol=native#text/plain
 boost/boost/preprocessor/enum_params.hpp svneol=native#text/plain
