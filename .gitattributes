@@ -307,6 +307,7 @@ boost/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp svneol=native#text/
 boost/boost/type_traits/detail/size_t_trait.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/size_t_trait_def.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/size_t_trait_undef.hpp svneol=native#text/plain
+boost/boost/type_traits/detail/template_arity_spec.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/type_trait_def.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/type_trait_undef.hpp svneol=native#text/plain
 boost/boost/type_traits/detail/wrap.hpp svneol=native#text/plain

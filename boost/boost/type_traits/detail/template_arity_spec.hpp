@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost/type_traits/detail/size_t_trait_def.hpp header file
+// boost/type_traits/detail/template_arity_spec.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -16,33 +16,25 @@
 
 // no include guards, the header is intended for multiple inclusion!
 
-#include "boost/type_traits/detail/size_t_trait.hpp"
-#include "boost/type_traits/detail/template_arity_spec.hpp"
+#include "boost/mpl/aux_/template_arity_fwd.hpp"
+#include "boost/mpl/aux_/preprocessor/params.hpp"
 #include "boost/mpl/aux_/lambda_support.hpp"
+#include "boost/mpl/aux_/config/overload_resolution.hpp"
+#include "boost/config.hpp"
 
-#define BOOST_TT_AUX_SIZE_T_TRAIT_DEF1(trait,T,value) \
-template< typename T > struct trait \
-    : ::boost::type_traits::size_t_trait< value > \
+#if defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT) && \
+    defined(BOOST_MPL_BROKEN_OVERLOAD_RESOLUTION)
+#   define BOOST_TT_AUX_TEMPLATE_ARITY_SPEC(i, name) \
+namespace mpl { namespace aux { \
+template< BOOST_MPL_PP_PARAMS(i, typename T) > \
+struct template_arity< \
+      name< BOOST_MPL_PP_PARAMS(i, T) > \
+    > \
 { \
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,trait,(T)) \
+    BOOST_STATIC_CONSTANT(int, value = i ); \
 }; \
-\
-BOOST_TT_AUX_TEMPLATE_ARITY_SPEC(1,trait) \
+}} \
 /**/
-
-#define BOOST_TT_AUX_SIZE_T_TRAIT_SPEC1(trait,spec,value) \
-template<> struct trait<spec> \
-    : ::boost::type_traits::size_t_trait< value > \
-{ \
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,trait,(spec)) \
-}; \
-\
-BOOST_TT_AUX_TEMPLATE_ARITY_SPEC(2,trait) \
-/**/
-
-#define BOOST_TT_AUX_SIZE_T_TRAIT_PARTIAL_SPEC1_1(param,trait,spec,value) \
-template< param > struct trait<spec> \
-    : ::boost::type_traits::size_t_trait< value > \
-{ \
-}; \
-/**/
+#else
+#   define BOOST_TT_AUX_TEMPLATE_ARITY_SPEC(i, name) /**/
+#endif
