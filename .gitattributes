@@ -3193,6 +3193,7 @@ boost/libs/numeric/ublas/test6/test63.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/ublas.dsw -text svneol=CRLF#unset
 boost/libs/optional/doc/optional.html svneol=native#text/html
 boost/libs/optional/index.html svneol=native#text/html
+boost/libs/optional/test/.cvsignore -text
 boost/libs/optional/test/Jamfile svneol=native#text/plain
 boost/libs/optional/test/optional_test.cpp svneol=native#text/plain
 boost/libs/pool/TODO.txt svneol=native#text/plain
