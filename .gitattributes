@@ -441,6 +441,7 @@ boost/libs/graph/examples/knights_tour.cpp svneol=native#text/plain
 boost/libs/graph/examples/knights_tour.expected -text
 boost/libs/graph/examples/kruskal.cpp svneol=native#text/plain
 boost/libs/graph/examples/kruskal.expected -text
+boost/libs/graph/examples/max_flow.cpp svneol=native#text/plain
 boost/libs/graph/examples/miles_span.cpp svneol=native#text/plain
 boost/libs/graph/examples/miles_span.expected -text
 boost/libs/graph/examples/ordered_out_edges.cpp svneol=native#text/plain
