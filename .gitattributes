@@ -1635,9 +1635,6 @@ boost/libs/property_map/property_map_cc.cpp svneol=native#text/plain
 boost/libs/python/Jamfile svneol=native#text/plain
 boost/libs/python/build/Jamfile svneol=native#text/plain
 boost/libs/python/build/__init__.py svneol=native#text/x-python
-boost/libs/python/build/bpl_static.dsp -text svneol=CRLF#unset
-boost/libs/python/build/build.dsw -text svneol=CRLF#unset
-boost/libs/python/build/build.opt -text
 boost/libs/python/build/como.mak svneol=native#text/plain
 boost/libs/python/build/example1/example1.dsp -text svneol=CRLF#unset
 boost/libs/python/build/filemgr.py svneol=native#text/x-python
