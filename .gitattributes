@@ -344,7 +344,6 @@ boost/boost/python/detail/types.hpp svneol=native#text/plain
 boost/boost/python/detail/void_adaptor.hpp svneol=native#text/plain
 boost/boost/python/detail/wrap_python.hpp svneol=native#text/plain
 boost/boost/python/errors.hpp svneol=native#text/plain
-boost/boost/python/export.hpp svneol=native#text/plain
 boost/boost/python/make_function.hpp svneol=native#text/plain
 boost/boost/python/module.hpp svneol=native#text/plain
 boost/boost/python/module_builder.hpp svneol=native#text/plain
