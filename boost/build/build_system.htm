@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
     <meta name="generator" content="HTML Tidy, see www.w3.org">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 
@@ -9,24 +10,41 @@
     <h2>Table of Contents</h2>
 
     <ul>
-    <li>Introduction
+      <li>
+        Introduction 
+
         <ul>
-        <li>Assumptions
-        <li>Requirements
+          <li>Assumptions
+
+          <li>Requirements
         </ul>
-    <li>Basic Design and Terminology
+
+      <li>
+        Basic Design and Terminology 
+
         <ul>
-        <li>Projects and Subprojects
-        <li>Targets
-        <li>Features
-        <li>Build Variants
-        <li>Subvariants
-        <li>Dependent Targets
+          <li>Projects and Subprojects
+
+          <li>Targets
+
+          <li>Features
+
+          <li>Build Variants
+
+          <li>Subvariants
+
+          <li>Dependent Targets
         </ul>
-    <li>Usage
+
+      <li>
+        Usage 
+
         <ul>
-        <li>Some Terminology
-        <li>Subproject Jamfiles
+          <li>Hints for Installing Jam
+
+          <li>Some Terminology
+
+          <li>Subproject Jamfiles
         </ul>
     </ul>
 
@@ -37,11 +55,12 @@
     <p>The requirements are driven by several basic assumptions:
 
     <ul>
-      <li>There is no single Boost developer or test facility with access to or 
-          knowledge of all the platforms and compilers Boost libraries are used with. 
+      <li>There is no single Boost developer or test facility with access to or
+      knowledge of all the platforms and compilers Boost libraries are used
+      with.
 
-      <li>Boost libraries are used across such a wide range of platforms and 
-        compilers that almost no other assumptions can be made.    
+      <li>Boost libraries are used across such a wide range of platforms and
+      compilers that almost no other assumptions can be made.
     </ul>
 
     <h3>Requirements</h3>
@@ -49,65 +68,147 @@
     <p>This build system was designed to satisfy the following requirements:
 
     <ul>
-      <li>A developer adding a new library or test program must only have to add
-          simple entries naming the source files to a text file, and not have to
-          know anything about platform specific files. The developer should not
-          have to supply header dependency information.
+      <li>A developer adding a new library or test program must only have to
+      add simple entries naming the source files to a text file, and not have
+      to know anything about platform specific files. The developer should not
+      have to supply header dependency information.
 
       <li>There should be a very high likelihood of builds succeeding on all
-          platforms if a build succeeds on any platform. In other words, a
-          developer must not be required to have access to many platforms or
-          compilers to ensure correct builds
+      platforms if a build succeeds on any platform. In other words, a
+      developer must not be required to have access to many platforms or
+      compilers to ensure correct builds
 
-     <li>A user or developer adding support for a new platform or compiler
-         should only have to add to a single file describing how to do the build
-         for that platform or compiler, and shouldn't have to identify the files
-         that will need to be built.
+      <li>A user or developer adding support for a new platform or compiler
+      should only have to add to a single file describing how to do the build
+      for that platform or compiler, and shouldn't have to identify the files
+      that will need to be built.
 
-     <li>The build should rely only on tools native to the platform and
-         compiler, or supplied via the boost download.
+      <li>The build should rely only on tools native to the platform and
+      compiler, or supplied via the boost download.
 
-     <li>The details of how the build is done for a particular platform or
-         compiler should be appropriate for that platform.
+      <li>The details of how the build is done for a particular platform or
+      compiler should be appropriate for that platform.
 
-     <li>It should be possible to build multiple variants (e.g. debug/release)
-         of a single target.
+      <li>It should be possible to build multiple variants (e.g. debug/release)
+      of a single target.
 
-     <li>It should be possible to build multiple variants of multiple targets
-         with multiple compilers from a single build command.
-     
-     <li>The build tools must be able to handle Boost growth issues such as
-         identified in Directory Structure proposals and discussion.
+      <li>It should be possible to build multiple variants of multiple targets
+      with multiple compilers from a single build command.
 
-     <li>Support for dynamic and static linking should be included.
+      <li>The build tools must be able to handle Boost growth issues such as
+      identified in Directory Structure proposals and discussion.
 
-     <li>It should be relatively straightforward to add support for a new
-         compiler. In most cases, no modification of files used to describe
-         existing targets should be required.
+      <li>Support for dynamic and static linking should be included.
 
-     <li>Support for compiler- and variant-specific configuration for each target
+      <li>It should be relatively straightforward to add support for a new
+      compiler. In most cases, no modification of files used to describe
+      existing targets should be required.
 
-     <li>It should be possible to build targets into a directory unrelated to the source
-         directories (they may be read-only)
+      <li>Support for compiler- and variant-specific configuration for each
+      target
 
+      <li>It should be possible to build targets into a directory unrelated to
+      the source directories (they may be read-only)
     </ul>
 
-    <h2>Basic Design and Terminology</h2>
+    <h3>Installing Jam</h3>
+    Jam can be found at <a href=
+    "http://www.perforce.com/jam/jam.html">http://www.perforce.com/jam/jam.html</a>.
+    If you are installing on Windows NT, please read <a href=
+    "http://frankenrouter.perforce.com/lists/jamming/msg00474.html">this
+    note</a>. You may need to use the ``<tt>SUBST</tt> hack'' described at the
+    bottom of the message to bootstrap Jam. Also, when defining the
+    <tt>MSVCNT</tt>, <tt>BCCROOT</tt>, etc. environment variables described <a
+    href="http://public.perforce.com/public/jam/src/README">here</a>, please
+    remember that they are case-sensitive. 
 
+    <h3>Initiating a Build</h3>
+
+    <p>Currently, the build system must be invoked with the
+    <tt>-f<i>allyourbase-path</i></tt> option, where <i>allyourbase-path</i> is
+    the path to the <tt><a href="allyourbase.jam">allyourbase.jam</a></tt> file
+    supplied in this directory. When the system matures, this file will be
+    compiled directly into Jam as the <tt>Jambase</tt>, and the <tt>-f</tt>
+    option will no longer be needed. The environment variables neccessary for
+    bootstrapping Jam are not needed once it has been built.
+
+    <p>Here are some sample Boost Jam invocations:
+
+    <table border="1" summary="Sample Jam Invocations=">
+      <tr>
+        <th>Command Line(s)
+
+        <th>Effects
+
+      <tr>
+        <td><tt>jam -f<i>allyourbase-path</i> -sTOOLS=gcc my_target</tt> 
+
+        <td>default (debug) <tt>BUILD</tt> of <tt>my_target</tt>with GCC
+
+      <tr>
+        <td><tt>jam -f<i>allyourbase-path</i> -sTOOLS="msvc gcc"</tt> 
+
+        <td>default-build <tt>all</tt> with msvc and gcc
+
+      <tr>
+        <td><tt>set TOOLS=msvc<br>
+         jam -f<i>allyourbase-path</i></tt> 
+
+        <td>Set an NT environment variable to always build with MSVC<br>
+        default-build <tt>all</tt>.
+
+      <tr>
+        <td><tt>jam -f<i>allyourbase-path</i> -sBUILD=release</tt> 
+
+        <td>release build <tt>all</tt> with default <tt>TOOLS</tt>:<br>
+         
+
+      <tr>
+        <td><tt>jam -f<i>allyourbase-path</i> -sBUILD="debug release"</tt> 
+
+        <td>debug and release build <tt>all</tt>.
+    </table>
+
+    <h3>Support Files</h3>
+
+    <p>To use the build system, the following must be located in your project's
+    root directory, or in directories given by the path variables indicated below:
+
+    <table border="1" summary="" Support Files="">
+    <tr><th>Filename(s) <th>Optional Path Variable <th>Meaning
+
+
+    <tr><td><i>toolset</i><tt>-tools.jam</tt> <td><tt>BOOST_TOOLSET_DIR</tt>
+    <td>Feature-to-command-line mapping for <i>toolset</i>.
+
+
+    <tr><td><tt>features.jam</tt> <td><tt>BOOST_TOOLSET_DIR</tt> <td>Abstract toolset
+    feature descriptions.
+
+    <tr><td><tt>boost-base.jam</tt> <td><tt>BOOST_BASE_DIR</tt> <td>Boost build
+    system-specific rule definitions.
+
+    </table>
+    
+    The <tt>boost-base.jam</tt> file is temporary, and will eventually be
+    compiled into our Jam executable.
+
+    <h2>Basic Design and Terminology</h2>
     This section gives an overview of the way that the system works, outlining
     the system's capabilities and overall design. It also introduces the
     terminology and concepts neccessary to understand the sections on writing
-    Jamfiles and command-line invocations.
+    Jamfiles and command-line invocations. 
 
     <h3>Projects and Subprojects</h3>
-    <p>
 
-    A <b>project</b> is a source directory tree containing a
+    <p>A <b>project</b> is a source directory tree containing a
     <tt>Jamfile</tt>. The root directory of the project is known as the
-    <b>project root</b>.
+    <b>project root</b>. The root directory of a project may contain a
+    <tt>Jamrules</tt> file, which contains project-specific Jam code. If the
+    <tt>Jamrules</tt> file is not present when Jam is invoked, a warning will
+    be issued.
 
-    <p>
-    Subdirectories containing <tt>Jamfile</tt>s are called <b>subproject
+    <p>Subdirectories containing <tt>Jamfile</tt>s are called <b>subproject
     directories</b>. Each such <tt>Jamfile</tt> describes a <b>subproject</b>.
 
     <p>The <b>build root</b> is a directory containing Jam files describing
@@ -116,32 +217,64 @@
     specified, it is a subdirectory of the project root called <tt>build</tt>,
     and <tt>BOOST_BUILD_ROOT</tt> is set to refer to that directory.
 
+    <h3>An Example Jamfile</h3>
+    Here is an example of a simple subproject Jamfile: 
+
+    <blockquote>
+<pre>
+subproject foo/bar/baz ; # path to here from project root
+
+# A static library called 'baz'
+lib baz : baz1.cpp baz2.cpp # C++ sources
+          parser/src/baz4.ll # Lex-&gt;C++ sources
+          parser/src/baz5.yy  # Yacc-&gt;C++ sources
+        : &lt;include&gt;$(BOOST_PARENT_DIRECTORY)  # Put boost in #include path
+    ;
+
+# An executable called 'test'
+exe test : &lt;lib&gt;baz # use the 'baz' library
+           baz_test.cpp   # C++ source
+         : &lt;include&gt;$(BOOST_PARENT_DIRECTORY)
+    ;
+</pre>
+    </blockquote>
+
+    <p>That's it! The build system takes care of the rest. If the you want to
+    be able to build all subprojects from the project root directory, you can
+    add a Jamfile at the root:
+
+    <blockquote>
+<pre>
+# Read subproject Jamfiles
+subinclude foo/bar/baz <font color="#7f7f7f">foo/bar/...</font>;
+<font color="#7f7f7f">subinclude a/b/c ...</font> ; # more subincludes
+</pre>
+    </blockquote>
+
     <h3>Targets</h3>
 
-    <p>Each <tt>Jamfile</tt> describes one or more <b>main targets</b>. 
+    <p>Each <tt>Jamfile</tt> describes one or more <b>main targets</b>.
 
     <p>Each main target is an abstract description of one or more <b>built
     targets</b> which are expressions of the corresponding main target under
     particular compilers and build variants. Intermediate files such as
     <tt>.o</tt>/<tt>.obj</tt> files generated by compiling <tt>.cpp</tt> files
     as a consequence of building a main target are also referred to as built
-    targets.
-
-    The term <b>target directory tree</b> refers to the location of built
-    target files.
+    targets. The term <b>target directory tree</b> refers to the location of
+    built target files.
 
     <ul>
-   <li> By default, the target directory tree is overlaid with the project
-        directory tree, with targets generated into a subtree rooted at the
-        <tt>bin</tt> subdirectory of each subproject directory (the name of this
-        directory can be customized by changing the <tt>BIN_DIRECTORY</tt> variable.
+      <li>By default, the target directory tree is overlaid with the project
+      directory tree, with targets generated into a subtree rooted at the
+      <tt>bin</tt> subdirectory of each subproject directory (the name of this
+      directory can be customized by changing the <tt>BIN_DIRECTORY</tt>
+      variable.
 
-    <li>If the variable <tt>ALL_LOCATE_TARGET</tt> is set, it specifies an
-        alternate target directory tree whose structure mirrors that of the
-        project. In this case, built targets of a subproject are generated into
-        the corresponding directory of the target directory tree.
+      <li>If the variable <tt>ALL_LOCATE_TARGET</tt> is set, it specifies an
+      alternate target directory tree whose structure mirrors that of the
+      project. In this case, built targets of a subproject are generated into
+      the corresponding directory of the target directory tree.
     </ul>
-
 
     <h3>Features and Properties</h3>
 
@@ -152,31 +285,33 @@
 
     <ol>
       <li><b>Simple features</b> can take on any of several predetermined
-          values. For example, the feature <tt>optimization</tt> might take one
-          of the values <tt>off</tt>, <tt>speed</tt>, or <tt>space</tt>. Simple
-          features have a default value. Most features fall into this category.
+      values. For example, the feature <tt>optimization</tt> might take one of
+      the values <tt>off</tt>, <tt>speed</tt>, or <tt>space</tt>. Simple
+      features have a default value. Most features fall into this category.
 
       <li><b>Free features</b> can take on any number of user-specified values
-          simultaneously. For example, the <tt>define</tt> feature for a release
-          build might have the values <tt>NDEBUG</tt> and
-          <tt>BOOST_RELEASE_BUILD</tt>. 
+      simultaneously. For example, the <tt>define</tt> feature for a release
+      build might have the values <tt>NDEBUG</tt> and
+      <tt>BOOST_RELEASE_BUILD</tt>.
     </ol>
 
     <p>A feature-value pair is known as a <b>build property</b>, or simply
-    <b>property</b>. The prefixes <i>Simple</i> and <i>free </i> apply to
+    <b>property</b>. The prefixes <i>Simple</i> and <i>free</i> apply to
     properties in an analogous way to features.
 
     <h3>Build Variants</h3>
 
     <p>A build variant, or simply <b>variant</b> is a named set of build
-        properties describing how targets should be built for
-        each compiler. Built targets for distinct build variants and compilers
-        are generated in separate parts of the target directory tree, known as
-        the <b>variant directories</b>. For example, a (sub)project with main targets
-        <tt>foo</tt> and <tt>bar</tt>, compiled with both GCC and KAI for <tt>debug</tt>
-        and <tt>release</tt> variants might generate the following structure
-        (target directories in <b>bold</b>).
-<blockquote><pre>
+    properties describing how targets should be built for each compiler. Built
+    targets for distinct build variants and compilers are generated in separate
+    parts of the target directory tree, known as the <b>variant
+    directories</b>. For example, a (sub)project with main targets <tt>foo</tt>
+    and <tt>bar</tt>, compiled with both GCC and KAI for <tt>debug</tt> and
+    <tt>release</tt> variants might generate the following structure (target
+    directories in <b>bold</b>).
+
+    <blockquote>
+<pre>
  bin
  +-foo
  | +-gcc
@@ -192,44 +327,51 @@
    `-kai
      +-<b>debug</b>
      `-<b>release</b>
-</pre></blockquote>
+</pre>
+    </blockquote>
 
-     <h3>Subvariants</h3>
+    <h3>Subvariants</h3>
 
-     <p>When a target is built with <i>simple</i> properties
-     that don't exactly match those specified in a build variant, the
-     non-matching features are called <b>subvariant features</b> and the target
-     is located in a <b>subvariant directory</b> beneath the directory of the
-     base variant. This can occur for two reasons:
+    <p>When a target is built with <i>simple</i> properties that don't exactly
+    match those specified in a build variant, the non-matching features are
+    called <b>subvariant features</b> and the target is located in a
+    <b>subvariant directory</b> beneath the directory of the base variant. This
+    can occur for two reasons:
 
-     <ol>
-       <li>Some features are only relevant to certain compilers. When
-           relevant simple features have no value specified in the build
-           variant, a value must be chosen. Even when the default value is used,
-           the target is generated into a subvariant directory. For example, the
-           <tt>runtime-link</tt> feature may be unspecified in the
-           <tt>debug</tt> variant, but relevant to MSVC. In that case, a
-           fragment of the target tree might look like:
+    <ol>
+      <li>
+        Some features are only relevant to certain compilers. When relevant
+        simple features have no value specified in the build variant, a value
+        must be chosen. Even when the default value is used, the target is
+        generated into a subvariant directory. For example, the
+        <tt>runtime-link</tt> feature may be unspecified in the <tt>debug</tt>
+        variant, but relevant to MSVC. In that case, a fragment of the target
+        tree might look like: 
 
-<blockquote><pre>
+        <blockquote>
+<pre>
  bin
  +-foo
  | +-msvc
  | | +-debug
  . . . `-<b>runtime-link-dynamic</b>
  . . .
-</pre></blockquote>
-
+</pre>
+        </blockquote>
         Because the default value of <tt>runtime-link</tt> is <tt>dynamic</tt>,
         when the <tt>debug</tt> variant is requested, the
-        <tt>runtime-link-dynamic</tt> subvariant of foo is built.<br><br>
+        <tt>runtime-link-dynamic</tt> subvariant of foo is built.<br>
+        <br>
 
-       <li>It is possible to request (either on the command-line, or as part of
-           a main target description) that particular subvariants be built. For
-           example, it may be desirable to generate builds that link to
-           the runtime both statically <i>and</i> dynamically. In that case,
-           both subvariant directories in the example above would be generated:
-<blockquote><pre>
+      <li>
+        It is possible to request (either on the command-line, or as part of a
+        main target description) that particular subvariants be built. For
+        example, it may be desirable to generate builds that link to the
+        runtime both statically <i>and</i> dynamically. In that case, both
+        subvariant directories in the example above would be generated: 
+
+        <blockquote>
+<pre>
  bin
  +-foo
  | +-msvc
@@ -237,21 +379,22 @@
  . . . +-<b>runtime-link-dynamic</b>
  . . . `-<b>runtime-link-static</b>
  . . .
-</pre></blockquote>
+</pre>
+        </blockquote>
+    </ol>
+    In no case will targets be built directly into <tt>bin/foo/msvc/debug</tt>,
+    since the <tt>debug</tt> variant doesn't include the <tt>runtime-link</tt>
+    feature, which is relevant to MSVC. 
 
-     </ol>
+    <p>When a subvariant includes multiple subvariant features, targets are
+    built into a subvariant directory whose path is determined by concatenating
+    the properties sorted in order of their feature names. For example, the
+    borland compiler, which uses different libraries depending on whether the
+    target is a console or GUI program, might create the following structure
+    for a DLL:
 
-     In no case will targets be built directly into <tt>bin/foo/msvc/debug</tt>,
-     since the <tt>debug</tt> variant doesn't include the <tt>runtime-link</tt>
-     feature, which is relevant to MSVC.
-
-     <p>When a subvariant includes multiple subvariant features, targets are built
-     into a subvariant directory whose path is determined by concatenating the
-     properties sorted in order of their feature names. For example, the
-     borland compiler, which uses different libraries depending on whether the
-     target is a console or GUI program, might create the following structure
-     for a DLL:
-<blockquote><pre>
+    <blockquote>
+<pre>
  bin
  +-foo
  | +-msvc
@@ -262,124 +405,145 @@
  . . . `-runtime-link-static
  . . .   +-<b>user-interface-console</b>
  . . .   `-<b>user-interface-gui</b>
-</pre></blockquote>
+</pre>
+    </blockquote>
 
-<p>Any configuration of properties for which a target is built, whether base
-variant or subvariant, is known as a <b>build configuration</b>, or simply a
-<b>build</b>. 
+    <p>Any configuration of properties for which a target is built, whether
+    base variant or subvariant, is known as a <b>build configuration</b>, or
+    simply a <b>build</b>.
 
     <h3>Dependent Targets</h3>
 
     <p>When a main target depends on the product of a second main target (as
-    when an executable depends on and links to a static library), each build configuration
-    of the dependent target is depends on the <i>same</i>
-    build of the dependee. Because only simple features
-    participate in build identity, the dependent and dependee targets may
-    have completely different free features. This puts the onus on the user for
-    ensuring link-compatibility when certain free properties are used. For
-    example, when <tt>assert()</tt> is used in header files, the preprocessor
-    symbol <tt>NDEBUG</tt> can impact link-compatibility of separate compilation
+    when an executable depends on and links to a static library), each build
+    configuration of the dependent target is depends on the <i>same</i> build
+    of the dependee. Because only simple features participate in build
+    identity, the dependent and dependee targets may have completely different
+    free features. This puts the onus on the user for ensuring
+    link-compatibility when certain free properties are used. For example, when
+    <tt>assert()</tt> is used in header files, the preprocessor symbol
+    <tt>NDEBUG</tt> can impact link-compatibility of separate compilation
     units. This danger can be minimized by encapsulating such feature
     differences inside of build variants.
 
     <h2>Usage</h2>
 
-    <p>This section describes how to start a build from the command-line and how
-    to write project and subproject Jamfiles. It also describes the other files
-    written in the Jam language: build-tool specification files, feature
+    <p>This section describes how to start a build from the command-line and
+    how to write project and subproject Jamfiles. It also describes the other
+    files written in the Jam language: build-tool specification files, feature
     descriptions files.
 
     <h3>Some terminology</h3>
-    
+
     <p>In the Jam language, a name can be divided into two parts. If the name
     starts with a '<tt>&lt;</tt>' symbol and contains a '<tt>&gt;</tt>' symbol,
     the characters between the '<tt>&lt;</tt>' and the first '<tt>&gt;</tt>',
     inclusive, is known as <i>grist</i> (if the name doesn't match this format,
     the grist is empty). The rest of the name is known as the <i>ungristed
     part</i>. The boost build system takes advantage of Jam's ability to divide
-    names on grist boundaries, sometimes concatenating multiple gristed elements
-    at the beginning of a name.
+    names on grist boundaries, sometimes concatenating multiple gristed
+    elements at the beginning of a name.
 
-     <h3>SubProject Jamfiles</h2>
-
-    This section describes how to write a Jamfile for a subproject.
+    <h3>SubProject Jamfiles</h3>
+    This section describes how to write a Jamfile for a subproject. 
 
     <h4>The <tt>subproject</tt> rule</h4>
-    <p>A subproject's Jamfile begins with an invocation of the <tt>subproject</tt> rule
-    that specifies the subproject's location relative to the top of the project
-    tree:
 
-<blockquote><pre>
+    <p>A subproject's Jamfile begins with an invocation of the
+    <tt>subproject</tt> rule that specifies the subproject's location relative
+    to the top of the project tree:
+
+    <blockquote>
+<pre>
 subproject <i>path-from-top</i> ;
-</blockquote></pre>
+</pre>
+    </blockquote>
 
     <p>The <tt>subproject</tt> rule tells the build system where to place built
     targets from the subproject in case <tt>ALL_LOCATE_TARGET</tt> is used to
     specify the target directory tree.
-    
+
     <h4>Describing Main Targets</h4>
 
     <p>A main target is described using the following syntax:
 
-<blockquote>
+    <blockquote>
 <pre>
 <i>target-type</i> <i>name</i> : <i>sources</i>
     [ : <i>requirements</i> [ : <i>default-BUILD</i> ] ] ;
-</pre></blockquote>
-<ul>
-<li><i>target-type</i> may be one of <tt>exe</tt>, <tt>lib</tt>, <tt>dll</tt>,
-or <tt>python</tt>.
+</pre>
+    </blockquote>
+
+    <ul>
+      <li><i>target-type</i> may be one of <tt>exe</tt>, <tt>lib</tt>,
+      <tt>dll</tt>, or <tt>python</tt>. <br>
+      <br>
 
 
-<p><li><i>name</i> specifies the name of the main target
+      <li><i>name</i> specifies the name of the main target <br>
+      <br>
 
-<p><li><i>sources</i> is a list of paths to source files and dependee targets. A
-dependee target path is preceded by <tt>&lt;target:&gt;</tt>, and the final path component
-specifies the name of a main target in a Jamfile located in the directory given
-by the inital path components. Paths may be absolute or relative.
 
-<p><li><i>requirements</i> specifies the build properties intrinsic to the
-target. Requirements are given as sets of optionally-<b>qualified build properties</b>:
+      <li><i>sources</i> is a list of paths to source files and dependee
+      targets. A dependee target path is preceded by <tt>&lt;target:&gt;</tt>,
+      and the final path component specifies the name of a main target in a
+      Jamfile located in the directory given by the inital path components.
+      Paths may be absolute or relative. <br>
+      <br>
 
-<blockquote><pre>
+
+      <li>
+        <i>requirements</i> specifies the build properties intrinsic to the
+        target. Requirements are given as sets of optionally-<b>qualified build
+        properties</b>: 
+
+        <blockquote>
+<pre>
 [[&lt;<i>compiler</i>&gt;]&lt;<i>variant</i>&gt;]&lt;<i>feature</i>&gt;<i>value</i>
-</pre></blockquote>
+</pre>
+        </blockquote>
+        <tt>&lt;<i>compiler</i>&gt;</tt> and <tt>&lt;<i>variant</i>&gt;</tt>,
+        if supplied, can be used to restrict the applicability of the
+        requirement. Either one may be replaced by <tt>&lt;*&gt;</tt>, which is
+        the same as ommitting it. 
 
-<tt>&lt;<i>compiler</i>&gt;</tt> and <tt>&lt;<i>variant</i>&gt;</tt>, if
-supplied, can be used to restrict the applicability of the requirement. Either
-one may be replaced by <tt>&lt;*&gt;</tt>, which is the same as ommitting it.
+        <p>The system checks that simple feature requirements are not violated
+        by explicit subvariant build requests, and will issue a warning
+        otherwise. Free features specified as requirements are simply added to
+        each corresponding build configuration.
+        <br>
+        <br>
 
-<p>The system checks that simple feature requirements are not violated by
-explicit subvariant build requests, and will issue a warning
-otherwise. Free features specified as requirements are simply added to each
-corresponding build configuration.
+      <li>
+        <i>default-BUILD</i> specifies the configurations that should be built
+        if the <tt>BUILD</tt> variable is not otherwise specified. Any
+        ungristed elements refer to build variants. Gristed elements use the
+        same syntax as the requirements described above, except that multiple
+        values may be specified for a simple feature by separating them with a
+        slash, forming (qualified) <b>multi-valued properties</b>: 
 
-<p>
-<li><i>default-BUILD</i> specifies the configurations that should be
-built if the <tt>BUILD</tt> variable is not otherwise specified. Any ungristed
-elements refer to build variants. Gristed elements use the same syntax as the
-requirements described above, except that multiple values may be
-specified for a simple feature by separating them with a slash, forming (qualified)
-<b>multi-valued properties</b>:
-<blockquote><pre>
+        <blockquote>
+<pre>
 [[&lt;<i>compiler</i>&gt;]&lt;<i>variant</i>&gt;]&lt;<i>feature</i>&gt;<i>value1</i>[/<i>value2</i>...]
-</pre></blockquote>
-When multiple values are specified, it causes <i>all</i> the implied configurations
-to be built by default.
-</ul>
+</pre>
+        </blockquote>
+        When multiple values are specified, it causes <i>all</i> the implied
+        configurations to be built by default.
+    </ul>
 
-<p><b>NOTE:</b> for simple features in both <i>requirements</i> and
-<i>default-BUILD</i>, more-specific qualification overrides less-specific.
+    <p><b>NOTE:</b> for simple features in both <i>requirements</i> and
+    <i>default-BUILD</i>, more-specific qualification overrides less-specific.
 
-<h4>Example</h4>
+    <h4>Example</h4>
 
-<p>This example shows how an executable called &quot;foo&quot; might be
-described in a Jamfile. The executable is composed of the sources
-<tt>./foo.cpp</tt> and <tt>./src/bar.cpp</tt> (specified relative to the
-directory in which the Jamfile resides), and the built target which results from
-building the target <tt>baz</tt> as described in <tt>../bazlib/Jamfile</tt>.
+    <p>This example shows how an executable called "foo" might be described in
+    a Jamfile. The executable is composed of the sources <tt>./foo.cpp</tt> and
+    <tt>./src/bar.cpp</tt> (specified relative to the directory in which the
+    Jamfile resides), and the built target which results from building the
+    target <tt>baz</tt> as described in <tt>../bazlib/Jamfile</tt>.
 
-<blockquote><pre>
+    <blockquote>
+<pre>
 exe foo : foo.cpp src/bar.cpp &lt;lib&gt;../bazlib/baz
     ## Requirements ##
     : &lt;include&gt;../bazlib/include 
@@ -395,49 +559,68 @@ exe foo : foo.cpp src/bar.cpp &lt;lib&gt;../bazlib/baz
     : debug release
       &lt;debug&gt;&lt;runtime-link&gt;static/dynamic
     ;
-</pre></blockquote>
+</pre>
+    </blockquote>
 
-<p>The requirements section:
-<ul>
-  <li>Adds <tt>../bazlib/include</tt> to the <tt>#include</tt> path
-  <li>Sets the preprocessor symbol <tt>BUILDING_FOO</tt> to <tt>1</tt>
-  <li>In the <tt>release</tt> builds, <tt>#define</tt>s <tt>FOO_RELEASE</tt>.
-  <li>When built with MSVC, <tt>#define</tt>s <tt>FOO_MSVC</tt>.
-  <li>In <tt>release</tt> variants built with MSVC, <tt>#define</tt>s
-  <tt>FOO_MSVC_RELEASE</tt>.
-  <li>Most builds under GCC have optimization turned off, but...
-  <li>...GCC <tt>release</tt> builds require optimization for space.
-  <li>Requires multithread support on compilers where it's relevant.
-</ul>
+    <p>The requirements section:
 
-<p>The default-BUILD section:
-<ul>
-  <li>specifies that <tt>debug</tt> and <tt>release</tt> base variants are built
-  by default.
+    <ul>
+      <li>Adds <tt>../bazlib/include</tt> to the <tt>#include</tt> path
 
-  <li>on compilers where the feature is relevant, requests both statically- and
-      dynamically-linked subvariants of the debug variant.
-</ul>
+      <li>Sets the preprocessor symbol <tt>BUILDING_FOO</tt> to <tt>1</tt>
 
-<h3>Toolset Description Files</h3>
+      <li>In the <tt>release</tt> builds, <tt>#define</tt>s
+      <tt>FOO_RELEASE</tt>.
 
-<p>Toolset descriptions are located in the project's root directory, or a
-directory specified by <tt>TOOLSET_DIR</tt>. Each file is called
-<i>toolset-name</i><tt>-tools.jam</tt>, where <i>toolset-name</i> is the name of
-the toolset. The  toolset description file has two main jobs:
+      <li>When built with MSVC, <tt>#define</tt>s <tt>FOO_MSVC</tt>.
 
-<ol>
-<li>redefine the following rules:
-<ul>
-<li><tt>Link-action</tt> - links an executable from objects and libraries
-<li><tt>Archive-action</tt> - links a static library from object files
-<li><tt>C++-action</tt> - compiles a 'C++' file into an object file
-<li><tt>Cc-action</tt> - compiles a 'C' file into an object file
-</ul>
-These rules should simply invoke the action part of a rule whose name is
-uniquely defined for the toolset. For example, 
+      <li>In <tt>release</tt> variants built with MSVC, <tt>#define</tt>s
+      <tt>FOO_MSVC_RELEASE</tt>.
 
-<blockquote><pre>
+      <li>Most builds under GCC have optimization turned off, but...
+
+      <li>...GCC <tt>release</tt> builds require optimization for space.
+
+      <li>Requires multithread support on compilers where it's relevant.
+    </ul>
+
+    <p>The default-BUILD section:
+
+    <ul>
+      <li>specifies that <tt>debug</tt> and <tt>release</tt> base variants are
+      built by default.
+
+      <li>on compilers where the feature is relevant, requests both statically-
+      and dynamically-linked subvariants of the debug variant.
+    </ul>
+
+    <h3>Toolset Description Files</h3>
+
+    <p>Toolset descriptions are located in the project's root directory, or a
+    directory specified by <tt>BOOST_TOOLSET_DIR</tt>. Each file is called
+    <i>toolset-name</i><tt>-tools.jam</tt>, where <i>toolset-name</i> is the
+    name of the toolset. The toolset description file has two main jobs:
+
+    <ol>
+      <li>
+        redefine the following rules: 
+
+        <ul>
+          <li><tt>Link-action</tt> - links an executable from objects and
+          libraries
+
+          <li><tt>Archive-action</tt> - links a static library from object
+          files
+
+          <li><tt>C++-action</tt> - compiles a 'C++' file into an object file
+
+          <li><tt>Cc-action</tt> - compiles a 'C' file into an object file
+        </ul>
+        These rules should simply invoke the action part of a rule whose name
+        is uniquely defined for the toolset. For example, 
+
+        <blockquote>
+<pre>
 rule C++-action
 {
     msvc-C++-action $(&lt;) : $(&gt;) ;
@@ -445,87 +628,110 @@ rule C++-action
 
 actions msvc-C++-action
 {
-    cl -nologo -GX -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) $(OPTIM) -I$(HDRS) -I$(STDHDRS) -Fo$(&lt;) -Tp$(&gt;)
+    cl -nologo -GX -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I$(HDRS) -I$(STDHDRS) -Fo$(&lt;) -Tp$(&gt;)
 }
 
-</pre></blockquote>
+</pre>
+        </blockquote>
 
-<li> Translate build settings given in the global <tt>gBUILD_PROPERTIES</tt>
-variable into something that can be used by the toolset. The build system
-provides the <tt>flags</tt> rule to help translate build properties into
-elements of global variables which are later attached to targets so that they
-can affect the build actions.
+      <li>
+        Translate build settings given in the global <tt>gBUILD_PROPERTIES</tt>
+        variable into something that can be used by the toolset. The build
+        system provides the <tt>flags</tt> rule to help translate build
+        properties into elements of global variables which are later attached
+        to targets so that they can affect the build actions. The
+        <tt>flags</tt> rule is used as follows: 
 
-The  <tt>flags</tt> rule is used as follows:
-<blockquote><pre>
+        <blockquote>
+<pre>
 flags <i>tools-name variable-name condition</i> [: <i>value</i>...]
-</pre></blockquote>
+</pre>
+        </blockquote>
+        The parameters are: 
 
-The parameters are:
-<ol>
-<li> <i>toolset</i> -         the name of the toolset 
-<li> <i>variable</i> -   the name of a global variable which can be used to carry
-information to a command-line 
-<li> <i>condition</i> -       one of the following:
-<ol>
-<li> a list of property-sets: <tt>&lt;<i>simple-feature</i>&gt;<i>value</i></tt>[<tt>/&lt;<i>simple-feature</i>&gt;<i>value</i></tt>...]
-<li> <tt>&lt;<i>free-feature</i>&gt;</tt>
-</ol>
-<li> values - empty if <i>condition</i> is a free freature; non-empty otherwise
-</ol>
+        <ol>
+          <li><i>toolset</i> - the name of the toolset
 
-<p>
-Semantics only affect targets built with the specified toolset, and depend on
-the form of condition:
+          <li><i>variable</i> - the name of a global variable which can be used
+          to carry information to a command-line
 
-<ul>
-<li> For targets whose build-properties are a superset of any element of
-condition, values will be appended to the given <i>variable</i>.
+          <li>
+            <i>condition</i> - one of the following: 
 
-<li> for each free property of a built target whose feature is specified by
-condition, the property's value will be appended to the given <i>variable</i>
-</ul>
-In either case, the variable will be set "on" the target so it may be  used in
-the build actions. 
-</ol>
+            <ol>
+              <li>a list of property-sets:
+              <tt>&lt;<i>simple-feature</i>&gt;<i>value</i></tt>[<tt>/&lt;<i>simple-feature</i>&gt;<i>
+              value</i></tt>...]
 
-<h3>Example</h3>
+              <li><tt>&lt;<i>free-feature</i>&gt;</tt>
+            </ol>
 
-<p>The description of the <tt>flags</tt> rule above is actually more complicated
-than it sounds. For example, the following line might be used to specify how
-optimization can be turned off for MSVC:
+          <li>values - empty if <i>condition</i> is a free freature; non-empty
+          otherwise
+        </ol>
 
-<blockquote><pre>
+        <p>Semantics only affect targets built with the specified toolset, and
+        depend on the form of condition:
+
+        <ul>
+          <li>For targets whose build-properties are a superset of any element
+          of condition, values will be appended to the given <i>variable</i>.
+
+          <li>for each free property of a built target whose feature is
+          specified by condition, the property's value will be appended to the
+          given <i>variable</i>
+        </ul>
+        In either case, the variable will be set "on" the target so it may be
+        used in the build actions.
+    </ol>
+
+    <h3>Example</h3>
+
+    <p>The description of the <tt>flags</tt> rule above is actually more
+    complicated than it sounds. For example, the following line might be used
+    to specify how optimization can be turned off for MSVC:
+
+    <blockquote>
+<pre>
 flags msvc CFLAGS &lt;optimization&gt;off : /Od ;
-</pre></blockquote>
+</pre>
+    </blockquote>
+    It says that the string <tt>/Od</tt> should be added to the global
+    <tt>CFLAGS</tt> variable whenever a build configuration includes the
+    property <tt>&lt;optimization&gt;off</tt>. 
 
-It says that the string <tt>/Od</tt> should be added to the global
-<tt>CFLAGS</tt> variable whenever a build configuration includes the property
-<tt>&lt;optimization&gt;off</tt>. 
+    <p>Similarly, in the following example,
 
-<p>Similarly, in the following example,
-<blockquote><pre>
+    <blockquote>
+<pre>
 flags msvc CFLAGS &lt;runtime-build&gt;release/&lt;runtime-link&gt;dynamic/&lt;threading&gt;multi : /MD ;
-</pre></blockquote>
+</pre>
+    </blockquote>
+    we add <tt>/MD</tt> to the CFLAGS variable when all of the specified
+    conditions are satisfied. We could grab all of the values of the free
+    feature <tt>&lt;include&gt;</tt> in the <tt>HDRS</tt> variable as follows: 
 
-we add <tt>/MD</tt> to the CFLAGS variable when all of the specified conditions
-are satisfied. We could grab all of the values of the free feature
-<tt>&lt;include&gt;</tt> in the <tt>HDRS</tt> variable as follows:
-
-<blockquote><pre>
+    <blockquote>
+<pre>
 flags msvc HDRS &lt;include&gt; ;
-</pre></blockquote>
+</pre>
+    </blockquote>
 
-<p>The use of these variables should be apparent from the declaration of
-<tt>actions msvc-C++-action</tt> in the previous section.
+    <p>The use of these variables should be apparent from the declaration of
+    <tt>actions msvc-C++-action</tt> in the previous section.
+
+    <h3>Feature Descriptions</h3>
 
     <hr>
 
     <p>&copy; Copyright David Abrahams 2001. Permission to copy, use, modify,
     sell and distribute this document is granted provided this copyright notice
     appears in all copies. This document is provided "as is" without express or
-    implied warranty, and with no claim as to its suitability for any purpose. 
+    implied warranty, and with no claim as to its suitability for any purpose.
 
     <p>Revised 
     <!--webbot bot="Timestamp" s-type="EDITED" s-format="%d %B, %Y" startspan
-    -->3 June, 2001<!--webbot bot="Timestamp" endspan i-checksum="28779" -->
+        -->3 June, 2001
+    <!--webbot bot="Timestamp" endspan i-checksum="28779" -->
+
+
