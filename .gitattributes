@@ -600,7 +600,6 @@ boost/boost/iostreams/detail/broken_overload_resolution/stream_facade.hpp svneol
 boost/boost/iostreams/detail/broken_overload_resolution/streambuf_facade.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/buffer.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/chain.hpp svneol=native#text/plain
-boost/boost/iostreams/detail/character.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/closer.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/codecvt_helper.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/codecvt_holder.hpp svneol=native#text/plain
