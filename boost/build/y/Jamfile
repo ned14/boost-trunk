@@ -1,4 +1,4 @@
-SubDir TOP y ;
+subproject y ;
 
 exe y : y.cpp <lib>../top : <include>.. ;
 exe foo : foo.cpp ;

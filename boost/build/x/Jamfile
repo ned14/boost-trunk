@@ -1,4 +1,4 @@
-SubDir TOP x ;
+subproject x ;
 
 lib xl : xl.cpp ../top.cpp ;
 exe x : x.cpp <lib>xl : <include>"path with spaces" ;
