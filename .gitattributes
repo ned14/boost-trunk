@@ -568,6 +568,8 @@ boost/libs/graph/example/incremental_components.cpp svneol=native#text/plain
 boost/libs/graph/example/incremental_components.expected -text
 boost/libs/graph/example/interior_property_map.cpp svneol=native#text/plain
 boost/libs/graph/example/interior_property_map.expected -text
+boost/libs/graph/example/iohb.c svneol=native#text/plain
+boost/libs/graph/example/iohb.h svneol=native#text/plain
 boost/libs/graph/example/isomorphism.cpp svneol=native#text/plain
 boost/libs/graph/example/johnson.cpp svneol=native#text/plain
 boost/libs/graph/example/johnson.expected -text
