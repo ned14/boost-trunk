@@ -1028,7 +1028,6 @@ boost/boost/multi_array/extent_range.hpp svneol=native#text/plain
 boost/boost/multi_array/index_gen.hpp svneol=native#text/plain
 boost/boost/multi_array/index_range.hpp svneol=native#text/plain
 boost/boost/multi_array/iterator.hpp svneol=native#text/plain
-boost/boost/multi_array/iterator_adaptors.hpp svneol=native#text/plain
 boost/boost/multi_array/multi_array_ref.hpp svneol=native#text/plain
 boost/boost/multi_array/range_list.hpp svneol=native#text/plain
 boost/boost/multi_array/storage_order.hpp svneol=native#text/plain
