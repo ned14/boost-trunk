@@ -8425,6 +8425,7 @@ boost/tools/regression/xsl_reports/merger/test/generate_test_results.py svneol=n
 boost/tools/regression/xsl_reports/report.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/runner/__init__.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/runner/collect_and_upload_logs.py svneol=native#text/x-python
+boost/tools/regression/xsl_reports/test/generate_test_results.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/test_results.xsd svneol=native#text/xml
 boost/tools/regression/xsl_reports/utils/__init__.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/utils/accept_args.py svneol=native#text/x-python
