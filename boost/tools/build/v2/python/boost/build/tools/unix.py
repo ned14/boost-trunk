@@ -16,8 +16,8 @@ from boost.build.util import set
 
 class UnixLinkingGenerator (builtin.LinkingGenerator):
     
-    def __init__ (self, id, rule, source_types, target_types, requirements):
-        builtin.LinkingGenerator.__init__ (self, id, rule, True, source_types, target_types, requirements)
+    def __init__ (self, id, composing, source_types, target_types, requirements):
+        builtin.LinkingGenerator.__init__ (self, id, composing, source_types, target_types, requirements)
     
     def run (self, project, name, prop_set, sources, multiple):
         result = builtin.LinkingGenerator.run (self, project, name, prop_set, sources, multiple)
@@ -41,8 +41,8 @@ class UnixLinkingGenerator (builtin.LinkingGenerator):
 
 
 class UnixArchiveGenerator (builtin.ArchiveGenerator):
-    def __init__ (self, id, rule, composing, source_types, target_types, requirements):
-        builtin.ArchiveGenerator.__init__ (self, id, rule, composing, source_types, target_types, requirements)
+    def __init__ (self, id, composing, source_types, target_types, requirements):
+        builtin.ArchiveGenerator.__init__ (self, id, composing, source_types, target_types, requirements)
         
     def run (self, project, name, prop_set, sources, multiple):
         result = ArchiveGenerator.run (project, name, prop_set, sources, multiple)
@@ -65,8 +65,8 @@ class UnixSearchedLibGenerator (builtin.SearchedLibGenerator):
         return result
 
 class UnixPrebuiltLibGenerator (generators.Generator):
-    def __init__ (self, id, rule, composing, source_types, target_types_and_names, requirements):
-        generators.Generator.__init__ (self, id, rule, composing, source_types, target_types_and_names, requirements)
+    def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
+        generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
 
     def run (self, project, name, prop_set, sources, multiple):
         f = prop_set.get ('<file>')
@@ -74,12 +74,9 @@ class UnixPrebuiltLibGenerator (generators.Generator):
         return (f, sources)
 
 ### # The derived toolset must specify their own rules and actions.
-def prebuilt ():
-    pass
+action.register ('unix.prebuilt', None, None)
 
-action.action (prebuilt, [])
-
-generators.register (UnixPrebuiltLibGenerator ('unix.prebuilt', prebuilt, False, [], ['LIB'], ['<file>', '<toolset>unix']))
+generators.register (UnixPrebuiltLibGenerator ('unix.prebuilt', False, [], ['LIB'], ['<file>', '<toolset>unix']))
 
 
 

@@ -14,9 +14,7 @@ feature.extend_feature ('toolset', ['gcc'])
 
 toolset.inherit_generators ('gcc', [], 'unix', ['unix_link', 'unix_link_dll'])
 toolset.inherit_flags ('gcc', 'unix')
-
-# TODO: (PF) I think we no longer need this.
-#toolset.inherit-rules gcc : unix ;
+toolset.inherit_rules ('gcc', 'unix')
 
 # Make the "o" suffix used for gcc toolset on all
 # platforms
@@ -50,55 +48,41 @@ def init (version = None, command = None, options = None):
     init_link_flags ('gcc', linker, condition)
 
 
-
-
-###################################################################
-# Still to port.
-# Original lines are prefixed with "### "
-#
-### if [ os.name ] = NT
-### {
-###     # This causes single-line command invocation to not go through
-###     # .bat files, thus avoiding command-line length limitations
-###     JAMSHELL = % ;  
-### }
-
-
-def gcc_compile_cpp (manager, target, sources, properties):
+def gcc_compile_cpp (manager, targets, sources, properties):
     # Some extensions are compiled as C++ by default. For others, we need
     # to pass -x c++.
     # We could always pass -x c++ but distcc does not work with it.
     extension = os.path.splitext (sources [0]) [1]
     if not extension in ['.cc', '.cp', '.cxx', '.cpp', '.c++', '.C']:
-        manager.engine ().set_target_variable (target [0], 'LANG', "-x c++")
+        manager.engine ().set_target_variable (targets, 'LANG', "-x c++")
 
-action.action (gcc_compile_cpp, ['"$(CONFIG_COMMAND)" $(LANG) -Wall -ftemplate-depth-100 $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)"'])
+action.register ('gcc.compile.c++', gcc_compile_cpp, ['"$(CONFIG_COMMAND)" $(LANG) -Wall -ftemplate-depth-100 $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)"'])
 
-builtin.register_c_compiler ('gcc_compile_cpp', gcc_compile_cpp, ['CPP'], ['OBJ'], ['<toolset>gcc'])
+builtin.register_c_compiler ('gcc.compile.c++', ['CPP'], ['OBJ'], ['<toolset>gcc'])
 
 
-def gcc_compile_c (manager, target, sources, properties):
+def gcc_compile_c (manager, targets, sources, properties):
     # If we use the name g++ then default file suffix -> language mapping
     # does not work. So have to pass -x option. Maybe, we can work around this
     # by allowing the user to specify both C and C++ compiler names.
-    manager.engine ().set_target_variable (target [0], 'LANG', "-x c")
+    manager.engine ().set_target_variable (targets, 'LANG', "-x c")
 
-action.action (gcc_compile_c, ['"$(CONFIG_COMMAND)" $(LANG) -Wall $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)"'])
+action.register ('gcc.compile.c', gcc_compile_c, ['"$(CONFIG_COMMAND)" $(LANG) -Wall $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)"'])
 
-builtin.register_c_compiler ('gcc_compile_c', gcc_compile_c, ['C'], ['OBJ'], ['<toolset>gcc'])
+builtin.register_c_compiler ('gcc.compile.c', ['C'], ['OBJ'], ['<toolset>gcc'])
 
 
 # Declare flags and action for compilation
-toolset.flags ('gcc_compile', 'OPTIONS', '<optimization>off', ['-O0'])
-toolset.flags ('gcc_compile', 'OPTIONS', '<optimization>speed', ['-O3'])
-toolset.flags ('gcc_compile', 'OPTIONS', '<optimization>space', ['-Os'])
+toolset.flags ('gcc.compile', 'OPTIONS', '<optimization>off', ['-O0'])
+toolset.flags ('gcc.compile', 'OPTIONS', '<optimization>speed', ['-O3'])
+toolset.flags ('gcc.compile', 'OPTIONS', '<optimization>space', ['-Os'])
 
-toolset.flags ('gcc_compile', 'OPTIONS', '<inlining>off', ['-fno-inline'])
-toolset.flags ('gcc_compile', 'OPTIONS', '<inlining>on', ['-Wno-inline'])
-toolset.flags ('gcc_compile', 'OPTIONS', '<inlining>full', ['-finline-functions', '-Wno-inline'])
+toolset.flags ('gcc.compile', 'OPTIONS', '<inlining>off', ['-fno-inline'])
+toolset.flags ('gcc.compile', 'OPTIONS', '<inlining>on', ['-Wno-inline'])
+toolset.flags ('gcc.compile', 'OPTIONS', '<inlining>full', ['-finline-functions', '-Wno-inline'])
 
-toolset.flags ('gcc_compile', 'OPTIONS', '<debug-symbols>on', ['-g'])
-toolset.flags ('gcc_compile', 'OPTIONS', '<profiling>on', ['-pg'])
+toolset.flags ('gcc.compile', 'OPTIONS', '<debug-symbols>on', ['-g'])
+toolset.flags ('gcc.compile', 'OPTIONS', '<profiling>on', ['-pg'])
 
 # On cygwin and mingw, gcc generates position independent code by default,
 # and warns if -fPIC is specified. This might not be the right way
@@ -108,17 +92,17 @@ toolset.flags ('gcc_compile', 'OPTIONS', '<profiling>on', ['-pg'])
 # we'll just add another parameter to 'init' and move this login
 # inside 'init'.
 if not os_name () in ['CYGWIN', 'NT']:
-    toolset.flags ('gcc_compile', 'OPTIONS', '<link>shared/<main-target-type>LIB', ['-fPIC'])
+    toolset.flags ('gcc.compile', 'OPTIONS', '<link>shared/<main-target-type>LIB', ['-fPIC'])
 
 if os_name () != 'NT':
     HAVE_SONAME = True
 else:
     HAVE_SONAME = False
 
-toolset.flags ('gcc_compile', 'OPTIONS', '<cflags>')
-toolset.flags ('gcc_compile_cpp', 'OPTIONS', '<cxxflags>')
-toolset.flags ('gcc_compile', 'DEFINES', '<define>')
-toolset.flags ('gcc_compile', 'INCLUDES', '<include>')
+toolset.flags ('gcc.compile', 'OPTIONS', '<cflags>')
+toolset.flags ('gcc.compile.c++', 'OPTIONS', '<cxxflags>')
+toolset.flags ('gcc.compile', 'DEFINES', '<define>')
+toolset.flags ('gcc.compile', 'INCLUDES', '<include>')
 
 class GccLinkingGenerator (unix.UnixLinkingGenerator):
     """ The class which check that we don't try to use
@@ -128,7 +112,7 @@ class GccLinkingGenerator (unix.UnixLinkingGenerator):
     def generated_targets (self, sources, prop_set, project, name):
         if '<link-runtime>static' in prop_set.raw ():
             m = ''
-            if self.id () == "gcc_link_dll":
+            if self.id () == "gcc.link.dll":
                 m = "on gcc, DLLs can't be build with <link-runtime>static."
             else:
                 for s in sources:
@@ -141,41 +125,41 @@ class GccLinkingGenerator (unix.UnixLinkingGenerator):
                         
         return unix.UnixLinkingGenerator.generated_targets (self, sources, prop_set, project, name)
 
-def gcc_link (manager, target, sources, properties):
+def gcc_link (manager, targets, sources, properties):
     manager.engine ().set_target_variable (targets, 'SPACE', " ")
 
 # TODO: how to set 'bind LIBRARIES'?
-action.action (gcc_link, ['"$(CONFIG_COMMAND)" -L"$(LINKPATH)" -Wl,-R$(SPACE)-Wl,"$(RPATH)" -Wl,-rpath-link$(SPACE)-Wl,"$(RPATH_LINK)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA) $(OPTIONS)'])
+action.register ('gcc.link', gcc_link, ['"$(CONFIG_COMMAND)" -L"$(LINKPATH)" -Wl,-R$(SPACE)-Wl,"$(RPATH)" -Wl,-rpath-link$(SPACE)-Wl,"$(RPATH_LINK)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA) $(OPTIONS)'])
 
-generators.register (GccLinkingGenerator ('gcc_link', gcc_link, ['LIB', 'OBJ'], ['EXE'], ['<toolset>gcc']))
+generators.register (GccLinkingGenerator ('gcc.link', True, ['LIB', 'OBJ'], ['EXE'], ['<toolset>gcc']))
 
 
 def gcc_link_dll (manager, target, sources, properties):
     manager.engine ().set_target_variable (target, 'SPACE', " ")
 
 # TODO: how to set 'bind LIBRARIES'?
-action.action (gcc_link_dll, ['"$(CONFIG_COMMAND)" -L"$(LINKPATH)" -Wl,-R$(SPACE)-Wl,"$(RPATH)" -o "$(<)" $(HAVE_SONAME)-Wl,-h$(SPACE)-Wl,$(<[1]:D=) -shared "$(>)"  "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA) $(OPTIONS)'])
+action.register ('gcc.link.dll', gcc_link_dll, ['"$(CONFIG_COMMAND)" -L"$(LINKPATH)" -Wl,-R$(SPACE)-Wl,"$(RPATH)" -o "$(<)" $(HAVE_SONAME)-Wl,-h$(SPACE)-Wl,$(<[1]:D=) -shared "$(>)"  "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA) $(OPTIONS)'])
 
-generators.register (GccLinkingGenerator ('gcc_link_dll', gcc_link_dll, ['LIB', 'OBJ'], ['SHARED_LIB'], ['<toolset>gcc']))
+generators.register (GccLinkingGenerator ('gcc.link.dll', True, ['LIB', 'OBJ'], ['SHARED_LIB'], ['<toolset>gcc']))
 
-### generators.override gcc_prebuilt : builtin.prebuilt ;
-### generators.override gcc_searched-lib-generator : searched-lib-generator ;
+### generators.override gcc.prebuilt : builtin.prebuilt ;
+### generators.override gcc.searched-lib-generator : searched-lib-generator ;
 ### 
 ### 
 ### 
 ### # Declare flags for linking
 ### # First, the common flags
-### flags gcc_link OPTIONS <debug-symbols>on : -g ;
-### flags gcc_link OPTIONS <profiling>on : -pg ;
-### flags gcc_link OPTIONS <linkflags> ;
-### flags gcc_link LINKPATH <library-path> ;
-### flags gcc_link FINDLIBS-ST <find-static-library> ;
-### flags gcc_link FINDLIBS-SA <find-shared-library> ;
-### flags gcc_link LIBRARIES <library-file> ;
+### flags gcc.link OPTIONS <debug-symbols>on : -g ;
+### flags gcc.link OPTIONS <profiling>on : -pg ;
+### flags gcc.link OPTIONS <linkflags> ;
+### flags gcc.link LINKPATH <library-path> ;
+### flags gcc.link FINDLIBS-ST <find-static-library> ;
+### flags gcc.link FINDLIBS-SA <find-shared-library> ;
+### flags gcc.link LIBRARIES <library-file> ;
 ### 
 ### # For <link-runtime>static we made sure there are no dynamic libraries 
 ### # in the link
-### flags gcc_link OPTIONS <link-runtime>static : -static ;
+### flags gcc.link OPTIONS <link-runtime>static : -static ;
 
 def init_link_flags (tool, linker, condition):
     """ Sets the vendor specific flags.
@@ -216,6 +200,14 @@ def init_link_flags (tool, linker, condition):
             raise UserError ("'%s' initialization: invalid linker '%s'\n" \
                 "The value '%s' specified for <linker> is not recognized.\n" \
                 "Possible values are: 'darwin', 'sun', 'gnu'" % (toolset, linker, linker))
+
+
+### if [ os.name ] = NT
+### {
+###     # This causes single-line command invocation to not go through
+###     # .bat files, thus avoiding command-line length limitations
+###     JAMSHELL = % ;  
+### }
 
 ### # Declare action for creating static libraries
 ### # The 'r' letter means to replace files in the archive

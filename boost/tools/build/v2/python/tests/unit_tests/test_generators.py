@@ -8,9 +8,6 @@ import unittest, helpers
 from boost.build.build import generators, type, property_set, feature, virtual_target
 from boost.build.manager import Manager
 
-def dummy_rule (target, sources, properties):
-    pass
-
 class TestGenerators (unittest.TestCase):
     
     def setUp (self):
@@ -27,10 +24,10 @@ class TestGenerators (unittest.TestCase):
         
         feature.feature ('define', [], ['free'])
 
-        g = generators.register_standard ('a_b', dummy_rule, ['A'], ['B'])
-        g = generators.register_standard ('a_b_<define>ABC', dummy_rule, ['A'], ['B'], ['<define>ABC'])
-        g = generators.register_standard ('ab_c', dummy_rule, ['A', 'B'], ['C'])
-        g = generators.register_standard ('a_e', dummy_rule, ['A'], ['E'])
+        g = generators.register_standard ('a_b', ['A'], ['B'], ['<define>XYZ'])
+        g = generators.register_standard ('a_b_<define>ABC', ['A'], ['B'], ['<define>ABC'])
+        g = generators.register_standard ('ab_c', ['A', 'B'], ['C'])
+        g = generators.register_standard ('a_e', ['A'], ['E'])
         
     def test_register (self):
         self.assertEqual ('a_b', generators.find ('a_b').id ())
@@ -38,6 +35,15 @@ class TestGenerators (unittest.TestCase):
         
     def test_construct (self):
         project = self.manager_.projects ().create ('.')
+        
+
+
+
+        from boost.build.util.logger import TextLogger
+        self.manager_.set_logger (TextLogger ())
+
+
+
         name = None
         target_type = 'B'
         multiple = False

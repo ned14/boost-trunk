@@ -9,10 +9,10 @@ import log_engine
 class BjamBuildSystem (log_engine.LogBuildSystem):
     def __init__ (self):
         log_engine.LogBuildSystem.__init__ (self)
-        self.action_names_ = {}
         self.all_targets_ = []
 
     def generate2(self):
+        # TODO: __define_common_variables
         import bjam
         dependencies = self.dependencies ()
         result = ''
@@ -21,7 +21,11 @@ class BjamBuildSystem (log_engine.LogBuildSystem):
         
     def generate (self):
 
-        result = self.__do_actions ()
+        result = ''
+        
+        result += self.__define_common_variables ()
+        result += '\n'
+        result += self.__do_actions ()
         result += '\n'
         result += self.__do_variables ()
         result += '\n'
@@ -32,6 +36,11 @@ class BjamBuildSystem (log_engine.LogBuildSystem):
         result += self.__do_depends_all ()
         return result
 
+    def __define_common_variables (self):
+        """ Define varialbes commonly used in update actions.
+        """
+        return '_ = " " ;\nSPACE = " " ;'
+    
     def __quote (self, values):
         quoted = [ '"' + v + '"' for v in values ] 
         return ' '.join (quoted)
@@ -56,9 +65,8 @@ class BjamBuildSystem (log_engine.LogBuildSystem):
     def __do_actions (self):
         result = ''
         for id, value in action.enumerate ():
-            name = self.__register_action_name (id)
-            result += 'actions ' + name + '\n{\n'
-            for v in value:
+            result += 'actions ' + id + '\n{\n'
+            for v in value [1]:
                 result += '    ' + v + '\n'
             result += '}\n\n'
                 
@@ -68,18 +76,12 @@ class BjamBuildSystem (log_engine.LogBuildSystem):
         action_bindings = self.action_bindings ()
         result = ''
         for action, targets, sources in action_bindings:
-            name = self.action_names_ [action]
-            result += name + ' ' + self.__quote (targets) + ' : ' + self.__quote (sources) + ' ;\n'
+            result += action + ' ' + self.__quote (targets) + ' : ' + self.__quote (sources) + ' ;\n'
             
             if not 'clean' in targets:
                 self.all_targets_.extend (targets)
             
         return result
-
-    def __register_action_name (self, id):
-        value = 'action_' + str (len (self.action_names_))
-        self.action_names_ [id] = value
-        return value
 
     def __do_depends_all (self):
         result = 'DEPENDS all : ' + '\n    '.join (self.all_targets_) + '\n    ;\n'

@@ -16,9 +16,6 @@ class MakeTarget (BasicTarget):
     def __init__ (self, project, name, sources, requirements, make_rule, default_build):
         BasicTarget.__init__ (self, name, project, sources, requirements, default_build)
        
-        if not callable (make_rule):
-            raise BaseException ("make rule '%s' must be callable" % make_rule)
-            
         self.project_ = project
         self.make_rule_ = make_rule
         

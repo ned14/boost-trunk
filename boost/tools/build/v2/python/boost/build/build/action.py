@@ -3,6 +3,7 @@
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 from boost.build.exceptions import NoAction
+from boost.build.util.utility import split_action_id, to_seq
 
 """ Manages actions.
     Actions are accosiated with rules.
@@ -21,34 +22,44 @@ def reset ():
 
 reset ()
 
-def action (rule_name, actions):
-    """ Associates 'actions' with 'rule_name', overwriting any action previosly defined for this rule.
-        'actions' is a sequence of strings, which are passed to the shell.
+def register (id, rule, actions):
+    """ Registers an action 'id' for a toolset.
+        'id' is in the form 'toolset.specific_rule', where specific_rule is, e.g., compile.c++.
+        'rule' is the function to be called during the set-up phase.
+        'actions' is a sequence of string that are executed by the shell during the update phase.
         TODO: document variable expansion.
     """
-    if isinstance (actions, str): 
-        actions = [actions]
+    actions = to_seq (actions)
 
-    __all_actions [str (rule_name)] = actions
+    if __all_actions.has_key (id):
+        old = __all_actions [id]
+        if not rule:
+            rule = old [0]
+        if not actions:
+            actions = old [1]
 
-def exists (rule_name):
-    """ Returns true iff actions are associated with 'rule_name'.
-    """
-    return __all_actions.has_key (str (rule_name))
+    __all_actions [id] = (rule, actions)
 
-def find (rule_name):
+def find_action (id):
+    return __find (id) [1]
+
+def find_rule (id):
+    return __find (id) [0]
+
+def enumerate ():
+    return __all_actions.iteritems ()
+    
+def __find (id):
     """ Finds the actions associated with a rule.
         Raises NoAction is none is found.
     """
-    if not __all_actions.has_key (str (rule_name)):
-        raise NoAction ("No action found for rule '%s'" % rule_name)
-    
-    return __all_actions [str (rule_name)]
+    v = __all_actions.get (id, None)
 
-def enumerate ():
-    """ Returns an iterator for the actions map.
-    """
-    return __all_actions.iteritems ()
+    if not v:
+        raise NoAction ("No action found for rule '%s'" % id)
+
+    return v
+
 
 class BjamActionWrapper:
     """Class which allows to use actions defined in bjam.

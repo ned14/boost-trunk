@@ -36,8 +36,8 @@ def reset ():
 reset ()
 
 # TODO: check this.
-action.action ('Clean', 'rm -rf "$(>)"')
-action.action ('MkDir', 'mkdir -p "$(<)"')
+action.register ('Clean', None, 'rm -rf "$(>)"')
+action.register ('MkDir', None, 'mkdir -p "$(<)"')
 
 
 def check_init_parameters (toolset, *args):
@@ -154,6 +154,9 @@ def get_invocation_command (toolset, tool, user_provided_command = None, additio
     if not command:
         command = user_provided_command
 
+    if not command:
+        command = tool
+
     return command
 
 
@@ -250,6 +253,7 @@ def handle_options (tool, condition, command, options):
         - OPTIOns for compile to the value of <compileflags> in options
         - OPTIONs for link to the value of <linkflags> in options
     """
+    assert (command)
     toolset.flags (tool, 'CONFIG_COMMAND', condition, [command])
     toolset.flags (tool + '_compile', 'OPTIONS', condition, feature.get_values ('<compileflags>', options))
     toolset.flags (tool + '_compile_c', 'OPTIONS', condition, feature.get_values ('<cflags>', options))

@@ -117,6 +117,18 @@ def forward_slashes (s):
     return __re_backslash.sub ('/', s)
 
 
+def split_action_id (id):
+    """ Splits an id in the toolset and specific rule parts. E.g.
+        'gcc.compile.c++' returns ('gcc', 'compile.c++')
+    """
+    split = id.split ('.', 1)
+    toolset = split [0]
+    name = ''
+    if len (split) > 1:
+        name = split [1]
+    return (toolset, name)
+
+
 # NOTE: Moved the functions below from os.jam because os confilicted with Python's os. Renamed some of the functions.
 #
 # TODO: Below are the values defined in jam for OSMAJOR, OSMINOR and OSPLAT. Most haven't yet been implemented in this port.

@@ -101,10 +101,11 @@ class Generator:
                                      was not specified.
     
             requirements (optional)
+            
+            NOTE: all subclasses must have a similar signature for clone to work!
     """
-    def __init__ (self, id, rule, composing, source_types, target_types_and_names, requirements):
+    def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
         self.id_ = id
-        self.rule_ = rule
         self.composing_ = composing
         self.source_types_ = source_types
         self.target_types_and_names_ = target_types_and_names
@@ -149,7 +150,6 @@ class Generator:
               - value to <toolset> feature in properties
         """
         return self.__class__ (new_id, 
-                               self.rule_, 
                                self.composing_, 
                                self.source_types_, 
                                self.target_types_and_names_,
@@ -347,7 +347,7 @@ class Generator:
         # Assign an action for each target
         action = self.action_class ()
         
-        a = action (project.manager (), sources, self.rule_, prop_set)
+        a = action (project.manager (), sources, self.id_, prop_set)
                 
         # Create generated target for each target type.
         targets = []
@@ -494,6 +494,7 @@ def register (g):
     """ Registers new generator instance 'g'.
     """
     id = g.id ()
+
     __generators [id] = g
                    
     for t in g.target_types ():
@@ -508,27 +509,25 @@ def register (g):
     # module intentionally declared two generators with the
     # same id, so such check will break it.
 
-    base = id
-    while (os.path.splitext (base) [1]):
-        base = os.path.splitext (base) [0]
+    base = id.split ('.', 1) [0]
 
     values = __generators_for_toolset.get (base, [])
     values.append (g)
     __generators_for_toolset [base] = values
 
-def register_standard (id, rule, source_types, target_types, requirements = []):
+def register_standard (id, source_types, target_types, requirements = []):
     """ Creates new instance of the 'generator' class and registers it.
         Returns the creates instance.
         Rationale: the instance is returned so that it's possible to first register
         a generator and then call 'run' method on that generator, bypassing all
         generator selection.
     """
-    g = Generator (id, rule, False, source_types, target_types, requirements)
+    g = Generator (id, False, source_types, target_types, requirements)
     register (g)
     return g
 
-def register_composing (id, rule, source_types, target_types, requirements = []):
-    g = Generator (id, rule, True, source_types, target_types, requirements)
+def register_composing (id, source_types, target_types, requirements = []):
+    g = Generator (id, True, source_types, target_types, requirements)
     register (g)
     return g
 
@@ -700,7 +699,7 @@ def try_one_generator (project, name, generator, multiple, target_type, properti
 
     viable_source_types = viable_source_types_for_generator (generator)
     
-    if  source_types and viable_source_types != ['*'] and not set.intersection (source_types, viable_source_types):
+    if source_types and viable_source_types != ['*'] and not set.intersection (source_types, viable_source_types):
         if project.manager ().logger ().on ():
             id = generator.id ()
             project.manager ().logger ().log (__name__, "generator '%s' pruned" % id)
@@ -873,7 +872,7 @@ def select_dependency_graph (logger, options):
         return v
 
     else:
-        raise BaseException ("%d possible generations for '%s'. Can't handle this now." % (len (options), target_types))
+        raise BaseException ("%d possible generations. Can't handle this now." % len (options))
     
 def __construct_really (project, name, target_type, multiple, prop_set, sources):
     """ Attempts to construct target by finding viable generators, running them

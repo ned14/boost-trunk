@@ -43,9 +43,9 @@ class TestMake (unittest.TestCase):
         sources = []
         requirements = []
         recorder = RuleRecorder ()
-        make_rule = recorder.make_rule
+        action.register ('make_rule', recorder.make_rule, '')
         default_build = []
-        target = MakeTarget (project, name, sources, requirements, make_rule, default_build)
+        target = MakeTarget (project, name, sources, requirements, 'make_rule', default_build)
         
         construct_name = 'Target'
         source_targets = []
@@ -93,10 +93,10 @@ class TestMake (unittest.TestCase):
         sources = ['x.cpp']
         requirements = property_set.create (['<a>A1', '<b>B1', '<e>E'])
         make_rule = recorder.make_rule
-        action.action (make_rule, [])
+        action.register ('my_make_rule', make_rule, [])
 
         default_build = property_set.create ([])
-        target = MakeTarget (project, name, sources, requirements, make_rule, default_build)
+        target = MakeTarget (project, name, sources, requirements, 'my_make_rule', default_build)
 
         ps = property_set.create (['<a>A2', '<b>B2'])
         return target.generate (ps)

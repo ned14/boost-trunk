@@ -14,22 +14,21 @@ import boost.build.tools.builtin
 def make_rule (manager, target, sources, properties):
     pass
 
-action.action (make_rule, ['cp $(>) $(<)'])
+action.register ('my_make_rule', make_rule, ['cp $(>) $(<)'])
 
 def run ():
     engine = BjamBuildSystem ()
     manager = Manager (engine)
     
     project = manager.projects ().create ('.')
-    rule = make_rule
     
     sources1 = ['x.cpp']
     requirements1 = ['<define>ABC']
-    project.make ('Make1', sources1, rule, requirements1)
+    project.make ('Make1', sources1, 'my_make_rule', requirements1)
 
     sources2 = ['y.cpp']
     requirements2 = ['<define>YUI']
-    project.make ('Make2', sources2, rule, requirements2)
+    project.make ('Make2', sources2, 'my_make_rule', requirements2)
 
     manager.construct (['<link-runtime>static', 'debug', 'release', '<define>DEF', '<user-interface>gui', '<user-interface>console'], [project.target ()])
     manager.construct (['debug', '<location-prefix>test'], [project.target ()])

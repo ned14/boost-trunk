@@ -11,8 +11,6 @@ from boost.build.manager import Manager
 from boost.build.engine.engine import BuildSystem
 from boost.build.engine.log_engine import *
 
-def dummy_compile (): pass
-
 class TestToolset (unittest.TestCase):
     
     def setUp (self):
@@ -43,10 +41,10 @@ class TestToolset (unittest.TestCase):
     def test_set_target_variables (self):
         
         self.__setup_features_and_flags ()
-        toolset.set_target_variables (self.manager, dummy_compile, ['TargetA'], ['<optimization>off'])
-        toolset.set_target_variables (self.manager, dummy_compile, ['TargetA'], ['<optimization>space'])
-        toolset.set_target_variables (self.manager, dummy_compile, ['TargetB'], ['<inlining>full'])
-        toolset.set_target_variables (self.manager, dummy_compile, ['TargetB'], ['<define>A', '<define>B'])
+        toolset.set_target_variables (self.manager, 'dummy_compile', ['TargetA'], ['<optimization>off'])
+        toolset.set_target_variables (self.manager, 'dummy_compile', ['TargetA'], ['<optimization>space'])
+        toolset.set_target_variables (self.manager, 'dummy_compile', ['TargetB'], ['<inlining>full'])
+        toolset.set_target_variables (self.manager, 'dummy_compile', ['TargetB'], ['<define>A', '<define>B'])
 
         variables = {
             'TargetA': { 

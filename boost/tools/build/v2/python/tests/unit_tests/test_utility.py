@@ -46,6 +46,11 @@ class TestGrist (unittest.TestCase):
     
     def test_forward_slashes (self):
         self.assertEqual (r'a/b/c/d/e', forward_slashes (r'a/b\c/d\e'))
+        
+    def test_split_action_id (self):
+        self.assertEqual (('gcc', 'compile.c++'), split_action_id ('gcc.compile.c++'))
+        self.assertEqual (('gcc', 'compile'), split_action_id ('gcc.compile'))
+        self.assertEqual (('gcc', ''), split_action_id ('gcc'))
 
 ######################################################################
 if __name__ == '__main__': unittest.main ()

@@ -4,17 +4,16 @@
 #  warranty, and with no claim as to its suitability for any purpose.
 
 """ Support for toolset definition.
-In BBv2, toolsets where defined using the a.b.c notation. In this port, '_' should be used instead of '.'.
 """
 
 import feature, property, generators
 from boost.build.util.utility import *
 from boost.build.util import set
 
-__re_split_last_segment = re.compile (r'^(.+)_([^_])*')
+__re_split_last_segment = re.compile (r'^(.+)\.([^\.])*')
 __re_two_ampersands = re.compile ('(&&)')
-__re_first_segment = re.compile ('([^_]*).*')
-__re_first_group = re.compile (r'[^_]*_(.*)')
+__re_first_segment = re.compile ('([^.]*).*')
+__re_first_group = re.compile (r'[^.]*\.(.*)')
 
 def reset ():
     """ Clear the module state. This is mainly for testing purposes.
@@ -113,10 +112,10 @@ def flags (rule_or_module, variable_name, condition, values = []):
 def set_target_variables (manager, rule_or_module, targets, properties):
     """
     """
-    key = str (rule_or_module.__name__) + '.' + str (properties)
+    key = rule_or_module + '.' + str (properties)
     settings = __stv.get (key, None)
     if not settings:
-        settings = __set_target_variables_aux  (manager, rule_or_module.__name__, properties)
+        settings = __set_target_variables_aux  (manager, rule_or_module, properties)
 
         __stv [key] = settings
         
@@ -143,7 +142,7 @@ def register (toolset):
     """
     feature.extend_feature ('toolset', [toolset])
 
-def inherit_generators (toolset, properties, base, generators_to_ignore):
+def inherit_generators (toolset, properties, base, generators_to_ignore = []):
     if not properties:
         properties = [replace_grist (toolset, '<toolset>')]
         
@@ -159,13 +158,9 @@ def inherit_generators (toolset, properties, base, generators_to_ignore):
             # which is not what we want. Manually parse the base and suffix
             # (if there's a better way to do this, I'd love to see it.)
             # See also register in module generators.
-            base = id
-            suffix = ''
-            while os.path.splitext (base) [1]:
-                suffix = os.path.splitext (base) [1] + suffix
-                base = os.path.splitext (base) [0]
+            (base, suffix) = split_action_id (id)
 
-            new_id = toolset + suffix
+            new_id = toolset + '.' + suffix
 
             generators.register (g.clone (new_id, properties))
 
@@ -180,7 +175,7 @@ def inherit_flags (toolset, base, prohibited_properties = []):
 
         entry = __rules [rule_or_module][f]
         
-        if set.difference (entry ['condition'], prohibited_properties) or not entry ['condition']:
+        if not entry ['condition'] or set.difference (entry ['condition'], prohibited_properties):
             match = __re_first_group.match (rule_or_module)
             rule_ = None
             if match:
@@ -196,6 +191,32 @@ def inherit_flags (toolset, base, prohibited_properties = []):
 
             __add_flag (new_rule_or_module, entry ['variable'], entry ['condition'], entry ['values'])
 
+def inherit_rules (toolset, base):
+    base_generators = generators.generators_for_toolset (base)
+
+    import action
+
+    ids = []
+    for g in base_generators:
+        (old_toolset, id) = split_action_id (g.id ())
+        ids.append (id) ;
+
+    new_actions = []
+    for name, value in action.enumerate ():
+        (old_toolset, id) = split_action_id (name)
+    
+        if old_toolset == base:
+            new_actions.append ((id, value [0], value [1]))
+
+    for a in new_actions:
+        action.register (toolset + '.' + a [0], a [1], a [2])
+        
+    # TODO: how to deal with this?
+#       IMPORT $(base) : $(rules) : $(toolset) : $(rules) : localized ;
+#       # Import the rules to the global scope
+#       IMPORT $(toolset) : $(rules) : : $(toolset).$(rules) ;
+#   }
+#   
 
 ######################################################################################
 # Private functions
@@ -278,10 +299,6 @@ def __add_flag (rule_or_module, variable_name, condition, values):
     """ Adds a new flag setting with the specified values.
         Does no checking.
     """
-    # Not '.' in names, use '_' instead.
-    assert (not '.' in rule_or_module)
-
-    rule_or_module.replace ('.', '_')
     if __rules.has_key (rule_or_module):
         current = __rules [rule_or_module]
     else:
@@ -313,6 +330,7 @@ def __add_flag (rule_or_module, variable_name, condition, values):
 
     __flag_no += 1
 
+    
 ###################################################################
 # Still to port.
 # Original lines are prefixed with "#   "
@@ -332,20 +350,5 @@ def __add_flag (rule_or_module, variable_name, condition, values):
 #       inherit_generators $(toolset) : $(base) ;
 #       inherit-flags $(toolset) : $(base) ;
 #       inherit-rules $(toolset) : $(base) ;
-#   }
-#   
-#   rule inherit-rules ( toolset : base )
-#   {
-#       # It appears that "action" creates local rule... 
-#       local base_generators = [ generators.generators_for_toolset $(base) ] ;
-#       local rules ;
-#       for local g in $(base_generators)
-#       {
-#           local id = [ MATCH "[^.]*\.(.*)" : [ $(g).id ] ] ;
-#           rules += $(id) ;
-#       }    
-#       IMPORT $(base) : $(rules) : $(toolset) : $(rules) : localized ;
-#       # Import the rules to the global scope
-#       IMPORT $(toolset) : $(rules) : : $(toolset).$(rules) ;
 #   }
 #   

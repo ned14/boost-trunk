@@ -373,13 +373,13 @@ class SearchedLibTarget (virtual_target.AbstractFileTarget):
 ### IMPORT $(__name__) : lib : : lib ;
 
 class SearchedLibGenerator (generators.Generator):
-    def __init__ (self):
+    def __init__ (self, id = 'SearchedLibGenerator', composing = False, source_types = [], target_types_and_names = ['SEARCHED_LIB'], requirements = []):
         # TODO: the comment below looks strange. There are no requirements!
         # The requirements cause the generators to be tried *only* when we're building
         # lib target and there's 'search' feature. This seems ugly --- all we want
         # is make sure SearchedLibGenerator is not invoked deep in transformation
         # search.
-        generators.Generator.__init__ (self, 'SearchedLibGenerator', None, False, [], ['SEARCHED_LIB'], [])
+        generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
     
     def run (self, project, name, prop_set, sources, multiple):
         if not name:
@@ -444,24 +444,23 @@ class CCompilingGenerator (generators.Generator):
         That class in turn adds additional include paths to handle a case
         when a source file includes headers which are generated themselfs.
     """
-    def __init__ (self, id, rule, source_types, target_types, requirements, optional_properties):
+    def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
         # TODO: (PF) What to do with optional_properties? It seemed that, in the bjam version, the arguments are wrong.
-        assert (not optional_properties)
-        generators.Generator.__init__ (self, id, rule, False, source_types, target_types, requirements)
+        generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
             
     def action_class (self):
         return CompileAction
 
-def register_c_compiler (id, rule, source_types, target_types, requirements, optional_properties = []):
-    g = CCompilingGenerator (id, rule, source_types, target_types, requirements, optional_properties)
+def register_c_compiler (id, source_types, target_types, requirements, optional_properties = []):
+    g = CCompilingGenerator (id, False, source_types, target_types, requirements + optional_properties)
     return generators.register (g)
 
 
 class LinkingGenerator (generators.Generator):
     """ The generator class for handling EXE and SHARED_LIB creation.
     """
-    def __init__ (self, id, rule, composing, source_types, target_types, requirements):
-        generators.Generator.__init__ (self, id, rule, composing, source_types, target_types, requirements)
+    def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
+        generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
         
     def run (self, project, name, prop_set, sources, multiple):
         sources.extend (prop_set.get ('<library>'))

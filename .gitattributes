@@ -131,6 +131,7 @@ boost/tools/build/v2/python/boost/build/manager.py svneol=native#text/x-python
 boost/tools/build/v2/python/boost/build/tools/__init__.py svneol=native#text/x-python
 boost/tools/build/v2/python/boost/build/tools/builtin.py svneol=native#text/x-python
 boost/tools/build/v2/python/boost/build/tools/common.py svneol=native#text/x-python
+boost/tools/build/v2/python/boost/build/tools/darwin.py svneol=native#text/x-python
 boost/tools/build/v2/python/boost/build/tools/gcc.py svneol=native#text/x-python
 boost/tools/build/v2/python/boost/build/tools/make.py svneol=native#text/x-python
 boost/tools/build/v2/python/boost/build/tools/types/__init__.py svneol=native#text/x-python
