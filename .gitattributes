@@ -71,6 +71,7 @@ boost/boost/nondet_random.hpp svneol=native#text/plain
 boost/boost/operators.hpp svneol=native#text/plain
 boost/boost/pattern_except.hpp svneol=native#text/plain
 boost/boost/pending/bucket_sorter.hpp svneol=native#text/plain
+boost/boost/pending/concept_archetypes.hpp svneol=native#text/plain
 boost/boost/pending/concept_checks.hpp svneol=native#text/plain
 boost/boost/pending/concept_skeletons.hpp svneol=native#text/plain
 boost/boost/pending/container_traits.hpp svneol=native#text/plain
