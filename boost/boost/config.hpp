@@ -11,6 +11,9 @@
 //  http://www.boost.org/libs/config
 
 //  Revision History (excluding minor changes for specific compilers)
+//   23 Jul 00  Fixed spelling of BOOST_NO_INCLASS_MEMBER_INITIALIZATION in
+//              comment (Dave Abrahams). 
+//   10 Jul 00  BOOST_NO_POINTER_TO_MEMBER_CONST added (Mark Rodgers)
 //   26 Jun 00  BOOST_NO_STD_ITERATOR, BOOST_MSVC_STD_ITERATOR,
 //              BOOST_NO_ITERATOR_TRAITS, BOOST_NO_USING_TEMPLATE,
 //              added (Jeremy Siek)
@@ -46,7 +49,7 @@
 //  parameters cannot have a dependent type, for example
 //  "template<class T, typename T::type value> class X { ... };"
 
-//  BOOST_NO_INCLASS_MEMBER_INITIALIZER: Compiler violates std::9.4.2/4. 
+//  BOOST_NO_INCLASS_MEMBER_INITIALIZATION: Compiler violates std::9.4.2/4. 
 
 //  BOOST_NO_ITERATOR_TRAITS: The compiler does not provide a standard
 //  compliant implementation of std::iterator_traits. Note that
@@ -62,6 +65,10 @@
 //  BOOST_NO_OPERATORS_IN_NAMESPACE: Compiler requires inherited operator
 //  friend functions to be defined at namespace scope, then using'ed to boost.
 //  Probably GCC specific.  See boost/operators.hpp for example.
+
+//  BOOST_NO_POINTER_TO_MEMBER_CONST: The compiler does not correctly handle
+//  pointers to const member functions, preventing use of these in overloaded 
+//  function templates.  See boost/functional.hpp for example. 
 
 //  BOOST_NO_STD_ITERATOR: The C++ implementation fails to provide the
 //  std::iterator class.
@@ -80,7 +87,9 @@
 //  BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION. Class template partial
 //  specialization (14.5.4 [temp.class.spec]) not supported.
 
-//  BOOST_NO_USING_TEMPLATE: This needs some docs!
+//  BOOST_NO_USING_TEMPLATE: The compiler will not accept a using declaration
+//  that imports a template from the global namespace into a named namespace.
+//  Probably Borland specific.
 
 //  Compiler Control or Information Macros  ----------------------------------//
 //
@@ -142,10 +151,10 @@
 #   if __BORLANDC__ <= 0x0550
 // Borland C++ Builder 4 and 5:
 #   define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#   define BOOST_NO_USING_TEMPLATE
 #     if __BORLANDC__ == 0x0550
 // Borland C++ Builder 5, command-line compiler 5.5:
 #       define BOOST_NO_OPERATORS_IN_NAMESPACE
-#       define BOOST_NO_USING_TEMPLATE
 #     endif
 #   endif
 #   if defined BOOST_DECL_EXPORTS
@@ -177,6 +186,7 @@
 # elif defined  __MWERKS__
 #   if __MWERKS__ <= 0x2301
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#     define BOOST_NO_POINTER_TO_MEMBER_CONST
 #   endif
 #   if __MWERKS__ >= 0x2300
 #     define BOOST_SYSTEM_HAS_STDINT_H

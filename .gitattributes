@@ -62,6 +62,7 @@ boost/libs/timer/timer_test.cpp svneol=native#text/plain
 boost/libs/utility/algo_opt_examples.cpp svneol=native#text/plain
 boost/libs/utility/call_traits_test.cpp svneol=native#text/plain
 boost/libs/utility/cast_test.cpp svneol=native#text/plain
+boost/libs/utility/compressed_pair_test.cpp svneol=native#text/plain
 boost/libs/utility/iterators_test.cpp svneol=native#text/plain
 boost/libs/utility/noncopyable_test.cpp svneol=native#text/plain
 boost/libs/utility/operators_test.cpp svneol=native#text/plain
