@@ -6061,8 +6061,6 @@ boost/libs/serialization/test/runall.ksh -text
 boost/libs/serialization/test/runtest.bat svneol=native#text/plain
 boost/libs/serialization/test/runtest.ksh -text
 boost/libs/serialization/test/runtest.sh svneol=native#text/x-sh
-boost/libs/serialization/test/test.dat -text
-boost/libs/serialization/test/test2.dat -text
 boost/libs/serialization/test/test_array.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_binary.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_codecvt_null.cpp svneol=native#text/plain
@@ -6133,12 +6131,6 @@ boost/libs/serialization/test/test_xml.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_xml_load.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_xml_save.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_zmisc.cpp svneol=native#text/plain
-boost/libs/serialization/test/testfile.txt svneol=native#text/plain
-boost/libs/serialization/test/testfile_binary_archive.hpp svneol=native#text/plain
-boost/libs/serialization/test/testfile_text_archive.hpp svneol=native#text/plain
-boost/libs/serialization/test/testfile_text_warchive.hpp svneol=native#text/plain
-boost/libs/serialization/test/testfile_xml_archive.hpp svneol=native#text/plain
-boost/libs/serialization/test/testfile_xml_warchive.hpp svneol=native#text/plain
 boost/libs/serialization/test/text_archive.hpp svneol=native#text/plain
 boost/libs/serialization/test/text_warchive.hpp svneol=native#text/plain
 boost/libs/serialization/test/throw_exception.hpp svneol=native#text/plain
