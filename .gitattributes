@@ -2212,6 +2212,7 @@ boost/libs/date_time/test/posix_time/testduration.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testformatters.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testiterator.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testlocal_adjustor.cpp svneol=native#text/plain
+boost/libs/date_time/test/posix_time/testmicrosec_time_clock.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testparse_time.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testperiod.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/teststreams.cpp svneol=native#text/plain
