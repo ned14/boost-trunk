@@ -157,6 +157,10 @@
 # OS specific variable settings
 #
 
+# dwa 6/4/01 - removed all settings of the following variables for boost:
+#   CC, CCFLAGS, C++, C++FLAGS, LINK, LINKFLAGS, LINKLIBS
+# probably a lot more could be cleared away
+
 if $(NT)
 {
     CP              ?= copy ;
@@ -166,7 +170,9 @@ if $(NT)
     SUFOBJ          ?= .obj ;
     SUFEXE          ?= .exe ;
     NOARSCAN        ?= true ;
-
+    
+    # dwa 6/4/01 - removed compiler determination for boost
+    # added some yacc/lex stuff, assuming cygwin for now.
     LEX = flex -d ;
     YACC = bison -t -d -l -v ;
     YACCFILES       = y.tab ;
@@ -424,10 +430,7 @@ YACCFLAGS       ?= ;
 HDRPATTERN = 
         "^[     ]*#[    ]*include[      ]*[<\"]([^\">]*)[\">].*$" ;
 
-#"# the quote makes emacs' perl-mode (which I'm using to edit Jamfiles) happy.
-
 OSFULL = $(OS)$(OSVER)$(OSPLAT) $(OS)$(OSPLAT) $(OS)$(OSVER) $(OS) ;
-
 #
 # Base dependencies - first for "bootstrap" kinds of rules
 #
@@ -441,7 +444,12 @@ ALWAYS clean uninstall ;
 # Rules
 #
 
-rule type-DEPENDS # type : targets...
+# dwa 6/4/01 - added for boost
+# type-DEPENDS type : targets...
+#
+# Use this to create a dependency between a fake type-target and other targets. Will prevent
+# targets in dependee subprojects from being added to the type-target's dependencies.
+rule type-DEPENDS # type-target : targets...
 {
     if ! $(gIN_LIB_INCLUDE)
     {
@@ -449,6 +457,11 @@ rule type-DEPENDS # type : targets...
     }
 }
 
+# dwa 6/4/01 - added for boost
+# Archive file-target : sources
+#
+# Used to dispatch through Archive-action, which should be redefined in toolset
+# description files.
 rule Archive
 {
     Archive-action $(<) : $(>) ;
@@ -456,20 +469,21 @@ rule Archive
 
 rule As
 {
-        DEPENDS $(<) : $(>) ;
-        ASFLAGS on $(<) += $(ASFLAGS) $(SUBDIRASFLAGS) ;
+    DEPENDS $(<) : $(>) ;
+    ASFLAGS on $(<) += $(ASFLAGS) $(SUBDIRASFLAGS) ;
 }
 
 rule Bulk
 {
-        local i ;
+    local i ;
 
-        for i in $(>)
-        {
-            File $(i:D=$(<)) : $(i) ;
-        }
+    for i in $(>)
+    {
+        File $(i:D=$(<)) : $(i) ;
+    }
 }
 
+# dwa 6/4/01 - modified for boost
 # factored out stuff from the builtin Cc and C++ rules
 rule Cc-platform-specifics
 {
@@ -498,18 +512,24 @@ rule Cc-platform-specifics
     }
 }
 
+# dwa 6/4/01 - added for boost
+# always-c++ filename...
+#
+# declares that the given files should be compiled as C++, regardless of their
+# filename extension.
 rule always-c++
 {
-    <always-c++> += [ FGristFiles $(<) ] ;
+    gALWAYS_C++ += [ FGristFiles $(<) ] ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule Cc
 {
     DEPENDS $(<) : $(>) ;
 
     Cc-platform-specifics $(<) : $(>) ;
 
-    if $(>) in $(<always-c++>)
+    if $(>) in $(gALWAYS_C++)
     {
         C++-action $(<) : $(>) ;
     }
@@ -519,6 +539,7 @@ rule Cc
     }
 }
 
+# dwa 6/4/01 - modified for boost
 rule C++
 {
     DEPENDS $(<) : $(>) ;
@@ -533,6 +554,7 @@ rule Chmod
     if $(CHMOD) { Chmod1 $(<) ; }
 }
 
+# dwa 6/4/01 - added for boost
 # conditional <cond> : <true-value> : <false-value>
 # returns <true-value> if <cond>, <false-value> otherwise
 rule conditional
@@ -540,6 +562,7 @@ rule conditional
     if $(1) { return $(2) ; } else { return $(3) ; }
 }
 
+# dwa 6/4/01 - modified for boost
 rule File
 {
     type-DEPENDS files : $(<) ;
@@ -569,6 +592,7 @@ rule GenFile1
     SEARCH on $(>) = $(SEARCH_SOURCE) ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule HardLink
 {
     type-DEPENDS files : $(<) ;
@@ -611,6 +635,7 @@ rule HdrRule
     HDRGRIST on $(s) = $(HDRGRIST) ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule InstallInto
 {
     local i t ;
@@ -690,6 +715,7 @@ rule InstallShell
     MODE on $(>:G=installed) = $(SHELLMODE) ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule Lex # file.c : file.l
 {
     # If we don't have a way of specifying the lex output file, we'll have to move it
@@ -707,11 +733,13 @@ rule Lex # file.c : file.l
     Clean clean : $(<) ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule Library
 {
     LibraryFromObjects $(<) : [ Objects $(>) ] ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule LibraryFromObjects
 {
     local _i _l ;
@@ -774,6 +802,7 @@ rule LibraryFromObjects
     if ! ( $(NOARSCAN) || $(KEEPOBJS) ) { RmTemps $(_l) : $(>) ; }
 }
 
+# dwa 6/4/01 - modified for boost to dispatch through Link-action
 rule Link
 {
     MODE on $(<) = $(EXEMODE) ;
@@ -792,11 +821,13 @@ rule LinkLibraries
     NEEDLIBS on $(_t) += $(>:S=$(SUFLIB)) ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule Main
 {
     MainFromObjects $(<) : [ Objects $(>) ] ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule MainFromObjects
 {
     local _s _t ;
@@ -824,6 +855,7 @@ rule MainFromObjects
     Link $(_t) : $(_s) ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule MakeLocate
 {
     if $(>)
@@ -882,6 +914,7 @@ rule MkDir
     }
 }
 
+# dwa 6/4/01 - modified for boost
 rule Object
 {
     local h ;
@@ -946,6 +979,7 @@ rule Object
     }
 }
     
+# dwa 6/4/01 - added for boost
 # Return the corresponding object file target names given a list of source file
 # target names.
 rule object-name # sources...
@@ -953,6 +987,7 @@ rule object-name # sources...
     return $(<:D=:S=$(SUFOBJ):G=$(TARGET_GRIST)) ;
 }
 
+# dwa 6/4/01 - added for boost
 # Build a generated source file from input-target, and build whatever that file generates.
 # Return a list of all object target names ultimately generated by recursively
 # building the products of input-target.
@@ -973,9 +1008,11 @@ rule gen-source # source => object-file-names
     return [ Objects $(immediate-target) ] ;
 }
 
+# dwa 6/4/01 - added for boost
 # A list of all file extensions which generate source files when built.
 SOURCE_GENERATING_EXTENSIONS ?= .lpp .ypp .l .y ;
 
+# dwa 6/4/01 - modified for boost
 # Build all object files generated by building $(<), and return a list of the
 # names of those object file targets.
 rule Objects
@@ -1009,6 +1046,7 @@ rule Setuid
     MODE on [ FAppendSuffix $(<) : $(SUFEXE) ] = 4711 ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule Shell
 {
     type-DEPENDS shell : $(<) ;
@@ -1019,6 +1057,7 @@ rule Shell
     Chmod $(<) ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule SubDir
 {
     local _r ;
@@ -1114,19 +1153,10 @@ rule SubDir
     RELATIVE_SUBDIR = [ join-path $(RELATIVE_SUBDIR_TOKENS) ] ;
 }
 
-rule FGristFiles 
-{
-	if ! $(SOURCE_GRIST)
-	{
-	    return $(<) ;
-	}
-	else 
-	{
-	    return $(<:G=$(SOURCE_GRIST)) ;
-	}
-}
-
-
+# dwa 6/4/01 - added for boost
+# strip-grist value
+#
+# strip all leading gristed elements from value and return the result.
 rule strip-grist
 {
     local x = $(<:G=) ;
@@ -1140,6 +1170,7 @@ rule strip-grist
     }
 }
 
+# dwa 6/4/01 - added for boost
 # Breaks $(<) into path components
 #
 # split-path <foo>bar/<bee>baz/mumble  => <foo>bar <bee>baz mumble 
@@ -1159,6 +1190,10 @@ rule split-path
     }
 }
 
+# dwa 6/4/01 - added for boost
+# reverse item1 item2... 
+#
+# Returns ...item2 item1
 rule reverse
 {
     local result ;
@@ -1169,6 +1204,7 @@ rule reverse
     return $(result) ;
 }
 
+# dwa 6/4/01 - added for boost
 # simplify-path-tokens token1 token2 ... tokenN : DOT-opt
 #
 # Remove redundant information from the given path elements
@@ -1253,6 +1289,7 @@ rule UserObject
     EXIT "Unknown suffix on" $(>) "- see UserObject rule in Jamfile(5)." ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule Yacc
 {
     local _h ;
@@ -1309,6 +1346,19 @@ rule FGrist
     return $(_g) ;
 }
 
+rule FGristFiles 
+{
+	if ! $(SOURCE_GRIST)
+	{
+	    return $(<) ;
+	}
+	else 
+	{
+	    return $(<:G=$(SOURCE_GRIST)) ;
+	}
+}
+
+# dwa 6/4/01 - modified for boost
 rule FGristSourceFiles
 {
     # Produce source file name name with grist in it, 
@@ -1339,6 +1389,10 @@ rule FGristSourceFiles
     }
 }
 
+# dwa 6/4/01 - modified for boost
+# join values... : [separator]
+#
+# Pastes values together into a single list element, separated by an optional separator.
 rule join
 {
     # Puts the variables together, removing spaces.
@@ -1385,6 +1439,7 @@ rule FSubDir
     return $(_d) ;
 }
 
+# dwa 6/4/01 - added for boost
 # Turn individual elements in $(<) into a usable path. If $(<) is empty, $(>) is
 # returned.
 rule join-path
@@ -1438,6 +1493,7 @@ rule join-path
     return $(_s) ;
 }
 
+# dwa 6/4/01 - modified for boost
 rule FDirName
 {
     # Turn individual elements in $(<) into a usable path.
@@ -1584,11 +1640,13 @@ actions Install
     $(CP) $(>) $(<) 
 }
 
+# dwa 6/4/01 - modified for boost
 actions together Lex
 {
     $(LEX) $(LEXFLAGS) $(LEX_OUTPUT)$(<) $(>)
 }
 
+# dwa 6/4/01 - modified for boost
 actions together LexMv
 {
     $(MV) lex.yy.c $(<)
@@ -1619,17 +1677,22 @@ actions Shell
     ' < $(>) > $(<)
 }
 
+# dwa 6/4/01 - modified for boost
 actions together Yacc1
 {
     $(YACC) $(YACCFLAGS) $(YACC_OUTPUT)$(<[1]) $(>)
 }
 
+# dwa 6/4/01 - modified for boost
 actions together YaccMv
 {
     $(MV) $(YACCFILES).c $(<[1])
     $(MV) $(YACCFILES).h $(<[2])
 }
 
+# dwa 6/4/01 - killed all platform-specific actions for boost
+
+# dwa 6/4/01 - modified for boost
 actions together Yacc-fix-line-directives
 {
     $(YACC_FIX_LINES) $(<) > $(<)
