@@ -1757,20 +1757,7 @@ boost/libs/test/README svneol=native#text/plain
 boost/libs/test/doc/index.htm svneol=native#text/html
 boost/libs/test/doc/test_lib_design.htm svneol=native#text/html
 boost/libs/test/doc/test_tools.htm svneol=native#text/html
-boost/libs/test/test/errors_handling_test.cpp svneol=native#text/plain
-boost/libs/test/test/online_test.cpp svneol=native#text/plain
-boost/libs/test/test/output_test_stream_test.cpp svneol=native#text/plain
-boost/libs/test/test/prg_exec_fail1.cpp svneol=native#text/plain
-boost/libs/test/test/prg_exec_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/regression.cfg -text
-boost/libs/test/test/result_report_test.cpp svneol=native#text/plain
-boost/libs/test/test/result_report_test.pattern -text
-boost/libs/test/test/test_exec_fail1.cpp svneol=native#text/plain
-boost/libs/test/test/test_exec_fail2.cpp svneol=native#text/plain
-boost/libs/test/test/test_exec_fail3.cpp svneol=native#text/plain
-boost/libs/test/test/test_exec_fail4.cpp svneol=native#text/plain
-boost/libs/test/test/test_tools_test.cpp svneol=native#text/plain
-boost/libs/test/test/unit_test_suite_ex_test.cpp svneol=native#text/plain
 boost/libs/thread/build/Jamfile svneol=native#text/plain
 boost/libs/thread/build/threads.mcp -text svneol=unset#unset
 boost/libs/thread/doc/acknowledgements.html svneol=native#text/html
