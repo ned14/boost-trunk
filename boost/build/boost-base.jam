@@ -751,39 +751,33 @@ rule multiply-property-sets
 assert_equal [ multiply-property-sets <b>1 <a>2/3 <c>4/5 ]
     : <a>2/<b>1/<c>4 <a>2/<b>1/<c>5 <a>3/<b>1/<c>4 <a>3/<b>1/<c>5 ;
 
-# make-path-property-set-pairs base-path : common-properties : property-sets
+# make-path-property-sets base-path : common-properties : property-sets
 #
-# Returns a list of pairs where each odd-numbered element is a relative path
-# into which a configuration should be built, and each following
-# even-numbered element is a slash-separated property set describing the
-# properties of the target to be built.
+# Returns a list of paths where the initial ungristed part is a relative path
+# into which a configuration should be built, and the rest of the element
+# is a slash-separated property set describing the properties of the target to
+# be built. 
 #
 # Each path returned is base-path extended by one of the ungristed property-sets
 # (or just the base-path if no property-sets are supplied). Each property set
 # returned is formed by extending common-properties with one of the property-sets.
-rule make-path-property-set-pairs
+rule make-path-property-sets
 {
     local result ;
     local s ;
     for s in $(3)
     {
-        # Add the directory
-        result += [ join-path $(<)
-                    [ ungrist-properties [ split-path $(s) ] ] ] ;
-
-        # Add the complete set of properties (can't use join-path because of grist)
-        result += [ join $(>) $(s) : $(SLASH) ] ;
+        result += [ join
+                    $(<) [ ungrist-properties [ split-path $(s) ] ] # directory components
+                    $(>) $(s) : $(SLASH) ] ; # common properties + property set
     }
 
-    if $(result)
+    # if there were no overrides, just add the base variant and properties
+    if ! $(result)
     {
-        return $(result) ;
+        result = [ join $(<) $(>) : $(SLASH) ] ;
     }
-    else
-    {
-        # if there were no overrides, just add the base variant and properties
-        return $(<) [ join $(>) : $(SLASH) ] ;
-    }
+    return $(result) ;
 }
 if ! ( NDEBUG in $(TEST) )
 {
@@ -792,18 +786,18 @@ if ! ( NDEBUG in $(TEST) )
   gUNGRISTED(<e>) = e ;
   gUNGRISTED(<g>) = g ;
   gUNGRISTED(<i>) = i ;
-  assert_equal [ make-path-property-set-pairs foo$(SLASH)bar : <a>b <c>d : <e>f$(SLASH)<g>h <i>j ]
-    : foo$(SLASH)bar$(SLASH)e-f$(SLASH)g-h <a>b$(SLASH)<c>d$(SLASH)<e>f$(SLASH)<g>h foo$(SLASH)bar$(SLASH)i-j <a>b$(SLASH)<c>d$(SLASH)<i>j ;
-  assert_equal [ make-path-property-set-pairs foo$(SLASH)bar : <a>b <c>d : ]
-    : foo$(SLASH)bar <a>b$(SLASH)<c>d ;
+  assert_equal [ make-path-property-sets foo$(SLASH)bar : <a>b <c>d : <e>f$(SLASH)<g>h <i>j ]
+    : foo$(SLASH)bar$(SLASH)e-f$(SLASH)g-h$(SLASH)<a>b$(SLASH)<c>d$(SLASH)<e>f$(SLASH)<g>h foo$(SLASH)bar$(SLASH)i-j$(SLASH)<a>b$(SLASH)<c>d$(SLASH)<i>j ;
+  assert_equal [ make-path-property-sets foo$(SLASH)bar : <a>b <c>d : ]
+    : foo$(SLASH)bar$(SLASH)<a>b$(SLASH)<c>d ;
 }
 
 # expand-build-request
 #      toolset variant target-name : requirements : build-request
-#    
-# Returns a list of pairs (build-path, properties) for the given variant
-# build of the given target with the given toolset, and all subvariant builds
-# specified by build-request.
+#
+# Returns a list of path-property-sets (see make-path-property-sets above) for
+# all build configurations based on the given toolset, requirements, and
+# build-request. Target-name is just used for error reporting.
 rule expand-build-request 
 {
     local toolset = $(<[1]) ;
@@ -845,40 +839,44 @@ rule expand-build-request
     local override-sets
         = [ multiply-property-sets $(override-properties) $(defaulted-properties) ] ;
 
-    # return pairs (path, property-set) corresponding to each (sub)variant build
+    # return path-property-sets corresponding to each (sub)variant build
     # described.
-    return [ make-path-property-set-pairs $(toolset)$(SLASH)$(variant)
+    return [ make-path-property-sets $(toolset)$(SLASH)$(variant)
                 : $(kept-properties) [ fixup-path-properties $(free-properties) ]
                 : $(override-sets) ] ;
 }
 
-# split-property-set property-set
+# split-path-at-grist path
 #
-# Used to peel apart path-separated property sets that may themselves
-# include paths. This arises most often when the <include> feature is used,
-# since its parameter is typically a path.
-#
-# The split properties are returned in reverse order
-rule split-property-set
+# Breaks path at each $(SLASH) that is followed by grist. This can be used to
+# break apart property sets, particularly where the <include> feature is used,
+# since its value is typically a path.
+rule split-path-at-grist
 {
     local full-split = [ split-path $(<) ] ;
+    local last ;
     local result x ;
     for x in $(full-split)
     {
         if $(x:G)
         {
-            result = $(x) $(result) ;
+            result += $(last) ;
+            last = $(x) ;
         }
         else
         {
-            result = $(result[1])$(SLASH)$(x) $(result[2-]) ;
+            last = $(last)$(SLASH)$(x) ;
+            last ?= $(x) ;
         }
     }
-    return $(result) ;
+    return $(result) $(last) ;
 }
 assert_equal
- [ split-property-set <a>b$(SLASH)c$(SLASH)<d>e$(SLASH)<f>g$(SLASH)h$(SLASH)i ]
- : <f>g$(SLASH)h$(SLASH)i <d>e <a>b$(SLASH)c ;
+ [ split-path-at-grist <a>b$(SLASH)c$(SLASH)<d>e$(SLASH)<f>g$(SLASH)h$(SLASH)i ]
+ : <a>b$(SLASH)c <d>e <f>g$(SLASH)h$(SLASH)i ;
+assert_equal
+ [ split-path-at-grist b$(SLASH)c$(SLASH)<d>e$(SLASH)<f>g$(SLASH)h$(SLASH)i ]
+ : b$(SLASH)c <d>e <f>g$(SLASH)h$(SLASH)i ;
  
 # declare-local-target name : sources : requirements : local-BUILD : target-type
 #
@@ -1082,19 +1080,16 @@ rule declare-target # target : sources : requirements : local-build : target-typ
     local v ;
     for v in $(variants)
     {
-      local build-pairs
+      local expanded
           = [ expand-build-request $(toolset) $(v) $(<)
               : $(requirements) : $(build-request) ] ;
 
-      local x;
-      local build = $(build-pairs) ;
-      for x in $(build-pairs)
+      local x ;
+      for x in $(expanded)
       {
-        if $(x:G) # Half the elements have grist; we're processing a pair-at-a-time
-        {
-          # extract the elements of the pair
-          local bin-path = $(build[1]) ;
-          local property-set = $(build[2]) ;
+          # extract the elements of x
+          local x-split = [ split-path-at-grist $(x) ] ;
+          local bin-path = $(x-split[1]) ;
 
           # SOURCE_GRIST identifies the subproject directory; TARGET_GRIST
           # should identify the subvariant.
@@ -1118,7 +1113,7 @@ rule declare-target # target : sources : requirements : local-build : target-typ
             declare-fake-targets $(target) : $(target-file) ;
             
             # set up gBUILD_PROPERTIES for include-tools (below)
-            local gBUILD_PROPERTIES = [ split-property-set $(property-set) ] ;
+            local gBUILD_PROPERTIES = $(x-split[2-]) ;
 
             # Include the toolset specification. This will set up the global
             # flags variables in a way appropriate to this build.
@@ -1142,7 +1137,6 @@ rule declare-target # target : sources : requirements : local-build : target-typ
 
           # peel the first pair off the front
           build = $(build[3-]) ;
-        }
       }
     }
   }
