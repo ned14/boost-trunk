@@ -4048,6 +4048,7 @@ boost/libs/graph/doc/constructing_algorithms.html svneol=native#text/html
 boost/libs/graph/doc/copy_graph.html svneol=native#text/html
 boost/libs/graph/doc/cuthill_mckee_ordering.html svneol=native#text/html
 boost/libs/graph/doc/dag_shortest_paths.html svneol=native#text/html
+boost/libs/graph/doc/default.css svneol=native#text/css
 boost/libs/graph/doc/depth_first_search.html svneol=native#text/html
 boost/libs/graph/doc/depth_first_visit.html svneol=native#text/html
 boost/libs/graph/doc/dfs_visitor.html svneol=native#text/html
