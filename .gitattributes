@@ -2576,7 +2576,6 @@ boost/libs/thread/src/xtime.cpp svneol=native#text/plain
 boost/libs/thread/test/.cvsignore -text
 boost/libs/thread/test/Carbon.r -text
 boost/libs/thread/test/Jamfile svneol=native#text/plain
-boost/libs/thread/test/test.cpp svneol=native#text/plain
 boost/libs/thread/test/test.mcp -text svneol=unset#unset
 boost/libs/thread/test/test_condition.cpp svneol=native#text/plain
 boost/libs/thread/test/test_mutex.cpp svneol=native#text/plain
