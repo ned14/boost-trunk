@@ -300,6 +300,7 @@ boost/boost/preprocessor/repeat_2nd.hpp svneol=native#text/plain
 boost/boost/preprocessor/repeat_3rd.hpp svneol=native#text/plain
 boost/boost/preprocessor/stringize.hpp svneol=native#text/plain
 boost/boost/preprocessor/tuple.hpp svneol=native#text/plain
+boost/boost/preprocessor/tuple/elem.hpp svneol=native#text/plain
 boost/boost/preprocessor/while.hpp svneol=native#text/plain
 boost/boost/progress.hpp svneol=native#text/plain
 boost/boost/property_map.hpp svneol=native#text/plain
