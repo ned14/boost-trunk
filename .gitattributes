@@ -382,7 +382,6 @@ boost/libs/graph/doc/kevin_bacon.html svneol=native#text/html
 boost/libs/graph/doc/known_problems.html svneol=native#text/html
 boost/libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
 boost/libs/graph/doc/leda_conversion.html svneol=native#text/html
-boost/libs/graph/doc/max-flow.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/null_visitor.html svneol=native#text/html
 boost/libs/graph/doc/opposite.html svneol=native#text/html
 boost/libs/graph/doc/predecessor_recorder.html svneol=native#text/html
