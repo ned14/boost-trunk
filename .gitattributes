@@ -4006,6 +4006,7 @@ boost/libs/smart_ptr/shared_array.htm svneol=native#text/html
 boost/libs/smart_ptr/shared_ptr.htm svneol=native#text/html
 boost/libs/smart_ptr/shared_ptr_alloc_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_assign_fail.cpp svneol=native#text/plain
+boost/libs/smart_ptr/shared_ptr_basic_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_example.cpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_example2.cpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_example2.hpp svneol=native#text/plain
