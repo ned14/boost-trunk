@@ -1968,6 +1968,7 @@ boost/boost/type_traits/type_with_alignment.hpp svneol=native#text/plain
 boost/boost/utility.hpp svneol=native#text/plain
 boost/boost/utility/addressof.hpp svneol=native#text/plain
 boost/boost/utility/base_from_member.hpp svneol=native#text/plain
+boost/boost/utility/in_place_factory.hpp svneol=native#text/plain
 boost/boost/utility/value_init.hpp svneol=native#text/plain
 boost/boost/utility_fwd.hpp svneol=native#text/plain
 boost/boost/variant.hpp svneol=native#text/plain
