@@ -2173,7 +2173,7 @@ boost/libs/array/array3.cpp svneol=native#text/plain
 boost/libs/array/array4.cpp svneol=native#text/plain
 boost/libs/array/array5.cpp svneol=native#text/plain
 boost/libs/array/doc/array.xml svneol=native#text/xml
-boost/libs/array/index.htm svneol=native#text/html
+boost/libs/array/index.html svneol=native#text/html
 boost/libs/array/print.hpp svneol=native#text/plain
 boost/libs/bind/bind.html svneol=native#text/html
 boost/libs/bind/bind_as_compose.cpp svneol=native#text/plain
@@ -2207,6 +2207,7 @@ boost/libs/compose/compose3.cpp.html svneol=native#text/html
 boost/libs/compose/compose4.cpp svneol=native#text/plain
 boost/libs/compose/compose4.cpp.html svneol=native#text/html
 boost/libs/compose/index.htm svneol=native#text/html
+boost/libs/compose/index.html svneol=native#text/html
 boost/libs/compose/print.hpp svneol=native#text/plain
 boost/libs/compose/print.hpp.html svneol=native#text/html
 boost/libs/concept_check/Jamfile svneol=native#text/plain
@@ -2509,7 +2510,7 @@ boost/libs/config/tools/configure.in -text
 boost/libs/config/tools/generate -text
 boost/libs/conversion/cast.htm svneol=native#text/html
 boost/libs/conversion/cast_test.cpp svneol=native#text/plain
-boost/libs/conversion/index.htm svneol=native#text/html
+boost/libs/conversion/index.html svneol=native#text/html
 boost/libs/conversion/lexical_cast.htm svneol=native#text/html
 boost/libs/conversion/lexical_cast_test.cpp svneol=native#text/plain
 boost/libs/conversion/test.hpp svneol=native#text/plain
