@@ -6,6 +6,7 @@ boost/boost/graph/adjacency_matrix.hpp svneol=native#text/plain
 boost/boost/graph/bandwidth.hpp svneol=native#text/plain
 boost/boost/graph/bellman_ford_shortest_paths.hpp svneol=native#text/plain
 boost/boost/graph/biconnected_components.hpp svneol=native#text/plain
+boost/boost/graph/brandes_betweenness_centrality.hpp svneol=native#text/plain
 boost/boost/graph/breadth_first_search.hpp svneol=native#text/plain
 boost/boost/graph/connected_components.hpp svneol=native#text/plain
 boost/boost/graph/copy.hpp svneol=native#text/plain
@@ -119,6 +120,7 @@ boost/libs/graph/doc/bgl-cover.jpg -text svneol=unset#image/jpeg
 boost/libs/graph/doc/bgl_named_params.html svneol=native#text/html
 boost/libs/graph/doc/bibliography.html svneol=native#text/html
 boost/libs/graph/doc/biconnected_components.w -text
+boost/libs/graph/doc/brandes_betweenness_centrality.html svneol=native#text/html
 boost/libs/graph/doc/breadth_first_search.html svneol=native#text/html
 boost/libs/graph/doc/breadth_first_visit.html svneol=native#text/html
 boost/libs/graph/doc/bundles.html svneol=native#text/html
@@ -154,12 +156,14 @@ boost/libs/graph/doc/figs/analogy.fig -text
 boost/libs/graph/doc/figs/analogy.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/back_edges.fig -text
 boost/libs/graph/doc/figs/back_edges.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/betweenness_centrality.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/bfs_example.fig -text
 boost/libs/graph/doc/figs/bfs_example.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/bfs_family.fig -text
 boost/libs/graph/doc/figs/bfs_family.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/bfs_visitor.fig -text
 boost/libs/graph/doc/figs/bfs_visitor.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/central_point_dominance.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/concepts.fig -text
 boost/libs/graph/doc/figs/concepts.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/dfs.fig -text
@@ -187,8 +191,11 @@ boost/libs/graph/doc/figs/knights_tour.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/max-flow.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/quick_start.fig -text
 boost/libs/graph/doc/figs/quick_start.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/relative_betweenness_centrality.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/search_states.fig -text
 boost/libs/graph/doc/figs/search_states.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/sigma_st.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/sigma_stv.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/stl_iter.fig -text
 boost/libs/graph/doc/figs/stl_iter.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/subgraph-tree.gif -text svneol=unset#image/gif
@@ -203,8 +210,10 @@ boost/libs/graph/doc/figs/undir-adj-matrix-graph2.gif -text svneol=unset#image/g
 boost/libs/graph/doc/figs/undir-adj-matrix-graph3.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix2.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/v_star.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/visitor.fig -text
 boost/libs/graph/doc/figs/visitor.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/wheel_graph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/file_dependency_example.html svneol=native#text/html
 boost/libs/graph/doc/filtered_graph.html svneol=native#text/html
 boost/libs/graph/doc/graph_coloring.html svneol=native#text/html
@@ -497,6 +506,7 @@ boost/libs/graph/test/bellman-test.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/bidir_remove_edge.cpp svneol=native#text/plain
+boost/libs/graph/test/brandes_betweenness_centrality_test.cpp svneol=native#text/plain
 boost/libs/graph/test/bundled_properties.cpp svneol=native#text/plain
 boost/libs/graph/test/copy.cpp svneol=native#text/plain
 boost/libs/graph/test/dfs.cpp svneol=native#text/plain
