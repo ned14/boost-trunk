@@ -641,7 +641,6 @@ boost/libs/graph/doc/MutableGraph.html svneol=native#text/html
 boost/libs/graph/doc/MutablePropertyGraph.html svneol=native#text/html
 boost/libs/graph/doc/PropertyGraph.html svneol=native#text/html
 boost/libs/graph/doc/PropertyTag.html svneol=native#text/html
-boost/libs/graph/doc/UniformCostVisitor.html svneol=native#text/html
 boost/libs/graph/doc/VertexAndEdgeListGraph.html svneol=native#text/html
 boost/libs/graph/doc/VertexListGraph.html svneol=native#text/html
 boost/libs/graph/doc/acknowledgements.html svneol=native#text/html
@@ -774,7 +773,6 @@ boost/libs/graph/doc/transitive_closure.w -text
 boost/libs/graph/doc/transpose_graph.html svneol=native#text/html
 boost/libs/graph/doc/trouble_shooting.html svneol=native#text/html
 boost/libs/graph/doc/ucs_visitor.html svneol=native#text/html
-boost/libs/graph/doc/uniform_cost_search.html svneol=native#text/html
 boost/libs/graph/doc/using_adjacency_list.html svneol=native#text/html
 boost/libs/graph/doc/using_graph_algorithms.html svneol=native#text/html
 boost/libs/graph/doc/using_property_maps.html svneol=native#text/html
