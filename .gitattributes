@@ -113,6 +113,7 @@ boost/boost/detail/compressed_pair.hpp svneol=native#text/plain
 boost/boost/detail/iterator.hpp svneol=native#text/plain
 boost/boost/detail/lightweight_mutex.hpp svneol=native#text/plain
 boost/boost/detail/limits.hpp svneol=native#text/plain
+boost/boost/detail/lwm_irix.hpp svneol=native#text/plain
 boost/boost/detail/lwm_linux.hpp svneol=native#text/plain
 boost/boost/detail/lwm_nop.hpp svneol=native#text/plain
 boost/boost/detail/lwm_pthreads.hpp svneol=native#text/plain
