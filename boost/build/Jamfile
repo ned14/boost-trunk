@@ -1,4 +1,4 @@
-subproject ; # Hmm, this doesn't look too good, does it?
+project-root ;
 
 exe foo : foo.cpp ;
 unit-test testfoo : foo.cpp ;

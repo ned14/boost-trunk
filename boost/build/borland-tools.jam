@@ -1,3 +1,9 @@
+# (C) Copyright David Abrahams 2001. Permission to copy, use,
+# modify, sell and distribute this software is granted provided this
+# copyright notice appears in all copies. This software is provided
+# "as is" without express or implied warranty, and with no claim as
+# to its suitability for any purpose.
+
 # Borland tool definitions.
 #
 # Please note that wide-character support is currently disabled for Borland in
@@ -26,21 +32,11 @@ flags borland LINKFLAGS <user-interface>gui/<target-type>EXE : -tW ;
 flags borland LINKFLAGS <user-interface>console/<target-type>EXE : -tWC ;
 flags borland LINKFLAGS <wide-character-support>on : -WU ;
 
-flags msvc LINKFLAGS <target-type>DLL : -tWD ;
+flags borland LINKFLAGS <target-type>DLL : -tWD ;
 
-# C0D32.OBJ - 32-bit DLL startup module (cod32w: wide-char version; cod32x: no
-# exception handling)
 flags borland CFLAGS <threading>multi : -tWM ;
-# flags borland CFLAGS <user-interface>gui/<target-type>EXE : -tW ;
 flags borland CFLAGS <runtime-link>dynamic : -tWR ;
-# flags borland CFLAGS <user-interface>console/<target-type>EXE : -tWC ;
 flags borland CFLAGS <wide-character-support>on : -WU ;
-
-# Apparently not needed when invoking the linker through bcc32
-# flags borland BCC_STDLIBS <runtime-link>static/<threading>single :  CW32.LIB ;
-# flags borland BCC_STDLIBS <runtime-link>dynamic/<threading>single :  CW32I.LIB ;
-# flags borland BCC_STDLIBS <runtime-link>static/<threading>multi : CW32MT.LIB ;
-# flags borland BCC_STDLIBS <runtime-link>dynamic/<threading>multi :  CW32MTI.LIB ;
 
 flags borland DEFINES <define> ;
 flags borland UNDEFS <undef> ;
@@ -49,27 +45,16 @@ flags borland HDRS <include> ;
 flags borland STDHDRS : $(BCCROOT)$(SLASH)include ;
 flags borland STDLIBPATH : $(BCCROOT)$(SLASH)lib ;
 
-# IMPORT32.LIB - 32-bit import library 
-
 # For detailed information about borland tools and their command-line switches,
 # see http://www.objectcentral.com/vide/help/videdoc/bcc32.html
-
-rule use-tool
-{
-    $(>) on $(<) = $(3:G=borland-tools:S=.exe) ;
-    DEPENDS $(<) : $(3:G=borland-tools:S=.exe) ;
-    SEARCH on $(3:G=borland-tools:S=.exe) = $(BCCROOT)$(SLASH)bin $(PATH) ;
-}
 
 #### Link ####
 
 rule Link-action
 {
-    use-tool $(<) : LINKER : bcc32 ;
     borland-Link-action $(<) : $(>) ;
     if $(3) = DLL
     {
-        use-tool $(<) : IMPLIB : implib ;
         borland-IMPLIB-action $(<) : $(>) ;
     }
 }
@@ -77,50 +62,47 @@ rule Link-action
 # bcc32 needs to have ilink32 in the path in order to invoke it, so explicitly
 # specifying $(BCC_TOOL_PATH)bcc32 doesn't help. You need to add
 # $(BCC_TOOL_PATH) to the path
-actions borland-Link-action bind NEEDLIBS LINKER
+actions borland-Link-action bind NEEDLIBS
 {
     set PATH=$(BCC_TOOL_PATH);%PATH%
-    $(LINKER) -q $(LINKFLAGS) -L"$(BCCROOT)$(SLASH)lib" -e"$(<[1])" "$(>)" "$(NEEDLIBS)" 
+    $(BCC_TOOL_PATH)bcc32 -q $(LINKFLAGS) -L"$(BCCROOT)$(SLASH)lib" -e"$(<[1])" "$(>)" "$(NEEDLIBS)" 
 }
 
 actions borland-IMPLIB-action bind IMPLIB
 {
-    $(IMPLIB) $(<[2]) $(<[1])
+    $(BCC_TOOL_PATH)implib $(<[2]) $(<[1])
 }
 
 #### Cc #####
 
 rule Cc-action
 {
-    use-tool $(<) : CC : bcc32 ;
     borland-Cc-action $(<) : $(>) ;
 }
 
-actions borland-Cc-action bind CC
+actions borland-Cc-action
 {
-    $(CC) -q -c -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
+    $(BCC_TOOL_PATH)bcc32 -q -c -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
 }
 
 #### C++ ####
 rule C++-action
 {
-    use-tool $(<) : C++ : bcc32 ;
     borland-C++-action $(<) : $(>) ;
 }
 
-actions borland-C++-action bind C++
+actions borland-C++-action
 {
-    $(C++) -q -c -P -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
+    $(BCC_TOOL_PATH)bcc32 -q -c -P -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
 }
 
 #### Archive ####
 rule Archive-action
 {
-    use-tool $(<) : LD : tlib ;
     borland-Archive-action $(<) : $(>) ;
 }
 
-actions updated together piecemeal borland-Archive-action bind LD
+actions updated together piecemeal borland-Archive-action
 {
-    $(LD) /P32 /u /a /C "$(<)" +"$(>)"
+    $(BCC_TOOL_PATH)tlib /P32 /u /a /C "$(<)" +"$(>)"
 }

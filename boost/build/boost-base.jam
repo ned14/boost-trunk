@@ -436,6 +436,10 @@ rule free-feature
 {
     feature $(<) : $(>) ;
     gFREE_FEATURES += <$(<)> ;
+    if $(>)
+    {
+        gSINGLE_VALUED_FREE_FEATURES += <$(<)> ;
+    }
 }
 
 rule path-feature
@@ -463,16 +467,17 @@ rule feature-default
 #   toolset:         the name of the toolset
 #   variable-name:   the name of a global variable which can be used to carry
 #                    information to a command-line
-#   condition:       one or more elements in the following forms:
-#                    1. property-sets of the form:
+#   condition:       One of the following:
+#                    1. zero or more property-sets of the form:
 #                          <feature>value[/<feature>value...]
-#                    2. <feature>[/<feature>...]
+#                    2. one or more <feature>[/<feature>...]
 #
 # This rule appends to the specified variable, depending on a target's build
-# configuration.
+# configuration and the form of condition.
 #
-#   1. if any specified property-set is a subset of the target's build properties,
-#   the values specified in $(3) will be appended once to /variable-name/.
+#   1. if any specified property-set is a subset of the target's build properties or if 
+#   condition is empty, the values specified in $(3) will be appended once to
+#   /variable-name/.
 #
 #   2. The value of each specified feature that participates in the target's
 #   build properaties is appended to /variable-name/.
@@ -514,6 +519,10 @@ rule flags
         {
             $(variable) += [ get-values $(x) : $(gBUILD_PROPERTIES) ] ;
         }
+    }
+    if ! $(condition)
+    {
+        $(variable) += $(>) ;
     }
 }
 
@@ -657,9 +666,8 @@ rule set-target-variables # file-target
 
 # fixup-path-properties properties...
 #
-# For free properties that have been declared with "PATH", add a relative path
-# prefix to the value as neccessary to locate the path relative to the current
-# subproject. 
+# For path properties, add a relative path prefix to the value as neccessary to
+# locate the path relative to the current subproject.
 rule fixup-path-properties
 {
     local path-properties = [ get-properties $(gPATH_FEATURES) : $(<) ] ;
@@ -763,6 +771,21 @@ rule segregate-overrides
     $(>) = [ get-properties $(kept-features) : $($(>)) ] ;
 }
 
+# report-free-property-conflicts free-property... : target
+#
+# If any single-valued free-feature appears more than once in free-property...,
+# exit with an appropriate error message.
+rule report-free-property-conflicts
+{
+    local p = [ get-properties $(gSINGLE_VALUED_FREE_FEATURES) $(<) ] ;
+    local f = [ unique $(p:G) ] ;
+    if $(p:G) != $(f)
+    {
+        EXIT $(>): multiple values for single-valued free feature(s)
+            [ difference $(p:G) $(f) ] requested ;
+    }
+}
+
 # expand-build-request
 #      toolset variant target-name : requirements : build-request
 #
@@ -782,6 +805,7 @@ rule expand-build-request
     local free-properties = [ segregate-free-properties requirements build-request ] ;
 
     # Check for conflicts
+    report-free-property-conflicts $(free-properties) : $(<[3]) ;
     report-any-incompatible-properties $(requirements) : $(build-request) : $(<[3]) ;
 
     # Get  the base variant for the toolset. Includes free features

@@ -1,3 +1,9 @@
+# (C) Copyright David Abrahams 2001. Permission to copy, use,
+# modify, sell and distribute this software is granted provided this
+# copyright notice appears in all copies. This software is provided
+# "as is" without express or implied warranty, and with no claim as
+# to its suitability for any purpose.
+
 # You can either use Metrowerks-supplied scripts (e.g. "<CodeWarrior>/Other
 # Metrowerks Tools/Command Line Tools/cwenv.bat") to set up the appropriate
 # environment, set up environment variables by hand as described in
@@ -31,12 +37,26 @@ flags metrowerks CFLAGS <user-interface>console/<runtime-link>dynamic : -prefix 
 flags metrowerks STDLIBS <runtime-link>static : ansicx86.lib;mwcrtl.lib;ansicppx86.lib;gdi32.lib;user32.lib;kernel32.lib ;
 flags metrowerks STDLIBS <runtime-link>dynamic : mwcrtldll.lib;gdi32.lib;user32.lib;kernel32.lib ;
 
+# How will we find metrowerks standard headers?
+# If the user specified METROWERKS_INCLUDE_ROOT, use that
+# Otherwise, if he specified METROWERKS_ROOT, use that
+# Otherwise, look at the "standard" environment variable CWFOLDER
+METROWERKS_INCLUDE_ROOT ?= $(METROWERKS_ROOT) ;
+METROWERKS_INCLUDE_ROOT ?= $(CWFOLDER) ;
+
+# This is the list of subdirectories below METROWERKS_INCLUDE_ROOT to search.
+# Might need customization for platforms other than Win32
+gMETROWERKS_STD_INCLUDES = MSL "Win32-X86 Support" MSL$(SLASH)MSL_C$(SLASH)MSL_Common$(SLASH)Include "Win32-X86 Support"$(SLASH)Headers$(SLASH)"Win32 SDK" ;
+
+# Multiply these out to get the STDHDRS settings for metrowerks
+flags metrowerks STDHDRS : $(METROWERKS_INCLUDE_ROOT)$(SLASH)$(gMETROWERKS_STD_INCLUDES) ;
+
 #### Link ####
 
 rule Link-action
 {
     metrowerks-Link-action $(<) : $(>) ;
-    IMPLIB_COMMAND on $(<) = "-implib " ;
+    IMPLIB_COMMAND on $(<) = "-implib " ; # will be "multiplied away" if not needed.
 }
 
 # Here we set the environment variable MWWinx86LibraryFiles (customize for other

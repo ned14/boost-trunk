@@ -1,5 +1,11 @@
 # Microsoft Visual C++
 
+# (C) Copyright David Abrahams 2001. Permission to copy, use,
+# modify, sell and distribute this software is granted provided this
+# copyright notice appears in all copies. This software is provided
+# "as is" without express or implied warranty, and with no claim as
+# to its suitability for any purpose.
+
 # compute MSVC tool path
 # You can either put the msvc bin directory in your PATH, or you can set
 # MSVCDir to point at the msvc installation directory
@@ -26,6 +32,7 @@ flags msvc CFLAGS <runtime-build>debug/<runtime-link>static/<threading>multi : /
 flags msvc DEFINES <define> ;
 flags msvc UNDEFS <undef> ;
 flags msvc HDRS <include> ;
+flags msvc HDRS <sysinclude> ;
 
 flags msvc STDHDRS : $(MSVCDir)$(SLASH)include ;
 flags msvc STDLIBPATH : $(MSVCDir)$(SLASH)lib ;

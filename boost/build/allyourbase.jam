@@ -6,6 +6,13 @@
 # This file is part of Jam - see jam.c for Copyright information.
 #
 
+# This file is ALSO:
+# (C) Copyright David Abrahams 2001. Permission to copy, use,
+# modify, sell and distribute this software is granted provided this
+# copyright notice appears in all copies. This software is provided
+# "as is" without express or implied warranty, and with no claim as
+# to its suitability for any purpose.
+
 #
 # JAMBASE - jam 2.3 ruleset providing make(1)-like functionality
 #
@@ -944,6 +951,10 @@ rule Object
     # Use unique to clean up confusing duplicates a bit
     HDRS on $(<) = [ unique $(LOCATE_SOURCE) $(SEARCH_SOURCE) $(HDRS) ] ;
 
+    # Set STDHDRS on the object so that multi-compiler builds will search for
+    # headers in the right places. 
+    STDHDRS on $(<) = $(STDHDRS) ;
+
     # handle #includes for source: Jam scans for headers with
     # the regexp pattern $(HDRSCAN) and then invokes $(HDRRULE)
     # with the scanned file as the target and the found headers
@@ -1070,6 +1081,15 @@ rule Shell
 rule subproject
 {
    SubDir TOP [ split-path $(<) ] ;
+}
+
+# dwa 6/18/01 - added for boost
+# project-root
+#
+# Declares this directory to be the project root.
+rule project-root
+{
+    SubDir TOP ;
 }
 
 # dwa 6/7/01 - added for boost
