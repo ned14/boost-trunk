@@ -2022,6 +2022,7 @@ boost/boost/variant/detail/has_trivial_move.hpp svneol=native#text/plain
 boost/boost/variant/detail/initializer.hpp svneol=native#text/plain
 boost/boost/variant/detail/make_variant_list.hpp svneol=native#text/plain
 boost/boost/variant/detail/move.hpp svneol=native#text/plain
+boost/boost/variant/detail/over_sequence.hpp svneol=native#text/plain
 boost/boost/variant/detail/substitute.hpp svneol=native#text/plain
 boost/boost/variant/detail/substitute_fwd.hpp svneol=native#text/plain
 boost/boost/variant/detail/variant_io.hpp svneol=native#text/plain
