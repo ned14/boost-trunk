@@ -655,6 +655,7 @@ boost/libs/utility/cast_test.cpp svneol=native#text/plain
 boost/libs/utility/compressed_pair.htm svneol=native#text/html
 boost/libs/utility/compressed_pair_test.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptor_examples.cpp svneol=native#text/plain
+boost/libs/utility/iterator_adaptor_test.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptors.htm svneol=native#text/html
 boost/libs/utility/iterators_test.cpp svneol=native#text/plain
 boost/libs/utility/noncopyable_test.cpp svneol=native#text/plain
