@@ -175,6 +175,11 @@ def register_globals ():
                          '<runtime-debugging>off', '<define>NDEBUG'])
     variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 
+    type.register ('H', ['h'])
+    type.register ('HPP', ['hpp'], 'H')
+    type.register ('C', ['c'])
+    
+
 reset ()
 register_globals ()
 
@@ -262,10 +267,6 @@ class SearchedLibTarget (virtual_target.AbstractFileTarget):
 ### scanner.register c-scanner : include ;
 ### 
 ### type.set-scanner CPP : c-scanner ;
-
-type.register ('H', ['h'])
-type.register ('HPP', ['hpp'], 'H')
-type.register ('C', ['c'])
 
 ### # The generator class for libraries (target type LIB). Depending on properties it will
 ### # request building of the approapriate specific type -- SHARED_LIB, STATIC_LIB or 
