@@ -2886,6 +2886,7 @@ boost/libs/date_time/example/Jamfile svneol=native#text/plain
 boost/libs/date_time/example/gregorian/Jamfile.v2 svneol=native#text/plain
 boost/libs/date_time/example/gregorian/dates_as_strings.cpp svneol=native#text/plain
 boost/libs/date_time/example/gregorian/days_alive.cpp svneol=native#text/plain
+boost/libs/date_time/example/gregorian/days_between_new_years.cpp svneol=native#text/plain
 boost/libs/date_time/example/gregorian/days_since_year_start.cpp svneol=native#text/plain
 boost/libs/date_time/example/gregorian/days_till_new_year.cpp svneol=native#text/plain
 boost/libs/date_time/example/gregorian/end_of_month_day.cpp svneol=native#text/plain
