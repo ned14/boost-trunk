@@ -2826,6 +2826,7 @@ boost/libs/mpl/example/inherit_multiply.cpp svneol=native#text/plain
 boost/libs/mpl/example/integer.cpp svneol=native#text/plain
 boost/libs/mpl/example/lambda2.cpp svneol=native#text/plain
 boost/libs/mpl/example/tuple_from_list.cpp svneol=native#text/plain
+boost/libs/mpl/index.html svneol=native#text/html
 boost/libs/mpl/preprocessed/list/list10.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/list/list10_c.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/list/list20.cpp svneol=native#text/plain
