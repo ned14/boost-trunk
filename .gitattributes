@@ -771,6 +771,7 @@ boost/libs/graph/doc/PropertyGraph.html svneol=native#text/html
 boost/libs/graph/doc/PropertyTag.html svneol=native#text/html
 boost/libs/graph/doc/VertexAndEdgeListGraph.html svneol=native#text/html
 boost/libs/graph/doc/VertexListGraph.html svneol=native#text/html
+boost/libs/graph/doc/VertexMutableGraph.html svneol=native#text/html
 boost/libs/graph/doc/acknowledgements.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_iterator.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_list.html svneol=native#text/html
