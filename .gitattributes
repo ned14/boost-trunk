@@ -2242,6 +2242,7 @@ boost/libs/python/test/comprehensive.hpp svneol=native#text/plain
 boost/libs/python/test/comprehensive.py svneol=native#text/x-python
 boost/libs/python/test/data_members.cpp svneol=native#text/plain
 boost/libs/python/test/data_members.py svneol=native#text/x-python
+boost/libs/python/test/defaults.cpp svneol=native#text/plain
 boost/libs/python/test/defaults.py svneol=native#text/x-python
 boost/libs/python/test/destroy_test.cpp svneol=native#text/plain
 boost/libs/python/test/dict.cpp svneol=native#text/plain
