@@ -372,6 +372,7 @@ boost/libs/graph/doc/bellman_visitor.html svneol=native#text/html
 boost/libs/graph/doc/bfs_visitor.html svneol=native#text/html
 boost/libs/graph/doc/bibliography.html svneol=native#text/html
 boost/libs/graph/doc/breadth_first_search.html svneol=native#text/html
+boost/libs/graph/doc/breadth_first_visit.html svneol=native#text/html
 boost/libs/graph/doc/challenge.html svneol=native#text/html
 boost/libs/graph/doc/connected_components.html svneol=native#text/html
 boost/libs/graph/doc/constructing_algorithms.html svneol=native#text/html
