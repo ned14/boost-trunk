@@ -1,9 +1,0 @@
-
-project
-    : source-location ../src
-    ;
-
-SOURCES = exception operations_posix_windows path_posix_windows convenience ;
-
-lib fs : $(SOURCES).cpp
-     ;
