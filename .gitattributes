@@ -665,7 +665,6 @@ boost/boost/iostreams/filtering_streambuf.hpp svneol=native#text/plain
 boost/boost/iostreams/is_device.hpp svneol=native#text/plain
 boost/boost/iostreams/is_direct.hpp svneol=native#text/plain
 boost/boost/iostreams/is_filter.hpp svneol=native#text/plain
-boost/boost/iostreams/offset.hpp svneol=native#text/plain
 boost/boost/iostreams/operations.hpp svneol=native#text/plain
 boost/boost/iostreams/pipable.hpp svneol=native#text/plain
 boost/boost/iostreams/reverse.hpp svneol=native#text/plain
