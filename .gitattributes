@@ -1953,6 +1953,7 @@ boost/boost/variant/detail/apply_visitor_unary.hpp svneol=native#text/plain
 boost/boost/variant/detail/bool_trait_def.hpp svneol=native#text/plain
 boost/boost/variant/detail/bool_trait_undef.hpp svneol=native#text/plain
 boost/boost/variant/detail/define_forwarding_func.hpp svneol=native#text/plain
+boost/boost/variant/detail/forced_return.hpp svneol=native#text/plain
 boost/boost/variant/detail/generic_result_type.hpp svneol=native#text/plain
 boost/boost/variant/detail/has_nothrow_move.hpp svneol=native#text/plain
 boost/boost/variant/detail/has_trivial_move.hpp svneol=native#text/plain
