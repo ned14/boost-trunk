@@ -702,7 +702,6 @@ boost/libs/regex/template_class_ref.htm svneol=native#text/html
 boost/libs/regex/traits_class_ref.htm svneol=native#text/html
 boost/libs/regression.cfg -text
 boost/libs/regression.cpp svneol=native#text/plain
-boost/libs/regrtest.py svneol=native#text/x-python
 boost/libs/smart_ptr/gccspeed.gif -text svneol=unset#image/gif
 boost/libs/smart_ptr/index.htm svneol=native#text/html
 boost/libs/smart_ptr/msvcspeed.gif -text svneol=unset#image/gif
