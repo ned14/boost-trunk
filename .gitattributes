@@ -236,6 +236,7 @@ boost/boost/regex/detail/regex_stack.hpp svneol=native#text/plain
 boost/boost/regex/detail/regex_synch.hpp svneol=native#text/plain
 boost/boost/regex/pattern_except.hpp svneol=native#text/plain
 boost/boost/regex/regex_traits.hpp svneol=native#text/plain
+boost/boost/regex/src.cpp svneol=native#text/plain
 boost/boost/smart_ptr.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
 boost/boost/stdint.h svneol=native#text/plain
