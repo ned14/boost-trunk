@@ -459,6 +459,7 @@ boost/libs/config/test/boost_no_std_wstring.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_stdc_namespace.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_swprintf.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_using_template.ipp svneol=native#text/plain
+boost/libs/config/test/boost_no_void_returns.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_wchar_t.ipp svneol=native#text/plain
 boost/libs/config/test/config_info.cpp svneol=native#text/plain
 boost/libs/config/test/config_test.cpp svneol=native#text/plain
