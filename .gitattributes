@@ -776,6 +776,7 @@ boost/boost/mpl/logical/not.hpp svneol=native#text/plain
 boost/boost/mpl/logical/or.hpp svneol=native#text/plain
 boost/boost/mpl/lower_bound.hpp svneol=native#text/plain
 boost/boost/mpl/math/fixed_c.hpp svneol=native#text/plain
+boost/boost/mpl/math/is_even.hpp svneol=native#text/plain
 boost/boost/mpl/math/rational_c.hpp svneol=native#text/plain
 boost/boost/mpl/max_element.hpp svneol=native#text/plain
 boost/boost/mpl/meta_fun.hpp svneol=native#text/plain
