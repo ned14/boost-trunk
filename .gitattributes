@@ -369,6 +369,7 @@ boost/boost/mpl/O1_size_fwd.hpp svneol=native#text/plain
 boost/boost/mpl/advance.hpp svneol=native#text/plain
 boost/boost/mpl/alias.hpp svneol=native#text/plain
 boost/boost/mpl/always.hpp svneol=native#text/plain
+boost/boost/mpl/apply.hpp svneol=native#text/plain
 boost/boost/mpl/apply_if.hpp svneol=native#text/plain
 boost/boost/mpl/arg.hpp svneol=native#text/plain
 boost/boost/mpl/arg_fwd.hpp svneol=native#text/plain
