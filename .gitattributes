@@ -3329,6 +3329,7 @@ boost/libs/bind/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/bind/test/bind_cdecl_mf_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_const_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_cv_test.cpp svneol=native#text/plain
+boost/libs/bind/test/bind_dm_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_eq_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_fastcall_mf_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_fastcall_test.cpp svneol=native#text/plain
