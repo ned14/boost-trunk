@@ -1,3 +1,9 @@
+boost/libs/thread/build/*.pdb
+boost/libs/thread/build/bin*
+boost/libs/thread/example/*.pdb
+boost/libs/thread/example/bin
+boost/libs/thread/test/*.pdb
+boost/libs/thread/test/bin
 boost/status/*.log
 boost/status/boosttmp.*
 boost/status/regression

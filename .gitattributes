@@ -1854,6 +1854,7 @@ boost/libs/test/test/test_tools_fail1.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_fail3.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_fail4.cpp svneol=native#text/plain
+boost/libs/thread/build/.cvsignore -text
 boost/libs/thread/build/Jamfile svneol=native#text/plain
 boost/libs/thread/build/threads.jam svneol=native#text/plain
 boost/libs/thread/build/threads.mcp -text svneol=unset#unset
@@ -1883,6 +1884,7 @@ boost/libs/thread/doc/thread_group.html svneol=native#text/html
 boost/libs/thread/doc/thread_resource_error.html svneol=native#text/html
 boost/libs/thread/doc/thread_specific_ptr.html svneol=native#text/html
 boost/libs/thread/doc/xtime.html svneol=native#text/html
+boost/libs/thread/example/.cvsignore -text
 boost/libs/thread/example/Jamfile svneol=native#text/plain
 boost/libs/thread/example/monitor/Carbon.r -text
 boost/libs/thread/example/monitor/monitor.cpp svneol=native#text/plain
@@ -1936,6 +1938,7 @@ boost/libs/thread/src/threadmon.hpp svneol=native#text/plain
 boost/libs/thread/src/timeconv.inl -text
 boost/libs/thread/src/tss.cpp svneol=native#text/plain
 boost/libs/thread/src/xtime.cpp svneol=native#text/plain
+boost/libs/thread/test/.cvsignore -text
 boost/libs/thread/test/Carbon.r -text
 boost/libs/thread/test/Jamfile svneol=native#text/plain
 boost/libs/thread/test/test.mcp -text svneol=unset#unset
