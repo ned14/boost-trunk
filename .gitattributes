@@ -6685,6 +6685,7 @@ boost/tools/build/v2/test/testing-primitives/bootstrap.jam svneol=native#text/pl
 boost/tools/build/v2/test/testing_primitives.py svneol=native#text/x-python
 boost/tools/build/v2/test/tree.py svneol=native#text/x-python
 boost/tools/build/v2/test/unit-tests.jam svneol=native#text/plain
+boost/tools/build/v2/test/unit_test.py svneol=native#text/x-python
 boost/tools/build/v2/test/unit_tests.py svneol=native#text/x-python
 boost/tools/build/v2/test/unused.py svneol=native#text/x-python
 boost/tools/build/v2/test/unused/Jamfile svneol=native#text/plain
