@@ -366,6 +366,7 @@ boost/boost/preprocessor/arithmetic/div.hpp svneol=native#text/plain
 boost/boost/preprocessor/arithmetic/mod.hpp svneol=native#text/plain
 boost/boost/preprocessor/arithmetic/mul.hpp svneol=native#text/plain
 boost/boost/preprocessor/arithmetic/sub.hpp svneol=native#text/plain
+boost/boost/preprocessor/array.hpp svneol=native#text/plain
 boost/boost/preprocessor/assert_msg.hpp svneol=native#text/plain
 boost/boost/preprocessor/cat.hpp svneol=native#text/plain
 boost/boost/preprocessor/comma.hpp svneol=native#text/plain
