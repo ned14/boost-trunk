@@ -4288,6 +4288,7 @@ boost/libs/utility/base_from_member_test.cpp svneol=native#text/plain
 boost/libs/utility/binary_search_test.cpp svneol=native#text/plain
 boost/libs/utility/call_traits.htm svneol=native#text/html
 boost/libs/utility/call_traits_test.cpp svneol=native#text/plain
+boost/libs/utility/checked_delete.html svneol=native#text/html
 boost/libs/utility/checked_delete_test.cpp svneol=native#text/plain
 boost/libs/utility/compressed_pair.htm svneol=native#text/html
 boost/libs/utility/compressed_pair_test.cpp svneol=native#text/plain
