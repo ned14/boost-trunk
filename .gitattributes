@@ -1451,6 +1451,7 @@ boost/boost/python/overloads.hpp svneol=native#text/plain
 boost/boost/python/pointee.hpp svneol=native#text/plain
 boost/boost/python/proxy.hpp svneol=native#text/plain
 boost/boost/python/ptr.hpp svneol=native#text/plain
+boost/boost/python/raw_function.hpp svneol=native#text/plain
 boost/boost/python/refcount.hpp svneol=native#text/plain
 boost/boost/python/reference_existing_object.hpp svneol=native#text/plain
 boost/boost/python/return_by_value.hpp svneol=native#text/plain
