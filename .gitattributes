@@ -7321,6 +7321,10 @@ boost/libs/thread/src/thread.cpp svneol=native#text/plain
 boost/libs/thread/src/threadmon.cpp svneol=native#text/plain
 boost/libs/thread/src/timeconv.inl -text
 boost/libs/thread/src/tss.cpp svneol=native#text/plain
+boost/libs/thread/src/tss_dll.cpp svneol=native#text/plain
+boost/libs/thread/src/tss_hooks.cpp svneol=native#text/plain
+boost/libs/thread/src/tss_null.cpp svneol=native#text/plain
+boost/libs/thread/src/tss_pe.cpp svneol=native#text/plain
 boost/libs/thread/src/xtime.cpp svneol=native#text/plain
 boost/libs/thread/test/.cvsignore -text
 boost/libs/thread/test/Carbon.r -text
