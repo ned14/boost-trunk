@@ -7313,6 +7313,7 @@ boost/libs/thread/src/mac/thread_cleanup.hpp svneol=native#text/plain
 boost/libs/thread/src/mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/mutex.inl -text
 boost/libs/thread/src/once.cpp svneol=native#text/plain
+boost/libs/thread/src/pe_tls.ipp svneol=native#text/plain
 boost/libs/thread/src/read_write_mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/recursive_mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/thread.cpp svneol=native#text/plain
