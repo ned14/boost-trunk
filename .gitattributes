@@ -138,7 +138,6 @@ boost/boost/graph/detail/incremental_components.hpp svneol=native#text/plain
 boost/boost/graph/detail/intset.hpp svneol=native#text/plain
 boost/boost/graph/detail/is_same.hpp svneol=native#text/plain
 boost/boost/graph/detail/list_base.hpp svneol=native#text/plain
-boost/boost/graph/detail/new_iterator_adaptors.hpp svneol=native#text/plain
 boost/boost/graph/detail/permutation.hpp svneol=native#text/plain
 boost/boost/graph/detail/self_avoiding_walk.hpp svneol=native#text/plain
 boost/boost/graph/detail/set_adaptor.hpp svneol=native#text/plain
