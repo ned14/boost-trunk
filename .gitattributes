@@ -4453,7 +4453,6 @@ boost/libs/python/pyste/src/Pyste/exporters.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/exporterutils.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/infos.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/policies.py svneol=native#text/x-python
-boost/libs/python/pyste/src/Pyste/pyste-profile.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/pyste.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/settings.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/utils.py svneol=native#text/x-python
