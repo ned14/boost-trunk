@@ -5424,6 +5424,7 @@ boost/libs/test/test/prg_exec_fail3.cpp svneol=native#text/plain
 boost/libs/test/test/prg_exec_fail4.cpp svneol=native#text/plain
 boost/libs/test/test/result_report_test.cpp svneol=native#text/plain
 boost/libs/test/test/result_report_test.pattern -text
+boost/libs/test/test/test_case_template_test.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail1.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail3.cpp svneol=native#text/plain
