@@ -424,6 +424,7 @@ boost/libs/config/test/boost_has_clock_gettime.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_ftime.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_gettimeofday.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_hash.ipp svneol=native#text/plain
+boost/libs/config/test/boost_has_long_long.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_macro_use_facet.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_nanosleep.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_nl_types_h.ipp svneol=native#text/plain
