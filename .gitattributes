@@ -4663,6 +4663,11 @@ boost/tools/build/examples-v2/make/lib/Jamfile svneol=native#text/plain
 boost/tools/build/examples-v2/make/lib/b.cpp svneol=native#text/plain
 boost/tools/build/examples-v2/make/project-root.jam svneol=native#text/plain
 boost/tools/build/examples-v2/make/readme.txt svneol=native#text/plain
+boost/tools/build/examples-v2/qt/Jamfile svneol=native#text/plain
+boost/tools/build/examples-v2/qt/lcdrange.cpp svneol=native#text/plain
+boost/tools/build/examples-v2/qt/lcdrange.qpp -text
+boost/tools/build/examples-v2/qt/main.cpp svneol=native#text/plain
+boost/tools/build/examples-v2/qt/project-root.jam svneol=native#text/plain
 boost/tools/build/examples/lib_use/Jamfile svneol=native#text/plain
 boost/tools/build/examples/lib_use/simple.cpp svneol=native#text/plain
 boost/tools/build/examples/lib_use/simple_lib.cpp svneol=native#text/plain
@@ -5173,6 +5178,11 @@ boost/tools/build/v2/example/make/lib/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/make/lib/b.cpp svneol=native#text/plain
 boost/tools/build/v2/example/make/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/make/readme.txt svneol=native#text/plain
+boost/tools/build/v2/example/qt/Jamfile svneol=native#text/plain
+boost/tools/build/v2/example/qt/lcdrange.cpp svneol=native#text/plain
+boost/tools/build/v2/example/qt/lcdrange.qpp -text
+boost/tools/build/v2/example/qt/main.cpp svneol=native#text/plain
+boost/tools/build/v2/example/qt/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/gcc.jam svneol=native#text/plain
 boost/tools/build/v2/kernel/class.jam svneol=native#text/plain
 boost/tools/build/v2/lex.jam svneol=native#text/plain
