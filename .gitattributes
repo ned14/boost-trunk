@@ -7454,6 +7454,7 @@ boost/libs/serialization/test/test_primitive.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_private_ctor.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_recursion.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_registered.cpp svneol=native#text/plain
+boost/libs/serialization/test/test_reset_object_address.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_set.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_shared_ptr.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_simple_class.cpp svneol=native#text/plain
