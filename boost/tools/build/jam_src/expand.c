@@ -65,6 +65,7 @@ var_expand(
 {
 	char out_buf[ MAXSYM ];
     string buf[1];
+    string out1; /* Temporary buffer */
     size_t prefix_length;
     char *out;
 	char *inp = in;
@@ -364,13 +365,11 @@ var_expand(
 
 		/* For each variable value */
 
+        string_new( &out1 );
 		for( ; value; value = list_next( value ) )
 		{
 		    LIST *rem;
-            string out1;
             size_t postfix_start;
-
-            string_new( &out1 );
 
 		    /* Handle end subscript (length actually) */
 
@@ -402,6 +401,8 @@ var_expand(
 		    }
 
             string_append( buf, out1.value );
+            string_free( &out1 );
+            string_new( &out1 );
 
 		    /* If no remainder, append result to output chain. */
 
@@ -426,6 +427,7 @@ var_expand(
 		    }
             string_free( &variable );
 		}
+        string_new( &out1 );
 
 		/* Toss used empty */
 

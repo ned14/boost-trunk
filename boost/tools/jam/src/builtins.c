@@ -45,7 +45,8 @@ int glob( char *s, char *c );
 
 static void lol_build( LOL* lol, char** elements );
 static void backtrace( FRAME *frame );
-static void backtrace_line( FRAME *frame );
+void backtrace_line( FRAME *frame );
+void print_source_line( PARSE* p );
 
 RULE* bind_builtin( char* name, LIST*(*f)(PARSE*, FRAME*), int flags, char** args )
 {
@@ -475,7 +476,7 @@ static void get_source_line( PARSE* procedure, char** file, int* line )
     }
 }
 
-static void print_source_line( PARSE* p )
+void print_source_line( PARSE* p )
 {
     char* file;
     int line;
@@ -488,7 +489,7 @@ static void print_source_line( PARSE* p )
 }
 
 /* Print a single line of error backtrace for the given frame */
-static void backtrace_line( FRAME *frame )
+void backtrace_line( FRAME *frame )
 {
     print_source_line( frame->procedure );
     printf( " in %s\n", frame->rulename );

@@ -1,5 +1,5 @@
 /*
- * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
+ * Copyright 1993, 2000 Christopher Seiwald.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -21,6 +21,7 @@
 # include "expand.h"
 # include "rules.h"
 # include "newstr.h"
+# include "make.h"
 # include "search.h"
 # include "hdrmacro.h"
 # include "hash.h"
@@ -35,37 +36,40 @@
  *
  * External routines:
  *
- *	compile_append() - append list results of two statements
- *	compile_foreach() - compile the "for x in y" statement
- *	compile_if() - compile 'if' rule
- *	compile_while() - compile 'while' rule
- *	compile_include() - support for 'include' - call include() on file
- *	compile_list() - expand and return a list 
- *	compile_local() - declare (and set) local variables
- *	compile_null() - do nothing -- a stub for parsing
- *	compile_on() - run rule under influence of on-target variables
- *	compile_rule() - compile a single user defined rule
- *	compile_rules() - compile a chain of rules
- *	compile_set() - compile the "set variable" statement
- *	compile_setcomp() - support for `rule` - save parse tree 
- *	compile_setexec() - support for `actions` - save execution string 
- *	compile_settings() - compile the "on =" (set variable on exec) statement
- *	compile_switch() - compile 'switch' rule
- *
+ *  compile_append() - append list results of two statements
+ *  compile_foreach() - compile the "for x in y" statement
+ *  compile_if() - compile 'if' rule
+ *  compile_while() - compile 'while' rule
+ *  compile_include() - support for 'include' - call include() on file
+ *  compile_list() - expand and return a list 
+ *  compile_local() - declare (and set) local variables
+ *  compile_null() - do nothing -- a stub for parsing
+ *  compile_on() - run rule under influence of on-target variables
+ *  compile_rule() - compile a single user defined rule
+ *  compile_rules() - compile a chain of rules
+ *  compile_set() - compile the "set variable" statement
+ *  compile_setcomp() - support for `rule` - save parse tree 
+ *  compile_setexec() - support for `actions` - save execution string 
+ *  compile_settings() - compile the "on =" (set variable on exec) statement
+ *  compile_switch() - compile 'switch' rule
  * Internal routines:
  *
- *	debug_compile() - printf with indent to show rule expansion.
+ *  debug_compile() - printf with indent to show rule expansion.
  *
- *	evaluate_if() - evaluate if to determine which leg to compile
- *	evaluate_rule() - execute a rule invocation
+ *  evaluate_rule() - execute a rule invocation
  *
- * 02/03/94 (seiwald) -	Changed trace output to read "setting" instead of 
- *			the awkward sounding "settings".
+ *  builtin_depends() - DEPENDS/INCLUDES rule
+ *  builtin_echo() - ECHO rule
+ *  builtin_exit() - EXIT rule
+ *  builtin_flags() - NOCARE, NOTFILE, TEMPORARY rule
+ *
+ * 02/03/94 (seiwald) - Changed trace output to read "setting" instead of 
+ *          the awkward sounding "settings".
  * 04/12/94 (seiwald) - Combined build_depends() with build_includes().
  * 04/12/94 (seiwald) - actionlist() now just appends a single action.
  * 04/13/94 (seiwald) - added shorthand L0 for null list pointer
  * 05/13/94 (seiwald) - include files are now bound as targets, and thus
- *			can make use of $(SEARCH)
+ *          can make use of $(SEARCH)
  * 06/01/94 (seiwald) - new 'actions existing' does existing sources
  * 08/23/94 (seiwald) - Support for '+=' (append to variable)
  * 12/20/94 (seiwald) - NOTIME renamed NOTFILE.
@@ -74,22 +78,38 @@
  * 02/14/95 (seiwald) - NoUpdate rule.
  * 09/11/00 (seiwald) - new evaluate_rule() for headers().
  * 09/11/00 (seiwald) - compile_xxx() now return LIST *.
- *			New compile_append() and compile_list() in
- *			support of building lists here, rather than
- *			in jamgram.yy.
+ *          New compile_append() and compile_list() in
+ *          support of building lists here, rather than
+ *          in jamgram.yy.
  * 01/10/00 (seiwald) - built-ins split out to builtin.c.
  */
 
 static void debug_compile( int which, char *s, FRAME* frame );
 int glob( char *s, char *c );
+/* Internal functions from builtins.c */
+void backtrace_line( FRAME *frame );
+void print_source_line( PARSE* p );
 
 
+void frame_init( FRAME* frame )
+{
+    frame->prev = 0;
+    lol_init(frame->args);
+    frame->module = root_module();
+    frame->rulename = "module scope";
+    frame->procedure = 0;
+}
+
+void frame_free( FRAME* frame )
+{
+    lol_free( frame->args );
+}
 
 /*
  * compile_append() - append list results of two statements
  *
- *	parse->left	more compile_append() by left-recursion
- *	parse->right	single rule
+ *  parse->left more compile_append() by left-recursion
+ *  parse->right    single rule
  */
 
 LIST *
@@ -134,7 +154,7 @@ lcmp( LIST *t, LIST *s )
 LIST *
 compile_eval(
 	PARSE	*parse,
-	FRAME *frame )
+	FRAME	*frame )
 {
 	LIST *ll = parse_evaluate( parse->left, frame );
 	LIST *lr = parse_evaluate( parse->right, frame );
@@ -154,11 +174,11 @@ compile_eval(
 	case EXPR_AND:
 		if( ll && lr ) status = 1;
 		break;
-    
+
 	case EXPR_OR:
 		if( ll || lr ) status = 1;
 		break;
-        
+
 	case EXPR_IN:
 		/* "a in b": make sure each of */
 		/* ll is equal to something in lr. */
@@ -170,20 +190,20 @@ compile_eval(
 			    break;
 		    if( !s ) break;
 		}
-        
+
 		/* No more ll? Success */
 
 		if( !t ) status = 1;
 
 		break;
-        
+
 	case EXPR_EQUALS:	if( lcmp( ll, lr ) == 0 ) status = 1; break;
 	case EXPR_NOTEQ:	if( lcmp( ll, lr ) != 0 ) status = 1; break;
 	case EXPR_LESS:		if( lcmp( ll, lr ) < 0  ) status = 1; break;
 	case EXPR_LESSEQ:	if( lcmp( ll, lr ) <= 0 ) status = 1; break;
 	case EXPR_MORE:		if( lcmp( ll, lr ) > 0  ) status = 1; break;
 	case EXPR_MOREEQ:	if( lcmp( ll, lr ) >= 0 ) status = 1; break;
-    
+
 	}
 
 	if( DEBUG_IF )
@@ -208,6 +228,7 @@ compile_eval(
 	if( lr ) list_free( lr );
 	return t;
 }
+
 
 /*
  * compile_foreach() - compile the "for x in y" statement
@@ -267,18 +288,32 @@ compile_if(
     PARSE   *p,
     FRAME *frame )
 {
-	LIST *l = parse_evaluate( p->left, frame );
-
-	if( l )
-	{
-	    list_free( l );
-	    return parse_evaluate( p->right, frame );
-	}
-	else
-	{
-	    return parse_evaluate( p->third, frame );
-	}
+    LIST *l = parse_evaluate( p->left, frame );
+    if( l )
+    {
+        list_free( l );
+        return parse_evaluate( p->right, frame );
+    }
+    else
+    {
+        return parse_evaluate( p->third, frame );
+    }
 }
+
+LIST *
+compile_while(
+    PARSE   *p,
+    FRAME *frame )
+{
+    LIST *l;
+    while ( l = parse_evaluate( p->left, frame ) )
+    {
+        list_free( l );
+        list_free( parse_evaluate( p->right, frame ) );
+    }
+    return L0;
+}
+
 
 /*
  * compile_include() - support for 'include' - call include() on file
@@ -447,10 +482,11 @@ compile_null(
 LIST *
 compile_on(
 	PARSE	*parse,
-	FRAME *frame )
+	FRAME	*frame )
 {
-	LIST	*nt = parse_evaluate( parse->left, frame );
+    LIST    *nt = parse_evaluate( parse->left, frame );
 	LIST	*result = 0;
+    PARSE   *p;
 
 	if( DEBUG_COMPILE )
 	{
@@ -462,12 +498,12 @@ compile_on(
 	if( nt )
 	{
 	    TARGET *t = bindtarget( nt->string );
-
 	    pushsettings( t->settings );
-	    result = parse_evaluate( parse->right, frame );
+
+        result = parse_evaluate( parse->right, frame );
+
 	    t->boundname = search( t->name, &t->time );
 	    popsettings( t->settings );
-
 	}
 
 	list_free( nt );
@@ -826,10 +862,10 @@ compile_rules(
     /* Ignore result from first statement; return the 2nd. */
 	/* Optimize recursion on the right by looping. */
 
-	do list_free( parse_evaluate( parse->left, frame ) );
-	while( (parse = parse->right)->func == compile_rules );
+    do list_free( parse_evaluate( parse->left, frame ) );
+    while( (parse = parse->right)->func == compile_rules );
 
-	return parse_evaluate( parse, frame );
+    return parse_evaluate( parse, frame );
 }
 
 /*
@@ -942,12 +978,6 @@ compile_setcomp(
 {
     argument_list* arg_list = 0;
     
-	if( DEBUG_COMPILE )
-	{
-	    debug_compile( 0, "rule", frame );
-	    printf( " %s\n", parse->string );
-	}
-
     /* Create new LOL describing argument requirements if supplied */
     if ( parse->right )
     {
@@ -1080,33 +1110,6 @@ compile_switch(
     list_free( nt );
 
     return result;
-}
-
-/*
- * compile_while() - compile 'while' rule
- *
- *	parse->left		condition tree
- *	parse->right		execution tree
- */
-
-LIST *
-compile_while(
-    PARSE   *p,
-    FRAME *frame )
-{
-	LIST *r = 0;
-	LIST *l;
-
-	/* Returns the value from the last execution of the block */
-
-	while( l = parse_evaluate( p->left, frame ) )
-	{
-	    list_free( l );
-	    if( r ) list_free( r );
-	    r = parse_evaluate( p->right, frame );
-	}
-
-	return r;
 }
 
 /*

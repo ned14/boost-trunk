@@ -1,5 +1,5 @@
 /*
- * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
+ * Copyright 1993, 2000 Christopher Seiwald.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -23,26 +23,29 @@
  * compile.h - compile parsed jam statements
  */
 
-LIST *compile_append( PARSE *parse, FRAME *args );
-LIST *compile_foreach( PARSE *parse, FRAME *args );
-LIST *compile_if( PARSE *parse, FRAME *args );
-LIST *compile_include( PARSE *parse, FRAME *args );
-LIST *compile_list( PARSE *parse, FRAME *args );
-LIST *compile_local( PARSE *parse, FRAME *args );
-LIST *compile_module( PARSE *parse, FRAME *args );
-LIST *compile_null( PARSE *parse, FRAME *args );
-LIST *compile_on( PARSE *parse, FRAME *args );
-LIST *compile_rule( PARSE *parse, FRAME *args );
-LIST *compile_rules( PARSE *parse, FRAME *args );
-LIST *compile_set( PARSE *parse,FRAME *args );
-LIST *compile_set_module( PARSE *parse, FRAME *args );
-LIST *compile_setcomp( PARSE *parse, FRAME *args );
-LIST *compile_setexec( PARSE *parse, FRAME *args );
-LIST *compile_settings( PARSE *parse,FRAME *args );
-LIST *compile_switch( PARSE *parse, FRAME *args );
-LIST *compile_while( PARSE *parse, FRAME *args );
+void compile_builtins();
 
-LIST *evaluate_rule( char *rulename, FRAME *args );
+LIST *compile_append( PARSE *parse, FRAME *frame );
+LIST *compile_foreach( PARSE *parse, FRAME *frame );
+LIST *compile_if( PARSE *parse, FRAME *frame );
+LIST *compile_eval( PARSE *parse, FRAME *args );
+LIST *compile_include( PARSE *parse, FRAME *frame );
+LIST *compile_list( PARSE *parse, FRAME *frame );
+LIST *compile_local( PARSE *parse, FRAME *frame );
+LIST *compile_module( PARSE *parse, FRAME *frame );
+LIST *compile_null( PARSE *parse, FRAME *frame );
+LIST *compile_on( PARSE *parse, FRAME *frame );
+LIST *compile_rule( PARSE *parse, FRAME *frame );
+LIST *compile_rules( PARSE *parse, FRAME *frame );
+LIST *compile_set( PARSE *parse, FRAME *frame );
+LIST *compile_set_module( PARSE *parse, FRAME *frame );
+LIST *compile_setcomp( PARSE *parse, FRAME *frame );
+LIST *compile_setexec( PARSE *parse, FRAME *frame );
+LIST *compile_settings( PARSE *parse, FRAME *frame );
+LIST *compile_switch( PARSE *parse, FRAME *frame );
+LIST *compile_while( PARSE *parse, FRAME *frame );
+
+LIST *evaluate_rule( char *rulename, FRAME *frame );
 
 regexp* regex_compile( const char* pattern );
 
@@ -79,3 +82,4 @@ void profile_dump();
 # define EXPR_IN	10	/* arg in arg */
 
 #endif // COMPILE_DWA20011022_H
+
