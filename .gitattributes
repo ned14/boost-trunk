@@ -1610,6 +1610,7 @@ boost/libs/python/src/module_builder.cpp svneol=native#text/plain
 boost/libs/python/src/object/class.cpp svneol=native#text/plain
 boost/libs/python/src/object/function.cpp svneol=native#text/plain
 boost/libs/python/src/object/inheritance.cpp svneol=native#text/plain
+boost/libs/python/src/object/life_support.cpp svneol=native#text/plain
 boost/libs/python/src/objects.cpp svneol=native#text/plain
 boost/libs/python/src/types.cpp svneol=native#text/plain
 boost/libs/python/test/complicated.hpp svneol=native#text/plain
