@@ -6806,8 +6806,10 @@ boost/libs/serialization/vc6ide/test_unregistered.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/test_utf8_codecvt.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/test_vector.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/test_void_cast.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc7ide/Attic/BoostSerializationLibrary.suo -text
 boost/libs/serialization/vc7ide/Boost[!!-~]Serialization[!!-~]Library.sln -text
 boost/libs/serialization/vc7ide/Boost[!!-~]Serialization[!!-~]Library.suo -text
+boost/libs/serialization/vc7ide/BoostSerializationLibrary.suo -text
 boost/libs/serialization/vc7ide/Library.vcproj -text
 boost/libs/serialization/vc7ide/LibraryW.vcproj -text
 boost/libs/serialization/vc7ide/Manual.vcproj -text
