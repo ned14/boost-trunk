@@ -3091,6 +3091,7 @@ boost/libs/iterator/doc/permutation_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/permutation_iterator_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/permutation_iterator_body.rst svneol=native#text/plain
 boost/libs/iterator/doc/permutation_iterator_ref.rst svneol=native#text/plain
+boost/libs/iterator/doc/ref_problem.rst svneol=native#text/plain
 boost/libs/iterator/doc/reverse_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/reverse_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/reverse_iterator_abstract.rst svneol=native#text/plain
