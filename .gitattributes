@@ -1380,7 +1380,6 @@ boost/boost/numeric/ublas/matrix_assign.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/matrix_expression.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/matrix_proxy.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/matrix_sparse.hpp svneol=native#text/plain
-boost/boost/numeric/ublas/new.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/noalias.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/operation.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/operation_blocked.hpp svneol=native#text/plain
