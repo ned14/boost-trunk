@@ -7005,6 +7005,7 @@ boost/libs/python/example/boost-build.jam svneol=native#text/plain
 boost/libs/python/example/getting_started1.cpp svneol=native#text/plain
 boost/libs/python/example/getting_started2.cpp svneol=native#text/plain
 boost/libs/python/example/project.zip -text svneol=unset#application/zip
+boost/libs/python/example/std_pair.cpp svneol=native#text/plain
 boost/libs/python/example/test_getting_started1.py svneol=native#text/x-python
 boost/libs/python/example/test_getting_started2.py svneol=native#text/x-python
 boost/libs/python/example/tutorial/Jamfile svneol=native#text/plain
