@@ -4328,6 +4328,7 @@ boost/libs/python/pyste/tests/header_test.h svneol=native#text/plain
 boost/libs/python/pyste/tests/header_test.pyste -text
 boost/libs/python/pyste/tests/header_testUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/infosUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/inherit.cpp svneol=native#text/plain
 boost/libs/python/pyste/tests/inherit.h svneol=native#text/plain
 boost/libs/python/pyste/tests/inherit.pyste -text
 boost/libs/python/pyste/tests/inheritUT.py svneol=native#text/x-python
@@ -4353,6 +4354,7 @@ boost/libs/python/pyste/tests/templatesUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/test_all.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/unions.h svneol=native#text/plain
 boost/libs/python/pyste/tests/unions.pyste -text
+boost/libs/python/pyste/tests/vars.cpp svneol=native#text/plain
 boost/libs/python/pyste/tests/vars.h svneol=native#text/plain
 boost/libs/python/pyste/tests/vars.pyste -text
 boost/libs/python/pyste/tests/varsUT.py svneol=native#text/x-python
