@@ -47,5 +47,6 @@ boost/libs/lambda/test/constructor_tests.cpp svneol=native#text/plain
 boost/libs/lambda/test/control_structures.cpp svneol=native#text/plain
 boost/libs/lambda/test/exception_test.cpp svneol=native#text/plain
 boost/libs/lambda/test/is_instance_of_test.cpp svneol=native#text/plain
+boost/libs/lambda/test/member_pointer_test.cpp svneol=native#text/plain
 boost/libs/lambda/test/operator_tests_simple.cpp svneol=native#text/plain
 boost/libs/lambda/test/switch_construct.cpp svneol=native#text/plain
