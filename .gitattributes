@@ -10,6 +10,7 @@ CVSROOT/notify -text
 CVSROOT/rcsinfo -text
 CVSROOT/taginfo -text
 CVSROOT/verifymsg -text
+boost/Jamfile svneol=native#text/plain
 boost/Jamrules svneol=native#text/plain
 boost/README svneol=native#text/plain
 boost/boost/any.hpp svneol=native#text/plain
