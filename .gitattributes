@@ -7346,6 +7346,7 @@ boost/libs/statechart/test/OuterOrthogonal.hpp svneol=native#text/plain
 boost/libs/statechart/test/RunTests.bat svneol=native#text/plain
 boost/libs/statechart/test/Test.vcproj -text
 boost/libs/statechart/test/TransitionTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/TransitionTest.vcproj -text
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/Jamfile.v2 svneol=native#text/plain
 boost/libs/static_assert/index.html svneol=native#text/html
