@@ -7570,6 +7570,7 @@ boost/libs/test/test/test_exec_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail3.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail4.cpp svneol=native#text/plain
 boost/libs/test/test/test_files/errors_handling_test.pattern -text
+boost/libs/test/test/test_files/errors_handling_test.pattern.gcc -text
 boost/libs/test/test/test_files/ifstream_line_iterator.tst1 -text
 boost/libs/test/test/test_files/ifstream_line_iterator.tst2 -text
 boost/libs/test/test/test_files/result_report_test.pattern -text
