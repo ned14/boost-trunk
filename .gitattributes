@@ -4699,6 +4699,7 @@ boost/libs/python/test/vector_indexing_suite.cpp svneol=native#text/plain
 boost/libs/python/test/vector_indexing_suite.py svneol=native#text/x-python
 boost/libs/python/test/virtual_functions.cpp svneol=native#text/plain
 boost/libs/python/test/virtual_functions.py svneol=native#text/x-python
+boost/libs/python/todo.html svneol=native#text/html
 boost/libs/python/todo.txt svneol=native#text/plain
 boost/libs/random/histogram.cpp svneol=native#text/plain
 boost/libs/random/index.html svneol=native#text/html
