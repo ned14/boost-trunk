@@ -4,12 +4,11 @@
 # provided "as is" without express or implied warranty, and with no
 # claim as to its suitability for any purpose.
 
-# This file is /NOT/ up-to-date; please use other toolset description
-# files as examples.
-
-
-gcc.bin-directory = [ conditional $(gcc.root-directory) : $(gcc.root-directory)$(SLASH)bin$(SLASH) : " " ] ;
-detect-build-tools gcc : "g++ -v" ;
+# compute directories for invoking GCC
+GCC_BIN_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)bin ;
+GCC_BIN_DIRECTORY ?= "" ; # Don't clobber tool names if GCC_ROOT_DIRECTORY not set
+GCC_INCLUDE_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)include ;
+GCC_STDLIB_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)lib ;
 
 flags gcc-stlport LINKFLAGS <runtime-link>static : -static ;
 flags gcc-stlport CFLAGS <debug-symbols>on : -g ;
@@ -21,18 +20,22 @@ flags gcc-stlport CFLAGS <inlining>off : -fno-inline ;
 flags gcc-stlport CFLAGS <inlining>on : -Wno-inline ;
 flags gcc-stlport CFLAGS <inlining>full : -finline-functions -Wno-inline ;
 
+flags gcc-stlport CFLAGS <profiling>on : -pg ;
+flags gcc-stlport LINKFLAGS <profiling>on : -pg ;
+
 flags gcc-stlport DEFINES <define> ;
 flags gcc-stlport UNDEFS <undef> ;
 flags gcc-stlport HDRS <include> ;
 
-flags gcc-stlport STDHDRS : $(stl-port-root)$(SLASH)stlport $(gcc-stlport.root-directory)$(SLASH)include ;
-flags gcc-stlport STDLIBPATH :  $(gcc-stlport.root-directory)$(SLASH)lib ;
+flags gcc-stlport STDHDRS : $(STLPORT_ROOT)$(SLASH)stlport $(GCC_INCLUDE_DIRECTORY) ;
+flags gcc-stlport STDLIBPATH : $(STLPORT_ROOT)$(SLASH)lib $(GCC_STDLIB_DIRECTORY) ;
 
-flags gcc-stlport LINKFLAGS <runtime-link>static : -static ;
-flags gcc-stlport STLPORTPATH  : $(stl-port-root)$(SLASH)lib ;
+flags gcc-stlport CFLAGS <shared-linkable>true : -fPIC ;
+flags gcc-stlport LINKFLAGS <shared-linkable>true : -fPIC ;
 
-flags gcc-stlport CFLAGS     <runtime-build>debug    : -D_REENTRANT -D__STL_DEBUG ;
-flags gcc-stlport CFLAGS     <runtime-build>release  : -D_REENTRANT ;
+flags gcc-stlport LINKFLAGS <target-type>DLL : -shared ;
+flags gcc-stlport CFLAGS     <runtime-build>debug    :  -D__STL_DEBUG ;
+# flags gcc-stlport CFLAGS     <runtime-build>release  : -D_REENTRANT ;
 
 flags gcc-stlport STLPORTLIB <runtime-build>debug    : stlport_cygwin_stldebug ;
 flags gcc-stlport STLPORTLIB <runtime-build>release  : stlport_cygwin ;
@@ -41,45 +44,49 @@ flags gcc-stlport STLPORTLIB <runtime-build>release  : stlport_cygwin ;
 
 rule Link-action
 {
-    gcc-Link-action $(<) : $(>) ;
+    # This will appear before the import library name when building a DLL, but
+    # will be "multiplied away" otherwise. The --exclude-symbols directive
+    # proved to be neccessary with some versions of Cygwin.
+    IMPLIB_COMMAND on $(<) = "-Wl,--exclude-symbols,_bss_end__:_bss_start__:_data_end__:_data_start__ -Wl,--out-implib," ;
+    gcc-stlport-Link-action $(<) : $(>) ;
 }
 
 # for gcc, we repeat all libraries so that dependencies are always resolved
-actions gcc-Link-action bind NEEDLIBS
+actions gcc-stlport-Link-action bind NEEDLIBS
 {
-    $(gcc.bin-directory)g++ $(LINKFLAGS) -o "$(<)" $(UNDEFS) -L$(STLPORTPATH) -L$(STDLIBPATH) "$(>)" $(NEEDLIBS) $(NEEDLIBS) -l$(STLPORTLIB)
+    $(GCC_BIN_DIRECTORY)g++ $(IMPLIB_COMMAND)$(<[2]) $(LINKFLAGS) -o "$(<[1])" -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)"
 }
 
 #### Cc #####
 
 rule Cc-action
 {
-    gcc-Cc-action $(<) : $(>) ;
+    gcc-stlport-Cc-action $(<) : $(>) ;
 }
 
-actions gcc-Cc-action
+actions gcc-stlport-Cc-action
 {
-    $(gcc.bin-directory)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
+    $(GCC_BIN_DIRECTORY)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### C++ ####
 rule C++-action
 {
-    gcc-C++-action $(<) : $(>) ;
+    gcc-stlport-C++-action $(<) : $(>) ;
 }
 
-actions gcc-C++-action
+actions gcc-stlport-C++-action
 {
-    $(gcc.bin-directory)g++ -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
+    $(GCC_BIN_DIRECTORY)g++ -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### Archive ####
 rule Archive-action
 {
-    gcc-Archive-action $(<) : $(>) ;
+    gcc-stlport-Archive-action $(<) : $(>) ;
 }
 
-actions updated together piecemeal gcc-Archive-action
+actions updated together piecemeal gcc-stlport-Archive-action
 {
     ar ru "$(<)" "$(>)"
 }
