@@ -972,7 +972,6 @@ boost/libs/graph/example/subgraph.cpp svneol=native#text/plain
 boost/libs/graph/example/subgraph.expected -text
 boost/libs/graph/example/target-compile-costs.dat -text
 boost/libs/graph/example/tc.dot -text
-boost/libs/graph/example/test-adj-list.cpp svneol=native#text/plain
 boost/libs/graph/example/topo-sort-file-dep.cpp svneol=native#text/plain
 boost/libs/graph/example/topo-sort-file-dep2.cpp svneol=native#text/plain
 boost/libs/graph/example/topo-sort-with-leda.cpp svneol=native#text/plain
