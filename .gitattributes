@@ -3200,6 +3200,7 @@ boost/libs/iterator/doc/style.tex -text
 boost/libs/iterator/doc/transform_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/transform_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/transform_iterator_abstract.rst svneol=native#text/plain
+boost/libs/iterator/doc/transform_iterator_eg.rst svneol=native#text/plain
 boost/libs/iterator/doc/transform_iterator_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/traversal.png -text svneol=unset#image/png
 boost/libs/iterator/example/Jamfile svneol=native#text/plain
