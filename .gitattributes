@@ -6588,6 +6588,7 @@ boost/tools/inspect/copyright_check.cpp svneol=native#text/plain
 boost/tools/inspect/copyright_check.hpp svneol=native#text/plain
 boost/tools/inspect/crlf_check.cpp svneol=native#text/plain
 boost/tools/inspect/crlf_check.hpp svneol=native#text/plain
+boost/tools/inspect/cvs_iterator.hpp svneol=native#text/plain
 boost/tools/inspect/index.html svneol=native#text/html
 boost/tools/inspect/inspect.cpp svneol=native#text/plain
 boost/tools/inspect/inspector.hpp svneol=native#text/plain
