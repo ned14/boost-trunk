@@ -1,16 +1,4 @@
 * text=auto !eol
-CVSROOT/checkoutlist -text
-CVSROOT/commitinfo -text
-CVSROOT/config -text
-CVSROOT/cvswrappers -text
-CVSROOT/editinfo -text
-CVSROOT/loginfo -text
-CVSROOT/modules -text
-CVSROOT/notify -text
-CVSROOT/rcsinfo -text
-CVSROOT/syncmail -text
-CVSROOT/taginfo -text
-CVSROOT/verifymsg -text
 boost/Jamfile svneol=native#text/plain
 boost/Jamfile.v2 svneol=native#text/plain
 boost/Jamrules svneol=native#text/plain
@@ -2718,33 +2706,6 @@ boost/boost/spirit/utility/regex.hpp svneol=native#text/plain
 boost/boost/spirit/utility/scoped_lock.hpp svneol=native#text/plain
 boost/boost/spirit/version.hpp svneol=native#text/plain
 boost/boost/state_saver.hpp svneol=native#text/plain
-boost/boost/statechart/asynchronous_state_machine.hpp svneol=native#text/plain
-boost/boost/statechart/custom_reaction.hpp svneol=native#text/plain
-boost/boost/statechart/deep_history.hpp svneol=native#text/plain
-boost/boost/statechart/deferral.hpp svneol=native#text/plain
-boost/boost/statechart/detail/avoid_unused_warning.hpp svneol=native#text/plain
-boost/boost/statechart/detail/constructor.hpp svneol=native#text/plain
-boost/boost/statechart/detail/counted_base.hpp svneol=native#text/plain
-boost/boost/statechart/detail/leaf_state.hpp svneol=native#text/plain
-boost/boost/statechart/detail/node_state.hpp svneol=native#text/plain
-boost/boost/statechart/detail/rtti_policy.hpp svneol=native#text/plain
-boost/boost/statechart/detail/state_base.hpp svneol=native#text/plain
-boost/boost/statechart/event.hpp svneol=native#text/plain
-boost/boost/statechart/event_base.hpp svneol=native#text/plain
-boost/boost/statechart/event_processor.hpp svneol=native#text/plain
-boost/boost/statechart/exception_translator.hpp svneol=native#text/plain
-boost/boost/statechart/fifo_scheduler.hpp svneol=native#text/plain
-boost/boost/statechart/fifo_worker.hpp svneol=native#text/plain
-boost/boost/statechart/history.hpp svneol=native#text/plain
-boost/boost/statechart/null_exception_translator.hpp svneol=native#text/plain
-boost/boost/statechart/processor_container.hpp svneol=native#text/plain
-boost/boost/statechart/result.hpp svneol=native#text/plain
-boost/boost/statechart/shallow_history.hpp svneol=native#text/plain
-boost/boost/statechart/simple_state.hpp svneol=native#text/plain
-boost/boost/statechart/state.hpp svneol=native#text/plain
-boost/boost/statechart/state_machine.hpp svneol=native#text/plain
-boost/boost/statechart/termination.hpp svneol=native#text/plain
-boost/boost/statechart/transition.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
 boost/boost/static_warning.hpp svneol=native#text/plain
 boost/boost/strong_typedef.hpp svneol=native#text/plain
@@ -7254,77 +7215,6 @@ boost/libs/spirit/test/traverse_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/tree_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_p_as_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_tests.cpp svneol=native#text/plain
-boost/libs/statechart/doc/A.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/Camera.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/Camera2.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/CameraWithHistory1.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/CameraWithHistory2.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/DeepHistoryLimitation1.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/DeepHistoryLimitation2.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/EventDispatch.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/ExceptionsAndOrthogonalStates.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/HelloWorld.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/JoinAndFork.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/LCA.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/OrthogonalStates.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/OutermostUnstableState.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/SimpleEventDispatch.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/StopWatch.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/ThrowingEntryAction.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/ThrowingInStateReaction.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/ThrowingTransitionAction.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/TransitionsAcrossOrthogonalRegions.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/acknowledgments.html svneol=native#text/html
-boost/libs/statechart/doc/configuration.html svneol=native#text/html
-boost/libs/statechart/doc/definitions.html svneol=native#text/html
-boost/libs/statechart/doc/faq.html svneol=native#text/html
-boost/libs/statechart/doc/index.html svneol=native#text/html
-boost/libs/statechart/doc/rationale.html svneol=native#text/html
-boost/libs/statechart/doc/reference.html svneol=native#text/html
-boost/libs/statechart/doc/tutorial.html svneol=native#text/html
-boost/libs/statechart/doc/uml_mapping.html svneol=native#text/html
-boost/libs/statechart/example/BitMachine/BitMachine.cpp svneol=native#text/plain
-boost/libs/statechart/example/BitMachine/BitMachine.dev -text
-boost/libs/statechart/example/BitMachine/BitMachine.sln -text
-boost/libs/statechart/example/BitMachine/BitMachine.vcproj -text
-boost/libs/statechart/example/BitMachine/Makefile svneol=native#text/plain
-boost/libs/statechart/example/BitMachine/UniqueObject.hpp svneol=native#text/plain
-boost/libs/statechart/example/BitMachine/UniqueObjectAllocator.hpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Camera.cpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Camera.dev -text
-boost/libs/statechart/example/Camera/Camera.hpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Camera.sln -text
-boost/libs/statechart/example/Camera/Camera.vcproj -text
-boost/libs/statechart/example/Camera/Configuring.cpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Configuring.hpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Main.cpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Makefile svneol=native#text/plain
-boost/libs/statechart/example/Camera/Precompiled.cpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Precompiled.hpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Shooting.cpp svneol=native#text/plain
-boost/libs/statechart/example/Camera/Shooting.hpp svneol=native#text/plain
-boost/libs/statechart/example/Handcrafted/Handcrafted.cpp svneol=native#text/plain
-boost/libs/statechart/example/Handcrafted/Handcrafted.dev -text
-boost/libs/statechart/example/Handcrafted/Handcrafted.sln -text
-boost/libs/statechart/example/Handcrafted/Handcrafted.vcproj -text
-boost/libs/statechart/example/Handcrafted/Makefile svneol=native#text/plain
-boost/libs/statechart/example/Keyboard/Keyboard.cpp svneol=native#text/plain
-boost/libs/statechart/example/Keyboard/Keyboard.dev -text
-boost/libs/statechart/example/Keyboard/Keyboard.sln -text
-boost/libs/statechart/example/Keyboard/Keyboard.vcproj -text
-boost/libs/statechart/example/Keyboard/Makefile svneol=native#text/plain
-boost/libs/statechart/example/PingPong/Makefile svneol=native#text/plain
-boost/libs/statechart/example/PingPong/PingPong.cpp svneol=native#text/plain
-boost/libs/statechart/example/PingPong/PingPong.dev -text
-boost/libs/statechart/example/PingPong/PingPong.sln -text
-boost/libs/statechart/example/PingPong/PingPong.vcproj -text
-boost/libs/statechart/example/StopWatch/Makefile svneol=native#text/plain
-boost/libs/statechart/example/StopWatch/StopWatch.cpp svneol=native#text/plain
-boost/libs/statechart/example/StopWatch/StopWatch.dev -text
-boost/libs/statechart/example/StopWatch/StopWatch.sln -text
-boost/libs/statechart/example/StopWatch/StopWatch.vcproj -text
-boost/libs/statechart/example/StopWatch/StopWatch2.cpp svneol=native#text/plain
-boost/libs/statechart/index.html svneol=native#text/html
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/Jamfile.v2 svneol=native#text/plain
 boost/libs/static_assert/index.html svneol=native#text/html
