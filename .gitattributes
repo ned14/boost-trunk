@@ -2684,6 +2684,7 @@ boost/libs/assign/index.html svneol=native#text/html
 boost/libs/assign/test/Jamfile svneol=native#text/plain
 boost/libs/assign/test/TODO svneol=native#text/plain
 boost/libs/assign/test/array.cpp svneol=native#text/plain
+boost/libs/assign/test/basic.cpp svneol=native#text/plain
 boost/libs/assign/test/email_example.cpp svneol=native#text/plain
 boost/libs/assign/test/list_inserter.cpp svneol=native#text/plain
 boost/libs/assign/test/list_of.cpp svneol=native#text/plain
