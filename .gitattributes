@@ -6287,6 +6287,7 @@ boost/tools/build/test/generators-test/z.cpp svneol=native#text/plain
 boost/tools/build/test/generators_test.py svneol=native#text/x-python
 boost/tools/build/test/inline.py svneol=native#text/x-python
 boost/tools/build/test/load_dir.py svneol=native#text/x-python
+boost/tools/build/test/loop.py svneol=native#text/x-python
 boost/tools/build/test/m1-01.py svneol=native#text/x-python
 boost/tools/build/test/m1-01/Jamfile svneol=native#text/plain
 boost/tools/build/test/m1-01/Jamfile2 -text
@@ -6706,6 +6707,7 @@ boost/tools/build/v2/test/generators-test/z.cpp svneol=native#text/plain
 boost/tools/build/v2/test/generators_test.py svneol=native#text/x-python
 boost/tools/build/v2/test/inline.py svneol=native#text/x-python
 boost/tools/build/v2/test/load_dir.py svneol=native#text/x-python
+boost/tools/build/v2/test/loop.py svneol=native#text/x-python
 boost/tools/build/v2/test/m1-01.py svneol=native#text/x-python
 boost/tools/build/v2/test/m1-01/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/m1-01/Jamfile2 -text
