@@ -376,6 +376,7 @@ boost/boost/mpl/aux_/advance_backward.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/advance_forward.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/apply.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/apply_1st.hpp svneol=native#text/plain
+boost/boost/mpl/aux_/arg_typedef.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/arity.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/arity_spec.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/at_impl.hpp svneol=native#text/plain
