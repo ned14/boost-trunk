@@ -1915,6 +1915,7 @@ boost/libs/python/test/if_else.cpp svneol=native#text/plain
 boost/libs/python/test/implicit.cpp svneol=native#text/plain
 boost/libs/python/test/implicit.py svneol=native#text/x-python
 boost/libs/python/test/indirect_traits_test.cpp svneol=native#text/plain
+boost/libs/python/test/input_iterator.cpp svneol=native#text/plain
 boost/libs/python/test/iterator.cpp svneol=native#text/plain
 boost/libs/python/test/iterator.py svneol=native#text/x-python
 boost/libs/python/test/m1.cpp svneol=native#text/plain
