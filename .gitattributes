@@ -16,6 +16,7 @@ boost/boost/lambda/detail/lambda_functors.hpp svneol=native#text/plain
 boost/boost/lambda/detail/lambda_fwd.hpp svneol=native#text/plain
 boost/boost/lambda/detail/lambda_traits.hpp svneol=native#text/plain
 boost/boost/lambda/detail/make_void.hpp svneol=native#text/plain
+boost/boost/lambda/detail/member_ptr.hpp svneol=native#text/plain
 boost/boost/lambda/detail/operator_actions.hpp svneol=native#text/plain
 boost/boost/lambda/detail/operator_lambda_functor_base.hpp svneol=native#text/plain
 boost/boost/lambda/detail/operator_return_type_traits.hpp svneol=native#text/plain
