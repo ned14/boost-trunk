@@ -386,6 +386,7 @@ boost/libs/graph/doc/push_relabel_max_flow.html svneol=native#text/html
 boost/libs/graph/doc/quick_tour.html svneol=native#text/html
 boost/libs/graph/doc/reverse_graph.html svneol=native#text/html
 boost/libs/graph/doc/sparse_matrix_ordering.html svneol=native#text/html
+boost/libs/graph/doc/stanford_graph.html svneol=native#text/html
 boost/libs/graph/doc/table_of_contents.html svneol=native#text/html
 boost/libs/graph/doc/time_stamper.html svneol=native#text/html
 boost/libs/graph/doc/topological_sort.html svneol=native#text/html
