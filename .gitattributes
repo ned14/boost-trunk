@@ -2788,6 +2788,7 @@ boost/libs/mpl/test/back.cpp svneol=native#text/plain
 boost/libs/mpl/test/bind.cpp svneol=native#text/plain
 boost/libs/mpl/test/bool_c.cpp svneol=native#text/plain
 boost/libs/mpl/test/comparison.cpp svneol=native#text/plain
+boost/libs/mpl/test/contains.cpp svneol=native#text/plain
 boost/libs/mpl/test/copy.cpp svneol=native#text/plain
 boost/libs/mpl/test/copy_backward.cpp svneol=native#text/plain
 boost/libs/mpl/test/copy_backward_if.cpp svneol=native#text/plain
