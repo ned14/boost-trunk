@@ -1577,6 +1577,7 @@ boost/libs/utility/filter_iterator.htm svneol=native#text/html
 boost/libs/utility/filter_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/fun_out_iter_example.cpp svneol=native#text/plain
 boost/libs/utility/function_output_iterator.htm svneol=native#text/html
+boost/libs/utility/generator_iterator.htm svneol=native#text/html
 boost/libs/utility/half_open_range_test.cpp svneol=native#text/plain
 boost/libs/utility/indirect_iterator.htm svneol=native#text/html
 boost/libs/utility/indirect_iterator_example.cpp svneol=native#text/plain
