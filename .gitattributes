@@ -261,6 +261,7 @@ boost/boost/python/detail/none.hpp svneol=native#text/plain
 boost/boost/python/detail/signatures.hpp svneol=native#text/plain
 boost/boost/python/detail/singleton.hpp svneol=native#text/plain
 boost/boost/python/detail/types.hpp svneol=native#text/plain
+boost/boost/python/detail/void_adaptor.hpp svneol=native#text/plain
 boost/boost/python/detail/wrap_python.hpp svneol=native#text/plain
 boost/boost/python/errors.hpp svneol=native#text/plain
 boost/boost/python/module_builder.hpp svneol=native#text/plain
