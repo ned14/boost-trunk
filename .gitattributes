@@ -4342,6 +4342,7 @@ boost/libs/regex/test/regress/wregex_test.cpp svneol=native#text/plain
 boost/libs/regex/traits_class_ref.htm svneol=native#text/html
 boost/libs/signals/build/Jamfile svneol=native#text/plain
 boost/libs/signals/build/Jamfile.v2 svneol=native#text/plain
+boost/libs/signals/doc/index.html svneol=native#text/html
 boost/libs/signals/example/Jamfile svneol=native#text/plain
 boost/libs/signals/example/button_click.cpp svneol=native#text/plain
 boost/libs/signals/example/difference_connection.cpp svneol=native#text/plain
