@@ -1260,6 +1260,7 @@ boost/people/william_kempf.jpg -text svneol=unset#image/jpeg
 boost/people/william_kempf_small.jpg -text svneol=unset#image/jpeg
 boost/status/compiler.cfg -text
 boost/status/compiler_status.html svneol=native#text/html
+boost/status/cs-aix.html svneol=native#text/html
 boost/status/cs-beos.html svneol=native#text/html
 boost/status/cs-hpux.html svneol=native#text/html
 boost/status/cs-irix.html svneol=native#text/html
