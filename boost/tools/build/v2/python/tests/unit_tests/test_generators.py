@@ -27,10 +27,10 @@ class TestGenerators (unittest.TestCase):
         
         feature.feature ('define', [], ['free'])
 
-        g = generators.register_standard (self.manager_, 'a_b', dummy_rule, ['A'], ['B'])
-        g = generators.register_standard (self.manager_, 'a_b_<define>ABC', dummy_rule, ['A'], ['B'], ['<define>ABC'])
-        g = generators.register_standard (self.manager_, 'ab_c', dummy_rule, ['A', 'B'], ['C'])
-        g = generators.register_standard (self.manager_, 'a_e', dummy_rule, ['A'], ['E'])
+        g = generators.register_standard ('a_b', dummy_rule, ['A'], ['B'])
+        g = generators.register_standard ('a_b_<define>ABC', dummy_rule, ['A'], ['B'], ['<define>ABC'])
+        g = generators.register_standard ('ab_c', dummy_rule, ['A', 'B'], ['C'])
+        g = generators.register_standard ('a_e', dummy_rule, ['A'], ['E'])
         
     def test_register (self):
         self.assertEqual ('a_b', generators.find ('a_b').id ())
@@ -108,6 +108,12 @@ class TestGenerators (unittest.TestCase):
     def test_composing_generator (self):
         # TODO: implement this
         pass
+
+    def test_clone (self):
+        original_g = generators.find ('a_b_<define>ABC')
+        new_g = original_g.clone ('new_a_b', ['<define>NEW_GEN'])
+        self.assertEqual ('new_a_b', new_g.id ())
+        self.assertEqual (['<define>ABC', '<define>NEW_GEN'], new_g.requirements ())
 
 ######################################################################
 if __name__ == '__main__': unittest.main ()

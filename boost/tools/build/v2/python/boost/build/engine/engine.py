@@ -44,6 +44,11 @@ class BuildSystem:
     	    """
     	    pass
 
+    def add_not_file_target (self, target):
+        """ Adds a target that is not a file.
+        """
+        pass
+
     def do_add_dependency (self, target, source):
         """ Should be redefined by base classes.
             Sets a dependency between one target and one source.

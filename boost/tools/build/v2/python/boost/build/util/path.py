@@ -15,6 +15,7 @@
 #   of slash only.
 
 import os.path
+from utility import to_seq
 
 def root (path, root):
     """ If 'path' is relative, it is rooted at 'root'. Otherwise, it's unchanged.
@@ -209,23 +210,23 @@ def pwd ():
 #           return [ join-imp $(elements) ] ;
 #       }    
 #   }
-#   
-#   
-#   #
-#   #    Returns the list of files matching the given pattern in the
-#   #    specified directory.  Both directories and patterns are 
-#   #    supplied as portable paths. Each pattern should be non-absolute
-#   #    path, and can't contain "." or ".." elements. Each slash separated
-#   #    element of pattern can contain the following special characters:
-#   #    -  '?', which match any character
-#   #    -  '*', which matches arbitrary number of characters.
-#   #    A file $(d)/e1/e2/e3 (where 'd' is in $(dirs)) matches pattern p1/p2/p3
-#   #    if and only if e1 matches p1, e2 matches p2 and so on.
-#   #
-#   #    For example: 
-#   #        [ glob . : *.cpp ] 
-#   #        [ glob . : */build/Jamfile ] 
-#   rule glob ( dirs * : patterns + )
+
+
+def glob (dirs, patterns):
+    """ Returns the list of files matching the given pattern in the
+    specified directory.  Both directories and patterns are 
+    supplied as portable paths. Each pattern should be non-absolute
+    path, and can't contain "." or ".." elements. Each slash separated
+    element of pattern can contain the following special characters:
+    -  '?', which match any character
+    -  '*', which matches arbitrary number of characters.
+    A file $(d)/e1/e2/e3 (where 'd' is in $(dirs)) matches pattern p1/p2/p3
+    if and only if e1 matches p1, e2 matches p2 and so on.
+    
+    For example: 
+        [ glob . : *.cpp ] 
+        [ glob . : */build/Jamfile ] 
+    """
 #   {
 #       local result ;
 #       if $(patterns:D)
@@ -274,6 +275,23 @@ def pwd ():
 #       return $(result) ;
 #   }
 #   
+
+# TODO: (PF) I replaced the code above by this. I think it should work but needs to be tested.
+    result = []
+    dirs = to_seq (dirs)
+    patterns = to_seq (patterns)
+
+    splitdirs = []
+    for dir in dirs:
+        splitdirs += dir.split (os.pathsep)
+
+    for dir in splitdirs:
+        for pattern in patterns:
+            p = os.path.join (dir, pattern)
+            import glob
+            result.extend (glob.glob (p))
+    return result
+    
 #   #
 #   #    Returns true is the specified file exists.
 #   #
@@ -393,23 +411,23 @@ def pwd ():
 #       }
 #       return [ join . $(root_1) $(split2) ] ;
 #   }
-#   
-#   # Returns the list of paths which are used by the operating system
-#   # for looking up programs
-#   rule programs-path ( )
-#   {
-#       local result ;
-#       local raw = [ modules.peek : PATH Path path ] ;
-#       for local p in $(raw)
-#       {
-#           if $(p)
-#           {
-#               result += [ path.make $(p) ] ;
-#           }        
-#       }
-#       return $(result) ;
-#   }
-#   
+
+# Returns the list of paths which are used by the operating system
+# for looking up programs
+def programs_path ():
+    raw = []
+    names = ['PATH', 'Path', 'path']
+    
+    for name in names:
+        raw.append (os.environ.get (name, ''))
+        
+    result = []
+    for p in raw:
+        if p:
+            result.append (make (p))
+
+    return result
+
 #   rule make-NT ( native )
 #   {
 #       local tokens = [ regex.split $(native) "[/\\]" ] ;

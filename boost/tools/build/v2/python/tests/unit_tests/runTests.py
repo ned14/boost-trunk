@@ -28,7 +28,8 @@ if __name__ == '__main__':
             'test_action',
             'test_build_request',
             'test_builtin',
-            'test_generators'
+            'test_generators',
+            'test_gcc'
         ]
     
     suite = unittest.TestSuite ()

@@ -83,5 +83,10 @@ class TestProperty (unittest.TestCase):
     def test_split_conditional (self):
         self.assertEqual (('<variant>debug,<toolset>gcc', '<inlining>full'), property.split_conditional ('<variant>debug,<toolset>gcc:<inlining>full'))
 
+    def test_change (self):
+        properties = ['<a>A1', '<b>B1', '<a>A2', '<b>B2', '<c>C:<a>A3']
+        self.assertEqual (['<a>AAA', '<b>B1', '<a>AAA', '<b>B2', '<c>C:<a>A3'], property.change (properties, '<a>', 'AAA'))
+        self.assertEqual (['<b>B1', '<b>B2', '<c>C:<a>A3'], property.change (properties, 'a'))
+
 ######################################################################
 if __name__ == '__main__': unittest.main ()

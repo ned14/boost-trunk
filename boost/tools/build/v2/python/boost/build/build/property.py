@@ -296,6 +296,26 @@ def evaluate_conditionals_in_context (properties, context):
 
     return result
 
+def change (properties, feature, value = None):
+    """ Returns a modified version of properties with all values of the
+        given feature replaced by the given value.
+        If 'value' is None the feature will be removed.
+    """
+    result = []
+    
+    feature = add_grist (feature)
+
+    for p in properties:
+        if get_grist (p) == feature:
+            if value:
+                result.append (replace_grist (value, feature))
+
+        else:
+            result.append (p)
+
+    return result
+
+
 ################################################################
 # Private functions
 
@@ -382,28 +402,7 @@ def __validate1 (property):
 #       }
 #       return $(result) ;
 #   }
-#   
-#   # Returns a modified version of properties with all values of the
-#   # given feature replaced by the given value.
-#   # If 'value' is empty the feature will be removed
-#   rule change ( properties * : feature value ? )
-#   {
-#       local result ; 
-#       for local p in $(properties)
-#       {
-#           if $(p:G) = $(feature)
-#           {
-#               result += $(value:G=$(feature)) ;            
-#           }
-#           else
-#           {
-#               result += $(p) ;
-#           }
-#       }
-#       return $(result) ;
-#   }
-#   
-#   
+
 #   # Class which maintains a property set -> string
 #   # mapping
 #   class property-map

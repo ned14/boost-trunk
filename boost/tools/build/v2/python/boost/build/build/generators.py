@@ -43,7 +43,7 @@
 
 import re
 import os.path
-import type, virtual_target, property_set
+import type, virtual_target, property_set, property
 from boost.build.util.logger import *
 from boost.build.util.utility import *
 from boost.build.util import set
@@ -101,8 +101,7 @@ class Generator:
     
             requirements (optional)
     """
-    def __init__ (self, manager, id, rule, composing, source_types, target_types_and_names, requirements):
-        self.manager_ = manager
+    def __init__ (self, id, rule, composing, source_types, target_types_and_names, requirements):
         self.id_ = id
         self.rule_ = rule
         self.composing_ = composing
@@ -142,6 +141,20 @@ class Generator:
         if len (self.target_types_) != 1 or self.target_types_ [0] != '*':
             for x in self.target_types_:
                 type.validate (x)
+
+    def clone (self, new_id, new_toolset_properties):
+        """ Returns another generator which differers from $(self) in
+              - id
+              - value to <toolset> feature in properties
+        """
+        return self.__class__ (new_id, 
+                               self.rule_, 
+                               self.composing_, 
+                               self.source_types_, 
+                               self.target_types_and_names_,
+                               # Note: this does not remove any subfeatures of <toolset>
+                               # which might cause problems
+                               property.change (self.requirements_, '<toolset>') + new_toolset_properties)
 
     def id (self):
         return self.id_
@@ -190,21 +203,6 @@ class Generator:
         return set.contains (property_requirements, properties_to_match) \
             and set.contains (feature_requirements, get_grist (properties_to_match))
         
-###     # Returns another generator which differers from $(self) in
-###     # - id
-###     # - value to <toolset> feature in properties
-###     rule clone ( new-id : new-toolset-properties + )
-###     {
-###         return [ new $(__class__) $(new-id) $(self.composing_)
-###                  : $(self.source_types_)
-###                  : $(self.target_types_and_names_) 
-###                  # Note: this does not remove any subfeatures of <toolset>
-###                  # which might cause problems
-###                  : [ property.change $(self.requirements_) : <toolset> ]
-###                    $(new-toolset-properties)
-###                ] ;
-###     }
-
     def run (self, project, name, prop_set, sources, multiple):
         """ Tries to invoke this generator on the given sources. Returns a
             list of generated targets (instances of 'virtual-target').
@@ -231,10 +229,10 @@ class Generator:
                           # remove the parameter altogether in the
                           # next revision to see what I learn -- DWA 2003/5/6
         
-        if self.manager_.logger ().on ():
-            self.manager_.logger ().log (__name__, "  generator '%s'" % self.id_)
-            self.manager_.logger ().log (__name__, "  multiple: '%s'" % multiple)
-            self.manager_.logger ().log (__name__, "  composing: '%s'" % self.composing_)
+        if project.manager ().logger ().on ():
+            project.manager ().logger ().log (__name__, "  generator '%s'" % self.id_)
+            project.manager ().logger ().log (__name__, "  multiple: '%s'" % multiple)
+            project.manager ().logger ().log (__name__, "  composing: '%s'" % self.composing_)
         
         if not self.composing_ and len (sources) > 1 and len (self.source_types_) > 1:
             raise BaseException ("Unsupported source/source_type combination")
@@ -274,11 +272,11 @@ class Generator:
             result.extend (bypassed)
 
         if result:
-            if self.manager_.logger ().on ():
-                self.manager_.logger ().log (__name__, "  SUCCESS: ", result)
+            if project.manager ().logger ().on ():
+                project.manager ().logger ().log (__name__, "  SUCCESS: ", result)
 
         else:
-                self.manager_.logger ().log (__name__, "  FAILURE")
+                project.manager ().logger ().log (__name__, "  FAILURE")
 
         return result
 
@@ -297,15 +295,15 @@ class Generator:
         result = []
         # If this is 1->1 transformation, apply it to all consumed targets in order.
         if len (self.source_types_) < 2 and not self.composing_:
-            if self.manager_.logger ().on ():
-                self.manager_.logger ().log (__name__, "alt1")
+            if project.manager ().logger ().on ():
+                project.manager ().logger ().log (__name__, "alt1")
 
             for r in consumed:
                 result.extend (self.generated_targets ([r], prop_set, project, name))
 
         else:
-            if self.manager_.logger ().on ():
-                self.manager_.logger ().log (__name__, "alt2 : consumed is ", consumed)
+            if project.manager ().logger ().on ():
+                project.manager ().logger ().log (__name__, "alt2 : consumed is ", consumed)
 
             if consumed:
                 result.extend (self.generated_targets (consumed, prop_set, project, name))
@@ -348,7 +346,7 @@ class Generator:
         # Assign an action for each target
         action = self.action_class ()
         
-        a = action (self.manager_, sources, self.rule_, prop_set)
+        a = action (project.manager (), sources, self.rule_, prop_set)
                 
         # Create generated target for each target type.
         targets = []
@@ -364,7 +362,7 @@ class Generator:
         for t in targets:
             t.set_intermediate (True)
         
-        return [ self.manager_.virtual_targets ().register (t) for t in targets ]
+        return [ project.manager ().virtual_targets ().register (t) for t in targets ]
 
     def convert_to_consumable_types (self, project, name, prop_set, sources, multiple, only_one):
         """ Attempts to convert 'source' to the types that this generator can
@@ -457,7 +455,7 @@ class Generator:
             # TODO: need to check for failure on each source.
             (c, b) = convert_to_consumable_types (project, None, prop_set, s, multiple, True)
             if not c:
-                self.manager_.logger ().log (__name__, " failed to convert ", s)
+                project.manager ().logger ().log (__name__, " failed to convert ", s)
 
             consumed.extend (c)
             bypassed.extend (b)
@@ -491,9 +489,10 @@ def find (id):
     """
     return __generators.get (id, None)
 
-def register (id, g):
+def register (g):
     """ Registers new generator instance 'g'.
     """
+    id = g.id ()
     __generators [id] = g
                    
     for t in g.target_types ():
@@ -507,7 +506,6 @@ def register (id, g):
     # is not already registered. For example, the fop.jam
     # module intentionally declared two generators with the
     # same id, so such check will break it.
-    id = g.id ()
 
     base = id
     while (os.path.splitext (base) [1]):
@@ -517,20 +515,20 @@ def register (id, g):
     values.append (g)
     __generators_for_toolset [base] = values
 
-def register_standard (manager, id, rule, source_types, target_types, requirements = []):
+def register_standard (id, rule, source_types, target_types, requirements = []):
     """ Creates new instance of the 'generator' class and registers it.
         Returns the creates instance.
         Rationale: the instance is returned so that it's possible to first register
         a generator and then call 'run' method on that generator, bypassing all
         generator selection.
     """
-    g = Generator (manager, id, rule, False, source_types, target_types, requirements)
-    register (id, g)
+    g = Generator (id, rule, False, source_types, target_types, requirements)
+    register (g)
     return g
 
 def register_composing (id, rule, source_types, target_types, requirements = []):
     g = Generator (id, rule, True, source_types, target_types, requirements)
-    register (id, g)
+    register (g)
     return g
 
 def generators_for_toolset (toolset):

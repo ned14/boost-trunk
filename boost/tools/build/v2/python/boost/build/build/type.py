@@ -6,7 +6,7 @@
 import re
 import os
 import os.path
-from boost.build.util.utility import replace_grist
+from boost.build.util.utility import replace_grist, os_name
 from boost.build.exceptions import *
 from boost.build.build import feature
 
@@ -219,6 +219,19 @@ def type (filename):
         
         if __suffixes_to_types.has_key (suffix):
             return __suffixes_to_types [suffix]
+
+# NOTE: moved from tools/types/register
+def register_type (type, suffixes, base_type = None, os = []):
+    """ Register the given type on the specified OSes, or on remaining OSes
+        if os is not specified.  This rule is injected into each of the type
+        modules for the sake of convenience.
+    """
+    if registered (type):
+        return
+
+    if not os or os_name () in os:
+        register (type, suffixes, base_type)
+
 
 
 ######################################################################################

@@ -7,6 +7,9 @@
 class BaseException (Exception):
     def __init__ (self, message = ''): Exception.__init__ (self, message)
 
+class UserError (BaseException):
+    def __init__ (self, message = ''): BaseException.__init__ (self, message)
+
 class FeatureConflict (BaseException):
     def __init__ (self, message = ''): BaseException.__init__ (self, message)
 
@@ -39,4 +42,3 @@ class NoBestMatchingAlternative (BaseException):
 
 class NoAction (BaseException):
     def __init__ (self, message = ''): BaseException.__init__ (self, message)
-    

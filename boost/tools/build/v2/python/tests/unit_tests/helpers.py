@@ -18,7 +18,7 @@ def reset ():
     """ Cleans up all modules' state.
     """
     from boost.build.build import feature, property, property_set, toolset, scanner, type, action, generators
-    from boost.build.tools import builtin
+    from boost.build.tools import builtin, common
     feature.reset ()
     property.reset ()
     property_set.reset ()
@@ -28,4 +28,4 @@ def reset ():
     action.reset ()
     builtin.reset ()
     generators.reset ()
-    
+    common.reset ()

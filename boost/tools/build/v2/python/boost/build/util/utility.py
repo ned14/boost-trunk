@@ -8,8 +8,21 @@
 """
 
 import re
-import os.path
+import os
 from boost.build.exceptions import *
+
+def to_seq (value):
+    """ If value is a sequence, returns it.
+        If it is a string, returns a sequence with value as its sole element.
+        """
+    if not value:
+        return []
+
+    if isinstance (value, str):
+        return [value]
+
+    else:
+        return value
 
 __re_grist_and_value = re.compile (r'(<[^>]*>)(.*)')
 __re_grist_content = re.compile ('^<(.*)>$')
@@ -107,3 +120,57 @@ def forward_slashes (s):
     """ Converts all backslashes to forward slashes.
     """
     return __re_backslash.sub ('/', s)
+
+
+# NOTE: Moved the functions below from os.jam because os confilicted with Python's os. Renamed some of the functions.
+#
+# TODO: Below are the values defined in jam for OSMAJOR, OSMINOR and OSPLAT. Most haven't yet been implemented in this port.
+#
+# OSMAJOR:
+#      VMS, NT, MINGW, OS2, MAC, UNIX
+#
+# OSMINOR:
+#      VMS, NT, AS400, MINGW, OS2, MAC, AIX, AMIGA, BEOS, BSDI, COHERENT, CYGWIN, FREEBSD, DRAGONFLYBSD, 
+#      DGUX, HPUX, INTERIX, IRIX, ISC, LINUX, LYNX, MACHTEN, MPEIX, MVS, NCR, NETBSD, QNXNTO, QNX, 
+#      RHAPSODY, NEXT, MACOSX, OSF, PTX, SCO, SINIX, SOLARIS, SUNOS, ULTRIX, UNICOS, UNIXWARE, OPENBSD
+#
+# OSPLAT:  
+#      VAX, PPC, AXP, X86, SPARC, MIPS, IA64, 390
+
+__major_map = {
+    'Darwin': 'UNIX'
+}
+
+__minor_map = {
+    'Darwin': 'MACOSX'
+}
+
+__platform_map = {
+    'Darwin': 'PPC'
+}
+
+__major = __major_map [os.uname () [0]]
+__minor = __minor_map [os.uname () [0]]
+__platform = __platform_map [os.uname () [0]]
+__version = os.uname () [2]
+
+def os_name ():
+    return __minor
+
+def platform ():
+    return __platform
+
+def os_version ():
+    return __version
+
+
+def on_windows ():
+    """ Returns true if running on windows, whether in cygwin or not.
+    """
+    if __major == 'NT':
+        return True
+
+    elif __minor == 'CYGWIN':
+        return True
+
+    return False

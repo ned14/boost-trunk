@@ -726,33 +726,22 @@ class Action:
         return prop_set
 
 
-#   # Action class which does nothing --- it produces the targets with
-#   # specific properties out of nowhere. It's needed to distinguish virtual
-#   # targets with different properties that are known to exist, and have no 
-#   # actions which create them.
-#   class null-action : action 
-#   {
-#       rule __init__ ( property-set ? )
-#       {
-#           action.__init__  : .no-action : $(property-set) ;
-#       }
-#           
-#       rule actualize ( )
-#       {
-#           if ! $(self.actualized)
-#           {
-#               self.actualized = true ;
-#   
-#               for local i in [ targets ]
-#               {
-#                   $(i).actualize ;
-#               }
-#           }        
-#       }
-#   }
-#   
-#   
-#   
+class NullAction (Action):
+    """ Action class which does nothing --- it produces the targets with
+        specific properties out of nowhere. It's needed to distinguish virtual
+        targets with different properties that are known to exist, and have no 
+        actions which create them.
+    """
+    def __init__ (self, manager, prop_set):
+        Action.__init__ (self, manager, None, prop_set)
+        
+    def actualize (self):
+        if not self.actualized_:
+            self.actualized_ = True
+
+            for i in self.targets ():
+                i.actualize ()
+
 
 def traverse (target, include_roots = False, include_sources = False):
     """ Traverses the dependency graph of 'target' and return all targets that will

@@ -6,7 +6,7 @@
 """ Support for toolset definition.
 """
 
-from boost.build.build import feature, property
+import feature, property, generators
 from boost.build.util.utility import *
 from boost.build.util import set
 
@@ -136,6 +136,66 @@ def find_property_subset (property_sets, properties):
 
     return None
 
+def register (toolset):
+    """ Registers a new toolset.
+    """
+    feature.extend_feature ('toolset', [toolset])
+
+def inherit_generators (toolset, properties, base, generators_to_ignore):
+    if not properties:
+        properties = [replace_grist (toolset, '<toolset>')]
+        
+    base_generators = generators.generators_for_toolset (base)
+    
+    for g in base_generators:
+        id = g.id ()
+        
+        if not id in generators_to_ignore:
+            # Some generator names have multiple periods in their name, so
+            # $(id:B=$(toolset)) doesn't generate the right new_id name.
+            # e.g. if id = gcc.compile.c++, $(id:B=darwin) = darwin.c++,
+            # which is not what we want. Manually parse the base and suffix
+            # (if there's a better way to do this, I'd love to see it.)
+            # See also register in module generators.
+            base = id
+            suffix = ''
+            while os.path.splitext (base) [1]:
+                suffix = os.path.splitext (base) [1] + suffix
+                base = os.path.splitext (base) [0]
+
+            new_id = toolset + suffix
+
+            generators.register (g.clone (new_id, properties))
+
+def inherit_flags (toolset, base, prohibited_properties = []):
+    """ Inherits the properties set for another toolset.
+        Properties listed in prohibited_properties won't
+        be inherited. Note that <debug-symbols>on and
+        <debug-symbols>off are two different properties
+    """
+    for f in __module_flags.get (base, []):
+        rule_or_module = __flags_to_modules [f]
+
+        entry = __rules [rule_or_module][f]
+        
+        if set.difference (entry ['condition'], prohibited_properties) or not entry ['condition']:
+            __re_first_dotted_group = re.compile (r'[^.]*\.(.*)')
+
+            match = __re_first_dotted_group.match (rule_or_module)
+            rule_ = None
+            if match:
+                rule_ = match.group (1)
+
+            new_rule_or_module = ''
+
+            if rule_:
+                new_rule_or_module = toolset + '.' + rule_
+
+            else:
+                new_rule_or_module = toolset
+
+            __add_flag (new_rule_or_module, entry ['variable'], entry ['condition'], entry ['values'])
+
 
 ######################################################################################
 # Private functions
@@ -253,15 +313,6 @@ def __add_flag (rule_or_module, variable_name, condition, values):
 # Still to port.
 # Original lines are prefixed with "#   "
 #
-#   .toolsets += $(toolset) ;
-#   
-#   # Registers a new toolset
-#   rule register ( toolset )
-#   {
-#       feature.extend toolset : $(toolset) ;
-#       .toolsets += $(toolset) ;
-#   }
-#   
 #   # Make toolset 'toolset', defined in a module of the same name,
 #   # inherit from 'base'
 #   # 1. The 'init' rule from 'base' is imported into 'toolset' with full
@@ -274,81 +325,17 @@ def __add_flag (rule_or_module, variable_name, condition, values):
 #   {
 #       import $(base) ;
 #       
-#       inherit-generators $(toolset) : $(base) ;
+#       inherit_generators $(toolset) : $(base) ;
 #       inherit-flags $(toolset) : $(base) ;
 #       inherit-rules $(toolset) : $(base) ;
-#   }
-#   
-#   rule inherit-generators ( toolset properties * : base : generators-to-ignore * )
-#   {
-#       properties ?= <toolset>$(toolset) ;
-#       local base-generators = [ generators.generators-for-toolset $(base) ] ;
-#       for local g in $(base-generators)
-#       {
-#           local id = [ $(g).id ] ;
-#           
-#           if ! $(id) in $(generators-to-ignore)
-#           {            
-#               # Some generator names have multiple periods in their name, so
-#               # $(id:B=$(toolset)) doesn't generate the right new-id name.
-#               # e.g. if id = gcc.compile.c++, $(id:B=darwin) = darwin.c++,
-#               # which is not what we want. Manually parse the base and suffix
-#               # (if there's a better way to do this, I'd love to see it.)
-#               # See also register in module generators.
-#               local base = $(id) ;
-#               local suffix = "" ;
-#               while $(base:S)
-#               {
-#                   suffix = $(base:S)$(suffix) ;
-#                   base = $(base:B) ;
-#               }
-#               local new-id = $(toolset)$(suffix) ;
-#   
-#               generators.register [ $(g).clone $(new-id) : $(properties) ] ;
-#           }        
-#       }    
-#   }
-#   
-#   # properties listed in prohibited-properties won't
-#   # be inherited. Note that <debug-symbols>on and
-#   # <debug-symbols>off are two different properties
-#   rule inherit-flags ( toolset : base : prohibited-properties * )
-#   {
-#       for local f in $(.module-flags.$(base))
-#       {        
-#           local rule_or_module = $(.rule_or_module.$(f)) ; 
-#           if [ set.difference
-#                   $(.$(rule_or_module).condition.$(f)) :
-#                   $(prohibited-properties)
-#              ] || ! $(.$(rule_or_module).condition.$(f))
-#           {
-#               local rule_ = [ MATCH "[^.]*\.(.*)" : $(rule_or_module) ] ;
-#               local new-rule_or_module ;
-#               if $(rule_)
-#               {
-#                   new-rule_or_module = $(toolset).$(rule_) ;
-#               }
-#               else
-#               {
-#                   new-rule_or_module = $(toolset) ;
-#               }
-#                                           
-#               add_flag
-#                  $(new-rule_or_module)
-#                  : $(.$(rule_or_module).variable.$(f)) 
-#                  : $(.$(rule_or_module).condition.$(f))              
-#                  : $(.$(rule_or_module).values.$(f))
-#                  ;
-#           }
-#       }            
 #   }
 #   
 #   rule inherit-rules ( toolset : base )
 #   {
 #       # It appears that "action" creates local rule... 
-#       local base-generators = [ generators.generators-for-toolset $(base) ] ;
+#       local base_generators = [ generators.generators_for_toolset $(base) ] ;
 #       local rules ;
-#       for local g in $(base-generators)
+#       for local g in $(base_generators)
 #       {
 #           local id = [ MATCH "[^.]*\.(.*)" : [ $(g).id ] ] ;
 #           rules += $(id) ;

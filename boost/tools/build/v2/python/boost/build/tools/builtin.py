@@ -7,8 +7,9 @@
 """
 
 import sys
-from boost.build.build import feature, property
+from boost.build.build import feature, property, virtual_target, generators
 from boost.build.util.utility import *
+import boost.build.tools.types 
 
 # Records explicit properties for a variant.
 # The key is the variant name.
@@ -20,96 +21,6 @@ def reset ():
     global __variant_explicit_properties
 
     __variant_explicit_properties = {}
-
-# This feature is used to determine which OS we're on.
-# In future, this may become <target-os> and <host-os>
-# TODO: check this. Compatibility with bjam names? Subfeature for version?
-os = sys.platform
-feature.feature ('os', [os], ['propagated', 'link-incompatible'])
-
-feature.feature ('toolset', [], ['implicit', 'propagated' ,'symmetric'])
-
-feature.feature ('stdlib', ['native'], ['propagated', 'composite'])
-
-feature.feature ('link', ['shared', 'static'], ['propagated'])
-feature.feature ('link-runtime', ['shared', 'static'], ['propagated'])
-feature.feature ('runtime-debugging', ['on', 'off'], ['propagated'])
-
-
-feature.feature ('optimization',  ['off', 'speed', 'space'], ['propagated'])
-feature.feature ('profiling', ['off', 'on'], ['propagated'])
-feature.feature ('inlining', ['off', 'on', 'full'], ['propagated'])
-
-feature.feature ('threading', ['single', 'multi'], ['propagated'])
-feature.feature ('rtti', ['on', 'off'], ['propagated'])
-feature.feature ('exception-handling', ['on', 'off'], ['propagated'])
-feature.feature ('debug-symbols', ['on', 'off'], ['propagated'])
-feature.feature ('define', [], ['free'])
-feature.feature ('include', [], ['free', 'path']) #order-sensitive
-feature.feature ('cflags', [], ['free'])
-feature.feature ('cxxflags', [], ['free'])
-feature.feature ('linkflags', [], ['free'])
-feature.feature ('archiveflags', [], ['free'])
-feature.feature ('version', [], ['free'])
-
-feature.feature ('location-prefix', [], ['free'])
-
-# The following features are incidental, since
-# in themself they have no effect on build products.
-# Not making them incidental will result in problems in corner
-# cases, for example:
-# 
-#    unit-test a : a.cpp : <use>b ;
-#    lib b : a.cpp b ;
-# 
-# Here, if <use> is not incidental, we'll decide we have two 
-# targets for a.obj with different properties, and will complain.
-#
-# Note that making feature incidental does not mean it's ignored. It may
-# be ignored when creating the virtual target, but the rest of build process
-# will use them.
-feature.feature ('use', [], ['free', 'dependency', 'incidental'])
-feature.feature ('dependency', [], ['free', 'dependency', 'incidental'])
-feature.feature ('implicit-dependency', [], ['free', 'dependency', 'incidental'])
-
-feature.feature ('source', [], ['free', 'dependency', 'incidental'])
-feature.feature ('library', [], ['free', 'dependency', 'incidental'])
-feature.feature ('file', [], ['free', 'dependency', 'incidental'])
-feature.feature ('find-shared-library', [], ['free']) #order-sensitive ;
-feature.feature ('find-static-library', [], ['free']) #order-sensitive ;
-feature.feature ('library-path', [], ['free', 'path']) #order-sensitive ;
-# Internal feature.
-feature.feature ('library-file', [], ['free', 'dependency'])
-
-feature.feature ('name', [], ['free'])
-feature.feature ('tag', [], ['free'])
-feature.feature ('search', [], ['free', 'path']) #order-sensitive ;
-feature.feature ('location', [], ['free', 'path'])
-
-feature.feature ('dll-path', [], ['free', 'path'])
-feature.feature ('hardcode-dll-paths', ['true', 'false'], ['incidental'])
-
-
-# This is internal feature which holds the paths of all dependency
-# dynamic libraries. On Windows, it's needed so that we can all
-# those paths to PATH, when running applications.
-# On Linux, it's needed to add proper -rpath-link command line options.
-feature.feature ('xdll-path', [], ['free', 'path'])
-
-#provides means to specify def-file for windows dlls.
-feature.feature ('def-file', [], ['free', 'dependency'])
-
-# This feature is used to allow specific generators to run.
-# For example, QT tools can only be invoked when QT library
-# is used. In that case, <allow>qt will be in usage requirement
-# of the library.
-feature.feature ('allow', [], ['free'])
-
-# Windows-specific features
-feature.feature ('user-interface', ['console', 'gui', 'wince', 'native', 'auto'], [])
-feature.feature ('variant', [], ['implicit', 'composite', 'propagated', 'symmetric'])
-
-
 
 def variant (name, parents_or_properties, explicit_properties = []):
     """ Declares a new variant.
@@ -166,65 +77,137 @@ def variant (name, parents_or_properties, explicit_properties = []):
     feature.extend_feature ('variant', [name])
     feature.compose (replace_grist (name, '<variant>'), explicit_properties)
 
-variant ('debug', ['<optimization>off', '<debug-symbols>on', '<inlining>off', '<runtime-debugging>on'])
-variant ('release', ['<optimization>speed', '<debug-symbols>off', '<inlining>full', 
-                     '<runtime-debugging>off', '<define>NDEBUG'])
-variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
+def register_globals ():
+    """ Registers all features and variants declared by this module.
+    """
+
+    # This feature is used to determine which OS we're on.
+    # In future, this may become <target-os> and <host-os>
+    # TODO: check this. Compatibility with bjam names? Subfeature for version?
+    os = sys.platform
+    feature.feature ('os', [os], ['propagated', 'link-incompatible'])
+    
+    feature.feature ('toolset', [], ['implicit', 'propagated' ,'symmetric'])
+    
+    feature.feature ('stdlib', ['native'], ['propagated', 'composite'])
+    
+    feature.feature ('link', ['shared', 'static'], ['propagated'])
+    feature.feature ('link-runtime', ['shared', 'static'], ['propagated'])
+    feature.feature ('runtime-debugging', ['on', 'off'], ['propagated'])
+    
+    
+    feature.feature ('optimization',  ['off', 'speed', 'space'], ['propagated'])
+    feature.feature ('profiling', ['off', 'on'], ['propagated'])
+    feature.feature ('inlining', ['off', 'on', 'full'], ['propagated'])
+    
+    feature.feature ('threading', ['single', 'multi'], ['propagated'])
+    feature.feature ('rtti', ['on', 'off'], ['propagated'])
+    feature.feature ('exception-handling', ['on', 'off'], ['propagated'])
+    feature.feature ('debug-symbols', ['on', 'off'], ['propagated'])
+    feature.feature ('define', [], ['free'])
+    feature.feature ('include', [], ['free', 'path']) #order-sensitive
+    feature.feature ('cflags', [], ['free'])
+    feature.feature ('cxxflags', [], ['free'])
+    feature.feature ('linkflags', [], ['free'])
+    feature.feature ('archiveflags', [], ['free'])
+    feature.feature ('version', [], ['free'])
+    
+    feature.feature ('location-prefix', [], ['free'])
+    
+    # The following features are incidental, since
+    # in themself they have no effect on build products.
+    # Not making them incidental will result in problems in corner
+    # cases, for example:
+    # 
+    #    unit-test a : a.cpp : <use>b ;
+    #    lib b : a.cpp b ;
+    # 
+    # Here, if <use> is not incidental, we'll decide we have two 
+    # targets for a.obj with different properties, and will complain.
+    #
+    # Note that making feature incidental does not mean it's ignored. It may
+    # be ignored when creating the virtual target, but the rest of build process
+    # will use them.
+    feature.feature ('use', [], ['free', 'dependency', 'incidental'])
+    feature.feature ('dependency', [], ['free', 'dependency', 'incidental'])
+    feature.feature ('implicit-dependency', [], ['free', 'dependency', 'incidental'])
+    
+    feature.feature ('source', [], ['free', 'dependency', 'incidental'])
+    feature.feature ('library', [], ['free', 'dependency', 'incidental'])
+    feature.feature ('file', [], ['free', 'dependency', 'incidental'])
+    feature.feature ('find-shared-library', [], ['free']) #order-sensitive ;
+    feature.feature ('find-static-library', [], ['free']) #order-sensitive ;
+    feature.feature ('library-path', [], ['free', 'path']) #order-sensitive ;
+    # Internal feature.
+    feature.feature ('library-file', [], ['free', 'dependency'])
+    
+    feature.feature ('name', [], ['free'])
+    feature.feature ('tag', [], ['free'])
+    feature.feature ('search', [], ['free', 'path']) #order-sensitive ;
+    feature.feature ('location', [], ['free', 'path'])
+    
+    feature.feature ('dll-path', [], ['free', 'path'])
+    feature.feature ('hardcode-dll-paths', ['true', 'false'], ['incidental'])
+    
+    
+    # This is internal feature which holds the paths of all dependency
+    # dynamic libraries. On Windows, it's needed so that we can all
+    # those paths to PATH, when running applications.
+    # On Linux, it's needed to add proper -rpath-link command line options.
+    feature.feature ('xdll-path', [], ['free', 'path'])
+    
+    #provides means to specify def-file for windows dlls.
+    feature.feature ('def-file', [], ['free', 'dependency'])
+    
+    # This feature is used to allow specific generators to run.
+    # For example, QT tools can only be invoked when QT library
+    # is used. In that case, <allow>qt will be in usage requirement
+    # of the library.
+    feature.feature ('allow', [], ['free'])
+    
+    # Windows-specific features
+    feature.feature ('user-interface', ['console', 'gui', 'wince', 'native', 'auto'], [])
+    feature.feature ('variant', [], ['implicit', 'composite', 'propagated', 'symmetric'])
+
+
+    variant ('debug', ['<optimization>off', '<debug-symbols>on', '<inlining>off', '<runtime-debugging>on'])
+    variant ('release', ['<optimization>speed', '<debug-symbols>off', '<inlining>full', 
+                         '<runtime-debugging>off', '<define>NDEBUG'])
+    variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
+
+reset ()
+register_globals ()
+
+class SearchedLibTarget (virtual_target.AbstractFileTarget):
+    def __init__ (self, name, project, shared, real_name, search, action):
+        AbstractFileTarget.__init__ (self, name, False, 'SEARCHED_LIB', project, action)
+        
+        self.shared_ = shared
+        self.real_name_ = real_name
+        if not self.real_name_:
+            self.real_name_ = name
+        self.search_ = search
+
+    def shared (self):
+        return self.shared_
+    
+    def real_name (self):
+        return self.real_name_
+    
+    def search (self):
+        return self.search_
+        
+    def actualize_location (self, target):
+        project.manager ().engine ().add_not_file_target (target)
+    
+    def path (self):
+        pass
 
 
 ###################################################################
 # Still to port.
 # Original lines are prefixed with "### "
 
-### class searched-lib-target : abstract-file-target
-### {
-###     rule __init__ ( name     
-###         : project 
-###         : shared ?                                
-###         : real-name ?
-###         : search *
-###         : action
-###     )
-###     {
-###         abstract-file-target.__init__ $(name) : SEARCHED_LIB : $(project) 
-###           : $(action) ;
-###         
-###         self.shared = $(shared) ;
-###         self.real-name = $(real-name) ;
-###         self.real-name ?= $(name) ;
-###         self.search = $(search) ;
-###     }
-###     
-###     
-###     rule shared ( )
-###     {
-###         return $(self.shared) ;
-###     }
-###     
-###     rule real-name ( ) 
-###     {
-###         return $(self.real-name) ;
-###     }
-###     
-###     rule search ( )
-###     {
-###         return $(self.search) ;
-###     }
-###         
-###     rule actualize-location ( target )
-###     {
-###         NOTFILE $(target) ;
-###     }    
-###     
-###     rule path ( )
-###     {
-###     }
-### }    
-### 
-### import types/register ;
-### import stage ;
-### 
-### 
 ### class c-scanner : scanner 
 ### {
 ###     import regex virtual-target path scanner ;    
@@ -295,15 +278,15 @@ variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 ###         generator.__init__ $(1) : $(2) : $(3) : $(4) : $(5) : $(6) : $(7) : $(8) : $(9) ;
 ###     }
 ###     
-###     rule run ( project name ? : property-set : sources * : multiple ? )
+###     rule run ( project name ? : prop_set : sources * : multiple ? )
 ###     {
 ###         # The lib generator is composing, and can be only invoked with
 ###         # explicit name. This check is present in generator.run (and so in
-###         # builtin.linking-generator), but duplicate it here to avoid doing
+###         # builtin.LinkingGenerator), but duplicate it here to avoid doing
 ###         # extra work.
 ###         if $(name)
 ###         {            
-###             local properties = [ $(property-set).raw ] ;
+###             local properties = [ $(prop_set).raw ] ;
 ###             # Determine the needed target type
 ###             local actual-type ;
 ###             if <search> in $(properties:G) || <name> in $(properties:G)
@@ -323,14 +306,14 @@ variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 ###             {
 ###                 actual-type = STATIC_LIB ;
 ###             }
-###             property-set = [ $(property-set).add-raw <main-target-type>LIB ] ;
+###             prop_set = [ $(prop_set).add-raw <main-target-type>LIB ] ;
 ###             # Construct the target.
 ###             return [ generators.construct $(project) $(name) : $(actual-type) 
-###               : $(property-set) : $(sources) : LIB ] ;        
+###               : $(prop_set) : $(sources) : LIB ] ;        
 ###         }  
 ###     }    
 ###     
-###     rule viable-source-types ( )
+###     rule viable-source_types ( )
 ###     {
 ###         return * ;
 ###     }    
@@ -387,52 +370,41 @@ variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 ###     return $(result) ;
 ### }
 ### IMPORT $(__name__) : lib : : lib ;
-### 
-### class searched-lib-generator : generator
-### {
-###     import property-set ;
-###     
-###     rule __init__ ( )
-###     {
-###         # The requirements cause the generators to be tried *only* when we're building
-###         # lib target and there's 'search' feature. This seems ugly --- all we want
-###         # is make sure searched-lib-generator is not invoced deep in transformation
-###         # search.
-###         generator.__init__ searched-lib-generator : : SEARCHED_LIB ;
-###     }
-###     
-###     rule run ( project name ? : property-set : sources * : multiple ? )
-###     {
-###         if $(name)
-###         {
-###             # If name is empty, it means we're called not from top-level.
-###             # In this case, we just fail immediately, because searched-lib-generator
-###             # cannot be used to produce intermediate targets.
-###             
-###             local properties = [ $(property-set).raw ] ;        
-###             local shared ;
-###             if <link>shared in $(properties)
-###             {
-###                 shared = true ;
-###             }        
-### 
-###             a = [ new null-action $(property-set) ] ;
-###             local t = [ new searched-lib-target $(name) : $(project) : $(shared)
-###                             : [ feature.get-values <name> : $(properties) ]
-###                             : [ feature.get-values <search> : $(properties) ]
-###                             : $(a)
-###                       ] ;
-###             # We return sources for a simple reason. If there's
-###             #    lib png : z : <name>png ; 
-###             # the 'z' target should be returned, so that apps linking to
-###             # 'png' will link to 'z', too.
-###             return [ virtual-target.register $(t) ] $(sources) ;
-###         }
-###     }        
-### }
-### 
-### generators.register [ new searched-lib-generator ] ;
-### 
+
+class SearchedLibGenerator (generators.Generator):
+    def __init__ (self):
+        # TODO: the comment below looks strange. There are no requirements!
+        # The requirements cause the generators to be tried *only* when we're building
+        # lib target and there's 'search' feature. This seems ugly --- all we want
+        # is make sure SearchedLibGenerator is not invoked deep in transformation
+        # search.
+        generators.Generator.__init__ (self, 'SearchedLibGenerator', None, False, [], ['SEARCHED_LIB'], [])
+    
+    def run (self, project, name, prop_set, sources, multiple):
+        if not name:
+            return ([], [])
+
+        # If name is empty, it means we're called not from top-level.
+        # In this case, we just fail immediately, because SearchedLibGenerator
+        # cannot be used to produce intermediate targets.
+        
+        properties = prop_set.raw ()
+        shared = '<link>shared' in properties
+
+        a = NullAction (project.manager (), prop_set)
+        
+        real_name = feature.get_values ('<name>', properties) [0]
+        search = feature.get_values ('<search>', properties) [0]
+        t = SearchedLibTarget (name, project, shared, real_name, search, a)
+
+        # We return sources for a simple reason. If there's
+        #    lib png : z : <name>png ; 
+        # the 'z' target should be returned, so that apps linking to
+        # 'png' will link to 'z', too.
+        return (virtual_target.register (t), sources)
+
+generators.register (SearchedLibGenerator ())
+
 ### class prebuilt-lib-generator : generator
 ### {
 ###     rule __init__ ( * : * )
@@ -440,9 +412,9 @@ variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 ###         generator.__init__ $(1) : $(2) : $(3) : $(4) : $(5) : $(6) : $(7) : $(8) : $(9) ;
 ###     }
 ### 
-###     rule run ( project name ? : property-set : sources * : multiple ? )
+###     rule run ( project name ? : prop_set : sources * : multiple ? )
 ###     {
-###         local f = [ $(property-set).get <file> ] ;
+###         local f = [ $(prop_set).get <file> ] ;
 ###         return $(f) $(sources) ;
 ###     }    
 ### }
@@ -464,10 +436,10 @@ variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 ###     # For all virtual targets for the same dependency graph as self, 
 ###     # i.e. which belong to the same main target, add their directories
 ###     # to include path.
-###     rule adjust-properties ( property-set )
+###     rule adjust-properties ( prop_set )
 ###     {        
 ###         local s = [ $(self.targets[1]).creating-subvariant ] ;
-###         return [ $(property-set).add-raw 
+###         return [ $(prop_set).add-raw 
 ###           [ $(s).implicit-includes "include" : H ] ] ;
 ###     }    
 ### }
@@ -479,10 +451,10 @@ variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 ### # when a source file includes headers which are generated themselfs.
 ### class C-compiling-generator : generator
 ### {
-###     rule __init__ ( id : source-types + : target-types + :
+###     rule __init__ ( id : source_types + : target_types + :
 ###         requirements * : optional-properties * )
 ###     {
-###         generator.__init__ $(id) : $(source-types) : $(target-types) :
+###         generator.__init__ $(id) : $(source_types) : $(target_types) :
 ###           $(requirements) : $(optional-properties) ;
 ###     }
 ###             
@@ -492,11 +464,11 @@ variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 ###     }
 ### }
 ### 
-### rule register-c-compiler ( id : source-types + : target-types + :
+### rule register-c-compiler ( id : source_types + : target_types + :
 ###                             requirements * : optional-properties * )
 ### {
-###     local g = [ new C-compiling-generator $(id) : $(source-types) 
-###                 : $(target-types) : $(requirements) : $(optional-properties) ] ;
+###     local g = [ new C-compiling-generator $(id) : $(source_types) 
+###                 : $(target_types) : $(requirements) : $(optional-properties) ] ;
 ###     generators.register $(g) ;
 ### }
 ### 
@@ -504,194 +476,143 @@ variant ('profile', ['release'], ['<profiling>on', '<debug-symbols>on'])
 ### # register all generators as "generator.some-rule", not with "some-module.some-rule".)
 ### IMPORT $(__name__) : register-c-compiler : : generators.register-c-compiler ;
 ### 
-### # The generator class for handling EXE and SHARED_LIB creation.
-### class linking-generator : generator
-### {
-###     import property-set ;
-###     import type ;
-###     import path ;
-###     import project ;
-###     
-###     rule __init__ ( id 
-###         composing ? : # Specify if generator is composing. The generator will be
-###         # composing if non-empty string is passed, or parameter is
-###         # not given. To make generator non-composing, pass empty
-###         # string ("")
-###         source-types + : target-types + : 
-###         requirements * )
-###     {
-###         composing ?= true ;
-###         generator.__init__ $(id) $(composing) : $(source-types) : $(target-types) :
-###           $(requirements) ;
-###     }
-###         
-###     rule run ( project name ? : property-set : sources + :  multiple ? )
-###     {   
-###         sources += [ $(property-set).get <library>  ] ;        
-###         
-###         # Add <library-path> properties for all searched libraries
-###         local extra ;
-###         for local s in $(sources)
-###         {
-###             if [ $(s).type ] = SEARCHED_LIB
-###             {
-###                 local search = [ $(s).search ] ;
-###                 extra += <library-path>$(search) ;
-###             }
-###         }
-###                    
-###         if [ $(property-set).get <hardcode-dll-paths> ] = true
-###          && [ type.is-derived $(self.target-types[1]) EXE ] 
-###         {
-###             local xdll-path = [ $(property-set).get <xdll-path> ] ;
-###             # It's possible that we have libraries in sources which did not came
-###             # from 'lib' target. For example, libraries which are specified
-###             # just as filenames as sources. We don't have xdll-path properties
-###             # for such target, but still need to add proper dll-path properties.
-###             for local s in $(sources)
-###             {
-###                 if [ type.is-derived [ $(s).type ] SHARED_LIB ] && ! [ $(s).action ] 
-###                 {
-###                     # Unfortunately, we don't have a good way to find the path
-###                     # to a file, so use this nasty approach.
-###                     local p = [ $(s).project ] ;
-###                     local location = [ path.root [ $(s).name ]
-###                       [ $(p).get source-location ] ] ;
-###                     xdll-path += [ path.parent $(location) ] ;
-###                 }                
-###             }
-###                           
-###             extra += <dll-path>$(xdll-path) ;
-###         }
-###         
-###         if $(extra)
-###         {
-###             property-set = [ $(property-set).add-raw $(extra) ] ;
-###         }            
-###                         
-###         local result = [ generator.run $(project) $(name) : $(property-set)
-###           : $(sources) : $(multiple) ] ;
-###         
-###         return [ extra-usage-requirements $(result) : $(property-set) ] $(result) ;
-###     }
-###     
-###     rule extra-usage-requirements ( created-targets * : property-set )
-###     {           
-###         local result = [ property-set.empty ] ;        
-###         local extra ;
-###                         
-###         # Add appropricate <xdll-path> usage requirements.
-###         local raw = [ $(property-set).raw ] ;
-###         if <link>shared in $(raw)
-###         {
-###             local paths ;
-###             local pwd = [ path.pwd ] ;
-###             for local t in $(created-targets)
-###             {
-###                 if [ type.is-derived [ $(t).type ] SHARED_LIB ] 
-###                 {
-###                     paths += [ path.root [ path.make [ $(t).path ] ] $(pwd) ] ;
-###                 }                                
-###             }       
-###             extra += $(paths:G=<xdll-path>) ;
-###         }
-###         
-###         # We need to pass <xdll-path> features that we've got from sources,
-###         # because if shared library is built, exe which uses it must know paths
-###         # to other shared libraries this one depends on, to be able to find them
-###         # all at runtime.
-###                         
-###         # Just pass all features in property-set, it's theorically possible
-###         # that we'll propagate <xdll-path> features explicitly specified by
-###         # the user, but then the user's to blaim for using internal feature.                
-###         local values = [ $(property-set).get <xdll-path> ] ;
-###         extra += $(values:G=<xdll-path>) ;
-###         
-###         if $(extra)
-###         {
-###             result = [ property-set.create $(extra) ] ;
-###         }
-###         return $(result) ;
-###     }
-###         
-###     rule generated-targets ( sources + : property-set : project name ? )
-###     {
-###         local sources2 ;     # sources to pass to inherited rule
-###         local properties2 ;  # properties to pass to inherited rule
-###         local libraries ;    # sources which are libraries
-###         
-###         # Searched libraries are not passed as argument to linker
-###         # but via some option. So, we pass them to the action
-###         # via property. 
-###         properties2 = [ $(property-set).raw ] ;
-###         local fsa ;
-###         local fst ;
-###         for local s in $(sources)
-###         {
-###             if [ type.is-derived [ $(s).type ] SEARCHED_LIB ]
-###             {
-###                 local name = [ $(s).real-name ] ;
-###                 if [ $(s).shared ] 
-###                 {                    
-###                     fsa +=  $(name) ;
-###                 }
-###                 else
-###                 {
-###                     fst += $(name) ;
-###                 }                         
-###             }
-###             else
-###             {
-###                 sources2 += $(s) ;
-###             }
-###         }
-###         properties2 += <find-shared-library>$(fsa:J=&&) 
-###                        <find-static-library>$(fst:J=&&) ;
-###                 
-###         local spawn = [ generator.generated-targets $(sources2)
-###           : [ property-set.create $(properties2) ] : $(project) $(name) ] ;
-###         
-###         return $(spawn) ;
-###     }
-### }                             
-### 
-### rule register-linker ( id composing ? : source-types + : target-types + :
+
+
+class LinkingGenerator (generators.Generator):
+    """ The generator class for handling EXE and SHARED_LIB creation.
+    """
+    def __init__ (self, id, rule, composing, source_types, target_types, requirements):
+        Generator.__init__ (self, id, rule, composing, source_types, target_types, requirements)
+        
+    def run (self, project, name, prop_set, sources, multiple):
+        sources.extend (prop_set.get ('<library>'))
+        
+        # Add <library-path> properties for all searched libraries
+        extra = []
+        for s in sources:
+            if s.type () == 'SEARCHED_LIB':
+                search = s.search ()
+                extra.append (replace_grist (search, '<library-path>'))
+                   
+        if prop_set.get ('<hardcode-dll-paths>') == ['true'] and type.is_derived (self.target_types [0], 'EXE'):
+            xdll_path = prop_set.get ('<xdll-path>')
+            # It's possible that we have libraries in sources which did not came
+            # from 'lib' target. For example, libraries which are specified
+            # just as filenames as sources. We don't have xdll-path properties
+            # for such target, but still need to add proper dll-path properties.
+            for s in sources:
+                if type.is_derived (s.type (), 'SHARED_LIB') and not s.action ():
+                    # Unfortunately, we don't have a good way to find the path
+                    # to a file, so use this nasty approach.
+                    p = s.project ()
+                    location = path.root (s.name (), p.get ('source-location'))
+                    xdll_path.append (path.parent (location))
+                          
+            extra += [ replace_grist (x, '<dll-path>') for x in xdll_path ]
+        
+        if extra:
+            prop_set = prop_set.add_raw (extra)
+                        
+        result = Generator.run (project, name, prop_set, sources, multiple)
+        
+        return (self.extra_usage_requirements (result, prop_set), result)
+    
+    def extra_usage_requirements (self, created_targets, prop_set):
+        
+        result = property_set.empty ()
+        extra = []
+                        
+        # Add appropriate <xdll-path> usage requirements.
+        raw = prop_set.raw ()
+        if '<link>shared' in raw:
+            paths = []
+            
+            # TODO: is it safe to use the current directory? I think we should use 
+            # another mechanism to allow this to be run from anywhere.
+            pwd = os.getcwd ()
+            
+            for t in created_targets:
+                if type.is_derived (t.type (), 'SHARED_LIB'):
+                    paths.apppend (path.root (path.make (t.path ()), pwd))
+
+            extra += replace_grist (paths, '<xdll-path>')
+        
+        # We need to pass <xdll-path> features that we've got from sources,
+        # because if shared library is built, exe which uses it must know paths
+        # to other shared libraries this one depends on, to be able to find them
+        # all at runtime.
+                        
+        # Just pass all features in property_set, it's theorically possible
+        # that we'll propagate <xdll-path> features explicitly specified by
+        # the user, but then the user's to blaim for using internal feature.                
+        values = prop_set.get ('<xdll-path>')
+        extra += replace_grist (values, '<xdll-path>')
+        
+        if extra:
+            result = property_set.create (extra)
+
+        return result
+
+    def generated_targets (self, sources, prop_set, project, name):
+
+        # sources to pass to inherited rule
+        sources2 = []
+        # properties to pass to inherited rule
+        properties2  = []
+        # sources which are libraries
+        libraries  = []
+        
+        # Searched libraries are not passed as argument to linker
+        # but via some option. So, we pass them to the action
+        # via property. 
+        properties2 = prop_set.raw ()
+        fsa = []
+        fst = []
+        for s in sources:
+            if type.is_derived (s.type (), 'SEARCHED_LIB'):
+                name = s.real_name ()
+                if s.shared ():
+                    fsa.append (name)
+
+                else:
+                    fst.append (name)
+
+            else:
+                sources2.append (s)
+
+        properties2 += '&&'.join (replace_grist (fsa, '<find-shared-library>'))
+        properties2 += '&&'.join (replace_grist (fst, '<find-static-library>'))
+                
+        spawn = generator.generated_targets (sources2, property_set.create (properties2), project, name)
+        
+        return spawn
+
+### rule register-linker ( id composing ? : source_types + : target_types + :
 ###                             requirements * )
 ### {
-###     local g = [ new linking-generator $(id) $(composing) : $(source-types) 
-###                 : $(target-types) : $(requirements) ] ;
+###     local g = [ new LinkingGenerator $(id) $(composing) : $(source_types) 
+###                 : $(target_types) : $(requirements) ] ;
 ###     generators.register $(g) ;
 ### }
-### 
-### # The generator class for handling STATIC_LIB creation.
-### class archive-generator : generator
-### {
-###     import property-set ; 
-### 
-###     rule __init__ ( id composing ? : source-types + : target-types + : 
-###         requirements * )
-###     {
-###         composing ?= true ;
-###         generator.__init__ $(id) $(composing) : $(source-types) : $(target-types) :
-###           $(requirements) ;
-###     }
-###         
-###     rule run ( project name ? : property-set : sources + :  multiple ? )
-###     {                                
-###         sources += [ $(property-set).get <library>  ] ;                
-###         
-###         local result = [ generator.run $(project) $(name) : $(property-set)
-###           : $(sources) : $(multiple) ] ;
-###              
-###         return $(result) ;
-###     }    
-### }
-### 
-### rule register-archiver ( id composing ? : source-types + : target-types + :
+
+class ArchiveGenerator (generators.Generator):
+    """ The generator class for handling STATIC_LIB creation.
+    """
+    def __init__ (self, manager, id, rule, composing, source_types, target_types, requirements):
+        Generator.__init__ (self, manager, id, rule, composing, source_types, target_types, requirements)
+        
+    def run (self, project, name, prop_set, sources, multiple):
+        sources += prop_set.get ('<library>')
+        
+        result = Generator.run (project, name, prop_set, sources, multiple)
+             
+        return result
+
+### rule register-archiver ( id composing ? : source_types + : target_types + :
 ###                             requirements * )
 ### {
-###     local g = [ new archive-generator $(id) $(composing) : $(source-types) 
-###                 : $(target-types) : $(requirements) ] ;
+###     local g = [ new ArchiveGenerator $(id) $(composing) : $(source_types) 
+###                 : $(target_types) : $(requirements) ] ;
 ###     generators.register $(g) ;
 ### }
 ### 

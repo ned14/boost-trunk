@@ -6,6 +6,7 @@ import unittest, helpers
 ######################################################################
 
 from boost.build.build import toolset, feature
+from boost.build.tools import builtin
 from boost.build.manager import Manager
 from boost.build.engine.engine import BuildSystem
 from boost.build.engine.log_engine import *
@@ -14,6 +15,7 @@ class TestToolset (unittest.TestCase):
     
     def setUp (self):
         helpers.reset ()
+        builtin.register_globals ()
 
         self.manager = Manager (LogBuildSystem ())
         
@@ -22,7 +24,7 @@ class TestToolset (unittest.TestCase):
         pass
         
     def test_normalize_condition (self):
-        feature.feature ('toolset', ['gcc'], ['implicit'])
+        feature.extend_feature ('toolset', ['gcc'])
         feature.subfeature ('toolset', 'gcc', 'version', ['3.2'])
 
         self.assertEqual (['<toolset>gcc/<toolset-gcc:version>3.2'], toolset.normalize_condition (['<toolset>gcc-3.2']))
@@ -54,17 +56,25 @@ class TestToolset (unittest.TestCase):
             }
         self.assertEqual (variables, self.manager.engine ().variables ())
 
+    def test_register (self):
+        self.assert_ (not 'a' in feature.values ('<toolset>'))
+        toolset.register ('a')
+        self.assert_ ('a' in feature.values ('<toolset>'))
+        
     def __setup_features_and_flags (self):
-        feature.feature ('optimization', ['off', 'space', 'speed'], [])
-        feature.feature ('inlining', ['off', 'full'], [])
-        feature.feature ('debug-symbols', ['on', 'off'], [])
-        feature.feature ('define', [], ['free'])
-
         toolset.flags ('gcc.compile', 'OPTIONS', '<optimization>off', ['-O0'])
         toolset.flags ('gcc.compile', 'OPTIONS', '<optimization>speed', ['-O3'])
         toolset.flags ('gcc.compile', 'OPTIONS', '<inlining>full', ['-finline-functions', '-Wno-inline'])
 
         toolset.flags ('gcc.compile', 'DEFINES', '<define>', [])
 
+    def test_inherit_generators (self):
+        # TODO: implement this
+        pass
+
+    def test_inherit_flags (self):
+        # TODO: implement this
+        pass
+        
 ######################################################################
 if __name__ == '__main__': unittest.main ()
