@@ -3832,6 +3832,8 @@ boost/libs/graph/doc/figs/quick_start.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/rel_betweenness_centrality.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/search_states.fig -text
 boost/libs/graph/doc/figs/search_states.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/sequential_vertex_coloring.graffle -text svneol=unset#application/octet-stream
+boost/libs/graph/doc/figs/sequential_vertex_coloring.png -text svneol=unset#image/png
 boost/libs/graph/doc/figs/sigma_st.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/sigma_stv.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/stl_iter.fig -text
@@ -3900,6 +3902,7 @@ boost/libs/graph/doc/random.html svneol=native#text/html
 boost/libs/graph/doc/random_layout.html svneol=native#text/html
 boost/libs/graph/doc/read-graphviz.html svneol=native#text/html
 boost/libs/graph/doc/reverse_graph.html svneol=native#text/html
+boost/libs/graph/doc/sequential_vertex_coloring.html svneol=native#text/html
 boost/libs/graph/doc/sloan_ordering.htm svneol=native#text/html
 boost/libs/graph/doc/sloan_start_end_vertices.htm svneol=native#text/html
 boost/libs/graph/doc/sparse_matrix_ordering.html svneol=native#text/html
@@ -4178,6 +4181,7 @@ boost/libs/graph/test/lvalue_pmap.cpp svneol=native#text/plain
 boost/libs/graph/test/property_iter.cpp svneol=native#text/plain
 boost/libs/graph/test/regression.cfg -text
 boost/libs/graph/test/reverse_graph_cc.cpp svneol=native#text/plain
+boost/libs/graph/test/sequential_vertex_coloring.cpp svneol=native#text/plain
 boost/libs/graph/test/stanford_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/subgraph.cpp svneol=native#text/plain
 boost/libs/graph/test/transitive_closure_test.cpp svneol=native#text/plain
