@@ -2470,6 +2470,7 @@ boost/libs/signals/example/no_function.cpp svneol=native#text/plain
 boost/libs/signals/example/print_sum_product.cpp svneol=native#text/plain
 boost/libs/signals/example/quotient_controlling.cpp svneol=native#text/plain
 boost/libs/signals/example/quotient_named.cpp svneol=native#text/plain
+boost/libs/signals/index.html svneol=native#text/html
 boost/libs/signals/src/connection.cpp svneol=native#text/plain
 boost/libs/signals/src/signal_base.cpp svneol=native#text/plain
 boost/libs/signals/src/slot.cpp svneol=native#text/plain
