@@ -8006,8 +8006,8 @@ boost/tools/build/v2/example/qt-ui/hello_world_widget.ui -text
 boost/tools/build/v2/example/qt-ui/main.cpp svneol=native#text/plain
 boost/tools/build/v2/example/qt-ui/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/qt/Jamfile svneol=native#text/plain
-boost/tools/build/v2/example/qt/lcdrange.cpp svneol=native#text/plain
-boost/tools/build/v2/example/qt/lcdrange.h svneol=native#text/plain
+boost/tools/build/v2/example/qt/canvas.cpp svneol=native#text/plain
+boost/tools/build/v2/example/qt/canvas.h svneol=native#text/plain
 boost/tools/build/v2/example/qt/main.cpp svneol=native#text/plain
 boost/tools/build/v2/example/qt/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/variant/Jamfile svneol=native#text/plain
