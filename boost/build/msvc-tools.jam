@@ -1,4 +1,11 @@
 # Microsoft Visual C++
+
+# compute MSVC tool path
+# You can either put the msvc bin directory in your PATH, or you can set
+# MSVCDir to point at the msvc installation directory
+MSVC_TOOL_PATH = $(MSVCDir)$(SLASH)bin$(SLASH) ;
+MSVC_TOOL_PATH ?= "" ; # Don't clobber adjoining text if MSVCDir isn't set
+
 flags msvc CFLAGS <debug-symbols>on : /Zi ;
 flags msvc LINKFLAGS <debug-symbols>on : /DEBUG ;
 
@@ -20,10 +27,11 @@ flags msvc DEFINES <define> ;
 flags msvc UNDEFS <undef> ;
 flags msvc HDRS <include> ;
 
-flags msvc STDHDRS : $(msvc.root-directory)$(SLASH)include ;
-flags msvc STDLIBPATH : $(msvc.root-directory)$(SLASH)lib ;
+flags msvc STDHDRS : $(MSVCDir)$(SLASH)include ;
+flags msvc STDLIBPATH : $(MSVCDir)$(SLASH)lib ;
 
-msvc.bin-directory = [ conditional $(msvc.root-directory) : $(msvc.root-directory)$(SLASH)bin$(SLASH) : " " ] ;
+flags msvc LINKFLAGS <target-type>DLL : /DLL ;
+
 detect-build-tools msvc : cl ;
 
 #### Link ####
@@ -35,7 +43,7 @@ rule Link-action
 
 actions msvc-Link-action bind NEEDLIBS bind pdb-name
 {
-    $(msvc.bin-directory)link /nologo $(LINKFLAGS) /PDB:$(<:S=.pdb) /out:"$(<)" $(UNDEFS) /LIBPATH:$(STDLIBPATH) $(NEEDLIBS) "$(>)"
+    $(MSVC_TOOL_PATH)link /nologo $(LINKFLAGS) /PDB:$(<:S=.pdb) /out:"$(<)" $(UNDEFS) /LIBPATH:$(STDLIBPATH) $(NEEDLIBS) "$(>)"
 }
 
 #### Cc #####
@@ -47,7 +55,7 @@ rule Cc-action
 
 actions msvc-Cc-action
 {
-    $(msvc.bin-directory)cl -nologo -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -Fo"$(<)" "$(>)"
+    $(MSVC_TOOL_PATH)cl -nologo -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -Fo"$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -58,7 +66,7 @@ rule C++-action
 
 actions msvc-C++-action
 {
-    $(msvc.bin-directory)cl -nologo -GX -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -Fo"$(<)" -Tp"$(>)"
+    $(MSVC_TOOL_PATH)cl -nologo -GX -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -Fo"$(<)" -Tp"$(>)"
 }
 
 #### Archive ####
@@ -70,6 +78,6 @@ rule Archive-action
 actions updated together piecemeal msvc-Archive-action
 {
 	if exist "$(<)" set _$(<:B)_="$(<)"
-	link /lib /out:"$(<)" %_$(<:B)_% "$(>)"
+	$(MSVC_TOOL_PATH)link /lib /out:"$(<)" %_$(<:B)_% "$(>)"
 }
 

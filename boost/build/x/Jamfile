@@ -1,5 +1,6 @@
 subproject x ;
 
 lib xl : xl.cpp ../top.cpp ;
+dll dxl : xl.cpp ../top.cpp ;
 exe x : x.cpp <lib>xl : <include>"path with spaces" ;
-
+exe xd : x.cpp <lib>dxl : <include>"path with spaces" ;

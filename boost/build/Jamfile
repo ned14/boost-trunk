@@ -2,6 +2,7 @@ subproject ; # Hmm, this doesn't look too good, does it?
 
 exe foo : foo.cpp ;
 lib top : top.cpp ;
+lib dtop : top.cpp ;
 
 subinclude x y ;
 

@@ -169,6 +169,7 @@ if $(NT)
     SUFLIB          ?= .lib ;
     SUFOBJ          ?= .obj ;
     SUFEXE          ?= .exe ;
+    SUFDLL          ?= .dll ;
     NOARSCAN        ?= true ;
     
     # dwa 6/4/01 - removed compiler determination for boost
@@ -420,6 +421,7 @@ SHELLMODE       ?= 755 ;
 SLASH           ?= / ;
 STDHDRS         ?= /usr/include ;
 SUFEXE          ?= "" ;
+SUFDLL          ?= .so ;
 SUFLIB          ?= .a ;
 SUFOBJ          ?= .o ;
 UNDEFFLAG       ?= "-u _" ;
@@ -494,7 +496,7 @@ rule Cc-platform-specifics
         CcMv $(<) : $(>) ;
     }
 
-    local _h = $(SEARCH_SOURCE) $(HDRS) $(SUBDIRHDRS) ;
+    local _h = $(SEARCH_SOURCE) $(HDRS) ;
 
     if $(VMS) && $(_h)
     {
@@ -802,11 +804,14 @@ rule LibraryFromObjects
     if ! ( $(NOARSCAN) || $(KEEPOBJS) ) { RmTemps $(_l) : $(>) ; }
 }
 
-# dwa 6/4/01 - modified for boost to dispatch through Link-action
+# dwa 6/4/01 - modified for boost to dispatch through Link-action and to pass
+# the target-type through.
+#
+# Link executable-target : object-target...
 rule Link
 {
     MODE on $(<) = $(EXEMODE) ;
-    Link-action $(<) : $(>) ;
+    Link-action $(<) : $(>) : $(3) ;
     Chmod $(<) ;
 }
 
@@ -936,7 +941,7 @@ rule Object
     # different from $(SEARCH_SOURCE).
 
     # Use unique to clean up confusing duplicates a bit
-    HDRS on $(<) = [ unique $(LOCATE_SOURCE) $(SEARCH_SOURCE) $(HDRS) $(SUBDIRHDRS) ] ;
+    HDRS on $(<) = [ unique $(LOCATE_SOURCE) $(SEARCH_SOURCE) $(HDRS) ] ;
 
     # handle #includes for source: Jam scans for headers with
     # the regexp pattern $(HDRSCAN) and then invokes $(HDRRULE)
@@ -961,7 +966,7 @@ rule Object
 
     HDRRULE on $(>) = HdrRule ;
     HDRSCAN on $(>) = $(HDRPATTERN) ;
-    HDRSEARCH on $(>) = $(HDRS) $(SUBDIRHDRS) $(h) $(STDHDRS) ;
+    HDRSEARCH on $(>) = $(HDRS) $(h) $(STDHDRS) ;
     HDRGRIST on $(>) = $(HDRGRIST) ;
 
     # if source is not .c, generate .c with specific rule
@@ -1162,7 +1167,6 @@ rule SubDir
 
     SUBDIRCCFLAGS = ;
     SUBDIRC++FLAGS = ;
-    SUBDIRHDRS = ;
 
     # This allows us to determine whether we're in the directory where jam was
     # invoked from so that we can make locally named targets

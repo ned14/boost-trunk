@@ -94,10 +94,26 @@ rule library-file
 
 rule executable-file
 {
-    executable-from-objects $(<) : [ Objects $(>) ] ;
+    main-from-objects $(<) : [ Objects $(>) ] : EXE ;
+
+    # Setting RUN_ALL causes all executable targets to be run.
+    if $(RUN_ALL)
+    {
+        Run $(<) ;
+    }
 }
 
-rule executable-from-objects
+rule dll-file
+{
+    main-from-objects $(<) : [ Objects $(>) ] : DLL ;
+}
+
+# main-from-objects exe-target : obj-target... : ("EXE"|"DLL")
+#
+# generate instructions to build the given "main" target from the given object
+# files given in the 2nd parameter. The 3rd parameter should be EXE for an
+# executable, or DLL for a shared library.
+rule main-from-objects
 {
     # make compiled sources a dependency of target
 
@@ -107,35 +123,13 @@ rule executable-from-objects
 
     Clean clean : $(<) ;
 
-    Link $(<) : $(>) ;
-
-    # Setting RUN_ALL causes all executable targets to be run.
-    if $(RUN_ALL)
-    {
-        Run $(<) ;
-    }
+    Link $(<) : $(>) : $(3) ;
 }
 
 # A simple action to run an executable target
 actions Run
 {
     $(<)
-}
-
-# assert_equal a : b
-#
-# exits with an assertion failure if a != b
-rule assert_equal
-{
-    # we can turn off assertions by putting the symbol NDEBUG in the global TEST
-    # variable 
-    if ! ( NDEBUG in $(TEST) )
-    {
-        if $(<) != $(>)
-        {
-            EXIT "assertion failure: [" $(<) "] != [" $(>) "]" ;
-        }
-    }
 }
 
 # bubble variable-name
@@ -176,7 +170,6 @@ rule sort
     }
     return $(_result) ;
 }
-assert_equal [ sort 7 3 5 6 2 4 ] : 2 3 4 5 6 7 ;
 
 # min args
 #
@@ -194,7 +187,6 @@ rule min
     }
     return $(result) ;
 }
-assert_equal [ min 7 3 5 6 2 4 ] : 2 ;
 
 # difference listB : listA
 # returns the elements of B that are not in A
@@ -211,7 +203,6 @@ rule difference
     }
     return $(result) ;
 }
-assert_equal [ difference 0 1 2 3 4 5 6 7 8 9 : 2 3 5 7 ] : 0 1 4 6 8 9 ;
 
 # replace list : old-value new-value
 #
@@ -233,7 +224,6 @@ rule replace
     }
     return $(result) ;
 }
-assert_equal [ replace 1 3 5 7 7 9 2 5 4 3 1 : 7 x ] : 1 3 5 x x 9 2 5 4 3 1 ;
 
 # select-ungristed list...
 #
@@ -250,7 +240,6 @@ rule select-ungristed
     }
     return $(result) ;
 }
-assert_equal [ select-ungristed <a>b c <d>e f ] : c f ;
 
 # Split a qualified property into 3 elements. 
 #
@@ -280,12 +269,6 @@ rule split-qualified-property
         return <*> <*> $(<) ;
     }
 }
-assert_equal [ split-qualified-property <feature>value ]
-    : <*> <*> <feature>value ;
-assert_equal [ split-qualified-property <variant><feature>value ]
-    : <*> <variant> <feature>value ;
-assert_equal [ split-qualified-property <toolset><variant><feature>value ]
-    : <toolset> <variant> <feature>value ;
 
 rule unique # list
 {
@@ -300,8 +283,6 @@ rule unique # list
     }
     return $(result) ;
 }
-
-assert_equal [ unique 0 1 2 3 1 7 6 6 4 5 ] : 0 1 2 3 7 6 4 5 ;
 
 # get-properties features : properties
 #
@@ -320,8 +301,6 @@ rule get-properties
     }
     return $(result) ;
 }
-assert_equal [ get-properties <foo> <bar> : <foo>bar <foo>baz <bar>fight <baz>niss ]
-    : <foo>bar <foo>baz <bar>fight ;
     
 # get-values feature : properties
 #
@@ -339,7 +318,6 @@ rule get-values
         return $(_properties:G=) ;
     }
 }
-assert_equal [ get-values <foo> : <foo>bar <foo>baz <bar>fight <baz>niss ] : bar baz ;
 
 # normalize-properties properties
 #
@@ -355,8 +333,6 @@ rule normalize-properties
     }
     return $(result) ;
 }
-assert_equal [ normalize-properties <a>b <c><d>e <f><g><h>i ] :
-     <*><*><a>b <*><c><d>e <f><g><h>i ;
 
 # intersection set1 : set2
 #
@@ -373,7 +349,6 @@ rule intersection
     }
     return $(result) ;
 }
-assert_equal [ intersection 1 2 2 3 3 4 5 6 7 : 5 1 3 7 3 9 11 ] : 1 3 3 5 7 ;
 
 # subset sub : super
 #
@@ -385,8 +360,6 @@ rule is-subset
         return true ;
     }
 }
-assert_equal [ is-subset a b c : c a b d ] : true ;
-assert_equal [ is-subset a b z : c a b d ] : ;
 
 # distribute-feature <feature>value1[/value2...]
 #
@@ -398,9 +371,6 @@ rule distribute-feature
     local result = [ split-path $(<:G=) ] ;
     return $(g)$(result) ;
 }
-assert_equal [ distribute-feature <feature>value1 ] : <feature>value1 ;
-assert_equal [ distribute-feature <feature>value1/value2 ] : <feature>value1 <feature>value2 ;
-assert_equal [ distribute-feature <feature>value1/value2/value3 ] : <feature>value1 <feature>value2 <feature>value3 ;
 
 # set-insert variable-name : value... ;
 #
@@ -417,14 +387,6 @@ rule set-insert
         }
     }
 }
-if ! ( NDEBUG in $(TEST) )
-{
-    gTEST_SET = 1 2 3 ;
-    set-insert gTEST_SET : 2 ;
-    assert_equal $(gTEST_SET) : 1 2 3 ;
-    set-insert gTEST_SET : 0 ;
-    assert_equal $(gTEST_SET) : 1 2 3 0 ;
-}
 
 # equal-sets set1 : set2
 #
@@ -437,9 +399,48 @@ rule equal-sets
         return true ;
     }
 }
-assert_equal [ equal-sets 1 2 3 : 3 2 2 1 ] : true ;
-assert_equal [ equal-sets 1 2 3 3 : 3 2 2 1 ] : true ;
-assert_equal [ equal-sets 1 2 3 3 4 : 3 2 2 1 ] : ;
+
+# feature name : [values...] : [ PATH ]
+#
+# Declares a feature with the given name. If values is empty, declares a free
+# feature; declares a simple feature otherwise. "PATH" should be supplied for a
+# free feature whose values might be paths specified relative to the
+# (sub)project directory.
+rule feature
+{
+    gUNGRISTED(<$(<)>) = $(<) ;
+    gFEATURE_VALUES(<$(<)>) = $(>) ;
+    
+    if ( ! $(>) ) && ! ( <$(<)> in $(gFREE_FEATURES) )
+    {
+        gFREE_FEATURES += <$(<)> ;
+        if PATH in $(3)
+        {
+            gPATH_FEATURES += <$(<)> ;
+        }
+    }
+    else
+    {
+        if PATH in $(3)
+        {
+            ECHO "Simple feature" <$(<)> "qualified with PATH in 3rd"
+                  "argument. PATH ignored." ;
+        }
+    }
+}
+
+# feature-default <feature>...
+#
+# return the default properties corresponding to the given feature(s)
+rule feature-default
+{
+    local result f ;
+    for f in $(<)
+    {
+        result += $(f)$(gFEATURE_VALUES($(f))[1]) ;
+    }
+    return $(result) ;
+}
 
 # flags tools-name variable-name condition [: value(s)]
 #
@@ -557,20 +558,25 @@ rule relevant-features # name
     return $(gRELEVANT_FEATURES($(<))) ;
 }
 
-rule assert_equal_sets
+# variant name : [<toolset>]<feature>value...
+#
+# Delcare a build variant, whose configuration is given by the given (optionally
+# toolset-qualified) properties.
+rule variant
 {
-    # we can turn off assertions by putting the symbol NDEBUG in the global TEST
-    # variable 
-    if ! ( NDEBUG in $(TEST) )
+    local toolset ;
+    for toolset in $(TOOLS)
     {
-        if ! [ equal-sets $(<) : $(>) ]
-        {
-            EXIT "assertion failure: [" $(<) "] !=(set) [" $(>) "]" ;
-        }
+        # We hijack select-properties to do our dirty work here.
+        # Because properties in a variant declaration are only qualified with
+        # toolset and not variant, we specify the toolset where
+        # select-properties expects a variant name. The first toolset parameter
+        # is neccessary to get the relevant-features correctly set. We supply
+        # the variant name as the target name, so that error messages will look
+        # coherent.
+        gBASE_PROPERTIES($(toolset),$(<))
+            = [ sort [ select-properties $(toolset) $(toolset) $(<) : $(>) ] ] ;
     }
-}
-{
-    assert_equal [ sort $(<) ] : [ sort $(>) ] ;
 }
 
 # select-properties toolset variant target-name : qualified-properties...
@@ -623,28 +629,6 @@ rule select-properties
 }
 # get toolset features
 include $(BOOST_TOOLSET_DIR)$(SLASH)features.jam ;
-if ! ( NDEBUG in $(TEST) )
-{
-    TEST_PROPERTIES = <inlining>off <define>FOO <*><release><inlining>on
-                      <debug><define>DEBUG <msvc><release><foo>bar
-                      <gcc><*><inlining>on
-                      <msvc><*><foo>baz
-                      <msvc><release><optimization>speed
-                      <msvc><*><optimization>off
-                      <*><debug><optimization>off
-                      ;
-    assert_equal_sets [ select-properties gcc debug my-target : $(TEST_PROPERTIES) ]
-        : <define>FOO <define>DEBUG <inlining>on <optimization>off ;
-        
-    assert_equal_sets [ select-properties gcc release my-target : $(TEST_PROPERTIES) ]
-        : <define>FOO <inlining>on ;
-        
-    assert_equal_sets [ select-properties msvc debug my-target : $(TEST_PROPERTIES) ]
-        : <define>FOO <define>DEBUG <inlining>off <optimization>off ;
-        
-    assert_equal_sets [ select-properties msvc release my-target : $(TEST_PROPERTIES) ]
-        : <define>FOO <inlining>on <optimization>speed ;
-}    
 
 # ungrist-properties properties...
 #
@@ -659,17 +643,11 @@ rule ungrist-properties
     local result = ;
     for property in $(<)
     {
-        local f = [ ungrist $(property:G) ] ;
-        result += $(f)-$(property:G=) ;
+        # local f = [ ungrist-feature $(property:G) ] ;
+        local f =  ;
+        result += $(gUNGRISTED($(property:G)))-$(property:G=) ;
     }
     return $(result) ;
-}
-if ! ( NDEBUG in $(TEST) )
-{
-    feature TEST_FEATURE1 : a b ;
-    feature TEST_FEATURE2 : c d ;
-    assert_equal [ ungrist-properties <TEST_FEATURE1>a <TEST_FEATURE2>c ]
-        : TEST_FEATURE1-a TEST_FEATURE2-c ;
 }
 
 # set-target-variables target
@@ -700,13 +678,6 @@ rule fixup-path-properties
     }
     return $(path-properties) $(non-path) ;
 }
-if ! ( NDEBUG in $(TEST) )
-{
-    local RELATIVE_SUBDIR = foobar ;
-    local gPATH_FEATURES = <include> ;
-    assert_equal [ fixup-path-properties <a>b <include>.. <c>d ]
-                : <include>foobar$(SLASH).. <a>b <c>d ;
-}
 
 # report-any-incompatible-properties requirements... : build-request... : target-name
 #
@@ -714,18 +685,18 @@ if ! ( NDEBUG in $(TEST) )
 # part as any element of build-request, exits with an error report about target-name
 rule report-any-incompatible-properties
 {
-    local common_features = [ intersection $(<:G) : $(>:G) ] ;
-    if ! [ equal-sets [ get-properties $(common_features) : $(<) ]
-                    : [ get-properties $(common_features) : $(>) ] ]
+    local all-properties = [ unique $(<) $(>) ] ;
+    local all-features = $(all-properties:G) ;
+    local unique-features = [ unique $(all-features) ] ;
+    if $(all-features) != $(unique-features)
     {
-        EXIT "Error:" "$(3):" "target requirements for the features {"
-                $(common_features) "} conflict with requested build {" $(>) "}" ;
+        EXIT "Error:" "$(3):" "target requirements conflict for requested build {" $(<) $(>) "}" ;
     }
 }
 if report-any-incompatible-properties in $(TEST)
 {
     report-any-incompatible-properties <foo>bar <baz>mumble : <b>c <foo>bar : my-target ;
-    report-any-incompatible-properties <foo>bat <baz>mumble : <b>c <foo>bar : my-target ;
+    report-any-incompatible-properties <foo>bat <baz>mumble <baz>buz <d>f : <b>c <foo>bar : my-target ;
 }
 
 # multiply-property-sets [<feature>value1[/value2...] ]...
@@ -748,8 +719,6 @@ rule multiply-property-sets
     }
     return $(result) ;
 }
-assert_equal [ multiply-property-sets <b>1 <a>2/3 <c>4/5 ]
-    : <a>2/<b>1/<c>4 <a>2/<b>1/<c>5 <a>3/<b>1/<c>4 <a>3/<b>1/<c>5 ;
 
 # make-path-property-sets base-path : common-properties : property-sets
 #
@@ -779,18 +748,6 @@ rule make-path-property-sets
     }
     return $(result) ;
 }
-if ! ( NDEBUG in $(TEST) )
-{
-  gUNGRISTED(<a>) = a ;
-  gUNGRISTED(<c>) = c ;
-  gUNGRISTED(<e>) = e ;
-  gUNGRISTED(<g>) = g ;
-  gUNGRISTED(<i>) = i ;
-  assert_equal [ make-path-property-sets foo$(SLASH)bar : <a>b <c>d : <e>f$(SLASH)<g>h <i>j ]
-    : foo$(SLASH)bar$(SLASH)e-f$(SLASH)g-h$(SLASH)<a>b$(SLASH)<c>d$(SLASH)<e>f$(SLASH)<g>h foo$(SLASH)bar$(SLASH)i-j$(SLASH)<a>b$(SLASH)<c>d$(SLASH)<i>j ;
-  assert_equal [ make-path-property-sets foo$(SLASH)bar : <a>b <c>d : ]
-    : foo$(SLASH)bar$(SLASH)<a>b$(SLASH)<c>d ;
-}
 
 # expand-build-request
 #      toolset variant target-name : requirements : build-request
@@ -809,8 +766,8 @@ rule expand-build-request
 
     # Separate the free features (e.g. <define>, <undef>, <include>) from the others
     local free-properties = [ get-properties $(gFREE_FEATURES) : $(requirements) $(build-request) ] ;
-    local requirements = [ difference $(requirements) : $(free-properties) ] ;
-    local build-request = [ difference $(build-request) : $(free-properties) ] ;
+    requirements = [ difference $(requirements) : $(free-properties) ] ;
+    build-request = [ difference $(build-request) : $(free-properties) ] ;
 
     # Check for conflicts
     report-any-incompatible-properties $(requirements) : $(build-request) : $(<[3]) ;
@@ -871,12 +828,6 @@ rule split-path-at-grist
     }
     return $(result) $(last) ;
 }
-assert_equal
- [ split-path-at-grist <a>b$(SLASH)c$(SLASH)<d>e$(SLASH)<f>g$(SLASH)h$(SLASH)i ]
- : <a>b$(SLASH)c <d>e <f>g$(SLASH)h$(SLASH)i ;
-assert_equal
- [ split-path-at-grist b$(SLASH)c$(SLASH)<d>e$(SLASH)<f>g$(SLASH)h$(SLASH)i ]
- : b$(SLASH)c <d>e <f>g$(SLASH)h$(SLASH)i ;
  
 # declare-local-target name : sources : requirements : local-BUILD : target-type
 #
@@ -923,7 +874,6 @@ rule directory-of
     }
     return $(result) ;
 }
-assert_equal [ directory-of a$(SLASH)b c d$(SLASH)e$(SLASH)f ] : a . d$(SLASH)e ;
 
 # top-relative-tokens path
 #
@@ -932,10 +882,6 @@ assert_equal [ directory-of a$(SLASH)b c d$(SLASH)e$(SLASH)f ] : a . d$(SLASH)e 
 rule top-relative-tokens
 {
     return [ simplify-path-tokens $(SUBDIR_TOKENS) [ split-path $(<) ] ] ;
-}
-{
-    local SUBDIR_TOKENS = a b c ;
-    assert_equal [ top-relative-tokens ..$(SLASH)d$(SLASH)e ] : a b d e ;
 }
 
 # dependent-include target-path...
@@ -962,7 +908,7 @@ rule dependent-include
             # protect variables from being permanently set by SubDir invocations
             # in included files.
             local SUBDIR SUBDIR_TOKENS SEARCH_SOURCE LOCATE_SOURCE LOCATE_TARGET ;
-            local SOURCE_GRIST SUBDIRCCFLAGS SUBDIRC++FLAGS SUBDIRHDRS ;
+            local SOURCE_GRIST ;
             local RELATIVE_SUBDIR RELATIVE_SUBDIR_TOKENS ;
 
             # this stack allows us to avoid making dependee libraries part of
@@ -975,7 +921,7 @@ rule dependent-include
     }
 }
 
-# link-libraries dependent : libs... : target-path
+# link-libraries dependent : libs... : dependent-path
 #
 # Used to make the given dependent target depend on the file result of building
 # the given libs. The 3rd argument should specify the directory path relative to
@@ -989,14 +935,14 @@ rule link-libraries
     
     # protect global variables from being permanently set by SubDir
     local SUBDIR SUBDIR_TOKENS SEARCH_SOURCE LOCATE_SOURCE LOCATE_TARGET ;
-    local SOURCE_GRIST SUBDIRCCFLAGS SUBDIRC++FLAGS SUBDIRHDRS ;
+    local SOURCE_GRIST ;
     local RELATIVE_SUBDIR RELATIVE_SUBDIR_TOKENS ;
 
     # Enter the dependee subproject
     SubDir $(new-subdir) ;
 
-    local target = [ FGristFiles $(lib-path:D=) ] ;
-    local target-type = $(gTARGET_TYPE($(target))) ;
+    local lib-target = [ FGristFiles $(lib-path:D=) ] ;
+    local lib-target-type = $(gTARGET_TYPE($(lib-target))) ;
 
     local target-grist = [ join-path $(SOURCE_GRIST) $(3) ] ;
     local build-target = $(target:G=$(target-grist)) ;
@@ -1004,14 +950,14 @@ rule link-libraries
     # if build instructions for the given target have not been given, do that now.
     if ! $(build-target) in $(gDECLARED_TARGETS)
     {
-        declare-target $(target)
-            : $(gTARGET_SOURCES($(target)))
-            : $(gTARGET_REQUIREMENTS($(target)))
-            : $(BUILD) : $(target-type) ;
+        declare-target $(lib-target)
+            : $(gTARGET_SOURCES($(lib-target)))
+            : $(gTARGET_REQUIREMENTS($(lib-target)))
+            : $(BUILD) : $(lib-target-type) ;
     }
 
     # Get the name of the built target file
-    local target-file = [ FAppendSuffix $(build-target) : $(SUF$(target-type)) ] ;
+    local target-file = [ FAppendSuffix $(build-target) : $(SUF$(lib-target-type)) ] ;
 
     # Set up dependencies and link instructions
     DEPENDS $(<) : $(target-file) ;
@@ -1059,6 +1005,25 @@ rule declare-fake-targets
     }
 }
 
+# declare-target-type TYPE : [[<compiler>]<variant>]<feature>value...
+rule declare-target-type
+{
+    gTARGET_TYPE_REQUIREMENTS($(<)) = $(>) ;
+}
+
+declare-target-type DLL : <shared-linkable>true ;
+
+if $(NT)
+{
+  gIMPORT_SUFFIX(DLL) = .lib ;
+  gIMPORT_SUFFIX(LIB) = .lib ;
+}
+else
+{
+  gIMPORT_SUFFIX(DLL) = .so ;
+  gIMPORT_SUFFIX(LIB) = .a ;
+}
+
 rule declare-target # target : sources : requirements : local-build : target-type
 {
   local target-type = $(5) ;
@@ -1080,9 +1045,12 @@ rule declare-target # target : sources : requirements : local-build : target-typ
     local v ;
     for v in $(variants)
     {
+      local type-requirements =
+        $(gTARGET_TYPE_REQUIREMENTS($(target-type))) <target-type>$(target-type) ;
+
       local expanded
           = [ expand-build-request $(toolset) $(v) $(<)
-              : $(requirements) : $(build-request) ] ;
+              : $(requirements) $(type-requirements) : $(build-request) ] ;
 
       local x ;
       for x in $(expanded)
@@ -1129,6 +1097,8 @@ rule declare-target # target : sources : requirements : local-build : target-typ
             {
               case EXE : executable-file $(target-file) : $(sources) ;
               case LIB : library-file $(target-file) : $(sources) ;
+              case DLL : dll-file $(target-file) : $(sources) ;
+              case * : EXIT "unknown target type:" $(target-type) ;
             }
 
             # generate build instructions
@@ -1150,6 +1120,14 @@ rule exe
     declare-local-target $(<) : $(2) : $(3) : $(4) : EXE ;
 }
 
+# dll target : sources : requirements : local-build
+#
+# Declare a shared library target.
+rule dll
+{
+    declare-local-target $(<) : $(2) : $(3) : $(4) : DLL ;
+}
+
 # lib target : sources : requirements : local-build
 #
 # Declare a statically-linked library target.
@@ -1158,3 +1136,8 @@ rule lib
     declare-local-target $(<) : $(2) : $(3) : $(4) : LIB ;
 }
 
+
+if ! ( NDEBUG in $(TEST) )
+{
+    include $(BOOST_BASE_DIR)$(SLASH)unit-tests.jam ;
+}

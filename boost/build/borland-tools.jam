@@ -1,5 +1,10 @@
-# compute Borland tool path
+# Borland tool definitions.
+#
+# Please note that wide-character support is currently disabled for Borland in
+# features.jam, pending someone taking the time to figure out how to get the
+# appropriate libraries into the link command line.
 
+# compute Borland tool path
 # You can either put the borland bin directory in your PATH, or you can set
 # BCCROOT to point at the borland installation directory
 BCC_TOOL_PATH = $(BCCROOT)$(SLASH)bin$(SLASH) ;
@@ -17,12 +22,10 @@ flags borland CFLAGS <inlining>off : -vi- ;
 flags borland CFLAGS <inlining>on : -vi -w-inl ;
 flags borland CFLAGS <inlining>full : -vi -w-inl ;
 
-
 flags borland LINKFLAGS <threading>multi : -tWM ;
-flags borland LINKFLAGS <user-interface>gui/<runtime-link>static : -tW ;
-flags borland LINKFLAGS <user-interface>gui/<runtime-link>dynamic : -tWR ;
-flags borland LINKFLAGS <user-interface>console/<runtime-link>static : -tWC ;
-flags borland LINKFLAGS <user-interface>console/<runtime-link>dynamic : -tWCR ;
+flags borland LINKFLAGS <user-interface>gui : -tW ;
+flags borland LINKFLAGS <runtime-link>dynamic : -tWR ;
+flags borland LINKFLAGS <user-interface>console : -tWC ;
 flags borland LINKFLAGS <wide-character-support>on : -WU ;
 
 # -tWD Make the target a Windows .DLL with all functions exportable. 
@@ -30,13 +33,12 @@ flags borland LINKFLAGS <wide-character-support>on : -WU ;
 # C0D32.OBJ - 32-bit DLL startup module (cod32w: wide-char version; cod32x: no
 # exception handling)
 flags borland CFLAGS <threading>multi : -tWM ;
-flags borland CFLAGS <user-interface>gui/<runtime-link>static : -tW ;
-flags borland CFLAGS <user-interface>gui/<runtime-link>dynamic : -tWR ;
-flags borland CFLAGS <user-interface>console/<runtime-link>static : -tWC ;
-flags borland CFLAGS <user-interface>console/<runtime-link>dynamic : -tWCR ;
+flags borland CFLAGS <user-interface>gui : -tW ;
+flags borland CFLAGS <runtime-link>dynamic : -tWR ;
+flags borland CFLAGS <user-interface>console : -tWC ;
 flags borland CFLAGS <wide-character-support>on : -WU ;
 
-# Apparrently not needed when invoking the linker through bcc32
+# Apparently not needed when invoking the linker through bcc32
 # flags borland BCC_STDLIBS <runtime-link>static/<threading>single :  CW32.LIB ;
 # flags borland BCC_STDLIBS <runtime-link>dynamic/<threading>single :  CW32I.LIB ;
 # flags borland BCC_STDLIBS <runtime-link>static/<threading>multi : CW32MT.LIB ;

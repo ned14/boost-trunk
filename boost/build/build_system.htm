@@ -46,6 +46,8 @@
 
           <li>Subproject Jamfiles
         </ul>
+        
+      <li><a href="#internals">Internals</a>
     </ul>
 
     <h2>Introduction</h2>
@@ -435,14 +437,14 @@ subinclude foo/bar/baz <font color="#7f7f7f">foo/bar/...</font>;
 
     <h3>Some terminology</h3>
 
-    <p>In the Jam language, a name can be divided into two parts. If the name
-    starts with a '<tt>&lt;</tt>' symbol and contains a '<tt>&gt;</tt>' symbol,
-    the characters between the '<tt>&lt;</tt>' and the first '<tt>&gt;</tt>',
-    inclusive, is known as <i>grist</i> (if the name doesn't match this format,
-    the grist is empty). The rest of the name is known as the <i>ungristed
-    part</i>. The boost build system takes advantage of Jam's ability to divide
-    names on grist boundaries, sometimes concatenating multiple gristed
-    elements at the beginning of a name.
+    <p><a name="grist">In the Jam</a> language, a name can be divided into two
+    parts. If the name starts with a '<tt>&lt;</tt>' symbol and contains a
+    '<tt>&gt;</tt>' symbol, the characters between the '<tt>&lt;</tt>' and the
+    first '<tt>&gt;</tt>', inclusive, is known as <i>grist</i> (if the name
+    doesn't match this format, the grist is empty). The rest of the name is
+    known as the <i>ungristed part</i>. The boost build system takes advantage
+    of Jam's ability to divide names on grist boundaries, sometimes
+    concatenating multiple gristed elements at the beginning of a name.
 
     <h3>SubProject Jamfiles</h3>
     This section describes how to write a Jamfile for a subproject. 
@@ -722,6 +724,166 @@ flags msvc HDRS &lt;include&gt; ;
 
     <h3>Feature Descriptions</h3>
 
+  <h2><a name="internals">Internals</a></h2>
+
+    <h3>Jam Fundamentals</h3>
+
+    <p> This section is derived from the official Jam documentation and from my
+    experience using it and reading the Jambase rules. I repeat the information
+    here mostly because it is essential to understanding and using Jam, but is
+    not consolidated in a single place. Some of it is missing from the official
+    documentation altogether. I hope it will be useful to anyone wishing to
+    become familiar with Jam and the Boost build system.
+
+    <ul>
+
+    <li>Jam ``<b>rules</b>'' are actually simple procedural entities. Think of
+    them as functions. Arguments are separated by colons.
+
+    <li>A Jam <b>target</b> is an abstract entity identified by an arbitrary
+    string. The build-in <tt>DEPENDS</tt> rule creates a link in the dependency
+    graph between the named targets.
+
+    <li>When a rule is invoked, if there are <b><tt>actions</tt></b> declared
+    with the same name as the rule, the <tt>actions</tt> are added to the
+    updating actions for the target identified by the rule's first argument.  It
+    is actually possible to invoke an undeclared rule if corresponding actions
+    are declared: the rule is treated as empty.
+
+    <li>Targets (other than <tt>NOTFILE</tt> targets) are associated with
+    paths in the filesystem through a process called <a
+    href="http://public.perforce.com/public/jam/src/Jam.html#binding">binding</a>.
+
+    <li>In addition to local and global variables, jam allows you to set a
+    variable <tt>on</tt> a target. Target-specific variable values can usually
+    not be read, and take effect <i>only</i> in the following contexts: 
+
+    <ul>
+      <li>In updating <tt>actions</tt>, variable values are first looked up <tt>on</tt>
+          the target named by the first argument (the target being updated).
+          Because Jam builds its entire dependency tree before executing
+          <tt>actions</tt>, Jam rules make target-specific variable settings as
+          a way of supplying parameters to the corresponding
+          <tt>actions</tt>. 
+
+      <li>Binding is controlled <i>entirely</i> by the target-specific setting of the
+          <tt>SEARCH</tt> and <tt>LOCATE</tt> variables, as described <a
+          href="http://public.perforce.com/public/jam/src/Jam.html#search">here</a>.
+     
+      <li>In the special rule used for <a
+          href="http://public.perforce.com/public/jam/src/Jam.html#hdrscan">header
+          file scanning</a>, variables values are first looked up <tt>on</tt> the target
+          named by the rule's first argument (the source file being
+          scanned).
+    </ul>
+
+    <li>The ``<b>bound value</b>'' of a variable is the path associated with the
+    target named by the variable. In build <tt>actions</tt>, the first two
+    arguments are automatically replaced with their bound
+    values. Target-specific variables can be selectively replaced by their bound
+    values using the <a
+    href="http://public.perforce.com/public/jam/src/Jam.html#actionmods">bind</a>
+    action modifier.
+    
+    <blockquote>
+       Note that the term ``binding'' as used in the Jam documentation indicates
+       a phase of processing that includes three sub-phases: <i>binding</i>
+       (yes!), update determination, and header file scanning. The repetition
+       can lead to some confusion. In particular, the <a
+       href="http://public.perforce.com/public/jam/src/Jam.html#bindingmods">Modifying
+       Binding</a> section in the Jam documentation should probably be titled
+       ``Modifying Update Determination''.
+    </blockquote>
+    
+    <li>``<a href="#grist">Grist</a>'' is just a string prefix of the form
+    <tt>&lt;</tt><i>characters</i><tt>&gt;</tt>. It is used in Jam to create
+    unique target names based on simpler names. For example, the file
+    name ``<tt>test.exe</tt>'' may be used by targets in separate subprojects,
+    or for the debug and release variants of the ``same'' abstract target. Grist
+    is used instead of identifying targets with absolute paths for two reasons:
+
+    <ol summary="">
+      <li>The location of header files can not be derived solely from what the
+      user puts in a Jamfile, but depend also on the binding process. Some
+      mechanism to identify headers with the same name is still needed.
+
+      <li>Grist allows us to use a uniform abstract identifier for each built
+      target, regardless of target file location (as allowed by setting
+      <tt>ALL_LOCATE_TARGET</tt>
+    </ol>
+
+    When grist is extracted from a name with
+    <tt>$(</tt><i>var</i><tt>:G)</tt>, the result includes the leading and
+    trailing angle brackets. When grist is added to a name with
+    <tt>$(</tt><i>var</i><tt>:G=</tt><i>expr</i><tt>)</tt>, existing grist is
+    first stripped. Then, if <i>expr</i> is non-empty, as few leading
+    <tt>&lt;</tt>s and <tt>&gt;</tt>s as
+    neccessary
+    to form an expression of the form
+    <tt>&lt;</tt><i>expr2</i><tt>&gt;</tt> are added;
+    <tt>&lt;</tt><i>expr2</i><tt>&gt;</tt> is then prepended.
+    Grist prefixes are stripped from target names when binding them to
+    filesystem paths.
+
+
+    </ul>
+    
+  
+  <p>Please also read <a href="http://public.perforce.com/public/jam/src/Jam.html">The
+  Jam language reference</a> for the additional details, and the <a
+  href="http://public.perforce.com/public/jam/src/RELNOTES">Jam release
+  notes</a> for a brief description of recent, but <b>fundamental changes to the
+  Jam language</b> without which you will probably not understand any of the
+  build system code. In particular, note that the <tt>return</tt> statement does
+  not affect control flow.
+  
+    <h3>Global Variables</h3>
+
+    <p>This section describes some of the global variables used by the build
+       system. Please note that some parts of the system (particularly those in
+       <tt>allyourbase.jam</tt>) are heavily based on the Jambase file supplied
+       with Jam, and as such do not follow the conventions described below.
+
+    <p>Global variables used in the build system fall into three categories: 
+
+    <ul>
+    <li> Global variables intended to
+    be set by the user on the command-line or in the environment use
+    <tt>ALL_UPPER_CASE</tt> names.
+
+    <li> Internal global variables begin with a lower-case &quot;g&quot; and
+    continue in upper-case: <tt>gSOME_GLOBAL</tt>
+
+    <li> Global variables of the form:
+    <tt>gBASE_NAME(</tt><i>arguments</i><tt>)</tt>, where <i>arguments</i> is a
+    comma-separated argument list, are used internally to achieve a kind of
+    indirection by concatenating variable values:
+    
+<blockquote><pre>
+    ECHO $(gFUBAR($(x),$(y))) ;
+</pre></blockquote>
+    </ul>
+
+    <p>Please note that the build system commonly takes advantage of <a
+    href="http://public.perforce.com/public/jam/src/Jam.html#bindingmods">Jam's
+    Dynamic Scoping feature</a> (see the <tt>local</tt> command in the
+    &quot;Flow of Control&quot; section below the link target) to temporarily
+    &quot;change&quot; a global variable by declaring a <tt>local</tt> of the
+    same name.
+
+    <h3>Variables Associated with SubProject Identity</h3>
+
+    <ul>
+
+    <li><tt>SUBDIR_TOKENS</tt> - a list of the path elements relative to the
+    project root of the current subproject.
+    
+    <li><tt>SUBDIR</tt> - the path from the invocation directory to the
+    current subproject directory.
+    
+    <li>
+
+    </ul>
     <hr>
 
     <p>&copy; Copyright David Abrahams 2001. Permission to copy, use, modify,
