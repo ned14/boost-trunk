@@ -19,6 +19,7 @@ boost/boost/array_traits.hpp svneol=native#text/plain
 boost/boost/bind.hpp svneol=native#text/plain
 boost/boost/bind/bind_cc.hpp svneol=native#text/plain
 boost/boost/bind/bind_mf_cc.hpp svneol=native#text/plain
+boost/boost/bind/bind_template.hpp svneol=native#text/plain
 boost/boost/bind/mem_fn_cc.hpp svneol=native#text/plain
 boost/boost/bind/mem_fn_template.hpp svneol=native#text/plain
 boost/boost/bind/mem_fn_vw.hpp svneol=native#text/plain
