@@ -4180,6 +4180,8 @@ boost/libs/python/pyste/example/unions.h svneol=native#text/plain
 boost/libs/python/pyste/example/unions.pyste -text
 boost/libs/python/pyste/example/virtual.h svneol=native#text/plain
 boost/libs/python/pyste/example/virtual.pyste -text
+boost/libs/python/pyste/example/virtual2.h svneol=native#text/plain
+boost/libs/python/pyste/example/virtual2.pyste -text
 boost/libs/python/pyste/example/wrappertest.h svneol=native#text/plain
 boost/libs/python/pyste/example/wrappertest.pyste -text
 boost/libs/python/pyste/example/wrappertest_wrappers.h svneol=native#text/plain
@@ -4212,8 +4214,10 @@ boost/libs/python/pyste/tests/example_enumsUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_header_testUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_nested.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_operatorsUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_smart_ptrUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_templatesUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_virtual.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_virtual2.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_wrappertestUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/infosUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/policiesUT.py svneol=native#text/x-python
