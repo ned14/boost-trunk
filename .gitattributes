@@ -5326,9 +5326,12 @@ boost/libs/program_options/example/custom_syntax.cpp svneol=native#text/plain
 boost/libs/program_options/example/first.cpp svneol=native#text/plain
 boost/libs/program_options/example/multiple_sources.cfg -text
 boost/libs/program_options/example/multiple_sources.cpp svneol=native#text/plain
+boost/libs/program_options/example/option_groups.cpp svneol=native#text/plain
 boost/libs/program_options/example/options_description.cpp svneol=native#text/plain
 boost/libs/program_options/example/real.cpp svneol=native#text/plain
 boost/libs/program_options/example/regex.cpp svneol=native#text/plain
+boost/libs/program_options/example/response_file.cpp svneol=native#text/plain
+boost/libs/program_options/example/response_file.rsp -text
 boost/libs/program_options/index.html svneol=native#text/html
 boost/libs/program_options/src/cmdline.cpp svneol=native#text/plain
 boost/libs/program_options/src/config_file.cpp svneol=native#text/plain
