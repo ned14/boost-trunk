@@ -14,17 +14,17 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/pop_front_fwd.hpp"
-#include "boost/mpl/aux_/pop_front_impl.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/pop_front_fwd.hpp>
+#include <boost/mpl/aux_/pop_front_impl.hpp>
+#include <boost/mpl/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct pop_front
     : pop_front_impl< typename sequence_tag<Sequence>::type >
@@ -33,7 +33,7 @@ struct pop_front
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,pop_front,(Sequence))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1, pop_front)
+BOOST_MPL_AUX_NA_SPEC(1, pop_front)
 
 } // namespace mpl
 } // namespace boost

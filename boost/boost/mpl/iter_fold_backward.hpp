@@ -17,21 +17,21 @@
 #ifndef BOOST_MPL_ITER_FOLD_BACKWARD_HPP_INCLUDED
 #define BOOST_MPL_ITER_FOLD_BACKWARD_HPP_INCLUDED
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/O1_size.hpp"
-#include "boost/mpl/arg.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/aux_/iter_fold_backward_impl.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/O1_size.hpp>
+#include <boost/mpl/arg.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/aux_/iter_fold_backward_impl.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(State)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(BackwardOp)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(State)
+    , typename BOOST_MPL_AUX_NA_PARAM(BackwardOp)
     , typename ForwardOp = arg<1>
     >
 struct iter_fold_backward
@@ -52,7 +52,7 @@ struct iter_fold_backward
         )
 };
 
-BOOST_MPL_AUX_VOID_SPEC(3, iter_fold_backward)
+BOOST_MPL_AUX_NA_SPEC(3, iter_fold_backward)
 
 } // namespace mpl
 } // namespace boost

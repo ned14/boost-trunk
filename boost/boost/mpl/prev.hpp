@@ -17,15 +17,15 @@
 #ifndef BOOST_MPL_PREV_HPP_INCLUDED
 #define BOOST_MPL_PREV_HPP_INCLUDED
 
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct prev
 {
@@ -33,14 +33,14 @@ struct prev
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,prev,(T))
 };
 
-#if defined(BOOST_MPL_MSVC_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
 template<> struct prev<int>
 {
     typedef int type;
 };
 #endif
 
-BOOST_MPL_AUX_VOID_SPEC(1, prev)
+BOOST_MPL_AUX_NA_SPEC(1, prev)
 
 } // namespace mpl
 } // namespace boost

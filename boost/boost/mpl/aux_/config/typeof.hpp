@@ -14,9 +14,9 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/aux_/config/workaround.hpp"
-#include "boost/mpl/aux_/config/gcc.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/aux_/config/workaround.hpp>
+#include <boost/mpl/aux_/config/gcc.hpp>
+#include <boost/config.hpp>
 
 #if !defined(BOOST_MPL_CFG_TYPEOF_SEQUENCES) \
     && (   defined(BOOST_MPL_CFG_GCC) && BOOST_MPL_CFG_GCC >= 0x0302 \

@@ -14,19 +14,19 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/vector/aux_/at.hpp"
-#include "boost/mpl/iterator_tag.hpp"
-#include "boost/mpl/plus.hpp"
-#include "boost/mpl/minus.hpp"
-#include "boost/mpl/advance_fwd.hpp"
-#include "boost/mpl/distance_fwd.hpp"
-#include "boost/mpl/next.hpp"
-#include "boost/mpl/prior.hpp"
-#include "boost/mpl/aux_/iterator_names.hpp"
-//#include "boost/mpl/aux_/value_wknd.hpp"
-#include "boost/mpl/aux_/config/nttp.hpp"
-#include "boost/mpl/aux_/config/ctps.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
+#include <boost/mpl/vector/aux_/at.hpp>
+#include <boost/mpl/iterator_tag.hpp>
+#include <boost/mpl/plus.hpp>
+#include <boost/mpl/minus.hpp>
+#include <boost/mpl/advance_fwd.hpp>
+#include <boost/mpl/distance_fwd.hpp>
+#include <boost/mpl/next.hpp>
+#include <boost/mpl/prior.hpp>
+#include <boost/mpl/aux_/iterator_names.hpp>
+//#include <boost/mpl/aux_/value_wknd.hpp>
+#include <boost/mpl/aux_/config/nttp.hpp>
+#include <boost/mpl/aux_/config/ctps.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
 
 namespace boost {
 namespace mpl {
@@ -37,7 +37,7 @@ template<
     >
 struct v_iter
 {
-    typedef ra_iter_tag_ category;
+    typedef random_access_iterator_tag category;
     typedef typename v_at<Vector,n_>::type type;
 
     typedef long_<n_> pos;

@@ -17,7 +17,7 @@
 #ifndef BOOST_MPL_ARG_FWD_HPP_INCLUDED
 #define BOOST_MPL_ARG_FWD_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/nttp.hpp"
+#include <boost/mpl/aux_/config/nttp.hpp>
 
 namespace boost {
 namespace mpl {

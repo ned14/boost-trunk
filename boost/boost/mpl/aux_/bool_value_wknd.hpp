@@ -17,12 +17,12 @@
 #ifndef BOOST_MPL_AUX_BOOL_VALUE_WKND_HPP_INCLUDED
 #define BOOST_MPL_AUX_BOOL_VALUE_WKND_HPP_INCLUDED
 
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 
 #if defined(__BORLANDC__) && (__BORLANDC__ <= 0x561 || !defined(BOOST_STRICT_CONFIG)) \
  || defined(BOOST_MSVC) && BOOST_MSVC < 1300
 
-#   include "boost/mpl/bool.hpp"
+#   include <boost/mpl/bool.hpp>
 
 namespace boost { namespace mpl { namespace aux {
 

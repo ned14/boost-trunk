@@ -14,19 +14,19 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/bool.hpp"
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/aux_/value_wknd.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/aux_/value_wknd.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/config.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+      typename BOOST_MPL_AUX_NA_PARAM(T1)
+    , typename BOOST_MPL_AUX_NA_PARAM(T2)
     >
 struct less
 {
@@ -50,7 +50,7 @@ struct less
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,less,(T1,T2))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, less)
+BOOST_MPL_AUX_NA_SPEC(2, less)
 
 template< long N >
 struct lt

@@ -17,9 +17,9 @@
 #ifndef BOOST_MPL_AUX_LAMBDA_ARITY_PARAM_HPP_INCLUDED
 #define BOOST_MPL_AUX_LAMBDA_ARITY_PARAM_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/ttp.hpp"
+#include <boost/mpl/aux_/config/ttp.hpp>
 
-#if !defined(BOOST_EXTENDED_TEMPLATE_PARAMETERS_MATCHING)
+#if !defined(BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING)
 #   define BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(param)    
 #else
 #   define BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(param) , param

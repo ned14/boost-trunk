@@ -17,8 +17,8 @@
 #ifndef BOOST_MPL_AUX_FIND_IF_PRED_HPP_INCLUDED
 #define BOOST_MPL_AUX_FIND_IF_PRED_HPP_INCLUDED
 
-#include "boost/mpl/aux_/iter_apply.hpp"
-#include "boost/mpl/not.hpp"
+#include <boost/mpl/aux_/iter_apply.hpp>
+#include <boost/mpl/not.hpp>
 
 namespace boost {
 namespace mpl {

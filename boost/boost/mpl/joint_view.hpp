@@ -18,11 +18,11 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/joint_iter.hpp"
-#include "boost/mpl/plus.hpp"
-#include "boost/mpl/size_fwd.hpp"
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/aux_/joint_iter.hpp>
+#include <boost/mpl/plus.hpp>
+#include <boost/mpl/size_fwd.hpp>
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost {
 namespace mpl {
@@ -43,8 +43,8 @@ struct size_traits< aux::joint_view_tag >
 };
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence1_)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence2_)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence1_)
+    , typename BOOST_MPL_AUX_NA_PARAM(Sequence2_)
     >
 struct joint_view
 {
@@ -63,7 +63,7 @@ struct joint_view
     typedef typename aux::joint_iter<last1_,last1_,last2_> end;
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, joint_view)
+BOOST_MPL_AUX_NA_SPEC(2, joint_view)
 
 } // namespace mpl
 } // namespace boost

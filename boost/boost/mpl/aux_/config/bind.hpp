@@ -17,7 +17,7 @@
 #ifndef BOOST_MPL_AUX_CONFIG_BIND_HPP_INCLUDED
 #define BOOST_MPL_AUX_CONFIG_BIND_HPP_INCLUDED
 
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 
 #if    !defined(BOOST_MPL_NO_BIND_TEMPLATE) \
     && !defined(BOOST_MPL_PREPROCESSING_MODE) \

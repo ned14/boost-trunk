@@ -17,14 +17,14 @@
 #ifndef BOOST_MPL_MAX_ELEMENT_HPP_INCLUDED
 #define BOOST_MPL_MAX_ELEMENT_HPP_INCLUDED
 
-#include "boost/mpl/less.hpp"
-#include "boost/mpl/iter_fold.hpp"
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/if.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/aux_/common_name_wknd.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/less.hpp>
+#include <boost/mpl/iter_fold.hpp>
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/aux_/common_name_wknd.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost {
 namespace mpl {
@@ -59,7 +59,7 @@ struct select_max
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     , typename Predicate = less<_,_>
     >
 struct max_element
@@ -77,7 +77,7 @@ struct max_element
 
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_END
 
-BOOST_MPL_AUX_ALGORITHM_VOID_SPEC(1, max_element)
+BOOST_MPL_AUX_NA_ALGORITHM_SPEC(1, max_element)
 
 } // namespace mpl
 } // namespace boost

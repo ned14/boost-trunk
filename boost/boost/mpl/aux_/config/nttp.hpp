@@ -17,7 +17,7 @@
 #ifndef BOOST_MPL_AUX_CONFIG_NTTP_HPP_INCLUDED
 #define BOOST_MPL_AUX_CONFIG_NTTP_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/msvc.hpp"
+#include <boost/mpl/aux_/config/msvc.hpp>
 
 // MSVC 6.5 ICE-s on the code as simple as this:
 //
@@ -38,7 +38,7 @@
 
 #if defined(BOOST_MSVC) && BOOST_MSVC < 1300
 
-#include "boost/preprocessor/cat.hpp"
+#include <boost/preprocessor/cat.hpp>
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 namespace boost { namespace mpl {

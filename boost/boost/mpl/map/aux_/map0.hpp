@@ -15,11 +15,11 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/long.hpp"
-#include "boost/mpl/void_fwd.hpp"
-#include "boost/mpl/map/aux_/tag.hpp"
-#include "boost/mpl/aux_/type_wrapper.hpp"
-#include "boost/mpl/aux_/config/static_constant.hpp"
+#include <boost/mpl/long.hpp>
+#include <boost/mpl/void_fwd.hpp>
+#include <boost/mpl/map/aux_/tag.hpp>
+#include <boost/mpl/aux_/type_wrapper.hpp>
+#include <boost/mpl/aux_/config/static_constant.hpp>
 
 namespace boost {
 namespace mpl {

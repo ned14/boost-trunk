@@ -17,19 +17,19 @@
 #ifndef BOOST_MPL_EMPTY_BASE_HPP_INCLUDED
 #define BOOST_MPL_EMPTY_BASE_HPP_INCLUDED
 
-#include "boost/type_traits/is_empty.hpp"
-#include "boost/mpl/bool.hpp"
-#include "boost/config.hpp"
+#include <boost/type_traits/is_empty.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/config.hpp>
 
 // should be always the last #include directive
-#include "boost/type_traits/detail/bool_trait_def.hpp"
+#include <boost/type_traits/detail/bool_trait_def.hpp>
 
 namespace boost {
 namespace mpl {
 
 // empty base class, guaranteed to have no members; inheritance from
 // 'empty_base' through the 'inherit' metafunction is a no-op - see 
-// "mpl/inherit.hpp" header for the details
+// "mpl/inherit.hpp> header for the details
 struct empty_base {};
 
 template< typename T >
@@ -56,6 +56,6 @@ BOOST_TT_AUX_BOOL_TRAIT_SPEC1(is_empty, mpl::empty_base, true)
 
 } // namespace boost
 
-#include "boost/type_traits/detail/bool_trait_undef.hpp"
+#include <boost/type_traits/detail/bool_trait_undef.hpp>
 
 #endif // BOOST_MPL_EMPTY_BASE_HPP_INCLUDED

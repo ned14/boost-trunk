@@ -14,11 +14,11 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/prior.hpp"
-#include "boost/mpl/aux_/deref_wknd.hpp"
-#include "boost/mpl/aux_/traits_lambda_spec.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/prior.hpp>
+#include <boost/mpl/aux_/deref_wknd.hpp>
+#include <boost/mpl/aux_/traits_lambda_spec.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
 
 namespace boost {
 namespace mpl {
@@ -33,7 +33,7 @@ struct back_impl
     template< typename Sequence > struct apply
     {
         typedef typename end<Sequence>::type iter_;
-#if defined(BOOST_MPL_MSVC_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
         typedef typename prior<iter_>::type last_;
 #else
         typedef typename iter_::prior last_;

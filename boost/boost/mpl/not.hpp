@@ -18,10 +18,10 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/bool.hpp"
-#include "boost/mpl/aux_/nested_type_wknd.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/aux_/nested_type_wknd.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
@@ -38,7 +38,7 @@ struct not_impl
 
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct not_
     : aux::not_impl<
@@ -48,7 +48,7 @@ struct not_
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,not_,(T))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1,not_)
+BOOST_MPL_AUX_NA_SPEC(1,not_)
 
 } // namespace mpl
 } // namespace boost

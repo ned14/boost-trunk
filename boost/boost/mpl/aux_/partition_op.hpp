@@ -17,12 +17,12 @@
 #ifndef BOOST_MPL_AUX_PARTITION_OP_HPP_INCLUDED
 #define BOOST_MPL_AUX_PARTITION_OP_HPP_INCLUDED
 
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/if.hpp"
-#include "boost/mpl/pair.hpp"
-#include "boost/mpl/push_front.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/apply_if.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/pair.hpp>
+#include <boost/mpl/push_front.hpp>
+#include <boost/mpl/aux_/lambda_spec.hpp>
 
 namespace boost {
 namespace mpl {

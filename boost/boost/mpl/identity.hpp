@@ -17,14 +17,14 @@
 #ifndef BOOST_MPL_IDENTITY_HPP_INCLUDED
 #define BOOST_MPL_IDENTITY_HPP_INCLUDED
 
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct identity
 {
@@ -33,7 +33,7 @@ struct identity
 };
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct make_identity
 {
@@ -41,8 +41,8 @@ struct make_identity
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,make_identity,(T))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1, identity)
-BOOST_MPL_AUX_VOID_SPEC(1, make_identity)
+BOOST_MPL_AUX_NA_SPEC(1, identity)
+BOOST_MPL_AUX_NA_SPEC(1, make_identity)
 
 } // namespace mpl
 } // namespace boost

@@ -17,10 +17,10 @@
 #ifndef BOOST_MPL_REVERSE_HPP_INCLUDED
 #define BOOST_MPL_REVERSE_HPP_INCLUDED
 
-#include "boost/mpl/copy.hpp"
-#include "boost/mpl/clear.hpp"
-#include "boost/mpl/push_front.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/copy.hpp>
+#include <boost/mpl/clear.hpp>
+#include <boost/mpl/push_front.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost {
 namespace mpl {
@@ -28,7 +28,7 @@ namespace mpl {
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct reverse
 {
@@ -45,7 +45,7 @@ struct reverse
 
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_END
 
-BOOST_MPL_AUX_ALGORITHM_VOID_SPEC(1, reverse)
+BOOST_MPL_AUX_NA_ALGORITHM_SPEC(1, reverse)
 
 } // namespace mpl
 } // namespace boost

@@ -17,8 +17,8 @@
 #ifndef BOOST_MPL_ITERATOR_RANGE_HPP_INCLUDED
 #define BOOST_MPL_ITERATOR_RANGE_HPP_INCLUDED
 
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
@@ -26,8 +26,8 @@ namespace mpl {
 struct iterator_range_tag;
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(First)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Last)
+      typename BOOST_MPL_AUX_NA_PARAM(First)
+    , typename BOOST_MPL_AUX_NA_PARAM(Last)
     >
 struct iterator_range
 {
@@ -39,7 +39,7 @@ struct iterator_range
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,iterator_range,(First,Last))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, iterator_range)
+BOOST_MPL_AUX_NA_SPEC(2, iterator_range)
 
 } // namespace mpl
 } // namespace boost

@@ -18,13 +18,13 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/aux_/typeof.hpp"
-#include "boost/mpl/aux_/value_wknd.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/aux_/typeof.hpp>
+#include <boost/mpl/aux_/value_wknd.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
+#include <boost/config.hpp>
 
 namespace boost {
 namespace mpl {
@@ -42,7 +42,7 @@ struct modulus_c
 #endif
 };
 
-#if defined(BOOST_MPL_MSVC_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
 template<>
 struct modulus_c<long,0,0>
 {
@@ -50,8 +50,8 @@ struct modulus_c<long,0,0>
 #endif
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+      typename BOOST_MPL_AUX_NA_PARAM(T1)
+    , typename BOOST_MPL_AUX_NA_PARAM(T2)
     >
 struct modulus
     : modulus_c<
@@ -65,7 +65,7 @@ struct modulus
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2, modulus, (T1,T2))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2,modulus)
+BOOST_MPL_AUX_NA_SPEC(2,modulus)
 
 } // namespace mpl
 } // namespace boost

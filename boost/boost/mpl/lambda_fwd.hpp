@@ -18,13 +18,13 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/lambda_arity_param.hpp"
-#include "boost/mpl/aux_/config/lambda.hpp"
+#include <boost/mpl/aux_/lambda_arity_param.hpp>
+#include <boost/mpl/aux_/config/lambda.hpp>
 
 namespace boost {
 namespace mpl {
 
-#if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
+#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
 
 template< 
       typename T

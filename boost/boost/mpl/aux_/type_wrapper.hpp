@@ -18,7 +18,7 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/config/ctps.hpp"
+#include <boost/mpl/aux_/config/ctps.hpp>
 
 namespace boost {
 namespace mpl {

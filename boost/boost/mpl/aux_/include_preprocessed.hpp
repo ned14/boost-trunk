@@ -13,10 +13,10 @@
 
 // no include guards, the header is intended for multiple inclusion!
 
-#include "boost/mpl/aux_/config/compiler.hpp"
-#include "boost/mpl/aux_/config/preprocessor.hpp"
-#include "boost/preprocessor/cat.hpp"
-#include "boost/preprocessor/stringize.hpp"
+#include <boost/mpl/aux_/config/compiler.hpp>
+#include <boost/mpl/aux_/config/preprocessor.hpp>
+#include <boost/preprocessor/cat.hpp>
+#include <boost/preprocessor/stringize.hpp>
 
 #if !defined(BOOST_NEEDS_TOKEN_PASTING_OP_FOR_TOKENS_JUXTAPOSING)
 #   define AUX_PREPROCESSED_HEADER \

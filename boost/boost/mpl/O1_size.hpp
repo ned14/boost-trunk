@@ -14,17 +14,17 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/O1_size_fwd.hpp"
-#include "boost/mpl/aux_/O1_size_impl.hpp"
-#include "boost/mpl/aux_/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/O1_size_fwd.hpp>
+#include <boost/mpl/aux_/O1_size_impl.hpp>
+#include <boost/mpl/aux_/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost {
 namespace mpl {
 
 // returns sequence size if it's an O(1) operation; otherwise returns -1
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct O1_size
     : O1_size_impl< typename sequence_tag<Sequence>::type >
@@ -32,7 +32,7 @@ struct O1_size
 {
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1, O1_size)
+BOOST_MPL_AUX_NA_SPEC(1, O1_size)
 
 } // namespace mpl
 } // namespace boost

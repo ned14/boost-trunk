@@ -17,11 +17,11 @@
 #ifndef BOOST_MPL_AUX_PREPROCESSOR_SUB_HPP_INCLUDED
 #define BOOST_MPL_AUX_PREPROCESSOR_SUB_HPP_INCLUDED
 
-#include "boost/mpl/aux_/preprocessor/tuple.hpp"
-#include "boost/mpl/aux_/config/preprocessor.hpp"
+#include <boost/mpl/aux_/preprocessor/tuple.hpp>
+#include <boost/mpl/aux_/config/preprocessor.hpp>
 
 #if defined(BOOST_MPL_BROKEN_PP_MACRO_EXPANSION)
-#   include "boost/preprocessor/cat.hpp"
+#   include <boost/preprocessor/cat.hpp>
 
 #   define BOOST_MPL_PP_SUB(i,j) \
     BOOST_MPL_PP_SUB_DELAY(i,j) \

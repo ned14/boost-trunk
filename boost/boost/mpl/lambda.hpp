@@ -17,12 +17,12 @@
 #ifndef BOOST_MPL_LAMBDA_HPP_INCLUDED
 #define BOOST_MPL_LAMBDA_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/lambda.hpp"
+#include <boost/mpl/aux_/config/lambda.hpp>
 
-#if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
-#   include "boost/mpl/aux_/full_lambda.hpp"
+#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
+#   include <boost/mpl/aux_/full_lambda.hpp>
 #else
-#   include "boost/mpl/aux_/lambda_no_ctps.hpp"
+#   include <boost/mpl/aux_/lambda_no_ctps.hpp>
 #endif
 
 #endif // BOOST_MPL_LAMBDA_HPP_INCLUDED

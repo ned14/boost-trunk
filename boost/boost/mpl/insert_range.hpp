@@ -17,19 +17,19 @@
 #ifndef BOOST_MPL_INSERT_RANGE_HPP_INCLUDED
 #define BOOST_MPL_INSERT_RANGE_HPP_INCLUDED
 
-#include "boost/mpl/insert_range_fwd.hpp"
-#include "boost/mpl/aux_/insert_range_impl.hpp"
-#include "boost/mpl/aux_/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/insert_range_fwd.hpp>
+#include <boost/mpl/aux_/insert_range_impl.hpp>
+#include <boost/mpl/aux_/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Pos)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Range)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(Pos)
+    , typename BOOST_MPL_AUX_NA_PARAM(Range)
     >
 struct insert_range
     : insert_range_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
@@ -38,7 +38,7 @@ struct insert_range
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,insert_range,(Sequence,Pos,Range))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(3, insert_range)
+BOOST_MPL_AUX_NA_SPEC(3, insert_range)
 
 } // namespace mpl
 } // namespace boost

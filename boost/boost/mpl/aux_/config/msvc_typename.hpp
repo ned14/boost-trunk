@@ -17,7 +17,7 @@
 #ifndef BOOST_MPL_AUX_CONFIG_MSVC_TYPENAME_HPP_INCLUDED
 #define BOOST_MPL_AUX_CONFIG_MSVC_TYPENAME_HPP_INCLUDED
 
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 
 #if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
 #   define BOOST_MSVC_TYPENAME

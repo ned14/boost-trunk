@@ -14,19 +14,19 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/insert_fwd.hpp"
-#include "boost/mpl/aux_/insert_impl.hpp"
-#include "boost/mpl/aux_/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/insert_fwd.hpp>
+#include <boost/mpl/aux_/insert_impl.hpp>
+#include <boost/mpl/aux_/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Pos_or_T)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(Pos_or_T)
+    , typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct insert
     : insert_impl< typename sequence_tag<Sequence>::type >
@@ -35,7 +35,7 @@ struct insert
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,insert,(Sequence,Pos_or_T,T))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(3, insert)
+BOOST_MPL_AUX_NA_SPEC(3, insert)
 
 }}
 

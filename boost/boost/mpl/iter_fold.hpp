@@ -17,20 +17,20 @@
 #ifndef BOOST_MPL_ITER_FOLD_HPP_INCLUDED
 #define BOOST_MPL_ITER_FOLD_HPP_INCLUDED
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/O1_size.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/aux_/iter_fold_impl.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/O1_size.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/aux_/iter_fold_impl.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(State)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(ForwardOp)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(State)
+    , typename BOOST_MPL_AUX_NA_PARAM(ForwardOp)
     >
 struct iter_fold
 {
@@ -45,7 +45,7 @@ struct iter_fold
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,iter_fold,(Sequence,State,ForwardOp))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(3, iter_fold)
+BOOST_MPL_AUX_NA_SPEC(3, iter_fold)
 
 } // namespace mpl
 } // namespace boost

@@ -17,21 +17,21 @@
 #ifndef BOOST_MPL_SWITCH_HPP_INCLUDED
 #define BOOST_MPL_SWITCH_HPP_INCLUDED
 
-#include "boost/mpl/find_if.hpp"
-#include "boost/mpl/select1st.hpp"
-#include "boost/mpl/select2nd.hpp"
-#include "boost/mpl/deref.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/find_if.hpp>
+#include <boost/mpl/select1st.hpp>
+#include <boost/mpl/select2nd.hpp>
+#include <boost/mpl/deref.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template< 
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Body)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(Body)
+    , typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct switch_
 {
@@ -47,7 +47,7 @@ struct switch_
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,switch_,(Body,T))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, switch_)
+BOOST_MPL_AUX_NA_SPEC(2, switch_)
 
 } // namespace mpl
 } // namespace boost

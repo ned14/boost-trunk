@@ -17,8 +17,8 @@
 #ifndef BOOST_MPL_ASSERT_IS_SAME_HPP_INCLUDED
 #define BOOST_MPL_ASSERT_IS_SAME_HPP_INCLUDED
 
-#include "boost/static_assert.hpp"
-#include "boost/type_traits/same_traits.hpp"
+#include <boost/static_assert.hpp>
+#include <boost/type_traits/same_traits.hpp>
 
 namespace boost {
 namespace mpl {

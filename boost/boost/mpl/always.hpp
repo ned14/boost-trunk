@@ -17,10 +17,10 @@
 #ifndef BOOST_MPL_ALWAYS_HPP_INCLUDED
 #define BOOST_MPL_ALWAYS_HPP_INCLUDED
 
-#include "boost/mpl/aux_/preprocessor/def_params_tail.hpp"
-#include "boost/mpl/void.hpp"
-#include "boost/mpl/aux_/arity_spec.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include <boost/mpl/aux_/preprocessor/def_params_tail.hpp>
+#include <boost/mpl/void.hpp>
+#include <boost/mpl/aux_/arity_spec.hpp>
+#include <boost/mpl/aux_/lambda_spec.hpp>
 
 namespace boost {
 namespace mpl {

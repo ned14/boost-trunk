@@ -15,18 +15,18 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/order_fwd.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/order_impl.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/order_fwd.hpp>
+#include <boost/mpl/sequence_tag.hpp>
+#include <boost/mpl/aux_/order_impl.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(AssociativeSequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Key)
+      typename BOOST_MPL_AUX_NA_PARAM(AssociativeSequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(Key)
     >
 struct order
     : order_impl< typename sequence_tag<AssociativeSequence>::type >
@@ -35,7 +35,7 @@ struct order
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,order,(AssociativeSequence,Key))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, order)
+BOOST_MPL_AUX_NA_SPEC(2, order)
 
 }}
 

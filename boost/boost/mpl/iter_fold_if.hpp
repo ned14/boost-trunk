@@ -17,22 +17,22 @@
 #ifndef BOOST_MPL_ITER_FOLD_IF_HPP_INCLUDED
 #define BOOST_MPL_ITER_FOLD_IF_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/workaround.hpp"
-#include "boost/mpl/aux_/iter_fold_if_impl.hpp"
-#include "boost/mpl/and.hpp"
-#include "boost/mpl/always.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/bool.hpp"
-#include "boost/mpl/if.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/not.hpp"
-#include "boost/mpl/pair.hpp"
-#include "boost/mpl/void.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/type_traits/is_same.hpp"
+#include <boost/mpl/aux_/config/workaround.hpp>
+#include <boost/mpl/aux_/iter_fold_if_impl.hpp>
+#include <boost/mpl/and.hpp>
+#include <boost/mpl/always.hpp>
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/apply_if.hpp>
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/not.hpp>
+#include <boost/mpl/pair.hpp>
+#include <boost/mpl/void.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/type_traits/is_same.hpp>
 
 namespace boost {
 namespace mpl {
@@ -55,10 +55,10 @@ struct iter_fold_if_pred
 } // namespace aux
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(State)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(ForwardOp)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(ForwardPredicate)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(State)
+    , typename BOOST_MPL_AUX_NA_PARAM(ForwardOp)
+    , typename BOOST_MPL_AUX_NA_PARAM(ForwardPredicate)
     , typename BackwardOp = void_
     , typename BackwardPredicate = void_
     >
@@ -112,7 +112,7 @@ public:
         )
 };
 
-BOOST_MPL_AUX_VOID_SPEC(4, iter_fold_if)
+BOOST_MPL_AUX_NA_SPEC(4, iter_fold_if)
 
 } // namespace mpl
 } // namespace boost

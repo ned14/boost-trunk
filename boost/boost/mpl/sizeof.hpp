@@ -18,14 +18,14 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/size_t.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/size_t.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost { namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct sizeof_
     : size_t< sizeof(T) >
@@ -33,7 +33,7 @@ struct sizeof_
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,sizeof_,(T))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1, sizeof_)
+BOOST_MPL_AUX_NA_SPEC(1, sizeof_)
 
 }} // namespace boost::mpl
 

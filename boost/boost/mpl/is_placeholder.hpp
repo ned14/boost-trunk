@@ -17,11 +17,11 @@
 #ifndef BOOST_MPL_IS_PLACEHOLDER_HPP_INCLUDED
 #define BOOST_MPL_IS_PLACEHOLDER_HPP_INCLUDED
 
-#include "boost/mpl/arg_fwd.hpp"
-#include "boost/mpl/bool.hpp"
-#include "boost/mpl/aux_/yes_no.hpp"
-#include "boost/mpl/aux_/config/ctps.hpp"
-#include "boost/mpl/aux_/config/nttp.hpp"
+#include <boost/mpl/arg_fwd.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/aux_/yes_no.hpp>
+#include <boost/mpl/aux_/config/ctps.hpp>
+#include <boost/mpl/aux_/config/nttp.hpp>
 
 namespace boost { namespace mpl {
 

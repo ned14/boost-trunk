@@ -15,14 +15,14 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/aux_/type_wrapper.hpp"
-#include "boost/mpl/aux_/yes_no.hpp"
-#include "boost/mpl/aux_/config/msvc_typename.hpp"
-#include "boost/mpl/aux_/config/overload_resolution.hpp"
-#include "boost/mpl/aux_/config/static_constant.hpp"
-#include "boost/detail/workaround.hpp"
+#include <boost/mpl/aux_/type_wrapper.hpp>
+#include <boost/mpl/aux_/yes_no.hpp>
+#include <boost/mpl/aux_/config/msvc_typename.hpp>
+#include <boost/mpl/aux_/config/overload_resolution.hpp>
+#include <boost/mpl/aux_/config/static_constant.hpp>
+#include <boost/detail/workaround.hpp>
 
-#if !defined(BOOST_MPL_BROKEN_OVERLOAD_RESOLUTION) \
+#if !defined(BOOST_MPL_CFG_BROKEN_OVERLOAD_RESOLUTION) \
     && !BOOST_WORKAROUND(__GNUC__, <= 2) \
     && !BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x833))
 
@@ -88,9 +88,9 @@ struct trait                                                                \
 
 #   else
 
-#      include "boost/mpl/if.hpp"
-#      include "boost/mpl/bool.hpp"
-#      include "boost/preprocessor/cat.hpp"
+#      include <boost/mpl/if.hpp>
+#      include <boost/mpl/bool.hpp>
+#      include <boost/preprocessor/cat.hpp>
 
 // agurt, 11/sep/02: MSVC version, based on a USENET newsgroup's posting by 
 // John Madsen (comp.lang.c++.moderated, 1999-11-12 19:17:06 GMT);
@@ -215,7 +215,7 @@ struct trait                                                                \
 };                                                                          \
 /**/
 
-#endif // BOOST_MPL_BROKEN_OVERLOAD_RESOLUTION
+#endif // BOOST_MPL_CFG_BROKEN_OVERLOAD_RESOLUTION
 
 #define BOOST_MPL_HAS_XXX_TRAIT_DEF(name)                   \
 BOOST_MPL_HAS_XXX_TRAIT_NAMED_DEF(has_##name, name, false)  \

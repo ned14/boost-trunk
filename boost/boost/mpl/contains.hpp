@@ -15,17 +15,17 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/contains_fwd.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/contains_fwd.hpp>
+#include <boost/mpl/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct contains
     : contains_impl< typename sequence_tag<Sequence>::type >
@@ -34,7 +34,7 @@ struct contains
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,contains,(Sequence,T))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, contains)
+BOOST_MPL_AUX_NA_SPEC(2, contains)
 
 }}
 

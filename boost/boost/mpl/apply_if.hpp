@@ -17,18 +17,18 @@
 #ifndef BOOST_MPL_APPLY_IF_HPP_INCLUDED
 #define BOOST_MPL_APPLY_IF_HPP_INCLUDED
 
-#include "boost/mpl/if.hpp"
-#include "boost/mpl/aux_/apply.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/aux_/apply.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(C)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(F1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(F2)
+      typename BOOST_MPL_AUX_NA_PARAM(C)
+    , typename BOOST_MPL_AUX_NA_PARAM(F1)
+    , typename BOOST_MPL_AUX_NA_PARAM(F2)
     >
 struct apply_if
 {
@@ -56,7 +56,7 @@ struct apply_if_c
     typedef typename BOOST_MPL_AUX_APPLY0(nullary_func_)::type type;
 };
 
-BOOST_MPL_AUX_VOID_SPEC(3, apply_if)
+BOOST_MPL_AUX_NA_SPEC(3, apply_if)
  
 } // namespace mpl
 } // namespace boost

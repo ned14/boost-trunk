@@ -17,14 +17,14 @@
 #ifndef BOOST_MPL_AUX_DEREF_WNKD_HPP_INCLUDED
 #define BOOST_MPL_AUX_DEREF_WNKD_HPP_INCLUDED
 
-#include "boost/mpl/aux_/is_msvc_eti_arg.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
+#include <boost/mpl/aux_/is_msvc_eti_arg.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
 
-#if defined(BOOST_MPL_MSVC_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
 
 namespace boost { namespace mpl { namespace aux {
 
-#   if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#   if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
 
 template< typename Iterator > struct deref_wknd
 {
@@ -60,7 +60,7 @@ template< typename Iterator > struct deref_wknd
 {
 };
 
-#   endif // BOOST_MPL_MSVC_60_ETI_BUG
+#   endif // BOOST_MPL_CFG_MSVC_60_ETI_BUG
 
 }}} // namespace boost::mpl::aux
 
@@ -70,6 +70,6 @@ template< typename Iterator > struct deref_wknd
 
 #   define BOOST_MPL_AUX_DEREF_WNKD(iter) iter::type
 
-#endif // BOOST_MPL_MSVC_ETI_BUG
+#endif // BOOST_MPL_CFG_MSVC_ETI_BUG
 
 #endif // BOOST_MPL_AUX_DEREF_WNKD_HPP_INCLUDED

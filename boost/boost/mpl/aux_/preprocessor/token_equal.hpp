@@ -18,13 +18,13 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/preprocessor/is_seq.hpp"
+#include <boost/mpl/aux_/preprocessor/is_seq.hpp>
 
-#include "boost/preprocessor/if.hpp"
-#include "boost/preprocessor/logical/bitand.hpp"
-#include "boost/preprocessor/logical/compl.hpp"
-#include "boost/preprocessor/tuple/eat.hpp"
-#include "boost/preprocessor/cat.hpp"
+#include <boost/preprocessor/if.hpp>
+#include <boost/preprocessor/logical/bitand.hpp>
+#include <boost/preprocessor/logical/compl.hpp>
+#include <boost/preprocessor/tuple/eat.hpp>
+#include <boost/preprocessor/cat.hpp>
 
 // compares tokens 'a' and 'b' for equality:
 //

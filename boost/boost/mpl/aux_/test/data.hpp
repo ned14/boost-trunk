@@ -18,7 +18,7 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/noncopyable.hpp"
+#include <boost/noncopyable.hpp>
 
 struct UDT {};
 struct incomplete;

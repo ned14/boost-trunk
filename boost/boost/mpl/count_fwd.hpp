@@ -13,7 +13,7 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/algorithm_namespace.hpp"
+#include <boost/mpl/aux_/algorithm_namespace.hpp>
 
 namespace boost {
 namespace mpl {

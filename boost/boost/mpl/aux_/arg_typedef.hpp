@@ -17,9 +17,9 @@
 #ifndef BOOST_MPL_AUX_ARG_TYPEDEF_HPP_INCLUDED
 #define BOOST_MPL_AUX_ARG_TYPEDEF_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/lambda.hpp"
+#include <boost/mpl/aux_/config/lambda.hpp>
 
-#if defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
+#if defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
 #   define BOOST_MPL_AUX_ARG_TYPEDEF(T, name) typedef T name;
 #else
 #   define BOOST_MPL_AUX_ARG_TYPEDEF(T, name) /**/

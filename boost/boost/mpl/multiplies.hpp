@@ -18,12 +18,12 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/aux_/typeof.hpp"
-#include "boost/mpl/aux_/value_wknd.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/aux_/typeof.hpp>
+#include <boost/mpl/aux_/value_wknd.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/config.hpp>
 
 namespace boost {
 namespace mpl {
@@ -42,8 +42,8 @@ struct multiplies_c
 };
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+      typename BOOST_MPL_AUX_NA_PARAM(T1)
+    , typename BOOST_MPL_AUX_NA_PARAM(T2)
     , typename T3 = integral_c<int,1>
     , typename T4 = integral_c<int,1>
     , typename T5 = integral_c<int,1>
@@ -63,7 +63,7 @@ struct multiplies
     BOOST_MPL_AUX_LAMBDA_SUPPORT(5, multiplies, (T1,T2,T3,T4,T5))
 };
 
-BOOST_MPL_AUX_VOID_SPEC_EXT(2, 5, multiplies)
+BOOST_MPL_AUX_NA_SPEC2(2, 5, multiplies)
 
 } // namespace mpl
 } // namespace boost

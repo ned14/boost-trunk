@@ -1,42 +1,48 @@
-//-----------------------------------------------------------------------------
-// boost mpl/test/copy.cpp source file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
+
+// Copyright (c) Aleksey Gurtovoy 2000-2004
+// Copyright (c) David Abrahams 2003-2004
 //
-// Copyright (c) 2000-02
-// Aleksey Gurtovoy
+// Use, modification and distribution are subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+// at http://www.boost.org/LICENSE_1_0.txt)
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/copy.hpp"
-#include "boost/mpl/vector/vector10_c.hpp"
-#include "boost/mpl/vector.hpp"
-#include "boost/mpl/range_c.hpp"
-#include "boost/mpl/push_front.hpp"
-#include "boost/mpl/size.hpp"
-#include "boost/mpl/equal.hpp"
-#include "boost/static_assert.hpp"
+// $Source$
+// $Date$
+// $Revision$
 
-namespace mpl = boost::mpl;
-using mpl::_;
+#include <boost/mpl/copy.hpp>
+#include <boost/mpl/vector/vector20_c.hpp>
+#include <boost/mpl/vector/vector0.hpp>
+#include <boost/mpl/range_c.hpp>
+#include <boost/mpl/front_inserter.hpp>
+#include <boost/mpl/size.hpp>
+#include <boost/mpl/equal.hpp>
 
-int main()
+#include <boost/mpl/aux_/test/test.hpp>
+
+
+MPL_TEST_CASE( copy_test )
 {
-    typedef mpl::vector10_c<int,9,8,7,6,5,4,3,2,1,0> answer;
-    typedef mpl::copy<
-          mpl::range_c<int,0,10>
-        , mpl::vector<>
-        , mpl::push_front<_,_>
+    typedef vector10_c<int,9,8,7,6,5,4,3,2,1,0> answer;
+    typedef copy<
+          range_c<int,0,10>
+        , front_inserter< vector0<> >
         >::type result;
 
-    BOOST_STATIC_ASSERT(mpl::size<result>::value == 10);
-    BOOST_STATIC_ASSERT((mpl::equal< result,answer >::type::value));
+    MPL_ASSERT_EQUAL(2,( size<result>::value, 10 ));
+    MPL_ASSERT(( equal< result,answer >::value ));
+}
 
-    return 0;
+MPL_TEST_CASE( reverse_copy_test )
+{
+    typedef vector10_c<int,10,11,12,13,14,15,16,17,18,19>::type numbers;
+    typedef reverse_copy<
+          range_c<int,0,10>
+        , front_inserter<numbers>
+        >::type result;
+
+    MPL_ASSERT_EQUAL(2,( size<result>::value, 20 ));
+    MPL_ASSERT(( equal< result,range_c<int,0,20> >::value ));
 }

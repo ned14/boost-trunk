@@ -23,23 +23,23 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include "boost/mpl/arg.hpp"
+#   include <boost/mpl/arg.hpp>
 #endif
 
-#include "boost/mpl/aux_/config/use_preprocessed.hpp"
+#include <boost/mpl/aux_/config/use_preprocessed.hpp>
 
-#if !defined(BOOST_MPL_NO_PREPROCESSED_HEADERS) \
+#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
  && !defined(BOOST_MPL_PREPROCESSING_MODE)
 
 #   define BOOST_MPL_PREPROCESSED_HEADER placeholders.hpp
-#   include "boost/mpl/aux_/include_preprocessed.hpp"
+#   include <boost/mpl/aux_/include_preprocessed.hpp>
 
 #else
 
-#   include "boost/mpl/aux_/config/nttp.hpp"
-#   include "boost/mpl/limits/arity.hpp"
-#   include "boost/preprocessor/iterate.hpp"
-#   include "boost/preprocessor/cat.hpp"
+#   include <boost/mpl/aux_/config/nttp.hpp>
+#   include <boost/mpl/limits/arity.hpp>
+#   include <boost/preprocessor/iterate.hpp>
+#   include <boost/preprocessor/cat.hpp>
 
 namespace boost {
 namespace mpl {
@@ -56,13 +56,13 @@ using boost::mpl::_;
 //: agurt, 17/mar/02: one more placeholder for the last 'apply#' 
 //: specialization
 #define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(1, BOOST_MPL_METAFUNCTION_MAX_ARITY + 1, "boost/mpl/placeholders.hpp"))
+    (3,(1, BOOST_MPL_LIMIT_METAFUNCTION_ARITY + 1, <boost/mpl/placeholders.hpp>))
 #include BOOST_PP_ITERATE()
 
 } // namespace mpl
 } // namespace boost 
 
-#endif // BOOST_MPL_USE_PREPROCESSED_HEADERS
+#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
 #endif // BOOST_MPL_PLACEHOLDERS_HPP_INCLUDED
 
 ///// iteration

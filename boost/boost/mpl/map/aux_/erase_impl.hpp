@@ -15,16 +15,16 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/erase_fwd.hpp"
-#include "boost/mpl/map/aux_/has_key_impl.hpp"
-#include "boost/mpl/map/aux_/item.hpp"
-#include "boost/mpl/map/aux_/tag.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/base.hpp"
-#include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/aux_/config/typeof.hpp"
+#include <boost/mpl/erase_fwd.hpp>
+#include <boost/mpl/map/aux_/has_key_impl.hpp>
+#include <boost/mpl/map/aux_/item.hpp>
+#include <boost/mpl/map/aux_/tag.hpp>
+#include <boost/mpl/identity.hpp>
+#include <boost/mpl/base.hpp>
+#include <boost/mpl/apply_if.hpp>
+#include <boost/mpl/aux_/config/typeof.hpp>
 
-#include "boost/type_traits/is_same.hpp"
+#include <boost/type_traits/is_same.hpp>
 
 namespace boost { namespace mpl {
 

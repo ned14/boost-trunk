@@ -17,20 +17,20 @@
 #ifndef BOOST_MPL_ZIP_VIEW_HPP_INCLUDED
 #define BOOST_MPL_ZIP_VIEW_HPP_INCLUDED
 
-#include "boost/mpl/transform.hpp"
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/iterator_tag.hpp"
-#include "boost/mpl/next.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/transform.hpp>
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/iterator_tag.hpp>
+#include <boost/mpl/next.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost { namespace mpl {
 
 template< typename IteratorSeq >
 struct zip_iterator
 {
-    typedef input_iter_tag_ category;
+    typedef fwd_iter_tag_ category;
     typedef typename transform<
           IteratorSeq
         , apply0<_1>
@@ -45,7 +45,7 @@ struct zip_iterator
 };
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequences)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequences)
     >
 struct zip_view
 {
@@ -59,7 +59,7 @@ struct zip_view
     typedef zip_iterator<last_ones_> end;
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1, zip_view)
+BOOST_MPL_AUX_NA_SPEC(1, zip_view)
 
 }} // namespace boost::mpl
 

@@ -17,22 +17,22 @@
 #ifndef BOOST_MPL_PROTECT_HPP_INCLUDED
 #define BOOST_MPL_PROTECT_HPP_INCLUDED
 
-#include "boost/mpl/aux_/arity.hpp"
-#include "boost/mpl/aux_/config/dtp.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/aux_/arity.hpp>
+#include <boost/mpl/aux_/config/dtp.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct protect : T
 {
     typedef struct protect type;
 };
 
-#if defined(BOOST_BROKEN_DEFAULT_TEMPLATE_PARAMETERS_IN_NESTED_TEMPLATES)
+#if defined(BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
 namespace aux { 
 template< BOOST_MPL_AUX_NTTP_DECL(int, N), typename T >
 struct arity< protect<T>, N > 
@@ -43,7 +43,7 @@ struct arity< protect<T>, N >
 #endif
 
 BOOST_MPL_AUX_VOID_SPEC_MAIN(1, protect)
-#if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
+#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
 BOOST_MPL_AUX_VOID_SPEC_TEMPLATE_ARITY(1, 1, protect)
 #endif
 

@@ -25,8 +25,8 @@
 #elif defined(__GCC__) && !BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
 #   define BOOST_MPL_AUX_TYPEOF(T,x) __typeof__(x)
 #else
-#   include "boost/config.hpp"
-#   include "boost/mpl/aux_/config/nttp.hpp"
+#   include <boost/config.hpp>
+#   include <boost/mpl/aux_/config/nttp.hpp>
 
 namespace boost {
 namespace mpl {

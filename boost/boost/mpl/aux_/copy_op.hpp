@@ -17,8 +17,8 @@
 #ifndef BOOST_MPL_AUX_COPY_OP_HPP_INCLUDED
 #define BOOST_MPL_AUX_COPY_OP_HPP_INCLUDED
 
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/aux_/lambda_spec.hpp>
 
 namespace boost {
 namespace mpl {

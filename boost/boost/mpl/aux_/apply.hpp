@@ -17,8 +17,8 @@
 #ifndef BOOST_MPL_AUX_APPLY_HPP_INCLUDED
 #define BOOST_MPL_AUX_APPLY_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/dtp.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/aux_/config/dtp.hpp>
+#include <boost/config.hpp>
 
 #define BOOST_MPL_AUX_APPLY(arity, args) \
     BOOST_PP_CAT(BOOST_MPL_AUX_APPLY,arity) args \
@@ -27,15 +27,15 @@
 // agurt, 14/nov/02: temporary fix, need to research a couple of ICEs to
 // get rid of this mess
 #if defined(BOOST_MSVC) && BOOST_MSVC == 1300 && !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include "boost/mpl/apply.hpp"
+#   include <boost/mpl/apply.hpp>
 #endif
 
 #if defined(BOOST_MPL_USE_APPLY_INTERNALLY) \
-    || defined(BOOST_BROKEN_DEFAULT_TEMPLATE_PARAMETERS_IN_NESTED_TEMPLATES) \
+    || defined(BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES) \
     || defined(BOOST_MSVC) && (BOOST_MSVC < 1300 || BOOST_MSVC == 1300 && defined(BOOST_MPL_PREPROCESSING_MODE))
 
 #   if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#       include "boost/mpl/apply.hpp"
+#       include <boost/mpl/apply.hpp>
 #   endif
 
 // tokenization takes place before macro expansion (see 2.1 [lex.phases] 

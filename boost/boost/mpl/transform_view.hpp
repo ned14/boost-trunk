@@ -17,17 +17,17 @@
 #ifndef BOOST_MPL_TRANSFORM_VIEW_HPP_INCLUDED
 #define BOOST_MPL_TRANSFORM_VIEW_HPP_INCLUDED
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/aux_/transform_iter.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/aux_/transform_iter.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(F)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(F)
     >
 struct transform_view
 {
@@ -42,7 +42,7 @@ struct transform_view
     typedef aux::transform_iter< last_,last_,f_ > end;
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, transform_view)
+BOOST_MPL_AUX_NA_SPEC(2, transform_view)
 
 } // namespace mpl
 } // namespace boost

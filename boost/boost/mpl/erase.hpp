@@ -14,19 +14,19 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/erase_fwd.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/erase_impl.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/mpl/aux_/config/msvc_typename.hpp"
+#include <boost/mpl/erase_fwd.hpp>
+#include <boost/mpl/sequence_tag.hpp>
+#include <boost/mpl/aux_/erase_impl.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/aux_/config/msvc_typename.hpp>
 
 namespace boost { namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(First_or_T)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Last)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(First_or_T)
+    , typename BOOST_MPL_AUX_NA_PARAM(Last)
     >
 struct erase
     : erase_impl< typename sequence_tag<Sequence>::type >
@@ -35,7 +35,7 @@ struct erase
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,erase,(Sequence,First_or_T,Last))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(3,erase)
+BOOST_MPL_AUX_NA_SPEC(3,erase)
 
 }}
 

@@ -18,12 +18,12 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/aux_/typeof.hpp"
-#include "boost/mpl/aux_/value_wknd.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/aux_/typeof.hpp>
+#include <boost/mpl/aux_/value_wknd.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/config.hpp>
 
 namespace boost {
 namespace mpl {
@@ -42,8 +42,8 @@ struct shift_right_c
 };
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Shift)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
+    , typename BOOST_MPL_AUX_NA_PARAM(Shift)
     >
 struct shift_right
     : shift_right_c<
@@ -56,7 +56,7 @@ struct shift_right
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2, shift_right, (T,Shift))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2,shift_right)
+BOOST_MPL_AUX_NA_SPEC(2,shift_right)
 
 } // namespace mpl
 } // namespace boost

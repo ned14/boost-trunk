@@ -18,12 +18,12 @@
 
 #if defined(BOOST_PP_IS_ITERATING)
 
-#include "boost/preprocessor/enum_params.hpp"
-#include "boost/preprocessor/enum_shifted_params.hpp"
-#include "boost/preprocessor/comma_if.hpp"
-#include "boost/preprocessor/repeat.hpp"
-#include "boost/preprocessor/dec.hpp"
-#include "boost/preprocessor/cat.hpp"
+#include <boost/preprocessor/enum_params.hpp>
+#include <boost/preprocessor/enum_shifted_params.hpp>
+#include <boost/preprocessor/comma_if.hpp>
+#include <boost/preprocessor/repeat.hpp>
+#include <boost/preprocessor/dec.hpp>
+#include <boost/preprocessor/cat.hpp>
 
 #define i BOOST_PP_FRAME_ITERATION(1)
 

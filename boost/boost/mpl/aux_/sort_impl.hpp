@@ -17,18 +17,18 @@
 #ifndef BOOST_MPL_AUX_SORT_IMPL_HPP_INCLUDED
 #define BOOST_MPL_AUX_SORT_IMPL_HPP_INCLUDED
 
-#include "boost/mpl/aux_/select1st_wknd.hpp"
-#include "boost/mpl/aux_/select2nd_wknd.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/copy_backward.hpp"
-#include "boost/mpl/empty.hpp"
-#include "boost/mpl/front.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/partition.hpp"
-#include "boost/mpl/pop_front.hpp"
-#include "boost/mpl/push_front.hpp"
-#include "boost/mpl/aux_/traits_lambda_spec.hpp"
+#include <boost/mpl/aux_/select1st_wknd.hpp>
+#include <boost/mpl/aux_/select2nd_wknd.hpp>
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/apply_if.hpp>
+#include <boost/mpl/copy_backward.hpp>
+#include <boost/mpl/empty.hpp>
+#include <boost/mpl/front.hpp>
+#include <boost/mpl/identity.hpp>
+#include <boost/mpl/partition.hpp>
+#include <boost/mpl/pop_front.hpp>
+#include <boost/mpl/push_front.hpp>
+#include <boost/mpl/aux_/traits_lambda_spec.hpp>
 
 namespace boost {
 namespace mpl {

@@ -17,8 +17,8 @@
 #ifndef BOOST_MPL_AUX_FOLD_PRED_HPP_INCLUDED
 #define BOOST_MPL_AUX_FOLD_PRED_HPP_INCLUDED
 
-#include "boost/mpl/same_as.hpp"
-#include "boost/mpl/apply.hpp"
+#include <boost/mpl/same_as.hpp>
+#include <boost/mpl/apply.hpp>
 
 namespace boost {
 namespace mpl {

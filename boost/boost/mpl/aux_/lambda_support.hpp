@@ -17,21 +17,21 @@
 #ifndef BOOST_MPL_AUX_LAMBDA_SUPPORT_HPP_INCLUDED
 #define BOOST_MPL_AUX_LAMBDA_SUPPORT_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/lambda.hpp"
+#include <boost/mpl/aux_/config/lambda.hpp>
 
-#if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
+#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
 
 #   define BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(i, name, params) /**/
 #   define BOOST_MPL_AUX_LAMBDA_SUPPORT(i,name,params) /**/
 
 #else
 
-#   include "boost/mpl/aux_/config/workaround.hpp"
-#   include "boost/mpl/aux_/preprocessor/params.hpp"
-#   include "boost/preprocessor/tuple/to_list.hpp"
-#   include "boost/preprocessor/list/for_each_i.hpp"
-#   include "boost/preprocessor/inc.hpp"
-#   include "boost/preprocessor/cat.hpp"
+#   include <boost/mpl/aux_/config/workaround.hpp>
+#   include <boost/mpl/aux_/preprocessor/params.hpp>
+#   include <boost/preprocessor/tuple/to_list.hpp>
+#   include <boost/preprocessor/list/for_each_i.hpp>
+#   include <boost/preprocessor/inc.hpp>
+#   include <boost/preprocessor/cat.hpp>
 
 #   define BOOST_MPL_AUX_LAMBDA_SUPPORT_ARG_TYPEDEF_FUNC(R,typedef_,i,param) \
     typedef_ param BOOST_PP_CAT(arg,BOOST_PP_INC(i)); \
@@ -131,6 +131,6 @@ class BOOST_PP_CAT(name,_rebind) \
 
 #endif // __EDG_VERSION__
 
-#endif // BOOST_MPL_NO_FULL_LAMBDA_SUPPORT
+#endif // BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT
 
 #endif // BOOST_MPL_AUX_LAMBDA_SUPPORT_HPP_INCLUDED

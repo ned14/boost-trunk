@@ -15,18 +15,18 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/has_key_fwd.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/has_key_impl.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/has_key_fwd.hpp>
+#include <boost/mpl/sequence_tag.hpp>
+#include <boost/mpl/aux_/has_key_impl.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(AssociativeSequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Key)
+      typename BOOST_MPL_AUX_NA_PARAM(AssociativeSequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(Key)
     >
 struct has_key
     : has_key_impl< typename sequence_tag<AssociativeSequence>::type >
@@ -35,7 +35,7 @@ struct has_key
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,has_key,(AssociativeSequence,Key))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, has_key)
+BOOST_MPL_AUX_NA_SPEC(2, has_key)
 
 }}
 

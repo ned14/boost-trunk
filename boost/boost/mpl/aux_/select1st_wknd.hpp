@@ -17,14 +17,14 @@
 #ifndef BOOST_MPL_AUX_SELECT1ST_WKND_HPP_INCLUDED
 #define BOOST_MPL_AUX_SELECT1ST_WKND_HPP_INCLUDED
 
-#include "boost/mpl/aux_/is_msvc_eti_arg.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
+#include <boost/mpl/aux_/is_msvc_eti_arg.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
 
-#if defined(BOOST_MPL_MSVC_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
 
 namespace boost { namespace mpl { namespace aux {
 
-#   if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#   if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
 
 template< typename Pair >
 struct select1st_wknd
@@ -37,7 +37,7 @@ template<> struct select1st_wknd<int>
     typedef int type;
 };
 
-#   else // !defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#   else // !defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
 
 template< bool > struct select1st_wknd_impl
 {
@@ -61,16 +61,16 @@ template< typename Pair > struct select1st_wknd
 {
 };
 
-#   endif // BOOST_MPL_MSVC_60_ETI_BUG workaround
+#   endif // BOOST_MPL_CFG_MSVC_60_ETI_BUG workaround
 
 }}} // namespace boost::mpl::aux
 
 #   define BOOST_MPL_AUX_SELECT1ST_WKND(pair) ::boost::mpl::aux::select1st_wknd< pair >::type
 
-#else // !defined(BOOST_MPL_MSVC_ETI_BUG)
+#else // !defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
 
 #   define BOOST_MPL_AUX_SELECT1ST_WKND(pair) pair::first
 
-#endif // BOOST_MPL_MSVC_ETI_BUG workaround
+#endif // BOOST_MPL_CFG_MSVC_ETI_BUG workaround
 
 #endif // BOOST_MPL_AUX_SELECT1ST_WKND_HPP_INCLUDED

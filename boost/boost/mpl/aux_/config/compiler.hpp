@@ -17,9 +17,9 @@
 #ifndef BOOST_MPL_AUX_CONFIG_COMPILER_HPP_INCLUDED
 #define BOOST_MPL_AUX_CONFIG_COMPILER_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/dtp.hpp"
-#include "boost/mpl/aux_/config/ttp.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/aux_/config/dtp.hpp>
+#include <boost/mpl/aux_/config/ttp.hpp>
+#include <boost/config.hpp>
 
 #if defined(BOOST_MSVC) && BOOST_MSVC < 1300
 #   define BOOST_MPL_COMPILER_DIR msvc60
@@ -31,14 +31,14 @@
 #   define BOOST_MPL_COMPILER_DIR gcc
 
 #elif defined(__BORLANDC__) 
-#   if !defined(BOOST_NO_DEFAULT_TEMPLATE_PARAMETERS_IN_NESTED_TEMPLATES)
+#   if !defined(BOOST_MPL_CFG_NO_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
 #       define BOOST_MPL_COMPILER_DIR bcc551
 #   else
 #       define BOOST_MPL_COMPILER_DIR bcc
 #   endif
 
 #elif defined(__MWERKS__) 
-#   if defined(BOOST_BROKEN_DEFAULT_TEMPLATE_PARAMETERS_IN_NESTED_TEMPLATES)
+#   if defined(BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
 #       define BOOST_MPL_COMPILER_DIR mwcw
 #   else
 #       define BOOST_MPL_COMPILER_DIR plain
@@ -47,7 +47,7 @@
 #elif defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 #   define BOOST_MPL_COMPILER_DIR no_ctps
 
-#elif defined(BOOST_NO_TEMPLATE_TEMPLATE_PARAMETERS)
+#elif defined(BOOST_MPL_CFG_NO_TEMPLATE_TEMPLATE_PARAMETERS)
 #   define BOOST_MPL_COMPILER_DIR no_ttp
 
 #else

@@ -14,24 +14,33 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/push_back_fwd.hpp"
-#include "boost/mpl/aux_/traits_lambda_spec.hpp"
+#include <boost/mpl/push_back_fwd.hpp>
+#include <boost/mpl/aux_/has_type.hpp>
+#include <boost/mpl/aux_/traits_lambda_spec.hpp>
 
-namespace boost {
-namespace mpl {
+namespace boost { namespace mpl {
 
-// no default implementation; the definition is needed to make happy the deficient
-// compilers
+// agurt 05/feb/04: no default implementation; the stub definition is needed 
+// to enable the default 'has_push_back' implementation below
 
 template< typename Tag >
 struct push_back_impl
 {
-    template< typename Sequence, typename T > struct apply;
+    template< typename Sequence, typename T > struct apply {};
+};
+
+template< typename Tag >
+struct has_push_back_impl
+{
+    template< typename Seq > struct apply
+        : aux::has_type< push_back<Seq,int> >
+    {
+    };
 };
 
 BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(2, push_back_impl)
+BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(1, has_push_back_impl)
 
-} // namespace mpl
-} // namespace boost
+}}
 
 #endif // BOOST_MPL_AUX_PUSH_BACK_IMPL_HPP_INCLUDED

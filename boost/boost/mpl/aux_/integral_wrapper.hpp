@@ -17,12 +17,12 @@
 
 // no include guards, the header is intended for multiple inclusion!
 
-#include "boost/mpl/aux_/static_cast.hpp"
-#include "boost/mpl/aux_/config/nttp.hpp"
-#include "boost/mpl/aux_/config/static_constant.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
+#include <boost/mpl/aux_/static_cast.hpp>
+#include <boost/mpl/aux_/config/nttp.hpp>
+#include <boost/mpl/aux_/config/static_constant.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
 
-#include "boost/preprocessor/cat.hpp"
+#include <boost/preprocessor/cat.hpp>
 
 #if !defined(AUX_WRAPPER_NAME)
 #   define AUX_WRAPPER_NAME BOOST_PP_CAT(AUX_WRAPPER_VALUE_TYPE,_)

@@ -17,15 +17,15 @@
 #ifndef BOOST_MPL_SINGLE_VIEW_HPP_INCLUDED
 #define BOOST_MPL_SINGLE_VIEW_HPP_INCLUDED
 
-#include "boost/mpl/aux_/single_element_iter.hpp"
-#include "boost/mpl/iterator_range.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/aux_/single_element_iter.hpp>
+#include <boost/mpl/iterator_range.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct single_view
     : iterator_range<
@@ -35,7 +35,7 @@ struct single_view
 {
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1, single_view)
+BOOST_MPL_AUX_NA_SPEC(1, single_view)
 
 } // namespace mpl
 } // namespace boost

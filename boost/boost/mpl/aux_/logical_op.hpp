@@ -18,44 +18,44 @@
 // no include guards, the header is intended for multiple inclusion!
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include "boost/mpl/bool.hpp"
-#   include "boost/mpl/aux_/nested_type_wknd.hpp"
-#   include "boost/mpl/aux_/void_spec.hpp"
-#   include "boost/mpl/aux_/lambda_support.hpp"
+#   include <boost/mpl/bool.hpp>
+#   include <boost/mpl/aux_/nested_type_wknd.hpp>
+#   include <boost/mpl/aux_/na_spec.hpp>
+#   include <boost/mpl/aux_/lambda_support.hpp>
 #endif
 
-#include "boost/mpl/limits/arity.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
-#include "boost/mpl/aux_/preprocessor/ext_params.hpp"
-#include "boost/mpl/aux_/preprocessor/def_params_tail.hpp"
-#include "boost/mpl/aux_/preprocessor/enum.hpp"
-#include "boost/mpl/aux_/preprocessor/sub.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
+#include <boost/mpl/limits/arity.hpp>
+#include <boost/mpl/aux_/preprocessor/params.hpp>
+#include <boost/mpl/aux_/preprocessor/ext_params.hpp>
+#include <boost/mpl/aux_/preprocessor/def_params_tail.hpp>
+#include <boost/mpl/aux_/preprocessor/enum.hpp>
+#include <boost/mpl/aux_/preprocessor/sub.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
 
-#include "boost/preprocessor/dec.hpp"
-#include "boost/preprocessor/inc.hpp"
-#include "boost/preprocessor/cat.hpp"
+#include <boost/preprocessor/dec.hpp>
+#include <boost/preprocessor/inc.hpp>
+#include <boost/preprocessor/cat.hpp>
 
 namespace boost { namespace mpl {
 
 // local macros, #undef-ined at the end of the header
 #   define AUX_LOGICAL_OP_PARAMS(param, sub) \
     BOOST_MPL_PP_PARAMS( \
-          BOOST_MPL_PP_SUB(BOOST_MPL_METAFUNCTION_MAX_ARITY, sub) \
+          BOOST_MPL_PP_SUB(BOOST_MPL_LIMIT_METAFUNCTION_ARITY, sub) \
         , param \
         ) \
     /**/
 
 #   define AUX_LOGICAL_OP_SHIFTED_PARAMS(param, sub) \
     BOOST_MPL_PP_EXT_PARAMS( \
-          2, BOOST_MPL_PP_SUB(BOOST_PP_INC(BOOST_MPL_METAFUNCTION_MAX_ARITY), sub) \
+          2, BOOST_MPL_PP_SUB(BOOST_PP_INC(BOOST_MPL_LIMIT_METAFUNCTION_ARITY), sub) \
         , param \
         ) \
     /**/
 
 #   define AUX_LOGICAL_OP_SPEC_PARAMS(param) \
     BOOST_MPL_PP_ENUM( \
-          BOOST_PP_DEC(BOOST_MPL_METAFUNCTION_MAX_ARITY) \
+          BOOST_PP_DEC(BOOST_MPL_LIMIT_METAFUNCTION_ARITY) \
         , param \
         ) \
     /**/
@@ -130,8 +130,8 @@ struct BOOST_PP_CAT(AUX_LOGICAL_OP_NAME,impl)<AUX_LOGICAL_OP_VALUE2>
 } // namespace aux
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+      typename BOOST_MPL_AUX_NA_PARAM(T1)
+    , typename BOOST_MPL_AUX_NA_PARAM(T2)
     BOOST_MPL_PP_DEF_PARAMS_TAIL(2, typename T, BOOST_PP_CAT(AUX_LOGICAL_OP_VALUE2,_))
     >
 struct AUX_LOGICAL_OP_NAME
@@ -147,15 +147,15 @@ struct AUX_LOGICAL_OP_NAME
 #endif
 {
     BOOST_MPL_AUX_LAMBDA_SUPPORT(
-          BOOST_MPL_METAFUNCTION_MAX_ARITY
+          BOOST_MPL_LIMIT_METAFUNCTION_ARITY
         , AUX_LOGICAL_OP_NAME
         , (AUX_LOGICAL_OP_PARAMS(T, 0))
         )
 };
 
-BOOST_MPL_AUX_VOID_SPEC_EXT(
+BOOST_MPL_AUX_NA_SPEC2(
       2
-    , BOOST_MPL_METAFUNCTION_MAX_ARITY
+    , BOOST_MPL_LIMIT_METAFUNCTION_ARITY
     , AUX_LOGICAL_OP_NAME
     )
 

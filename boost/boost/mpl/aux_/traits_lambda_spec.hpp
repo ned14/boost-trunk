@@ -14,15 +14,15 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/void.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
-#include "boost/mpl/aux_/config/lambda.hpp"
+#include <boost/mpl/void.hpp>
+#include <boost/mpl/aux_/preprocessor/params.hpp>
+#include <boost/mpl/aux_/config/lambda.hpp>
 
-#if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
+#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
 
 #   define BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(i, trait) /**/
 
-#elif !defined(BOOST_MPL_MSVC_ETI_BUG)
+#elif !defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
 
 #   define BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(i, trait) \
 template<> struct trait<void_> \
@@ -51,6 +51,6 @@ template<> struct trait<int> \
 }; \
 /**/
 
-#endif // BOOST_MPL_NO_FULL_LAMBDA_SUPPORT
+#endif // BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT
 
 #endif // BOOST_MPL_AUX_TRAITS_LAMBDA_SPEC_HPP_INCLUDED

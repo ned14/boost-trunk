@@ -14,11 +14,11 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/clear.hpp"
-#include "boost/mpl/push_front.hpp"
-#include "boost/mpl/copy_backward.hpp"
-#include "boost/mpl/iterator_range.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include <boost/mpl/clear.hpp>
+#include <boost/mpl/push_front.hpp>
+#include <boost/mpl/copy_backward.hpp>
+#include <boost/mpl/iterator_range.hpp>
+#include <boost/mpl/aux_/na.hpp>
 
 namespace boost {
 namespace mpl {
@@ -36,7 +36,7 @@ struct erase_impl
         >
     struct apply
     {
-        typedef typename if_void_< Last,typename next<First>::type >::type last_;
+        typedef typename if_na< Last,typename next<First>::type >::type last_;
         
         // 1st half: [begin, first)
         typedef iterator_range<

@@ -18,19 +18,19 @@
 
 #if !defined(BOOST_PP_IS_ITERATING)
 
-#   include "boost/mpl/aux_/apply.hpp"
-#   include "boost/mpl/aux_/next.hpp"
-#   include "boost/mpl/aux_/config/ctps.hpp"
-#   include "boost/mpl/aux_/config/nttp.hpp"
+#   include <boost/mpl/aux_/apply.hpp>
+#   include <boost/mpl/aux_/next.hpp>
+#   include <boost/mpl/aux_/config/ctps.hpp>
+#   include <boost/mpl/aux_/config/nttp.hpp>
 
-#   include "boost/mpl/limits/unrolling.hpp"
-#   include "boost/mpl/aux_/preprocessor/repeat.hpp"
+#   include <boost/mpl/limits/unrolling.hpp>
+#   include <boost/mpl/aux_/preprocessor/repeat.hpp>
 
-#   include "boost/preprocessor/arithmetic/sub.hpp"
-#   include "boost/preprocessor/iterate.hpp"
-#   include "boost/preprocessor/dec.hpp"
-#   include "boost/preprocessor/inc.hpp"
-#   include "boost/preprocessor/cat.hpp"
+#   include <boost/preprocessor/arithmetic/sub.hpp>
+#   include <boost/preprocessor/iterate.hpp>
+#   include <boost/preprocessor/dec.hpp>
+#   include <boost/preprocessor/inc.hpp>
+#   include <boost/preprocessor/cat.hpp>
 
 // local macros, #undef-ined at the end of the header
 
@@ -89,7 +89,7 @@ struct AUX_FOLD_IMPL_NAME;
  && !defined(BOOST_NO_NON_TYPE_TEMPLATE_PARTIAL_SPECIALIZATION)
 
 #   define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(0, BOOST_MPL_UNROLLING_LIMIT, "boost/mpl/aux_/fold_backward_impl_body.hpp"))
+    (3,(0, BOOST_MPL_UNROLLING_LIMIT, <boost/mpl/aux_/fold_backward_impl_body.hpp>))
 #   include BOOST_PP_ITERATE()
 
 // implementation for N that exceeds BOOST_MPL_UNROLLING_LIMIT
@@ -179,7 +179,7 @@ template< BOOST_MPL_AUX_NTTP_DECL(long, N) >
 struct AUX_FOLD_CHUNK_NAME;
 
 #   define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(0, BOOST_MPL_UNROLLING_LIMIT, "boost/mpl/aux_/fold_backward_impl_body.hpp"))
+    (3,(0, BOOST_MPL_UNROLLING_LIMIT, <boost/mpl/aux_/fold_backward_impl_body.hpp>))
 #   include BOOST_PP_ITERATE()
 
 // implementation for N that exceeds BOOST_MPL_UNROLLING_LIMIT
@@ -268,7 +268,7 @@ struct AUX_FOLD_CHUNK_NAME<-1>
         typedef typename res_::iterator iterator;
     };
 
-#if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
     //: ETI workaround
     template<> struct result_<int,int,int,int,int>
     {
@@ -405,7 +405,7 @@ struct AUX_FOLD_CHUNK_NAME<BOOST_PP_FRAME_ITERATION(1)>
         typedef BOOST_PP_CAT(iter,i) iterator;
     };
 
-#if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
     //: ETI workaround
     template<> struct result_<int,int,int,int,int>
     {

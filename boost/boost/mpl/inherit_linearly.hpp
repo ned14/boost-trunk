@@ -17,17 +17,17 @@
 #ifndef BOOST_MPL_INHERIT_FRONT_TO_BACK_HPP_INCLUDED
 #define BOOST_MPL_INHERIT_FRONT_TO_BACK_HPP_INCLUDED
 
-#include "boost/mpl/fold.hpp"
-#include "boost/mpl/empty_base.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/fold.hpp>
+#include <boost/mpl/empty_base.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Types_)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Node_)
+      typename BOOST_MPL_AUX_NA_PARAM(Types_)
+    , typename BOOST_MPL_AUX_NA_PARAM(Node_)
     , typename Root_ = empty_base
     >
 struct inherit_linearly
@@ -36,7 +36,7 @@ struct inherit_linearly
     BOOST_MPL_AUX_LAMBDA_SUPPORT(3,inherit_linearly,(Types_,Node_,Root_))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, inherit_linearly)
+BOOST_MPL_AUX_NA_SPEC(2, inherit_linearly)
 
 } // namespace mpl
 } // namespace boost

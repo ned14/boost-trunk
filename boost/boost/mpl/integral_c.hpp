@@ -18,10 +18,10 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/integral_c_fwd.hpp"
-#include "boost/mpl/aux_/ice_cast.hpp"
-#include "boost/mpl/aux_/config/ctps.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
+#include <boost/mpl/integral_c_fwd.hpp>
+#include <boost/mpl/aux_/ice_cast.hpp>
+#include <boost/mpl/aux_/config/ctps.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
 
 #if BOOST_WORKAROUND(__HP_aCC, BOOST_TESTED_AT(53800))
 // the type of non-type template arguments may not depend on template arguments
@@ -33,7 +33,7 @@
 #define AUX_WRAPPER_NAME integral_c
 #define AUX_WRAPPER_VALUE_TYPE T
 #define AUX_WRAPPER_INST(value) AUX_WRAPPER_NAME< T, value >
-#include "boost/mpl/aux_/integral_wrapper.hpp"
+#include <boost/mpl/aux_/integral_wrapper.hpp>
 
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \

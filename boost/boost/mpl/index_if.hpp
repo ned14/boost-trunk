@@ -17,18 +17,18 @@
 #ifndef BOOST_MPL_INDEX_IF_HPP_INCLUDED
 #define BOOST_MPL_INDEX_IF_HPP_INCLUDED
 
-#include "boost/mpl/aux_/find_if_pred.hpp"
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/if.hpp"
-#include "boost/mpl/int.hpp"
-#include "boost/mpl/iter_fold_if.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/next.hpp"
-#include "boost/mpl/protect.hpp"
-#include "boost/mpl/void.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/type_traits/is_same.hpp"
+#include <boost/mpl/aux_/find_if_pred.hpp>
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/int.hpp>
+#include <boost/mpl/iter_fold_if.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/next.hpp>
+#include <boost/mpl/protect.hpp>
+#include <boost/mpl/void.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/type_traits/is_same.hpp>
 
 namespace boost {
 namespace mpl {
@@ -36,8 +36,8 @@ namespace mpl {
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Predicate)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(Predicate)
     >
 struct index_if
 {
@@ -70,7 +70,7 @@ public:
 
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_END
 
-BOOST_MPL_AUX_ALGORITHM_VOID_SPEC(2, index_if)
+BOOST_MPL_AUX_NA_ALGORITHM_SPEC(2, index_if)
 
 } // namespace mpl
 } // namespace boost

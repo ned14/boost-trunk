@@ -19,7 +19,7 @@
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 // BOOST_STATIC_CONSTANT is defined here:
-#   include "boost/config.hpp"
+#   include <boost/config.hpp>
 #endif
 
 #endif // BOOST_MPL_AUX_CONFIG_STATIC_CONSTANT_HPP_INCLUDED

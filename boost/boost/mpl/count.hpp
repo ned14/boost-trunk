@@ -13,11 +13,11 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/count_fwd.hpp"
-#include "boost/mpl/aux_/count_impl.hpp"
-#include "boost/mpl/aux_/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/count_fwd.hpp>
+#include <boost/mpl/aux_/count_impl.hpp>
+#include <boost/mpl/aux_/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
@@ -25,8 +25,8 @@ namespace mpl {
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct count
     : count_impl< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
@@ -37,7 +37,7 @@ struct count
 
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_END
 
-BOOST_MPL_AUX_ALGORITHM_VOID_SPEC(2, count)
+BOOST_MPL_AUX_NA_ALGORITHM_SPEC(2, count)
 
 }}
 

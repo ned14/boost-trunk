@@ -17,7 +17,7 @@
 #ifndef BOOST_MPL_RATIONAL_C_HPP_INCLUDED
 #define BOOST_MPL_RATIONAL_C_HPP_INCLUDED
 
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 
 namespace boost {
 namespace mpl {

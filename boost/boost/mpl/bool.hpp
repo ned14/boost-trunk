@@ -18,8 +18,8 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/bool_fwd.hpp"
-#include "boost/mpl/aux_/config/static_constant.hpp"
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/mpl/aux_/config/static_constant.hpp>
 
 namespace boost { namespace mpl {
 

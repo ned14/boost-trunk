@@ -17,23 +17,23 @@
 #ifndef BOOST_MPL_IS_SEQUENCE_HPP_INCLUDED
 #define BOOST_MPL_IS_SEQUENCE_HPP_INCLUDED
 
-#include "boost/mpl/not.hpp"
-#include "boost/mpl/and.hpp"
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/if.hpp"
-#include "boost/mpl/bool.hpp"
-#include "boost/mpl/sequence_tag_fwd.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/void.hpp"
-#include "boost/mpl/aux_/has_tag.hpp"
-#include "boost/mpl/aux_/has_begin.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
+#include <boost/mpl/not.hpp>
+#include <boost/mpl/and.hpp>
+#include <boost/mpl/begin_end.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/sequence_tag_fwd.hpp>
+#include <boost/mpl/identity.hpp>
+#include <boost/mpl/void.hpp>
+#include <boost/mpl/aux_/has_tag.hpp>
+#include <boost/mpl/aux_/has_begin.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
 
-#include "boost/type_traits/is_same.hpp"
-#include "boost/type_traits/is_class.hpp"
+#include <boost/type_traits/is_same.hpp>
+#include <boost/type_traits/is_class.hpp>
 
 namespace boost { namespace mpl {
 
@@ -57,7 +57,7 @@ template< typename T > struct is_sequence_impl
 } // namespace aux
         
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct is_sequence
     : if_<
@@ -72,7 +72,7 @@ struct is_sequence
 #elif defined(BOOST_MPL_NO_AUX_HAS_XXX)
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct is_sequence
     : bool_<false>
@@ -82,7 +82,7 @@ struct is_sequence
 #else
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct is_sequence
     : not_< is_same< typename begin<T>::type, void_ > >
@@ -92,14 +92,14 @@ struct is_sequence
 
 #endif // BOOST_MSVC
 
-#if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
 template<> struct is_sequence<int>
     : bool_<false>
 {
 };
 #endif
 
-BOOST_MPL_AUX_VOID_SPEC(1, is_sequence)
+BOOST_MPL_AUX_NA_SPEC(1, is_sequence)
 
 }} // namespace boost::mpl
 

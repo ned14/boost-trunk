@@ -18,11 +18,11 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/plus.hpp"
-#include "boost/mpl/minus.hpp"
-#include "boost/mpl/multiplies.hpp"
-#include "boost/mpl/divides.hpp"
-#include "boost/mpl/modulus.hpp"
-#include "boost/mpl/negate.hpp"
+#include <boost/mpl/plus.hpp>
+#include <boost/mpl/minus.hpp>
+#include <boost/mpl/multiplies.hpp>
+#include <boost/mpl/divides.hpp>
+#include <boost/mpl/modulus.hpp>
+#include <boost/mpl/negate.hpp>
 
 #endif // BOOST_MPL_ARITHMETIC_HPP_INCLUDED

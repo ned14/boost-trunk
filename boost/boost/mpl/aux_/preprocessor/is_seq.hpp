@@ -18,11 +18,11 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/preprocessor/seq/size.hpp"
-#include "boost/preprocessor/arithmetic/dec.hpp"
-#include "boost/preprocessor/punctuation/paren.hpp"
-#include "boost/preprocessor/cat.hpp"
-#include "boost/preprocessor/config/config.hpp"
+#include <boost/preprocessor/seq/size.hpp>
+#include <boost/preprocessor/arithmetic/dec.hpp>
+#include <boost/preprocessor/punctuation/paren.hpp>
+#include <boost/preprocessor/cat.hpp>
+#include <boost/preprocessor/config/config.hpp>
 
 // returns 1 if 'seq' is a PP-sequence, 0 otherwise:
 //

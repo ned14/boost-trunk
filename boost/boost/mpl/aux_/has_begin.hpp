@@ -17,7 +17,7 @@
 #ifndef BOOST_MPL_AUX_HAS_BEGIN_HPP_INCLUDED
 #define BOOST_MPL_AUX_HAS_BEGIN_HPP_INCLUDED
 
-#include "boost/mpl/aux_/has_xxx.hpp"
+#include <boost/mpl/aux_/has_xxx.hpp>
 
 namespace boost { namespace mpl { namespace aux {
 BOOST_MPL_HAS_XXX_TRAIT_NAMED_DEF(has_begin, begin, true)

@@ -14,11 +14,11 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/begin_end_fwd.hpp"
-#include "boost/mpl/aux_/begin_end_impl.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/begin_end_fwd.hpp>
+#include <boost/mpl/aux_/begin_end_impl.hpp>
+#include <boost/mpl/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
@@ -27,7 +27,7 @@ namespace mpl {
 // happy this way (less ETI-related errors), and it doesn't affect 
 // anything else
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct begin
 {
@@ -39,7 +39,7 @@ struct begin
 };
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct end
 {
@@ -50,8 +50,8 @@ struct end
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,end,(Sequence))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1, begin)
-BOOST_MPL_AUX_VOID_SPEC(1, end)
+BOOST_MPL_AUX_NA_SPEC(1, begin)
+BOOST_MPL_AUX_NA_SPEC(1, end)
 
 } // namespace mpl
 } // namespace boost

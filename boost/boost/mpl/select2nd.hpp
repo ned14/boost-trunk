@@ -17,15 +17,15 @@
 #ifndef BOOST_MPL_SELECT2ND_HPP_INCLUDED
 #define BOOST_MPL_SELECT2ND_HPP_INCLUDED
 
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Pair)
+      typename BOOST_MPL_AUX_NA_PARAM(Pair)
     >
 struct select2nd
 {
@@ -33,14 +33,14 @@ struct select2nd
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,select2nd,(Pair))
 };
 
-#if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
 template<> struct select2nd<int>
 {
     typedef int type;
 };
 #endif
 
-BOOST_MPL_AUX_VOID_SPEC(1, select2nd)
+BOOST_MPL_AUX_NA_SPEC(1, select2nd)
 
 } // namespace mpl
 } // namespace boost

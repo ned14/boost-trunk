@@ -18,8 +18,8 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/has_key_fwd.hpp"
-#include "boost/mpl/aux_/traits_lambda_spec.hpp"
+#include <boost/mpl/has_key_fwd.hpp>
+#include <boost/mpl/aux_/traits_lambda_spec.hpp>
 
 namespace boost {
 namespace mpl {

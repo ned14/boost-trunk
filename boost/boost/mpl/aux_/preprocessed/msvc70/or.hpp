@@ -37,8 +37,8 @@ template<> struct or_impl<false>
 } // namespace aux
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+      typename BOOST_MPL_AUX_NA_PARAM(T1)
+    , typename BOOST_MPL_AUX_NA_PARAM(T2)
     , typename T3 = false_, typename T4 = false_, typename T5 = false_
     >
 struct or_
@@ -55,7 +55,7 @@ struct or_
         )
 };
 
-BOOST_MPL_AUX_VOID_SPEC_EXT(
+BOOST_MPL_AUX_NA_SPEC2(
       2
     , 5
     , or_

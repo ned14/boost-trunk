@@ -20,7 +20,7 @@
 #if defined(BOOST_MPL_USE_NEXT_INTERNALLY)
 
 #   if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#       include "boost/mpl/prior.hpp"
+#       include <boost/mpl/prior.hpp>
 #   endif
 
 #   define BOOST_MPL_AUX_PRIOR(x) prior<x>::type

@@ -17,17 +17,17 @@
 #ifndef BOOST_MPL_AS_SEQUENCE_HPP_INCLUDED
 #define BOOST_MPL_AS_SEQUENCE_HPP_INCLUDED
 
-#include "boost/mpl/is_sequence.hpp"
-#include "boost/mpl/single_view.hpp"
-#include "boost/mpl/if.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
+#include <boost/mpl/is_sequence.hpp>
+#include <boost/mpl/single_view.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
 
 namespace boost { namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct as_sequence
     : if_< is_sequence<T>, T, single_view<T> >
@@ -35,14 +35,14 @@ struct as_sequence
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,as_sequence,(T))
 };
 
-#if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
 template<> struct as_sequence<int>
 {
     typedef single_view<int> type;
 };
 #endif
 
-BOOST_MPL_AUX_VOID_SPEC(1, as_sequence)
+BOOST_MPL_AUX_NA_SPEC(1, as_sequence)
 
 }} // namespace boost::mpl
 

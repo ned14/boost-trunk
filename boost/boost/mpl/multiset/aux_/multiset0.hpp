@@ -13,8 +13,8 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/multiset/aux_/tag.hpp"
-#include "boost/mpl/int.hpp"
+#include <boost/mpl/multiset/aux_/tag.hpp>
+#include <boost/mpl/int.hpp>
 
 namespace boost { namespace mpl {
 

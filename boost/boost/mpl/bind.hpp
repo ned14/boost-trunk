@@ -21,29 +21,29 @@
 #ifndef BOOST_MPL_BIND_HPP_INCLUDED
 #define BOOST_MPL_BIND_HPP_INCLUDED
 
-#include "boost/mpl/aux_/apply.hpp"
-#include "boost/mpl/aux_/config/bind.hpp"
-#include "boost/mpl/aux_/config/lambda.hpp"
-#include "boost/mpl/aux_/config/ctps.hpp"
-#include "boost/mpl/aux_/config/static_constant.hpp"
+#include <boost/mpl/aux_/apply.hpp>
+#include <boost/mpl/aux_/config/bind.hpp>
+#include <boost/mpl/aux_/config/lambda.hpp>
+#include <boost/mpl/aux_/config/ctps.hpp>
+#include <boost/mpl/aux_/config/static_constant.hpp>
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include "boost/mpl/placeholders.hpp"
-#   include "boost/mpl/void.hpp"
-#   include "boost/mpl/protect.hpp"
-#   include "boost/mpl/limits/arity.hpp"
-#   include "boost/mpl/aux_/arity_spec.hpp"
-#   include "boost/mpl/aux_/type_wrapper.hpp"
-#   include "boost/mpl/aux_/yes_no.hpp"
-#   include "boost/mpl/aux_/common_name_wknd.hpp"
+#   include <boost/mpl/placeholders.hpp>
+#   include <boost/mpl/void.hpp>
+#   include <boost/mpl/protect.hpp>
+#   include <boost/mpl/limits/arity.hpp>
+#   include <boost/mpl/aux_/arity_spec.hpp>
+#   include <boost/mpl/aux_/type_wrapper.hpp>
+#   include <boost/mpl/aux_/yes_no.hpp>
+#   include <boost/mpl/aux_/common_name_wknd.hpp>
 #   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-#       include "boost/type_traits/is_reference.hpp"
+#       include <boost/type_traits/is_reference.hpp>
 #   endif 
 #endif
 
-#include "boost/mpl/aux_/config/use_preprocessed.hpp"
+#include <boost/mpl/aux_/config/use_preprocessed.hpp>
 
-#if !defined(BOOST_MPL_NO_PREPROCESSED_HEADERS) && \
+#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) && \
     !defined(BOOST_MPL_PREPROCESSING_MODE)
 
 #   if defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
@@ -51,23 +51,23 @@
 #   else
 #       define BOOST_MPL_PREPROCESSED_HEADER bind.hpp
 #   endif
-#   include "boost/mpl/aux_/include_preprocessed.hpp"
+#   include <boost/mpl/aux_/include_preprocessed.hpp>
 
 #else
 
-#   include "boost/mpl/aux_/preprocessor/params.hpp"
-#   include "boost/mpl/aux_/preprocessor/default_params.hpp"
-#   include "boost/mpl/aux_/preprocessor/def_params_tail.hpp"
-#   include "boost/mpl/aux_/preprocessor/partial_spec_params.hpp"
-#   include "boost/mpl/aux_/preprocessor/enum.hpp"
-#   include "boost/mpl/aux_/preprocessor/add.hpp"
-#   include "boost/mpl/aux_/config/dtp.hpp"
-#   include "boost/mpl/aux_/config/nttp.hpp"
+#   include <boost/mpl/aux_/preprocessor/params.hpp>
+#   include <boost/mpl/aux_/preprocessor/default_params.hpp>
+#   include <boost/mpl/aux_/preprocessor/def_params_tail.hpp>
+#   include <boost/mpl/aux_/preprocessor/partial_spec_params.hpp>
+#   include <boost/mpl/aux_/preprocessor/enum.hpp>
+#   include <boost/mpl/aux_/preprocessor/add.hpp>
+#   include <boost/mpl/aux_/config/dtp.hpp>
+#   include <boost/mpl/aux_/config/nttp.hpp>
 
-#   include "boost/preprocessor/iterate.hpp"
-#   include "boost/preprocessor/comma_if.hpp"
-#   include "boost/preprocessor/cat.hpp"
-#   include "boost/preprocessor/inc.hpp"
+#   include <boost/preprocessor/iterate.hpp>
+#   include <boost/preprocessor/comma_if.hpp>
+#   include <boost/preprocessor/cat.hpp>
+#   include <boost/preprocessor/inc.hpp>
 
 namespace boost {
 namespace mpl {
@@ -77,19 +77,19 @@ BOOST_MPL_AUX_COMMON_NAME_WKND(bind2nd)
 
 // local macros, #undef-ined at the end of the header
 #   define AUX_APPLY(args) \
-    BOOST_MPL_AUX_APPLY(BOOST_MPL_METAFUNCTION_MAX_ARITY, args) \
+    BOOST_MPL_AUX_APPLY(BOOST_MPL_LIMIT_METAFUNCTION_ARITY, args) \
     /**/
 
 #   define AUX_BIND_PARAMS(param) \
     BOOST_MPL_PP_PARAMS( \
-          BOOST_MPL_METAFUNCTION_MAX_ARITY \
+          BOOST_MPL_LIMIT_METAFUNCTION_ARITY \
         , param \
         ) \
     /**/
 
 #   define AUX_BIND_DEFAULT_PARAMS(param, value) \
     BOOST_MPL_PP_DEFAULT_PARAMS( \
-          BOOST_MPL_METAFUNCTION_MAX_ARITY \
+          BOOST_MPL_LIMIT_METAFUNCTION_ARITY \
         , param \
         , value \
         ) \
@@ -105,7 +105,7 @@ BOOST_MPL_AUX_COMMON_NAME_WKND(bind2nd)
     BOOST_MPL_PP_PARTIAL_SPEC_PARAMS(n, param, def) \
     /**/
 
-#if !defined(BOOST_NO_DEFAULT_TEMPLATE_PARAMETERS_IN_NESTED_TEMPLATES)
+#if !defined(BOOST_MPL_CFG_NO_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
 #   define AUX_BIND_NESTED_DEFAULT_PARAMS(param, value) \
     AUX_BIND_DEFAULT_PARAMS(param, value) \
     /**/
@@ -332,7 +332,7 @@ template< typename T > struct is_bind_template
 
 #if !defined(BOOST_MPL_NO_BIND_TEMPLATE)
 BOOST_MPL_AUX_ARITY_SPEC(
-      BOOST_PP_INC(BOOST_MPL_METAFUNCTION_MAX_ARITY)
+      BOOST_PP_INC(BOOST_MPL_LIMIT_METAFUNCTION_ARITY)
     , bind
     )
 #endif
@@ -341,7 +341,7 @@ BOOST_MPL_AUX_ARITY_SPEC(2,bind1st)
 BOOST_MPL_AUX_ARITY_SPEC(2,bind2nd)
 
 #define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(0, BOOST_MPL_METAFUNCTION_MAX_ARITY, "boost/mpl/bind.hpp"))
+    (3,(0, BOOST_MPL_LIMIT_METAFUNCTION_ARITY, <boost/mpl/bind.hpp>))
 #include BOOST_PP_ITERATE()
 
 // real C++ version is already taken care of
@@ -352,8 +352,8 @@ namespace aux {
 // apply_count_args
 #define BOOST_MPL_AUX_COUNT_ARGS_PREFIX bind
 #define BOOST_MPL_AUX_COUNT_ARGS_DEFAULT void_
-#define BOOST_MPL_AUX_COUNT_ARGS_ARITY BOOST_MPL_METAFUNCTION_MAX_ARITY
-#include "boost/mpl/aux_/count_args.hpp"
+#define BOOST_MPL_AUX_COUNT_ARGS_ARITY BOOST_MPL_LIMIT_METAFUNCTION_ARITY
+#include <boost/mpl/aux_/count_args.hpp>
 }
 
 // bind
@@ -407,7 +407,7 @@ struct bind2nd
 } // namespace mpl
 } // namespace boost
 
-#endif // BOOST_MPL_USE_PREPROCESSED_HEADERS
+#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
 #endif // BOOST_MPL_BIND_HPP_INCLUDED
 
 ///// iteration, depth == 1
@@ -440,7 +440,7 @@ struct BOOST_PP_CAT(bind,i)
 #   endif // BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT
 
 #   if i > 0
-#       define BOOST_PP_ITERATION_PARAMS_2 (3,(1, i, "boost/mpl/bind.hpp"))
+#       define BOOST_PP_ITERATION_PARAMS_2 (3,(1, i, <boost/mpl/bind.hpp>))
 #       include BOOST_PP_ITERATE()
 #   endif
 
@@ -486,7 +486,7 @@ BOOST_MPL_AUX_ARITY_SPEC(BOOST_PP_INC(i), BOOST_PP_CAT(bind,i))
 #   if !defined(BOOST_MPL_NO_BIND_TEMPLATE)
 #   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     
-#if i == BOOST_MPL_METAFUNCTION_MAX_ARITY
+#if i == BOOST_MPL_LIMIT_METAFUNCTION_ARITY
 
 //: primary template (not a specialization!)
 template<
@@ -507,7 +507,7 @@ struct bind< F AUX_BIND_N_SPEC_PARAMS(i, T, void_) >
 {
 };
 
-#endif // i == BOOST_MPL_METAFUNCTION_MAX_ARITY
+#endif // i == BOOST_MPL_LIMIT_METAFUNCTION_ARITY
 
 #   else
 

@@ -18,7 +18,7 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/config.hpp" // make sure 'size_t' is placed into 'std'
+#include <boost/config.hpp> // make sure 'size_t' is placed into 'std'
 #include <cstddef>
 
 namespace boost { namespace mpl {

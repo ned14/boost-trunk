@@ -17,9 +17,9 @@
 #ifndef BOOST_MPL_AUX_ITER_DISTANCE_HPP_INCLUDED
 #define BOOST_MPL_AUX_ITER_DISTANCE_HPP_INCLUDED
 
-#include "boost/mpl/aux_/iterator_names.hpp"
-#include "boost/mpl/aux_/msvc_never_true.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/aux_/iterator_names.hpp>
+#include <boost/mpl/aux_/msvc_never_true.hpp>
+#include <boost/config.hpp>
 
 namespace boost {
 namespace mpl {
@@ -31,7 +31,7 @@ namespace aux {
 #define BOOST_MPL_AUX_MSVC_DTW_NAME msvc_distance
 #define BOOST_MPL_AUX_MSVC_DTW_ORIGINAL_NAME BOOST_MPL_AUX_ITERATOR_DISTANCE
 #define BOOST_MPL_AUX_MSVC_DTW_ARITY 1
-#include "boost/mpl/aux_/msvc_dtw.hpp"
+#include <boost/mpl/aux_/msvc_dtw.hpp>
 
 template<
       typename Iterator

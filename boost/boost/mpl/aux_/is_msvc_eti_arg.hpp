@@ -17,15 +17,15 @@
 #ifndef BOOST_MPL_AUX_IS_MSVC_ETI_ARG_HPP_INCLUDED
 #define BOOST_MPL_AUX_IS_MSVC_ETI_ARG_HPP_INCLUDED
 
-#include "boost/mpl/aux_/yes_no.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
-#include "boost/mpl/aux_/config/static_constant.hpp"
+#include <boost/mpl/aux_/yes_no.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
+#include <boost/mpl/aux_/config/static_constant.hpp>
 
 namespace boost { namespace mpl { namespace aux {
 
-#if defined(BOOST_MPL_MSVC_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
 
-#if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
 
 template< typename T >
 struct is_msvc_eti_arg
@@ -52,7 +52,7 @@ struct is_msvc_eti_arg
         );
 };
 
-#endif // BOOST_MPL_MSVC_60_ETI_BUG
+#endif // BOOST_MPL_CFG_MSVC_60_ETI_BUG
 
 template<>
 struct is_msvc_eti_arg<int>
@@ -60,7 +60,7 @@ struct is_msvc_eti_arg<int>
     BOOST_STATIC_CONSTANT(bool, value = true);
 };
 
-#endif // BOOST_MPL_MSVC_ETI_BUG
+#endif // BOOST_MPL_CFG_MSVC_ETI_BUG
 
 }}} // namespace boost::mpl::aux
 

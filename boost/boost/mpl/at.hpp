@@ -14,20 +14,20 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/at_fwd.hpp"
-#include "boost/mpl/aux_/at_impl.hpp"
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/mpl/aux_/config/nttp.hpp"
+#include <boost/mpl/at_fwd.hpp>
+#include <boost/mpl/aux_/at_impl.hpp>
+#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/aux_/config/nttp.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(N)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(N)
     >
 struct at
     : at_impl< typename sequence_tag<Sequence>::type >
@@ -46,7 +46,7 @@ struct at_c
 {
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, at)
+BOOST_MPL_AUX_NA_SPEC(2, at)
 
 } // namespace mpl
 } // namespace boost

@@ -14,8 +14,8 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/aux_/config/workaround.hpp"
-#include "boost/mpl/aux_/config/msvc.hpp"
+#include <boost/mpl/aux_/config/workaround.hpp>
+#include <boost/mpl/aux_/config/msvc.hpp>
 
 namespace boost { namespace mpl { namespace aux {
 

@@ -17,16 +17,16 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/void.hpp"
-#include "boost/mpl/aux_/value_wknd.hpp"
-#include "boost/mpl/aux_/static_cast.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/void.hpp>
+#include <boost/mpl/aux_/value_wknd.hpp>
+#include <boost/mpl/aux_/static_cast.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
+#include <boost/config.hpp>
 
-#if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
-#   include "boost/mpl/arg_fwd.hpp"
+#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
+#   include <boost/mpl/arg_fwd.hpp>
 #endif
 
 namespace boost {
@@ -56,9 +56,9 @@ struct if_c<false,T1,T2>
 };
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(C)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+      typename BOOST_MPL_AUX_NA_PARAM(C)
+    , typename BOOST_MPL_AUX_NA_PARAM(T1)
+    , typename BOOST_MPL_AUX_NA_PARAM(T2)
     >
 struct if_
 {
@@ -120,9 +120,9 @@ struct if_c
 // (almost) copy & paste in order to save one more 
 // recursively nested template instantiation to user
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(C_)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+      typename BOOST_MPL_AUX_NA_PARAM(C_)
+    , typename BOOST_MPL_AUX_NA_PARAM(T1)
+    , typename BOOST_MPL_AUX_NA_PARAM(T2)
     >
 struct if_
 {
@@ -138,10 +138,10 @@ struct if_
 
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_END
 
-BOOST_MPL_AUX_ALGORITHM_VOID_SPEC(3, if_)
+BOOST_MPL_AUX_NA_ALGORITHM_SPEC(3, if_)
 
 
-#if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
+#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
 
 // Aleksey, check it out: lazy if_ evaluation in lambdas!
 // I think this doesn't handle the case of
@@ -184,7 +184,7 @@ namespace aux
 {
   template <
       typename T
-    , BOOST_MPL_PP_PARAMS(BOOST_MPL_METAFUNCTION_MAX_ARITY, typename U)
+    , BOOST_MPL_PP_PARAMS(BOOST_MPL_LIMIT_METAFUNCTION_ARITY, typename U)
   > struct resolve_bind_arg;
 
   template<

@@ -18,7 +18,7 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/config/workaround.hpp"
+#include <boost/mpl/aux_/config/workaround.hpp>
 
 namespace boost { namespace mpl {
 #if BOOST_WORKAROUND(__HP_aCC, BOOST_TESTED_AT(53800))

@@ -20,7 +20,7 @@
 #if defined(BOOST_MPL_USE_NEXT_INTERNALLY)
 
 #   if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#       include "boost/mpl/next.hpp"
+#       include <boost/mpl/next.hpp>
 #   endif
 
 #   define BOOST_MPL_AUX_NEXT(x) next<x>::type

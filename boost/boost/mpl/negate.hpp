@@ -18,17 +18,17 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/aux_/typeof.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/aux_/typeof.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/config.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct negate
 {
@@ -43,7 +43,7 @@ struct negate
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1, negate, (T))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1,negate)
+BOOST_MPL_AUX_NA_SPEC(1,negate)
 
 } // namespace mpl
 } // namespace boost 

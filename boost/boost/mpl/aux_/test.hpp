@@ -18,10 +18,10 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/test/assert.hpp"
-#include "boost/mpl/aux_/test/data.hpp"
-#include "boost/mpl/aux_/test/test_case.hpp"
-#include "boost/mpl/aux_/test/for_each.hpp"
-#include "boost/mpl/aux_/config/msvc_typename.hpp"
+#include <boost/mpl/aux_/test/assert.hpp>
+#include <boost/mpl/aux_/test/data.hpp>
+#include <boost/mpl/aux_/test/test_case.hpp>
+#include <boost/mpl/aux_/test/for_each.hpp>
+#include <boost/mpl/aux_/config/msvc_typename.hpp>
 
 #endif // BOOST_MPL_AUX_TEST_HPP_INCLUDED

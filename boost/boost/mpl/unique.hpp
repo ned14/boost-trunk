@@ -17,21 +17,21 @@
 #ifndef BOOST_MPL_UNIQUE_HPP_INCLUDED
 #define BOOST_MPL_UNIQUE_HPP_INCLUDED
 
-#include "boost/mpl/fold_backward.hpp"
-#include "boost/mpl/push_front.hpp"
-#include "boost/mpl/clear.hpp"
-#include "boost/mpl/front.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/pair.hpp"
-#include "boost/mpl/select1st.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/void.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
-#include "boost/type_traits/is_same.hpp"
+#include <boost/mpl/fold_backward.hpp>
+#include <boost/mpl/push_front.hpp>
+#include <boost/mpl/clear.hpp>
+#include <boost/mpl/front.hpp>
+#include <boost/mpl/identity.hpp>
+#include <boost/mpl/pair.hpp>
+#include <boost/mpl/select1st.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/apply_if.hpp>
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/void.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_spec.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
+#include <boost/type_traits/is_same.hpp>
 
 namespace boost {
 namespace mpl {
@@ -62,7 +62,7 @@ BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(1,aux::unique_op)
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     , typename Predicate = is_same<_,_>
     >
 struct unique
@@ -78,7 +78,7 @@ struct unique
         >::type fold_result_;
 
  public:
-#if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
     // MSVC6.5 forces us to use 'select1st<fold_result_>::type' instead of 
     // simple 'fold_result_::first' here
     typedef typename select1st<fold_result_>::type type;
@@ -89,7 +89,7 @@ struct unique
 
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_END
 
-BOOST_MPL_AUX_ALGORITHM_VOID_SPEC(1, unique)
+BOOST_MPL_AUX_NA_ALGORITHM_SPEC(1, unique)
 
 } // namespace mpl
 } // namespace boost

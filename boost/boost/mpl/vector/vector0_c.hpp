@@ -14,7 +14,7 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/vector/vector0.hpp"
+#include <boost/mpl/vector/vector0.hpp>
 
 namespace boost {
 namespace mpl {

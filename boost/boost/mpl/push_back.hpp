@@ -14,18 +14,18 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/push_back_fwd.hpp"
-#include "boost/mpl/aux_/push_back_impl.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/push_back_fwd.hpp>
+#include <boost/mpl/aux_/push_back_impl.hpp>
+#include <boost/mpl/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct push_back
     : push_back_impl< typename sequence_tag<Sequence>::type >
@@ -34,7 +34,20 @@ struct push_back
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,push_back,(Sequence,T))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2, push_back)
+
+template< 
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    >
+struct has_push_back
+    : has_push_back_impl< typename sequence_tag<Sequence>::type >
+        ::template apply< Sequence >
+{
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,has_push_back,(Sequence))
+};
+
+
+BOOST_MPL_AUX_NA_SPEC(2, push_back)
+BOOST_MPL_AUX_NA_SPEC(1, has_push_back)
 
 } // namespace mpl
 } // namespace boost

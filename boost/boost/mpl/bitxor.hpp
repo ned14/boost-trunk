@@ -18,12 +18,12 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/aux_/typeof.hpp"
-#include "boost/mpl/aux_/value_wknd.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/aux_/typeof.hpp>
+#include <boost/mpl/aux_/value_wknd.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
+#include <boost/config.hpp>
 
 namespace boost {
 namespace mpl {
@@ -42,8 +42,8 @@ struct bitxor_c
 };
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+      typename BOOST_MPL_AUX_NA_PARAM(T1)
+    , typename BOOST_MPL_AUX_NA_PARAM(T2)
     >
 struct bitxor_
     : bitxor_c<
@@ -55,7 +55,7 @@ struct bitxor_
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2, bitxor_, (T1,T2))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(2,bitxor_)
+BOOST_MPL_AUX_NA_SPEC(2,bitxor_)
 
 } // namespace mpl
 } // namespace boost

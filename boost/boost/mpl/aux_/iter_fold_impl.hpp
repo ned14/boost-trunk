@@ -17,30 +17,30 @@
 #ifndef BOOST_MPL_AUX_ITER_FOLD_IMPL_HPP_INCLUDED
 #define BOOST_MPL_AUX_ITER_FOLD_IMPL_HPP_INCLUDED
 
-#include "boost/mpl/aux_/apply.hpp"
-#include "boost/mpl/aux_/next.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
-#include "boost/config.hpp"
+#include <boost/mpl/aux_/apply.hpp>
+#include <boost/mpl/aux_/next.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
+#include <boost/config.hpp>
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && \
     !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include "boost/mpl/if.hpp"
-#   include "boost/type_traits/is_same.hpp"
+#   include <boost/mpl/if.hpp>
+#   include <boost/type_traits/is_same.hpp>
 #endif
 
-#include "boost/mpl/aux_/config/use_preprocessed.hpp"
+#include <boost/mpl/aux_/config/use_preprocessed.hpp>
 
-#if !defined(BOOST_MPL_NO_PREPROCESSED_HEADERS) && \
+#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) && \
     !defined(BOOST_MPL_PREPROCESSING_MODE)
 
 #   define BOOST_MPL_PREPROCESSED_HEADER iter_fold_impl.hpp
-#   include "boost/mpl/aux_/include_preprocessed.hpp"
+#   include <boost/mpl/aux_/include_preprocessed.hpp>
 
 #else
 
 #   define BOOST_MPL_AUX_FOLD_IMPL_OP(iter) iter
 #   define BOOST_MPL_AUX_FOLD_IMPL_NAME_PREFIX iter_fold
-#   include "boost/mpl/aux_/fold_impl_body.hpp"
+#   include <boost/mpl/aux_/fold_impl_body.hpp>
 
-#endif // BOOST_MPL_USE_PREPROCESSED_HEADERS
+#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
 #endif // BOOST_MPL_AUX_ITER_FOLD_IMPL_HPP_INCLUDED

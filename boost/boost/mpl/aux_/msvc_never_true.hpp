@@ -17,7 +17,7 @@
 #ifndef BOOST_MPL_AUX_MSVC_NEVER_TRUE_HPP_INCLUDED
 #define BOOST_MPL_AUX_MSVC_NEVER_TRUE_HPP_INCLUDED
 
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 
 #if defined(BOOST_MSVC) && BOOST_MSVC <= 1300
 

@@ -14,17 +14,17 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/empty_fwd.hpp"
-#include "boost/mpl/aux_/empty_impl.hpp"
-#include "boost/mpl/aux_/sequence_tag.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/empty_fwd.hpp>
+#include <boost/mpl/aux_/empty_impl.hpp>
+#include <boost/mpl/aux_/sequence_tag.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct empty
     : empty_impl< typename sequence_tag<Sequence>::type >
@@ -33,7 +33,7 @@ struct empty
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,empty,(Sequence))
 };
 
-BOOST_MPL_AUX_VOID_SPEC(1, empty)
+BOOST_MPL_AUX_NA_SPEC(1, empty)
 
 } // namespace mpl
 } // namespace boost

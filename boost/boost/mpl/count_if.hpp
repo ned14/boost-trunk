@@ -17,16 +17,16 @@
 #ifndef BOOST_MPL_COUNT_IF_HPP_INCLUDED
 #define BOOST_MPL_COUNT_IF_HPP_INCLUDED
 
-#include "boost/mpl/fold.hpp"
-#include "boost/mpl/next.hpp"
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/protect.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
+#include <boost/mpl/fold.hpp>
+#include <boost/mpl/next.hpp>
+#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/identity.hpp>
+#include <boost/mpl/apply_if.hpp>
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/protect.hpp>
+#include <boost/mpl/apply.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost {
 namespace mpl {
@@ -55,8 +55,8 @@ struct next_if
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Predicate)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_NA_PARAM(Predicate)
     >
 struct count_if
 {
@@ -75,7 +75,7 @@ struct count_if
 
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_END
 
-BOOST_MPL_AUX_ALGORITHM_VOID_SPEC(2, count_if)
+BOOST_MPL_AUX_NA_ALGORITHM_SPEC(2, count_if)
 
 } // namespace mpl
 } // namespace boost

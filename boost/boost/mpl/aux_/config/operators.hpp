@@ -14,8 +14,8 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/aux_/config/gcc.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
+#include <boost/mpl/aux_/config/gcc.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
 
 // agurt, 03/may/03: when defining 'friend' operators, use specialization
 // in place of conventional overloading to supress a warning on GCC 3.x;

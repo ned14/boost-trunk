@@ -17,14 +17,14 @@
 #ifndef BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
 #define BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
 
-#include "boost/mpl/sequence_tag_fwd.hpp"
-#include "boost/mpl/aux_/has_tag.hpp"
-#include "boost/mpl/aux_/has_begin.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/is_msvc_eti_arg.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
-#include "boost/mpl/aux_/yes_no.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
+#include <boost/mpl/sequence_tag_fwd.hpp>
+#include <boost/mpl/aux_/has_tag.hpp>
+#include <boost/mpl/aux_/has_begin.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/is_msvc_eti_arg.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
+#include <boost/mpl/aux_/yes_no.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
 
 namespace boost { namespace mpl {
 
@@ -33,7 +33,7 @@ namespace boost { namespace mpl {
 #if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct sequence_tag
 {
@@ -67,7 +67,7 @@ struct sequence_tag_impl<false>
 } // namespace aux
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct sequence_tag
     : aux::sequence_tag_impl< !aux::is_msvc_eti_arg<Sequence>::value >
@@ -107,7 +107,7 @@ AUX_CLASS_SEQUENCE_TAG_SPEC(false, false, non_sequence_tag)
 } // namespace aux
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
     >
 struct sequence_tag
     : aux::sequence_tag_impl<
@@ -119,14 +119,14 @@ struct sequence_tag
 
 #endif // BOOST_MSVC
 
-#if defined(BOOST_MPL_MSVC_60_ETI_BUG)
+#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
 template<> struct sequence_tag<int>
 {
     typedef int type;
 };
 #endif
 
-BOOST_MPL_AUX_VOID_SPEC(1, sequence_tag)
+BOOST_MPL_AUX_NA_SPEC(1, sequence_tag)
 
 }} // namespace boost::mpl
 
