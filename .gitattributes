@@ -992,6 +992,7 @@ boost/libs/regex/changes.txt svneol=native#text/plain
 boost/libs/regex/configure svneol=native#text/plain
 boost/libs/regex/configure.in -text
 boost/libs/regex/dmi.sh svneol=native#text/x-sh
+boost/libs/regex/example/Jamfile svneol=native#text/plain
 boost/libs/regex/example/jgrep/bc55.mak svneol=native#text/plain
 boost/libs/regex/example/jgrep/bcb4.mak svneol=native#text/plain
 boost/libs/regex/example/jgrep/bcb5.mak svneol=native#text/plain
