@@ -5469,6 +5469,7 @@ boost/libs/statechart/example/StopWatch/StopWatch.sln -text
 boost/libs/statechart/example/StopWatch/StopWatch.vcproj -text
 boost/libs/statechart/index.html svneol=native#text/html
 boost/libs/static_assert/Jamfile svneol=native#text/plain
+boost/libs/static_assert/Jamfile.v2 svneol=native#text/plain
 boost/libs/static_assert/index.html svneol=native#text/html
 boost/libs/static_assert/static_assert.htm svneol=native#text/html
 boost/libs/static_assert/static_assert_example_1.cpp svneol=native#text/plain
