@@ -2446,6 +2446,7 @@ boost/boost/serialization/binary_object.hpp svneol=native#text/plain
 boost/boost/serialization/collection_traits.hpp svneol=native#text/plain
 boost/boost/serialization/collections_load_imp.hpp svneol=native#text/plain
 boost/boost/serialization/collections_save_imp.hpp svneol=native#text/plain
+boost/boost/serialization/config.hpp svneol=native#text/plain
 boost/boost/serialization/deque.hpp svneol=native#text/plain
 boost/boost/serialization/export.hpp svneol=native#text/plain
 boost/boost/serialization/extended_type_info.hpp svneol=native#text/plain
