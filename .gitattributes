@@ -2888,7 +2888,6 @@ boost/libs/graph/doc/figs/Makefile svneol=native#text/plain
 boost/libs/graph/doc/figs/adj-list.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-list2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-matrix-graph.gif -text svneol=unset#image/gif
-boost/libs/graph/doc/figs/adj-matrix-graph2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-matrix-graph3.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-matrix.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj_list.fig -text
