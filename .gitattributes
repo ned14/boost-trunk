@@ -3364,6 +3364,7 @@ boost/libs/date_time/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/date_time/data/README.zone_spec_csv_file -text
 boost/libs/date_time/data/date_time_zonespec.csv -text
 boost/libs/date_time/doc/index.html svneol=native#text/html
+boost/libs/date_time/doc/time_duration_inherit.png -text svneol=unset#image/png
 boost/libs/date_time/example/Jamfile svneol=native#text/plain
 boost/libs/date_time/example/gregorian/Jamfile.v2 svneol=native#text/plain
 boost/libs/date_time/example/gregorian/date_serialization_demo.cpp svneol=native#text/plain
