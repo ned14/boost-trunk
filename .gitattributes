@@ -1108,6 +1108,7 @@ boost/boost/numeric/ublas/triangular.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/vector.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/vector_assign.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/vector_expression.hpp svneol=native#text/plain
+boost/boost/numeric/ublas/vector_of_vector.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/vector_proxy.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/vector_sparse.hpp svneol=native#text/plain
 boost/boost/operators.hpp svneol=native#text/plain
