@@ -4542,6 +4542,7 @@ boost/libs/spirit/example/application/cpp/cpp/cpp_iteration_context.hpp svneol=n
 boost/libs/spirit/example/application/cpp/cpp/cpp_iterator.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp/cpp_literal_grammar_gen.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp/cpp_macromap.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/insert_whitespace_detection.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp/unput_queue_iterator.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp_config.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp_version.hpp svneol=native#text/plain
