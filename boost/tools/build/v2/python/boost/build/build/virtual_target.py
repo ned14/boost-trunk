@@ -696,7 +696,7 @@ class Action:
                 i = self.manager_.get_object (i)
                 
             if i.type ():
-                scanner = self.manager_.types.get_scanner (i.type (), prop_set)
+                scanner = type.get_scanner (i.type (), prop_set)
 
             result.append (i.actualize (scanner))
         
@@ -894,52 +894,55 @@ class Subvariant:
 #           }
 #           return $(all-targets) ;                        
 #       }
-#                  
-#       # Returns the properties which specify implicit include paths to
-#       # generated headers. This traverses all targets in this subvariant,
-#       # and subvariants referred by <implcit-dependecy>properties.
-#       # For all targets which are of type 'target-type' (or for all targets,
-#       # if 'target-type' is not specified), the result will contain
-#       # <$(feature)>path-to-that-target.
-#       rule implicit-includes ( feature : target-type ? )
-#       {
-#           local key = ii$(feature)-$(target-type:E="") ;
-#           if ! $($(key))-is-nonempty
-#           {
-#               local target_paths = [ all-target-directories $(target-type) ] ;    
-#               target_paths = [ sequence.unique $(target_paths) ] ;
-#               local result = $(target_paths:G=$(feature)) ;
-#               if ! $(result)
-#               {
-#                   result = "" ;
-#               }            
-#               $(key) = $(result) ;
-#           }
-#           if $($(key)) = ""
-#           {
-#               return ;
-#           }
-#           else
-#           {
-#               return $($(key)) ;
-#           }        
-#       }
-#           
-#       rule all-target-directories ( target-type ? )
+
+    def implicit_includes (self, feature, target_type):
+        """ Returns the properties which specify implicit include paths to
+            generated headers. This traverses all targets in this subvariant,
+            and subvariants referred by <implcit-dependecy>properties.
+            For all targets which are of type 'target-type' (or for all targets,
+            if 'target_type' is not specified), the result will contain
+            <$(feature)>path-to-that-target.
+        """
+#    {
+#        local key = ii$(feature)-$(target_type:E="") ;
+#        if ! $($(key))-is-nonempty
+#        {
+#            local target_paths = [ all-target-directories $(target_type) ] ;    
+#            target_paths = [ sequence.unique $(target_paths) ] ;
+#            local result = $(target_paths:G=$(feature)) ;
+#            if ! $(result)
+#            {
+#                result = "" ;
+#            }            
+#            $(key) = $(result) ;
+#        }
+#        if $($(key)) = ""
+#        {
+#            return ;
+#        }
+#        else
+#        {
+#            return $($(key)) ;
+#        }        
+#    }
+        # TODO: port above code
+        return []
+        
+#       rule all-target-directories ( target_type ? )
 #       {
 #           if ! $(self.target-directories)
 #           {
-#               compute-target-directories $(target-type) ;
+#               compute-target-directories $(target_type) ;
 #           }                
 #           return $(self.target-directories) ;
 #       }
 #       
-#       rule compute-target-directories ( target-type ? )
+#       rule compute-target-directories ( target_type ? )
 #       {   
 #           local result ;
 #           for local t in $(self.created_targets_)
 #           {
-#               if $(target-type) && ! [ type.is-derived [ $(t).type ] $(target-type) ] 
+#               if $(target_type) && ! [ type.is-derived [ $(t).type ] $(target_type) ] 
 #               {
 #                   # Skip target which is of wrong type.
 #               }
@@ -950,7 +953,7 @@ class Subvariant:
 #           }
 #           for local d in $(self.other_dg)
 #           {
-#               result += [ $(d).all-target-directories $(target-type) ] ;
+#               result += [ $(d).all-target-directories $(target_type) ] ;
 #           }
 #           self.target-directories = $(result) ;
 #       }   

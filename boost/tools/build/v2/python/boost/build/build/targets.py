@@ -68,8 +68,8 @@
 import re
 import os.path
 
-from boost.build.util.utility import add_grist, get_grist, ungrist, replace_grist, unique
-import property, project, virtual_target, property_set, feature
+from boost.build.util.utility import *
+import property, project, virtual_target, property_set, feature, generators
 from virtual_target import Subvariant
 from boost.build.exceptions import *
 
@@ -671,7 +671,8 @@ class BasicTarget (AbstractTarget):
                 
                 extra = rproperties.get ('<source>')
                 source_targets += replace_grist (extra, '')
-
+                source_targets = replace_references_by_objects (self.manager (), source_targets)
+                
                 # We might get duplicate sources, for example if
                 # we link to two library which have the same <library> in
                 # usage requirements.
@@ -1098,9 +1099,9 @@ class TypedTarget (BasicTarget):
     def type (self):
         return self.type_
             
-    def construct (self, name, source_targets, property_set):
+    def construct (self, name, source_targets, prop_set):
         r = generators.construct (self.project_, name, self.type_, False, 
-            property_set.create (property_set.raw () + '<main-target-type>' + self.type_),
+            property_set.create (prop_set.raw () + ['<main-target-type>' + self.type_]),
             source_targets)
 
         if not r:

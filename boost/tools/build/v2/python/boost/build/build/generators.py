@@ -700,11 +700,11 @@ def try_one_generator (project, name, generator, multiple, target_type, properti
     viable_source_types = viable_source_types_for_generator (generator)
     
     if  source_types and viable_source_types != ['*'] and not set.intersection (source_types, viable_source_types):
-        if project.manager ().on ():
+        if project.manager ().logger ().on ():
             id = generator.id ()
-            project.manager ().log (__name__, "generator '%s' pruned" % id)
-            project.manager ().log (__name__, "source_types" '%s' % source_types)
-            project.manager ().log (__name__, "viable_source_types '%s'" % viable_source_types)
+            project.manager ().logger ().log (__name__, "generator '%s' pruned" % id)
+            project.manager ().logger ().log (__name__, "source_types" '%s' % source_types)
+            project.manager ().logger ().log (__name__, "viable_source_types '%s'" % viable_source_types)
         
         return []
 

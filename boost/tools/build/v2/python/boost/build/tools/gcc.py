@@ -7,7 +7,7 @@
 #  http://www.boost.org/LICENSE_1_0.txt)
 
 import unix, builtin, common
-from boost.build.build import feature, toolset, type
+from boost.build.build import feature, toolset, type, action
 from boost.build.util.utility import *
 
 feature.extend_feature ('toolset', ['gcc'])
@@ -62,11 +62,37 @@ def init (version = None, command = None, options = None):
 ###     # .bat files, thus avoiding command-line length limitations
 ###     JAMSHELL = % ;  
 ### }
-### 
-### generators.register-c-compiler gcc.compile.c++ : CPP : OBJ : <toolset>gcc ;
-### generators.register-c-compiler gcc.compile.c : C : OBJ : <toolset>gcc ;
-### 
-### 
+
+
+def gcc_compile_cpp (target, sources, properties):
+    # Some extensions are compiled as C++ by default. For others, we need
+    # to pass -x c++.
+    # We could always pass -x c++ but distcc does not work with it.
+    # TODO: implement this
+#    if ! $(>:S) in .cc .cp .cxx .cpp .c++ .C
+#    {
+#        LANG on $(<) = "-x c++" ;
+#    }
+    pass
+
+action.action (gcc_compile_cpp, ['"$(CONFIG_COMMAND)" $(LANG) -Wall -ftemplate-depth-100 $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)"'])
+
+builtin.register_c_compiler ('gcc.compile.c++', gcc_compile_cpp, ['CPP'], ['OBJ'], ['<toolset>gcc'])
+
+
+def gcc_compile_c (target, sources, properties):
+    # If we use the name g++ then default file suffix -> language mapping
+    # does not work. So have to pass -x option. Maybe, we can work around this
+    # by allowing the user to specify both C and C++ compiler names.
+    # TODO: implement this
+    # LANG on $(<) = "-x c" ;
+    pass
+
+action.action (gcc_compile_c, ['"$(CONFIG_COMMAND)" $(LANG) -Wall $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)"'])
+
+builtin.register_c_compiler ('gcc.compile.c', gcc_compile_c, ['C'], ['OBJ'], ['<toolset>gcc'])
+
+
 ### # Declare flags and action for compilation
 ### flags gcc.compile OPTIONS <optimization>off : -O0 ;
 ### flags gcc.compile OPTIONS <optimization>speed : -O3 ;
@@ -100,40 +126,6 @@ def init (version = None, command = None, options = None):
 ### flags gcc.compile.c++ OPTIONS <cxxflags> ;
 ### flags gcc.compile DEFINES <define> ;
 ### flags gcc.compile INCLUDES <include> ;
-### 
-### rule compile.c++
-### {
-###     # Some extensions are compiled as C++ by default. For others, we need
-###     # to pass -x c++.
-###     # We could always pass -x c++ but distcc does not work with it.
-###     if ! $(>:S) in .cc .cp .cxx .cpp .c++ .C
-###     {
-###         LANG on $(<) = "-x c++" ;
-###     }    
-### }
-### 
-### 
-### actions compile.c++
-### {
-###     "$(CONFIG_COMMAND)" $(LANG) -Wall -ftemplate-depth-100 $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)" 
-### }
-### 
-### rule compile.c
-### {
-###     # If we use the name g++ then default file suffix -> language mapping
-###     # does not work. So have to pass -x option. Maybe, we can work around this
-###     # by allowing the user to specify both C and C++ compiler names.
-###     #if $(>:S) != .c
-###     #{
-###         LANG on $(<) = "-x c" ;
-###     #}    
-### }
-### 
-### 
-### actions compile.c
-### {
-###     "$(CONFIG_COMMAND)" $(LANG) -Wall $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)" 
-### }
 ### 
 ### # The class which check that we don't try to use
 ### # the <link-runtime>static property while creating or using shared library,

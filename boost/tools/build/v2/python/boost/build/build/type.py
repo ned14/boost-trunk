@@ -243,54 +243,36 @@ def __register_main_rule (type):
     # and so from time to time we needed to make yet another type 'main'. So, now 
     # main target rule is defined for each type.
      
-    # TODO:
-    # something along the lines of
-    #   main_rule_name = type_to_rule_name (type)
-    #   __rule_names_to_types [main_rule_name] = type
-    #   import boost.build.build.project
-    #   boost.build.build.project.ProjectModule.__dict__ [main_rule_name] = main_rule
-    # How to define main_rule? Create a global object that catches all calls and
-    # does what is needed dependeing on the method name?
-    pass
+    main_rule_name = type_to_rule_name (type)
+    __rule_names_to_types [main_rule_name] = type
+
+    import boost.build.build.project
+    boost.build.build.project.ProjectModule.__dict__ [main_rule_name] = main_target_rule
 
 
-###################################################################
-# Still to port.
-# Original lines are prefixed with "#   "
-#
-#   # Given type, returns name of main target rule which creates
-#   # targets of that type.
-#   rule type_to_rule_name ( type )
-#   {
-#       # Lowercase everything. Convert underscores to dashes.ame.
-#       import regex ;
-#       local n = [ regex.split $(type:L) "_" ] ;
-#       n = $(n:J=-) ;
-#       return $(n) ;
-#   }
-#   
+def type_to_rule_name (type):
+    """ Given type, returns name of main target rule which creates
+        targets of that type.
+    """
+    # Lowercase everything.
+    return type.lower ()
+
 #   # Returns a type, given the name of a main rule.
 #   rule type-from-rule-name ( main-target-name )
 #   {
 #       return $(.main-target-type.$(main-target-name)) ;
 #   }
-#   
-#   rule main-target-rule ( name : sources * : requirements * : default-build * 
-#                           : usage-requirements * )
-#   {
-#       # First find required target type, which is equal to the name used
-#       # to invoke us.
-#       local bt = [ BACKTRACE 1 ] ;
-#       local rulename = $(bt[4]) ;
-#       
-#       # This rule may be only called from Jamfile, and therefore, 
-#       # CALLER_MODULE is Jamfile module, which is used to denote 
-#       # a project.
-#       local project = [ project.current ] ;
-#           
-#       # This is a circular module dependency, so it must be imported here
-#       import targets ;
-#       return [ targets.create-typed-target $(.main-target-type.$(rulename)) : $(project)
-#         : $(name) : $(sources) : $(requirements) 
-#         : $(default-build) : $(usage-requirements) ] ;        
-#   }
+
+def main_target_rule (project, name, sources, requirements = [], default_build = None, usage_requirements = []):
+
+    # TODO: get this
+    type = 'OBJ'
+
+    targets = project.manager ().targets ()
+    return targets.create_typed_target (type, project.target (), name, sources, requirements, default_build, usage_requirements)
+
+
+def make (project, target_name, sources, generating_rule, requirements):
+    """ Declares the 'make' main target.
+    """
+    targets = project.manager ().targets ()

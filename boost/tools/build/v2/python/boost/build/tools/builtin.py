@@ -7,7 +7,7 @@
 """
 
 import sys
-from boost.build.build import feature, property, virtual_target, generators
+from boost.build.build import feature, property, virtual_target, generators, type
 from boost.build.util.utility import *
 import boost.build.tools.types 
 
@@ -262,12 +262,11 @@ class SearchedLibTarget (virtual_target.AbstractFileTarget):
 ### scanner.register c-scanner : include ;
 ### 
 ### type.set-scanner CPP : c-scanner ;
-### 
-### 
-### type.register H : h ;
-### type.register HPP : hpp : H ;
-### type.register C : c ;
-### 
+
+type.register ('H', ['h'])
+type.register ('HPP', ['hpp'], 'H')
+type.register ('C', ['c'])
+
 ### # The generator class for libraries (target type LIB). Depending on properties it will
 ### # request building of the approapriate specific type -- SHARED_LIB, STATIC_LIB or 
 ### # SHARED_LIB.
@@ -421,61 +420,39 @@ generators.register (SearchedLibGenerator ())
 ### 
 ### generators.register 
 ###   [ new prebuilt-lib-generator builtin.prebuilt : : LIB : <file> ] ;
-### 
-###     
-### class compile-action : action 
-### {
-###     import sequence ;
-###     
-###     rule __init__ ( targets * : sources * : action-name : properties * )
-###     {
-###         action.__init__ $(targets) : $(sources) : $(action-name) : $(properties) ;
-###     }
-###    
-###     
-###     # For all virtual targets for the same dependency graph as self, 
-###     # i.e. which belong to the same main target, add their directories
-###     # to include path.
-###     rule adjust-properties ( prop_set )
-###     {        
-###         local s = [ $(self.targets[1]).creating-subvariant ] ;
-###         return [ $(prop_set).add-raw 
-###           [ $(s).implicit-includes "include" : H ] ] ;
-###     }    
-### }
-### 
-### # Declare a special compiler generator.
-### # The only thing it does is changing the type used to represent
-### # 'action' in the constructed dependency graph to 'compile-action'.
-### # That class in turn adds additional include paths to handle a case
-### # when a source file includes headers which are generated themselfs.
-### class C-compiling-generator : generator
-### {
-###     rule __init__ ( id : source_types + : target_types + :
-###         requirements * : optional-properties * )
-###     {
-###         generator.__init__ $(id) : $(source_types) : $(target_types) :
-###           $(requirements) : $(optional-properties) ;
-###     }
-###             
-###     rule action-class ( )
-###     {
-###         return compile-action ;
-###     }
-### }
-### 
-### rule register-c-compiler ( id : source_types + : target_types + :
-###                             requirements * : optional-properties * )
-### {
-###     local g = [ new C-compiling-generator $(id) : $(source_types) 
-###                 : $(target_types) : $(requirements) : $(optional-properties) ] ;
-###     generators.register $(g) ;
-### }
-### 
-### # FIXME: this is ugly, should find a better way (we'd want client code to
-### # register all generators as "generator.some-rule", not with "some-module.some-rule".)
-### IMPORT $(__name__) : register-c-compiler : : generators.register-c-compiler ;
-### 
+
+
+class CompileAction (virtual_target.Action):
+    def __init__ (self, manager, sources, action_name, prop_set):
+        virtual_target.Action.__init__ (self, manager, sources, action_name, prop_set)
+
+    def adjust_properties (self, prop_set):
+        """ For all virtual targets for the same dependency graph as self, 
+            i.e. which belong to the same main target, add their directories
+            to include path.
+        """
+        s = self.targets () [0].creating_subvariant ()
+
+        return prop_set.add_raw (s.implicit_includes ('include', 'H'))
+
+class CCompilingGenerator (generators.Generator):
+    """ Declare a special compiler generator.
+        The only thing it does is changing the type used to represent
+        'action' in the constructed dependency graph to 'CompileAction'.
+        That class in turn adds additional include paths to handle a case
+        when a source file includes headers which are generated themselfs.
+    """
+    def __init__ (self, id, rule, source_types, target_types, requirements, optional_properties):
+        # TODO: (PF) What to do with optional_properties? It seemed that, in the bjam version, the arguments are wrong.
+        assert (not optional_properties)
+        generators.Generator.__init__ (self, id, rule, False, source_types, target_types, requirements)
+            
+    def action_class (self):
+        return CompileAction
+
+def register_c_compiler (id, rule, source_types, target_types, requirements, optional_properties = []):
+    g = CCompilingGenerator (id, rule, source_types, target_types, requirements, optional_properties)
+    return generators.register (g)
 
 
 class LinkingGenerator (generators.Generator):

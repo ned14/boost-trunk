@@ -146,6 +146,7 @@ boost/tools/build/v2/python/doc/Overview.txt svneol=native#text/plain
 boost/tools/build/v2/python/doc/images/engine.png -text svneol=unset#image/png
 boost/tools/build/v2/python/doc/images/project_registry.png -text svneol=unset#image/png
 boost/tools/build/v2/python/doc/images/registries.png -text svneol=unset#image/png
+boost/tools/build/v2/python/tests/acceptance_tests/gcc_build.py svneol=native#text/x-python
 boost/tools/build/v2/python/tests/acceptance_tests/helpers.py svneol=native#text/x-python
 boost/tools/build/v2/python/tests/acceptance_tests/make_target.py svneol=native#text/x-python
 boost/tools/build/v2/python/tests/unit_tests/helpers.py svneol=native#text/x-python

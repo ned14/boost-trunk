@@ -60,6 +60,10 @@ class Manager:
     def get_object (self, key):
         """ Returns a previously registered object.
         """
+        if not isinstance (key, str):
+            # Probably it's the object itself.
+            return key
+            
         return self.object_map_ [key]
 
     def construct (self, properties = [], targets = []):

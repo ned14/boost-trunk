@@ -11,6 +11,10 @@ import re
 import os
 from boost.build.exceptions import *
 
+__re_grist_and_value = re.compile (r'(<[^>]*>)(.*)')
+__re_grist_content = re.compile ('^<(.*)>$')
+__re_backslash = re.compile (r'\\')
+
 def to_seq (value):
     """ If value is a sequence, returns it.
         If it is a string, returns a sequence with value as its sole element.
@@ -24,9 +28,11 @@ def to_seq (value):
     else:
         return value
 
-__re_grist_and_value = re.compile (r'(<[^>]*>)(.*)')
-__re_grist_content = re.compile ('^<(.*)>$')
-__re_backslash = re.compile (r'\\')
+def replace_references_by_objects (manager, refs):
+    objs = []
+    for r in refs:
+        objs.append (manager.get_object (r))
+    return objs
 
 def add_grist (features):
     """ Transform a string by bracketing it with "<>". If already bracketed, does nothing.
