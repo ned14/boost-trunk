@@ -605,6 +605,7 @@ boost/boost/python/object/value_holder_fwd.hpp svneol=native#text/plain
 boost/boost/python/object_attributes.hpp svneol=native#text/plain
 boost/boost/python/object_call.hpp svneol=native#text/plain
 boost/boost/python/object_core.hpp svneol=native#text/plain
+boost/boost/python/object_fwd.hpp svneol=native#text/plain
 boost/boost/python/object_items.hpp svneol=native#text/plain
 boost/boost/python/object_operators.hpp svneol=native#text/plain
 boost/boost/python/object_protocol.hpp svneol=native#text/plain
