@@ -2713,6 +2713,10 @@ boost/tools/build/jam_src/command.h svneol=native#text/plain
 boost/tools/build/jam_src/common.mk -text
 boost/tools/build/jam_src/compile.c svneol=native#text/plain
 boost/tools/build/jam_src/compile.h svneol=native#text/plain
+boost/tools/build/jam_src/debian/changelog -text
+boost/tools/build/jam_src/debian/control -text
+boost/tools/build/jam_src/debian/copyright -text
+boost/tools/build/jam_src/debian/rules -text
 boost/tools/build/jam_src/debugjam0.bat svneol=native#text/plain
 boost/tools/build/jam_src/debugjam0.sh svneol=native#text/x-sh
 boost/tools/build/jam_src/execcmd.h svneol=native#text/plain
@@ -3159,6 +3163,10 @@ boost/tools/jam/src/command.h svneol=native#text/plain
 boost/tools/jam/src/common.mk -text
 boost/tools/jam/src/compile.c svneol=native#text/plain
 boost/tools/jam/src/compile.h svneol=native#text/plain
+boost/tools/jam/src/debian/changelog -text
+boost/tools/jam/src/debian/control -text
+boost/tools/jam/src/debian/copyright -text
+boost/tools/jam/src/debian/rules -text
 boost/tools/jam/src/debugjam0.bat svneol=native#text/plain
 boost/tools/jam/src/debugjam0.sh svneol=native#text/x-sh
 boost/tools/jam/src/execcmd.h svneol=native#text/plain
