@@ -5760,6 +5760,7 @@ boost/libs/python/doc/v2/to_python_value.html svneol=native#text/html
 boost/libs/python/doc/v2/tuple.html svneol=native#text/html
 boost/libs/python/doc/v2/type_id.html svneol=native#text/html
 boost/libs/python/doc/v2/with_custodian_and_ward.html svneol=native#text/html
+boost/libs/python/doc/v2/wrapper.html svneol=native#text/html
 boost/libs/python/example/Attic/project.zip -text svneol=unset#application/zip
 boost/libs/python/example/Jamfile svneol=native#text/plain
 boost/libs/python/example/Jamfile.v2 svneol=native#text/plain
@@ -6658,8 +6659,11 @@ boost/libs/serialization/vc6ide/test_unregistered.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/test_utf8_codecvt.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/test_vector.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/test_void_cast.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc7ide/Attic/BoostSerializationLibrary.suo -text
 boost/libs/serialization/vc7ide/Boost[!!-~]Serialization[!!-~]Library.sln -text
 boost/libs/serialization/vc7ide/Boost[!!-~]Serialization[!!-~]Library.suo -text
+boost/libs/serialization/vc7ide/BoostSerializationLibrary.sln -text
+boost/libs/serialization/vc7ide/BoostSerializationLibrary.suo -text
 boost/libs/serialization/vc7ide/Library.vcproj -text
 boost/libs/serialization/vc7ide/LibraryW.vcproj -text
 boost/libs/serialization/vc7ide/Manual.vcproj -text
@@ -6674,6 +6678,7 @@ boost/libs/serialization/vc7ide/demo_shared_ptr.vcproj -text
 boost/libs/serialization/vc7ide/demo_xml.vcproj -text
 boost/libs/serialization/vc7ide/demo_xml_load.vcproj -text
 boost/libs/serialization/vc7ide/demo_xml_save.vcproj -text
+boost/libs/serialization/vc7ide/readme.txt svneol=native#text/plain
 boost/libs/serialization/vc7ide/test_array.vcproj -text
 boost/libs/serialization/vc7ide/test_binary.vcproj -text
 boost/libs/serialization/vc7ide/test_class_info_save.vcproj -text
@@ -6688,6 +6693,8 @@ boost/libs/serialization/vc7ide/test_derived_class.vcproj -text
 boost/libs/serialization/vc7ide/test_derived_class_ptr.vcproj -text
 boost/libs/serialization/vc7ide/test_diamond.vcproj -text
 boost/libs/serialization/vc7ide/test_exported.vcproj -text
+boost/libs/serialization/vc7ide/test_iterators.vcproj -text
+boost/libs/serialization/vc7ide/test_iterators_base64.vcproj -text
 boost/libs/serialization/vc7ide/test_iterattors.vcproj -text
 boost/libs/serialization/vc7ide/test_iterattors_base64.vcproj -text
 boost/libs/serialization/vc7ide/test_list.vcproj -text
