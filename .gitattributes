@@ -198,6 +198,7 @@ boost/boost/detail/shared_array_nmt.hpp svneol=native#text/plain
 boost/boost/detail/shared_count.hpp svneol=native#text/plain
 boost/boost/detail/shared_ptr_nmt.hpp svneol=native#text/plain
 boost/boost/detail/winapi.hpp svneol=native#text/plain
+boost/boost/detail/workaround.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset_fwd.hpp svneol=native#text/plain
 boost/boost/enable_shared_from_this.hpp svneol=native#text/plain
