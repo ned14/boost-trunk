@@ -4134,6 +4134,7 @@ boost/libs/python/example/project.zip -text svneol=unset#application/zip
 boost/libs/python/example/tutorial/Jamfile svneol=native#text/plain
 boost/libs/python/example/tutorial/hello.cpp svneol=native#text/plain
 boost/libs/python/index.html svneol=native#text/html
+boost/libs/python/pyste/NEWS -text
 boost/libs/python/pyste/README svneol=native#text/plain
 boost/libs/python/pyste/doc/exporting_all_declarations_from_a_header.html svneol=native#text/html
 boost/libs/python/pyste/doc/introduction.html svneol=native#text/html
