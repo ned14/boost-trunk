@@ -977,6 +977,7 @@ boost/libs/graph/example/interior_property_map.expected -text
 boost/libs/graph/example/iohb.c svneol=native#text/plain
 boost/libs/graph/example/iohb.h svneol=native#text/plain
 boost/libs/graph/example/isomorphism.cpp svneol=native#text/plain
+boost/libs/graph/example/iteration_macros.cpp svneol=native#text/plain
 boost/libs/graph/example/iterator-property-map-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/johnson-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/johnson.expected -text
