@@ -5798,6 +5798,59 @@ boost/libs/regex/test/regress/vc6.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc7.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc71.mak svneol=native#text/plain
 boost/libs/regex/test/regress/wregex_test.cpp svneol=native#text/plain
+boost/libs/serialization/build/Jamfile svneol=native#text/plain
+boost/libs/serialization/build/Jamfile.v2 svneol=native#text/plain
+boost/libs/serialization/doc/acknowledgments.html svneol=native#text/html
+boost/libs/serialization/doc/archive_reference.html svneol=native#text/html
+boost/libs/serialization/doc/archives.html svneol=native#text/html
+boost/libs/serialization/doc/bibliography.html svneol=native#text/html
+boost/libs/serialization/doc/class_diagram.html svneol=native#text/html
+boost/libs/serialization/doc/codecvt.html svneol=native#text/html
+boost/libs/serialization/doc/contents.html svneol=native#text/html
+boost/libs/serialization/doc/dataflow.html svneol=native#text/html
+boost/libs/serialization/doc/derivation.html svneol=native#text/html
+boost/libs/serialization/doc/dot.gif -text svneol=unset#image/gif
+boost/libs/serialization/doc/exception_safety.html svneol=native#text/html
+boost/libs/serialization/doc/exceptions.html svneol=native#text/html
+boost/libs/serialization/doc/headers.html svneol=native#text/html
+boost/libs/serialization/doc/history.html svneol=native#text/html
+boost/libs/serialization/doc/implementation.html svneol=native#text/html
+boost/libs/serialization/doc/index.html svneol=native#text/html
+boost/libs/serialization/doc/minus.gif -text svneol=unset#image/gif
+boost/libs/serialization/doc/overview.html svneol=native#text/html
+boost/libs/serialization/doc/pimpl.html svneol=native#text/html
+boost/libs/serialization/doc/plus.gif -text svneol=unset#image/gif
+boost/libs/serialization/doc/rationale.html svneol=native#text/html
+boost/libs/serialization/doc/release.html svneol=native#text/html
+boost/libs/serialization/doc/serialization.html svneol=native#text/html
+boost/libs/serialization/doc/shared_ptr.html svneol=native#text/html
+boost/libs/serialization/doc/smart_cast.html svneol=native#text/html
+boost/libs/serialization/doc/special.html svneol=native#text/html
+boost/libs/serialization/doc/state_saver.html svneol=native#text/html
+boost/libs/serialization/doc/static_warning.html svneol=native#text/html
+boost/libs/serialization/doc/strong_typedef.html svneol=native#text/html
+boost/libs/serialization/doc/traits.html svneol=native#text/html
+boost/libs/serialization/doc/tutorial.html svneol=native#text/html
+boost/libs/serialization/doc/wrappers.html svneol=native#text/html
+boost/libs/serialization/example/Jamfile svneol=native#text/plain
+boost/libs/serialization/example/demo.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_auto_ptr.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_exception.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_fast_binary_archive.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_pimpl.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_pimpl_A.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_pimpl_A.hpp svneol=native#text/plain
+boost/libs/serialization/example/demo_polymorphic.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_polymorphic_A.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_polymorphic_A.hpp svneol=native#text/plain
+boost/libs/serialization/example/demo_portable_binary_archive.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_shared_ptr.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_xml.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_xml.hpp svneol=native#text/plain
+boost/libs/serialization/example/demo_xml_load.cpp svneol=native#text/plain
+boost/libs/serialization/example/demo_xml_save.cpp svneol=native#text/plain
+boost/libs/serialization/example/portable_binary_iarchive.hpp svneol=native#text/plain
+boost/libs/serialization/example/portable_binary_oarchive.hpp svneol=native#text/plain
 boost/libs/serialization/src/basic_archive.cpp svneol=native#text/plain
 boost/libs/serialization/src/basic_iarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/basic_oarchive.cpp svneol=native#text/plain
@@ -5827,6 +5880,206 @@ boost/libs/serialization/src/xml_oarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/xml_wgrammar.cpp svneol=native#text/plain
 boost/libs/serialization/src/xml_wiarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/xml_woarchive.cpp svneol=native#text/plain
+boost/libs/serialization/vc6ide/Attic/Library.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_auto_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_exception.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_fast_binary_archive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_mi.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_pimpl.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_plugin.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_shared_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_xml.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_xml_load.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_xml_save.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/serialization.dsw -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/serialization.ncb -text
+boost/libs/serialization/vc6ide/Attic/serialization.opt -text
+boost/libs/serialization/vc6ide/Attic/test_array.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_binary.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_binary.plg -text
+boost/libs/serialization/vc6ide/Attic/test_codecvt_null.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_constructor.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_contained_class.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_cyclic_ptrs.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_delete_pointer.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_deque.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_derived.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_derived_class_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_diamond.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_exported.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_iterattors.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_iterattors_base64.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_level_class_info_load.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_level_class_info_save.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_level_not_serializable.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_level_object.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_level_primitive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_list.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_list_ptrs.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_map.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_mi.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_mult_archive_types.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_multiple_ptrs.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_no_rtti.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_non_default_ctor.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_non_intrusive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_null_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_nvp.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_optional.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_polymorphic_archive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_private_ctor.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_recursion.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_registered.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_set.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_shared_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_simple_class.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_simple_class_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_simple_derived_class.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_smart_cast.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_split.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_static_warning.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_tracking.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_traits_fail.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_traits_pass.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_unregistered.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_utf8_codecvt.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_vector.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/test_void_cast.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Library.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_auto_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_exception.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_fast_binary_archive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_mi.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_pimpl.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_plugin.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_portable_binary_archive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_shared_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_xml.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_xml_load.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_xml_save.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/serialization.dsw -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/serialization.ncb -text
+boost/libs/serialization/vc6ide/serialization.opt -text
+boost/libs/serialization/vc6ide/test_array.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_binary.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_binary.plg -text
+boost/libs/serialization/vc6ide/test_codecvt_null.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_constructor.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_contained_class.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_cyclic_ptrs.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_delete_pointer.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_deque.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_derived.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_derived_class_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_diamond.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_exported.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_iterattors.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_iterattors_base64.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_level_class_info_load.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_level_class_info_save.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_level_not_serializable.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_level_object.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_level_primitive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_list.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_list_ptrs.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_map.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_mi.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_mult_archive_types.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_multiple_ptrs.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_no_rtti.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_non_default_ctor.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_non_intrusive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_null_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_nvp.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_optional.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_polymorphic_archive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_private_ctor.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_recursion.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_registered.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_set.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_shared_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_simple_class.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_simple_class_ptr.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_simple_derived_class.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_smart_cast.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_split.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_static_warning.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_tracking.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_traits_fail.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_traits_pass.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_unregistered.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_utf8_codecvt.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_vector.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/test_void_cast.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc7ide/Boost[!!-~]Serialization[!!-~]Library.sln -text
+boost/libs/serialization/vc7ide/Boost[!!-~]Serialization[!!-~]Library.suo -text
+boost/libs/serialization/vc7ide/Library.vcproj -text
+boost/libs/serialization/vc7ide/LibraryW.vcproj -text
+boost/libs/serialization/vc7ide/Manual.vcproj -text
+boost/libs/serialization/vc7ide/demo.vcproj -text
+boost/libs/serialization/vc7ide/demo_auto_ptr.vcproj -text
+boost/libs/serialization/vc7ide/demo_exception.vcproj -text
+boost/libs/serialization/vc7ide/demo_fast_binary_archive.vcproj -text
+boost/libs/serialization/vc7ide/demo_pimpl.vcproj -text
+boost/libs/serialization/vc7ide/demo_polymorphic.vcproj -text
+boost/libs/serialization/vc7ide/demo_portable_binary_archive.vcproj -text
+boost/libs/serialization/vc7ide/demo_shared_ptr.vcproj -text
+boost/libs/serialization/vc7ide/demo_xml.vcproj -text
+boost/libs/serialization/vc7ide/demo_xml_load.vcproj -text
+boost/libs/serialization/vc7ide/demo_xml_save.vcproj -text
+boost/libs/serialization/vc7ide/test_array.vcproj -text
+boost/libs/serialization/vc7ide/test_binary.vcproj -text
+boost/libs/serialization/vc7ide/test_codecvt_null.vcproj -text
+boost/libs/serialization/vc7ide/test_const.vcproj -text
+boost/libs/serialization/vc7ide/test_contained_class.vcproj -text
+boost/libs/serialization/vc7ide/test_cyclic_ptrs.vcproj -text
+boost/libs/serialization/vc7ide/test_delete_pointer.vcproj -text
+boost/libs/serialization/vc7ide/test_deque.vcproj -text
+boost/libs/serialization/vc7ide/test_derived.vcproj -text
+boost/libs/serialization/vc7ide/test_derived_class_ptr..vcproj -text
+boost/libs/serialization/vc7ide/test_diamond.vcproj -text
+boost/libs/serialization/vc7ide/test_exported.vcproj -text
+boost/libs/serialization/vc7ide/test_iterattors.vcproj -text
+boost/libs/serialization/vc7ide/test_iterattors_base64.vcproj -text
+boost/libs/serialization/vc7ide/test_level_class_info_load.vcproj -text
+boost/libs/serialization/vc7ide/test_level_class_info_save.vcproj -text
+boost/libs/serialization/vc7ide/test_level_not_serializable.vcproj -text
+boost/libs/serialization/vc7ide/test_level_object.vcproj -text
+boost/libs/serialization/vc7ide/test_level_primitive.vcproj -text
+boost/libs/serialization/vc7ide/test_list.vcproj -text
+boost/libs/serialization/vc7ide/test_list_ptrs.vcproj -text
+boost/libs/serialization/vc7ide/test_map.vcproj -text
+boost/libs/serialization/vc7ide/test_mi.vcproj -text
+boost/libs/serialization/vc7ide/test_mult_archive_types.vcproj -text
+boost/libs/serialization/vc7ide/test_multiple_ptrs.vcproj -text
+boost/libs/serialization/vc7ide/test_multiplel_ptrs..vcproj -text
+boost/libs/serialization/vc7ide/test_no_rtti.vcproj -text
+boost/libs/serialization/vc7ide/test_non_default_ctor.vcproj -text
+boost/libs/serialization/vc7ide/test_non_intrusive.vcproj -text
+boost/libs/serialization/vc7ide/test_null_ptr.vcproj -text
+boost/libs/serialization/vc7ide/test_nvp.vcproj -text
+boost/libs/serialization/vc7ide/test_optional.vcproj -text
+boost/libs/serialization/vc7ide/test_polymorphic_archive.vcproj -text
+boost/libs/serialization/vc7ide/test_private_ctor.vcproj -text
+boost/libs/serialization/vc7ide/test_recursion.vcproj -text
+boost/libs/serialization/vc7ide/test_registered.vcproj -text
+boost/libs/serialization/vc7ide/test_set.vcproj -text
+boost/libs/serialization/vc7ide/test_shared_ptr.vcproj -text
+boost/libs/serialization/vc7ide/test_simple_class.vcproj -text
+boost/libs/serialization/vc7ide/test_simple_class_ptr.vcproj -text
+boost/libs/serialization/vc7ide/test_simple_derived_class.vcproj -text
+boost/libs/serialization/vc7ide/test_smart_cast.vcproj -text
+boost/libs/serialization/vc7ide/test_split.vcproj -text
+boost/libs/serialization/vc7ide/test_static_warning.vcproj -text
+boost/libs/serialization/vc7ide/test_tracking.vcproj -text
+boost/libs/serialization/vc7ide/test_traits_fail.vcproj -text
+boost/libs/serialization/vc7ide/test_traits_pass.vcproj -text
+boost/libs/serialization/vc7ide/test_unregistered.vcproj -text
+boost/libs/serialization/vc7ide/test_utf8_codecvt.vcproj -text
+boost/libs/serialization/vc7ide/test_vector.vcproj -text
+boost/libs/serialization/vc7ide/test_void_cast.vcproj -text
 boost/libs/signals/build/Jamfile svneol=native#text/plain
 boost/libs/signals/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/signals/doc/Jamfile.v2 svneol=native#text/plain
