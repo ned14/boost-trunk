@@ -26,13 +26,17 @@
 namespace boost {
 namespace mpl {
 
+// agurt, 13/sep/02: switched from inheritance to typedef; MSVC is more
+// happy this way (less ETI-related errors), and it doesn't affect 
+// anything else
 template<
       typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
     >
 struct begin
-    : begin_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
-        ::template algorithm< Sequence >
 {
+    typedef typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) tag_;
+    typedef typename begin_traits< tag_ >
+        ::template algorithm< Sequence >::type type;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,begin,(Sequence))
 };
 
@@ -40,9 +44,10 @@ template<
       typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
     >
 struct end
-    : end_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
-        ::template algorithm< Sequence >
 {
+    typedef typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) tag_;
+    typedef typename end_traits< tag_ >
+        ::template algorithm< Sequence >::type type;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,end,(Sequence))
 };
 
