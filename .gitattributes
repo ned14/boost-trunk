@@ -557,6 +557,8 @@ boost/libs/graph/src/README svneol=native#text/plain
 boost/libs/graph/src/graphviz.grammar -text
 boost/libs/graph/src/graphviz_lex.l -text
 boost/libs/graph/src/graphviz_parser.y -text
+boost/libs/graph/src/sed-dir -text
+boost/libs/graph/src/sed-undir -text
 boost/libs/graph/src/yystype.h svneol=native#text/plain
 boost/libs/graph/test/adj_list_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/adj_list_test.cpp svneol=native#text/plain
