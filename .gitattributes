@@ -4533,6 +4533,7 @@ boost/libs/spirit/example/application/cpp/cpp/cpp_iteration_context.hpp svneol=n
 boost/libs/spirit/example/application/cpp/cpp/cpp_iterator.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp/cpp_literal_grammar_gen.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp/cpp_macromap.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/unput_queue_iterator.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp_config.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp_version.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/cpp_lex_interface.hpp svneol=native#text/plain
@@ -4583,6 +4584,9 @@ boost/libs/spirit/example/application/cpp/test/list_includes/instantiate_slex_le
 boost/libs/spirit/example/application/cpp/test/list_includes/list_includes.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test/list_includes/list_includes.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test/list_includes/list_includes_version.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test_files/test1.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test_files/test2.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test_files/test3.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/.cvsignore -text
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.hpp svneol=native#text/plain
