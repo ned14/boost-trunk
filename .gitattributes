@@ -801,6 +801,7 @@ boost/boost/thread/recursive_mutex.hpp svneol=native#text/plain
 boost/boost/thread/thread.hpp svneol=native#text/plain
 boost/boost/thread/tss.hpp svneol=native#text/plain
 boost/boost/thread/xtime.hpp svneol=native#text/plain
+boost/boost/throw_exception.hpp svneol=native#text/plain
 boost/boost/timer.hpp svneol=native#text/plain
 boost/boost/token_functions.hpp svneol=native#text/plain
 boost/boost/token_iterator.hpp svneol=native#text/plain
