@@ -772,7 +772,6 @@ boost/libs/graph/doc/transitive_closure.html svneol=native#text/html
 boost/libs/graph/doc/transitive_closure.w -text
 boost/libs/graph/doc/transpose_graph.html svneol=native#text/html
 boost/libs/graph/doc/trouble_shooting.html svneol=native#text/html
-boost/libs/graph/doc/ucs_visitor.html svneol=native#text/html
 boost/libs/graph/doc/using_adjacency_list.html svneol=native#text/html
 boost/libs/graph/doc/using_graph_algorithms.html svneol=native#text/html
 boost/libs/graph/doc/using_property_maps.html svneol=native#text/html
