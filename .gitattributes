@@ -687,6 +687,7 @@ boost/boost/python/detail/not_specified.hpp svneol=native#text/plain
 boost/boost/python/detail/operator_id.hpp svneol=native#text/plain
 boost/boost/python/detail/pointee.hpp svneol=native#text/plain
 boost/boost/python/detail/preprocessor.hpp svneol=native#text/plain
+boost/boost/python/detail/python22_fixed.h svneol=native#text/plain
 boost/boost/python/detail/raw_pyobject.hpp svneol=native#text/plain
 boost/boost/python/detail/referent_storage.hpp svneol=native#text/plain
 boost/boost/python/detail/result.hpp svneol=native#text/plain
