@@ -3198,7 +3198,6 @@ boost/libs/mpl/doc/paper/html/usage.html svneol=native#text/html
 boost/libs/mpl/doc/paper/html/xsltproc_build.bat svneol=native#text/plain
 boost/libs/mpl/doc/paper/mpl_paper.html svneol=native#text/html
 boost/libs/mpl/doc/paper/mpl_paper.pdf -text svneol=unset#application/pdf
-boost/libs/mpl/doc/paper/msxsl_build.bat svneol=native#text/plain
 boost/libs/mpl/doc/paper/src/abstract.sgml -text
 boost/libs/mpl/doc/paper/src/acknowl.sgml -text
 boost/libs/mpl/doc/paper/src/body.sgml -text
@@ -3211,6 +3210,7 @@ boost/libs/mpl/doc/paper/src/references.sgml -text
 boost/libs/mpl/doc/paper/src/sequences.sgml -text
 boost/libs/mpl/doc/paper/src/typeselection.sgml -text
 boost/libs/mpl/doc/paper/src/usage.sgml -text
+boost/libs/mpl/doc/readme svneol=native#text/plain
 boost/libs/mpl/doc/ref/Acknowledgements.html svneol=native#text/html
 boost/libs/mpl/doc/ref/Algorithms.html svneol=native#text/html
 boost/libs/mpl/doc/ref/Bidirectional_Iterator.html svneol=native#text/html
@@ -3318,6 +3318,8 @@ boost/libs/mpl/doc/src/preface.sgml -text
 boost/libs/mpl/doc/src/sequences.sgml -text
 boost/libs/mpl/doc/src/technical.sgml -text
 boost/libs/mpl/doc/src/tutorial.sgml -text
+boost/libs/mpl/doc/tidy_attr.py svneol=native#text/x-python
+boost/libs/mpl/doc/tidy_config -text
 boost/libs/mpl/example/fsm/aux_/STT_impl_gen.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/base_event.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/event.hpp svneol=native#text/plain
