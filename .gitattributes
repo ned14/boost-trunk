@@ -4378,7 +4378,6 @@ boost/people/william_kempf_small.jpg -text svneol=unset#image/jpeg
 boost/project-root.jam svneol=native#text/plain
 boost/status/.cvsignore -text
 boost/status/Jamfile svneol=native#text/plain
-boost/status/compiler.cfg -text
 boost/status/compiler_status.html svneol=native#text/html
 boost/status/cs-aix.html svneol=native#text/html
 boost/status/cs-hpux.html svneol=native#text/html
@@ -4391,8 +4390,6 @@ boost/status/cs-win32.html svneol=native#text/html
 boost/status/index.html svneol=native#text/html
 boost/status/intel_logo.gif -text svneol=unset#image/gif
 boost/status/kai_logo.gif -text svneol=unset#image/gif
-boost/status/regression.cfg -text
-boost/status/regression.cpp svneol=native#text/plain
 boost/tools/build/allyourbase.jam svneol=native#text/plain
 boost/tools/build/architecture.html svneol=native#text/html
 boost/tools/build/boost-base.jam svneol=native#text/plain
