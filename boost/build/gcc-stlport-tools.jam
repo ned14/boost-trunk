@@ -4,11 +4,20 @@
 # provided "as is" without express or implied warranty, and with no
 # claim as to its suitability for any purpose.
 
-# this is simply an extension to the gcc toolset.
+# this is simply an extension to the gcc toolset. 
 extends-toolset gcc ;
 
-# Reset these so that we can ensure that they're set in the appropriate order, below
-STDHDRS = ; 
+STDHDRS = ;
 STDLIBPATH = ;
 flags gcc-stlport STDHDRS : $(STLPORT_ROOT)$(SLASH)stlport $(GCC_INCLUDE_DIRECTORY) ;
 flags gcc-stlport STDLIBPATH : $(STLPORT_ROOT)$(SLASH)lib $(GCC_STDLIB_DIRECTORY) ;
+
+flags gcc-stlport DEFINES <runtime-build>debug : _STLP_DEBUG ;
+flags gcc-stlport STLPORT_LIB <runtime-link>static/<runtime-build>debug    : stlport_cygwin_stldebug ;
+flags gcc-stlport STLPORT_LIB <runtime-link>static/<runtime-build>release  : stlport_cygwin ;
+flags gcc-stlport STLPORT_LIB <runtime-link>dynamic/<runtime-build>debug    : stlport_cygwin_stldebug.dll.4.5.b8 ;
+flags gcc-stlport STLPORT_LIB <runtime-link>dynamic/<runtime-build>release  : stlport_cygwin.dll.4.5.b8 ;
+flags gcc-stlport CFLAGS <runtime-link>dynamic    : -D_REENTRANT ;
+
+
+

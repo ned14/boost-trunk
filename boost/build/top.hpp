@@ -1,4 +1,4 @@
-#if defined(__WIN32__) || defined(_WIN32)
+#if defined(__WIN32__) || defined(_WIN32) || defined(__CYGWIN__)
 #   if defined(TOP_BUILD_DLL)
 #       define TOP_EXPIMP __declspec(dllexport)
 #   elif defined(TOP_USE_DLL)

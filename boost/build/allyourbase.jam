@@ -890,35 +890,20 @@ rule MkDir
 
     if $(<) != $(DOT) && ! $($(<)-mkdir) 
     {
-        
-        # Cygwin's ar tool gets confused by backslashes in paths, so if you are
-        # building with cygwin, you must use forward slashes in
-        # ALL_LOCATE_TARGET. On the other hand, Win32 mkdir gets confused by
-        # forward slashes, so we must fix the slashes here.
-        local p = $(<) ;
-        if $(NT)
-        {
-            path = [ join-path [ split-path $(<) ] ] ;
-            if $(path) != $(<)
-            {
-                DEPENDS $(<) : $(path) ;
-            }
-        }
-        
         local s ;
 
         # Cheesy gate to prevent multiple invocations on same dir
         # MkDir1 has the actions 
         # Arrange for jam dirs
 
-        $(path)-mkdir = true ;
-        MkDir1 $(path) ;
-        Depends dirs : $(path) ;
+        $(<)-mkdir = true ;
+        MkDir1 $(<) ;
+        Depends dirs : $(<) ;
 
         # Recursively make parent directories.
-        # $(path:P) = $(path)'s parent, & we recurse until root
+        # $(<:P) = $(<)'s parent, & we recurse until root
 
-        s = $(path:P) ;
+        s = $(<:P) ;
 
         if $(NT)
         {
@@ -929,9 +914,9 @@ rule MkDir
             }
         }
 
-        if $(s) && $(s) != $(path)
+        if $(s) && $(s) != $(<)
         {
-            Depends $(path) : $(s) ;
+            Depends $(<) : $(s) ;
             MkDir $(s) ;
         }
         else if $(s)
@@ -1244,24 +1229,40 @@ rule strip-grist
 # split-path <foo>bar/<bee>baz/mumble  => <foo>bar <bee>baz mumble 
 rule split-path
 {
+    local result ;
     local parent = $(<:P) ;
+    if $(NT)
+    {
+        switch $(<:G=)
+        {
+        # It turns out that to match a backslash, you need a /quadruple/ slash
+        # in the case clause! 
+        case *:\\\\*\\\\* :  # continue splitting
+        case *:/*\\\\* :  # continue splitting
+        case *:\\\\*/* :  # continue splitting
+        case *:/*/* :  # continue splitting
+        case *:/* : result = $(<) ;
+        case *:\\\\* : result = $(<) ;
+        case *: : result = $(<) ;
+        }
+    }
+
     if ( ! $(<:B) ) && ( $(<) != $(DOT) ) # handle the case where $(<) is all grist.
     {
-        local foo = $(<:D=xx) ;
-        return $(<:G) ;
+        result ?= $(<:G) ;
     }
     else if ( ! $(parent:G=) )
-#            || ( ( $(<:R=) != $(<) ) && ( $(parent:R=) = $(parent) ) )
     {
-        return $(<) ;
+        result ?= $(<) ;
     }
     else
     {
         local p = [ split-path $(parent) ] ;
         local b = [ strip-grist $(<) ] ;
         p += $(b:D=) ; # can't use :B here because it destroys . and ..
-        return $(p) ;
+        result ?= $(p) ;
     }
+    return $(result) ;
 }
 
 # dwa 6/4/01 - added for boost
