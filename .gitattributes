@@ -3720,6 +3720,12 @@ boost/libs/lambda/test/operator_tests_simple.cpp svneol=native#text/plain
 boost/libs/lambda/test/phoenix_control_structures.cpp svneol=native#text/plain
 boost/libs/lambda/test/switch_construct.cpp svneol=native#text/plain
 boost/libs/libraries.htm svneol=native#text/html
+boost/libs/logic/doc/Jamfile.v2 svneol=native#text/plain
+boost/libs/logic/doc/tribool.boostbook -text
+boost/libs/logic/test/Jamfile svneol=native#text/plain
+boost/libs/logic/test/tribool_io_test.cpp svneol=native#text/plain
+boost/libs/logic/test/tribool_rename_test.cpp svneol=native#text/plain
+boost/libs/logic/test/tribool_test.cpp svneol=native#text/plain
 boost/libs/math/doc/common_factor.html svneol=native#text/html
 boost/libs/math/doc/index.html svneol=native#text/html
 boost/libs/math/index.html svneol=native#text/html
