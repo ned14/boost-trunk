@@ -3156,6 +3156,7 @@ boost/libs/graph/test/isomorphism.cpp svneol=native#text/plain
 boost/libs/graph/test/johnson-test.cpp svneol=native#text/plain
 boost/libs/graph/test/leda_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/lvalue_pmap.cpp svneol=native#text/plain
+boost/libs/graph/test/property_iter.cpp svneol=native#text/plain
 boost/libs/graph/test/regression.cfg -text
 boost/libs/graph/test/reverse_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/stanford_graph_cc.cpp svneol=native#text/plain
