@@ -3239,6 +3239,7 @@ boost/libs/assign/test/list_of.cpp svneol=native#text/plain
 boost/libs/assign/test/list_of_workaround.cpp svneol=native#text/plain
 boost/libs/assign/test/multi_index_container.cpp svneol=native#text/plain
 boost/libs/assign/test/my_vector_example.cpp svneol=native#text/plain
+boost/libs/assign/test/static_list_of.cpp svneol=native#text/plain
 boost/libs/assign/test/std.cpp svneol=native#text/plain
 boost/libs/bind/bind.html svneol=native#text/html
 boost/libs/bind/bind_as_compose.cpp svneol=native#text/plain
