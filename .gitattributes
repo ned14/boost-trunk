@@ -118,6 +118,7 @@ boost/libs/graph/doc/awpaper.sty -text
 boost/libs/graph/doc/bandwidth.html svneol=native#text/html
 boost/libs/graph/doc/bellman_ford_shortest.html svneol=native#text/html
 boost/libs/graph/doc/bellman_visitor.html svneol=native#text/html
+boost/libs/graph/doc/betweenness_centrality_clustering.html svneol=native#text/html
 boost/libs/graph/doc/bfs_visitor.html svneol=native#text/html
 boost/libs/graph/doc/bgl-cover.jpg -text svneol=unset#image/jpeg
 boost/libs/graph/doc/bgl_named_params.html svneol=native#text/html
