@@ -1848,6 +1848,7 @@ boost/libs/test/test/test_tools_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_fail3.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_fail4.cpp svneol=native#text/plain
 boost/libs/thread/build/Jamfile svneol=native#text/plain
+boost/libs/thread/build/threads.jam svneol=native#text/plain
 boost/libs/thread/build/threads.mcp -text svneol=unset#unset
 boost/libs/thread/doc/acknowledgements.html svneol=native#text/html
 boost/libs/thread/doc/bibliography.html svneol=native#text/html
