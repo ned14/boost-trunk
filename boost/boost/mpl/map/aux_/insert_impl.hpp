@@ -19,28 +19,40 @@
 #include <boost/mpl/map/aux_/contains_impl.hpp>
 #include <boost/mpl/map/aux_/item.hpp>
 #include <boost/mpl/map/aux_/tag.hpp>
+#include <boost/mpl/aux_/na.hpp>
 #include <boost/mpl/aux_/config/typeof.hpp>
 
 namespace boost { namespace mpl {
 
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
+namespace aux {
+template<  typename Map, typename Pair > 
+struct map_insert_impl
+    : if_< 
+          contains_impl<aux::map_tag>::apply<Map,Pair>
+        , Map
+        , m_item<
+              typename Pair::first
+            , typename Pair::second
+            , Map
+            >
+        >
+{
+};
+}
+
 template<>
 struct insert_impl< aux::map_tag >
 {
     template< 
           typename Map
-        , typename Pair
-        , typename unused_ 
+        , typename PosOrKey
+        , typename KeyOrNA
         > 
     struct apply
-        : if_< 
-              contains_impl<aux::map_tag>::apply<Map,Pair>
-            , Map
-            , m_item<
-                  typename Pair::first
-                , typename Pair::second
-                , Map
-                >
+        : aux::map_insert_impl<
+              Map
+            , typename if_na<KeyOrNA,PosOrKey>::type
             >
     {
     };

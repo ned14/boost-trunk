@@ -14,7 +14,8 @@
 
 #include <boost/mpl/map.hpp>
 #include <boost/mpl/insert.hpp>
-#include <boost/mpl/erase.hpp>
+#include <boost/mpl/erase_key.hpp>
+#include <boost/mpl/erase_key.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/clear.hpp>
@@ -116,13 +117,13 @@ MPL_TEST_CASE()
 
     MPL_ASSERT(( is_same< m1,m2 >::value ));
 
-    typedef erase<m1,char>::type m_1;
+    typedef erase_key<m1,char>::type m_1;
     MPL_ASSERT(( is_same<m,m_1>::value ));
     MPL_ASSERT(( size<m_1>::type::value == 1 ));
     MPL_ASSERT(( is_same< at<m_1,char>::type,void_ >::value ));
     MPL_ASSERT(( is_same< at<m_1,int>::type,unsigned >::value ));
 
-    typedef erase<m3,char>::type m2_1;
+    typedef erase_key<m3,char>::type m2_1;
     MPL_ASSERT(( size<m2_1>::type::value == 2 ));
     MPL_ASSERT(( is_same< at<m2_1,char>::type,void_ >::value ));
     MPL_ASSERT(( is_same< at<m2_1,int>::type,unsigned >::value ));
@@ -163,7 +164,7 @@ MPL_TEST_CASE()
     MPL_ASSERT(( size<m1>::type::value == 1 ));
     MPL_ASSERT(( is_same< at<m1,char>::type,int >::value ));
 
-    typedef erase<m,char>::type m0_1;
+    typedef erase_key<m,char>::type m0_1;
     MPL_ASSERT(( size<m0_1>::type::value == 0 ));
     MPL_ASSERT(( is_same< at<m0_1,char>::type,void_ >::value ));
 #endif

@@ -22,30 +22,23 @@
 #include <boost/mpl/identity.hpp>
 #include <boost/mpl/base.hpp>
 #include <boost/mpl/apply_if.hpp>
+#include <boost/mpl/aux_/na.hpp>
 
 #include <boost/type_traits/is_same.hpp>
 
-namespace boost {
-namespace mpl {
+namespace boost { namespace mpl {
 
-template<>
-struct insert_impl< aux::set_tag >
-{
-    template< 
-          typename Set
-        , typename T
-        , typename unused_ 
-        > 
-    struct apply
-        : apply_if< 
-              has_key_impl<aux::set_tag>::apply<Set,T>
-            , identity<Set>
-            , apply_if< 
-                  is_same< T,typename Set::last_masked_ > 
-                , base<Set>
-                , identity< s_item<T,Set> >
-                >
+namespace aux {
+template<  typename Set, typename T > struct set_insert_impl
+    : apply_if< 
+          has_key_impl<aux::set_tag>::apply<Set,T>
+        , identity<Set>
+        , apply_if< 
+              is_same< T,typename Set::last_masked_ > 
+            , base<Set>
+            , identity< s_item<T,Set> >
             >
+        >
 /*
     : eval< if_<
           has_key<Set,T>
@@ -53,6 +46,23 @@ struct insert_impl< aux::set_tag >
         , Set
         > >
 */
+{
+};
+}
+
+template<>
+struct insert_impl< aux::set_tag >
+{
+    template< 
+          typename Set
+        , typename PosOrKey
+        , typename KeyOrNA
+        > 
+    struct apply
+        : aux::set_insert_impl<
+              Set
+            , typename if_na<KeyOrNA,PosOrKey>::type
+            >
     {
     };
 };

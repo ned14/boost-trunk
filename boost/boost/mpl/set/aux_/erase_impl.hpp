@@ -16,14 +16,8 @@
 // $Revision$
 
 #include <boost/mpl/erase_fwd.hpp>
-#include <boost/mpl/set/aux_/has_key_impl.hpp>
-#include <boost/mpl/set/aux_/item.hpp>
+#include <boost/mpl/set/aux_/erase_key_impl.hpp>
 #include <boost/mpl/set/aux_/tag.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/base.hpp>
-#include <boost/mpl/apply_if.hpp>
-
-#include <boost/type_traits/is_same.hpp>
 
 namespace boost {
 namespace mpl {
@@ -33,19 +27,12 @@ struct erase_impl< aux::set_tag >
 {
     template< 
           typename Set
-        , typename T
+        , typename Pos
         , typename unused_
         > 
     struct apply
-        : apply_if< 
-              has_key_impl<aux::set_tag>::apply<Set,T>
-            , apply_if< 
-                  is_same< T,typename Set::item_type_ > 
-                , base<Set>
-                , identity< s_mask<T,Set> >
-                >
-            , identity<Set>
-            >
+        : erase_key_impl<aux::set_tag>
+            ::apply<Set,typename Pos::type>
     {
     };
 };

@@ -15,6 +15,7 @@
 #include <boost/mpl/set.hpp>
 #include <boost/mpl/insert.hpp>
 #include <boost/mpl/erase.hpp>
+#include <boost/mpl/erase_key.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/clear.hpp>
 #include <boost/mpl/has_key.hpp>
@@ -84,7 +85,7 @@ MPL_TEST_CASE()
     MPL_ASSERT_SAME(3,( at<s1,char>::type, char ));
     MPL_ASSERT_NOT_SAME(2,( s1, s2 ));
 
-    typedef erase<s1,char>::type s_1;
+    typedef erase_key<s1,char>::type s_1;
     MPL_ASSERT_SAME(2,( s, s_1 ));
     MPL_ASSERT_EQUAL(2,( size<s_1>::value, 1 ));
     MPL_ASSERT_SAME(3,( at<s_1,char>::type, void_ ));
@@ -123,7 +124,7 @@ MPL_TEST_CASE()
     MPL_ASSERT_EQUAL(2,( size<s1>::value, 1 ));
     MPL_ASSERT_SAME(3,( at<s1,char>::type, char ));
 
-    typedef erase<s,char>::type s0_1;
+    typedef erase_key<s,char>::type s0_1;
     MPL_ASSERT_EQUAL(2,( size<s0_1>::value, 0 ));
     MPL_ASSERT_SAME(3,( at<s0_1,char>::type, void_ ));
 }
