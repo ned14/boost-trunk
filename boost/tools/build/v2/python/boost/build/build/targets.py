@@ -330,7 +330,7 @@ class ProjectTarget (AbstractTarget):
         """ Generates all possible targets contained in this project.
         """
         if self.manager_.logger ().on ():
-            self.manager_.logger ().log (self, "Building project '%s' with '%s'" % (self.name (), ps.raw ()))
+            self.manager_.logger ().log (__name__, "Building project '%s' with '%s'" % (self.name (), ps.raw ()))
             self.manager_.logger ().increase_indent ()
                 
         usage_requirements = property_set.empty ()
@@ -642,15 +642,15 @@ class BasicTarget (AbstractTarget):
             overridden.
         """
         if self.manager ().logger ().on ():
-            self.manager ().logger ().log (self, "Building target '%s'" % self.name_)
-            self.manager ().logger ().log (self, "Build request: '%s'" % str (ps.raw ()))
+            self.manager ().logger ().log (__name__, "Building target '%s'" % self.name_)
+            self.manager ().logger ().log (__name__, "Build request: '%s'" % str (ps.raw ()))
             self.manager ().logger ().increase_indent ()
 
         if not self.generated_.has_key (str (ps)):
             rproperties = self.common_properties (ps, self.requirements_)
             
             if self.manager ().logger ().on ():
-                self.manager ().logger ().log (self, "Common properties are '%s'" % str (rproperties.raw ()))
+                self.manager ().logger ().log (__name__, "Common properties are '%s'" % str (rproperties.raw ()))
             
             # TODO: check use of "@error".
             if not "@error" in str (rproperties):
@@ -664,7 +664,7 @@ class BasicTarget (AbstractTarget):
                 usage_requirements += u
 
                 if self.manager_.logger ().on ():
-                      self.manager_.logger ().log (self, "Usage requirements for '%s' are '%s'" % (self.name_, usage_requirements))
+                      self.manager_.logger ().log (__name__, "Usage requirements for '%s' are '%s'" % (self.name_, usage_requirements))
 
                 rproperties = property_set.create (properties + usage_requirements)
                 usage_requirements = property_set.create (usage_requirements)
@@ -692,7 +692,7 @@ class BasicTarget (AbstractTarget):
                 self.generated_ [str (ps)] = (rproperties, [])
         else:
             if self.manager ().logger ().on ():
-                self.manager ().logger ().log (self, "Already built")
+                self.manager ().logger ().log (__name__, "Already built")
 
         self.manager ().logger ().decrease_indent ()
 
