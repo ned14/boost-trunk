@@ -949,6 +949,7 @@ boost/libs/rational/rational.html svneol=native#text/html
 boost/libs/rational/rational_example.cpp svneol=native#text/plain
 boost/libs/rational/rational_test.cpp svneol=native#text/plain
 boost/libs/regex/appendix.htm svneol=native#text/html
+boost/libs/regex/build/Jamfile svneol=native#text/plain
 boost/libs/regex/build/bc55.mak svneol=native#text/plain
 boost/libs/regex/build/bcb4.mak svneol=native#text/plain
 boost/libs/regex/build/bcb5.mak svneol=native#text/plain
