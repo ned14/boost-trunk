@@ -2195,6 +2195,7 @@ boost/libs/date_time/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/date_time/doc/BasicTerms.html svneol=native#text/html
 boost/libs/date_time/doc/BuildInfo.html svneol=native#text/html
 boost/libs/date_time/doc/Calculations.html svneol=native#text/html
+boost/libs/date_time/doc/Changes.html svneol=native#text/html
 boost/libs/date_time/doc/DesignGoals.html svneol=native#text/html
 boost/libs/date_time/doc/References.html svneol=native#text/html
 boost/libs/date_time/doc/Tradeoffs.html svneol=native#text/html
