@@ -2924,6 +2924,7 @@ boost/libs/date_time/test/gregorian/testformatters.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testgenerators.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testgreg_cal.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testgreg_day.cpp svneol=native#text/plain
+boost/libs/date_time/test/gregorian/testgreg_durations.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testgreg_month.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testgreg_serialize.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testgreg_wstream.cpp svneol=native#text/plain
