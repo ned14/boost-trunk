@@ -4339,6 +4339,10 @@ boost/libs/graph/example/property-map-traits-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/property_iterator.cpp svneol=native#text/plain
 boost/libs/graph/example/push-relabel-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/put-get-helper-eg.cpp svneol=native#text/plain
+boost/libs/graph/example/python/biconnected_components.dot -text
+boost/libs/graph/example/python/disconnected.dot -text
+boost/libs/graph/example/python/mst.dot -text
+boost/libs/graph/example/python/vis.py svneol=native#text/x-python
 boost/libs/graph/example/quick-tour.cpp svneol=native#text/plain
 boost/libs/graph/example/quick_tour.cpp svneol=native#text/plain
 boost/libs/graph/example/quick_tour.expected -text
