@@ -845,6 +845,7 @@ boost/boost/mpl/is_placeholder.hpp svneol=native#text/plain
 boost/boost/mpl/is_sequence.hpp svneol=native#text/plain
 boost/boost/mpl/iter_fold.hpp svneol=native#text/plain
 boost/boost/mpl/iter_fold_backward.hpp svneol=native#text/plain
+boost/boost/mpl/iter_fold_if.hpp svneol=native#text/plain
 boost/boost/mpl/iterator_category.hpp svneol=native#text/plain
 boost/boost/mpl/iterator_range.hpp svneol=native#text/plain
 boost/boost/mpl/iterator_tag.hpp svneol=native#text/plain
