@@ -568,7 +568,6 @@ boost/boost/test/cpp_main.cpp svneol=native#text/plain
 boost/boost/test/test_main.cpp svneol=native#text/plain
 boost/boost/test/test_tools.hpp svneol=native#text/plain
 boost/boost/thread/condition.hpp svneol=native#text/plain
-boost/boost/thread/config.hpp svneol=native#text/plain
 boost/boost/thread/detail/force_cast.hpp svneol=native#text/plain
 boost/boost/thread/detail/lock.hpp svneol=native#text/plain
 boost/boost/thread/detail/singleton.hpp svneol=native#text/plain
