@@ -1,6 +1,6 @@
 SubDir TOP ;
 
-exe foo : foo.cpp : <include>z:/boost ;
+exe foo : foo.cpp ;
 lib top : top.cpp ;
 
 SubInclude TOP x ;
