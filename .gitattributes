@@ -1592,6 +1592,7 @@ boost/libs/python/doc/under-the-hood.html svneol=native#text/html
 boost/libs/python/doc/v2/acknowledgments.html svneol=native#text/html
 boost/libs/python/doc/v2/bibliography.html svneol=native#text/html
 boost/libs/python/doc/v2/call.html svneol=native#text/html
+boost/libs/python/doc/v2/callbacks.txt svneol=native#text/plain
 boost/libs/python/doc/v2/class.html svneol=native#text/html
 boost/libs/python/doc/v2/configuration.html svneol=native#text/html
 boost/libs/python/doc/v2/copy_const_reference.html svneol=native#text/html
