@@ -52,6 +52,7 @@ boost/boost/graph/matrix_as_graph.hpp svneol=native#text/plain
 boost/boost/graph/prim_minimum_spanning_tree.hpp svneol=native#text/plain
 boost/boost/graph/properties.hpp svneol=native#text/plain
 boost/boost/graph/relax.hpp svneol=native#text/plain
+boost/boost/graph/reverse_graph.hpp svneol=native#text/plain
 boost/boost/graph/sequential_vertex_coloring.hpp svneol=native#text/plain
 boost/boost/graph/smallest_last_vertex_ordering.hpp svneol=native#text/plain
 boost/boost/graph/stanford_graph.hpp svneol=native#text/plain
