@@ -5568,7 +5568,9 @@ boost/libs/test/build/msvc71_proj/.cvsignore -text
 boost/libs/test/build/msvc71_proj/auto_unit_test_test.vcproj -text
 boost/libs/test/build/msvc71_proj/auto_unit_test_test_mult.vcproj -text
 boost/libs/test/build/msvc71_proj/boost_test_library.sln -text
+boost/libs/test/build/msvc71_proj/custom_exception_test.vcproj -text
 boost/libs/test/build/msvc71_proj/errors_handling_test.vcproj -text
+boost/libs/test/build/msvc71_proj/exec_mon_example.vcproj -text
 boost/libs/test/build/msvc71_proj/minimal_test.vcproj -text
 boost/libs/test/build/msvc71_proj/online_test.vcproj -text
 boost/libs/test/build/msvc71_proj/output_test_stream_test.vcproj -text
