@@ -2883,6 +2883,8 @@ boost/tools/build/test/project-test3/lib3/project-root.jam svneol=native#text/pl
 boost/tools/build/test/project-test3/project-root.jam svneol=native#text/plain
 boost/tools/build/test/project-test3/readme.txt svneol=native#text/plain
 boost/tools/build/test/project-test4/Jamfile svneol=native#text/plain
+boost/tools/build/test/project-test4/Jamfile2 -text
+boost/tools/build/test/project-test4/Jamfile3 -text
 boost/tools/build/test/project-test4/a.cpp svneol=native#text/plain
 boost/tools/build/test/project-test4/lib/Jamfile svneol=native#text/plain
 boost/tools/build/test/project-test4/lib/b.cpp svneol=native#text/plain
@@ -3060,6 +3062,8 @@ boost/tools/build/v2/test/project-test3/lib3/project-root.jam svneol=native#text
 boost/tools/build/v2/test/project-test3/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/project-test3/readme.txt svneol=native#text/plain
 boost/tools/build/v2/test/project-test4/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/project-test4/Jamfile2 -text
+boost/tools/build/v2/test/project-test4/Jamfile3 -text
 boost/tools/build/v2/test/project-test4/a.cpp svneol=native#text/plain
 boost/tools/build/v2/test/project-test4/lib/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/project-test4/lib/b.cpp svneol=native#text/plain
