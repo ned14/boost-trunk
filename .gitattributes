@@ -6086,6 +6086,8 @@ boost/tools/build/jam_src/build.sh svneol=native#text/x-sh
 boost/tools/build/jam_src/build_vms.com -text
 boost/tools/build/jam_src/builtins.c svneol=native#text/plain
 boost/tools/build/jam_src/builtins.h svneol=native#text/plain
+boost/tools/build/jam_src/class.c svneol=native#text/plain
+boost/tools/build/jam_src/class.h svneol=native#text/plain
 boost/tools/build/jam_src/command.c svneol=native#text/plain
 boost/tools/build/jam_src/command.h svneol=native#text/plain
 boost/tools/build/jam_src/compile.c svneol=native#text/plain
@@ -6978,6 +6980,8 @@ boost/tools/jam/src/build.sh svneol=native#text/x-sh
 boost/tools/jam/src/build_vms.com -text
 boost/tools/jam/src/builtins.c svneol=native#text/plain
 boost/tools/jam/src/builtins.h svneol=native#text/plain
+boost/tools/jam/src/class.c svneol=native#text/plain
+boost/tools/jam/src/class.h svneol=native#text/plain
 boost/tools/jam/src/command.c svneol=native#text/plain
 boost/tools/jam/src/command.h svneol=native#text/plain
 boost/tools/jam/src/compile.c svneol=native#text/plain
