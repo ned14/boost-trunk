@@ -3229,6 +3229,7 @@ boost/libs/mpl/test/replace.cpp svneol=native#text/plain
 boost/libs/mpl/test/replace_if.cpp svneol=native#text/plain
 boost/libs/mpl/test/reverse.cpp svneol=native#text/plain
 boost/libs/mpl/test/same_as.cpp svneol=native#text/plain
+boost/libs/mpl/test/set.cpp svneol=native#text/plain
 boost/libs/mpl/test/single_view.cpp svneol=native#text/plain
 boost/libs/mpl/test/size.cpp svneol=native#text/plain
 boost/libs/mpl/test/sizeof.cpp svneol=native#text/plain
