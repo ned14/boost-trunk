@@ -365,6 +365,7 @@ boost/boost/python/classes.hpp svneol=native#text/plain
 boost/boost/python/conversions.hpp svneol=native#text/plain
 boost/boost/python/converter/builtin_converters.hpp svneol=native#text/plain
 boost/boost/python/converter/callback.hpp svneol=native#text/plain
+boost/boost/python/converter/callback_from_python_base.hpp svneol=native#text/plain
 boost/boost/python/converter/callback_to_python_base.hpp svneol=native#text/plain
 boost/boost/python/converter/find_from_python.hpp svneol=native#text/plain
 boost/boost/python/converter/from_python.hpp svneol=native#text/plain
