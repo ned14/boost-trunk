@@ -91,6 +91,7 @@ boost/boost/crc.hpp svneol=native#text/plain
 boost/boost/cregex.hpp svneol=native#text/plain
 boost/boost/cstdint.hpp svneol=native#text/plain
 boost/boost/cstdlib.hpp svneol=native#text/plain
+boost/boost/detail/algorithm.hpp svneol=native#text/plain
 boost/boost/detail/allocator.hpp svneol=native#text/plain
 boost/boost/detail/call_traits.hpp svneol=native#text/plain
 boost/boost/detail/catch_exceptions.hpp svneol=native#text/plain
