@@ -634,6 +634,7 @@ boost/boost/iostreams/detail/streambuf/chainbuf.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/streambuf/direct_streambuf.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/streambuf/indirect_streambuf.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/streambuf/linked_streambuf.hpp svneol=native#text/plain
+boost/boost/iostreams/detail/translate_int_type.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/vc6/operations.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/wrap_unwrap.hpp svneol=native#text/plain
 boost/boost/iostreams/device/array.hpp svneol=native#text/plain
