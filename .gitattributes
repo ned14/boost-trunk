@@ -2532,6 +2532,7 @@ boost/tools/build/test/project-test1/dir2/project-root.jam svneol=native#text/pl
 boost/tools/build/test/project-test1/project-root.jam svneol=native#text/plain
 boost/tools/build/test/project-test1/project-test1.jam svneol=native#text/plain
 boost/tools/build/test/project-test1/readme.txt svneol=native#text/plain
+boost/tools/build/test/project-test2.py svneol=native#text/x-python
 boost/tools/build/test/project-test2/Jamfile svneol=native#text/plain
 boost/tools/build/test/project-test2/dir/Jamfile svneol=native#text/plain
 boost/tools/build/test/project-test2/dir/Jamfile2 -text
@@ -2658,6 +2659,7 @@ boost/tools/build/v2/test/project-test1/dir2/project-root.jam svneol=native#text
 boost/tools/build/v2/test/project-test1/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/project-test1/project-test1.jam svneol=native#text/plain
 boost/tools/build/v2/test/project-test1/readme.txt svneol=native#text/plain
+boost/tools/build/v2/test/project-test2.py svneol=native#text/x-python
 boost/tools/build/v2/test/project-test2/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/project-test2/dir/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/project-test2/dir/Jamfile2 -text
