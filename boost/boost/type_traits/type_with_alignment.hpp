@@ -82,18 +82,16 @@ template <int Align>
 class type_with_alignment
 {
     typedef detail::lower_alignment<Align> t1;
-    typedef alignment_of<t1> t1_align;
-    
     typedef typename mpl::if_c<
-          ::boost::detail::is_aligned< t1_align::value,Align >::value
+          ::boost::detail::is_aligned< ::boost::alignment_of<t1>::value,Align >::value
         , t1
         , detail::max_align
         >::type align_t;
 
-    typedef alignment_of<align_t> found;
+    BOOST_STATIC_CONSTANT(std::size_t, found = alignment_of<align_t>::value);
 
-    BOOST_STATIC_ASSERT(found::value >= Align);
-    BOOST_STATIC_ASSERT(found::value % Align == 0);
+    BOOST_STATIC_ASSERT(found >= Align);
+    BOOST_STATIC_ASSERT(found % Align == 0);
 
  public:
     typedef align_t type;

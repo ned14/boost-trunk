@@ -13,6 +13,7 @@
 #include "boost/config.hpp"
 #include "boost/utility.hpp"
 #include "boost/type_traits/alignment_of.hpp"
+#include "boost/type_traits/type_with_alignment.hpp"
 #include "boost/type_traits/ice.hpp"
 
 #include <iostream>
@@ -201,7 +202,6 @@ struct test_align<T&>
 
 #define align_test(T) test_align<T>::do_it()
 
-/*
 template<class T>
 struct test_type_with_align 
 {
@@ -224,7 +224,7 @@ struct test_type_with_align
 };
 
 #define type_with_align_test(T) test_type_with_align<T>::do_it()
-*/
+
 //
 // the following code allows us to test that a particular
 // template functions correctly when instanciated inside another template

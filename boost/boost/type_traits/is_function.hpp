@@ -48,7 +48,7 @@ struct is_function_chooser<false>
 {
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
     template< typename T > struct result_
-        : ::boost::type_traits::is_function_ptr_helper<T>
+        : ::boost::type_traits::is_function_ptr_helper<T*>
     {
     };
 #else
