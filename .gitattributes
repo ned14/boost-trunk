@@ -1985,6 +1985,7 @@ boost/tools/build/jam_src/yyacc -text
 boost/tools/build/kcc-tools.jam svneol=native#text/plain
 boost/tools/build/metrowerks-tools.jam svneol=native#text/plain
 boost/tools/build/mingw-tools.jam svneol=native#text/plain
+boost/tools/build/mipspro-tools.jam svneol=native#text/plain
 boost/tools/build/msvc-stlport-tools.jam svneol=native#text/plain
 boost/tools/build/msvc-tools.jam svneol=native#text/plain
 boost/tools/build/new/assert.jam svneol=native#text/plain
@@ -2045,6 +2046,7 @@ boost/tools/build/v1/intel-win32-tools.jam svneol=native#text/plain
 boost/tools/build/v1/kcc-tools.jam svneol=native#text/plain
 boost/tools/build/v1/metrowerks-tools.jam svneol=native#text/plain
 boost/tools/build/v1/mingw-tools.jam svneol=native#text/plain
+boost/tools/build/v1/mipspro-tools.jam svneol=native#text/plain
 boost/tools/build/v1/msvc-stlport-tools.jam svneol=native#text/plain
 boost/tools/build/v1/msvc-tools.jam svneol=native#text/plain
 boost/tools/build/v1/python.jam svneol=native#text/plain
