@@ -582,6 +582,7 @@ boost/boost/python/copy_const_reference.hpp svneol=native#text/plain
 boost/boost/python/copy_non_const_reference.hpp svneol=native#text/plain
 boost/boost/python/cross_module.hpp svneol=native#text/plain
 boost/boost/python/data_members.hpp svneol=native#text/plain
+boost/boost/python/def.hpp svneol=native#text/plain
 boost/boost/python/default_call_policies.hpp svneol=native#text/plain
 boost/boost/python/detail/aix_init_module.hpp svneol=native#text/plain
 boost/boost/python/detail/api_placeholder.hpp svneol=native#text/plain
