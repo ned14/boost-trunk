@@ -2826,6 +2826,7 @@ boost/boost/spirit/fusion/sequence/at.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/begin.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/cons.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/detail/as_tuple_element.hpp svneol=native#text/plain
+boost/boost/spirit/fusion/sequence/detail/cons_begin_end_traits.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/detail/filter_view_begin_end_trts.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/detail/generate.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/detail/io.hpp svneol=native#text/plain
