@@ -2382,6 +2382,7 @@ boost/tools/build/gcc-tools.html svneol=native#text/html
 boost/tools/build/gcc-tools.jam svneol=native#text/plain
 boost/tools/build/gen_aix_import_file.py svneol=native#text/x-python
 boost/tools/build/index.html svneol=native#text/html
+boost/tools/build/intel-linux-tools.html svneol=native#text/html
 boost/tools/build/intel-linux-tools.jam svneol=native#text/plain
 boost/tools/build/intel-win32-tools.jam svneol=native#text/plain
 boost/tools/build/jam_src/Build.com -text
@@ -2628,6 +2629,7 @@ boost/tools/build/v1/gcc-tools.html svneol=native#text/html
 boost/tools/build/v1/gcc-tools.jam svneol=native#text/plain
 boost/tools/build/v1/gen_aix_import_file.py svneol=native#text/x-python
 boost/tools/build/v1/index.html svneol=native#text/html
+boost/tools/build/v1/intel-linux-tools.html svneol=native#text/html
 boost/tools/build/v1/intel-linux-tools.jam svneol=native#text/plain
 boost/tools/build/v1/intel-win32-tools.jam svneol=native#text/plain
 boost/tools/build/v1/kcc-tools.jam svneol=native#text/plain
