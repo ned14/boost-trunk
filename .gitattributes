@@ -6644,6 +6644,7 @@ boost/libs/spirit/example/Jamfile svneol=native#text/plain
 boost/libs/spirit/example/fundamental/ast_calc.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/bind.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/boiler_plate.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc_debug.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/calc_plain.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/comments.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/complex_number.cpp svneol=native#text/plain
