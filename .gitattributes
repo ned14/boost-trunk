@@ -241,6 +241,7 @@ boost/boost/math/special_functions/sinhc.hpp svneol=native#text/plain
 boost/boost/math_fwd.hpp svneol=native#text/plain
 boost/boost/mem_fn.hpp svneol=native#text/plain
 boost/boost/min_rand.hpp svneol=native#text/plain
+boost/boost/mpl/apply.hpp svneol=native#text/plain
 boost/boost/nondet_random.hpp svneol=native#text/plain
 boost/boost/operators.hpp svneol=native#text/plain
 boost/boost/pending/bucket_sorter.hpp svneol=native#text/plain
