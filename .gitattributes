@@ -3516,6 +3516,7 @@ boost/libs/date_time/test/local_time/poorly_formed_zonespec.csv -text
 boost/libs/date_time/test/local_time/testclocks.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testdst_transition_day_rule.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testlocal_time.cpp svneol=native#text/plain
+boost/libs/date_time/test/local_time/testlocal_time_facet.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testposix_time_zone.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testtime_zone.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testtz_database.cpp svneol=native#text/plain
