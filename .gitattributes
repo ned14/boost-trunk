@@ -4439,6 +4439,9 @@ boost/libs/python/pyste/src/Pyste/utils.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/.cvsignore -text
 boost/libs/python/pyste/tests/GCCXMLParserUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/SmartFileUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/abstract_test.h svneol=native#text/plain
+boost/libs/python/pyste/tests/abstract_test.pyste -text
+boost/libs/python/pyste/tests/abstract_testUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/add_test.h svneol=native#text/plain
 boost/libs/python/pyste/tests/add_test.pyste -text
 boost/libs/python/pyste/tests/add_testUT.py svneol=native#text/x-python
