@@ -282,6 +282,7 @@ boost/boost/preprocessor/enum_params.hpp svneol=native#text/plain
 boost/boost/preprocessor/enum_params_with_a_default.hpp svneol=native#text/plain
 boost/boost/preprocessor/enum_params_with_defaults.hpp svneol=native#text/plain
 boost/boost/preprocessor/enum_shifted_params.hpp svneol=native#text/plain
+boost/boost/preprocessor/expand.hpp svneol=native#text/plain
 boost/boost/preprocessor/identity.hpp svneol=native#text/plain
 boost/boost/preprocessor/if.hpp svneol=native#text/plain
 boost/boost/preprocessor/inc.hpp svneol=native#text/plain
