@@ -1468,6 +1468,7 @@ boost/boost/python/with_custodian_and_ward.hpp svneol=native#text/plain
 boost/boost/random.hpp svneol=native#text/plain
 boost/boost/random/additive_combine.hpp svneol=native#text/plain
 boost/boost/random/bernoulli_distribution.hpp svneol=native#text/plain
+boost/boost/random/binomial_distribution.hpp svneol=native#text/plain
 boost/boost/random/cauchy_distribution.hpp svneol=native#text/plain
 boost/boost/random/detail/const_mod.hpp svneol=native#text/plain
 boost/boost/random/detail/iterator_mixin.hpp svneol=native#text/plain
