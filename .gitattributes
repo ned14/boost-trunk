@@ -8035,6 +8035,7 @@ boost/tools/boostbook/doc/reference.dtdxml -text
 boost/tools/boostbook/doc/reference.xml svneol=native#text/xml
 boost/tools/boostbook/doc/together.xml svneol=native#text/xml
 boost/tools/boostbook/dtd/boostbook.dtd svneol=native#text/xml
+boost/tools/boostbook/xsl/admon.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/annotation.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/caramel/LICENSE -text
 boost/tools/boostbook/xsl/caramel/concept2docbook.xsl svneol=native#text/xml
