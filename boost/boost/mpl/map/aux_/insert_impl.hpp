@@ -19,9 +19,11 @@
 #include "boost/mpl/map/aux_/contains_impl.hpp"
 #include "boost/mpl/map/aux_/item.hpp"
 #include "boost/mpl/map/aux_/tag.hpp"
+#include "boost/mpl/aux_/config/typeof.hpp"
 
 namespace boost { namespace mpl {
 
+#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
 template<>
 struct insert_impl< aux::map_tag >
 {
@@ -43,6 +45,7 @@ struct insert_impl< aux::map_tag >
     {
     };
 };
+#endif
 
 }}
 

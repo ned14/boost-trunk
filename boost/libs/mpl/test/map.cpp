@@ -69,7 +69,11 @@ MPL_TEST_CASE( map_test2 )
     MPL_TEST_ASSERT(( is_same< first::type,pair<int,unsigned> >::value ));
     MPL_TEST_ASSERT(( is_same< next<first>::type,last >::value ));
 
+#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
     typedef m_item<char,long,m> m2;
+#else
+    typedef m_item3<char,long,m> m2;
+#endif
 
     MPL_TEST_ASSERT(( size<m2>::type::value == 2 ));
     MPL_TEST_ASSERT(( !empty<m2>::type::value ));
@@ -95,6 +99,7 @@ MPL_TEST_CASE( map_test2 )
     MPL_TEST_ASSERT(( is_same<iter::type,pair<char,long> >::value ));
     MPL_TEST_ASSERT(( is_same< next<iter>::type,last2 >::value ));
 
+#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
     typedef insert<m2,pair<int,unsigned> >::type s2_1;
     MPL_TEST_ASSERT(( is_same<m2,s2_1>::value ));
 
@@ -129,7 +134,7 @@ MPL_TEST_CASE( map_test2 )
     MPL_TEST_ASSERT(( is_same< at<m2_1,char>::type,void_ >::value ));
     MPL_TEST_ASSERT(( is_same< at<m2_1,int>::type,unsigned >::value ));
     MPL_TEST_ASSERT(( is_same< at<m2_1,long>::type,unsigned >::value ));
-  
+#endif
 }
 
 struct UDT {};
@@ -142,7 +147,7 @@ MPL_TEST_CASE( empty_map_test )
     
     MPL_TEST_ASSERT(( size<m>::type::value == 0 ));
     MPL_TEST_ASSERT(( empty<m>::type::value ));
-    
+
     MPL_TEST_ASSERT(( is_same< clear<m>::type,map0<> >::value ));
     MPL_TEST_ASSERT(( is_same< at<m,char>::type,void_ >::value ));
 
@@ -164,6 +169,7 @@ MPL_TEST_CASE( empty_map_test )
     MPL_TEST_ASSERT(( !has_key<m,UDT&>::type::value ));
     MPL_TEST_ASSERT(( !has_key<m,incomplete&>::type::value ));
 
+#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
     typedef insert<m,pair<char,int> >::type m1;
     MPL_TEST_ASSERT(( size<m1>::type::value == 1 ));
     MPL_TEST_ASSERT(( is_same< at<m1,char>::type,int >::value ));
@@ -171,6 +177,7 @@ MPL_TEST_CASE( empty_map_test )
     typedef erase<m,char>::type m0_1;
     MPL_TEST_ASSERT(( size<m0_1>::type::value == 0 ));
     MPL_TEST_ASSERT(( is_same< at<m0_1,char>::type,void_ >::value ));
+#endif
 }
 
 

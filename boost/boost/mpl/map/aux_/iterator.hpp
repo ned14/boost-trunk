@@ -16,14 +16,13 @@
 // $Revision$
 
 #include "boost/mpl/map/aux_/map0.hpp"
-//#include "boost/mpl/map/aux_/at_impl.hpp"
-//#include "boost/mpl/map/aux_/has_key_impl.hpp"
+#include "boost/mpl/map/aux_/at_impl.hpp"
 #include "boost/mpl/map/aux_/tag.hpp"
 #include "boost/mpl/iterator_tag.hpp"
-#include "boost/mpl/next.hpp"
-#include "boost/mpl/apply_if.hpp"
 #include "boost/mpl/if.hpp"
-#include "boost/mpl/identity.hpp"
+#include "boost/mpl/next.hpp"
+#include "boost/mpl/long.hpp"
+#include "boost/mpl/void.hpp"
 #include "boost/mpl/aux_/config/ctps.hpp"
 
 

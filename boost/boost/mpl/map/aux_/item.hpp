@@ -114,6 +114,7 @@ struct m_mask
 #else // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
 
 aux::no_tag operator/(map0<> const&, void*);
+aux::no_tag operator%(map0<> const&, void*);
 
 template< typename Key, typename T, typename Base >
 struct m_item_
@@ -139,14 +140,21 @@ template< typename Key, typename T, typename Base >
 struct m_item1
     : m_item_<Key,T,Base>
 {
-    typedef T type1;
+    typedef pair<Key,T> type1;
 };
 
 template< typename Key, typename T, typename Base >
 struct m_item2
     : m_item_<Key,T,Base>
 {
-    typedef T type2;
+    typedef pair<Key,T> type2;
+};
+
+template< typename Key, typename T, typename Base >
+struct m_item3
+    : m_item_<Key,T,Base>
+{
+    typedef pair<Key,T> type3;
 };
 
 template< typename Key, typename Base >
@@ -158,10 +166,10 @@ struct m_mask
 
     typedef typename prior< typename Base::size >::type  size;
 
-    //typedef typename x_order_impl<Base,Key>::type old_order_;
+    typedef typename x_order_impl<Base,Key>::type old_order_;
     
-//    friend aux::no_tag operator/(m_mask const&, long_<(old_order_::value + 1)>);
     friend aux::no_tag operator/(m_mask const&, aux::type_wrapper<Key>*);
+    friend aux::yes_tag operator%(m_mask const&, long_<old_order_::value>*);
 };
 
 

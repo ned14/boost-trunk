@@ -558,7 +558,6 @@ boost/boost/mpl/set/aux_/has_key_impl.hpp svneol=native#text/plain
 boost/boost/mpl/set/aux_/insert_impl.hpp svneol=native#text/plain
 boost/boost/mpl/set/aux_/item.hpp svneol=native#text/plain
 boost/boost/mpl/set/aux_/iterator.hpp svneol=native#text/plain
-boost/boost/mpl/set/aux_/order_impl.hpp svneol=native#text/plain
 boost/boost/mpl/set/aux_/set0.hpp svneol=native#text/plain
 boost/boost/mpl/set/aux_/size_impl.hpp svneol=native#text/plain
 boost/boost/mpl/set/aux_/tag.hpp svneol=native#text/plain

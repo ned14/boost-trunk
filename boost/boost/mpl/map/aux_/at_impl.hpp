@@ -24,6 +24,12 @@
 #include "boost/mpl/aux_/static_cast.hpp"
 #include "boost/mpl/aux_/config/typeof.hpp"
 
+#if !defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
+#   include "boost/mpl/apply_if.hpp"
+#   include "boost/mpl/select2nd.hpp"
+#   include "boost/mpl/void.hpp"
+#endif
+
 namespace boost { namespace mpl {
 
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
@@ -72,27 +78,55 @@ template< typename Map, long n > struct m_at
 };
 
 template< typename Map>
-struct m_at<Map,1>
+struct m_at<Map,2>
 {
     typedef typename Map::type1 type;
 };
 
 template< typename Map>
-struct m_at<Map,2>
+struct m_at<Map,3>
 {
     typedef typename Map::type2 type;
+};
+
+template< typename Map>
+struct m_at<Map,4>
+{
+    typedef typename Map::type3 type;
 };
 
 template<>
 struct at_impl< aux::map_tag >
 {
     template< typename Map, typename Key > struct apply
-        : m_at<
+    {
+        typedef typename m_at<
               Map
             , x_order_impl<Map,Key>::value
-            >
-    {
+            >::type type_;
+        
+        typedef typename apply_if< 
+              is_void_<type_>
+            , void_
+            , select2nd<type_> 
+            >::type type;
     };
+};
+
+template< typename Map, long order > struct item_by_order
+{
+    BOOST_STATIC_CONSTANT(bool, is_deleted_ = 
+          sizeof( 
+              *BOOST_MPL_AUX_STATIC_CAST(Map*, 0)
+                % BOOST_MPL_AUX_STATIC_CAST(long_<order>*, 0)
+            ) - 1
+        );
+    
+    typedef typename apply_if_c< 
+          is_deleted_
+        , void_
+        , m_at<Map,order>
+        >::type type;
 };
 
 #endif
