@@ -4391,6 +4391,7 @@ boost/libs/graph/src/graphviz_parser.yy -text
 boost/libs/graph/src/python/basic_graph.cpp svneol=native#text/plain
 boost/libs/graph/src/python/basic_graph.hpp svneol=native#text/plain
 boost/libs/graph/src/python/betweenness_centrality.cpp svneol=native#text/plain
+boost/libs/graph/src/python/bfs_events.hpp svneol=native#text/plain
 boost/libs/graph/src/python/breadth_first_search.cpp svneol=native#text/plain
 boost/libs/graph/src/python/digraph.cpp svneol=native#text/plain
 boost/libs/graph/src/python/digraph.hpp svneol=native#text/plain
