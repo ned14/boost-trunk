@@ -2655,6 +2655,7 @@ boost/libs/thread/example/thread.cpp svneol=native#text/plain
 boost/libs/thread/example/thread_group.cpp svneol=native#text/plain
 boost/libs/thread/example/tss.cpp svneol=native#text/plain
 boost/libs/thread/example/xtime.cpp svneol=native#text/plain
+boost/libs/thread/index.html svneol=native#text/html
 boost/libs/thread/src/condition.cpp svneol=native#text/plain
 boost/libs/thread/src/exceptions.cpp svneol=native#text/plain
 boost/libs/thread/src/mac/debug_prefix.hpp svneol=native#text/plain
