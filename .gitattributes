@@ -5913,6 +5913,7 @@ boost/status/compiler_status.html svneol=native#text/html
 boost/status/index.html svneol=native#text/html
 boost/status/intel_logo.gif -text svneol=unset#image/gif
 boost/status/kai_logo.gif -text svneol=unset#image/gif
+boost/status/notes.html svneol=native#text/html
 boost/tools/bcp/Jamfile svneol=native#text/plain
 boost/tools/bcp/add_path.cpp svneol=native#text/plain
 boost/tools/bcp/bcp.hpp svneol=native#text/plain
