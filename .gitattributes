@@ -5350,6 +5350,7 @@ boost/libs/program_options/test/cmdline_test.cpp svneol=native#text/plain
 boost/libs/program_options/test/options_description_test.cpp svneol=native#text/plain
 boost/libs/program_options/test/parsers_test.cpp svneol=native#text/plain
 boost/libs/program_options/test/positional_options_test.cpp svneol=native#text/plain
+boost/libs/program_options/test/program_options_size_test.py svneol=native#text/x-python
 boost/libs/program_options/test/test_convert.cpp svneol=native#text/plain
 boost/libs/program_options/test/ucs2.txt svneol=native#text/plain
 boost/libs/program_options/test/unicode_test.cpp svneol=native#text/plain
