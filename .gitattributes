@@ -507,6 +507,7 @@ boost/boost/regex/pattern_except.hpp svneol=native#text/plain
 boost/boost/regex/regex_traits.hpp svneol=native#text/plain
 boost/boost/regex/src.cpp svneol=native#text/plain
 boost/boost/regex/user.hpp svneol=native#text/plain
+boost/boost/regex_fwd.hpp svneol=native#text/plain
 boost/boost/scoped_array.hpp svneol=native#text/plain
 boost/boost/scoped_ptr.hpp svneol=native#text/plain
 boost/boost/shared_array.hpp svneol=native#text/plain
