@@ -8736,6 +8736,7 @@ boost/libs/test/test/auto_unit_test_test.cpp svneol=native#text/plain
 boost/libs/test/test/auto_unit_test_test_mult1.cpp svneol=native#text/plain
 boost/libs/test/test/auto_unit_test_test_mult2.cpp svneol=native#text/plain
 boost/libs/test/test/basic_cstring_test.cpp svneol=native#text/plain
+boost/libs/test/test/boost_check_equal_str.cpp svneol=native#text/plain
 boost/libs/test/test/class_properties_test.cpp svneol=native#text/plain
 boost/libs/test/test/custom_exception_test.cpp svneol=native#text/plain
 boost/libs/test/test/errors_handling_test.cpp svneol=native#text/plain
