@@ -5307,7 +5307,6 @@ boost/libs/program_options/doc/glossary.dox -text
 boost/libs/program_options/doc/glossary.xml svneol=native#text/xml
 boost/libs/program_options/doc/howto.xml svneol=native#text/xml
 boost/libs/program_options/doc/index.html svneol=native#text/html
-boost/libs/program_options/doc/options_description.xml svneol=native#text/xml
 boost/libs/program_options/doc/overview.xml svneol=native#text/xml
 boost/libs/program_options/doc/post_review_plan.txt svneol=native#text/plain
 boost/libs/program_options/doc/program_options.dox -text
