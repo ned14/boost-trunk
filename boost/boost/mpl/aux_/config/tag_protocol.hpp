@@ -14,7 +14,7 @@
 // $Date$
 // $Revision$
 
-#define BOOST_MPL_TAG_IMPL_SUFFIX traits
-#define BOOST_MPL_TAG_IMPL_APPLY algorithm
+#define BOOST_MPL_TAG_IMPL_SUFFIX impl
+#define BOOST_MPL_TAG_IMPL_APPLY apply
 
 #endif // BOOST_MPL_AUX_CONFIG_TAG_PROTOCOL_HPP_INCLUDED
