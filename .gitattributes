@@ -3250,6 +3250,7 @@ boost/libs/iterator/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/iterator/test/concept_tests.cpp svneol=native#text/plain
 boost/libs/iterator/test/counting_iterator_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/filter_iterator_test.cpp svneol=native#text/plain
+boost/libs/iterator/test/indirect_iterator_member_types.cpp svneol=native#text/plain
 boost/libs/iterator/test/indirect_iterator_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/interoperable_fail.cpp svneol=native#text/plain
 boost/libs/iterator/test/is_convertible_fail.cpp svneol=native#text/plain
