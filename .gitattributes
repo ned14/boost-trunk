@@ -2065,6 +2065,7 @@ boost/tools/build/new/sequence.jam svneol=native#text/plain
 boost/tools/build/new/set.jam svneol=native#text/plain
 boost/tools/build/new/test.jam svneol=native#text/plain
 boost/tools/build/new/ultility.jam svneol=native#text/plain
+boost/tools/build/new/utility.jam svneol=native#text/plain
 boost/tools/build/python.jam svneol=native#text/plain
 boost/tools/build/test/Jamfile svneol=native#text/plain
 boost/tools/build/test/Jamrules svneol=native#text/plain
@@ -2154,6 +2155,7 @@ boost/tools/build/v2/util/os.jam svneol=native#text/plain
 boost/tools/build/v2/util/regex.jam svneol=native#text/plain
 boost/tools/build/v2/util/sequence.jam svneol=native#text/plain
 boost/tools/build/v2/util/set.jam svneol=native#text/plain
+boost/tools/build/v2/util/utility.jam svneol=native#text/plain
 boost/tools/build/vacpp-tools.jam svneol=native#text/plain
 boost/tools/jam/src/Build.com -text
 boost/tools/jam/src/Build.mpw -text
