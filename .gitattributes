@@ -1431,6 +1431,7 @@ boost/libs/preprocessor/doc/tutorial.htm svneol=native#text/html
 boost/libs/preprocessor/example/array_arithmetic.c svneol=native#text/plain
 boost/libs/preprocessor/example/array_arithmetic_helpers.hpp svneol=native#text/plain
 boost/libs/preprocessor/example/delay.cpp svneol=native#text/plain
+boost/libs/preprocessor/example/is_integral.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/arithmetic_test.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/for_test.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/list_test.cpp svneol=native#text/plain
