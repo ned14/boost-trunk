@@ -6617,6 +6617,7 @@ boost/tools/build/jam_src/build.bat svneol=native#text/plain
 boost/tools/build/jam_src/build.jam svneol=native#text/plain
 boost/tools/build/jam_src/build.sh svneol=native#text/x-sh
 boost/tools/build/jam_src/build_vms.com -text
+boost/tools/build/jam_src/buildbot.test -text
 boost/tools/build/jam_src/builtins.c svneol=native#text/plain
 boost/tools/build/jam_src/builtins.h svneol=native#text/plain
 boost/tools/build/jam_src/bump_version.py svneol=native#text/x-python
@@ -7222,6 +7223,7 @@ boost/tools/jam/src/build.bat svneol=native#text/plain
 boost/tools/jam/src/build.jam svneol=native#text/plain
 boost/tools/jam/src/build.sh svneol=native#text/x-sh
 boost/tools/jam/src/build_vms.com -text
+boost/tools/jam/src/buildbot.test -text
 boost/tools/jam/src/builtins.c svneol=native#text/plain
 boost/tools/jam/src/builtins.h svneol=native#text/plain
 boost/tools/jam/src/bump_version.py svneol=native#text/x-python
