@@ -572,7 +572,6 @@ boost/libs/min_rand/generate_n_test.cpp svneol=native#text/plain
 boost/libs/min_rand/index.htm svneol=native#text/html
 boost/libs/min_rand/min_rand.html svneol=native#text/html
 boost/libs/min_rand/min_rand_test.cpp svneol=native#text/plain
-boost/libs/persistence/doc/persistence.html svneol=native#text/html
 boost/libs/pool/TODO.txt svneol=native#text/plain
 boost/libs/pool/doc/concepts.html svneol=native#text/html
 boost/libs/pool/doc/copyright.html svneol=native#text/html
