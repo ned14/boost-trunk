@@ -382,6 +382,7 @@ boost/boost/preprocessor/detail/expand.hpp svneol=native#text/plain
 boost/boost/preprocessor/detail/iterate/exp1.hpp svneol=native#text/plain
 boost/boost/preprocessor/detail/iterate/exp2.hpp svneol=native#text/plain
 boost/boost/preprocessor/detail/iterate/exp3.hpp svneol=native#text/plain
+boost/boost/preprocessor/detail/iterate/exp4.hpp svneol=native#text/plain
 boost/boost/preprocessor/detail/repeat_edg.hpp svneol=native#text/plain
 boost/boost/preprocessor/empty.hpp svneol=native#text/plain
 boost/boost/preprocessor/enum.hpp svneol=native#text/plain
