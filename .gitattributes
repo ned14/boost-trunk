@@ -7328,6 +7328,7 @@ boost/libs/statechart/example/Camera/Precompiled.hpp svneol=native#text/plain
 boost/libs/statechart/example/Camera/Shooting.cpp svneol=native#text/plain
 boost/libs/statechart/example/Camera/Shooting.hpp svneol=native#text/plain
 boost/libs/statechart/example/Handcrafted/Handcrafted.cpp svneol=native#text/plain
+boost/libs/statechart/example/Handcrafted/Handcrafted.vcproj -text
 boost/libs/statechart/example/Jamfile svneol=native#text/plain
 boost/libs/statechart/example/Keyboard/Keyboard.cpp svneol=native#text/plain
 boost/libs/statechart/example/Keyboard/Keyboard.vcproj -text
