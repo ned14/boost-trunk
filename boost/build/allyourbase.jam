@@ -1138,7 +1138,7 @@ rule SubDir
         include $(_r) ;
 
         # determine where toolset specifications and boost-base can be found. 
-        BOOST_TOOLSET_DIR ?= $($(<[1])) ;
+        BOOST_BUILD_INSTALLATION ?= $($(<[1])) ;
         BOOST_BASE_DIR ?= $($(<[1])) ;
         # and include boost-base
         include [ join-path $(BOOST_BASE_DIR) boost-base.jam ] ;

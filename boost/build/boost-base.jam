@@ -537,12 +537,12 @@ rule include-tools
     gTARGET_VARIABLES = ;
     gRELEVANT_FEATURES($(<)) = ; # clear relevant feature set
     
-    include $(BOOST_TOOLSET_DIR)$(SLASH)$(<)-tools.jam ;
+    include $(BOOST_BUILD_INSTALLATION)$(SLASH)$(<)-tools.jam ;
 
     # Always maintain the list of relevant features as unique
     gRELEVANT_FEATURES($(<)) = [ unique $(gRELEVANT_FEATURES($(<))) ] ;
     
-    gINCLUDED($(BOOST_TOOLSET_DIR)$(SLASH)$(<)-tools.jam) = true ;
+    gINCLUDED($(BOOST_BUILD_INSTALLATION)$(SLASH)$(<)-tools.jam) = true ;
 }
 
 # relevant-features toolset
@@ -628,7 +628,7 @@ rule select-properties
     return $(result) ;
 }
 # get toolset features
-include $(BOOST_TOOLSET_DIR)$(SLASH)features.jam ;
+include $(BOOST_BUILD_INSTALLATION)$(SLASH)features.jam ;
 
 # ungrist-properties properties...
 #
@@ -722,14 +722,23 @@ rule multiply-property-sets
 
 # make-path-property-sets base-path : common-properties : property-sets
 #
-# Returns a list of paths where the initial ungristed part is a relative path
-# into which a configuration should be built, and the rest of the element
-# is a slash-separated property set describing the properties of the target to
-# be built. 
+# Returns a list of paths where the initial ungristed part of each element is a
+# relative path to a subvariant directory from a target's build root and the
+# rest of the element is a slash-separated property set describing the
+# properties of the target to be built.
 #
 # Each path returned is base-path extended by one of the ungristed property-sets
 # (or just the base-path if no property-sets are supplied). Each property set
 # returned is formed by extending common-properties with one of the property-sets.
+#
+# For example,
+#
+#   make-path-property-sets gcc/release : <p1>v1 : <p2>v2/<p3>v3
+#
+# returns this single-element list:
+#
+#      gcc/release/p2-v2/p3-v3/<p1>v1/<p2>v2/<p3>v3
+#     |<-- subvariant path -->|<-- property-set -->|
 rule make-path-property-sets
 {
     local result ;
@@ -921,11 +930,11 @@ rule dependent-include
     }
 }
 
-# link-libraries dependent : libs... : dependent-path
+# link-libraries dependent : libs... : subvariant-id
 #
 # Used to make the given dependent target depend on the file result of building
-# the given libs. The 3rd argument should specify the directory path relative to
-# the subproject directory where the appropriate build is located.
+# the given libs. The 3rd argument should be the relative path from the target
+# build root to the requested subvariant.
 rule link-libraries
 {
   local lib-path ;
@@ -944,8 +953,8 @@ rule link-libraries
     local lib-target = [ FGristFiles $(lib-path:D=) ] ;
     local lib-target-type = $(gTARGET_TYPE($(lib-target))) ;
 
-    local target-grist = [ join-path $(SOURCE_GRIST) $(3) ] ;
-    local build-target = $(target:G=$(target-grist)) ;
+    local lib-grist = [ join-path $(SOURCE_GRIST) $(lib-path:D=) $(3) ] ;
+    local build-target = $(target:G=$(lib-grist)) ;
     
     # if build instructions for the given target have not been given, do that now.
     if ! $(build-target) in $(gDECLARED_TARGETS)
@@ -1057,11 +1066,14 @@ rule declare-target # target : sources : requirements : local-build : target-typ
       {
           # extract the elements of x
           local x-split = [ split-path-at-grist $(x) ] ;
-          local bin-path = $(x-split[1]) ;
+
+          # this is the path from the target's build root to the subvariant directory
+          local subvariant-id = $(x-split[1]) ;
 
           # SOURCE_GRIST identifies the subproject directory; TARGET_GRIST
-          # should identify the subvariant.
-          local TARGET_GRIST = [ join-path $(SOURCE_GRIST) $(bin-path) ] ;
+          # will identify the target and subvariant, since unique versions of
+          # files will be built for that combination. 
+          local TARGET_GRIST = [ join-path $(SOURCE_GRIST) $(<) $(subvariant-id) ] ;
 
           # target is the unsuffixed name of the target, with TARGET_GRIST
           local target = $(<:G=$(TARGET_GRIST)) ;
@@ -1075,7 +1087,7 @@ rule declare-target # target : sources : requirements : local-build : target-typ
             # LOCATE_TARGET affects where built targets are generated. We move
             # it relative to the default location based on the subvariant
             local LOCATE_TARGET
-              = [ join-path $(LOCATE_TARGET) $(BIN_DIRECTORY) $(bin-path) ] ;
+              = [ join-path $(LOCATE_TARGET) $(BIN_DIRECTORY) $(<) $(subvariant-id) ] ;
 
             local target-file = [ FAppendSuffix $(target) : $(SUF$(target-type)) ] ;
             declare-fake-targets $(target) : $(target-file) ;
@@ -1102,7 +1114,7 @@ rule declare-target # target : sources : requirements : local-build : target-typ
             }
 
             # generate build instructions
-            link-libraries $(target-file) : $(libs) : $(bin-path) ;
+            link-libraries $(target-file) : $(libs) : $(subvariant-id) ;
           }
 
           # peel the first pair off the front
