@@ -3247,7 +3247,6 @@ boost/libs/iterator/doc/function_output_iterator_eg.rst svneol=native#text/plain
 boost/libs/iterator/doc/function_output_iterator_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/generate.py svneol=native#text/x-python
 boost/libs/iterator/doc/index.html svneol=native#text/html
-boost/libs/iterator/doc/index.pdf -text svneol=unset#application/pdf
 boost/libs/iterator/doc/index.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/indirect_iterator.pdf -text svneol=unset#application/pdf
