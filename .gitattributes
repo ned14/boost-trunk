@@ -4426,6 +4426,136 @@ boost/libs/spirit/example/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/c/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/c/c_grammar.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/c/readme.txt svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/Ackermann.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/ArrayAccess3.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/CountLinesWordsChars.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/Fibonacci.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/HashAccess.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/HashAccess2.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/HeapSort.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/HelloWorld.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/Moments.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/MultiplyMatrices.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/NestedLoops.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/RandomGenerator.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/ReverseFile.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/Sieve.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/StringConcat.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/SumCol.c svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/ChangeLog -text
+boost/libs/spirit/example/application/cpp/Copyright.txt svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/Jamfile svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/Readme.txt svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_context.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_exceptions.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_grammar.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_grammar_gen.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_ifblock.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_include_pathes.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_iteration_context.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_iterator.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp_config.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp_version.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/cpp_lex_interface.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/cpp_lex_iterator.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/cpp_token_ids.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/cpp_token_names.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2c_functor.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/aq.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/aq.h svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/cpp.re -text
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/cpp.re.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/cpp_re2c_lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/cpp_re2c_token.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/scanner.h svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/test/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/test/lextest.in -text
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/test/lextest.output -text
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/test/run_tests.sh svneol=native#text/x-sh
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/test/test_lexer.c svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/test/test_lexer.in -text
+boost/libs/spirit/example/application/cpp/cpplexer/re2clex/test/test_lexer.output -text
+boost/libs/spirit/example/application/cpp/cpplexer/slex/cpp_slex_lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/slex/cpp_slex_token.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/slex/util/time_conversion_helper.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/slex_functor.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/test/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/test/instantiate_re2c_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/test/instantiate_slex_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/test/lextest.in -text
+boost/libs/spirit/example/application/cpp/cpplexer/test/lextest.re2c.output -text
+boost/libs/spirit/example/application/cpp/cpplexer/test/lextest.slex.output -text
+boost/libs/spirit/example/application/cpp/cpplexer/test/run_tests.sh svneol=native#text/x-sh
+boost/libs/spirit/example/application/cpp/cpplexer/test/test_re2c_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/test/test_re2c_lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/test/test_slex_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/test/test_slex_lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/instantiate_cpp_grammar.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/instantiate_re2c_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/instantiate_slex_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test/list_includes/Jamfile svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test/list_includes/Readme.txt svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test/list_includes/instantiate_cpp_grammar.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test/list_includes/instantiate_re2c_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test/list_includes/instantiate_slex_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test/list_includes/list_includes.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test/list_includes/list_includes.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test/list_includes/list_includes_version.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_test.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/makefile svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/cpp_to_html.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/cpp_to_html_vc6_7.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/readme.txt svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/style.css svneol=native#text/css
+boost/libs/spirit/example/application/pascal/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/pascal/readme.txt svneol=native#text/plain
+boost/libs/spirit/example/application/pascal/sg_pascal.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/pascal/test_files/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/pascal/test_files/t1.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t2.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t3.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t4.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t5.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t6.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t7.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t8.pas -text
+boost/libs/spirit/example/application/quickdoc/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/doc/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/doc/grammar.html svneol=native#text/html
+boost/libs/spirit/example/application/quickdoc/doc/introduction.html svneol=native#text/html
+boost/libs/spirit/example/application/quickdoc/doc/quickdoc.txt svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/doc/syntax_summary.html svneol=native#text/html
+boost/libs/spirit/example/application/quickdoc/doc/theme/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/doc/theme/alert.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/arrow.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/bkd.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/bkd2.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/bulb.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/bullet.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/l_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/l_arr_disabled.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/lens.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/note.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/r_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/r_arr_disabled.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/spirit.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/style.css svneol=native#text/css
+boost/libs/spirit/example/application/quickdoc/doc/theme/u_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/index.html svneol=native#text/html
+boost/libs/spirit/example/application/quickdoc/quickdoc.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/quickdoc.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/quickdoc.txt svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/Makefile.am svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/mystyle.xls -text svneol=unset#application/vnd.ms-excel
+boost/libs/spirit/example/application/rfcdate/peti.css svneol=native#text/css
 boost/libs/statechart/doc/FsmDiscussion.html svneol=native#text/html
 boost/libs/statechart/example/FSM.cpp svneol=native#text/plain
 boost/libs/static_assert/Jamfile svneol=native#text/plain
