@@ -1457,6 +1457,7 @@ boost/boost/python/detail/raw_pyobject.hpp svneol=native#text/plain
 boost/boost/python/detail/referent_storage.hpp svneol=native#text/plain
 boost/boost/python/detail/result.hpp svneol=native#text/plain
 boost/boost/python/detail/scope.hpp svneol=native#text/plain
+boost/boost/python/detail/signature.hpp svneol=native#text/plain
 boost/boost/python/detail/string_literal.hpp svneol=native#text/plain
 boost/boost/python/detail/target.hpp svneol=native#text/plain
 boost/boost/python/detail/translate_exception.hpp svneol=native#text/plain
