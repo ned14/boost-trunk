@@ -1573,6 +1573,7 @@ boost/boost/python/detail/type_list.hpp svneol=native#text/plain
 boost/boost/python/detail/type_list_impl.hpp svneol=native#text/plain
 boost/boost/python/detail/type_list_impl_no_pts.hpp svneol=native#text/plain
 boost/boost/python/detail/unwind_type.hpp svneol=native#text/plain
+boost/boost/python/detail/value_arg.hpp svneol=native#text/plain
 boost/boost/python/detail/value_is_shared_ptr.hpp svneol=native#text/plain
 boost/boost/python/detail/value_is_xxx.hpp svneol=native#text/plain
 boost/boost/python/detail/void_ptr.hpp svneol=native#text/plain
