@@ -6802,6 +6802,7 @@ boost/libs/serialization/vc7ide/test_multiple_ptrs.vcproj -text
 boost/libs/serialization/vc7ide/test_multiplel_ptrs..vcproj -text
 boost/libs/serialization/vc7ide/test_no_rtti.vcproj -text
 boost/libs/serialization/vc7ide/test_non_default_ctor.vcproj -text
+boost/libs/serialization/vc7ide/test_non_default_ctor2.vcproj -text
 boost/libs/serialization/vc7ide/test_non_intrusive.vcproj -text
 boost/libs/serialization/vc7ide/test_not_serializable.vcproj -text
 boost/libs/serialization/vc7ide/test_null_ptr.vcproj -text
