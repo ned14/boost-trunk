@@ -604,7 +604,6 @@ boost/libs/function/example/int_div.cpp svneol=native#text/plain
 boost/libs/function/example/sum_avg.cpp svneol=native#text/plain
 boost/libs/function/index.html svneol=native#text/html
 boost/libs/function/test/allocator_test.cpp svneol=native#text/plain
-boost/libs/function/test/defarg_test.cpp svneol=native#text/plain
 boost/libs/function/test/function_n_test.cpp svneol=native#text/plain
 boost/libs/function/test/function_test.cpp svneol=native#text/plain
 boost/libs/function/test/function_test_fail1.cpp svneol=native#text/plain
