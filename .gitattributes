@@ -5784,6 +5784,7 @@ boost/libs/thread/src/xtime.cpp svneol=native#text/plain
 boost/libs/thread/test/.cvsignore -text
 boost/libs/thread/test/Carbon.r -text
 boost/libs/thread/test/Jamfile svneol=native#text/plain
+boost/libs/thread/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/thread/test/test.mcp -text svneol=unset#unset
 boost/libs/thread/test/test_condition.cpp svneol=native#text/plain
 boost/libs/thread/test/test_mutex.cpp svneol=native#text/plain
@@ -5841,6 +5842,7 @@ boost/libs/type_traits/examples/iter_swap_example.cpp svneol=native#text/plain
 boost/libs/type_traits/examples/trivial_destructor_example.cpp svneol=native#text/plain
 boost/libs/type_traits/index.htm svneol=native#text/html
 boost/libs/type_traits/test/Jamfile svneol=native#text/plain
+boost/libs/type_traits/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/type_traits/test/add_const_test.cpp svneol=native#text/plain
 boost/libs/type_traits/test/add_pointer_test.cpp svneol=native#text/plain
 boost/libs/type_traits/test/add_reference_test.cpp svneol=native#text/plain
