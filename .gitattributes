@@ -273,6 +273,7 @@ boost/boost/detail/templated_streams.hpp svneol=native#text/plain
 boost/boost/detail/typed_in_place_factory.hpp svneol=native#text/plain
 boost/boost/detail/workaround.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset.hpp svneol=native#text/plain
+boost/boost/dynamic_bitset/config.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset/dynamic_bitset.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset_fwd.hpp svneol=native#text/plain
 boost/boost/enable_shared_from_this.hpp svneol=native#text/plain
