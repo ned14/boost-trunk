@@ -2866,7 +2866,7 @@ boost/libs/graph/example/iterator-property-map-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/johnson-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/johnson.expected -text
 boost/libs/graph/example/kevin-bacon.cpp svneol=native#text/plain
-boost/libs/graph/example/kevin_bacon.dat -text
+boost/libs/graph/example/kevin-bacon.dat -text
 boost/libs/graph/example/kevin_bacon.expected -text
 boost/libs/graph/example/knights-tour.cpp svneol=native#text/plain
 boost/libs/graph/example/knights_tour.expected -text
