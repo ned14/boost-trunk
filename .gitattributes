@@ -246,6 +246,7 @@ boost/boost/random/uniform_on_sphere.hpp svneol=native#text/plain
 boost/boost/random/uniform_real.hpp svneol=native#text/plain
 boost/boost/random/uniform_smallint.hpp svneol=native#text/plain
 boost/boost/rational.hpp svneol=native#text/plain
+boost/boost/ref.hpp svneol=native#text/plain
 boost/boost/regex.h svneol=native#text/plain
 boost/boost/regex.hpp svneol=native#text/plain
 boost/boost/regex/detail/fileiter.hpp svneol=native#text/plain
