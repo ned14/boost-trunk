@@ -762,6 +762,7 @@ boost/libs/graph/doc/dijkstra_visitor.html svneol=native#text/html
 boost/libs/graph/doc/distance_recorder.html svneol=native#text/html
 boost/libs/graph/doc/edge_list.html svneol=native#text/html
 boost/libs/graph/doc/edmunds_karp_max_flow.html svneol=native#text/html
+boost/libs/graph/doc/eg1-iso.cpp svneol=native#text/plain
 boost/libs/graph/doc/faq.html svneol=native#text/html
 boost/libs/graph/doc/figs/Makefile svneol=native#text/plain
 boost/libs/graph/doc/figs/adj-list.gif -text svneol=unset#image/gif
