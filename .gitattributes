@@ -245,6 +245,7 @@ boost/libs/graph/docs/file_dependency_example.html svneol=native#text/html
 boost/libs/graph/docs/graph_coloring.html svneol=native#text/html
 boost/libs/graph/docs/graph_concepts.html svneol=native#text/html
 boost/libs/graph/docs/graph_theory_review.html svneol=native#text/html
+boost/libs/graph/docs/graph_traits.html svneol=native#text/html
 boost/libs/graph/docs/incident.html svneol=native#text/html
 boost/libs/graph/docs/index.html svneol=native#text/html
 boost/libs/graph/docs/johnson_all_pairs_shortest_paths.html svneol=native#text/html
