@@ -49,6 +49,7 @@ boost/boost/graph/detail/is_same.hpp svneol=native#text/plain
 boost/boost/graph/detail/list_base.hpp svneol=native#text/plain
 boost/boost/graph/detail/self_avoiding_walk.hpp svneol=native#text/plain
 boost/boost/graph/dijkstra_shortest_paths.hpp svneol=native#text/plain
+boost/boost/graph/edge_connectivity.hpp svneol=native#text/plain
 boost/boost/graph/edge_list.hpp svneol=native#text/plain
 boost/boost/graph/edmunds_karp_max_flow.hpp svneol=native#text/plain
 boost/boost/graph/filtered_edge_graph.hpp svneol=native#text/plain
