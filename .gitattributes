@@ -2406,7 +2406,6 @@ boost/boost/regex/v4/primary_transform.hpp svneol=native#text/plain
 boost/boost/regex/v4/protected_call.hpp svneol=native#text/plain
 boost/boost/regex/v4/regbase.hpp svneol=native#text/plain
 boost/boost/regex/v4/regex.hpp svneol=native#text/plain
-boost/boost/regex/v4/regex_compile.hpp svneol=native#text/plain
 boost/boost/regex/v4/regex_cstring.hpp svneol=native#text/plain
 boost/boost/regex/v4/regex_format.hpp svneol=native#text/plain
 boost/boost/regex/v4/regex_fwd.hpp svneol=native#text/plain
