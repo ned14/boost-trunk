@@ -2092,6 +2092,7 @@ boost/libs/function/example/bind1st.cpp svneol=native#text/plain
 boost/libs/function/example/int_div.cpp svneol=native#text/plain
 boost/libs/function/example/sum_avg.cpp svneol=native#text/plain
 boost/libs/function/index.html svneol=native#text/html
+boost/libs/function/test/Jamfile svneol=native#text/plain
 boost/libs/function/test/allocator_test.cpp svneol=native#text/plain
 boost/libs/function/test/function_30.cpp svneol=native#text/plain
 boost/libs/function/test/function_arith_cxx98.cpp svneol=native#text/plain
