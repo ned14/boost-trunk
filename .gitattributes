@@ -4571,6 +4571,7 @@ boost/libs/spirit/example/application/cpp/test/list_includes/list_includes.hpp s
 boost/libs/spirit/example/application/cpp/test/list_includes/list_includes_version.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_simple_test.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_test.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.hpp svneol=native#text/plain
