@@ -3,7 +3,6 @@ boost/libs/python/pyste/dist/*.pyc
 boost/libs/python/pyste/dist/*.zip
 boost/libs/python/pyste/src/*.pyc
 boost/libs/python/pyste/tests/*.arg
-boost/libs/python/pyste/tests/*.cpp
 boost/libs/python/pyste/tests/*.dll
 boost/libs/python/pyste/tests/*.exp
 boost/libs/python/pyste/tests/*.lib
