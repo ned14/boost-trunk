@@ -5709,8 +5709,10 @@ boost/tools/build/test/dependency-test/x.foo -text
 boost/tools/build/test/dependency-test/y.foo -text
 boost/tools/build/test/dependency_test.py svneol=native#text/x-python
 boost/tools/build/test/direct-request-test/Jamfile svneol=native#text/plain
+boost/tools/build/test/direct-request-test/Jamfile2 -text
 boost/tools/build/test/direct-request-test/a.cpp svneol=native#text/plain
 boost/tools/build/test/direct-request-test/b.cpp svneol=native#text/plain
+boost/tools/build/test/direct-request-test/b_inverse.cpp svneol=native#text/plain
 boost/tools/build/test/direct-request-test/project-root.jam svneol=native#text/plain
 boost/tools/build/test/direct_request_test.py svneol=native#text/x-python
 boost/tools/build/test/echo_args.jam svneol=native#text/plain
@@ -6069,8 +6071,10 @@ boost/tools/build/v2/test/dependency-test/x.foo -text
 boost/tools/build/v2/test/dependency-test/y.foo -text
 boost/tools/build/v2/test/dependency_test.py svneol=native#text/x-python
 boost/tools/build/v2/test/direct-request-test/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/direct-request-test/Jamfile2 -text
 boost/tools/build/v2/test/direct-request-test/a.cpp svneol=native#text/plain
 boost/tools/build/v2/test/direct-request-test/b.cpp svneol=native#text/plain
+boost/tools/build/v2/test/direct-request-test/b_inverse.cpp svneol=native#text/plain
 boost/tools/build/v2/test/direct-request-test/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/direct_request_test.py svneol=native#text/x-python
 boost/tools/build/v2/test/echo_args.jam svneol=native#text/plain
