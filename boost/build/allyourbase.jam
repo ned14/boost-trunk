@@ -169,7 +169,7 @@ if $(NT)
     SUFLIB          ?= .lib ;
     SUFOBJ          ?= .obj ;
     SUFEXE          ?= .exe ;
-    SUFDLL          ?= .dll ;
+    SUFDLL          ?= .dll .lib ;
     NOARSCAN        ?= true ;
     
     # dwa 6/4/01 - removed compiler determination for boost
@@ -437,9 +437,10 @@ OSFULL = $(OS)$(OSVER)$(OSPLAT) $(OS)$(OSPLAT) $(OS)$(OSVER) $(OS) ;
 # Base dependencies - first for "bootstrap" kinds of rules
 #
 
-DEPENDS all : shell files lib exe obj ;
-DEPENDS all shell files lib exe obj : first ;
-NOTFILE all first shell files lib exe obj dirs clean uninstall ;
+# dwa 6/17/01 - added test
+DEPENDS all : shell files lib exe obj test ;
+DEPENDS all shell files lib exe obj test : first ;
+NOTFILE all first shell files lib exe obj dirs clean uninstall test ;
 ALWAYS clean uninstall ;
 
 #
@@ -1178,6 +1179,12 @@ rule SubDir
     RELATIVE_SUBDIR_TOKENS = [ simplify-path-tokens [ split-path $($(<[1])) ] $(SUBDIR_TOKENS) ] ;
     RELATIVE_SUBDIR = [ join-path $(RELATIVE_SUBDIR_TOKENS) ] ;
 }
+# These are the global variables that get set up by SubDir. If you need to
+# invoke SubDir temporarily and then restore them, declare
+#       local $(gSUBDIR_GLOBALS) ;
+gSUBDIR_GLOBALS = SUBDIR SUBDIR_TOKENS SEARCH_SOURCE LOCATE_SOURCE LOCATE_TARGET
+    SOURCE_GRIST RELATIVE_SUBDIR RELATIVE_SUBDIR_TOKENS ; 
+
 
 # dwa 6/4/01 - added for boost
 # strip-grist value
@@ -1571,6 +1578,7 @@ rule FRelPath
     }
 }
 
+# dwa 6/17/01 - modified for boost to handle multiple suffixes
 rule FAppendSuffix
 {
    # E.g., "FAppendSuffix yacc lex foo.bat : $(SUFEXE) ;"
@@ -1585,7 +1593,7 @@ rule FAppendSuffix
         {
             if $(_i:S)
             {
-                _o += $(_i) ;
+                _o += $(_i) $(_i:S=$(>[2-)) ;
             }
             else
             {

@@ -10,8 +10,6 @@
 BCC_TOOL_PATH = $(BCCROOT)$(SLASH)bin$(SLASH) ;
 BCC_TOOL_PATH ?= "" ; # Don't clobber adjoining text if BCCROOT isn't set
 
-detect-build-tools borland : bcc32 ;
-
 # specify compilation and link flags
 flags borland CFLAGS <debug-symbols>on : -v ;
 flags borland LINKFLAGS <debug-symbols>on : -v ;
@@ -23,19 +21,19 @@ flags borland CFLAGS <inlining>on : -vi -w-inl ;
 flags borland CFLAGS <inlining>full : -vi -w-inl ;
 
 flags borland LINKFLAGS <threading>multi : -tWM ;
-flags borland LINKFLAGS <user-interface>gui : -tW ;
 flags borland LINKFLAGS <runtime-link>dynamic : -tWR ;
-flags borland LINKFLAGS <user-interface>console : -tWC ;
+flags borland LINKFLAGS <user-interface>gui/<target-type>EXE : -tW ;
+flags borland LINKFLAGS <user-interface>console/<target-type>EXE : -tWC ;
 flags borland LINKFLAGS <wide-character-support>on : -WU ;
 
-# -tWD Make the target a Windows .DLL with all functions exportable. 
+flags msvc LINKFLAGS <target-type>DLL : -tWD ;
 
 # C0D32.OBJ - 32-bit DLL startup module (cod32w: wide-char version; cod32x: no
 # exception handling)
 flags borland CFLAGS <threading>multi : -tWM ;
-flags borland CFLAGS <user-interface>gui : -tW ;
+# flags borland CFLAGS <user-interface>gui/<target-type>EXE : -tW ;
 flags borland CFLAGS <runtime-link>dynamic : -tWR ;
-flags borland CFLAGS <user-interface>console : -tWC ;
+# flags borland CFLAGS <user-interface>console/<target-type>EXE : -tWC ;
 flags borland CFLAGS <wide-character-support>on : -WU ;
 
 # Apparently not needed when invoking the linker through bcc32
@@ -56,52 +54,73 @@ flags borland STDLIBPATH : $(BCCROOT)$(SLASH)lib ;
 # For detailed information about borland tools and their command-line switches,
 # see http://www.objectcentral.com/vide/help/videdoc/bcc32.html
 
+rule use-tool
+{
+    $(>) on $(<) = $(3:G=borland-tools:S=.exe) ;
+    DEPENDS $(<) : $(3:G=borland-tools:S=.exe) ;
+    SEARCH on $(3:G=borland-tools:S=.exe) = $(BCCROOT)$(SLASH)bin $(PATH) ;
+}
+
 #### Link ####
 
 rule Link-action
 {
+    use-tool $(<) : LINKER : bcc32 ;
     borland-Link-action $(<) : $(>) ;
+    if $(3) = DLL
+    {
+        use-tool $(<) : IMPLIB : implib ;
+        borland-IMPLIB-action $(<) : $(>) ;
+    }
 }
 
 # bcc32 needs to have ilink32 in the path in order to invoke it, so explicitly
 # specifying $(BCC_TOOL_PATH)bcc32 doesn't help. You need to add
 # $(BCC_TOOL_PATH) to the path
-actions borland-Link-action bind NEEDLIBS
+actions borland-Link-action bind NEEDLIBS LINKER
 {
     set PATH=$(BCC_TOOL_PATH);%PATH%
-    bcc32 -q $(LINKFLAGS) -L"$(BCCROOT)$(SLASH)lib" -e"$(<)" "$(>)" "$(NEEDLIBS)" 
+    $(LINKER) -q $(LINKFLAGS) -L"$(BCCROOT)$(SLASH)lib" -e"$(<[1])" "$(>)" "$(NEEDLIBS)" 
+}
+
+actions borland-IMPLIB-action bind IMPLIB
+{
+    $(IMPLIB) $(<[2]) $(<[1])
 }
 
 #### Cc #####
 
 rule Cc-action
 {
+    use-tool $(<) : CC : bcc32 ;
     borland-Cc-action $(<) : $(>) ;
 }
 
-actions borland-Cc-action
+actions borland-Cc-action bind CC
 {
-    $(BCC_TOOL_PATH)bcc32 -q -c -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
+    $(CC) -q -c -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
 }
 
 #### C++ ####
 rule C++-action
 {
+    use-tool $(<) : C++ : bcc32 ;
     borland-C++-action $(<) : $(>) ;
 }
 
-actions borland-C++-action
+actions borland-C++-action bind C++
 {
-    $(BCC_TOOL_PATH)bcc32 -q -c -P -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
+    $(C++) -q -c -P -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
 }
 
 #### Archive ####
 rule Archive-action
 {
+    use-tool $(<) : LD : tlib ;
     borland-Archive-action $(<) : $(>) ;
 }
 
-actions updated together piecemeal borland-Archive-action
+actions updated together piecemeal borland-Archive-action bind LD
 {
-    $(BCC_TOOL_PATH)tlib /P32 /u /a /C "$(<)" +"$(>)"
+    $(LD) /P32 /u /a /C "$(<)" +"$(>)"
 }

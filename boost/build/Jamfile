@@ -1,6 +1,7 @@
 subproject ; # Hmm, this doesn't look too good, does it?
 
 exe foo : foo.cpp ;
+unit-test testfoo : foo.cpp ;
 lib top : top.cpp ;
 lib dtop : top.cpp ;
 

@@ -17,6 +17,10 @@ rule assert_equal_sets
     }
 }
 
+# FAppendSuffix
+assert_equal [ FAppendSuffix yacc lex foo.bat : ] : yacc lex foo.bat ;
+assert_equal [ FAppendSuffix yacc lex foo.bat : .exe ] : yacc.exe lex.exe foo.bat ;
+assert_equal [ FAppendSuffix yacc lex foo.bat : .dll .lib ] : yacc.dll yacc.lib lex.dll lex.lib foo.bat foo.lib ;
 
 # sort
 assert_equal [ sort 7 3 5 6 2 4 ] : 2 3 4 5 6 7 ;
@@ -112,6 +116,17 @@ assert_equal [ equal-sets 1 2 3 3 4 : 3 2 2 1 ] : ;
 
 # select-properties
 {
+    local TOOLS = gcc msvc ;
+    
+    local gRELEVANT_FEATURES(msvc)  = <debug-symbols> <optimization> <inlining> <inline> <runtime-build> <runtime-link> <threading> <define> <undef> <include> <target-type> ;
+    local gRELEVANT_FEATURES(gcc)  = <runtime-link> <debug-symbols> <optimization> <inlining> <profiling> <define> <undef> <include> <shared-linkable> <target-type> ;
+    local gFREE_FEATURES =  <define> <undef> <include> ;
+    
+    local gBASE_PROPERTIES(msvc,debug)  = <debug-symbols>on <inlining>off <optimization>off <runtime-build>debug <threading>single ;
+    local gBASE_PROPERTIES(gcc,debug)  = <debug-symbols>on <inlining>off <optimization>off <profiling>off <shared-linkable>false ;
+    local gBASE_PROPERTIES(msvc,release)  = <debug-symbols>off <define>NDEBUG <inlining>full <optimization>speed <runtime-build>release <threading>single ;
+    local gBASE_PROPERTIES(gcc,release)  = <debug-symbols>off <define>NDEBUG <inlining>full <optimization>speed <profiling>off <shared-linkable>false ;
+    
     local TEST_PROPERTIES = <inlining>off <define>FOO <*><release><inlining>on
                   <debug><define>DEBUG <msvc><release><foo>bar
                   <gcc><*><inlining>on
@@ -120,6 +135,7 @@ assert_equal [ equal-sets 1 2 3 3 4 : 3 2 2 1 ] : ;
                   <msvc><*><optimization>off
                   <*><debug><optimization>off
                   ;
+                  
     assert_equal_sets [ select-properties gcc debug my-target : $(TEST_PROPERTIES) ]
         : <define>FOO <define>DEBUG <inlining>on <optimization>off ;
 
@@ -193,4 +209,17 @@ assert_equal [ directory-of a$(SLASH)b c d$(SLASH)e$(SLASH)f ] : a . d$(SLASH)e 
     assert_equal $(FLAGS2) : b ;
     flags toolset FLAGS1 <a>b/<c>d <a>b/<e>f : foobar ;
     assert_equal $(FLAGS1) : foobar b d f foobar ;
+}
+
+# get-BUILD
+{
+    local DEFAULT_BUILD = a ;
+    BUILD = b ;
+    assert_equal [ get-BUILD c <d>e ] : b ;
+    BUILD = ;
+    assert_equal [ get-BUILD c <d>e ] : c <d>e ;
+    assert_equal [ get-BUILD ] : a ;
+    assert_equal [ get-BUILD <d>e ] : <d>e a ;
+    BUILD = <f>g ;
+    assert_equal [ get-BUILD c <d>e ] : <f>g a ;
 }

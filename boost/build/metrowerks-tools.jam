@@ -18,6 +18,8 @@ flags metrowerks HDRS <include> ;
 
 flags metrowerks CFLAGS <debug-symbols>on : -g ;
 flags metrowerks LINKFLAGS <debug-symbols>on : -g ;
+
+flags metrowerks LINKFLAGS <target-type>DLL : -shared ;
 flags metrowerks CFLAGS <optimization>off : -O0 ;
 flags metrowerks CFLAGS <optimization>speed : -Op ;
 flags metrowerks CFLAGS <optimization>space : -Os ;
@@ -34,6 +36,7 @@ flags metrowerks STDLIBS <runtime-link>dynamic : mwcrtldll.lib;gdi32.lib;user32.
 rule Link-action
 {
     metrowerks-Link-action $(<) : $(>) ;
+    IMPLIB_COMMAND on $(<) = "-implib " ;
 }
 
 # Here we set the environment variable MWWinx86LibraryFiles (customize for other
@@ -44,7 +47,7 @@ actions metrowerks-Link-action bind NEEDLIBS
 {
     $(METROWERKS_SETUP)
     set MWWinx86LibraryFiles=$(STDLIBS)
-    mwld -msgstyle gcc $(LINKFLAGS) -o "$(<)" $(UNDEFS) $(NEEDLIBS) "$(>)"
+    mwld -export dllexport -nowraplines -msgstyle gcc $(LINKFLAGS) $(IMPLIB_COMMAND)"$(<[2])" -o "$(<[1])"  $(UNDEFS) $(NEEDLIBS) "$(>)"
 }
 
 #### Cc #####

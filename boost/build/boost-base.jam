@@ -82,11 +82,6 @@ rule detect-build-tools
     detection-command on $(<) = $($(<).bin-directory)$(>) ;
 }
 
-actions build-tools
-{
-    $(detection-command)
-}
-
 rule library-file
 {
     LibraryFromObjects $(<) : [ Objects $(>) ] ;
@@ -96,26 +91,21 @@ rule executable-file
 {
     type-DEPENDS exe : $(<) ;
     main-from-objects $(<) : [ Objects $(>) ] : EXE ;
-
-    # Setting RUN_ALL causes all executable targets to be run.
-    if $(RUN_ALL)
-    {
-        Run $(<) ;
-    }
 }
 
-rule dll-file
+rule dll-files
 {
     type-DEPENDS dll : $(<) ;
     
     # Set up the import library dependency on Windows
-    if $(gEXPORT_SUFFIX(DLL))
+    local f ;
+    for f in $(<[2-])
     {
-        INCLUDES $(<) : $(<:S=)$(gEXPORT_SUFFIX(DLL)) ;
-        INCLUDES $(<:S=)$(gEXPORT_SUFFIX(DLL)) : $(<) ;
+        INCLUDES $(<) : $(f) ;
+        INCLUDES $(f) : $(<) ;
     }
     
-    main-from-objects $(<) $(<:S=)$(gEXPORT_SUFFIX(DLL)) : [ Objects $(>) ] : DLL ;
+    main-from-objects [ FAppendSuffix $(<) : $(SUFDLL) ] : [ Objects $(>) ] : DLL ;
 }
 
 # main-from-objects exe-target : obj-target... : ("EXE"|"DLL")
@@ -428,41 +418,30 @@ rule equal-sets
     }
 }
 
-# feature name : [values...] : [ PATH ]
+# feature name : [values...]
 #
-# Declares a feature with the given name. If values is empty, declares a free
-# feature; declares a simple feature otherwise. "PATH" should be supplied for a
-# free feature whose values might be paths specified relative to the
-# (sub)project directory.
+# Declares a feature with the given name, and the given allowed values.
 rule feature
 {
+    if $(<) in $(gFEATURES)
+    {
+        EXIT feature $(<) : $(gFEATURE_VALUES(<$(<)>) redeclared as $(<) : $(>) ;
+    }
+    gFEATURES += <$(<)> ;
     gUNGRISTED(<$(<)>) = $(<) ;
     gFEATURE_VALUES(<$(<)>) = $(>) ;
-    
-    if ( ! $(>) ) && ! ( <$(<)> in $(gFREE_FEATURES) )
-    {
-        gFREE_FEATURES += <$(<)> ;
-        if PATH in $(3)
-        {
-            gPATH_FEATURES += <$(<)> ;
-        }
-    }
-    else
-    {
-        if PATH in $(3)
-        {
-            ECHO "Simple feature" <$(<)> "qualified with PATH in 3rd"
-                  "argument. PATH ignored." ;
-        }
+}
 
-        # Record reverse-transformations between "ungristed property" path
-        # elements and properties.
-        local value ;
-        for value in $(>)
-        {
-            gREGRIST_PROPERTY($(<)-$(value)) = <$(<)>$(value) ;
-        }
-    }
+rule free-feature
+{
+    feature $(<) : $(>) ;
+    gFREE_FEATURES += <$(<)> ;
+}
+
+rule path-feature
+{
+    free-feature $(<) : $(>) ;
+    gPATH_FEATURES += <$(<)> ;
 }
 
 # feature-default <feature>...
@@ -901,6 +880,7 @@ rule declare-local-target
     {
         main-target $(target-id) : $(4) ;
     }
+    return $(gTARGET_FILES($(target-id))) ;
 }
 
 # directory-of files...
@@ -954,9 +934,7 @@ rule dependent-include
         {
             # protect variables from being permanently set by SubDir invocations
             # in included files.
-            local SUBDIR SUBDIR_TOKENS SEARCH_SOURCE LOCATE_SOURCE LOCATE_TARGET ;
-            local SOURCE_GRIST ;
-            local RELATIVE_SUBDIR RELATIVE_SUBDIR_TOKENS ;
+            local $(gSUBDIR_GLOBALS) ;
 
             # this stack allows us to avoid making dependee libraries part of
             # the "type" targets, e.g. all, exe, obj. See rule type-DEPENDS.
@@ -989,8 +967,8 @@ rule segregate-free-properties
 # target with <feature>value2, empty otherwise
 rule is-link-compatible
 {
-    return $(gLINK_COMPATIBLE($(<))) $(gLINK_COMPATIBLE($(<)$(>)))
-        $(gLINK_COMPATIBLE($(<),$(>),$(3))) ;
+    return [ intersection
+        $(<) $(>:G=$(<)) $(>:G=$(<))$(SLASH)$(3:G=$(<)) : $(gLINK_COMPATIBLE) ] ;
 }
 
 # find-compatible-subvariant main-target : toolset variant : dependent-simple-properties
@@ -1049,7 +1027,6 @@ rule find-compatible-subvariant
 # dependent-properties, returning a list of the linkable targets.
 rule link-libraries
 {
-  
   # extract the simple properties from dependent-properties
   local simple-properties
             = [ difference $(3)
@@ -1061,9 +1038,7 @@ rule link-libraries
     local new-subdir = TOP [ top-relative-tokens [ directory-of $(lib-path) ] ] ;
     
     # protect global variables from being permanently set by SubDir
-    local SUBDIR SUBDIR_TOKENS SEARCH_SOURCE LOCATE_SOURCE LOCATE_TARGET ;
-    local SOURCE_GRIST ;
-    local RELATIVE_SUBDIR RELATIVE_SUBDIR_TOKENS ;
+    local $(gSUBDIR_GLOBALS) ;
 
     # Enter the dependee subproject
     SubDir $(new-subdir) ;
@@ -1072,12 +1047,11 @@ rule link-libraries
     local lib-subvariant = [ find-compatible-subvariant $(lib-target) : $(>) : $(3) ] ;
 
     # Generate build instructions for the library target
-    local lib-grist
+    local lib-files
         = [ subvariant-target $(lib-target) : $(lib-subvariant) : $(>) ] ;
 
-    # Adde the name of the built target file
-    local suffix = $(gIMPORT_SUFFIX($(gTARGET_TYPE($(lib-target))))) ;
-    result += [ FAppendSuffix $(lib-target:G=$(lib-grist)) : $(suffix) ] ;
+    # Add the name of the built target file
+    result += $(lib-files[1]) ;
   }
   return $(result) ;
 }
@@ -1087,13 +1061,18 @@ DEFAULT_BUILD ?= debug ;
 
 # get-BUILD [target-default-build]
 #
-# If BUILD is set, return it. Otherwise if target-default-build is non-empty,
-# return it. Otherwise, return $(DEFAULT_BUILD)
+# pick the first of ($(BUILD), $(>), $(DEFAULT_BUILD)) which is set. If it
+# contains no variants, add variants from $(DEFAULT_BUILD).
 rule get-BUILD
 {
   local build = $(BUILD) ;
   build ?= $(<) ;
   build ?= $(DEFAULT_BUILD) ;
+  local variants = [ select-ungristed $(build) ] ;
+  if ! $(variants)
+  {
+    build += [ select-ungristed $(DEFAULT_BUILD) ] ;
+  }
   return $(build) ;
 }
 
@@ -1146,20 +1125,27 @@ else
 #
 # Given target, a main target name gristed with $(SOURCE_GRIST), generate build
 # instructions for a subvariant target using the given toolset, variant, etc.
-# RETURNS: the appropriate grist for built target files of the subvariant.
+#
+# RETURNS: the a list of target names for the files built by the subvariant. If
+# the target is a library, the first filename is the one that should be linked
+# into a dependent target.
 rule subvariant-target 
 {
   # SOURCE_GRIST identifies the subproject directory; TARGET_GRIST will identify
   # the target and subvariant, since unique versions of files will be built for
   # that combination.
   local TARGET_GRIST = [ join-path $(SOURCE_GRIST) $(<:G=) $(>[1]) ] ;
+  local subvariant = $(<:G=$(TARGET_GRIST)) ;
 
   # Do nothing if build instructions and dependencies for this target have
   # already been generated. 
   if ! $(TARGET_GRIST) in $(gDECLARED_TARGETS)
   {
     gDECLARED_TARGETS += $(TARGET_GRIST) ;
-    
+
+    # headers should be identified specific to the target, since search paths
+    # may differ for different subvariants. The same header name or relative
+    # path may refer to different files.
     local HDRGRIST = $(TARGET_GRIST) ;
     local target-type = $(gTARGET_TYPE($(<))) ;
     
@@ -1168,8 +1154,14 @@ rule subvariant-target
     local LOCATE_TARGET
       = [ join-path $(LOCATE_TARGET) $(BIN_DIRECTORY) $(<:G=) $(>[1]) ] ;
 
-    local target-file = [ FAppendSuffix $(<:G=$(TARGET_GRIST)) : $(SUF$(target-type)) ] ;
-    declare-fake-targets $(<) : $(target-file) ;
+    local target-files = [ FAppendSuffix $(subvariant) : $(SUF$(target-type)) ] ;
+
+    # reverse these so that the Windows import library will be first, for
+    # linking to DLLs
+    gTARGET_FILES($(subvariant)) = [ reverse $(target-files) ] ;
+    gTARGET_FILES($(<)) += $(gTARGET_FILES($(subvariant))) ;
+    
+    declare-fake-targets $(<) : $(target-files) ;
 
     # set up gBUILD_PROPERTIES for include-tools (below)
     local gBUILD_PROPERTIES = $(>[2-]) ;
@@ -1180,20 +1172,19 @@ rule subvariant-target
     include-tools $(3[1]) ;
 
     # transfer target variables to the target file.
-    set-target-variables $(target-file) ;
+    set-target-variables $(target-files) ;
 
-    # dispatch to the appropriate declaration function. It would be much better
+    # dispatch to the appropriate declaration function. It would be much cleaner
     # to be able to do this with some sort of indirection, but Jam doesn't yet
     # support it.
-
     switch $(target-type)
     {
       case EXE :
-        executable-file $(target-file) : $(gTARGET_SOURCES($(<))) ;
+        executable-file $(target-files) : $(gTARGET_SOURCES($(<))) ;
       case LIB :
-        library-file $(target-file) : $(gTARGET_SOURCES($(<))) ;
+        library-file $(target-files) : $(gTARGET_SOURCES($(<))) ;
       case DLL :
-        dll-file $(target-file) : $(gTARGET_SOURCES($(<))) ;
+        dll-files $(target-files) : $(gTARGET_SOURCES($(<))) ;
       case * : EXIT "unknown target type:" $(target-type) ;
     }
 
@@ -1201,17 +1192,18 @@ rule subvariant-target
     {
         # generate library build instructions
         local libs = [ link-libraries $(gTARGET_LIBS($(<))) : $(3) : $(>[2-]) ] ;
-        NEEDLIBS on $(target-file) += $(libs) ;
-        DEPENDS $(target-file) : $(libs) ; 
+        NEEDLIBS on $(target-files) += $(libs) ;
+        DEPENDS $(target-files) : $(libs) ; 
     }
   }
-  return $(TARGET_GRIST) ;
+  return $(gTARGET_FILES($(subvariant))) ;
 }
 
-rule main-target # target : local-build
+# main-target target : local-build
+#
+# Generates requested subvariant build instructions for the given main target
+rule main-target
 {
-  local target-type = $(gTARGET_TYPE($(<))) ;
-
   local BUILD = [ get-BUILD $(>) ] ;
   local variants = [ select-ungristed $(BUILD) ] ;
   local build-request = [ difference $(BUILD) : $(variants) ] ;
@@ -1233,8 +1225,7 @@ rule main-target # target : local-build
       for x in $(expanded)
       {
           subvariant-target $(<)
-            : [ split-path-at-grist $(x) ]
-            : $(toolset) $(v) ;
+                : [ split-path-at-grist $(x) ] : $(toolset) $(v) ;
       }
     }
   }
@@ -1264,6 +1255,21 @@ rule lib
     declare-local-target $(<) : $(2) : $(3) : $(4) : LIB ;
 }
 
+# unit-test target : sources : requirements : local-build
+#
+# Declare an executable target, to be run by tests.
+rule unit-test
+{
+    
+    local files = [ exe $(<) : $(2) : $(3) : $(4) : EXE ] ;
+    type-DEPENDS test : $(files) ;
+    local file ;
+    
+    for file in $(files)
+    {
+        Run $(file) ;
+    }
+}
 
 if ! ( NDEBUG in $(TEST) )
 {

@@ -1,4 +1,4 @@
 subproject y ;
 
-exe y : y.cpp <lib>../top : <include>.. ;
-exe foo : foo.cpp ;
+unit-test y : y.cpp <lib>../top : <include>.. ;
+unit-test foo : foo.cpp ;

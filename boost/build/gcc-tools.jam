@@ -1,3 +1,9 @@
+# compute directories for invoking GCC
+GCC_BIN_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)bin ;
+GCC_BIN_DIRECTORY ?= "" ; # Don't clobber tool names if GCC_ROOT_DIRECTORY not set
+GCC_INCLUDE_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)include ;
+GCC_STDLIB_DIRECTORY ?= $(GCC_ROOT_DIRECTORY)$(SLASH)lib ;
+
 gcc.bin-directory = [ conditional $(gcc.root-directory) : $(gcc.root-directory)$(SLASH)bin$(SLASH) : " " ] ;
 detect-build-tools gcc : "g++ -v" ;
 
@@ -18,8 +24,8 @@ flags gcc DEFINES <define> ;
 flags gcc UNDEFS <undef> ;
 flags gcc HDRS <include> ;
 
-flags gcc STDHDRS : $(gcc.root-directory)$(SLASH)include ;
-flags gcc STDLIBPATH : $(gcc.root-directory)$(SLASH)lib ;
+flags gcc STDHDRS : $(GCC_INCLUDE_DIRECTORY) ;
+flags gcc STDLIBPATH : $(GCC_STDLIB_DIRECTORY) ;
 
 flags gcc CFLAGS <shared-linkable>true : -fPIC ;
 flags gcc LINKFLAGS <shared-linkable>true : -fPIC ;
@@ -43,17 +49,17 @@ rule Link-action
 # for gcc, we repeat all libraries so that dependencies are always resolved
 actions gcc-Link-action bind NEEDLIBS
 {
-    $(gcc.bin-directory)g++ $(LINKFLAGS) -o "$(<[1])" -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)"
+    $(GCC_BIN_DIRECTORY)g++ $(LINKFLAGS) -o "$(<[1])" -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)"
 }
 
 actions gcc-DLL-action bind NEEDLIBS 
 {
-    $(gcc.bin-directory)g++ -Wl,--exclude-symbols,_bss_end__:_bss_start__:_data_end__:_data_start__ -Wl,--out-implib,$(<[2]) $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
+    $(GCC_BIN_DIRECTORY)g++ -Wl,--exclude-symbols,_bss_end__:_bss_start__:_data_end__:_data_start__ -Wl,--out-implib,$(<[2]) $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
 }
 
 # older actions
-#    $(gcc.bin-directory)dlltool -e $(<[1]:S=:D=:G=) -l "$(<[2])" "$(>)"
-#    $(gcc.bin-directory)g++ $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
+#    $(GCC_BIN_DIRECTORY)dlltool -e $(<[1]:S=:D=:G=) -l "$(<[2])" "$(>)"
+#    $(GCC_BIN_DIRECTORY)g++ $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
 
 
 #### Cc #####
@@ -65,7 +71,7 @@ rule Cc-action
 
 actions gcc-Cc-action
 {
-    $(gcc.bin-directory)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
+    $(GCC_BIN_DIRECTORY)gcc -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -76,7 +82,7 @@ rule C++-action
 
 actions gcc-C++-action
 {
-    $(gcc.bin-directory)g++ -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
+    $(GCC_BIN_DIRECTORY)g++ -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### Archive ####
