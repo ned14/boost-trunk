@@ -4390,6 +4390,7 @@ boost/libs/thread/test/test_once.cpp svneol=native#text/plain
 boost/libs/thread/test/test_thread.cpp svneol=native#text/plain
 boost/libs/thread/test/test_tss.cpp svneol=native#text/plain
 boost/libs/thread/test/test_xtime.cpp svneol=native#text/plain
+boost/libs/thread/test/util.inl -text
 boost/libs/thread/tutorial/Jamfile svneol=native#text/plain
 boost/libs/thread/tutorial/bounded_buffer.cpp svneol=native#text/plain
 boost/libs/thread/tutorial/counter.cpp svneol=native#text/plain
