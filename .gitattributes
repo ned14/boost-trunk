@@ -19,6 +19,7 @@ boost/README svneol=native#text/plain
 boost/boost-build.jam svneol=native#text/plain
 boost/boost.css svneol=native#text/css
 boost/boost/algorithm/minmax.hpp svneol=native#text/plain
+boost/boost/algorithm/minmax_element.hpp svneol=native#text/plain
 boost/boost/algorithm/string.hpp svneol=native#text/plain
 boost/boost/algorithm/string/case_conv.hpp svneol=native#text/plain
 boost/boost/algorithm/string/classification.hpp svneol=native#text/plain
