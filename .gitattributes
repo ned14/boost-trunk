@@ -6844,6 +6844,7 @@ boost/libs/python/src/str.cpp svneol=native#text/plain
 boost/libs/python/src/tuple.cpp svneol=native#text/plain
 boost/libs/python/src/wrapper.cpp svneol=native#text/plain
 boost/libs/python/test/Jamfile svneol=native#text/plain
+boost/libs/python/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/python/test/args.cpp svneol=native#text/plain
 boost/libs/python/test/args.py svneol=native#text/x-python
 boost/libs/python/test/as_to_python_function.cpp svneol=native#text/plain
