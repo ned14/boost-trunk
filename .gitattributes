@@ -2683,6 +2683,7 @@ boost/libs/thread/build/threads.jam svneol=native#text/plain
 boost/libs/thread/build/threads.mcp -text svneol=unset#unset
 boost/libs/thread/doc/acknowledgments.html svneol=native#text/html
 boost/libs/thread/doc/bibliography.html svneol=native#text/html
+boost/libs/thread/doc/build.html svneol=native#text/html
 boost/libs/thread/doc/condition.html svneol=native#text/html
 boost/libs/thread/doc/configuration.html svneol=native#text/html
 boost/libs/thread/doc/definitions.html svneol=native#text/html
