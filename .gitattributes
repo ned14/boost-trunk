@@ -7994,7 +7994,6 @@ boost/tools/build/v2/example/make/lib/b.cpp svneol=native#text/plain
 boost/tools/build/v2/example/make/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/make/readme.txt svneol=native#text/plain
 boost/tools/build/v2/example/qt-ui/Jamfile svneol=native#text/plain
-boost/tools/build/v2/example/qt-ui/hello_world.pro -text
 boost/tools/build/v2/example/qt-ui/hello_world_widget.ui -text
 boost/tools/build/v2/example/qt-ui/main.cpp svneol=native#text/plain
 boost/tools/build/v2/example/qt-ui/project-root.jam svneol=native#text/plain
