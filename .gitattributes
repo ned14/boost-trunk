@@ -58,6 +58,7 @@ boost/libs/compose/print.hpp svneol=native#text/plain
 boost/libs/compose/print.hpp.html svneol=native#text/html
 boost/libs/config/config_test.cpp svneol=native#text/plain
 boost/libs/config/index.htm svneol=native#text/html
+boost/libs/cs-win32.html svneol=native#text/html
 boost/libs/dir_it/boost.h svneol=native#text/plain
 boost/libs/dir_it/dir_it.html svneol=native#text/html
 boost/libs/dir_it/dir_it.zip -text svneol=unset#application/zip
