@@ -575,6 +575,7 @@ boost/boost/preprocessor/repetition.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/detail/bcc/for_p.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/detail/edg/for.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/detail/for.hpp svneol=native#text/plain
+boost/boost/preprocessor/repetition/detail/msvc/for.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/detail/unrolled.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/enum.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/enum_binary_params.hpp svneol=native#text/plain
