@@ -8204,6 +8204,7 @@ boost/tools/build/v1/como-win32-4.3.3-vc7.1-tools.jam svneol=native#text/plain
 boost/tools/build/v1/como-win32-tools.jam svneol=native#text/plain
 boost/tools/build/v1/cw-8.3-tools.jam svneol=native#text/plain
 boost/tools/build/v1/cw-9.2-tools.jam svneol=native#text/plain
+boost/tools/build/v1/cw-9.3-tools.jam svneol=native#text/plain
 boost/tools/build/v1/cw-tools.html svneol=native#text/html
 boost/tools/build/v1/cw-tools.jam svneol=native#text/plain
 boost/tools/build/v1/darwin-tools.html svneol=native#text/html
