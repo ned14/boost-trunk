@@ -604,7 +604,6 @@ boost/boost/iostreams/detail/character.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/closer.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/codecvt_helper.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/codecvt_holder.hpp svneol=native#text/plain
-boost/boost/iostreams/detail/compose.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/auto_link.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/bzip2.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/dyn_link.hpp svneol=native#text/plain
