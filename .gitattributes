@@ -3195,6 +3195,7 @@ boost/libs/iterator/doc/reverse_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/reverse_iterator_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/reverse_iterator_eg.rst svneol=native#text/plain
 boost/libs/iterator/doc/reverse_iterator_ref.rst svneol=native#text/plain
+boost/libs/iterator/doc/rst2html -text
 boost/libs/iterator/doc/sources.py svneol=native#text/x-python
 boost/libs/iterator/doc/style.tex -text
 boost/libs/iterator/doc/transform_iterator.html svneol=native#text/html
