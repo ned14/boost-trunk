@@ -2394,6 +2394,7 @@ boost/tools/build/v1/tru64cxx-tools.jam svneol=native#text/plain
 boost/tools/build/v1/tru64cxx65-tools.jam svneol=native#text/plain
 boost/tools/build/v1/unit-tests.jam svneol=native#text/plain
 boost/tools/build/v1/vacpp-tools.jam svneol=native#text/plain
+boost/tools/build/v1/vc7-tools.jam svneol=native#text/plain
 boost/tools/build/v2/architecture.html svneol=native#text/html
 boost/tools/build/v2/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/build/build-request.jam svneol=native#text/plain
@@ -2439,6 +2440,7 @@ boost/tools/build/v2/util/set.jam svneol=native#text/plain
 boost/tools/build/v2/util/string.jam svneol=native#text/plain
 boost/tools/build/v2/util/utility.jam svneol=native#text/plain
 boost/tools/build/vacpp-tools.jam svneol=native#text/plain
+boost/tools/build/vc7-tools.jam svneol=native#text/plain
 boost/tools/jam/src/Build.com -text
 boost/tools/jam/src/Build.mpw -text
 boost/tools/jam/src/INSTALL svneol=native#text/plain
