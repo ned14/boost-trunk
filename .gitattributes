@@ -6096,7 +6096,6 @@ boost/libs/serialization/borland6ide/Attic/test_simple_class.res -text
 boost/libs/serialization/borland6ide/test_simple_class.bpf -text
 boost/libs/serialization/borland6ide/test_simple_class.bpr -text
 boost/libs/serialization/borland6ide/test_simple_class.res -text
-boost/libs/serialization/borland6ide/test_simple_class.tds -text
 boost/libs/serialization/build/Jamfile svneol=native#text/plain
 boost/libs/serialization/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/serialization/doc/acknowledgments.html svneol=native#text/html
