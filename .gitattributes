@@ -165,6 +165,7 @@ boost/development/py_cpp/newtypes_d.cpp svneol=native#text/plain
 boost/development/py_cpp/none.h svneol=native#text/plain
 boost/development/py_cpp/objects.cpp svneol=native#text/plain
 boost/development/py_cpp/objects.h svneol=native#text/plain
+boost/development/py_cpp/operators.h svneol=native#text/plain
 boost/development/py_cpp/overloading.html svneol=native#text/html
 boost/development/py_cpp/overriding.html svneol=native#text/html
 boost/development/py_cpp/pointers.html svneol=native#text/html
