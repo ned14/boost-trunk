@@ -1939,6 +1939,7 @@ boost/libs/date_time/test/posix_time/testiterator.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testlocal_adjustor.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testparse_time.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testperiod.cpp svneol=native#text/plain
+boost/libs/date_time/test/posix_time/teststreams.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testtime.cpp svneol=native#text/plain
 boost/libs/date_time/test/testconstrained_value.cpp svneol=native#text/plain
 boost/libs/date_time/test/testgregorian_calendar.cpp svneol=native#text/plain
