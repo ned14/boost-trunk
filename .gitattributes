@@ -2165,6 +2165,9 @@ boost/boost/test/detail/basic_cstring/compare.hpp svneol=native#text/plain
 boost/boost/test/detail/basic_cstring/io.hpp svneol=native#text/plain
 boost/boost/test/detail/class_properties.hpp svneol=native#text/plain
 boost/boost/test/detail/fixed_mapping.hpp svneol=native#text/plain
+boost/boost/test/detail/iterator/ifstream_line_iterator.hpp svneol=native#text/plain
+boost/boost/test/detail/iterator/input_iterator_facade.hpp svneol=native#text/plain
+boost/boost/test/detail/iterator/istream_line_iterator.hpp svneol=native#text/plain
 boost/boost/test/detail/nullstream.hpp svneol=native#text/plain
 boost/boost/test/detail/supplied_log_formatters.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_config.hpp svneol=native#text/plain
@@ -6200,6 +6203,7 @@ boost/libs/test/build/msvc71_proj/custom_exception_test.vcproj -text
 boost/libs/test/build/msvc71_proj/errors_handling_test.vcproj -text
 boost/libs/test/build/msvc71_proj/exec_mon_example.vcproj -text
 boost/libs/test/build/msvc71_proj/fixed_mapping_test.vcproj -text
+boost/libs/test/build/msvc71_proj/ifstream_line_iterator_test.vcproj -text
 boost/libs/test/build/msvc71_proj/minimal_test.vcproj -text
 boost/libs/test/build/msvc71_proj/online_test.vcproj -text
 boost/libs/test/build/msvc71_proj/output_test_stream_test.vcproj -text
@@ -6384,8 +6388,8 @@ boost/libs/test/test/basic_cstring_test.cpp svneol=native#text/plain
 boost/libs/test/test/class_properties_test.cpp svneol=native#text/plain
 boost/libs/test/test/custom_exception_test.cpp svneol=native#text/plain
 boost/libs/test/test/errors_handling_test.cpp svneol=native#text/plain
-boost/libs/test/test/errors_handling_test.pattern -text
 boost/libs/test/test/fixed_mapping_test.cpp svneol=native#text/plain
+boost/libs/test/test/ifstream_line_iterator_test.cpp svneol=native#text/plain
 boost/libs/test/test/minimal_test.cpp svneol=native#text/plain
 boost/libs/test/test/online_test.cpp svneol=native#text/plain
 boost/libs/test/test/output_test_stream_test.cpp svneol=native#text/plain
@@ -6395,12 +6399,15 @@ boost/libs/test/test/prg_exec_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/prg_exec_fail3.cpp svneol=native#text/plain
 boost/libs/test/test/prg_exec_fail4.cpp svneol=native#text/plain
 boost/libs/test/test/result_report_test.cpp svneol=native#text/plain
-boost/libs/test/test/result_report_test.pattern -text
 boost/libs/test/test/test_case_template_test.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail1.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail3.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail4.cpp svneol=native#text/plain
+boost/libs/test/test/test_files/errors_handling_test.pattern -text
+boost/libs/test/test/test_files/ifstream_line_iterator.tst1 -text
+boost/libs/test/test/test_files/ifstream_line_iterator.tst2 -text
+boost/libs/test/test/test_files/result_report_test.pattern -text
 boost/libs/test/test/test_fp_comparisons.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_test.cpp svneol=native#text/plain
 boost/libs/test/test/unit_test_suite_ex_test.cpp svneol=native#text/plain
