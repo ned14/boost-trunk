@@ -4456,6 +4456,7 @@ boost/libs/spirit/example/application/cpp/cpp/cpp_ifblock.hpp svneol=native#text
 boost/libs/spirit/example/application/cpp/cpp/cpp_include_pathes.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp/cpp_iteration_context.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp/cpp_iterator.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpp/cpp_macromap.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp_config.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpp_version.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/cpp_lex_interface.hpp svneol=native#text/plain
