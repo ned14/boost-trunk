@@ -1658,6 +1658,7 @@ boost/boost/shared_array.hpp svneol=native#text/plain
 boost/boost/shared_container_iterator.hpp svneol=native#text/plain
 boost/boost/shared_ptr.hpp svneol=native#text/plain
 boost/boost/signal.hpp svneol=native#text/plain
+boost/boost/signals.hpp svneol=native#text/plain
 boost/boost/signals/connection.hpp svneol=native#text/plain
 boost/boost/signals/detail/gen_signal_N.pl svneol=native#text/x-perl
 boost/boost/signals/detail/signal_base.hpp svneol=native#text/plain
