@@ -1146,6 +1146,7 @@ boost/libs/crc/crc_test.cpp svneol=native#text/plain
 boost/libs/crc/index.html svneol=native#text/html
 boost/libs/disjoint_sets/bibliography.html svneol=native#text/html
 boost/libs/disjoint_sets/disjoint_sets.html svneol=native#text/html
+boost/libs/dynamic_bitset/Jamfile svneol=native#text/plain
 boost/libs/dynamic_bitset/bitset_test.hpp svneol=native#text/plain
 boost/libs/dynamic_bitset/dyn_bitset_unit_tests1.cpp svneol=native#text/plain
 boost/libs/dynamic_bitset/dyn_bitset_unit_tests2.cpp svneol=native#text/plain
