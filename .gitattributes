@@ -3894,6 +3894,7 @@ boost/libs/signals/doc/reference/signalN.html svneol=native#text/html
 boost/libs/signals/doc/reference/slot.html svneol=native#text/html
 boost/libs/signals/doc/reference/trackable.html svneol=native#text/html
 boost/libs/signals/doc/reference/visit_each.html svneol=native#text/html
+boost/libs/signals/doc/todo.html svneol=native#text/html
 boost/libs/signals/doc/tutorial.html svneol=native#text/html
 boost/libs/signals/example/Jamfile svneol=native#text/plain
 boost/libs/signals/example/button_click.cpp svneol=native#text/plain
