@@ -1481,6 +1481,7 @@ boost/boost/random/linear_congruential.hpp svneol=native#text/plain
 boost/boost/random/lognormal_distribution.hpp svneol=native#text/plain
 boost/boost/random/mersenne_twister.hpp svneol=native#text/plain
 boost/boost/random/normal_distribution.hpp svneol=native#text/plain
+boost/boost/random/poisson_distribution.hpp svneol=native#text/plain
 boost/boost/random/random_number_generator.hpp svneol=native#text/plain
 boost/boost/random/ranlux.hpp svneol=native#text/plain
 boost/boost/random/shuffle_output.hpp svneol=native#text/plain
