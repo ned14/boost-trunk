@@ -4453,6 +4453,7 @@ boost/status/cs-macosx.html svneol=native#text/html
 boost/status/cs-solaris.html svneol=native#text/html
 boost/status/cs-tru64.html svneol=native#text/html
 boost/status/cs-win32.html svneol=native#text/html
+boost/status/index.html svneol=native#text/html
 boost/status/intel_logo.gif -text svneol=unset#image/gif
 boost/status/kai_logo.gif -text svneol=unset#image/gif
 boost/status/regression.cfg -text
