@@ -448,7 +448,7 @@ YACCFILES       ?= ;
 YACCFLAGS       ?= ;
 
 HDRPATTERN = 
-        "^[     ]*#[    ]*include[      ]*([<\"][^\">]*[\">]).*$" ;
+        "^[     ]*#[    ]*include[      ]*[<\"]([^\">]*)[\">].*$" ;
 
 OSFULL = $(OS)$(OSVER)$(OSPLAT) $(OS)$(OSPLAT) $(OS)$(OSVER) $(OS) ;
 #
@@ -635,25 +635,18 @@ rule HdrRule
     # care if we can't actually find the headers (they may have been
     # within ifdefs),
 
-    local angle-includes = [ subst-list $(>) : "<(.+)>" ] ;
-    local quoted-includes = [ subst-list $(>) : "\"(.+)\"" ] ;
-
     local s ;
 
     if $(HDRGRIST) 
     { 
-        angle-includes = $(angle-includes:G=$(HDRGRIST)) ;
-        quoted-includes = $(quoted-includes:G=$(HDRGRIST)) ;
-    } 
-
-    local s = $(angle-includes) $(quoted-includes) ;
+        s = $(>:G=$(HDRGRIST)) ;
+    } else { 
+        s = $(>) ; 
+    }
 
     INCLUDES $(<) : $(s) ;
-    SEARCH on $(angle-includes) = $(HDRSEARCH)  ;
-    SEARCH on $(quoted-includes) = $(gBINDING($(<)):D) $(HDRSEARCH)  ;
+    SEARCH on $(s) = $(HDRSEARCH) ;
     NOCARE $(s) ;
-
-    BINDRULE on $(s) = remember-binding ;
 
     # Propagate on $(<) to $(>)
 
@@ -1606,17 +1599,6 @@ rule Yacc
     INCLUDES $(<) : $(_h) ;
 }
 
-rule remember-binding ( target : bound-path ) {
-    gBINDING($(target)) = $(bound-path) ;
-}
-
-rule subst-list ( list + : pattern ) {
-    local result ;
-    for local i in $(list) {
-        result += [ SUBST $(i) $(pattern) "$1" ] ;
-    }
-    return $(result) ;
-}
 
 #
 # Utility rules; no side effects on these
