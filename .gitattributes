@@ -229,6 +229,7 @@ boost/boost/pending/mutable_queue.hpp svneol=native#text/plain
 boost/boost/pending/property.hpp svneol=native#text/plain
 boost/boost/pending/queue.hpp svneol=native#text/plain
 boost/boost/pending/stringtok.hpp svneol=native#text/plain
+boost/boost/permutation_iterator.hpp svneol=native#text/plain
 boost/boost/pool/detail/ct_gcd_lcm.hpp svneol=native#text/plain
 boost/boost/pool/detail/for.m4 -text
 boost/boost/pool/detail/gcd_lcm.hpp svneol=native#text/plain
