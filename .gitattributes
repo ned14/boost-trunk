@@ -2408,6 +2408,16 @@ boost/libs/test/example/unit_test_example2.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example3.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example4.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example5.cpp svneol=native#text/plain
+boost/libs/test/src/cpp_main.cpp svneol=native#text/plain
+boost/libs/test/src/execution_monitor.cpp svneol=native#text/plain
+boost/libs/test/src/test_main.cpp svneol=native#text/plain
+boost/libs/test/src/test_tools.cpp svneol=native#text/plain
+boost/libs/test/src/unit_test_config.cpp svneol=native#text/plain
+boost/libs/test/src/unit_test_log.cpp svneol=native#text/plain
+boost/libs/test/src/unit_test_main.cpp svneol=native#text/plain
+boost/libs/test/src/unit_test_monitor.cpp svneol=native#text/plain
+boost/libs/test/src/unit_test_result.cpp svneol=native#text/plain
+boost/libs/test/src/unit_test_suite.cpp svneol=native#text/plain
 boost/libs/test/test/Jamfile svneol=native#text/plain
 boost/libs/test/test/error_handling_test.pattern -text
 boost/libs/test/test/errors_handling_test.cpp svneol=native#text/plain
