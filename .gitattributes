@@ -804,7 +804,6 @@ boost/libs/utility/indirect_iterator.htm svneol=native#text/html
 boost/libs/utility/indirect_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/iter_adaptor_fail_expected1.cpp svneol=native#text/plain
 boost/libs/utility/iter_adaptor_fail_expected2.cpp svneol=native#text/plain
-boost/libs/utility/iter_adaptor_fail_expected3.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptor_examples.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptor_test.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptors.htm svneol=native#text/html
