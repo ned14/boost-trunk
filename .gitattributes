@@ -171,6 +171,7 @@ boost/boost/pool/singleton_pool.hpp svneol=native#text/plain
 boost/boost/pool/singleton_pool_fwd.hpp svneol=native#text/plain
 boost/boost/progress.hpp svneol=native#text/plain
 boost/boost/property_map.hpp svneol=native#text/plain
+boost/boost/property_map_iterator.hpp svneol=native#text/plain
 boost/boost/python/callback.hpp svneol=native#text/plain
 boost/boost/python/caller.hpp svneol=native#text/plain
 boost/boost/python/class_builder.hpp svneol=native#text/plain
