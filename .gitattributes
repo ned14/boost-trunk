@@ -3780,6 +3780,7 @@ boost/libs/iterator/test/static_assert_same.hpp svneol=native#text/plain
 boost/libs/iterator/test/transform_iterator_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/unit_tests.cpp svneol=native#text/plain
 boost/libs/iterator/test/zip_iterator_test.cpp svneol=native#text/plain
+boost/libs/lambda/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/lambda/doc/apa.html svneol=native#text/html
 boost/libs/lambda/doc/ar01s02.html svneol=native#text/html
 boost/libs/lambda/doc/ar01s03.html svneol=native#text/html
