@@ -4651,7 +4651,9 @@ boost/tools/build/new/container.jam svneol=native#text/plain
 boost/tools/build/new/doc.jam svneol=native#text/plain
 boost/tools/build/new/errors.jam svneol=native#text/plain
 boost/tools/build/new/feature.jam svneol=native#text/plain
+boost/tools/build/new/gcc.jam svneol=native#text/plain
 boost/tools/build/new/generators.jam svneol=native#text/plain
+boost/tools/build/new/lex.jam svneol=native#text/plain
 boost/tools/build/new/m1.txt svneol=native#text/plain
 boost/tools/build/new/m2-transformations.txt svneol=native#text/plain
 boost/tools/build/new/make.jam svneol=native#text/plain
@@ -4695,8 +4697,6 @@ boost/tools/build/test/generators-test/c.ui -text
 boost/tools/build/test/generators-test/d.wd -text
 boost/tools/build/test/generators-test/e.cpp svneol=native#text/plain
 boost/tools/build/test/generators-test/extra.jam svneol=native#text/plain
-boost/tools/build/test/generators-test/gcc.jam svneol=native#text/plain
-boost/tools/build/test/generators-test/lex.jam svneol=native#text/plain
 boost/tools/build/test/generators-test/lib/Jamfile svneol=native#text/plain
 boost/tools/build/test/generators-test/lib/c.cpp svneol=native#text/plain
 boost/tools/build/test/generators-test/nm.jam svneol=native#text/plain
@@ -4893,7 +4893,9 @@ boost/tools/build/v2/example/make/lib/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/make/lib/b.cpp svneol=native#text/plain
 boost/tools/build/v2/example/make/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/make/readme.txt svneol=native#text/plain
+boost/tools/build/v2/gcc.jam svneol=native#text/plain
 boost/tools/build/v2/kernel/class.jam svneol=native#text/plain
+boost/tools/build/v2/lex.jam svneol=native#text/plain
 boost/tools/build/v2/m1.txt svneol=native#text/plain
 boost/tools/build/v2/modules.jam svneol=native#text/plain
 boost/tools/build/v2/project-root.jam svneol=native#text/plain
@@ -4917,8 +4919,6 @@ boost/tools/build/v2/test/generators-test/c.ui -text
 boost/tools/build/v2/test/generators-test/d.wd -text
 boost/tools/build/v2/test/generators-test/e.cpp svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/extra.jam svneol=native#text/plain
-boost/tools/build/v2/test/generators-test/gcc.jam svneol=native#text/plain
-boost/tools/build/v2/test/generators-test/lex.jam svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/lib/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/lib/c.cpp svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/nm.jam svneol=native#text/plain
