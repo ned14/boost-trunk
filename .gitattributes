@@ -3249,7 +3249,6 @@ boost/libs/numeric/interval/test/cmp_header.hpp svneol=native#text/plain
 boost/libs/numeric/interval/test/cmp_lex.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/det.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/fmod.cpp svneol=native#text/plain
-boost/libs/numeric/interval/test/io.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/mul.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/overflow.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/pi.cpp svneol=native#text/plain
