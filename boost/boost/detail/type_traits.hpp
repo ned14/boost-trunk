@@ -420,10 +420,69 @@ template <typename T, std::size_t sz> struct is_POD<T[sz]>
 { static const bool value = is_POD<T>::value; };
 
 //
+// is one type convertable to another?
+template <class From, class To>
+class is_convertible
+{
+ typedef char (&no)[1];
+ typedef char (&yes)[2];
+#  if defined(__BORLANDC__) || defined(__GNUC__)
+ // This workaround for Borland breaks the EDG C++ frontend,
+ // so we only use it for Borland.
+ template <class T>
+ struct checker
+ {
+   static no check(...);
+   static yes check(T);
+ };
+ static From from;
+public:
+ static const bool value = sizeof( checker<To>::check(from) ) == sizeof(yes);
+
+#  else // not __BORLANDC__
+ static no check(...);
+ static yes check(To);
+ static From from;
+public:
+ static const bool value = sizeof( check(from) ) == sizeof(yes);
+#  endif
+ void foo(); // avoid warning about all members being private
+};
+
+template <class From>
+struct is_convertible<From, void>
+{
+   static const bool value = false;
+};
+template <class To>
+struct is_convertible<void, To>
+{
+   static const bool value = false;
+};
+template <>
+struct is_convertible<void, void>
+{
+   static const bool value = true;
+};
+//
+// get the alignment of some arbitrary type:
+template <class T>
+class alignment_of
+{
+   struct padded
+   {
+      char c;
+      T t;
+   };
+public:
+   static const unsigned value = sizeof(padded) - sizeof(T);
+};
+
+//
 // JM 7Jan2000
 // 
 namespace detail{
-template <typename T, bool b>
+template <typename T, bool b, bool b2>
 struct empty_helper{ static const bool value = false; };
 
 template <typename T>
@@ -437,7 +496,7 @@ struct empty_helper_t1 : public T
 struct empty_helper_t2 { int i[256]; };
 
 template <typename T>
-struct empty_helper<T, true>
+struct empty_helper<T, true, false>
 {
    static const bool value = (sizeof(empty_helper_t1<T>) == sizeof(empty_helper_t2));
 };
@@ -449,7 +508,7 @@ template <typename T> struct is_empty
 private:
    typedef typename remove_cv<T>::type cvt;
 public:
-   static const bool value = ::boost::detail::empty_helper<T, is_class<T>::value>::value
+   static const bool value = ::boost::detail::empty_helper<T, is_class<T>::value , is_convertible<T,int>::value>::value
                      || BOOST_IS_EMPTY(cvt);
 };
 
