@@ -7831,6 +7831,8 @@ boost/libs/statechart/example/StopWatch/StopWatch2.cpp svneol=native#text/plain
 boost/libs/statechart/index.html svneol=native#text/html
 boost/libs/statechart/test/DeferralTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/DeferralTest.vcproj -text
+boost/libs/statechart/test/HistoryTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/HistoryTest.vcproj -text
 boost/libs/statechart/test/InnermostDefault.hpp svneol=native#text/plain
 boost/libs/statechart/test/InvalidTransitionTest1.cpp svneol=native#text/plain
 boost/libs/statechart/test/InvalidTransitionTest1.vcproj -text
