@@ -312,7 +312,6 @@ boost/libs/graph/doc/IncidenceGraph.html svneol=native#text/html
 boost/libs/graph/doc/IteratorConstructibleGraph.html svneol=native#text/html
 boost/libs/graph/doc/MutableGraph.html svneol=native#text/html
 boost/libs/graph/doc/MutablePropertyGraph.html svneol=native#text/html
-boost/libs/graph/doc/Property.html svneol=native#text/html
 boost/libs/graph/doc/PropertyGraph.html svneol=native#text/html
 boost/libs/graph/doc/PropertyTag.html svneol=native#text/html
 boost/libs/graph/doc/UniformCostVisitor.html svneol=native#text/html
