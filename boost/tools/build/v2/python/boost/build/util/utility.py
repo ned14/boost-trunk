@@ -144,15 +144,18 @@ def forward_slashes (s):
 #      VAX, PPC, AXP, X86, SPARC, MIPS, IA64, 390
 
 __major_map = {
-    'Darwin': 'UNIX'
+    'Darwin': 'UNIX',
+    'Linux': 'UNIX'
 }
 
 __minor_map = {
-    'Darwin': 'MACOSX'
+    'Darwin': 'MACOSX',
+    'Linux': 'Linux'
 }
 
 __platform_map = {
-    'Darwin': 'PPC'
+    'Darwin': 'PPC',
+    'Linux': 'x86'
 }
 
 __major = __major_map [os.uname () [0]]
