@@ -631,6 +631,7 @@ boost/boost/mpl/aux_/preprocessor/enum.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/preprocessor/ext_params.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/preprocessor/filter_params.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/preprocessor/params.hpp svneol=native#text/plain
+boost/boost/mpl/aux_/preprocessor/partial_spec_params.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/preprocessor/repeat.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/preprocessor/sub.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/preprocessor/tuple.hpp svneol=native#text/plain
