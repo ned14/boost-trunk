@@ -37,6 +37,7 @@ boost/boost/graph/adjacency_matrix.hpp svneol=native#text/plain
 boost/boost/graph/bellman_ford_shortest_paths.hpp svneol=native#text/plain
 boost/boost/graph/breadth_first_search.hpp svneol=native#text/plain
 boost/boost/graph/connected_components.hpp svneol=native#text/plain
+boost/boost/graph/copy.hpp svneol=native#text/plain
 boost/boost/graph/cuthill_mckee_ordering.hpp svneol=native#text/plain
 boost/boost/graph/depth_first_search.hpp svneol=native#text/plain
 boost/boost/graph/detail/adj_list_edge_iterator.hpp svneol=native#text/plain
