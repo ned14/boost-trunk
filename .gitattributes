@@ -3142,6 +3142,7 @@ boost/libs/iterator/doc/facade-and-adaptor.rst svneol=native#text/plain
 boost/libs/iterator/doc/filter_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/filter_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/filter_iterator_abstract.rst svneol=native#text/plain
+boost/libs/iterator/doc/filter_iterator_eg.rst svneol=native#text/plain
 boost/libs/iterator/doc/filter_iterator_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/function_output_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/function_output_iterator.rst svneol=native#text/plain
