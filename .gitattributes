@@ -5385,9 +5385,6 @@ boost/libs/statechart/example/PingPong/boost_thread.dll -text
 boost/libs/statechart/example/PingPong/boost_thread.lib -text
 boost/libs/statechart/example/PingPong/boost_threadd.dll -text
 boost/libs/statechart/example/PingPong/boost_threadd.lib -text
-boost/libs/statechart/example/StateSize/StateSize.cpp svneol=native#text/plain
-boost/libs/statechart/example/StateSize/StateSize.sln -text
-boost/libs/statechart/example/StateSize/StateSize.vcproj -text
 boost/libs/statechart/example/StopWatch/StopWatch.cpp svneol=native#text/plain
 boost/libs/statechart/example/StopWatch/StopWatch.sln -text
 boost/libs/statechart/example/StopWatch/StopWatch.vcproj -text
