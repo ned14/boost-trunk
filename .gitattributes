@@ -1812,6 +1812,7 @@ boost/libs/smart_ptr/shared_ptr_example.cpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_example2.cpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_example2.hpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_example2_test.cpp svneol=native#text/plain
+boost/libs/smart_ptr/shared_ptr_mt_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/shared_ptr_timing_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/smart_ptr.htm svneol=native#text/html
