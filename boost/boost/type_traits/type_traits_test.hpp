@@ -9,11 +9,15 @@
 
 #ifndef BOOST_TYPE_TRAITS_TEST_HPP
 #define BOOST_TYPE_TRAITS_TEST_HPP
+
+#include "boost/config.hpp"
+#include "boost/utility.hpp"
+#include "boost/type_traits/alignment_of.hpp"
+#include "boost/type_traits/ice.hpp"
+
 #include <iostream>
 #include <typeinfo>
-#include <boost/config.hpp>
-#include <boost/utility.hpp>
-#include <boost/type_traits/alignment_traits.hpp>
+
 //
 // define tests here
 unsigned failures = 0;
@@ -197,6 +201,7 @@ struct test_align<T&>
 
 #define align_test(T) test_align<T>::do_it()
 
+/*
 template<class T>
 struct test_type_with_align 
 {
@@ -219,7 +224,7 @@ struct test_type_with_align
 };
 
 #define type_with_align_test(T) test_type_with_align<T>::do_it()
-
+*/
 //
 // the following code allows us to test that a particular
 // template functions correctly when instanciated inside another template
@@ -422,13 +427,3 @@ struct incomplete_type;
 
 
 #endif // BOOST_TYPE_TRAITS_TEST_HPP
-
-
-
-
-
-
-
-
-
-
