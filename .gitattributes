@@ -1686,6 +1686,7 @@ boost/libs/python/doc/richcmp.html svneol=native#text/html
 boost/libs/python/doc/special.html svneol=native#text/html
 boost/libs/python/doc/under-the-hood.html svneol=native#text/html
 boost/libs/python/doc/v2/Apr2002.html svneol=native#text/html
+boost/libs/python/doc/v2/Dereferenceable.html svneol=native#text/html
 boost/libs/python/doc/v2/Mar2002.html svneol=native#text/html
 boost/libs/python/doc/v2/ResultConverter.html svneol=native#text/html
 boost/libs/python/doc/v2/acknowledgments.html svneol=native#text/html
