@@ -283,13 +283,6 @@ boost/boost/type_traits/transform_traits_spec.hpp svneol=native#text/plain
 boost/boost/type_traits/type_traits_test.hpp svneol=native#text/plain
 boost/boost/utility.hpp svneol=native#text/plain
 boost/c++boost.gif -text svneol=unset#image/gif
-boost/development/iterator/boost/iterator_categories.hpp svneol=native#text/plain
-boost/development/iterator/boost/iterator_concepts.hpp svneol=native#text/plain
-boost/development/iterator/libs/iterator/concept_tests.cpp svneol=native#text/plain
-boost/development/iterator/libs/iterator/iterator_categories.htm svneol=native#text/html
-boost/development/iterator/libs/iterator/iterator_concepts.fig -text
-boost/development/iterator/libs/iterator/iterator_concepts.gif -text svneol=unset#image/gif
-boost/development/iterator/libs/iterator/iterator_concepts.htm svneol=native#text/html
 boost/index.htm svneol=native#text/html
 boost/libs/array/array.hpp.html svneol=native#text/html
 boost/libs/array/array.html svneol=native#text/html
