@@ -1434,6 +1434,7 @@ boost/libs/preprocessor/example/catch_builtin.cpp svneol=native#text/plain
 boost/libs/preprocessor/example/count_down.c svneol=native#text/plain
 boost/libs/preprocessor/example/delay.c svneol=native#text/plain
 boost/libs/preprocessor/example/is_integral.cpp svneol=native#text/plain
+boost/libs/preprocessor/example/linear_fib.c svneol=native#text/plain
 boost/libs/preprocessor/example/note.c svneol=native#text/plain
 boost/libs/preprocessor/example/repeat_2d.c svneol=native#text/plain
 boost/libs/preprocessor/example/static_assert.c svneol=native#text/plain
