@@ -16,7 +16,6 @@
 #endif
 
 #include <boost/config.hpp>
-#include <boost/mpl/apply_if.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
