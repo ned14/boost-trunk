@@ -1473,6 +1473,7 @@ boost/boost/random/detail/iterator_mixin.hpp svneol=native#text/plain
 boost/boost/random/detail/signed_unsigned_compare.hpp svneol=native#text/plain
 boost/boost/random/discard_block.hpp svneol=native#text/plain
 boost/boost/random/exponential_distribution.hpp svneol=native#text/plain
+boost/boost/random/gamma_distribution.hpp svneol=native#text/plain
 boost/boost/random/geometric_distribution.hpp svneol=native#text/plain
 boost/boost/random/inversive_congruential.hpp svneol=native#text/plain
 boost/boost/random/lagged_fibonacci.hpp svneol=native#text/plain
