@@ -1355,3 +1355,5 @@ boost/tools/build/v1/kcc-tools.jam svneol=native#text/plain
 boost/tools/build/v1/metrowerks-tools.jam svneol=native#text/plain
 boost/tools/build/v1/msvc-tools.jam svneol=native#text/plain
 boost/tools/build/v1/unit-tests.jam svneol=native#text/plain
+boost/tools/build/v1/vacpp-tools.jam svneol=native#text/plain
+boost/tools/build/vacpp-tools.jam svneol=native#text/plain
