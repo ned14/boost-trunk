@@ -7159,6 +7159,7 @@ boost/tools/regression/test/test.bat svneol=native#text/plain
 boost/tools/regression/xsl_reports/empty_expected_results.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/report.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/xsl/add_expected_results.xsl svneol=native#text/xml
+boost/tools/regression/xsl_reports/xsl/links_page.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/master.css svneol=native#text/css
 boost/tools/regression/xsl_reports/xsl/produce_expected_results.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/result_page.xsl svneol=native#text/xml
