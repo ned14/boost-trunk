@@ -3590,6 +3590,7 @@ boost/libs/filesystem/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/filesystem/test/auto-link-test/Jamfile svneol=native#text/plain
 boost/libs/filesystem/test/convenience_test.cpp svneol=native#text/plain
 boost/libs/filesystem/test/default_name_check_test.cpp svneol=native#text/plain
+boost/libs/filesystem/test/equivalent.cpp svneol=native#text/plain
 boost/libs/filesystem/test/fstream_test.cpp svneol=native#text/plain
 boost/libs/filesystem/test/large_file_support_test.cpp svneol=native#text/plain
 boost/libs/filesystem/test/operations_test.cpp svneol=native#text/plain
