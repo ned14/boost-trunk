@@ -157,7 +157,7 @@ compile_eval(
 	FRAME	*frame )
 {
 	LIST *ll = parse_evaluate( parse->left, frame );
-	LIST *lr = parse_evaluate( parse->right, frame );
+	LIST *lr = parse->right ? parse_evaluate( parse->right, frame ) : 0;
 	LIST *s, *t;
 	int status = 0;
 
@@ -172,11 +172,23 @@ compile_eval(
 		break;
 
 	case EXPR_AND:
-		if( ll && lr ) status = 1;
+                if ( ll )
+                {
+                    if ( parse->third ) lr = parse_evaluate( parse->third, frame );
+                    if ( lr ) status = 1;
+                }
 		break;
 
 	case EXPR_OR:
-		if( ll || lr ) status = 1;
+                if ( ll )
+                {
+                    status = 1;
+                }
+                else
+                {
+                    if ( parse->third ) lr = parse_evaluate( parse->third, frame );
+                    if ( lr ) status = 1;
+                }
 		break;
 
 	case EXPR_IN:

@@ -110,6 +110,7 @@
 
 # define pappend( l,r )    	parse_make( compile_append,l,r,P0,S0,S0,0 )
 # define peval( c,l,r )	parse_make( compile_eval,l,r,P0,S0,S0,c )
+# define pshortcircuiteval( c,l,r )	parse_make( compile_eval,l,P0,r,S0,S0,c )
 # define pfor( s,l,r,x )    	parse_make( compile_foreach,l,r,P0,s,S0,x )
 # define pif( l,r,t )	  	parse_make( compile_if,l,r,t,S0,S0,0 )
 # define pwhile( l,r )	  	parse_make( compile_while,l,r,P0,S0,S0,0 )
@@ -256,11 +257,11 @@ expr	: arg
 	| expr _AMPER expr 
 		{ $$.parse = peval( EXPR_AND, $1.parse, $3.parse ); }
 	| expr _AMPERAMPER expr 
-		{ $$.parse = peval( EXPR_AND, $1.parse, $3.parse ); }
+		{ $$.parse = pshortcircuiteval( EXPR_AND, $1.parse, $3.parse ); }
 	| expr _BAR expr
 		{ $$.parse = peval( EXPR_OR, $1.parse, $3.parse ); }
 	| expr _BARBAR expr
-		{ $$.parse = peval( EXPR_OR, $1.parse, $3.parse ); }
+		{ $$.parse = pshortcircuiteval( EXPR_OR, $1.parse, $3.parse ); }
 	| arg IN list
 		{ $$.parse = peval( EXPR_IN, $1.parse, $3.parse ); }
 	| _BANG expr
