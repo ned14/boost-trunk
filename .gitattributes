@@ -6803,6 +6803,7 @@ boost/libs/ptr_container/test/convert.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/incomplete_type_test.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/indirect_fun.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/indirect_vector.cpp svneol=native#text/plain
+boost/libs/ptr_container/test/iterator_test.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/map_value_iterator.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/null_object.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/pointainer_speed.cpp svneol=native#text/plain
