@@ -6292,6 +6292,7 @@ boost/status/explicit-failures-markup.xml svneol=native#text/xml
 boost/status/index.html svneol=native#text/html
 boost/status/intel_logo.gif -text svneol=unset#image/gif
 boost/status/kai_logo.gif -text svneol=unset#image/gif
+boost/status/ms_logo.gif -text svneol=unset#image/gif
 boost/status/notes.html svneol=native#text/html
 boost/status/win32-notes-map.txt svneol=native#text/plain
 boost/tools/Jamfile.v2 svneol=native#text/plain
