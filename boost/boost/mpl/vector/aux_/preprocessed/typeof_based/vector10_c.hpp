@@ -1,6 +1,3 @@
-// preprocessed version of 'boost/mpl/vector/vector10_c.hpp' header
-// see the original for copyright information
-
 namespace boost {
 namespace mpl {
 
@@ -9,9 +6,8 @@ template<
     , T C0
     >
 struct vector1_c
-    : vector_node<
-          1
-        , integral_c< T,C0 >
+    : v_item<
+          integral_c< T,C0 >
         , vector0_c<T>
         >
 {
@@ -22,10 +18,9 @@ template<
     , T C0, T C1
     >
 struct vector2_c
-    : vector_node<
-          2
-        , integral_c< T,C0 >
-        , vector1_c< T,C1 >
+    : v_item<
+          integral_c< T,C1 >
+        , vector1_c< T,C0 >
         >
 {
 };
@@ -35,10 +30,9 @@ template<
     , T C0, T C1, T C2
     >
 struct vector3_c
-    : vector_node<
-          3
-        , integral_c< T,C0 >
-        , vector2_c< T,C1,C2 >
+    : v_item<
+          integral_c< T,C2 >
+        , vector2_c< T,C0,C1 >
         >
 {
 };
@@ -48,10 +42,9 @@ template<
     , T C0, T C1, T C2, T C3
     >
 struct vector4_c
-    : vector_node<
-          4
-        , integral_c< T,C0 >
-        , vector3_c< T,C1,C2,C3 >
+    : v_item<
+          integral_c< T,C3 >
+        , vector3_c< T,C0,C1,C2 >
         >
 {
 };
@@ -61,10 +54,9 @@ template<
     , T C0, T C1, T C2, T C3, T C4
     >
 struct vector5_c
-    : vector_node<
-          5
-        , integral_c< T,C0 >
-        , vector4_c< T,C1,C2,C3,C4 >
+    : v_item<
+          integral_c< T,C4 >
+        , vector4_c< T,C0,C1,C2,C3 >
         >
 {
 };
@@ -74,10 +66,9 @@ template<
     , T C0, T C1, T C2, T C3, T C4, T C5
     >
 struct vector6_c
-    : vector_node<
-          6
-        , integral_c< T,C0 >
-        , vector5_c< T,C1,C2,C3,C4,C5 >
+    : v_item<
+          integral_c< T,C5 >
+        , vector5_c< T,C0,C1,C2,C3,C4 >
         >
 {
 };
@@ -87,10 +78,9 @@ template<
     , T C0, T C1, T C2, T C3, T C4, T C5, T C6
     >
 struct vector7_c
-    : vector_node<
-          7
-        , integral_c< T,C0 >
-        , vector6_c< T,C1,C2,C3,C4,C5,C6 >
+    : v_item<
+          integral_c< T,C6 >
+        , vector6_c< T,C0,C1,C2,C3,C4,C5 >
         >
 {
 };
@@ -100,10 +90,9 @@ template<
     , T C0, T C1, T C2, T C3, T C4, T C5, T C6, T C7
     >
 struct vector8_c
-    : vector_node<
-          8
-        , integral_c< T,C0 >
-        , vector7_c< T,C1,C2,C3,C4,C5,C6,C7 >
+    : v_item<
+          integral_c< T,C7 >
+        , vector7_c< T,C0,C1,C2,C3,C4,C5,C6 >
         >
 {
 };
@@ -113,10 +102,9 @@ template<
     , T C0, T C1, T C2, T C3, T C4, T C5, T C6, T C7, T C8
     >
 struct vector9_c
-    : vector_node<
-          9
-        , integral_c< T,C0 >
-        , vector8_c< T,C1,C2,C3,C4,C5,C6,C7,C8 >
+    : v_item<
+          integral_c< T,C8 >
+        , vector8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >
         >
 {
 };
@@ -126,14 +114,12 @@ template<
     , T C0, T C1, T C2, T C3, T C4, T C5, T C6, T C7, T C8, T C9
     >
 struct vector10_c
-    : vector_node<
-          10
-        , integral_c< T,C0 >
-        , vector9_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9 >
+    : v_item<
+          integral_c< T,C9 >
+        , vector9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >
         >
 {
 };
 
 } // namespace mpl
 } // namespace boost
-

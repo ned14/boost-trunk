@@ -13,30 +13,20 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/replace_if.hpp"
-#include "boost/mpl/list/list10_c.hpp"
-#include "boost/mpl/int.hpp"
-#include "boost/mpl/equal.hpp"
-#include "boost/mpl/greater.hpp"
-#include "boost/mpl/equal_to.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/replace_if.hpp>
+#include <boost/mpl/list/list10_c.hpp>
+#include <boost/mpl/int.hpp>
+#include <boost/mpl/equal.hpp>
+#include <boost/mpl/greater.hpp>
+#include <boost/mpl/equal_to.hpp>
 
-using namespace boost;
-using namespace mpl;
+#include <boost/mpl/aux_/test/test.hpp>
 
-#define MPL_TEST_CASE( test_name ) void test_name()
-#define MPL_TEST_ASSERT( expr ) BOOST_STATIC_ASSERT( expr )
-
-MPL_TEST_CASE( replace_if_test )
+MPL_TEST_CASE()
 {
     typedef list8_c<int,1,4,5,2,7,5,3,5>::type numbers;
-    typedef replace_if< numbers, gt<4>, mpl::int_<0> >::type result;
+    typedef replace_if< numbers, greater<_1,int_<4> >, int_<0> >::type result;
 
     typedef list8_c<int,1,4,0,2,0,0,3,0>::type answer;
-    MPL_TEST_ASSERT(( equal< answer,result,equal_to<_,_> >::value ));
-}
-
-int main()
-{
-    return 0;
+    MPL_ASSERT(( equal< answer,result,equal_to<_1,_2> >::value ));
 }

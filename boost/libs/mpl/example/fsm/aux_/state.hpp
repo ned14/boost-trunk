@@ -17,7 +17,7 @@
 #ifndef BOOST_FSM_STATE_INCLUDED
 #define BOOST_FSM_STATE_INCLUDED
 
-#include "boost/mpl/integral_c.hpp"
+#include <boost/mpl/integral_c.hpp>
 
 namespace fsm {
 namespace aux {

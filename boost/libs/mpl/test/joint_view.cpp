@@ -15,11 +15,11 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/joint_view.hpp"
-#include "boost/mpl/range_c.hpp"
-#include "boost/mpl/equal.hpp"
-#include "boost/mpl/size.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/joint_view.hpp>
+#include <boost/mpl/range_c.hpp>
+#include <boost/mpl/equal.hpp>
+#include <boost/mpl/size.hpp>
+#include <boost/static_assert.hpp>
 
 namespace mpl = boost::mpl;
 

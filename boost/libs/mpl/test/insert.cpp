@@ -14,13 +14,13 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/insert.hpp"
-#include "boost/mpl/find.hpp"
-#include "boost/mpl/list_c.hpp"
-#include "boost/mpl/size.hpp"
-#include "boost/mpl/range_c.hpp"
-#include "boost/mpl/equal.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/insert.hpp>
+#include <boost/mpl/find.hpp>
+#include <boost/mpl/list_c.hpp>
+#include <boost/mpl/size.hpp>
+#include <boost/mpl/range_c.hpp>
+#include <boost/mpl/equal.hpp>
+#include <boost/static_assert.hpp>
 
 namespace mpl = boost::mpl;
 

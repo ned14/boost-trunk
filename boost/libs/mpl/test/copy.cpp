@@ -23,7 +23,7 @@
 #include <boost/mpl/aux_/test/test.hpp>
 
 
-MPL_TEST_CASE( copy_test )
+MPL_TEST_CASE()
 {
     typedef vector10_c<int,9,8,7,6,5,4,3,2,1,0> answer;
     typedef copy<
@@ -35,9 +35,9 @@ MPL_TEST_CASE( copy_test )
     MPL_ASSERT(( equal< result,answer >::value ));
 }
 
-MPL_TEST_CASE( reverse_copy_test )
+MPL_TEST_CASE()
 {
-    typedef vector10_c<int,10,11,12,13,14,15,16,17,18,19>::type numbers;
+    typedef vector10_c<int,10,11,12,13,14,15,16,17,18,19> numbers;
     typedef reverse_copy<
           range_c<int,0,10>
         , front_inserter<numbers>

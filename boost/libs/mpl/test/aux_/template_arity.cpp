@@ -15,8 +15,8 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/template_arity.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/aux_/template_arity.hpp>
+#include <boost/static_assert.hpp>
 
 #   if defined(BOOST_EXTENDED_TEMPLATE_PARAMETERS_MATCHING)
 

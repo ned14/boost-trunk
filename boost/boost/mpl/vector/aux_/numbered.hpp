@@ -3,7 +3,7 @@
 
 #if defined(BOOST_PP_IS_ITERATING)
 
-// Copyright (c) 2000-04 Aleksey Gurtovoy
+// Copyright (c) Aleksey Gurtovoy 2000-2004
 //
 // Use, modification and distribution are subject to the Boost Software 
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
@@ -26,10 +26,10 @@
 
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
 
-#   define MPL_AUX_VECTOR_TAIL(vector, i_, T) \
-    BOOST_PP_CAT(vector,BOOST_PP_DEC(i_))< \
-      BOOST_PP_ENUM_SHIFTED_PARAMS(i_, T) \
-    > \
+#   define AUX778076_VECTOR_TAIL(vector, i_, T) \
+    BOOST_PP_CAT(vector,i_)< \
+          BOOST_PP_ENUM_PARAMS(i_, T) \
+        > \
     /**/
 
 #if i_ > 0
@@ -38,14 +38,14 @@ template<
     >
 struct BOOST_PP_CAT(vector,i_)
     : v_item<
-          T0
-        , MPL_AUX_VECTOR_TAIL(vector,i_,T)
+          BOOST_PP_CAT(T,BOOST_PP_DEC(i_))
+        , AUX778076_VECTOR_TAIL(vector,BOOST_PP_DEC(i_),T)
         >
 {
 };
 #endif
 
-#   undef MPL_AUX_VECTOR_TAIL
+#   undef AUX778076_VECTOR_TAIL
 
 #else // "brute force" implementation
 
@@ -59,12 +59,12 @@ struct BOOST_PP_CAT(vector,i_)
     typedef aux::vector_tag<i_> tag;
     typedef BOOST_PP_CAT(vector,i_) type;
 
-#   define AUX_VECTOR_ITEM(unused, i_, unused2) \
+#   define AUX778076_VECTOR_ITEM(unused, i_, unused2) \
     typedef BOOST_PP_CAT(T,i_) BOOST_PP_CAT(item,i_); \
     /**/
 
-    BOOST_PP_REPEAT_1(i_, AUX_VECTOR_ITEM, unused)
-#   undef AUX_VECTOR_ITEM
+    BOOST_PP_REPEAT_1(i_, AUX778076_VECTOR_ITEM, unused)
+#   undef AUX778076_VECTOR_ITEM
     typedef void_ BOOST_PP_CAT(item,i_);
     typedef BOOST_PP_CAT(T,BOOST_PP_DEC(i_)) back;
 

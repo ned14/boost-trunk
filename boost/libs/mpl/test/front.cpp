@@ -14,11 +14,11 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/front.hpp"
-#include "boost/mpl/list.hpp"
-#include "boost/mpl/list_c.hpp"
-#include "boost/mpl/assert_is_same.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/front.hpp>
+#include <boost/mpl/list.hpp>
+#include <boost/mpl/list_c.hpp>
+#include <boost/mpl/assert_is_same.hpp>
+#include <boost/static_assert.hpp>
 
 namespace mpl = boost::mpl;
 

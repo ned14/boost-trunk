@@ -45,11 +45,11 @@ struct print
     enum {
         n =
 # if __EDG_VERSION__ 
-        aux::dependent_unsigned<T>::value
+           aux::dependent_unsigned<T>::value > -1
 # else 
-           sizeof(T)
+           sizeof(T) > -1, 
 # endif 
-           > -1, };
+        };
 #endif 
 };
 

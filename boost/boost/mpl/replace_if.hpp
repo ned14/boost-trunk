@@ -56,7 +56,7 @@ template<
 struct replace_if
     : transform1<
           Sequence
-        , protect< aux::replace_if_op<pred_,T> >
+        , protect< aux::replace_if_op<Predicate,T> >
         , Inserter
         >
 {

@@ -14,7 +14,7 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/aux_/debug_print.hpp"
+#include <boost/mpl/aux_/debug_print.hpp>
 
 int main()
 {

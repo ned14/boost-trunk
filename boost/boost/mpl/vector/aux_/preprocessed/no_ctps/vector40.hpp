@@ -1,6 +1,3 @@
-// preprocessed version of 'boost/mpl/vector/vector40.hpp' header
-// see the original for copyright information
-
 namespace boost {
 namespace mpl {
 
@@ -49,17 +46,16 @@ struct vector31
     typedef T29 item29;
     typedef T30 item30;
     
-
     typedef void_ item31;
     typedef T30 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,31> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,31 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 30> >
+struct push_front_impl< aux::vector_tag< 30> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector31<
               T
@@ -84,9 +80,9 @@ struct push_front_traits< aux::vector_tag< 30> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 31> >
+struct pop_front_impl< aux::vector_tag< 31> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector30<
               typename Vector::item1, typename Vector::item2
@@ -108,72 +104,124 @@ struct pop_front_traits< aux::vector_tag< 31> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 30> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector31<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 31> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector30<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<31>
+template<> struct v_at_impl<31>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item31 type;
+        typedef typename V_::item31 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 31> >
+struct at_impl< aux::vector_tag< 31> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 31> >
+struct front_impl< aux::vector_tag< 31> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 31> >
+struct back_impl< aux::vector_tag< 31> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 31> >
+struct empty_impl< aux::vector_tag< 31> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 31> >
+struct size_impl< aux::vector_tag< 31> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,31 >
+    template< typename Vector > struct apply
+        : long_<31>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 31> >
-    : size_traits< aux::vector_tag< 31> >
+struct O1_size_impl< aux::vector_tag< 31> >
+    : size_impl< aux::vector_tag< 31> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 31> >
+struct clear_impl< aux::vector_tag< 31> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -225,17 +273,16 @@ struct vector32
     typedef T30 item30;
     typedef T31 item31;
     
-
     typedef void_ item32;
     typedef T31 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,32> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,32 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 31> >
+struct push_front_impl< aux::vector_tag< 31> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector32<
               T
@@ -261,9 +308,9 @@ struct push_front_traits< aux::vector_tag< 31> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 32> >
+struct pop_front_impl< aux::vector_tag< 32> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector31<
               typename Vector::item1, typename Vector::item2
@@ -286,72 +333,126 @@ struct pop_front_traits< aux::vector_tag< 32> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 31> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector32<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 32> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector31<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<32>
+template<> struct v_at_impl<32>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item32 type;
+        typedef typename V_::item32 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 32> >
+struct at_impl< aux::vector_tag< 32> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 32> >
+struct front_impl< aux::vector_tag< 32> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 32> >
+struct back_impl< aux::vector_tag< 32> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 32> >
+struct empty_impl< aux::vector_tag< 32> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 32> >
+struct size_impl< aux::vector_tag< 32> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,32 >
+    template< typename Vector > struct apply
+        : long_<32>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 32> >
-    : size_traits< aux::vector_tag< 32> >
+struct O1_size_impl< aux::vector_tag< 32> >
+    : size_impl< aux::vector_tag< 32> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 32> >
+struct clear_impl< aux::vector_tag< 32> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -404,17 +505,16 @@ struct vector33
     typedef T31 item31;
     typedef T32 item32;
     
-
     typedef void_ item33;
     typedef T32 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,33> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,33 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 32> >
+struct push_front_impl< aux::vector_tag< 32> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector33<
               T
@@ -440,9 +540,9 @@ struct push_front_traits< aux::vector_tag< 32> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 33> >
+struct pop_front_impl< aux::vector_tag< 33> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector32<
               typename Vector::item1, typename Vector::item2
@@ -465,72 +565,126 @@ struct pop_front_traits< aux::vector_tag< 33> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 32> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector33<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 33> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector32<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<33>
+template<> struct v_at_impl<33>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item33 type;
+        typedef typename V_::item33 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 33> >
+struct at_impl< aux::vector_tag< 33> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 33> >
+struct front_impl< aux::vector_tag< 33> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 33> >
+struct back_impl< aux::vector_tag< 33> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 33> >
+struct empty_impl< aux::vector_tag< 33> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 33> >
+struct size_impl< aux::vector_tag< 33> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,33 >
+    template< typename Vector > struct apply
+        : long_<33>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 33> >
-    : size_traits< aux::vector_tag< 33> >
+struct O1_size_impl< aux::vector_tag< 33> >
+    : size_impl< aux::vector_tag< 33> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 33> >
+struct clear_impl< aux::vector_tag< 33> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -584,17 +738,16 @@ struct vector34
     typedef T32 item32;
     typedef T33 item33;
     
-
     typedef void_ item34;
     typedef T33 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,34> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,34 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 33> >
+struct push_front_impl< aux::vector_tag< 33> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector34<
               T
@@ -621,9 +774,9 @@ struct push_front_traits< aux::vector_tag< 33> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 34> >
+struct pop_front_impl< aux::vector_tag< 34> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector33<
               typename Vector::item1, typename Vector::item2
@@ -647,72 +800,128 @@ struct pop_front_traits< aux::vector_tag< 34> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 33> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector34<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 34> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector33<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<34>
+template<> struct v_at_impl<34>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item34 type;
+        typedef typename V_::item34 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 34> >
+struct at_impl< aux::vector_tag< 34> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 34> >
+struct front_impl< aux::vector_tag< 34> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 34> >
+struct back_impl< aux::vector_tag< 34> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 34> >
+struct empty_impl< aux::vector_tag< 34> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 34> >
+struct size_impl< aux::vector_tag< 34> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,34 >
+    template< typename Vector > struct apply
+        : long_<34>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 34> >
-    : size_traits< aux::vector_tag< 34> >
+struct O1_size_impl< aux::vector_tag< 34> >
+    : size_impl< aux::vector_tag< 34> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 34> >
+struct clear_impl< aux::vector_tag< 34> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -767,17 +976,16 @@ struct vector35
     typedef T33 item33;
     typedef T34 item34;
     
-
     typedef void_ item35;
     typedef T34 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,35> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,35 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 34> >
+struct push_front_impl< aux::vector_tag< 34> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector35<
               T
@@ -804,9 +1012,9 @@ struct push_front_traits< aux::vector_tag< 34> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 35> >
+struct pop_front_impl< aux::vector_tag< 35> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector34<
               typename Vector::item1, typename Vector::item2
@@ -830,72 +1038,128 @@ struct pop_front_traits< aux::vector_tag< 35> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 34> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector35<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 35> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector34<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<35>
+template<> struct v_at_impl<35>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item35 type;
+        typedef typename V_::item35 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 35> >
+struct at_impl< aux::vector_tag< 35> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 35> >
+struct front_impl< aux::vector_tag< 35> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 35> >
+struct back_impl< aux::vector_tag< 35> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 35> >
+struct empty_impl< aux::vector_tag< 35> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 35> >
+struct size_impl< aux::vector_tag< 35> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,35 >
+    template< typename Vector > struct apply
+        : long_<35>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 35> >
-    : size_traits< aux::vector_tag< 35> >
+struct O1_size_impl< aux::vector_tag< 35> >
+    : size_impl< aux::vector_tag< 35> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 35> >
+struct clear_impl< aux::vector_tag< 35> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -952,17 +1216,16 @@ struct vector36
     typedef T34 item34;
     typedef T35 item35;
     
-
     typedef void_ item36;
     typedef T35 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,36> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,36 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 35> >
+struct push_front_impl< aux::vector_tag< 35> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector36<
               T
@@ -990,9 +1253,9 @@ struct push_front_traits< aux::vector_tag< 35> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 36> >
+struct pop_front_impl< aux::vector_tag< 36> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector35<
               typename Vector::item1, typename Vector::item2
@@ -1017,72 +1280,130 @@ struct pop_front_traits< aux::vector_tag< 36> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 35> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector36<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 36> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector35<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<36>
+template<> struct v_at_impl<36>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item36 type;
+        typedef typename V_::item36 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 36> >
+struct at_impl< aux::vector_tag< 36> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 36> >
+struct front_impl< aux::vector_tag< 36> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 36> >
+struct back_impl< aux::vector_tag< 36> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 36> >
+struct empty_impl< aux::vector_tag< 36> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 36> >
+struct size_impl< aux::vector_tag< 36> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,36 >
+    template< typename Vector > struct apply
+        : long_<36>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 36> >
-    : size_traits< aux::vector_tag< 36> >
+struct O1_size_impl< aux::vector_tag< 36> >
+    : size_impl< aux::vector_tag< 36> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 36> >
+struct clear_impl< aux::vector_tag< 36> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -1140,17 +1461,16 @@ struct vector37
     typedef T35 item35;
     typedef T36 item36;
     
-
     typedef void_ item37;
     typedef T36 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,37> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,37 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 36> >
+struct push_front_impl< aux::vector_tag< 36> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector37<
               T
@@ -1178,9 +1498,9 @@ struct push_front_traits< aux::vector_tag< 36> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 37> >
+struct pop_front_impl< aux::vector_tag< 37> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector36<
               typename Vector::item1, typename Vector::item2
@@ -1205,72 +1525,130 @@ struct pop_front_traits< aux::vector_tag< 37> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 36> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector37<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34, typename Vector::item35
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 37> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector36<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34, typename Vector::item35
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<37>
+template<> struct v_at_impl<37>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item37 type;
+        typedef typename V_::item37 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 37> >
+struct at_impl< aux::vector_tag< 37> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 37> >
+struct front_impl< aux::vector_tag< 37> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 37> >
+struct back_impl< aux::vector_tag< 37> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 37> >
+struct empty_impl< aux::vector_tag< 37> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 37> >
+struct size_impl< aux::vector_tag< 37> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,37 >
+    template< typename Vector > struct apply
+        : long_<37>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 37> >
-    : size_traits< aux::vector_tag< 37> >
+struct O1_size_impl< aux::vector_tag< 37> >
+    : size_impl< aux::vector_tag< 37> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 37> >
+struct clear_impl< aux::vector_tag< 37> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -1329,17 +1707,16 @@ struct vector38
     typedef T36 item36;
     typedef T37 item37;
     
-
     typedef void_ item38;
     typedef T37 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,38> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,38 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 37> >
+struct push_front_impl< aux::vector_tag< 37> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector38<
               T
@@ -1368,9 +1745,9 @@ struct push_front_traits< aux::vector_tag< 37> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 38> >
+struct pop_front_impl< aux::vector_tag< 38> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector37<
               typename Vector::item1, typename Vector::item2
@@ -1396,72 +1773,132 @@ struct pop_front_traits< aux::vector_tag< 38> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 37> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector38<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34, typename Vector::item35
+            , typename Vector::item36
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 38> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector37<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34, typename Vector::item35
+            , typename Vector::item36
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<38>
+template<> struct v_at_impl<38>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item38 type;
+        typedef typename V_::item38 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 38> >
+struct at_impl< aux::vector_tag< 38> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 38> >
+struct front_impl< aux::vector_tag< 38> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 38> >
+struct back_impl< aux::vector_tag< 38> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 38> >
+struct empty_impl< aux::vector_tag< 38> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 38> >
+struct size_impl< aux::vector_tag< 38> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,38 >
+    template< typename Vector > struct apply
+        : long_<38>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 38> >
-    : size_traits< aux::vector_tag< 38> >
+struct O1_size_impl< aux::vector_tag< 38> >
+    : size_impl< aux::vector_tag< 38> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 38> >
+struct clear_impl< aux::vector_tag< 38> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -1521,17 +1958,16 @@ struct vector39
     typedef T37 item37;
     typedef T38 item38;
     
-
     typedef void_ item39;
     typedef T38 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,39> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,39 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 38> >
+struct push_front_impl< aux::vector_tag< 38> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector39<
               T
@@ -1560,9 +1996,9 @@ struct push_front_traits< aux::vector_tag< 38> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 39> >
+struct pop_front_impl< aux::vector_tag< 39> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector38<
               typename Vector::item1, typename Vector::item2
@@ -1588,72 +2024,132 @@ struct pop_front_traits< aux::vector_tag< 39> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 38> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector39<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34, typename Vector::item35
+            , typename Vector::item36, typename Vector::item37
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 39> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector38<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34, typename Vector::item35
+            , typename Vector::item36, typename Vector::item37
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<39>
+template<> struct v_at_impl<39>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item39 type;
+        typedef typename V_::item39 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 39> >
+struct at_impl< aux::vector_tag< 39> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 39> >
+struct front_impl< aux::vector_tag< 39> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 39> >
+struct back_impl< aux::vector_tag< 39> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 39> >
+struct empty_impl< aux::vector_tag< 39> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 39> >
+struct size_impl< aux::vector_tag< 39> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,39 >
+    template< typename Vector > struct apply
+        : long_<39>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 39> >
-    : size_traits< aux::vector_tag< 39> >
+struct O1_size_impl< aux::vector_tag< 39> >
+    : size_impl< aux::vector_tag< 39> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 39> >
+struct clear_impl< aux::vector_tag< 39> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -1714,17 +2210,16 @@ struct vector40
     typedef T38 item38;
     typedef T39 item39;
     
-
     typedef void_ item40;
     typedef T39 back;
-    typedef vector_iterator< type,integral_c<long,0> > begin;
-    typedef vector_iterator< type,integral_c<long,40> > end;
+    typedef v_iter< type,0 > begin;
+    typedef v_iter< type,40 > end;
 };
 
 template<>
-struct push_front_traits< aux::vector_tag< 39> >
+struct push_front_impl< aux::vector_tag< 39> >
 {
-    template< typename Vector, typename T > struct algorithm
+    template< typename Vector, typename T > struct apply
     {
         typedef vector40<
               T
@@ -1754,9 +2249,9 @@ struct push_front_traits< aux::vector_tag< 39> >
 };
 
 template<>
-struct pop_front_traits< aux::vector_tag< 40> >
+struct pop_front_impl< aux::vector_tag< 40> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector39<
               typename Vector::item1, typename Vector::item2
@@ -1783,72 +2278,134 @@ struct pop_front_traits< aux::vector_tag< 40> >
     };
 };
 
+template<>
+struct push_back_impl< aux::vector_tag< 39> >
+{
+    template< typename Vector, typename T > struct apply
+    {
+        typedef vector40<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34, typename Vector::item35
+            , typename Vector::item36, typename Vector::item37
+            , typename Vector::item38
+              ,
+              T
+            > type;
+    };
+};
+
+template<>
+struct pop_back_impl< aux::vector_tag< 40> >
+{
+    template< typename Vector > struct apply
+    {
+        typedef vector39<
+              typename Vector::item0, typename Vector::item1
+            , typename Vector::item2, typename Vector::item3
+            , typename Vector::item4, typename Vector::item5
+            , typename Vector::item6, typename Vector::item7
+            , typename Vector::item8, typename Vector::item9
+            , typename Vector::item10, typename Vector::item11
+            , typename Vector::item12, typename Vector::item13
+            , typename Vector::item14, typename Vector::item15
+            , typename Vector::item16, typename Vector::item17
+            , typename Vector::item18, typename Vector::item19
+            , typename Vector::item20, typename Vector::item21
+            , typename Vector::item22, typename Vector::item23
+            , typename Vector::item24, typename Vector::item25
+            , typename Vector::item26, typename Vector::item27
+            , typename Vector::item28, typename Vector::item29
+            , typename Vector::item30, typename Vector::item31
+            , typename Vector::item32, typename Vector::item33
+            , typename Vector::item34, typename Vector::item35
+            , typename Vector::item36, typename Vector::item37
+            , typename Vector::item38
+            > type;
+    };
+};
+
 namespace aux {
-template<> struct vector_item_impl<40>
+template<> struct v_at_impl<40>
 {
-    template< typename V > struct result_
+    template< typename V_ > struct result_
     {
-        typedef typename V::item40 type;
+        typedef typename V_::item40 type;
     };
 };
+
 }
-
 template<>
-struct at_traits< aux::vector_tag< 40> >
+struct at_impl< aux::vector_tag< 40> >
 {
-    template< typename V, typename N > struct algorithm
+    template< typename V_, typename N > struct apply
     {
-        typedef typename aux::vector_item_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
-            ::template result_<V>::type type;
+        typedef typename aux::v_at_impl<BOOST_MPL_AUX_VALUE_WKND(N)::value>
+            ::template result_<V_>::type type;
     };
 };
 
 template<>
-struct front_traits< aux::vector_tag< 40> >
+struct front_impl< aux::vector_tag< 40> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::item0 type;
     };
 };
 
 template<>
-struct back_traits< aux::vector_tag< 40> >
+struct back_impl< aux::vector_tag< 40> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef typename Vector::back type;
     };
 };
 
 template<>
-struct empty_traits< aux::vector_tag< 40> >
+struct empty_impl< aux::vector_tag< 40> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
         : false_
     {
     };
 };
 
 template<>
-struct size_traits< aux::vector_tag< 40> >
+struct size_impl< aux::vector_tag< 40> >
 {
-    template< typename Vector > struct algorithm
-        : integral_c< long,40 >
+    template< typename Vector > struct apply
+        : long_<40>
     {
     };
 };
 
 template<>
-struct O1_size_traits< aux::vector_tag< 40> >
-    : size_traits< aux::vector_tag< 40> >
+struct O1_size_impl< aux::vector_tag< 40> >
+    : size_impl< aux::vector_tag< 40> >
 {
 };
 
 template<>
-struct clear_traits< aux::vector_tag< 40> >
+struct clear_impl< aux::vector_tag< 40> >
 {
-    template< typename Vector > struct algorithm
+    template< typename Vector > struct apply
     {
         typedef vector0<> type;
     };
@@ -1856,4 +2413,3 @@ struct clear_traits< aux::vector_tag< 40> >
 
 } // namespace mpl
 } // namespace boost
-

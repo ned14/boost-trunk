@@ -147,16 +147,16 @@ struct iter_fold_if_backward_step
 
 #   define AUX_ITER_FOLD_BACKWARD_STEP(unused, i, unused2) \
     AUX_ITER_FOLD_BACKWARD_STEP_FUNC( \
-        BOOST_PP_SUB_D(1,BOOST_MPL_UNROLLING_LIMIT,i) \
+        BOOST_PP_SUB_D(1,BOOST_MPL_LIMIT_UNROLLING,i) \
         ) \
     /**/
 
 #   define AUX_LAST_FORWARD_STEP \
-    BOOST_PP_CAT(forward_step, BOOST_MPL_UNROLLING_LIMIT) \
+    BOOST_PP_CAT(forward_step, BOOST_MPL_LIMIT_UNROLLING) \
     /**/
 
 #   define AUX_LAST_BACKWARD_STEP \
-    BOOST_PP_CAT(backward_step, BOOST_MPL_UNROLLING_LIMIT) \
+    BOOST_PP_CAT(backward_step, BOOST_MPL_LIMIT_UNROLLING) \
     /**/
 
 template<
@@ -172,7 +172,7 @@ struct iter_fold_if_impl
  private:
     typedef iter_fold_if_null_step<Iterator,State> forward_step0;
     BOOST_PP_REPEAT_1(
-          BOOST_MPL_UNROLLING_LIMIT
+          BOOST_MPL_LIMIT_UNROLLING
         , AUX_ITER_FOLD_FORWARD_STEP
         , unused
         )
@@ -194,7 +194,7 @@ struct iter_fold_if_impl
         >::type AUX_LAST_BACKWARD_STEP;
 
     BOOST_PP_REPEAT_1(
-          BOOST_MPL_UNROLLING_LIMIT
+          BOOST_MPL_LIMIT_UNROLLING
         , AUX_ITER_FOLD_BACKWARD_STEP
         , unused
         )

@@ -14,15 +14,15 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/stable_partition.hpp"
+#include <boost/mpl/stable_partition.hpp>
 
-#include "boost/static_assert.hpp"
-#include "boost/mpl/list_c.hpp"
-#include "boost/mpl/equal.hpp"
+#include <boost/static_assert.hpp>
+#include <boost/mpl/list_c.hpp>
+#include <boost/mpl/equal.hpp>
 
-#include "boost/mpl/less.hpp"
-#include "boost/mpl/placeholders.hpp"
-#include "boost/mpl/int.hpp"
+#include <boost/mpl/less.hpp>
+#include <boost/mpl/placeholders.hpp>
+#include <boost/mpl/int.hpp>
 
 namespace mpl = boost::mpl;
 

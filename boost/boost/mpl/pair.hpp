@@ -32,7 +32,28 @@ struct pair
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,pair,(T1,T2))
 };
 
+template<
+      typename BOOST_MPL_AUX_NA_PARAM(P)
+    >
+struct first
+{
+    typedef typename P::first type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,first,(P))
+};
+
+template<
+      typename BOOST_MPL_AUX_NA_PARAM(P)
+    >
+struct second
+{
+    typedef typename P::second type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,second,(P))
+};
+
+
 BOOST_MPL_AUX_NA_SPEC(2, pair)
+BOOST_MPL_AUX_NA_SPEC(1, first)
+BOOST_MPL_AUX_NA_SPEC(1, second)
 
 }}
 

@@ -13,13 +13,14 @@
 
 // no include guards, the header is intended for multiple inclusion!
 
-#include <boost/mpl/aux_/config/vector.hpp>
+#include <boost/mpl/aux_/config/typeof.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
 #include <boost/mpl/aux_/config/preprocessor.hpp>
+
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/stringize.hpp>
 
-#if defined(BOOST_MPL_CFG_TYPEOF_SEQUENCES)
+#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
 #   define AUX_VECTOR_INCLIDE_DIR typeof_based
 #elif defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
    || defined(BOOST_MPL_CFG_NO_NONTYPE_TEMPLATE_PARTIAL_SPEC)

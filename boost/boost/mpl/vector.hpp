@@ -6,7 +6,7 @@
 #ifndef BOOST_MPL_VECTOR_HPP_INCLUDED
 #define BOOST_MPL_VECTOR_HPP_INCLUDED
 
-// Copyright (c) 2000-04 Aleksey Gurtovoy
+// Copyright (c) Aleksey Gurtovoy 2000-2004
 //
 // Use, modification and distribution are subject to the Boost Software 
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
@@ -18,11 +18,9 @@
 // $Date$
 // $Revision$
 
-// no include guards, the header is intended for multiple inclusion!
-
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include <boost/mpl/limits/vector.hpp>
-#   include <boost/mpl/void.hpp>
+#   include <boost/mpl/aux_/na.hpp>
 #   include <boost/mpl/aux_/config/preprocessor.hpp>
 
 #   include <boost/preprocessor/inc.hpp>
@@ -30,23 +28,23 @@
 #   include <boost/preprocessor/stringize.hpp>
 
 #if !defined(BOOST_NEEDS_TOKEN_PASTING_OP_FOR_TOKENS_JUXTAPOSING)
-#   define MPL_AUX_VECTOR_HEADER \
+#   define AUX778076_VECTOR_HEADER \
     BOOST_PP_CAT(vector, BOOST_MPL_LIMIT_VECTOR_SIZE).hpp \
     /**/
 #else
-#   define MPL_AUX_VECTOR_HEADER \
+#   define AUX778076_VECTOR_HEADER \
     BOOST_PP_CAT(vector, BOOST_MPL_LIMIT_VECTOR_SIZE)##.hpp \
     /**/
 #endif
 
-#   include BOOST_PP_STRINGIZE(boost/mpl/vector/MPL_AUX_VECTOR_HEADER)
-#   undef MPL_AUX_VECTOR_HEADER
+#   include BOOST_PP_STRINGIZE(boost/mpl/vector/AUX778076_VECTOR_HEADER)
+#   undef AUX778076_VECTOR_HEADER
 #endif
 
 #include <boost/mpl/aux_/config/use_preprocessed.hpp>
 
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) && \
-    !defined(BOOST_MPL_PREPROCESSING_MODE)
+#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
+    && !defined(BOOST_MPL_PREPROCESSING_MODE)
 
 #   define BOOST_MPL_PREPROCESSED_HEADER vector.hpp
 #   include <boost/mpl/aux_/include_preprocessed.hpp>
@@ -54,6 +52,7 @@
 #else
 
 #   include <boost/mpl/limits/vector.hpp>
+#   include <boost/mpl/aux_/config/ctps.hpp>
 #   include <boost/mpl/aux_/config/nttp.hpp>
 
 #   include <boost/preprocessor/arithmetic/sub.hpp>
@@ -65,19 +64,16 @@
 #   include <boost/preprocessor/comma_if.hpp>
 #   include <boost/preprocessor/iterate.hpp>
 
-#   include <boost/config.hpp>
+namespace boost { namespace mpl {
 
-namespace boost {
-namespace mpl {
-
-#   define AUX_VECTOR_PARAMS(param) \
+#   define AUX778076_VECTOR_PARAMS(param) \
     BOOST_PP_ENUM_PARAMS( \
           BOOST_MPL_LIMIT_VECTOR_SIZE \
         , param \
         ) \
     /**/
 
-#   define AUX_VECTOR_DEFAULT_PARAMS(param, value) \
+#   define AUX778076_VECTOR_DEFAULT_PARAMS(param, value) \
      BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT( \
           BOOST_MPL_LIMIT_VECTOR_SIZE \
         , param \
@@ -85,11 +81,11 @@ namespace mpl {
         ) \
     /**/
 
-#   define AUX_VECTOR_N_PARAMS(n, param) \
+#   define AUX778076_VECTOR_N_PARAMS(n, param) \
     BOOST_PP_ENUM_PARAMS(n, param) \
     /**/
 
-#   define AUX_VECTOR_N_PARTIAL_SPEC_PARAMS(n, param, def) \
+#   define AUX778076_VECTOR_N_PARTIAL_SPEC_PARAMS(n, param, def) \
     BOOST_PP_ENUM_PARAMS(n, param) \
     BOOST_PP_COMMA_IF(n) \
     BOOST_PP_ENUM( \
@@ -102,12 +98,12 @@ namespace mpl {
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 // forward declaration
 template<
-      AUX_VECTOR_DEFAULT_PARAMS(typename T, void_)
+      AUX778076_VECTOR_DEFAULT_PARAMS(typename T, na)
     >
 struct vector;
 #else
 namespace aux {
-template< BOOST_MPL_AUX_NTTP_DECL(int, N) > struct vector_impl_chooser;
+template< AUX778076_NTTP_DECL(int, N) > struct vector_chooser;
 }
 #endif
 
@@ -120,44 +116,43 @@ template< BOOST_MPL_AUX_NTTP_DECL(int, N) > struct vector_impl_chooser;
 
 namespace aux {
 // vector_count_args
-#define BOOST_MPL_AUX_COUNT_ARGS_PREFIX vector
-#define BOOST_MPL_AUX_COUNT_ARGS_DEFAULT void_
-#define BOOST_MPL_AUX_COUNT_ARGS_ARITY BOOST_MPL_LIMIT_VECTOR_SIZE
-#define BOOST_MPL_AUX_COUNT_ARGS_USE_STANDARD_PP_PRIMITIVES
+#define AUX778076_COUNT_ARGS_PREFIX vector
+#define AUX778076_COUNT_ARGS_DEFAULT na
+#define AUX778076_COUNT_ARGS_ARITY BOOST_MPL_LIMIT_VECTOR_SIZE
+#define AUX778076_COUNT_ARGS_USE_STANDARD_PP_PRIMITIVES
 #include <boost/mpl/aux_/count_args.hpp>
 
 template<
-      AUX_VECTOR_PARAMS(typename T)
+      AUX778076_VECTOR_PARAMS(typename T)
     >
 struct vector_impl
 {
-    typedef aux::vector_count_args< AUX_VECTOR_PARAMS(T) > arg_num_;
-    typedef typename aux::vector_impl_chooser< arg_num_::value >
-        ::template result_< AUX_VECTOR_PARAMS(T) >::type type;
+    typedef aux::vector_count_args< AUX778076_VECTOR_PARAMS(T) > arg_num_;
+    typedef typename aux::vector_chooser< arg_num_::value >
+        ::template result_< AUX778076_VECTOR_PARAMS(T) >::type type;
 };
 
 } // namespace aux
 
 template<
-      AUX_VECTOR_DEFAULT_PARAMS(typename T, void_)
+      AUX778076_VECTOR_DEFAULT_PARAMS(typename T, na)
     >
 struct vector
-    : aux::vector_impl< AUX_VECTOR_PARAMS(T) >::type
+    : aux::vector_impl< AUX778076_VECTOR_PARAMS(T) >::type
 {
     typedef typename aux::vector_impl<
-          AUX_VECTOR_PARAMS(T)
+          AUX778076_VECTOR_PARAMS(T)
         >::type type;
 };
 
 #endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
-#   undef AUX_VECTOR_N_PARTIAL_SPEC_PARAMS
-#   undef AUX_VECTOR_N_PARAMS
-#   undef AUX_VECTOR_DEFAULT_PARAMS
-#   undef AUX_VECTOR_PARAMS
+#   undef AUX778076_VECTOR_N_PARTIAL_SPEC_PARAMS
+#   undef AUX778076_VECTOR_N_PARAMS
+#   undef AUX778076_VECTOR_DEFAULT_PARAMS
+#   undef AUX778076_VECTOR_PARAMS
 
-} // namespace mpl
-} // namespace boost
+}}
 
 #endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
 #endif // BOOST_MPL_VECTOR_HPP_INCLUDED
@@ -165,49 +160,49 @@ struct vector
 ///// iteration
 
 #else
-#define i BOOST_PP_FRAME_ITERATION(1)
+#define i_ BOOST_PP_FRAME_ITERATION(1)
 
 #   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 
-#if i == BOOST_MPL_LIMIT_VECTOR_SIZE
+#if i_ == BOOST_MPL_LIMIT_VECTOR_SIZE
 
 //: primary template (not a specialization!)
 template<
-      AUX_VECTOR_N_PARAMS(i, typename T)
+      AUX778076_VECTOR_N_PARAMS(i_, typename T)
     >
 struct vector
-    : BOOST_PP_CAT(vector,i)< AUX_VECTOR_N_PARAMS(i, T) >
+    : BOOST_PP_CAT(vector,i_)< AUX778076_VECTOR_N_PARAMS(i_, T) >
 {
-    typedef BOOST_PP_CAT(vector,i)< AUX_VECTOR_N_PARAMS(i, T) > type;
+    typedef BOOST_PP_CAT(vector,i_)< AUX778076_VECTOR_N_PARAMS(i_, T) > type;
 };
 
 #else
 
 template<
-      AUX_VECTOR_N_PARAMS(i, typename T)
+      AUX778076_VECTOR_N_PARAMS(i_, typename T)
     >
-struct vector< AUX_VECTOR_N_PARTIAL_SPEC_PARAMS(i, T, void_) >
-    : BOOST_PP_CAT(vector,i)< AUX_VECTOR_N_PARAMS(i, T) >
+struct vector< AUX778076_VECTOR_N_PARTIAL_SPEC_PARAMS(i_, T, na) >
+    : BOOST_PP_CAT(vector,i_)< AUX778076_VECTOR_N_PARAMS(i_, T) >
 {
-    typedef BOOST_PP_CAT(vector,i)< AUX_VECTOR_N_PARAMS(i, T) > type;
+    typedef BOOST_PP_CAT(vector,i_)< AUX778076_VECTOR_N_PARAMS(i_, T) > type;
 };
 
-#endif // i == BOOST_MPL_LIMIT_VECTOR_SIZE
+#endif // i_ == BOOST_MPL_LIMIT_VECTOR_SIZE
 
 #   else
 
 namespace aux {
 
 template<>
-struct vector_impl_chooser<i>
+struct vector_chooser<i_>
 {
     template<
-          AUX_VECTOR_PARAMS(typename T)
+          AUX778076_VECTOR_PARAMS(typename T)
         >
     struct result_
     {
-        typedef BOOST_PP_CAT(vector,i)<
-              AUX_VECTOR_N_PARAMS(i, T)
+        typedef BOOST_PP_CAT(vector,i_)<
+              AUX778076_VECTOR_N_PARAMS(i_, T)
             > type;
     };
 };
@@ -216,5 +211,5 @@ struct vector_impl_chooser<i>
 
 #   endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
-#undef i
+#undef i_
 #endif // BOOST_PP_IS_ITERATING

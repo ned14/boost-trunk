@@ -15,10 +15,10 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/preprocessor/is_seq.hpp"
+#include <boost/mpl/aux_/preprocessor/is_seq.hpp>
 
-#include "boost/preprocessor/logical/not.hpp"
-#include "boost/preprocessor/debug/assert.hpp"
+#include <boost/preprocessor/logical/not.hpp>
+#include <boost/preprocessor/debug/assert.hpp>
 
 #define AUX_ASSERT_IS_SEQ( seq ) \
     BOOST_PP_ASSERT( BOOST_MPL_PP_IS_SEQ(seq) ) \

@@ -14,6 +14,8 @@
 // $Date$
 // $Revision$
 
+#include <boost/preprocessor/cat.hpp>
+
 #if 0
 
 #include <boost/preprocessor/comma_if.hpp>
@@ -38,7 +40,7 @@ void name() \
 
 #else
 
-#   define MPL_TEST_CASE( test_name ) void test_name()
+#   define MPL_TEST_CASE() void BOOST_PP_CAT(test,__LINE__)()
 
 #endif
 

@@ -19,6 +19,7 @@
 // $Revision$
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include <boost/mpl/lambda_fwd.hpp>
 #   include <boost/mpl/aux_/apply_wrap.hpp>
 #   include <boost/mpl/aux_/na.hpp>
 #endif
@@ -39,7 +40,6 @@
 #   include <boost/mpl/aux_/preprocessor/default_params.hpp>
 #   include <boost/mpl/aux_/preprocessor/partial_spec_params.hpp>
 #   include <boost/mpl/aux_/preprocessor/enum.hpp>
-#   include <boost/mpl/aux_/preprocessor/add.hpp>
 #   include <boost/mpl/aux_/config/lambda.hpp>
 #   include <boost/mpl/aux_/config/dtp.hpp>
 #   include <boost/mpl/aux_/config/nttp.hpp>
@@ -50,6 +50,7 @@
 #   include <boost/preprocessor/comma_if.hpp>
 #   include <boost/preprocessor/inc.hpp>
 #   include <boost/preprocessor/iterate.hpp>
+#   include <boost/preprocessor/cat.hpp>
 
 
 // agurt, 15/jan/02: top-level 'apply' template gives an ICE on MSVC
@@ -80,7 +81,7 @@ namespace boost { namespace mpl {
     BOOST_MPL_PP_PARAMS(n, param) \
     /**/
 
-#   define AUX778076_APPLY_N_SPEC_PARAMS(n, param) \
+#   define AUX778076_APPLY_N_COMMA_PARAMS(n, param) \
     BOOST_PP_COMMA_IF(n) \
     BOOST_MPL_PP_PARAMS(n, param) \
     /**/
@@ -142,7 +143,7 @@ struct apply
 
 #   undef AUX778076_APPLY_N_SPEC_PARAMS
 #   undef AUX778076_APPLY_N_PARTIAL_SPEC_PARAMS
-#   undef AUX778076_APPLY_N_SPEC_PARAMS
+#   undef AUX778076_APPLY_N_COMMA_PARAMS
 #   undef AUX778076_APPLY_N_PARAMS
 #   undef AUX778076_APPLY_DEF_PARAMS
 #   undef AUX778076_APPLY_PARAMS
@@ -150,6 +151,11 @@ struct apply
 }}
 
 #endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
+
+#if !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include <boost/mpl/lambda.hpp>
+#endif
+
 #endif // BOOST_MPL_APPLY_HPP_INCLUDED
 
 ///// iteration, depth == 1
@@ -159,18 +165,18 @@ struct apply
 #   define i_ BOOST_PP_FRAME_ITERATION(1)
 
 template<
-      typename F, AUX778076_APPLY_N_PARAMS(i_, typename T)
+      typename F AUX778076_APPLY_N_COMMA_PARAMS(i_, typename T)
     >
 struct BOOST_PP_CAT(apply,i_)
-    : BOOST_PP_CAT(apply_wrap,i_)< 
-          lambda<F>
-        , AUX778076_APPLY_N_PARAMS(i_, T)
+    : aux::BOOST_PP_CAT(apply_wrap,i_)< 
+          typename lambda<F>::type
+        AUX778076_APPLY_N_COMMA_PARAMS(i_, T)
         >
 {
-    BOOST_AUX_LAMBDA_SUPPORT(
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(
           BOOST_PP_INC(i_)
         , BOOST_PP_CAT(apply,i_)
-        , (F, AUX778076_APPLY_N_PARAMS(i_,T))
+        , (F AUX778076_APPLY_N_COMMA_PARAMS(i_,T))
         )
 };
 
@@ -188,29 +194,25 @@ struct BOOST_PP_CAT(apply,i_)<AUX778076_APPLY_N_SPEC_PARAMS(i_, int)>
 #   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 
 #if i_ == BOOST_MPL_LIMIT_METAFUNCTION_ARITY
-
 //: primary template (not a specialization!)
 template<
-      typename F AUX778076_APPLY_N_SPEC_PARAMS(i_, typename T)
+      typename F AUX778076_APPLY_N_COMMA_PARAMS(i_, typename T)
     >
 struct apply
-    : BOOST_PP_CAT(apply,i_)< F AUX778076_APPLY_N_SPEC_PARAMS(i_, T) >
+    : BOOST_PP_CAT(apply,i_)< F AUX778076_APPLY_N_COMMA_PARAMS(i_, T) >
 {
 };
-
 #else
-
 template<
-      typename F AUX778076_APPLY_N_SPEC_PARAMS(i_, typename T)
+      typename F AUX778076_APPLY_N_COMMA_PARAMS(i_, typename T)
     >
 struct apply< F AUX778076_APPLY_N_PARTIAL_SPEC_PARAMS(i_, T, na) >
-    : BOOST_PP_CAT(apply,i_)< F AUX778076_APPLY_N_SPEC_PARAMS(i_, T) >
+    : BOOST_PP_CAT(apply,i_)< F AUX778076_APPLY_N_COMMA_PARAMS(i_, T) >
 {
 };
+#endif
 
-#endif // i_ == BOOST_MPL_LIMIT_METAFUNCTION_ARITY
-
-#   else
+#   else // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 namespace aux {
 
@@ -223,7 +225,7 @@ struct apply_chooser<i_>
     struct result_
     {
         typedef BOOST_PP_CAT(apply,i_)<
-              F AUX778076_APPLY_N_SPEC_PARAMS(i_, T)
+              F AUX778076_APPLY_N_COMMA_PARAMS(i_, T)
             > type;
     };
 };

@@ -15,6 +15,7 @@
 #include <boost/mpl/pair_view.hpp>
 #include <boost/mpl/list/list10_c.hpp>
 #include <boost/mpl/front.hpp>
+#include <boost/mpl/back.hpp>
 
 #include <boost/mpl/aux_/test/test.hpp>
 
@@ -28,4 +29,6 @@ MPL_TEST_CASE( min_max_test )
     
     MPL_ASSERT_EQUAL(2,( front<view>::type::first::value,0 ));
     MPL_ASSERT_EQUAL(2,( front<view>::type::second::value,9 ));
+//    MPL_ASSERT_EQUAL(2,( back<view>::type::first::value,9 ));
+//    MPL_ASSERT_EQUAL(2,( back<view>::type::second::value,0 ));
 }

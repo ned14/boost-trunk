@@ -23,6 +23,7 @@
 #include <boost/mpl/front_inserter.hpp>
 #include <boost/mpl/clear.hpp>
 #include <boost/mpl/if.hpp>
+#include <boost/mpl/aux_/na.hpp>
 #include <boost/mpl/aux_/preprocessor/params.hpp>
 #include <boost/mpl/aux_/preprocessor/default_params.hpp>
 #include <boost/mpl/aux_/common_name_wknd.hpp>
@@ -35,7 +36,7 @@
 BOOST_MPL_AUX_COMMON_NAME_WKND(name) \
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN \
 template< \
-      BOOST_MPL_PP_DEFAULT_PARAMS(arity, typename P, void_) \
+      BOOST_MPL_PP_DEFAULT_PARAMS(arity, typename P, na) \
     > \
 struct name \
     : aux::name##_impl<BOOST_MPL_PP_PARAMS(arity, P)> \
@@ -45,7 +46,7 @@ struct name \
 template< \
       BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), typename P) \
     > \
-struct name< BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P),void_ > \
+struct name< BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P),na > \
     : if_< has_push_back<P1> \
         , aux::name##_impl< \
               BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P) \
@@ -60,7 +61,7 @@ struct name< BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P),void_ > \
 }; \
 \
 template< \
-      BOOST_MPL_PP_DEFAULT_PARAMS(arity, typename P, void_) \
+      BOOST_MPL_PP_DEFAULT_PARAMS(arity, typename P, na) \
     > \
 struct reverse_##name \
     : aux::reverse_##name##_impl<BOOST_MPL_PP_PARAMS(arity, P)> \
@@ -70,13 +71,13 @@ struct reverse_##name \
 template< \
       BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), typename P) \
     > \
-struct reverse_##name< BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P),void_ > \
+struct reverse_##name< BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P),na > \
     : if_< has_push_front<P1> \
-        , aux::reverse_##name##_impl< \
+        , aux::name##_impl< \
               BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P) \
             , front_inserter< typename clear<P1>::type > \
             > \
-        , aux::name##_impl< \
+        , aux::reverse_##name##_impl< \
               BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P) \
             , back_inserter< typename clear<P1>::type > \
             > \

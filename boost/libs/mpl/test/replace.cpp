@@ -1,33 +1,27 @@
-//-----------------------------------------------------------------------------
-// boost mpl/test/replace.cpp source file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
+
+// Copyright (c) Aleksey Gurtovoy 2000-2004
+// Copyright (c) David Abrahams 2003-2004
 //
-// Copyright (c) 2000-02
-// Aleksey Gurtovoy and John R. Bandela
+// Use, modification and distribution are subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+// at http://www.boost.org/LICENSE_1_0.txt)
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/replace.hpp"
-#include "boost/mpl/list.hpp"
-#include "boost/mpl/equal.hpp"
-#include "boost/static_assert.hpp"
+// $Source$
+// $Date$
+// $Revision$
 
-namespace mpl = boost::mpl;
+#include <boost/mpl/replace.hpp>
+#include <boost/mpl/list.hpp>
+#include <boost/mpl/equal.hpp>
 
-int main()
+#include <boost/mpl/aux_/test/test.hpp>
+
+MPL_TEST_CASE()
 {
-    typedef mpl::list<int,float,char,float,float,double>::type types;
-    typedef mpl::replace< types,float,double >::type result;
-
-    typedef mpl::list<int,double,char,double,double,double>::type answer;
-    BOOST_STATIC_ASSERT((mpl::equal< result,answer >::type::value));
-
-    return 0;
+    typedef list<int,float,char,float,float,double> types;
+    typedef replace< types,float,double >::type result;
+    typedef list<int,double,char,double,double,double> answer;
+    MPL_ASSERT(( equal< result,answer >::value ));
 }

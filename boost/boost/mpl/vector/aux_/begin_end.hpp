@@ -39,8 +39,7 @@ struct end_impl< aux::vector_tag >
 {
     template< typename Vector > struct apply
     {
-        enum { size_ = Vector::upper_bound_ - Vector::lower_bound_ };
-        typedef v_iter<Vector,size_> type;
+        typedef v_iter<Vector,Vector::size::value> type;
     };
 };
 

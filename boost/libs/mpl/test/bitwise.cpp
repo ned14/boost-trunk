@@ -15,9 +15,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/bitwise.hpp"
-#include "boost/mpl/integral_c.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/bitwise.hpp>
+#include <boost/mpl/integral_c.hpp>
+#include <boost/static_assert.hpp>
 
 namespace mpl = boost::mpl;
 

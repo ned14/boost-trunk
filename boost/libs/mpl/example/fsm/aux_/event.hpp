@@ -17,7 +17,7 @@
 #ifndef BOOST_FSM_EVENT_INCLUDED
 #define BOOST_FSM_EVENT_INCLUDED
 
-#include "base_event.hpp"
+#include <base_event.hpp>
 
 namespace fsm {
 namespace aux {

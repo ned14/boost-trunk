@@ -24,7 +24,7 @@ namespace boost { namespace mpl {
 template< typename N >
 struct range_c_iterator
 {
-    typedef ra_iter_tag_ category;
+    typedef random_access_iterator_tag category;
     typedef N type;
 
     typedef range_c_iterator<typename N::next> next;

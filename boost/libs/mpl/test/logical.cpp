@@ -14,9 +14,9 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/logical.hpp"
-#include "boost/mpl/bool.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/logical.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/static_assert.hpp>
 
 namespace mpl = boost::mpl;
 

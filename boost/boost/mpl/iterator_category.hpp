@@ -16,7 +16,6 @@
 
 #include <boost/mpl/aux_/na_spec.hpp>
 #include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
 
 namespace boost { 
 namespace mpl {
@@ -30,12 +29,6 @@ struct iterator_category
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,iterator_category,(Iterator))
 };
 
-#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
-template<> struct iterator_category<int>
-{
-    typedef int type;
-};
-#endif
 /*
 template<
       typename BOOST_MPL_AUX_NA_PARAM(Iterator)

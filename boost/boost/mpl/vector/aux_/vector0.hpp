@@ -35,7 +35,7 @@ template<> struct vector0<0>
     typedef lower_bound_    upper_bound_;
     typedef long_<0>        size;
 
-    static void_ item_(...);
+    static aux::type_wrapper<void_> item_(...);
 #else
     typedef aux::vector_tag<0> tag;
     typedef vector0 type;

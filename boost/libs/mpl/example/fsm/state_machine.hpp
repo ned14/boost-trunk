@@ -17,11 +17,11 @@
 #ifndef BOOST_FSM_STATE_MACHINE_INCLUDED
 #define BOOST_FSM_STATE_MACHINE_INCLUDED
 
-#include "aux_/event.hpp"
-#include "aux_/state.hpp"
-#include "aux_/transition.hpp"
-#include "aux_/STT_impl_gen.hpp"
-#include "boost/shared_ptr.hpp"
+#include <aux_/event.hpp>
+#include <aux_/state.hpp>
+#include <aux_/transition.hpp>
+#include <aux_/STT_impl_gen.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <queue>
 #include <memory>

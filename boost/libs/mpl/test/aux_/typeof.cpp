@@ -14,8 +14,8 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/aux_/typeof.hpp"
-#include "boost/mpl/assert_is_same.hpp"
+#include <boost/mpl/aux_/typeof.hpp>
+#include <boost/mpl/assert_is_same.hpp>
 
 namespace {
 template< typename T > struct identity { static T type(); };

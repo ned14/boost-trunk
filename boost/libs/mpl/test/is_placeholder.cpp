@@ -14,13 +14,13 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/is_placeholder.hpp"
-#include "boost/mpl/placeholders.hpp"
+#include <boost/mpl/is_placeholder.hpp>
+#include <boost/mpl/placeholders.hpp>
 
-#include "boost/preprocessor/repeat.hpp"
-#include "boost/preprocessor/inc.hpp"
-#include "boost/preprocessor/cat.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/preprocessor/repeat.hpp>
+#include <boost/preprocessor/inc.hpp>
+#include <boost/preprocessor/cat.hpp>
+#include <boost/static_assert.hpp>
 
 using namespace boost::mpl;
 

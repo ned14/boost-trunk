@@ -15,7 +15,7 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/test.hpp"
+#include <boost/mpl/aux_/test.hpp>
 
 CTT_test_case( false_positives, (S)(T) )
 {

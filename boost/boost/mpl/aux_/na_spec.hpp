@@ -14,17 +14,21 @@
 // $Date$
 // $Revision$
 
-#include <boost/mpl/lambda_fwd.hpp>
-#include <boost/mpl/int_fwd.hpp>
-#include <boost/mpl/aux_/na.hpp>
+#if !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include <boost/mpl/lambda_fwd.hpp>
+#   include <boost/mpl/int.hpp>
+#   include <boost/mpl/aux_/na.hpp>
+#   include <boost/mpl/aux_/arity.hpp>
+#   include <boost/mpl/aux_/template_arity_fwd.hpp>
+#endif
+
 #include <boost/mpl/aux_/preprocessor/params.hpp>
 #include <boost/mpl/aux_/preprocessor/enum.hpp>
 #include <boost/mpl/aux_/preprocessor/def_params_tail.hpp>
-#include <boost/mpl/aux_/arity.hpp>
-#include <boost/mpl/aux_/template_arity_fwd.hpp>
 #include <boost/mpl/aux_/lambda_arity_param.hpp>
 #include <boost/mpl/aux_/algorithm_namespace.hpp>
 #include <boost/mpl/aux_/config/dtp.hpp>
+#include <boost/mpl/aux_/config/eti.hpp>
 #include <boost/mpl/aux_/config/nttp.hpp>
 #include <boost/mpl/aux_/config/ttp.hpp>
 #include <boost/mpl/aux_/config/lambda.hpp>
@@ -41,13 +45,11 @@
 namespace aux { \
 template< BOOST_MPL_AUX_NTTP_DECL(int, N) > \
 struct arity< \
-      name< BOOST_MPL_AUX_NA_PARAMS(i) > \
-    , N \
-    > \
+          name< BOOST_MPL_AUX_NA_PARAMS(i) > \
+        , N \
+        > \
+    : int_< BOOST_MPL_LIMIT_METAFUNCTION_ARITY > \
 { \
-    BOOST_STATIC_CONSTANT(int \
-        , value = BOOST_MPL_LIMIT_METAFUNCTION_ARITY \
-        ); \
 }; \
 } \
 /**/
@@ -96,17 +98,17 @@ struct lambda< \
 /**/
 #endif
 
-#if defined(BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING) \ 
+#if defined(BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING) \
     || defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT) \
         && defined(BOOST_MPL_CFG_BROKEN_OVERLOAD_RESOLUTION)
 #   define BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(i, j, name) \
 namespace aux { \
 template< BOOST_MPL_PP_PARAMS(j, typename T) > \
 struct template_arity< \
-      name< BOOST_MPL_PP_PARAMS(j, T) > \
-    > \
+          name< BOOST_MPL_PP_PARAMS(j, T) > \
+        > \
+    : int_<j> \
 { \
-    BOOST_STATIC_CONSTANT(int, value = j); \
 }; \
 \
 template<> \
@@ -122,11 +124,23 @@ struct template_arity< \
 #   define BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(i, j, name) /**/
 #endif
 
+#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
+#   define BOOST_MPL_AUX_NA_SPEC_ETI(i, name) \
+template<> \
+struct name< BOOST_MPL_PP_ENUM(i, int) > \
+{ \
+    typedef int type; \
+}; \
+/**/
+#else
+#   define BOOST_MPL_AUX_NA_SPEC_ETI(i, name) /**/
+#endif
 
 #define BOOST_MPL_AUX_NA_PARAM(param) param = na
 
 #define BOOST_MPL_AUX_NA_SPEC(i, name) \
 BOOST_MPL_AUX_NA_SPEC_MAIN(i, name) \
+BOOST_MPL_AUX_NA_SPEC_ETI(i, name) \
 BOOST_MPL_AUX_NA_SPEC_LAMBDA(i, name) \
 BOOST_MPL_AUX_NA_SPEC_ARITY(i, name) \
 BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(i, i, name) \
@@ -134,6 +148,7 @@ BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(i, i, name) \
 
 #define BOOST_MPL_AUX_NA_SPEC2(i, j, name) \
 BOOST_MPL_AUX_NA_SPEC_MAIN(i, name) \
+BOOST_MPL_AUX_NA_SPEC_ETI(i, name) \
 BOOST_MPL_AUX_NA_SPEC_LAMBDA(i, name) \
 BOOST_MPL_AUX_NA_SPEC_ARITY(i, name) \
 BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(i, j, name) \
@@ -142,6 +157,7 @@ BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(i, j, name) \
 #define BOOST_MPL_AUX_NA_ALGORITHM_SPEC(i, name) \
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN \
 BOOST_MPL_AUX_NA_SPEC_MAIN(i, name) \
+BOOST_MPL_AUX_NA_SPEC_ETI(i, name) \
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_END \
 BOOST_MPL_AUX_NA_SPEC_LAMBDA(i, BOOST_MPL_AUX_AGLORITHM_NAMESPACE_PREFIX name) \
 BOOST_MPL_AUX_NA_SPEC_ARITY(i, BOOST_MPL_AUX_AGLORITHM_NAMESPACE_PREFIX name) \

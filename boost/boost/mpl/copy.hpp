@@ -16,7 +16,7 @@
 // $Revision$
 
 #include <boost/mpl/fold.hpp>
-#include <boost/mpl/fold_backward.hpp>
+#include <boost/mpl/reverse_fold.hpp>
 #include <boost/mpl/aux_/inserter_algorithm.hpp>
 
 namespace boost { namespace mpl {
@@ -41,7 +41,7 @@ template<
     , typename Inserter
     >
 struct reverse_copy_impl
-    : fold_backward<
+    : reverse_fold<
           Sequence
         , typename Inserter::state
         , typename Inserter::operation

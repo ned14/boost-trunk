@@ -1,6 +1,3 @@
-// preprocessed version of 'boost/mpl/vector/vector10_c.hpp' header
-// see the original for copyright information
-
 namespace boost {
 namespace mpl {
 
@@ -122,4 +119,3 @@ struct vector10_c
 
 } // namespace mpl
 } // namespace boost
-

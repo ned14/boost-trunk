@@ -15,9 +15,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/aux_/has_xxx.hpp"
-#include "boost/mpl/aux_/config/workaround.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/aux_/has_xxx.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
+#include <boost/static_assert.hpp>
 
 BOOST_MPL_HAS_XXX_TRAIT_DEF(xxx)
 

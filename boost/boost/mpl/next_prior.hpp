@@ -16,7 +16,6 @@
 
 #include <boost/mpl/aux_/na_spec.hpp>
 #include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
 
 namespace boost { namespace mpl {
 
@@ -37,19 +36,6 @@ struct prior
     typedef typename T::prior type;
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,prior,(T))
 };
-
-
-#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
-template<> struct next<int>
-{
-    typedef int type;
-};
-
-template<> struct prior<int>
-{
-    typedef int type;
-};
-#endif
 
 BOOST_MPL_AUX_NA_SPEC(1, next)
 BOOST_MPL_AUX_NA_SPEC(1, prior)

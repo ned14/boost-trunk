@@ -1,8 +1,4 @@
-// preprocessed version of 'boost/mpl/aux_/template_arity.hpp' header
-// see the original for copyright information
-
 namespace boost { namespace mpl { namespace aux {
-
 template< int N > struct arity_tag
 {
     typedef char (&type)[N + 1];
@@ -59,7 +55,6 @@ template<
     >
 typename arity_tag<5>::type
 arity_helper(type_wrapper< F<T1,T2,T3,T4,T5> >,arity_tag<5 >);
-
 template< typename F, int N >
 struct template_arity_impl
 {
@@ -76,7 +71,7 @@ struct template_arity
          F,2 >::value, template_arity_impl< F,3 >::value, template_arity_impl<
          F,4 >::value, template_arity_impl< F,5 >::value >::value )
         ;
+    typedef int_<value> type;
 };
 
 }}} // namespace boost::mpl::aux
-

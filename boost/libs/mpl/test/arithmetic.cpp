@@ -14,9 +14,9 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/arithmetic.hpp"
-#include "boost/mpl/int.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/arithmetic.hpp>
+#include <boost/mpl/int.hpp>
+#include <boost/static_assert.hpp>
 
 namespace mpl = boost::mpl;
 

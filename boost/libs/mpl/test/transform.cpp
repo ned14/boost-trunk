@@ -16,34 +16,31 @@
 #include <boost/mpl/list.hpp>
 #include <boost/mpl/list_c.hpp>
 #include <boost/mpl/equal.hpp>
+#include <boost/mpl/equal_to.hpp>
 #include <boost/mpl/plus.hpp>
 #include <boost/type_traits/add_pointer.hpp>
 
 #include <boost/mpl/aux_/test/test.hpp>
 
 
-MPL_TEST_CASE( copy_test )
+MPL_TEST_CASE()
 {
     typedef list<char,short,int,long,float,double> types;
     typedef list<char*,short*,int*,long*,float*,double*> pointers;
-
-//        typedef mpl::transform1< types,boost::add_pointer<_1> >::type result1;
-//        BOOST_STATIC_ASSERT((mpl::equal<result1,pointers>::type::value));
     
-    typedef transform< types,add_pointer<_1> >::type result;
-    MPL_ASSERT(( mpl::equal<result,pointers>::value ));
+    typedef transform1< types,add_pointer<_1> >::type result;
+    MPL_ASSERT(( equal<result,pointers>::value ));
 }
 
-#if 0    
-    {
-        typedef mpl::list_c<long,0,2,4,6,8,10> evens;
-        typedef mpl::list_c<long,2,3,5,7,11,13> primes;
-        typedef mpl::list_c<long,2,5,9,13,19,23> sums;
+MPL_TEST_CASE()
+{
+    typedef list_c<long,0,2,4,6,8,10> evens;
+    typedef list_c<long,2,3,5,7,11,13> primes;
+    typedef list_c<long,2,5,9,13,19,23> sums;
 
-        typedef mpl::transform2< evens, primes, mpl::plus<> >::type result1;
-        BOOST_STATIC_ASSERT((mpl::equal<result1::type,sums::type>::type::value));
-        
-        typedef mpl::transform< evens, primes, mpl::plus<> >::type result;
-        BOOST_STATIC_ASSERT((mpl::equal<result::type,sums::type>::type::value));
-    }
-#endif
+    typedef transform2< evens, primes, plus<> >::type result;
+    MPL_ASSERT(( equal< result,sums,equal_to<_1,_2> >::value ));
+    
+    typedef transform< evens, primes, plus<> >::type result2;
+    MPL_ASSERT_SAME(2,( result2,result ));
+}

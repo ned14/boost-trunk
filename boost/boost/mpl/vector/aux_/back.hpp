@@ -31,7 +31,7 @@ struct back_impl< aux::vector_tag >
     template< typename Vector > struct apply
         : v_at<
               Vector
-            , Vector::index_::value
+            , Vector::size::prior::value
             >
     {
     };

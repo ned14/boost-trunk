@@ -22,26 +22,32 @@
 #include <boost/mpl/aux_/config/typeof.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
 
-namespace boost {
-namespace mpl {
+namespace boost { namespace mpl {
 
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
 
 template< typename Vector, long n_ >
-struct v_at
+struct v_at_impl
 {
     typedef long_< (Vector::lower_bound_::value + n_) > index_;
     typedef __typeof__( Vector::item_(index_()) ) type;
+};
+
+
+template< typename Vector, long n_ >
+struct v_at
+    : aux::wrapped_type< typename v_at_impl<Vector,n_>::type >
+{
 };
 
 template<>
 struct at_impl< aux::vector_tag >
 {
     template< typename Vector, typename N > struct apply
-        : aux::wrapped_type< typename v_at<
+        : v_at<
               Vector
             , BOOST_MPL_AUX_VALUE_WKND(N)::value
-            >::type >
+            >
     {
     };
 };
@@ -94,7 +100,6 @@ struct v_at
 
 #endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
 
-} // namespace mpl
-} // namespace boost
+}}
 
 #endif // BOOST_MPL_VECTOR_AUX_AT_HPP_INCLUDED

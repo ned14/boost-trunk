@@ -14,8 +14,8 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "state_machine.hpp"
-#include "boost/mpl/list.hpp"
+#include <state_machine.hpp>
+#include <boost/mpl/list.hpp>
 
 #include <iostream>
 

@@ -20,8 +20,7 @@
 #include <boost/mpl/aux_/config/typeof.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
 
-namespace boost {
-namespace mpl {
+namespace boost { namespace mpl {
 
 #if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
 
@@ -72,7 +71,7 @@ struct v_mask
     typedef Base base;
 
     using Base::item_;
-    static void_ item_(index_);
+    static aux::type_wrapper<void_> item_(index_);
 };
 
 template< 
@@ -87,12 +86,11 @@ struct v_mask<Base,1>
     typedef Base base;
 
     using Base::item_;
-    static void_ item_(index_);
+    static aux::type_wrapper<void_> item_(index_);
 };
 
 #endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
 
-} // namespace mpl
-} // namespace boost
+}}
 
 #endif // BOOST_MPL_VECTOR_AUX_ITEM_HPP_INCLUDED

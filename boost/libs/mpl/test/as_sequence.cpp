@@ -14,9 +14,9 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/vector.hpp"
-#include "boost/mpl/as_sequence.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/vector.hpp>
+#include <boost/mpl/as_sequence.hpp>
+#include <boost/static_assert.hpp>
 
 using namespace boost::mpl;
 

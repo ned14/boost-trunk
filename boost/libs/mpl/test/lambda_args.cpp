@@ -14,10 +14,10 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/type_traits/is_same.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/mpl/lambda.hpp>
+#include <boost/mpl/apply.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <boost/static_assert.hpp>
 
 using namespace boost;
 using namespace mpl;

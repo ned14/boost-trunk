@@ -51,25 +51,25 @@ namespace aux {
 template< BOOST_MPL_AUX_NTTP_DECL(long, N) > struct advance_backward;
 
 #   define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(0, BOOST_MPL_UNROLLING_LIMIT, <boost/mpl/aux_/advance_backward.hpp>))
+    (3,(0, BOOST_MPL_LIMIT_UNROLLING, <boost/mpl/aux_/advance_backward.hpp>))
 #   include BOOST_PP_ITERATE()
 
-// implementation for N that exceeds BOOST_MPL_UNROLLING_LIMIT
+// implementation for N that exceeds BOOST_MPL_LIMIT_UNROLLING
 template< BOOST_MPL_AUX_NTTP_DECL(long, N) >
 struct advance_backward
 {
     template< typename Iterator > struct apply
     {
         typedef typename BOOST_MPL_AUX_APPLY1(
-              advance_backward<BOOST_MPL_UNROLLING_LIMIT>
+              advance_backward<BOOST_MPL_LIMIT_UNROLLING>
             , Iterator
             )::type chunk_result_;
 
         typedef typename BOOST_MPL_AUX_APPLY1(
               advance_backward<(
-                (N - BOOST_MPL_UNROLLING_LIMIT) < 0
+                (N - BOOST_MPL_LIMIT_UNROLLING) < 0
                     ? 0
-                    : N - BOOST_MPL_UNROLLING_LIMIT
+                    : N - BOOST_MPL_LIMIT_UNROLLING
                     )>
             , chunk_result_
             )::type type;
