@@ -4607,6 +4607,7 @@ boost/libs/spirit/example/application/cpp/test/list_includes/list_includes_versi
 boost/libs/spirit/example/application/cpp/test_files/test1.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test2.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test3.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test_files/test4.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test5.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test6.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test7.cpp svneol=native#text/plain
