@@ -14,6 +14,7 @@
 #include <boost/mpl/insert_range.hpp>
 #include <boost/mpl/find.hpp>
 #include <boost/mpl/vector_c.hpp>
+#include <boost/mpl/list.hpp>
 #include <boost/mpl/size.hpp>
 #include <boost/mpl/range_c.hpp>
 #include <boost/mpl/equal.hpp>
@@ -28,4 +29,7 @@ MPL_TEST_CASE()
 
     MPL_ASSERT_EQUAL(2,( size<range>::value, 10 ));
     MPL_ASSERT(( equal< range,range_c<int,0,10> >::value ));
+
+    typedef insert_range< list0<>,end< list0<> >::type,list1<int> >::type result2;
+    MPL_ASSERT_EQUAL(2,( size<result2>::value, 1 ));
 }

@@ -52,7 +52,7 @@ int main()
 
     BOOST_STATIC_ASSERT((equal< 
           result
-        , filter_view< range_c<int,10,30>, math::is_even<_> >
+        , filter_view< range_c<int,10,30>, is_even<_> >
         , equal_to<_,_>
         >::type::value));
 

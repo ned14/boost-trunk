@@ -18,6 +18,7 @@
 #include <boost/mpl/push_front.hpp>
 #include <boost/mpl/copy_backward.hpp>
 #include <boost/mpl/iterator_range.hpp>
+#include <boost/mpl/next.hpp>
 #include <boost/mpl/aux_/na.hpp>
 
 namespace boost {

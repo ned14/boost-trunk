@@ -38,7 +38,7 @@ struct single_element_iter;
 template< typename T, BOOST_MPL_AUX_NTTP_DECL(int, N) >
 struct single_iter_base
 {
-    typedef ra_iter_tag_ category;
+    typedef random_access_iterator_tag category;
     typedef int_<N> position;
 
     template< typename D >

@@ -17,6 +17,7 @@
 #ifndef BOOST_MPL_AUX_JOINT_ITER_HPP_INCLUDED
 #define BOOST_MPL_AUX_JOINT_ITER_HPP_INCLUDED
 
+#include <boost/mpl/next_prior.hpp>
 #include <boost/mpl/aux_/lambda_spec.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -37,7 +38,7 @@ struct joint_iter
     typedef Iterator1 base;
     typedef typename base::category category;
     typedef joint_iter<
-          typename base::next
+          typename next<base>::type
         , LastIterator1
         , Iterator2
         > next;
@@ -56,7 +57,7 @@ struct joint_iter<LastIterator1,LastIterator1,Iterator2>
     typedef joint_iter<
           LastIterator1
         , LastIterator1
-        , typename base::next
+        , typename next<base>::type
         > next;
 
     typedef typename base::type type;

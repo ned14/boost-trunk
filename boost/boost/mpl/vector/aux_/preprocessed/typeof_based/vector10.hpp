@@ -10,6 +10,7 @@ struct vector1
         , vector0<  >
         >
 {
+    typedef vector1 type;
 };
 
 template<
@@ -21,6 +22,7 @@ struct vector2
         , vector1<T0>
         >
 {
+    typedef vector2 type;
 };
 
 template<
@@ -32,6 +34,7 @@ struct vector3
         , vector2< T0,T1 >
         >
 {
+    typedef vector3 type;
 };
 
 template<
@@ -43,6 +46,7 @@ struct vector4
         , vector3< T0,T1,T2 >
         >
 {
+    typedef vector4 type;
 };
 
 template<
@@ -54,6 +58,7 @@ struct vector5
         , vector4< T0,T1,T2,T3 >
         >
 {
+    typedef vector5 type;
 };
 
 template<
@@ -66,6 +71,7 @@ struct vector6
         , vector5< T0,T1,T2,T3,T4 >
         >
 {
+    typedef vector6 type;
 };
 
 template<
@@ -78,6 +84,7 @@ struct vector7
         , vector6< T0,T1,T2,T3,T4,T5 >
         >
 {
+    typedef vector7 type;
 };
 
 template<
@@ -90,6 +97,7 @@ struct vector8
         , vector7< T0,T1,T2,T3,T4,T5,T6 >
         >
 {
+    typedef vector8 type;
 };
 
 template<
@@ -102,6 +110,7 @@ struct vector9
         , vector8< T0,T1,T2,T3,T4,T5,T6,T7 >
         >
 {
+    typedef vector9 type;
 };
 
 template<
@@ -114,6 +123,7 @@ struct vector10
         , vector9< T0,T1,T2,T3,T4,T5,T6,T7,T8 >
         >
 {
+    typedef vector10 type;
 };
 
 } // namespace mpl

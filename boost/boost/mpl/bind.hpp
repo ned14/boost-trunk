@@ -19,12 +19,8 @@
 // $Date$
 // $Revision$
 
-#include <boost/mpl/aux_/config/bind.hpp>
-#include <boost/mpl/aux_/config/lambda.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include <boost/mpl/bind_fwd.hpp>
 #   include <boost/mpl/apply.hpp>
 #   include <boost/mpl/placeholders.hpp>
 #   include <boost/mpl/protect.hpp>
@@ -33,11 +29,14 @@
 #   include <boost/mpl/aux_/arity_spec.hpp>
 #   include <boost/mpl/aux_/type_wrapper.hpp>
 #   include <boost/mpl/aux_/yes_no.hpp>
-#   include <boost/mpl/aux_/common_name_wknd.hpp>
 #   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 #       include <boost/type_traits/is_reference.hpp>
 #   endif 
 #endif
+
+#include <boost/mpl/aux_/config/lambda.hpp>
+#include <boost/mpl/aux_/config/ctps.hpp>
+#include <boost/mpl/aux_/config/static_constant.hpp>
 
 #include <boost/mpl/aux_/config/use_preprocessed.hpp>
 
@@ -68,9 +67,6 @@
 #   include <boost/preprocessor/inc.hpp>
 
 namespace boost { namespace mpl {
-
-BOOST_MPL_AUX_COMMON_NAME_WKND(bind1st)
-BOOST_MPL_AUX_COMMON_NAME_WKND(bind2nd)
 
 // local macros, #undef-ined at the end of the header
 #   define AUX778076_APPLY \
@@ -147,7 +143,26 @@ struct replace_unnamed_arg< arg<-1>,Arg >
 
 #   endif // BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT
 
-#else
+template<
+      BOOST_MPL_AUX_NTTP_DECL(int, N), AUX778076_BIND_PARAMS(typename U)
+    >
+struct resolve_bind_arg< arg<N>,AUX778076_BIND_PARAMS(U) >
+{
+    typedef typename AUX778076_APPLY<mpl::arg<N>, AUX778076_BIND_PARAMS(U)>::type type;
+};
+
+#if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
+template<
+      typename F, AUX778076_BIND_PARAMS(typename T), AUX778076_BIND_PARAMS(typename U)
+    >
+struct resolve_bind_arg< bind<F,AUX778076_BIND_PARAMS(T)>,AUX778076_BIND_PARAMS(U) >
+{
+    typedef bind<F,AUX778076_BIND_PARAMS(T)> f_;
+    typedef typename AUX778076_APPLY<f_, AUX778076_BIND_PARAMS(U)>::type type;
+};
+#endif
+
+#else // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 // agurt, 15/jan/02: it's not a intended to be used as a function class, and 
 // MSVC6.5 has problems with 'apply' name here (the code compiles, but doesn't
@@ -215,63 +230,6 @@ struct replace_unnamed_arg
 
 #   endif // BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT
 
-#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-} // namespace aux
-
-#if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
-// forward declaration
-template<
-      typename F, AUX778076_BIND_DEFAULT_PARAMS(typename T, na)
-    >
-struct bind;
-#endif
-
-// fwd, for 'resolve_bind_arg'/'is_bind_template' specializations
-template< typename F, typename T > struct bind1st;
-template< typename F, typename T > struct bind2nd;
-
-namespace aux {
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-template<
-      BOOST_MPL_AUX_NTTP_DECL(int, N), AUX778076_BIND_PARAMS(typename U)
-    >
-struct resolve_bind_arg< arg<N>,AUX778076_BIND_PARAMS(U) >
-{
-    typedef typename AUX778076_APPLY<mpl::arg<N>, AUX778076_BIND_PARAMS(U)>::type type;
-};
-
-#if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
-template<
-      typename F, AUX778076_BIND_PARAMS(typename T), AUX778076_BIND_PARAMS(typename U)
-    >
-struct resolve_bind_arg< bind<F,AUX778076_BIND_PARAMS(T)>,AUX778076_BIND_PARAMS(U) >
-{
-    typedef bind<F,AUX778076_BIND_PARAMS(T)> f_;
-    typedef typename AUX778076_APPLY<f_, AUX778076_BIND_PARAMS(U)>::type type;
-};
-#endif
-
-template<
-      typename F, typename T, AUX778076_BIND_PARAMS(typename U)
-    >
-struct resolve_bind_arg< bind1st<F,T>, AUX778076_BIND_PARAMS(U) >
-{
-    typedef bind1st<F,T> f_;
-    typedef typename AUX778076_APPLY<f_, AUX778076_BIND_PARAMS(U)>::type type;
-};
-
-template<
-      typename F, typename T, AUX778076_BIND_PARAMS(typename U)
-    >
-struct resolve_bind_arg< bind2nd<F,T>, AUX778076_BIND_PARAMS(U) >
-{
-    typedef bind2nd<F,T> f_;
-    typedef typename AUX778076_APPLY<f_, AUX778076_BIND_PARAMS(U)>::type type;
-};
-
-#else
 // agurt, 10/mar/02: the forward declaration has to appear before any of
 // 'is_bind_helper' overloads, otherwise MSVC6.5 issues an ICE on it
 template< BOOST_MPL_AUX_NTTP_DECL(int, arity_) > struct bind_chooser;
@@ -292,9 +250,6 @@ aux::yes_tag is_bind_helper(bind<F,AUX778076_BIND_PARAMS(T)>*);
 
 template< BOOST_MPL_AUX_NTTP_DECL(int, N) >
 aux::yes_tag is_bind_helper(arg<N>*);
-
-template< typename F, typename T > aux::yes_tag is_bind_helper(bind1st<F,T>*);
-template< typename F, typename T > aux::yes_tag is_bind_helper(bind2nd<F,T>*);
 
 template< bool is_ref_ = true >
 struct is_bind_template_impl
@@ -327,15 +282,6 @@ template< typename T > struct is_bind_template
 
 } // namespace aux
 
-#if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
-BOOST_MPL_AUX_ARITY_SPEC(
-      BOOST_PP_INC(BOOST_MPL_LIMIT_METAFUNCTION_ARITY)
-    , bind
-    )
-#endif
-
-BOOST_MPL_AUX_ARITY_SPEC(2,bind1st)
-BOOST_MPL_AUX_ARITY_SPEC(2,bind2nd)
 
 #define BOOST_PP_ITERATION_PARAMS_1 \
     (3,(0, BOOST_MPL_LIMIT_METAFUNCTION_ARITY, <boost/mpl/bind.hpp>))
@@ -343,7 +289,7 @@ BOOST_MPL_AUX_ARITY_SPEC(2,bind2nd)
 
 // real C++ version is already taken care of
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
- && !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
+    && !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
 
 namespace aux {
 // apply_count_args
@@ -364,35 +310,12 @@ struct bind
 {
 };
 
+BOOST_MPL_AUX_ARITY_SPEC(
+      BOOST_PP_INC(BOOST_MPL_LIMIT_METAFUNCTION_ARITY)
+    , bind
+    )
+
 #endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-// bind1st/bind2nd, lightweight, for simple cases/backward compatibility
-
-template< typename F, typename T >
-struct bind1st
-{
-    template<
-          typename U
-        , BOOST_MPL_PP_NESTED_DEF_PARAMS_TAIL(1, typename U, na)
-        >
-    struct apply
-        : apply2<F,T,U>
-    {
-    };
-};
-
-template< typename F, typename T >
-struct bind2nd
-{
-    template<
-          typename U
-        , BOOST_MPL_PP_NESTED_DEF_PARAMS_TAIL(1, typename U, na)
-        >
-    struct apply
-        : apply2<F,T,U>
-    {
-    };
-};
 
 #   undef AUX778076_BIND_NESTED_DEFAULT_PARAMS
 #   undef AUX778076_BIND_N_SPEC_PARAMS

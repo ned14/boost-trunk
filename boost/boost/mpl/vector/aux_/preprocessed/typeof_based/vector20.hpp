@@ -12,6 +12,7 @@ struct vector11
         , vector10< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >
         >
 {
+    typedef vector11 type;
 };
 
 template<
@@ -25,6 +26,7 @@ struct vector12
         , vector11< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 >
         >
 {
+    typedef vector12 type;
 };
 
 template<
@@ -38,6 +40,7 @@ struct vector13
         , vector12< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11 >
         >
 {
+    typedef vector13 type;
 };
 
 template<
@@ -51,6 +54,7 @@ struct vector14
         , vector13< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12 >
         >
 {
+    typedef vector14 type;
 };
 
 template<
@@ -64,6 +68,7 @@ struct vector15
         , vector14< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13 >
         >
 {
+    typedef vector15 type;
 };
 
 template<
@@ -78,6 +83,7 @@ struct vector16
         , vector15< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14 >
         >
 {
+    typedef vector16 type;
 };
 
 template<
@@ -92,6 +98,7 @@ struct vector17
         , vector16< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15 >
         >
 {
+    typedef vector17 type;
 };
 
 template<
@@ -106,6 +113,7 @@ struct vector18
         , vector17< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16 >
         >
 {
+    typedef vector18 type;
 };
 
 template<
@@ -120,6 +128,7 @@ struct vector19
         , vector18< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17 >
         >
 {
+    typedef vector19 type;
 };
 
 template<
@@ -134,6 +143,7 @@ struct vector20
         , vector19< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18 >
         >
 {
+    typedef vector20 type;
 };
 
 } // namespace mpl

@@ -1,11 +1,12 @@
-// preprocessed version of 'boost/mpl/apply.hpp' header
-// see the original for copyright information
+namespace boost { namespace mpl {
 
-namespace boost {
-namespace mpl {
-
-template< typename F >
-struct apply0 : F
+template<
+      typename F
+    >
+struct apply0
+    : aux::apply_wrap0<
+          typename lambda<F>::type
+        >
 {
     enum { arity = 1 }; typedef F arg1;
  friend class apply0_rebind;
@@ -15,30 +16,19 @@ struct apply0 : F
  
 };
 
-// workaround for the ETI bug
-template<>
-struct apply0<int>
-{
-    typedef int type;
-};
-
 namespace aux {
-
-template< typename F>
-struct msvc_apply1
+template<>
+struct apply_chooser<0>
 {
-    template< bool > struct f_ : F {};
-    template<> struct f_<true>
+    template<
+          typename F, typename T1, typename T2, typename T3, typename T4
+        , typename T5
+        >
+    struct result_
     {
-        template< typename P1 > struct apply
-        {
-        };
-    };
-
-    template< typename T1 > struct result_
-        : f_< aux::msvc_never_true<F>::value >
-            ::template apply<T1>
-    {
+        typedef apply0<
+              F
+            > type;
     };
 };
 
@@ -48,11 +38,11 @@ template<
       typename F, typename T1
     >
 struct apply1
+    : aux::apply_wrap1<
+          typename lambda<F>::type
+        , T1
+        >
 {
-    typedef typename aux::msvc_apply1<F>::template result_<
-          T1
-    >::type type;
-    
     enum { arity = 2 }; typedef F arg1;
  typedef T1 arg2;
  friend class apply1_rebind;
@@ -62,30 +52,19 @@ struct apply1
  
 };
 
-// workaround for ETI bug
-template<>
-struct apply1< int,int >
-{
-    typedef int type;
-};
-
 namespace aux {
-
-template< typename F>
-struct msvc_apply2
+template<>
+struct apply_chooser<1>
 {
-    template< bool > struct f_ : F {};
-    template<> struct f_<true>
+    template<
+          typename F, typename T1, typename T2, typename T3, typename T4
+        , typename T5
+        >
+    struct result_
     {
-        template< typename P1, typename P2 > struct apply
-        {
-        };
-    };
-
-    template< typename T1, typename T2 > struct result_
-        : f_< aux::msvc_never_true<F>::value >
-            ::template apply< T1,T2 >
-    {
+        typedef apply1<
+              F, T1
+            > type;
     };
 };
 
@@ -95,11 +74,11 @@ template<
       typename F, typename T1, typename T2
     >
 struct apply2
+    : aux::apply_wrap2<
+          typename lambda<F>::type
+        , T1, T2
+        >
 {
-    typedef typename aux::msvc_apply2<F>::template result_<
-          T1, T2
-    >::type type;
-    
     enum { arity = 3 }; typedef F arg1;
  typedef T1 arg2;
  typedef T2 arg3;
@@ -110,30 +89,19 @@ struct apply2
  
 };
 
-// workaround for ETI bug
-template<>
-struct apply2< int,int,int >
-{
-    typedef int type;
-};
-
 namespace aux {
-
-template< typename F>
-struct msvc_apply3
+template<>
+struct apply_chooser<2>
 {
-    template< bool > struct f_ : F {};
-    template<> struct f_<true>
+    template<
+          typename F, typename T1, typename T2, typename T3, typename T4
+        , typename T5
+        >
+    struct result_
     {
-        template< typename P1, typename P2, typename P3 > struct apply
-        {
-        };
-    };
-
-    template< typename T1, typename T2, typename T3 > struct result_
-        : f_< aux::msvc_never_true<F>::value >
-            ::template apply< T1,T2,T3 >
-    {
+        typedef apply2<
+              F, T1, T2
+            > type;
     };
 };
 
@@ -143,10 +111,11 @@ template<
       typename F, typename T1, typename T2, typename T3
     >
 struct apply3
+    : aux::apply_wrap3<
+          typename lambda<F>::type
+        , T1, T2, T3
+        >
 {
-    typedef typename aux::msvc_apply3<F>::template result_<
-          T1, T2, T3
-    >::type type;
     enum { arity = 4 }; typedef F arg1;
  typedef T1 arg2;
  typedef T2 arg3;
@@ -158,36 +127,19 @@ struct apply3
  
 };
 
-// workaround for ETI bug
-template<>
-struct apply3< int,int,int,int >
-{
-    typedef int type;
-};
-
 namespace aux {
-
-template< typename F>
-struct msvc_apply4
+template<>
+struct apply_chooser<3>
 {
-    template< bool > struct f_ : F {};
-    template<> struct f_<true>
-    {
-        template<
-              typename P1, typename P2, typename P3, typename P4
-            >
-        struct apply
-        {
-        };
-    };
-
     template<
-          typename T1, typename T2, typename T3, typename T4
+          typename F, typename T1, typename T2, typename T3, typename T4
+        , typename T5
         >
     struct result_
-        : f_< aux::msvc_never_true<F>::value >
-            ::template apply< T1,T2,T3,T4 >
     {
+        typedef apply3<
+              F, T1, T2, T3
+            > type;
     };
 };
 
@@ -197,10 +149,11 @@ template<
       typename F, typename T1, typename T2, typename T3, typename T4
     >
 struct apply4
+    : aux::apply_wrap4<
+          typename lambda<F>::type
+        , T1, T2, T3, T4
+        >
 {
-    typedef typename aux::msvc_apply4<F>::template result_<
-        T1, T2, T3, T4
-    >::type type;
     enum { arity = 5 }; typedef F arg1;
  typedef T1 arg2;
  typedef T2 arg3;
@@ -213,38 +166,19 @@ struct apply4
  
 };
 
-// workaround for ETI bug
-template<>
-struct apply4< int,int,int,int,int >
-{
-    typedef int type;
-};
-
 namespace aux {
-
-template< typename F>
-struct msvc_apply5
+template<>
+struct apply_chooser<4>
 {
-    template< bool > struct f_ : F {};
-    template<> struct f_<true>
-    {
-        template<
-              typename P1, typename P2, typename P3, typename P4
-            , typename P5
-            >
-        struct apply
-        {
-        };
-    };
-
     template<
-          typename T1, typename T2, typename T3, typename T4
+          typename F, typename T1, typename T2, typename T3, typename T4
         , typename T5
         >
     struct result_
-        : f_< aux::msvc_never_true<F>::value >
-            ::template apply< T1,T2,T3,T4,T5 >
     {
+        typedef apply4<
+              F, T1, T2, T3, T4
+            > type;
     };
 };
 
@@ -255,10 +189,11 @@ template<
     , typename T5
     >
 struct apply5
+    : aux::apply_wrap5<
+          typename lambda<F>::type
+        , T1, T2, T3, T4, T5
+        >
 {
-    typedef typename aux::msvc_apply5<F>::template result_<
-        T1, T2, T3, T4, T5
-    >::type type;
     enum { arity = 6 }; typedef F arg1;
  typedef T1 arg2;
  typedef T2 arg3;
@@ -272,13 +207,60 @@ struct apply5
  
 };
 
-// workaround for ETI bug
+namespace aux {
 template<>
-struct apply5< int,int,int,int,int,int >
+struct apply_chooser<5>
 {
-    typedef int type;
+    template<
+          typename F, typename T1, typename T2, typename T3, typename T4
+        , typename T5
+        >
+    struct result_
+    {
+        typedef apply5<
+              F, T1, T2, T3, T4, T5
+            > type;
+    };
 };
 
-} // namespace mpl
-} // namespace boost
+} // namespace aux
 
+namespace aux {
+template< typename T >
+struct is_apply_arg
+{
+    enum { value = true };
+};
+
+template<>
+struct is_apply_arg<na>
+{
+    enum { value = false };
+};
+
+template<
+      typename T1, typename T2, typename T3, typename T4, typename T5
+    >
+struct apply_count_args
+{
+    enum { value =
+          is_apply_arg<T1>::value + is_apply_arg<T2>::value 
+        + is_apply_arg<T3>::value + is_apply_arg<T4>::value 
+        + is_apply_arg<T5>::value
+        };
+};
+
+}
+
+template<
+      typename F, typename T1 = na, typename T2 = na, typename T3 = na
+    , typename T4 = na, typename T5 = na
+    >
+struct apply
+    : aux::apply_chooser<
+          aux::apply_count_args< T1,T2,T3,T4,T5 >::value
+        >::template result_< F,T1,T2,T3,T4,T5 >::type
+{
+};
+
+}}

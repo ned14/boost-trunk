@@ -19,7 +19,8 @@
 // $Revision$
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/lambda_fwd.hpp>
+#   include <boost/mpl/apply_fwd.hpp>
+#   include <boost/mpl/lambda.hpp>
 #   include <boost/mpl/aux_/apply_wrap.hpp>
 #   include <boost/mpl/aux_/na.hpp>
 #endif
@@ -51,13 +52,6 @@
 #   include <boost/preprocessor/inc.hpp>
 #   include <boost/preprocessor/iterate.hpp>
 #   include <boost/preprocessor/cat.hpp>
-
-
-// agurt, 15/jan/02: top-level 'apply' template gives an ICE on MSVC
-// (for known reasons)
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1200)
-#   define BOOST_MPL_CFG_NO_APPLY_TEMPLATE
-#endif
 
 namespace boost { namespace mpl {
 
@@ -95,21 +89,6 @@ namespace boost { namespace mpl {
     BOOST_MPL_PP_ENUM(BOOST_PP_INC(n), param) \
     /**/
 
-#   if !defined(BOOST_MPL_CFG_NO_APPLY_TEMPLATE)
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-// forward declaration
-template<
-      typename F, AUX778076_APPLY_DEF_PARAMS(typename T, na)
-    >
-struct apply;
-#else
-namespace aux {
-template< BOOST_AUX_NTTP_DECL(int, arity_) > struct apply_chooser;
-}
-#endif
-
-#   endif // BOOST_MPL_CFG_NO_APPLY_TEMPLATE
 
 #define BOOST_PP_ITERATION_PARAMS_1 \
     (3,(0, BOOST_MPL_LIMIT_METAFUNCTION_ARITY, <boost/mpl/apply.hpp>))
@@ -151,11 +130,6 @@ struct apply
 }}
 
 #endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/lambda.hpp>
-#endif
-
 #endif // BOOST_MPL_APPLY_HPP_INCLUDED
 
 ///// iteration, depth == 1

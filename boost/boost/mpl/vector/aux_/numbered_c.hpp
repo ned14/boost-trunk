@@ -43,6 +43,7 @@ struct BOOST_PP_CAT(BOOST_PP_CAT(vector,i_),_c)
         , AUX778076_VECTOR_TAIL(vector,BOOST_PP_DEC(i_),C)
         >
 {
+    typedef BOOST_PP_CAT(BOOST_PP_CAT(vector,i_),_c) type;
 };
 #endif
 

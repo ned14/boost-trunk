@@ -11,6 +11,7 @@ struct vector1_c
         , vector0_c<T>
         >
 {
+    typedef vector1_c type;
 };
 
 template<
@@ -23,6 +24,7 @@ struct vector2_c
         , vector1_c< T,C0 >
         >
 {
+    typedef vector2_c type;
 };
 
 template<
@@ -35,6 +37,7 @@ struct vector3_c
         , vector2_c< T,C0,C1 >
         >
 {
+    typedef vector3_c type;
 };
 
 template<
@@ -47,6 +50,7 @@ struct vector4_c
         , vector3_c< T,C0,C1,C2 >
         >
 {
+    typedef vector4_c type;
 };
 
 template<
@@ -59,6 +63,7 @@ struct vector5_c
         , vector4_c< T,C0,C1,C2,C3 >
         >
 {
+    typedef vector5_c type;
 };
 
 template<
@@ -71,6 +76,7 @@ struct vector6_c
         , vector5_c< T,C0,C1,C2,C3,C4 >
         >
 {
+    typedef vector6_c type;
 };
 
 template<
@@ -83,6 +89,7 @@ struct vector7_c
         , vector6_c< T,C0,C1,C2,C3,C4,C5 >
         >
 {
+    typedef vector7_c type;
 };
 
 template<
@@ -95,6 +102,7 @@ struct vector8_c
         , vector7_c< T,C0,C1,C2,C3,C4,C5,C6 >
         >
 {
+    typedef vector8_c type;
 };
 
 template<
@@ -107,6 +115,7 @@ struct vector9_c
         , vector8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >
         >
 {
+    typedef vector9_c type;
 };
 
 template<
@@ -119,6 +128,7 @@ struct vector10_c
         , vector9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >
         >
 {
+    typedef vector10_c type;
 };
 
 } // namespace mpl

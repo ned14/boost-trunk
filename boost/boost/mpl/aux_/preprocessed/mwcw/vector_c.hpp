@@ -21,7 +21,7 @@ struct vector_c<
         >
     : vector0_c<T>
 {
-    typedef vector0_c<T> type;
+    typedef typename vector0_c<T>::type type;
 };
 
 template<
@@ -34,7 +34,7 @@ struct vector_c<
         >
     : vector1_c< T,C0 >
 {
-    typedef vector1_c< T,C0 > type;
+    typedef typename vector1_c< T,C0 >::type type;
 };
 
 template<
@@ -47,7 +47,7 @@ struct vector_c<
         >
     : vector2_c< T,C0,C1 >
 {
-    typedef vector2_c< T,C0,C1 > type;
+    typedef typename vector2_c< T,C0,C1 >::type type;
 };
 
 template<
@@ -60,7 +60,7 @@ struct vector_c<
         >
     : vector3_c< T,C0,C1,C2 >
 {
-    typedef vector3_c< T,C0,C1,C2 > type;
+    typedef typename vector3_c< T,C0,C1,C2 >::type type;
 };
 
 template<
@@ -73,7 +73,7 @@ struct vector_c<
         >
     : vector4_c< T,C0,C1,C2,C3 >
 {
-    typedef vector4_c< T,C0,C1,C2,C3 > type;
+    typedef typename vector4_c< T,C0,C1,C2,C3 >::type type;
 };
 
 template<
@@ -86,7 +86,7 @@ struct vector_c<
         >
     : vector5_c< T,C0,C1,C2,C3,C4 >
 {
-    typedef vector5_c< T,C0,C1,C2,C3,C4 > type;
+    typedef typename vector5_c< T,C0,C1,C2,C3,C4 >::type type;
 };
 
 template<
@@ -99,7 +99,7 @@ struct vector_c<
         >
     : vector6_c< T,C0,C1,C2,C3,C4,C5 >
 {
-    typedef vector6_c< T,C0,C1,C2,C3,C4,C5 > type;
+    typedef typename vector6_c< T,C0,C1,C2,C3,C4,C5 >::type type;
 };
 
 template<
@@ -113,7 +113,7 @@ struct vector_c<
         >
     : vector7_c< T,C0,C1,C2,C3,C4,C5,C6 >
 {
-    typedef vector7_c< T,C0,C1,C2,C3,C4,C5,C6 > type;
+    typedef typename vector7_c< T,C0,C1,C2,C3,C4,C5,C6 >::type type;
 };
 
 template<
@@ -127,7 +127,7 @@ struct vector_c<
         >
     : vector8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >
 {
-    typedef vector8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 > type;
+    typedef typename vector8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >::type type;
 };
 
 template<
@@ -141,7 +141,7 @@ struct vector_c<
         >
     : vector9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >
 {
-    typedef vector9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 > type;
+    typedef typename vector9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >::type type;
 };
 
 template<
@@ -155,7 +155,7 @@ struct vector_c<
         >
     : vector10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >
 {
-    typedef vector10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 > type;
+    typedef typename vector10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >::type type;
 };
 
 template<
@@ -168,7 +168,7 @@ struct vector_c<
         >
     : vector11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >
 {
-    typedef vector11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 > type;
+    typedef typename vector11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >::type type;
 };
 
 template<
@@ -181,7 +181,7 @@ struct vector_c<
         >
     : vector12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >
 {
-    typedef vector12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 > type;
+    typedef typename vector12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >::type type;
 };
 
 template<
@@ -194,7 +194,7 @@ struct vector_c<
         >
     : vector13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >
 {
-    typedef vector13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 > type;
+    typedef typename vector13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >::type type;
 };
 
 template<
@@ -210,7 +210,7 @@ struct vector_c<
           T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13
         >
 {
-    typedef vector14_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 > type;
+    typedef typename vector14_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 >::type type;
 };
 
 template<
@@ -226,7 +226,7 @@ struct vector_c<
           T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14
         >
 {
-    typedef vector15_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 > type;
+    typedef typename vector15_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 >::type type;
 };
 
 template<
@@ -243,7 +243,7 @@ struct vector_c<
         , C15
         >
 {
-    typedef vector16_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 > type;
+    typedef typename vector16_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 >::type type;
 };
 
 template<
@@ -260,7 +260,7 @@ struct vector_c<
         , C15, C16
         >
 {
-    typedef vector17_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 > type;
+    typedef typename vector17_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 >::type type;
 };
 
 template<
@@ -277,7 +277,7 @@ struct vector_c<
         , C15, C16, C17
         >
 {
-    typedef vector18_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 > type;
+    typedef typename vector18_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 >::type type;
 };
 
 template<
@@ -294,7 +294,7 @@ struct vector_c<
         , C15, C16, C17, C18
         >
 {
-    typedef vector19_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 > type;
+    typedef typename vector19_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 >::type type;
 };
 
 // primary template (not a specialization!)
@@ -310,7 +310,7 @@ struct vector_c
         , C15, C16, C17, C18, C19
         >
 {
-    typedef vector20_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 > type;
+    typedef typename vector20_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 >::type type;
 };
 
 }}

@@ -32,7 +32,7 @@ template< \
 struct lambda< \
       name< BOOST_MPL_PP_PARAMS(i, T) > \
     , Tag \
-    BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(int_<-1>) \
+    BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(int_<i>) \
     > \
 { \
     BOOST_MPL_AUX_IS_LAMBDA_EXPR(false_) \

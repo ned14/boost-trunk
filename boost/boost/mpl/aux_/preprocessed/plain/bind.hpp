@@ -1,6 +1,4 @@
 namespace boost { namespace mpl {
-BOOST_MPL_AUX_COMMON_NAME_WKND(bind1st)
-BOOST_MPL_AUX_COMMON_NAME_WKND(bind2nd)
 
 namespace aux {
 
@@ -32,19 +30,6 @@ struct replace_unnamed_arg< arg<-1>,Arg >
     typedef Arg type;
 };
 
-} // namespace aux
-
-template<
-      typename F, typename T1 = na, typename T2 = na, typename T3 = na
-    , typename T4 = na, typename T5 = na
-    >
-struct bind;
-
-template< typename F, typename T > struct bind1st;
-template< typename F, typename T > struct bind2nd;
-
-namespace aux {
-
 template<
       int N, typename U1, typename U2, typename U3, typename U4, typename U5
     >
@@ -64,33 +49,7 @@ struct resolve_bind_arg< bind<F,T1,T2,T3,T4,T5>,U1,U2,U3,U4,U5 >
     typedef typename apply5< f_,U1,U2,U3,U4,U5 >::type type;
 };
 
-template<
-      typename F, typename T, typename U1, typename U2, typename U3
-    , typename U4, typename U5
-    >
-struct resolve_bind_arg< bind1st<F,T>,U1,U2,U3,U4,U5 >
-{
-    typedef bind1st< F,T > f_;
-    typedef typename apply5< f_,U1,U2,U3,U4,U5 >::type type;
-};
-
-template<
-      typename F, typename T, typename U1, typename U2, typename U3
-    , typename U4, typename U5
-    >
-struct resolve_bind_arg< bind2nd<F,T>,U1,U2,U3,U4,U5 >
-{
-    typedef bind2nd< F,T > f_;
-    typedef typename apply5< f_,U1,U2,U3,U4,U5 >::type type;
-};
-
 } // namespace aux
-BOOST_MPL_AUX_ARITY_SPEC(
-      6
-    , bind
-    )
-BOOST_MPL_AUX_ARITY_SPEC(2, bind1st)
-BOOST_MPL_AUX_ARITY_SPEC(2, bind2nd)
 
 template<
       typename F
@@ -468,34 +427,6 @@ template<
 struct bind
     : bind5< F,T1,T2,T3,T4,T5 >
 {
-};
-
-template< typename F, typename T >
-struct bind1st
-{
-    template<
-          typename U
-        , typename U2 = na, typename U3 = na, typename U4 = na
-        , typename U5 = na
-        >
-    struct apply
-        : apply2< F,T,U >
-    {
-    };
-};
-
-template< typename F, typename T >
-struct bind2nd
-{
-    template<
-          typename U
-        , typename U2 = na, typename U3 = na, typename U4 = na
-        , typename U5 = na
-        >
-    struct apply
-        : apply2< F,T,U >
-    {
-    };
 };
 
 }}

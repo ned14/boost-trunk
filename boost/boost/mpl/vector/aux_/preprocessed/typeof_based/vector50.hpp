@@ -18,6 +18,7 @@ struct vector41
         , vector40< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39 >
         >
 {
+    typedef vector41 type;
 };
 
 template<
@@ -37,6 +38,7 @@ struct vector42
         , vector41< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40 >
         >
 {
+    typedef vector42 type;
 };
 
 template<
@@ -56,6 +58,7 @@ struct vector43
         , vector42< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41 >
         >
 {
+    typedef vector43 type;
 };
 
 template<
@@ -75,6 +78,7 @@ struct vector44
         , vector43< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42 >
         >
 {
+    typedef vector44 type;
 };
 
 template<
@@ -94,6 +98,7 @@ struct vector45
         , vector44< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43 >
         >
 {
+    typedef vector45 type;
 };
 
 template<
@@ -114,6 +119,7 @@ struct vector46
         , vector45< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44 >
         >
 {
+    typedef vector46 type;
 };
 
 template<
@@ -134,6 +140,7 @@ struct vector47
         , vector46< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45 >
         >
 {
+    typedef vector47 type;
 };
 
 template<
@@ -154,6 +161,7 @@ struct vector48
         , vector47< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46 >
         >
 {
+    typedef vector48 type;
 };
 
 template<
@@ -174,6 +182,7 @@ struct vector49
         , vector48< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47 >
         >
 {
+    typedef vector49 type;
 };
 
 template<
@@ -194,6 +203,7 @@ struct vector50
         , vector49< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48 >
         >
 {
+    typedef vector50 type;
 };
 
 } // namespace mpl

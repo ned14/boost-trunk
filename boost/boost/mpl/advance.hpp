@@ -83,12 +83,8 @@ template<
     , BOOST_MPL_AUX_NTTP_DECL(long, N)
     >
 struct advance_c
+    : advance<Iterator,integral_c<long,N> >
 {
-    typedef typename aux::advance_impl<
-          typename BOOST_MPL_AUX_ITERATOR_CATEGORY(Iterator)
-        , Iterator
-        , integral_c<long,N>
-        >::type type;
 };
 
 #else // no partial specialization

@@ -39,7 +39,7 @@ int main()
     BOOST_STATIC_ASSERT(is_placeholder<_>::value);
     
     BOOST_PP_REPEAT(
-          BOOST_MPL_METAFUNCTION_MAX_ARITY
+          BOOST_MPL_LIMIT_METAFUNCTION_ARITY
         , AUX_IS_PLACEHOLDER_TEST
         , unused
         )

@@ -23,4 +23,6 @@
 #   include <boost/mpl/aux_/lambda_no_ctps.hpp>
 #endif
 
+#include <boost/mpl/bind.hpp>
+
 #endif // BOOST_MPL_LAMBDA_HPP_INCLUDED

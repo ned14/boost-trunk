@@ -17,7 +17,7 @@
 #include <boost/mpl/aux_/test/test.hpp>
 
 
-MPL_TEST_CASE( iterator_tag_test )
+MPL_TEST_CASE()
 {
     MPL_ASSERT(( less<forward_iterator_tag,bidirectional_iterator_tag>::value ));
     MPL_ASSERT(( less<bidirectional_iterator_tag,random_access_iterator_tag>::value ));

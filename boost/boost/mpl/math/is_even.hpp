@@ -25,8 +25,6 @@
 
 namespace boost { namespace mpl {
 
-namespace math {
-
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
 namespace aux
 {
@@ -51,9 +49,7 @@ struct is_even
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,is_even,(N))
 };
 
-} // namespace math
-
-BOOST_MPL_AUX_NA_SPEC(1, math::is_even)
+BOOST_MPL_AUX_NA_SPEC(1, is_even)
 
 }} // namespace boost::mpl
 

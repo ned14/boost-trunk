@@ -30,7 +30,7 @@ namespace boost { namespace mpl {
 template< typename IteratorSeq >
 struct zip_iterator
 {
-    typedef fwd_iter_tag_ category;
+    typedef forward_iterator_tag category;
     typedef typename transform<
           IteratorSeq
         , apply0<_1>

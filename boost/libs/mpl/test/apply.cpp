@@ -56,7 +56,7 @@ namespace mpl = boost::mpl;
 
 namespace aux {
 BOOST_PP_REPEAT(
-      BOOST_MPL_METAFUNCTION_MAX_ARITY
+      BOOST_MPL_LIMIT_METAFUNCTION_ARITY
     , APPLY_FUNC_DEF
     , unused
     )
@@ -98,14 +98,14 @@ BOOST_PP_REPEAT(
 int main()
 {
     BOOST_PP_REPEAT(
-          BOOST_MPL_METAFUNCTION_MAX_ARITY
+          BOOST_MPL_LIMIT_METAFUNCTION_ARITY
         , APPLY_TEST
         , MAKE_APPLY_N_NAME
         )
 
 #if defined(BOOST_MPL_HAS_APPLY)
     BOOST_PP_REPEAT(
-          BOOST_MPL_METAFUNCTION_MAX_ARITY
+          BOOST_MPL_LIMIT_METAFUNCTION_ARITY
         , APPLY_TEST
         , MAKE_APPLY_NAME
         )

@@ -20,9 +20,10 @@
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include <boost/mpl/lambda_fwd.hpp>
-#   include <boost/mpl/bind.hpp>
+#   include <boost/mpl/bind_fwd.hpp>
 #   include <boost/mpl/protect.hpp>
 #   include <boost/mpl/quote.hpp>
+#   include <boost/mpl/arg.hpp>
 #   include <boost/mpl/bool.hpp>
 #   include <boost/mpl/int_fwd.hpp>
 #   include <boost/mpl/aux_/template_arity.hpp>

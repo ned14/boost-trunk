@@ -18,11 +18,11 @@
 #include <boost/mpl/insert_fwd.hpp>
 
 namespace boost { namespace mpl {
-//#error here!
+
 template<>
-struct insert_traits< aux::multiset_tag >
+struct insert_impl< aux::multiset_tag >
 {
-    template< typename Set, typename Key, typename unused_ > struct algorithm
+    template< typename Set, typename Key, typename unused_ > struct apply
     {
         typedef ms_item<Key,Set> type;
     };

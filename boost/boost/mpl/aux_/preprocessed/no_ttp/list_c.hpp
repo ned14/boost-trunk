@@ -21,7 +21,7 @@ struct list_c<
         >
     : list0_c<T>
 {
-    typedef list0_c<T> type;
+    typedef typename list0_c<T>::type type;
 };
 
 template<
@@ -34,7 +34,7 @@ struct list_c<
         >
     : list1_c< T,C0 >
 {
-    typedef list1_c< T,C0 > type;
+    typedef typename list1_c< T,C0 >::type type;
 };
 
 template<
@@ -47,7 +47,7 @@ struct list_c<
         >
     : list2_c< T,C0,C1 >
 {
-    typedef list2_c< T,C0,C1 > type;
+    typedef typename list2_c< T,C0,C1 >::type type;
 };
 
 template<
@@ -60,7 +60,7 @@ struct list_c<
         >
     : list3_c< T,C0,C1,C2 >
 {
-    typedef list3_c< T,C0,C1,C2 > type;
+    typedef typename list3_c< T,C0,C1,C2 >::type type;
 };
 
 template<
@@ -73,7 +73,7 @@ struct list_c<
         >
     : list4_c< T,C0,C1,C2,C3 >
 {
-    typedef list4_c< T,C0,C1,C2,C3 > type;
+    typedef typename list4_c< T,C0,C1,C2,C3 >::type type;
 };
 
 template<
@@ -86,7 +86,7 @@ struct list_c<
         >
     : list5_c< T,C0,C1,C2,C3,C4 >
 {
-    typedef list5_c< T,C0,C1,C2,C3,C4 > type;
+    typedef typename list5_c< T,C0,C1,C2,C3,C4 >::type type;
 };
 
 template<
@@ -99,7 +99,7 @@ struct list_c<
         >
     : list6_c< T,C0,C1,C2,C3,C4,C5 >
 {
-    typedef list6_c< T,C0,C1,C2,C3,C4,C5 > type;
+    typedef typename list6_c< T,C0,C1,C2,C3,C4,C5 >::type type;
 };
 
 template<
@@ -113,7 +113,7 @@ struct list_c<
         >
     : list7_c< T,C0,C1,C2,C3,C4,C5,C6 >
 {
-    typedef list7_c< T,C0,C1,C2,C3,C4,C5,C6 > type;
+    typedef typename list7_c< T,C0,C1,C2,C3,C4,C5,C6 >::type type;
 };
 
 template<
@@ -127,7 +127,7 @@ struct list_c<
         >
     : list8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >
 {
-    typedef list8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 > type;
+    typedef typename list8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >::type type;
 };
 
 template<
@@ -141,7 +141,7 @@ struct list_c<
         >
     : list9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >
 {
-    typedef list9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 > type;
+    typedef typename list9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >::type type;
 };
 
 template<
@@ -155,7 +155,7 @@ struct list_c<
         >
     : list10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >
 {
-    typedef list10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 > type;
+    typedef typename list10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >::type type;
 };
 
 template<
@@ -168,7 +168,7 @@ struct list_c<
         >
     : list11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >
 {
-    typedef list11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 > type;
+    typedef typename list11_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >::type type;
 };
 
 template<
@@ -181,7 +181,7 @@ struct list_c<
         >
     : list12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >
 {
-    typedef list12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 > type;
+    typedef typename list12_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >::type type;
 };
 
 template<
@@ -194,7 +194,7 @@ struct list_c<
         >
     : list13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >
 {
-    typedef list13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 > type;
+    typedef typename list13_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >::type type;
 };
 
 template<
@@ -210,7 +210,7 @@ struct list_c<
           T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13
         >
 {
-    typedef list14_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 > type;
+    typedef typename list14_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 >::type type;
 };
 
 template<
@@ -226,7 +226,7 @@ struct list_c<
           T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14
         >
 {
-    typedef list15_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 > type;
+    typedef typename list15_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 >::type type;
 };
 
 template<
@@ -243,7 +243,7 @@ struct list_c<
         , C15
         >
 {
-    typedef list16_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 > type;
+    typedef typename list16_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 >::type type;
 };
 
 template<
@@ -260,7 +260,7 @@ struct list_c<
         , C15, C16
         >
 {
-    typedef list17_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 > type;
+    typedef typename list17_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 >::type type;
 };
 
 template<
@@ -277,7 +277,7 @@ struct list_c<
         , C15, C16, C17
         >
 {
-    typedef list18_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 > type;
+    typedef typename list18_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 >::type type;
 };
 
 template<
@@ -294,7 +294,7 @@ struct list_c<
         , C15, C16, C17, C18
         >
 {
-    typedef list19_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 > type;
+    typedef typename list19_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 >::type type;
 };
 
 // primary template (not a specialization!)
@@ -310,7 +310,7 @@ struct list_c
         , C15, C16, C17, C18, C19
         >
 {
-    typedef list20_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 > type;
+    typedef typename list20_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 >::type type;
 };
 
 }}

@@ -17,11 +17,14 @@
 #include <boost/mpl/list.hpp>
 #include <boost/mpl/list_c.hpp>
 #include <boost/mpl/equal.hpp>
+#include <boost/mpl/equal_to.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/mpl/push_front.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/less.hpp>
 #include <boost/mpl/int.hpp>
+#include <boost/mpl/at.hpp>
+#include <boost/mpl/size.hpp>
 #include <boost/type_traits/is_float.hpp>
 
 #include <boost/mpl/aux_/test/test.hpp>
@@ -48,5 +51,5 @@ MPL_TEST_CASE()
         , if_< less< _2,int_<0> >, push_front<_1,_2>, _1 >
         >::type result;
 
-    MPL_ASSERT(( equal< negatives,result >::value ));
+    MPL_ASSERT(( equal< result,negatives,equal_to<_1,_2> >::value ));
 }

@@ -19,7 +19,7 @@
 
 #include <boost/mpl/aux_/test/test.hpp>
 
-MPL_TEST_CASE( push_front_test )
+MPL_TEST_CASE()
 {
     typedef push_front<list0<>,long>::type res1;
     typedef push_front<list1<long>,int>::type res2;

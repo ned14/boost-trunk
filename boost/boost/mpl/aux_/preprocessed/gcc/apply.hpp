@@ -1,12 +1,6 @@
 namespace boost { namespace mpl {
 
 template<
-      typename F, typename T1 = na, typename T2 = na, typename T3 = na
-    , typename T4 = na, typename T5 = na
-    >
-struct apply;
-
-template<
       typename F
     >
 struct apply0

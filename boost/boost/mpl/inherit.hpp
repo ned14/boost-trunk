@@ -177,7 +177,7 @@ BOOST_MPL_AUX_NA_SPEC(2, inherit2)
 #define n BOOST_PP_FRAME_ITERATION(1)
 
 template<
-      BOOST_MPL_PP_DEFAULT_PARAMS(n, typename T, void_)
+      BOOST_MPL_PP_DEFAULT_PARAMS(n, typename T, na)
     >
 struct BOOST_PP_CAT(inherit,n)
     : inherit2<
@@ -206,9 +206,9 @@ struct inherit
 {
 };
 
-// 'void_' specialization
+// 'na' specialization
 template<>
-struct inherit< BOOST_MPL_AUX_VOID_SPEC_PARAMS(n) >
+struct inherit< BOOST_MPL_AUX_NA_PARAMS(n) >
 {
     template<
           BOOST_MPL_PP_NESTED_DEF_PARAMS_TAIL(0, typename T, empty_base)
@@ -219,9 +219,9 @@ struct inherit< BOOST_MPL_AUX_VOID_SPEC_PARAMS(n) >
     };
 };
 
-BOOST_MPL_AUX_VOID_SPEC_LAMBDA(n, inherit)
-BOOST_MPL_AUX_VOID_SPEC_ARITY(n, inherit)
-BOOST_MPL_AUX_VOID_SPEC_TEMPLATE_ARITY(n, n, inherit)
+BOOST_MPL_AUX_NA_SPEC_LAMBDA(n, inherit)
+BOOST_MPL_AUX_NA_SPEC_ARITY(n, inherit)
+BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(n, n, inherit)
 #endif
 
 #undef n

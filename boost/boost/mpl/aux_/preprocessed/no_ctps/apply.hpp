@@ -1,15 +1,12 @@
-// preprocessed version of 'boost/mpl/apply.hpp' header
-// see the original for copyright information
+namespace boost { namespace mpl {
 
-namespace boost {
-namespace mpl {
-
-namespace aux {
-template< int arity_ > struct apply_impl_chooser;
-}
-
-template< typename F >
-struct apply0 : F
+template<
+      typename F
+    >
+struct apply0
+    : aux::apply_wrap0<
+          typename lambda<F>::type
+        >
 {
     static int const arity = 1; typedef F arg1;
  friend class apply0_rebind;
@@ -20,9 +17,8 @@ struct apply0 : F
 };
 
 namespace aux {
-
 template<>
-struct apply_impl_chooser<0>
+struct apply_chooser<0>
 {
     template<
           typename F, typename T1, typename T2, typename T3, typename T4
@@ -31,7 +27,7 @@ struct apply_impl_chooser<0>
     struct result_
     {
         typedef apply0<
-              F  
+              F
             > type;
     };
 };
@@ -42,8 +38,9 @@ template<
       typename F, typename T1
     >
 struct apply1
-    : F::template apply<
-          T1
+    : aux::apply_wrap1<
+          typename lambda<F>::type
+        , T1
         >
 {
     static int const arity = 2; typedef F arg1;
@@ -56,9 +53,8 @@ struct apply1
 };
 
 namespace aux {
-
 template<>
-struct apply_impl_chooser<1>
+struct apply_chooser<1>
 {
     template<
           typename F, typename T1, typename T2, typename T3, typename T4
@@ -78,8 +74,9 @@ template<
       typename F, typename T1, typename T2
     >
 struct apply2
-    : F::template apply<
-          T1, T2
+    : aux::apply_wrap2<
+          typename lambda<F>::type
+        , T1, T2
         >
 {
     static int const arity = 3; typedef F arg1;
@@ -93,9 +90,8 @@ struct apply2
 };
 
 namespace aux {
-
 template<>
-struct apply_impl_chooser<2>
+struct apply_chooser<2>
 {
     template<
           typename F, typename T1, typename T2, typename T3, typename T4
@@ -115,8 +111,9 @@ template<
       typename F, typename T1, typename T2, typename T3
     >
 struct apply3
-    : F::template apply<
-          T1, T2, T3
+    : aux::apply_wrap3<
+          typename lambda<F>::type
+        , T1, T2, T3
         >
 {
     static int const arity = 4; typedef F arg1;
@@ -131,9 +128,8 @@ struct apply3
 };
 
 namespace aux {
-
 template<>
-struct apply_impl_chooser<3>
+struct apply_chooser<3>
 {
     template<
           typename F, typename T1, typename T2, typename T3, typename T4
@@ -153,8 +149,9 @@ template<
       typename F, typename T1, typename T2, typename T3, typename T4
     >
 struct apply4
-    : F::template apply<
-          T1, T2, T3, T4
+    : aux::apply_wrap4<
+          typename lambda<F>::type
+        , T1, T2, T3, T4
         >
 {
     static int const arity = 5; typedef F arg1;
@@ -170,9 +167,8 @@ struct apply4
 };
 
 namespace aux {
-
 template<>
-struct apply_impl_chooser<4>
+struct apply_chooser<4>
 {
     template<
           typename F, typename T1, typename T2, typename T3, typename T4
@@ -193,8 +189,9 @@ template<
     , typename T5
     >
 struct apply5
-    : F::template apply<
-          T1, T2, T3, T4, T5
+    : aux::apply_wrap5<
+          typename lambda<F>::type
+        , T1, T2, T3, T4, T5
         >
 {
     static int const arity = 6; typedef F arg1;
@@ -211,9 +208,8 @@ struct apply5
 };
 
 namespace aux {
-
 template<>
-struct apply_impl_chooser<5>
+struct apply_chooser<5>
 {
     template<
           typename F, typename T1, typename T2, typename T3, typename T4
@@ -230,7 +226,6 @@ struct apply_impl_chooser<5>
 } // namespace aux
 
 namespace aux {
-
 template< typename T >
 struct is_apply_arg
 {
@@ -238,7 +233,7 @@ struct is_apply_arg
 };
 
 template<>
-struct is_apply_arg<void_>
+struct is_apply_arg<na>
 {
     static bool const value = false;
 };
@@ -255,19 +250,17 @@ struct apply_count_args
         ;
 };
 
-} // namespace aux
+}
 
 template<
-      typename F, typename T1 = void_, typename T2 = void_
-    , typename T3 = void_, typename T4 = void_, typename T5 = void_
+      typename F, typename T1 = na, typename T2 = na, typename T3 = na
+    , typename T4 = na, typename T5 = na
     >
 struct apply
-    : aux::apply_impl_chooser< 
+    : aux::apply_chooser<
           aux::apply_count_args< T1,T2,T3,T4,T5 >::value
         >::template result_< F,T1,T2,T3,T4,T5 >::type
 {
 };
 
-} // namespace mpl
-} // namespace boost
-
+}}

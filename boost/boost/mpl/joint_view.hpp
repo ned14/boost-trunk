@@ -32,9 +32,9 @@ struct joint_view_tag;
 }
 
 template<>
-struct size_traits< aux::joint_view_tag >
+struct size_impl< aux::joint_view_tag >
 {
-    template < typename JointView > struct algorithm
+    template < typename JointView > struct apply
       : plus<
             size<typename JointView::sequence1_>
           , size<typename JointView::sequence2_>
