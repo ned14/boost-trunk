@@ -319,6 +319,9 @@ boost/libs/graph/doc/edge_list.html svneol=native#text/html
 boost/libs/graph/doc/edmunds_karp_max_flow.html svneol=native#text/html
 boost/libs/graph/doc/faq.html svneol=native#text/html
 boost/libs/graph/doc/figs/Makefile svneol=native#text/plain
+boost/libs/graph/doc/figs/adj-list.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/adj-matrix-graph.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/adj-matrix.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj_list.fig -text
 boost/libs/graph/doc/figs/adj_list.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj_matrix.fig -text
@@ -368,6 +371,9 @@ boost/libs/graph/doc/figs/tree_edges.fig -text
 boost/libs/graph/doc/figs/tree_edges.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undigraph.fig -text
 boost/libs/graph/doc/figs/undigraph.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/undir-adj-list.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/undir-adj-matrix-graph.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/undir-adj-matrix.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/visitor.fig -text
 boost/libs/graph/doc/figs/visitor.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/file_dependency_example.html svneol=native#text/html
