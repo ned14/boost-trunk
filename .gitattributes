@@ -941,6 +941,7 @@ boost/libs/mpl/preprocessed/src/advance_backward.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/src/advance_forward.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/src/and.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/src/apply.cpp svneol=native#text/plain
+boost/libs/mpl/preprocessed/src/apply_wrap.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/src/arg.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/src/basic_bind.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/src/bind.cpp svneol=native#text/plain
