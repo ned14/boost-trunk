@@ -3407,6 +3407,7 @@ boost/libs/python/doc/tutorial/doc/class_virtual_functions.html svneol=native#te
 boost/libs/python/doc/tutorial/doc/constructors.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/default_arguments.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/derived_object_types.html svneol=native#text/html
+boost/libs/python/doc/tutorial/doc/enums.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/exception_translation.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/exposing_classes.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/extracting_c___objects.html svneol=native#text/html
