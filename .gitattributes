@@ -248,7 +248,6 @@ boost/libs/conversion/lexical_cast_test.cpp svneol=native#text/plain
 boost/libs/conversion/test.hpp svneol=native#text/plain
 boost/libs/cs-beos.html svneol=native#text/html
 boost/libs/cs-irix6.html svneol=native#text/html
-boost/libs/cs-linux2.html svneol=native#text/html
 boost/libs/cs-osf1V5.html svneol=native#text/html
 boost/libs/cs-win32.html svneol=native#text/html
 boost/libs/dir_it/boost.h svneol=native#text/plain
