@@ -5961,6 +5961,8 @@ boost/tools/build/doc/extending.html svneol=native#text/html
 boost/tools/build/doc/recipes.html svneol=native#text/html
 boost/tools/build/doc/tools.html svneol=native#text/html
 boost/tools/build/doc/tracker.html svneol=native#text/html
+boost/tools/build/edg-tools.html svneol=native#text/html
+boost/tools/build/edg-tools.jam svneol=native#text/plain
 boost/tools/build/examples-v2/boost-build.jam svneol=native#text/plain
 boost/tools/build/examples-v2/customization/Jamfile svneol=native#text/plain
 boost/tools/build/examples-v2/customization/class.verbatim -text
@@ -6474,6 +6476,8 @@ boost/tools/build/v1/cwpro8-tools.jam svneol=native#text/plain
 boost/tools/build/v1/darwin-tools.html svneol=native#text/html
 boost/tools/build/v1/darwin-tools.jam svneol=native#text/plain
 boost/tools/build/v1/distribution.jam svneol=native#text/plain
+boost/tools/build/v1/edg-tools.html svneol=native#text/html
+boost/tools/build/v1/edg-tools.jam svneol=native#text/plain
 boost/tools/build/v1/example/lib_use/Jamfile svneol=native#text/plain
 boost/tools/build/v1/example/lib_use/simple.cpp svneol=native#text/plain
 boost/tools/build/v1/example/lib_use/simple_lib.cpp svneol=native#text/plain
