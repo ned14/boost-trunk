@@ -1367,6 +1367,7 @@ boost/boost/python/detail/construct.hpp svneol=native#text/plain
 boost/boost/python/detail/convertible.hpp svneol=native#text/plain
 boost/boost/python/detail/copy_ctor_mutates_rhs.hpp svneol=native#text/plain
 boost/boost/python/detail/cv_category.hpp svneol=native#text/plain
+boost/boost/python/detail/dealloc.hpp svneol=native#text/plain
 boost/boost/python/detail/decorated_type_id.hpp svneol=native#text/plain
 boost/boost/python/detail/decref_guard.hpp svneol=native#text/plain
 boost/boost/python/detail/def_helper.hpp svneol=native#text/plain
