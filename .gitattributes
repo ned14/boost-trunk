@@ -142,6 +142,7 @@ boost/boost/python/module_builder.hpp svneol=native#text/plain
 boost/boost/python/objects.hpp svneol=native#text/plain
 boost/boost/python/operators.hpp svneol=native#text/plain
 boost/boost/python/reference.hpp svneol=native#text/plain
+boost/boost/python/x_class_builder.hpp svneol=native#text/plain
 boost/boost/random.hpp svneol=native#text/plain
 boost/boost/rational.hpp svneol=native#text/plain
 boost/boost/re_detail/fileiter.hpp svneol=native#text/plain
