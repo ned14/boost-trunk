@@ -8483,6 +8483,7 @@ boost/tools/build/v2/test/inherit_toolset.py svneol=native#text/x-python
 boost/tools/build/v2/test/inline.py svneol=native#text/x-python
 boost/tools/build/v2/test/library_chain.py svneol=native#text/x-python
 boost/tools/build/v2/test/library_order.py svneol=native#text/x-python
+boost/tools/build/v2/test/library_property.py svneol=native#text/x-python
 boost/tools/build/v2/test/load_dir.py svneol=native#text/x-python
 boost/tools/build/v2/test/loop.py svneol=native#text/x-python
 boost/tools/build/v2/test/m1-01.py svneol=native#text/x-python
