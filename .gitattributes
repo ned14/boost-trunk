@@ -14,6 +14,7 @@ CVSROOT/verifymsg -text
 boost/Jamfile svneol=native#text/plain
 boost/Jamfile.v2 svneol=native#text/plain
 boost/Jamrules svneol=native#text/plain
+boost/LICENSE -text
 boost/README svneol=native#text/plain
 boost/boost-build.jam svneol=native#text/plain
 boost/boost.css svneol=native#text/css
