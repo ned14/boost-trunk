@@ -2283,6 +2283,7 @@ boost/libs/config/test/boost_no_partial_spec.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_priv_aggregate.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_ptr_mem_const.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_ret_det.ipp svneol=native#text/plain
+boost/libs/config/test/boost_no_sfinae.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_sstream.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_std_allocator.ipp svneol=native#text/plain
 boost/libs/config/test/boost_no_std_distance.ipp svneol=native#text/plain
