@@ -3147,7 +3147,6 @@ boost/boost/type_traits/remove_volatile.hpp svneol=native#text/plain
 boost/boost/type_traits/same_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/transform_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/transform_traits_spec.hpp svneol=native#text/plain
-boost/boost/type_traits/type_traits_test.hpp svneol=native#text/plain
 boost/boost/type_traits/type_with_alignment.hpp svneol=native#text/plain
 boost/boost/utility.hpp svneol=native#text/plain
 boost/boost/utility/addressof.hpp svneol=native#text/plain
