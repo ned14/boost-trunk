@@ -514,6 +514,7 @@ boost/boost/graph/graph_test.hpp svneol=native#text/plain
 boost/boost/graph/graph_traits.hpp svneol=native#text/plain
 boost/boost/graph/graph_utility.hpp svneol=native#text/plain
 boost/boost/graph/graphviz.hpp svneol=native#text/plain
+boost/boost/graph/gursoy_atun_layout.hpp svneol=native#text/plain
 boost/boost/graph/incremental_components.hpp svneol=native#text/plain
 boost/boost/graph/isomorphism.hpp svneol=native#text/plain
 boost/boost/graph/iteration_macros.hpp svneol=native#text/plain
@@ -3822,6 +3823,9 @@ boost/libs/graph/doc/figs/file_dep.fig -text
 boost/libs/graph/doc/figs/file_dep.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/forward_or_cross_edges.fig -text
 boost/libs/graph/doc/figs/forward_or_cross_edges.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/ga-circle.png -text svneol=unset#image/png
+boost/libs/graph/doc/figs/ga-heart.png -text svneol=unset#image/png
+boost/libs/graph/doc/figs/ga-square.png -text svneol=unset#image/png
 boost/libs/graph/doc/figs/graph_search.fig -text
 boost/libs/graph/doc/figs/graph_search.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/knights_tour.fig -text
@@ -3862,6 +3866,7 @@ boost/libs/graph/doc/graph_coloring.html svneol=native#text/html
 boost/libs/graph/doc/graph_concepts.html svneol=native#text/html
 boost/libs/graph/doc/graph_theory_review.html svneol=native#text/html
 boost/libs/graph/doc/graph_traits.html svneol=native#text/html
+boost/libs/graph/doc/gursoy_atun_layout.html svneol=native#text/html
 boost/libs/graph/doc/history.html svneol=native#text/html
 boost/libs/graph/doc/incident.html svneol=native#text/html
 boost/libs/graph/doc/incremental_components.html svneol=native#text/html
@@ -4173,6 +4178,7 @@ boost/libs/graph/test/floyd_warshall_test.cpp svneol=native#text/plain
 boost/libs/graph/test/graph.cpp svneol=native#text/plain
 boost/libs/graph/test/graph_concepts.cpp svneol=native#text/plain
 boost/libs/graph/test/graph_type.hpp svneol=native#text/plain
+boost/libs/graph/test/gursoy_atun_layout_test.cpp svneol=native#text/plain
 boost/libs/graph/test/isomorphism.cpp svneol=native#text/plain
 boost/libs/graph/test/johnson-test.cpp svneol=native#text/plain
 boost/libs/graph/test/layout_test.cpp svneol=native#text/plain
