@@ -364,6 +364,7 @@ boost/boost/iterator/filter_iterator.hpp svneol=native#text/plain
 boost/boost/iterator/indirect_iterator.hpp svneol=native#text/plain
 boost/boost/iterator/interoperable.hpp svneol=native#text/plain
 boost/boost/iterator/is_lvalue_iterator.hpp svneol=native#text/plain
+boost/boost/iterator/is_readable_iterator.hpp svneol=native#text/plain
 boost/boost/iterator/iterator_adaptor.hpp svneol=native#text/plain
 boost/boost/iterator/iterator_archetypes.hpp svneol=native#text/plain
 boost/boost/iterator/iterator_categories.hpp svneol=native#text/plain
