@@ -7840,6 +7840,7 @@ boost/tools/regression/test/run-pass.cpp svneol=native#text/plain
 boost/tools/regression/test/test.bat svneol=native#text/plain
 boost/tools/regression/xsl_reports/empty_expected_results.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/report.py svneol=native#text/x-python
+boost/tools/regression/xsl_reports/runner/__init__.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/runner/collect_and_upload_logs.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/test_results.xsd svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/add_expected_results.xsl svneol=native#text/xml
