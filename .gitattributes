@@ -1,16 +1,4 @@
 * text=auto !eol
-CVSROOT/checkoutlist -text
-CVSROOT/commitinfo -text
-CVSROOT/config -text
-CVSROOT/cvswrappers -text
-CVSROOT/editinfo -text
-CVSROOT/loginfo -text
-CVSROOT/modules -text
-CVSROOT/notify -text
-CVSROOT/rcsinfo -text
-CVSROOT/syncmail -text
-CVSROOT/taginfo -text
-CVSROOT/verifymsg -text
 boost/Jamfile svneol=native#text/plain
 boost/Jamfile.v2 svneol=native#text/plain
 boost/Jamrules svneol=native#text/plain
@@ -34,7 +22,6 @@ boost/boost/bind/placeholders.hpp svneol=native#text/plain
 boost/boost/bind/protect.hpp svneol=native#text/plain
 boost/boost/call_traits.hpp svneol=native#text/plain
 boost/boost/cast.hpp svneol=native#text/plain
-boost/boost/checked_delete.hpp svneol=native#text/plain
 boost/boost/compatibility/cpp_c_headers/cassert -text
 boost/boost/compatibility/cpp_c_headers/cctype -text
 boost/boost/compatibility/cpp_c_headers/cerrno -text
@@ -198,7 +185,6 @@ boost/boost/detail/ob_compressed_pair.hpp svneol=native#text/plain
 boost/boost/detail/quick_allocator.hpp svneol=native#text/plain
 boost/boost/detail/select_type.hpp svneol=native#text/plain
 boost/boost/detail/shared_array_nmt.hpp svneol=native#text/plain
-boost/boost/detail/shared_count.hpp svneol=native#text/plain
 boost/boost/detail/shared_ptr_nmt.hpp svneol=native#text/plain
 boost/boost/detail/workaround.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset.hpp svneol=native#text/plain
@@ -331,7 +317,6 @@ boost/boost/integer/static_log2.hpp svneol=native#text/plain
 boost/boost/integer/static_min_max.hpp svneol=native#text/plain
 boost/boost/integer_fwd.hpp svneol=native#text/plain
 boost/boost/integer_traits.hpp svneol=native#text/plain
-boost/boost/intrusive_ptr.hpp svneol=native#text/plain
 boost/boost/io/ios_state.hpp svneol=native#text/plain
 boost/boost/io_fwd.hpp svneol=native#text/plain
 boost/boost/iterator.hpp svneol=native#text/plain
@@ -1540,11 +1525,7 @@ boost/boost/regex/v3/regex_stack.hpp svneol=native#text/plain
 boost/boost/regex/v3/regex_synch.hpp svneol=native#text/plain
 boost/boost/regex/v3/regex_traits.hpp svneol=native#text/plain
 boost/boost/regex_fwd.hpp svneol=native#text/plain
-boost/boost/scoped_array.hpp svneol=native#text/plain
-boost/boost/scoped_ptr.hpp svneol=native#text/plain
-boost/boost/shared_array.hpp svneol=native#text/plain
 boost/boost/shared_container_iterator.hpp svneol=native#text/plain
-boost/boost/shared_ptr.hpp svneol=native#text/plain
 boost/boost/signal.hpp svneol=native#text/plain
 boost/boost/signals/connection.hpp svneol=native#text/plain
 boost/boost/signals/detail/gen_signal_N.pl svneol=native#text/x-perl
@@ -1708,13 +1689,6 @@ boost/boost/spirit/utility/loops.hpp svneol=native#text/plain
 boost/boost/spirit/utility/refactoring.hpp svneol=native#text/plain
 boost/boost/spirit/utility/regex.hpp svneol=native#text/plain
 boost/boost/spirit/utility/scoped_lock.hpp svneol=native#text/plain
-boost/boost/statechart/event.hpp svneol=native#text/plain
-boost/boost/statechart/event_base.hpp svneol=native#text/plain
-boost/boost/statechart/event_receiver.hpp svneol=native#text/plain
-boost/boost/statechart/simple_exception_translator.hpp svneol=native#text/plain
-boost/boost/statechart/state.hpp svneol=native#text/plain
-boost/boost/statechart/state_base.hpp svneol=native#text/plain
-boost/boost/statechart/state_machine.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
 boost/boost/test/auto_unit_test.hpp svneol=native#text/plain
 boost/boost/test/detail/class_properties.hpp svneol=native#text/plain
@@ -2782,7 +2756,6 @@ boost/libs/graph/test/stanford_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/subgraph.cpp svneol=native#text/plain
 boost/libs/graph/test/transitive_closure_test.cpp svneol=native#text/plain
 boost/libs/graph/test/vector_graph_cc.cpp svneol=native#text/plain
-boost/libs/hdr_depend.html svneol=native#text/html
 boost/libs/index.html svneol=native#text/html
 boost/libs/integer/cstdint.htm svneol=native#text/html
 boost/libs/integer/cstdint_test.cpp svneol=native#text/plain
@@ -3990,13 +3963,11 @@ boost/libs/python/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/python/build/VisualStudio/boost_python.dsp -text svneol=CRLF#unset
 boost/libs/python/build/VisualStudio/boost_python.dsw -text svneol=CRLF#unset
 boost/libs/python/build/python_v1.zip -text svneol=unset#application/zip
-boost/libs/python/doc/PyConDC_2003/bpl.txt svneol=native#text/plain
 boost/libs/python/doc/PyConDC_2003/bpl_mods.txt svneol=native#text/plain
 boost/libs/python/doc/PyConDC_2003/default.css svneol=native#text/css
 boost/libs/python/doc/PyConDC_2003/python_cpp_mix.png -text svneol=unset#image/png
 boost/libs/python/doc/boost.css svneol=native#text/css
 boost/libs/python/doc/building.html svneol=native#text/html
-boost/libs/python/doc/index.html svneol=native#text/html
 boost/libs/python/doc/new-conversions.html svneol=native#text/html
 boost/libs/python/doc/new-conversions.txt svneol=native#text/plain
 boost/libs/python/doc/news.html svneol=native#text/html
@@ -4959,8 +4930,6 @@ boost/libs/spirit/test/subrule_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/symbols_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/traverse_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_tests.cpp svneol=native#text/plain
-boost/libs/statechart/doc/FsmDiscussion.html svneol=native#text/html
-boost/libs/statechart/example/FSM.cpp svneol=native#text/plain
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/index.html svneol=native#text/html
 boost/libs/static_assert/static_assert.htm svneol=native#text/html
