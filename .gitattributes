@@ -452,6 +452,8 @@ boost/libs/graph/example/fibonacci_heap.cpp svneol=native#text/plain
 boost/libs/graph/example/fibonacci_heap.expected -text
 boost/libs/graph/example/file_dependencies.cpp svneol=native#text/plain
 boost/libs/graph/example/file_dependencies.expected -text
+boost/libs/graph/example/filtered_edge_graph.cpp svneol=native#text/plain
+boost/libs/graph/example/filtered_edge_graph.expected -text
 boost/libs/graph/example/gerdemann.cpp svneol=native#text/plain
 boost/libs/graph/example/gerdemann.expected -text
 boost/libs/graph/example/girth.cpp svneol=native#text/plain
