@@ -2572,6 +2572,7 @@ boost/boost/serialization/tracking_enum.hpp svneol=native#text/plain
 boost/boost/serialization/traits.hpp svneol=native#text/plain
 boost/boost/serialization/type_info_implementation.hpp svneol=native#text/plain
 boost/boost/serialization/utility.hpp svneol=native#text/plain
+boost/boost/serialization/variant.hpp svneol=native#text/plain
 boost/boost/serialization/vector.hpp svneol=native#text/plain
 boost/boost/serialization/version.hpp svneol=native#text/plain
 boost/boost/serialization/void_cast.hpp svneol=native#text/plain
