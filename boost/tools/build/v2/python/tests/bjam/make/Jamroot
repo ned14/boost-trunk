@@ -1,0 +1,10 @@
+
+make a : a.cpp : $(__name__).copy ;
+
+actions copy
+{
+    cp $(>) $(<)
+}
+
+# Ugly hack.
+IMPORT $(__name__) : copy : : $(__name__).copy ;

@@ -1,2 +1,42 @@
 
-ECHO "Boost.Build V2/Python" ;
+ECHO "Boost.Build V2 Python port (experimental)" ;
+
+# Arrange for PyBB modules to be found.
+module
+{
+    EXTRA_PYTHONPATH = $(BOOST_BUILD_PATH)/python ;
+}
+
+module python_interface
+{
+    rule load ( module-name : location )
+    {        
+        USER_MODULE $(module-name) ;
+        module $(module-name)
+        {
+            __name__ = $(1) ;
+           include $(2) ;
+           local rules = [ RULENAMES $(1) ] ;
+           IMPORT $(1) : $(rules) : $(1) : $(1).$(rules) ;
+        }
+    }    
+    
+    rule set-top-level-targets ( targets * )
+    {
+        DEPENDS all : $(targets) ;
+    }
+    
+}
+
+
+PYTHON_IMPORT_RULE boost.build.main : main : PyBB : main ;
+
+module PyBB
+{
+    main ;
+}
+
+
+
+
+

@@ -5,11 +5,19 @@
 from boost.build.build import action
 import log_engine
 
+
 class BjamBuildSystem (log_engine.LogBuildSystem):
     def __init__ (self):
         log_engine.LogBuildSystem.__init__ (self)
         self.action_names_ = {}
         self.all_targets_ = []
+
+    def generate2(self):
+        import bjam
+        dependencies = self.dependencies ()
+        result = ''
+        for target, sources in dependencies.iteritems ():
+            bjam.call('fffff')
         
     def generate (self):
 

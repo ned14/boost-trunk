@@ -676,14 +676,16 @@ class Action:
         engine = self.manager_.engine ()
         action_name = str (self.action_name_)
 
-        if not action.exists (action_name):
-            raise NoAction ("No action defined for rule '%s'" % action_name)
-            
+        #if not action.exists (action_name):
+        #    raise NoAction ("No action defined for rule '%s'" % action_name)
+        
         self.manager_.engine ().set_update_action (action_name, actual_targets, self.actual_sources_)
         
         # Since we set up creating action here, we also set up
         # action for cleaning up
         self.manager_.engine ().set_update_action ('Clean', 'clean', actual_targets)
+
+        return actual_targets
 
     def actualize_source_type (self, sources, prop_set):
         """ Helper for 'actualize_sources'.

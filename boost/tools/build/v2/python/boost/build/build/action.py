@@ -49,3 +49,29 @@ def enumerate ():
     """ Returns an iterator for the actions map.
     """
     return __all_actions.iteritems ()
+
+class BjamActionWrapper:
+    """Class which allows to use actions defined in bjam.
+
+       This class is a callable which takes a name of
+       bjam action and can be used inside Python. Ideally, we should
+       be able to use string as action name, but current code
+       requires action to be callable.
+    """
+
+    def __init__(self, name):
+        self.name_ = name
+        self.__name__ = name
+
+    def __call__(self, manager, targets, sources, properties):
+        """Forwards the call to bjam."""
+        print "Wrapper called"
+        import bjam
+        bjam.call(self.name_, targets, sources, properties)
+        bjam.call('DEPENDS', targets, sources)
+
+    def __str__(self):
+        """This is called by the Action class to determine the
+        name of bjam action. Returns the one passed to __init__."""
+        return self.name_
+    

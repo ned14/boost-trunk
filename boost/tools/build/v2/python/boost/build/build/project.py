@@ -35,15 +35,19 @@
 #  to obtain module name for a location using 'module_name' rule. The standalone projects
 #  are not recorded, the only way to use them is by project id.
 
-from boost.build.util import path
-from boost.build.build import property_set
+from boost.build.util import path, set
+from boost.build.build import property_set, property
+import boost.build.build.targets
+
+import sys
+import os.path
 
 class ProjectAttributes:
     """ Class keeping all the attributes of a project.
         The standard attributes are "id", "location", "project-root", "parent"
         "requirements", "default-build", "source-location" and "projects-to-build".
     """
-    def __init__ (self, manager, location):
+    def __init__ (self, manager, location, parent=None):
 
         self.manager_ = manager
         
@@ -53,7 +57,17 @@ class ProjectAttributes:
         # A map with all attributes. The key is the attribute name.
         self.attributes_ = {}
         
-        self.attributes_ ['location'] = location
+        self.attributes_['location'] = location
+        self.attributes_['source-location'] = location
+        empty = property_set.empty ()
+        self.attributes_['requirements'] = empty
+        self.attributes_['usage-requirements'] = empty
+        
+        # TODO: For some reason, usage-requirements are a list, rather than a property set
+        self.attributes_['default-build'] = []
+        
+        if parent:
+            self.inherit(parent)
             
     def set (self, attribute, specification, exact = False):
         """ Set the named attribute from the specification given by the user.
@@ -63,15 +77,12 @@ class ProjectAttributes:
         if exact:
             self.attributes_ [attribute] = specification
             return
-
-        properties = self.manager_.properties ()
-        property_sets = self.manager_.property_sets ()
         
         if attribute == "requirements":
-            specification = properties.translate_paths (specification, self.location_)
-            specification = properties.expand_subfeatures_in_conditions (specification)
-            specification = properties.make (specification)
-            result = property_sets.create (specification)
+            specification = property.translate_paths (specification, self.location_)
+            specification = property.expand_subfeatures_in_conditions (specification)
+            specification = property.make (specification)
+            result = property_set.create (specification)
             
             # If we have inherited properties, need to refine them with the
             # specified.
@@ -88,26 +99,27 @@ class ProjectAttributes:
                 self.attributes_ ['requirements'] = result
 
         elif attribute == "usage-requirements":
-            unconditional = ''
+            unconditional = []
             for p in specification:
-                split = properties.split_conditional (p)
+                split = property.split_conditional (p)
                 if not split: 
                     unconditional.append (p)
                 else:
-                    unconditional.append (split [1])
+                    unconditional.append (split [2])
             
-            non_free = properties.remove ('free', unconditional)
+            non_free = property.remove ('free', unconditional)
             
             if non_free:
                 raise BaseException ("usage-requirements '%s' have non-free properties" % (specification, non_free))
 
-            t = properties.translate_paths (specification, self.location_)
+            t = property.translate_paths (specification, self.location_)
 
             if self.attributes_.has_key ('usage-requirements'):
-                self.attributes_ ['usage-requirements'] = property_sets.create (self.usage-requirements.raw + t)
+                self.attributes_ ['usage-requirements'] = property_set.create (
+                    self.get('usage-requirements').raw() + t)
 
             else:
-                self.attributes_ ['usage-requirements'] = property_sets.create (t)
+                self.attributes_ ['usage-requirements'] = property_set.create (t)
 
         elif attribute == "default-build":
             self.attributes_ ['default-build'] = properties.make (specification)
@@ -131,25 +143,50 @@ class ProjectAttributes:
         else:
             return ''
 
+    def inherit(self, parent):
+        self.attributes_['default-build'] = parent.get('default-build')
+        self.attributes_['requirements'] = parent.get('requirements')
+        self.attributes_['usage-requirements'] = parent.get('usage-requirements')
+
+        parent_build_dir = parent.get('build-dir')
+        if parent_build_dir:
+            # Have to compute relative path from parent dir to our dir
+            # Convert both paths to absolute, since we cannot
+            # find relative path from ".." to "."
+        
+            parent_dir = path.root(parent.get('location'), path.pwd())
+            our_dir = path.root(self.get('location'), path.pwd())
+            self.attributes_['build-dir'] = os.path.join(
+                parent_dir, path.relative(our_dir, parent_dir))
+
+    def dump(self):
+        for k in self.attributes_:
+            print k, " : ", self.attributes_[k]
+
 
 
 class ProjectModule:
+    """Project abstraction.
+
+       In V2/Jam, projects were identified by bjam module corresponding
+       to the Jamfile. This design was moved to V2/Python, but should
+       be revised after we've done with the porting. This class should
+       be gone and we should be using ProjectTarget instead.
+    """
     
-    def __init__ (self, registry, location):
-        # TODO: implement all the loading of Jamfiles or whatever we'll use.
+    def __init__ (self, registry, location, parent):
 
         self.registry_ = registry
         manager = self.registry_.manager_
 
-        self.attributes_ = ProjectAttributes (manager, location)
+        parent_attributes = None
+        parent_target = None
+        if parent:
+            parent_attributes = parent.attributes()
+            parent_target = parent.target()
 
-        self.attributes_.set ('source-location', path.make (location), True)
-        empty = property_set.empty ()
-        self.attributes_.set ('requirements', empty, True)
-        self.attributes_.set ('usage-requirements', empty, True)
-        
-        # TODO: For some reason, usage-requirements are a list, rather than a property set
-        self.attributes_.set ('default-build', [], True)
+        self.attributes_ = ProjectAttributes (manager, location,
+                                              parent_attributes)
 
         # The unambiguous name of the module, based on its location.
         self.module_name_ = None
@@ -157,7 +194,7 @@ class ProjectModule:
         from targets import ProjectTarget
         self.target_ = ProjectTarget (self.module_name (), 
             self, 
-            None, 
+            parent_target, 
             self.attribute ('requirements'), 
             [])
         
@@ -196,9 +233,11 @@ class ProjectRegistry:
 
         # A map of all projects.
         self.projects_ = {}
+        # A map from project id to ProjectModule instance
+        self.id_to_module_ = {}
         
-    def create (self, location):
-        project = ProjectModule (self, location)
+    def create (self, location, parent=None):        
+        project = ProjectModule (self, location, parent)
         
         module_name = project.module_name ()
         if self.projects_.has_key (module_name):
@@ -206,7 +245,7 @@ class ProjectRegistry:
             
         self.projects_ [module_name] = project
         
-        return project
+        return project        
     
     def projects (self):
         return self.projects_.iteritems ()
@@ -234,19 +273,8 @@ class ProjectRegistry:
 #   #   If the jamfile at that location is loaded already, does nothing.
 #   #   Returns the project module for the Jamfile.
 #   #
-#   rule load ( jamfile-location )
-#   {   
-#       if --debug-loading in [ modules.peek : ARGV ]
-#       {
-#           ECHO "Loading Jamfile at" '$(jamfile-location)' ;
-#       }    
-#               
-#       local module_name = [ module_name $(jamfile-location) ] ;            
-#       # If Jamfile is already loaded, don't try again.
-#       if ! $(module_name) in $(.jamfile-modules)
-#       {      
-#           load-jamfile $(jamfile-location) ;
-#                   
+
+                   
 #           # We want to make sure that child project are loaded only
 #           # after parent projects. In particular, because parent projects
 #           # define attributes whch are inherited by children, and we don't
@@ -272,9 +300,11 @@ class ProjectRegistry:
 #           }        
 #       }                
 #       return $(module_name) ;        
-#   }
+#   }        
 #   
-#   JAMROOT = project-root.jam Jamroot jamroot Jamroot.jam jamroot.jam ;
+
+
+
 #   # Loads parent of Jamfile at 'location'. Issues an error if nothing is found.
 #   rule load-parent ( location )
 #   {
@@ -354,7 +384,7 @@ class ProjectRegistry:
 #   # Returns the name of module corresponding to 'jamfile-location'.
 #   # If no module corresponds to location yet, associates default
 #   # module name with that location.
-#   #
+#   #    
 #   rule module_name ( jamfile-location )
 #   {
 #       if ! $(.module.$(jamfile-location))
@@ -372,13 +402,16 @@ class ProjectRegistry:
 #   # declarations.
 #   #
 #   JAMFILE = [ modules.peek : JAMFILE ] ;
-#   JAMFILE ?= [Jj]amfile.v2 [Jj]amfile [Jj]amfile.jam ;
+
 #   
 #   # Find the Jamfile at the given location. This returns the exact names of
 #   # all the Jamfiles in the given directory. The optional parent-root argument
 #   # causes this to search not the given directory but the ones above it up
 #   # to the directory given in it.
 #   #
+
+       
+
 #   local rule find-jamfile (
 #       dir # The directory(s) to look for a Jamfile.
 #       parent-root ? # Optional flag indicating to search for the parent Jamfile.
@@ -444,32 +477,7 @@ class ProjectRegistry:
 #   
 #       return $(jamfile-to-load) ;
 #   }
-#   
-#   # Load a Jamfile at the given directory. Returns nothing.
-#   # Will attempt to load the file as indicated by the JAMFILE patterns. 
-#   # Effect of calling this rule twice with the same 'dir' is underfined.
-#   
-#   local rule load-jamfile (
-#       dir # The directory of the project Jamfile.
-#       )
-#   {
-#       # See if the Jamfile is where it should be.
-#       #
-#       local jamfile-to-load = [ path.glob $(dir) : $(JAMROOT) ] ;
-#       if ! $(jamfile-to-load)
-#       {
-#           jamfile-to-load = [ find-jamfile $(dir) ] ;
-#       }
-#       
-#       
-#       # The module of the jamfile.
-#       #
-#       local jamfile-module = [ module_name  [ path.parent $(jamfile-to-load) ] ] ;
-#   
-#       # Initialize the jamfile module before loading.
-#       #    
-#       initialize $(jamfile-module) : [ path.parent $(jamfile-to-load) ] 
-#         : $(jamfile-to-load:BS) ;
+
 #   
 #       # Now load the Jamfile in it's own context.
 #       # Initialization might have load parent Jamfiles, which might have
@@ -512,43 +520,9 @@ class ProjectRegistry:
 #   
 #   
 #   
-#   # Initialize the module for a project. 
-#   #
-#   rule initialize (
-#       module_name # The name of the project module.
-#       : location ? # The location (directory) of the project to initialize.
-#                    # If not specified, stanalone project will be initialized.               
-#       : basename ? 
-#       )
-#   {
-#       if --debug-loading in [ modules.peek : ARGV ]
-#       {
-#           ECHO "Initializing project '$(module_name)'" ;
-#       }
-#   
-#       # TODO: need to consider if standalone projects can do anything but defining
-#       # prebuilt targets. If so, we need to give more sensible "location", so that
-#       # source paths are correct.
-#       location ?= "" ;
-#       # Create the module for the Jamfile first.    
-#       module $(module_name)
-#       {          
-#       }    
-#       $(module_name).attributes = [ new ProjectAttributes $(location) ] ;
-#       local attributes = $($(module_name).attributes) ;
-#       
-#       if $(location)
-#       {        
-#           $(attributes).set source-location : [ path.make $(location) ] : exact ;    
-#       }
-#       else
-#       {
-#           $(attributes).set source-location : "" : exact ;    
-#       }
-#       
-#       $(attributes).set requirements : [ property-set.empty ] : exact ;
-#       $(attributes).set usage-requirements : [ property-set.empty ] : exact ;    
-#   
+
+        
+            
 #       # Import rules common to all project modules from project-rules module,
 #       # defined at the end of this file.
 #       modules.clone-rules project-rules $(module_name) ;
@@ -556,7 +530,8 @@ class ProjectRegistry:
 #       # We search for parent/project-root only if jamfile was specified --- i.e
 #       # if the project is not standalone.
 #       if $(location)
-#       {       
+#       {
+
 #           local parent-module ;
 #           if ! $(basename) in $(JAMROOT)
 #           {
@@ -620,7 +595,11 @@ class ProjectRegistry:
 #       }        
 #   }
 #   
-#   
+#
+    def register_id(self, id, project_module):
+        self.id_to_module_[id] = project_module
+
+        
 #   # Associate the given id with the given project module
 #   rule register-id ( id : module )
 #   {
@@ -702,6 +681,8 @@ class ProjectRegistry:
 #       }
 #       .current-project = $(saved-project) ;
 #   }
+
+
 #   
 #   # This module defines rules common to all projects
 #   module project-rules
@@ -824,3 +805,5 @@ class ProjectRegistry:
 #   {
 #       import assert ;
 #   }
+
+
