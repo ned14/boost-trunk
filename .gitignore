@@ -1,0 +1,5 @@
+boost/status/*.log
+boost/status/boosttmp.*
+boost/status/regression
+boost/status/rng.saved
+boost/status/rng.tmp
