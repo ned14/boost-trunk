@@ -1956,6 +1956,7 @@ boost/boost/range/end.hpp svneol=native#text/plain
 boost/boost/range/functions.hpp svneol=native#text/plain
 boost/boost/range/iterator.hpp svneol=native#text/plain
 boost/boost/range/iterator_range.hpp svneol=native#text/plain
+boost/boost/range/metafunctions.hpp svneol=native#text/plain
 boost/boost/range/rbegin.hpp svneol=native#text/plain
 boost/boost/range/rend.hpp svneol=native#text/plain
 boost/boost/range/result_iterator.hpp svneol=native#text/plain
