@@ -2210,6 +2210,8 @@ boost/tools/build/jam_src/boost-jam.spec -text
 boost/tools/build/jam_src/builds/win32-borlandc.mk -text
 boost/tools/build/jam_src/builds/win32-gcc.mk -text
 boost/tools/build/jam_src/builds/win32-visualc.mk -text
+boost/tools/build/jam_src/builtins.c svneol=native#text/plain
+boost/tools/build/jam_src/builtins.h svneol=native#text/plain
 boost/tools/build/jam_src/command.c svneol=native#text/plain
 boost/tools/build/jam_src/command.h svneol=native#text/plain
 boost/tools/build/jam_src/common.mk -text
@@ -2231,6 +2233,7 @@ boost/tools/build/jam_src/filesys.c svneol=native#text/plain
 boost/tools/build/jam_src/filesys.h svneol=native#text/plain
 boost/tools/build/jam_src/fileunix.c svneol=native#text/plain
 boost/tools/build/jam_src/filevms.c svneol=native#text/plain
+boost/tools/build/jam_src/frames.c svneol=native#text/plain
 boost/tools/build/jam_src/frames.h svneol=native#text/plain
 boost/tools/build/jam_src/glob.c svneol=native#text/plain
 boost/tools/build/jam_src/hash.c svneol=native#text/plain
@@ -2267,6 +2270,7 @@ boost/tools/build/jam_src/parse.c svneol=native#text/plain
 boost/tools/build/jam_src/parse.h svneol=native#text/plain
 boost/tools/build/jam_src/patchlevel.h svneol=native#text/plain
 boost/tools/build/jam_src/pathmac.c svneol=native#text/plain
+boost/tools/build/jam_src/pathsys.h svneol=native#text/plain
 boost/tools/build/jam_src/pathunix.c svneol=native#text/plain
 boost/tools/build/jam_src/pathvms.c svneol=native#text/plain
 boost/tools/build/jam_src/regexp.c svneol=native#text/plain
@@ -2424,6 +2428,8 @@ boost/tools/jam/src/boost-jam.spec -text
 boost/tools/jam/src/builds/win32-borlandc.mk -text
 boost/tools/jam/src/builds/win32-gcc.mk -text
 boost/tools/jam/src/builds/win32-visualc.mk -text
+boost/tools/jam/src/builtins.c svneol=native#text/plain
+boost/tools/jam/src/builtins.h svneol=native#text/plain
 boost/tools/jam/src/command.c svneol=native#text/plain
 boost/tools/jam/src/command.h svneol=native#text/plain
 boost/tools/jam/src/common.mk -text
@@ -2445,6 +2451,7 @@ boost/tools/jam/src/filesys.c svneol=native#text/plain
 boost/tools/jam/src/filesys.h svneol=native#text/plain
 boost/tools/jam/src/fileunix.c svneol=native#text/plain
 boost/tools/jam/src/filevms.c svneol=native#text/plain
+boost/tools/jam/src/frames.c svneol=native#text/plain
 boost/tools/jam/src/frames.h svneol=native#text/plain
 boost/tools/jam/src/glob.c svneol=native#text/plain
 boost/tools/jam/src/hash.c svneol=native#text/plain
@@ -2481,6 +2488,7 @@ boost/tools/jam/src/parse.c svneol=native#text/plain
 boost/tools/jam/src/parse.h svneol=native#text/plain
 boost/tools/jam/src/patchlevel.h svneol=native#text/plain
 boost/tools/jam/src/pathmac.c svneol=native#text/plain
+boost/tools/jam/src/pathsys.h svneol=native#text/plain
 boost/tools/jam/src/pathunix.c svneol=native#text/plain
 boost/tools/jam/src/pathvms.c svneol=native#text/plain
 boost/tools/jam/src/regexp.c svneol=native#text/plain
