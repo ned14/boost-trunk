@@ -5674,6 +5674,7 @@ boost/libs/regex/test/c_compiler_checks/posix_api_check.cpp svneol=native#text/p
 boost/libs/regex/test/c_compiler_checks/wide_posix_api_check.c svneol=native#text/plain
 boost/libs/regex/test/c_compiler_checks/wide_posix_api_check.cpp svneol=native#text/plain
 boost/libs/regex/test/captures/Jamfile svneol=native#text/plain
+boost/libs/regex/test/captures/Jamfile.v2 svneol=native#text/plain
 boost/libs/regex/test/captures/captures_test.cpp svneol=native#text/plain
 boost/libs/regex/test/concepts/concept_check.cpp svneol=native#text/plain
 boost/libs/regex/test/concepts/wide_concept_check.cpp svneol=native#text/plain
