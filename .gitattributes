@@ -2639,15 +2639,26 @@ boost/libs/thread/doc/tss.html svneol=native#text/html
 boost/libs/thread/doc/xtime.html svneol=native#text/html
 boost/libs/thread/example/.cvsignore -text
 boost/libs/thread/example/Jamfile svneol=native#text/plain
+boost/libs/thread/example/condition.cpp svneol=native#text/plain
+boost/libs/thread/example/monitor.cpp svneol=native#text/plain
 boost/libs/thread/example/monitor/Carbon.r -text
 boost/libs/thread/example/monitor/monitor.cpp svneol=native#text/plain
 boost/libs/thread/example/monitor/monitor.mcp -text svneol=unset#unset
+boost/libs/thread/example/mutex.cpp svneol=native#text/plain
+boost/libs/thread/example/once.cpp svneol=native#text/plain
+boost/libs/thread/example/recursive_mutex.cpp svneol=native#text/plain
+boost/libs/thread/example/starvephil.cpp svneol=native#text/plain
 boost/libs/thread/example/starvephil/Carbon.r -text
 boost/libs/thread/example/starvephil/starvephil.cpp svneol=native#text/plain
 boost/libs/thread/example/starvephil/starvephil.mcp -text svneol=unset#unset
+boost/libs/thread/example/tennis.cpp svneol=native#text/plain
 boost/libs/thread/example/tennis/Carbon.r -text
 boost/libs/thread/example/tennis/tennis.cpp svneol=native#text/plain
 boost/libs/thread/example/tennis/tennis.mcp -text svneol=unset#unset
+boost/libs/thread/example/thread.cpp svneol=native#text/plain
+boost/libs/thread/example/thread_group.cpp svneol=native#text/plain
+boost/libs/thread/example/tss.cpp svneol=native#text/plain
+boost/libs/thread/example/xtime.cpp svneol=native#text/plain
 boost/libs/thread/src/condition.cpp svneol=native#text/plain
 boost/libs/thread/src/exceptions.cpp svneol=native#text/plain
 boost/libs/thread/src/mac/debug_prefix.hpp svneol=native#text/plain
