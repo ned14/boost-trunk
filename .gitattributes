@@ -179,6 +179,7 @@ boost/libs/graph/docs/depth_first_visit.html svneol=native#text/html
 boost/libs/graph/docs/dijkstra_shortest_paths.html svneol=native#text/html
 boost/libs/graph/docs/dynamic_connected_components.html svneol=native#text/html
 boost/libs/graph/docs/edge_list.html svneol=native#text/html
+boost/libs/graph/docs/figs/Makefile svneol=native#text/plain
 boost/libs/graph/docs/figs/adj_list.fig -text
 boost/libs/graph/docs/figs/adj_list.gif -text svneol=unset#image/gif
 boost/libs/graph/docs/figs/adj_matrix.fig -text
