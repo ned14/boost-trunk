@@ -1466,6 +1466,7 @@ boost/boost/statechart/state.hpp svneol=native#text/plain
 boost/boost/statechart/state_base.hpp svneol=native#text/plain
 boost/boost/statechart/state_machine.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
+boost/boost/test/auto_unit_test.hpp svneol=native#text/plain
 boost/boost/test/detail/class_properties.hpp svneol=native#text/plain
 boost/boost/test/detail/nullstream.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_config.hpp svneol=native#text/plain
