@@ -301,6 +301,7 @@ boost/boost/graph/minimum_degree_ordering.hpp svneol=native#text/plain
 boost/boost/graph/named_function_params.hpp svneol=native#text/plain
 boost/boost/graph/neighbor_bfs.hpp svneol=native#text/plain
 boost/boost/graph/prim_minimum_spanning_tree.hpp svneol=native#text/plain
+boost/boost/graph/profile.hpp svneol=native#text/plain
 boost/boost/graph/properties.hpp svneol=native#text/plain
 boost/boost/graph/property_iter_range.hpp svneol=native#text/plain
 boost/boost/graph/push_relabel_max_flow.hpp svneol=native#text/plain
@@ -308,6 +309,7 @@ boost/boost/graph/read_dimacs.hpp svneol=native#text/plain
 boost/boost/graph/relax.hpp svneol=native#text/plain
 boost/boost/graph/reverse_graph.hpp svneol=native#text/plain
 boost/boost/graph/sequential_vertex_coloring.hpp svneol=native#text/plain
+boost/boost/graph/sloan_ordering.hpp svneol=native#text/plain
 boost/boost/graph/smallest_last_ordering.hpp svneol=native#text/plain
 boost/boost/graph/stanford_graph.hpp svneol=native#text/plain
 boost/boost/graph/strong_components.hpp svneol=native#text/plain
@@ -319,6 +321,7 @@ boost/boost/graph/tree_traits.hpp svneol=native#text/plain
 boost/boost/graph/undirected_dfs.hpp svneol=native#text/plain
 boost/boost/graph/vector_as_graph.hpp svneol=native#text/plain
 boost/boost/graph/visitors.hpp svneol=native#text/plain
+boost/boost/graph/wavefront.hpp svneol=native#text/plain
 boost/boost/half_open_range.hpp svneol=native#text/plain
 boost/boost/integer.hpp svneol=native#text/plain
 boost/boost/integer/integer_mask.hpp svneol=native#text/plain
@@ -2665,6 +2668,7 @@ boost/libs/graph/example/roget_components.cpp svneol=native#text/plain
 boost/libs/graph/example/scc.cpp svneol=native#text/plain
 boost/libs/graph/example/scc.dot -text
 boost/libs/graph/example/sgb-regression.cfg -text
+boost/libs/graph/example/sloan_ordering.cpp svneol=native#text/plain
 boost/libs/graph/example/strong-components.cpp svneol=native#text/plain
 boost/libs/graph/example/strong_components.cpp svneol=native#text/plain
 boost/libs/graph/example/strong_components.expected -text
