@@ -4195,6 +4195,7 @@ boost/libs/python/pyste/src/enumerate.py svneol=native#text/x-python
 boost/libs/python/pyste/src/exporters.py svneol=native#text/x-python
 boost/libs/python/pyste/src/exporterutils.py svneol=native#text/x-python
 boost/libs/python/pyste/src/infos.py svneol=native#text/x-python
+boost/libs/python/pyste/src/makeid.py svneol=native#text/x-python
 boost/libs/python/pyste/src/policies.py svneol=native#text/x-python
 boost/libs/python/pyste/src/pyste-profile.py svneol=native#text/x-python
 boost/libs/python/pyste/src/pyste.py svneol=native#text/x-python
