@@ -3399,6 +3399,7 @@ boost/libs/python/doc/tutorial/doc/theme/bkd2.gif -text svneol=unset#image/gif
 boost/libs/python/doc/tutorial/doc/theme/bulb.gif -text svneol=unset#image/gif
 boost/libs/python/doc/tutorial/doc/theme/bullet.gif -text svneol=unset#image/gif
 boost/libs/python/doc/tutorial/doc/theme/c++boost.gif -text svneol=unset#image/gif
+boost/libs/python/doc/tutorial/doc/theme/jam.png -text svneol=unset#image/png
 boost/libs/python/doc/tutorial/doc/theme/l_arr.gif -text svneol=unset#image/gif
 boost/libs/python/doc/tutorial/doc/theme/l_arr_disabled.gif -text svneol=unset#image/gif
 boost/libs/python/doc/tutorial/doc/theme/lens.gif -text svneol=unset#image/gif
