@@ -4443,6 +4443,7 @@ boost/libs/graph/test/layout_test.cpp svneol=native#text/plain
 boost/libs/graph/test/leda_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/lvalue_pmap.cpp svneol=native#text/plain
 boost/libs/graph/test/property_iter.cpp svneol=native#text/plain
+boost/libs/graph/test/python/biconnected_components.dot -text
 boost/libs/graph/test/python/biconnected_components.py svneol=native#text/x-python
 boost/libs/graph/test/python/py_dijkstra.py svneol=native#text/x-python
 boost/libs/graph/test/regression.cfg -text
