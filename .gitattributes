@@ -76,7 +76,7 @@ boost/boost/pending/cstddef.hpp svneol=native#text/plain
 boost/boost/pending/ct_if.hpp svneol=native#text/plain
 boost/boost/pending/detail/disjoint_sets.hpp svneol=native#text/plain
 boost/boost/pending/detail/int_iterator.hpp svneol=native#text/plain
-boost/boost/pending/detail/plugin.hpp svneol=native#text/plain
+boost/boost/pending/detail/property.hpp svneol=native#text/plain
 boost/boost/pending/disjoint_sets.hpp svneol=native#text/plain
 boost/boost/pending/fenced_priority_queue.hpp svneol=native#text/plain
 boost/boost/pending/fibonacci_heap.hpp svneol=native#text/plain
@@ -88,7 +88,7 @@ boost/boost/pending/iterator_tests.hpp svneol=native#text/plain
 boost/boost/pending/limits.hpp svneol=native#text/plain
 boost/boost/pending/mutable_heap.hpp svneol=native#text/plain
 boost/boost/pending/mutable_queue.hpp svneol=native#text/plain
-boost/boost/pending/plugin.hpp svneol=native#text/plain
+boost/boost/pending/property.hpp svneol=native#text/plain
 boost/boost/pending/queue.hpp svneol=native#text/plain
 boost/boost/pending/stringtok.hpp svneol=native#text/plain
 boost/boost/progress.hpp svneol=native#text/plain
@@ -312,8 +312,8 @@ boost/libs/graph/examples/dynamic_components.cpp svneol=native#text/plain
 boost/libs/graph/examples/dynamic_components.expected -text
 boost/libs/graph/examples/edge_basics.cpp svneol=native#text/plain
 boost/libs/graph/examples/edge_basics.expected -text
-boost/libs/graph/examples/edge_plugin.cpp svneol=native#text/plain
-boost/libs/graph/examples/edge_plugin.expected -text
+boost/libs/graph/examples/edge_property.cpp svneol=native#text/plain
+boost/libs/graph/examples/edge_property.expected -text
 boost/libs/graph/examples/exterior_edge_properties.cpp svneol=native#text/plain
 boost/libs/graph/examples/exterior_edge_properties.expected -text
 boost/libs/graph/examples/exterior_property_map.cpp svneol=native#text/plain
