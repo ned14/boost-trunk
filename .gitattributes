@@ -1425,6 +1425,7 @@ boost/libs/preprocessor/doc/reference/while_8hpp.html svneol=native#text/html
 boost/libs/preprocessor/doc/reference/xor_8hpp.html svneol=native#text/html
 boost/libs/preprocessor/doc/references.htm svneol=native#text/html
 boost/libs/preprocessor/doc/tutorial.htm svneol=native#text/html
+boost/libs/preprocessor/example/delay.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/arithmetic_test.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/for_test.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/list_test.cpp svneol=native#text/plain
