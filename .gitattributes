@@ -162,7 +162,6 @@ boost/development/py_cpp/module.cpp svneol=native#text/plain
 boost/development/py_cpp/module.h svneol=native#text/plain
 boost/development/py_cpp/newtypes.cpp svneol=native#text/plain
 boost/development/py_cpp/newtypes.h svneol=native#text/plain
-boost/development/py_cpp/newtypes_d.cpp svneol=native#text/plain
 boost/development/py_cpp/none.h svneol=native#text/plain
 boost/development/py_cpp/objects.cpp svneol=native#text/plain
 boost/development/py_cpp/objects.h svneol=native#text/plain
