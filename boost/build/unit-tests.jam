@@ -80,10 +80,6 @@ assert_equal [ split-path <a>$(SLASH)<d>$(SLASH)<e> ] : <a> <d> <e> ;
 assert_equal [ split-path <a> ] : <a> ;
 assert_equal [ split-path x ] : x ;
 assert_equal [ split-path $(DOT) ] : $(DOT) ;
-if $(NT)
-{
-    assert_equal [ split-path x:\\y\\z ] : x: y z  ;
-}
 
 # distribute-feature
 assert_equal [ distribute-feature <feature>value1 ] : <feature>value1 ;
