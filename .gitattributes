@@ -5304,6 +5304,7 @@ boost/libs/multi_index/doc/reference/key_extraction.html svneol=native#text/html
 boost/libs/multi_index/doc/reference/multi_index_container.html svneol=native#text/html
 boost/libs/multi_index/doc/reference/ord_indices.html svneol=native#text/html
 boost/libs/multi_index/doc/reference/seq_indices.html svneol=native#text/html
+boost/libs/multi_index/doc/release_notes.html svneol=native#text/html
 boost/libs/multi_index/doc/style.css svneol=native#text/css
 boost/libs/multi_index/doc/tests.html svneol=native#text/html
 boost/libs/multi_index/doc/tutorial.html svneol=native#text/html
