@@ -518,6 +518,7 @@ boost/libs/graph/example/container_gen.cpp svneol=native#text/plain
 boost/libs/graph/example/container_gen.expected -text
 boost/libs/graph/example/cuthill_mckee_ordering.cpp svneol=native#text/plain
 boost/libs/graph/example/cuthill_mckee_ordering.expected -text
+boost/libs/graph/example/dag_shortest_paths.cpp svneol=native#text/plain
 boost/libs/graph/example/dave.cpp svneol=native#text/plain
 boost/libs/graph/example/dave.expected -text
 boost/libs/graph/example/dfs.cpp svneol=native#text/plain
