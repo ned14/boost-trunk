@@ -655,6 +655,7 @@ boost/boost/iostreams/reverse.hpp svneol=native#text/plain
 boost/boost/iostreams/stream_facade.hpp svneol=native#text/plain
 boost/boost/iostreams/streambuf_facade.hpp svneol=native#text/plain
 boost/boost/iostreams/traits.hpp svneol=native#text/plain
+boost/boost/iostreams/traits_fwd.hpp svneol=native#text/plain
 boost/boost/iterator.hpp svneol=native#text/plain
 boost/boost/iterator/counting_iterator.hpp svneol=native#text/plain
 boost/boost/iterator/detail/any_conversion_eater.hpp svneol=native#text/plain
