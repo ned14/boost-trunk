@@ -4455,6 +4455,7 @@ boost/libs/python/pyste/install/pyste.py svneol=native#text/x-python
 boost/libs/python/pyste/install/setup.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/.cvsignore -text
 boost/libs/python/pyste/src/Pyste/ClassExporter.py svneol=native#text/x-python
+boost/libs/python/pyste/src/Pyste/CodeExporter.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/CppParser.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/EnumExporter.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/Exporter.py svneol=native#text/x-python
@@ -4488,6 +4489,9 @@ boost/libs/python/pyste/tests/basic.cpp svneol=native#text/plain
 boost/libs/python/pyste/tests/basic.h svneol=native#text/plain
 boost/libs/python/pyste/tests/basic.pyste -text
 boost/libs/python/pyste/tests/basicUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/code_test.h svneol=native#text/plain
+boost/libs/python/pyste/tests/code_test.pyste -text
+boost/libs/python/pyste/tests/code_testUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/enums.h svneol=native#text/plain
 boost/libs/python/pyste/tests/enums.pyste -text
 boost/libs/python/pyste/tests/enumsUT.py svneol=native#text/x-python
