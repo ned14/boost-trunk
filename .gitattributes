@@ -1968,6 +1968,7 @@ boost/status/regression.cfg -text
 boost/status/regression.cpp svneol=native#text/plain
 boost/tools/build/TODO.txt svneol=native#text/plain
 boost/tools/build/allyourbase.jam svneol=native#text/plain
+boost/tools/build/architecture.html svneol=native#text/html
 boost/tools/build/boost-base.jam svneol=native#text/plain
 boost/tools/build/boost-build.jam svneol=native#text/plain
 boost/tools/build/borland-tools.jam svneol=native#text/plain
@@ -2146,6 +2147,7 @@ boost/tools/build/v1/python.jam svneol=native#text/plain
 boost/tools/build/v1/tru64cxx-tools.jam svneol=native#text/plain
 boost/tools/build/v1/unit-tests.jam svneol=native#text/plain
 boost/tools/build/v1/vacpp-tools.jam svneol=native#text/plain
+boost/tools/build/v2/architecture.html svneol=native#text/html
 boost/tools/build/v2/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/build/feature.jam svneol=native#text/plain
 boost/tools/build/v2/build/property.jam svneol=native#text/plain
