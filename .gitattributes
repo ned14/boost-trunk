@@ -3525,6 +3525,7 @@ boost/libs/python/doc/building.html svneol=native#text/html
 boost/libs/python/doc/index.html svneol=native#text/html
 boost/libs/python/doc/new-conversions.html svneol=native#text/html
 boost/libs/python/doc/new-conversions.txt svneol=native#text/plain
+boost/libs/python/doc/news.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/basic_interface.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/building_an_extension_module.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/building_hello_world.html svneol=native#text/html
