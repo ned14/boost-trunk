@@ -52,6 +52,9 @@ namespace boost { namespace spirit {
         rule_id(const T& a) 
         : base_t(a) {}
 
+        rule_id(const rule_id& a) 
+        : base_t(a) {}
+
         template <typename T>
         rule_id& operator=(const T& a)
         { base_t::operator=(a); return *this; }
@@ -292,7 +295,7 @@ struct test_banal : public grammar<test_banal>
     }
 
     template <typename TreeT>
-    TreeT expected_tree(void)
+    TreeT expected_tree()
     {
         return fold<TreeT>(
             ID_ROOT, fold<TreeT>(
@@ -336,7 +339,7 @@ struct run_test
             ast_parse(text_begin, text_end, gram);
 
         assert(info.full);
-
+#if! BOOST_WORKAROUND(BOOST_MSVC,<=1300) 
         tree_t expected = gram.template expected_tree<tree_t>();
 
 #if DEBUG_DUMP_TREES
@@ -345,6 +348,7 @@ struct run_test
 #endif
 
         assert(equal(info.trees[0], expected));
+#endif
     }
 };
 

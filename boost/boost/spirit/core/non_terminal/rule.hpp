@@ -72,12 +72,12 @@ namespace boost { namespace spirit {
         rule();
         ~rule();
 
-        rule(rule const& r)
-        : ptr(new impl::concrete_parser<rule, ScannerT, result_t>(r)) {}
-
         template <typename ParserT>
         rule(ParserT const& p)
         : ptr(new impl::concrete_parser<ParserT, ScannerT, result_t>(p)) {}
+
+        rule(rule const& r)
+        : ptr(new impl::concrete_parser<rule, ScannerT, result_t>(r)) {}
 
         template <typename ParserT>
         rule& operator=(ParserT const& p)

@@ -1,6 +1,7 @@
 /*=============================================================================
     Spirit v1.6.2
     Copyright (c) 2001-2003 Daniel Nuffer
+    Copyright (c) 2004      Peder Holt
     http://spirit.sourceforge.net/
 
     Distributed under the Boost Software License, Version 1.0.

@@ -1,6 +1,7 @@
 /*=============================================================================
     Spirit v1.6.2
     Copyright (c) 2001-2003 Daniel Nuffer
+    Copyright (c) 2004-2005 Peder Holt
     http://spirit.sourceforge.net/
 
     Distributed under the Boost Software License, Version 1.0.
@@ -9,10 +10,6 @@
 =============================================================================*/
 #ifndef BOOST_SPIRIT_TREE_COMMON_HPP
 #define BOOST_SPIRIT_TREE_COMMON_HPP
-
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
-#error "Sorry, this module does not support VC6. Please upgrade to at least VC7"
-#endif
 
 #include "boost/spirit/core.hpp"
 

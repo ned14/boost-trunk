@@ -28,10 +28,10 @@ using namespace boost::spirit;
 ////////////////////////////////////////////////////////////////////////////
 struct calculator : public grammar<calculator>
 {
-    static const int integerID = 1;
-    static const int factorID = 2;
-    static const int termID = 3;
-    static const int expressionID = 4;
+    BOOST_STATIC_CONSTANT(int, integerID = 1);
+    BOOST_STATIC_CONSTANT(int, factorID = 2);
+    BOOST_STATIC_CONSTANT(int, termID = 3);
+    BOOST_STATIC_CONSTANT(int, expressionID = 4);
 
     template <typename ScannerT>
     struct definition
