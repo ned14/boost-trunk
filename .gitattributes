@@ -880,6 +880,12 @@ boost/libs/graph/example/family-tree-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/family_tree.expected -text
 boost/libs/graph/example/fibonacci_heap.cpp svneol=native#text/plain
 boost/libs/graph/example/fibonacci_heap.expected -text
+boost/libs/graph/example/figs/cc-internet.dot -text
+boost/libs/graph/example/figs/dfs-example.dot -text
+boost/libs/graph/example/figs/edge-connectivity.dot -text
+boost/libs/graph/example/figs/ospf-graph.dot -text
+boost/libs/graph/example/figs/scc.dot -text
+boost/libs/graph/example/figs/telephone-network.dot -text
 boost/libs/graph/example/file_dependencies.cpp svneol=native#text/plain
 boost/libs/graph/example/file_dependencies.expected -text
 boost/libs/graph/example/filtered_graph.cpp svneol=native#text/plain
