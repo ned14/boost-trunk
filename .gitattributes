@@ -4900,6 +4900,7 @@ boost/libs/spirit/test/directives_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/epsilon_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/escape_char_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/exception_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/file_iterator_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/fixed_size_queue_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/for_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/fundamental_tests.cpp svneol=native#text/plain
