@@ -4236,6 +4236,7 @@ boost/libs/python/pyste/dist/.cvsignore -text
 boost/libs/python/pyste/dist/create_build.py svneol=native#text/x-python
 boost/libs/python/pyste/dist/setup.py svneol=native#text/x-python
 boost/libs/python/pyste/doc/exporting_all_declarations_from_a_header.html svneol=native#text/html
+boost/libs/python/pyste/doc/global_variables.html svneol=native#text/html
 boost/libs/python/pyste/doc/introduction.html svneol=native#text/html
 boost/libs/python/pyste/doc/policies.html svneol=native#text/html
 boost/libs/python/pyste/doc/pyste.txt svneol=native#text/plain
@@ -4285,6 +4286,8 @@ boost/libs/python/pyste/example/templates.h svneol=native#text/plain
 boost/libs/python/pyste/example/templates.pyste -text
 boost/libs/python/pyste/example/unions.h svneol=native#text/plain
 boost/libs/python/pyste/example/unions.pyste -text
+boost/libs/python/pyste/example/vars.h svneol=native#text/plain
+boost/libs/python/pyste/example/vars.pyste -text
 boost/libs/python/pyste/example/virtual.h svneol=native#text/plain
 boost/libs/python/pyste/example/virtual.pyste -text
 boost/libs/python/pyste/example/virtual2.h svneol=native#text/plain
@@ -4305,6 +4308,7 @@ boost/libs/python/pyste/src/IncludeExporter.py svneol=native#text/x-python
 boost/libs/python/pyste/src/MultipleCodeUnit.py svneol=native#text/x-python
 boost/libs/python/pyste/src/SingleCodeUnit.py svneol=native#text/x-python
 boost/libs/python/pyste/src/SmartFile.py svneol=native#text/x-python
+boost/libs/python/pyste/src/VarExporter.py svneol=native#text/x-python
 boost/libs/python/pyste/src/declarations.py svneol=native#text/x-python
 boost/libs/python/pyste/src/exporters.py svneol=native#text/x-python
 boost/libs/python/pyste/src/exporterutils.py svneol=native#text/x-python
@@ -4327,6 +4331,7 @@ boost/libs/python/pyste/tests/example_opaqueUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_operatorsUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_smart_ptrUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_templatesUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_varsUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_virtual.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_virtual2.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/example_wrappertestUT.py svneol=native#text/x-python
