@@ -18,7 +18,7 @@
 #include "boost/mpl/begin_end.hpp"
 #include "boost/mpl/distance.hpp"
 #include "boost/mpl/aux_/traits_lambda_spec.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/aux_/config/workaround.hpp"
 
 namespace boost {
 namespace mpl {
@@ -30,7 +30,7 @@ template< typename Tag >
 struct size_impl
 {
     template< typename Sequence > struct apply
-#if !defined(__BORLANDC__) && (__BORLANDC__ <= 0x561 || !defined(BOOST_STRICT_CONFIG))
+#if !BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x561))
         : distance<
               typename begin<Sequence>::type
             , typename end<Sequence>::type

@@ -28,7 +28,7 @@ struct pop_back_impl
     template< typename Sequence > struct apply;
 };
 
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(1, pop_back_traits)
+BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(1, pop_back_impl)
 
 } // namespace mpl
 } // namespace boost

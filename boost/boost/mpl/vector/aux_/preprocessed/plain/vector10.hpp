@@ -36,6 +36,17 @@ struct push_front_traits< aux::vector_tag< 0> >
 };
 
 template<>
+struct push_back_impl< aux::vector_tag< 0> >
+{
+    template< typename Vector, typename T > struct algorithm
+    {
+        typedef vector1<
+              T
+            > type;
+    };
+};
+
+template<>
 struct pop_front_traits< aux::vector_tag< 1> >
 {
     template< typename Vector > struct algorithm

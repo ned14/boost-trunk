@@ -1,28 +1,25 @@
-//-----------------------------------------------------------------------------
-// boost mpl/aux_/nested_type_wknd.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2000-02
-// Aleksey Gurtovoy
-//
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
 
 #ifndef BOOST_MPL_AUX_NESTED_TYPE_WKND_HPP_INCLUDED
 #define BOOST_MPL_AUX_NESTED_TYPE_WKND_HPP_INCLUDED
 
-#include "boost/config.hpp"
+// Copyright (c) 2000-04 Aleksey Gurtovoy
+//
+// Use, modification and distribution are subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+// at http://www.boost.org/LICENSE_1_0.txt)
+//
+// See http://www.boost.org/libs/mpl for documentation.
 
-#if defined(__GNUC__) && (__GNUC__ < 3 || __GNUC__ == 3 && __GNUC_MINOR__ <= 2 \
-    || !defined(BOOST_STRICT_CONFIG)) \
- || defined(__BORLANDC__) && (__BORLANDC__ <= 0x561 || !defined(BOOST_STRICT_CONFIG)) \
- || defined(__SUNPRO_CC)
+// $Source$
+// $Date$
+// $Revision$
+
+#include "boost/mpl/aux_/config/gcc.hpp"
+#include "boost/mpl/aux_/config/workaround.hpp"
+
+#if BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0302)) \
+    || BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x561)) \
+    || BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x530))
 
 namespace boost { namespace mpl { namespace aux {
 
@@ -34,12 +31,14 @@ struct nested_type_wknd
 
 }}} // namespace boost::mpl::aux
 
-#   define BOOST_MPL_AUX_NESTED_TYPE_WKND(T) ::boost::mpl::aux::nested_type_wknd<T>
+#   define BOOST_MPL_AUX_NESTED_TYPE_WKND(T) \
+    ::boost::mpl::aux::nested_type_wknd<T> \
+/**/
 
 #else
 
 #   define BOOST_MPL_AUX_NESTED_TYPE_WKND(T) T::type
 
-#endif // __GNUC__
+#endif // BOOST_MPL_CFG_GCC et al.
 
 #endif // BOOST_MPL_AUX_NESTED_TYPE_WKND_HPP_INCLUDED
