@@ -40,11 +40,11 @@ namespace boost { namespace fusion
     template <typename Sequence, typename T>
     inline typename lazy_disable_if<
         fusion::is_sequence<Sequence>
-      , result_of_push_back<type_sequence<Sequence const> const, T>
+      , result_of_push_back<type_sequence<Sequence> const, T>
     >::type
     push_back(Sequence, T const& x)
     {
-        return fusion::push_back(type_sequence<Sequence const>(), x);
+        return fusion::push_back(type_sequence<Sequence>(), x);
     }
 
 #endif

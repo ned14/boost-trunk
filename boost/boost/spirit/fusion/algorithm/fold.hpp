@@ -51,11 +51,11 @@ namespace boost { namespace fusion
     template <typename Sequence, typename State, typename F>
     inline typename lazy_disable_if<
         fusion::is_sequence<Sequence>
-      , result_of_fold<type_sequence<Sequence const> const, State, F>
+      , result_of_fold<type_sequence<Sequence>, State, F>
     >::type
     fold(Sequence, State const& state, F const& f)
     {
-        return fusion::fold(type_sequence<Sequence const>(), state, f);
+        return fusion::fold(type_sequence<Sequence>(), state, f);
     }
 
 #endif

@@ -63,14 +63,14 @@ namespace boost { namespace fusion
     inline typename lazy_disable_if<
         fusion::is_sequence<Sequence>
       , result_of_replace<
-            type_sequence<Sequence const> const
+            type_sequence<Sequence>
           , type_sequence_iterator<Position>
           , T>
     >::type
     replace(Sequence, Position, T const& x)
     {
         return fusion::replace(
-            type_sequence<Sequence const>()
+            type_sequence<Sequence>()
           , type_sequence_iterator<Position>()
           , x);
     }

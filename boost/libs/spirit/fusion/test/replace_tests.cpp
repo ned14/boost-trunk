@@ -44,17 +44,17 @@ test_main(int, char*[])
             == make_tuple(std::string("happy"), 'x', 3.3, s)));
     }
 
-//#ifdef FUSION_COMFORMING_COMPILER // $$$ not working
-//    {
-//        typedef boost::mpl::vector_c<int, 1, 2, 3, 4, 5> mpl_vec;
-//        typedef boost::mpl::begin<mpl_vec>::type mpl_vec_begin;
-//        typedef boost::mpl::advance<mpl_vec_begin, boost::mpl::int_<3> >::type mpl_vec_at3;
-//
-//        std::cout << replace(mpl_vec(), mpl_vec_at3(), boost::mpl::int_<66>()) << std::endl;
-//        BOOST_TEST((replace(mpl_vec(), mpl_vec_at3(), boost::mpl::int_<66>())
-//            == make_tuple(1, 2, 3, 66, 5)));
-//    }
-//#endif
+#ifdef FUSION_COMFORMING_COMPILER
+    {
+        typedef boost::mpl::vector_c<int, 1, 2, 3, 4, 5> mpl_vec;
+        typedef boost::mpl::begin<mpl_vec>::type mpl_vec_begin;
+        typedef boost::mpl::advance<mpl_vec_begin, boost::mpl::int_<3> >::type mpl_vec_at3;
+
+        std::cout << replace(mpl_vec(), mpl_vec_at3(), boost::mpl::int_<66>()) << std::endl;
+        BOOST_TEST((replace(mpl_vec(), mpl_vec_at3(), boost::mpl::int_<66>())
+            == make_tuple(1, 2, 3, 66, 5)));
+    }
+#endif
 
     return 0;
 }

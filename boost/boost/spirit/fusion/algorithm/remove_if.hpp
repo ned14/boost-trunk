@@ -37,11 +37,11 @@ namespace boost { namespace fusion
     template <typename Pred, typename Sequence>
     inline typename lazy_disable_if<
         fusion::is_sequence<Sequence>
-      , result_of_remove_if<Pred, type_sequence<Sequence const> const>
+      , result_of_remove_if<Pred, type_sequence<Sequence> const>
     >::type
     remove_if(Sequence)
     {
-        return fusion::remove_if<Pred>(type_sequence<Sequence const>());
+        return fusion::remove_if<Pred>(type_sequence<Sequence>());
     }
 
 #endif

@@ -58,13 +58,13 @@ namespace boost { namespace fusion
     inline typename lazy_disable_if<
         fusion::is_sequence<Sequence>
       , result_of_erase<
-            type_sequence<Sequence const> const
+            type_sequence<Sequence>
           , type_sequence_iterator<Position> >
     >::type
     erase(Sequence, Position)
     {
         return fusion::erase(
-            type_sequence<Sequence const>()
+            type_sequence<Sequence>()
           , type_sequence_iterator<Position>());
     }
 

@@ -52,11 +52,11 @@ namespace boost { namespace fusion
     template <typename Pred, typename Sequence>
     inline typename lazy_disable_if<
         fusion::is_sequence<Sequence>
-      , result_of_find_if<Pred, type_sequence<Sequence const> const>
+      , result_of_find_if<Pred, type_sequence<Sequence> >
     >::type
     find_if(Sequence)
     {
-        return fusion::find_if<Pred>(type_sequence<Sequence const>());
+        return fusion::find_if<Pred>(type_sequence<Sequence>());
     }
 
 #endif

@@ -62,7 +62,7 @@ namespace boost { namespace fusion
     >::type
     for_each(Sequence, F const& f)
     {
-        return fusion::for_each(type_sequence<Sequence const>(), f);
+        return fusion::for_each(type_sequence<Sequence>(), f);
     }
 
 #endif

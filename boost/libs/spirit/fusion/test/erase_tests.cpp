@@ -37,17 +37,17 @@ test_main(int, char*[])
         BOOST_TEST((erase(t1, pos) == make_tuple(1, 'x', s)));
     }
 
-//#ifdef FUSION_COMFORMING_COMPILER // $$$ not working
-//    {
-//        typedef boost::mpl::vector_c<int, 1, 2, 3, 4, 5> mpl_vec;
-//        typedef boost::mpl::begin<mpl_vec>::type mpl_vec_begin;
-//        typedef boost::mpl::advance<mpl_vec_begin, boost::mpl::int_<3> >::type mpl_vec_at3;
-//
-//        std::cout << erase(mpl_vec(), mpl_vec_at3()) << std::endl;
-//        BOOST_TEST((erase(mpl_vec(), mpl_vec_at3())
-//            == make_tuple(1, 2, 3, 5)));
-//    }
-//#endif
+#ifdef FUSION_COMFORMING_COMPILER
+    {
+        typedef boost::mpl::vector_c<int, 1, 2, 3, 4, 5> mpl_vec;
+        typedef boost::mpl::begin<mpl_vec>::type mpl_vec_begin;
+        typedef boost::mpl::advance<mpl_vec_begin, boost::mpl::int_<3> >::type mpl_vec_at3;
+
+        std::cout << erase(mpl_vec(), mpl_vec_at3()) << std::endl;
+        BOOST_TEST((erase(mpl_vec(), mpl_vec_at3())
+            == make_tuple(1, 2, 3, 5)));
+    }
+#endif
 
     return 0;
 }

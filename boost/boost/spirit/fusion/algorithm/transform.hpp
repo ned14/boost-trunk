@@ -36,11 +36,11 @@ namespace boost { namespace fusion
     template <typename Sequence, typename F>
     inline typename lazy_disable_if<
         fusion::is_sequence<Sequence>
-      , result_of_transform<type_sequence<Sequence const> const, F>
+      , result_of_transform<type_sequence<Sequence> const, F>
     >::type
     transform(Sequence, F const& f)
     {
-        return fusion::transform(type_sequence<Sequence const>(), f);
+        return fusion::transform(type_sequence<Sequence>(), f);
     }
 
 #endif
