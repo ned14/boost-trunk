@@ -1,4 +1,4 @@
-borland.bin-directory = [ conditional $(borland.root-directory) : $(borland.root-directory)$(SLASH)bin$(SLASH) : " " ] ;
+borland.bin-directory = [ conditional $(BCCROOT) : $(BCCROOT)$(SLASH)bin$(SLASH) : " " ] ;
 detect-build-tools borland : bcc32 ;
 
 flags borland CFLAGS <debug-symbols>on : -v ;
@@ -12,10 +12,14 @@ flags borland CFLAGS <inlining>full : -vi -w-inl ;
 
 
 flags borland CFLAGS <threading>multi : -tWM ;
-
 flags borland CFLAGS <user-interface>gui : -tW ;
 flags borland CFLAGS <user-interface>console : -tWC ;
 
+flags borland LINKFLAGS <threading>multi : -tWM ;
+flags borland LINKFLAGS <user-interface>gui/<runtime-link>static : -tW ;
+flags borland LINKFLAGS <user-interface>gui/<runtime-link>dynamic : -tWR ;
+flags borland LINKFLAGS <user-interface>console/<runtime-link>static : -tWC ;
+flags borland LINKFLAGS <user-interface>console/<runtime-link>dynamic : -tWCR ;
 
 # -tWD Make the target a Windows .DLL with all functions exportable. 
 
@@ -25,11 +29,11 @@ flags borland CFLAGS <runtime-link>dynamic/<user-interface>gui : -tWR ;
 flags borland CFLAGS <runtime-link>dynamic/<user-interface>console : -tWCR ;
 
 
-flags borland STDLIBS <user-interface>gui/<wide-character-support>off : COW32.OBJ ;
-flags borland STDLIBS <user-interface>gui/<wide-character-support>on : COW32w.OBJ ;
+#  flags borland STDOBJS <user-interface>gui/<wide-character-support>off : c0W32.OBJ ;
+#  flags borland STDOBJS <user-interface>gui/<wide-character-support>on : c0W32w.OBJ ;
 
-flags borland STDLIBS <user-interface>console/<wide-character-support>off : COX32.OBJ ;
-flags borland STDLIBS <user-interface>console/<wide-character-support>on : COX32w.OBJ ;
+#  flags borland STDOBJS <user-interface>console/<wide-character-support>off : c0X32.OBJ ;
+#  flags borland STDOBJS <user-interface>console/<wide-character-support>on : c0X32w.OBJ ;
 
 flags borland STDLIBS <runtime-link>static/<threading>single :  CW32.LIB ;
 flags borland STDLIBS <runtime-link>dynamic/<threading>single :  CW32I.LIB ;
@@ -41,8 +45,8 @@ flags borland DEFINES <define> ;
 flags borland UNDEFS <undef> ;
 flags borland HDRS <include> ;
 
-flags borland STDHDRS : $(borland.root-directory)$(SLASH)include ;
-flags borland STDLIBPATH : $(borland.root-directory)$(SLASH)lib ;
+flags borland STDHDRS : $(BCCROOT)$(SLASH)include ;
+flags borland STDLIBPATH : $(BCCROOT)$(SLASH)lib ;
 
 # IMPORT32.LIB - 32-bit import library 
 
@@ -63,7 +67,7 @@ rule Link-action
 actions borland-Link-action bind NEEDLIBS
 {
     set PATH="$(borland.bin-directory)";%PATH% ;
-    bcc32 -q $(LINKFLAGS) -L"$(STDLIBPATH)" -e"$(<)" "$(>)"  "$(STDLIBS)" "$(NEEDLIBS)"
+    bcc32 -q $(LINKFLAGS) -L"$(BCCROOT)$(SLASH)lib" -e"$(<)" "$(>)"  "$(STDLIBS)" "$(NEEDLIBS)" 
 }
 
 #### Cc #####
@@ -75,7 +79,7 @@ rule Cc-action
 
 actions borland-Cc-action
 {
-    $(borland.bin-directory)bcc32 -q -c -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(CCFLAGS) $(OPTIM) -I$(HDRS) -I$(STDHDRS) -o"$(<)" "$(>)"
+    $(borland.bin-directory)bcc32 -q -c -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(CCFLAGS) $(OPTIM) -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
 }
 #### C++ ####
 rule C++-action
@@ -85,7 +89,7 @@ rule C++-action
 
 actions borland-C++-action
 {
-    $(borland.bin-directory)bcc32 -q -c -P -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) $(OPTIM)  -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
+    $(borland.bin-directory)bcc32 -q -c -P -w- -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) $(OPTIM)  -I"$(HDRS)" -I"$(BCCROOT)$(SLASH)include" -o"$(<)" "$(>)"
 }
 
 #### Archive ####
