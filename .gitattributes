@@ -3447,6 +3447,7 @@ boost/libs/date_time/test/gregorian/testparse_date.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testperiod.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/README.poorly_formed_zonespec -text
 boost/libs/date_time/test/local_time/poorly_formed_zonespec.csv -text
+boost/libs/date_time/test/local_time/testclocks.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testdst_transition_day_rule.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testlocal_time.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testposix_time_zone.cpp svneol=native#text/plain
