@@ -1,12 +1,11 @@
 /*=============================================================================
-    Phoenix v1.1
+    Phoenix V1.2.1
     Copyright (c) 2002 Joel de Guzman
     Copyright (c) 2002-2003 Hartmut Kaiser
 
-    Permission to copy, use, modify, sell and distribute this software
-    is granted provided this copyright notice appears in all copies.
-    This software is provided "as is" without express or implied
-    warranty, and with no claim as to its suitability for any purpose.
+    Use, modification and distribution is subject to the Boost Software
+    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #ifndef PHOENIX_TUPLEHELPERS_HPP
 #define PHOENIX_TUPLEHELPERS_HPP
@@ -527,7 +526,7 @@ namespace impl
         typedef is_default_t<false> is_not_default;
 
         static type
-        actor_element(ActorTupleT const& actor_tuple, is_default)
+        actor_element(ActorTupleT const& /*actor_tuple*/, is_default)
         {
             return type(); // default construct
         }

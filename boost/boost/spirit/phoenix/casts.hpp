@@ -1,12 +1,11 @@
 /*=============================================================================
-    Phoenix v1.1
+    Phoenix V1.2.1
     Copyright (c) 2001-2003 Joel de Guzman
     Copyright (c) 2001-2003 Hartmut Kaiser
 
-    Permission to copy, use, modify, sell and distribute this software is
-    granted provided this copyright notice appears in all copies. This
-    software is provided "as is" without express or implied warranty, and
-    with no claim as to its suitability for any purpose.
+    Use, modification and distribution is subject to the Boost Software
+    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 
 #ifndef PHOENIX_CASTS_HPP
@@ -439,6 +438,7 @@ struct construct_1 {
         T t(a);
         return t;
     }
+
 };
 
 template <typename T>
@@ -456,6 +456,7 @@ struct construct_2 {
         T t(a, b);
         return t;
     }
+
 };
 
 template <typename T>

@@ -1,23 +1,22 @@
 /*=============================================================================
-    Phoenix V1.0
+    Phoenix V1.2.1
     Copyright (c) 2001-2003 Joel de Guzman
 
-    Permission to copy, use, modify, sell and distribute this software is
-    granted provided this copyright notice appears in all copies. This
-    software is provided "as is" without express or implied warranty, and
-    with no claim as to its suitability for any purpose.
+    Use, modification and distribution is subject to the Boost Software
+    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <vector>
 #include <algorithm>
 #include <iostream>
 
 #define PHOENIX_LIMIT 5
-#include "boost/spirit/phoenix/operators.hpp"
-#include "boost/spirit/phoenix/primitives.hpp"
-#include "boost/spirit/phoenix/composite.hpp"
-#include "boost/spirit/phoenix/special_ops.hpp"
-#include "boost/spirit/phoenix/statements.hpp"
-#include "boost/spirit/phoenix/functions.hpp"
+#include <boost/spirit/phoenix/operators.hpp>
+#include <boost/spirit/phoenix/primitives.hpp>
+#include <boost/spirit/phoenix/composite.hpp>
+#include <boost/spirit/phoenix/special_ops.hpp>
+#include <boost/spirit/phoenix/statements.hpp>
+#include <boost/spirit/phoenix/functions.hpp>
 
 namespace phoenix {
 
@@ -494,7 +493,7 @@ main()
         lfun2(arg1 + 2000),
         lfun2(val(5000) * 2),
         lfun2(lvar1 + lfun3()),
-        lfun4(55),
+        lfun4(val(55)),
         cout << lvar1 << '\n',
         cout << lfun3() << '\n',
         cout << val("bye bye\n")
