@@ -4458,6 +4458,9 @@ boost/libs/python/pyste/tests/inherit.pyste -text
 boost/libs/python/pyste/tests/inherit2.h svneol=native#text/plain
 boost/libs/python/pyste/tests/inherit2.pyste -text
 boost/libs/python/pyste/tests/inherit2UT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/inherit3.h svneol=native#text/plain
+boost/libs/python/pyste/tests/inherit3.pyste -text
+boost/libs/python/pyste/tests/inherit3UT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/inheritUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/nested.cpp svneol=native#text/plain
 boost/libs/python/pyste/tests/nested.h svneol=native#text/plain
