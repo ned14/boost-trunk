@@ -469,6 +469,7 @@ boost/boost/graph/adjacency_iterator.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list_io.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_matrix.hpp svneol=native#text/plain
+boost/boost/graph/astar_search.hpp svneol=native#text/plain
 boost/boost/graph/bandwidth.hpp svneol=native#text/plain
 boost/boost/graph/bc_clustering.hpp svneol=native#text/plain
 boost/boost/graph/bellman_ford_shortest_paths.hpp svneol=native#text/plain
@@ -503,6 +504,8 @@ boost/boost/graph/edge_list.hpp svneol=native#text/plain
 boost/boost/graph/edmunds_karp_max_flow.hpp svneol=native#text/plain
 boost/boost/graph/exception.hpp svneol=native#text/plain
 boost/boost/graph/filtered_graph.hpp svneol=native#text/plain
+boost/boost/graph/floyd_warshall_shortest.hpp svneol=native#text/plain
+boost/boost/graph/fruchterman_reingold.hpp svneol=native#text/plain
 boost/boost/graph/graph_archetypes.hpp svneol=native#text/plain
 boost/boost/graph/graph_as_tree.hpp svneol=native#text/plain
 boost/boost/graph/graph_concepts.hpp svneol=native#text/plain
@@ -529,10 +532,12 @@ boost/boost/graph/properties.hpp svneol=native#text/plain
 boost/boost/graph/property_iter_range.hpp svneol=native#text/plain
 boost/boost/graph/push_relabel_max_flow.hpp svneol=native#text/plain
 boost/boost/graph/random.hpp svneol=native#text/plain
+boost/boost/graph/random_layout.hpp svneol=native#text/plain
 boost/boost/graph/read_dimacs.hpp svneol=native#text/plain
 boost/boost/graph/relax.hpp svneol=native#text/plain
 boost/boost/graph/reverse_graph.hpp svneol=native#text/plain
 boost/boost/graph/sequential_vertex_coloring.hpp svneol=native#text/plain
+boost/boost/graph/simple_point.hpp svneol=native#text/plain
 boost/boost/graph/sloan_ordering.hpp svneol=native#text/plain
 boost/boost/graph/smallest_last_ordering.hpp svneol=native#text/plain
 boost/boost/graph/stanford_graph.hpp svneol=native#text/plain
@@ -3650,6 +3655,8 @@ boost/libs/functional/ptr_fun.html svneol=native#text/html
 boost/libs/graph/LICENSE -text
 boost/libs/graph/build/Jamfile svneol=native#text/plain
 boost/libs/graph/build/Jamfile.v2 svneol=native#text/plain
+boost/libs/graph/doc/AStarHeuristic.html svneol=native#text/html
+boost/libs/graph/doc/AStarVisitor.html svneol=native#text/html
 boost/libs/graph/doc/AdjacencyGraph.html svneol=native#text/html
 boost/libs/graph/doc/AdjacencyMatrix.html svneol=native#text/html
 boost/libs/graph/doc/BFSVisitor.html svneol=native#text/html
@@ -3681,6 +3688,9 @@ boost/libs/graph/doc/adjacency_iterator.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_list.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_list_traits.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_matrix.html svneol=native#text/html
+boost/libs/graph/doc/astar_heuristic.html svneol=native#text/html
+boost/libs/graph/doc/astar_search.html svneol=native#text/html
+boost/libs/graph/doc/astar_visitor.html svneol=native#text/html
 boost/libs/graph/doc/awpaper.sty -text
 boost/libs/graph/doc/bandwidth.html svneol=native#text/html
 boost/libs/graph/doc/bc_clustering.html svneol=native#text/html
@@ -3788,6 +3798,8 @@ boost/libs/graph/doc/figs/visitor.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/wheel_graph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/file_dependency_example.html svneol=native#text/html
 boost/libs/graph/doc/filtered_graph.html svneol=native#text/html
+boost/libs/graph/doc/floyd_warshall_shortest.html svneol=native#text/html
+boost/libs/graph/doc/fruchterman_reingold.html svneol=native#text/html
 boost/libs/graph/doc/graph_coloring.html svneol=native#text/html
 boost/libs/graph/doc/graph_concepts.html svneol=native#text/html
 boost/libs/graph/doc/graph_theory_review.html svneol=native#text/html
@@ -3829,6 +3841,7 @@ boost/libs/graph/doc/publications.html svneol=native#text/html
 boost/libs/graph/doc/push_relabel_max_flow.html svneol=native#text/html
 boost/libs/graph/doc/quick_tour.html svneol=native#text/html
 boost/libs/graph/doc/random.html svneol=native#text/html
+boost/libs/graph/doc/random_layout.html svneol=native#text/html
 boost/libs/graph/doc/read-graphviz.html svneol=native#text/html
 boost/libs/graph/doc/reverse_graph.html svneol=native#text/html
 boost/libs/graph/doc/sloan_ordering.htm svneol=native#text/html
@@ -3862,6 +3875,7 @@ boost/libs/graph/example/adjacency_list.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.expected -text
 boost/libs/graph/example/adjacency_list_io.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_matrix.cpp svneol=native#text/plain
+boost/libs/graph/example/astar-cities.cpp svneol=native#text/plain
 boost/libs/graph/example/bcsstk01 -text
 boost/libs/graph/example/bcsstk01.rsa -text
 boost/libs/graph/example/bellman-example.cpp svneol=native#text/plain
@@ -4038,6 +4052,7 @@ boost/libs/graph/example/subgraph.expected -text
 boost/libs/graph/example/subgraph_properties.cpp svneol=native#text/plain
 boost/libs/graph/example/target-compile-costs.dat -text
 boost/libs/graph/example/tc.dot -text
+boost/libs/graph/example/test-astar-cities.dot -text
 boost/libs/graph/example/topo-sort-file-dep.cpp svneol=native#text/plain
 boost/libs/graph/example/topo-sort-file-dep2.cpp svneol=native#text/plain
 boost/libs/graph/example/topo-sort-with-leda.cpp svneol=native#text/plain
@@ -4077,6 +4092,7 @@ boost/libs/graph/test/adj_list_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/adj_list_test.cpp svneol=native#text/plain
 boost/libs/graph/test/adj_matrix_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/adjacency_matrix_test.cpp svneol=native#text/plain
+boost/libs/graph/test/astar_search_test.cpp svneol=native#text/plain
 boost/libs/graph/test/bellman-test.cpp svneol=native#text/plain
 boost/libs/graph/test/betweenness_centrality_test.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs.cpp svneol=native#text/plain
@@ -4090,6 +4106,7 @@ boost/libs/graph/test/dijkstra_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/edge_list_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/filter_graph_vp_test.cpp svneol=native#text/plain
 boost/libs/graph/test/filtered_graph_cc.cpp svneol=native#text/plain
+boost/libs/graph/test/floyd_warshall_test.cpp svneol=native#text/plain
 boost/libs/graph/test/graph.cpp svneol=native#text/plain
 boost/libs/graph/test/graph_concepts.cpp svneol=native#text/plain
 boost/libs/graph/test/graph_type.hpp svneol=native#text/plain
