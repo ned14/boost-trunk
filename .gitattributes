@@ -5820,7 +5820,6 @@ boost/libs/python/test/staticmethod.py svneol=native#text/x-python
 boost/libs/python/test/str.cpp svneol=native#text/plain
 boost/libs/python/test/str.py svneol=native#text/x-python
 boost/libs/python/test/string_literal.cpp svneol=native#text/plain
-boost/libs/python/test/submod_subclass_api.cpp svneol=native#text/plain
 boost/libs/python/test/test_builtin_converters.cpp svneol=native#text/plain
 boost/libs/python/test/test_builtin_converters.py svneol=native#text/x-python
 boost/libs/python/test/test_class.hpp svneol=native#text/plain
