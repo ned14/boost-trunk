@@ -2330,7 +2330,6 @@ boost/status/intel_logo.gif -text svneol=unset#image/gif
 boost/status/kai_logo.gif -text svneol=unset#image/gif
 boost/status/regression.cfg -text
 boost/status/regression.cpp svneol=native#text/plain
-boost/tools/build/TODO.txt svneol=native#text/plain
 boost/tools/build/allyourbase.jam svneol=native#text/plain
 boost/tools/build/architecture.html svneol=native#text/html
 boost/tools/build/boost-base.jam svneol=native#text/plain
@@ -2574,7 +2573,6 @@ boost/tools/build/test/unit-tests.jam svneol=native#text/plain
 boost/tools/build/tru64cxx-tools.jam svneol=native#text/plain
 boost/tools/build/tru64cxx65-tools.jam svneol=native#text/plain
 boost/tools/build/unit-tests.jam svneol=native#text/plain
-boost/tools/build/v1/TODO.txt svneol=native#text/plain
 boost/tools/build/v1/allyourbase.jam svneol=native#text/plain
 boost/tools/build/v1/boost-base.jam svneol=native#text/plain
 boost/tools/build/v1/boost.css svneol=native#text/css
