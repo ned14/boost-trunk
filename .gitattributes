@@ -5269,6 +5269,7 @@ boost/libs/test/build/msvc71_proj/prg_exec_fail3.vcproj -text
 boost/libs/test/build/msvc71_proj/prg_exec_monitor.vcproj -text
 boost/libs/test/build/msvc71_proj/result_report_test.vcproj -text
 boost/libs/test/build/msvc71_proj/test_case_template_example.vcproj -text
+boost/libs/test/build/msvc71_proj/test_case_template_test.vcproj -text
 boost/libs/test/build/msvc71_proj/test_exec_example.vcproj -text
 boost/libs/test/build/msvc71_proj/test_exec_fail1.vcproj -text
 boost/libs/test/build/msvc71_proj/test_exec_fail2.vcproj -text
