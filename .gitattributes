@@ -1443,6 +1443,7 @@ boost/boost/python/objects.hpp svneol=native#text/plain
 boost/boost/python/operators.hpp svneol=native#text/plain
 boost/boost/python/operators2.hpp svneol=native#text/plain
 boost/boost/python/other.hpp svneol=native#text/plain
+boost/boost/python/overloads.hpp svneol=native#text/plain
 boost/boost/python/pointee.hpp svneol=native#text/plain
 boost/boost/python/proxy.hpp svneol=native#text/plain
 boost/boost/python/ptr.hpp svneol=native#text/plain
