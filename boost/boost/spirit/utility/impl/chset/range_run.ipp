@@ -56,9 +56,9 @@ namespace boost { namespace spirit {
         range<CharT>::overlaps(range const& r) const
         {
             CharT decr_first =
-                first == std::numeric_limits<CharT>::min() ? first : first-1;
+                first == (std::numeric_limits<CharT>::min)() ? first : first-1;
             CharT incr_last =
-                last == std::numeric_limits<CharT>::max() ? last : last+1;
+                last == (std::numeric_limits<CharT>::max)() ? last : last+1;
 
             return (decr_first <= r.last) && (incr_last >= r.first);
         }
@@ -68,8 +68,8 @@ namespace boost { namespace spirit {
         inline void
         range<CharT>::merge(range const& r)
         {
-            first = std::min(first, r.first);
-            last = std::max(last, r.last);
+            first = (std::min)(first, r.first);
+            last = (std::max)(last, r.last);
         }
 
         ///////////////////////////////////////////////////////////////////////

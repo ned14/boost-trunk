@@ -32,6 +32,14 @@
 #pragma warning(disable:4800)
 #endif
 
+#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
+#define BOOST_SPIRIT_USING_STD
+#define BOOST_SPIRIT_NS_STD
+#else
+#define BOOST_SPIRIT_USING_STD using namespace std
+#define BOOST_SPIRIT_NS_STD
+#endif
+
 namespace boost { namespace spirit {
 
     template <typename DrivedT> struct char_parser;
@@ -147,7 +155,7 @@ namespace boost { namespace spirit {
 
     template <typename CharT>
     inline CharT
-    to_char_type(typename 
+    to_char_type(typename
         BOOST_SPIRIT_CHAR_TRAITS_NAMESPACE::char_traits<CharT>::int_type c)
     {
         return BOOST_SPIRIT_CHAR_TRAITS_NAMESPACE
@@ -161,102 +169,102 @@ namespace boost { namespace spirit {
     ///////////////////////////////////////////////////////////////////////////
 
     inline bool isalnum_(char c)
-        { using namespace std; return isalnum(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return isalnum(to_int_type(c)); }
 
     inline bool isalpha_(char c)
-        { using namespace std; return isalpha(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return isalpha(to_int_type(c)); }
 
     inline bool iscntrl_(char c)
-        { using namespace std; return iscntrl(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iscntrl(to_int_type(c)); }
 
     inline bool isdigit_(char c)
-        { using namespace std; return isdigit(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return isdigit(to_int_type(c)); }
 
     inline bool isgraph_(char c)
-        { using namespace std; return isgraph(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return isgraph(to_int_type(c)); }
 
     inline bool islower_(char c)
-        { using namespace std; return islower(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return islower(to_int_type(c)); }
 
     inline bool isprint_(char c)
-        { using namespace std; return isprint(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return isprint(to_int_type(c)); }
 
     inline bool ispunct_(char c)
-        { using namespace std; return ispunct(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return ispunct(to_int_type(c)); }
 
     inline bool isspace_(char c)
-        { using namespace std; return isspace(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return isspace(to_int_type(c)); }
 
     inline bool isupper_(char c)
-        { using namespace std; return isupper(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return isupper(to_int_type(c)); }
 
     inline bool isxdigit_(char c)
-        { using namespace std; return isxdigit(to_int_type(c)); }
-        
+    { BOOST_SPIRIT_USING_STD; return isxdigit(to_int_type(c)); }
+
     inline bool isblank_(char c)
-        { return (c == ' ' || c == '\t'); }    
+    { return (c == ' ' || c == '\t'); }
 
     inline char tolower_(char c)
-        { 
-            using namespace std; 
-            return to_char_type<char>(tolower(to_int_type(c))); 
-        }
+    {
+        BOOST_SPIRIT_USING_STD;
+        return to_char_type<char>(tolower(to_int_type(c)));
+    }
 
     inline char toupper_(char c)
-        { 
-            using namespace std; 
-            return to_char_type<char>(toupper(to_int_type(c))); 
-        }
+    {
+        BOOST_SPIRIT_USING_STD;
+        return to_char_type<char>(toupper(to_int_type(c)));
+    }
 
 #if !defined(BOOST_NO_CWCTYPE)
 
     inline bool isalnum_(wchar_t c)
-        { using namespace std; return iswalnum(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswalnum(to_int_type(c)); }
 
     inline bool isalpha_(wchar_t c)
-        { using namespace std; return iswalpha(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswalpha(to_int_type(c)); }
 
     inline bool iscntrl_(wchar_t c)
-        { using namespace std; return iswcntrl(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswcntrl(to_int_type(c)); }
 
     inline bool isdigit_(wchar_t c)
-        { using namespace std; return iswdigit(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswdigit(to_int_type(c)); }
 
     inline bool isgraph_(wchar_t c)
-        { using namespace std; return iswgraph(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswgraph(to_int_type(c)); }
 
     inline bool islower_(wchar_t c)
-        { using namespace std; return iswlower(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswlower(to_int_type(c)); }
 
     inline bool isprint_(wchar_t c)
-        { using namespace std; return iswprint(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswprint(to_int_type(c)); }
 
     inline bool ispunct_(wchar_t c)
-        { using namespace std; return iswpunct(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswpunct(to_int_type(c)); }
 
     inline bool isspace_(wchar_t c)
-        { using namespace std; return iswspace(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswspace(to_int_type(c)); }
 
     inline bool isupper_(wchar_t c)
-        { using namespace std; return iswupper(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswupper(to_int_type(c)); }
 
     inline bool isxdigit_(wchar_t c)
-        { using namespace std; return iswxdigit(to_int_type(c)); }
+    { BOOST_SPIRIT_USING_STD; return iswxdigit(to_int_type(c)); }
 
     inline bool isblank_(wchar_t c)
-        { return (c == L' ' || c == L'\t'); } 
-        
+    { return (c == L' ' || c == L'\t'); }
+
     inline wchar_t tolower_(wchar_t c)
-        { 
-            using namespace std; 
-            return to_char_type<wchar_t>(towlower(to_int_type(c))); 
-        }
+    {
+        BOOST_SPIRIT_USING_STD;
+        return to_char_type<wchar_t>(towlower(to_int_type(c)));
+    }
 
     inline wchar_t toupper_(wchar_t c)
-        { 
-            using namespace std; 
-            return to_char_type<wchar_t>(towupper(to_int_type(c))); 
-        }
+    {
+        BOOST_SPIRIT_USING_STD;
+        return to_char_type<wchar_t>(towupper(to_int_type(c)));
+    }
 
 #endif // !defined(BOOST_NO_CWCTYPE)
 

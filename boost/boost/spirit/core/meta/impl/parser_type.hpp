@@ -110,9 +110,20 @@ namespace boost { namespace spirit {
             >::type
         return_type;
 
+#if BOOST_WORKAROUND(BOOST_MSVC, <= 1200)
+        static return_type convert(param_type p);
+#else
         static return_type convert(param_type p)
         { return p; }
+#endif
     };
+
+#if BOOST_WORKAROUND(BOOST_MSVC, <= 1200)
+    template <typename T>
+    typename as_parser<T>::return_type
+    as_parser<T>::convert(param_type p)
+    { return p; }
+#endif
 
 #endif // !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 

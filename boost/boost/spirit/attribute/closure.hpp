@@ -12,6 +12,10 @@
 #ifndef BOOST_SPIRIT_CLOSURE_HPP
 #define BOOST_SPIRIT_CLOSURE_HPP
 
+#if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+#error "Sorry, this module does not support VC6 and VC7. Please upgrade to at least VC7.1"
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////
 #include "boost/spirit/core/parser.hpp"
 #include "boost/spirit/core/composite/composite.hpp"

@@ -17,10 +17,6 @@
 #include "boost/spirit/core/parser.hpp"
 #include "boost/spirit/core/composite/composite.hpp"
 
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-#include <boost/bind.hpp>
-#endif
-
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
 
@@ -201,17 +197,19 @@ namespace boost { namespace spirit {
     // MSVC6 Workaround for assigning to strings from custom iterators
     //
     // MSVC6 does not support custom iterators in string::assign()
-    // because it does not support partial ordering of member templates. 
-    // In other places of the standard library, this was fixed by supporting 
-    // any iterator inherited from std::iterator (and all Spirit's iterators, 
-    // as iterator_adaptor's generated ones, do that), but this is not the 
+    // because it does not support partial ordering of member templates.
+    // In other places of the standard library, this was fixed by supporting
+    // any iterator inherited from std::iterator (and all Spirit's iterators,
+    // as iterator_adaptor's generated ones, do that), but this is not the
     // case here. So, we create a specialization to handle it manually.
     //////////////////////////////////
 #if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
+
     template <>
     class assign_actor<std::string>
     {
     public:
+
         explicit
             assign_actor(std::string& ref_)
             : ref(ref_) {}
@@ -222,27 +220,22 @@ namespace boost { namespace spirit {
 
             template <typename IteratorT>
             void operator()(IteratorT const& f, IteratorT const& l) const
-            { 
+            {
                 // Here I tried several alternatives, but all the obvious ones
                 //  are not supported by MSVC6. For instance, std::string does
                 //  not have a push_back() member function, so we can't use
                 //  std::copy with back_inserter. This is the best solution I
                 //  could come up with.
-                std::for_each(f, l, 
-                    boost::bind(&assign_actor<std::string>::string_push_back, 
-                        this, _1)
-                );
-            }
 
+                for (IteratorT i = f; i != l; ++i)
+                    ref += *i;
+            }
     private:
-        void string_push_back(char ch)
-        { ref += ch; }
 
         std::string& ref;
     };
 #endif
-    
-    
+
     //////////////////////////////////
     template <typename T>
     inline assign_actor<T> const

@@ -29,8 +29,8 @@ inline basic_chset<CharT>::basic_chset() {}
 
 //////////////////////////////////
 template <typename CharT>
-inline basic_chset<CharT>::basic_chset(basic_chset const& arg)
-: rr(arg.rr) {}
+inline basic_chset<CharT>::basic_chset(basic_chset const& arg_)
+: rr(arg_.rr) {}
 
 //////////////////////////////////
 template <typename CharT>
@@ -69,8 +69,8 @@ basic_chset<CharT>::inverse()
 {
     basic_chset inv;
     inv.set(
-        std::numeric_limits<CharT>::min(),
-        std::numeric_limits<CharT>::max()
+        (std::numeric_limits<CharT>::min)(),
+        (std::numeric_limits<CharT>::max)()
     );
     inv -= *this;
     swap(inv);
@@ -100,8 +100,8 @@ basic_chset<CharT>::operator&=(basic_chset<CharT> const& x)
 {
     basic_chset inv;
     inv.set(
-        std::numeric_limits<CharT>::min(),
-        std::numeric_limits<CharT>::max()
+        (std::numeric_limits<CharT>::min)(),
+        (std::numeric_limits<CharT>::max)()
     );
     inv -= x;
     *this -= inv;
@@ -143,8 +143,8 @@ inline basic_chset_8bit<CharT>::basic_chset_8bit() {}
 
 /////////////////////////////////
 template <typename CharT>
-inline basic_chset_8bit<CharT>::basic_chset_8bit(basic_chset_8bit const& arg)
-: bset(arg.bset) {}
+inline basic_chset_8bit<CharT>::basic_chset_8bit(basic_chset_8bit const& arg_)
+: bset(arg_.bset) {}
 
 /////////////////////////////////
 template <typename CharT>

@@ -146,7 +146,7 @@ chset_p(range<CharT> const& arg_)
 #if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
 
 template <typename ParserT>
-inline chset<CharT>
+inline chset<typename ParserT::char_t>
 chset_p(negated_char_parser<ParserT> const& arg_)
 { return chset<typename ParserT::char_t>(arg_); }
 

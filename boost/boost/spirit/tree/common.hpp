@@ -11,11 +11,15 @@
 #ifndef BOOST_SPIRIT_TREE_COMMON_HPP
 #define BOOST_SPIRIT_TREE_COMMON_HPP
 
+#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
+#error "Sorry, this module does not support VC6. Please upgrade to at least VC7"
+#endif
+
 #include "boost/spirit/core.hpp"
 
 #if BOOST_WORKAROUND(BOOST_MSVC , <= 1300)
 #include <boost/spirit/tree/msvc/common.hpp>
-#else 
+#else
 
 #include <vector>
 
