@@ -3234,6 +3234,7 @@ boost/libs/iterator/doc/iterator_adaptor.html svneol=native#text/html
 boost/libs/iterator/doc/iterator_adaptor.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor_abstract.diff -text
 boost/libs/iterator/doc/iterator_adaptor_abstract.rst svneol=native#text/plain
+boost/libs/iterator/doc/iterator_adaptor_body.diff -text
 boost/libs/iterator/doc/iterator_adaptor_body.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor_tutorial.rst svneol=native#text/plain
