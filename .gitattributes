@@ -6424,6 +6424,7 @@ boost/tools/build/test/startup/no-bootstrap3/boost-build.jam svneol=native#text/
 boost/tools/build/test/startup_v1.py svneol=native#text/x-python
 boost/tools/build/test/startup_v2.py svneol=native#text/x-python
 boost/tools/build/test/subdir1/file-to-bind -text
+boost/tools/build/test/suffix.py svneol=native#text/x-python
 boost/tools/build/test/svn_tree.py svneol=native#text/x-python
 boost/tools/build/test/symlink.py svneol=native#text/x-python
 boost/tools/build/test/tag.py svneol=native#text/x-python
@@ -6846,6 +6847,7 @@ boost/tools/build/v2/test/startup/no-bootstrap3/boost-build.jam svneol=native#te
 boost/tools/build/v2/test/startup_v1.py svneol=native#text/x-python
 boost/tools/build/v2/test/startup_v2.py svneol=native#text/x-python
 boost/tools/build/v2/test/subdir1/file-to-bind -text
+boost/tools/build/v2/test/suffix.py svneol=native#text/x-python
 boost/tools/build/v2/test/svn_tree.py svneol=native#text/x-python
 boost/tools/build/v2/test/symlink.py svneol=native#text/x-python
 boost/tools/build/v2/test/tag.py svneol=native#text/x-python
