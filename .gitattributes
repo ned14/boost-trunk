@@ -652,7 +652,6 @@ boost/boost/iostreams/filter/symmetric_filter_adapter.hpp svneol=native#text/pla
 boost/boost/iostreams/filter/zlib.hpp svneol=native#text/plain
 boost/boost/iostreams/filtering_stream.hpp svneol=native#text/plain
 boost/boost/iostreams/filtering_streambuf.hpp svneol=native#text/plain
-boost/boost/iostreams/io_traits.hpp svneol=native#text/plain
 boost/boost/iostreams/is_device.hpp svneol=native#text/plain
 boost/boost/iostreams/is_direct.hpp svneol=native#text/plain
 boost/boost/iostreams/is_filter.hpp svneol=native#text/plain
