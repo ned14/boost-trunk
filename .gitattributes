@@ -6242,6 +6242,7 @@ boost/tools/build/examples-v2/versioned/jamfile.jam svneol=native#text/plain
 boost/tools/build/examples-v2/versioned/project-root.jam svneol=native#text/plain
 boost/tools/build/generators_prototype.py svneol=native#text/x-python
 boost/tools/build/hacking.txt svneol=native#text/plain
+boost/tools/build/index.html svneol=native#text/html
 boost/tools/build/index_v2.html svneol=native#text/html
 boost/tools/build/jam_src/Jam.html svneol=native#text/html
 boost/tools/build/jam_src/Jambase -text
