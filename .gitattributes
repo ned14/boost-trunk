@@ -9436,6 +9436,7 @@ boost/tools/build/v1/vc-7_1-stlport-tools.html svneol=native#text/html
 boost/tools/build/v1/vc-7_1-stlport-tools.jam svneol=native#text/plain
 boost/tools/build/v1/vc-7_1-tools.html svneol=native#text/html
 boost/tools/build/v1/vc-7_1-tools.jam svneol=native#text/plain
+boost/tools/build/v1/vc-8_0-amd64-tools.jam svneol=native#text/plain
 boost/tools/build/v1/vc-8_0-tools.jam svneol=native#text/plain
 boost/tools/build/v1/vc-8_0-x86_amd64-tools.jam svneol=native#text/plain
 boost/tools/build/v1/vc7-stlport-tools.html svneol=native#text/html
