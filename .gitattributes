@@ -495,7 +495,6 @@ boost/libs/graph/doc/using_adjacency_list.html svneol=native#text/html
 boost/libs/graph/doc/using_graph_algorithms.html svneol=native#text/html
 boost/libs/graph/doc/using_property_maps.html svneol=native#text/html
 boost/libs/graph/doc/visitor_concepts.html svneol=native#text/html
-boost/libs/graph/example/LEDA_concept_check.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.expected -text
 boost/libs/graph/example/adjacency_matrix.cpp svneol=native#text/plain
