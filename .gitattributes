@@ -3986,6 +3986,7 @@ boost/libs/signals/test/signal_n_test.cpp svneol=native#text/plain
 boost/libs/signals/test/signal_test.cpp svneol=native#text/plain
 boost/libs/signals/test/trackable_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/compatibility.htm svneol=native#text/html
+boost/libs/smart_ptr/enable_shared_from_this_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/gccspeed.gif -text svneol=unset#image/gif
 boost/libs/smart_ptr/index.htm svneol=native#text/html
 boost/libs/smart_ptr/msvcspeed.gif -text svneol=unset#image/gif
