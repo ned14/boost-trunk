@@ -1570,6 +1570,7 @@ boost/libs/python/doc/v2/overview.html svneol=native#text/html
 boost/libs/python/doc/v2/rationale.html svneol=native#text/html
 boost/libs/python/doc/v2/reference.html svneol=native#text/html
 boost/libs/python/doc/v2/reference_existing_object.html svneol=native#text/html
+boost/libs/python/doc/v2/return_internal_reference.html svneol=native#text/html
 boost/libs/python/example/README svneol=native#text/plain
 boost/libs/python/example/abstract.cpp svneol=native#text/plain
 boost/libs/python/example/do_it_yourself_convts.cpp svneol=native#text/plain
