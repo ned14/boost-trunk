@@ -123,6 +123,7 @@ boost/boost/type_traits.hpp svneol=native#text/plain
 boost/boost/utility.hpp svneol=native#text/plain
 boost/c++boost.gif -text svneol=unset#image/gif
 boost/development/py_cpp/base_object.h svneol=native#text/plain
+boost/development/py_cpp/building.html svneol=native#text/html
 boost/development/py_cpp/callback.h svneol=native#text/plain
 boost/development/py_cpp/caller.h svneol=native#text/plain
 boost/development/py_cpp/cast.h svneol=native#text/plain
