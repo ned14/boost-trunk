@@ -6689,6 +6689,7 @@ boost/libs/spirit/example/fundamental/complex_number.cpp svneol=native#text/plai
 boost/libs/spirit/example/fundamental/distinct/distinct_parser.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/distinct/distinct_parser_dynamic.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/error_handling.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/error_reporting.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/file_parser.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/full_calc.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/functor_parser.cpp svneol=native#text/plain
