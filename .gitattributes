@@ -1633,7 +1633,6 @@ boost/boost/spirit/tree/impl/parse_tree_utils.ipp svneol=native#text/plain
 boost/boost/spirit/tree/impl/tree_to_xml.ipp svneol=native#text/plain
 boost/boost/spirit/tree/parse_tree.hpp svneol=native#text/plain
 boost/boost/spirit/tree/parse_tree_utils.hpp svneol=native#text/plain
-boost/boost/spirit/tree/parse_tree_xml.hpp svneol=native#text/plain
 boost/boost/spirit/tree/parsetree.dtd svneol=native#text/xml
 boost/boost/spirit/tree/tree_iterator.hpp svneol=native#text/plain
 boost/boost/spirit/tree/tree_to_xml.hpp svneol=native#text/plain
