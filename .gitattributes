@@ -1573,6 +1573,7 @@ boost/libs/regex/example/timer/bc55.mak svneol=native#text/plain
 boost/libs/regex/example/timer/bcb4.mak svneol=native#text/plain
 boost/libs/regex/example/timer/bcb5.mak svneol=native#text/plain
 boost/libs/regex/example/timer/gcc.mak svneol=native#text/plain
+boost/libs/regex/example/timer/input_script.txt svneol=native#text/plain
 boost/libs/regex/example/timer/regex_timer.cpp svneol=native#text/plain
 boost/libs/regex/example/timer/vc6-stlport.mak svneol=native#text/plain
 boost/libs/regex/example/timer/vc6.mak svneol=native#text/plain
