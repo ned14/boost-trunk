@@ -6850,7 +6850,6 @@ boost/libs/spirit/test/grammar_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/if_p_as_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/if_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/impl/sstream.hpp svneol=native#text/plain
-boost/libs/spirit/test/impl/util.ipp svneol=native#text/plain
 boost/libs/spirit/test/impl/var.hpp svneol=native#text/plain
 boost/libs/spirit/test/lazy_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/loops_tests.cpp svneol=native#text/plain
