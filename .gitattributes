@@ -7508,6 +7508,7 @@ boost/libs/utility/generator_iterator.htm svneol=native#text/html
 boost/libs/utility/index.html svneol=native#text/html
 boost/libs/utility/indirect_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptor_examples.cpp svneol=native#text/plain
+boost/libs/utility/iterator_adaptors.htm svneol=native#text/html
 boost/libs/utility/iterator_traits_test.cpp svneol=native#text/plain
 boost/libs/utility/iterators_test.cpp svneol=native#text/plain
 boost/libs/utility/noncopyable_test.cpp svneol=native#text/plain
