@@ -4466,6 +4466,7 @@ boost/libs/mpl/book/chapter1/binary.hpp svneol=native#text/plain
 boost/libs/mpl/doc/index.html svneol=native#text/html
 boost/libs/mpl/doc/paper/mpl_paper.pdf -text svneol=unset#application/pdf
 boost/libs/mpl/doc/refmanual.html svneol=native#text/html
+boost/libs/mpl/doc/refmanual.pdf -text svneol=unset#application/pdf
 boost/libs/mpl/doc/refmanual/accumulate.html svneol=native#text/html
 boost/libs/mpl/doc/refmanual/acknowledgements.html svneol=native#text/html
 boost/libs/mpl/doc/refmanual/advance.html svneol=native#text/html
