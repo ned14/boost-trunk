@@ -1408,7 +1408,6 @@ boost/libs/preprocessor/doc/examples_preprocessed.htm svneol=native#text/html
 boost/libs/preprocessor/doc/index.htm svneol=native#text/html
 boost/libs/preprocessor/doc/keywords.txt svneol=native#text/plain
 boost/libs/preprocessor/doc/known_problems_with_cpp.htm svneol=native#text/html
-boost/libs/preprocessor/doc/plan.txt svneol=native#text/plain
 boost/libs/preprocessor/doc/problems_with_compilers.htm svneol=native#text/html
 boost/libs/preprocessor/doc/reference/arithmetic.htm svneol=native#text/html
 boost/libs/preprocessor/doc/reference/arithmetic_add.htm svneol=native#text/html
