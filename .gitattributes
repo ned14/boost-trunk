@@ -5916,6 +5916,7 @@ boost/libs/variant/doc/misc.html svneol=native#text/html
 boost/libs/variant/doc/overview.html svneol=native#text/html
 boost/libs/variant/doc/reference.html svneol=native#text/html
 boost/libs/variant/doc/reference/apply_visitor.xml svneol=native#text/xml
+boost/libs/variant/doc/reference/bad_visit.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/concepts.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/get.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/reference.xml svneol=native#text/xml
