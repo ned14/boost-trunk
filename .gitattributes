@@ -4605,6 +4605,7 @@ boost/libs/numeric/interval/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/numeric/interval/test/add.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/bugs.hpp svneol=native#text/plain
 boost/libs/numeric/interval/test/cmp.cpp svneol=native#text/plain
+boost/libs/numeric/interval/test/cmp_exn.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/cmp_exp.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/cmp_header.hpp svneol=native#text/plain
 boost/libs/numeric/interval/test/cmp_lex.cpp svneol=native#text/plain
