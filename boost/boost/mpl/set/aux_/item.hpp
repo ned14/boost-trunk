@@ -2,21 +2,18 @@
 #ifndef BOOST_MPL_SET_AUX_ITEM_HPP_INCLUDED
 #define BOOST_MPL_SET_AUX_ITEM_HPP_INCLUDED
 
-// + file: boost/mpl/aux_/item.hpp
-// + last modified: 03/may/03
-
-// Copyright (c) 2002-03
-// David Abrahams, Aleksey Gurtovoy
+// Copyright (c) Aleksey Gurtovoy 2003-2004
+// Copyright (c) David Abrahams 2003-2004
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// Use, modification and distribution are subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+// at http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include "boost/mpl/long.hpp"
 #include "boost/mpl/void_fwd.hpp"
@@ -37,6 +34,7 @@ aux::no_tag operator%(set0<> const&, void*);
 #if BOOST_WORKAROUND(__GNUC__, > 2) && BOOST_WORKAROUND(__GNUC__, BOOST_TESTED_AT(3))
 template< typename T, typename Base > struct s_item;
 template< typename T, typename Base > struct s_mask;
+template< typename T, typename Base > struct s_unmask;
 
 template< typename T, typename Base >
 typename s_item<T,Base>::order_tag
@@ -44,6 +42,9 @@ operator/(s_item<T,Base> const&, aux::type_wrapper<T>*);
 
 template< typename T, typename Base >
 aux::yes_tag operator%(s_item<T,Base> const&, aux::type_wrapper<T>*);
+
+template< typename T, typename Base >
+aux::yes_tag operator%(s_unmask<T,Base> const&, aux::type_wrapper<T>*);
 
 template< typename T, typename Base >
 aux::no_tag operator%(s_mask<T,Base> const&, aux::type_wrapper<T>*);
@@ -95,6 +96,20 @@ struct s_mask
     friend aux::no_tag operator%<>(s_mask const&, aux::type_wrapper<T>*);
 #else
     friend aux::no_tag operator%(s_mask const&, aux::type_wrapper<T>*);
+#endif
+};
+
+
+template< typename T, typename Base >
+struct s_unmask
+    : Base
+{
+    typedef void_ last_masked;
+#if BOOST_WORKAROUND(__GNUC__, > 2) && BOOST_WORKAROUND(__GNUC__, BOOST_TESTED_AT(3))
+    // to make GCC happy
+    friend aux::yes_tag operator%<>(s_unmask const&, aux::type_wrapper<T>*);
+#else
+    friend aux::yes_tag operator%(s_unmask const&, aux::type_wrapper<T>*);
 #endif
 };
 

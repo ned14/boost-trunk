@@ -2,21 +2,18 @@
 #ifndef BOOST_MPL_SET_AUX_ORDER_IMPL_HPP_INCLUDED
 #define BOOST_MPL_SET_AUX_ORDER_IMPL_HPP_INCLUDED
 
-// + file: boost/mpl/aux_/item.hpp
-// + last modified: 03/may/03
-
-// Copyright (c) 2002-03
-// David Abrahams, Aleksey Gurtovoy
+// Copyright (c) Aleksey Gurtovoy 2003-2004
+// Copyright (c) David Abrahams 2003-2004
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// Use, modification and distribution are subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+// at http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include "boost/mpl/set/aux_/tag.hpp"
 #include "boost/mpl/order_fwd.hpp"
@@ -56,7 +53,7 @@ struct order_impl< aux::set_tag >
         typedef typename aux::long_or_void<value>::type type;
 #   endif
 
-#else
+#else // ISO98 C++
         : aux::long_or_void< 
               sizeof( 
                   aux::ptr_to_ref(BOOST_MPL_AUX_STATIC_CAST(Set*, 0))

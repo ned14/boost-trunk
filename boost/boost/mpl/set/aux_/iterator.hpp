@@ -2,21 +2,18 @@
 #ifndef BOOST_MPL_SET_AUX_ITERATOR_HPP_INCLUDED
 #define BOOST_MPL_SET_AUX_ITERATOR_HPP_INCLUDED
 
-// + file: boost/mpl/aux_/iterator.hpp
-// + last modified: 03/may/03
-
-// Copyright (c) 2002-03
-// David Abrahams, Aleksey Gurtovoy
+// Copyright (c) Aleksey Gurtovoy 2003-2004
+// Copyright (c) David Abrahams 2003-2004
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// Use, modification and distribution are subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+// at http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include "boost/mpl/set/aux_/set0.hpp"
 #include "boost/mpl/has_key.hpp"
@@ -29,54 +26,71 @@
 
 namespace boost { namespace mpl {
 
-// used by 'set_iter_impl'
-template< typename Set, typename Tail > struct set_iter;
+// used by 's_iter_impl'
+template< typename Set, typename Tail > struct s_iter;
 
-template< typename Set, typename Tail > struct set_iter_impl
+template< typename Set, typename Tail > struct s_iter_impl
 {
     typedef Tail                tail_;
     typedef fwd_iter_tag_       category;
     typedef typename Tail::item type;
 
+#if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     typedef typename apply_if< 
           has_key< Set,typename Tail::base::item >
-        , identity< set_iter<Set,typename Tail::base> >
-        , next< set_iter<Set,typename Tail::base> >
+        , identity< s_iter<Set,typename Tail::base> >
+        , next< s_iter<Set,typename Tail::base> >
         >::type next;        
+#endif
 };
 
-#if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 
-template< typename Set >
-struct set_end_iter
+template< typename Set, typename Tail > 
+struct next< s_iter<Set,Tail> >
+    : apply_if< 
+          has_key< Set,typename Tail::base::item >
+        , identity< s_iter<Set,typename Tail::base> >
+        , next< s_iter<Set,typename Tail::base> >
+        >
 {
-    typedef fwd_iter_tag_           category;
-    typedef set_iter<Set,set0<> >   next;
 };
 
-template< typename Set, typename Tail > struct set_iter
-    : if_< 
-          is_same< Tail,set0<> >
-        , set_end_iter<Set>
-        , set_iter_impl<Set,Tail>
-        >::type
+template< typename Set > 
+struct next< s_iter<Set,set0<> > >
 {
+    typedef s_iter<Set,set0<> > type;
+};
+
+template< typename Set, typename Tail > struct s_iter
+    : s_iter_impl<Set,Tail>
+{
+};
+
+template< typename Set > struct s_iter<Set, set0<> >
+{
+    typedef fwd_iter_tag_  category;
 };
 
 #else
 
-template< typename Set, typename Tail > struct set_iter
-    : set_iter_impl<Set,Tail>
+template< typename Set >
+struct s_end_iter
+{
+    typedef fwd_iter_tag_       category;
+    typedef s_iter<Set,set0<> > next;
+};
+
+template< typename Set, typename Tail > struct s_iter
+    : if_< 
+          is_same< Tail,set0<> >
+        , s_end_iter<Set>
+        , s_iter_impl<Set,Tail>
+        >::type
 {
 };
 
-template< typename Set > struct set_iter<Set, set0<> >
-{
-    typedef fwd_iter_tag_   category;
-    typedef set_iter        next;
-};
-
-#endif
+#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 }}
 
