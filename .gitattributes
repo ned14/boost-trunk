@@ -6205,7 +6205,6 @@ boost/libs/serialization/test/polymorphic_xml_warchive.hpp svneol=native#text/pl
 boost/libs/serialization/test/portable_binary_archive.hpp svneol=native#text/plain
 boost/libs/serialization/test/run_archive_test.bat svneol=native#text/plain
 boost/libs/serialization/test/run_archive_test.ksh -text
-boost/libs/serialization/test/runall.ksh -text
 boost/libs/serialization/test/runtest.bat svneol=native#text/plain
 boost/libs/serialization/test/runtest.ksh -text
 boost/libs/serialization/test/runtest.sh svneol=native#text/x-sh
