@@ -8574,7 +8574,6 @@ boost/people/william_kempf.htm svneol=native#text/html
 boost/project-root.jam svneol=native#text/plain
 boost/rst.css svneol=native#text/css
 boost/status/.cvsignore -text
-boost/status/1_32_release_progress.rst svneol=native#text/plain
 boost/status/Jamfile svneol=native#text/plain
 boost/status/Jamfile.v2 svneol=native#text/plain
 boost/status/borland_logo.gif -text svneol=unset#image/gif
