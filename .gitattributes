@@ -6930,6 +6930,7 @@ boost/status/Jamfile.v2 svneol=native#text/plain
 boost/status/borland_logo.gif -text svneol=unset#image/gif
 boost/status/compiler_status.html svneol=native#text/html
 boost/status/explicit-failures-markup.xml svneol=native#text/xml
+boost/status/explicit-failures.xsd svneol=native#text/xml
 boost/status/index.html svneol=native#text/html
 boost/status/intel_logo.gif -text svneol=unset#image/gif
 boost/status/kai_logo.gif -text svneol=unset#image/gif
