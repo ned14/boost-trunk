@@ -5632,6 +5632,7 @@ boost/tools/build/python.jam svneol=native#text/plain
 boost/tools/build/stlport.jam svneol=native#text/plain
 boost/tools/build/sunpro-stlport-tools.jam svneol=native#text/plain
 boost/tools/build/sunpro-tools.jam svneol=native#text/plain
+boost/tools/build/test/.cvsignore -text
 boost/tools/build/test/BoostBuild.py svneol=native#text/x-python
 boost/tools/build/test/Jamfile svneol=native#text/plain
 boost/tools/build/test/Jamrules svneol=native#text/plain
