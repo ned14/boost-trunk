@@ -4124,6 +4124,7 @@ boost/libs/test/example/unit_test_example2.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example3.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example4.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example5.cpp svneol=native#text/plain
+boost/libs/test/example/unit_test_example5.input -text
 boost/libs/test/index.html svneol=native#text/html
 boost/libs/test/src/cpp_main.cpp svneol=native#text/plain
 boost/libs/test/src/execution_monitor.cpp svneol=native#text/plain
