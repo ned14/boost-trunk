@@ -4615,7 +4615,6 @@ boost/libs/io/test/ios_state_test.cpp svneol=native#text/plain
 boost/libs/io/test/ios_state_unit_test.cpp svneol=native#text/plain
 boost/libs/iostreams/build/Jamfile svneol=native#text/plain
 boost/libs/iostreams/build/bzip2.jam svneol=native#text/plain
-boost/libs/iostreams/build/compression.jam svneol=native#text/plain
 boost/libs/iostreams/build/zlib.jam svneol=native#text/plain
 boost/libs/iostreams/doc/adapters.html svneol=native#text/html
 boost/libs/iostreams/doc/bibliography.html svneol=native#text/html
