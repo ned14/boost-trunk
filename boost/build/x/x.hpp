@@ -1,7 +1,8 @@
 #include <vector>
+#include "integer.hpp"
 
 struct foo
 {
-    std::vector<int> x;
+    std::vector<integer> x;
     foo();
 };

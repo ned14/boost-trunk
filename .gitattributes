@@ -20,6 +20,7 @@ boost/build/msvc-tools.jam svneol=native#text/plain
 boost/build/top.cpp svneol=native#text/plain
 boost/build/top.hpp svneol=native#text/plain
 boost/build/x/Jamfile svneol=native#text/plain
+boost/build/x/path[!!-~]with[!!-~]spaces/integer.hpp svneol=native#text/plain
 boost/build/x/x.cpp svneol=native#text/plain
 boost/build/x/x.hpp svneol=native#text/plain
 boost/build/x/xl.cpp svneol=native#text/plain
