@@ -1025,6 +1025,12 @@ boost/libs/utility/reverse_iterator.htm svneol=native#text/html
 boost/libs/utility/reverse_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/tie.html svneol=native#text/html
 boost/libs/utility/tie_example.cpp svneol=native#text/plain
+boost/libs/utility/tmpw2001-paper/Makefile svneol=native#text/plain
+boost/libs/utility/tmpw2001-paper/defs.tex -text
+boost/libs/utility/tmpw2001-paper/iter-adaptor.tex -text
+boost/libs/utility/tmpw2001-paper/netobjectdays.cls -text
+boost/libs/utility/tmpw2001-paper/refs.bib -text
+boost/libs/utility/tmpw2001-paper/tmpw00.bib -text
 boost/libs/utility/transform_iterator.htm svneol=native#text/html
 boost/libs/utility/transform_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/transform_iterator_test.cpp svneol=native#text/plain
