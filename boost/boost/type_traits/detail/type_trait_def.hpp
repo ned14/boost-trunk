@@ -16,17 +16,24 @@
 
 // no include guards, the header is intended for multiple inclusion!
 
+#include "boost/type_traits/detail/template_arity_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
+
 #define BOOST_TT_AUX_TYPE_TRAIT_DEF1(trait,T,result) \
 template< typename T > struct trait \
 { \
     typedef result type; \
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,trait,(T)) \
 }; \
+\
+BOOST_TT_AUX_TEMPLATE_ARITY_SPEC(1,trait) \
 /**/
 
 #define BOOST_TT_AUX_TYPE_TRAIT_SPEC1(trait,spec,result) \
 template<> struct trait<spec> \
 { \
     typedef result type; \
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,trait,(spec)) \
 }; \
 /**/
 
@@ -43,24 +50,3 @@ template< param1, param2 > struct trait<spec> \
     typedef result; \
 }; \
 /**/
-
-
-#if 0
-#define BOOST_TT_AUX_TYPE_TRAIT_PARTIAL_SPEC1_1(param,trait,spec,result) \
-template< param > struct trait<spec> \
-    : boost::mpl::metafunction<1>
-{ \
-    typedef spec arg1;
-    struct metafunction
-    {
-        template< typename U > struct apply
-        {
-            typedef typename trait<U>::type type;
-        };
-    };
-
-    typedef result type; \
-}; \
-/**/
-
-#endif
