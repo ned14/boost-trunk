@@ -2395,6 +2395,7 @@ boost/libs/algorithm/string/example/rle_example.cpp svneol=native#text/plain
 boost/libs/algorithm/string/example/split_example.cpp svneol=native#text/plain
 boost/libs/algorithm/string/example/trim_example.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/Jamfile svneol=native#text/plain
+boost/libs/algorithm/string/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/algorithm/string/test/container_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/conv_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/find_test.cpp svneol=native#text/plain
