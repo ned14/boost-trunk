@@ -2546,7 +2546,6 @@ boost/boost/regex/pending/static_mutex.hpp svneol=native#text/plain
 boost/boost/regex/pending/unicode_iterator.hpp svneol=native#text/plain
 boost/boost/regex/regex_traits.hpp svneol=native#text/plain
 boost/boost/regex/src.cpp svneol=native#text/plain
-boost/boost/regex/static_mutex.hpp svneol=native#text/plain
 boost/boost/regex/user.hpp svneol=native#text/plain
 boost/boost/regex/v4/basic_regex.hpp svneol=native#text/plain
 boost/boost/regex/v4/basic_regex_creator.hpp svneol=native#text/plain
