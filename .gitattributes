@@ -663,7 +663,6 @@ boost/libs/python/doc/overriding.html svneol=native#text/html
 boost/libs/python/doc/pickle.html svneol=native#text/html
 boost/libs/python/doc/pointers.html svneol=native#text/html
 boost/libs/python/doc/special.html svneol=native#text/html
-boost/libs/python/doc/template.html svneol=native#text/html
 boost/libs/python/doc/under-the-hood.html svneol=native#text/html
 boost/libs/python/example/README svneol=native#text/plain
 boost/libs/python/example/abstract.cpp svneol=native#text/plain
