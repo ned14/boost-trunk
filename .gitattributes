@@ -4545,6 +4545,7 @@ boost/libs/spirit/example/application/cpp/cpp_version.hpp svneol=native#text/pla
 boost/libs/spirit/example/application/cpp/cpplexer/cpp_lex_interface.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/cpp_lex_iterator.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/cpp_token_ids.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/cpplexer/cpplexer_exceptions.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/re2c_functor.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/re2clex/aq.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/re2clex/aq.h svneol=native#text/plain
