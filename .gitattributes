@@ -5237,6 +5237,7 @@ boost/libs/test/build/prg_exec_fail2.dsp -text svneol=CRLF#unset
 boost/libs/test/build/prg_exec_fail3.dsp -text svneol=CRLF#unset
 boost/libs/test/build/prg_exec_monitor.dsp -text svneol=CRLF#unset
 boost/libs/test/build/result_report_test.dsp -text svneol=CRLF#unset
+boost/libs/test/build/test_case_template_example.dsp -text svneol=CRLF#unset
 boost/libs/test/build/test_exec_example.dsp -text svneol=CRLF#unset
 boost/libs/test/build/test_exec_fail1.dsp -text svneol=CRLF#unset
 boost/libs/test/build/test_exec_fail2.dsp -text svneol=CRLF#unset
