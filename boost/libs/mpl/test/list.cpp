@@ -21,24 +21,9 @@ namespace mpl = boost::mpl;
 int main()
 {
     typedef mpl::list0 list0;
-    typedef mpl::list1<int> list1;
-    typedef mpl::list2<int,long> list2;
-    typedef mpl::list14<
-          void
-        , char
-        , signed char
-        , unsigned char
-        , signed short
-        , unsigned short
-        , signed int
-        , unsigned int
-        , signed long
-        , unsigned long
-        , float
-        , double
-        , long double
-        , void
-        > list14;
+    typedef mpl::list1<char> list1;
+    typedef mpl::list2<char,long> list2;
+    typedef mpl::list9<char,char,char,char,char,char,char,char,char> list9;
 
     return 0;
 }

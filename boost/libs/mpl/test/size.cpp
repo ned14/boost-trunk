@@ -22,7 +22,7 @@ namespace mpl = boost::mpl;
 
 int main()
 {
-    typedef mpl::list0 empty_list;
+    typedef mpl::list<>::type empty_list;
     typedef mpl::list<char,short,int,long> list;
     
     BOOST_STATIC_ASSERT((mpl::size<empty_list>::value == 0));
