@@ -611,6 +611,7 @@ boost/boost/iostreams/detail/config/codecvt.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/disable_warnings.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/dyn_link.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/enable_warnings.hpp svneol=native#text/plain
+boost/boost/iostreams/detail/config/gcc.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/limits.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/overload_resolution.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/wide_streams.hpp svneol=native#text/plain
