@@ -1707,6 +1707,7 @@ boost/libs/utility/noncopyable_test.cpp svneol=native#text/plain
 boost/libs/utility/numeric_traits_test.cpp svneol=native#text/plain
 boost/libs/utility/operators.htm svneol=native#text/html
 boost/libs/utility/operators_test.cpp svneol=native#text/plain
+boost/libs/utility/permutation_iterator.htm svneol=native#text/html
 boost/libs/utility/projection_iterator.htm svneol=native#text/html
 boost/libs/utility/projection_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/reverse_iterator.htm svneol=native#text/html
