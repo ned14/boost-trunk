@@ -989,7 +989,6 @@ boost/libs/tokenizer/simple_example_4.cpp svneol=native#text/plain
 boost/libs/tokenizer/simple_example_5.cpp svneol=native#text/plain
 boost/libs/tokenizer/token_iterator.htm svneol=native#text/html
 boost/libs/tokenizer/tokenizer.htm svneol=native#text/html
-boost/libs/tokenizer/tokenizer_policy.htm svneol=native#text/html
 boost/libs/tokenizer/tokenizerfunction.htm svneol=native#text/html
 boost/libs/type_traits/c++_type_traits.htm svneol=native#text/html
 boost/libs/type_traits/examples/copy_example.cpp svneol=native#text/plain
