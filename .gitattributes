@@ -2486,6 +2486,7 @@ boost/tools/build/jam_src/yyacc -text
 boost/tools/build/jam_src/yyacc.bat svneol=native#text/plain
 boost/tools/build/kcc-tools.html svneol=native#text/html
 boost/tools/build/kcc-tools.jam svneol=native#text/plain
+boost/tools/build/metrowerks-tools.html svneol=native#text/html
 boost/tools/build/metrowerks-tools.jam svneol=native#text/plain
 boost/tools/build/mingw-tools.jam svneol=native#text/plain
 boost/tools/build/mipspro-tools.jam svneol=native#text/plain
@@ -2637,6 +2638,7 @@ boost/tools/build/v1/intel-win32-tools.html svneol=native#text/html
 boost/tools/build/v1/intel-win32-tools.jam svneol=native#text/plain
 boost/tools/build/v1/kcc-tools.html svneol=native#text/html
 boost/tools/build/v1/kcc-tools.jam svneol=native#text/plain
+boost/tools/build/v1/metrowerks-tools.html svneol=native#text/html
 boost/tools/build/v1/metrowerks-tools.jam svneol=native#text/plain
 boost/tools/build/v1/mingw-tools.jam svneol=native#text/plain
 boost/tools/build/v1/mipspro-tools.jam svneol=native#text/plain
