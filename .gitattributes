@@ -618,7 +618,6 @@ boost/boost/iostreams/detail/double_object.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/enable_if_stream.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/error.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/forward.hpp svneol=native#text/plain
-boost/boost/iostreams/detail/ios_traits.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/is_dereferenceable.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/is_iterator_range.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/param_type.hpp svneol=native#text/plain
