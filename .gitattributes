@@ -2859,6 +2859,7 @@ boost/libs/math/quaternion/graphics/quaternion_blurb.html8.jpeg -text svneol=uns
 boost/libs/math/quaternion/graphics/quaternion_blurb.html9.jpeg -text svneol=unset#image/jpeg
 boost/libs/math/quaternion/index.html svneol=native#text/html
 boost/libs/math/quaternion/output.txt svneol=native#text/plain
+boost/libs/math/quaternion/output_more.txt svneol=native#text/plain
 boost/libs/math/quaternion/quaternion.html svneol=native#text/html
 boost/libs/math/quaternion/quaternion_mi1.cpp svneol=native#text/plain
 boost/libs/math/quaternion/quaternion_mi1.h svneol=native#text/plain
