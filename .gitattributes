@@ -3321,7 +3321,6 @@ boost/libs/iterator/doc/rst2html -text
 boost/libs/iterator/doc/rst2latex -text
 boost/libs/iterator/doc/scanrst.py svneol=native#text/x-python
 boost/libs/iterator/doc/sources.py svneol=native#text/x-python
-boost/libs/iterator/doc/style.tex -text
 boost/libs/iterator/doc/syscmd.py svneol=native#text/x-python
 boost/libs/iterator/doc/transform_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/transform_iterator.pdf -text svneol=unset#application/pdf
