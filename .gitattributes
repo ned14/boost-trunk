@@ -555,6 +555,7 @@ boost/libs/min_rand/generate_n_test.cpp svneol=native#text/plain
 boost/libs/min_rand/index.htm svneol=native#text/html
 boost/libs/min_rand/min_rand.html svneol=native#text/html
 boost/libs/min_rand/min_rand_test.cpp svneol=native#text/plain
+boost/libs/persistence/doc/persistence.html svneol=native#text/html
 boost/libs/pri_queue/boost-heap-1.0.zip -text svneol=unset#application/zip
 boost/libs/pri_queue/d_heap.html svneol=native#text/html
 boost/libs/pri_queue/f_heap.html svneol=native#text/html
