@@ -1967,6 +1967,7 @@ boost/boost/variant/detail/has_trivial_move.hpp svneol=native#text/plain
 boost/boost/variant/detail/move.hpp svneol=native#text/plain
 boost/boost/variant/detail/variant_io.hpp svneol=native#text/plain
 boost/boost/variant/get.hpp svneol=native#text/plain
+boost/boost/variant/recursive_variant.hpp svneol=native#text/plain
 boost/boost/variant/static_visitor.hpp svneol=native#text/plain
 boost/boost/variant/variant.hpp svneol=native#text/plain
 boost/boost/variant/variant_fwd.hpp svneol=native#text/plain
