@@ -172,6 +172,7 @@ boost/libs/array_traits/array-article.html svneol=native#text/html
 boost/libs/array_traits/array_traits.html svneol=native#text/html
 boost/libs/array_traits/index.html svneol=native#text/html
 boost/libs/array_traits/ndim_array_example.cpp svneol=native#text/plain
+boost/libs/compiler.cfg -text
 boost/libs/compiler_status.htm svneol=native#text/html
 boost/libs/compose/compose.hpp.html svneol=native#text/html
 boost/libs/compose/compose.html svneol=native#text/html
@@ -655,6 +656,8 @@ boost/libs/regex/src/wide_posix_api.cpp svneol=native#text/plain
 boost/libs/regex/syntax.htm svneol=native#text/html
 boost/libs/regex/template_class_ref.htm svneol=native#text/html
 boost/libs/regex/traits_class_ref.htm svneol=native#text/html
+boost/libs/regression.cfg -text
+boost/libs/regression.cpp svneol=native#text/plain
 boost/libs/regrtest.py svneol=native#text/x-python
 boost/libs/smart_ptr/gccspeed.gif -text svneol=unset#image/gif
 boost/libs/smart_ptr/index.htm svneol=native#text/html
