@@ -3116,6 +3116,7 @@ boost/libs/iterator/test/is_readable_iterator.cpp svneol=native#text/plain
 boost/libs/iterator/test/iterator_adaptor_cc.cpp svneol=native#text/plain
 boost/libs/iterator/test/iterator_adaptor_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/iterator_archetype_cc.cpp svneol=native#text/plain
+boost/libs/iterator/test/iterator_categories.cpp svneol=native#text/plain
 boost/libs/iterator/test/permutation_iterator_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/reverse_iterator_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/static_assert_same.hpp svneol=native#text/plain
