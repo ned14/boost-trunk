@@ -17,35 +17,26 @@
 #ifndef BOOST_MPL_SIZE_HPP_INCLUDED
 #define BOOST_MPL_SIZE_HPP_INCLUDED
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/distance.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/size_fwd.hpp"
+#include "boost/mpl/aux_/size_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename Tag >
-struct size_algorithm_traits
-{
-    template< typename Sequence > struct algorithm
-        : distance<
-              typename begin<Sequence>::type
-            , typename end<Sequence>::type
-            >
-    {
-    };
-};
-
-template< typename Sequence >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    >
 struct size
-    : size_algorithm_traits<
-          typename sequence_tag<Sequence>::type
-        >::template algorithm< Sequence >
+    : size_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence >
 {
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,size,(Sequence))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, size)
+BOOST_MPL_AUX_VOID_SPEC(1, size)
 
 } // namespace mpl
 } // namespace boost

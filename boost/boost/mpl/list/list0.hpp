@@ -17,17 +17,26 @@
 #ifndef BOOST_MPL_LIST_LIST0_HPP_INCLUDED
 #define BOOST_MPL_LIST_LIST0_HPP_INCLUDED
 
-#include "boost/mpl/list/aux_/begin_end.hpp"
+#include "boost/mpl/void.hpp"
 #include "boost/mpl/list/aux_/push_front.hpp"
 #include "boost/mpl/list/aux_/pop_front.hpp"
+#include "boost/mpl/list/aux_/front.hpp"
 #include "boost/mpl/list/aux_/clear.hpp"
+#include "boost/mpl/list/aux_/O1_size.hpp"
+#include "boost/mpl/list/aux_/size.hpp"
+#include "boost/mpl/list/aux_/empty.hpp"
 #include "boost/mpl/list/aux_/begin_end.hpp"
 #include "boost/mpl/list/aux_/node.hpp"
 
 namespace boost {
 namespace mpl {
 
-typedef null_node list0;
+template< typename Dummy = void_ > struct list0;
+template<> struct list0<void_>
+    : null_node
+{
+    typedef null_node type;
+};
 
 } // namespace mpl
 } // namespace boost

@@ -21,7 +21,10 @@ namespace boost {
 namespace mpl {
 namespace aux {
 
-template< typename T > struct type_wrapper {};
+template< typename T > struct type_wrapper
+{
+    typedef T type;
+};
 
 } // namespace aux
 } // namespace mpl

@@ -20,9 +20,11 @@
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/apply_if.hpp"
+#include "boost/mpl/aux_/lambda_spec.hpp"
 
 namespace boost {
 namespace mpl {
+
 namespace aux {
 
 template<
@@ -34,7 +36,7 @@ struct copy_if_op
     template< typename Sequence, typename T > struct apply
     {
         typedef typename apply_if<
-              apply1<Predicate,T>
+              typename apply1<Predicate,T>::type
             , apply2<Operation,Sequence,T>
             , identity<Sequence>
             >::type type;
@@ -42,7 +44,10 @@ struct copy_if_op
 };
 
 } // namespace aux
+
+BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(2,aux::copy_if_op)
+
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_AUX_COPY_IF_OP_HPP_INCLUDED
+#endif // BOOST_MPL_AUX_COPY_IF_OP_HPP_INCLUDED

@@ -16,7 +16,9 @@
 #ifndef BOOST_MPL_IF_HPP_INCLUDED
 #define BOOST_MPL_IF_HPP_INCLUDED
 
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/value_wknd.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 #include "boost/config.hpp"
 
 namespace boost {
@@ -43,42 +45,21 @@ struct if_c<false,T1,T2>
     typedef T2 type;
 };
 
-#if !defined(__BORLANDC__)
 template<
-      typename C
-    , typename T1
-    , typename T2
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(C)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
     >
 struct if_
 {
     typedef typename if_c<
-          C::value
+          BOOST_MPL_AUX_VALUE_WKND(C)::value
         , T1
         , T2
         >::type type;
+
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,if_,(C,T1,T2))
 };
-
-#else 
-// Borland workaround
-namespace aux {
-template< typename C > struct bcc_value : C {};
-}
-
-template<
-      typename C
-    , typename T1
-    , typename T2
-    >
-struct if_
-{
-    typedef typename if_c<
-          ::boost::mpl::aux::bcc_value<C>::value
-        , T1
-        , T2
-        >::type type;
-};
-
-#endif // __BORLANDC__
 
 #elif defined(BOOST_MSVC) && (BOOST_MSVC <= 1200)
 
@@ -156,19 +137,21 @@ struct if_c
 // (almost) copy & paste in order to save one more 
 // recursively nested template instantiation to user
 template<
-      typename C
-    , typename T1
-    , typename T2
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(C)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
     >
 struct if_
 {
     typedef typename aux::if_impl< C::value >
         ::template result_<T1,T2>::type type;
+
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,if_,(C,T1,T2))
 };
 
 #endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
-BOOST_MPL_AUX_LAMBDA_SPEC(3, if_)
+BOOST_MPL_AUX_VOID_SPEC(3, if_)
 
 } // namespace mpl
 } // namespace boost

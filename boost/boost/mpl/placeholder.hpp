@@ -14,64 +14,70 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
+#if !defined(BOOST_PP_IS_ITERATING)
+
+///// header body
+
 #ifndef BOOST_MPL_PLACEHOLDER_HPP_INCLUDED
 #define BOOST_MPL_PLACEHOLDER_HPP_INCLUDED
 
-#include "boost/mpl/limits/arity.hpp"
+#if !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/arg.hpp"
+#endif
 
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
 #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
     !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include "boost/mpl/aux_/preprocessed/placeholder.hpp"
+
+#   define BOOST_MPL_PREPROCESSED_HEADER placeholder.hpp
+#   include "boost/mpl/aux_/include_preprocessed.hpp"
 
 #else
 
-#   include "boost/preprocessor/repeat.hpp"
-#   include "boost/preprocessor/inc.hpp"
+#   include "boost/mpl/limits/arity.hpp"
+#   include "boost/preprocessor/iterate.hpp"
 #   include "boost/preprocessor/cat.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< long N > struct arg;
-
+// watch out for GNU gettext users, who #define _(x)
+#if !defined(_) || defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 typedef arg<-1> _;
 
 namespace placeholder {
 using boost::mpl::_;
 }
+#endif
 
-// local macros, #undef-ined at the end of the header
-#define AUX_PLACEHOLDER_N_DEF(n) \
-typedef arg<n> BOOST_PP_CAT(_,n); \
-namespace placeholder { \
-using boost::mpl::BOOST_PP_CAT(_,n); \
-} \
-/**/
-
-#define AUX_PLACEHOLDER_DEF(n, unused) \
-    AUX_PLACEHOLDER_N_DEF(BOOST_PP_INC(n)) \
-/**/
-
-// typedef arg<#> _#; namespace placeholder { using boost::mpl::_#; }
-BOOST_PP_REPEAT(
-      // agurt, 17/mar/02: one more placeholder for the last 'apply#' 
-      // specialization
-      BOOST_PP_INC(BOOST_MPL_METAFUNCTION_MAX_ARITY)
-    , AUX_PLACEHOLDER_DEF
-    , unused
-    )
-
-#undef AUX_PLACEHOLDER_DEF
-#undef AUX_PLACEHOLDER_N_DEF
+//: agurt, 17/mar/02: one more placeholder for the last 'apply#' 
+//: specialization
+#define BOOST_PP_ITERATION_PARAMS_1 \
+    (3,(1, BOOST_MPL_METAFUNCTION_MAX_ARITY + 1, "boost/mpl/placeholder.hpp"))
+#include BOOST_PP_ITERATE()
 
 } // namespace mpl
 } // namespace boost 
 
-// injecting the unnumbered placeholder into global namespace
+#if !defined(_) || defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
+//: injecting the unnumbered placeholder into global namespace
 using boost::mpl::_;
+#endif
 
-#endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
-
+#endif // BOOST_MPL_USE_PREPROCESSED_HEADERS
 #endif // BOOST_MPL_PLACEHOLDER_HPP_INCLUDED
+
+///// iteration
+
+#else
+#define i BOOST_PP_FRAME_ITERATION(1)
+
+typedef arg<i> BOOST_PP_CAT(_,i);
+
+namespace placeholder {
+using boost::mpl::BOOST_PP_CAT(_,i);
+}
+
+#undef i
+#endif // BOOST_PP_IS_ITERATING

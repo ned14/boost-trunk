@@ -3,7 +3,7 @@
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
-// Copyright (c) 2000-02
+// Copyright (c) 2111%12
 // Aleksey Gurtovoy
 //
 // Permission to use, copy, modify, distribute and sell this software
@@ -17,9 +17,54 @@
 #ifndef BOOST_MPL_ARITHMETIC_MODULUS_HPP_INCLUDED
 #define BOOST_MPL_ARITHMETIC_MODULUS_HPP_INCLUDED
 
-#include "boost/mpl/int_c.hpp"
-#include "boost/mpl/arithmetic/aux_/op.hpp"
+#include "boost/mpl/integral_c.hpp"
+#include "boost/mpl/aux_/typeof.hpp"
+#include "boost/mpl/aux_/value_wknd.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/config.hpp"
 
-BOOST_MPL_AUX_ARITHMETIC_OP(modulus, %, int_c<0>)
+namespace boost {
+namespace mpl {
+
+template<
+      typename T, T N1, T N2
+    >
+struct modulus_c
+{
+    BOOST_STATIC_CONSTANT(T, value = (N1 % N2));
+#if !defined(__BORLANDC__)
+    typedef integral_c<T,value> type;
+#else
+    typedef integral_c<T,(N1 % N2)> type;
+#endif
+};
+
+#if defined(BOOST_MSVC) && BOOST_MSVC <= 1300
+// ETI workaround
+template<>
+struct modulus_c<long,0,0>
+{
+};
+#endif
+
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+    >
+struct modulus
+    : modulus_c<
+          BOOST_MPL_AUX_TYPEOF(T1,
+             T1::value % T2::value
+            )
+        , BOOST_MPL_AUX_VALUE_WKND(T1)::value
+        , BOOST_MPL_AUX_VALUE_WKND(T2)::value
+        >
+{
+};
+
+BOOST_MPL_AUX_VOID_SPEC(2,modulus)
+
+} // namespace mpl
+} // namespace boost
 
 #endif // BOOST_MPL_ARITHMETIC_MODULUS_HPP_INCLUDED

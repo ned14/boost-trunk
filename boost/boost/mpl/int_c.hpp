@@ -17,35 +17,30 @@
 #ifndef BOOST_MPL_INT_C_HPP_INCLUDED
 #define BOOST_MPL_INT_C_HPP_INCLUDED
 
-#include "boost/mpl/is_reflective.hpp"
 #include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< int N > struct int_c
-#if defined(BOOST_MPL_NO_IS_REFLECTIVE_TRAIT_SPECIALIZATION)
-    : aux::reflective_type_base
-#endif
+template< int N >
+struct int_c
 {
     BOOST_STATIC_CONSTANT(int, value = N);
     typedef int_c type;
     typedef int value_type;
 
+    // have to #ifdef here: some compilers don't like the 'N + 1' form (MSVC),
+    // while some other don't like 'value + 1' (Borland)
+#if !defined(__BORLANDC__)
     typedef int_c<value + 1> next;
     typedef int_c<value - 1> prior;
+#else
+    typedef int_c<N + 1> next;
+    typedef int_c<N - 1> prior;
+#endif
 
     operator int() const { return this->value; } 
 };
-
-#if !defined(BOOST_MPL_NO_IS_REFLECTIVE_TRAIT_SPECIALIZATION)
-template< int N >
-struct is_reflective< int_c<N> >
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-    typedef is_reflective type;
-};
-#endif
 
 } // namespace mpl
 } // namespace boost 

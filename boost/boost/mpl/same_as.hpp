@@ -17,11 +17,9 @@
 #ifndef BOOST_MPL_SAME_AS_HPP_INCLUDED
 #define BOOST_MPL_SAME_AS_HPP_INCLUDED
 
-#include "boost/mpl/bool_c.hpp"
-#include "boost/type_traits/same_traits.hpp"
-#include "boost/mpl/lambda_fwd.hpp"
-#include "boost/mpl/aux_/config/lambda_support.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/logical/not.hpp"
+#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/type_traits/is_same.hpp"
 
 namespace boost {
 namespace mpl {
@@ -30,12 +28,13 @@ template< typename T1 >
 struct same_as
 {
     template< typename T2 > struct apply
+#if !defined(__BORLANDC__)
+        : is_same<T1,T2>
     {
-        BOOST_STATIC_CONSTANT(bool, value =
-            (::boost::is_same<T1,T2>::value)
-            );
-        
-        typedef bool_c<value> type;
+#else
+    {
+        typedef typename is_same<T1,T2>::type type;
+#endif
     };
 };
 
@@ -43,26 +42,18 @@ template< typename T1 >
 struct not_same_as
 {
     template< typename T2 > struct apply
+#if !defined(__BORLANDC__)
+        : logical_not< is_same<T1,T2> >
     {
-        BOOST_STATIC_CONSTANT(bool, value =
-            (!::boost::is_same<T1,T2>::value)
-            );
-        
-        typedef bool_c<value> type;
+#else
+    {
+        typedef typename logical_not< is_same<T1,T2> >::type type;
+#endif
     };
 };
 
-#if !defined(BOOST_MPL_NO_LAMDBA_SUPPORT)
-template< typename T1 > struct lambda< same_as<T1> >
-{
-    typedef same_as<T1> type;
-};
-
-template< typename T1 > struct lambda< not_same_as<T1> >
-{
-    typedef not_same_as<T1> type;
-};
-#endif
+BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(1,same_as)
+BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(1,not_same_as)
 
 } // namespace mpl
 } // namespace boost

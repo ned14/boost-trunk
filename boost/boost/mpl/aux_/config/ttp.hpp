@@ -19,8 +19,12 @@
 
 #include "boost/config.hpp"
 
-#if (defined(BOOST_MSVC) && (BOOST_MSVC < 1300)) || defined(__BORLANDC__)
+#if defined(BOOST_NO_TEMPLATE_TEMPLATES)
 #   define BOOST_NO_TEMPLATE_TEMPLATE_PARAMETERS
+#endif
+
+#if defined(__GNUC__) && !defined(BOOST_EXTENDED_TEMPLATE_PARAMETERS_MATCHING)
+#   define BOOST_EXTENDED_TEMPLATE_PARAMETERS_MATCHING
 #endif
 
 #endif // BOOST_MPL_AUX_CONFIG_TTP_HPP_INCLUDED

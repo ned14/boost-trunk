@@ -17,26 +17,111 @@
 #ifndef BOOST_MPL_LOGICAL_OR_HPP_INCLUDED
 #define BOOST_MPL_LOGICAL_OR_HPP_INCLUDED
 
-#include "boost/mpl/apply_if.hpp"
 #include "boost/mpl/bool_c.hpp"
-#include "boost/mpl/logical/aux_/op.hpp"
+#include "boost/mpl/aux_/nested_type_wknd.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
+#include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 
+namespace aux {
+
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+
 template<
-      typename T0
-    , typename T1
+      bool C, typename T1, typename T2, typename T3, typename T4
     >
-struct logical_or2
+struct logical_or_impl
+    : true_c
 {
-    typedef typename apply_if<T0, true_c, T1>::type type;
-    BOOST_STATIC_CONSTANT(bool, value = type::value);
 };
+
+template<
+      typename T1, typename T2, typename T3, typename T4
+    >
+struct logical_or_impl<false,T1,T2,T3,T4>
+    : logical_or_impl<
+          BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value,T2,T3,T4,false_c
+        >
+{
+};
+
+template<>
+struct logical_or_impl<false,false_c,false_c,false_c,false_c>
+    : false_c
+{
+};
+
+#else
+
+template< bool C > struct logical_or_impl
+{
+    template<
+          typename T1, typename T2, typename T3, typename T4
+        >
+    struct result_
+        : true_c
+    {
+    };
+};
+
+template<> struct logical_or_impl<false>
+{
+    template<
+          typename T1, typename T2, typename T3, typename T4
+        >
+    struct result_
+        : logical_or_impl< BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value >
+            ::template result_<T2,T3,T4,false_c>
+    {
+    };
+
+#if defined(BOOST_MSVC) && BOOST_MSVC == 1300
+    template<>
+    struct result_<false_c,false_c,false_c,false_c>
+        : false_c
+    {
+    };
+};
+#else
+};
+
+template<>
+struct logical_or_impl<false>::result_<false_c,false_c,false_c,false_c>
+    : false_c
+{
+};
+#endif // BOOST_MSVC == 1300
+
+#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+
+} // namespace aux
+
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+    , typename T3 = false_c
+    , typename T4 = false_c
+    , typename T5 = false_c
+    >
+struct logical_or
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+    : aux::logical_or_impl<
+          BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value,T2,T3,T4,T5
+        >
+#else
+    : aux::logical_or_impl< BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value>
+        ::template result_<T2,T3,T4,T5>
+#endif
+{
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(5,logical_or,(T1,T2,T3,T4,T5))
+};
+
+BOOST_MPL_AUX_VOID_SPEC_EXT(2,5,logical_or)
 
 } // namespace mpl
 } // namespace boost
-
-BOOST_MPL_AUX_LOGICAL_OP(logical_or, false_c)
 
 #endif // BOOST_MPL_LOGICAL_OR_HPP_INCLUDED

@@ -17,22 +17,24 @@
 #ifndef BOOST_MPL_PRIOR_HPP_INCLUDED
 #define BOOST_MPL_PRIOR_HPP_INCLUDED
 
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 #include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename T
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
     >
 struct prior
 {
     typedef typename T::prior type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,prior,(T))
 };
 
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
-// workaround of MSVC early template instantiation bug
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
+// ETI workaround
 template<>
 struct prior<int>
 {
@@ -40,9 +42,9 @@ struct prior<int>
 };
 #endif
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, prior)
+BOOST_MPL_AUX_VOID_SPEC(1, prior)
 
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_PRIOR_HPP_INCLUDED
+#endif // BOOST_MPL_PRIOR_HPP_INCLUDED

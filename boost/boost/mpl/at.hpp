@@ -17,30 +17,25 @@
 #ifndef BOOST_MPL_AT_HPP_INCLUDED
 #define BOOST_MPL_AT_HPP_INCLUDED
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/advance.hpp"
-#include "boost/mpl/aux_/msvc_workarounds.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/at_fwd.hpp"
+#include "boost/mpl/integral_c.hpp"
+#include "boost/mpl/aux_/at_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename N
-    , typename Sequence
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(N)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
     >
 struct at
+    : at_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< N,Sequence >
 {
- private:
-    typedef typename begin<Sequence>::type first_;
-    typedef typename advance<first_,N>::type iter_;
-
- public:
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
-    typedef typename apply0<iter_>::type type;
-#else
-    typedef typename iter_::type type;
-#endif
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,at,(N,Sequence))
 };
 
 template<
@@ -48,20 +43,12 @@ template<
     , typename Sequence
     >
 struct at_c
+    : at_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< integral_c<long,N>,Sequence >
 {
- private:
-    typedef typename begin<Sequence>::type first_;
-    typedef typename advance_c<first_,N>::type iter_;
-
- public:
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
-    typedef typename apply0<iter_>::type type;
-#else
-    typedef typename iter_::type type;
-#endif
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, at)
+BOOST_MPL_AUX_VOID_SPEC(2, at)
 
 } // namespace mpl
 } // namespace boost

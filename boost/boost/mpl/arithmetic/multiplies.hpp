@@ -17,9 +17,52 @@
 #ifndef BOOST_MPL_ARITHMETIC_MULTIPLIES_HPP_INCLUDED
 #define BOOST_MPL_ARITHMETIC_MULTIPLIES_HPP_INCLUDED
 
-#include "boost/mpl/int_c.hpp"
-#include "boost/mpl/arithmetic/aux_/op.hpp"
+#include "boost/mpl/integral_c.hpp"
+#include "boost/mpl/aux_/typeof.hpp"
+#include "boost/mpl/aux_/value_wknd.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/config.hpp"
 
-BOOST_MPL_AUX_ARITHMETIC_OP(multiplies, *, int_c<1>)
+namespace boost {
+namespace mpl {
+
+template<
+      typename T, T N1, T N2, T N3 = 1, T N4 = 1, T N5 = 1
+    >
+struct multiplies_c
+{
+    BOOST_STATIC_CONSTANT(T, value = (N1 * N2 * N3 * N4 * N5));
+#if !defined(__BORLANDC__)
+    typedef integral_c<T,value> type;
+#else
+    typedef integral_c<T,(N1 * N2 * N3 * N4 * N5)> type;
+#endif
+};
+
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+    , typename T3 = integral_c<int,1>
+    , typename T4 = integral_c<int,1>
+    , typename T5 = integral_c<int,1>
+    >
+struct multiplies
+    : multiplies_c<
+          BOOST_MPL_AUX_TYPEOF(T1,
+             T1::value * T2::value * T3::value * T4::value * T5::value
+            )
+        , BOOST_MPL_AUX_VALUE_WKND(T1)::value
+        , BOOST_MPL_AUX_VALUE_WKND(T2)::value
+        , BOOST_MPL_AUX_VALUE_WKND(T3)::value
+        , BOOST_MPL_AUX_VALUE_WKND(T4)::value
+        , BOOST_MPL_AUX_VALUE_WKND(T5)::value
+        >
+{
+};
+
+BOOST_MPL_AUX_VOID_SPEC_EXT(2,5,multiplies)
+
+} // namespace mpl
+} // namespace boost
 
 #endif // BOOST_MPL_ARITHMETIC_MULTIPLIES_HPP_INCLUDED

@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/list.hpp header file
+// boost mpl/list_c.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -14,130 +14,221 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
+#if !defined(BOOST_PP_IS_ITERATING)
+
+///// header body
+
 #ifndef BOOST_MPL_LIST_C_HPP_INCLUDED
 #define BOOST_MPL_LIST_C_HPP_INCLUDED
 
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/list/aux_/impl.hpp"
-#include <climits>
+#if !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/limits/list.hpp"
+
+#   include "boost/preprocessor/inc.hpp"
+#   include "boost/preprocessor/cat.hpp"
+#   include "boost/preprocessor/stringize.hpp"
+
+#   define MPL_AUX_LIST_HEADER \
+    BOOST_PP_STRINGIZE( \
+        BOOST_PP_CAT( \
+              BOOST_PP_CAT(boost/mpl/list/list, BOOST_MPL_LIMIT_LIST_SIZE) \
+            ,_c.##hpp) \
+        ) \
+    /**/
+
+#   include MPL_AUX_LIST_HEADER
+#   undef MPL_AUX_LIST_HEADER
+#   include <climits>
+#endif
 
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
 #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
     !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include "boost/mpl/aux_/preprocessed/list_c.hpp"
+
+#   define BOOST_MPL_PREPROCESSED_HEADER list_c.hpp
+#   include "boost/mpl/aux_/include_preprocessed.hpp"
 
 #else
 
 #   include "boost/mpl/limits/list.hpp"
-#   include "boost/mpl/aux_/preprocessor/params.hpp"
-#   include "boost/mpl/aux_/preprocessor/default_params.hpp"
-#   include "boost/mpl/aux_/preprocessor/enum.hpp"
-#   include "boost/mpl/aux_/config/msvc_typename.hpp"
-#   include "boost/preprocessor/tuple/elem.hpp"
+#   include "boost/mpl/aux_/preprocessor/project1st.hpp"
+
+#   include "boost/preprocessor/arithmetic/sub.hpp"
+#   include "boost/preprocessor/enum_params_with_a_default.hpp"
+#   include "boost/preprocessor/enum_params.hpp"
+#   include "boost/preprocessor/enum.hpp"
+#   include "boost/preprocessor/repeat.hpp"
+#   include "boost/preprocessor/comma_if.hpp"
+#   include "boost/preprocessor/iterate.hpp"
+
 #   include "boost/config.hpp"
+
+#if defined(BOOST_MPL_PREPROCESSING_MODE)
+#   undef LONG_MAX
+#endif
 
 namespace boost {
 namespace mpl {
 
-#define AUX_LIST_PARAMS(param) \
-    BOOST_MPL_PP_PARAMS( \
-          0 \
-        , BOOST_MPL_LIMIT_LIST_SIZE \
+#   define AUX_LIST_C(i) \
+    BOOST_PP_CAT(BOOST_PP_CAT(list,i),_c) \
+    /**/
+
+#   define AUX_LIST_C_PARAMS(param) \
+    BOOST_PP_ENUM_PARAMS( \
+          BOOST_MPL_LIMIT_LIST_SIZE \
         , param \
         ) \
-/**/
+    /**/
 
-#define AUX_LIST_DEFAULT_PARAMS(param, value) \
-    BOOST_MPL_PP_DEFAULT_PARAMS( \
-          0 \
-        , BOOST_MPL_LIMIT_LIST_SIZE \
+#   define AUX_LIST_C_DEFAULT_PARAMS(param, value) \
+     BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT( \
+          BOOST_MPL_LIMIT_LIST_SIZE \
         , param \
         , value \
         ) \
-/**/
+    /**/
 
-#define AUX_LIST_C_PARAMS_FUNC(i, tc) \
-    integral_c< \
-          BOOST_PP_TUPLE_ELEM(2, 0, tc) \
-        , BOOST_PP_CAT(BOOST_PP_TUPLE_ELEM(2, 1, tc), i) \
-        > \
-/**/
+#   define AUX_LIST_C_N_PARAMS(n, param) \
+    BOOST_PP_COMMA_IF(n) \
+    BOOST_PP_ENUM_PARAMS(n, param) \
+    /**/
 
-#define AUX_LIST_C_PARAMS(T, C) \
-    BOOST_MPL_PP_ENUM( \
-          0 \
-        , BOOST_MPL_LIMIT_LIST_SIZE \
-        , AUX_LIST_C_PARAMS_FUNC \
-        , (T, C) \
+#   define AUX_LIST_C_N_PARTIAL_SPEC_PARAMS(n, param, def) \
+    BOOST_PP_ENUM_PARAMS(n, param) \
+    BOOST_PP_COMMA_IF(n) \
+    BOOST_PP_ENUM( \
+          BOOST_PP_SUB(BOOST_MPL_LIMIT_LIST_SIZE,n) \
+        , BOOST_MPL_PP_PROJECT2ND \
+        , def \
         ) \
-/**/
+    /**/
+
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+// forward declaration
+template<
+      typename T
+    , AUX_LIST_C_DEFAULT_PARAMS(long C, LONG_MAX)
+    >
+struct list_c;
+#else
+namespace aux {
+template< int > struct list_c_impl_chooser;
+}
+#endif
+
+#define BOOST_PP_ITERATION_PARAMS_1 \
+    (3,(0, BOOST_MPL_LIMIT_LIST_SIZE, "boost/mpl/list_c.hpp"))
+#include BOOST_PP_ITERATE()
+
+// real C++ version is already taken care of
+#if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 
 namespace aux {
-
-template< typename T > struct list_c_param
-{
-    typedef long type;
-    BOOST_STATIC_CONSTANT(long, value = LONG_MAX);
-};
-
-#define AUX_LIST_C_UNSIGNED_PARAM_SPEC(T) \
-template<> struct list_c_param<T> \
-{ \
-    typedef unsigned long type; \
-    BOOST_STATIC_CONSTANT(unsigned long, value = ULONG_MAX); \
-}; \
-/**/
-
-AUX_LIST_C_UNSIGNED_PARAM_SPEC(unsigned char)
-AUX_LIST_C_UNSIGNED_PARAM_SPEC(unsigned short)
-AUX_LIST_C_UNSIGNED_PARAM_SPEC(unsigned int)
-AUX_LIST_C_UNSIGNED_PARAM_SPEC(unsigned long)
-
-#undef AUX_LIST_C_UNSIGNED_PARAM_SPEC
+// list_count_args
+#define BOOST_MPL_AUX_COUNT_ARGS_PREFIX list_c
+#define BOOST_MPL_AUX_COUNT_ARGS_DEFAULT LONG_MAX
+#define BOOST_MPL_AUX_COUNT_ARGS_TEMPLATE_PARAM long T
+#define BOOST_MPL_AUX_COUNT_ARGS_ARITY BOOST_MPL_LIMIT_LIST_SIZE
+#define BOOST_MPL_AUX_COUNT_ARGS_USE_STANDARD_PP_PRIMITIVES
+#include "boost/mpl/aux_/count_args.hpp"
 
 template<
       typename T
-    , AUX_LIST_PARAMS(BOOST_MSVC_TYPENAME list_c_param<T>::type C)
+    , AUX_LIST_C_PARAMS(long C)
     >
 struct list_c_impl
 {
-    typedef typename list_c_param<T>::type param_type_;
-    typedef aux::list_count_if_not<
-          integral_c<param_type_,list_c_param<T>::value>
-        , AUX_LIST_C_PARAMS(param_type_, C)
-        > arg_num_;
-
-    typedef typename aux::list_impl_chooser< arg_num_::value >
-        ::template result_< AUX_LIST_C_PARAMS(T, (T)C) >::type type;
+    typedef aux::list_c_count_args< AUX_LIST_C_PARAMS(C) > arg_num_;
+    typedef typename aux::list_c_impl_chooser< arg_num_::value >
+        ::template result_< T, AUX_LIST_C_PARAMS(C) >::type type;
 };
 
 } // namespace aux
 
 template<
       typename T
-    , AUX_LIST_DEFAULT_PARAMS(
-          BOOST_MSVC_TYPENAME aux::list_c_param<T>::type C
-        , aux::list_c_param<T>::value
-        )
+    , AUX_LIST_C_DEFAULT_PARAMS(long C, LONG_MAX)
     >
 struct list_c
-    : aux::list_c_impl< T, AUX_LIST_PARAMS(C) >::type
+    : aux::list_c_impl< T,AUX_LIST_C_PARAMS(C) >::type
 {
     typedef typename aux::list_c_impl<
-          T
-        , AUX_LIST_PARAMS(C)
+          T,AUX_LIST_C_PARAMS(C)
         >::type type;
 };
 
-#undef AUX_LIST_C_PARAMS
-#undef AUX_LIST_DEFAULT_PARAMS
-#undef AUX_LIST_C_PARAMS_FUNC
-#undef AUX_LIST_PARAMS
+#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+
+#   undef AUX_LIST_C_N_PARTIAL_SPEC_PARAMS
+#   undef AUX_LIST_C_N_PARAMS
+#   undef AUX_LIST_C_DEFAULT_PARAMS
+#   undef AUX_LIST_C_PARAMS
+#   undef AUX_LIST_C
 
 } // namespace mpl
 } // namespace boost
 
-#endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
-
+#endif // BOOST_MPL_USE_PREPROCESSED_HEADERS
 #endif // BOOST_MPL_LIST_C_HPP_INCLUDED
+
+///// iteration
+
+#else
+#define i BOOST_PP_FRAME_ITERATION(1)
+
+#   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+
+#if i == BOOST_MPL_LIMIT_LIST_SIZE
+
+//: primary template (not a specialization!)
+template<
+      typename T
+    AUX_LIST_C_N_PARAMS(i, long C)
+    >
+struct list_c
+    : AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) >
+{
+    typedef AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) > type;
+};
+
+#else
+
+template<
+      typename T
+    AUX_LIST_C_N_PARAMS(i, long C)
+    >
+struct list_c< T,AUX_LIST_C_N_PARTIAL_SPEC_PARAMS(i, C, LONG_MAX) >
+    : AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) >
+{
+    typedef AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) > type;
+};
+
+#endif // i == BOOST_MPL_LIMIT_LIST_SIZE
+
+#   else
+
+namespace aux {
+
+template<>
+struct list_c_impl_chooser<i>
+{
+    template<
+          typename T
+        , AUX_LIST_C_PARAMS(long C)
+        >
+    struct result_
+    {
+        typedef AUX_LIST_C(i)<
+              T AUX_LIST_C_N_PARAMS(i, C)
+            > type;
+    };
+};
+
+} // namespace aux
+
+#   endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+
+#undef i
+#endif // BOOST_PP_IS_ITERATING

@@ -35,4 +35,4 @@ BOOST_MPL_AUX_LAMBDA_SPEC(1, select2nd)
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_SELECT2ND_HPP_INCLUDED
+#endif // BOOST_MPL_SELECT2ND_HPP_INCLUDED

@@ -17,54 +17,37 @@
 #ifndef BOOST_MPL_BEGIN_END_HPP_INCLUDED
 #define BOOST_MPL_BEGIN_END_HPP_INCLUDED
 
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/begin_end_fwd.hpp"
+#include "boost/mpl/aux_/begin_end_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename Tag >
-struct begin_algorithm_traits
-{
-    template< typename Sequence > struct algorithm
-    {
-        typedef typename Sequence::begin type;
-    };
-};
-
-template< typename Tag >
-struct end_algorithm_traits
-{
-    template< typename Sequence > struct algorithm
-    {
-        typedef typename Sequence::end type;
-    };
-};
-
-template< typename Sequence >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    >
 struct begin
+    : begin_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence >
 {
- private:
-    typedef typename sequence_tag<Sequence>::type tag_;
- 
- public:
-    typedef typename begin_algorithm_traits<tag_>
-        ::template algorithm< Sequence >::type type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,begin,(Sequence))
 };
 
-template< typename Sequence >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    >
 struct end
+    : end_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence >
 {
- private:
-    typedef typename sequence_tag<Sequence>::type tag_;
- 
- public:
-    typedef typename end_algorithm_traits<tag_>
-        ::template algorithm< Sequence >::type type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,end,(Sequence))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, begin)
-BOOST_MPL_AUX_LAMBDA_SPEC(1, end)
+BOOST_MPL_AUX_VOID_SPEC(1, begin)
+BOOST_MPL_AUX_VOID_SPEC(1, end)
 
 } // namespace mpl
 } // namespace boost

@@ -20,10 +20,10 @@
 #include "boost/mpl/comparison/less.hpp"
 #include "boost/mpl/iter_fold.hpp"
 #include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/select_if.hpp"
+#include "boost/mpl/if.hpp"
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/lambda.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
@@ -42,7 +42,7 @@ struct select_max
             , typename Iterator::type
             >::type condition_;
 
-        typedef typename select_if<
+        typedef typename if_<
               condition_
             , Iterator
             , OldIterator
@@ -53,7 +53,7 @@ struct select_max
 } // namespace aux 
 
 template<
-      typename Sequence
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
     , typename Predicate = less<_,_>
     >
 struct max_element
@@ -69,7 +69,7 @@ struct max_element
         >::type type;
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, max_element)
+BOOST_MPL_AUX_VOID_SPEC(1, max_element)
 
 } // namespace mpl
 } // namespace boost

@@ -23,13 +23,14 @@
 #include "boost/mpl/front.hpp"
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/pair.hpp"
-#include "boost/mpl/first.hpp"
-#include "boost/mpl/type_traits/is_same.hpp"
+#include "boost/mpl/select1st.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/apply_if.hpp"
 #include "boost/mpl/apply.hpp"
-#include "boost/mpl/protect.hpp"
+#include "boost/mpl/void.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 #include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/type_traits/is_same.hpp"
 
 namespace boost {
 namespace mpl {
@@ -44,7 +45,7 @@ struct unique_op
         typedef typename Pair::first seq_;
         typedef typename Pair::second prior_;
         typedef typename apply_if<
-              apply2<Predicate,prior_,T>
+              typename apply2<Predicate,prior_,T>::type
             , identity<seq_>
             , push_front<seq_,T>
             >::type new_seq_;
@@ -55,29 +56,31 @@ struct unique_op
 
 } // namespace aux
 
+BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(1,aux::unique_op)
+
 template<
-      typename Sequence
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
     , typename Predicate = is_same<_,_>
     >
 struct unique
 {
  private:
+    struct none_;
     typedef typename lambda<Predicate>::type pred_;
     typedef typename clear<Sequence>::type result_;
     typedef typename fold_backward<
           Sequence
-        , pair<result_,aux::none>
-        , protect< aux::unique_op<pred_> >
+        , pair<result_,none_>
+        , aux::unique_op<pred_>
         >::type fold_result_;
 
  public:
-    // MSVC6.5 forces us to use 'first<fold_result_>::type' instead of 
+    // MSVC6.5 forces us to use 'select1st<fold_result_>::type' instead of 
     // simple 'fold_result_::first' here
-    typedef typename first<fold_result_>::type type;
+    typedef typename select1st<fold_result_>::type type;
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, unique)
-BOOST_MPL_AUX_LAMBDA_SPEC(2, unique)
+BOOST_MPL_AUX_VOID_SPEC(1, unique)
 
 } // namespace mpl
 } // namespace boost

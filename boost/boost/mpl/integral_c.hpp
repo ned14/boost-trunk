@@ -47,7 +47,7 @@ struct integral_c
 };
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
- && (!defined(BOOST_MSVC) && (BOOST_MSVC != 1301)) \
+ && (!defined(BOOST_MSVC) || BOOST_MSVC != 1301) \
  && !defined(__BORLANDC__)
 // 'bool' constant doesn't have 'next'/'prior' members
 template< bool C >

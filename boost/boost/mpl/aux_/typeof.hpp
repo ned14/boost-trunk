@@ -17,9 +17,14 @@
 #ifndef BOOST_MPL_AUX_TYPEOF_HPP_INCLUDED
 #define BOOST_MPL_AUX_TYPEOF_HPP_INCLUDED
 
-#include "boost/config.hpp"
-
-#if !defined(__ICL)
+#if defined(__BORLANDC__) 
+#   define BOOST_MPL_AUX_TYPEOF(T,x) typename T::value_type
+#elif defined(__MWERKS__) || defined(BOOST_MSVC) && BOOST_MSVC <= 1300
+#   define BOOST_MPL_AUX_TYPEOF(T,x) long
+#elif defined(__GCC__)
+#   define BOOST_MPL_AUX_TYPEOF(T,x) __typeof__(x)
+#else
+#   include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
@@ -39,15 +44,11 @@ typeof_answer<index>::type& type_index(T const&); \
 }}} \
 /**/
 
-#if defined(BOOST_NO_INCLASS_MEMBER_INITIALIZATION) || defined(BOOST_MSVC) && (BOOST_MSVC == 1301)
-#   define BOOST_MPL_AUX_TYPEOF(x) long
-#else
-#   define BOOST_MPL_AUX_TYPEOF(x) \
-boost::mpl::aux::typeof_c< \
-    sizeof(boost::mpl::aux::type_index(x)) \
+#define BOOST_MPL_AUX_TYPEOF(T,x) \
+typename boost::mpl::aux::typeof_c< \
+    sizeof(::boost::mpl::aux::type_index(x)) \
     >::type \
 /**/
-#endif
 
 } // namespace mpl
 } // namespace boost
@@ -65,24 +66,10 @@ BOOST_MPL_AUX_REGISTER_TYPE(8, int)
 BOOST_MPL_AUX_REGISTER_TYPE(9, unsigned int)
 BOOST_MPL_AUX_REGISTER_TYPE(10, long)
 BOOST_MPL_AUX_REGISTER_TYPE(11, unsigned long)
-BOOST_MPL_AUX_REGISTER_TYPE(12, float)
-BOOST_MPL_AUX_REGISTER_TYPE(13, double)
-BOOST_MPL_AUX_REGISTER_TYPE(14, long double)
+//BOOST_MPL_AUX_REGISTER_TYPE(12, float)
+//BOOST_MPL_AUX_REGISTER_TYPE(13, double)
+//BOOST_MPL_AUX_REGISTER_TYPE(14, long double)
 
-#else
-
-namespace boost {
-namespace mpl {
-
-namespace aux {
-template< long > struct typeof_c { typedef long type; };
-}
-
-} // namespace mpl
-} // namespace boost
-
-#   define BOOST_MPL_AUX_TYPEOF(x) aux::typeof_c<x>::type
-
-#endif // #if !defined(__ICL)
+#endif // __GCC__
 
 #endif // BOOST_MPL_AUX_TYPEOF_HPP_INCLUDED

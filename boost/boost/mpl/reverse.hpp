@@ -20,13 +20,13 @@
 #include "boost/mpl/copy.hpp"
 #include "boost/mpl/clear.hpp"
 #include "boost/mpl/push_front.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename Sequence
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
     >
 struct reverse
 {
@@ -41,7 +41,7 @@ struct reverse
         >::type type;
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, reverse)
+BOOST_MPL_AUX_VOID_SPEC(1, reverse)
 
 } // namespace mpl
 } // namespace boost

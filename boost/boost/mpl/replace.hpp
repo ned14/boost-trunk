@@ -19,22 +19,22 @@
 
 #include "boost/mpl/replace_if.hpp"
 #include "boost/mpl/same_as.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename Sequence
-    , typename OldType
-    , typename NewType
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(OldType)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(NewType)
     >
 struct replace
     : replace_if< Sequence,same_as<OldType>,NewType >
 {
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(3, replace)
+BOOST_MPL_AUX_VOID_SPEC(3, replace)
 
 } // namespace mpl
 } // namespace boost

@@ -17,11 +17,9 @@
 #ifndef BOOST_MPL_LIST_AUX_ITERATOR_HPP_INCLUDED
 #define BOOST_MPL_LIST_AUX_ITERATOR_HPP_INCLUDED
 
+#include "boost/mpl/iterator_tag.hpp"
 #include "boost/mpl/list/aux_/node.hpp"
-#include "boost/mpl/iterator_category.hpp"
-#include "boost/mpl/aux_/none.hpp"
-#include "boost/mpl/lambda_fwd.hpp"
-#include "boost/mpl/aux_/config/lambda_support.hpp"
+#include "boost/mpl/aux_/lambda_spec.hpp"
 
 namespace boost {
 namespace mpl {
@@ -40,13 +38,7 @@ struct list_iterator<null_node>
     typedef forward_iterator_tag category;
 };
 
-#if !defined(BOOST_MPL_NO_LAMDBA_SUPPORT)
-template< typename Node >
-struct lambda< list_iterator<Node> >
-{
-    typedef list_iterator<Node> type;
-};
-#endif
+BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(1,list_iterator)
 
 } // namespace mpl
 } // namespace boost

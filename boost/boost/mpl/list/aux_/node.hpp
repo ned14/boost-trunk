@@ -17,21 +17,23 @@
 #ifndef BOOST_MPL_LIST_AUX_NODE_HPP_INCLUDED
 #define BOOST_MPL_LIST_AUX_NODE_HPP_INCLUDED
 
+#include "boost/mpl/integral_c.hpp"
 #include "boost/mpl/list/aux_/tag.hpp"
-#include "boost/mpl/aux_/none.hpp"
-#include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename T
+      typename Size
+    , typename T
     , typename Next
     >
 struct list_node
 {
     typedef aux::list_tag tag;
     typedef list_node type;
+
+    typedef Size size;
     typedef T item;
     typedef Next next;
 };
@@ -40,12 +42,7 @@ struct null_node
 {
     typedef aux::list_tag tag;
     typedef null_node type;
-
-// to make VC 7.0 happy
-#if defined(BOOST_MSVC) && (BOOST_MSVC == 1300)
-//    typedef aux::none item;
-//    typedef null_node next;
-#endif
+    typedef integral_c<long,0> size;
 };
 
 } // namespace mpl

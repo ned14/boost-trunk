@@ -17,44 +17,37 @@
 #ifndef BOOST_MPL_FOLD_BACKWARD_HPP_INCLUDED
 #define BOOST_MPL_FOLD_BACKWARD_HPP_INCLUDED
 
-#include "boost/mpl/aux_/iter_fold_if.hpp"
-#include "boost/mpl/aux_/fold_op.hpp"
-#include "boost/mpl/aux_/fold_pred.hpp"
 #include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/project1st.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/O1_size.hpp"
+#include "boost/mpl/arg.hpp"
+#include "boost/mpl/lambda.hpp"
+#include "boost/mpl/aux_/fold_backward_impl.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename Sequence
-    , typename State
-    , typename BackwardOp
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(State)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(BackwardOp)
+    , typename ForwardOp = arg<1>
     >
 struct fold_backward
 {
- private:
-    typedef typename begin<Sequence>::type first_;
-    typedef typename end<Sequence>::type last_;
-    typedef aux::fold_pred<last_> pred_;
-
-    typedef aux::fold_op<
-          typename lambda<BackwardOp>::type
-        > backward_op_;
-
- public:
-    typedef typename aux::iter_fold_if<
-          first_
+    typedef typename aux::fold_backward_impl<
+          ::boost::mpl::O1_size<Sequence>::value
+        , typename begin<Sequence>::type
+        , typename end<Sequence>::type
         , State
-        , project1st<_,_>
-        , pred_
-        , backward_op_
-        , pred_
+        , typename lambda<BackwardOp>::type
+        , typename lambda<ForwardOp>::type
         >::state type;
+
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,fold_backward,(Sequence,State,BackwardOp))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(3, fold_backward)
+BOOST_MPL_AUX_VOID_SPEC(3, fold_backward)
 
 } // namespace mpl
 } // namespace boost

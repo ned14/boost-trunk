@@ -17,11 +17,6 @@
 #ifndef BOOST_MPL_AUX_CONFIG_USE_PREPROCESSED_HPP_INCLUDED
 #define BOOST_MPL_AUX_CONFIG_USE_PREPROCESSED_HPP_INCLUDED
 
-// EDG-based compilers have serious problems with preprocessor performance,
-// so we have to feed them already preprocessed version of code
-#if !defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)\
-    && defined(__EDG_VERSION__) && (__EDG_VERSION__ <= 300)
-#   define BOOST_MPL_USE_PREPROCESSED_HEADERS
-#endif
+#define BOOST_MPL_USE_PREPROCESSED_HEADERS
 
 #endif // BOOST_MPL_AUX_CONFIG_USE_PREPROCESSED_HPP_INCLUDED

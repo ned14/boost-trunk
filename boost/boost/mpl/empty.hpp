@@ -17,35 +17,26 @@
 #ifndef BOOST_MPL_EMPTY_HPP_INCLUDED
 #define BOOST_MPL_EMPTY_HPP_INCLUDED
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/type_traits/is_same.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/empty_fwd.hpp"
+#include "boost/mpl/aux_/empty_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename Tag >
-struct empty_algorithm_traits
-{
-    template< typename Sequence > struct algorithm
-        : is_same<
-              typename begin<Sequence>::type
-            , typename end<Sequence>::type
-            >
-    {
-    };
-};
-
-template< typename Sequence >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    >
 struct empty
-    : empty_algorithm_traits<
-          typename sequence_tag<Sequence>::type
-        >::template algorithm< Sequence >
+    : empty_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence >
 {
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,empty,(Sequence))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, empty)
+BOOST_MPL_AUX_VOID_SPEC(1, empty)
 
 } // namespace mpl
 } // namespace boost

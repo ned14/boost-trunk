@@ -41,4 +41,4 @@ struct fold_op
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_AUX_FOLD_OP_HPP_INCLUDED
+#endif // BOOST_MPL_AUX_FOLD_OP_HPP_INCLUDED

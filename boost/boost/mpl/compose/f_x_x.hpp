@@ -18,8 +18,7 @@
 #define BOOST_MPL_COMPOSE_F_X_X_HPP_INCLXDED
 
 #include "boost/mpl/apply.hpp"
-#include "boost/mpl/placeholder.hpp"
-#include "boost/mpl/aux_/config/lambda_support.hpp"
+#include "boost/mpl/aux_/lambda_spec.hpp"
 
 namespace boost {
 namespace mpl {
@@ -48,15 +47,7 @@ struct compose_f_x_x
     };
 };
 
-#if !defined(BOOST_MPL_NO_LAMDBA_SUPPORT)
-template<
-      typename F
-    >
-struct lambda< compose_f_x_x<F> >
-{
-    typedef compose_f_x_x<F> type;
-};
-#endif
+BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(1,compose_f_x_x)
 
 } // namespace mpl
 } // namespace boost

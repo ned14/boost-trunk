@@ -18,24 +18,26 @@
 #define BOOST_MPL_SIZE_OF_HPP_INCLUDED
 
 #include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 #include <cstddef> // for std::size_t
 
 namespace boost {
 namespace mpl {
 
-template< typename T >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+    >
 struct size_of
+    : mpl::integral_c<std::size_t, sizeof(T)>
 {
-    BOOST_STATIC_CONSTANT(std::size_t, value = sizeof(T));
-    typedef mpl::integral_c<std::size_t,value> type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,size_of,(T))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, size_of)
+BOOST_MPL_AUX_VOID_SPEC(1, size_of)
 
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_SIZE_OF_HPP_INCLUDED
+#endif // BOOST_MPL_SIZE_OF_HPP_INCLUDED

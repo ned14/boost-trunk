@@ -29,4 +29,4 @@ struct protect : T
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_PROTECT_HPP_INCLUDED
+#endif // BOOST_MPL_PROTECT_HPP_INCLUDED

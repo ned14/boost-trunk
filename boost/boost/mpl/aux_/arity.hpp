@@ -17,24 +17,29 @@
 #ifndef BOOST_MPL_AUX_ARITY_HPP_INCLUDED
 #define BOOST_MPL_AUX_ARITY_HPP_INCLUDED
 
-#include "boost/config.hpp"
+#include "boost/mpl/aux_/config/dtp.hpp"
+
+#if defined(BOOST_NO_DEFAULT_TEMPLATE_PARAMETERS_IN_NESTED_TEMPLATES)
+
+#   include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 namespace aux {
 
 // agurt, 15/mar/02: it's possible to implement the template so that it will 
-// "just work" and do not require any specialization, but MWCW 8.0 fails to 
-// compile such implementation as well ('arity' is needed only to workaround 
-// yet another CW bug - see 'mpl/apply.hpp')
-template< typename F, long N >
+// "just work" and do not require any specialization, but not on the compilers
+// that require the arity workaround in the first place
+template< typename F, int N >
 struct arity
 {
-    BOOST_STATIC_CONSTANT(long, value = N);
+    BOOST_STATIC_CONSTANT(int, value = N);
 };
 
 } // namespace aux
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_AUX_ARITY_HPP_INCLUDED
+#endif // BOOST_NO_DEFAULT_TEMPLATE_PARAMETERS_IN_NESTED_TEMPLATES
+
+#endif // BOOST_MPL_AUX_ARITY_HPP_INCLUDED

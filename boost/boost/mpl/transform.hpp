@@ -23,7 +23,7 @@
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/protect.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
@@ -45,8 +45,8 @@ struct transform_op
 } // namespace aux
 
 template<
-      typename Sequence
-    , typename Operation
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Operation)
     >
 struct transform
 {
@@ -62,7 +62,7 @@ struct transform
         >::type type;
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, transform)
+BOOST_MPL_AUX_VOID_SPEC(2, transform)
 
 } // namespace mpl
 } // namespace boost

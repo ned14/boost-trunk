@@ -21,15 +21,16 @@
 #include "boost/mpl/aux_/copy_op.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/protect.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename InputSequence
-    , typename Operation
-    , typename OutputSequence
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(InputSequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Operation)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(OutputSequence)
     >
 struct copy
 {
@@ -42,9 +43,11 @@ struct copy
         , OutputSequence
         , protect< aux::copy_op<op_> >
         >::type type;
+
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,copy,(InputSequence,Operation,OutputSequence))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(3, copy)
+BOOST_MPL_AUX_VOID_SPEC(3, copy)
 
 } // namespace mpl
 } // namespace boost

@@ -23,8 +23,9 @@
 #include "boost/mpl/integral_c.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/apply.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/apply.hpp"
+#include "boost/mpl/aux_/deref_wknd.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
@@ -63,11 +64,11 @@ struct lower_bound_step
         typedef typename DeferredIterator::type iter_;
         typedef typename advance<iter_, offset_>::type middle_;
         typedef typename apply_if<
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
-              apply2<Predicate,typename apply0<middle_>::type,T>
-#else
-              apply2<Predicate,typename middle_::type,T>
-#endif
+              typename BOOST_MPL_AUX_APPLY2(
+                  Predicate
+                , typename BOOST_MPL_AUX_DEREF_WNKD(middle_)
+                , T
+                )::type
             , typename lower_bound_step<Distance - offset_::value - 1>
                 ::template result_< Predicate,T,next<middle_> >
             , typename lower_bound_step<offset_::value>
@@ -79,9 +80,9 @@ struct lower_bound_step
 } // namespace aux
 
 template<
-      typename Sequence
-    , typename T
-    , typename Predicate
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Predicate)
     >
 struct lower_bound
 {
@@ -93,7 +94,7 @@ struct lower_bound
         ::template result_< pred_,T,begin<Sequence> >::type type;
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(3, lower_bound)
+BOOST_MPL_AUX_VOID_SPEC(3, lower_bound)
 
 } // namespace mpl
 } // namespace boost

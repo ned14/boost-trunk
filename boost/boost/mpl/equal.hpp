@@ -17,19 +17,21 @@
 #ifndef BOOST_MPL_EQUAL_HPP_INCLUDED
 #define BOOST_MPL_EQUAL_HPP_INCLUDED
 
-#include "boost/mpl/aux_/iter_fold_if.hpp"
+#include "boost/mpl/aux_/iter_fold_if_impl.hpp"
 #include "boost/mpl/aux_/iter_apply.hpp"
 #include "boost/mpl/logical/and.hpp"
+#include "boost/mpl/logical/not.hpp"
 #include "boost/mpl/begin_end.hpp"
 #include "boost/mpl/next.hpp"
-#include "boost/mpl/always_true.hpp"
+#include "boost/mpl/always.hpp"
+#include "boost/mpl/bool_c.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/bind.hpp"
 #include "boost/mpl/apply.hpp"
-#include "boost/mpl/type_traits/is_not_same.hpp"
-#include "boost/mpl/type_traits/is_same.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/void.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
+#include "boost/type_traits/is_same.hpp"
 
 namespace boost {
 namespace mpl {
@@ -50,8 +52,8 @@ struct equal_pred
     struct apply
     {
         typedef typename logical_and< 
-              is_not_same<Iterator1,LastIterator1>
-            , is_not_same<Iterator2,LastIterator2>
+              logical_not< is_same<Iterator1,LastIterator1> >
+            , logical_not< is_same<Iterator2,LastIterator2> >
             , aux::iter_apply2<Predicate,Iterator1,Iterator2>
             >::type type;
     };
@@ -60,8 +62,8 @@ struct equal_pred
 } // namespace aux
 
 template<
-      typename Sequence1
-    , typename Sequence2
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence1)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence2)
     , typename Predicate = is_same<_,_>
     >
 struct equal
@@ -73,29 +75,29 @@ struct equal
     typedef typename end<Sequence2>::type last2_;
     typedef typename lambda<Predicate>::type pred_;
 
-    typedef aux::iter_fold_if<
+    typedef aux::iter_fold_if_impl<
           first1_
         , first2_
-        , next<_>
+        , next<>
         , aux::equal_pred<pred_,last1_,last2_>
-        , aux::none
-        , always_false
+        , void_
+        , always<false_c>
         > fold_;
 
     typedef typename fold_::iterator iter1_;
     typedef typename fold_::state iter2_;
-    typedef logical_and2<
+    typedef logical_and<
           is_same<iter1_,last1_>
         , is_same<iter2_,last2_>
         > result_;
 
  public:
     typedef typename result_::type type;
-    BOOST_STATIC_CONSTANT(bool, value = result_::value);
+
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,equal,(Sequence1,Sequence2))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, equal)
-BOOST_MPL_AUX_LAMBDA_SPEC(3, equal)
+BOOST_MPL_AUX_VOID_SPEC(2, equal)
 
 } // namespace mpl
 } // namespace boost

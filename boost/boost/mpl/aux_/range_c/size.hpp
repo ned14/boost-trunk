@@ -17,21 +17,22 @@
 #ifndef BOOST_MPL_AUX_RANGE_C_SIZE_HPP_INCLUDED
 #define BOOST_MPL_AUX_RANGE_C_SIZE_HPP_INCLUDED
 
-#include "boost/mpl/size.hpp"
+#include "boost/mpl/size_fwd.hpp"
+#include "boost/mpl/arithmetic/minus.hpp"
 #include "boost/mpl/aux_/range_c/tag.hpp"
-#include "boost/mpl/integral_c.hpp"
-#include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<>
-struct size_algorithm_traits< aux::half_open_range_tag >
+struct size_traits< aux::half_open_range_tag >
 {
     template< typename Range > struct algorithm
+        : minus<
+              typename Range::finish
+            , typename Range::start
+            >
     {
-        BOOST_STATIC_CONSTANT(long, value = Range::finish - Range::start);
-        typedef integral_c<long, value> type;
     };
 };
 

@@ -14,35 +14,50 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED
-#define BOOST_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED
+#ifndef BOOST_MPL_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED
+#define BOOST_MPL_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED
 
-#include "boost/preprocessor/arithmetic/add.hpp"
-#include "boost/preprocessor/arithmetic/sub.hpp"
-#include "boost/preprocessor/comma_if.hpp"
-#include "boost/preprocessor/repeat.hpp"
-#include "boost/preprocessor/tuple/elem.hpp"
-#include "boost/preprocessor/cat.hpp"
+// BOOST_MPL_PP_ENUM(0,int): <nothing>
+// BOOST_MPL_PP_ENUM(1,int): int
+// BOOST_MPL_PP_ENUM(2,int): int, int
+// BOOST_MPL_PP_ENUM(n,int): int, int, .., int
 
-// BOOST_MPL_PP_ENUM(0, 0, F, int): <nothing>
-// BOOST_MPL_PP_ENUM(0, 1, F, int): F(0, int)
-// BOOST_MPL_PP_ENUM(0, 2, F, int): F(0, int), F(1, int)
-// BOOST_MPL_PP_ENUM(1, n, F, int): F(1, int), F(2, int), .., F(n-1, int)
+#if !defined(BOOST_MPL_NO_OWN_PP_PRIMITIVES)
 
-#define BOOST_MPL_PP_AUX_ENUM_FUNC(i, ofp) \
-    BOOST_PP_COMMA_IF(i) \
-    BOOST_PP_TUPLE_ELEM(3, 1, ofp)( \
-          BOOST_PP_ADD(i, BOOST_PP_TUPLE_ELEM(3, 0, ofp)) \
-        , BOOST_PP_TUPLE_ELEM(3, 2, ofp) \
-        ) \
-/**/
+#   include "boost/preprocessor/cat.hpp"
 
-#define BOOST_MPL_PP_ENUM(i, j, f, param) \
+#   define BOOST_MPL_PP_ENUM(n,param) \
+    BOOST_PP_CAT(BOOST_MPL_PP_ENUM_,n)(param) \
+    /**/
+    
+#   define BOOST_MPL_PP_ENUM_0(p)
+#   define BOOST_MPL_PP_ENUM_1(p) p
+#   define BOOST_MPL_PP_ENUM_2(p) p,p
+#   define BOOST_MPL_PP_ENUM_3(p) p,p,p
+#   define BOOST_MPL_PP_ENUM_4(p) p,p,p,p
+#   define BOOST_MPL_PP_ENUM_5(p) p,p,p,p,p
+#   define BOOST_MPL_PP_ENUM_6(p) p,p,p,p,p,p
+#   define BOOST_MPL_PP_ENUM_7(p) p,p,p,p,p,p,p
+#   define BOOST_MPL_PP_ENUM_8(p) p,p,p,p,p,p,p,p
+#   define BOOST_MPL_PP_ENUM_9(p) p,p,p,p,p,p,p,p,p
+
+#else
+
+#   include "boost/preprocessor/comma_if.hpp"
+#   include "boost/preprocessor/repeat.hpp"
+
+#   define BOOST_MPL_PP_AUX_ENUM_FUNC(i,param) \
+    BOOST_PP_COMMA_IF(i) param \
+    /**/
+
+#   define BOOST_MPL_PP_ENUM(n,param) \
     BOOST_PP_REPEAT( \
-          BOOST_PP_SUB(j, i) \
+          n \
         , BOOST_MPL_PP_AUX_ENUM_FUNC \
-        , (i, f, param) \
+        , param \
         ) \
-/**/
+    /**/
 
-#endif // BOOST_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED
+#endif // BOOST_MPL_NO_OWN_PP_PRIMITIVES
+
+#endif // BOOST_MPL_AUX_PREPROCESSOR_ENUM_HPP_INCLUDED

@@ -17,15 +17,14 @@
 #ifndef BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
 #define BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
 
-#include "boost/mpl/pop_front.hpp"
+#include "boost/mpl/pop_front_fwd.hpp"
 #include "boost/mpl/list/aux_/tag.hpp"
-#include "boost/mpl/list/aux_/node.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<>
-struct pop_front_algorithm_traits< aux::list_tag >
+struct pop_front_traits< aux::list_tag >
 {
     template< typename List > struct algorithm
     {

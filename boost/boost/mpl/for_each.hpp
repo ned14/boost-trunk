@@ -18,12 +18,10 @@
 #define BOOST_MPL_FOR_EACH_HPP_INCLUDED
 
 #include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/identity.hpp"
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/bool_c.hpp"
-
-#include "boost/type_traits/same_traits.hpp"
-#include "boost/bind/arg.hpp"
+#include "boost/mpl/lambda.hpp"
+#include "boost/type_traits/is_same.hpp"
 
 namespace boost {
 namespace mpl {
@@ -42,16 +40,18 @@ inline
 void for_each_impl(
       F f
     , false_c
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1301
     , Iterator* = 0
     , LastIterator* = 0
     , TransformFunc* = 0
+#endif
     )
 {
     typedef typename Iterator::type item;
-    typedef typename apply1<TransformFunc,item>::type x;
     typedef typename Iterator::next iter;
     typedef bool_c< boost::is_same<iter,LastIterator>::value > is_last;
-    f(x());
+    typename apply1<TransformFunc,item>::type x;
+    f(x);
     for_each_impl< iter,LastIterator,TransformFunc >(f, is_last());
 }
 
@@ -65,9 +65,11 @@ inline
 void for_each_impl(
       F
     , true_c
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1301
     , Iterator* = 0
     , LastIterator* = 0
     , TransformFunc* = 0
+#endif
     )
 {
 }
@@ -76,28 +78,17 @@ void for_each_impl(
 
 template<
       typename Sequence
+    , typename TransformOp
     , typename F
     >
 inline
 void for_each(F f)
 {
-    typedef begin<Sequence>::type first;
-    typedef end<Sequence>::type last;
+    typedef typename begin<Sequence>::type first;
+    typedef typename end<Sequence>::type last;
+    typedef typename lambda<TransformOp>::type transform_op;
     typedef bool_c< boost::is_same<first,last>::value > is_last;
-    aux::for_each_impl< first,last,make_identity<_> >(f, is_last());
-}
-
-template<
-      typename Sequence
-    , typename F
-    >
-inline
-void for_each(F f, boost::arg<1>)
-{
-    typedef begin<Sequence>::type first;
-    typedef end<Sequence>::type last;
-    typedef bool_c< boost::is_same<first,last>::value > is_last;
-    aux::for_each_impl< first,last,identity<_> >(f, is_last());
+    aux::for_each_impl< first,last,transform_op >(f, is_last());
 }
 
 } // namespace mpl

@@ -17,78 +17,28 @@
 #ifndef BOOST_MPL_INSERT_HPP_INCLUDED
 #define BOOST_MPL_INSERT_HPP_INCLUDED
 
-#include "boost/mpl/iter_fold.hpp"
-#include "boost/mpl/clear.hpp"
-#include "boost/mpl/push_front.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/type_traits/is_same.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
-#include "boost/mpl/aux_/iter_push_front.hpp"
+#include "boost/mpl/insert_fwd.hpp"
+#include "boost/mpl/aux_/insert_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
-namespace aux {
-
 template<
-      typename Pos
-    , typename T
-    >
-struct iter_inserter
-{
-    template< typename Sequence, typename Iterator > struct apply
-    {
-        typedef typename aux::iter_push_front<
-              typename apply_if<
-                  is_same<Pos,Iterator>
-                , push_front<Sequence,T>
-                , identity<Sequence>
-                >::type
-            , Iterator
-            >::type type;
-    };
-};
-
-} // namespace aux
-
-
-template< typename Tag >
-struct insert_algorithm_traits
-{
-    template<
-          typename Sequence
-        , typename Pos
-        , typename T
-        >
-    struct algorithm
-    {
-        typedef typename iter_fold<
-              Sequence
-            , typename clear<Sequence>::type
-            , project1st<_,_>
-            , aux::iter_inserter<Pos,T>
-            >::type type;
-    };
-};
-
-template<
-      typename Sequence
-    , typename Pos
-    , typename T
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Pos)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
     >
 struct insert
+    : insert_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence,Pos,T >
 {
- private:
-    typedef typename sequence_tag<Sequence>::type tag_;
- 
- public:
-    typedef typename insert_range_algorithm_traits<tag_>
-        ::template algorithm< Sequence,Pos,T >::type type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,insert,(Sequence,Pos,T))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(3, insert)
+BOOST_MPL_AUX_VOID_SPEC(3, insert)
 
 } // namespace mpl
 } // namespace boost

@@ -17,19 +17,24 @@
 #ifndef BOOST_MPL_LIST_AUX_PUSH_FRONT_HPP_INCLUDED
 #define BOOST_MPL_LIST_AUX_PUSH_FRONT_HPP_INCLUDED
 
-#include "boost/mpl/push_front.hpp"
-#include "boost/mpl/list/aux_/tag.hpp"
+#include "boost/mpl/push_front_fwd.hpp"
+#include "boost/mpl/aux_/next.hpp"
 #include "boost/mpl/list/aux_/node.hpp"
+#include "boost/mpl/list/aux_/tag.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<>
-struct push_front_algorithm_traits< aux::list_tag >
+struct push_front_traits< aux::list_tag >
 {
     template< typename List, typename T > struct algorithm
     {
-        typedef list_node<T,List> type;
+        typedef list_node<
+              typename BOOST_MPL_AUX_NEXT(List::size)
+            , T
+            , typename List::type
+            > type;
     };
 };
 

@@ -14,11 +14,11 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_AUX_PREPROCESSOR_PROJECT1ST_HPP_INCLUDED
-#define BOOST_AUX_PREPROCESSOR_PROJECT1ST_HPP_INCLUDED
+#ifndef BOOST_MPL_AUX_PREPROCESSOR_PROJECT1ST_HPP_INCLUDED
+#define BOOST_MPL_AUX_PREPROCESSOR_PROJECT1ST_HPP_INCLUDED
 
 // should be in PREPROCESSOR library
 #define BOOST_MPL_PP_PROJECT1ST(first, second) first
 #define BOOST_MPL_PP_PROJECT2ND(first, second) second
 
-#endif // BOOST_AUX_PREPROCESSOR_PROJECT1ST_HPP_INCLUDED
+#endif // BOOST_MPL_AUX_PREPROCESSOR_PROJECT1ST_HPP_INCLUDED

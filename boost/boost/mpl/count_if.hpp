@@ -22,10 +22,11 @@
 #include "boost/mpl/integral_c.hpp"
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/apply.hpp"
 #include "boost/mpl/lambda.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/protect.hpp"
+#include "boost/mpl/apply.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
@@ -42,7 +43,7 @@ struct next_if
     struct apply
     {
         typedef typename apply_if<
-              apply1<Predicate,T>
+              typename apply1<Predicate,T>::type
             , next<N>
             , identity<N>
             >::type type;
@@ -52,8 +53,8 @@ struct next_if
 } // namespace aux
 
 template<
-      typename Sequence
-    , typename Predicate
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Predicate)
     >
 struct count_if
 {
@@ -67,10 +68,10 @@ struct count_if
         , protect< aux::next_if<pred_> >
         >::type type;
 
-    BOOST_STATIC_CONSTANT(unsigned long, value = type::value);
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,count_if,(Sequence,Predicate))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, count_if)
+BOOST_MPL_AUX_VOID_SPEC(2, count_if)
 
 } // namespace mpl
 } // namespace boost

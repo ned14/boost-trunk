@@ -18,6 +18,7 @@
 #define BOOST_MPL_AUX_COPY_OP_HPP_INCLUDED
 
 #include "boost/mpl/apply.hpp"
+#include "boost/mpl/aux_/lambda_spec.hpp"
 
 namespace boost {
 namespace mpl {
@@ -40,7 +41,10 @@ struct copy_op
 };
 
 } // namespace aux
+
+BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(1,aux::copy_op)
+
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_AUX_COPY_OP_HPP_INCLUDED
+#endif // BOOST_MPL_AUX_COPY_OP_HPP_INCLUDED

@@ -17,55 +17,26 @@
 #ifndef BOOST_MPL_FRONT_HPP_INCLUDED
 #define BOOST_MPL_FRONT_HPP_INCLUDED
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/select_if.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/is_reflective.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/front_fwd.hpp"
+#include "boost/mpl/aux_/front_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename Tag >
-struct front_algorithm_traits
-{
-    template< typename Sequence > struct algorithm
-    {
-     private:
-        typedef typename begin<Sequence>::type iter_;
-     
-     public:
-        typedef typename iter_::type type;
-    };
-};
-
-namespace aux {
-
-template< typename Sequence >
-struct front_impl
-{
- private:
-    typedef typename sequence_tag<Sequence>::type tag_;
-    typedef typename front_algorithm_traits<tag_>
-        ::template algorithm< Sequence >::type result_;
- public:
-    typedef typename select_if<
-          is_reflective<result_>
-        , result_
-        , identity<result_>
-        >::type type;
-};
-
-} // namespace aux
-
-template< typename Sequence >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    >
 struct front
-    : aux::front_impl<Sequence>::type
+    : front_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence >
 {
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,front,(Sequence))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, front)
+BOOST_MPL_AUX_VOID_SPEC(1, front)
 
 } // namespace mpl
 } // namespace boost

@@ -17,15 +17,15 @@
 #ifndef BOOST_MPL_LIST_AUX_CLEAR_HPP_INCLUDED
 #define BOOST_MPL_LIST_AUX_CLEAR_HPP_INCLUDED
 
+#include "boost/mpl/clear_fwd.hpp"
 #include "boost/mpl/list/aux_/node.hpp"
 #include "boost/mpl/list/aux_/tag.hpp"
-#include "boost/mpl/clear.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<>
-struct clear_algorithm_traits< aux::list_tag >
+struct clear_traits< aux::list_tag >
 {
     template< typename List > struct algorithm
     {

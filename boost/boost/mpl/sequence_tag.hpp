@@ -17,14 +17,20 @@
 #ifndef BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
 #define BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
 
+#include "boost/mpl/aux_/void_spec.hpp"
+
 namespace boost {
 namespace mpl {
 
-template< typename Sequence >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    >
 struct sequence_tag
 {
     typedef typename Sequence::tag type;
 };
+
+BOOST_MPL_AUX_VOID_SPEC(1, sequence_tag)
 
 } // namespace mpl
 } // namespace boost

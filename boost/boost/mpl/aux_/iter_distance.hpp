@@ -17,16 +17,21 @@
 #ifndef BOOST_MPL_AUX_ITER_DISTANCE_HPP_INCLUDED
 #define BOOST_MPL_AUX_ITER_DISTANCE_HPP_INCLUDED
 
-#include "boost/mpl/aux_/msvc_workarounds.hpp"
+#include "boost/mpl/aux_/iterator_names.hpp"
+#include "boost/mpl/aux_/msvc_never_true.hpp"
 #include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 namespace aux {
 
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
 
-BOOST_MPL_AUX_MSVC_DEPENDENT_TEMPLATE_WRAPPER_DEF(msvc_distance, distance_, 1)
+// msvc_distance
+#define BOOST_MPL_AUX_MSVC_DTW_NAME msvc_distance
+#define BOOST_MPL_AUX_MSVC_DTW_ORIGINAL_NAME BOOST_MPL_AUX_ITERATOR_DISTANCE
+#define BOOST_MPL_AUX_MSVC_DTW_ARITY 1
+#include "boost/mpl/aux_/msvc_dtw.hpp"
 
 template<
       typename Iterator
@@ -44,7 +49,7 @@ template<
     , typename Other
     > 
 struct iter_distance
-    : Iterator::template distance_<Other>
+    : Iterator::template BOOST_MPL_AUX_ITERATOR_DISTANCE<Other>
 {
 };
 

@@ -17,8 +17,56 @@
 #ifndef BOOST_MPL_COMPARISON_EQUAL_TO_HPP_INCLUDED
 #define BOOST_MPL_COMPARISON_EQUAL_TO_HPP_INCLUDED
 
-#include "boost/mpl/comparison/aux_/op.hpp"
+#include "boost/mpl/bool_c.hpp"
+#include "boost/mpl/integral_c.hpp"
+#include "boost/mpl/aux_/value_wknd.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
+#include "boost/config.hpp"
 
-BOOST_MPL_AUX_COMPARISON_OP(equal_to, eq, ==)
+namespace boost {
+namespace mpl {
+
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T1)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T2)
+    >
+struct equal_to
+{
+    BOOST_STATIC_CONSTANT(bool, value = (
+          BOOST_MPL_AUX_VALUE_WKND(T1)::value 
+            == BOOST_MPL_AUX_VALUE_WKND(T2)::value
+        ));
+
+#if !defined(__BORLANDC__)
+    typedef bool_c<value> type;
+#else
+    typedef bool_c<(
+          BOOST_MPL_AUX_VALUE_WKND(T1)::value 
+            == BOOST_MPL_AUX_VALUE_WKND(T2)::value
+        )> type;
+#endif
+
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,equal_to,(T1,T2))
+};
+
+BOOST_MPL_AUX_VOID_SPEC(2, equal_to)
+
+template< long N >
+struct eq
+{
+    template< typename T > struct apply
+#if !defined(__BORLANDC__)
+        : equal_to< T,integral_c<long,N> >
+    {
+#else
+    {
+        typedef typename equal_to< T,integral_c<long,N> >::type type;
+#endif
+    };
+};
+
+} // namespace mpl
+} // namespace boost
 
 #endif // BOOST_MPL_COMPARISON_EQUAL_TO_HPP_INCLUDED

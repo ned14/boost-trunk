@@ -16,49 +16,55 @@
 
 // no include guards, the header is intended for multiple inclusion!
 
-#include "boost/mpl/list/aux_/node.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
+#if defined(BOOST_PP_IS_ITERATING)
 
-#include "boost/preprocessor/repeat_2nd.hpp"
-#include "boost/preprocessor/arithmetic/add.hpp"
+#include "boost/preprocessor/enum_params.hpp"
+#include "boost/preprocessor/enum_shifted_params.hpp"
 #include "boost/preprocessor/dec.hpp"
-#include "boost/preprocessor/if.hpp"
-#include "boost/preprocessor/identity.hpp"
-#include "boost/preprocessor/empty.hpp"
 #include "boost/preprocessor/cat.hpp"
 
-namespace boost {
-namespace mpl {
+#define i BOOST_PP_FRAME_ITERATION(1)
 
-// local macros, #undef-ined at the end of the header
-#define AUX_LIST_N_DEF(i) \
-template< BOOST_MPL_PP_PARAMS(0, i, typename T) > \
-struct BOOST_PP_CAT(list, i) \
-    : list_node< \
-          T0 \
-        , BOOST_PP_CAT(list, BOOST_PP_DEC(i)) \
-          BOOST_PP_CAT(BOOST_PP_, BOOST_PP_IF(BOOST_PP_DEC(i), IDENTITY(<), EMPTY))() \
-              BOOST_MPL_PP_PARAMS(1, i, T) \
-          BOOST_PP_CAT(BOOST_PP_, BOOST_PP_IF(BOOST_PP_DEC(i), IDENTITY(>), EMPTY))() \
-        > \
-{ \
-    typedef BOOST_PP_CAT(list, i) type; \
-}; \
-/**/
+#if i == 1
 
-#define AUX_LIST_DEF(i, offset) \
-    AUX_LIST_N_DEF(BOOST_PP_ADD(offset, i)) \
-/**/
+template<
+      BOOST_PP_ENUM_PARAMS(i, typename T)
+    >
+struct list1
+    : list_node<
+          integral_c<long,1>
+        , T0
+        , null_node
+        >
+{
+    typedef list1 type;
+};
 
-// list#
-BOOST_PP_REPEAT_2ND(
-      BOOST_MPL_AUX_NUMBERED_LIST_BLOCK_SIZE
-    , AUX_LIST_DEF
-    , BOOST_MPL_AUX_NUMBERED_LIST_BLOCK_START
-    )
+#else
 
-#undef AUX_LIST_DEF
-#undef AUX_LIST_N_DEF
+#   define MPL_AUX_LIST_TAIL(list, i, T) \
+    BOOST_PP_CAT(list,BOOST_PP_DEC(i))< \
+      BOOST_PP_ENUM_SHIFTED_PARAMS(i, T) \
+    > \
+    /**/
+    
+template<
+      BOOST_PP_ENUM_PARAMS(i, typename T)
+    >
+struct BOOST_PP_CAT(list,i)
+    : list_node<
+          integral_c<long,i>
+        , T0
+        , MPL_AUX_LIST_TAIL(list,i,T)
+        >
+{
+    typedef BOOST_PP_CAT(list,i) type;
+};
 
-} // namespace mpl
-} // namespace boost
+#   undef MPL_AUX_LIST_TAIL
+
+#endif // i == 1
+
+#undef i
+
+#endif // BOOST_PP_IS_ITERATING

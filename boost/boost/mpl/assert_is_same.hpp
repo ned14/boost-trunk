@@ -33,11 +33,11 @@ namespace mpl {
 // conform to the standard here
 
 #define BOOST_MPL_ASSERT_IS_SAME(type1, type2) \
-    BOOST_STATIC_ASSERT((boost::is_same< type1, type2 >::value)) \
+    BOOST_STATIC_ASSERT((::boost::is_same< type1, type2 >::value)) \
 /**/
 
 #define BOOST_MPL_ASSERT_NOT_SAME(type1, type2) \
-    BOOST_STATIC_ASSERT(!(boost::is_same< type1, type2 >::value)) \
+    BOOST_STATIC_ASSERT(!(::boost::is_same< type1, type2 >::value)) \
 /**/
 
 } // namespace mpl

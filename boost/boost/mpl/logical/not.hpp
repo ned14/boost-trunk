@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/functional/logical_not.hpp header file
+// boost mpl/logical/not.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -14,26 +14,42 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_MPL_FUNCTIONAL_LOGICAL_NOT_HPP_INCLUDED
-#define BOOST_MPL_FUNCTIONAL_LOGICAL_NOT_HPP_INCLUDED
+#ifndef BOOST_MPL_LOGICAL_NOT_HPP_INCLUDED
+#define BOOST_MPL_LOGICAL_NOT_HPP_INCLUDED
 
 #include "boost/mpl/bool_c.hpp"
+#include "boost/mpl/aux_/nested_type_wknd.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename T >
-struct logical_not
+namespace aux {
+
+template< long C > // |long| is intentional here
+struct logical_not_impl
+    : bool_c<!C>
 {
- private:
-    typedef typename T::type t_;
- 
- public:
-    BOOST_STATIC_CONSTANT(bool, value = (!t_::value));
-    typedef bool_c<value> type;
 };
+
+} // namespace aux
+
+
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+    >
+struct logical_not
+    : aux::logical_not_impl<
+          BOOST_MPL_AUX_NESTED_TYPE_WKND(T)::value
+        >
+{
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,logical_not,(T))
+};
+
+BOOST_MPL_AUX_VOID_SPEC(1,logical_not)
 
 } // namespace mpl
 } // namespace boost
 
-#endif // BOOST_MPL_FUNCTIONAL_LOGICAL_NOT_HPP_INCLUDED
+#endif // BOOST_MPL_LOGICAL_NOT_HPP_INCLUDED

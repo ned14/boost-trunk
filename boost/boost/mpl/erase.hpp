@@ -17,69 +17,42 @@
 #ifndef BOOST_MPL_ERASE_HPP_INCLUDED
 #define BOOST_MPL_ERASE_HPP_INCLUDED
 
-#include "boost/mpl/iter_fold.hpp"
-#include "boost/mpl/clear.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/protect.hpp"
-#include "boost/mpl/apply_if.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
-#include "boost/mpl/aux_/iter_push_front.hpp"
-#include "boost/mpl/type_traits/is_same.hpp"
+#include "boost/mpl/erase_fwd.hpp"
+#include "boost/mpl/aux_/next.hpp"
+#include "boost/mpl/aux_/erase_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
+#include "boost/mpl/aux_/config/msvc_typename.hpp"
 
 namespace boost {
 namespace mpl {
 
 namespace aux {
-
-template< typename Pos > struct iter_eraser
+template< typename T > struct erase_param
 {
-    template< typename Sequence, typename Iterator > struct apply
-    {
-        typedef typename apply_if<
-              is_same<Pos,Iterator>
-            , identity<Sequence>
-            , aux::iter_push_front<Sequence,Iterator>
-            >::type type;
-    };
+    typedef typename BOOST_MPL_AUX_NEXT(T) type;
 };
 
+template<> struct erase_param<void_>
+{
+    typedef void_ type;
+};
 } // namespace aux
 
-
-template< typename Tag >
-struct erase_algorithm_traits
-{
-    template<
-          typename Sequence
-        , typename Pos
-        >
-    struct algorithm
-    {
-        typedef typename iter_fold<
-              Sequence
-            , typename clear<Sequence>::type
-            , project1st<_,_>
-            , protect< aux::iter_eraser<Pos> >
-            >::type type;
-    };
-};
-
 template<
-      typename Sequence
-    , typename Pos
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(First)
+    , typename Last = BOOST_MSVC_TYPENAME aux::erase_param<First>::type
     >
 struct erase
+    : erase_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence,First,Last >
 {
- private:
-    typedef typename sequence_tag<Sequence>::type tag_;
- 
- public:
-    typedef typename erase_algorithm_traits<tag_>
-        ::template algorithm< Sequence,Pos >::type type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,erase,(Sequence,First,Last))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, erase)
+BOOST_MPL_AUX_VOID_SPEC_EXT(2,3,erase)
 
 } // namespace mpl
 } // namespace boost

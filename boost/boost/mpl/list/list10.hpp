@@ -17,21 +17,32 @@
 #ifndef BOOST_MPL_LIST_LIST10_HPP_INCLUDED
 #define BOOST_MPL_LIST_LIST10_HPP_INCLUDED
 
-#include "boost/mpl/list/list0.hpp"
+#if !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/list/list0.hpp"
+#endif
+
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
 #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
     !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include "boost/mpl/aux_/preprocessed/list10.hpp"
+
+#   define BOOST_MPL_PREPROCESSED_HEADER list10.hpp
+#   include "boost/mpl/aux_/include_preprocessed.hpp"
 
 #else
 
-#   define BOOST_MPL_AUX_NUMBERED_LIST_BLOCK_START 1
-#   define BOOST_MPL_AUX_NUMBERED_LIST_BLOCK_SIZE 10
-#   include "boost/mpl/list/aux_/numbered.hpp"
-#   undef BOOST_MPL_AUX_NUMBERED_LIST_BLOCK_START
-#   undef BOOST_MPL_AUX_NUMBERED_LIST_BLOCK_SIZE
+#   include "boost/preprocessor/iterate.hpp"
 
-#endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
+namespace boost {
+namespace mpl {
+
+#   define BOOST_PP_ITERATION_PARAMS_1 \
+    (3,(1, 10, "boost/mpl/list/aux_/numbered.hpp"))
+#   include BOOST_PP_ITERATE()
+
+} // namespace mpl
+} // namespace boost
+
+#endif // BOOST_MPL_USE_PREPROCESSED_HEADERS
 
 #endif // BOOST_MPL_LIST_LIST10_HPP_INCLUDED

@@ -17,18 +17,19 @@
 #ifndef BOOST_MPL_FIND_IF_HPP_INCLUDED
 #define BOOST_MPL_FIND_IF_HPP_INCLUDED
 
-#include "boost/mpl/aux_/iter_fold_if.hpp"
+#include "boost/mpl/aux_/iter_fold_if_impl.hpp"
 #include "boost/mpl/aux_/iter_apply.hpp"
-#include "boost/mpl/type_traits/is_same.hpp"
 #include "boost/mpl/logical/or.hpp"
 #include "boost/mpl/logical/not.hpp"
 #include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/project1st.hpp"
-#include "boost/mpl/always_true.hpp"
+#include "boost/mpl/always.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/bind.hpp"
 #include "boost/mpl/apply.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/void.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
+#include "boost/type_traits/is_same.hpp"
 
 namespace boost {
 namespace mpl {
@@ -44,7 +45,7 @@ struct find_if_pred
         >
     struct apply
     {
-        typedef typename logical_not< logical_or2<
+        typedef typename logical_not< logical_or<
               is_same<Iterator,LastIterator>
             , aux::iter_apply1<Predicate,Iterator>
             > >::type type;
@@ -54,8 +55,8 @@ struct find_if_pred
 } // namespace aux
 
 template<
-      typename Sequence
-    , typename Predicate
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Predicate)
     >
 struct find_if
 {
@@ -65,17 +66,19 @@ struct find_if
     typedef typename lambda<Predicate>::type pred_;
 
  public:
-    typedef typename aux::iter_fold_if<
+    typedef typename aux::iter_fold_if_impl<
           first_
         , pred_
-        , project1st<_,_>
+        , arg<1>
         , aux::find_if_pred<last_>
-        , aux::none
-        , always_false
+        , void
+        , always<false_c>
         >::iterator type;
+
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,find_if,(Sequence,Predicate))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, find_if)
+BOOST_MPL_AUX_VOID_SPEC(2,find_if)
 
 } // namespace mpl
 } // namespace boost

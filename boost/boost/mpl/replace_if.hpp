@@ -20,9 +20,9 @@
 #include "boost/mpl/transform.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/apply.hpp"
-#include "boost/mpl/select_if.hpp"
+#include "boost/mpl/if.hpp"
 #include "boost/mpl/protect.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
@@ -34,8 +34,8 @@ struct replace_if_op
 {
     template< typename U > struct apply
     {
-        typedef typename select_if<
-              apply1<Predicate,U>
+        typedef typename if_<
+              typename apply1<Predicate,U>::type
             , T
             , U
             >::type type;
@@ -45,9 +45,9 @@ struct replace_if_op
 } // namespace aux
 
 template<
-      typename Sequence
-    , typename Predicate
-    , typename T
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Predicate)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
     >
 struct replace_if
 {
@@ -61,7 +61,7 @@ struct replace_if
         >::type type;
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(3, replace_if)
+BOOST_MPL_AUX_VOID_SPEC(3, replace_if)
 
 } // namespace mpl
 } // namespace boost

@@ -17,29 +17,26 @@
 #ifndef BOOST_MPL_POP_FRONT_HPP_INCLUDED
 #define BOOST_MPL_POP_FRONT_HPP_INCLUDED
 
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/pop_front_fwd.hpp"
+#include "boost/mpl/aux_/pop_front_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename Tag >
-struct pop_front_algorithm_traits
-{
-    template< typename Sequence > struct algorithm;
-};
-
 template<
-      typename Sequence
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
     >
 struct pop_front
-    : pop_front_algorithm_traits<
-          typename sequence_tag<Sequence>::type
-        >::template algorithm< Sequence >
+    : pop_front_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence >
 {
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,pop_front,(Sequence))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, pop_front)
+BOOST_MPL_AUX_VOID_SPEC(1, pop_front)
 
 } // namespace mpl
 } // namespace boost

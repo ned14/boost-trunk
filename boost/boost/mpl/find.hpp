@@ -19,21 +19,23 @@
 
 #include "boost/mpl/find_if.hpp"
 #include "boost/mpl/same_as.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename Sequence
-    , typename T
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
     >
 struct find
     : find_if< Sequence,same_as<T> >
 {
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,find,(Sequence,T))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, find)
+BOOST_MPL_AUX_VOID_SPEC(2, find)
 
 } // namespace mpl
 } // namespace boost

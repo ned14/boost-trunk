@@ -21,7 +21,7 @@
 #include "boost/mpl/aux_/copy_op.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/protect.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
@@ -44,7 +44,7 @@ struct copy_backward
         >::type type;
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(3, copy_backward)
+BOOST_MPL_AUX_VOID_SPEC(3, copy_backward)
 
 } // namespace mpl
 } // namespace boost

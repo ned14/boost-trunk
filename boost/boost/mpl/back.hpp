@@ -17,56 +17,26 @@
 #ifndef BOOST_MPL_BACK_HPP_INCLUDED
 #define BOOST_MPL_BACK_HPP_INCLUDED
 
-#include "boost/mpl/begin_end.hpp"
-#include "boost/mpl/sequence_tag.hpp"
-#include "boost/mpl/select_if.hpp"
-#include "boost/mpl/identity.hpp"
-#include "boost/mpl/is_reflective.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/back_fwd.hpp"
+#include "boost/mpl/aux_/back_impl.hpp"
+#include "boost/mpl/aux_/sequence_tag.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename Tag >
-struct back_algorithm_traits
-{
-    template< typename Sequence > struct algorithm
-    {
-     private:
-        typedef typename end<Sequence>::type iter_;
-        typedef typename iter_::prior last_;
-     
-     public:
-        typedef typename last_::type type;
-    };
-};
-
-namespace aux {
-
-template< typename Sequence >
-struct back_impl
-{
- private:
-    typedef typename sequence_tag<Sequence>::type tag_;
-    typedef typename back_algorithm_traits<tag_>
-        ::template algorithm< Sequence >::type result_;
- public:
-    typedef typename select_if<
-          is_reflective<result_>
-        , result_
-        , identity<result_>
-        >::type type;
-};
-
-} // namespace aux
-
-template< typename Sequence >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    >
 struct back
-    : aux::back_impl<Sequence>::type
+    : back_traits< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        ::template algorithm< Sequence >
 {
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,back,(Sequence))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, back)
+BOOST_MPL_AUX_VOID_SPEC(1, back)
 
 } // namespace mpl
 } // namespace boost

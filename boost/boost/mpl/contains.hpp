@@ -19,22 +19,28 @@
 
 #include "boost/mpl/begin_end.hpp"
 #include "boost/mpl/find.hpp"
-#include "boost/mpl/type_traits/is_not_same.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/logical_not.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
+#include "boost/type_traits/is_same.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename Sequence, typename T >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+    >
 struct contains
-    : is_not_same<
+    : logical_not< is_same<
           typename find<Sequence,T>::type
         , typename end<Sequence>::type
-        >
+        > >
 {
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,contains,(Sequence,T))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(2, contains)
+BOOST_MPL_AUX_VOID_SPEC(2, contains)
 
 } // namespace mpl
 } // namespace boost

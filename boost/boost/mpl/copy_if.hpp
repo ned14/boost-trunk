@@ -21,16 +21,17 @@
 #include "boost/mpl/aux_/copy_if_op.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/protect.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename InputSequence
-    , typename Operation
-    , typename OutputSequence
-    , typename Predicate
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(InputSequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Operation)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(OutputSequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Predicate)
     >
 struct copy_if
 {
@@ -44,9 +45,14 @@ struct copy_if
         , OutputSequence
         , protect< aux::copy_if_op<op_,pred_> >
         >::type type;
+
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(4
+        ,  copy_if
+        , (InputSequence,Operation,OutputSequence,Predicate)
+        )
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(4, copy_if)
+BOOST_MPL_AUX_VOID_SPEC(4, copy_if)
 
 } // namespace mpl
 } // namespace boost

@@ -17,18 +17,31 @@
 #ifndef BOOST_MPL_ITERATOR_CATEGORY_HPP_INCLUDED
 #define BOOST_MPL_ITERATOR_CATEGORY_HPP_INCLUDED
 
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
+
 namespace boost {
 namespace mpl {
 
-struct forward_iterator_tag;
-struct bidirectional_iterator_tag;
-struct random_access_iterator_tag;
-
-template< typename Iterator >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Iterator)
+    >
 struct iterator_category
 {
     typedef typename Iterator::category type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,iterator_category,(Iterator))
 };
+
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
+// ETI workaround
+template<>
+struct iterator_category<int>
+{
+    typedef iterator_category<int> type;
+};
+#endif
+
+BOOST_MPL_AUX_VOID_SPEC(1, iterator_category)
 
 } // namespace mpl
 } // namespace boost

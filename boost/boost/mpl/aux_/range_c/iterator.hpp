@@ -17,35 +17,35 @@
 #ifndef BOOST_MPL_AUX_RANGE_C_ITERATOR_HPP_INCLUDED
 #define BOOST_MPL_AUX_RANGE_C_ITERATOR_HPP_INCLUDED
 
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/iterator_category.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/iterator_tag.hpp"
+#include "boost/mpl/arithmetic/plus.hpp"
+#include "boost/mpl/arithmetic/minus.hpp"
+#include "boost/mpl/aux_/iterator_names.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename T, T N >
+template< typename N >
 struct range_c_iterator
 {
-    typedef random_access_iterator_tag category;
+    typedef ra_iter_tag_ category;
+    typedef N type;
 
-    typedef integral_c<T,N> type;
-    BOOST_STATIC_CONSTANT(T, value = N);
+    typedef range_c_iterator<typename N::next> next;
+    typedef range_c_iterator<typename N::prior> prior;
 
-    typedef range_c_iterator<T,value + 1> next;
-    typedef range_c_iterator<T,value - 1> prior;
-
-    template< typename D > struct advance_
+    template< typename D >
+    struct BOOST_MPL_AUX_ITERATOR_ADVANCE
     {
-        // temporary 'result_' is a MSVC6.5 workaround
-        BOOST_STATIC_CONSTANT(T, result_ = N + D::value);
-        typedef range_c_iterator<T,result_> type;
+        typedef range_c_iterator<
+              typename plus<N,D>::type
+            > type;
     };
 
-    template< typename U > struct distance_
+    template< typename U >
+    struct BOOST_MPL_AUX_ITERATOR_DISTANCE
     {
-        BOOST_STATIC_CONSTANT(long, value = U::value - N);
-        typedef integral_c<long, value> type;
+        typedef typename minus<typename U::type,N>::type type;
     };
 };
 

@@ -17,22 +17,33 @@
 #ifndef BOOST_MPL_SELECT1ST_HPP_INCLUDED
 #define BOOST_MPL_SELECT1ST_HPP_INCLUDED
 
-#include "boost/mpl/aux_/lambda_spec.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename Pair
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Pair)
     >
 struct select1st
 {
     typedef typename Pair::first type;
+    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,select1st,(Pair))
 };
 
-BOOST_MPL_AUX_LAMBDA_SPEC(1, select1st)
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
+// ETI workaround
+template<>
+struct select1st<int>
+{
+    typedef select1st<int> type;
+};
+#endif
+
+BOOST_MPL_AUX_VOID_SPEC(1, select1st)
 
 } // namespace mpl
 } // namespace boost
 
-#endif // #ifndef BOOST_MPL_SELECT1ST_HPP_INCLUDED
+#endif // BOOST_MPL_SELECT1ST_HPP_INCLUDED

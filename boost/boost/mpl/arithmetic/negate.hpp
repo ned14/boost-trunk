@@ -19,18 +19,27 @@
 
 #include "boost/mpl/integral_c.hpp"
 #include "boost/mpl/aux_/typeof.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 #include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 
-template< typename T >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(T)
+    >
 struct negate
 {
-    typedef typename BOOST_MPL_AUX_TYPEOF(T::value) value_t;
-    BOOST_STATIC_CONSTANT(value_t, value = (-T::value));
-    typedef integral_c<value_t, value> type;
+    typedef BOOST_MPL_AUX_TYPEOF(T,T::value) value_type;
+    BOOST_STATIC_CONSTANT(value_type, value = (-T::value));
+#if !defined(__BORLANDC__)
+    typedef integral_c<value_type, value> type;
+#else
+    typedef integral_c<value_type, (-T::value)> type;
+#endif
 };
+
+BOOST_MPL_AUX_VOID_SPEC(1,negate)
 
 } // namespace mpl
 } // namespace boost 
