@@ -1273,6 +1273,7 @@ boost/boost/python/detail/make_keyword_range_fn.hpp svneol=native#text/plain
 boost/boost/python/detail/make_tuple.hpp svneol=native#text/plain
 boost/boost/python/detail/map_entry.hpp svneol=native#text/plain
 boost/boost/python/detail/member_function_cast.hpp svneol=native#text/plain
+boost/boost/python/detail/mpl_lambda.hpp svneol=native#text/plain
 boost/boost/python/detail/msvc_typeinfo.hpp svneol=native#text/plain
 boost/boost/python/detail/none.hpp svneol=native#text/plain
 boost/boost/python/detail/not_specified.hpp svneol=native#text/plain
