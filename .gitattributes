@@ -543,6 +543,7 @@ boost/boost/graph/matrix_as_graph.hpp svneol=native#text/plain
 boost/boost/graph/minimum_degree_ordering.hpp svneol=native#text/plain
 boost/boost/graph/named_function_params.hpp svneol=native#text/plain
 boost/boost/graph/neighbor_bfs.hpp svneol=native#text/plain
+boost/boost/graph/page_rank.hpp svneol=native#text/plain
 boost/boost/graph/prim_minimum_spanning_tree.hpp svneol=native#text/plain
 boost/boost/graph/profile.hpp svneol=native#text/plain
 boost/boost/graph/properties.hpp svneol=native#text/plain
