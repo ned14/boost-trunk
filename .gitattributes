@@ -3164,6 +3164,7 @@ boost/libs/iterator/doc/function_output_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/function_output_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/function_output_iterator_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/function_output_iterator_ref.rst svneol=native#text/plain
+boost/libs/iterator/doc/generate.py svneol=native#text/x-python
 boost/libs/iterator/doc/index.html svneol=native#text/html
 boost/libs/iterator/doc/index.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_iterator.html svneol=native#text/html
@@ -3195,6 +3196,7 @@ boost/libs/iterator/doc/reverse_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/reverse_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/reverse_iterator_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/reverse_iterator_ref.rst svneol=native#text/plain
+boost/libs/iterator/doc/sources.py svneol=native#text/x-python
 boost/libs/iterator/doc/style.tex -text
 boost/libs/iterator/doc/transform_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/transform_iterator.rst svneol=native#text/plain
