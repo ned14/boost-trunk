@@ -392,6 +392,12 @@ struct AUX_FOLD_CHUNK_NAME<BOOST_PP_FRAME_ITERATION(1)>
         typedef bkwd_state0 state;
         typedef BOOST_PP_CAT(iter,i) iterator;
     };
+
+    template<> struct result_<int,int,int,int,int>
+    {
+        typedef int state;
+        typedef int iterator;
+    };
 };
 
 #endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION

@@ -21,6 +21,7 @@
 #include "boost/mpl/aux_/typeof.hpp"
 #include "boost/mpl/aux_/value_wknd.hpp"
 #include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/config/eti.hpp"
 #include "boost/config.hpp"
 
 namespace boost {
@@ -39,8 +40,7 @@ struct divides_c
 #endif
 };
 
-#if defined(BOOST_MSVC) && BOOST_MSVC <= 1300
-// ETI workaround
+#if defined(BOOST_MPL_MSVC_ETI_BUG)
 template<>
 struct divides_c<long,0,0,0,0,0>
 {

@@ -19,7 +19,7 @@
 
 #include "boost/mpl/begin_end_fwd.hpp"
 #include "boost/mpl/aux_/traits_lambda_spec.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/aux_/config/eti.hpp"
 
 namespace boost {
 namespace mpl {
@@ -46,8 +46,7 @@ struct end_traits
     };
 };
 
-#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
-// ETI workaround
+#if defined(BOOST_MPL_MSVC_ETI_BUG)
 template<> struct begin_traits<int>
 {
     template< typename Sequence > struct algorithm

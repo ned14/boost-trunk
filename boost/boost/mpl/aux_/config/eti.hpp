@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------
-// boost mpl/sequence_tag.hpp header file
+// boost mpl/aux_/config/eti.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
-// Copyright (c) 2000-02
+// Copyright (c) 2001-02
 // Aleksey Gurtovoy
 //
 // Permission to use, copy, modify, distribute and sell this software
@@ -14,33 +14,14 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
-#define BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
+#ifndef BOOST_MPL_AUX_CONFIG_ETI_HPP_INCLUDED
+#define BOOST_MPL_AUX_CONFIG_ETI_HPP_INCLUDED
 
-#include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/config/eti.hpp"
+#include "boost/config.hpp"
 
-namespace boost {
-namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    >
-struct sequence_tag
-{
-    typedef typename Sequence::tag type;
-};
-
-#if defined(BOOST_MPL_MSVC_ETI_BUG)
-template<> struct sequence_tag<int>
-{
-    typedef int type;
-};
+// flag for MSVC 6.5's so-called "early template instantiation bug"
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
+#   define BOOST_MPL_MSVC_ETI_BUG
 #endif
 
-BOOST_MPL_AUX_VOID_SPEC(1, sequence_tag)
-
-} // namespace mpl
-} // namespace boost
-
-#endif // BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
+#endif // BOOST_MPL_AUX_CONFIG_ETI_HPP_INCLUDED

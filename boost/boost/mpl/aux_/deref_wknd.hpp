@@ -17,9 +17,9 @@
 #ifndef BOOST_MPL_AUX_DEREF_WNKD_HPP_INCLUDED
 #define BOOST_MPL_AUX_DEREF_WNKD_HPP_INCLUDED
 
-#include "boost/config.hpp"
+#include "boost/mpl/aux_/config/eti.hpp"
 
-#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
+#if defined(BOOST_MPL_MSVC_ETI_BUG)
 
 namespace boost { namespace mpl { namespace aux {
 
@@ -29,7 +29,6 @@ struct deref_wknd
     typedef typename Iterator::type type;
 };
 
-// ETI workaround
 template<> struct deref_wknd<int>
 {
     typedef deref_wknd type;

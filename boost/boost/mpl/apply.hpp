@@ -182,8 +182,8 @@ struct apply0< arg<-1> >
 };
 #endif
 
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
-//: workaround for "early template instantiation" bug
+#if defined(BOOST_MPL_MSVC_ETI_BUG)
+//: workaround for the ETI bug
 template<>
 struct apply0<int>
 {
@@ -214,7 +214,7 @@ struct BOOST_PP_CAT(apply,i)
 {
 };
 
-//: workaround for "early template instantiation" bug
+//: workaround for ETI bug
 template<>
 struct BOOST_PP_CAT(apply,i)<AUX_APPLY_N_SPEC_PARAMS(i, int)>
 {

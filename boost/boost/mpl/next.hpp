@@ -19,7 +19,7 @@
 
 #include "boost/mpl/aux_/void_spec.hpp"
 #include "boost/mpl/aux_/lambda_support.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/aux_/config/eti.hpp"
 
 namespace boost {
 namespace mpl {
@@ -33,10 +33,8 @@ struct next
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,next,(T))
 };
 
-#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
-// ETI workaround
-template<>
-struct next<int>
+#if defined(BOOST_MPL_MSVC_ETI_BUG)
+template<> struct next<int>
 {
     typedef next<int> type;
 };

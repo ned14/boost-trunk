@@ -23,6 +23,7 @@
 
 #include "boost/mpl/aux_/apply.hpp"
 #include "boost/mpl/aux_/next.hpp"
+#include "boost/mpl/aux_/config/eti.hpp"
 
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
@@ -96,6 +97,10 @@ struct advance_forward< BOOST_PP_FRAME_ITERATION(1) >
 
         typedef BOOST_PP_CAT(iter,BOOST_PP_FRAME_ITERATION(1)) type;
     };
+
+#if defined(BOOST_MPL_MSVC_ETI_BUG)
+    template<> struct apply<int> { typedef int type; };
+#endif
 };
 
 ///// iteration, depth == 2
