@@ -53,6 +53,7 @@ boost/boost/algorithm/string/formatter.hpp svneol=native#text/plain
 boost/boost/algorithm/string/iter_find.hpp svneol=native#text/plain
 boost/boost/algorithm/string/iterator_range.hpp svneol=native#text/plain
 boost/boost/algorithm/string/predicate.hpp svneol=native#text/plain
+boost/boost/algorithm/string/predicate_facade.hpp svneol=native#text/plain
 boost/boost/algorithm/string/regex.hpp svneol=native#text/plain
 boost/boost/algorithm/string/regex_find_format.hpp svneol=native#text/plain
 boost/boost/algorithm/string/replace.hpp svneol=native#text/plain
