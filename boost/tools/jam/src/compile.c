@@ -317,13 +317,15 @@ compile_while(
     PARSE   *p,
     FRAME *frame )
 {
+    LIST *r = 0;
     LIST *l;
     while ( l = parse_evaluate( p->left, frame ) )
     {
         list_free( l );
-        list_free( parse_evaluate( p->right, frame ) );
+        if( r ) list_free( r );
+        r = parse_evaluate( p->right, frame );
     }
-    return L0;
+    return r;
 }
 
 
