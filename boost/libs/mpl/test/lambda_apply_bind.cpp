@@ -15,7 +15,7 @@
 #include <boost/mpl/lambda.hpp>
 #include <boost/mpl/plus.hpp>
 
-#include <boost/mpl/aux_/test/test.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
 #include <vector>
 
@@ -53,13 +53,13 @@ MPL_TEST_CASE()
 
 MPL_TEST_CASE()
 {
-    typedef lambda< lambda<_1,void_> >::type make_lambda;
+    typedef lambda< lambda<_1> >::type make_lambda;
     typedef make_lambda::apply< std::vector<int> >::type v;
     MPL_ASSERT_SAME(2,( v,std::vector<int> ));
 
     typedef make_lambda::apply< std::vector<_1> >::type make_vector;
     typedef make_vector::apply<int>::type v_int;
-    MPL_ASSERT_SAME(2,( v,std::vector<int> ));
+    MPL_ASSERT_SAME(2,( v_int,std::vector<int> ));
 }
 
 MPL_TEST_CASE()
