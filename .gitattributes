@@ -1745,7 +1745,6 @@ boost/boost/python/detail/aix_init_module.hpp svneol=native#text/plain
 boost/boost/python/detail/api_placeholder.hpp svneol=native#text/plain
 boost/boost/python/detail/borrowed_ptr.hpp svneol=native#text/plain
 boost/boost/python/detail/caller.hpp svneol=native#text/plain
-boost/boost/python/detail/char_array.hpp svneol=native#text/plain
 boost/boost/python/detail/config.hpp svneol=native#text/plain
 boost/boost/python/detail/construct.hpp svneol=native#text/plain
 boost/boost/python/detail/convertible.hpp svneol=native#text/plain
