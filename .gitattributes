@@ -5910,6 +5910,7 @@ boost/libs/python/doc/v2/to_python_value.html svneol=native#text/html
 boost/libs/python/doc/v2/tuple.html svneol=native#text/html
 boost/libs/python/doc/v2/type_id.html svneol=native#text/html
 boost/libs/python/doc/v2/with_custodian_and_ward.html svneol=native#text/html
+boost/libs/python/doc/v2/wrapper.html svneol=native#text/html
 boost/libs/python/example/Attic/project.zip -text svneol=unset#application/zip
 boost/libs/python/example/Jamfile svneol=native#text/plain
 boost/libs/python/example/Jamfile.v2 svneol=native#text/plain
