@@ -8702,6 +8702,7 @@ boost/tools/build/v2/tools/symlink.jam svneol=native#text/plain
 boost/tools/build/v2/tools/testing.jam svneol=native#text/plain
 boost/tools/build/v2/tools/unix.jam svneol=native#text/plain
 boost/tools/build/v2/tools/vacpp.jam svneol=native#text/plain
+boost/tools/build/v2/tools/xlf.jam svneol=native#text/plain
 boost/tools/build/v2/tools/xsltproc.jam svneol=native#text/plain
 boost/tools/build/v2/user-config.jam svneol=native#text/plain
 boost/tools/build/v2/util/assert.jam svneol=native#text/plain
