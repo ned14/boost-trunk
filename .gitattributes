@@ -5013,6 +5013,7 @@ boost/libs/signals/src/signal_base.cpp svneol=native#text/plain
 boost/libs/signals/src/slot.cpp svneol=native#text/plain
 boost/libs/signals/src/trackable.cpp svneol=native#text/plain
 boost/libs/signals/test/Jamfile svneol=native#text/plain
+boost/libs/signals/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/signals/test/dead_slot_test.cpp svneol=native#text/plain
 boost/libs/signals/test/deletion_test.cpp svneol=native#text/plain
 boost/libs/signals/test/ordering_test.cpp svneol=native#text/plain
