@@ -6825,6 +6825,7 @@ boost/tools/build/v2/test/module-actions/bootstrap.jam svneol=native#text/plain
 boost/tools/build/v2/test/module_actions.py svneol=native#text/x-python
 boost/tools/build/v2/test/ndebug.py svneol=native#text/x-python
 boost/tools/build/v2/test/no_type.py svneol=native#text/x-python
+boost/tools/build/v2/test/ordered_properties.py svneol=native#text/x-python
 boost/tools/build/v2/test/path_features.py svneol=native#text/x-python
 boost/tools/build/v2/test/prebuilt.py svneol=native#text/x-python
 boost/tools/build/v2/test/prebuilt/Jamfile svneol=native#text/plain
