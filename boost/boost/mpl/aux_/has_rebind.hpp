@@ -28,9 +28,9 @@ namespace mpl {
 namespace aux {
 
 #if !defined(BOOST_MPL_BROKEN_OVERLOAD_RESOLUTION)
-#if !defined(BOOST_MSVC) || BOOST_MSVC != 1300
+#if !defined(BOOST_MSVC) || BOOST_MSVC > 1300
 
-// the implementation below is based on a USENET newsgroup posting by  
+// the implementation below is based on a USENET newsgroup's posting by  
 // Rani Sharoni (comp.lang.c++.moderated, 2002-03-17 07:45:09 PST)
 
 template< typename T >
@@ -51,32 +51,52 @@ struct has_rebind
 };
 
 #else
-// MSVC 7.0 has an overload resolution bug that matches |T::rebind::arg#| 
-// typedefs against the |has_rebind_helper(type_wrapper<T>, T::rebind*)|
-// overload; whatever is below, it works around the problem
 
-template< typename T >
-yes_tag
-has_rebind_helper(type_wrapper<T>, typename T::rebind*, typename T::rebind*);
+// agurt, 11/sep/02: MSVC version, based on a USENET newsgroup's posting by 
+// John Madsen (comp.lang.c++.moderated, 1999-11-12 19:17:06 GMT);
+// note that the code is _not_ standard-conforming, but it works, 
+// and it resolves some nasty ICE cases with the above implementation
 
-template< typename T >
-no_tag
-has_rebind_helper(type_wrapper<T>, typename T::rebind*, typename T::rebind::dummy*);
-
-template< typename T >
-no_tag
-has_rebind_helper(type_wrapper<T>, ...);
-
-template< typename T >
-struct has_rebind
+template< typename T, typename rebind = int >
+struct has_rebind : T
 {
-     BOOST_STATIC_CONSTANT(bool, value = 
-        sizeof(has_rebind_helper(type_wrapper<T>(), 0, 0))
-            == sizeof(yes_tag)
+ private:
+    static no_tag test(int*);
+    static yes_tag test(...);
+
+ public:
+    BOOST_STATIC_CONSTANT(bool, value = 
+        sizeof(test(static_cast<rebind*>(0))) != sizeof(no_tag)
         );
 };
 
-#endif // BOOST_MSVC != 1300
+#   define AUX_HAS_REBIND_SPEC(T) \
+    template<> struct has_rebind<T,int> \
+    { \
+        enum { value = false }; \
+    }; \
+    /**/
+
+AUX_HAS_REBIND_SPEC(bool)
+AUX_HAS_REBIND_SPEC(char)
+AUX_HAS_REBIND_SPEC(signed char)
+AUX_HAS_REBIND_SPEC(unsigned char)
+#if !defined(BOOST_NO_INTRINSIC_WCHAR_T)
+AUX_HAS_REBIND_SPEC(wchar_t)
+#endif
+AUX_HAS_REBIND_SPEC(signed short)
+AUX_HAS_REBIND_SPEC(unsigned short)
+AUX_HAS_REBIND_SPEC(signed int)
+AUX_HAS_REBIND_SPEC(unsigned int)
+AUX_HAS_REBIND_SPEC(signed long)
+AUX_HAS_REBIND_SPEC(unsigned long)
+AUX_HAS_REBIND_SPEC(float)
+AUX_HAS_REBIND_SPEC(double)
+AUX_HAS_REBIND_SPEC(long double)
+
+#   undef AUX_HAS_REBIND_SPEC
+
+#endif // BOOST_MSVC > 1300
 #else 
 
 template< typename T >
