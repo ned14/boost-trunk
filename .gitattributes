@@ -395,7 +395,6 @@ boost/boost/python/detail/char_array.hpp svneol=native#text/plain
 boost/boost/python/detail/config.hpp svneol=native#text/plain
 boost/boost/python/detail/cv_category.hpp svneol=native#text/plain
 boost/boost/python/detail/destroy.hpp svneol=native#text/plain
-boost/boost/python/detail/eval.hpp svneol=native#text/plain
 boost/boost/python/detail/extension_class.hpp svneol=native#text/plain
 boost/boost/python/detail/functions.hpp svneol=native#text/plain
 boost/boost/python/detail/indirect_traits.hpp svneol=native#text/plain
