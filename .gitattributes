@@ -8200,6 +8200,8 @@ boost/libs/statechart/test/OuterOrthogonal.hpp svneol=native#text/plain
 boost/libs/statechart/test/RunTests.bat svneol=native#text/plain
 boost/libs/statechart/test/StateCastTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/StateCastTest.vcproj -text
+boost/libs/statechart/test/StateIterationTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/StateIterationTest.vcproj -text
 boost/libs/statechart/test/TransitionTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TransitionTest.vcproj -text
 boost/libs/statechart/test/TypeInfoTest.cpp svneol=native#text/plain
