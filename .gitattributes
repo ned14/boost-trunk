@@ -2862,6 +2862,7 @@ boost/libs/mpl/test/int_c.cpp svneol=native#text/plain
 boost/libs/mpl/test/integral_c.cpp svneol=native#text/plain
 boost/libs/mpl/test/joint_view.cpp svneol=native#text/plain
 boost/libs/mpl/test/lambda.cpp svneol=native#text/plain
+boost/libs/mpl/test/lambda_args.cpp svneol=native#text/plain
 boost/libs/mpl/test/list.cpp svneol=native#text/plain
 boost/libs/mpl/test/list_c.cpp svneol=native#text/plain
 boost/libs/mpl/test/logical.cpp svneol=native#text/plain
