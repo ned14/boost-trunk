@@ -137,6 +137,7 @@ boost/boost/format.hpp svneol=native#text/plain
 boost/boost/format/exceptions.hpp svneol=native#text/plain
 boost/boost/format/feed_args.hpp svneol=native#text/plain
 boost/boost/format/format_class.hpp svneol=native#text/plain
+boost/boost/format/format_config.hpp svneol=native#text/plain
 boost/boost/format/format_fwd.hpp svneol=native#text/plain
 boost/boost/format/format_implementation.hpp svneol=native#text/plain
 boost/boost/format/free_funcs.hpp svneol=native#text/plain
