@@ -1,3 +1,10 @@
+boost/libs/test/build/*.ncb
+boost/libs/test/build/*.opt
+boost/libs/test/build/*.plg
+boost/libs/test/build/*.positions
+boost/libs/test/build/Debug
+boost/libs/test/build/bin
+boost/libs/test/test/bin
 boost/libs/thread/build/*.pdb
 boost/libs/thread/build/bin*
 boost/libs/thread/example/*.pdb

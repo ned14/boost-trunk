@@ -2521,6 +2521,7 @@ boost/libs/static_assert/static_assert_test_fail_7.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_8.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_9.cpp svneol=native#text/plain
 boost/libs/test/README svneol=native#text/plain
+boost/libs/test/build/.cvsignore -text
 boost/libs/test/build/Jamfile svneol=native#text/plain
 boost/libs/test/build/boost_test_library.dsw -text svneol=CRLF#unset
 boost/libs/test/build/errors_handling_test.dsp -text svneol=CRLF#unset
@@ -2604,6 +2605,7 @@ boost/libs/test/src/unit_test_monitor.cpp svneol=native#text/plain
 boost/libs/test/src/unit_test_parameters.cpp svneol=native#text/plain
 boost/libs/test/src/unit_test_result.cpp svneol=native#text/plain
 boost/libs/test/src/unit_test_suite.cpp svneol=native#text/plain
+boost/libs/test/test/.cvsignore -text
 boost/libs/test/test/Jamfile svneol=native#text/plain
 boost/libs/test/test/error_handling_test.pattern -text
 boost/libs/test/test/errors_handling_test.cpp svneol=native#text/plain
