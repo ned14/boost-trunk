@@ -8,6 +8,7 @@ boost/boost/mpl/arithmetic/aux_/op.hpp svneol=native#text/plain
 boost/boost/mpl/arithmetic/divides.hpp svneol=native#text/plain
 boost/boost/mpl/arithmetic/minus.hpp svneol=native#text/plain
 boost/boost/mpl/arithmetic/modulus.hpp svneol=native#text/plain
+boost/boost/mpl/arithmetic/multiplies.hpp svneol=native#text/plain
 boost/boost/mpl/arithmetic/mutliplies.hpp svneol=native#text/plain
 boost/boost/mpl/arithmetic/negate.hpp svneol=native#text/plain
 boost/boost/mpl/arithmetic/plus.hpp svneol=native#text/plain

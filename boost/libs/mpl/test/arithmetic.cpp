@@ -33,8 +33,8 @@ int main()
     BOOST_STATIC_ASSERT((mpl::minus2<_0,_10>::value == -10));
     BOOST_STATIC_ASSERT((mpl::minus<_10,_0>::value == 10));
 
-    BOOST_STATIC_ASSERT((mpl::mutliplies2<_1,_10>::value == 10));
-    BOOST_STATIC_ASSERT((mpl::mutliplies<_10,_1>::value == 10));
+    BOOST_STATIC_ASSERT((mpl::multiplies2<_1,_10>::value == 10));
+    BOOST_STATIC_ASSERT((mpl::multiplies<_10,_1>::value == 10));
 
     BOOST_STATIC_ASSERT((mpl::divides2<_10,_1>::value == 10));
     BOOST_STATIC_ASSERT((mpl::divides<_10,_1>::value == 10));

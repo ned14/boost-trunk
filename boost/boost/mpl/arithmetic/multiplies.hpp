@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/arithmetic.hpp header file
+// boost mpl/arithmetic/multiplies.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -14,14 +14,12 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_MPL_ARITHMETIC_HPP_INCLUDED
-#define BOOST_MPL_ARITHMETIC_HPP_INCLUDED
+#ifndef BOOST_MPL_ARITHMETIC_MULTIPLIES_HPP_INCLUDED
+#define BOOST_MPL_ARITHMETIC_MULTIPLIES_HPP_INCLUDED
 
-#include "boost/mpl/arithmetic/plus.hpp"
-#include "boost/mpl/arithmetic/minus.hpp"
-#include "boost/mpl/arithmetic/multiplies.hpp"
-#include "boost/mpl/arithmetic/divides.hpp"
-#include "boost/mpl/arithmetic/modulus.hpp"
-#include "boost/mpl/arithmetic/negate.hpp"
+#include "boost/mpl/int_c.hpp"
+#include "boost/mpl/arithmetic/aux_/op.hpp"
 
-#endif // BOOST_MPL_ARITHMETIC_HPP_INCLUDED
+BOOST_MPL_AUX_ARITHMETIC_OP(multiplies, *, int_c<1>)
+
+#endif // BOOST_MPL_ARITHMETIC_MULTIPLIES_HPP_INCLUDED
