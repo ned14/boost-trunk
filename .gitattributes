@@ -161,6 +161,7 @@ boost/libs/graph/docs/AdjacencyMatrix.html svneol=native#text/html
 boost/libs/graph/docs/BFSVisitor.html svneol=native#text/html
 boost/libs/graph/docs/BellmanFordVisitor.html svneol=native#text/html
 boost/libs/graph/docs/BidirectionalGraph.html svneol=native#text/html
+boost/libs/graph/docs/Buffer.html svneol=native#text/html
 boost/libs/graph/docs/ColorValue.html svneol=native#text/html
 boost/libs/graph/docs/DFSVisitor.html svneol=native#text/html
 boost/libs/graph/docs/EdgeListGraph.html svneol=native#text/html
