@@ -33,7 +33,7 @@
 #define BOOST_MPL_PP_AUX_TAIL_PARAM_FUNC(i, op) \
     , BOOST_PP_CAT( \
           BOOST_PP_TUPLE_ELEM(2, 1, op) \
-        , BOOST_PP_ADD(BOOST_PP_TUPLE_ELEM(2, 0, op), i) \
+        , BOOST_PP_ADD(i, BOOST_PP_TUPLE_ELEM(2, 0, op)) \
         ) = aux::none \
 /**/
 

@@ -32,7 +32,7 @@
 #define BOOST_MPL_PP_AUX_ENUM_FUNC(i, ofp) \
     BOOST_PP_COMMA_IF(i) \
     BOOST_PP_TUPLE_ELEM(3, 1, ofp)( \
-          BOOST_PP_ADD(BOOST_PP_TUPLE_ELEM(3, 0, ofp), i) \
+          BOOST_PP_ADD(i, BOOST_PP_TUPLE_ELEM(3, 0, ofp)) \
         , BOOST_PP_TUPLE_ELEM(3, 2, ofp) \
         ) \
 /**/
