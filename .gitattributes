@@ -6693,6 +6693,7 @@ boost/libs/variant/doc/tutorial/tutorial.xml svneol=native#text/xml
 boost/libs/variant/doc/variant.xml svneol=native#text/xml
 boost/libs/variant/index.html svneol=native#text/html
 boost/libs/variant/test/Jamfile svneol=native#text/plain
+boost/libs/variant/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/variant/test/class_a.cpp svneol=native#text/plain
 boost/libs/variant/test/class_a.h svneol=native#text/plain
 boost/libs/variant/test/jobs.h svneol=native#text/plain
