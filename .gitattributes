@@ -177,12 +177,14 @@ boost/development/type_traits/libs/type_traits/alignment_test.cpp svneol=native#
 boost/development/type_traits/libs/type_traits/arithmetic_traits_test.cpp svneol=native#text/plain
 boost/development/type_traits/libs/type_traits/composite_traits_test.cpp svneol=native#text/plain
 boost/development/type_traits/libs/type_traits/copy_example.cpp svneol=native#text/plain
+boost/development/type_traits/libs/type_traits/cs-linux.html svneol=native#text/html
 boost/development/type_traits/libs/type_traits/cs-win32.html svneol=native#text/html
 boost/development/type_traits/libs/type_traits/cv_traits_test.cpp svneol=native#text/plain
 boost/development/type_traits/libs/type_traits/fill_example.cpp svneol=native#text/plain
 boost/development/type_traits/libs/type_traits/is_convertible_test.cpp svneol=native#text/plain
 boost/development/type_traits/libs/type_traits/is_same_test.cpp svneol=native#text/plain
 boost/development/type_traits/libs/type_traits/iter_swap_example.cpp svneol=native#text/plain
+boost/development/type_traits/libs/type_traits/linux-regression.out.txt svneol=native#text/plain
 boost/development/type_traits/libs/type_traits/object_type_traits_test.cpp svneol=native#text/plain
 boost/development/type_traits/libs/type_traits/regress.cfg -text
 boost/development/type_traits/libs/type_traits/regression.out.txt svneol=native#text/plain
