@@ -1,6 +1,12 @@
 * text=auto !eol
 CVSROOT/checkoutlist -text
 CVSROOT/commitinfo -text
+CVSROOT/config -text
+CVSROOT/cvswrappers -text
+CVSROOT/editinfo -text
 CVSROOT/loginfo -text
 CVSROOT/modules -text
 CVSROOT/notify -text
+CVSROOT/rcsinfo -text
+CVSROOT/taginfo -text
+CVSROOT/verifymsg -text
