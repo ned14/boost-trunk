@@ -1,5 +1,4 @@
 boost/libs/optional/test/bin
-boost/libs/python/pyste/src/*.pyc
 boost/libs/python/pyste/tests/*.cpp
 boost/libs/python/pyste/tests/*.dll
 boost/libs/python/pyste/tests/*.pyc
