@@ -5269,6 +5269,7 @@ boost/libs/preprocessor/doc/syntax.html svneol=native#text/html
 boost/libs/preprocessor/doc/terms.html svneol=native#text/html
 boost/libs/preprocessor/doc/terms/evaluated.html svneol=native#text/html
 boost/libs/preprocessor/doc/terms/named_external.html svneol=native#text/html
+boost/libs/preprocessor/doc/title.html svneol=native#text/html
 boost/libs/preprocessor/doc/top.html svneol=native#text/html
 boost/libs/preprocessor/doc/topics.html svneol=native#text/html
 boost/libs/preprocessor/doc/topics/evaluated_slots.html svneol=native#text/html
