@@ -4563,6 +4563,7 @@ boost/libs/spirit/example/application/c/test_files/ReverseFile.c svneol=native#t
 boost/libs/spirit/example/application/c/test_files/Sieve.c svneol=native#text/plain
 boost/libs/spirit/example/application/c/test_files/StringConcat.c svneol=native#text/plain
 boost/libs/spirit/example/application/c/test_files/SumCol.c svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/.cvsignore -text
 boost/libs/spirit/example/application/cpp/ChangeLog -text
 boost/libs/spirit/example/application/cpp/Copyright.txt svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/Jamfile svneol=native#text/plain
@@ -4633,6 +4634,7 @@ boost/libs/spirit/example/application/cpp/instantiate_cpp_grammar.cpp svneol=nat
 boost/libs/spirit/example/application/cpp/instantiate_cpp_literalgrammars.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/instantiate_re2c_lexer.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/instantiate_slex_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/runtests.sh svneol=native#text/x-sh
 boost/libs/spirit/example/application/cpp/test/cpp_tokens/Jamfile svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test/cpp_tokens/cpp_tokens.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test/cpp_tokens/cpp_tokens_config.hpp svneol=native#text/plain
