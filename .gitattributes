@@ -157,10 +157,12 @@ boost/libs/graph/LICENSE -text
 boost/libs/graph/docs/AdjacencyGraph.html svneol=native#text/html
 boost/libs/graph/docs/AdjacencyMatrix.html svneol=native#text/html
 boost/libs/graph/docs/BFSVisitor.html svneol=native#text/html
+boost/libs/graph/docs/BellmanFordVisitor.html svneol=native#text/html
 boost/libs/graph/docs/BidirectionalGraph.html svneol=native#text/html
 boost/libs/graph/docs/ColorValue.html svneol=native#text/html
 boost/libs/graph/docs/EdgeListGraph.html svneol=native#text/html
 boost/libs/graph/docs/EdgePropertyGraph.html svneol=native#text/html
+boost/libs/graph/docs/EventVisitor.html svneol=native#text/html
 boost/libs/graph/docs/Graph.html svneol=native#text/html
 boost/libs/graph/docs/IncidenceGraph.html svneol=native#text/html
 boost/libs/graph/docs/MutableGraph.html svneol=native#text/html
