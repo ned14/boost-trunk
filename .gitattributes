@@ -4456,8 +4456,6 @@ boost/libs/smart_ptr/test/shared_ptr_timing_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/smart_ptr_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/weak_ptr_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/weak_ptr.htm svneol=native#text/html
-boost/libs/spirit/Makefile.am svneol=native#text/plain
-boost/libs/spirit/doc/Makefile.am svneol=native#text/plain
 boost/libs/spirit/doc/acknowledgments.html svneol=native#text/html
 boost/libs/spirit/doc/basic_concepts.html svneol=native#text/html
 boost/libs/spirit/doc/calc_plain.cpp.html svneol=native#text/html
@@ -4504,7 +4502,6 @@ boost/libs/spirit/doc/style_guide.html svneol=native#text/html
 boost/libs/spirit/doc/subrule_calc.cpp.html svneol=native#text/html
 boost/libs/spirit/doc/subrules.html svneol=native#text/html
 boost/libs/spirit/doc/symbols.html svneol=native#text/html
-boost/libs/spirit/doc/theme/Makefile.am svneol=native#text/plain
 boost/libs/spirit/doc/theme/alert.gif -text svneol=unset#image/gif
 boost/libs/spirit/doc/theme/arrow.gif -text svneol=unset#image/gif
 boost/libs/spirit/doc/theme/bkd.gif -text svneol=unset#image/gif
@@ -4538,9 +4535,6 @@ boost/libs/spirit/doc/theme/trees4.png -text svneol=unset#image/png
 boost/libs/spirit/doc/theme/u_arr.gif -text svneol=unset#image/gif
 boost/libs/spirit/doc/trees.html svneol=native#text/html
 boost/libs/spirit/example/Jamfile svneol=native#text/plain
-boost/libs/spirit/example/Makefile.am svneol=native#text/plain
-boost/libs/spirit/example/application/Makefile.am svneol=native#text/plain
-boost/libs/spirit/example/application/c/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/c/c_grammar.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/c/readme.txt svneol=native#text/plain
 boost/libs/spirit/example/application/c/test_files/Ackermann.c svneol=native#text/plain
@@ -4569,15 +4563,12 @@ boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.hpp svneol=nativ
 boost/libs/spirit/example/application/cpp_lexer/lexer_base.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/lexer_token_base.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/makefile svneol=native#text/plain
-boost/libs/spirit/example/application/cpp_to_html/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_to_html/cpp_to_html.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_to_html/cpp_to_html_vc6_7.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_to_html/readme.txt svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_to_html/style.css svneol=native#text/css
-boost/libs/spirit/example/application/pascal/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/pascal/readme.txt svneol=native#text/plain
 boost/libs/spirit/example/application/pascal/sg_pascal.cpp svneol=native#text/plain
-boost/libs/spirit/example/application/pascal/test_files/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/pascal/test_files/t1.pas -text
 boost/libs/spirit/example/application/pascal/test_files/t2.pas -text
 boost/libs/spirit/example/application/pascal/test_files/t3.pas -text
@@ -4586,13 +4577,10 @@ boost/libs/spirit/example/application/pascal/test_files/t5.pas -text
 boost/libs/spirit/example/application/pascal/test_files/t6.pas -text
 boost/libs/spirit/example/application/pascal/test_files/t7.pas -text
 boost/libs/spirit/example/application/pascal/test_files/t8.pas -text
-boost/libs/spirit/example/application/quickdoc/Makefile.am svneol=native#text/plain
-boost/libs/spirit/example/application/quickdoc/doc/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/quickdoc/doc/grammar.html svneol=native#text/html
 boost/libs/spirit/example/application/quickdoc/doc/introduction.html svneol=native#text/html
 boost/libs/spirit/example/application/quickdoc/doc/quickdoc.txt svneol=native#text/plain
 boost/libs/spirit/example/application/quickdoc/doc/syntax_summary.html svneol=native#text/html
-boost/libs/spirit/example/application/quickdoc/doc/theme/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/quickdoc/doc/theme/alert.gif -text svneol=unset#image/gif
 boost/libs/spirit/example/application/quickdoc/doc/theme/arrow.gif -text svneol=unset#image/gif
 boost/libs/spirit/example/application/quickdoc/doc/theme/bkd.gif -text svneol=unset#image/gif
@@ -4612,7 +4600,6 @@ boost/libs/spirit/example/application/quickdoc/doc/theme/u_arr.gif -text svneol=
 boost/libs/spirit/example/application/quickdoc/index.html svneol=native#text/html
 boost/libs/spirit/example/application/quickdoc/quickdoc.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/quickdoc/quickdoc.hpp svneol=native#text/plain
-boost/libs/spirit/example/application/rfcdate/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/rfcdate/mystyle.xls -text svneol=unset#application/vnd.ms-excel
 boost/libs/spirit/example/application/rfcdate/peti.css svneol=native#text/css
 boost/libs/spirit/example/application/rfcdate/peti.dsl -text
@@ -4628,14 +4615,12 @@ boost/libs/spirit/example/application/rfcdate/timestamp.hpp svneol=native#text/p
 boost/libs/spirit/example/application/rfcdate/tutorial.html svneol=native#text/html
 boost/libs/spirit/example/application/rfcdate/tutorial.pdf -text svneol=unset#application/pdf
 boost/libs/spirit/example/application/rfcdate/tutorial.xml svneol=native#text/xml
-boost/libs/spirit/example/application/slex/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/slex/README svneol=native#text/plain
 boost/libs/spirit/example/application/slex/callback.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/slex/lexer.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/slex/lexer.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/slex/lexer.output -text
 boost/libs/spirit/example/application/slex/lextest.cpp svneol=native#text/plain
-boost/libs/spirit/example/application/slex/testfiles/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/slex/testfiles/runtest.sh svneol=native#text/x-sh
 boost/libs/spirit/example/application/slex/testfiles/test1-1.in -text
 boost/libs/spirit/example/application/slex/testfiles/test1-1.out -text
@@ -4663,7 +4648,6 @@ boost/libs/spirit/example/application/slex/testfiles/test7.lex -text
 boost/libs/spirit/example/application/slex/testfiles/test8-1.in -text
 boost/libs/spirit/example/application/slex/testfiles/test8-1.out -text
 boost/libs/spirit/example/application/slex/testfiles/test8.lex -text
-boost/libs/spirit/example/application/xml/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/application/xml/ast_xml.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/xml/goodtest/REC-xml-19980210.xml svneol=native#text/xml
 boost/libs/spirit/example/application/xml/goodtest/dia.xml svneol=native#text/xml
@@ -4680,9 +4664,7 @@ boost/libs/spirit/example/application/xml/test4.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/xml/test5.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/xml/xml.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/xml/xml_grammar.hpp svneol=native#text/plain
-boost/libs/spirit/example/fundamental/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/fundamental/boiler_plate.cpp svneol=native#text/plain
-boost/libs/spirit/example/fundamental/calc/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/fundamental/calc/ast_calc.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/calc/ast_calc2.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/calc/calc_plain.cpp svneol=native#text/plain
@@ -4706,7 +4688,6 @@ boost/libs/spirit/example/fundamental/matching_tags.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/number_list.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/parameters.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/polynomial.cpp svneol=native#text/plain
-boost/libs/spirit/example/fundamental/position_iterator/Makefile.am svneol=native#text/plain
 boost/libs/spirit/example/fundamental/position_iterator/position_iterator.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/position_iterator/position_iterator.err1 -text
 boost/libs/spirit/example/fundamental/position_iterator/position_iterator.err2 -text
@@ -4720,8 +4701,6 @@ boost/libs/spirit/example/fundamental/roman_numerals.cpp svneol=native#text/plai
 boost/libs/spirit/example/fundamental/spirit_bind.cpp svneol=native#text/plain
 boost/libs/spirit/example/fundamental/sum.cpp svneol=native#text/plain
 boost/libs/spirit/index.html svneol=native#text/html
-boost/libs/spirit/phoenix/Makefile.am svneol=native#text/plain
-boost/libs/spirit/phoenix/doc/Makefile.am svneol=native#text/plain
 boost/libs/spirit/phoenix/doc/actors.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/actors_revisited.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/adaptable_closures.html svneol=native#text/html
@@ -4749,7 +4728,6 @@ boost/libs/spirit/phoenix/doc/primitives.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/quick_start.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/references.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/statements.html svneol=native#text/html
-boost/libs/spirit/phoenix/doc/theme/Makefile.am svneol=native#text/plain
 boost/libs/spirit/phoenix/doc/theme/alert.gif -text svneol=unset#image/gif
 boost/libs/spirit/phoenix/doc/theme/arrow.gif -text svneol=unset#image/gif
 boost/libs/spirit/phoenix/doc/theme/bkd.gif -text svneol=unset#image/gif
@@ -4771,7 +4749,6 @@ boost/libs/spirit/phoenix/doc/values.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/variables.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/wrap_up.html svneol=native#text/html
 boost/libs/spirit/phoenix/example/Jamfile svneol=native#text/plain
-boost/libs/spirit/phoenix/example/Makefile.am svneol=native#text/plain
 boost/libs/spirit/phoenix/example/fundamental/closures.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/example/fundamental/sample10.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/example/fundamental/sample2.cpp svneol=native#text/plain
@@ -4784,7 +4761,6 @@ boost/libs/spirit/phoenix/example/fundamental/sample8.cpp svneol=native#text/pla
 boost/libs/spirit/phoenix/example/fundamental/sample9.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/index.html svneol=native#text/html
 boost/libs/spirit/phoenix/test/Jamfile svneol=native#text/plain
-boost/libs/spirit/phoenix/test/Makefile.am svneol=native#text/plain
 boost/libs/spirit/phoenix/test/binary_tests.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/test/binders_tests.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/test/functors_tests.cpp svneol=native#text/plain
@@ -4798,7 +4774,6 @@ boost/libs/spirit/phoenix/test/stl_tests.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/test/tuples_tests.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/test/unary_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/Jamfile svneol=native#text/plain
-boost/libs/spirit/test/Makefile.am svneol=native#text/plain
 boost/libs/spirit/test/actions_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/chset_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/closure_tests.cpp svneol=native#text/plain
