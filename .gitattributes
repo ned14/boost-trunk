@@ -405,6 +405,7 @@ boost/libs/graph/example/bfs.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs.expected -text
 boost/libs/graph/example/bfs_basics.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs_basics.expected -text
+boost/libs/graph/example/boost_web.dat -text
 boost/libs/graph/example/bucket_sorter.cpp svneol=native#text/plain
 boost/libs/graph/example/city_visitor.cpp svneol=native#text/plain
 boost/libs/graph/example/components_on_edgelist.cpp svneol=native#text/plain
