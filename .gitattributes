@@ -279,7 +279,6 @@ boost/boost/type_traits/transform_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/transform_traits_spec.hpp svneol=native#text/plain
 boost/boost/type_traits/type_traits_test.hpp svneol=native#text/plain
 boost/boost/utility.hpp svneol=native#text/plain
-boost/build/x/path[!!-~]with[!!-~]spaces/integer.hpp svneol=native#text/plain
 boost/c++boost.gif -text svneol=unset#image/gif
 boost/development/iterator/boost/iterator_categories.hpp svneol=native#text/plain
 boost/development/iterator/boost/iterator_concepts.hpp svneol=native#text/plain
