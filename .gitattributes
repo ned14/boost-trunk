@@ -2161,6 +2161,7 @@ boost/boost/test/auto_unit_test.hpp svneol=native#text/plain
 boost/boost/test/detail/algorithm.hpp svneol=native#text/plain
 boost/boost/test/detail/basic_cstring/basic_cstring.hpp svneol=native#text/plain
 boost/boost/test/detail/basic_cstring/basic_cstring_fwd.hpp svneol=native#text/plain
+boost/boost/test/detail/basic_cstring/bcs_char_traits.hpp svneol=native#text/plain
 boost/boost/test/detail/basic_cstring/compare.hpp svneol=native#text/plain
 boost/boost/test/detail/basic_cstring/io.hpp svneol=native#text/plain
 boost/boost/test/detail/class_properties.hpp svneol=native#text/plain
