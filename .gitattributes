@@ -655,6 +655,7 @@ boost/libs/random/statistic_tests.hpp svneol=native#text/plain
 boost/libs/rational/index.html svneol=native#text/html
 boost/libs/rational/rational.html svneol=native#text/html
 boost/libs/rational/rational_example.cpp svneol=native#text/plain
+boost/libs/rational/rational_test.cpp svneol=native#text/plain
 boost/libs/regex/appendix.htm svneol=native#text/html
 boost/libs/regex/changes.txt svneol=native#text/plain
 boost/libs/regex/configure svneol=native#text/plain
