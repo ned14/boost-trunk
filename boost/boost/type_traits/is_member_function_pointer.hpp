@@ -39,6 +39,8 @@ BOOST_TT_AUX_BOOL_TRAIT_DEF1(
 
 #else
 
+#ifndef __BORLANDC__
+
 namespace detail {
 
 template <bool>
@@ -52,10 +54,12 @@ struct is_member_function_pointer_select<false>
 {
     template <typename T> struct result_
     {
-        static T& make_t();
+        static T& make_t;
+        typedef result<T> self_type;
+        
         BOOST_STATIC_CONSTANT(
             bool, value = (
-                1 == sizeof(::boost::type_traits::is_mem_fun_pointer_tester(make_t()))
+                1 == sizeof(::boost::type_traits::is_mem_fun_pointer_tester(self_type::make_t))
             ));
     };
 };
@@ -72,6 +76,25 @@ struct is_mem_fun_pointer_impl
 };
 
 } // namespace detail
+
+#else // Borland C++
+
+template <typename T>
+struct is_member_function_pointer_impl
+{
+   static T& m_t;
+   BOOST_STATIC_CONSTANT(
+              bool, value =
+               (1 == sizeof(detail::is_member_function_pointer_helper(m_t))) );
+};
+
+template <typename T>
+struct is_member_function_pointer_impl<T&>
+{
+   BOOST_STATIC_CONSTANT(bool, value = false);
+};
+
+#endif
 
 BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_member_function_pointer,T,::boost::detail::is_mem_fun_pointer_impl<T>::value)
 BOOST_TT_AUX_BOOL_TRAIT_SPEC1(is_member_function_pointer,void,false)
