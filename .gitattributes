@@ -4136,6 +4136,22 @@ boost/libs/python/pyste/doc/theme/smiley.gif -text svneol=unset#image/gif
 boost/libs/python/pyste/doc/theme/style.css svneol=native#text/css
 boost/libs/python/pyste/doc/theme/u_arr.gif -text svneol=unset#image/gif
 boost/libs/python/pyste/doc/wrappers.html svneol=native#text/html
+boost/libs/python/pyste/example/README svneol=native#text/plain
+boost/libs/python/pyste/example/basic.h svneol=native#text/plain
+boost/libs/python/pyste/example/basic.pyste -text
+boost/libs/python/pyste/example/enums.h svneol=native#text/plain
+boost/libs/python/pyste/example/enums.pyste -text
+boost/libs/python/pyste/example/header_test.h svneol=native#text/plain
+boost/libs/python/pyste/example/header_test.pyste -text
+boost/libs/python/pyste/example/nested.h svneol=native#text/plain
+boost/libs/python/pyste/example/nested.pyste -text
+boost/libs/python/pyste/example/operator.h svneol=native#text/plain
+boost/libs/python/pyste/example/operator.pyste -text
+boost/libs/python/pyste/example/templates.h svneol=native#text/plain
+boost/libs/python/pyste/example/templates.pyste -text
+boost/libs/python/pyste/example/wrappertest.h svneol=native#text/plain
+boost/libs/python/pyste/example/wrappertest.pyste -text
+boost/libs/python/pyste/example/wrappertest_wrappers.h svneol=native#text/plain
 boost/libs/python/pyste/index.html svneol=native#text/html
 boost/libs/python/pyste/src/.cvsignore -text
 boost/libs/python/pyste/src/ClassExporter.py svneol=native#text/x-python
