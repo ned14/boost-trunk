@@ -8863,6 +8863,10 @@ boost/tools/build/v2/test/alternatives.py svneol=native#text/x-python
 boost/tools/build/v2/test/assert-equal.jam svneol=native#text/plain
 boost/tools/build/v2/test/bad_dirname.py svneol=native#text/x-python
 boost/tools/build/v2/test/boost-build.jam svneol=native#text/plain
+boost/tools/build/v2/test/boostbook.py svneol=native#text/x-python
+boost/tools/build/v2/test/boostbook/Jamroot -text
+boost/tools/build/v2/test/boostbook/a.hpp svneol=native#text/plain
+boost/tools/build/v2/test/boostbook/docs.xml svneol=native#text/xml
 boost/tools/build/v2/test/build_dir.py svneol=native#text/x-python
 boost/tools/build/v2/test/c_file.py svneol=native#text/x-python
 boost/tools/build/v2/test/chain.py svneol=native#text/x-python
