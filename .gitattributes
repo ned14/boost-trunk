@@ -1528,6 +1528,7 @@ boost/boost/spirit/Makefile.am svneol=native#text/plain
 boost/boost/spirit/attribute.hpp svneol=native#text/plain
 boost/boost/spirit/attribute/Makefile.am svneol=native#text/plain
 boost/boost/spirit/attribute/closure.hpp svneol=native#text/plain
+boost/boost/spirit/attribute/closure_context.hpp svneol=native#text/plain
 boost/boost/spirit/attribute/grouping.hpp svneol=native#text/plain
 boost/boost/spirit/attribute/impl/Makefile.am svneol=native#text/plain
 boost/boost/spirit/attribute/impl/grouping.ipp svneol=native#text/plain
