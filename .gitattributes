@@ -635,6 +635,7 @@ boost/boost/mpl/always.hpp svneol=native#text/plain
 boost/boost/mpl/and.hpp svneol=native#text/plain
 boost/boost/mpl/apply.hpp svneol=native#text/plain
 boost/boost/mpl/apply_fwd.hpp svneol=native#text/plain
+boost/boost/mpl/apply_if.hpp svneol=native#text/plain
 boost/boost/mpl/apply_wrap.hpp svneol=native#text/plain
 boost/boost/mpl/arg.hpp svneol=native#text/plain
 boost/boost/mpl/arg_fwd.hpp svneol=native#text/plain
