@@ -6209,6 +6209,7 @@ boost/tools/build/release_procedure.txt svneol=native#text/plain
 boost/tools/build/roll.sh svneol=native#text/x-sh
 boost/tools/build/stlport.jam svneol=native#text/plain
 boost/tools/build/sunpro-stlport-tools.jam svneol=native#text/plain
+boost/tools/build/sunpro-tools.html svneol=native#text/html
 boost/tools/build/sunpro-tools.jam svneol=native#text/plain
 boost/tools/build/test/.cvsignore -text
 boost/tools/build/test/BoostBuild.py svneol=native#text/x-python
@@ -6525,6 +6526,7 @@ boost/tools/build/v1/msvc-tools.jam svneol=native#text/plain
 boost/tools/build/v1/python.jam svneol=native#text/plain
 boost/tools/build/v1/stlport.jam svneol=native#text/plain
 boost/tools/build/v1/sunpro-stlport-tools.jam svneol=native#text/plain
+boost/tools/build/v1/sunpro-tools.html svneol=native#text/html
 boost/tools/build/v1/sunpro-tools.jam svneol=native#text/plain
 boost/tools/build/v1/testing.jam svneol=native#text/plain
 boost/tools/build/v1/tru64cxx-tools.html svneol=native#text/html
