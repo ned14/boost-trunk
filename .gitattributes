@@ -75,6 +75,7 @@ boost/boost/graph/sequential_vertex_coloring.hpp svneol=native#text/plain
 boost/boost/graph/smallest_last_ordering.hpp svneol=native#text/plain
 boost/boost/graph/stanford_graph.hpp svneol=native#text/plain
 boost/boost/graph/subgraph.hpp svneol=native#text/plain
+boost/boost/graph/tarjan_scc.hpp svneol=native#text/plain
 boost/boost/graph/topological_sort.hpp svneol=native#text/plain
 boost/boost/graph/transpose_graph.hpp svneol=native#text/plain
 boost/boost/graph/tree_traits.hpp svneol=native#text/plain
@@ -495,6 +496,7 @@ boost/libs/graph/example/remove_edge_if_undir.cpp svneol=native#text/plain
 boost/libs/graph/example/remove_edge_if_undir.expected -text
 boost/libs/graph/example/reverse_graph.cpp svneol=native#text/plain
 boost/libs/graph/example/reverse_graph.expected -text
+boost/libs/graph/example/strongly_connected_components.cpp svneol=native#text/plain
 boost/libs/graph/example/subgraph.cpp svneol=native#text/plain
 boost/libs/graph/example/subgraph.expected -text
 boost/libs/graph/example/topo_sort.cpp svneol=native#text/plain
