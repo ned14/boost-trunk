@@ -2791,6 +2791,7 @@ boost/libs/dynamic_bitset/dyn_bitset_unit_tests2.cpp svneol=native#text/plain
 boost/libs/dynamic_bitset/dyn_bitset_unit_tests3.cpp svneol=native#text/plain
 boost/libs/dynamic_bitset/dyn_bitset_unit_tests4.cpp svneol=native#text/plain
 boost/libs/dynamic_bitset/dynamic_bitset.html svneol=native#text/html
+boost/libs/dynamic_bitset/example/Jamfile svneol=native#text/plain
 boost/libs/dynamic_bitset/example/example1.cpp svneol=native#text/plain
 boost/libs/dynamic_bitset/example/example2.cpp svneol=native#text/plain
 boost/libs/dynamic_bitset/example/example3.cpp svneol=native#text/plain
