@@ -181,14 +181,14 @@ BOOST_MPL_AUX_NA_ALGORITHM_SPEC(3, if_)
 
 #   define AUX_BIND_PARAMS(param) \
     BOOST_MPL_PP_PARAMS( \
-          BOOST_MPL_METAFUNCTION_MAX_ARITY \
+          BOOST_MPL_LIMIT_METAFUNCTION_ARITY \
         , param \
         ) \
     /**/
 
 #   define AUX_BIND_DEFAULT_PARAMS(param, value) \
     BOOST_MPL_PP_DEFAULT_PARAMS( \
-          BOOST_MPL_METAFUNCTION_MAX_ARITY \
+          BOOST_MPL_LIMIT_METAFUNCTION_ARITY \
         , param \
         , value \
         ) \
