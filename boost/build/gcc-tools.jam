@@ -35,7 +35,7 @@ rule Link-action
 # for gcc, we repeat all libraries so that dependencies are always resolved
 actions gcc-Link-action bind NEEDLIBS
 {
-    $(gcc.bin-directory)g++ $(LINKFLAGS) -o "$(<)" $(UNDEFS) -L$(STDLIBPATH) "$(>)" $(NEEDLIBS) $(NEEDLIBS)
+    $(gcc.bin-directory)g++ $(LINKFLAGS) -o "$(<[1])" $(UNDEFS) -L$(STDLIBPATH) "$(>)" $(NEEDLIBS) $(NEEDLIBS)
 }
 
 #### Cc #####

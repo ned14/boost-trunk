@@ -844,23 +844,37 @@ rule split-path-at-grist
 # all top-level rules which declare targets should eventually go through here.
 rule declare-local-target 
 {
+    # We add SOURCE_GRIST the base target name here because we're referring the
+    # abstract  target which generates all of the actual builds. We need a way to
+    # distinguish targets of the same name from different subprojects. 
+    local target-id = [ FGristFiles $(<) ] ;
 
-    # We grist the base target name here because we're referring the abstract
-    # target which generates all of the actual builds. We need a way to
-    # distinguish targets of the same name from different subprojects.
-    local base-target = [ FGristFiles $(<) ] ;
-
-    gTARGET_SOURCES($(base-target)) = $(2) ;
-    gTARGET_REQUIREMENTS($(base-target)) = $(3) ;
-    gTARGET_BUILD($(base-target)) = $(4) ;
-    gTARGET_TYPE($(base-target)) = $(5) ;
-
-    # Check to avoid infinite recursion when subprojects contain mutual
-    # dependencies. 
-    if ! $(gCURRENTLY_DECLARING($(base-target)))
+    if ! $(5)
     {
-        local gCURRENTLY_DECLARING($(base-target)) = true ;
-        declare-target $(1) : $(2) : $(3) : $(4) : $(5) ;
+        EXIT No target type given for "$(<)" ;
+    }
+    
+    if ! $(gTARGET_TYPE($(target-id)))
+    {
+        gTARGET_REQUIREMENTS($(target-id)) = $(3) ;
+        gTARGET_TYPE($(target-id)) = $(5) ;
+        gTARGET_LIBS($(target-id)) = [ get-values <lib> : $(>) ] ;
+        
+        gTARGET_SOURCES($(target-id))
+            = [ FGristFiles
+                [ difference $(>:G=) : gTARGET_LIBS($(target-id)) ] ] ;
+
+        # Just gather information if we are including a library's Jamfile for a
+        # dependent target. Don't generate build instructions here.
+        if ! $(gIN_LIB_INCLUDE)
+        {
+            main-target $(target-id) : $(4) ;
+        }
+    }
+    else if $(gTARGET_TYPE($(target-id))) != $(5)
+    {
+        EXIT conflicting target types for "$(<)":
+        "$(gTARGET_TYPE($(target-id)))" "$(5)" ;
     }
 }
 
@@ -959,7 +973,7 @@ rule link-libraries
     # if build instructions for the given target have not been given, do that now.
     if ! $(lib-grist) in $(gDECLARED_TARGETS)
     {
-        declare-target $(lib-target)
+        main-target $(lib-target)
             : $(gTARGET_SOURCES($(lib-target)))
             : $(gTARGET_REQUIREMENTS($(lib-target)))
             : $(BUILD) : $(lib-target-type) ;
@@ -1034,20 +1048,73 @@ else
   gIMPORT_SUFFIX(LIB) = .a ;
 }
 
-rule declare-target # target : sources : requirements : local-build : target-type
+rule subvariant-target # target : subvariant-id build-properties
 {
-  local target-type = $(5) ;
-  local requirements = $(3) ;
-  local BUILD = [ get-BUILD $(4) ] ;
+  # this is the path from the target's build root to the subvariant directory
+  local subvariant-id = $(>[1]) ;
+
+  # SOURCE_GRIST identifies the subproject directory; TARGET_GRIST will identify
+  # the target and subvariant, since unique versions of files will be built for
+  # that combination.
+  local TARGET_GRIST = [ join-path $(SOURCE_GRIST) $(<) $(subvariant-id) ] ;
+  local HDRGRIST = $(TARGET_GRIST) ;
+
+  # Do nothing if build instructions and dependencies for this target have
+  # already been generated. 
+  if ! $(TARGET_GRIST) in $(gDECLARED_TARGETS)
+  {
+    gDECLARED_TARGETS += $(TARGET_GRIST) ;
+
+    # LOCATE_TARGET affects where built targets are generated. We move it
+    # relative to the default location based on the subvariant 
+    local LOCATE_TARGET
+      = [ join-path $(LOCATE_TARGET) $(BIN_DIRECTORY) $(<) $(subvariant-id) ] ;
+
+    local main-target = $(<:G=$(TARGET_GRIST)) ;
+    local target-file = [ FAppendSuffix $(main-target) : $(SUF$(target-type)) ] ;
+    declare-fake-targets $(main-target) : $(target-file) ;
+
+    # set up gBUILD_PROPERTIES for include-tools (below)
+    local gBUILD_PROPERTIES = $(>[2-])
+
+    # Include the toolset specification. This will set up the global flags
+    # variables in a way appropriate to this build. 
+    
+    include-tools $(toolset) ;
+
+    # transfer target variables to the target file.
+    set-target-variables $(target-file) ;
+
+    # dispatch to the appropriate declaration function. It would be much better
+    # to be able to do this with some sort of indirection, but Jam doesn't yet
+    # support it.
+
+    switch $(target-type)
+    {
+      case EXE :
+        executable-file $(target-file) : $(gTARGET_SOURCES($(<))) ;
+      case LIB :
+        library-file $(target-file) : $(gTARGET_SOURCES($(<))) ;
+      case DLL :
+        dll-file $(target-file) : $(gTARGET_SOURCES($(<))) ;
+      case * : EXIT "unknown target type:" $(target-type) ;
+    }
+
+    # generate build instructions
+    link-libraries $(target-file) : $(gTARGET_LIBS($(<))) : $(subvariant-id) ;
+  }
+}
+
+rule main-target # target : local-build
+{
+  local target-type = $(gTARGET_TYPE($(<)) ;
+
+  local BUILD = [ get-BUILD $(>) ] ;
   local variants = [ select-ungristed $(BUILD) ] ;
   local build-request = [ difference $(BUILD) : $(variants) ] ;
-
-  # extract and remove <lib> targets from $(>)
-  local libs = [ get-values <lib> : $(>) ] ;
-  local sources = [ FGristFiles [ difference $(>:G=) : $(libs) ] ] ;
-
+  
   # include each jamfile describing a dependee target.
-  dependent-include $(libs) ;
+  dependent-include $(gTARGET_LIBS($(<)))
   
   local toolset ;
   for toolset in $(TOOLS)
@@ -1060,65 +1127,12 @@ rule declare-target # target : sources : requirements : local-build : target-typ
 
       local expanded
           = [ expand-build-request $(toolset) $(v) $(<)
-              : $(requirements) $(type-requirements) : $(build-request) ] ;
+              : gTARGET_REQUIREMENTS($(<)) $(type-requirements) : $(build-request) ] ;
 
       local x ;
       for x in $(expanded)
       {
-          # extract the elements of x
-          local x-split = [ split-path-at-grist $(x) ] ;
-
-          # this is the path from the target's build root to the subvariant directory
-          local subvariant-id = $(x-split[1]) ;
-
-          # SOURCE_GRIST identifies the subproject directory; TARGET_GRIST
-          # will identify the target and subvariant, since unique versions of
-          # files will be built for that combination. 
-          local TARGET_GRIST = [ join-path $(SOURCE_GRIST) $(<) $(subvariant-id) ] ;
-          local HDRGRIST = $(TARGET_GRIST) ;
-
-          # Do nothing if build instructions and dependencies for this target
-          # have already been generated.
-          if ! $(TARGET_GRIST) in $(gDECLARED_TARGETS)
-          {
-            gDECLARED_TARGETS += $(TARGET_GRIST) ;
-
-            # LOCATE_TARGET affects where built targets are generated. We move
-            # it relative to the default location based on the subvariant
-            local LOCATE_TARGET
-              = [ join-path $(LOCATE_TARGET) $(BIN_DIRECTORY) $(<) $(subvariant-id) ] ;
-
-            local main-target = $(<:G=$(TARGET_GRIST)) ;
-            local target-file = [ FAppendSuffix $(main-target) : $(SUF$(target-type)) ] ;
-            declare-fake-targets $(main-target) : $(target-file) ;
-            
-            # set up gBUILD_PROPERTIES for include-tools (below)
-            local gBUILD_PROPERTIES = $(x-split[2-]) ;
-
-            # Include the toolset specification. This will set up the global
-            # flags variables in a way appropriate to this build.
-            include-tools $(toolset) ;
-            
-            # transfer target variables to the target file.
-            set-target-variables $(target-file) ;
-
-            # dispatch to the appropriate declaration function. It would be much
-            # better to be able to do this with some sort of indirection, but
-            # Jam doesn't yet support it.
-            switch $(target-type)
-            {
-              case EXE : executable-file $(target-file) : $(sources) ;
-              case LIB : library-file $(target-file) : $(sources) ;
-              case DLL : dll-file $(target-file) : $(sources) ;
-              case * : EXIT "unknown target type:" $(target-type) ;
-            }
-
-            # generate build instructions
-            link-libraries $(target-file) : $(libs) : $(subvariant-id) ;
-          }
-
-          # peel the first pair off the front
-          build = $(build[3-]) ;
+          subvariant-target $(<) : [ split-path-at-grist $(x) ] ;
       }
     }
   }
