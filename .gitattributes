@@ -3427,7 +3427,6 @@ boost/libs/config/test/threads/test_thread_fail1.cpp svneol=native#text/plain
 boost/libs/config/test/threads/test_thread_fail2.cpp svneol=native#text/plain
 boost/libs/config/tools/Jamfile svneol=native#text/plain
 boost/libs/config/tools/configure.in -text
-boost/libs/config/tools/generate -text
 boost/libs/config/tools/generate.cpp svneol=native#text/plain
 boost/libs/conversion/cast.htm svneol=native#text/html
 boost/libs/conversion/cast_test.cpp svneol=native#text/plain
