@@ -491,6 +491,7 @@ boost/boost/preprocessor/for.hpp svneol=native#text/plain
 boost/boost/preprocessor/identity.hpp svneol=native#text/plain
 boost/boost/preprocessor/if.hpp svneol=native#text/plain
 boost/boost/preprocessor/inc.hpp svneol=native#text/plain
+boost/boost/preprocessor/iterate.hpp svneol=native#text/plain
 boost/boost/preprocessor/iteration.hpp svneol=native#text/plain
 boost/boost/preprocessor/iteration/detail/bounds/lower1.hpp svneol=native#text/plain
 boost/boost/preprocessor/iteration/detail/bounds/lower2.hpp svneol=native#text/plain
