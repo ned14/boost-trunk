@@ -210,8 +210,6 @@ boost/libs/array_traits/array-article.html svneol=native#text/html
 boost/libs/array_traits/array_traits.html svneol=native#text/html
 boost/libs/array_traits/index.html svneol=native#text/html
 boost/libs/array_traits/ndim_array_example.cpp svneol=native#text/plain
-boost/libs/compiler.cfg -text
-boost/libs/compiler_status.htm svneol=native#text/html
 boost/libs/compose/compose.hpp.html svneol=native#text/html
 boost/libs/compose/compose.html svneol=native#text/html
 boost/libs/compose/compose1.cpp svneol=native#text/plain
@@ -248,11 +246,6 @@ boost/libs/conversion/index.htm svneol=native#text/html
 boost/libs/conversion/lexical_cast.htm svneol=native#text/html
 boost/libs/conversion/lexical_cast_test.cpp svneol=native#text/plain
 boost/libs/conversion/test.hpp svneol=native#text/plain
-boost/libs/cs-beos.html svneol=native#text/html
-boost/libs/cs-irix.html svneol=native#text/html
-boost/libs/cs-linux.html svneol=native#text/html
-boost/libs/cs-tru64.html svneol=native#text/html
-boost/libs/cs-win32.html svneol=native#text/html
 boost/libs/dir_it/boost.h svneol=native#text/plain
 boost/libs/dir_it/dir_it.html svneol=native#text/html
 boost/libs/dir_it/dir_it.zip -text svneol=unset#application/zip
@@ -707,8 +700,6 @@ boost/libs/regex/src/wide_posix_api.cpp svneol=native#text/plain
 boost/libs/regex/syntax.htm svneol=native#text/html
 boost/libs/regex/template_class_ref.htm svneol=native#text/html
 boost/libs/regex/traits_class_ref.htm svneol=native#text/html
-boost/libs/regression.cfg -text
-boost/libs/regression.cpp svneol=native#text/plain
 boost/libs/smart_ptr/gccspeed.gif -text svneol=unset#image/gif
 boost/libs/smart_ptr/index.htm svneol=native#text/html
 boost/libs/smart_ptr/msvcspeed.gif -text svneol=unset#image/gif
@@ -835,3 +826,12 @@ boost/people/valentin_bonnard_small.jpg -text svneol=unset#image/jpeg
 boost/people/william_kempf.htm svneol=native#text/html
 boost/people/william_kempf.jpg -text svneol=unset#image/jpeg
 boost/people/william_kempf_small.jpg -text svneol=unset#image/jpeg
+boost/status/compiler.cfg -text
+boost/status/compiler_status.html svneol=native#text/html
+boost/status/cs-beos.html svneol=native#text/html
+boost/status/cs-irix.html svneol=native#text/html
+boost/status/cs-linux.html svneol=native#text/html
+boost/status/cs-tru64.html svneol=native#text/html
+boost/status/cs-win32.html svneol=native#text/html
+boost/status/regression.cfg -text
+boost/status/regression.cpp svneol=native#text/plain
