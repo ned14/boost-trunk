@@ -743,6 +743,7 @@ boost/libs/utility/compressed_pair_test.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptor_examples.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptor_test.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptors.htm svneol=native#text/html
+boost/libs/utility/iterator_traits_test.cpp svneol=native#text/plain
 boost/libs/utility/iterators_test.cpp svneol=native#text/plain
 boost/libs/utility/noncopyable_test.cpp svneol=native#text/plain
 boost/libs/utility/operators.htm svneol=native#text/html
