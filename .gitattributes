@@ -648,6 +648,7 @@ boost/libs/functional/mem_fun.html svneol=native#text/html
 boost/libs/functional/negators.html svneol=native#text/html
 boost/libs/functional/ptr_fun.html svneol=native#text/html
 boost/libs/graph/LICENSE -text
+boost/libs/graph/build/Jamfile svneol=native#text/plain
 boost/libs/graph/doc/AdjacencyGraph.html svneol=native#text/html
 boost/libs/graph/doc/AdjacencyMatrix.html svneol=native#text/html
 boost/libs/graph/doc/BFSVisitor.html svneol=native#text/html
@@ -805,6 +806,7 @@ boost/libs/graph/doc/using_adjacency_list.html svneol=native#text/html
 boost/libs/graph/doc/using_graph_algorithms.html svneol=native#text/html
 boost/libs/graph/doc/using_property_maps.html svneol=native#text/html
 boost/libs/graph/doc/visitor_concepts.html svneol=native#text/html
+boost/libs/graph/example/Jamfile svneol=native#text/plain
 boost/libs/graph/example/accum-compile-times.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.expected -text
@@ -902,7 +904,6 @@ boost/libs/graph/example/iohb.h svneol=native#text/plain
 boost/libs/graph/example/isomorphism.cpp svneol=native#text/plain
 boost/libs/graph/example/iterator-property-map-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/johnson-eg.cpp svneol=native#text/plain
-boost/libs/graph/example/johnson.cpp svneol=native#text/plain
 boost/libs/graph/example/johnson.expected -text
 boost/libs/graph/example/kevin-bacon.cpp svneol=native#text/plain
 boost/libs/graph/example/kevin_bacon.cpp svneol=native#text/plain
@@ -994,6 +995,10 @@ boost/libs/graph/example/visitor.expected -text
 boost/libs/graph/src/Makefile svneol=native#text/plain
 boost/libs/graph/src/README svneol=native#text/plain
 boost/libs/graph/src/graphviz.grammar -text
+boost/libs/graph/src/graphviz_digraph_lex.cpp svneol=native#text/plain
+boost/libs/graph/src/graphviz_digraph_parser.cpp svneol=native#text/plain
+boost/libs/graph/src/graphviz_graph_lex.cpp svneol=native#text/plain
+boost/libs/graph/src/graphviz_graph_parser.cpp svneol=native#text/plain
 boost/libs/graph/src/graphviz_lex.l -text
 boost/libs/graph/src/graphviz_parser.y -text
 boost/libs/graph/src/sed-dir -text
