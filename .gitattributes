@@ -597,6 +597,7 @@ boost/boost/iostreams/detail/adapter/range_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/unary_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/allocator_utilities.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/assert_convertible.hpp svneol=native#text/plain
+boost/boost/iostreams/detail/broken_overload_resolution/forward.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/broken_overload_resolution/stream_facade.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/broken_overload_resolution/streambuf_facade.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/buffer.hpp svneol=native#text/plain
