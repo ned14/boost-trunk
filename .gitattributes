@@ -116,7 +116,6 @@ boost/boost/archive/impl/basic_binary_oprimitive.ipp svneol=native#text/plain
 boost/boost/archive/impl/basic_text_iarchive.ipp svneol=native#text/plain
 boost/boost/archive/impl/basic_text_iprimitive.ipp svneol=native#text/plain
 boost/boost/archive/impl/basic_text_oprimitive.ipp svneol=native#text/plain
-boost/boost/archive/impl/basic_text_oprimitive.~ipp -text
 boost/boost/archive/impl/basic_xml_grammar.hpp svneol=native#text/plain
 boost/boost/archive/impl/basic_xml_iarchive.ipp svneol=native#text/plain
 boost/boost/archive/impl/basic_xml_oarchive.ipp svneol=native#text/plain
@@ -128,7 +127,6 @@ boost/boost/archive/impl/xml_iarchive_impl.ipp svneol=native#text/plain
 boost/boost/archive/impl/xml_oarchive_impl.ipp svneol=native#text/plain
 boost/boost/archive/impl/xml_wiarchive_impl.ipp svneol=native#text/plain
 boost/boost/archive/impl/xml_woarchive_impl.ipp svneol=native#text/plain
-boost/boost/archive/impl/xml_woarchive_impl.~ipp -text
 boost/boost/archive/iterators/base64_exception.hpp svneol=native#text/plain
 boost/boost/archive/iterators/base64_from_binary.hpp svneol=native#text/plain
 boost/boost/archive/iterators/binary_from_base64.hpp svneol=native#text/plain
