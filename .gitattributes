@@ -1126,6 +1126,7 @@ boost/libs/functional/index.html svneol=native#text/html
 boost/libs/functional/mem_fun.html svneol=native#text/html
 boost/libs/functional/negators.html svneol=native#text/html
 boost/libs/functional/ptr_fun.html svneol=native#text/html
+boost/libs/gdtl/doc/index.html svneol=native#text/html
 boost/libs/graph/LICENSE -text
 boost/libs/graph/build/Jamfile svneol=native#text/plain
 boost/libs/graph/doc/AdjacencyGraph.html svneol=native#text/html
