@@ -40,6 +40,7 @@ boost/boost/lambda/detail/select_functions.hpp svneol=native#text/plain
 boost/boost/lambda/detail/switch.hpp svneol=native#text/plain
 boost/boost/lambda/exceptions.hpp svneol=native#text/plain
 boost/boost/lambda/lambda.hpp svneol=native#text/plain
+boost/libs/lambda/doc/lambda_users_guide.tex -text
 boost/libs/lambda/doc/users_guide_examples.cpp svneol=native#text/plain
 boost/libs/lambda/test/bind_tests_advanced.cpp svneol=native#text/plain
 boost/libs/lambda/test/bind_tests_simple.cpp svneol=native#text/plain
