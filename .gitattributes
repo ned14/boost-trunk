@@ -2662,6 +2662,7 @@ boost/libs/test/test/.cvsignore -text
 boost/libs/test/test/Jamfile svneol=native#text/plain
 boost/libs/test/test/error_handling_test.pattern -text
 boost/libs/test/test/errors_handling_test.cpp svneol=native#text/plain
+boost/libs/test/test/minimal_test.cpp svneol=native#text/plain
 boost/libs/test/test/online_test.cpp svneol=native#text/plain
 boost/libs/test/test/output_test_stream_test.cpp svneol=native#text/plain
 boost/libs/test/test/prg_exec_fail1.cpp svneol=native#text/plain
