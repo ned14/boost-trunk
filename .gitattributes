@@ -180,7 +180,6 @@ boost/boost/graph/topological_sort.hpp svneol=native#text/plain
 boost/boost/graph/transitive_closure.hpp svneol=native#text/plain
 boost/boost/graph/transpose_graph.hpp svneol=native#text/plain
 boost/boost/graph/tree_traits.hpp svneol=native#text/plain
-boost/boost/graph/uniform_cost_search.hpp svneol=native#text/plain
 boost/boost/graph/vector_as_graph.hpp svneol=native#text/plain
 boost/boost/graph/visitors.hpp svneol=native#text/plain
 boost/boost/half_open_range.hpp svneol=native#text/plain
