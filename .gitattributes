@@ -6636,7 +6636,6 @@ boost/tools/build/test/v1_testing/foo.cpp svneol=native#text/plain
 boost/tools/build/test/v1_testing/lib.cpp svneol=native#text/plain
 boost/tools/build/test/v1_testing/lib.err.cpp svneol=native#text/plain
 boost/tools/build/test/v1_testing/project-root.jam svneol=native#text/plain
-boost/tools/build/testing.jam svneol=native#text/plain
 boost/tools/build/tools/bison.jam svneol=native#text/plain
 boost/tools/build/tools/boostbook.jam svneol=native#text/plain
 boost/tools/build/tools/borland.jam svneol=native#text/plain
