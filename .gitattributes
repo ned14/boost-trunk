@@ -8040,6 +8040,7 @@ boost/tools/boostbook/xsl/caramel/LICENSE -text
 boost/tools/boostbook/xsl/caramel/concept2docbook.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/caramel/cpp-operators.xml svneol=native#text/xml
 boost/tools/boostbook/xsl/caramel/unparser.xsl svneol=native#text/xml
+boost/tools/boostbook/xsl/chunk-common.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/docbook-layout.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/docbook.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/doxygen/collect.xsl svneol=native#text/xml
@@ -8057,6 +8058,7 @@ boost/tools/boostbook/xsl/macro.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/manpages.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/navbar.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/reference.xsl svneol=native#text/xml
+boost/tools/boostbook/xsl/relative-href.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/source-highlight.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/template.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/testing/Jamfile.xsl svneol=native#text/xml
