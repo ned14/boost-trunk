@@ -5399,6 +5399,7 @@ boost/tools/boostbook/xsl/annotation.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/docbook.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/doxygen/collect.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/doxygen/doxygen2boostbook.xsl svneol=native#text/xml
+boost/tools/boostbook/xsl/dtd/dtd2boostbook.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/error.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/fo.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/function.xsl svneol=native#text/xml
