@@ -802,6 +802,7 @@ boost/boost/test/floating_point_comparison.hpp svneol=native#text/plain
 boost/boost/test/included/prg_exec_monitor.hpp svneol=native#text/plain
 boost/boost/test/included/test_exec_monitor.hpp svneol=native#text/plain
 boost/boost/test/included/unit_test_framework.hpp svneol=native#text/plain
+boost/boost/test/minimal.hpp svneol=native#text/plain
 boost/boost/test/test_tools.hpp svneol=native#text/plain
 boost/boost/test/unit_test.hpp svneol=native#text/plain
 boost/boost/test/unit_test_log.hpp svneol=native#text/plain
