@@ -5077,7 +5077,6 @@ boost/libs/program_options/example/regex.cpp svneol=native#text/plain
 boost/libs/program_options/src/cmdline.cpp svneol=native#text/plain
 boost/libs/program_options/src/config_file.cpp svneol=native#text/plain
 boost/libs/program_options/src/convert.cpp svneol=native#text/plain
-boost/libs/program_options/src/option.cpp svneol=native#text/plain
 boost/libs/program_options/src/options_description.cpp svneol=native#text/plain
 boost/libs/program_options/src/parsers.cpp svneol=native#text/plain
 boost/libs/program_options/src/positional_options.cpp svneol=native#text/plain
