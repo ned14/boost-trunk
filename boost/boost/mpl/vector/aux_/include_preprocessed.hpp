@@ -19,10 +19,10 @@
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/stringize.hpp>
 
-#if defined(BOOST_MPL_TYPEOF_BASED_VECTOR_IMPL)
+#if defined(BOOST_MPL_CFG_TYPEOF_SEQUENCES)
 #   define AUX_VECTOR_INCLIDE_DIR typeof_based
 #elif defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
-   || defined(BOOST_NO_NON_TYPE_TEMPLATE_PARTIAL_SPECIALIZATION)
+   || defined(BOOST_MPL_CFG_NO_NONTYPE_TEMPLATE_PARTIAL_SPEC)
 #   define AUX_VECTOR_INCLIDE_DIR no_ctps
 #else
 #   define AUX_VECTOR_INCLIDE_DIR plain

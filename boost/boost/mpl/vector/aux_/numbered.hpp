@@ -125,7 +125,7 @@ struct pop_back_impl< aux::vector_tag<i_> >
 #   endif // i_ > 0
 
 #   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
-    && !defined(BOOST_NO_NON_TYPE_TEMPLATE_PARTIAL_SPECIALIZATION)
+    && !defined(BOOST_MPL_CFG_NO_NONTYPE_TEMPLATE_PARTIAL_SPEC)
 
 template< typename V >
 struct v_at<V,i_>

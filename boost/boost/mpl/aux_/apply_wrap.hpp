@@ -20,6 +20,7 @@
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include <boost/mpl/aux_/arity.hpp>
+#   include <boost/mpl/aux_/na.hpp>
 #   include <boost/mpl/aux_/msvc_never_true.hpp>
 #endif
 
@@ -123,7 +124,7 @@ template<
 struct BOOST_PP_CAT(apply_wrap_impl,i_);
 
 #define BOOST_PP_ITERATION_PARAMS_2 \
-    (3,(0, BOOST_MPL_LIMIT_METAFUNCTION_ARITY - i_, <boost/mpl/apply_wrap.hpp>))
+    (3,(0, BOOST_MPL_LIMIT_METAFUNCTION_ARITY - i_, <boost/mpl/aux_/apply_wrap.hpp>))
 #include BOOST_PP_ITERATE()
 
 template<
@@ -183,7 +184,7 @@ struct BOOST_PP_CAT(apply_wrap_impl,i_)<
 {
     typedef typename F::template apply<
           AUX778076_APPLY_WRAP_PARAMS(i_, T)
-        BOOST_PP_COMMA_IF(j_) BOOST_MPL_PP_ENUM(j_, void_)
+        BOOST_PP_COMMA_IF(j_) BOOST_MPL_PP_ENUM(j_, na)
         > type;
 };
 

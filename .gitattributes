@@ -40,7 +40,6 @@ boost/boost/mpl/aux_/config/dependent_nttp.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/dtp.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/eti.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/gcc.hpp svneol=native#text/plain
-boost/boost/mpl/aux_/config/internals.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/lambda.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/msvc.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/msvc_typename.hpp svneol=native#text/plain

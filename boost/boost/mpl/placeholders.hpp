@@ -45,7 +45,7 @@ namespace boost {
 namespace mpl {
 
 // watch out for GNU gettext users, who #define _(x)
-#if !defined(_) || defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
+#if !defined(_) || defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 typedef arg<-1> _;
 
 namespace placeholders {

@@ -49,7 +49,7 @@ struct at_impl< aux::vector_tag >
 #else
 
 #   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
-    && !defined(BOOST_NO_NON_TYPE_TEMPLATE_PARTIAL_SPECIALIZATION)
+    && !defined(BOOST_MPL_CFG_NO_NONTYPE_TEMPLATE_PARTIAL_SPEC)
 
 template< typename Vector, long n_ > struct v_at;
 

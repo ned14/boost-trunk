@@ -19,7 +19,7 @@
 
 #include <boost/mpl/aux_/config/lambda.hpp>
 
-#if defined(BOOST_MPL_NO_LAMBDA_HEURISTIC)
+#if defined(BOOST_MPL_CFG_NO_LAMBDA_HEURISTIC)
 #   define BOOST_MPL_AUX_IS_LAMBDA_EXPR(value) /**/
 #else
 #   define BOOST_MPL_AUX_IS_LAMBDA_EXPR(value) \

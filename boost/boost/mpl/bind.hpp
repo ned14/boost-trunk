@@ -46,7 +46,7 @@
 #if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) && \
     !defined(BOOST_MPL_PREPROCESSING_MODE)
 
-#   if defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
+#   if defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 #       define BOOST_MPL_PREPROCESSED_HEADER basic_bind.hpp
 #   else
 #       define BOOST_MPL_PREPROCESSED_HEADER bind.hpp
@@ -127,7 +127,7 @@ struct resolve_bind_arg
     typedef T type;
 };
 
-#   if !defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
+#   if !defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 
 template<
       typename T
@@ -148,7 +148,7 @@ struct replace_unnamed_arg< arg<-1>,Arg >
     typedef Arg type;
 };
 
-#   endif // BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT
+#   endif // BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT
 
 #else
 
@@ -188,7 +188,7 @@ struct resolve_bind_arg
 {
 };
 
-#   if !defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
+#   if !defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 
 template< typename T > 
 struct replace_unnamed_arg_impl
@@ -216,13 +216,13 @@ struct replace_unnamed_arg
 {
 };
 
-#   endif // BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT
+#   endif // BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT
 
 #endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 } // namespace aux
 
-#if !defined(BOOST_MPL_NO_BIND_TEMPLATE)
+#if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
 // forward declaration
 template<
       typename F, AUX_BIND_DEFAULT_PARAMS(typename T, void_)
@@ -245,7 +245,7 @@ struct resolve_bind_arg< arg<N>,AUX_BIND_PARAMS(U) >
     typedef typename AUX_APPLY((mpl::arg<N>, AUX_BIND_PARAMS(U)))::type type;
 };
 
-#if !defined(BOOST_MPL_NO_BIND_TEMPLATE)
+#if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
 template<
       typename F, AUX_BIND_PARAMS(typename T), AUX_BIND_PARAMS(typename U)
     >
@@ -286,7 +286,7 @@ template< typename T > aux::no_tag is_bind_helper(protect<T>*);
 // agurt, 15/mar/02: MSVC 6.5 fails to properly resolve the overload 
 // in case if we use 'aux::type_wrapper< bind<...> >' here, and all 
 // 'bind' instantiations form a complete type anyway
-#if !defined(BOOST_MPL_NO_BIND_TEMPLATE)
+#if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
 template<
       typename F, AUX_BIND_PARAMS(typename T)
     >
@@ -330,7 +330,7 @@ template< typename T > struct is_bind_template
 
 } // namespace aux
 
-#if !defined(BOOST_MPL_NO_BIND_TEMPLATE)
+#if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
 BOOST_MPL_AUX_ARITY_SPEC(
       BOOST_PP_INC(BOOST_MPL_LIMIT_METAFUNCTION_ARITY)
     , bind
@@ -346,7 +346,7 @@ BOOST_MPL_AUX_ARITY_SPEC(2,bind2nd)
 
 // real C++ version is already taken care of
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
- && !defined(BOOST_MPL_NO_BIND_TEMPLATE)
+ && !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
 
 namespace aux {
 // apply_count_args
@@ -427,7 +427,7 @@ struct BOOST_PP_CAT(bind,i)
     struct apply
     {
      private:
-#   if !defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
+#   if !defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 
         typedef aux::replace_unnamed_arg< F,mpl::arg<1> > r0;
         typedef typename r0::type a0;
@@ -437,7 +437,7 @@ struct BOOST_PP_CAT(bind,i)
 #   else
         typedef typename aux::resolve_bind_arg<F,AUX_BIND_PARAMS(U)>::type f_;
 
-#   endif // BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT
+#   endif // BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT
 
 #   if i > 0
 #       define BOOST_PP_ITERATION_PARAMS_2 (3,(1, i, <boost/mpl/bind.hpp>))
@@ -483,7 +483,7 @@ is_bind_helper(BOOST_PP_CAT(bind,i)<F AUX_BIND_N_PARAMS(i,T)>*);
 BOOST_MPL_AUX_ARITY_SPEC(BOOST_PP_INC(i), BOOST_PP_CAT(bind,i))
 
 
-#   if !defined(BOOST_MPL_NO_BIND_TEMPLATE)
+#   if !defined(BOOST_MPL_CFG_NO_BIND_TEMPLATE)
 #   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     
 #if i == BOOST_MPL_LIMIT_METAFUNCTION_ARITY
@@ -528,7 +528,7 @@ struct bind_impl_chooser<i>
 } // namespace aux
 
 #   endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-#   endif // BOOST_MPL_NO_BIND_TEMPLATE
+#   endif // BOOST_MPL_CFG_NO_BIND_TEMPLATE
 
 #   undef i
 
@@ -537,7 +537,7 @@ struct bind_impl_chooser<i>
 #elif BOOST_PP_ITERATION_DEPTH() == 2
 
 #   define j BOOST_PP_FRAME_ITERATION(2)
-#   if !defined(BOOST_MPL_NO_UNNAMED_PLACEHOLDER_SUPPORT)
+#   if !defined(BOOST_MPL_CFG_NO_UNNAMED_PLACEHOLDER_SUPPORT)
 
         typedef aux::replace_unnamed_arg< BOOST_PP_CAT(T,j),BOOST_PP_CAT(n,j) > BOOST_PP_CAT(r,j);
         typedef typename BOOST_PP_CAT(r,j)::type BOOST_PP_CAT(a,j);

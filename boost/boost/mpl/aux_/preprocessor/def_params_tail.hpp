@@ -27,7 +27,7 @@
 // BOOST_MPL_PP_DEF_PARAMS_TAIL(2,T,value): , T2 = value, .., Tn = value
 // BOOST_MPL_PP_DEF_PARAMS_TAIL(n,T,value): <nothing>
 
-#if !defined(BOOST_MPL_NO_OWN_PP_PRIMITIVES)
+#if !defined(BOOST_MPL_CFG_NO_OWN_PP_PRIMITIVES)
 
 #   include <boost/mpl/aux_/preprocessor/filter_params.hpp>
 #   include <boost/mpl/aux_/preprocessor/sub.hpp>
@@ -86,7 +86,7 @@
         ) \
     /**/
 
-#endif // BOOST_MPL_NO_OWN_PP_PRIMITIVES
+#endif // BOOST_MPL_CFG_NO_OWN_PP_PRIMITIVES
 
 #define BOOST_MPL_PP_DEF_PARAMS_TAIL(i, param, value) \
     BOOST_MPL_PP_DEF_PARAMS_TAIL_IMPL(i, param, BOOST_PP_IDENTITY(=value)) \

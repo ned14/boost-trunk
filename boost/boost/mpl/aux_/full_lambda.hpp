@@ -102,7 +102,7 @@ struct lambda
 {
 };
 
-#if !defined(BOOST_MPL_NO_LAMBDA_HEURISTIC)
+#if !defined(BOOST_MPL_CFG_NO_LAMBDA_HEURISTIC)
 
 #define n BOOST_MPL_LIMIT_METAFUNCTION_ARITY
 namespace aux {
@@ -131,7 +131,7 @@ struct lambda_impl< arg<N>,Tag,Protect AUX_ARITY_PARAM(int_<-1>) >
     typedef mpl::arg<N> type; // qualified for the sake of MIPSpro 7.41
 };
 
-#endif // BOOST_MPL_NO_LAMBDA_HEURISTIC
+#endif // BOOST_MPL_CFG_NO_LAMBDA_HEURISTIC
 
 #define BOOST_PP_ITERATION_LIMITS (0, BOOST_MPL_LIMIT_METAFUNCTION_ARITY)
 #define BOOST_PP_FILENAME_1 <boost/mpl/aux_/full_lambda.hpp>
@@ -212,7 +212,7 @@ struct lambda< F<AUX_LAMBDA_PARAMS(i, T)>, Tag AUX_ARITY_PARAM(int_<i>) >
 {
 };
 
-#if defined(BOOST_MPL_NO_LAMBDA_HEURISTIC)
+#if defined(BOOST_MPL_CFG_NO_LAMBDA_HEURISTIC)
 
 template<
       template< AUX_LAMBDA_PARAMS(i, typename P) > class F
@@ -237,7 +237,7 @@ struct lambda_impl<
 #   undef AUX_LAMBDA_INVOCATION
 };
 
-#else // BOOST_MPL_NO_LAMBDA_HEURISTIC
+#else // BOOST_MPL_CFG_NO_LAMBDA_HEURISTIC
 
 #   define AUX_LAMBDA_RESULT(unused, i, T) \
     BOOST_PP_COMMA_IF(i) \
@@ -324,7 +324,7 @@ struct lambda_impl<
 #   undef AUX_LAMBDA_INVOCATION
 #   undef AUX_LAMBDA_RESULT
 
-#endif // BOOST_MPL_NO_LAMBDA_HEURISTIC
+#endif // BOOST_MPL_CFG_NO_LAMBDA_HEURISTIC
 #endif // i > 0
 
 template<

@@ -27,7 +27,7 @@
 
 #define i BOOST_PP_FRAME_ITERATION(1)
 
-#if defined(BOOST_MPL_TYPEOF_BASED_VECTOR_IMPL)
+#if defined(BOOST_MPL_CFG_TYPEOF_SEQUENCES)
 
 #   define MPL_AUX_VECTOR_TAIL(vector, i, C) \
     BOOST_PP_CAT(BOOST_PP_CAT(vector,BOOST_PP_DEC(i)),_c)<T \
@@ -68,7 +68,7 @@ struct BOOST_PP_CAT(BOOST_PP_CAT(vector,i),_c)
 
 #   undef MPL_AUX_VECTOR_C_PARAM_FUNC
 
-#endif // BOOST_MPL_TYPEOF_BASED_VECTOR_IMPL
+#endif // BOOST_MPL_CFG_TYPEOF_SEQUENCES
 
 #undef i
 
