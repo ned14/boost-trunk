@@ -5945,6 +5945,7 @@ boost/libs/variant/doc/credits.xml svneol=native#text/xml
 boost/libs/variant/doc/index.html svneol=native#text/html
 boost/libs/variant/doc/introduction.xml svneol=native#text/xml
 boost/libs/variant/doc/misc.html svneol=native#text/html
+boost/libs/variant/doc/misc.xml svneol=native#text/xml
 boost/libs/variant/doc/overview.html svneol=native#text/html
 boost/libs/variant/doc/reference.html svneol=native#text/html
 boost/libs/variant/doc/reference/apply_visitor.xml svneol=native#text/xml
