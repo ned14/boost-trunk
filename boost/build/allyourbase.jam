@@ -1075,7 +1075,7 @@ rule subinclude
     local d ;
     for d in $(<)
     {
-        SubInclude TOP [ split-path d ] ;
+        SubInclude TOP [ split-path $(d) ] ;
     }
 }
 
