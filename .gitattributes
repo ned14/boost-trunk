@@ -4462,6 +4462,7 @@ boost/libs/math/test/Jamfile svneol=native#text/plain
 boost/libs/math/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/math/test/common_factor_test.cpp svneol=native#text/plain
 boost/libs/mem_fn/index.html svneol=native#text/html
+boost/libs/mpl/book/chapter1/binary.hpp svneol=native#text/plain
 boost/libs/mpl/doc/index.html svneol=native#text/html
 boost/libs/mpl/doc/paper/mpl_paper.pdf -text svneol=unset#application/pdf
 boost/libs/mpl/doc/refmanual.html svneol=native#text/html
