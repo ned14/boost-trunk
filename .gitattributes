@@ -160,6 +160,7 @@ boost/boost/graph/graph_archetypes.hpp svneol=native#text/plain
 boost/boost/graph/graph_as_tree.hpp svneol=native#text/plain
 boost/boost/graph/graph_concepts.hpp svneol=native#text/plain
 boost/boost/graph/graph_selectors.hpp svneol=native#text/plain
+boost/boost/graph/graph_test.hpp svneol=native#text/plain
 boost/boost/graph/graph_traits.hpp svneol=native#text/plain
 boost/boost/graph/graph_utility.hpp svneol=native#text/plain
 boost/boost/graph/graphviz.hpp svneol=native#text/plain
