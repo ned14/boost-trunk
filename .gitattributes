@@ -61,6 +61,7 @@ boost/boost/graph/graph_concepts.hpp svneol=native#text/plain
 boost/boost/graph/graph_selectors.hpp svneol=native#text/plain
 boost/boost/graph/graph_traits.hpp svneol=native#text/plain
 boost/boost/graph/graph_utility.hpp svneol=native#text/plain
+boost/boost/graph/graphviz.hpp svneol=native#text/plain
 boost/boost/graph/johnson_all_pairs_shortest.hpp svneol=native#text/plain
 boost/boost/graph/kruskal_min_spanning_tree.hpp svneol=native#text/plain
 boost/boost/graph/leda_graph.hpp svneol=native#text/plain
@@ -484,6 +485,8 @@ boost/libs/graph/example/gerdemann.cpp svneol=native#text/plain
 boost/libs/graph/example/gerdemann.expected -text
 boost/libs/graph/example/girth.cpp svneol=native#text/plain
 boost/libs/graph/example/graph.cpp svneol=native#text/plain
+boost/libs/graph/example/graphviz.cpp svneol=native#text/plain
+boost/libs/graph/example/graphviz_test.dot -text
 boost/libs/graph/example/in_edges.cpp svneol=native#text/plain
 boost/libs/graph/example/in_edges.expected -text
 boost/libs/graph/example/interior_property_map.cpp svneol=native#text/plain
