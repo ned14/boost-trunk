@@ -6618,6 +6618,7 @@ boost/libs/serialization/test/test_mult_archive_types.cpp svneol=native#text/pla
 boost/libs/serialization/test/test_multiple_ptrs.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_no_rtti.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_non_default_ctor.cpp svneol=native#text/plain
+boost/libs/serialization/test/test_non_default_ctor2.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_non_intrusive.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_null_ptr.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_nvp.cpp svneol=native#text/plain
