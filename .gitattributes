@@ -4693,6 +4693,7 @@ boost/libs/regex/test/regress/v3_tests.txt svneol=native#text/plain
 boost/libs/regex/test/regress/vc6-stlport.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc6.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc7.mak svneol=native#text/plain
+boost/libs/regex/test/regress/vc71.mak svneol=native#text/plain
 boost/libs/regex/test/regress/wregex_test.cpp svneol=native#text/plain
 boost/libs/signals/build/Jamfile svneol=native#text/plain
 boost/libs/signals/build/Jamfile.v2 svneol=native#text/plain
