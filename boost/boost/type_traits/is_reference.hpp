@@ -56,67 +56,21 @@ using ::boost::type_traits::yes_type;
 using ::boost::type_traits::no_type;
 using ::boost::type_traits::wrap;
 
-template <typename T> T&(* is_reference_tester1(wrap<T>) )(wrap<T>);
-char BOOST_TT_DECL is_reference_tester1(...);
+template <class T> T&(* is_reference_helper1(wrap<T>) )(wrap<T>);
+char is_reference_helper1(...);
 
-template <typename T> no_type is_reference_tester2(T&(*)(wrap<T>));
-yes_type BOOST_TT_DECL is_reference_tester2(...);
-
-#if defined(BOOST_MSVC)
-
-template< typename T >
-struct is_reference_or_function_type
-{
-    BOOST_STATIC_CONSTANT(
-        bool, value = sizeof(
-            ::boost::detail::is_reference_tester2(
-                ::boost::detail::is_reference_tester1(wrap<T>())
-                )) == 1
-        );
-};
-
-template <bool>
-struct is_reference_helper
-    : ::boost::type_traits::false_result
-{
-};
-
-template <>
-struct is_reference_helper<true>
-{
-    template< typename T > struct result_
-    {
-        // if not a function type, then it's indeed a reference
-        static T t;
-        BOOST_STATIC_CONSTANT(bool, value = 
-            sizeof(::boost::type_traits::is_function_type_tester(t)) != 
-                sizeof(::boost::type_traits::yes_type)
-            );
-    };
-};
+template <class T> no_type is_reference_helper2(T&(*)(wrap<T>));
+yes_type is_reference_helper2(...);
 
 template <typename T>
 struct is_reference_impl
-    : is_reference_helper<
-          ::boost::detail::is_reference_or_function_type<T>::value
-        >::template result_<T>
-{
-};
-
-#else
-
-template< typename T >
-struct is_reference_impl
 {
     BOOST_STATIC_CONSTANT(
         bool, value = sizeof(
-            ::boost::detail::is_reference_tester2(
-                ::boost::detail::is_reference_tester1(wrap<T>())
-                )) == 1
+            ::boost::detail::is_reference_helper2(
+                ::boost::detail::is_reference_helper1(::boost::type_traits::wrap<T>()))) == 1
         );
 };
-
-#endif // BOOST_MSVC
 
 } // namespace detail
 
