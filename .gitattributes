@@ -1392,6 +1392,7 @@ boost/libs/pool/test/test_pool_alloc.cpp svneol=native#text/plain
 boost/libs/pool/test/time_pool_alloc.cpp svneol=native#text/plain
 boost/libs/preprocessor/doc/acknowledgements.htm svneol=native#text/html
 boost/libs/preprocessor/doc/bibliography.htm svneol=native#text/html
+boost/libs/preprocessor/doc/examples.htm svneol=native#text/html
 boost/libs/preprocessor/doc/examples_preprocessed.htm svneol=native#text/html
 boost/libs/preprocessor/doc/index.htm svneol=native#text/html
 boost/libs/preprocessor/doc/keywords.txt svneol=native#text/plain
