@@ -5903,6 +5903,7 @@ boost/libs/statechart/example/StopWatch/StopWatch.cpp svneol=native#text/plain
 boost/libs/statechart/example/StopWatch/StopWatch.dev -text
 boost/libs/statechart/example/StopWatch/StopWatch.sln -text
 boost/libs/statechart/example/StopWatch/StopWatch.vcproj -text
+boost/libs/statechart/example/StopWatch/StopWatch2.cpp svneol=native#text/plain
 boost/libs/statechart/index.html svneol=native#text/html
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/Jamfile.v2 svneol=native#text/plain
