@@ -4765,6 +4765,7 @@ boost/libs/random/random_test.cpp svneol=native#text/plain
 boost/libs/random/statistic_tests.cpp svneol=native#text/plain
 boost/libs/random/statistic_tests.hpp svneol=native#text/plain
 boost/libs/random/test/Jamfile svneol=native#text/plain
+boost/libs/random/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/random/wg21-proposal.html svneol=native#text/html
 boost/libs/rational/index.html svneol=native#text/html
 boost/libs/rational/rational.html svneol=native#text/html
