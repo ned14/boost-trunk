@@ -658,8 +658,10 @@ boost/libs/graph/example/strong_components.cpp svneol=native#text/plain
 boost/libs/graph/example/strong_components.expected -text
 boost/libs/graph/example/subgraph.cpp svneol=native#text/plain
 boost/libs/graph/example/subgraph.expected -text
+boost/libs/graph/example/tc.dot -text
 boost/libs/graph/example/topo_sort.cpp svneol=native#text/plain
 boost/libs/graph/example/topo_sort.expected -text
+boost/libs/graph/example/transitive_closure.cpp svneol=native#text/plain
 boost/libs/graph/example/undirected.cpp svneol=native#text/plain
 boost/libs/graph/example/undirected.expected -text
 boost/libs/graph/example/vector_as_graph.cpp svneol=native#text/plain
