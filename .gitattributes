@@ -2064,6 +2064,7 @@ boost/boost/statechart/asynchronous_state_machine.hpp svneol=native#text/plain
 boost/boost/statechart/custom_reaction.hpp svneol=native#text/plain
 boost/boost/statechart/deep_history.hpp svneol=native#text/plain
 boost/boost/statechart/deferral.hpp svneol=native#text/plain
+boost/boost/statechart/detail/avoid_unused_warning.hpp svneol=native#text/plain
 boost/boost/statechart/detail/constructor.hpp svneol=native#text/plain
 boost/boost/statechart/detail/counted_base.hpp svneol=native#text/plain
 boost/boost/statechart/detail/leaf_state.hpp svneol=native#text/plain
