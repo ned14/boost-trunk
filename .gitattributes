@@ -1162,6 +1162,7 @@ boost/libs/type_traits/examples/fill_example.cpp svneol=native#text/plain
 boost/libs/type_traits/examples/iter_swap_example.cpp svneol=native#text/plain
 boost/libs/type_traits/examples/trivial_destructor_example.cpp svneol=native#text/plain
 boost/libs/type_traits/index.htm svneol=native#text/html
+boost/libs/type_traits/tests/Jamfile svneol=native#text/plain
 boost/libs/type_traits/tests/alignment_test.cpp svneol=native#text/plain
 boost/libs/type_traits/tests/arithmetic_traits_test.cpp svneol=native#text/plain
 boost/libs/type_traits/tests/composite_traits_test.cpp svneol=native#text/plain
