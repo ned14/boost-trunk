@@ -5908,6 +5908,13 @@ boost/tools/build/doc/development_plan.html svneol=native#text/html
 boost/tools/build/doc/recipes.html svneol=native#text/html
 boost/tools/build/doc/tools.html svneol=native#text/html
 boost/tools/build/examples-v2/boost-build.jam svneol=native#text/plain
+boost/tools/build/examples-v2/customization/Jamfile svneol=native#text/plain
+boost/tools/build/examples-v2/customization/class.verbatim -text
+boost/tools/build/examples-v2/customization/codegen.cpp svneol=native#text/plain
+boost/tools/build/examples-v2/customization/inline_file.py svneol=native#text/x-python
+boost/tools/build/examples-v2/customization/project-root.jam svneol=native#text/plain
+boost/tools/build/examples-v2/customization/usage.verbatim -text
+boost/tools/build/examples-v2/customization/verbatim.jam svneol=native#text/plain
 boost/tools/build/examples-v2/gettext/Jamfile svneol=native#text/plain
 boost/tools/build/examples-v2/gettext/main.cpp svneol=native#text/plain
 boost/tools/build/examples-v2/gettext/project-root.jam svneol=native#text/plain
@@ -6499,6 +6506,13 @@ boost/tools/build/v2/doc/development_plan.html svneol=native#text/html
 boost/tools/build/v2/doc/recipes.html svneol=native#text/html
 boost/tools/build/v2/doc/tools.html svneol=native#text/html
 boost/tools/build/v2/example/boost-build.jam svneol=native#text/plain
+boost/tools/build/v2/example/customization/Jamfile svneol=native#text/plain
+boost/tools/build/v2/example/customization/class.verbatim -text
+boost/tools/build/v2/example/customization/codegen.cpp svneol=native#text/plain
+boost/tools/build/v2/example/customization/inline_file.py svneol=native#text/x-python
+boost/tools/build/v2/example/customization/project-root.jam svneol=native#text/plain
+boost/tools/build/v2/example/customization/usage.verbatim -text
+boost/tools/build/v2/example/customization/verbatim.jam svneol=native#text/plain
 boost/tools/build/v2/example/gettext/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/gettext/main.cpp svneol=native#text/plain
 boost/tools/build/v2/example/gettext/project-root.jam svneol=native#text/plain
