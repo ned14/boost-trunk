@@ -481,6 +481,7 @@ boost/boost/mpl/aux_/deref_wknd.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/empty_impl.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/erase_impl.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/filter_iter.hpp svneol=native#text/plain
+boost/boost/mpl/aux_/find_if_pred.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/fold_backward_impl.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/fold_backward_impl_body.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/fold_impl.hpp svneol=native#text/plain
