@@ -4003,6 +4003,7 @@ boost/libs/python/build/VisualStudio/boost_python.dsw -text svneol=CRLF#unset
 boost/libs/python/build/python_v1.zip -text svneol=unset#application/zip
 boost/libs/python/doc/PyConDC_2003/bpl_mods.txt svneol=native#text/plain
 boost/libs/python/doc/PyConDC_2003/default.css svneol=native#text/css
+boost/libs/python/doc/PyConDC_2003/python_cpp_mix.jpg -text svneol=unset#image/jpeg
 boost/libs/python/doc/PyConDC_2003/python_cpp_mix.png -text svneol=unset#image/png
 boost/libs/python/doc/boost.css svneol=native#text/css
 boost/libs/python/doc/building.html svneol=native#text/html
@@ -4178,8 +4179,12 @@ boost/libs/python/pyste/example/nested.h svneol=native#text/plain
 boost/libs/python/pyste/example/nested.pyste -text
 boost/libs/python/pyste/example/operator.h svneol=native#text/plain
 boost/libs/python/pyste/example/operator.pyste -text
+boost/libs/python/pyste/example/operators.h svneol=native#text/plain
+boost/libs/python/pyste/example/operators.pyste -text
 boost/libs/python/pyste/example/templates.h svneol=native#text/plain
 boost/libs/python/pyste/example/templates.pyste -text
+boost/libs/python/pyste/example/unions.h svneol=native#text/plain
+boost/libs/python/pyste/example/unions.pyste -text
 boost/libs/python/pyste/example/virtual.h svneol=native#text/plain
 boost/libs/python/pyste/example/virtual.pyste -text
 boost/libs/python/pyste/example/wrappertest.h svneol=native#text/plain
@@ -4206,9 +4211,19 @@ boost/libs/python/pyste/src/pyste-profile.py svneol=native#text/x-python
 boost/libs/python/pyste/src/pyste.py svneol=native#text/x-python
 boost/libs/python/pyste/src/settings.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/GCCXMLParserUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/build_pyste_nt.bat svneol=native#text/plain
+boost/libs/python/pyste/tests/example_basicUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_enumsUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_header_testUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_nested.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_operatorsUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_templatesUT.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_virtual.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/example_wrappertestUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/infosUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/policiesUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/runtests.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/test_all.bat svneol=native#text/plain
 boost/libs/python/release_notes.txt svneol=native#text/plain
 boost/libs/python/src/aix_init_module.cpp svneol=native#text/plain
 boost/libs/python/src/converter/arg_to_python_base.cpp svneol=native#text/plain
