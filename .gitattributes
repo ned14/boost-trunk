@@ -819,6 +819,8 @@ boost/libs/graph/doc/figs/search_states.fig -text
 boost/libs/graph/doc/figs/search_states.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/stl_iter.fig -text
 boost/libs/graph/doc/figs/stl_iter.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/subgraph-tree.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/subgraph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/tree_edges.fig -text
 boost/libs/graph/doc/figs/tree_edges.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undigraph.fig -text
@@ -872,6 +874,7 @@ boost/libs/graph/doc/sparse_matrix_ordering.html svneol=native#text/html
 boost/libs/graph/doc/stanford_graph.html svneol=native#text/html
 boost/libs/graph/doc/strong_components.html svneol=native#text/html
 boost/libs/graph/doc/strong_components.w -text
+boost/libs/graph/doc/subgraph.html svneol=native#text/html
 boost/libs/graph/doc/table_of_contents.html svneol=native#text/html
 boost/libs/graph/doc/tc-out.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/tc.gif -text svneol=unset#image/gif
