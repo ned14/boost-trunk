@@ -4513,6 +4513,7 @@ boost/libs/regex/test/regress/wregex_test.cpp svneol=native#text/plain
 boost/libs/regex/traits_class_ref.htm svneol=native#text/html
 boost/libs/signals/build/Jamfile svneol=native#text/plain
 boost/libs/signals/build/Jamfile.v2 svneol=native#text/plain
+boost/libs/signals/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/signals/doc/design.xml svneol=native#text/xml
 boost/libs/signals/doc/faq.xml svneol=native#text/xml
 boost/libs/signals/doc/index.html svneol=native#text/html
