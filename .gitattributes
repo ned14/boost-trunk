@@ -7342,6 +7342,8 @@ boost/libs/statechart/example/StopWatch/StopWatch.cpp svneol=native#text/plain
 boost/libs/statechart/example/StopWatch/StopWatch.vcproj -text
 boost/libs/statechart/example/StopWatch/StopWatch2.cpp svneol=native#text/plain
 boost/libs/statechart/index.html svneol=native#text/html
+boost/libs/statechart/test/DeferralTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/DeferralTest.vcproj -text
 boost/libs/statechart/test/InnermostDefault.hpp svneol=native#text/plain
 boost/libs/statechart/test/Jamfile svneol=native#text/plain
 boost/libs/statechart/test/OuterOrthogonal.hpp svneol=native#text/plain
