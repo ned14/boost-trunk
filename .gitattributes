@@ -292,6 +292,7 @@ boost/libs/graph/doc/UniformCostVisitor.html svneol=native#text/html
 boost/libs/graph/doc/VertexAndEdgeListGraph.html svneol=native#text/html
 boost/libs/graph/doc/VertexListGraph.html svneol=native#text/html
 boost/libs/graph/doc/acknowledgements.html svneol=native#text/html
+boost/libs/graph/doc/adjacency_iterator.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_list.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_list_traits.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_matrix.html svneol=native#text/html
