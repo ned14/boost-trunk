@@ -3176,6 +3176,7 @@ boost/libs/iterator/doc/iterator_facade_tutorial.rst svneol=native#text/plain
 boost/libs/iterator/doc/make_counting_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/make_filter_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/make_reverse_iterator.rst svneol=native#text/plain
+boost/libs/iterator/doc/make_transform_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/new-iter-concepts.html svneol=native#text/html
 boost/libs/iterator/doc/new-iter-concepts.rst svneol=native#text/plain
 boost/libs/iterator/doc/oldeqnew.png -text svneol=unset#image/png
