@@ -5510,3 +5510,4 @@ boost/tools/regression/detail/tiny_xml_test.cpp svneol=native#text/plain
 boost/tools/regression/detail/tiny_xml_test.txt svneol=native#text/plain
 boost/tools/regression/index.htm svneol=native#text/html
 boost/tools/regression/process_jam_log.cpp svneol=native#text/plain
+boost/tools/regression/run_tests.sh svneol=native#text/x-sh
