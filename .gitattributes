@@ -1243,6 +1243,7 @@ boost/libs/pool/doc/pool.css svneol=native#text/css
 boost/libs/pool/test/sys_allocator.hpp svneol=native#text/plain
 boost/libs/pool/test/test_pool_alloc.cpp svneol=native#text/plain
 boost/libs/pool/test/time_pool_alloc.cpp svneol=native#text/plain
+boost/libs/preprocessor/doc/doxygen_reference.bash -text
 boost/libs/preprocessor/doc/doxygen_reference.dox -text
 boost/libs/preprocessor/doc/doxygen_reference_footer.htm svneol=native#text/html
 boost/libs/preprocessor/doc/doxygen_reference_header.htm svneol=native#text/html
@@ -1265,9 +1266,9 @@ boost/libs/preprocessor/doc/reference/dec_8hpp.html svneol=native#text/html
 boost/libs/preprocessor/doc/reference/div_8hpp.html svneol=native#text/html
 boost/libs/preprocessor/doc/reference/empty_8hpp.html svneol=native#text/html
 boost/libs/preprocessor/doc/reference/enum__params_8hpp.html svneol=native#text/html
-boost/libs/preprocessor/doc/reference/enum__params__with__a__default_8hpp.html svneol=native#text/html
-boost/libs/preprocessor/doc/reference/enum__params__with__defaults_8hpp.html svneol=native#text/html
 boost/libs/preprocessor/doc/reference/enum__shifted__params_8hpp.html svneol=native#text/html
+boost/libs/preprocessor/doc/reference/enum_params_with_a_default.htm svneol=native#text/html
+boost/libs/preprocessor/doc/reference/enum_params_with_defaults.htm svneol=native#text/html
 boost/libs/preprocessor/doc/reference/equal_8hpp.html svneol=native#text/html
 boost/libs/preprocessor/doc/reference/files.html svneol=native#text/html
 boost/libs/preprocessor/doc/reference/globals.html svneol=native#text/html
