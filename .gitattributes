@@ -205,6 +205,7 @@ boost/boost/type_traits/arithmetic_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/composite_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/conversion_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/cv_traits.hpp svneol=native#text/plain
+boost/boost/type_traits/function_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/fwd.hpp svneol=native#text/plain
 boost/boost/type_traits/ice.hpp svneol=native#text/plain
 boost/boost/type_traits/object_traits.hpp svneol=native#text/plain
