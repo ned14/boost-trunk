@@ -189,7 +189,6 @@ boost/boost/integer.hpp svneol=native#text/plain
 boost/boost/integer_traits.hpp svneol=native#text/plain
 boost/boost/iterator.hpp svneol=native#text/plain
 boost/boost/iterator_adaptors.hpp svneol=native#text/plain
-boost/boost/lambda/dummy -text
 boost/boost/lexical_cast.hpp svneol=native#text/plain
 boost/boost/limits.hpp svneol=native#text/plain
 boost/boost/math/octonion.hpp svneol=native#text/plain
