@@ -435,6 +435,7 @@ boost/boost/python/object/life_support.hpp svneol=native#text/plain
 boost/boost/python/object/make_holder.hpp svneol=native#text/plain
 boost/boost/python/object/pointer_holder.hpp svneol=native#text/plain
 boost/boost/python/object/value_holder.hpp svneol=native#text/plain
+boost/boost/python/object/value_holder_fwd.hpp svneol=native#text/plain
 boost/boost/python/objects.hpp svneol=native#text/plain
 boost/boost/python/operators.hpp svneol=native#text/plain
 boost/boost/python/ptr.hpp svneol=native#text/plain
