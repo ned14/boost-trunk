@@ -536,7 +536,6 @@ boost/libs/graph/example/visitor.cpp svneol=native#text/plain
 boost/libs/graph/example/visitor.expected -text
 boost/libs/graph/src/graphviz.grammar -text
 boost/libs/graph/src/graphviz_lex.l -text
-boost/libs/graph/src/graphviz_parser.h svneol=native#text/plain
 boost/libs/graph/src/graphviz_parser.y -text
 boost/libs/graph/test/adj_list_test.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs.cpp svneol=native#text/plain
