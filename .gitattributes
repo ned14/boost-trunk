@@ -269,16 +269,6 @@ boost/libs/concept_check/reference.htm svneol=native#text/html
 boost/libs/concept_check/stl_concept_check.cpp svneol=native#text/plain
 boost/libs/concept_check/stl_concept_covering.cpp svneol=native#text/plain
 boost/libs/concept_check/using_concept_check.htm svneol=native#text/html
-boost/libs/concept_checking/bad_error_eg.cpp svneol=native#text/plain
-boost/libs/concept_checking/bibliography.html svneol=native#text/html
-boost/libs/concept_checking/class_concept_checks_fail_expected.cpp svneol=native#text/plain
-boost/libs/concept_checking/class_concept_checks_test.cpp svneol=native#text/plain
-boost/libs/concept_checking/concept_checking.html svneol=native#text/html
-boost/libs/concept_checking/concept_checks_fail_expected.cpp svneol=native#text/plain
-boost/libs/concept_checking/concept_checks_test.cpp svneol=native#text/plain
-boost/libs/concept_checking/stl_concept_checks.cpp svneol=native#text/plain
-boost/libs/concept_checking/stl_concept_checks.expected -text
-boost/libs/concept_checking/stl_concept_covering.cpp svneol=native#text/plain
 boost/libs/config/config_test.cpp svneol=native#text/plain
 boost/libs/config/index.htm svneol=native#text/html
 boost/libs/cs-beos.html svneol=native#text/html
