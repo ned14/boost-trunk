@@ -269,7 +269,6 @@ boost/development/iterator/libs/iterator/iterator_categories.htm svneol=native#t
 boost/development/iterator/libs/iterator/iterator_concepts.fig -text
 boost/development/iterator/libs/iterator/iterator_concepts.gif -text svneol=unset#image/gif
 boost/development/iterator/libs/iterator/iterator_concepts.htm svneol=native#text/html
-boost/development/iterator/libs/iterator/iterator_traits.htm svneol=native#text/html
 boost/index.htm svneol=native#text/html
 boost/libs/array/array.hpp.html svneol=native#text/html
 boost/libs/array/array.html svneol=native#text/html
