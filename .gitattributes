@@ -862,6 +862,7 @@ boost/libs/graph/doc/using_property_maps.html svneol=native#text/html
 boost/libs/graph/doc/visitor_concepts.html svneol=native#text/html
 boost/libs/graph/example/Jamfile svneol=native#text/plain
 boost/libs/graph/example/accum-compile-times.cpp svneol=native#text/plain
+boost/libs/graph/example/adj_list_ra_edgelist.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.expected -text
 boost/libs/graph/example/adjacency_list_io.cpp svneol=native#text/plain
