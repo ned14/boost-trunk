@@ -4,7 +4,6 @@ boost/boost/lambda/casts.hpp svneol=native#text/plain
 boost/boost/lambda/construct.hpp svneol=native#text/plain
 boost/boost/lambda/control_structures.hpp svneol=native#text/plain
 boost/boost/lambda/core.hpp svneol=native#text/plain
-boost/boost/lambda/dummy -text
 boost/boost/lambda/exceptions.hpp svneol=native#text/plain
 boost/boost/lambda/lambda.hpp svneol=native#text/plain
 boost/boost/lambda/memory.hpp svneol=native#text/plain
