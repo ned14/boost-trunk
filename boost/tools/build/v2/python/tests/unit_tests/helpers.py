@@ -17,7 +17,7 @@ sys.path.append (src_dir)
 def reset ():
     """ Cleans up all modules' state.
     """
-    from boost.build.build import feature, property, property_set, toolset, scanner, type, action
+    from boost.build.build import feature, property, property_set, toolset, scanner, type, action, generators
     from boost.build.tools import builtin
     feature.reset ()
     property.reset ()
@@ -27,4 +27,5 @@ def reset ():
     type.reset ()
     action.reset ()
     builtin.reset ()
+    generators.reset ()
     
