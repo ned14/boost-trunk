@@ -5,6 +5,7 @@ boost/boost/graph/adjacency_list_io.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_matrix.hpp svneol=native#text/plain
 boost/boost/graph/bandwidth.hpp svneol=native#text/plain
 boost/boost/graph/bellman_ford_shortest_paths.hpp svneol=native#text/plain
+boost/boost/graph/betweenness_centrality_clustering.hpp svneol=native#text/plain
 boost/boost/graph/biconnected_components.hpp svneol=native#text/plain
 boost/boost/graph/brandes_betweenness_centrality.hpp svneol=native#text/plain
 boost/boost/graph/breadth_first_search.hpp svneol=native#text/plain
@@ -287,6 +288,7 @@ boost/libs/graph/doc/wavefront.htm svneol=native#text/html
 boost/libs/graph/doc/write-graphviz.html svneol=native#text/html
 boost/libs/graph/example/Jamfile svneol=native#text/plain
 boost/libs/graph/example/accum-compile-times.cpp svneol=native#text/plain
+boost/libs/graph/example/actor_clustering.cpp svneol=native#text/plain
 boost/libs/graph/example/adj_list_ra_edgelist.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.expected -text
