@@ -1126,6 +1126,7 @@ boost/libs/functional/index.html svneol=native#text/html
 boost/libs/functional/mem_fun.html svneol=native#text/html
 boost/libs/functional/negators.html svneol=native#text/html
 boost/libs/functional/ptr_fun.html svneol=native#text/html
+boost/libs/gdtl/build/Jamfile svneol=native#text/plain
 boost/libs/gdtl/doc/BasicTerms.html svneol=native#text/html
 boost/libs/gdtl/doc/DateTimeConcepts-Calculations.html svneol=native#text/html
 boost/libs/gdtl/doc/DesignGoals.html svneol=native#text/html
