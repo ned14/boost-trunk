@@ -24,8 +24,8 @@ using namespace spirit;
 
 void bug_000004_test()
 {
-    const char min = numeric_limits<char>::min();
-    const char max = numeric_limits<char>::max();
+    const char min = (numeric_limits<char>::min)();
+    const char max = (numeric_limits<char>::max)();
 
     {
         chset<> set(~range<>(min, max));

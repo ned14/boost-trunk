@@ -14,6 +14,9 @@ using namespace boost::spirit;
 
 void shortest_alternative_parser_test()
 {
+#if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+    typedef rule<> parser_t;
+#else
     typedef
         shortest_alternative<
             shortest_alternative<
@@ -23,6 +26,7 @@ void shortest_alternative_parser_test()
                 strlit<> >,
             strlit<> >
     parser_t;
+#endif
 
     parser_t short_rule =
         shortest_d[

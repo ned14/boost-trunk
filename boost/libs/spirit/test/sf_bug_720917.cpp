@@ -14,12 +14,12 @@
 #include <iterator>
 #include "impl/util.ipp"
 #include "impl/sstream.hpp"
-#include <boost/test/included/unit_test_framework.hpp>
+//#include <boost/test/included/unit_test_framework.hpp>
 
 using namespace std;
 using namespace boost::spirit;
 
-// Test for bug #720917 
+// Test for bug #720917
 // http://sf.net/tracker/index.php?func=detail&aid=720917&group_id=28447&atid=393386
 //
 // Check that it's possible to use multi_pass
@@ -85,34 +85,51 @@ void construct_string_from(void)
     IterT mp1(a);
 
     std::string dummy;
+#ifdef __BORLANDC__ //  Should have used boost::spirit::assign_actor but
+                    //  Borland has a linker error BC it couldn't find
+                    //  the string::replace code.
+        copy(mp1, mpend, back_insert_iterator<std::string>(dummy));
+#else
     dummy.assign(mp1, mpend);
+#endif
 }
 
 template <>
-void construct_string_from<functor_multi_pass_t>(void) 
+void construct_string_from<functor_multi_pass_t>(void)
 {
     functor_multi_pass_t mpend;
     functor_multi_pass_t mp1 = functor_multi_pass_t(my_functor());
 
     std::string dummy;
+#ifdef __BORLANDC__ //  Should have used boost::spirit::assign_actor but
+                    //  Borland has a linker error BC it couldn't find
+                    //  the string::replace code.
+        copy(mp1, mpend, back_insert_iterator<std::string>(dummy));
+#else
     dummy.assign(mp1, mpend);
+#endif
 }
 
 ////////////////////////////////////////////////
 // Definition of the test suite
-boost::unit_test_framework::test_suite*
-init_unit_test_suite( int argc, char* argv[] )
+//boost::unit_test_framework::test_suite*
+int main(int argc, char* argv[])
 {
-    test::init(argc, argv);
-    test::banner("sf_bug_720917");
+//    test::init(argc, argv);
+//    test::banner("sf_bug_720917");
+//
+//    boost::unit_test_framework::test_suite* s =
+//        BOOST_TEST_SUITE("spirit::sf_bug_720917");
 
-    boost::unit_test_framework::test_suite* s =
-        BOOST_TEST_SUITE("spirit::sf_bug_720917");
+//    s->add(BOOST_TEST_CASE(construct_string_from<default_multi_pass_t>));
+//    s->add(BOOST_TEST_CASE(construct_string_from<fixed_multi_pass_t>));
+//    s->add(BOOST_TEST_CASE(construct_string_from<first_owner_multi_pass_t>));
+//    s->add(BOOST_TEST_CASE(construct_string_from<functor_multi_pass_t>));
 
-    s->add(BOOST_TEST_CASE(construct_string_from<default_multi_pass_t>));
-    s->add(BOOST_TEST_CASE(construct_string_from<fixed_multi_pass_t>));
-    s->add(BOOST_TEST_CASE(construct_string_from<first_owner_multi_pass_t>));
-    s->add(BOOST_TEST_CASE(construct_string_from<functor_multi_pass_t>));
+    construct_string_from<default_multi_pass_t>();
+    construct_string_from<fixed_multi_pass_t>();
+    construct_string_from<first_owner_multi_pass_t>();
+    construct_string_from<functor_multi_pass_t>();
 
-    return s;
+    return 0;
 }
