@@ -73,9 +73,13 @@ else if $(UNIX)
         <library-path>$(PYTHON_LIB_PATH)
       ;
     
+    if $(DLL_AS_LIB)
+    {
+        PYTHON_PROPERTIES += <find-library>python$(PYTHON_VERSION) ;
+    }
     if $(OS) = OSF
     {
-        PYTHON_PROPERTIES += <*><*><linkflags>"-expect_unresolved 'Py*' -expect_unresolved '_Py*'" ;
+#        PYTHON_PROPERTIES += <*><*><linkflags>"-expect_unresolved 'Py*' -expect_unresolved '_Py*'" ;
     }
 }
 
@@ -315,7 +319,6 @@ rule python-test-target ( test-target : sources + )
     python-runtest-aux $(test-target) : $(sources) ;
     Clean clean : $(test-target) ; # remove the test-target as part of any clean operation
     type-DEPENDS test : $(test-target) ;
-    MakeLocate $(test-target) : $(LOCATE_TARGET) ;
     MakeLocate $(test-target) : $(LOCATE_TARGET) ;
 }
 
