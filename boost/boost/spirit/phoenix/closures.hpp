@@ -234,7 +234,7 @@ private:
     closure_frame& operator=(closure_frame const&); // no assign
 
     closure_frame* save;
-    impl::closure_frame_holder<closure_frame>& frame;
+    impl::closure_frame_holder<closure_frame<ClosureT> >& frame;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
