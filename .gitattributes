@@ -18,6 +18,7 @@ boost/build/metrowerks-tools.jam svneol=native#text/plain
 boost/build/msvc-tools.jam svneol=native#text/plain
 boost/build/top.cpp svneol=native#text/plain
 boost/build/top.hpp svneol=native#text/plain
+boost/build/unit-tests.jam svneol=native#text/plain
 boost/build/x/Jamfile svneol=native#text/plain
 boost/build/x/path[!!-~]with[!!-~]spaces/integer.hpp svneol=native#text/plain
 boost/build/x/x.cpp svneol=native#text/plain
