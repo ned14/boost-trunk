@@ -1,15 +1,4 @@
 * text=auto !eol
-CVSROOT/checkoutlist -text
-CVSROOT/commitinfo -text
-CVSROOT/config -text
-CVSROOT/cvswrappers -text
-CVSROOT/editinfo -text
-CVSROOT/loginfo -text
-CVSROOT/modules -text
-CVSROOT/notify -text
-CVSROOT/rcsinfo -text
-CVSROOT/taginfo -text
-CVSROOT/verifymsg -text
 boost/README svneol=native#text/plain
 boost/boost/any.hpp svneol=native#text/plain
 boost/boost/array.hpp svneol=native#text/plain
@@ -1085,8 +1074,6 @@ boost/libs/test/test/test_tools_fail1.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_fail3.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_fail4.cpp svneol=native#text/plain
-boost/libs/thread/example/Jamfile svneol=native#text/plain
-boost/libs/thread/test/Jamfile svneol=native#text/plain
 boost/libs/timer/index.htm svneol=native#text/html
 boost/libs/timer/timer.htm svneol=native#text/html
 boost/libs/timer/timer_test.cpp svneol=native#text/plain
