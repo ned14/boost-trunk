@@ -176,6 +176,7 @@ boost/libs/graph/docs/VertexAndEdgeListGraph.html svneol=native#text/html
 boost/libs/graph/docs/VertexListGraph.html svneol=native#text/html
 boost/libs/graph/docs/adjacency_list.html svneol=native#text/html
 boost/libs/graph/docs/bellman_ford_shortest_paths.html svneol=native#text/html
+boost/libs/graph/docs/bellman_visitor.html svneol=native#text/html
 boost/libs/graph/docs/bfs_visitor.html svneol=native#text/html
 boost/libs/graph/docs/bibliography.html svneol=native#text/html
 boost/libs/graph/docs/breadth_first_search.html svneol=native#text/html
