@@ -30,7 +30,17 @@ A. Gurtovoy, D. Abrahams, <ulink url="./paper/html/index.html">The Boost C++ Met
 <title>Sources</>
 
 <para>
-The latest library sources are available from here - <ulink url="http://www.mywikinet.com/mpl/mpl_18_jul_02.zip"></>. The library also requires the latest version of Boost Preprocessor library, that can be obtained from <ulink url="http://www.boost.org/more/download.html#CVS">boost CVS</>.
+The latest library sources are available from:
+</>
+
+<itemizedlist mark="box">
+    <listitem><simpara>The <ulink url="http://www.boost.org/more/download.html#CVS">boost CVS</>, <literal>mpl_v2</> branch (<literal>cvs update -P -rmpl_v2 boost/mpl boost/type_traits libs/mpl</>)</></>
+    <listitem><simpara>From here - <ulink url="http://www.mywikinet.com/mpl/mpl_18_jul_02.zip"></></></>
+
+</itemizedlist>
+
+<para>
+The library also requires the latest version of Boost Preprocessor library, that can be also obtained from <ulink url="http://www.boost.org/more/download.html#CVS">boost CVS</>.
 </>
 
 </section>

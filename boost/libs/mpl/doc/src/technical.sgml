@@ -44,6 +44,9 @@ Below is the list of compilers the library has been tested with:
 <listitem><simpara>Borland C++ 5.5.1</></>
 </>
 
+<para>An incomplete matrix of recent test compilation results is available from here - <ulink url="http://www.mywikinet.com/mpl/log.html"></>.
+</>
+
 </section>
 
 </section>

@@ -97,7 +97,17 @@
 </div>
 </div>
 
-<p>The latest library sources are available from here - <a href="http://www.mywikinet.com/mpl/mpl_17_jul_02.zip" target="_top">http://www.mywikinet.com/mpl/mpl_17_jul_02.zip</a>. The library also requires the latest version of Boost Preprocessor library, that can be obtained from <a href="http://www.boost.org/more/download.html#CVS" target="_top">boost CVS</a>.</p>
+<p>The latest library sources are available from:</p>
+
+<div class="itemizedlist">
+<ul type="box">
+<li style="list-style-type: square">The <a href="http://www.boost.org/more/download.html#CVS" target="_top">boost CVS</a>, <tt>mpl_v2</tt> branch (<tt>cvs update -P -rmpl_v2 boost/mpl boost/type_traits libs/mpl</tt>)</li>
+
+<li style="list-style-type: square">From here - <a href="http://www.mywikinet.com/mpl/mpl_18_jul_02.zip" target="_top">http://www.mywikinet.com/mpl/mpl_18_jul_02.zip</a></li>
+</ul>
+</div>
+
+<p>The library also requires the latest version of Boost Preprocessor library, that can be also obtained from <a href="http://www.boost.org/more/download.html#CVS" target="_top">boost CVS</a>.</p>
 </div>
 
 <div class="section">
@@ -263,7 +273,7 @@ Error: name followed by "::" must be a class or namespace name
 
 <p>because the expression <tt>typename T::element_type</tt> is not valid in case of <tt>T == char*</tt>.</p>
 
-<p>Here's what we need to do to make <tt>pointed_type</tt> work for plain pointers: <sup><a name="idaghwr" href="#ftn.IDAGHWR">1</a></sup> instead of instantiating our two potential results before passing them to <tt>if_</tt>, we need to write metafunctions that can be used to instantiate the results; then we can use <tt>if_</tt> to choose a metafunction, and only then should we use that function to get the result.</p>
+<p>Here's what we need to do to make <tt>pointed_type</tt> work for plain pointers: <sup><a name="idayhwr" href="#ftn.IDAYHWR">1</a></sup> instead of instantiating our two potential results before passing them to <tt>if_</tt>, we need to write metafunctions that can be used to instantiate the results; then we can use <tt>if_</tt> to choose a metafunction, and only then should we use that function to get the result.</p>
 
 <p><tt>boost::remove_pointer</tt> already is a metafunction. We just need to write an auxiliary function to return the <tt>element_type</tt> of a pointer type:</p>
 
@@ -417,6 +427,8 @@ struct remove_pointer_if
 <li style="list-style-type: square">Borland C++ 5.5.1</li>
 </ul>
 </div>
+
+<p>An incomplete matrix of recent test compilation results is available from here - <a href="http://www.mywikinet.com/mpl/log.html" target="_top">http://www.mywikinet.com/mpl/log.html</a>.</p>
 </div>
 </div>
 
@@ -477,7 +489,7 @@ struct remove_pointer_if
 <div class="footnotes"><br>
 <hr width="100" align="left">
 <div class="footnote">
-<p><sup><a name="ftn.idaghwr" href="#IDAGHWR">1</a></sup> It would be easy to implement <tt>pointed_type</tt> using partial specialization to distinguish the case where <tt>T</tt> is a pointer. <tt>if_</tt> is used here to avoid creating a complicated example.</p>
+<p><sup><a name="ftn.idayhwr" href="#IDAYHWR">1</a></sup> It would be easy to implement <tt>pointed_type</tt> using partial specialization to distinguish the case where <tt>T</tt> is a pointer. <tt>if_</tt> is used here to avoid creating a complicated example.</p>
 </div>
 
 <div class="footnote">
