@@ -996,6 +996,7 @@ boost/more/generic_programming.html svneol=native#text/html
 boost/more/header.htm svneol=native#text/html
 boost/more/imp_vars.htm svneol=native#text/html
 boost/more/index.htm svneol=native#text/html
+boost/more/integral_constant_guidelines.htm svneol=native#text/html
 boost/more/lib_guide.htm svneol=native#text/html
 boost/more/library_reuse.htm svneol=native#text/html
 boost/more/microsoft_vcpp.html svneol=native#text/html
