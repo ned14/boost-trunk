@@ -4672,7 +4672,6 @@ boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.cpp svneol=nativ
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/lexer_base.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/lexer_token_base.hpp svneol=native#text/plain
-boost/libs/spirit/example/application/cpp_lexer/makefile svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_to_html/cpp_to_html.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_to_html/cpp_to_html_vc6_7.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_to_html/readme.txt svneol=native#text/plain
