@@ -310,7 +310,6 @@ boost/libs/graph/examples/fibonacci_heap.expected -text
 boost/libs/graph/examples/file_dependencies.cpp svneol=native#text/plain
 boost/libs/graph/examples/file_dependencies.expected -text
 boost/libs/graph/examples/graph.cpp svneol=native#text/plain
-boost/libs/graph/examples/graph.expected -text
 boost/libs/graph/examples/in_edges.cpp svneol=native#text/plain
 boost/libs/graph/examples/in_edges.expected -text
 boost/libs/graph/examples/interior_property_accessor.cpp svneol=native#text/plain
