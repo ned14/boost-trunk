@@ -2628,6 +2628,7 @@ boost/libs/python/src/long.cpp svneol=native#text/plain
 boost/libs/python/src/module.cpp svneol=native#text/plain
 boost/libs/python/src/module_builder.cpp svneol=native#text/plain
 boost/libs/python/src/object/class.cpp svneol=native#text/plain
+boost/libs/python/src/object/enum.cpp svneol=native#text/plain
 boost/libs/python/src/object/function.cpp svneol=native#text/plain
 boost/libs/python/src/object/inheritance.cpp svneol=native#text/plain
 boost/libs/python/src/object/iterator.cpp svneol=native#text/plain
