@@ -4725,6 +4725,7 @@ boost/libs/regex/test/c_compiler_checks/posix_api_check.cpp svneol=native#text/p
 boost/libs/regex/test/c_compiler_checks/wide_posix_api_check.c svneol=native#text/plain
 boost/libs/regex/test/c_compiler_checks/wide_posix_api_check.cpp svneol=native#text/plain
 boost/libs/regex/test/pathology/bad_expression_test.cpp svneol=native#text/plain
+boost/libs/regex/test/pathology/concept_check.cpp svneol=native#text/plain
 boost/libs/regex/test/pathology/recursion_test.cpp svneol=native#text/plain
 boost/libs/regex/test/regress/bc55.mak svneol=native#text/plain
 boost/libs/regex/test/regress/bcb4.mak svneol=native#text/plain
