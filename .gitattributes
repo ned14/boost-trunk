@@ -166,6 +166,7 @@ boost/development/py_cpp/pyconfig.h svneol=native#text/plain
 boost/development/py_cpp/pyptr.h svneol=native#text/plain
 boost/development/py_cpp/signatures.h svneol=native#text/plain
 boost/development/py_cpp/singleton.h svneol=native#text/plain
+boost/development/py_cpp/special.html svneol=native#text/html
 boost/development/py_cpp/subclass.cpp svneol=native#text/plain
 boost/development/py_cpp/subclass.h svneol=native#text/plain
 boost/development/py_cpp/test_example1.py svneol=native#text/x-python
