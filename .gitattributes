@@ -1570,6 +1570,7 @@ boost/libs/python/release_notes.txt svneol=native#text/plain
 boost/libs/python/src/classes.cpp svneol=native#text/plain
 boost/libs/python/src/conversions.cpp svneol=native#text/plain
 boost/libs/python/src/converter/body.cpp svneol=native#text/plain
+boost/libs/python/src/converter/builtin_converters.cpp svneol=native#text/plain
 boost/libs/python/src/converter/handle.cpp svneol=native#text/plain
 boost/libs/python/src/converter/registry.cpp svneol=native#text/plain
 boost/libs/python/src/converter/type_id.cpp svneol=native#text/plain
