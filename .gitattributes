@@ -8534,36 +8534,6 @@ boost/libs/test/README svneol=native#text/plain
 boost/libs/test/build/.cvsignore -text
 boost/libs/test/build/Jamfile svneol=native#text/plain
 boost/libs/test/build/Jamfile.v2 svneol=native#text/plain
-boost/libs/test/build/msvc65_proj/.cvsignore -text
-boost/libs/test/build/msvc65_proj/auto_unit_test_test.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/boost_test_library.dsw -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/errors_handling_test.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/minimal_test.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/online_test.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/output_test_stream_test.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/parameterized_test_test.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/prg_exec_example.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/prg_exec_fail1.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/prg_exec_fail2.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/prg_exec_fail3.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/prg_exec_monitor.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/result_report_test.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_case_template_example.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_exec_example.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_exec_fail1.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_exec_fail2.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_exec_fail3.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_exec_fail4.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_exec_monitor.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_fp_comparisons.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/test_tools_test.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/unit_test_example1.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/unit_test_example2.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/unit_test_example3.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/unit_test_example4.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/unit_test_example5.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/unit_test_framework.dsp -text svneol=CRLF#unset
-boost/libs/test/build/msvc65_proj/unit_test_suite_ex_test.dsp -text svneol=CRLF#unset
 boost/libs/test/build/msvc71_proj/.cvsignore -text
 boost/libs/test/build/msvc71_proj/algorithms_test.vcproj -text
 boost/libs/test/build/msvc71_proj/auto_unit_test_test.vcproj -text

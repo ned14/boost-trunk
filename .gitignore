@@ -12,13 +12,6 @@ boost/libs/python/pyste/tests/*.obj
 boost/libs/python/pyste/tests/*.pyc
 boost/libs/python/pyste/tests/.sconsign
 boost/libs/test/build/bin
-boost/libs/test/build/msvc65_proj/*.ncb
-boost/libs/test/build/msvc65_proj/*.opt
-boost/libs/test/build/msvc65_proj/*.plg
-boost/libs/test/build/msvc65_proj/*.positions
-boost/libs/test/build/msvc65_proj/Debug
-boost/libs/test/build/msvc65_proj/Release
-boost/libs/test/build/msvc65_proj/pattern.*
 boost/libs/test/build/msvc71_proj/*.ncb
 boost/libs/test/build/msvc71_proj/*.rsp
 boost/libs/test/build/msvc71_proj/*.suo
