@@ -171,6 +171,7 @@ boost/libs/graph/docs/Graph.html svneol=native#text/html
 boost/libs/graph/docs/IncidenceGraph.html svneol=native#text/html
 boost/libs/graph/docs/MutableGraph.html svneol=native#text/html
 boost/libs/graph/docs/MutablePropertyGraph.html svneol=native#text/html
+boost/libs/graph/docs/PropertyGraph.html svneol=native#text/html
 boost/libs/graph/docs/UniformCostVisitor.html svneol=native#text/html
 boost/libs/graph/docs/VertexAndEdgeListGraph.html svneol=native#text/html
 boost/libs/graph/docs/VertexListGraph.html svneol=native#text/html
