@@ -9876,6 +9876,7 @@ boost/tools/build/v2/test/default_features.py svneol=native#text/x-python
 boost/tools/build/v2/test/dependency-test/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/a.cpp svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/a.h svneol=native#text/plain
+boost/tools/build/v2/test/dependency-test/a_c.c svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/b.cpp svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/b.h svneol=native#text/plain
 boost/tools/build/v2/test/dependency-test/c.cpp svneol=native#text/plain
