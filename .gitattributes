@@ -910,7 +910,6 @@ boost/libs/graph/example/kevin_bacon.dat -text
 boost/libs/graph/example/kevin_bacon.expected -text
 boost/libs/graph/example/knights-tour.cpp svneol=native#text/plain
 boost/libs/graph/example/knights_tour.expected -text
-boost/libs/graph/example/koenig-lookup.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal-example.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal-telephone.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal.expected -text
