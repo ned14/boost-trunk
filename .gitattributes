@@ -409,6 +409,7 @@ boost/boost/preprocessor/for.hpp svneol=native#text/plain
 boost/boost/preprocessor/identity.hpp svneol=native#text/plain
 boost/boost/preprocessor/if.hpp svneol=native#text/plain
 boost/boost/preprocessor/inc.hpp svneol=native#text/plain
+boost/boost/preprocessor/iterate.hpp svneol=native#text/plain
 boost/boost/preprocessor/limits.hpp svneol=native#text/plain
 boost/boost/preprocessor/list.hpp svneol=native#text/plain
 boost/boost/preprocessor/list/adt.hpp svneol=native#text/plain
