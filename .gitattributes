@@ -645,6 +645,7 @@ boost/libs/python/build/example1/example1.dsp -text svneol=CRLF#unset
 boost/libs/python/build/gcc.mak svneol=native#text/plain
 boost/libs/python/build/getting_started1/getting_started1.dsp -text svneol=CRLF#unset
 boost/libs/python/build/getting_started2/getting_started2.dsp -text svneol=CRLF#unset
+boost/libs/python/build/irix_CC.mak svneol=native#text/plain
 boost/libs/python/build/linux_gcc.mak svneol=native#text/plain
 boost/libs/python/build/mingw32.mak svneol=native#text/plain
 boost/libs/python/build/rwgk1/rwgk1.dsp -text svneol=CRLF#unset
