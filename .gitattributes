@@ -2401,6 +2401,7 @@ boost/libs/config/test/link/common.sh svneol=native#text/x-sh
 boost/libs/config/test/link/link_test.cpp svneol=native#text/plain
 boost/libs/config/test/link/link_test.hpp svneol=native#text/plain
 boost/libs/config/test/link/main.cpp svneol=native#text/plain
+boost/libs/config/test/link/test/Jamfile svneol=native#text/plain
 boost/libs/config/test/link/vc6-stlport.mak svneol=native#text/plain
 boost/libs/config/test/link/vc6.mak svneol=native#text/plain
 boost/libs/config/test/link/vc7-stlport.mak svneol=native#text/plain
