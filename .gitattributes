@@ -3431,6 +3431,7 @@ boost/libs/date_time/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testcurrent_day.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testdate.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testdate_duration.cpp svneol=native#text/plain
+boost/libs/date_time/test/gregorian/testdate_facet_new.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testdate_iterator.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testfacet.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testformat_date_parser.cpp svneol=native#text/plain
