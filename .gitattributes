@@ -3716,6 +3716,7 @@ boost/libs/python/src/tuple.cpp svneol=native#text/plain
 boost/libs/python/test/Jamfile svneol=native#text/plain
 boost/libs/python/test/args.cpp svneol=native#text/plain
 boost/libs/python/test/args.py svneol=native#text/x-python
+boost/libs/python/test/as_to_python_function.cpp svneol=native#text/plain
 boost/libs/python/test/auto_ptr.cpp svneol=native#text/plain
 boost/libs/python/test/auto_ptr.py svneol=native#text/x-python
 boost/libs/python/test/back_reference.cpp svneol=native#text/plain
