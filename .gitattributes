@@ -831,6 +831,7 @@ boost/status/compiler_status.html svneol=native#text/html
 boost/status/cs-beos.html svneol=native#text/html
 boost/status/cs-irix.html svneol=native#text/html
 boost/status/cs-linux.html svneol=native#text/html
+boost/status/cs-solaris.html svneol=native#text/html
 boost/status/cs-tru64.html svneol=native#text/html
 boost/status/cs-win32.html svneol=native#text/html
 boost/status/regression.cfg -text
