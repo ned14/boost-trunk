@@ -397,6 +397,7 @@ boost/libs/graph/doc/ColorValue.html svneol=native#text/html
 boost/libs/graph/doc/DFSVisitor.html svneol=native#text/html
 boost/libs/graph/doc/DijkstraVisitor.html svneol=native#text/html
 boost/libs/graph/doc/EdgeListGraph.html svneol=native#text/html
+boost/libs/graph/doc/EdgeMutableGraph.html svneol=native#text/html
 boost/libs/graph/doc/EventVisitor.html svneol=native#text/html
 boost/libs/graph/doc/EventVisitorList.html svneol=native#text/html
 boost/libs/graph/doc/Graph.html svneol=native#text/html
