@@ -464,6 +464,7 @@ boost/libs/graph/doc/null_visitor.html svneol=native#text/html
 boost/libs/graph/doc/opposite.html svneol=native#text/html
 boost/libs/graph/doc/predecessor_recorder.html svneol=native#text/html
 boost/libs/graph/doc/prim_minimum_spanning_tree.html svneol=native#text/html
+boost/libs/graph/doc/property.html svneol=native#text/html
 boost/libs/graph/doc/property_map.html svneol=native#text/html
 boost/libs/graph/doc/property_writer.html svneol=native#text/html
 boost/libs/graph/doc/publications.html svneol=native#text/html
