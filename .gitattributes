@@ -1643,7 +1643,6 @@ boost/status/kai_logo.gif -text svneol=unset#image/gif
 boost/status/regression.cfg -text
 boost/status/regression.cpp svneol=native#text/plain
 boost/tools/build/Jambase -text
-boost/tools/build/Jamfile svneol=native#text/plain
 boost/tools/build/Jamrules svneol=native#text/plain
 boost/tools/build/TODO.txt svneol=native#text/plain
 boost/tools/build/allyourbase.jam svneol=native#text/plain
@@ -1675,7 +1674,6 @@ boost/tools/build/test/test_nt_line_length.jam svneol=native#text/plain
 boost/tools/build/test/unit-tests.jam svneol=native#text/plain
 boost/tools/build/unit-tests.jam svneol=native#text/plain
 boost/tools/build/v1/Jambase -text
-boost/tools/build/v1/Jamfile svneol=native#text/plain
 boost/tools/build/v1/Jamrules svneol=native#text/plain
 boost/tools/build/v1/TODO.txt svneol=native#text/plain
 boost/tools/build/v1/allyourbase.jam svneol=native#text/plain
