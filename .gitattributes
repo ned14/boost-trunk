@@ -3597,6 +3597,7 @@ boost/libs/multi_array/example/print_array.cpp svneol=native#text/plain
 boost/libs/multi_array/example/subview.cpp svneol=native#text/plain
 boost/libs/multi_array/example/subview2.cpp svneol=native#text/plain
 boost/libs/multi_array/index.html svneol=native#text/html
+boost/libs/multi_array/test/Jamfile svneol=native#text/plain
 boost/libs/multi_array/test/access.cpp svneol=native#text/plain
 boost/libs/multi_array/test/assign.cpp svneol=native#text/plain
 boost/libs/multi_array/test/compare.cpp svneol=native#text/plain
