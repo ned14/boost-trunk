@@ -5784,6 +5784,7 @@ boost/libs/python/doc/tutorial/doc/html/boostbook.css svneol=native#text/css
 boost/libs/python/doc/tutorial/doc/html/index.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/tutorial.qbk svneol=native#text/plain
 boost/libs/python/doc/tutorial/doc/tutorial.qbk.xml svneol=native#text/xml
+boost/libs/python/doc/tutorial/index.html svneol=native#text/html
 boost/libs/python/doc/v2/Apr2002.html svneol=native#text/html
 boost/libs/python/doc/v2/CallPolicies.html svneol=native#text/html
 boost/libs/python/doc/v2/Dereferenceable.html svneol=native#text/html
