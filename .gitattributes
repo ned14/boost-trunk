@@ -8130,6 +8130,7 @@ boost/libs/smart_ptr/test/atomic_count_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/collector_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/get_deleter_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/intrusive_ptr_test.cpp svneol=native#text/plain
+boost/libs/smart_ptr/test/lw_mutex_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_from_this_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_ptr_alloc_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_ptr_assign_fail.cpp svneol=native#text/plain
