@@ -137,6 +137,7 @@ boost/libs/timer/timer.cpp svneol=native#text/plain
 boost/libs/timer/timer.htm svneol=native#text/html
 boost/libs/timer/timer_test.cpp svneol=native#text/plain
 boost/libs/utility/algo_opt_examples.cpp svneol=native#text/plain
+boost/libs/utility/c++_type_traits.htm svneol=native#text/html
 boost/libs/utility/call_traits.htm svneol=native#text/html
 boost/libs/utility/call_traits_test.cpp svneol=native#text/plain
 boost/libs/utility/cast.htm svneol=native#text/html
