@@ -7415,6 +7415,7 @@ boost/libs/thread/doc/exceptions-ref.xml svneol=native#text/xml
 boost/libs/thread/doc/faq.xml svneol=native#text/xml
 boost/libs/thread/doc/glossary.xml svneol=native#text/xml
 boost/libs/thread/doc/implementation_notes.xml svneol=native#text/xml
+boost/libs/thread/doc/index.html svneol=native#text/html
 boost/libs/thread/doc/mutex-ref.xml svneol=native#text/xml
 boost/libs/thread/doc/once-ref.xml svneol=native#text/xml
 boost/libs/thread/doc/overview.xml svneol=native#text/xml
