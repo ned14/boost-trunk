@@ -1849,6 +1849,7 @@ boost/tools/build/ftjam-requests.txt svneol=native#text/plain
 boost/tools/build/gcc-stlport-tools.jam svneol=native#text/plain
 boost/tools/build/gcc-tools.jam svneol=native#text/plain
 boost/tools/build/index.html svneol=native#text/html
+boost/tools/build/intel-linux-tools.jam svneol=native#text/plain
 boost/tools/build/intel-win32-tools.jam svneol=native#text/plain
 boost/tools/build/jam_src/Build.com -text
 boost/tools/build/jam_src/Build.mpw -text
@@ -1999,6 +2000,7 @@ boost/tools/build/v1/ftjam-requests.txt svneol=native#text/plain
 boost/tools/build/v1/gcc-stlport-tools.jam svneol=native#text/plain
 boost/tools/build/v1/gcc-tools.jam svneol=native#text/plain
 boost/tools/build/v1/index.html svneol=native#text/html
+boost/tools/build/v1/intel-linux-tools.jam svneol=native#text/plain
 boost/tools/build/v1/intel-win32-tools.jam svneol=native#text/plain
 boost/tools/build/v1/kcc-tools.jam svneol=native#text/plain
 boost/tools/build/v1/metrowerks-tools.jam svneol=native#text/plain
