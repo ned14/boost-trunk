@@ -124,7 +124,6 @@ boost/boost/pending/integer_range.hpp svneol=native#text/plain
 boost/boost/pending/is_heap.hpp svneol=native#text/plain
 boost/boost/pending/iterator_adaptors.hpp svneol=native#text/plain
 boost/boost/pending/iterator_tests.hpp svneol=native#text/plain
-boost/boost/pending/limits.hpp svneol=native#text/plain
 boost/boost/pending/mutable_heap.hpp svneol=native#text/plain
 boost/boost/pending/mutable_queue.hpp svneol=native#text/plain
 boost/boost/pending/property.hpp svneol=native#text/plain
