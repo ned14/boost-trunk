@@ -1985,6 +1985,7 @@ boost/boost/variant/detail/forced_return.hpp svneol=native#text/plain
 boost/boost/variant/detail/generic_result_type.hpp svneol=native#text/plain
 boost/boost/variant/detail/has_nothrow_move.hpp svneol=native#text/plain
 boost/boost/variant/detail/has_trivial_move.hpp svneol=native#text/plain
+boost/boost/variant/detail/initializer.hpp svneol=native#text/plain
 boost/boost/variant/detail/make_variant_list.hpp svneol=native#text/plain
 boost/boost/variant/detail/move.hpp svneol=native#text/plain
 boost/boost/variant/detail/variant_io.hpp svneol=native#text/plain
