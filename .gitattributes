@@ -643,6 +643,7 @@ boost/boost/math_fwd.hpp svneol=native#text/plain
 boost/boost/mem_fn.hpp svneol=native#text/plain
 boost/boost/mpl/O1_size.hpp svneol=native#text/plain
 boost/boost/mpl/O1_size_fwd.hpp svneol=native#text/plain
+boost/boost/mpl/accumulate.hpp svneol=native#text/plain
 boost/boost/mpl/advance.hpp svneol=native#text/plain
 boost/boost/mpl/advance_fwd.hpp svneol=native#text/plain
 boost/boost/mpl/alias.hpp svneol=native#text/plain
