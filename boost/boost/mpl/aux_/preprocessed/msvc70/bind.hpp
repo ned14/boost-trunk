@@ -184,9 +184,9 @@ struct bind1
         typedef typename r1::type a1;
         typedef typename r1::next_arg n2;
         typedef typename aux::resolve_bind_arg< a1,U1,U2,U3,U4,U5 >::type t1;
-
+        
      public:
-        typedef typename f_::template apply<t1>::type type;
+        typedef typename apply1< f_,t1 >::type type;
     };
 };
 
@@ -245,7 +245,7 @@ struct bind2
         typedef typename aux::resolve_bind_arg< a2,U1,U2,U3,U4,U5 >::type t2;
 
      public:
-        typedef typename f_::template apply< t1,t2 >::type type;
+        typedef typename apply2< f_,t1,t2 >::type type;
     };
 };
 
@@ -309,7 +309,7 @@ struct bind3
         typedef typename aux::resolve_bind_arg< a3,U1,U2,U3,U4,U5 >::type t3;
 
      public:
-        typedef typename f_::template apply< t1,t2,t3 >::type type;
+        typedef typename apply3< f_,t1,t2,t3 >::type type;
     };
 };
 
@@ -378,7 +378,7 @@ struct bind4
         typedef typename aux::resolve_bind_arg< a4,U1,U2,U3,U4,U5 >::type t4;
 
      public:
-        typedef typename f_::template apply< t1,t2,t3,t4 >::type type;
+        typedef typename apply4< f_,t1,t2,t3,t4 >::type type;
     };
 };
 
@@ -453,7 +453,7 @@ struct bind5
         typedef typename aux::resolve_bind_arg< a5,U1,U2,U3,U4,U5 >::type t5;
 
      public:
-        typedef typename f_::template apply< t1,t2,t3,t4,t5 >::type type;
+        typedef typename apply5< f_,t1,t2,t3,t4,t5 >::type type;
     };
 };
 
