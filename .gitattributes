@@ -9772,6 +9772,8 @@ boost/tools/quickbook/quickbook.hpp svneol=native#text/plain
 boost/tools/quickbook/syntax_highlight.hpp svneol=native#text/plain
 boost/tools/regression/build/Jamfile svneol=native#text/plain
 boost/tools/regression/build/Jamfile.v2 svneol=native#text/plain
+boost/tools/regression/build/vcide/process_jam_log.sln -text
+boost/tools/regression/build/vcide/process_jam_log.vcproj -text
 boost/tools/regression/compiler_status.cpp svneol=native#text/plain
 boost/tools/regression/detail/tiny_xml.cpp svneol=native#text/plain
 boost/tools/regression/detail/tiny_xml.hpp svneol=native#text/plain
