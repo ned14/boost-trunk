@@ -300,7 +300,6 @@ boost/libs/graph/doc/depth_first_visit.html svneol=native#text/html
 boost/libs/graph/doc/dfs_visitor.html svneol=native#text/html
 boost/libs/graph/doc/dijkstra_shortest_paths.html svneol=native#text/html
 boost/libs/graph/doc/distance_recorder.html svneol=native#text/html
-boost/libs/graph/doc/dynamic_components.html svneol=native#text/html
 boost/libs/graph/doc/edge_list.html svneol=native#text/html
 boost/libs/graph/doc/edmunds_karp_max_flow.html svneol=native#text/html
 boost/libs/graph/doc/faq.html svneol=native#text/html
@@ -370,6 +369,7 @@ boost/libs/graph/doc/graph_theory_review.html svneol=native#text/html
 boost/libs/graph/doc/graph_traits.html svneol=native#text/html
 boost/libs/graph/doc/history.html svneol=native#text/html
 boost/libs/graph/doc/incident.html svneol=native#text/html
+boost/libs/graph/doc/incremental_components.html svneol=native#text/html
 boost/libs/graph/doc/index.html svneol=native#text/html
 boost/libs/graph/doc/iscope99.pdf -text svneol=unset#application/pdf
 boost/libs/graph/doc/johnson_all_pairs_shortest.html svneol=native#text/html
@@ -437,8 +437,6 @@ boost/libs/graph/example/dfs_parenthesis.cpp svneol=native#text/plain
 boost/libs/graph/example/dfs_parenthesis.expected -text
 boost/libs/graph/example/dijkstra.cpp svneol=native#text/plain
 boost/libs/graph/example/dijkstra.expected -text
-boost/libs/graph/example/dynamic_components.cpp svneol=native#text/plain
-boost/libs/graph/example/dynamic_components.expected -text
 boost/libs/graph/example/edge_basics.cpp svneol=native#text/plain
 boost/libs/graph/example/edge_basics.expected -text
 boost/libs/graph/example/edge_connectivity.cpp svneol=native#text/plain
@@ -467,6 +465,8 @@ boost/libs/graph/example/graphviz.cpp svneol=native#text/plain
 boost/libs/graph/example/graphviz_test.dot -text
 boost/libs/graph/example/in_edges.cpp svneol=native#text/plain
 boost/libs/graph/example/in_edges.expected -text
+boost/libs/graph/example/incremental_components.cpp svneol=native#text/plain
+boost/libs/graph/example/incremental_components.expected -text
 boost/libs/graph/example/interior_property_map.cpp svneol=native#text/plain
 boost/libs/graph/example/interior_property_map.expected -text
 boost/libs/graph/example/johnson.cpp svneol=native#text/plain
@@ -518,11 +518,20 @@ boost/libs/graph/example/visitor.expected -text
 boost/libs/graph/src/graphviz.grammar -text
 boost/libs/graph/src/graphviz_lex.l -text
 boost/libs/graph/src/graphviz_parser.y -text
+boost/libs/graph/test/adj_list_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/adj_list_test.cpp svneol=native#text/plain
+boost/libs/graph/test/adj_matrix_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/bfs.cpp svneol=native#text/plain
 boost/libs/graph/test/dfs.cpp svneol=native#text/plain
+boost/libs/graph/test/edge_list_cc.cpp svneol=native#text/plain
+boost/libs/graph/test/filtered_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/graph.cpp svneol=native#text/plain
+boost/libs/graph/test/graph_concepts.cpp svneol=native#text/plain
 boost/libs/graph/test/graph_type.hpp svneol=native#text/plain
+boost/libs/graph/test/regression.cfg -text
+boost/libs/graph/test/reverse_graph_cc.cpp svneol=native#text/plain
+boost/libs/graph/test/stanford_graph_cc.cpp svneol=native#text/plain
+boost/libs/graph/test/vector_graph_cc.cpp svneol=native#text/plain
 boost/libs/hdr_depend.html svneol=native#text/html
 boost/libs/integer/cstdint.htm svneol=native#text/html
 boost/libs/integer/cstdint_test.cpp svneol=native#text/plain
