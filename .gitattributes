@@ -2290,6 +2290,7 @@ boost/libs/config/test/no_void_returns_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_void_returns_pass.cpp svneol=native#text/plain
 boost/libs/config/test/no_wchar_t_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_wchar_t_pass.cpp svneol=native#text/plain
+boost/libs/config/test/options.jam svneol=native#text/plain
 boost/libs/config/test/test.hpp svneol=native#text/plain
 boost/libs/config/tools/configure.in -text
 boost/libs/config/tools/generate -text
