@@ -4387,7 +4387,6 @@ boost/libs/spirit/doc/subrule_calc.cpp.html svneol=native#text/html
 boost/libs/spirit/doc/subrules.html svneol=native#text/html
 boost/libs/spirit/doc/symbols.html svneol=native#text/html
 boost/libs/spirit/doc/theme/Makefile.am svneol=native#text/plain
-boost/libs/spirit/doc/theme/Thumbs.db -text
 boost/libs/spirit/doc/theme/alert.gif -text svneol=unset#image/gif
 boost/libs/spirit/doc/theme/arrow.gif -text svneol=unset#image/gif
 boost/libs/spirit/doc/theme/bkd.gif -text svneol=unset#image/gif
@@ -4692,7 +4691,6 @@ boost/libs/spirit/phoenix/doc/quick_start.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/references.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/statements.html svneol=native#text/html
 boost/libs/spirit/phoenix/doc/theme/Makefile.am svneol=native#text/plain
-boost/libs/spirit/phoenix/doc/theme/Thumbs.db -text
 boost/libs/spirit/phoenix/doc/theme/alert.gif -text svneol=unset#image/gif
 boost/libs/spirit/phoenix/doc/theme/arrow.gif -text svneol=unset#image/gif
 boost/libs/spirit/phoenix/doc/theme/bkd.gif -text svneol=unset#image/gif
