@@ -1679,7 +1679,6 @@ boost/libs/tokenizer/tokenizerfunction.htm svneol=native#text/html
 boost/libs/tuple/doc/design_decisions_rationale.html svneol=native#text/html
 boost/libs/tuple/doc/tuple_advanced_interface.html svneol=native#text/html
 boost/libs/tuple/doc/tuple_users_guide.html svneol=native#text/html
-boost/libs/tuple/src/tuple.cpp svneol=native#text/plain
 boost/libs/tuple/test/README svneol=native#text/plain
 boost/libs/tuple/test/another_tuple_test_bench.cpp svneol=native#text/plain
 boost/libs/tuple/test/io_test.cpp svneol=native#text/plain
