@@ -417,6 +417,7 @@ boost/libs/graph/doc/visitor_concepts.html svneol=native#text/html
 boost/libs/graph/example/LEDA_concept_check.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.cpp svneol=native#text/plain
 boost/libs/graph/example/adjacency_list.expected -text
+boost/libs/graph/example/adjacency_matrix.cpp svneol=native#text/plain
 boost/libs/graph/example/bellman_ford.cpp svneol=native#text/plain
 boost/libs/graph/example/bellman_ford.expected -text
 boost/libs/graph/example/bfs.cpp svneol=native#text/plain
