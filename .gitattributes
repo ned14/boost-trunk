@@ -1940,6 +1940,7 @@ boost/boost/spirit/fusion/sequence/tuple30.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/tuple40.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/tuple50.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/tuple_element.hpp svneol=native#text/plain
+boost/boost/spirit/fusion/sequence/tuple_forward.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/tuple_size.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/type_sequence.hpp svneol=native#text/plain
 boost/boost/spirit/iterator.hpp svneol=native#text/plain
