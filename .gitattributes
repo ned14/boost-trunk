@@ -1500,6 +1500,7 @@ boost/libs/python/src/gen_returning.py svneol=native#text/x-python
 boost/libs/python/src/gen_signatures.py svneol=native#text/x-python
 boost/libs/python/src/gen_singleton.py svneol=native#text/x-python
 boost/libs/python/src/init_function.cpp svneol=native#text/plain
+boost/libs/python/src/module.cpp svneol=native#text/plain
 boost/libs/python/src/module_builder.cpp svneol=native#text/plain
 boost/libs/python/src/object/class.cpp svneol=native#text/plain
 boost/libs/python/src/object/function.cpp svneol=native#text/plain
