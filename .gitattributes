@@ -1991,6 +1991,7 @@ boost/boost/variant/get.hpp svneol=native#text/plain
 boost/boost/variant/recursive_variant.hpp svneol=native#text/plain
 boost/boost/variant/static_visitor.hpp svneol=native#text/plain
 boost/boost/variant/variant.hpp svneol=native#text/plain
+boost/boost/variant/variant_before.hpp svneol=native#text/plain
 boost/boost/variant/variant_fwd.hpp svneol=native#text/plain
 boost/boost/variant/visitor_ptr.hpp svneol=native#text/plain
 boost/boost/vector_property_map.hpp svneol=native#text/plain
