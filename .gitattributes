@@ -8541,6 +8541,7 @@ boost/libs/test/build/msvc71_proj/algorithms_test.vcproj -text
 boost/libs/test/build/msvc71_proj/auto_unit_test_test.vcproj -text
 boost/libs/test/build/msvc71_proj/auto_unit_test_test_mult.vcproj -text
 boost/libs/test/build/msvc71_proj/basic_cstring_test.vcproj -text
+boost/libs/test/build/msvc71_proj/boost_check_equal_str.vcproj -text
 boost/libs/test/build/msvc71_proj/boost_test_library.sln -text
 boost/libs/test/build/msvc71_proj/class_properties_test.vcproj -text
 boost/libs/test/build/msvc71_proj/custom_exception_test.vcproj -text
