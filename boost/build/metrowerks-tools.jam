@@ -46,7 +46,7 @@ rule Cc-action
 
 actions metrowerks-Cc-action
 {
-    mwcc -c -cwd include -U$(UNDEFS) -D$(DEFINES) -msgstyle gcc -nowraplines $(CCFLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
+    mwcc -c -cwd include -U$(UNDEFS) -D$(DEFINES) -msgstyle gcc -nowraplines $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -57,7 +57,7 @@ rule C++-action
 
 actions metrowerks-C++-action
 {
-    mwcc -c -cwd include -U$(UNDEFS) -D$(DEFINES) -msgstyle gcc -nowraplines -lang c++ $(C++FLAGS) $(OPTIM) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
+    mwcc -c -cwd include -U$(UNDEFS) -D$(DEFINES) -msgstyle gcc -nowraplines -lang c++ $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 #### Archive ####
