@@ -7259,6 +7259,7 @@ boost/tools/jam/src/yyacc.bat svneol=native#text/plain
 boost/tools/jam/src/yyacc.c svneol=native#text/plain
 boost/tools/make-cputime-page.pl svneol=native#text/x-perl
 boost/tools/regression/build/Jamfile svneol=native#text/plain
+boost/tools/regression/build/Jamfile.v2 svneol=native#text/plain
 boost/tools/regression/compiler_status.cpp svneol=native#text/plain
 boost/tools/regression/detail/tiny_xml.cpp svneol=native#text/plain
 boost/tools/regression/detail/tiny_xml.hpp svneol=native#text/plain
