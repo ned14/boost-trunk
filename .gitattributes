@@ -2090,6 +2090,7 @@ boost/libs/python/test/pointer_type_id_test.cpp svneol=native#text/plain
 boost/libs/python/test/raw_pyobject_fail1.cpp svneol=native#text/plain
 boost/libs/python/test/raw_pyobject_fail2.cpp svneol=native#text/plain
 boost/libs/python/test/result.cpp svneol=native#text/plain
+boost/libs/python/test/select_arg_to_python_test.cpp svneol=native#text/plain
 boost/libs/python/test/select_from_python_test.cpp svneol=native#text/plain
 boost/libs/python/test/select_holder.cpp svneol=native#text/plain
 boost/libs/python/test/simple_type.hpp svneol=native#text/plain
