@@ -3621,6 +3621,7 @@ boost/libs/python/doc/v2/init.html svneol=native#text/html
 boost/libs/python/doc/v2/instance_holder.html svneol=native#text/html
 boost/libs/python/doc/v2/iterator.html svneol=native#text/html
 boost/libs/python/doc/v2/list.html svneol=native#text/html
+boost/libs/python/doc/v2/long.html svneol=native#text/html
 boost/libs/python/doc/v2/lvalue_from_pytype.html svneol=native#text/html
 boost/libs/python/doc/v2/make_function.html svneol=native#text/html
 boost/libs/python/doc/v2/manage_new_object.html svneol=native#text/html
