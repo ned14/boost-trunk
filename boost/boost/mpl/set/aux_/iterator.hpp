@@ -33,11 +33,11 @@ template< typename Set, typename Tail > struct s_iter_impl
 {
     typedef Tail                tail_;
     typedef fwd_iter_tag_       category;
-    typedef typename Tail::item type;
+    typedef typename Tail::type type;
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     typedef typename apply_if< 
-          has_key< Set,typename Tail::next_::item >
+          has_key< Set,typename Tail::next_::type >
         , identity< s_iter<Set,typename Tail::next_> >
         , next< s_iter<Set,typename Tail::next_> >
         >::type next;        
@@ -49,7 +49,7 @@ template< typename Set, typename Tail > struct s_iter_impl
 template< typename Set, typename Tail > 
 struct next< s_iter<Set,Tail> >
     : apply_if< 
-          has_key< Set,typename Tail::next_::item >
+          has_key< Set,typename Tail::next_::type >
         , identity< s_iter<Set,typename Tail::next_> >
         , next< s_iter<Set,typename Tail::next_> >
         >

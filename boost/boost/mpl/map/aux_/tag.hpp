@@ -1,8 +1,9 @@
 
-#ifndef BOOST_MPL_VOID_FWD_HPP_INCLUDED
-#define BOOST_MPL_VOID_FWD_HPP_INCLUDED
+#ifndef BOOST_MPL_MAP_AUX_TAG_HPP_INCLUDED
+#define BOOST_MPL_MAP_AUX_TAG_HPP_INCLUDED
 
-// Copyright (c) Aleksey Gurtovoy 2001-2004
+// Copyright (c) Aleksey Gurtovoy 2003-2004
+// Copyright (c) David Abrahams 2003-2004
 //
 // Use, modification and distribution are subject to the Boost Software 
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
@@ -14,10 +15,10 @@
 // $Date$
 // $Revision$
 
-namespace boost { namespace mpl {
+namespace boost { namespace mpl { namespace aux {
 
-struct void_;
+struct map_tag;
 
-}}
+}}}
 
-#endif // BOOST_MPL_VOID_FWD_HPP_INCLUDED
+#endif // BOOST_MPL_MAP_AUX_TAG_HPP_INCLUDED

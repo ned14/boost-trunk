@@ -2,26 +2,26 @@
 #ifndef BOOST_MPL_VOID_HPP_INCLUDED
 #define BOOST_MPL_VOID_HPP_INCLUDED
 
-// + file: boost/mpl/void.hpp
-// + last modified: 05/may/03
-
-// Copyright (c) 2001-03
-// Peter Dimov, Aleksey Gurtovoy
+// Copyright (c) Aleksey Gurtovoy 2001-2004
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// Use, modification and distribution are subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+// at http://www.boost.org/LICENSE_1_0.txt)
 //
 // See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include "boost/mpl/void_fwd.hpp"
 #include "boost/mpl/bool.hpp"
 #include "boost/mpl/aux_/config/msvc.hpp"
+#include "boost/mpl/aux_/config/ctps.hpp"
 #include "boost/mpl/aux_/config/workaround.hpp"
+
+// should be the last include
+#include "boost/type_traits/detail/bool_trait_def.hpp"
 
 namespace boost {
 namespace mpl {
@@ -32,25 +32,51 @@ namespace mpl {
 //  a zero arity functor evaluation call.
 struct void_ { typedef void_ type; };
 
-template< typename T >
-struct is_void_
-    : false_
+BOOST_TT_AUX_BOOL_TRAIT_DEF1( is_void_, T, false )
+BOOST_TT_AUX_BOOL_TRAIT_SPEC1( is_void_, void_, true )
+
+BOOST_TT_AUX_BOOL_TRAIT_DEF1( is_not_void_, T, true )
+BOOST_TT_AUX_BOOL_TRAIT_SPEC1( is_not_void_, void_, false )
+
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+
+template< typename T, typename U > struct if_void_
 {
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    using false_::value;
-#endif
+    typedef T type;
 };
 
-template<>
-struct is_void_<void_>
-    : true_
+template< typename U > struct if_void_<void_,U>
 {
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    using true_::value;
-#endif
+    typedef U type;
 };
 
-} // namespace mpl
-} // namespace boost
+#else
+
+template< typename T > struct if_void_impl
+{
+    template< typename U > struct apply
+    {
+        typedef T type;
+    };
+};
+
+template<> struct if_void_impl<void_>
+{
+    template< typename U > struct apply
+    {
+        typedef U type;
+    };
+};
+
+template< typename T, typename U > struct if_void_
+    : if_void_impl<T>::template apply<U>
+{
+};
+
+#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+
+}}
+
+#include "boost/type_traits/detail/bool_trait_undef.hpp"
 
 #endif // BOOST_MPL_VOID_HPP_INCLUDED

@@ -26,8 +26,9 @@ namespace mpl {
 template< int dummy_ = 0 > struct set0
 {
     typedef aux::set_tag    tag;
-    typedef void_           last_masked;
-    typedef void_           item;
+    typedef void_           last_masked_;
+    typedef void_           item_;
+    typedef void_           type;
     typedef long_<0>        size;
     
     BOOST_STATIC_CONSTANT(long, order = 0);

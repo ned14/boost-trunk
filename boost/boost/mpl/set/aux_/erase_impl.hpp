@@ -1,6 +1,6 @@
 
-#ifndef BOOST_MPL_SET_AUX_INSERT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_INSERT_IMPL_HPP_INCLUDED
+#ifndef BOOST_MPL_SET_AUX_ERASE_IMPL_HPP_INCLUDED
+#define BOOST_MPL_SET_AUX_ERASE_IMPL_HPP_INCLUDED
 
 // Copyright (c) Aleksey Gurtovoy 2003-2004
 // Copyright (c) David Abrahams 2003-2004
@@ -15,7 +15,7 @@
 // $Date$
 // $Revision$
 
-#include "boost/mpl/insert_fwd.hpp"
+#include "boost/mpl/erase_fwd.hpp"
 #include "boost/mpl/set/aux_/has_key_impl.hpp"
 #include "boost/mpl/set/aux_/item.hpp"
 #include "boost/mpl/set/aux_/tag.hpp"
@@ -29,34 +29,27 @@ namespace boost {
 namespace mpl {
 
 template<>
-struct insert_impl< aux::set_tag >
+struct erase_impl< aux::set_tag >
 {
     template< 
           typename Set
         , typename T
-        , typename unused_ 
+        , typename unused_
         > 
     struct apply
         : apply_if< 
               has_key_impl<aux::set_tag>::apply<Set,T>
-            , identity<Set>
             , apply_if< 
-                  is_same< T,typename Set::last_masked_ > 
+                  is_same< T,typename Set::item_ > 
                 , base<Set>
-                , identity< s_item<T,Set> >
+                , identity< s_mask<T,Set> >
                 >
+            , identity<Set>
             >
-/*
-    : eval< if_<
-          has_key<Set,T>
-        , if_< is_same< T,typename Set::last_masked >, base< arg<Set> >, Set >
-        , Set
-        > >
-*/
     {
     };
 };
 
 }}
 
-#endif // BOOST_MPL_SET_AUX_INSERT_IMPL_HPP_INCLUDED
+#endif // BOOST_MPL_SET_AUX_ERASE_IMPL_HPP_INCLUDED

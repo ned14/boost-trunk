@@ -1,6 +1,6 @@
 
-#ifndef BOOST_MPL_SET_AUX_ITEM_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_ITEM_HPP_INCLUDED
+#ifndef BOOST_MPL_MAP_AUX_ITEM_HPP_INCLUDED
+#define BOOST_MPL_MAP_AUX_ITEM_HPP_INCLUDED
 
 // Copyright (c) Aleksey Gurtovoy 2003-2004
 // Copyright (c) David Abrahams 2003-2004
@@ -19,8 +19,8 @@
 #include "boost/mpl/void_fwd.hpp"
 #include "boost/mpl/next.hpp"
 #include "boost/mpl/prior.hpp"
-#include "boost/mpl/set/aux_/set0.hpp"
-#include "boost/mpl/aux_/yes_no.hpp"
+#include "boost/mpl/set/aux_/map0.hpp"
+#include "boost/mpl/aux_/yem_no.hpp"
 #include "boost/mpl/aux_/type_wrapper.hpp"
 #include "boost/mpl/aux_/config/gcc.hpp"
 #include "boost/mpl/aux_/config/static_constant.hpp"
@@ -36,27 +36,27 @@
 namespace boost {
 namespace mpl {
 
-aux::no_tag operator/(set0<> const&, void*);
-aux::no_tag operator%(set0<> const&, void*);
+aux::no_tag operator/(map0<> const&, void*);
+aux::no_tag operator%(map0<> const&, void*);
 
 #if defined(BOOST_MPL_CFG_USE_OPERATORS_SPECIALIZATION)
 
-template< typename T, typename Base > struct s_item;
-template< typename T, typename Base > struct s_mask;
-template< typename T, typename Base > struct s_unmask;
+template< typename T, typename Base > struct m_item;
+template< typename T, typename Base > struct m_mask;
+template< typename T, typename Base > struct m_unmask;
 
 template< typename T, typename Base >
-typename s_item<T,Base>::order_tag
-operator/(s_item<T,Base> const&, aux::type_wrapper<T>*);
+typename m_item<T,Base>::order_tag
+operator/(m_item<T,Base> const&, aux::type_wrapper<T>*);
 
 template< typename T, typename Base >
-aux::yes_tag operator%(s_item<T,Base> const&, aux::type_wrapper<T>*);
+aux::yes_tag operator%(m_item<T,Base> const&, aux::type_wrapper<T>*);
 
 template< typename T, typename Base >
-aux::yes_tag operator%(s_unmask<T,Base> const&, aux::type_wrapper<T>*);
+aux::yes_tag operator%(m_unmask<T,Base> const&, aux::type_wrapper<T>*);
 
 template< typename T, typename Base >
-aux::no_tag operator%(s_mask<T,Base> const&, aux::type_wrapper<T>*);
+aux::no_tag operator%(m_mask<T,Base> const&, aux::type_wrapper<T>*);
 
 #endif // BOOST_MPL_CFG_USE_OPERATORS_SPECIALIZATION
 
@@ -70,8 +70,8 @@ template< long n_ > struct order_tag_
 }
 #endif
 
-template< typename T, typename Base >
-struct s_item
+template< typename Key, typename T, typename Base >
+struct m_item
     : Base
 {
     typedef void_   last_masked_;
@@ -91,17 +91,17 @@ struct s_item
 #endif
 
 #if defined(BOOST_MPL_CFG_USE_OPERATORS_SPECIALIZATION)
-    friend order_tag    operator/<>(s_item const&, aux::type_wrapper<T>*);
-    friend aux::yes_tag operator%<>(s_item const&, aux::type_wrapper<T>*);
+    friend order_tag    operator/<>(m_item const&, aux::type_wrapper<T>*);
+    friend aux::yes_tag operator%<>(m_item const&, aux::type_wrapper<T>*);
 #else
-    friend order_tag    operator/(s_item const&, aux::type_wrapper<T>*);
-    friend aux::yes_tag operator%(s_item const&, aux::type_wrapper<T>*);
+    friend order_tag    operator/(m_item const&, aux::type_wrapper<T>*);
+    friend aux::yes_tag operator%(m_item const&, aux::type_wrapper<T>*);
 #endif
 };
 
 
 template< typename T, typename Base >
-struct s_mask
+struct m_mask
     : Base
 {
     typedef T       last_masked_;
@@ -109,15 +109,15 @@ struct s_mask
     typedef Base    base;
     typedef typename prior< typename Base::size >::type  size;
 #if defined(BOOST_MPL_CFG_USE_OPERATORS_SPECIALIZATION)
-    friend aux::no_tag operator%<>(s_mask const&, aux::type_wrapper<T>*);
+    friend aux::no_tag operator%<>(m_mask const&, aux::type_wrapper<T>*);
 #else
-    friend aux::no_tag operator%(s_mask const&, aux::type_wrapper<T>*);
+    friend aux::no_tag operator%(m_mask const&, aux::type_wrapper<T>*);
 #endif
 };
 
 
 template< typename T, typename Base >
-struct s_unmask
+struct m_unmask
     : Base
 {
     typedef void_   last_masked_;
@@ -125,12 +125,12 @@ struct s_unmask
     typedef Base    base;
     typedef typename next< typename Base::size >::type  size;
 #if defined(BOOST_MPL_CFG_USE_OPERATORS_SPECIALIZATION)
-    friend aux::yes_tag operator%<>(s_unmask const&, aux::type_wrapper<T>*);
+    friend aux::yes_tag operator%<>(m_unmask const&, aux::type_wrapper<T>*);
 #else
-    friend aux::yes_tag operator%(s_unmask const&, aux::type_wrapper<T>*);
+    friend aux::yes_tag operator%(m_unmask const&, aux::type_wrapper<T>*);
 #endif
 };
 
 }}
 
-#endif // BOOST_MPL_SET_AUX_ITEM_HPP_INCLUDED
+#endif // BOOST_MPL_MAP_AUX_ITEM_HPP_INCLUDED
