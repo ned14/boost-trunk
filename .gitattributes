@@ -214,9 +214,12 @@ boost/libs/compose/compose4.cpp.html svneol=native#text/html
 boost/libs/compose/index.htm svneol=native#text/html
 boost/libs/compose/print.hpp svneol=native#text/plain
 boost/libs/compose/print.hpp.html svneol=native#text/html
+boost/libs/concept_checking/bad_error_eg.cpp svneol=native#text/plain
+boost/libs/concept_checking/bibliography.html svneol=native#text/html
 boost/libs/concept_checking/concept_checking.html svneol=native#text/html
 boost/libs/concept_checking/stl_concept_checks.cpp svneol=native#text/plain
 boost/libs/concept_checking/stl_concept_checks.expected -text
+boost/libs/concept_checking/stl_concept_covering.cpp svneol=native#text/plain
 boost/libs/config/config_test.cpp svneol=native#text/plain
 boost/libs/config/index.htm svneol=native#text/html
 boost/libs/cs-linux2.html svneol=native#text/html
