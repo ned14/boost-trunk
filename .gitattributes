@@ -4942,6 +4942,7 @@ boost/libs/test/doc/index.htm svneol=native#text/html
 boost/libs/test/doc/minimal.htm svneol=native#text/html
 boost/libs/test/doc/output_test_stream.htm svneol=native#text/html
 boost/libs/test/doc/prg_exec_monitor.htm svneol=native#text/html
+boost/libs/test/doc/release_notes.htm svneol=native#text/html
 boost/libs/test/doc/style/btl-gray.css svneol=native#text/css
 boost/libs/test/doc/style/btl-print.css svneol=native#text/css
 boost/libs/test/doc/style/btl-simple.css svneol=native#text/css
