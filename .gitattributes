@@ -3160,6 +3160,7 @@ boost/doc/html/lambda.html svneol=native#text/html
 boost/doc/html/ref.html svneol=native#text/html
 boost/doc/html/reference.css svneol=native#text/css
 boost/doc/html/signals.html svneol=native#text/html
+boost/doc/html/threads.html svneol=native#text/html
 boost/doc/html/variant.html svneol=native#text/html
 boost/doc/src/boost.xml svneol=native#text/xml
 boost/google_logo_40wht.png -text svneol=unset#image/png
