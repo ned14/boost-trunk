@@ -578,6 +578,7 @@ boost/libs/graph/example/ordered_out_edges.cpp svneol=native#text/plain
 boost/libs/graph/example/ordered_out_edges.expected -text
 boost/libs/graph/example/prim.cpp svneol=native#text/plain
 boost/libs/graph/example/prim.expected -text
+boost/libs/graph/example/property_iterator.cpp svneol=native#text/plain
 boost/libs/graph/example/quick_tour.cpp svneol=native#text/plain
 boost/libs/graph/example/quick_tour.expected -text
 boost/libs/graph/example/regression.cfg -text
