@@ -163,7 +163,6 @@ boost/libs/graph/docs/EdgeListGraph.html svneol=native#text/html
 boost/libs/graph/docs/EdgePropertyGraph.html svneol=native#text/html
 boost/libs/graph/docs/Graph.html svneol=native#text/html
 boost/libs/graph/docs/IncidenceGraph.html svneol=native#text/html
-boost/libs/graph/docs/MultiPassInputIterator.html svneol=native#text/html
 boost/libs/graph/docs/MutableGraph.html svneol=native#text/html
 boost/libs/graph/docs/MutablePropertyGraph.html svneol=native#text/html
 boost/libs/graph/docs/UniformCostVisitor.html svneol=native#text/html
