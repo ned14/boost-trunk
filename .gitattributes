@@ -4180,6 +4180,8 @@ boost/libs/python/pyste/example/operator.h svneol=native#text/plain
 boost/libs/python/pyste/example/operator.pyste -text
 boost/libs/python/pyste/example/templates.h svneol=native#text/plain
 boost/libs/python/pyste/example/templates.pyste -text
+boost/libs/python/pyste/example/virtual.h svneol=native#text/plain
+boost/libs/python/pyste/example/virtual.pyste -text
 boost/libs/python/pyste/example/wrappertest.h svneol=native#text/plain
 boost/libs/python/pyste/example/wrappertest.pyste -text
 boost/libs/python/pyste/example/wrappertest_wrappers.h svneol=native#text/plain
