@@ -6310,6 +6310,14 @@ boost/tools/build/v2/build/type.jam svneol=native#text/plain
 boost/tools/build/v2/build/version.jam svneol=native#text/plain
 boost/tools/build/v2/build/virtual-target.jam svneol=native#text/plain
 boost/tools/build/v2/c++boost.gif -text svneol=unset#image/gif
+boost/tools/build/v2/debian/boost-build.docs -text
+boost/tools/build/v2/debian/boost-build.examples -text
+boost/tools/build/v2/debian/changelog -text
+boost/tools/build/v2/debian/conffiles -text
+boost/tools/build/v2/debian/control -text
+boost/tools/build/v2/debian/copyright -text
+boost/tools/build/v2/debian/excludes -text
+boost/tools/build/v2/debian/rules -text
 boost/tools/build/v2/doc/architecture.html svneol=native#text/html
 boost/tools/build/v2/doc/development_plan.html svneol=native#text/html
 boost/tools/build/v2/doc/extending.html svneol=native#text/html
