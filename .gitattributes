@@ -5457,6 +5457,7 @@ boost/libs/mpl/example/fsm/aux_/event.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/state.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/transition.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/player.cpp svneol=native#text/plain
+boost/libs/mpl/example/fsm/player1.cpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/player2.cpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/state_machine.hpp svneol=native#text/plain
 boost/libs/mpl/example/inherit_linearly.cpp svneol=native#text/plain
