@@ -8928,4 +8928,5 @@ boost/tools/regression/xsl_reports/xsl/v2/result_page.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/v2/runners.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/v2/summary_page.xsl svneol=native#text/xml
 boost/tools/release/make_tarballs.py svneol=native#text/x-python
+boost/tools/release/user-config.jam svneol=native#text/plain
 boost/tools/release/utils.py svneol=native#text/x-python
