@@ -37,7 +37,7 @@ typedef int (alignment_dummy::*member_function_ptr)();
         char, short, int, long, float, double, long double \
         , void*, function_ptr, member_ptr, member_function_ptr))
 
-#define BOOST_TT_CHOOSE_LOWER_ALIGNMENT(R,P,I,T) \
+#define BOOST_TT_CHOOSE_MIN_ALIGNMENT(R,P,I,T) \
         typename mpl::if_c< \
            alignment_of<T>::value <= target, T, char>::type BOOST_PP_CAT(t,I);
 
@@ -47,7 +47,7 @@ template <std::size_t target>
 union lower_alignment
 {
     BOOST_PP_LIST_FOR_EACH_I(
-          BOOST_TT_CHOOSE_LOWER_ALIGNMENT
+          BOOST_TT_CHOOSE_MIN_ALIGNMENT
         , ignored
         , BOOST_TT_ALIGNMENT_TYPES
         )
@@ -63,7 +63,7 @@ union max_align
 };
 
 #undef BOOST_TT_ALIGNMENT_TYPES
-#undef BOOST_TT_CHOOSE_LOWER_ALIGNMENT
+#undef BOOST_TT_CHOOSE_MIN_ALIGNMENT
 #undef BOOST_TT_CHOOSE_T
 
 template<int TAlign, int Align>
