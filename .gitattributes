@@ -2495,6 +2495,7 @@ boost/libs/format/index.htm svneol=native#text/html
 boost/libs/format/test/Jamfile svneol=native#text/plain
 boost/libs/format/test/format_test1.cpp svneol=native#text/plain
 boost/libs/format/test/format_test2.cpp svneol=native#text/plain
+boost/libs/format/test/format_test3.cpp svneol=native#text/plain
 boost/libs/format/test/format_test_wstring.cpp svneol=native#text/plain
 boost/libs/format/test/regression.cfg -text
 boost/libs/function/doc/Jamfile.v2 svneol=native#text/plain
