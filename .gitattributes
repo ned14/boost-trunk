@@ -1520,7 +1520,6 @@ boost/boost/type_traits/is_integral.hpp svneol=native#text/plain
 boost/boost/type_traits/is_member_function_pointer.hpp svneol=native#text/plain
 boost/boost/type_traits/is_member_pointer.hpp svneol=native#text/plain
 boost/boost/type_traits/is_object.hpp svneol=native#text/plain
-boost/boost/type_traits/is_pod.hpp svneol=native#text/plain
 boost/boost/type_traits/is_pointer.hpp svneol=native#text/plain
 boost/boost/type_traits/is_polymorphic.hpp svneol=native#text/plain
 boost/boost/type_traits/is_reference.hpp svneol=native#text/plain
