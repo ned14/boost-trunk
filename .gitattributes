@@ -6017,6 +6017,7 @@ boost/libs/serialization/src/basic_iarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/basic_oarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/basic_serializer_map.cpp svneol=native#text/plain
 boost/libs/serialization/src/basic_xml_archive.cpp svneol=native#text/plain
+boost/libs/serialization/src/basic_xml_grammar.ipp svneol=native#text/plain
 boost/libs/serialization/src/binary_iarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/binary_oarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/binary_wiarchive.cpp svneol=native#text/plain
