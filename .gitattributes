@@ -426,6 +426,7 @@ boost/boost/python/to_python_indirect.hpp svneol=native#text/plain
 boost/boost/python/to_python_value.hpp svneol=native#text/plain
 boost/boost/python/type_from_python.hpp svneol=native#text/plain
 boost/boost/python/value_from_python.hpp svneol=native#text/plain
+boost/boost/python/with_custodian_and_ward.hpp svneol=native#text/plain
 boost/boost/random.hpp svneol=native#text/plain
 boost/boost/random/additive_combine.hpp svneol=native#text/plain
 boost/boost/random/bernoulli_distribution.hpp svneol=native#text/plain
