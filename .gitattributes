@@ -1428,6 +1428,7 @@ boost/libs/thread/example/monitor/monitor.cpp svneol=native#text/plain
 boost/libs/thread/example/starvephil/starvephil.cpp svneol=native#text/plain
 boost/libs/thread/example/tennis/tennis.cpp svneol=native#text/plain
 boost/libs/thread/src/condition.cpp svneol=native#text/plain
+boost/libs/thread/src/exceptions.cpp svneol=native#text/plain
 boost/libs/thread/src/mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/once.cpp svneol=native#text/plain
 boost/libs/thread/src/recursive_mutex.cpp svneol=native#text/plain
