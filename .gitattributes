@@ -277,6 +277,7 @@ boost/libs/graph/examples/bfs.expected -text
 boost/libs/graph/examples/bfs_basics.cpp svneol=native#text/plain
 boost/libs/graph/examples/bfs_basics.expected -text
 boost/libs/graph/examples/bucket_sorter.cpp svneol=native#text/plain
+boost/libs/graph/examples/city_visitor.cpp svneol=native#text/plain
 boost/libs/graph/examples/concept_checks.cpp svneol=native#text/plain
 boost/libs/graph/examples/concept_checks.expected -text
 boost/libs/graph/examples/connected_components.cpp svneol=native#text/plain
