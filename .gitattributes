@@ -609,6 +609,7 @@ boost/boost/iostreams/detail/config/enable_warnings.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/limits.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/locale.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/overload_resolution.hpp svneol=native#text/plain
+boost/boost/iostreams/detail/config/wide_streams.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/windows_posix.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/config/zlib.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/converting_chain.hpp svneol=native#text/plain
