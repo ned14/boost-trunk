@@ -286,6 +286,7 @@ boost/boost/date_time/date_clock_device.hpp svneol=native#text/plain
 boost/boost/date_time/date_defs.hpp svneol=native#text/plain
 boost/boost/date_time/date_duration.hpp svneol=native#text/plain
 boost/boost/date_time/date_duration_types.hpp svneol=native#text/plain
+boost/boost/date_time/date_facet.hpp svneol=native#text/plain
 boost/boost/date_time/date_format_simple.hpp svneol=native#text/plain
 boost/boost/date_time/date_formatting.hpp svneol=native#text/plain
 boost/boost/date_time/date_formatting_limited.hpp svneol=native#text/plain
