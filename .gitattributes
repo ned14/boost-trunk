@@ -5306,12 +5306,9 @@ boost/libs/program_options/doc/acknowledgements.xml svneol=native#text/xml
 boost/libs/program_options/doc/alternatives -text
 boost/libs/program_options/doc/changes.xml svneol=native#text/xml
 boost/libs/program_options/doc/design.xml svneol=native#text/xml
-boost/libs/program_options/doc/footer.html svneol=native#text/html
 boost/libs/program_options/doc/glossary.dox -text
 boost/libs/program_options/doc/glossary.xml svneol=native#text/xml
-boost/libs/program_options/doc/header.html svneol=native#text/html
 boost/libs/program_options/doc/howto.xml svneol=native#text/xml
-boost/libs/program_options/doc/index.html svneol=native#text/html
 boost/libs/program_options/doc/options_description.xml svneol=native#text/xml
 boost/libs/program_options/doc/overview.xml svneol=native#text/xml
 boost/libs/program_options/doc/post_review_plan.txt svneol=native#text/plain
