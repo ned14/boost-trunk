@@ -575,7 +575,6 @@ boost/boost/python/module_builder.hpp svneol=native#text/plain
 boost/boost/python/object.hpp svneol=native#text/plain
 boost/boost/python/object/class.hpp svneol=native#text/plain
 boost/boost/python/object/class_converters.hpp svneol=native#text/plain
-boost/boost/python/object/class_object.hpp svneol=native#text/plain
 boost/boost/python/object/class_wrapper.hpp svneol=native#text/plain
 boost/boost/python/object/construct.hpp svneol=native#text/plain
 boost/boost/python/object/find_instance.hpp svneol=native#text/plain
