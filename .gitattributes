@@ -6792,6 +6792,7 @@ boost/tools/build/v1/vc7.1-tools.jam svneol=native#text/plain
 boost/tools/build/v2/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/boost.css svneol=native#text/css
 boost/tools/build/v2/boost_build_v2.html svneol=native#text/html
+boost/tools/build/v2/bootstrap.jam svneol=native#text/plain
 boost/tools/build/v2/build-system.jam svneol=native#text/plain
 boost/tools/build/v2/build/alias.jam svneol=native#text/plain
 boost/tools/build/v2/build/build-request.jam svneol=native#text/plain
