@@ -5953,6 +5953,7 @@ boost/libs/variant/doc/reference/bad_visit.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/concepts.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/get.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/recursive_variant.xml svneol=native#text/xml
+boost/libs/variant/doc/reference/recursive_wrapper.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/reference.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/static_visitor.xml svneol=native#text/xml
 boost/libs/variant/doc/reference/variant.xml svneol=native#text/xml
