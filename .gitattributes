@@ -576,7 +576,6 @@ boost/boost/integer_traits.hpp svneol=native#text/plain
 boost/boost/intrusive_ptr.hpp svneol=native#text/plain
 boost/boost/io/ios_state.hpp svneol=native#text/plain
 boost/boost/io_fwd.hpp svneol=native#text/plain
-boost/boost/iostreams/adapt.hpp svneol=native#text/plain
 boost/boost/iostreams/categories.hpp svneol=native#text/plain
 boost/boost/iostreams/code_converter.hpp svneol=native#text/plain
 boost/boost/iostreams/combine.hpp svneol=native#text/plain
