@@ -4164,6 +4164,7 @@ boost/libs/multi_index/index.html svneol=native#text/html
 boost/libs/multi_index/perf/Jamfile svneol=native#text/plain
 boost/libs/multi_index/perf/test_perf.cpp svneol=native#text/plain
 boost/libs/multi_index/test/Jamfile svneol=native#text/plain
+boost/libs/multi_index/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/multi_index/test/employee.hpp svneol=native#text/plain
 boost/libs/multi_index/test/pair_of_ints.hpp svneol=native#text/plain
 boost/libs/multi_index/test/pre_multi_index.hpp svneol=native#text/plain
