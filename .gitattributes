@@ -849,7 +849,6 @@ boost/boost/mpl/not.hpp svneol=native#text/plain
 boost/boost/mpl/not_equal_to.hpp svneol=native#text/plain
 boost/boost/mpl/or.hpp svneol=native#text/plain
 boost/boost/mpl/pair.hpp svneol=native#text/plain
-boost/boost/mpl/placeholder.hpp svneol=native#text/plain
 boost/boost/mpl/placeholders.hpp svneol=native#text/plain
 boost/boost/mpl/plus.hpp svneol=native#text/plain
 boost/boost/mpl/pop_back.hpp svneol=native#text/plain
