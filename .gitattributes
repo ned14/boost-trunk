@@ -99,7 +99,6 @@ boost/boost/config/stdlib/stlport.hpp svneol=native#text/plain
 boost/boost/config/stdlib/vacpp.hpp svneol=native#text/plain
 boost/boost/config/suffix.hpp svneol=native#text/plain
 boost/boost/config/user.hpp svneol=native#text/plain
-boost/boost/counting_iterator.hpp svneol=native#text/plain
 boost/boost/crc.hpp svneol=native#text/plain
 boost/boost/cregex.hpp svneol=native#text/plain
 boost/boost/cstdint.hpp svneol=native#text/plain
