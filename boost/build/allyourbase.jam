@@ -128,7 +128,7 @@
 #       ECHO - blurt out targets on stdout
 #       EXIT - blurt out targets and exit
 #       INCLUDES - marks sources as headers for target (a codependency)
-#       NCARE - don't panic if the target can't be built
+#       NOCARE - don't panic if the target can't be built
 #       NOUPDATE - create the target if needed but never update it 
 #       NOTFILE - ignore the timestamp of the target (it's not a file)
 #       TEMPORARY - target need not be present if sources haven't changed
