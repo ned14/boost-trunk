@@ -5866,6 +5866,7 @@ boost/libs/range/test/partial_workaround.cpp svneol=native#text/plain
 boost/libs/range/test/reversible_range.cpp svneol=native#text/plain
 boost/libs/range/test/std_container.cpp svneol=native#text/plain
 boost/libs/range/test/string.cpp svneol=native#text/plain
+boost/libs/range/test/sub_range.cpp svneol=native#text/plain
 boost/libs/rational/index.html svneol=native#text/html
 boost/libs/rational/rational.html svneol=native#text/html
 boost/libs/rational/rational_example.cpp svneol=native#text/plain
