@@ -298,6 +298,7 @@ boost/boost/date_time/date_parsing.hpp svneol=native#text/plain
 boost/boost/date_time/dst_rules.hpp svneol=native#text/plain
 boost/boost/date_time/dst_transition_generators.hpp svneol=native#text/plain
 boost/boost/date_time/filetime_functions.hpp svneol=native#text/plain
+boost/boost/date_time/gregorian/conversion.hpp svneol=native#text/plain
 boost/boost/date_time/gregorian/formatters.hpp svneol=native#text/plain
 boost/boost/date_time/gregorian/formatters_limited.hpp svneol=native#text/plain
 boost/boost/date_time/gregorian/greg_calendar.hpp svneol=native#text/plain
