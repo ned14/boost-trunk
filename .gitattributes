@@ -649,6 +649,7 @@ boost/libs/python/build/test/test.dsp -text svneol=CRLF#unset
 boost/libs/python/build/tru64_cxx.mak svneol=native#text/plain
 boost/libs/python/doc/building.html svneol=native#text/html
 boost/libs/python/doc/comparisons.html svneol=native#text/html
+boost/libs/python/doc/cross_module_dependencies.html svneol=native#text/html
 boost/libs/python/doc/data_structures.txt svneol=native#text/plain
 boost/libs/python/doc/enums.html svneol=native#text/html
 boost/libs/python/doc/example1.html svneol=native#text/html
