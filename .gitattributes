@@ -1738,6 +1738,9 @@ boost/tools/build/jam_src/Makefile svneol=native#text/plain
 boost/tools/build/jam_src/Porting -text
 boost/tools/build/jam_src/README svneol=native#text/plain
 boost/tools/build/jam_src/RELNOTES -text
+boost/tools/build/jam_src/builds/win32-borlandc.mk -text
+boost/tools/build/jam_src/builds/win32-gcc.mk -text
+boost/tools/build/jam_src/builds/win32-visualc.mk -text
 boost/tools/build/jam_src/command.c svneol=native#text/plain
 boost/tools/build/jam_src/command.h svneol=native#text/plain
 boost/tools/build/jam_src/common.mk -text
@@ -1902,6 +1905,9 @@ boost/tools/jam/src/Makefile svneol=native#text/plain
 boost/tools/jam/src/Porting -text
 boost/tools/jam/src/README svneol=native#text/plain
 boost/tools/jam/src/RELNOTES -text
+boost/tools/jam/src/builds/win32-borlandc.mk -text
+boost/tools/jam/src/builds/win32-gcc.mk -text
+boost/tools/jam/src/builds/win32-visualc.mk -text
 boost/tools/jam/src/command.c svneol=native#text/plain
 boost/tools/jam/src/command.h svneol=native#text/plain
 boost/tools/jam/src/common.mk -text
