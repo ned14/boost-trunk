@@ -3470,6 +3470,7 @@ boost/libs/date_time/test/posix_time/testparse_time.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testperiod.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/teststreams.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testtime.cpp svneol=native#text/plain
+boost/libs/date_time/test/posix_time/testtime_facet.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testtime_formatters.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testtime_period.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testtime_serialize.cpp svneol=native#text/plain
