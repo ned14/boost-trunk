@@ -374,7 +374,6 @@ boost/boost/python/converter/registry.hpp svneol=native#text/plain
 boost/boost/python/converter/smart_ptr.hpp svneol=native#text/plain
 boost/boost/python/converter/to_python_function.hpp svneol=native#text/plain
 boost/boost/python/converter/type_id.hpp svneol=native#text/plain
-boost/boost/python/converter/unwrapper_select.hpp svneol=native#text/plain
 boost/boost/python/copy_const_reference.hpp svneol=native#text/plain
 boost/boost/python/copy_non_const_reference.hpp svneol=native#text/plain
 boost/boost/python/cross_module.hpp svneol=native#text/plain
