@@ -4208,6 +4208,7 @@ boost/libs/python/pyste/src/policies.py svneol=native#text/x-python
 boost/libs/python/pyste/src/pyste-profile.py svneol=native#text/x-python
 boost/libs/python/pyste/src/pyste.py svneol=native#text/x-python
 boost/libs/python/pyste/src/settings.py svneol=native#text/x-python
+boost/libs/python/pyste/tests/.cvsignore -text
 boost/libs/python/pyste/tests/GCCXMLParserUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/build_pyste_nt.bat svneol=native#text/plain
 boost/libs/python/pyste/tests/example_basicUT.py svneol=native#text/x-python
