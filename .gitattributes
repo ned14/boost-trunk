@@ -2451,7 +2451,6 @@ boost/boost/thread/detail/force_cast.hpp svneol=native#text/plain
 boost/boost/thread/detail/lock.hpp svneol=native#text/plain
 boost/boost/thread/detail/read_write_lock.hpp svneol=native#text/plain
 boost/boost/thread/detail/singleton.hpp svneol=native#text/plain
-boost/boost/thread/detail/threadmon.hpp svneol=native#text/plain
 boost/boost/thread/detail/tss_hooks.hpp svneol=native#text/plain
 boost/boost/thread/exceptions.hpp svneol=native#text/plain
 boost/boost/thread/mutex.hpp svneol=native#text/plain
@@ -7315,11 +7314,9 @@ boost/libs/thread/src/mac/thread_cleanup.hpp svneol=native#text/plain
 boost/libs/thread/src/mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/mutex.inl -text
 boost/libs/thread/src/once.cpp svneol=native#text/plain
-boost/libs/thread/src/pe_tls.ipp svneol=native#text/plain
 boost/libs/thread/src/read_write_mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/recursive_mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/thread.cpp svneol=native#text/plain
-boost/libs/thread/src/threadmon.cpp svneol=native#text/plain
 boost/libs/thread/src/timeconv.inl -text
 boost/libs/thread/src/tss.cpp svneol=native#text/plain
 boost/libs/thread/src/tss_dll.cpp svneol=native#text/plain
