@@ -4588,6 +4588,7 @@ boost/status/cs-win32.html svneol=native#text/html
 boost/status/index.html svneol=native#text/html
 boost/status/intel_logo.gif -text svneol=unset#image/gif
 boost/status/kai_logo.gif -text svneol=unset#image/gif
+boost/status/testsuites.jam svneol=native#text/plain
 boost/tools/build/acc-tools.jam svneol=native#text/plain
 boost/tools/build/allyourbase.jam svneol=native#text/plain
 boost/tools/build/architecture.html svneol=native#text/html
