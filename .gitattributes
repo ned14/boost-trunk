@@ -4893,6 +4893,7 @@ boost/libs/test/build/test_exec_fail2.dsp -text svneol=CRLF#unset
 boost/libs/test/build/test_exec_fail3.dsp -text svneol=CRLF#unset
 boost/libs/test/build/test_exec_fail4.dsp -text svneol=CRLF#unset
 boost/libs/test/build/test_exec_monitor.dsp -text svneol=CRLF#unset
+boost/libs/test/build/test_fp_comparisons.dsp -text svneol=CRLF#unset
 boost/libs/test/build/test_tools_test.dsp -text svneol=CRLF#unset
 boost/libs/test/build/unit_test_example1.dsp -text svneol=CRLF#unset
 boost/libs/test/build/unit_test_example2.dsp -text svneol=CRLF#unset
@@ -4950,8 +4951,8 @@ boost/libs/test/src/unit_test_suite.cpp svneol=native#text/plain
 boost/libs/test/test/.cvsignore -text
 boost/libs/test/test/Jamfile svneol=native#text/plain
 boost/libs/test/test/auto_unit_test_test.cpp svneol=native#text/plain
-boost/libs/test/test/error_handling_test.pattern -text
 boost/libs/test/test/errors_handling_test.cpp svneol=native#text/plain
+boost/libs/test/test/errors_handling_test.pattern -text
 boost/libs/test/test/minimal_test.cpp svneol=native#text/plain
 boost/libs/test/test/online_test.cpp svneol=native#text/plain
 boost/libs/test/test/output_test_stream_test.cpp svneol=native#text/plain
@@ -4965,6 +4966,7 @@ boost/libs/test/test/test_exec_fail1.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail2.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail3.cpp svneol=native#text/plain
 boost/libs/test/test/test_exec_fail4.cpp svneol=native#text/plain
+boost/libs/test/test/test_fp_comparisons.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_test.cpp svneol=native#text/plain
 boost/libs/test/test/unit_test_suite_ex_test.cpp svneol=native#text/plain
 boost/libs/thread/build/.cvsignore -text
