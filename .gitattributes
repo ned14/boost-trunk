@@ -1240,6 +1240,7 @@ boost/boost/python/converter/registrations.hpp svneol=native#text/plain
 boost/boost/python/converter/registry.hpp svneol=native#text/plain
 boost/boost/python/converter/return_from_python.hpp svneol=native#text/plain
 boost/boost/python/converter/rvalue_from_python_data.hpp svneol=native#text/plain
+boost/boost/python/converter/shared_ptr_deleter.hpp svneol=native#text/plain
 boost/boost/python/converter/shared_ptr_from_python.hpp svneol=native#text/plain
 boost/boost/python/converter/to_python_function_type.hpp svneol=native#text/plain
 boost/boost/python/copy_const_reference.hpp svneol=native#text/plain
