@@ -34,10 +34,8 @@
 
 #if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
 #define BOOST_SPIRIT_USING_STD
-#define BOOST_SPIRIT_NS_STD
 #else
 #define BOOST_SPIRIT_USING_STD using namespace std
-#define BOOST_SPIRIT_NS_STD
 #endif
 
 namespace boost { namespace spirit {
