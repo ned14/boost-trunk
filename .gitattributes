@@ -231,6 +231,7 @@ boost/libs/array/print.hpp.html svneol=native#text/html
 boost/libs/array_traits/array-article.html svneol=native#text/html
 boost/libs/array_traits/array_traits.html svneol=native#text/html
 boost/libs/array_traits/index.html svneol=native#text/html
+boost/libs/array_traits/ndim_array_example.cpp svneol=native#text/plain
 boost/libs/compiler_status.htm svneol=native#text/html
 boost/libs/compose/compose.hpp.html svneol=native#text/html
 boost/libs/compose/compose.html svneol=native#text/html
