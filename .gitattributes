@@ -18,7 +18,6 @@ boost/boost-build.jam svneol=native#text/plain
 boost/boost.css svneol=native#text/css
 boost/boost/any.hpp svneol=native#text/plain
 boost/boost/array.hpp svneol=native#text/plain
-boost/boost/array_traits.hpp svneol=native#text/plain
 boost/boost/assert.hpp svneol=native#text/plain
 boost/boost/bind.hpp svneol=native#text/plain
 boost/boost/bind/apply.hpp svneol=native#text/plain
