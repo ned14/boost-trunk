@@ -178,7 +178,6 @@ boost/boost/pool/detail/pool_construct.bat svneol=native#text/plain
 boost/boost/pool/detail/pool_construct.inc -text
 boost/boost/pool/detail/pool_construct.m4 -text
 boost/boost/pool/detail/pool_construct.sh svneol=native#text/x-sh
-boost/boost/pool/detail/postulate.hpp svneol=native#text/plain
 boost/boost/pool/detail/select_type.hpp svneol=native#text/plain
 boost/boost/pool/detail/singleton.hpp svneol=native#text/plain
 boost/boost/pool/object_pool.hpp svneol=native#text/plain
@@ -786,7 +785,6 @@ boost/libs/pool/doc/implementation/object_pool.html svneol=native#text/html
 boost/libs/pool/doc/implementation/pool.html svneol=native#text/html
 boost/libs/pool/doc/implementation/pool_alloc.html svneol=native#text/html
 boost/libs/pool/doc/implementation/pool_construct.html svneol=native#text/html
-boost/libs/pool/doc/implementation/postulate.html svneol=native#text/html
 boost/libs/pool/doc/implementation/simple_segregated_storage.html svneol=native#text/html
 boost/libs/pool/doc/implementation/singleton.html svneol=native#text/html
 boost/libs/pool/doc/implementation/singleton_pool.html svneol=native#text/html
