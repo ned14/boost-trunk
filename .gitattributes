@@ -2562,6 +2562,7 @@ boost/libs/test/doc/js-lib/browser.js svneol=native#text/javascript
 boost/libs/test/doc/js-lib/callback_api.js svneol=native#text/javascript
 boost/libs/test/doc/js-lib/core.js svneol=native#text/javascript
 boost/libs/test/doc/js-lib/examples/core_example.html svneol=native#text/html
+boost/libs/test/doc/js-lib/examples/mouse_events_example.htm svneol=native#text/html
 boost/libs/test/doc/js-lib/examples/scheduler_api_example.html svneol=native#text/html
 boost/libs/test/doc/js-lib/examples/smooth_move_example.html svneol=native#text/html
 boost/libs/test/doc/js-lib/examples/smooth_scroll_example.html svneol=native#text/html
