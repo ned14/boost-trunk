@@ -347,6 +347,7 @@ boost/libs/graph/docs/property_map.html svneol=native#text/html
 boost/libs/graph/docs/property_writer.html svneol=native#text/html
 boost/libs/graph/docs/publications.html svneol=native#text/html
 boost/libs/graph/docs/quick_tour.html svneol=native#text/html
+boost/libs/graph/docs/reverse_graph.html svneol=native#text/html
 boost/libs/graph/docs/sparse_matrix_ordering.html svneol=native#text/html
 boost/libs/graph/docs/table_of_contents.html svneol=native#text/html
 boost/libs/graph/docs/time_stamper.html svneol=native#text/html
@@ -433,6 +434,7 @@ boost/libs/graph/examples/remove_edge_if_dir.cpp svneol=native#text/plain
 boost/libs/graph/examples/remove_edge_if_dir.expected -text
 boost/libs/graph/examples/remove_edge_if_undir.cpp svneol=native#text/plain
 boost/libs/graph/examples/remove_edge_if_undir.expected -text
+boost/libs/graph/examples/reverse_graph.cpp svneol=native#text/plain
 boost/libs/graph/examples/topo_sort.cpp svneol=native#text/plain
 boost/libs/graph/examples/topo_sort.expected -text
 boost/libs/graph/examples/undirected.cpp svneol=native#text/plain
