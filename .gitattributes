@@ -71,6 +71,7 @@ boost/boost/config/compiler/sunpro_cc.hpp svneol=native#text/plain
 boost/boost/config/compiler/vacpp.hpp svneol=native#text/plain
 boost/boost/config/compiler/visualc.hpp svneol=native#text/plain
 boost/boost/config/platform/aix.hpp svneol=native#text/plain
+boost/boost/config/platform/amigaos.hpp svneol=native#text/plain
 boost/boost/config/platform/beos.hpp svneol=native#text/plain
 boost/boost/config/platform/bsd.hpp svneol=native#text/plain
 boost/boost/config/platform/cygwin.hpp svneol=native#text/plain
