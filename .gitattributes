@@ -4362,6 +4362,7 @@ boost/libs/spirit/doc/file_iterator.html svneol=native#text/html
 boost/libs/spirit/doc/functional.html svneol=native#text/html
 boost/libs/spirit/doc/functor_parser.html svneol=native#text/html
 boost/libs/spirit/doc/grammar.html svneol=native#text/html
+boost/libs/spirit/doc/grouping_parser.html svneol=native#text/html
 boost/libs/spirit/doc/indepth_the_parser.html svneol=native#text/html
 boost/libs/spirit/doc/indepth_the_scanner.html svneol=native#text/html
 boost/libs/spirit/doc/introduction.html svneol=native#text/html
