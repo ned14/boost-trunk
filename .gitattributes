@@ -6867,6 +6867,7 @@ boost/tools/build/v2/example/versioned/hello.cpp svneol=native#text/plain
 boost/tools/build/v2/example/versioned/jamfile.jam svneol=native#text/plain
 boost/tools/build/v2/example/versioned/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/generators_prototype.py svneol=native#text/x-python
+boost/tools/build/v2/hacking.txt svneol=native#text/plain
 boost/tools/build/v2/index_v2.html svneol=native#text/html
 boost/tools/build/v2/kernel/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/kernel/bootstrap.jam svneol=native#text/plain
