@@ -3257,6 +3257,7 @@ boost/libs/numeric/interval/test/overflow.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/pi.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/pow.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/test_float.cpp svneol=native#text/plain
+boost/libs/numeric/sublibs -text
 boost/libs/numeric/ublas/Jamfile svneol=native#text/plain
 boost/libs/numeric/ublas/bench1/Jamfile svneol=native#text/plain
 boost/libs/numeric/ublas/bench1/bench1.cpp svneol=native#text/plain
