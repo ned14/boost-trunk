@@ -78,7 +78,6 @@ boost/boost/graph/smallest_last_ordering.hpp svneol=native#text/plain
 boost/boost/graph/stanford_graph.hpp svneol=native#text/plain
 boost/boost/graph/strong_components.hpp svneol=native#text/plain
 boost/boost/graph/subgraph.hpp svneol=native#text/plain
-boost/boost/graph/tarjan_scc.hpp svneol=native#text/plain
 boost/boost/graph/topological_sort.hpp svneol=native#text/plain
 boost/boost/graph/transpose_graph.hpp svneol=native#text/plain
 boost/boost/graph/tree_traits.hpp svneol=native#text/plain
