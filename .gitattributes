@@ -365,6 +365,12 @@ boost/libs/graph/examples/prim.cpp svneol=native#text/plain
 boost/libs/graph/examples/prim.expected -text
 boost/libs/graph/examples/quick_tour.cpp svneol=native#text/plain
 boost/libs/graph/examples/quick_tour.expected -text
+boost/libs/graph/examples/remove_edge_if_bidir.cpp svneol=native#text/plain
+boost/libs/graph/examples/remove_edge_if_bidir.expected -text
+boost/libs/graph/examples/remove_edge_if_dir.cpp svneol=native#text/plain
+boost/libs/graph/examples/remove_edge_if_dir.expected -text
+boost/libs/graph/examples/remove_edge_if_undir.cpp svneol=native#text/plain
+boost/libs/graph/examples/remove_edge_if_undir.expected -text
 boost/libs/graph/examples/stl_concept_checks.cpp svneol=native#text/plain
 boost/libs/graph/examples/stl_concept_checks.expected -text
 boost/libs/graph/examples/topo_sort.cpp svneol=native#text/plain
