@@ -3351,6 +3351,7 @@ boost/libs/bind/test/bind_stdcall_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_cdecl_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_derived_test.cpp svneol=native#text/plain
+boost/libs/bind/test/mem_fn_dm_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_eq_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_fastcall_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_stdcall_test.cpp svneol=native#text/plain
