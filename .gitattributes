@@ -3067,6 +3067,7 @@ boost/libs/iterator/doc/traversal.png -text svneol=unset#image/png
 boost/libs/iterator/example/Jamfile svneol=native#text/plain
 boost/libs/iterator/example/reverse_iterator.cpp svneol=native#text/plain
 boost/libs/iterator/test/Jamfile svneol=native#text/plain
+boost/libs/iterator/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/iterator/test/concept_tests.cpp svneol=native#text/plain
 boost/libs/iterator/test/counting_iterator_test.cpp svneol=native#text/plain
 boost/libs/iterator/test/filter_iterator_test.cpp svneol=native#text/plain
