@@ -8059,6 +8059,7 @@ boost/tools/build/v2/kernel/bootstrap.jam svneol=native#text/plain
 boost/tools/build/v2/kernel/class.jam svneol=native#text/plain
 boost/tools/build/v2/kernel/errors.jam svneol=native#text/plain
 boost/tools/build/v2/kernel/modules.jam svneol=native#text/plain
+boost/tools/build/v2/nightly.sh svneol=native#text/x-sh
 boost/tools/build/v2/options/help.jam svneol=native#text/plain
 boost/tools/build/v2/release_procedure.txt svneol=native#text/plain
 boost/tools/build/v2/roll.sh svneol=native#text/x-sh
