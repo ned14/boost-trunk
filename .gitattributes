@@ -11,6 +11,7 @@ CVSROOT/rcsinfo -text
 CVSROOT/taginfo -text
 CVSROOT/verifymsg -text
 boost/README svneol=native#text/plain
+boost/boost/any.hpp svneol=native#text/plain
 boost/boost/array.hpp svneol=native#text/plain
 boost/boost/array_traits.hpp svneol=native#text/plain
 boost/boost/call_traits.hpp svneol=native#text/plain
