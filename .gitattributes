@@ -4115,6 +4115,8 @@ boost/libs/test/doc/test_exec_monitor.htm svneol=native#text/html
 boost/libs/test/doc/test_lib_design.htm svneol=native#text/html
 boost/libs/test/doc/test_tools.htm svneol=native#text/html
 boost/libs/test/doc/unit_test_framework.htm svneol=native#text/html
+boost/libs/test/example/.cvsignore -text
+boost/libs/test/example/Jamfile svneol=native#text/plain
 boost/libs/test/example/prg_exec_example.cpp svneol=native#text/plain
 boost/libs/test/example/test_exec_example.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example1.cpp svneol=native#text/plain
