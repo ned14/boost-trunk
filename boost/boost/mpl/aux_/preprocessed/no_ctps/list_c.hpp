@@ -1,236 +1,412 @@
-// preprocessed version of 'boost/mpl/list_c.hpp' header
-// see the original for copyright information
-
-namespace boost {
-namespace mpl {
+namespace boost { namespace mpl {
 
 namespace aux {
-template< int N > struct list_c_impl_chooser;
+template< int N >
+struct list_c_chooser;
+
 }
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<0>
+struct list_c_chooser<0>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list0_c<
-              T  
-            >::type type;
+        typedef list0_c<
+              T
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<1>
+struct list_c_chooser<1>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list1_c<
+        typedef list1_c<
               T, C0
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<2>
+struct list_c_chooser<2>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list2_c<
+        typedef list2_c<
               T, C0, C1
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<3>
+struct list_c_chooser<3>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list3_c<
+        typedef list3_c<
               T, C0, C1, C2
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<4>
+struct list_c_chooser<4>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list4_c<
+        typedef list4_c<
               T, C0, C1, C2, C3
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<5>
+struct list_c_chooser<5>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list5_c<
+        typedef list5_c<
               T, C0, C1, C2, C3, C4
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<6>
+struct list_c_chooser<6>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list6_c<
+        typedef list6_c<
               T, C0, C1, C2, C3, C4, C5
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<7>
+struct list_c_chooser<7>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list7_c<
+        typedef list7_c<
               T, C0, C1, C2, C3, C4, C5, C6
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<8>
+struct list_c_chooser<8>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list8_c<
+        typedef list8_c<
               T, C0, C1, C2, C3, C4, C5, C6, C7
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<9>
+struct list_c_chooser<9>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list9_c<
+        typedef list9_c<
               T, C0, C1, C2, C3, C4, C5, C6, C7, C8
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
-
 template<>
-struct list_c_impl_chooser<10>
+struct list_c_chooser<10>
 {
     template<
-          typename T
-        , long C0, long C1, long C2, long C3, long C4, long C5, long C6
-        , long C7, long C8, long C9
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
         >
     struct result_
     {
-        typedef typename list10_c<
+        typedef list10_c<
               T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9
-            >::type type;
+            > type;
     };
 };
 
 } // namespace aux
 
 namespace aux {
+template<>
+struct list_c_chooser<11>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list11_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10
+            > type;
+    };
+};
 
-template< long T >
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<12>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list12_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<13>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list13_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<14>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list14_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<15>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list15_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<16>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list16_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<17>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list17_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<18>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list18_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<19>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list19_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17, C18
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template<>
+struct list_c_chooser<20>
+{
+    template<
+          typename T, long C0, long C1, long C2, long C3, long C4, long C5
+        , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+        , long C13, long C14, long C15, long C16, long C17, long C18, long C19
+        >
+    struct result_
+    {
+        typedef list20_c<
+              T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C19
+            > type;
+    };
+};
+
+} // namespace aux
+
+namespace aux {
+template< long C >
 struct is_list_c_arg
 {
     static bool const value = true;
@@ -243,8 +419,9 @@ struct is_list_c_arg<LONG_MAX>
 };
 
 template<
-      long T1, long T2, long T3, long T4, long T5, long T6, long T7, long T8
-    , long T9, long T10
+      long C1, long C2, long C3, long C4, long C5, long C6, long C7, long C8
+    , long C9, long C10, long C11, long C12, long C13, long C14, long C15
+    , long C16, long C17, long C18, long C19, long C20
     >
 struct list_c_count_args
 {
@@ -253,39 +430,48 @@ struct list_c_count_args
         + is_list_c_arg<T3>::value + is_list_c_arg<T4>::value 
         + is_list_c_arg<T5>::value + is_list_c_arg<T6>::value 
         + is_list_c_arg<T7>::value + is_list_c_arg<T8>::value 
-        + is_list_c_arg<T9>::value + is_list_c_arg<T10>::value
+        + is_list_c_arg<T9>::value + is_list_c_arg<T10>::value 
+        + is_list_c_arg<T11>::value + is_list_c_arg<T12>::value 
+        + is_list_c_arg<T13>::value + is_list_c_arg<T14>::value 
+        + is_list_c_arg<T15>::value + is_list_c_arg<T16>::value 
+        + is_list_c_arg<T17>::value + is_list_c_arg<T18>::value 
+        + is_list_c_arg<T19>::value + is_list_c_arg<T20>::value
         ;
 };
 
 template<
-      typename T
-    , long C0, long C1, long C2, long C3, long C4, long C5, long C6, long C7
-    , long C8, long C9
+      typename T, long C0, long C1, long C2, long C3, long C4, long C5
+    , long C6, long C7, long C8, long C9, long C10, long C11, long C12
+    , long C13, long C14, long C15, long C16, long C17, long C18, long C19
     >
 struct list_c_impl
 {
-    typedef aux::list_c_count_args< C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 > arg_num_;
-    typedef typename aux::list_c_impl_chooser< arg_num_::value >
-        ::template result_< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >::type type;
+    typedef aux::list_c_count_args<
+          T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C19
+        > arg_num_;
+    typedef typename aux::list_c_chooser< arg_num_::value >
+        ::template result_< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 >::type type;
 };
 
 } // namespace aux
 
 template<
-      typename T
-    , long C0 = LONG_MAX, long C1 = LONG_MAX, long C2 = LONG_MAX
+      typename T, long C0 = LONG_MAX, long C1 = LONG_MAX, long C2 = LONG_MAX
     , long C3 = LONG_MAX, long C4 = LONG_MAX, long C5 = LONG_MAX
     , long C6 = LONG_MAX, long C7 = LONG_MAX, long C8 = LONG_MAX
-    , long C9 = LONG_MAX
+    , long C9 = LONG_MAX, long C10 = LONG_MAX, long C11 = LONG_MAX
+    , long C12 = LONG_MAX, long C13 = LONG_MAX, long C14 = LONG_MAX
+    , long C15 = LONG_MAX, long C16 = LONG_MAX, long C17 = LONG_MAX
+    , long C18 = LONG_MAX, long C19 = LONG_MAX
     >
 struct list_c
-    : aux::list_c_impl< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >::type
+    : aux::list_c_impl<
+          T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C19
+        >::type
 {
     typedef typename aux::list_c_impl<
-          T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9
+          T, C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C19
         >::type type;
 };
 
-} // namespace mpl
-} // namespace boost
-
+}}

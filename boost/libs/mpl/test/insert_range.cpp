@@ -1,36 +1,31 @@
-//-----------------------------------------------------------------------------
-// boost mpl/test/insert_range.cpp source file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
+
+// Copyright (c) Aleksey Gurtovoy 2001-2004
 //
-// Copyright (c) 2001-02
-// Aleksey Gurtovoy
+// Use, modification and distribution are subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy 
+// at http://www.boost.org/LICENSE_1_0.txt)
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include <boost/mpl/insert_range.hpp>
 #include <boost/mpl/find.hpp>
-#include <boost/mpl/list_c.hpp>
+#include <boost/mpl/vector_c.hpp>
 #include <boost/mpl/size.hpp>
 #include <boost/mpl/range_c.hpp>
 #include <boost/mpl/equal.hpp>
-#include <boost/static_assert.hpp>
 
-namespace mpl = boost::mpl;
+#include <boost/mpl/aux_/test/test.hpp>
 
-int main()
+MPL_TEST_CASE()
 {
-    typedef mpl::list_c<int,0,1,7,8,9> numbers;
-    typedef mpl::find< numbers,mpl::integral_c<int,7> >::type pos;
-    typedef mpl::insert_range< numbers,pos,mpl::range_c<int,2,7> >::type range;
+    typedef vector_c<int,0,1,7,8,9> numbers;
+    typedef find< numbers,integral_c<int,7> >::type pos;
+    typedef insert_range< numbers,pos,range_c<int,2,7> >::type range;
 
-    BOOST_STATIC_ASSERT(mpl::size<range>::type::value == 10);
-    BOOST_STATIC_ASSERT((mpl::equal< range,mpl::range_c<int,0,10> >::type::value));
-    return 0;
+    MPL_ASSERT_EQUAL(2,( size<range>::value, 10 ));
+    MPL_ASSERT(( equal< range,range_c<int,0,10> >::value ));
 }

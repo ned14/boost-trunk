@@ -153,7 +153,8 @@ struct lambda<
 };
 
 
-#if defined(BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING)
+#if defined(BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING) \
+    && !defined(BOOST_MPL_CFG_NO_LAMBDA_HEURISTIC)
 
 template<
       typename F

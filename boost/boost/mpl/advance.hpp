@@ -25,13 +25,11 @@
 #include <boost/mpl/aux_/iterator_category.hpp>
 #include <boost/mpl/aux_/iterator_names.hpp>
 #include <boost/mpl/aux_/msvc_never_true.hpp>
-#include <boost/mpl/aux_/apply.hpp>
 #include <boost/mpl/aux_/na_spec.hpp>
 #include <boost/mpl/aux_/config/nttp.hpp>
-#include <boost/config.hpp>
+#include <boost/mpl/aux_/config/msvc.hpp>
 
-namespace boost {
-namespace mpl {
+namespace boost { namespace mpl {
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 
