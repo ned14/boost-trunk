@@ -1280,6 +1280,7 @@ boost/boost/property_map.hpp svneol=native#text/plain
 boost/boost/property_map_iterator.hpp svneol=native#text/plain
 boost/boost/python/arg_from_python.hpp svneol=native#text/plain
 boost/boost/python/args.hpp svneol=native#text/plain
+boost/boost/python/args_fwd.hpp svneol=native#text/plain
 boost/boost/python/back_reference.hpp svneol=native#text/plain
 boost/boost/python/base_type_traits.hpp svneol=native#text/plain
 boost/boost/python/bases.hpp svneol=native#text/plain
