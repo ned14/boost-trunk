@@ -12,6 +12,7 @@ CVSROOT/syncmail -text
 CVSROOT/taginfo -text
 CVSROOT/verifymsg -text
 boost/Jamfile svneol=native#text/plain
+boost/Jamfile.v2 svneol=native#text/plain
 boost/Jamrules svneol=native#text/plain
 boost/README svneol=native#text/plain
 boost/boost-build.jam svneol=native#text/plain
@@ -1991,6 +1992,7 @@ boost/libs/crc/crc.html svneol=native#text/html
 boost/libs/crc/crc_test.cpp svneol=native#text/plain
 boost/libs/crc/index.html svneol=native#text/html
 boost/libs/date_time/build/Jamfile svneol=native#text/plain
+boost/libs/date_time/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/date_time/doc/BasicTerms.html svneol=native#text/html
 boost/libs/date_time/doc/BuildInfo.html svneol=native#text/html
 boost/libs/date_time/doc/Calculations.html svneol=native#text/html
@@ -4027,6 +4029,7 @@ boost/libs/static_assert/static_assert_test_fail_9.cpp svneol=native#text/plain
 boost/libs/test/README svneol=native#text/plain
 boost/libs/test/build/.cvsignore -text
 boost/libs/test/build/Jamfile svneol=native#text/plain
+boost/libs/test/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/test/build/boost_test_library.dsw -text svneol=CRLF#unset
 boost/libs/test/build/errors_handling_test.dsp -text svneol=CRLF#unset
 boost/libs/test/build/online_test.dsp -text svneol=CRLF#unset
