@@ -214,6 +214,7 @@ boost/development/iterator/boost/iterator_traits.hpp svneol=native#text/plain
 boost/development/iterator/libs/iterator/concept_tests.cpp svneol=native#text/plain
 boost/development/iterator/libs/iterator/iterator_concepts.gif -text svneol=unset#image/gif
 boost/development/iterator/libs/iterator/iterator_concepts.htm svneol=native#text/html
+boost/development/iterator/libs/iterator/iterator_traits.htm svneol=native#text/html
 boost/index.htm svneol=native#text/html
 boost/libs/array/array.hpp.html svneol=native#text/html
 boost/libs/array/array.html svneol=native#text/html
