@@ -48,9 +48,13 @@ actions gcc-Link-action bind NEEDLIBS
 
 actions gcc-DLL-action bind NEEDLIBS 
 {
-    $(gcc.bin-directory)dlltool -e $(<[1]:S=:D=:G=) -l "$(<[2])" "$(>)"
-    $(gcc.bin-directory)g++ $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
+    $(gcc.bin-directory)g++ -Wl,--exclude-symbols,_bss_end__:_bss_start__:_data_end__:_data_start__ -Wl,--out-implib,$(<[2]) $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
 }
+
+# older actions
+#    $(gcc.bin-directory)dlltool -e $(<[1]:S=:D=:G=) -l "$(<[2])" "$(>)"
+#    $(gcc.bin-directory)g++ $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
+
 
 #### Cc #####
 

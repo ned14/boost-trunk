@@ -1021,7 +1021,10 @@ rule find-compatible-subvariant
                     incompatible with requested $(p) ;
             }
         }
-        override-properties += $(p) ;
+        else
+        {
+            override-properties += $(p) ;
+        }
     }
     
     local base-properties = $(gBASE_PROPERTIES($(>[1]),$(>[2]))) ;
