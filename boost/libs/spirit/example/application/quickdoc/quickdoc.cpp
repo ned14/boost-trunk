@@ -3,10 +3,9 @@
     Copyright (c) 2002 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Permission to copy, use, modify, sell and distribute this software
-    is granted provided this copyright notice appears in all copies.
-    This software is provided "as is" without express or implied
-    warranty, and with no claim as to its suitability for any purpose.
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
+    http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #include "quickdoc.hpp"
 
@@ -82,10 +81,10 @@ void basic_footer(ostream& out)
     out << "<br>\n"
         << "<hr size=\"1\">"
         << "<p class=\"copyright\">Copyright &copy; 2001-2002 Joel de Guzman<br><br>\n"
-        << "<font size=\"2\">Permission to copy, use, modify, sell and distribute this document\n"
-        << " is granted provided this copyright notice appears in all copies. This document\n"
-        << " is provided &quot;as is&quot; without express or implied warranty, and with\n"
-        << " no claim as to its suitability for any purpose. </font> </p>\n"
+        << "<font size=\"2\">Distributed under the Boost Software License, Version 1.0.\n"
+        << " (See accompanying file LICENSE_1_0.txt or copy at\n"
+        << " <a href=\"http://www.boost.org/LICENSE_1_0.txt\">\n"
+        << "http://www.boost.org/LICENSE_1_0.txt</a>\n"
         << "</body>\n"
         << "</html>\n"
         ;

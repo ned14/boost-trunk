@@ -5,10 +5,9 @@
     Copyright (c) 2002 Raghavendra Satish
     http://spirit.sourceforge.net/
 
-    Permission to copy, use, modify, sell and distribute this software is
-    granted provided this copyright notice appears in all copies. This
-    software is provided "as is" without express or implied warranty, and
-    with no claim as to its suitability for any purpose.
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
+    http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_MSVC_HPP
 #define BOOST_SPIRIT_MSVC_HPP
