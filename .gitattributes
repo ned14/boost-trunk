@@ -132,6 +132,7 @@ boost/development/py_cpp/comparisons.html svneol=native#text/html
 boost/development/py_cpp/data_structures.txt svneol=native#text/plain
 boost/development/py_cpp/doctest.py svneol=native#text/x-python
 boost/development/py_cpp/doxyfile -text
+boost/development/py_cpp/enums.html svneol=native#text/html
 boost/development/py_cpp/errors.h svneol=native#text/plain
 boost/development/py_cpp/example1.cpp svneol=native#text/plain
 boost/development/py_cpp/example1.html svneol=native#text/html
@@ -165,6 +166,7 @@ boost/development/py_cpp/objects.cpp svneol=native#text/plain
 boost/development/py_cpp/objects.h svneol=native#text/plain
 boost/development/py_cpp/overloading.html svneol=native#text/html
 boost/development/py_cpp/overriding.html svneol=native#text/html
+boost/development/py_cpp/pointers.html svneol=native#text/html
 boost/development/py_cpp/py.cpp svneol=native#text/plain
 boost/development/py_cpp/py.h svneol=native#text/plain
 boost/development/py_cpp/py_cpp.html svneol=native#text/html
