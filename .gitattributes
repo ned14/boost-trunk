@@ -1430,7 +1430,6 @@ boost/libs/preprocessor/doc/reference/while.htm svneol=native#text/html
 boost/libs/preprocessor/doc/references.htm svneol=native#text/html
 boost/libs/preprocessor/doc/tutorial.htm svneol=native#text/html
 boost/libs/preprocessor/example/array_arithmetic.c svneol=native#text/plain
-boost/libs/preprocessor/example/array_arithmetic_helpers.hpp svneol=native#text/plain
 boost/libs/preprocessor/example/catch_builtin.cpp svneol=native#text/plain
 boost/libs/preprocessor/example/count_down.c svneol=native#text/plain
 boost/libs/preprocessor/example/delay.c svneol=native#text/plain
