@@ -241,7 +241,8 @@ namespace impl {
         typename AssocContainerT::const_iterator it = id_to_name_map.find(id);
         if (it != id_to_name_map.end())
             return (*it).second;
-        return typename AssocContainerT::value_type::second_type();
+        typename AssocContainerT::value_type::second_type result;
+        return result;
     }
 
     // dump a parse tree as xml
