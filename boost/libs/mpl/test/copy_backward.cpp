@@ -15,8 +15,8 @@
 // without express or implied warranty.
 
 #include "boost/mpl/copy_backward.hpp"
-#include "boost/mpl/list.hpp"
-#include "boost/mpl/list_c.hpp"
+#include "boost/mpl/list/list10_c.hpp"
+#include "boost/mpl/push_front.hpp"
 #include "boost/mpl/range_c.hpp"
 #include "boost/mpl/size.hpp"
 #include "boost/mpl/equal.hpp"
@@ -28,15 +28,15 @@ int main()
 {
     using namespace mpl::placeholder;
 
-    typedef mpl::list_c<int,5,6,7,8,9>::type numbers;
+    typedef mpl::list10_c<int,10,11,12,13,14,15,16,17,18,19>::type numbers;
     typedef mpl::copy_backward<
-          mpl::range_c<int,0,5>
+          mpl::range_c<int,0,10>
         , mpl::push_front<_,_>
         , numbers
         >::type result;
 
-    BOOST_STATIC_ASSERT(mpl::size<result>::value == 10);
-    BOOST_STATIC_ASSERT((mpl::equal< result,mpl::range_c<int,0,10> >::value));
+    BOOST_STATIC_ASSERT(mpl::size<result>::value == 20);
+    BOOST_STATIC_ASSERT((mpl::equal< result,mpl::range_c<int,0,20> >::type::value));
 
     return 0;
 }

@@ -26,9 +26,9 @@ struct my
 
 int main()
 {
-    BOOST_STATIC_ASSERT(mpl::size_of<char>::value == sizeof(char));
-    BOOST_STATIC_ASSERT(mpl::size_of<int>::value == sizeof(int));
-    BOOST_STATIC_ASSERT(mpl::size_of<double>::value == sizeof(double));
-    BOOST_STATIC_ASSERT(mpl::size_of<my>::value == sizeof(my));
+    BOOST_STATIC_ASSERT(mpl::size_of<char>::type::value == sizeof(char));
+    BOOST_STATIC_ASSERT(mpl::size_of<int>::type::value == sizeof(int));
+    BOOST_STATIC_ASSERT(mpl::size_of<double>::type::value == sizeof(double));
+    BOOST_STATIC_ASSERT(mpl::size_of<my>::type::value == sizeof(my));
     return 0;
 }

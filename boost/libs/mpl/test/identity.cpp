@@ -22,8 +22,7 @@ namespace mpl = boost::mpl;
 
 int main()
 {
-    using namespace mpl::placeholder;
-    typedef mpl::apply1< mpl::identity<_>, char >::type t1;
+    typedef mpl::apply1< mpl::identity<>, char >::type t1;
     BOOST_MPL_ASSERT_IS_SAME(t1, char);
 
     return 0;

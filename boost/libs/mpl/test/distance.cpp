@@ -27,7 +27,7 @@ void list_distance_test()
     typedef mpl::begin<list>::type first;
     typedef mpl::end<list>::type last;
     
-    BOOST_STATIC_ASSERT((mpl::distance<first,last>::value == 4));
+    BOOST_STATIC_ASSERT((mpl::distance<first,last>::type::value == 4));
 }
 
 void range_distance_test()
@@ -36,7 +36,7 @@ void range_distance_test()
     typedef mpl::begin<range>::type first;
     typedef mpl::end<range>::type last;
     
-    BOOST_STATIC_ASSERT((mpl::distance<first,last>::value == 10));
+    BOOST_STATIC_ASSERT((mpl::distance<first,last>::type::value == 10));
 }
 
 int main()

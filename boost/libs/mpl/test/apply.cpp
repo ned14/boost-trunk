@@ -17,10 +17,10 @@
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/assert_is_same.hpp"
 #include "boost/mpl/limits/arity.hpp"
-
 #include "boost/mpl/aux_/preprocessor/params.hpp"
 #include "boost/mpl/aux_/preprocessor/enum.hpp"
 #include "boost/mpl/aux_/preprocessor/project1st.hpp"
+
 #include "boost/preprocessor/repeat_2nd.hpp"
 #include "boost/preprocessor/comma_if.hpp"
 #include "boost/preprocessor/dec.hpp"
@@ -36,14 +36,14 @@ namespace mpl = boost::mpl;
 #define APPLY_N_FUNC_DEF(i) \
     struct first##i \
     { \
-        template< BOOST_MPL_PP_PARAMS(0, i, typename U) > \
-        struct apply { typedef U0 type; }; \
+        template< BOOST_MPL_PP_PARAMS(i, typename U) > \
+        struct apply { typedef U1 type; }; \
     }; \
     \
     struct last##i \
     { \
-        template< BOOST_MPL_PP_PARAMS(0, i, typename U) > \
-        struct apply { typedef BOOST_PP_CAT(U, BOOST_PP_DEC(i)) type; }; \
+        template< BOOST_MPL_PP_PARAMS(i, typename U) > \
+        struct apply { typedef BOOST_PP_CAT(U,i) type; }; \
     }; \
 /**/
 
@@ -73,12 +73,12 @@ BOOST_PP_REPEAT_2ND(
           aux::first##i \
         , char \
         BOOST_PP_COMMA_IF(BOOST_PP_DEC(i)) \
-        BOOST_MPL_PP_ENUM(1, i, BOOST_MPL_PP_PROJECT2ND, int) \
+        BOOST_MPL_PP_ENUM(BOOST_PP_DEC(i), int) \
         >::type t1; \
     \
     typedef mpl::apply_< \
           aux::last##i \
-        , BOOST_MPL_PP_ENUM(0, BOOST_PP_DEC(i), BOOST_MPL_PP_PROJECT2ND, int) \
+        , BOOST_MPL_PP_ENUM(BOOST_PP_DEC(i), int) \
         BOOST_PP_COMMA_IF(BOOST_PP_DEC(i)) char \
         >::type t2; \
     { BOOST_MPL_ASSERT_IS_SAME(t1, char); } \

@@ -27,11 +27,11 @@ int main()
     typedef mpl::list<int,float,long,double,char,long,double,short> list3;
     typedef mpl::list<int,float,long,double,char,long,double> list4;
 
-    BOOST_STATIC_ASSERT((mpl::equal<list1,list2>::value == true));
-    BOOST_STATIC_ASSERT((mpl::equal<list2,list1>::value == true));
-    BOOST_STATIC_ASSERT((mpl::equal<list2,list3>::value == false));
-    BOOST_STATIC_ASSERT((mpl::equal<list3,list4>::value == false));
-    BOOST_STATIC_ASSERT((mpl::equal<list4,list3>::value == false));
+    BOOST_STATIC_ASSERT((mpl::equal<list1,list2>::type::value == true));
+    BOOST_STATIC_ASSERT((mpl::equal<list2,list1>::type::value == true));
+    BOOST_STATIC_ASSERT((mpl::equal<list2,list3>::type::value == false));
+    BOOST_STATIC_ASSERT((mpl::equal<list3,list4>::type::value == false));
+    BOOST_STATIC_ASSERT((mpl::equal<list4,list3>::type::value == false));
 
     return 0;
 }

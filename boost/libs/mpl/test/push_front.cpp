@@ -33,9 +33,9 @@ int main()
     typedef mpl::push_front<types2,int>::type  result2;
     typedef mpl::push_front<types3,char>::type result3;
     
-    BOOST_STATIC_ASSERT(mpl::size<result1>::value == 1);
-    BOOST_STATIC_ASSERT(mpl::size<result2>::value == 2);
-    BOOST_STATIC_ASSERT(mpl::size<result3>::value == 3);
+    BOOST_STATIC_ASSERT(mpl::size<result1>::type::value == 1);
+    BOOST_STATIC_ASSERT(mpl::size<result2>::type::value == 2);
+    BOOST_STATIC_ASSERT(mpl::size<result3>::type::value == 3);
     
     BOOST_MPL_ASSERT_IS_SAME(mpl::front<result1>::type, long);
     BOOST_MPL_ASSERT_IS_SAME(mpl::front<result2>::type, int);

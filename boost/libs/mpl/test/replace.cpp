@@ -23,12 +23,11 @@ namespace mpl = boost::mpl;
 
 int main()
 {
-    using namespace mpl::placeholder;
     typedef mpl::list<int,float,char,float,float,double>::type types;
     typedef mpl::replace< types,float,double >::type result;
 
     typedef mpl::list<int,double,char,double,double,double>::type answer;
-    BOOST_STATIC_ASSERT((mpl::equal< result,answer >::value));
+    BOOST_STATIC_ASSERT((mpl::equal< result,answer >::type::value));
 
     return 0;
 }

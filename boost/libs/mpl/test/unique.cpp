@@ -28,7 +28,7 @@ int main()
     typedef mpl::unique<types>::type result;
 
     typedef mpl::list<int,float,char,int,double>::type answer;
-    BOOST_STATIC_ASSERT((mpl::equal< result,answer >::value));
+    BOOST_STATIC_ASSERT((mpl::equal< result,answer >::type::value));
 
     return 0;
 }

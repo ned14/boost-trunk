@@ -20,7 +20,7 @@ namespace mpl = boost::mpl;
 
 int main()
 {
-    typedef mpl::list0 list0;
+    typedef mpl::list0<> list0;
     typedef mpl::list1<char> list1;
     typedef mpl::list2<char,long> list2;
     typedef mpl::list9<char,char,char,char,char,char,char,char,char> list9;

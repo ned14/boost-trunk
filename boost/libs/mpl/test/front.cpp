@@ -36,9 +36,9 @@ int main()
     typedef mpl::list_c<int,2,1>::type values2;
     typedef mpl::list_c<int,3,2,1>::type values3;
 
-    BOOST_STATIC_ASSERT(mpl::front<values1>::value == 1);
-    BOOST_STATIC_ASSERT(mpl::front<values2>::value == 2);
-    BOOST_STATIC_ASSERT(mpl::front<values3>::value == 3);
+    BOOST_STATIC_ASSERT(mpl::front<values1>::type::value == 1);
+    BOOST_STATIC_ASSERT(mpl::front<values2>::type::value == 2);
+    BOOST_STATIC_ASSERT(mpl::front<values3>::type::value == 3);
 
     return 0;
 }

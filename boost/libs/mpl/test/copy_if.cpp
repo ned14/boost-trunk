@@ -15,28 +15,29 @@
 // without express or implied warranty.
 
 #include "boost/mpl/copy_if.hpp"
+#include "boost/mpl/list_c.hpp"
+#include "boost/mpl/push_front.hpp"
+#include "boost/mpl/comparison/less.hpp"
+#include "boost/mpl/int_c.hpp"
 #include "boost/mpl/equal.hpp"
-#include "boost/mpl/list.hpp"
 #include "boost/mpl/size.hpp"
-#include "boost/mpl/type_traits/is_float.hpp"
 #include "boost/static_assert.hpp"
 
 namespace mpl = boost::mpl;
 
 int main()
 {
-    using namespace mpl::placeholder;
-    typedef mpl::list<int,float,long,float,char,long,double,double>::type types;
-    typedef mpl::list<float,float,double,double>::type float_types;
+    typedef mpl::list_c<int,0,1,2,3,4,5,6,7,8,9>::type numbers;
+    typedef mpl::list_c<int,4,3,2,1,0>::type answer;
     typedef mpl::copy_if<
-          types
+          numbers
         , mpl::push_front<_,_>
-        , mpl::list0
-        , mpl::is_float<_>
+        , mpl::list0_c<int>
+        , mpl::less<_,mpl::int_c<5> >
         >::type result;
 
-    BOOST_STATIC_ASSERT(mpl::size<result>::value == 4);
-    BOOST_STATIC_ASSERT((mpl::equal<result,float_types>::value));
+    BOOST_STATIC_ASSERT(mpl::size<result>::value == 5);
+    BOOST_STATIC_ASSERT((mpl::equal<result,answer>::type::value));
 
     return 0;
 }

@@ -27,29 +27,26 @@ int main()
     typedef mpl::int_c<3> _3;
     typedef mpl::int_c<10> _10;
 
-    BOOST_STATIC_ASSERT((mpl::plus2<_0,_10>::value == 10));
+    BOOST_STATIC_ASSERT((mpl::plus<_0,_10>::value == 10));
     BOOST_STATIC_ASSERT((mpl::plus<_10,_0>::value == 10));
 
-    BOOST_STATIC_ASSERT((mpl::minus2<_0,_10>::value == -10));
+    BOOST_STATIC_ASSERT((mpl::minus<_0,_10>::value == -10));
     BOOST_STATIC_ASSERT((mpl::minus<_10,_0>::value == 10));
 
-    BOOST_STATIC_ASSERT((mpl::multiplies2<_1,_10>::value == 10));
+    BOOST_STATIC_ASSERT((mpl::multiplies<_1,_10>::value == 10));
     BOOST_STATIC_ASSERT((mpl::multiplies<_10,_1>::value == 10));
 
-    BOOST_STATIC_ASSERT((mpl::divides2<_10,_1>::value == 10));
+    BOOST_STATIC_ASSERT((mpl::divides<_10,_1>::value == 10));
     BOOST_STATIC_ASSERT((mpl::divides<_10,_1>::value == 10));
 
-    BOOST_STATIC_ASSERT((mpl::modulus2<_10,_1>::value == 0));
+    BOOST_STATIC_ASSERT((mpl::modulus<_10,_1>::value == 0));
     BOOST_STATIC_ASSERT((mpl::modulus<_10,_3>::value == 1));
 
-#if !defined(BOOST_MSVC) || (BOOST_MSVC > 1300)
     BOOST_STATIC_ASSERT((mpl::minus<_10,_1,_10>::value == -1));
     BOOST_STATIC_ASSERT((mpl::plus<_10,_1,_10>::value == 21));
     BOOST_STATIC_ASSERT((mpl::divides<_10,_1,_10>::value == 1));
     BOOST_STATIC_ASSERT((mpl::divides<_10,_1,_10>::value == 1));
-    BOOST_STATIC_ASSERT((mpl::modulus<_10,_3,_1>::value == 0));
-#endif
-
+    
     BOOST_STATIC_ASSERT((mpl::negate<_10>::value == -10));
 
     return 0;

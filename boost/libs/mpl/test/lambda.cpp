@@ -14,14 +14,15 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
+//#define BOOST_MPL_USE_PREPROCESSED_HEADERS
 #include "boost/mpl/logical.hpp"
 #include "boost/mpl/comparison.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/int_c.hpp"
 #include "boost/mpl/bool_c.hpp"
 #include "boost/mpl/size_of.hpp"
-#include "boost/mpl/type_traits/is_same.hpp"
-#include "boost/mpl/type_traits/is_float.hpp"
+#include "boost/type_traits/is_same.hpp"
+#include "boost/type_traits/is_float.hpp"
 #include "boost/static_assert.hpp"
 
 namespace mpl = boost::mpl;
@@ -37,37 +38,35 @@ int main()
 
     // !(x == char) && !(x == double) && x convertible to int || size_of(x) > 8
     typedef mpl::lambda<
-        mpl::logical_or2<
-              mpl::logical_and2<
-                    mpl::logical_not< mpl::is_same<_1, char> >
-                  , mpl::logical_not< mpl::is_float<_1> >
+        mpl::logical_or<
+              mpl::logical_and<
+                    mpl::logical_not< boost::is_same<_1, char> >
+                  , mpl::logical_not< boost::is_float<_1> >
                   >
             , mpl::greater< mpl::size_of<_1>, mpl::int_c<8> >
             >
         >::type f1;
 
-    BOOST_STATIC_ASSERT(!f1::apply<char>::value);
-    BOOST_STATIC_ASSERT(!f1::apply<double>::value);
-    BOOST_STATIC_ASSERT(f1::apply<long>::value);
-    BOOST_STATIC_ASSERT(f1::apply<my>::value);
+    BOOST_STATIC_ASSERT(!f1::apply<char>::type::value);
+    BOOST_STATIC_ASSERT(!f1::apply<double>::type::value);
+    BOOST_STATIC_ASSERT(f1::apply<long>::type::value);
+    BOOST_STATIC_ASSERT(f1::apply<my>::type::value);
 
-#if !(defined(__GNUC__) && (__GNUC__ == 2) && (__GNUC_MINOR__ <= 95))
     // x == y || x == my || sizeof(x) == sizeof(y)
     typedef mpl::lambda<
         mpl::logical_or< 
-              mpl::is_same<_1, _2>
-            , mpl::is_same<_2, my>
+              boost::is_same<_1, _2>
+            , boost::is_same<_2, my>
             , mpl::equal_to< mpl::size_of<_1>, mpl::size_of<_2> >
             >
         >::type f2;
 
-    BOOST_STATIC_ASSERT((!f2::apply<double,char>::value));
-    BOOST_STATIC_ASSERT((!f2::apply<my,int>::value));
-    BOOST_STATIC_ASSERT((!f2::apply<my,char[99]>::value));
-    BOOST_STATIC_ASSERT((f2::apply<int,int>::value));
-    BOOST_STATIC_ASSERT((f2::apply<my,my>::value));
-    BOOST_STATIC_ASSERT((f2::apply<signed long, unsigned long>::value));
-#endif
+    BOOST_STATIC_ASSERT((!f2::apply<double,char>::type::value));
+    BOOST_STATIC_ASSERT((!f2::apply<my,int>::type::value));
+    BOOST_STATIC_ASSERT((!f2::apply<my,char[99]>::type::value));
+    BOOST_STATIC_ASSERT((f2::apply<int,int>::type::value));
+    BOOST_STATIC_ASSERT((f2::apply<my,my>::type::value));
+    BOOST_STATIC_ASSERT((f2::apply<signed long, unsigned long>::type::value));
 
     return 0;
 }

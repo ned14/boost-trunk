@@ -15,12 +15,15 @@
 // without express or implied warranty.
 
 #include "boost/mpl/bind.hpp"
+#include "boost/mpl/apply.hpp"
 #include "boost/mpl/assert_is_same.hpp"
-//#include "boost/mpl/aux_/preprocessor.hpp"
+#include "boost/type_traits/is_same.hpp"
 
 namespace mpl = boost::mpl;
 
-struct test1
+namespace {
+
+struct f1
 {
     template< typename T1 > struct apply
     {
@@ -28,102 +31,30 @@ struct test1
     };
 };
 
-#if 0
+struct f5
+{
+    template< typename T1, typename T2, typename T3, typename T4, typename T5 >
+    struct apply
+    {
+        typedef T5 type;
+    };
+};
 
-#define BIND_DEF(i, ap) \
-    typedef mpl::BOOST_PP_CAT(bind, BOOST_PP_TUPLE_ELEM(2, 0, ap))< \
-          BOOST_PP_CAT(f, BOOST_PP_TUPLE_ELEM(2, 0, ap)) \
-        , BOOST_MPL_PP_ENUM(0, i, BOOST_MPL_PP_PROJECT2ND, int) \
-        BOOST_PP_COMMA_IF(i) BOOST_PP_CAT(_, BOOST_PP_TUPLE_ELEM(2, 1, ap)) \
-        BOOST_PP_COMMA_IF(BOOST_PP_DEC(i))
-        BOOST_MPL_PP_ENUM(i, BOOST_PP_TUPLE_ELEM(2, 0, ap), BOOST_MPL_PP_PROJECT2ND, int) \
-        >::type b##i; \
-
-    typedef b##i::apply<
-        , BOOST_MPL_PP_ENUM(0, i, BOOST_MPL_PP_PROJECT2ND, int) \
-          char
-        BOOST_PP_COMMA_IF(arity)
-        BOOST_MPL_PP_ENUM(1, arity, BOOST_MPL_PP_PROJECT2ND, int)
-        >::type t1;
-
-/**/
-
-#define BIND_TEST(arity, placeholder) \
-    BOOST_PP_REPEAT_2ND(
-          0
-        , arity
-        , BIND_DEF
-        , (arity, placeholder)
-        )
-
-    typedef b##i::apply<
-          char
-        BOOST_PP_COMMA_IF(arity)
-        BOOST_MPL_PP_ENUM(1, arity, BOOST_MPL_PP_PROJECT2ND, int)
-        >::type t1;
-
-    typedef b##i::apply<
-          char
-        BOOST_PP_COMMA_IF(arity)
-        BOOST_MPL_PP_ENUM(1, arity, BOOST_MPL_PP_PROJECT2ND, int)
-        >::type t1;
-
-        
-    typedef mpl::bind2<test2, int, _1,int,int>::type b2;
-
-#endif
+} // namespace
 
 int main()
 {
     using namespace mpl::placeholder;
-
-    typedef mpl::bind<test1,int> b0;
-//    typedef mpl::apply0<b0>::type res;
-//    BOOST_MPL_ASSERT_IS_SAME(res,int);
-
-    typedef mpl::bind1st<mpl::apply1<_,_>,test1> b1;
-
-//    typedef mpl::bind1<test1, _1> b1;
-    typedef mpl::bind1<test1, _2> b2;
-    typedef mpl::bind1<test1, _3> b3;
-    typedef mpl::bind1<test1, mpl::bind1<test1,_1> > b4;
-
-    typedef mpl::bind1<_1, char> b5;
-
-    typedef b1::apply<char,int,int,int,int>::type t1;
-    typedef b2::apply<int,char,int,int,int>::type t2;
-    typedef b3::apply<int,int,char,int,int>::type t3;
-    typedef b4::apply<char,int,int,int,int>::type t4;
-    typedef b5::apply<test1>::type t5;
-    typedef mpl::apply1<b5,test1>::type t5_1;
-
-    BOOST_MPL_ASSERT_IS_SAME(t1, char);
-    BOOST_MPL_ASSERT_IS_SAME(t2, char);
-    BOOST_MPL_ASSERT_IS_SAME(t3, char);
-    BOOST_MPL_ASSERT_IS_SAME(t4, char);
-    BOOST_MPL_ASSERT_IS_SAME(t5, char);
-    BOOST_MPL_ASSERT_IS_SAME(t5_1, char);
-/*
-    typedef mpl::bind5<f5,_1,int,int,int,int>::type b1;
-    typedef mpl::bind5<f5,int,_1,int,int,int>::type b2;
-    typedef mpl::bind5<f5,int,int,_1,int,int>::type b3;
-    typedef mpl::bind5<f5,int,int,int,_1,int>::type b4;
-    typedef mpl::bind5<f5,int,int,int,int,_1>::type b5;
-
-    typedef b1::apply<char,int,int,int,int>::type t1;
-    typedef b1::apply<char,int,int,int,int>::type t1;
-
-
-    typedef mpl::bind2<test2, _2, int,int,int>::type b3;
-    typedef mpl::bind2<test2, int, _2,int,int>::type b4;
-
-m    typedef b2::apply<int,char,int>::type t2;
-    typedef b3::apply<int,int,char>::type t3;
-
-    BOOST_MPL_ASSERT_IS_SAME(t1, char);
-    BOOST_MPL_ASSERT_IS_SAME(t2, char);
-    BOOST_MPL_ASSERT_IS_SAME(t3, char);
-*/
-//    std::cout << typeid(t4).name();
+    
+    typedef mpl::apply1< mpl::bind1<f1,_1>,int >::type r11;
+    typedef mpl::apply5< mpl::bind1<f1,_5>,void,void,void,void,int >::type r12;
+    BOOST_MPL_ASSERT_IS_SAME(r11,int);
+    BOOST_MPL_ASSERT_IS_SAME(r12,int);
+    
+    typedef mpl::apply5< mpl::bind5<f5,_1,_2,_3,_4,_5>,void,void,void,void,int >::type r51;
+    typedef mpl::apply5< mpl::bind5<f5,_5,_4,_3,_2,_1>,int,void,void,void,void >::type r52;
+    BOOST_MPL_ASSERT_IS_SAME(r51,int);
+    BOOST_MPL_ASSERT_IS_SAME(r52,int);
+    
     return 0;
 }

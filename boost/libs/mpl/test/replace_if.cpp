@@ -31,7 +31,7 @@ int main()
     typedef mpl::replace_if< numbers, mpl::gt<4>, mpl::int_c<0> >::type result;
 
     typedef mpl::list_c<int,1,4,0,2,0,0,3,0>::type answer;
-    BOOST_STATIC_ASSERT((mpl::equal< answer,result,mpl::equal_to<_,_> >::value));
+    BOOST_STATIC_ASSERT((mpl::equal< answer,result,mpl::equal_to<_,_> >::type::value));
 
     return 0;
 }

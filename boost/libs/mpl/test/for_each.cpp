@@ -17,6 +17,8 @@
 #include "boost/mpl/for_each.hpp"
 #include "boost/mpl/list.hpp"
 #include "boost/mpl/range_c.hpp"
+#include "boost/mpl/identity.hpp"
+#include "boost/mpl/lambda.hpp"
 #include "boost/bind.hpp"
 
 #include <vector>
@@ -29,10 +31,10 @@ namespace mpl = boost::mpl;
 struct printer
 {
     printer(std::ostream& s) : f_stream(&s) {}
-    template< typename U > void operator()(U)
+    template< typename U > void operator()(mpl::identity<U>)
     {
         *f_stream << typeid(U).name() << '\n';
-    };
+    }
 
  private:
     std::ostream* f_stream;
@@ -41,11 +43,11 @@ struct printer
 int main()
 {
     typedef mpl::list<char,short,int,long,float,double> types;
-    mpl::for_each<types>(printer(std::cout));
+    mpl::for_each< types,mpl::make_identity<_> >(printer(std::cout));
 
     typedef mpl::range_c<int,0,10> numbers;
     std::vector<int> v;
-    mpl::for_each<numbers>(
+    mpl::for_each<numbers,_>(
           boost::bind(&std::vector<int>::push_back, &v, _1)
         );
     

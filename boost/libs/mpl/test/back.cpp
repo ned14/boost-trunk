@@ -23,13 +23,13 @@ namespace mpl = boost::mpl;
 
 int main()
 {
-    typedef mpl::range_c<int,0,1> numbers1;
-    typedef mpl::range_c<int,0,10> numbers2;
-    typedef mpl::range_c<int,-10,0> numbers3;
+    typedef mpl::range_c<int,0,1> range1;
+    typedef mpl::range_c<int,0,10> range2;
+    typedef mpl::range_c<int,-10,0> range3;
     
-    BOOST_STATIC_ASSERT(mpl::back<numbers1>::value == 0);
-    BOOST_STATIC_ASSERT(mpl::back<numbers2>::value == 9);
-    BOOST_STATIC_ASSERT(mpl::back<numbers3>::value == -1);
+    BOOST_STATIC_ASSERT(mpl::back<range1>::type::value == 0);
+    BOOST_STATIC_ASSERT(mpl::back<range2>::type::value == 9);
+    BOOST_STATIC_ASSERT(mpl::back<range3>::type::value == -1);
 
     return 0;
 }

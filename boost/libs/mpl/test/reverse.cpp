@@ -30,7 +30,7 @@ int main()
     typedef mpl::reverse< numbers >::type result;
 
     typedef mpl::range_c<int,0,10> answer;
-    BOOST_STATIC_ASSERT((mpl::equal< result,answer,mpl::equal_to<_,_> >::value));
+    BOOST_STATIC_ASSERT((mpl::equal< result,answer,mpl::equal_to<_,_> >::type::value));
 
     return 0;
 }

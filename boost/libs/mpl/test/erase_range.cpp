@@ -14,7 +14,7 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/erase_range.hpp"
+#include "boost/mpl/erase.hpp"
 #include "boost/mpl/list.hpp"
 #include "boost/mpl/find.hpp"
 #include "boost/mpl/size.hpp"
@@ -32,9 +32,9 @@ int main()
     typedef mpl::find<types,short>::type iter1;
     typedef mpl::find<types,double>::type iter2;
 
-    typedef mpl::erase_range<types,iter1,iter2>::type result;
+    typedef mpl::erase<types,iter1,iter2>::type result;
     
-    BOOST_STATIC_ASSERT(mpl::size<result>::value == 5);
+    BOOST_STATIC_ASSERT(mpl::size<result>::type::value == 5);
 
     typedef mpl::find<result,unsigned>::type iter;
     BOOST_MPL_ASSERT_IS_SAME(iter, mpl::end<result>::type);

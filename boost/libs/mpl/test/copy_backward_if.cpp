@@ -15,28 +15,28 @@
 // without express or implied warranty.
 
 #include "boost/mpl/copy_backward_if.hpp"
-#include "boost/mpl/equal.hpp"
 #include "boost/mpl/list.hpp"
+#include "boost/mpl/push_front.hpp"
 #include "boost/mpl/size.hpp"
-#include "boost/mpl/type_traits/is_float.hpp"
+#include "boost/mpl/equal.hpp"
+#include "boost/type_traits/is_float.hpp"
 #include "boost/static_assert.hpp"
 
 namespace mpl = boost::mpl;
 
 int main()
 {
-    using namespace mpl::placeholder;
     typedef mpl::list<int,float,long,float,char,long,double,double>::type types;
     typedef mpl::list<float,float,double,double>::type float_types;
     typedef mpl::copy_backward_if<
           types
         , mpl::push_front<_,_>
-        , mpl::list0
-        , mpl::is_float<_>
+        , mpl::list0<>
+        , boost::is_float<_>
         >::type result;
 
     BOOST_STATIC_ASSERT(mpl::size<result>::value == 4);
-    BOOST_STATIC_ASSERT((mpl::equal<result,float_types>::value));
+    BOOST_STATIC_ASSERT((mpl::equal<result,result>::type::value));
 
     return 0;
 }

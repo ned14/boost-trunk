@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/test/bool_c.cpp source file
+// boost mpl/test/comparison.cpp source file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //

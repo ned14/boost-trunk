@@ -17,7 +17,7 @@
 #include "boost/mpl/transform.hpp"
 #include "boost/mpl/list.hpp"
 #include "boost/mpl/equal.hpp"
-#include "boost/type_traits/transform_traits.hpp"
+#include "boost/type_traits/add_pointer.hpp"
 #include "boost/static_assert.hpp"
 
 namespace mpl = boost::mpl;
@@ -29,7 +29,7 @@ int main()
     typedef mpl::list<char*,short*,int*,long*,float*,double*> pointers;
 
     typedef mpl::transform< types,boost::add_pointer<_1> >::type result;
-    BOOST_STATIC_ASSERT((mpl::equal<result,pointers>::value));
+    BOOST_STATIC_ASSERT((mpl::equal<result,pointers>::type::value));
     
     return 0;
 }

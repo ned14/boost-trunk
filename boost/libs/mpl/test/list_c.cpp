@@ -28,8 +28,8 @@ void test_bool_list()
     typedef mpl::list_c<bool,true>::type list1;
     typedef mpl::list_c<bool,false>::type list2;
 
-    BOOST_STATIC_ASSERT(mpl::front<list1>::value == true);
-    BOOST_STATIC_ASSERT(mpl::front<list2>::value == false);
+    BOOST_STATIC_ASSERT(mpl::front<list1>::type::value == true);
+    BOOST_STATIC_ASSERT(mpl::front<list2>::type::value == false);
 }
 #endif
 
@@ -39,12 +39,12 @@ void test_int_list()
     typedef mpl::list_c<int,0,1>::type list2;
     typedef mpl::list_c<int,1,2,3>::type list3;
 
-    BOOST_STATIC_ASSERT(mpl::size<list1>::value == 1);
-    BOOST_STATIC_ASSERT(mpl::size<list2>::value == 2);
-    BOOST_STATIC_ASSERT(mpl::size<list3>::value == 3);
-    BOOST_STATIC_ASSERT(mpl::front<list1>::value == -1);
-    BOOST_STATIC_ASSERT(mpl::front<list2>::value == 0);
-    BOOST_STATIC_ASSERT(mpl::front<list3>::value == 1);
+    BOOST_STATIC_ASSERT(mpl::size<list1>::type::value == 1);
+    BOOST_STATIC_ASSERT(mpl::size<list2>::type::value == 2);
+    BOOST_STATIC_ASSERT(mpl::size<list3>::type::value == 3);
+    BOOST_STATIC_ASSERT(mpl::front<list1>::type::value == -1);
+    BOOST_STATIC_ASSERT(mpl::front<list2>::type::value == 0);
+    BOOST_STATIC_ASSERT(mpl::front<list3>::type::value == 1);
 }
 
 void test_unsigned_list()
@@ -52,10 +52,10 @@ void test_unsigned_list()
     typedef mpl::list_c<unsigned,0>::type list1;
     typedef mpl::list_c<unsigned,1,2>::type list2;
 
-    BOOST_STATIC_ASSERT(mpl::size<list1>::value == 1);
-    BOOST_STATIC_ASSERT(mpl::size<list2>::value == 2);
-    BOOST_STATIC_ASSERT(mpl::front<list1>::value == 0);
-    BOOST_STATIC_ASSERT(mpl::front<list2>::value == 1);
+    BOOST_STATIC_ASSERT(mpl::size<list1>::type::value == 1);
+    BOOST_STATIC_ASSERT(mpl::size<list2>::type::value == 2);
+    BOOST_STATIC_ASSERT(mpl::front<list1>::type::value == 0);
+    BOOST_STATIC_ASSERT(mpl::front<list2>::type::value == 1);
 }
 
 int main()

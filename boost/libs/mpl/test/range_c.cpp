@@ -30,22 +30,22 @@ int main()
     typedef mpl::range_c<int,0,1> range1;
     typedef mpl::range_c<int,0,10> range10;
 
-    BOOST_STATIC_ASSERT(mpl::size<range0>::value == 0);
-    BOOST_STATIC_ASSERT(mpl::size<range1>::value == 1);
-    BOOST_STATIC_ASSERT(mpl::size<range10>::value == 10);
+    BOOST_STATIC_ASSERT(mpl::size<range0>::type::value == 0);
+    BOOST_STATIC_ASSERT(mpl::size<range1>::type::value == 1);
+    BOOST_STATIC_ASSERT(mpl::size<range10>::type::value == 10);
 
-    BOOST_STATIC_ASSERT(mpl::empty<range0>::value);
-    BOOST_STATIC_ASSERT(!mpl::empty<range1>::value);
-    BOOST_STATIC_ASSERT(!mpl::empty<range10>::value);
+    BOOST_STATIC_ASSERT(mpl::empty<range0>::type::value);
+    BOOST_STATIC_ASSERT(!mpl::empty<range1>::type::value);
+    BOOST_STATIC_ASSERT(!mpl::empty<range10>::type::value);
 
     BOOST_MPL_ASSERT_IS_SAME(mpl::begin<range0>::type, mpl::end<range0>::type);
     BOOST_MPL_ASSERT_NOT_SAME(mpl::begin<range1>::type, mpl::end<range1>::type);
     BOOST_MPL_ASSERT_NOT_SAME(mpl::begin<range10>::type, mpl::end<range10>::type);
 
-    BOOST_STATIC_ASSERT(mpl::front<range1>::value == 0);
-    BOOST_STATIC_ASSERT(mpl::back<range1>::value == 0);
-    BOOST_STATIC_ASSERT(mpl::front<range10>::value == 0);
-    BOOST_STATIC_ASSERT(mpl::back<range10>::value == 9);
+    BOOST_STATIC_ASSERT(mpl::front<range1>::type::value == 0);
+    BOOST_STATIC_ASSERT(mpl::back<range1>::type::value == 0);
+    BOOST_STATIC_ASSERT(mpl::front<range10>::type::value == 0);
+    BOOST_STATIC_ASSERT(mpl::back<range10>::type::value == 9);
 
     return 0;
 }

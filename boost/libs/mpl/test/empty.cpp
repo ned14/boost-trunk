@@ -15,18 +15,18 @@
 // without express or implied warranty.
 
 #include "boost/mpl/empty.hpp"
-#include "boost/mpl/list.hpp"
+#include "boost/mpl/list/list10.hpp"
 #include "boost/static_assert.hpp"
 
 namespace mpl = boost::mpl;
 
 int main()
 {
-    typedef mpl::list0 list0;
+    typedef mpl::list0<> list0;
     typedef mpl::list1<char> list1;
     
-    BOOST_STATIC_ASSERT((mpl::empty<list0>::value == true));
-    BOOST_STATIC_ASSERT((mpl::empty<list1>::value == false));
+    BOOST_STATIC_ASSERT((mpl::empty<list0>::type::value == true));
+    BOOST_STATIC_ASSERT((mpl::empty<list1>::type::value == false));
 
     return 0;
 }

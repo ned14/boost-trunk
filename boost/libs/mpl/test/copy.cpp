@@ -15,9 +15,9 @@
 // without express or implied warranty.
 
 #include "boost/mpl/copy.hpp"
-#include "boost/mpl/list.hpp"
-#include "boost/mpl/list_c.hpp"
+#include "boost/mpl/vector/vector20_c.hpp"
 #include "boost/mpl/range_c.hpp"
+#include "boost/mpl/push_back.hpp"
 #include "boost/mpl/size.hpp"
 #include "boost/mpl/equal.hpp"
 #include "boost/static_assert.hpp"
@@ -26,17 +26,15 @@ namespace mpl = boost::mpl;
 
 int main()
 {
-    using namespace mpl::placeholder;
-
-    typedef mpl::vector_c<int,5,6,7,8,9>::type numbers;
-    typedef mpl::copy_backward<
-          mpl::range_c<int,0,5>
+    typedef mpl::vector10_c<int,0,1,2,3,4,5,6,7,8,9> numbers;
+    typedef mpl::copy<
+          mpl::range_c<int,10,20>
         , mpl::push_back<_,_>
         , numbers
         >::type result;
 
-    BOOST_STATIC_ASSERT(mpl::size<result>::value == 10);
-    BOOST_STATIC_ASSERT((mpl::equal< result,mpl::range_c<int,0,10> >::value));
+    BOOST_STATIC_ASSERT(mpl::size<result>::value == 20);
+    BOOST_STATIC_ASSERT((mpl::equal< result,mpl::range_c<int,0,20> >::type::value));
 
     return 0;
 }
