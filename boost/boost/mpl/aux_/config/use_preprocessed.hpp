@@ -19,7 +19,8 @@
 
 // EDG-based compilers have serious problems with preprocessor performance,
 // so we have to feed them already preprocessed version of code
-#if defined(__EDG__) && (__EDG_VERSION__ <= 245)
+#if !defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)\
+    && defined(__EDG_VERSION__) && (__EDG_VERSION__ <= 300)
 #   define BOOST_MPL_USE_PREPROCESSED_HEADERS
 #endif
 
