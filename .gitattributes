@@ -8,6 +8,7 @@ CVSROOT/loginfo -text
 CVSROOT/modules -text
 CVSROOT/notify -text
 CVSROOT/rcsinfo -text
+CVSROOT/syncmail -text
 CVSROOT/taginfo -text
 CVSROOT/verifymsg -text
 boost/Jamfile svneol=native#text/plain
