@@ -3628,6 +3628,7 @@ boost/libs/python/doc/v2/lvalue_from_pytype.html svneol=native#text/html
 boost/libs/python/doc/v2/make_function.html svneol=native#text/html
 boost/libs/python/doc/v2/manage_new_object.html svneol=native#text/html
 boost/libs/python/doc/v2/module.html svneol=native#text/html
+boost/libs/python/doc/v2/numeric.html svneol=native#text/html
 boost/libs/python/doc/v2/object.html svneol=native#text/html
 boost/libs/python/doc/v2/operators.html svneol=native#text/html
 boost/libs/python/doc/v2/overloads.html svneol=native#text/html
