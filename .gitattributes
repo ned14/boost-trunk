@@ -7338,6 +7338,7 @@ boost/libs/statechart/example/Handcrafted/Handcrafted.dev -text
 boost/libs/statechart/example/Handcrafted/Handcrafted.sln -text
 boost/libs/statechart/example/Handcrafted/Handcrafted.vcproj -text
 boost/libs/statechart/example/Handcrafted/Makefile svneol=native#text/plain
+boost/libs/statechart/example/Jamfile svneol=native#text/plain
 boost/libs/statechart/example/Keyboard/Keyboard.cpp svneol=native#text/plain
 boost/libs/statechart/example/Keyboard/Keyboard.dev -text
 boost/libs/statechart/example/Keyboard/Keyboard.sln -text
