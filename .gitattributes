@@ -135,6 +135,7 @@ boost/libs/compose/compose4.cpp.html svneol=native#text/html
 boost/libs/compose/index.htm svneol=native#text/html
 boost/libs/compose/print.hpp svneol=native#text/plain
 boost/libs/compose/print.hpp.html svneol=native#text/html
+boost/libs/concept_checking/concept_checking.html svneol=native#text/html
 boost/libs/config/config_test.cpp svneol=native#text/plain
 boost/libs/config/index.htm svneol=native#text/html
 boost/libs/cs-linux2.html svneol=native#text/html
