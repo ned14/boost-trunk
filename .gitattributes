@@ -2948,6 +2948,7 @@ boost/libs/iterator/doc/access2old.png -text svneol=unset#image/png
 boost/libs/iterator/doc/default.css svneol=native#text/css
 boost/libs/iterator/doc/facade-and-adaptor.html svneol=native#text/html
 boost/libs/iterator/doc/facade-and-adaptor.rst svneol=native#text/plain
+boost/libs/iterator/doc/index.rst svneol=native#text/plain
 boost/libs/iterator/doc/new-iter-concepts.html svneol=native#text/html
 boost/libs/iterator/doc/new-iter-concepts.rst svneol=native#text/plain
 boost/libs/iterator/doc/oldeqnew.png -text svneol=unset#image/png
