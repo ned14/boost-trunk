@@ -1507,6 +1507,7 @@ boost/boost/signals/trackable.hpp svneol=native#text/plain
 boost/boost/smart_ptr.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
 boost/boost/test/detail/class_properties.hpp svneol=native#text/plain
+boost/boost/test/detail/nullstream.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_config.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_monitor.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_parameters.hpp svneol=native#text/plain
