@@ -20,6 +20,7 @@
 #include "boost/mpl/fold_backward.hpp"
 #include "boost/mpl/clear.hpp"
 #include "boost/mpl/apply_if.hpp"
+#include "boost/mpl/push_front.hpp"
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/protect.hpp"
 #include "boost/mpl/lambda.hpp"

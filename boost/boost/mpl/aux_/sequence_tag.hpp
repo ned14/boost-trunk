@@ -17,7 +17,10 @@
 #ifndef BOOST_MPL_AUX_SEQUENCE_TAG_HPP_INCLUDED
 #define BOOST_MPL_AUX_SEQUENCE_TAG_HPP_INCLUDED
 
-#if defined(BOOST_MPL_INTERNAL_USE_SEQUENCE_TAG)
+#include "boost/config.hpp"
+
+#if defined(BOOST_MPL_INTERNAL_USE_SEQUENCE_TAG) || \
+    defined(BOOST_MSVC) && BOOST_MSVC < 1300
 #   include "boost/mpl/sequence_tag.hpp"
 
 #   define BOOST_MPL_AUX_SEQUENCE_TAG(seq) sequence_tag<seq>::type

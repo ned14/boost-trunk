@@ -18,6 +18,7 @@
 #define BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
 
 #include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
@@ -29,6 +30,14 @@ struct sequence_tag
 {
     typedef typename Sequence::tag type;
 };
+
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1300
+// ETI workaround
+template<> struct sequence_tag<int>
+{
+    typedef int type;
+};
+#endif
 
 BOOST_MPL_AUX_VOID_SPEC(1, sequence_tag)
 

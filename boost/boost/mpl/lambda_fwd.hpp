@@ -17,10 +17,10 @@
 #ifndef BOOST_MPL_LAMBDA_FWD_HPP_INCLUDED
 #define BOOST_MPL_LAMBDA_FWD_HPP_INCLUDED
 
+#include "boost/mpl/aux_/lambda_arity_param.hpp"
+
 namespace boost {
 namespace mpl {
-
-#include "boost/mpl/aux_/lambda_arity_param.hpp"
 
 #if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
 template< typename T BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(long Arity) >
