@@ -2077,7 +2077,6 @@ boost/libs/property_map/property_map.html svneol=native#text/html
 boost/libs/property_map/property_map_cc.cpp svneol=native#text/plain
 boost/libs/python/Jamfile svneol=native#text/plain
 boost/libs/python/build/Jamfile svneol=native#text/plain
-boost/libs/python/build/__init__.py svneol=native#text/x-python
 boost/libs/python/build/como.mak svneol=native#text/plain
 boost/libs/python/build/filemgr.py svneol=native#text/x-python
 boost/libs/python/build/gcc.mak svneol=native#text/plain
