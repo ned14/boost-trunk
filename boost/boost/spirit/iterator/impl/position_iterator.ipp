@@ -1,4 +1,5 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002 Juan Carlos Arevalo-Baeza
     Copyright (c) 2002-2003 Hartmut Kaiser
     Copyright (c) 2003 Giovanni Bajo

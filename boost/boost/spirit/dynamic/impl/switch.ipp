@@ -1,4 +1,5 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 

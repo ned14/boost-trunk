@@ -2188,6 +2188,7 @@ boost/boost/spirit/utility/loops.hpp svneol=native#text/plain
 boost/boost/spirit/utility/refactoring.hpp svneol=native#text/plain
 boost/boost/spirit/utility/regex.hpp svneol=native#text/plain
 boost/boost/spirit/utility/scoped_lock.hpp svneol=native#text/plain
+boost/boost/spirit/version.hpp svneol=native#text/plain
 boost/boost/state_saver.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
 boost/boost/static_warning.hpp svneol=native#text/plain

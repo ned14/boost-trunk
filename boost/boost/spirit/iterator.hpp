@@ -1,5 +1,5 @@
 /*=============================================================================
-    Spirit v1.6.0
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Daniel Nuffer
     Copyright (c) 2002 Jeff Westfahl
     http://spirit.sourceforge.net/
@@ -11,6 +11,8 @@
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_ITERATOR_MAIN_HPP)
 #define BOOST_SPIRIT_ITERATOR_MAIN_HPP
+
+#include "boost/spirit/version.hpp"
 
 ///////////////////////////////////////////////////////////////////////////////
 //

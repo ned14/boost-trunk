@@ -1,7 +1,7 @@
 /*=============================================================================
     Lexer test
 
-    Spirit v1.6.0
+    Spirit v1.6.2
     Copyright (c) 2001, Daniel C. Nuffer
 
     http://spirit.sourceforge.net/

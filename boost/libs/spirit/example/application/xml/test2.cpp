@@ -56,7 +56,7 @@ static void ParseFileWithMultiPass(RuleT const& rule, char const* filename)
     }
 
     typedef char char_t;
-    typedef boost::multi_pass<istreambuf_iterator<char_t> > iterator_t;
+    typedef boost::spirit::multi_pass<istreambuf_iterator<char_t> > iterator_t;
     iterator_t first = boost::make_multi_pass(istreambuf_iterator<char_t>(in.rdbuf()));
     iterator_t last = boost::make_multi_pass(istreambuf_iterator<char_t>());
 

@@ -1,5 +1,5 @@
 /*=============================================================================
-    Spirit v1.6.0
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     Copyright (c) 2001-2003 Daniel Nuffer
     Copyright (c) 2001-2003 Hartmut Kaiser
@@ -17,9 +17,6 @@
 =============================================================================*/
 #if !defined(SPIRIT_HPP)
 #define SPIRIT_HPP
-
-#define SPIRIT_VERSION 0x1601
-#define SPIRIT_PIZZA_VERSION SPIRIT_PIZZA_EVERYTHING_EXCEPT_FISH  // :-)
 
 ///////////////////////////////////////////////////////////////////////////////
 //
