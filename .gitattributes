@@ -3747,7 +3747,6 @@ boost/libs/python/test/dict.cpp svneol=native#text/plain
 boost/libs/python/test/dict.py svneol=native#text/x-python
 boost/libs/python/test/docstring.cpp svneol=native#text/plain
 boost/libs/python/test/docstring.py svneol=native#text/x-python
-boost/libs/python/test/doctest.py svneol=native#text/x-python
 boost/libs/python/test/enum.cpp svneol=native#text/plain
 boost/libs/python/test/enum.py svneol=native#text/x-python
 boost/libs/python/test/exception_translator.cpp svneol=native#text/plain
