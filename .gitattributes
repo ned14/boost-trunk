@@ -933,6 +933,7 @@ boost/boost/multi_array/subarray.hpp svneol=native#text/plain
 boost/boost/multi_array/types.hpp svneol=native#text/plain
 boost/boost/multi_array/view.hpp svneol=native#text/plain
 boost/boost/nondet_random.hpp svneol=native#text/plain
+boost/boost/numeric/interval.hpp svneol=native#text/plain
 boost/boost/numeric/interval/arith.hpp svneol=native#text/plain
 boost/boost/numeric/interval/arith2.hpp svneol=native#text/plain
 boost/boost/numeric/interval/checking.hpp svneol=native#text/plain
