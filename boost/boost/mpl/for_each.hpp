@@ -84,7 +84,7 @@ void for_each(F f)
     typedef begin<Sequence>::type first;
     typedef end<Sequence>::type last;
     typedef bool_c< boost::is_same<first,last>::value > is_last;
-    aux::for_each_impl< first,last,make_identity<_1> >(f, is_last());
+    aux::for_each_impl< first,last,make_identity<_> >(f, is_last());
 }
 
 template<
@@ -97,7 +97,7 @@ void for_each(F f, boost::arg<1>)
     typedef begin<Sequence>::type first;
     typedef end<Sequence>::type last;
     typedef bool_c< boost::is_same<first,last>::value > is_last;
-    aux::for_each_impl< first,last,identity<_1> >(f, is_last());
+    aux::for_each_impl< first,last,identity<_> >(f, is_last());
 }
 
 } // namespace mpl
