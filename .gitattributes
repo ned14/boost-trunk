@@ -1045,7 +1045,6 @@ boost/libs/integer/integer.htm svneol=native#text/html
 boost/libs/integer/integer_test.cpp svneol=native#text/plain
 boost/libs/integer/integer_traits.html svneol=native#text/html
 boost/libs/integer/integer_traits_test.cpp svneol=native#text/plain
-boost/libs/lambda/dummy -text
 boost/libs/libraries.htm svneol=native#text/html
 boost/libs/math/Jamfile svneol=native#text/plain
 boost/libs/math/octonion/graphics/octonion_blurb.html1.jpeg -text svneol=unset#image/jpeg
