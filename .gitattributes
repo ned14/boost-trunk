@@ -373,6 +373,7 @@ boost/boost/python/converter/from_python_data.hpp svneol=native#text/plain
 boost/boost/python/converter/from_python_function.hpp svneol=native#text/plain
 boost/boost/python/converter/from_python_stage1_data.hpp svneol=native#text/plain
 boost/boost/python/converter/lvalue_from_python_chain.hpp svneol=native#text/plain
+boost/boost/python/converter/pointee_to_python_function.hpp svneol=native#text/plain
 boost/boost/python/converter/pointer_type_id.hpp svneol=native#text/plain
 boost/boost/python/converter/registrations.hpp svneol=native#text/plain
 boost/boost/python/converter/registry.hpp svneol=native#text/plain
