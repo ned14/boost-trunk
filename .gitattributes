@@ -5954,6 +5954,7 @@ boost/libs/utility/shared_iterator_example2.cpp svneol=native#text/plain
 boost/libs/utility/shared_iterator_example3.cpp svneol=native#text/plain
 boost/libs/utility/shared_iterator_test.cpp svneol=native#text/plain
 boost/libs/utility/test/Jamfile svneol=native#text/plain
+boost/libs/utility/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/utility/throw_exception.html svneol=native#text/html
 boost/libs/utility/transform_iterator.htm svneol=native#text/html
 boost/libs/utility/transform_iterator_example.cpp svneol=native#text/plain
