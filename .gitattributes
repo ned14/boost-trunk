@@ -596,6 +596,7 @@ boost/libs/python/doc/comparisons.html svneol=native#text/html
 boost/libs/python/doc/data_structures.txt svneol=native#text/plain
 boost/libs/python/doc/enums.html svneol=native#text/html
 boost/libs/python/doc/example1.html svneol=native#text/html
+boost/libs/python/doc/exporting_classes.html svneol=native#text/html
 boost/libs/python/doc/extending.html svneol=native#text/html
 boost/libs/python/doc/index.html svneol=native#text/html
 boost/libs/python/doc/inheritance.html svneol=native#text/html
