@@ -3415,6 +3415,7 @@ boost/libs/numeric/interval/examples/rational.cpp svneol=native#text/plain
 boost/libs/numeric/interval/examples/transc.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/Jamfile svneol=native#text/plain
 boost/libs/numeric/interval/test/add.cpp svneol=native#text/plain
+boost/libs/numeric/interval/test/bugs.hpp svneol=native#text/plain
 boost/libs/numeric/interval/test/cmp.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/cmp_exp.cpp svneol=native#text/plain
 boost/libs/numeric/interval/test/cmp_header.hpp svneol=native#text/plain
