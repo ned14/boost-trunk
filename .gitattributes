@@ -2816,6 +2816,7 @@ boost/boost/test/detail/basic_cstring/bcs_char_traits.hpp svneol=native#text/pla
 boost/boost/test/detail/basic_cstring/compare.hpp svneol=native#text/plain
 boost/boost/test/detail/basic_cstring/io.hpp svneol=native#text/plain
 boost/boost/test/detail/class_properties.hpp svneol=native#text/plain
+boost/boost/test/detail/custom_manip.hpp svneol=native#text/plain
 boost/boost/test/detail/enable_warnings.hpp svneol=native#text/plain
 boost/boost/test/detail/fixed_mapping.hpp svneol=native#text/plain
 boost/boost/test/detail/iterator/ifstream_line_iterator.hpp svneol=native#text/plain
