@@ -20,7 +20,7 @@ boost/libs/test/build/msvc65_proj/*.positions
 boost/libs/test/build/msvc65_proj/Debug
 boost/libs/test/build/msvc65_proj/Release
 boost/libs/test/build/msvc65_proj/bin
-boost/libs/test/build/msvc71_proj/*.nsb
+boost/libs/test/build/msvc71_proj/*.ncb
 boost/libs/test/build/msvc71_proj/*.suo
 boost/libs/test/build/msvc71_proj/debug
 boost/libs/test/build/msvc71_proj/release
