@@ -1898,6 +1898,7 @@ boost/libs/timer/timer_test.cpp svneol=native#text/plain
 boost/libs/tokenizer/char_delimiters_separator.htm svneol=native#text/html
 boost/libs/tokenizer/char_sep_example_1.cpp svneol=native#text/plain
 boost/libs/tokenizer/char_sep_example_2.cpp svneol=native#text/plain
+boost/libs/tokenizer/char_sep_example_3.cpp svneol=native#text/plain
 boost/libs/tokenizer/char_separator.htm svneol=native#text/html
 boost/libs/tokenizer/escaped_list_separator.htm svneol=native#text/html
 boost/libs/tokenizer/examples.cpp svneol=native#text/plain
