@@ -121,10 +121,10 @@ namespace boost { namespace mpl
     };
 
     template <typename Tag>
-    struct push_front_traits;
+    struct push_front_impl;
 
     template <>
-    struct push_front_traits<fusion::tuple_tag>
+    struct push_front_impl<fusion::tuple_tag>
     {
         template <typename Tuple, typename T>
         struct apply
