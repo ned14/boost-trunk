@@ -2002,6 +2002,7 @@ boost/libs/date_time/src/gregorian/greg_month.cpp svneol=native#text/plain
 boost/libs/date_time/src/gregorian/greg_weekday.cpp svneol=native#text/plain
 boost/libs/date_time/src/gregorian/gregorian_types.cpp svneol=native#text/plain
 boost/libs/date_time/src/posix_time/posix_time_types.cpp svneol=native#text/plain
+boost/libs/date_time/test/Jamfile svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testcurrent_day.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testdate.cpp svneol=native#text/plain
 boost/libs/date_time/test/gregorian/testdate_duration.cpp svneol=native#text/plain
