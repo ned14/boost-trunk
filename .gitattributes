@@ -8254,6 +8254,7 @@ boost/tools/build/v1/intel-linux-tools.jam svneol=native#text/plain
 boost/tools/build/v1/intel-win32-7.1-vc6-stlport-4.5.3-tools.jam svneol=native#text/plain
 boost/tools/build/v1/intel-win32-7.1-vc6-tools.jam svneol=native#text/plain
 boost/tools/build/v1/intel-win32-8.0-tools.jam svneol=native#text/plain
+boost/tools/build/v1/intel-win32-8.1-tools.jam svneol=native#text/plain
 boost/tools/build/v1/intel-win32-stlport-tools.jam svneol=native#text/plain
 boost/tools/build/v1/intel-win32-tools.html svneol=native#text/html
 boost/tools/build/v1/intel-win32-tools.jam svneol=native#text/plain
