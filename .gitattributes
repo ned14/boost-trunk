@@ -4371,8 +4371,6 @@ boost/libs/python/pyste/tests/templates.h svneol=native#text/plain
 boost/libs/python/pyste/tests/templates.pyste -text
 boost/libs/python/pyste/tests/templatesUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/test_all.py svneol=native#text/x-python
-boost/libs/python/pyste/tests/unions.h svneol=native#text/plain
-boost/libs/python/pyste/tests/unions.pyste -text
 boost/libs/python/pyste/tests/vars.cpp svneol=native#text/plain
 boost/libs/python/pyste/tests/vars.h svneol=native#text/plain
 boost/libs/python/pyste/tests/vars.pyste -text
