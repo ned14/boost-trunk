@@ -920,6 +920,7 @@ boost/libs/graph/example/kruskal.expected -text
 boost/libs/graph/example/last-mod-time.cpp svneol=native#text/plain
 boost/libs/graph/example/leda-concept-check.cpp svneol=native#text/plain
 boost/libs/graph/example/leda-graph-eg.cpp svneol=native#text/plain
+boost/libs/graph/example/leda-regression.cfg -text
 boost/libs/graph/example/loops_dfs.cpp svneol=native#text/plain
 boost/libs/graph/example/makefile-dependencies.dat svneol=native#text/plain
 boost/libs/graph/example/makefile-target-names.dat svneol=native#text/plain
@@ -966,6 +967,7 @@ boost/libs/graph/example/reverse_graph.expected -text
 boost/libs/graph/example/roget_components.cpp svneol=native#text/plain
 boost/libs/graph/example/scc.cpp svneol=native#text/plain
 boost/libs/graph/example/scc.dot -text
+boost/libs/graph/example/sgb-regression.cfg -text
 boost/libs/graph/example/strong-components.cpp svneol=native#text/plain
 boost/libs/graph/example/strong_components.cpp svneol=native#text/plain
 boost/libs/graph/example/strong_components.expected -text
