@@ -106,6 +106,7 @@ boost/boost/current_function.hpp svneol=native#text/plain
 boost/boost/date_time/adjust_functors.hpp svneol=native#text/plain
 boost/boost/date_time/c_local_time_adjustor.hpp svneol=native#text/plain
 boost/boost/date_time/c_time.hpp svneol=native#text/plain
+boost/boost/date_time/compiler_config.hpp svneol=native#text/plain
 boost/boost/date_time/constrained_value.hpp svneol=native#text/plain
 boost/boost/date_time/date.hpp svneol=native#text/plain
 boost/boost/date_time/date_clock_device.hpp svneol=native#text/plain
