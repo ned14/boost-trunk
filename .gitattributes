@@ -6157,6 +6157,7 @@ boost/libs/serialization/doc/special.html svneol=native#text/html
 boost/libs/serialization/doc/state_saver.html svneol=native#text/html
 boost/libs/serialization/doc/static_warning.html svneol=native#text/html
 boost/libs/serialization/doc/strong_typedef.html svneol=native#text/html
+boost/libs/serialization/doc/style.css svneol=native#text/css
 boost/libs/serialization/doc/traits.html svneol=native#text/html
 boost/libs/serialization/doc/tutorial.html svneol=native#text/html
 boost/libs/serialization/doc/wrappers.html svneol=native#text/html
