@@ -454,6 +454,7 @@ boost/boost/preprocessor/repeat_3rd.hpp svneol=native#text/plain
 boost/boost/preprocessor/repeat_from_to.hpp svneol=native#text/plain
 boost/boost/preprocessor/repeat_from_to_2nd.hpp svneol=native#text/plain
 boost/boost/preprocessor/repeat_from_to_3rd.hpp svneol=native#text/plain
+boost/boost/preprocessor/slot.hpp svneol=native#text/plain
 boost/boost/preprocessor/stringize.hpp svneol=native#text/plain
 boost/boost/preprocessor/tuple.hpp svneol=native#text/plain
 boost/boost/preprocessor/tuple/eat.hpp svneol=native#text/plain
