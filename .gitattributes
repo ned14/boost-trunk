@@ -492,6 +492,7 @@ boost/libs/graph/example/prim.cpp svneol=native#text/plain
 boost/libs/graph/example/prim.expected -text
 boost/libs/graph/example/quick_tour.cpp svneol=native#text/plain
 boost/libs/graph/example/quick_tour.expected -text
+boost/libs/graph/example/regrtest.py svneol=native#text/x-python
 boost/libs/graph/example/remove_edge_if_bidir.cpp svneol=native#text/plain
 boost/libs/graph/example/remove_edge_if_bidir.expected -text
 boost/libs/graph/example/remove_edge_if_dir.cpp svneol=native#text/plain
