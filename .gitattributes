@@ -36,6 +36,7 @@ boost/boost/mpl/aux_/iter_distance.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/iter_fold_if.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/iter_push_front.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/lambda_spec.hpp svneol=native#text/plain
+boost/boost/mpl/aux_/msvc_apply_fix.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/msvc_workarounds.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/none.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/pred.hpp svneol=native#text/plain

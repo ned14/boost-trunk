@@ -19,9 +19,9 @@
 
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/next.hpp"
-#include "boost/mpl/bool_c.hpp"
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/select_if.hpp"
+#include "boost/mpl/aux_/msvc_apply_fix.hpp"
 
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
@@ -62,7 +62,6 @@ struct iter_fold_step_impl
     {
         typedef typename apply2< StateOp,State,Iterator >::type state;
         typedef typename IteratorOp::type iterator;
-        typedef false_c is_last;
     };
 };
 
@@ -79,21 +78,12 @@ struct iter_fold_step_impl<false>
     {
         typedef State state;
         typedef Iterator iterator;
-        typedef true_c is_last;
     };
 };
 
-#if defined(__GNUC__) && (__GNUC__ == 2) && (__GNUC_MINOR__ <= 95)
-template<
-      typename F
-    , typename T1
-    , typename T2
-    >
-struct apply2_result
-    : apply2<F,T1,T2>::type
-{
-};
-
+// agurt, 25/jun/02: MSVC 6.5 workaround, had to get rid of inheritance 
+// here and in 'iter_fold_backward_step', because sometimes it interfered 
+// with the "early template instantiation bug" in _really_ ugly ways
 template<
       typename Iterator
     , typename State
@@ -101,9 +91,13 @@ template<
     , typename Predicate
     >
 struct iter_fold_forward_step
-    : iter_fold_step_impl< apply2_result<Predicate,State,Iterator>::value >
-        ::template result_< Iterator,State,ForwardOp,next<Iterator> >
 {
+    typedef typename apply2<Predicate,State,Iterator>::type is_last;
+    typedef typename iter_fold_step_impl< aux::msvc_apply_fix<is_last>::value >
+        ::template result_< Iterator,State,ForwardOp,next<Iterator> > impl_;
+
+    typedef typename impl_::state state;
+    typedef typename impl_::iterator iterator;
 };
 
 template<
@@ -113,40 +107,14 @@ template<
     , typename Predicate
     >
 struct iter_fold_backward_step
-    : iter_fold_step_impl< apply2_result<Predicate,State,Iterator>::value >
-        ::template result_< Iterator,State,BackwardOp,identity<Iterator> >
 {
+    typedef typename apply2<Predicate,State,Iterator>::type is_last;
+    typedef typename iter_fold_step_impl< aux::msvc_apply_fix<is_last>::value>
+        ::template result_< Iterator,State,BackwardOp,identity<Iterator> > impl_;
+
+    typedef typename impl_::state state;
+    typedef typename impl_::iterator iterator;
 };
-
-#else
-
-template<
-      typename Iterator
-    , typename State
-    , typename ForwardOp
-    , typename Predicate
-    , typename IsLast = typename apply2<Predicate,State,Iterator>::type
-    >
-struct iter_fold_forward_step
-    : iter_fold_step_impl< IsLast::value >
-        ::template result_< Iterator,State,ForwardOp,next<Iterator> >
-{
-};
-
-template<
-      typename Iterator
-    , typename State
-    , typename BackwardOp
-    , typename Predicate
-    , typename IsLast = typename apply2<Predicate,State,Iterator>::type
-    >
-struct iter_fold_backward_step
-    : iter_fold_step_impl< IsLast::value >
-        ::template result_< Iterator,State,BackwardOp,identity<Iterator> >
-{
-};
-
-#endif // #if defined(__GNUC__) && (__GNUC__ == 2) && (__GNUC_MINOR__ <= 95)
 
 
 // local macros, #undef-ined at the end of the header
