@@ -136,6 +136,7 @@ boost/boost/graph/dag_shortest_paths.hpp svneol=native#text/plain
 boost/boost/graph/depth_first_search.hpp svneol=native#text/plain
 boost/boost/graph/detail/adj_list_edge_iterator.hpp svneol=native#text/plain
 boost/boost/graph/detail/adjacency_list.hpp svneol=native#text/plain
+boost/boost/graph/detail/algorithm.hpp svneol=native#text/plain
 boost/boost/graph/detail/array_binary_tree.hpp svneol=native#text/plain
 boost/boost/graph/detail/bitset.hpp svneol=native#text/plain
 boost/boost/graph/detail/bitset_adaptor.hpp svneol=native#text/plain
