@@ -22,7 +22,6 @@ boost/build/top.hpp svneol=native#text/plain
 boost/build/x/Jamfile svneol=native#text/plain
 boost/build/x/x.cpp svneol=native#text/plain
 boost/build/x/x.hpp svneol=native#text/plain
-boost/build/x/x.map -text
 boost/build/x/xl.cpp svneol=native#text/plain
 boost/build/x/xl.hpp svneol=native#text/plain
 boost/build/y/Jamfile svneol=native#text/plain
