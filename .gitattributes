@@ -1403,7 +1403,6 @@ boost/boost/python/converter/object_manager.hpp svneol=native#text/plain
 boost/boost/python/converter/pointer_type_id.hpp svneol=native#text/plain
 boost/boost/python/converter/pyobject_traits.hpp svneol=native#text/plain
 boost/boost/python/converter/pyobject_type.hpp svneol=native#text/plain
-boost/boost/python/converter/pytype_arg_from_python.hpp svneol=native#text/plain
 boost/boost/python/converter/pytype_object_mgr_traits.hpp svneol=native#text/plain
 boost/boost/python/converter/registered.hpp svneol=native#text/plain
 boost/boost/python/converter/registered_pointee.hpp svneol=native#text/plain
