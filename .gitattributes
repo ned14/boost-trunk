@@ -24,6 +24,7 @@ boost/boost/cregex.hpp svneol=native#text/plain
 boost/boost/cstdint.hpp svneol=native#text/plain
 boost/boost/detail/call_traits.hpp svneol=native#text/plain
 boost/boost/detail/compressed_pair.hpp svneol=native#text/plain
+boost/boost/detail/iterator.hpp svneol=native#text/plain
 boost/boost/detail/ob_call_traits.hpp svneol=native#text/plain
 boost/boost/detail/ob_compressed_pair.hpp svneol=native#text/plain
 boost/boost/detail/ob_type_traits.hpp svneol=native#text/plain
