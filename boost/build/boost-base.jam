@@ -448,6 +448,14 @@ rule feature
             ECHO "Simple feature" <$(<)> "qualified with PATH in 3rd"
                   "argument. PATH ignored." ;
         }
+
+        # Record reverse-transformations between "ungristed property" path
+        # elements and properties.
+        local value ;
+        for value in $(>)
+        {
+            gREGRIST_PROPERTY($(<)-$(value)) = <$(<)>$(value) ;
+        }
     }
 }
 
@@ -633,18 +641,17 @@ include $(BOOST_BUILD_INSTALLATION)$(SLASH)features.jam ;
 # ungrist-properties properties...
 #
 # Transforms a list of properties of the form:
-#   <feature1>value1 [<feature2>value2... ]
+#       <feature1>value1 [<feature2>value2... ]
 # into a list of the form:
-#   feature1-value1 feature2-value2
+#       feature1-value1 feature2-value2
 # suitable for use as directory path elements
+#
 rule ungrist-properties
 {
     local property ;
     local result = ;
     for property in $(<)
     {
-        # local f = [ ungrist-feature $(property:G) ] ;
-        local f =  ;
         result += $(gUNGRISTED($(property:G)))-$(property:G=) ;
     }
     return $(result) ;
@@ -948,9 +955,15 @@ rule dependent-include
 #
 # Used to make the given dependent target depend on the file result of building
 # the given libs. The 3rd argument should be the relative path from the target
-# build root to the requested subvariant.
+# build root to the dependent subvariant.
 rule link-libraries
 {
+  local properties dir ;
+  for dir in [ split-path $(3) ]
+  {
+    properties += gREGRIST_PROPERTY($(dir)) ;
+  }
+  
   local lib-path ;
   for lib-path in $(>)
   {
@@ -964,15 +977,17 @@ rule link-libraries
     # Enter the dependee subproject
     SubDir $(new-subdir) ;
 
-    local lib-target = [ FGristFiles $(lib-path:D=) ] ;
-    local lib-target-type = $(gTARGET_TYPE($(lib-target))) ;
+    local lib-main-target = [ FGristFiles $(lib-path:D=) ] ;
+    local lib-target-type = $(gTARGET_TYPE($(lib-main-target))) ;
 
+    local lib-subvariant = [ dependee-subvariant $(lib-main-target) : $(3) ] ;
     local lib-grist = [ join-path $(SOURCE_GRIST) $(lib-path:D=) $(3) ] ;
-    local build-target = $(lib-target:G=$(lib-grist)) ;
+    local build-target = $(lib-main-target:G=$(lib-grist)) ;
     
     # if build instructions for the given target have not been given, do that now.
     if ! $(lib-grist) in $(gDECLARED_TARGETS)
     {
+        build-subvariant
         main-target $(lib-target)
             : $(gTARGET_SOURCES($(lib-target)))
             : $(gTARGET_REQUIREMENTS($(lib-target)))
@@ -1048,10 +1063,11 @@ else
   gIMPORT_SUFFIX(LIB) = .a ;
 }
 
-rule subvariant-target # target : subvariant-id build-properties
+rule subvariant-target # target : subvariant-id build-properties : toolset variant
 {
   # this is the path from the target's build root to the subvariant directory
   local subvariant-id = $(>[1]) ;
+  local subvariant-tokens = [ split-path
 
   # SOURCE_GRIST identifies the subproject directory; TARGET_GRIST will identify
   # the target and subvariant, since unique versions of files will be built for
@@ -1100,8 +1116,11 @@ rule subvariant-target # target : subvariant-id build-properties
       case * : EXIT "unknown target type:" $(target-type) ;
     }
 
-    # generate build instructions
-    link-libraries $(target-file) : $(gTARGET_LIBS($(<))) : $(subvariant-id) ;
+    if $(gTARGET_LIBS($(<)))
+    {
+        # generate library build instructions
+        link-libraries $(target-file) : $(gTARGET_LIBS($(<))) : $(>[2-]) ;
+    }
   }
 }
 
@@ -1132,7 +1151,9 @@ rule main-target # target : local-build
       local x ;
       for x in $(expanded)
       {
-          subvariant-target $(<) : [ split-path-at-grist $(x) ] ;
+          subvariant-target $(<)
+            : [ split-path-at-grist $(x) ]
+            : toolset variant ;
       }
     }
   }
