@@ -2890,6 +2890,7 @@ boost/libs/mpl/test/erase_range.cpp svneol=native#text/plain
 boost/libs/mpl/test/filter_view.cpp svneol=native#text/plain
 boost/libs/mpl/test/find.cpp svneol=native#text/plain
 boost/libs/mpl/test/find_if.cpp svneol=native#text/plain
+boost/libs/mpl/test/fold.cpp svneol=native#text/plain
 boost/libs/mpl/test/for_each.cpp svneol=native#text/plain
 boost/libs/mpl/test/front.cpp svneol=native#text/plain
 boost/libs/mpl/test/identity.cpp svneol=native#text/plain
