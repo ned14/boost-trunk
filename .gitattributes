@@ -72,3 +72,9 @@ boost/development/py_cpp/vc6_prj/vc6_prj.dsp -text svneol=CRLF#unset
 boost/development/py_cpp/vc6_prj/vc6_prj.dsw -text svneol=CRLF#unset
 boost/development/py_cpp/vc6_prj/vc6_prj.opt -text
 boost/development/py_cpp/wrap_python.h svneol=native#text/plain
+boost/libs/python/build/bpl_static.dsp -text svneol=CRLF#unset
+boost/libs/python/build/build.dsw -text svneol=CRLF#unset
+boost/libs/python/build/build.opt -text svneol=unset#application/octet-stream
+boost/libs/python/build/example1/example1.dsp -text svneol=CRLF#unset
+boost/libs/python/build/rwgk1/rwgk1.dsp -text svneol=CRLF#unset
+boost/libs/python/build/test/test.dsp -text svneol=CRLF#unset
