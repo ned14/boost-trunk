@@ -36,8 +36,8 @@ typedef struct {
 } VAR_EDITS ;
 
 static void var_edit_parse( char *mods, VAR_EDITS *edits );
-static void var_edit_file( char *in, char *out, VAR_EDITS *edits );
-static void var_edit_shift( char *out, VAR_EDITS *edits );
+static void var_edit_file( char *in, string *out, VAR_EDITS *edits );
+static void var_edit_shift( string *out, VAR_EDITS *edits );
 
 # define MAGIC_COLON	'\001'
 # define MAGIC_LEFT	'\002'
@@ -64,7 +64,9 @@ var_expand(
 	int	cancopyin )
 {
 	char out_buf[ MAXSYM ];
-	char *out = out_buf;
+    string buf[1];
+    size_t prefix_length;
+    char *out;
 	char *inp = in;
 	char *ov;		/* for temp copy of variable in outbuf */
 	int depth;
@@ -91,7 +93,7 @@ var_expand(
 	/* Just try simple copy of in to out. */
 
 	while( in < end )
-	    if( ( *out++ = *in++ ) == '$' && *in == '(' ) 
+	    if( *in++ == '$' && *in == '(' ) 
 		goto expand;
 
 	/* No variables expanded - just add copy of input string to list. */
@@ -100,14 +102,24 @@ var_expand(
 	/* item, we can use the copystr() to put it on the new list. */
 	/* Otherwise, we use the slower newstr(). */
 
-	*out = '\0';
-
-	if( cancopyin )
+	if( cancopyin ) 
+    {
 	    return list_new( l, copystr( inp ) );
+    }
 	else
-	    return list_new( l, newstr( out_buf ) );
+    {
+        LIST* r;
+        string_new( buf );
+        string_append_range( buf, inp, end );
+
+        r = list_new( l, newstr( buf->value) );
+        string_free( buf );
+        return r;
+    }
 
     expand:
+    string_new( buf );
+    string_append_range( buf, inp, in - 1); /* copy the part before '$'. */
 	/*
 	 * Input so far (ignore blanks):
 	 *
@@ -130,24 +142,37 @@ var_expand(
 	 */
 
 	depth = 1;
-	out--, in++;
-	ov = out;
+    inp = ++in; /* skip over the '(' */
 
 	while( in < end && depth )
 	{
-	    switch( *ov++ = *in++ )
+	    switch( *in++ )
 	    {
 	    case '(': depth++; break;
 	    case ')': depth--; break;
-	    case ':': ov[-1] = MAGIC_COLON; break;
-	    case '[': ov[-1] = MAGIC_LEFT; break;
-	    case ']': ov[-1] = MAGIC_RIGHT; break;
 	    }
 	}
 
-	/* Copied ) - back up. */
+	/*
+	 * Input so far (ignore blanks):
+	 *
+	 *	stuff-in-outbuf $(variable) remainder
+	 *			  ^	   ^         ^
+	 *			  inp      in        end
+         */
+        prefix_length = buf->size;
+        string_append_range( buf, inp, in - 1 );
 
-	ov--;
+        out = buf->value + prefix_length;
+	for ( ov = out; ov < buf->value + buf->size; ++ov )
+	{
+	    switch( *ov )
+	    {
+	    case ':': *ov = MAGIC_COLON; break;
+	    case '[': *ov = MAGIC_LEFT; break;
+	    case ']': *ov = MAGIC_RIGHT; break;
+	    }
+	}
 
 	/*
 	 * Input so far (ignore blanks):
@@ -188,18 +213,20 @@ var_expand(
 		LIST *value, *evalue = 0;
 		char *colon;
 		char *bracket;
-		char varname[ MAXSYM ];
+        string variable;
+        char *varname;
 		int sub1 = 0, sub2 = -1;
 		VAR_EDITS edits;
 
 		/* Look for a : modifier in the variable name */
 		/* Must copy into varname so we can modify it */
 
-		strcpy( varname, vars->string );
+		string_copy( &variable, vars->string );
+        varname = variable.value;
 
 		if( colon = strchr( varname, MAGIC_COLON ) )
 		{
-		    *colon = '\0';
+            string_truncate( &variable, colon - varname );
 		    var_edit_parse( colon + 1, &edits );
 		}
 
@@ -216,6 +243,8 @@ var_expand(
                     */
 
                     char *s = bracket + 1;
+
+                    string_truncate( &variable, bracket - varname );
 
                     do  /* so we can use "break" */
                     {
@@ -318,6 +347,7 @@ var_expand(
 
 		if( out == out_buf && !bracket && !colon && in == end )
 		{
+            string_free( &variable );
 		    l = list_copy( l, value );
 		    continue;
 		}
@@ -337,24 +367,27 @@ var_expand(
 		for( ; value; value = list_next( value ) )
 		{
 		    LIST *rem;
-		    char *out1;
+            string out1;
+            size_t postfix_start;
 
-            // FIXME: fixme_should_handle_T_modifier;
+            string_new( &out1 );
 
 		    /* Handle end subscript (length actually) */
 
 		    if( sub2 >= 0 && --sub2 < 0 )
 			break;
 
+            string_truncate( buf, prefix_length );
+
 		    /* Apply : mods, if present */
 
 		    if( colon && edits.filemods )
-			var_edit_file( value->string, out, &edits );
+			var_edit_file( value->string, &out1, &edits );
 		    else
-			strcpy( out, value->string );
+			string_append( &out1, value->string );
 
-		    if( colon && ( edits.upshift || edits.downshift ) )
-			var_edit_shift( out, &edits );
+		    if( colon && ( edits.upshift || edits.downshift || edits.to_slashes ) )
+			var_edit_shift( &out1, &edits );
 
 		    /* Handle :J=joinval */
 		    /* If we have more values for this var, just */
@@ -364,17 +397,17 @@ var_expand(
 		    if( colon && edits.join.ptr && 
 		      ( list_next( value ) || list_next( vars ) ) )
 		    {
-			out += strlen( out );
-			strcpy( out, edits.join.ptr );
-			out += strlen( out );
+                string_append( &out1, edits.join.ptr );
 			continue;
 		    }
+
+            string_append( buf, out1.value );
 
 		    /* If no remainder, append result to output chain. */
 
 		    if( in == end )
 		    {
-			l = list_new( l, newstr( out_buf ) );
+			l = list_new( l, newstr( buf->value ) );
 			continue;
 		    }
 
@@ -383,13 +416,15 @@ var_expand(
 		    /* Remember the end of the variable expansion so */
 		    /* we can just tack on each instance of 'remainder' */
 
-		    out1 = out + strlen( out );
+            postfix_start = buf->size;
 
 		    for( rem = remainder; rem; rem = list_next( rem ) )
 		    {
-			strcpy( out1, rem->string );
-			l = list_new( l, newstr( out_buf ) );
+                string_truncate( buf, postfix_start );
+                string_append( buf, rem->string );
+			l = list_new( l, newstr( buf->value ) );
 		    }
+            string_free( &variable );
 		}
 
 		/* Toss used empty */
@@ -413,6 +448,7 @@ var_expand(
 		printf( "\n" );
 	    }
 
+        string_free( buf );
 	    return l;
 	}
 }
@@ -539,7 +575,7 @@ var_edit_parse(
 static void
 var_edit_file( 
 	char	*in,
-	char	*out,
+	string	*out,
 	VAR_EDITS *edits )
 {
 	PATHNAME pathname;
@@ -575,13 +611,7 @@ var_edit_file(
 
 	/* Put filename back together */
 
-    // FIXME: should switch to strings everywhere.
-    {
-        string s;
-        string_new(&s);
-        path_build( &pathname, &s, 0 );
-        strcpy(out, s.value);
-    }
+    path_build( &pathname, out, 0 );
 }
 
 /*
@@ -590,21 +620,29 @@ var_edit_file(
 
 static void
 var_edit_shift( 
-	char	*out,
+	string	*out,
 	VAR_EDITS *edits )
 {
-	/* Handle upshifting, downshifting now */
+	/* Handle upshifting, downshifting and slash translation now */
 
-	if( edits->upshift )
-	{
-	    for( ; *out; ++out )
-		*out = toupper( *out );
-	}
-	else if( edits->downshift )
-	{
-	    for( ; *out; ++out )
-		*out = tolower( *out );
-	}
+    char *p;
+    for ( p = out->value; *p; ++p)
+    {
+        if (edits->upshift)
+        {
+            *p = toupper( *p );
+        }
+        else if ( edits->downshift )
+        {
+            *p = tolower( *p );
+        } 
+        if ( edits->to_slashes )
+        {
+            if ( *p == '\\')
+                *p = '/';
+        }
+    }
+    out->size = p - out->value;
 }
 
 #ifndef NDEBUG
