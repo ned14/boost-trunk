@@ -186,6 +186,7 @@ boost/boost/pool/pool.hpp svneol=native#text/plain
 boost/boost/pool/pool_alloc.hpp svneol=native#text/plain
 boost/boost/pool/pool_alloc_fwd.hpp svneol=native#text/plain
 boost/boost/pool/pool_fwd.hpp svneol=native#text/plain
+boost/boost/pool/poolfwd.hpp svneol=native#text/plain
 boost/boost/pool/simple_segregated_storage.hpp svneol=native#text/plain
 boost/boost/pool/simple_segregated_storage_fwd.hpp svneol=native#text/plain
 boost/boost/pool/singleton_pool.hpp svneol=native#text/plain
