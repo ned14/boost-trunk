@@ -55,6 +55,7 @@ boost/boost/graph/edmunds_karp_max_flow.hpp svneol=native#text/plain
 boost/boost/graph/filtered_edge_graph.hpp svneol=native#text/plain
 boost/boost/graph/graph_as_tree.hpp svneol=native#text/plain
 boost/boost/graph/graph_concepts.hpp svneol=native#text/plain
+boost/boost/graph/graph_selectors.hpp svneol=native#text/plain
 boost/boost/graph/graph_traits.hpp svneol=native#text/plain
 boost/boost/graph/graph_utility.hpp svneol=native#text/plain
 boost/boost/graph/johnson_all_pairs_shortest.hpp svneol=native#text/plain
