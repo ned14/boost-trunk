@@ -39,13 +39,13 @@ struct distance_impl
           iterator_range<First,Last>
         , integral_c<long, 0>
         , next<>
-        >
+        >::type
 {
 };
 
 template< typename First, typename Last >
 struct distance_impl<random_access_iterator_tag,First,Last>
-    : aux::iter_distance<First,Last>
+    : aux::iter_distance<First,Last>::type
 {
 };
 
@@ -94,7 +94,7 @@ struct distance_impl
               iterator_range<First,Last>
             , integral_c<long, 0>
             , next<>
-            >
+            >::type
     {
     };
 };
@@ -103,7 +103,7 @@ template<>
 struct distance_impl<random_access_iterator_tag>
 {
     template< typename First, typename Last > struct result_
-        : aux::iter_distance<First,Last>
+        : aux::iter_distance<First,Last>::type
     {
     };
 };

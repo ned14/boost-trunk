@@ -11,7 +11,6 @@ compile apply.cpp ;
 compile apply_if.cpp ;
 compile arithmetic.cpp ;
 compile as_sequence.cpp ;
-compile assert_is_same.cpp ;
 compile at.cpp ;
 compile back.cpp ;
 compile bind.cpp ;

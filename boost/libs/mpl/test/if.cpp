@@ -1,36 +1,29 @@
-//-----------------------------------------------------------------------------
-// boost mpl/test/if.cpp source file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
+
+// Copyright (c) Aleksey Gurtovoy 2000-2004
 //
-// Copyright (c) 2000-02
-// Aleksey Gurtovoy
+// Distributed under the Boost Software License,Version 1.0. 
+// (See accompanying file LICENSE_1_0.txt or copy at 
+// http://www.boost.org/LICENSE_1_0.txt)
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/bool.hpp>
-#include <boost/mpl/assert_is_same.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
-namespace mpl = boost::mpl;
-
-int main()
+MPL_TEST_CASE()
 {
-    typedef mpl::if_<mpl::true_,char,long>::type t1;
-    typedef mpl::if_c<true,char,long>::type t2;
-    BOOST_MPL_ASSERT_IS_SAME(t1, char);
-    BOOST_MPL_ASSERT_IS_SAME(t2, char);
+    typedef if_<true_,char,long>::type t1;
+    typedef if_c<true,char,long>::type t2;
+    MPL_ASSERT_SAME(2,( t1, char ));
+    MPL_ASSERT_SAME(2,( t2, char ));
 
-    typedef mpl::if_<mpl::false_,char,long>::type t3;
-    typedef mpl::if_c<false,char,long>::type t4;
-    BOOST_MPL_ASSERT_IS_SAME(t3, long);
-    BOOST_MPL_ASSERT_IS_SAME(t4, long);
-
-    return 0;
+    typedef if_<false_,char,long>::type t3;
+    typedef if_c<false,char,long>::type t4;
+    MPL_ASSERT_SAME(2,( t3, long ));
+    MPL_ASSERT_SAME(2,( t4, long ));
 }

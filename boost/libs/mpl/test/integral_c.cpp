@@ -1,46 +1,40 @@
-//-----------------------------------------------------------------------------
-// boost mpl/test/integral_c.cpp source file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
+
+// Copyright (c) Aleksey Gurtovoy 2001-2004
 //
-// Copyright (c) 2001-02
-// Aleksey Gurtovoy
+// Distributed under the Boost Software License,Version 1.0. 
+// (See accompanying file LICENSE_1_0.txt or copy at 
+// http://www.boost.org/LICENSE_1_0.txt)
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/assert_is_same.hpp>
-#include <boost/static_assert.hpp>
+#include <boost/mpl/aux_/test.hpp>
 #include <boost/preprocessor/repeat.hpp>
 
 #include <cassert>
 
-namespace mpl = boost::mpl;
 
-#define INTEGRAL_C_TEST(z, i, T)                                \
-    {                                                           \
-        typedef mpl::integral_c<T,i> c##i;                      \
-        typedef mpl::integral_c<T,i+1> next_c##i;               \
-        typedef mpl::integral_c<T,i-1> prior_c##i;              \
-        { BOOST_MPL_ASSERT_IS_SAME(c##i::value_type, T); }      \
-        { BOOST_MPL_ASSERT_IS_SAME(c##i::type, c##i); }         \
-        { BOOST_MPL_ASSERT_IS_SAME(c##i::next, next_c##i); }    \
-        { BOOST_MPL_ASSERT_IS_SAME(c##i::prior, prior_c##i); }  \
-        { BOOST_STATIC_ASSERT(c##i::value == i); }              \
-        assert(c##i() == i);                                    \
-    }
+#define INTEGRAL_C_TEST(z, i, T) \
+    { \
+        typedef integral_c<T,i> c##i; \
+        typedef integral_c<T,i+1> next_c##i; \
+        typedef integral_c<T,i-1> prior_c##i; \
+        { MPL_ASSERT_SAME(2,(c##i::value_type, T)); } \
+        { MPL_ASSERT_SAME(2,(c##i::type, c##i)); } \
+        { MPL_ASSERT_SAME(2,(c##i::next, next_c##i)); } \
+        { MPL_ASSERT_SAME(2,(c##i::prior, prior_c##i)); } \
+        { MPL_ASSERT_EQUAL(2,(c##i::value, i)); } \
+        assert(c##i() == i); \
+    } \
 /**/
 
-int main()
+MPL_TEST_CASE()
 {
     BOOST_PP_REPEAT(10, INTEGRAL_C_TEST, char)
     BOOST_PP_REPEAT(10, INTEGRAL_C_TEST, short)
     BOOST_PP_REPEAT(10, INTEGRAL_C_TEST, int)
-    return 0;
 }

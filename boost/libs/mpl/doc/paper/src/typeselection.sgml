@@ -31,8 +31,8 @@ Note that the first template parameter of the template is a type.
 typedef mpl::if_<mpl::true_c,char,long>::type t1;
 typedef mpl::if_<mpl::false_c,char,long>::type t2;
 
-BOOST_MPL_ASSERT_IS_SAME(t1, char);
-BOOST_MPL_ASSERT_IS_SAME(t2, long);
+MPL_ASSERT_SAME(2,(t1, char);
+MPL_ASSERT_SAME(2,(t2, long);
 ]]>
 </>
 
@@ -50,9 +50,9 @@ The way the &Cxx; template instantiation mechanism works imposes some subtle lim
 
 <programlisting>
 <![CDATA[
-BOOST_MPL_ASSERT_IS_SAME(pointed_type<my*>::type, my);
-BOOST_MPL_ASSERT_IS_SAME(pointed_type< std::auto_ptr<my> >::type, my);
-BOOST_MPL_ASSERT_IS_SAME(pointed_type< boost::scoped_ptr<my> >::type, my);
+MPL_ASSERT_SAME(2,(pointed_type<my*>::type, my);
+MPL_ASSERT_SAME(2,(pointed_type< std::auto_ptr<my> >::type, my);
+MPL_ASSERT_SAME(2,(pointed_type< boost::scoped_ptr<my> >::type, my);
 ]]>
 </>
 

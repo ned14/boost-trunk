@@ -63,8 +63,8 @@ struct if_
 typedef mpl::if_&lt;mpl::true_c,char,long&gt;::type t1;
 typedef mpl::if_&lt;mpl::false_c,char,long&gt;::type t2;
 
-BOOST_MPL_ASSERT_IS_SAME(t1, char);
-BOOST_MPL_ASSERT_IS_SAME(t2, long);
+MPL_ASSERT_SAME(2,(t1, char);
+MPL_ASSERT_SAME(2,(t2, long);
 </pre>
 
 <p>The construct is important because template metaprograms often contain a lot of decision-making code, and, as we will show, spelling it manually every time via (partial) class template specialization quickly becomes impractical. The template is also important from the point of encapsulating the compiler workarounds.</p>
@@ -79,9 +79,9 @@ BOOST_MPL_ASSERT_IS_SAME(t2, long);
 <p>The way the C++ template instantiation mechanism works imposes some subtle limitations on applicability of the type selection primitive (<tt>if_</tt>), compared to a manually implemented equivalent of the selection code. For example, suppose we are implementing a <tt>pointed_type</tt> traits template such that <tt>pointed_type&lt;T&gt;::type</tt> instantiated for a <tt>T</tt> that is either a plain pointer (<tt>U*</tt>), <tt>std::auto_ptr&lt;U&gt;</tt>, or any of the Boost smart pointers <span class="citation">[<a class="interlink" href="refs.html#ref.spl" title="[spl]">SPL</a>]</span>, e.g. <tt>boost::scoped_ptr&lt;U&gt;</tt>, will give us the pointed type (<tt>U</tt>):</p>
 
 <pre class="programlisting">
-BOOST_MPL_ASSERT_IS_SAME(pointed_type&lt;my*&gt;::type, my);
-BOOST_MPL_ASSERT_IS_SAME(pointed_type&lt; std::auto_ptr&lt;my&gt; &gt;::type, my);
-BOOST_MPL_ASSERT_IS_SAME(pointed_type&lt; boost::scoped_ptr&lt;my&gt; &gt;::type, my);
+MPL_ASSERT_SAME(2,(pointed_type&lt;my*&gt;::type, my);
+MPL_ASSERT_SAME(2,(pointed_type&lt; std::auto_ptr&lt;my&gt; &gt;::type, my);
+MPL_ASSERT_SAME(2,(pointed_type&lt; boost::scoped_ptr&lt;my&gt; &gt;::type, my);
 </pre>
 
 <p>Unfortunately, the straightforward application of <tt>if_</tt> to this problem does not work: <sup><a name="note.pointedtype" href="#ftn.note.pointedtype">1</a></sup></p>

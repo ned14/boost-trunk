@@ -20,7 +20,7 @@
 #include <boost/mpl/plus.hpp>
 #include <boost/type_traits/add_pointer.hpp>
 
-#include <boost/mpl/aux_/test/test.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
 
 MPL_TEST_CASE()

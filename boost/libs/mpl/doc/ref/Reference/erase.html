@@ -55,7 +55,7 @@ typedef erase&lt;values,pos&gt;::type result_seq;
 BOOST_STATIC_ASSERT(<a href="../Reference/size.html">size</a>&lt;result_seq&gt;::type::value == 7);
 <p>
 typedef find&lt;result, integral_c&lt;int,7&gt; &gt;::type result_iter;
-BOOST_MPL_ASSERT_IS_SAME(result_iter, <a href="../Reference/end.html">end</a>&lt;result_seq&gt;::type);
+MPL_ASSERT_SAME(2,(result_iter, <a href="../Reference/end.html">end</a>&lt;result_seq&gt;::type);
 </pre>
 <p>
 <h3>See also</h3>

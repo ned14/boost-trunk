@@ -50,7 +50,7 @@ Amortized constant time.
 <pre>
 typedef plus&lt; integral_c&lt;short,-1&gt;, integral_c&lt;long,10&gt; &gt;::type sum;
 BOOST_STATIC_ASSERT(sum::value == 9));
-BOOST_MPL_ASSERT_IS_SAME(sum::value_type, long);
+MPL_ASSERT_SAME(2,(sum::value_type, long);
 </pre>
 <p>
 <h3>Notes</h3>

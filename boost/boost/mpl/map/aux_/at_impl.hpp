@@ -26,7 +26,7 @@
 
 #if !defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
 #   include <boost/mpl/apply_if.hpp>
-#   include <boost/mpl/select2nd.hpp>
+#   include <boost/mpl/pair.hpp>
 #   include <boost/mpl/void.hpp>
 #endif
 
@@ -108,7 +108,7 @@ struct at_impl< aux::map_tag >
         typedef typename apply_if< 
               is_void_<type_>
             , void_
-            , select2nd<type_> 
+            , second<type_> 
             >::type type;
     };
 };

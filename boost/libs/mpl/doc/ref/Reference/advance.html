@@ -51,8 +51,8 @@ typedef begin&lt;numbers&gt;::type first;
 typedef end&lt;numbers&gt;::type last;
 typedef advance_c&lt;first,10&gt;::type iter1;
 typedef advance_c&lt;last,-10&gt;::type iter2;
-BOOST_MPL_ASSERT_IS_SAME(iter1, last);
-BOOST_MPL_ASSERT_IS_SAME(iter2, first);
+MPL_ASSERT_SAME(2,(iter1, last);
+MPL_ASSERT_SAME(2,(iter2, first);
 </pre>
 <p>
 <h3>See also</h3>

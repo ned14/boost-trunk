@@ -17,41 +17,37 @@
 #include <boost/mpl/apply_if.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/identity.hpp>
-#include <boost/mpl/assert_is_same.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
-namespace mpl = boost::mpl;
-
-int main()
+MPL_TEST_CASE()
 {
-    typedef mpl::apply_if<
-          mpl::true_
-        , mpl::identity<char>
-        , mpl::identity<long>
+    typedef apply_if<
+          true_
+        , identity<char>
+        , identity<long>
         >::type t1;
 
-    typedef mpl::apply_if_c<
+    typedef apply_if_c<
           true
-        , mpl::identity<char>
-        , mpl::identity<long>
+        , identity<char>
+        , identity<long>
         >::type t2;
 
-    BOOST_MPL_ASSERT_IS_SAME(t1, char);
-    BOOST_MPL_ASSERT_IS_SAME(t2, char);
+    MPL_ASSERT_SAME(2,(t1, char));
+    MPL_ASSERT_SAME(2,(t2, char));
 
-    typedef mpl::apply_if<
-          mpl::false_
-        , mpl::identity<char>
-        , mpl::identity<long>
+    typedef apply_if<
+          false_
+        , identity<char>
+        , identity<long>
          >::type t3;
 
-    typedef mpl::apply_if_c<
+    typedef apply_if_c<
           false
-        , mpl::identity<char>
-        , mpl::identity<long>
+        , identity<char>
+        , identity<long>
         >::type t4;
 
-    BOOST_MPL_ASSERT_IS_SAME(t3, long);
-    BOOST_MPL_ASSERT_IS_SAME(t4, long);
-
-    return 0;
+    MPL_ASSERT_SAME(2,(t3, long));
+    MPL_ASSERT_SAME(2,(t4, long));
 }

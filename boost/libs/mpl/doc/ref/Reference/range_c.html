@@ -42,7 +42,7 @@ BOOST_STATIC_ASSERT(empty&lt;range0&gt;::type::value);
 BOOST_STATIC_ASSERT(!empty&lt;range1&gt;::type::value);
 BOOST_STATIC_ASSERT(!empty&lt;range10&gt;::type::value);
 <p>
-BOOST_MPL_ASSERT_IS_SAME(begin&lt;range0&gt;::type, end&lt;range0&gt;::type);
+MPL_ASSERT_SAME(2,(begin&lt;range0&gt;::type, end&lt;range0&gt;::type);
 BOOST_MPL_ASSERT_NOT_SAME(begin&lt;range1&gt;::type, end&lt;range1&gt;::type);
 BOOST_MPL_ASSERT_NOT_SAME(begin&lt;range10&gt;::type, end&lt;range10&gt;::type);
 <p>

@@ -1,53 +1,46 @@
-//-----------------------------------------------------------------------------
-// boost mpl/test/arithmetic.cpp source file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
+
+// Copyright (c) Aleksey Gurtovoy 2001-2004
 //
-// Copyright (c) 2001-02
-// Aleksey Gurtovoy
+// Distributed under the Boost Software License, Version 1.0. 
+// (See accompanying file LICENSE_1_0.txt or copy at 
+// http://www.boost.org/LICENSE_1_0.txt)
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include <boost/mpl/arithmetic.hpp>
 #include <boost/mpl/int.hpp>
-#include <boost/static_assert.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
-namespace mpl = boost::mpl;
-
-int main()
+MPL_TEST_CASE()
 {
-    typedef mpl::int_<0> _0;
-    typedef mpl::int_<1> _1;
-    typedef mpl::int_<3> _3;
-    typedef mpl::int_<10> _10;
+    typedef int_<0> _0;
+    typedef int_<1> _1;
+    typedef int_<3> _3;
+    typedef int_<10> _10;
 
-    BOOST_STATIC_ASSERT((mpl::plus<_0,_10>::value == 10));
-    BOOST_STATIC_ASSERT((mpl::plus<_10,_0>::value == 10));
+    MPL_ASSERT_EQUAL(3,(plus<_0,_10>::value, 10));
+    MPL_ASSERT_EQUAL(3,(plus<_10,_0>::value, 10));
 
-    BOOST_STATIC_ASSERT((mpl::minus<_0,_10>::value == -10));
-    BOOST_STATIC_ASSERT((mpl::minus<_10,_0>::value == 10));
+    MPL_ASSERT_EQUAL(3,(minus<_0,_10>::value, -10));
+    MPL_ASSERT_EQUAL(3,(minus<_10,_0>::value, 10));
 
-    BOOST_STATIC_ASSERT((mpl::multiplies<_1,_10>::value == 10));
-    BOOST_STATIC_ASSERT((mpl::multiplies<_10,_1>::value == 10));
+    MPL_ASSERT_EQUAL(3,(multiplies<_1,_10>::value, 10));
+    MPL_ASSERT_EQUAL(3,(multiplies<_10,_1>::value, 10));
 
-    BOOST_STATIC_ASSERT((mpl::divides<_10,_1>::value == 10));
-    BOOST_STATIC_ASSERT((mpl::divides<_10,_1>::value == 10));
+    MPL_ASSERT_EQUAL(3,(divides<_10,_1>::value, 10));
+    MPL_ASSERT_EQUAL(3,(divides<_10,_1>::value, 10));
 
-    BOOST_STATIC_ASSERT((mpl::modulus<_10,_1>::value == 0));
-    BOOST_STATIC_ASSERT((mpl::modulus<_10,_3>::value == 1));
+    MPL_ASSERT_EQUAL(3,(modulus<_10,_1>::value, 0));
+    MPL_ASSERT_EQUAL(3,(modulus<_10,_3>::value, 1));
 
-    BOOST_STATIC_ASSERT((mpl::minus<_10,_1,_10>::value == -1));
-    BOOST_STATIC_ASSERT((mpl::plus<_10,_1,_10>::value == 21));
-    BOOST_STATIC_ASSERT((mpl::divides<_10,_1,_10>::value == 1));
-    BOOST_STATIC_ASSERT((mpl::divides<_10,_1,_10>::value == 1));
+    MPL_ASSERT_EQUAL(4,(minus<_10,_1,_10>::value, -1));
+    MPL_ASSERT_EQUAL(4,(plus<_10,_1,_10>::value, 21));
+    MPL_ASSERT_EQUAL(4,(divides<_10,_1,_10>::value, 1));
+    MPL_ASSERT_EQUAL(4,(divides<_10,_1,_10>::value, 1));
     
-    BOOST_STATIC_ASSERT((mpl::negate<_10>::value == -10));
-
-    return 0;
+    MPL_ASSERT_EQUAL(2,(negate<_10>::value, -10));
 }

@@ -58,14 +58,14 @@ typedef mpl::lambda&lt;expr&gt;::type func;
 
 <pre class="programlisting">
 typedef mpl::apply&lt;func,int const&gt;::type res;
-BOOST_MPL_ASSERT_IS_SAME(res, int);
+MPL_ASSERT_SAME(2,(res, int);
 </pre>
 
 <p>or even</p>
 
 <pre class="programlisting">
 typedef func::apply&lt;int const&gt;::type res;
-BOOST_MPL_ASSERT_IS_SAME(res, int);
+MPL_ASSERT_SAME(2,(res, int);
 </pre>
 
 <p>Inline composition is very appealing syntactically when one deals with metafunctions, because it makes the expression obvious:</p>

@@ -56,8 +56,8 @@ BOOST_STATIC_ASSERT(<a href="../Reference/size.html">size</a>&lt;result1&gt;::ty
 BOOST_STATIC_ASSERT(size&lt;result2&gt;::type::value == 1);
 BOOST_STATIC_ASSERT(size&lt;result3&gt;::type::value == 2);
 <p>
-BOOST_MPL_ASSERT_IS_SAME(<a href="../Reference/front.html">front</a>&lt;result2&gt;::type, long);
-BOOST_MPL_ASSERT_IS_SAME(front&lt;result3&gt;::type, int);
+MPL_ASSERT_SAME(2,(<a href="../Reference/front.html">front</a>&lt;result2&gt;::type, long);
+MPL_ASSERT_SAME(2,(front&lt;result3&gt;::type, int);
 </pre>
 <p>
 <h3>Notes</h3>

@@ -19,7 +19,7 @@
 #include <boost/mpl/range_c.hpp>
 #include <boost/mpl/equal.hpp>
 
-#include <boost/mpl/aux_/test/test.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
 MPL_TEST_CASE()
 {

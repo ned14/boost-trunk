@@ -61,8 +61,8 @@ typedef integer<15>::type int15;
 typedef integer<32>::type int32;
 typedef integer<100>::type int100;
 
-BOOST_MPL_ASSERT_IS_SAME(int1, char);
-BOOST_MPL_ASSERT_IS_SAME(int5, char);
-BOOST_MPL_ASSERT_IS_SAME(int15, short);
-BOOST_MPL_ASSERT_IS_SAME(int32, int);
-BOOST_MPL_ASSERT_IS_SAME(int100, big_int<100>);
+MPL_ASSERT_SAME(2,(int1, char);
+MPL_ASSERT_SAME(2,(int5, char);
+MPL_ASSERT_SAME(2,(int15, short);
+MPL_ASSERT_SAME(2,(int32, int);
+MPL_ASSERT_SAME(2,(int100, big_int<100>);

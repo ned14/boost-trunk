@@ -46,7 +46,7 @@ Amortized constant time.
 <pre>
 typedef negate&lt; integral_c&lt;short,-10&gt; &gt;::type n;
 BOOST_STATIC_ASSERT(n::value == 10));
-BOOST_MPL_ASSERT_IS_SAME(n::value_type, short);
+MPL_ASSERT_SAME(2,(n::value_type, short);
 </pre>
 <p>
 <h3>Notes</h3>

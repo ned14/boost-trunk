@@ -22,7 +22,7 @@
 #include <boost/mpl/size.hpp>
 #include <boost/type_traits/is_float.hpp>
 
-#include <boost/mpl/aux_/test/test.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
 MPL_TEST_CASE()
 {

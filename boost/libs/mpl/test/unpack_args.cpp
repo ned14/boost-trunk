@@ -16,7 +16,7 @@
 #include <boost/mpl/lambda.hpp>
 #include <boost/mpl/unpack_args.hpp>
 
-#include <boost/mpl/aux_/test/test.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
 
 MPL_TEST_CASE()

@@ -1186,7 +1186,6 @@ boost/libs/mpl/test/apply.cpp svneol=native#text/plain
 boost/libs/mpl/test/apply_if.cpp svneol=native#text/plain
 boost/libs/mpl/test/arithmetic.cpp svneol=native#text/plain
 boost/libs/mpl/test/as_sequence.cpp svneol=native#text/plain
-boost/libs/mpl/test/assert_is_same.cpp svneol=native#text/plain
 boost/libs/mpl/test/at.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/Jamfile svneol=native#text/plain
 boost/libs/mpl/test/aux_/debug_print.cpp svneol=native#text/plain

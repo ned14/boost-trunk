@@ -34,7 +34,7 @@ The <literal>func</> is a unary metafunction class and can be used as such. In p
 
 <programlisting><![CDATA[
 typedef mpl::apply<func,int const>::type res;
-BOOST_MPL_ASSERT_IS_SAME(res, int);
+MPL_ASSERT_SAME(2,(res, int);
 ]]></>
 
 <para>
@@ -43,7 +43,7 @@ or even
 
 <programlisting><![CDATA[
 typedef func::apply<int const>::type res;
-BOOST_MPL_ASSERT_IS_SAME(res, int);
+MPL_ASSERT_SAME(2,(res, int);
 ]]></>
 
 <para>

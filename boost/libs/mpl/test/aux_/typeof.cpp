@@ -22,7 +22,7 @@ template< typename T > struct identity { static T type(); };
 }
 
 #define TYPEOF_CHECK(T) \
-    BOOST_MPL_ASSERT_IS_SAME( \
+    MPL_ASSERT_SAME(2,( \
           BOOST_MPL_AUX_TYPEOF(identity<T>::type()) \
         , T \
         ) \

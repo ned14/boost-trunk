@@ -48,9 +48,9 @@ typedef single_view&lt;int&gt; view;
 typedef <a href="../Reference/begin.html">begin</a>&lt;view&gt;::type first;
 typedef <a href="../Reference/end.html">end</a>&lt;view&gt;::type last;
 <p>
-BOOST_MPL_ASSERT_IS_SAME(first::type,int);
-BOOST_MPL_ASSERT_IS_SAME(first::next,last);
-BOOST_MPL_ASSERT_IS_SAME(last::prior,first);
+MPL_ASSERT_SAME(2,(first::type,int);
+MPL_ASSERT_SAME(2,(first::next,last);
+MPL_ASSERT_SAME(2,(last::prior,first);
 <p>
 BOOST_STATIC_ASSERT(size&lt;view&gt;::type::value == 1);
 </pre>

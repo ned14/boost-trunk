@@ -1,24 +1,22 @@
-//-----------------------------------------------------------------------------
-// boost mpl/test/apply.cpp source file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
+
+// Copyright (c) Aleksey Gurtovoy 2000-2004
 //
-// Copyright (c) 2000-02
-// Aleksey Gurtovoy
+// Distributed under the Boost Software License, Version 1.0. 
+// (See accompanying file LICENSE_1_0.txt or copy at 
+// http://www.boost.org/LICENSE_1_0.txt)
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// See http://www.boost.org/libs/mpl for documentation.
+
+// $Source$
+// $Date$
+// $Revision$
 
 #include <boost/mpl/apply.hpp>
-#include <boost/mpl/assert_is_same.hpp>
 #include <boost/mpl/limits/arity.hpp>
 #include <boost/mpl/aux_/preprocessor/params.hpp>
 #include <boost/mpl/aux_/preprocessor/enum.hpp>
+
+#include <boost/mpl/aux_/test.hpp>
 
 #include <boost/preprocessor/repeat.hpp>
 #include <boost/preprocessor/comma_if.hpp>
@@ -26,7 +24,6 @@
 #include <boost/preprocessor/if.hpp>
 #include <boost/preprocessor/cat.hpp>
 
-namespace mpl = boost::mpl;
 
 #define APPLY_0_FUNC_DEF(i) \
     struct f0 { typedef char type; }; \
@@ -54,34 +51,34 @@ namespace mpl = boost::mpl;
         )(i) \
 /**/
 
-namespace aux {
+namespace { namespace test {
 BOOST_PP_REPEAT(
       BOOST_MPL_LIMIT_METAFUNCTION_ARITY
     , APPLY_FUNC_DEF
     , unused
     )
-}
+}}
 
 #define APPLY_0_TEST(i, apply_) \
-    typedef mpl::apply_<aux::f##i>::type t; \
-    { BOOST_MPL_ASSERT_IS_SAME(t, char); } \
+    typedef apply_<test::f##i>::type t; \
+    { MPL_ASSERT_SAME(2,(t, char)); } \
 /**/
 
 #define APPLY_N_TEST(i, apply_) \
-    typedef mpl::apply_< \
-          aux::first##i \
+    typedef apply_< \
+          test::first##i \
         , char \
         BOOST_PP_COMMA_IF(BOOST_PP_DEC(i)) \
         BOOST_MPL_PP_ENUM(BOOST_PP_DEC(i), int) \
         >::type t1; \
     \
-    typedef mpl::apply_< \
-          aux::last##i \
+    typedef apply_< \
+          test::last##i \
         , BOOST_MPL_PP_ENUM(BOOST_PP_DEC(i), int) \
         BOOST_PP_COMMA_IF(BOOST_PP_DEC(i)) char \
         >::type t2; \
-    { BOOST_MPL_ASSERT_IS_SAME(t1, char); } \
-    { BOOST_MPL_ASSERT_IS_SAME(t2, char); } \
+    { MPL_ASSERT_SAME(2,(t1, char)); } \
+    { MPL_ASSERT_SAME(2,(t2, char)); } \
 /**/
 
 #define APPLY_TEST(z, i, APPLY_NAME) \
@@ -92,23 +89,25 @@ BOOST_PP_REPEAT(
         )(i, APPLY_NAME(i)) \
 /**/
 
-#define MAKE_APPLY_N_NAME(i) apply##i
-#define MAKE_APPLY_NAME(i) apply
 
-int main()
+MPL_TEST_CASE()
 {
+#   define MAKE_APPLY_N_NAME(i) apply##i
     BOOST_PP_REPEAT(
           BOOST_MPL_LIMIT_METAFUNCTION_ARITY
         , APPLY_TEST
         , MAKE_APPLY_N_NAME
         )
+}
 
 #if defined(BOOST_MPL_HAS_APPLY)
+MPL_TEST_CASE()
+{
+#   define MAKE_APPLY_NAME(i) apply
     BOOST_PP_REPEAT(
           BOOST_MPL_LIMIT_METAFUNCTION_ARITY
         , APPLY_TEST
         , MAKE_APPLY_NAME
         )
-#endif
-    return 0;
 }
+#endif

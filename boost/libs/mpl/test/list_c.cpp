@@ -16,7 +16,7 @@
 #include <boost/mpl/size.hpp>
 #include <boost/static_assert.hpp>
 
-#include <boost/mpl/aux_/test/test.hpp>
+#include <boost/mpl/aux_/test.hpp>
 
 
 #if !BOOST_WORKAROUND(BOOST_MSVC,<= 1200)

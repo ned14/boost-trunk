@@ -50,7 +50,7 @@ Amortized constant time.
 <pre>
 typedef multiplies&lt; integral_c&lt;short,-1&gt;, integral_c&lt;long,10&gt; &gt;::type product;
 BOOST_STATIC_ASSERT(product::value == -10));
-BOOST_MPL_ASSERT_IS_SAME(product::value_type, long);
+MPL_ASSERT_SAME(2,(product::value_type, long);
 </pre>
 <p>
 <h3>Notes</h3>
