@@ -5887,6 +5887,7 @@ boost/tools/build/test/prebuilt.py svneol=native#text/x-python
 boost/tools/build/test/prebuilt/Jamfile svneol=native#text/plain
 boost/tools/build/test/prebuilt/ext/Jamfile svneol=native#text/plain
 boost/tools/build/test/prebuilt/ext/Jamfile2 -text
+boost/tools/build/test/prebuilt/ext/Jamfile3 -text
 boost/tools/build/test/prebuilt/ext/a.cpp svneol=native#text/plain
 boost/tools/build/test/prebuilt/ext/debug/a.h svneol=native#text/plain
 boost/tools/build/test/prebuilt/ext/project-root.jam svneol=native#text/plain
@@ -6262,6 +6263,7 @@ boost/tools/build/v2/test/prebuilt.py svneol=native#text/x-python
 boost/tools/build/v2/test/prebuilt/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/prebuilt/ext/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/prebuilt/ext/Jamfile2 -text
+boost/tools/build/v2/test/prebuilt/ext/Jamfile3 -text
 boost/tools/build/v2/test/prebuilt/ext/a.cpp svneol=native#text/plain
 boost/tools/build/v2/test/prebuilt/ext/debug/a.h svneol=native#text/plain
 boost/tools/build/v2/test/prebuilt/ext/project-root.jam svneol=native#text/plain
