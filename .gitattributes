@@ -2315,6 +2315,7 @@ boost/libs/algorithm/string/test/regex_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/replace_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/split_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/trim_test.cpp svneol=native#text/plain
+boost/libs/algorithm/sublibs -text
 boost/libs/any/any_test.cpp svneol=native#text/plain
 boost/libs/any/doc/any.xml svneol=native#text/xml
 boost/libs/any/index.html svneol=native#text/html
