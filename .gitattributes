@@ -317,6 +317,7 @@ boost/boost/python/detail/extension_class.hpp svneol=native#text/plain
 boost/boost/python/detail/functions.hpp svneol=native#text/plain
 boost/boost/python/detail/init_function.hpp svneol=native#text/plain
 boost/boost/python/detail/none.hpp svneol=native#text/plain
+boost/boost/python/detail/python_library_include.hpp svneol=native#text/plain
 boost/boost/python/detail/signatures.hpp svneol=native#text/plain
 boost/boost/python/detail/singleton.hpp svneol=native#text/plain
 boost/boost/python/detail/types.hpp svneol=native#text/plain
