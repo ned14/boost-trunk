@@ -1079,6 +1079,7 @@ boost/libs/graph/test/filtered_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/graph.cpp svneol=native#text/plain
 boost/libs/graph/test/graph_concepts.cpp svneol=native#text/plain
 boost/libs/graph/test/graph_type.hpp svneol=native#text/plain
+boost/libs/graph/test/isomorphism.cpp svneol=native#text/plain
 boost/libs/graph/test/leda_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/lvalue_pmap.cpp svneol=native#text/plain
 boost/libs/graph/test/regression.cfg -text
