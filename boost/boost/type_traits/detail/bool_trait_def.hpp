@@ -26,7 +26,7 @@ template< typename T > struct trait \
     : ::boost::type_traits::bool_trait< C > \
 { \
     typedef ::boost::type_traits::bool_trait< C > base_trait_; \
-    using base_trait_::value; \
+    BOOST_STATIC_CONSTANT(bool, value = base_trait_::value); \
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,trait,(T)) \
 }; \
 \
@@ -38,7 +38,7 @@ template< typename T1, typename T2 > struct trait \
     : ::boost::type_traits::bool_trait< C > \
 { \
     typedef ::boost::type_traits::bool_trait< C > base_trait_; \
-    using base_trait_::value; \
+    BOOST_STATIC_CONSTANT(bool, value = base_trait_::value); \
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,trait,(T1,T2)) \
 }; \
 \
@@ -50,7 +50,7 @@ template<> struct trait<sp> \
     : ::boost::type_traits::bool_trait< C > \
 { \
     typedef ::boost::type_traits::bool_trait< C > base_trait_; \
-    using base_trait_::value; \
+    BOOST_STATIC_CONSTANT(bool, value = base_trait_::value); \
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1,trait,(sp)) \
 }; \
 /**/
@@ -60,7 +60,7 @@ template<> struct trait<sp1,sp2> \
     : ::boost::type_traits::bool_trait< C > \
 { \
     typedef ::boost::type_traits::bool_trait< C > base_trait_; \
-    using base_trait_::value; \
+    BOOST_STATIC_CONSTANT(bool, value = base_trait_::value); \
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,trait,(sp1,sp2)) \
 }; \
 /**/
@@ -70,7 +70,7 @@ template< param > struct trait<sp> \
     : ::boost::type_traits::bool_trait< C > \
 { \
     typedef ::boost::type_traits::bool_trait< C > base_trait_; \
-    using base_trait_::value; \
+    BOOST_STATIC_CONSTANT(bool, value = base_trait_::value); \
 }; \
 /**/
 
@@ -79,7 +79,7 @@ template< param1, param2 > struct trait<sp> \
     : ::boost::type_traits::bool_trait< C > \
 { \
     typedef ::boost::type_traits::bool_trait< C > base_trait_; \
-    using base_trait_::value; \
+    BOOST_STATIC_CONSTANT(bool, value = base_trait_::value); \
 }; \
 /**/
 
@@ -88,7 +88,7 @@ template< param > struct trait<sp1,sp2> \
     : ::boost::type_traits::bool_trait< C > \
 { \
     typedef ::boost::type_traits::bool_trait< C > base_trait_; \
-    using base_trait_::value; \
+    BOOST_STATIC_CONSTANT(bool, value = base_trait_::value); \
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,trait,(sp1,sp2)) \
 }; \
 /**/
@@ -98,7 +98,7 @@ template< param1, param2 > struct trait<sp1,sp2> \
     : ::boost::type_traits::bool_trait< C > \
 { \
     typedef ::boost::type_traits::bool_trait< C > base_trait_; \
-    using base_trait_::value; \
+    BOOST_STATIC_CONSTANT(bool, value = base_trait_::value); \
 }; \
 /**/
 
