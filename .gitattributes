@@ -252,6 +252,7 @@ boost/libs/graph/docs/kruskal_minimum_spanning_tree.html svneol=native#text/html
 boost/libs/graph/docs/leda_conversion.html svneol=native#text/html
 boost/libs/graph/docs/null_visitor.html svneol=native#text/html
 boost/libs/graph/docs/opposite.html svneol=native#text/html
+boost/libs/graph/docs/predecessor_recorder.html svneol=native#text/html
 boost/libs/graph/docs/prim_minimum_spanning_tree.html svneol=native#text/html
 boost/libs/graph/docs/quick_tour.html svneol=native#text/html
 boost/libs/graph/docs/sparse_matrix_ordering.html svneol=native#text/html
