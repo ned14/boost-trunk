@@ -6836,8 +6836,6 @@ boost/libs/serialization/vc7ide/test_derived_class.vcproj -text
 boost/libs/serialization/vc7ide/test_derived_class_ptr.vcproj -text
 boost/libs/serialization/vc7ide/test_diamond.vcproj -text
 boost/libs/serialization/vc7ide/test_exported.vcproj -text
-boost/libs/serialization/vc7ide/test_iterattors.vcproj -text
-boost/libs/serialization/vc7ide/test_iterattors_base64.vcproj -text
 boost/libs/serialization/vc7ide/test_list.vcproj -text
 boost/libs/serialization/vc7ide/test_list_ptrs.vcproj -text
 boost/libs/serialization/vc7ide/test_map.vcproj -text
