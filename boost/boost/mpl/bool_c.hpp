@@ -17,16 +17,12 @@
 #ifndef BOOST_MPL_BOOL_C_HPP_INCLUDED
 #define BOOST_MPL_BOOL_C_HPP_INCLUDED
 
-#include "boost/mpl/is_reflective.hpp"
 #include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
 
 template< bool C > struct bool_c
-#if defined(BOOST_MPL_NO_IS_REFLECTIVE_TRAIT_SPECIALIZATION)
-    : aux::reflective_type_base
-#endif
 {
     BOOST_STATIC_CONSTANT(bool, value = C);
     typedef bool_c type;
@@ -37,16 +33,6 @@ template< bool C > struct bool_c
 // shorcuts
 typedef bool_c<true> true_c;
 typedef bool_c<false> false_c;
-
-
-#if !defined(BOOST_MPL_NO_IS_REFLECTIVE_TRAIT_SPECIALIZATION)
-template< bool C >
-struct is_reflective< bool_c<C> >
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-    typedef is_reflective type;
-};
-#endif
 
 } // namespace mpl
 } // namespace boost 
