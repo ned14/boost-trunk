@@ -1440,6 +1440,7 @@ boost/libs/python/src/cross_module.cpp svneol=native#text/plain
 boost/libs/python/src/extension_class.cpp svneol=native#text/plain
 boost/libs/python/src/functions.cpp svneol=native#text/plain
 boost/libs/python/src/gen_all.py svneol=native#text/x-python
+boost/libs/python/src/gen_arg_tuple_size.py svneol=native#text/x-python
 boost/libs/python/src/gen_callback.py svneol=native#text/x-python
 boost/libs/python/src/gen_caller.py svneol=native#text/x-python
 boost/libs/python/src/gen_extclass.py svneol=native#text/x-python
