@@ -151,6 +151,7 @@ boost/development/py_cpp/gen_function.py svneol=native#text/x-python
 boost/development/py_cpp/gen_init_function.py svneol=native#text/x-python
 boost/development/py_cpp/gen_signatures.py svneol=native#text/x-python
 boost/development/py_cpp/gen_singleton.py svneol=native#text/x-python
+boost/development/py_cpp/inheritance.html svneol=native#text/html
 boost/development/py_cpp/init_function.cpp svneol=native#text/plain
 boost/development/py_cpp/init_function.h svneol=native#text/plain
 boost/development/py_cpp/module.cpp svneol=native#text/plain
