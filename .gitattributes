@@ -3404,6 +3404,7 @@ boost/libs/graph/example/graph-assoc-types.cpp svneol=native#text/plain
 boost/libs/graph/example/graph-property-iter-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/graph.cpp svneol=native#text/plain
 boost/libs/graph/example/graph_as_tree.cpp svneol=native#text/plain
+boost/libs/graph/example/graph_property.cpp svneol=native#text/plain
 boost/libs/graph/example/graphviz.cpp svneol=native#text/plain
 boost/libs/graph/example/graphviz_test.dot -text
 boost/libs/graph/example/in_edges.cpp svneol=native#text/plain
