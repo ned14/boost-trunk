@@ -8173,8 +8173,12 @@ boost/libs/statechart/test/InvalidTransitionTest4.vcproj -text
 boost/libs/statechart/test/Jamfile svneol=native#text/plain
 boost/libs/statechart/test/OuterOrthogonal.hpp svneol=native#text/plain
 boost/libs/statechart/test/RunTests.bat svneol=native#text/plain
+boost/libs/statechart/test/StateCastTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/StateCastTest.vcproj -text
 boost/libs/statechart/test/TransitionTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TransitionTest.vcproj -text
+boost/libs/statechart/test/TypeInfoTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/TypeInfoTest.vcproj -text
 boost/libs/statechart/test/UnsupportedDeepHistoryTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/UnsupportedDeepHistoryTest.vcproj -text
 boost/libs/static_assert/Jamfile svneol=native#text/plain
