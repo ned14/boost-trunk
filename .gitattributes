@@ -523,6 +523,7 @@ boost/libs/bind/bind_stdcall_test.cpp svneol=native#text/plain
 boost/libs/bind/bind_test.cpp svneol=native#text/plain
 boost/libs/bind/bind_visitor.cpp svneol=native#text/plain
 boost/libs/bind/mem_fn.html svneol=native#text/html
+boost/libs/bind/mem_fn_derived_test.cpp svneol=native#text/plain
 boost/libs/bind/mem_fn_stdcall_test.cpp svneol=native#text/plain
 boost/libs/bind/mem_fn_test.cpp svneol=native#text/plain
 boost/libs/bind/mem_fn_void_test.cpp svneol=native#text/plain
