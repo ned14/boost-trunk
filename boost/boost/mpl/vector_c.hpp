@@ -99,7 +99,7 @@ namespace mpl {
     BOOST_PP_ENUM_PARAMS(n, param) \
     BOOST_PP_COMMA_IF(n) \
     BOOST_PP_ENUM( \
-          BOOST_PP_SUB(BOOST_MPL_LIMIT_VECTOR_SIZE,n) \
+          BOOST_PP_SUB_D(1,BOOST_MPL_LIMIT_VECTOR_SIZE,n) \
         , BOOST_MPL_PP_PROJECT2ND \
         , def \
         ) \

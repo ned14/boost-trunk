@@ -65,13 +65,13 @@
 #   define BOOST_MPL_PP_AUX_TAIL_PARAM_FUNC(i, op) \
     , BOOST_PP_CAT( \
           BOOST_PP_TUPLE_ELEM(2, 1, op) \
-        , BOOST_PP_ADD(i, BOOST_PP_TUPLE_ELEM(2, 0, op)) \
+        , BOOST_PP_ADD_D(1, i, BOOST_PP_TUPLE_ELEM(2, 0, op)) \
         ) = void_ \
     /**/
 
 #   define BOOST_MPL_PP_DEF_PARAMS_TAIL(i, param) \
-    BOOST_PP_REPEAT( \
-          BOOST_PP_SUB(BOOST_MPL_METAFUNCTION_MAX_ARITY, i) \
+    BOOST_PP_REPEAT_1ST( \
+          BOOST_PP_SUB_D(1, BOOST_MPL_METAFUNCTION_MAX_ARITY, i) \
         , BOOST_MPL_PP_AUX_TAIL_PARAM_FUNC \
         , (i, param) \
         ) \

@@ -67,7 +67,7 @@ struct BOOST_PP_CAT(vector,i)
     typedef BOOST_PP_CAT(T,i) BOOST_PP_CAT(item,i); \
     /**/
 
-    BOOST_PP_REPEAT(i, AUX_VECTOR_ITEM, unused)
+    BOOST_PP_REPEAT_1ST(i, AUX_VECTOR_ITEM, unused)
 #   undef AUX_VECTOR_ITEM
     typedef void_ BOOST_PP_CAT(item,i);
     typedef BOOST_PP_CAT(T,BOOST_PP_DEC(i)) back;

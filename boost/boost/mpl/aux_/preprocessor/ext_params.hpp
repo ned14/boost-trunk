@@ -62,13 +62,13 @@
     BOOST_PP_COMMA_IF(i) \
     BOOST_PP_CAT( \
           BOOST_PP_TUPLE_ELEM(2,1,op) \
-        , BOOST_PP_ADD(i, BOOST_PP_TUPLE_ELEM(2,0,op)) \
+        , BOOST_PP_ADD_D(1, i, BOOST_PP_TUPLE_ELEM(2,0,op)) \
         ) \
     /**/
 
 #   define BOOST_MPL_PP_EXT_PARAMS(i,j,param) \
     BOOST_PP_REPEAT( \
-          BOOST_PP_SUB(j,i) \
+          BOOST_PP_SUB_D(1,j,i) \
         , BOOST_MPL_PP_AUX_EXT_PARAM_FUNC \
         , (i,param) \
         ) \

@@ -31,7 +31,7 @@
 #   include "boost/mpl/aux_/preprocessor/repeat.hpp"
 #   include "boost/mpl/aux_/preprocessor/params.hpp"
 
-#   define AUX_COUNT_ARGS_REPEAT BOOST_MPL_PP_REPEAT
+#   define AUX_COUNT_ARGS_REPEAT BOOST_MPL_PP_REPEAT_1ST
 #   define AUX_COUNT_ARGS_PARAMS(param) \
     BOOST_MPL_PP_PARAMS( \
           BOOST_MPL_AUX_COUNT_ARGS_ARITY \
@@ -45,7 +45,7 @@
 #   include "boost/preprocessor/repeat.hpp"
 #   include "boost/preprocessor/inc.hpp"
 
-#   define AUX_COUNT_ARGS_REPEAT BOOST_PP_REPEAT
+#   define AUX_COUNT_ARGS_REPEAT BOOST_PP_REPEAT_1ST
 #   define AUX_COUNT_ARGS_PARAMS(param) \
     BOOST_PP_ENUM_SHIFTED_PARAMS( \
           BOOST_PP_INC(BOOST_MPL_AUX_COUNT_ARGS_ARITY) \

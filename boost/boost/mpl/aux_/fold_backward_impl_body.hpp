@@ -53,7 +53,7 @@
 
 #   define AUX_ITER_FOLD_BACKWARD_STEP(i, j) \
     AUX_ITER_FOLD_BACKWARD_STEP_FUNC( \
-        BOOST_PP_SUB(j,i) \
+        BOOST_PP_SUB_D(1,j,i) \
         ) \
     /**/
 
