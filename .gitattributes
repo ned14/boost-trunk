@@ -2169,6 +2169,7 @@ boost/boost/test/detail/fixed_mapping.hpp svneol=native#text/plain
 boost/boost/test/detail/iterator/ifstream_line_iterator.hpp svneol=native#text/plain
 boost/boost/test/detail/iterator/input_iterator_facade.hpp svneol=native#text/plain
 boost/boost/test/detail/iterator/istream_line_iterator.hpp svneol=native#text/plain
+boost/boost/test/detail/iterator/token_iterator.hpp svneol=native#text/plain
 boost/boost/test/detail/nullstream.hpp svneol=native#text/plain
 boost/boost/test/detail/supplied_log_formatters.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_config.hpp svneol=native#text/plain
