@@ -2396,6 +2396,7 @@ boost/tools/build/new/class.jam svneol=native#text/plain
 boost/tools/build/new/doc.jam svneol=native#text/plain
 boost/tools/build/new/errors.jam svneol=native#text/plain
 boost/tools/build/new/feature.jam svneol=native#text/plain
+boost/tools/build/new/m1.txt svneol=native#text/plain
 boost/tools/build/new/modules.jam svneol=native#text/plain
 boost/tools/build/new/numbers.jam svneol=native#text/plain
 boost/tools/build/new/os.jam svneol=native#text/plain
@@ -2431,6 +2432,32 @@ boost/tools/build/test/cxxflags_test.zip -text svneol=unset#application/zip
 boost/tools/build/test/echo_args.jam svneol=native#text/plain
 boost/tools/build/test/empty.jam svneol=native#text/plain
 boost/tools/build/test/include_types_test.zip -text svneol=unset#application/zip
+boost/tools/build/test/m1-01.py svneol=native#text/x-python
+boost/tools/build/test/m1-01/Jamfile svneol=native#text/plain
+boost/tools/build/test/m1-01/Jamfile2 -text
+boost/tools/build/test/m1-01/Jamfile3 -text
+boost/tools/build/test/m1-01/a.cpp svneol=native#text/plain
+boost/tools/build/test/m1-01/project-root.jam svneol=native#text/plain
+boost/tools/build/test/m1-02.py svneol=native#text/x-python
+boost/tools/build/test/m1-02/Jamfile svneol=native#text/plain
+boost/tools/build/test/m1-02/Jamfile2 -text
+boost/tools/build/test/m1-02/Jamfile3 -text
+boost/tools/build/test/m1-02/Jamfile4 -text
+boost/tools/build/test/m1-02/a.cpp svneol=native#text/plain
+boost/tools/build/test/m1-02/auxillary/Jamfile svneol=native#text/plain
+boost/tools/build/test/m1-02/auxillary/Jamfile3 -text
+boost/tools/build/test/m1-02/auxillary/Jamfile4 -text
+boost/tools/build/test/m1-02/auxillary/b.cpp svneol=native#text/plain
+boost/tools/build/test/m1-02/auxillary/x.cpp svneol=native#text/plain
+boost/tools/build/test/m1-02/project-root.jam svneol=native#text/plain
+boost/tools/build/test/m1-03.py svneol=native#text/x-python
+boost/tools/build/test/m1-03/p1/Jamfile svneol=native#text/plain
+boost/tools/build/test/m1-03/p1/a.cpp svneol=native#text/plain
+boost/tools/build/test/m1-03/p1/auxillary/Jamfile svneol=native#text/plain
+boost/tools/build/test/m1-03/p1/auxillary/b.cpp svneol=native#text/plain
+boost/tools/build/test/m1-03/p1/project-root.jam svneol=native#text/plain
+boost/tools/build/test/m1-03/p2/Jamfile svneol=native#text/plain
+boost/tools/build/test/m1-03/p2/project-root.jam svneol=native#text/plain
 boost/tools/build/test/nested_includes_test.zip -text svneol=unset#application/zip
 boost/tools/build/test/project-test1.jam svneol=native#text/plain
 boost/tools/build/test/project-test1.py svneol=native#text/x-python
@@ -2492,6 +2519,7 @@ boost/tools/build/v2/build/targets.jam svneol=native#text/plain
 boost/tools/build/v2/doc/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/errors.jam svneol=native#text/plain
 boost/tools/build/v2/kernel/class.jam svneol=native#text/plain
+boost/tools/build/v2/m1.txt svneol=native#text/plain
 boost/tools/build/v2/modules.jam svneol=native#text/plain
 boost/tools/build/v2/os.path.jam svneol=native#text/plain
 boost/tools/build/v2/project-root.jam svneol=native#text/plain
@@ -2513,6 +2541,32 @@ boost/tools/build/v2/test/cxxflags_test.zip -text svneol=unset#application/zip
 boost/tools/build/v2/test/echo_args.jam svneol=native#text/plain
 boost/tools/build/v2/test/empty.jam svneol=native#text/plain
 boost/tools/build/v2/test/include_types_test.zip -text svneol=unset#application/zip
+boost/tools/build/v2/test/m1-01.py svneol=native#text/x-python
+boost/tools/build/v2/test/m1-01/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/m1-01/Jamfile2 -text
+boost/tools/build/v2/test/m1-01/Jamfile3 -text
+boost/tools/build/v2/test/m1-01/a.cpp svneol=native#text/plain
+boost/tools/build/v2/test/m1-01/project-root.jam svneol=native#text/plain
+boost/tools/build/v2/test/m1-02.py svneol=native#text/x-python
+boost/tools/build/v2/test/m1-02/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/m1-02/Jamfile2 -text
+boost/tools/build/v2/test/m1-02/Jamfile3 -text
+boost/tools/build/v2/test/m1-02/Jamfile4 -text
+boost/tools/build/v2/test/m1-02/a.cpp svneol=native#text/plain
+boost/tools/build/v2/test/m1-02/auxillary/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/m1-02/auxillary/Jamfile3 -text
+boost/tools/build/v2/test/m1-02/auxillary/Jamfile4 -text
+boost/tools/build/v2/test/m1-02/auxillary/b.cpp svneol=native#text/plain
+boost/tools/build/v2/test/m1-02/auxillary/x.cpp svneol=native#text/plain
+boost/tools/build/v2/test/m1-02/project-root.jam svneol=native#text/plain
+boost/tools/build/v2/test/m1-03.py svneol=native#text/x-python
+boost/tools/build/v2/test/m1-03/p1/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/m1-03/p1/a.cpp svneol=native#text/plain
+boost/tools/build/v2/test/m1-03/p1/auxillary/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/m1-03/p1/auxillary/b.cpp svneol=native#text/plain
+boost/tools/build/v2/test/m1-03/p1/project-root.jam svneol=native#text/plain
+boost/tools/build/v2/test/m1-03/p2/Jamfile svneol=native#text/plain
+boost/tools/build/v2/test/m1-03/p2/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/nested_includes_test.zip -text svneol=unset#application/zip
 boost/tools/build/v2/test/project-test1.jam svneol=native#text/plain
 boost/tools/build/v2/test/project-test1.py svneol=native#text/x-python
