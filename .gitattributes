@@ -6850,6 +6850,7 @@ boost/libs/spirit/test/actor/clear_test.cpp svneol=native#text/plain
 boost/libs/spirit/test/actor/decrement_test.cpp svneol=native#text/plain
 boost/libs/spirit/test/actor/erase_at_test.cpp svneol=native#text/plain
 boost/libs/spirit/test/actor/increment_test.cpp svneol=native#text/plain
+boost/libs/spirit/test/actor/insert_at_test.cpp svneol=native#text/plain
 boost/libs/spirit/test/actor/insert_key_test.cpp svneol=native#text/plain
 boost/libs/spirit/test/actor/push_back_test.cpp svneol=native#text/plain
 boost/libs/spirit/test/actor/push_front_test.cpp svneol=native#text/plain
