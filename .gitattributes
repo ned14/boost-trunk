@@ -5802,7 +5802,6 @@ boost/libs/variant/test/test5.cpp svneol=native#text/plain
 boost/libs/variant/test/test6.cpp svneol=native#text/plain
 boost/libs/variant/test/test7.cpp svneol=native#text/plain
 boost/libs/variant/test/test8.cpp svneol=native#text/plain
-boost/libs/variant/test/varout.h svneol=native#text/plain
 boost/more/borland_cpp.html svneol=native#text/html
 boost/more/bugs.htm svneol=native#text/html
 boost/more/count_bdy.htm svneol=native#text/html
