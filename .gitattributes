@@ -2579,6 +2579,7 @@ boost/libs/test/doc/js-lib/scheduler_api.js svneol=native#text/javascript
 boost/libs/test/doc/js-lib/transitions.js svneol=native#text/javascript
 boost/libs/test/doc/js-lib/vis_obj_loop_roller.js svneol=native#text/javascript
 boost/libs/test/doc/js-lib/vis_object_api.js svneol=native#text/javascript
+boost/libs/test/doc/js-lib/viso_core.js svneol=native#text/javascript
 boost/libs/test/doc/js-lib/wipe_away_menu.js svneol=native#text/javascript
 boost/libs/test/doc/output_test_stream.htm svneol=native#text/html
 boost/libs/test/doc/prg_exec_monitor.htm svneol=native#text/html
