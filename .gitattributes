@@ -243,6 +243,7 @@ boost/boost/function/gen_function_N.pl svneol=native#text/x-perl
 boost/boost/function_output_iterator.hpp svneol=native#text/plain
 boost/boost/functional.hpp svneol=native#text/plain
 boost/boost/generator_iterator.hpp svneol=native#text/plain
+boost/boost/get_pointer.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_iterator.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list_io.hpp svneol=native#text/plain
