@@ -16,7 +16,7 @@
 
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/assert_is_same.hpp"
-#include "boost/mpl/aux_/preprocessor.hpp"
+#include "boost/mpl/aux_/preprocessor/params.hpp"
 
 #include "boost/preprocessor/repeat_2nd.hpp"
 #include "boost/preprocessor/dec.hpp"

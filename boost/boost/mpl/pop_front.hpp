@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/list/aux_/pop_front.hpp header file
+// boost mpl/pop_front.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -14,26 +14,34 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
-#define BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
+#ifndef BOOST_MPL_POP_FRONT_HPP_INCLUDED
+#define BOOST_MPL_POP_FRONT_HPP_INCLUDED
 
-#include "boost/mpl/pop_front.hpp"
-#include "boost/mpl/list/aux_/tag.hpp"
-#include "boost/mpl/list/aux_/node.hpp"
+#include "boost/mpl/sequence_tag.hpp"
+#include "boost/mpl/aux_/lambda_spec.hpp"
 
 namespace boost {
 namespace mpl {
 
-template<>
-struct pop_front_algorithm_traits< aux::list_tag >
+template< typename Tag >
+struct pop_front_algorithm_traits
 {
-    template< typename List > struct algorithm
-    {
-        typedef typename List::next type;
-    };
+    template< typename Sequence > struct algorithm;
 };
+
+template<
+      typename Sequence
+    >
+struct pop_front
+    : pop_front_algorithm_traits<
+          typename sequence_tag<Sequence>::type
+        >::template algorithm< Sequence >
+{
+};
+
+BOOST_MPL_AUX_LAMBDA_SPEC(1, pop_front)
 
 } // namespace mpl
 } // namespace boost
 
-#endif // BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
+#endif // BOOST_MPL_POP_FRONT_HPP_INCLUDED

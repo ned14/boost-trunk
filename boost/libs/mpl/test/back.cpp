@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/list/aux_/pop_front.hpp header file
+// boost mpl/test/back.cpp source file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -14,26 +14,22 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
-#define BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
+#include "boost/mpl/back.hpp"
+#include "boost/mpl/range_c.hpp"
+#include "boost/mpl/assert_is_same.hpp"
+#include "boost/static_assert.hpp"
 
-#include "boost/mpl/pop_front.hpp"
-#include "boost/mpl/list/aux_/tag.hpp"
-#include "boost/mpl/list/aux_/node.hpp"
+namespace mpl = boost::mpl;
 
-namespace boost {
-namespace mpl {
-
-template<>
-struct pop_front_algorithm_traits< aux::list_tag >
+int main()
 {
-    template< typename List > struct algorithm
-    {
-        typedef typename List::next type;
-    };
-};
+    typedef mpl::range_c<int,0,1> numbers1;
+    typedef mpl::range_c<int,0,10> numbers2;
+    typedef mpl::range_c<int,-10,0> numbers3;
+    
+    BOOST_STATIC_ASSERT(mpl::back<numbers1>::value == 0);
+    BOOST_STATIC_ASSERT(mpl::back<numbers2>::value == 9);
+    BOOST_STATIC_ASSERT(mpl::back<numbers3>::value == -1);
 
-} // namespace mpl
-} // namespace boost
-
-#endif // BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
+    return 0;
+}

@@ -43,8 +43,8 @@ struct null_node
 
 // to make VC 7.0 happy
 #if defined(BOOST_MSVC) && (BOOST_MSVC == 1300)
-    typedef aux::none item;
-    typedef null_node next;
+//    typedef aux::none item;
+//    typedef null_node next;
 #endif
 };
 

@@ -21,6 +21,7 @@
 #include "boost/mpl/list/aux_/push_front.hpp"
 #include "boost/mpl/list/aux_/pop_front.hpp"
 #include "boost/mpl/list/aux_/clear.hpp"
+#include "boost/mpl/list/aux_/begin_end.hpp"
 #include "boost/mpl/list/aux_/node.hpp"
 
 namespace boost {

@@ -19,6 +19,7 @@
 
 #include "boost/mpl/begin_end.hpp"
 #include "boost/mpl/sequence_tag.hpp"
+#include "boost/mpl/select_if.hpp"
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/is_reflective.hpp"
 #include "boost/mpl/aux_/lambda_spec.hpp"
@@ -50,7 +51,7 @@ struct back_impl
     typedef typename back_algorithm_traits<tag_>
         ::template algorithm< Sequence >::type result_;
  public:
-    typedef typename apply_if<
+    typedef typename select_if<
           is_reflective<result_>
         , result_
         , identity<result_>

@@ -17,8 +17,9 @@
 #ifndef BOOST_MPL_LIST_AUX_ITERATOR_HPP_INCLUDED
 #define BOOST_MPL_LIST_AUX_ITERATOR_HPP_INCLUDED
 
-#include "boost/mpl/aux_/none.hpp"
+#include "boost/mpl/list/aux_/node.hpp"
 #include "boost/mpl/iterator_category.hpp"
+#include "boost/mpl/aux_/none.hpp"
 #include "boost/mpl/lambda_fwd.hpp"
 #include "boost/mpl/aux_/config/lambda_support.hpp"
 
@@ -34,7 +35,7 @@ struct list_iterator
 };
 
 template<>
-struct list_iterator<aux::none>
+struct list_iterator<null_node>
 {
     typedef forward_iterator_tag category;
 };

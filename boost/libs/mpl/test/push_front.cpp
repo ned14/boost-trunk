@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/test/copy_backward.cpp source file
+// boost mpl/test/push_front.cpp source file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -14,29 +14,32 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/copy_backward.hpp"
+#include "boost/mpl/push_front.hpp"
 #include "boost/mpl/list.hpp"
-#include "boost/mpl/list_c.hpp"
-#include "boost/mpl/range_c.hpp"
 #include "boost/mpl/size.hpp"
-#include "boost/mpl/equal.hpp"
+#include "boost/mpl/front.hpp"
+#include "boost/mpl/assert_is_same.hpp"
 #include "boost/static_assert.hpp"
 
 namespace mpl = boost::mpl;
 
 int main()
 {
-    using namespace mpl::placeholder;
+    typedef mpl::list<>::type types1;
+    typedef mpl::list<long>::type types2;
+    typedef mpl::list<int,long>::type types3;
 
-    typedef mpl::list_c<int,5,6,7,8,9>::type numbers;
-    typedef mpl::copy_backward<
-          mpl::range_c<int,0,5>
-        , mpl::push_front<_,_>
-        , numbers
-        >::type result;
-
-    BOOST_STATIC_ASSERT(mpl::size<result>::value == 10);
-    BOOST_STATIC_ASSERT((mpl::equal< result,mpl::range_c<int,0,10> >::value));
+    typedef mpl::push_front<types1,long>::type result1;
+    typedef mpl::push_front<types2,int>::type  result2;
+    typedef mpl::push_front<types3,char>::type result3;
+    
+    BOOST_STATIC_ASSERT(mpl::size<result1>::value == 1);
+    BOOST_STATIC_ASSERT(mpl::size<result2>::value == 2);
+    BOOST_STATIC_ASSERT(mpl::size<result3>::value == 3);
+    
+    BOOST_MPL_ASSERT_IS_SAME(mpl::front<result1>::type, long);
+    BOOST_MPL_ASSERT_IS_SAME(mpl::front<result2>::type, int);
+    BOOST_MPL_ASSERT_IS_SAME(mpl::front<result3>::type, char);
 
     return 0;
 }

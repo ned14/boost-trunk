@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/test/count_if.cpp source file
+// boost mpl/test/front.cpp source file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -14,30 +14,31 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#include "boost/mpl/count_if.hpp"
+#include "boost/mpl/front.hpp"
 #include "boost/mpl/list.hpp"
 #include "boost/mpl/list_c.hpp"
-#include "boost/mpl/int_c.hpp"
-#include "boost/mpl/comparison/less.hpp"
-#include "boost/mpl/comparison/equal_to.hpp"
-#include "boost/mpl/type_traits/is_float.hpp"
+#include "boost/mpl/assert_is_same.hpp"
 #include "boost/static_assert.hpp"
 
 namespace mpl = boost::mpl;
 
 int main()
 {
-    using namespace mpl::placeholder;
-    typedef mpl::list<int,char,long,short,char,long,double,long> types;
-    typedef mpl::list_c<int,1,0,5,1,7,5,0,5> values;
-    
-    BOOST_STATIC_ASSERT((mpl::count_if< types, mpl::is_float<_> >::value == 1));
-    BOOST_STATIC_ASSERT((mpl::count_if< types, mpl::same_as<char> >::value == 2));
-    BOOST_STATIC_ASSERT((mpl::count_if< types, mpl::same_as<void> >::value == 0));
+    typedef mpl::list<long>::type types1;
+    typedef mpl::list<int,long>::type types2;
+    typedef mpl::list<char,int,long>::type types3;
 
-    BOOST_STATIC_ASSERT((mpl::count_if< values, mpl::lt<5> >::value == 4));
-    BOOST_STATIC_ASSERT((mpl::count_if< values, mpl::eq<0>  >::value == 2));
-    BOOST_STATIC_ASSERT((mpl::count_if< values, mpl::eq<-1> >::value == 0));
-    
+    BOOST_MPL_ASSERT_IS_SAME(mpl::front<types1>::type, long);
+    BOOST_MPL_ASSERT_IS_SAME(mpl::front<types2>::type, int);
+    BOOST_MPL_ASSERT_IS_SAME(mpl::front<types3>::type, char);
+
+    typedef mpl::list_c<int,1>::type values1;
+    typedef mpl::list_c<int,2,1>::type values2;
+    typedef mpl::list_c<int,3,2,1>::type values3;
+
+    BOOST_STATIC_ASSERT(mpl::front<values1>::value == 1);
+    BOOST_STATIC_ASSERT(mpl::front<values2>::value == 2);
+    BOOST_STATIC_ASSERT(mpl::front<values3>::value == 3);
+
     return 0;
 }

@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------
-// boost mpl/list/aux_/pop_front.hpp header file
+// boost mpl/test/size_of.cpp source file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
-// Copyright (c) 2000-02
+// Copyright (c) 2001-02
 // Aleksey Gurtovoy
 //
 // Permission to use, copy, modify, distribute and sell this software
@@ -14,26 +14,21 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
-#define BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
+#include "boost/mpl/size_of.hpp"
+#include "boost/static_assert.hpp"
 
-#include "boost/mpl/pop_front.hpp"
-#include "boost/mpl/list/aux_/tag.hpp"
-#include "boost/mpl/list/aux_/node.hpp"
+namespace mpl = boost::mpl;
 
-namespace boost {
-namespace mpl {
-
-template<>
-struct pop_front_algorithm_traits< aux::list_tag >
+struct my
 {
-    template< typename List > struct algorithm
-    {
-        typedef typename List::next type;
-    };
+    char a[100];
 };
 
-} // namespace mpl
-} // namespace boost
-
-#endif // BOOST_MPL_LIST_AUX_POP_FRONT_HPP_INCLUDED
+int main()
+{
+    BOOST_STATIC_ASSERT(mpl::size_of<char>::value == sizeof(char));
+    BOOST_STATIC_ASSERT(mpl::size_of<int>::value == sizeof(int));
+    BOOST_STATIC_ASSERT(mpl::size_of<double>::value == sizeof(double));
+    BOOST_STATIC_ASSERT(mpl::size_of<my>::value == sizeof(my));
+    return 0;
+}
