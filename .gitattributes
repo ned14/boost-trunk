@@ -143,6 +143,7 @@ boost/boost/smart_ptr.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
 boost/boost/stdint.h svneol=native#text/plain
 boost/boost/timer.hpp svneol=native#text/plain
+boost/boost/type.hpp svneol=native#text/plain
 boost/boost/type_traits.hpp svneol=native#text/plain
 boost/boost/utility.hpp svneol=native#text/plain
 boost/c++boost.gif -text svneol=unset#image/gif
