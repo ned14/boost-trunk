@@ -7343,6 +7343,7 @@ boost/libs/smart_ptr/test/shared_ptr_timing_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/smart_ptr_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/weak_ptr_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/weak_ptr.htm svneol=native#text/html
+boost/libs/spirit/change_log.html svneol=native#text/html
 boost/libs/spirit/change_log.txt svneol=native#text/plain
 boost/libs/spirit/doc/acknowledgments.html svneol=native#text/html
 boost/libs/spirit/doc/basic_concepts.html svneol=native#text/html
