@@ -1,6 +1,9 @@
 boost/libs/optional/test/bin
 boost/libs/python/pyste/example/*.cpp
 boost/libs/python/pyste/src/*.pyc
+boost/libs/python/pyste/tests/*.cpp
+boost/libs/python/pyste/tests/*.dll
+boost/libs/python/pyste/tests/*.pyc
 boost/libs/spirit/example/application/cpp_lexer/*.gprof
 boost/libs/spirit/example/application/cpp_lexer/*.out
 boost/libs/spirit/example/application/cpp_lexer/*.output
