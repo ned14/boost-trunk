@@ -2419,6 +2419,7 @@ boost/boost/test/detail/unit_test_config.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_monitor.hpp svneol=native#text/plain
 boost/boost/test/detail/unit_test_parameters.hpp svneol=native#text/plain
 boost/boost/test/detail/wrap_stringstream.hpp svneol=native#text/plain
+boost/boost/test/detail/xml_printer.hpp svneol=native#text/plain
 boost/boost/test/execution_monitor.hpp svneol=native#text/plain
 boost/boost/test/floating_point_comparison.hpp svneol=native#text/plain
 boost/boost/test/included/prg_exec_monitor.hpp svneol=native#text/plain
