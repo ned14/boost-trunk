@@ -7486,6 +7486,7 @@ boost/libs/serialization/test/test_traits_fail.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_traits_pass.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_unregistered.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_utf8_codecvt.cpp svneol=native#text/plain
+boost/libs/serialization/test/test_variant.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_vector.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_void_cast.cpp svneol=native#text/plain
 boost/libs/serialization/test/text_archive.hpp svneol=native#text/plain
