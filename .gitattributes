@@ -2907,6 +2907,7 @@ boost/libs/io/doc/index.html svneol=native#text/html
 boost/libs/io/doc/ios_state.html svneol=native#text/html
 boost/libs/io/index.html svneol=native#text/html
 boost/libs/io/test/ios_state_test.cpp svneol=native#text/plain
+boost/libs/io/test/ios_state_unit_test.cpp svneol=native#text/plain
 boost/libs/lambda/doc/apa.html svneol=native#text/html
 boost/libs/lambda/doc/ar01s02.html svneol=native#text/html
 boost/libs/lambda/doc/ar01s03.html svneol=native#text/html
