@@ -484,6 +484,7 @@ boost/boost/mpl/aux_/config/nttp.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/overload_resolution.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/preprocessor.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/static_constant.hpp svneol=native#text/plain
+boost/boost/mpl/aux_/config/tag_protocol.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/ttp.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/use_preprocessed.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/vector.hpp svneol=native#text/plain
