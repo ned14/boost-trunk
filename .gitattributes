@@ -8147,6 +8147,7 @@ boost/libs/spirit/test/grammar_multi_instance_tst.cpp svneol=native#text/plain
 boost/libs/spirit/test/grammar_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/group_match_bug.cpp svneol=native#text/plain
 boost/libs/spirit/test/if_p_as_parser_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/if_p_int_as_condition_test.cpp svneol=native#text/plain
 boost/libs/spirit/test/if_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/impl/sstream.hpp svneol=native#text/plain
 boost/libs/spirit/test/impl/string_length.hpp svneol=native#text/plain
