@@ -5378,6 +5378,17 @@ boost/tools/build/vacpp-tools.jam svneol=native#text/plain
 boost/tools/build/variables.html svneol=native#text/html
 boost/tools/build/vc7-tools.html svneol=native#text/html
 boost/tools/build/vc7-tools.jam svneol=native#text/plain
+boost/tools/index.html svneol=native#text/html
+boost/tools/inspect/build/Jamfile svneol=native#text/plain
+boost/tools/inspect/index.html svneol=native#text/html
+boost/tools/inspect/inspect.cpp svneol=native#text/plain
+boost/tools/inspect/inspector.hpp svneol=native#text/plain
+boost/tools/inspect/link_check.cpp svneol=native#text/plain
+boost/tools/inspect/link_check.hpp svneol=native#text/plain
+boost/tools/inspect/long_name_check.cpp svneol=native#text/plain
+boost/tools/inspect/long_name_check.hpp svneol=native#text/plain
+boost/tools/inspect/tab_check.cpp svneol=native#text/plain
+boost/tools/inspect/tab_check.hpp svneol=native#text/plain
 boost/tools/jam/src/Build.com -text
 boost/tools/jam/src/Build.mpw -text
 boost/tools/jam/src/INSTALL svneol=native#text/plain
@@ -5496,4 +5507,5 @@ boost/tools/regression/detail/tiny_xml.cpp svneol=native#text/plain
 boost/tools/regression/detail/tiny_xml.hpp svneol=native#text/plain
 boost/tools/regression/detail/tiny_xml_test.cpp svneol=native#text/plain
 boost/tools/regression/detail/tiny_xml_test.txt svneol=native#text/plain
+boost/tools/regression/index.htm svneol=native#text/html
 boost/tools/regression/process_jam_log.cpp svneol=native#text/plain
