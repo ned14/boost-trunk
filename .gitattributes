@@ -7822,6 +7822,7 @@ boost/libs/utility/enable_if_partial_specializations.cpp svneol=native#text/plai
 boost/libs/utility/filter_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/fun_out_iter_example.cpp svneol=native#text/plain
 boost/libs/utility/generator_iterator.htm svneol=native#text/html
+boost/libs/utility/in_place_factories.html svneol=native#text/html
 boost/libs/utility/index.html svneol=native#text/html
 boost/libs/utility/indirect_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/iterator_adaptor_examples.cpp svneol=native#text/plain
