@@ -1089,6 +1089,7 @@ boost/libs/graph/doc/exception.html svneol=native#text/html
 boost/libs/graph/doc/faq.html svneol=native#text/html
 boost/libs/graph/doc/figs/Makefile svneol=native#text/plain
 boost/libs/graph/doc/figs/adj-list.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/adj-list2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-matrix-graph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj-matrix.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/adj_list.fig -text
@@ -1145,6 +1146,7 @@ boost/libs/graph/doc/figs/undigraph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-list.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix-graph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/undir-adj-matrix.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/undir-adj-matrix2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/visitor.fig -text
 boost/libs/graph/doc/figs/visitor.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/file_dependency_example.html svneol=native#text/html
