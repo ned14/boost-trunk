@@ -2549,4 +2549,384 @@ boost/boost/vector_property_map.hpp svneol=native#text/plain
 boost/boost/version.hpp svneol=native#text/plain
 boost/boost/visit_each.hpp svneol=native#text/plain
 boost/boost/weak_ptr.hpp svneol=native#text/plain
+boost/libs/spirit/doc/acknowledgments.html svneol=native#text/html
+boost/libs/spirit/doc/basic_concepts.html svneol=native#text/html
+boost/libs/spirit/doc/calc_plain.cpp.html svneol=native#text/html
+boost/libs/spirit/doc/character_sets.html svneol=native#text/html
+boost/libs/spirit/doc/closures.html svneol=native#text/html
+boost/libs/spirit/doc/confix.html svneol=native#text/html
+boost/libs/spirit/doc/debugging.html svneol=native#text/html
+boost/libs/spirit/doc/directives.html svneol=native#text/html
+boost/libs/spirit/doc/dynamic_parsers.html svneol=native#text/html
+boost/libs/spirit/doc/error_handling.html svneol=native#text/html
+boost/libs/spirit/doc/escape_char_parser.html svneol=native#text/html
+boost/libs/spirit/doc/faq.html svneol=native#text/html
+boost/libs/spirit/doc/file_iterator.html svneol=native#text/html
+boost/libs/spirit/doc/functional.html svneol=native#text/html
+boost/libs/spirit/doc/functor_parser.html svneol=native#text/html
+boost/libs/spirit/doc/grammar.html svneol=native#text/html
+boost/libs/spirit/doc/indepth_the_parser.html svneol=native#text/html
+boost/libs/spirit/doc/indepth_the_parser_context.html svneol=native#text/html
+boost/libs/spirit/doc/indepth_the_scanner.html svneol=native#text/html
+boost/libs/spirit/doc/introduction.html svneol=native#text/html
+boost/libs/spirit/doc/list_parsers.html svneol=native#text/html
+boost/libs/spirit/doc/loops.html svneol=native#text/html
+boost/libs/spirit/doc/multi_pass.html svneol=native#text/html
+boost/libs/spirit/doc/number_list.cpp.html svneol=native#text/html
+boost/libs/spirit/doc/numerics.html svneol=native#text/html
+boost/libs/spirit/doc/operators.html svneol=native#text/html
+boost/libs/spirit/doc/organization.html svneol=native#text/html
+boost/libs/spirit/doc/parametric_parsers.html svneol=native#text/html
+boost/libs/spirit/doc/portability.html svneol=native#text/html
+boost/libs/spirit/doc/position_iterator.html svneol=native#text/html
+boost/libs/spirit/doc/predefined_actions.html svneol=native#text/html
+boost/libs/spirit/doc/preface.html svneol=native#text/html
+boost/libs/spirit/doc/primitives.html svneol=native#text/html
+boost/libs/spirit/doc/quick_start.html svneol=native#text/html
+boost/libs/spirit/doc/rationale.html svneol=native#text/html
+boost/libs/spirit/doc/refactoring.html svneol=native#text/html
+boost/libs/spirit/doc/references.html svneol=native#text/html
+boost/libs/spirit/doc/regular_expression_parser.html svneol=native#text/html
+boost/libs/spirit/doc/rule.html svneol=native#text/html
+boost/libs/spirit/doc/scanner.html svneol=native#text/html
+boost/libs/spirit/doc/scoped_lock.html svneol=native#text/html
+boost/libs/spirit/doc/semantic_actions.html svneol=native#text/html
+boost/libs/spirit/doc/style_guide.html svneol=native#text/html
+boost/libs/spirit/doc/subrule_calc.cpp.html svneol=native#text/html
+boost/libs/spirit/doc/subrules.html svneol=native#text/html
+boost/libs/spirit/doc/symbols.html svneol=native#text/html
+boost/libs/spirit/doc/theme/alert.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/arrow.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/bkd.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/bkd2.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/bulb.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/bullet.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/closure1.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/error_handling.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/intro1.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/intro2.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/intro3.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/intro4.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/intro5.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/intro6.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/intro7.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/l_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/l_arr_disabled.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/lambda.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/lens.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/note.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/organization1.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/r_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/r_arr_disabled.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/scanner1.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/spirit.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/theme/style.css svneol=native#text/css
+boost/libs/spirit/doc/theme/subrule1.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/trees1.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/trees2.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/trees3.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/trees4.png -text svneol=unset#image/png
+boost/libs/spirit/doc/theme/u_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/doc/trees.html svneol=native#text/html
+boost/libs/spirit/example/Jamfile svneol=native#text/plain
+boost/libs/spirit/example/application/c/c_grammar.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/c/readme.txt svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/Ackermann.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/ArrayAccess3.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/CountLinesWordsChars.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/Fibonacci.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/HashAccess.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/HashAccess2.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/HeapSort.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/HelloWorld.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/Moments.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/MultiplyMatrices.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/NestedLoops.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/RandomGenerator.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/ReverseFile.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/Sieve.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/StringConcat.c svneol=native#text/plain
+boost/libs/spirit/example/application/c/test_files/SumCol.c svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_simple_test.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_test.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/cpp_lexer_token.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/lexer_base.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_lexer/lexer_token_base.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/cpp_to_html.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/cpp_to_html_vc6_7.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/readme.txt svneol=native#text/plain
+boost/libs/spirit/example/application/cpp_to_html/style.css svneol=native#text/css
+boost/libs/spirit/example/application/pascal/readme.txt svneol=native#text/plain
+boost/libs/spirit/example/application/pascal/sg_pascal.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/pascal/test_files/t1.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t2.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t3.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t4.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t5.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t6.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t7.pas -text
+boost/libs/spirit/example/application/pascal/test_files/t8.pas -text
+boost/libs/spirit/example/application/quickdoc/doc/grammar.html svneol=native#text/html
+boost/libs/spirit/example/application/quickdoc/doc/introduction.html svneol=native#text/html
+boost/libs/spirit/example/application/quickdoc/doc/quickdoc.txt svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/doc/syntax_summary.html svneol=native#text/html
+boost/libs/spirit/example/application/quickdoc/doc/theme/alert.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/arrow.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/bkd.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/bkd2.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/bulb.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/bullet.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/l_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/l_arr_disabled.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/lens.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/note.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/r_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/r_arr_disabled.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/smiley.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/spirit.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/doc/theme/style.css svneol=native#text/css
+boost/libs/spirit/example/application/quickdoc/doc/theme/u_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/quickdoc/index.html svneol=native#text/html
+boost/libs/spirit/example/application/quickdoc/quickdoc.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/quickdoc.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/quickdoc.txt svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/mystyle.xls -text svneol=unset#application/vnd.ms-excel
+boost/libs/spirit/example/application/rfcdate/peti.css svneol=native#text/css
+boost/libs/spirit/example/application/rfcdate/peti.dsl -text
+boost/libs/spirit/example/application/rfcdate/rfc-skipper.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/rfcdate-compile-test.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/rfcdate-parser.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/rfcdate-test.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/rfcskipper-compile-test.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/runtest.sh svneol=native#text/x-sh
+boost/libs/spirit/example/application/rfcdate/skipper-test.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/timestamp-compile-test.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/timestamp.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/rfcdate/tutorial.html svneol=native#text/html
+boost/libs/spirit/example/application/rfcdate/tutorial.pdf -text svneol=unset#application/pdf
+boost/libs/spirit/example/application/rfcdate/tutorial.xml svneol=native#text/xml
+boost/libs/spirit/example/application/slex/README svneol=native#text/plain
+boost/libs/spirit/example/application/slex/callback.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/slex/lexer.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/slex/lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/slex/lexer.output -text
+boost/libs/spirit/example/application/slex/lextest.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/slex/testfiles/runtest.sh svneol=native#text/x-sh
+boost/libs/spirit/example/application/slex/testfiles/test1-1.in -text
+boost/libs/spirit/example/application/slex/testfiles/test1-1.out -text
+boost/libs/spirit/example/application/slex/testfiles/test1-2.in -text
+boost/libs/spirit/example/application/slex/testfiles/test1-2.out -text
+boost/libs/spirit/example/application/slex/testfiles/test1.lex -text
+boost/libs/spirit/example/application/slex/testfiles/test2.lex -text
+boost/libs/spirit/example/application/slex/testfiles/test3-1.in -text
+boost/libs/spirit/example/application/slex/testfiles/test3-1.out -text
+boost/libs/spirit/example/application/slex/testfiles/test3-2.in -text
+boost/libs/spirit/example/application/slex/testfiles/test3-2.out -text
+boost/libs/spirit/example/application/slex/testfiles/test3.lex -text
+boost/libs/spirit/example/application/slex/testfiles/test4-1.in -text
+boost/libs/spirit/example/application/slex/testfiles/test4-1.out -text
+boost/libs/spirit/example/application/slex/testfiles/test4.lex -text
+boost/libs/spirit/example/application/slex/testfiles/test5-1.in -text
+boost/libs/spirit/example/application/slex/testfiles/test5-1.out -text
+boost/libs/spirit/example/application/slex/testfiles/test5.lex -text
+boost/libs/spirit/example/application/slex/testfiles/test6-1.in -text
+boost/libs/spirit/example/application/slex/testfiles/test6-1.out -text
+boost/libs/spirit/example/application/slex/testfiles/test6.lex -text
+boost/libs/spirit/example/application/slex/testfiles/test7-1.in -text svneol=unset#application/octet-stream
+boost/libs/spirit/example/application/slex/testfiles/test7-1.out -text svneol=unset#application/octet-stream
+boost/libs/spirit/example/application/slex/testfiles/test7.lex -text
+boost/libs/spirit/example/application/slex/testfiles/test8-1.in -text
+boost/libs/spirit/example/application/slex/testfiles/test8-1.out -text
+boost/libs/spirit/example/application/slex/testfiles/test8.lex -text
+boost/libs/spirit/example/application/xml/ast_xml.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/goodtest/REC-xml-19980210.xml svneol=native#text/xml
+boost/libs/spirit/example/application/xml/goodtest/dia.xml svneol=native#text/xml
+boost/libs/spirit/example/application/xml/goodtest/rss.xml svneol=native#text/xml
+boost/libs/spirit/example/application/xml/goodtest/xhtml1.xhtml svneol=native#text/xhtml%2Bxml
+boost/libs/spirit/example/application/xml/goodtest/xlink.xml svneol=native#text/xml
+boost/libs/spirit/example/application/xml/iso8859_xml_grammar.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/simplexml.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/simplexml.txt svneol=native#text/plain
+boost/libs/spirit/example/application/xml/test1.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/test2.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/test3.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/test4.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/test5.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/xml.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/xml/xml_grammar.hpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/boiler_plate.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/ast_calc.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/ast_calc2.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/calc_plain.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/calc_with_variables.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/full_calc.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/parse_tree_calc1.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/phoenix_calc.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/phoenix_subrule_calc.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/primitive_calc.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/rpn_calc.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/subrule_calc.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/tree_calc_grammar.hpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/calc/vmachine_calc.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/comments.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/complex_number.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/dynamic_parser.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/file_parser.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/functor_parser.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/list_parser.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/matching_tags.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/number_list.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/parameters.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/polynomial.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/position_iterator/position_iterator.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/position_iterator/position_iterator.err1 -text
+boost/libs/spirit/example/fundamental/position_iterator/position_iterator.err2 -text
+boost/libs/spirit/example/fundamental/position_iterator/position_iterator.err3 -text
+boost/libs/spirit/example/fundamental/position_iterator/position_iterator.ok -text
+boost/libs/spirit/example/fundamental/refactoring.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/regex_convert.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/regular_expression.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/rfc821.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/roman_numerals.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/spirit_bind.cpp svneol=native#text/plain
+boost/libs/spirit/example/fundamental/sum.cpp svneol=native#text/plain
 boost/libs/spirit/index.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/actors.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/actors_revisited.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/adaptable_closures.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/architecture.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/arguments.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/basic_concepts.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/binders.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/composites.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/composites_revisited.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/efficiency.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/functions.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/inside_phoenix.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/interfacing.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/introduction.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/lazy_construction_and_conversions.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/lazy_functions.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/operators.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/operators_revisited.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/organization.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/phoenix_users_manual.txt svneol=native#text/plain
+boost/libs/spirit/phoenix/doc/place_holders.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/polymorphic_functions.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/preface.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/primitives.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/quick_start.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/references.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/statements.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/theme/alert.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/arrow.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/bkd.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/bkd2.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/bulb.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/bullet.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/l_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/l_arr_disabled.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/lens.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/note.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/r_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/r_arr_disabled.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/smiley.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/spirit.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/theme/style.css svneol=native#text/css
+boost/libs/spirit/phoenix/doc/theme/u_arr.gif -text svneol=unset#image/gif
+boost/libs/spirit/phoenix/doc/tuples.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/values.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/variables.html svneol=native#text/html
+boost/libs/spirit/phoenix/doc/wrap_up.html svneol=native#text/html
+boost/libs/spirit/phoenix/example/Jamfile svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/closures.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample10.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample2.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample3.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample4.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample5.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample6.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample7.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample8.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/example/fundamental/sample9.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/index.html svneol=native#text/html
+boost/libs/spirit/phoenix/test/Jamfile svneol=native#text/plain
+boost/libs/spirit/phoenix/test/binary_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/binders_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/functors_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/iostream_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/mixed_binary_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/more_expressions_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/primitives_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/runtest.sh svneol=native#text/x-sh
+boost/libs/spirit/phoenix/test/statements_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/stl_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/tuples_tests.cpp svneol=native#text/plain
+boost/libs/spirit/phoenix/test/unary_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/Jamfile svneol=native#text/plain
+boost/libs/spirit/test/actions_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/ast_calc_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/bug_000001.cpp svneol=native#text/plain
+boost/libs/spirit/test/bug_000002.cpp svneol=native#text/plain
+boost/libs/spirit/test/bug_000003.cpp svneol=native#text/plain
+boost/libs/spirit/test/bug_000004.cpp svneol=native#text/plain
+boost/libs/spirit/test/bug_000005.cpp svneol=native#text/plain
+boost/libs/spirit/test/bug_000006.cpp svneol=native#text/plain
+boost/libs/spirit/test/bug_000007.cpp svneol=native#text/plain
+boost/libs/spirit/test/bug_000008.cpp svneol=native#text/plain
+boost/libs/spirit/test/chset_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/closure_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/composite_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/confix_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/directives_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/epsilon_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/escape_char_parser_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/exception_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/file_iterator_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/fixed_size_queue_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/for_p_as_parser_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/for_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/fundamental_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/grammar_mt_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/grammar_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/if_p_as_parser_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/if_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/impl/sstream.hpp svneol=native#text/plain
+boost/libs/spirit/test/impl/util.ipp svneol=native#text/plain
+boost/libs/spirit/test/impl/var.hpp svneol=native#text/plain
+boost/libs/spirit/test/loops_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/match_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/multi_pass_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/numerics_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/operators_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/owi_mt_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/owi_st_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/parametric_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/parser_traits_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/position_iterator_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/primitives_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/rule_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/run_regression_tests.py svneol=native#text/x-python
+boost/libs/spirit/test/run_regression_tests.sh svneol=native#text/x-sh
+boost/libs/spirit/test/runtests.sh svneol=native#text/x-sh
+boost/libs/spirit/test/scanner_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/scoped_lock_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/sf_bug_718903.cpp svneol=native#text/plain
+boost/libs/spirit/test/sf_bug_719322.cpp svneol=native#text/plain
+boost/libs/spirit/test/sf_bug_720917.cpp svneol=native#text/plain
+boost/libs/spirit/test/sf_bug_742038.cpp svneol=native#text/plain
+boost/libs/spirit/test/sf_bug_742038.tmp -text
+boost/libs/spirit/test/shortest_alternative_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/subrule_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/switch_tests_eps_default.cpp svneol=native#text/plain
+boost/libs/spirit/test/switch_tests_general_default.cpp svneol=native#text/plain
+boost/libs/spirit/test/switch_tests_single.cpp svneol=native#text/plain
+boost/libs/spirit/test/switch_tests_wo_default.cpp svneol=native#text/plain
+boost/libs/spirit/test/symbols_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/traverse_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/tree_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/while_p_as_parser_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/while_tests.cpp svneol=native#text/plain
