@@ -277,18 +277,14 @@ yylex()
 	    if( c == EOF )
 		goto eof;
 
-<<<<<<< variant A
         yylval.file = incp->fname;
         yylval.line = incp->line;
         
->>>>>>> variant B
 	    /* While scanning the word, disqualify it for (expensive) */
 	    /* keyword lookup when we can: $anything, "anything", \anything */
 
 	    notkeyword = c == '$';
 
-####### Ancestor
-======= end
 	    /* look for white space to delimit word */
 	    /* "'s get stripped but preserve white space */
 	    /* \ protects next character */

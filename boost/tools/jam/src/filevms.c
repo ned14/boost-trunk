@@ -216,14 +216,8 @@ file_dirscan(
 	    f.f_suffix.len = xnam.nam$b_type;
 	}
 
-<<<<<<< variant A
         string_truncate( filename2, 0 );
-	file_build( &f, filename2, 0 );
->>>>>>> variant B
 	path_build( &f, filename2, 0 );
-####### Ancestor
-	file_build( &f, filename2, 0 );
-======= end
 
 	/*
 	if( DEBUG_SEARCH )
@@ -234,25 +228,9 @@ file_dirscan(
 		    filename2);
 	*/
 
-<<<<<<< variant A
-	(*func)( filename2->value, 1 /* time valid */, time );
->>>>>>> variant B
-	(*func)( closure, filename2, 1 /* time valid */, time );
-####### Ancestor
-	(*func)( filename2, 1 /* time valid */, time );
-======= end
+	(*func)( closure, filename2->value, 1 /* time valid */, time );
     }
-<<<<<<< variant A
     string_free( filename2 );
-
-    if ( status != RMS$_NMF && status != RMS$_FNF )
-	lib$signal( xfab.fab$l_sts, xfab.fab$l_stv );
->>>>>>> variant B
-####### Ancestor
-
-    if ( status != RMS$_NMF && status != RMS$_FNF )
-	lib$signal( xfab.fab$l_sts, xfab.fab$l_stv );
-======= end
 }    
 
 int

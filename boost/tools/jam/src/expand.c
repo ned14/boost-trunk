@@ -1,32 +1,17 @@
-/*
- * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
- *
- * This file is part of Jam - see jam.c for Copyright information.
- */
-/*  This file is ALSO:
- *  (C) Copyright David Abrahams 2001. Permission to copy, use,
- *  modify, sell and distribute this software is granted provided this
- *  copyright notice appears in all copies. This software is provided
- *  "as is" without express or implied warranty, and with no claim as
- *  to its suitability for any purpose.
- */
-
 # include "jam.h"
 # include "lists.h"
 # include "variable.h"
 # include "expand.h"
 # include "pathsys.h"
 # include "newstr.h"
-# include "strings.h"
-
 # include <assert.h>
-# include <string.h>
+
 /*
  * expand.c - expand a buffer, given variable values
  *
  * External routines:
  *
- *     var_expand() - variable-expand input string into list of strings
+ *	var_expand() - variable-expand input string into list of strings
  *
  * Internal routines:
  *
@@ -43,34 +28,16 @@ typedef struct {
 	PATHNAME	f;		/* :GDBSMR -- pieces */
 	char		parent;		/* :P -- go to parent directory */
 	char		filemods;	/* one of the above applied */
-	char	downshift;	/* :L -- downshift result */
-	char	upshift;	/* :U -- upshift result */
-<<<<<<< variant A
-	char	parent;		/* :P -- go to parent directory */
-        char    to_slashes;     /* :T -- convert "\" to "/" */
-} VAR_ACTS ;
->>>>>>> variant B
+	char		downshift;	/* :L -- downshift result */
+	char		upshift;	     /* :U -- upshift result */
+    char         to_slashes;    /* :T -- convert "\" to "/" */
 	PATHPART	empty;		/* :E -- default for empties */
 	PATHPART	join;		/* :J -- join list with char */
 } VAR_EDITS ;
-####### Ancestor
-	char	parent;		/* :P -- go to parent directory */
-} VAR_ACTS ;
-======= end
 
-<<<<<<< variant A
-static void var_edit( char *in, char *mods, string *out );
-static void var_mods( char *mods, FILENAME *f, VAR_ACTS *acts );
->>>>>>> variant B
 static void var_edit_parse( char *mods, VAR_EDITS *edits );
 static void var_edit_file( char *in, char *out, VAR_EDITS *edits );
 static void var_edit_shift( char *out, VAR_EDITS *edits );
-####### Ancestor
-static void var_edit( char *in, char *mods, char *out );
-static void var_mods( char *mods, FILENAME *f, VAR_ACTS *acts );
-======= end
-
-static int adjust_index( int index, int length );
 
 # define MAGIC_COLON	'\001'
 # define MAGIC_LEFT	'\002'
@@ -96,9 +63,8 @@ var_expand(
 	LOL	*lol,
 	int	cancopyin )
 {
-        string buf[1];
-        size_t prefix_length;
-	char *out;
+	char out_buf[ MAXSYM ];
+	char *out = out_buf;
 	char *inp = in;
 	char *ov;		/* for temp copy of variable in outbuf */
 	int depth;
@@ -122,10 +88,10 @@ var_expand(
 	    }
 	}
 
-	/* See if we can use a simple copy of in to out. */
+	/* Just try simple copy of in to out. */
 
-	while ( in < end )
-	    if ( *in++ == '$' && *in == '(' )
+	while( in < end )
+	    if( ( *out++ = *in++ ) == '$' && *in == '(' ) 
 		goto expand;
 
 	/* No variables expanded - just add copy of input string to list. */
@@ -134,77 +100,54 @@ var_expand(
 	/* item, we can use the copystr() to put it on the new list. */
 	/* Otherwise, we use the slower newstr(). */
 
-	if ( cancopyin )
-        {
+	*out = '\0';
+
+	if( cancopyin )
 	    return list_new( l, copystr( inp ) );
-        }
 	else
-        {
-            LIST* r;
-            string_new( buf );
-            string_append_range( buf, inp, in );
-            
-	    r = list_new( l, newstr( buf->value ) );
-            string_free( buf );
-            return r;
-        }
+	    return list_new( l, newstr( out_buf ) );
 
     expand:
-        string_new( buf );
-        string_append_range( buf, inp, in - 1 ); /* copy in initial stuff */
-	/*
-         * Input so far (ignore blanks):
-         *
-         *      stuff-in-outbuf $(variable) remainder
-         *                       ^                   ^
-         *                       in                  end
-         * Output so far:
-         *
-         *      stuff-in-outbuf $
-         *      ^                ^
-         *      out_buf          out
-         *
-         *
-         * We just copied the $ of $(...), so back up one on the output.
-         * We now find the matching close paren, copying the variable and
-         * modifiers between the $( and ) temporarily into out_buf, so that
-         * we can replace :'s with MAGIC_COLON.  This is necessary to avoid
-         * being confused by modifier values that are variables containing
-         * :'s.  Ugly.
-         */
-
-	depth = 1;
-	inp = ++in; /* skip over the '(' */
-
-	while( in < end && depth )
-	{
-	    switch( *in++ )
-	    {
-	    case '(': depth++; break;
-	    case ')': depth--; break;
-	    }
-	}
-
 	/*
 	 * Input so far (ignore blanks):
 	 *
 	 *	stuff-in-outbuf $(variable) remainder
-	 *			  ^	   ^         ^
-	 *			  inp      in        end
-         */
-        prefix_length = buf->size;
-        string_append_range( buf, inp, in - 1 );
+	 *			 ^	             ^
+	 *			 in		     end
+	 * Output so far:
+	 *
+	 *	stuff-in-outbuf $
+	 *	^	         ^
+	 *	out_buf          out
+	 *
+	 *
+	 * We just copied the $ of $(...), so back up one on the output.
+	 * We now find the matching close paren, copying the variable and
+	 * modifiers between the $( and ) temporarily into out_buf, so that
+	 * we can replace :'s with MAGIC_COLON.  This is necessary to avoid
+	 * being confused by modifier values that are variables containing
+	 * :'s.  Ugly.
+	 */
 
-        out = buf->value + prefix_length;
-	for ( ov = out; ov < buf->value + buf->size; ++ov )
+	depth = 1;
+	out--, in++;
+	ov = out;
+
+	while( in < end && depth )
 	{
-	    switch( *ov )
+	    switch( *ov++ = *in++ )
 	    {
-	    case ':': *ov = MAGIC_COLON; break;
-	    case '[': *ov = MAGIC_LEFT; break;
-	    case ']': *ov = MAGIC_RIGHT; break;
+	    case '(': depth++; break;
+	    case ')': depth--; break;
+	    case ':': ov[-1] = MAGIC_COLON; break;
+	    case '[': ov[-1] = MAGIC_LEFT; break;
+	    case ']': ov[-1] = MAGIC_RIGHT; break;
 	    }
 	}
+
+	/* Copied ) - back up. */
+
+	ov--;
 
 	/*
 	 * Input so far (ignore blanks):
@@ -245,84 +188,96 @@ var_expand(
 		LIST *value, *evalue = 0;
 		char *colon;
 		char *bracket;
-<<<<<<< variant A
-		int i, sub1, sub2;
-		string variable;
-                char *varname;
->>>>>>> variant B
 		char varname[ MAXSYM ];
 		int sub1 = 0, sub2 = -1;
 		VAR_EDITS edits;
-####### Ancestor
-		char varname[ MAXSYM ];
-		int i, sub1, sub2;
-======= end
 
 		/* Look for a : modifier in the variable name */
 		/* Must copy into varname so we can modify it */
-                
-                string_copy( &variable, vars->string );
-                varname = variable.value;
+
+		strcpy( varname, vars->string );
 
 		if( colon = strchr( varname, MAGIC_COLON ) )
-<<<<<<< variant A
-                {
-		    string_truncate( &variable, colon - varname );
-                }
->>>>>>> variant B
 		{
 		    *colon = '\0';
 		    var_edit_parse( colon + 1, &edits );
 		}
 
 		/* Look for [x-y] subscripting */
-		/* sub1 is x (0 default) */
-		/* sub2 is length (-1 means forever) */
-####### Ancestor
-		    *colon = '\0';
-======= end
+		/* sub1 and sub2 are x and y. */
 
-		if( bracket = strchr( varname, MAGIC_LEFT ) )
-		{
-		    char *dash = 0;
+                if ( bracket = strchr( varname, MAGIC_LEFT ) )
+                {
+                    /*
+                    ** Make all syntax errors in [] subscripting
+                    ** result in the same behavior: silenty return an empty
+                    ** expansion (by setting sub2 = 0). Brute force parsing;
+                    ** May get moved into yacc someday.
+                    */
 
-<<<<<<< variant A
-		    if( bracket[1] && ( dash = strchr( bracket + 2, '-' ) ) )
-		    {
-                        if( dash == bracket + 2 && *( bracket + 1 ) == '-')
-                            --dash;
-			string_truncate( &variable, dash - varname );
-			sub1 = atoi( bracket + 1 );
-			sub2 = atoi( dash + 1 );
-		    }
-		    else
-		    {
-			sub1 = sub2 = atoi( bracket + 1 );
-		    }
->>>>>>> variant B
-		    if( dash = strchr( bracket + 1, '-' ) )
-			*dash = '\0';
+                    char *s = bracket + 1;
 
-		    sub1 = atoi( bracket + 1 ) - 1;
+                    do  /* so we can use "break" */
+                    {
+                        /* Allow negative indexes. */
+                        if (! isdigit( *s ) && ! ( *s == '-') )
+                        {
+                            sub2 = 0;
+                            break;
+                        }
+                        sub1 = atoi(s);
 
-		    if( !dash )		sub2 = 1;
-		    else if( !dash[1] )	sub2 = -1;
-		    else 		sub2 = atoi( dash + 1 ) - sub1;
-####### Ancestor
-		    if( dash = strchr( bracket + 1, '-' ) )
-		    {
-			*dash = '\0';
-			sub1 = atoi( bracket + 1 );
-			sub2 = atoi( dash + 1 );
-		    }
-		    else
-		    {
-			sub1 = sub2 = atoi( bracket + 1 );
-		    }
-======= end
+                        /* Skip over the first symbol, which is either a digit or dash. */
+                        s++;
+                        while ( isdigit( *s ) ) s++;
 
-                    string_truncate( &variable, bracket - varname );
-		}
+                        if ( *s == MAGIC_RIGHT )
+                        {
+                            sub2 = sub1;
+                            break;
+                        }
+
+                        if ( *s != '-')
+                        {
+                            sub2 = 0;
+                            break;
+                        }
+
+                        s++;
+
+                        if ( *s == MAGIC_RIGHT )
+                        {
+                            sub2 = -1;
+                            break;
+                        }
+
+                        if (! isdigit( *s ) && ! ( *s == '-') )
+                        {
+                            sub2 = 0;
+                            break;
+                        }
+
+                        /* First, compute the index of the last element. */
+                        sub2 = atoi(s);               
+                        s++;
+                        while ( isdigit( *s ) ) s++;
+
+                        if ( *s != MAGIC_RIGHT)
+                            sub2 = 0;
+
+                    } while (0);
+
+                    /*
+                    ** Anything but the end of the string, or the colon
+                    ** introducing a modifier is a syntax error.
+                    */
+
+                    s++;                
+                    if (*s && *s != MAGIC_COLON)
+                        sub2 = 0;
+
+                    *bracket = '\0';
+                }
 
 		/* Get variable value, specially handling $(<), $(>), $(n) */
 		
@@ -334,27 +289,39 @@ var_expand(
 		    value = lol_get( lol, varname[0] - '1' );
 		else 
 		    value = var_get( varname );
-                
+
+        /* Handle negitive indexes: part two. */
+        {
+            int length = list_length( value );
+
+            if (sub1 < 0)
+                sub1 = length + sub1;
+            else
+                sub1 -= 1;
+
+            if (sub2 < 0)
+                sub2 = length + 1 + sub2 - sub1;
+            else
+                sub2 -= sub1;
+            /*
+            ** The "sub2 < 0" test handles the semantic error
+            ** of sub2 < sub1.
+            */
+            if ( sub2 < 0 )
+                sub2 = 0;
+        }
+
+
+
 		/* The fast path: $(x) - just copy the variable value. */
 		/* This is only an optimization */
 
-		if( out == buf->value && !bracket && !colon && in == end )
+		if( out == out_buf && !bracket && !colon && in == end )
 		{
-                    string_free( &variable );
 		    l = list_copy( l, value );
 		    continue;
 		}
 
-<<<<<<< variant A
-                /* Adjust negative indices */
-                if ( sub1 < 0 || sub2 < 0 )
-                {
-                    int length = list_length( value );
-                    sub1 = adjust_index( sub1, length );
-                    sub2 = adjust_index( sub2, length );
-                }
-
->>>>>>> variant B
 		/* Handle start subscript */
 
 		while( sub1 > 0 && value )
@@ -365,43 +332,26 @@ var_expand(
 		if( !value && colon && edits.empty.ptr )
 		    evalue = value = list_new( L0, newstr( edits.empty.ptr ) );
 
-####### Ancestor
-======= end
 		/* For each variable value */
-<<<<<<< variant A
-		for( i = 1; value; i++, value = list_next( value ) )
->>>>>>> variant B
 
 		for( ; value; value = list_next( value ) )
-####### Ancestor
-
-		for( i = 1; value; i++, value = list_next( value ) )
-======= end
 		{
 		    LIST *rem;
-                    size_t postfix_start;
+		    char *out1;
+
+            // FIXME: fixme_should_handle_T_modifier;
 
 		    /* Handle end subscript (length actually) */
 
 		    if( sub2 >= 0 && --sub2 < 0 )
 			break;
 
-                    string_truncate( buf, prefix_length );
-
 		    /* Apply : mods, if present */
 
-<<<<<<< variant A
-		    if( colon )
-			var_edit( value->string, colon + 1, buf );
->>>>>>> variant B
 		    if( colon && edits.filemods )
 			var_edit_file( value->string, out, &edits );
-####### Ancestor
-		    if( colon )
-			var_edit( value->string, colon + 1, out );
-======= end
 		    else
-                        string_append( buf, value->string );
+			strcpy( out, value->string );
 
 		    if( colon && ( edits.upshift || edits.downshift ) )
 			var_edit_shift( out, &edits );
@@ -424,7 +374,7 @@ var_expand(
 
 		    if( in == end )
 		    {
-			l = list_new( l, newstr( buf->value ) );
+			l = list_new( l, newstr( out_buf ) );
 			continue;
 		    }
 
@@ -433,25 +383,19 @@ var_expand(
 		    /* Remember the end of the variable expansion so */
 		    /* we can just tack on each instance of 'remainder' */
 
-		    postfix_start = buf->size;
+		    out1 = out + strlen( out );
 
 		    for( rem = remainder; rem; rem = list_next( rem ) )
 		    {
-                        string_truncate( buf, postfix_start );
-                        string_append( buf, rem->string );
-			l = list_new( l, newstr( buf->value ) );
+			strcpy( out1, rem->string );
+			l = list_new( l, newstr( out_buf ) );
 		    }
 		}
-<<<<<<< variant A
-                string_free( &variable );
->>>>>>> variant B
 
 		/* Toss used empty */
 
 		if( evalue )
 		    list_free( evalue );
-####### Ancestor
-======= end
 	    }
 
 	    /* variables & remainder were gifts from var_expand */
@@ -469,159 +413,12 @@ var_expand(
 		printf( "\n" );
 	    }
 
-            string_free( buf );
 	    return l;
 	}
 }
 
 /*
-<<<<<<< variant A
- * var_edit() - copy input target name to output, performing : modifiers
- */
-	
-static void
-var_edit( 
-	char	*in,
-	char	*mods,
-	string	*out)
-{
-	FILENAME oldf, newf;
-	VAR_ACTS acts;
-
-	/* Parse apart original filename, putting parts into "oldf" */
-
-	file_parse( in, &oldf );
-
-	/* Parse apart modifiers, putting them into "newf" */
-
-	var_mods( mods, &newf, &acts );
-
-	/* Replace any oldf with newf */
-
-	if( newf.f_grist.ptr )
-	    oldf.f_grist = newf.f_grist;
-
-	if( newf.f_root.ptr )
-	    oldf.f_root = newf.f_root;
-
-	if( newf.f_dir.ptr )
-	    oldf.f_dir = newf.f_dir;
-
-	if( newf.f_base.ptr )
-	    oldf.f_base = newf.f_base;
-
-	if( newf.f_suffix.ptr )
-	    oldf.f_suffix = newf.f_suffix;
-
-	if( newf.f_member.ptr )
-	    oldf.f_member = newf.f_member;
-
-	/* If requested, modify oldf to point to parent */
-
-	if( acts.parent )
-	    file_parent( &oldf );
-
-	/* Put filename back together */
-
-	file_build( &oldf, out, 0 );
-
-	/* Handle upshifting, downshifting now */
-        /* Handle conversion of "\" to "/" */
-        {
-            char* p;
-            for ( p = out->value; *p; ++p)
-            {
-                if( acts.upshift )
-                {
-                    *p = toupper( *p );
-                }
-                else if( acts.downshift )
-                {
-                    *p = tolower( *p );
-                }
-                if ( acts.to_slashes )
-                {
-                    if ( *p == '\\' )
-                        *p = '/';
-                }
-            }
-            out->size = p - out->value;
-        }
-}
-
-
-/*
- * var_mods() - parse : modifiers into FILENAME structure
->>>>>>> variant B
  * var_edit_parse() - parse : modifiers into PATHNAME structure
-####### Ancestor
- * var_edit() - copy input target name to output, performing : modifiers
- */
-	
-static void
-var_edit( 
-	char	*in,
-	char	*mods,
-	char	*out )
-{
-	FILENAME oldf, newf;
-	VAR_ACTS acts;
-
-	/* Parse apart original filename, putting parts into "oldf" */
-
-	file_parse( in, &oldf );
-
-	/* Parse apart modifiers, putting them into "newf" */
-
-	var_mods( mods, &newf, &acts );
-
-	/* Replace any oldf with newf */
-
-	if( newf.f_grist.ptr )
-	    oldf.f_grist = newf.f_grist;
-
-	if( newf.f_root.ptr )
-	    oldf.f_root = newf.f_root;
-
-	if( newf.f_dir.ptr )
-	    oldf.f_dir = newf.f_dir;
-
-	if( newf.f_base.ptr )
-	    oldf.f_base = newf.f_base;
-
-	if( newf.f_suffix.ptr )
-	    oldf.f_suffix = newf.f_suffix;
-
-	if( newf.f_member.ptr )
-	    oldf.f_member = newf.f_member;
-
-	/* If requested, modify oldf to point to parent */
-
-	if( acts.parent )
-	    file_parent( &oldf );
-
-	/* Put filename back together */
-
-	file_build( &oldf, out, 0 );
-
-	/* Handle upshifting, downshifting now */
-
-	if( acts.upshift )
-	{
-	    for( ; *out; ++out )
-		*out = toupper( *out );
-	}
-	else if( acts.downshift )
-	{
-	    for( ; *out; ++out )
-		*out = tolower( *out );
-	}
-}
-
-
-/*
- * var_mods() - parse : modifiers into FILENAME structure
-======= end
  *
  * The : modifiers in a $(varname:modifier) currently support replacing
  * or omitting elements of a filename, and so they are parsed into a 
@@ -660,12 +457,6 @@ var_edit_parse(
 	char		*mods,
 	VAR_EDITS	*edits )
 {
-<<<<<<< variant A
-	char *flags = "GRDBSMT";
->>>>>>> variant B
-####### Ancestor
-	char *flags = "GRDBSM";
-======= end
 	int havezeroed = 0;
 	memset( (char *)edits, 0, sizeof( *edits ) );
 
@@ -687,15 +478,10 @@ var_edit_parse(
 	    case 'B': fp = &edits->f.f_base; goto fileval;
 	    case 'S': fp = &edits->f.f_suffix; goto fileval;
 	    case 'M': fp = &edits->f.f_member; goto fileval;
+        case 'T': edits->to_slashes = 1; continue;
 
 	    default: return; /* should complain, but so what... */
 	    }
-            else if ( *mods == 'T' )
-            {
-              acts->to_slashes = 1;
-              ++mods;
-              continue;
-            }
 
 	fileval:
 
@@ -731,19 +517,19 @@ var_edit_parse(
 		fp->len = 0;
 	    }
 	    else if( p = strchr( mods, MAGIC_COLON ) )
-		{
+	    {
 		*p = 0;
 		fp->ptr = ++mods;
-		    fp->len = p - mods;
-		    mods = p + 1;
-		}
-		else
-		{
-		fp->ptr = ++mods;
-		    fp->len = strlen( mods );
-		    mods += fp->len;
-		}
+		fp->len = p - mods;
+		mods = p + 1;
 	    }
+	    else
+	    {
+		fp->ptr = ++mods;
+		fp->len = strlen( mods );
+		mods += fp->len;
+	    }
+	}
 }
 
 /*
@@ -789,7 +575,13 @@ var_edit_file(
 
 	/* Put filename back together */
 
-	path_build( &pathname, out, 0 );
+    // FIXME: should switch to strings everywhere.
+    {
+        string s;
+        string_new(&s);
+        path_build( &pathname, &s, 0 );
+        strcpy(out, s.value);
+    }
 }
 
 /*
@@ -813,19 +605,6 @@ var_edit_shift(
 	    for( ; *out; ++out )
 		*out = tolower( *out );
 	}
-}
-
-static int adjust_index( int index, int length )
-{
-    if ( index < 0 )
-        index = length + 1 + index;
-    /** For first range index negative values are ok.
-        For second return value of 0 means don't use second bound. 
-        We need to make it -1 so that all elements are skipped.
-    */
-    if ( index == 0 )
-        index = -1;
-    return index;
 }
 
 #ifndef NDEBUG

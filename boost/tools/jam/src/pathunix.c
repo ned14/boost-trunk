@@ -13,14 +13,8 @@
  */
 
 # include "jam.h"
-<<<<<<< variant A
-# include "filesys.h"
-# include "strings.h"
->>>>>>> variant B
 # include "pathsys.h"
-####### Ancestor
-# include "filesys.h"
-======= end
+# include "strings.h"
 
 # ifdef USE_PATHUNIX
 
@@ -145,19 +139,9 @@ path_parse(
  */
 
 void
-<<<<<<< variant A
-file_build(
-	FILENAME *f,
-	string	*file,
->>>>>>> variant B
 path_build(
 	PATHNAME *f,
-	char	*file,
-####### Ancestor
-file_build(
-	FILENAME *f,
-	char	*file,
-======= end
+	string	*file,
 	int	binding )
 {
     file_build1( f, file );

@@ -1,5 +1,5 @@
 /*
- * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
+ * Copyright 1993, 2000 Christopher Seiwald.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -18,6 +18,7 @@
 # include "variable.h"
 # include "expand.h"
 # include "hash.h"
+# include "filesys.h"
 # include "newstr.h"
 # include "strings.h"
 

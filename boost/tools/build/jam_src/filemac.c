@@ -65,16 +65,8 @@ file_dirscan(
 	scanback func,
 	void	*closure )
 {
-<<<<<<< variant A
-    FILENAME f;
+    PATHNAME f;
     string filename[1];
->>>>>>> variant B
-	PATHNAME f;
-	char filename[ MAXJPATH ];
-####### Ancestor
-	FILENAME f;
-	char filename[ MAXJPATH ];
-======= end
     unsigned char fullPath[ 512 ];
 
     FSSpec spec;
@@ -140,19 +132,9 @@ file_dirscan(
         f.f_base.ptr = (char *)fullPath + 1;
         f.f_base.len = *fullPath;
 
-<<<<<<< variant A
         string_truncate( filename, 0 );
-        file_build( &f, filename, 0 );
-        (*func)( filename->value, 0 /* not stat()'ed */, (time_t)0 );
->>>>>>> variant B
-	    path_build( &f, filename, 0 );
-
-	    (*func)( closure, filename, 0 /* not stat()'ed */, (time_t)0 );
-####### Ancestor
-	    file_build( &f, filename, 0 );
-
-	    (*func)( filename, 0 /* not stat()'ed */, (time_t)0 );
-======= end
+        path_build( &f, filename, 0 );
+        (*func)( closure, filename->value, 0 /* not stat()'ed */, (time_t)0 );
     }
     string_free( filename );
 }

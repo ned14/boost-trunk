@@ -240,16 +240,8 @@ make1b( TARGET *t )
 
             if( t->actions )
             {
-<<<<<<< variant A
                 ++counts->total;
                 if( DEBUG_MAKE && !( counts->total % 100 ) )
->>>>>>> variant B
-		++counts->total;
-
-		if( DEBUG_MAKE && !( counts->total % 100 ) )
-####### Ancestor
-		if( DEBUG_MAKE && !( ++counts->total % 100 ) )
-======= end
                     printf( "...on %dth target...\n", counts->total );
 
                 pushsettings( t->settings );

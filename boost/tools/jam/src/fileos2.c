@@ -52,18 +52,8 @@ file_dirscan(
 	scanback func,
 	void	*closure )
 {
-<<<<<<< variant A
-    FILENAME f;
+    PATHNAME f;
     string filespec[1];
->>>>>>> variant B
-	PATHNAME f;
-	char filespec[ MAXJPATH ];
-	char filename[ MAXJPATH ];
-####### Ancestor
-	FILENAME f;
-	char filespec[ MAXJPATH ];
-	char filename[ MAXJPATH ];
-======= end
     long handle;
     int ret;
     struct _find_t finfo[1];
@@ -108,19 +98,9 @@ file_dirscan(
             f.f_base.ptr = finfo->name;
             f.f_base.len = strlen( finfo->name );
 
-<<<<<<< variant A
             string_truncate( filename, 0 );
-            file_build( &f, filename, 0 );
-            (*func)( filename->value, 0 /* not stat()'ed */, (time_t)0 );
->>>>>>> variant B
-		path_build( &f, filename, 0 );
-
-		(*func)( closure, filename, 0 /* not stat()'ed */, (time_t)0 );
-####### Ancestor
-		file_build( &f, filename, 0 );
-
-		(*func)( filename, 0 /* not stat()'ed */, (time_t)0 );
-======= end
+            path_build( &f, filename, 0 );
+            (*func)( closure, filename->value, 0 /* not stat()'ed */, (time_t)0 );
         }
         while( !_dos_findnext( finfo ) );
         string_free( filename );

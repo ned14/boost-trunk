@@ -20,6 +20,11 @@
  * (without a file), so that $(VAR:D) can climb to the parent.
  */
 
+#ifndef PATHSYS_VP_20020211_H
+# define PATHSYS_VP_20020211_H
+
+#include "strings.h"
+
 typedef struct _pathname PATHNAME;
 typedef struct _pathpart PATHPART;
 
@@ -43,7 +48,10 @@ struct _pathname {
 
 } ;
 
-void path_build( PATHNAME *f, char *file, int binding );
+void path_build( PATHNAME *f, string *file, int binding );
+void path_build1( PATHNAME *f, string *file );
+
 void path_parse( char *file, PATHNAME *f );
 void path_parent( PATHNAME *f );
 
+#endif // PATHSYS_VP_20020211_H

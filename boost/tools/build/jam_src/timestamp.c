@@ -130,13 +130,7 @@ timestamp(
 
 	    if( !( b->flags & BIND_SCANNED ) )
 	    {
-<<<<<<< variant A
-		file_dirscan( buf->value, time_enter );
->>>>>>> variant B
-		file_dirscan( buf, time_enter, bindhash );
-####### Ancestor
-		file_dirscan( buf, time_enter );
-======= end
+		file_dirscan( buf->value, time_enter, bindhash );
 		b->flags |= BIND_SCANNED;
 	    }
 	}
@@ -150,14 +144,8 @@ timestamp(
 	    f2 = f1;
 	    f2.f_grist.len = 0;
 	    f2.f_member.len = 0;
-<<<<<<< variant A
             string_truncate( buf, 0 );
-	    file_build( &f2, buf, 0 );
->>>>>>> variant B
 	    path_build( &f2, buf, 0 );
-####### Ancestor
-	    file_build( &f2, buf, 0 );
-======= end
 
 	    b->name = buf->value;
 	    b->time = b->flags = 0;
@@ -168,13 +156,7 @@ timestamp(
 
 	    if( !( b->flags & BIND_SCANNED ) )
 	    {
-<<<<<<< variant A
-		file_archscan( buf->value, time_enter );
->>>>>>> variant B
-		file_archscan( buf, time_enter, bindhash );
-####### Ancestor
-		file_archscan( buf, time_enter );
-======= end
+		file_archscan( buf->value, time_enter, bindhash );
 		b->flags |= BIND_SCANNED;
 	    }
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
+ * Copyright 1993, 1995 Christopher Seiwald.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -43,7 +43,7 @@
 
 # ifdef VMS
 
-# define unlink remove
+int unlink( char *f ); 	/* In filevms.c */
 
 # include <types.h>
 # include <file.h>
@@ -65,8 +65,8 @@
 # define EXITBAD 0
 # define DOWNSHIFT_PATHS
 
-/* Do any of these work? */
-# if defined( VAX ) || defined( __VAX ) || defined( vax )
+/* This may be inaccurate */
+# ifndef __DECC
 # define OSPLAT "OSPLAT=VAX"
 # endif 
 
@@ -158,7 +158,6 @@
 # define OSMINOR "OS=MAC"
 # define OS_MAC
 # define SPLITPATH ','
-# define DOWNSHIFT_PATHS
 
 # endif
 
@@ -415,9 +414,7 @@
 # define OSPLAT "OSPLAT=ARM"
 # endif
 
-# if defined( __ia64__ ) || \
-     defined( __IA64__ ) || \
-     defined( _M_IA64 )
+# if defined( __ia64__ ) || defined( __IA64__ )
 # define OSPLAT "OSPLAT=IA64"
 # endif
 

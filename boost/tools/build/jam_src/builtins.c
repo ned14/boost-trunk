@@ -13,6 +13,8 @@
 # include "filesys.h"
 # include "newstr.h"
 # include "frames.h"
+# include "hash.h"
+# include "strings.h"
 
 /*
  * builtins.c - builtin jam rules
@@ -41,6 +43,10 @@
 
 int glob( char *s, char *c );
 
+static void lol_build( LOL* lol, char** elements );
+static void backtrace( FRAME *frame );
+static void backtrace_line( FRAME *frame );
+
 RULE* bind_builtin( char* name, LIST*(*f)(PARSE*, FRAME*), int flags, char** args )
 {
     argument_list* arg_list = 0;
@@ -65,7 +71,7 @@ load_builtins()
 {
     duplicate_rule( "Always" ,
       bind_builtin( "ALWAYS" ,
-                    builtin_flags, T_FLAGS_TOUCHED, 0 ) );
+                    builtin_flags, T_FLAG_TOUCHED, 0 ) );
 
     duplicate_rule( "Depends" ,
       bind_builtin( "DEPENDS" ,
@@ -121,38 +127,48 @@ load_builtins()
     /* Beware that this rule might disappear or be renamed in the future..       */
     /* contact david.turner@freetype.org for more details..                      */
       bind_builtin( "FAIL_EXPECTED" ,
-                    builtin_flags, T_FLAG_FAIL_EXPECTED, 0 ) );
+                    builtin_flags, T_FLAG_FAIL_EXPECTED, 0 );
 
-    char * args[] = { 0 };
+      {
+          char * args[] = { "string", "pattern", "replacements", "+", 0 };
+          duplicate_rule( "subst" ,
+            bind_builtin( "SUBST" ,
+                          builtin_subst, 0, args ) );
+      }
 
-           args = { "string", "pattern", "replacements", "+", 0 };
-    duplicate_rule( "subst" ,
-      bind_builtin( "SUBST" ,
-                    builtin_subst, 0, args ) );
+      {
+          char * args[] = { "module", "?", 0 };
+          bind_builtin( "RULENAMES" ,
+                         builtin_rulenames, 0, args );
+      }
 
-           args = { "module", "?", 0 };
-      bind_builtin( "RULENAMES" ,
-                    builtin_rulenames, 0, args );
+      {
+           char * args[] = { "source_module", "?",
+                             ":", "source_rules", "*",
+                             ":", "target_module", "?",
+                             ":", "target_rules", "*",
+                             ":", "localize", "?", 0 };
+           bind_builtin( "IMPORT" ,
+                         builtin_import, 0, args );
+      }
 
-           args = { "source_module", "?",
-                        ":", "source_rules", "*",
-                        ":", "target_module", "?",
-                        ":", "target_rules", "*",
-                        ":", "localize", "?", 0 };
-      bind_builtin( "IMPORT" ,
-                    builtin_import, 0, args );
+      {
+          char * args[] = { "module", "?", ":", "rules", "*", 0 };
+          bind_builtin( "EXPORT" ,
+                        builtin_export, 0, args );
+      }
 
-           args = { "module", "?", ":", "rules", "*", 0 };
-      bind_builtin( "EXPORT" ,
-                    builtin_export, 0, args );
+      {
+          char * args[] = { "levels", "?", 0 };
+          bind_builtin( "CALLER_MODULE" ,
+                         builtin_caller_module, 0, args );
+      }
 
-           args = { "levels", "?", 0 };
-      bind_builtin( "CALLER_MODULE" ,
-                    builtin_caller_module, 0, args );
-
-           args = { 0 };
-      bind_builtin( "BACKTRACE" ,
-                    builtin_backtrace, 0, args );
+      {
+          char * args[] = { 0 };
+          bind_builtin( "BACKTRACE" ,
+                        builtin_backtrace, 0, args );
+      }
 }
 
 /*
@@ -283,7 +299,7 @@ builtin_glob(
 	return globbing.results;
 }
 
-static LIST *
+LIST *
 builtin_hdrmacro(
     PARSE    *parse,
     FRAME *frame )
@@ -322,7 +338,7 @@ static void add_rule_name( void* r_, void* result_ )
         *result = list_new( *result, copystr( r->name ) );
 }
 
-static LIST *
+LIST *
 builtin_rulenames(
     PARSE   *parse,
     FRAME *frame )
@@ -359,7 +375,7 @@ static void unknown_rule( FRAME *frame, char* key, char *module_name, char *rule
  * TARGET_MODULE, with corresponding access to its module local
  * variables.
  */
-static LIST *
+LIST *
 builtin_import(
     PARSE *parse,
     FRAME *frame )
@@ -411,7 +427,7 @@ builtin_import(
  * (and thus exportable). If an element of RULES does not name a rule
  * in MODULE, an error is issued.
  */
-static LIST *
+LIST *
 builtin_export(
     PARSE *parse,
     FRAME *frame )
@@ -494,7 +510,7 @@ static void backtrace( FRAME *frame )
  *  describing each frame. Note that the module-name is always
  *  followed by a period.
  */
-static LIST *builtin_backtrace( PARSE *parse, FRAME *frame )
+LIST *builtin_backtrace( PARSE *parse, FRAME *frame )
 {
     LIST* result = L0;
     while ( frame = frame->prev )
@@ -523,7 +539,7 @@ static LIST *builtin_backtrace( PARSE *parse, FRAME *frame )
  * question is the global module. This rule is needed for implementing module
  * import behavior.
  */
-static LIST *builtin_caller_module( PARSE *parse, FRAME *frame )
+LIST *builtin_caller_module( PARSE *parse, FRAME *frame )
 {
     LIST* levels_arg = lol_get( frame->args, 0 );
     int levels = levels_arg ? atoi( levels_arg->string ) : 0 ;
@@ -551,3 +567,27 @@ static LIST *builtin_caller_module( PARSE *parse, FRAME *frame )
         return result;
     }
 }
+
+static void lol_build( LOL* lol, char** elements )
+{
+    LIST* l = L0;
+    lol_init( lol );
+    
+    while ( elements && *elements )
+    {
+        if ( !strcmp( *elements, ":" ) )
+        {
+            lol_add( lol, l );
+            l = L0 ;
+        }
+        else
+        {
+            l = list_new( l, newstr( *elements ) );
+        }
+        ++elements;
+    }
+    
+    if ( l != L0 )
+        lol_add( lol, l );
+}
+

@@ -14,12 +14,8 @@
 
 # include "jam.h"
 # include "filesys.h"
-<<<<<<< variant A
 # include "strings.h"
->>>>>>> variant B
 # include "pathsys.h"
-####### Ancestor
-======= end
 
 # ifdef USE_FILEUNIX
 
@@ -154,22 +150,10 @@ file_dirscan(
 # endif
 	    f.f_base.len = strlen( f.f_base.ptr );
 
-<<<<<<< variant A
             string_truncate( filename, 0 );
-	    file_build( &f, filename, 0 );
->>>>>>> variant B
 	    path_build( &f, filename, 0 );
-####### Ancestor
-	    file_build( &f, filename, 0 );
-======= end
 
-<<<<<<< variant A
-	    (*func)( filename->value, 0 /* not stat()'ed */, (time_t)0 );
->>>>>>> variant B
-	    (*func)( closure, filename, 0 /* not stat()'ed */, (time_t)0 );
-####### Ancestor
-	    (*func)( filename, 0 /* not stat()'ed */, (time_t)0 );
-======= end
+	    (*func)( closure, filename->value, 0 /* not stat()'ed */, (time_t)0 );
 	}
         string_free( filename );
 

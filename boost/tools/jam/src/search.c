@@ -106,14 +106,8 @@ search(
             f->f_root.ptr = varlist->string;
             f->f_root.len = strlen( varlist->string );
 
-<<<<<<< variant A
             string_truncate( buf, 0 );
-            file_build( f, buf, 1 );
->>>>>>> variant B
-		path_build( f, buf, 1 );
-####### Ancestor
-		file_build( f, buf, 1 );
-======= end
+            path_build( f, buf, 1 );
 
             if( DEBUG_SEARCH )
                 printf( "search %s: %s\n", target, buf->value );
@@ -139,14 +133,8 @@ search(
         f->f_root.ptr = 0;
         f->f_root.len = 0;
 
-<<<<<<< variant A
         string_truncate( buf, 0 );
-        file_build( f, buf, 1 );
->>>>>>> variant B
-	path_build( f, buf, 1 );
-####### Ancestor
-	file_build( f, buf, 1 );
-======= end
+        path_build( f, buf, 1 );
 
         if( DEBUG_SEARCH )
             printf( "search %s: %s\n", target, buf->value );

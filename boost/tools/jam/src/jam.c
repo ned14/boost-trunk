@@ -77,17 +77,7 @@
  *	execunix.c - execute a shell script on UNIX
  *	execvms.c - execute a shell script, ala VMS
  *	expand.c - expand a buffer, given variable values
-<<<<<<< variant A
- *	fileunix.c - manipulate file names and scan directories on UNIX
- *	filevms.c - manipulate file names and scan directories on VMS
- *  fileos2.c - manipulate file names and scan directories on OS/2
- *  filent.c - manipulate file names and scan directories on Windows
->>>>>>> variant B
  *	file*.c - scan directories and archives on *
-####### Ancestor
- *	fileunix.c - manipulate file names and scan directories on UNIX
- *	filevms.c - manipulate file names and scan directories on VMS
-======= end
  *	hash.c - simple in-memory hashing routines 
  *  hdrmacro.c - handle header file parsing for filename macro definitions
  *	headers.c - handle #includes in source files
@@ -241,14 +231,8 @@ int  main( int argc, char **argv, char **arg_environ )
     {
         printf( "Boost.Jam  " );
         printf( "Version %s.  ", VERSION );
-<<<<<<< variant A
->>>>>>> variant B
-	    printf( "Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.  " );
-####### Ancestor
-	    printf( "Copyright 1993, 2000 Christopher Seiwald.  " );
-======= end
         printf( "%s.\n", OSMINOR );
-        printf( "    Copyright 1993, 2000 Christopher Seiwald.\n" );
+	   printf( "   Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.  " );
         printf( "    Copyright 2001 David Turner.\n" );
         printf( "    Copyright 2001 David Abrahams.\n" );
 

@@ -237,19 +237,9 @@ dir_flags(
  */
 
 void
-<<<<<<< variant A
-file_build(
-	FILENAME *f,
-	string	*file,
->>>>>>> variant B
 path_build(
 	PATHNAME *f,
-	char	*file,
-####### Ancestor
-file_build(
-	FILENAME *f,
-	char	*file,
-======= end
+	string	*file,
 	int	binding )
 {
     struct dirinf root, dir;
