@@ -463,10 +463,10 @@ boost/boost/graph/adjacency_list.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list_io.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_matrix.hpp svneol=native#text/plain
 boost/boost/graph/bandwidth.hpp svneol=native#text/plain
+boost/boost/graph/bc_clustering.hpp svneol=native#text/plain
 boost/boost/graph/bellman_ford_shortest_paths.hpp svneol=native#text/plain
-boost/boost/graph/betweenness_centrality_clustering.hpp svneol=native#text/plain
+boost/boost/graph/betweenness_centrality.hpp svneol=native#text/plain
 boost/boost/graph/biconnected_components.hpp svneol=native#text/plain
-boost/boost/graph/brandes_betweenness_centrality.hpp svneol=native#text/plain
 boost/boost/graph/breadth_first_search.hpp svneol=native#text/plain
 boost/boost/graph/circle_layout.hpp svneol=native#text/plain
 boost/boost/graph/connected_components.hpp svneol=native#text/plain
@@ -3665,15 +3665,15 @@ boost/libs/graph/doc/adjacency_list_traits.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_matrix.html svneol=native#text/html
 boost/libs/graph/doc/awpaper.sty -text
 boost/libs/graph/doc/bandwidth.html svneol=native#text/html
+boost/libs/graph/doc/bc_clustering.html svneol=native#text/html
 boost/libs/graph/doc/bellman_ford_shortest.html svneol=native#text/html
 boost/libs/graph/doc/bellman_visitor.html svneol=native#text/html
-boost/libs/graph/doc/betweenness_centrality_clustering.html svneol=native#text/html
+boost/libs/graph/doc/betweenness_centrality.html svneol=native#text/html
 boost/libs/graph/doc/bfs_visitor.html svneol=native#text/html
 boost/libs/graph/doc/bgl-cover.jpg -text svneol=unset#image/jpeg
 boost/libs/graph/doc/bgl_named_params.html svneol=native#text/html
 boost/libs/graph/doc/bibliography.html svneol=native#text/html
 boost/libs/graph/doc/biconnected_components.w -text
-boost/libs/graph/doc/brandes_betweenness_centrality.html svneol=native#text/html
 boost/libs/graph/doc/breadth_first_search.html svneol=native#text/html
 boost/libs/graph/doc/breadth_first_visit.html svneol=native#text/html
 boost/libs/graph/doc/bundles.html svneol=native#text/html
@@ -3745,7 +3745,7 @@ boost/libs/graph/doc/figs/knights_tour.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/max-flow.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/quick_start.fig -text
 boost/libs/graph/doc/figs/quick_start.gif -text svneol=unset#image/gif
-boost/libs/graph/doc/figs/relative_betweenness_centrality.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/rel_betweenness_centrality.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/search_states.fig -text
 boost/libs/graph/doc/figs/search_states.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/sigma_st.gif -text svneol=unset#image/gif
