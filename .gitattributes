@@ -1593,6 +1593,7 @@ boost/boost/spirit/core/composite/impl/composite.ipp svneol=native#text/plain
 boost/boost/spirit/core/composite/impl/directives.ipp svneol=native#text/plain
 boost/boost/spirit/core/composite/impl/operators.ipp svneol=native#text/plain
 boost/boost/spirit/core/composite/operators.hpp svneol=native#text/plain
+boost/boost/spirit/core/impl/borland.hpp svneol=native#text/plain
 boost/boost/spirit/core/impl/match.ipp svneol=native#text/plain
 boost/boost/spirit/core/impl/msvc.hpp svneol=native#text/plain
 boost/boost/spirit/core/impl/parser.ipp svneol=native#text/plain
