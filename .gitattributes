@@ -4462,7 +4462,6 @@ boost/libs/python/pyste/src/Pyste/Exporter.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/FunctionExporter.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/GCCXMLParser.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/HeaderExporter.py svneol=native#text/x-python
-boost/libs/python/pyste/src/Pyste/IncludeExporter.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/MultipleCodeUnit.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/SingleCodeUnit.py svneol=native#text/x-python
 boost/libs/python/pyste/src/Pyste/SmartFile.py svneol=native#text/x-python
