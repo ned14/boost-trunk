@@ -1564,6 +1564,7 @@ boost/libs/python/doc/v2/header.html svneol=native#text/html
 boost/libs/python/doc/v2/index.html svneol=native#text/html
 boost/libs/python/doc/v2/make_function.html svneol=native#text/html
 boost/libs/python/doc/v2/manage_new_object.html svneol=native#text/html
+boost/libs/python/doc/v2/module.html svneol=native#text/html
 boost/libs/python/doc/v2/overview.html svneol=native#text/html
 boost/libs/python/doc/v2/rationale.html svneol=native#text/html
 boost/libs/python/doc/v2/reference.html svneol=native#text/html
