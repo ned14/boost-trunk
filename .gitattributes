@@ -428,7 +428,7 @@ boost/libs/graph/example/bfs_basics.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs_basics.expected -text
 boost/libs/graph/example/boost_web.dat -text
 boost/libs/graph/example/boost_web_graph.cpp svneol=native#text/plain
-boost/libs/graph/example/boost_web_graph.exp -text
+boost/libs/graph/example/boost_web_graph.expected -text
 boost/libs/graph/example/bucket_sorter.cpp svneol=native#text/plain
 boost/libs/graph/example/city_visitor.cpp svneol=native#text/plain
 boost/libs/graph/example/components_on_edgelist.cpp svneol=native#text/plain
