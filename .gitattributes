@@ -537,6 +537,7 @@ boost/boost/graph/detail/read_graphviz_spirit.hpp svneol=native#text/plain
 boost/boost/graph/detail/self_avoiding_walk.hpp svneol=native#text/plain
 boost/boost/graph/detail/set_adaptor.hpp svneol=native#text/plain
 boost/boost/graph/detail/shadow_iterator.hpp svneol=native#text/plain
+boost/boost/graph/detail/sparse_ordering.hpp svneol=native#text/plain
 boost/boost/graph/dijkstra_shortest_paths.hpp svneol=native#text/plain
 boost/boost/graph/edge_connectivity.hpp svneol=native#text/plain
 boost/boost/graph/edge_list.hpp svneol=native#text/plain
@@ -561,6 +562,7 @@ boost/boost/graph/iteration_macros.hpp svneol=native#text/plain
 boost/boost/graph/iteration_macros_undef.hpp svneol=native#text/plain
 boost/boost/graph/johnson_all_pairs_shortest.hpp svneol=native#text/plain
 boost/boost/graph/kamada_kawai_spring_layout.hpp svneol=native#text/plain
+boost/boost/graph/king_ordering.hpp svneol=native#text/plain
 boost/boost/graph/kruskal_min_spanning_tree.hpp svneol=native#text/plain
 boost/boost/graph/leda_graph.hpp svneol=native#text/plain
 boost/boost/graph/matrix_as_graph.hpp svneol=native#text/plain
@@ -4212,6 +4214,7 @@ boost/libs/graph/doc/johnson_all_pairs_shortest.html svneol=native#text/html
 boost/libs/graph/doc/jwebfrob.pl svneol=native#text/x-perl
 boost/libs/graph/doc/kamada_kawai_spring_layout.html svneol=native#text/html
 boost/libs/graph/doc/kevin_bacon.html svneol=native#text/html
+boost/libs/graph/doc/king_ordering.html svneol=native#text/html
 boost/libs/graph/doc/known_problems.html svneol=native#text/html
 boost/libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
 boost/libs/graph/doc/layout_tolerance.html svneol=native#text/html
@@ -4384,6 +4387,7 @@ boost/libs/graph/example/johnson.expected -text
 boost/libs/graph/example/kevin-bacon.cpp svneol=native#text/plain
 boost/libs/graph/example/kevin-bacon.dat -text
 boost/libs/graph/example/kevin_bacon.expected -text
+boost/libs/graph/example/king_ordering.cpp svneol=native#text/plain
 boost/libs/graph/example/knights-tour.cpp svneol=native#text/plain
 boost/libs/graph/example/knights_tour.expected -text
 boost/libs/graph/example/kruskal-example.cpp svneol=native#text/plain
