@@ -3130,8 +3130,6 @@ boost/libs/graph/src/graphviz_lex.ll -text
 boost/libs/graph/src/graphviz_parser.h svneol=native#text/plain
 boost/libs/graph/src/graphviz_parser.y -text
 boost/libs/graph/src/graphviz_parser.yy -text
-boost/libs/graph/src/sed-dir -text
-boost/libs/graph/src/sed-undir -text
 boost/libs/graph/src/yystype.h svneol=native#text/plain
 boost/libs/graph/test/Jamfile svneol=native#text/plain
 boost/libs/graph/test/Jamfile.v2 svneol=native#text/plain
