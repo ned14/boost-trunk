@@ -430,6 +430,7 @@ boost/libs/config/test/boost_has_pthread_ma_gt.cxx -text
 boost/libs/config/test/boost_has_pthread_yield.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_pthreads.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_sched_yield.ipp svneol=native#text/plain
+boost/libs/config/test/boost_has_sgi_type_traits.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_slist.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_stdint_h.ipp svneol=native#text/plain
 boost/libs/config/test/boost_has_stlp_use_facet.ipp svneol=native#text/plain
@@ -508,6 +509,8 @@ boost/libs/config/test/has_pthreads_fail.cpp svneol=native#text/plain
 boost/libs/config/test/has_pthreads_pass.cpp svneol=native#text/plain
 boost/libs/config/test/has_sched_yield_fail.cpp svneol=native#text/plain
 boost/libs/config/test/has_sched_yield_pass.cpp svneol=native#text/plain
+boost/libs/config/test/has_sgi_type_traits_fail.cpp svneol=native#text/plain
+boost/libs/config/test/has_sgi_type_traits_pass.cpp svneol=native#text/plain
 boost/libs/config/test/has_slist_fail.cpp svneol=native#text/plain
 boost/libs/config/test/has_slist_pass.cpp svneol=native#text/plain
 boost/libs/config/test/has_stdint_h_fail.cpp svneol=native#text/plain
