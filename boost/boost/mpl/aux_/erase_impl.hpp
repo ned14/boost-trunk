@@ -16,7 +16,7 @@
 
 #include <boost/mpl/clear.hpp>
 #include <boost/mpl/push_front.hpp>
-#include <boost/mpl/copy_backward.hpp>
+#include <boost/mpl/reverse_fold.hpp>
 #include <boost/mpl/iterator_range.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/mpl/aux_/na.hpp>
@@ -51,13 +51,13 @@ struct erase_impl
             , typename end<Sequence>::type
             > second_half_;
 
-        typedef typename copy_backward<
+        typedef typename reverse_fold<
               second_half_
             , typename clear<Sequence>::type
             , push_front<_,_>
             >::type half_sequence_;
 
-        typedef typename copy_backward<
+        typedef typename reverse_fold<
               first_half_
             , half_sequence_
             , push_front<_,_>

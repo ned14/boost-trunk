@@ -21,13 +21,14 @@
 #include <boost/mpl/aux_/select2nd_wknd.hpp>
 #include <boost/mpl/apply.hpp>
 #include <boost/mpl/apply_if.hpp>
-#include <boost/mpl/copy_backward.hpp>
+#include <boost/mpl/reverse_fold.hpp>
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/front.hpp>
 #include <boost/mpl/identity.hpp>
 #include <boost/mpl/partition.hpp>
 #include <boost/mpl/pop_front.hpp>
 #include <boost/mpl/push_front.hpp>
+#include <boost/mpl/protect.hpp>
 #include <boost/mpl/aux_/traits_lambda_spec.hpp>
 
 namespace boost {
@@ -70,7 +71,7 @@ private:
 
 public:
 
-    typedef typename copy_backward<
+    typedef typename reverse_fold<
           first_part
         , typename push_front< second_part,pivot_ >::type
         , push_front<_,_>
@@ -91,10 +92,10 @@ struct quick_sort
 } // namespace aux
 
 template< typename Tag >
-struct sort_traits
+struct sort_impl
 {
     template< typename Sequence, typename Predicate >
-    struct algorithm
+    struct apply
     {
         typedef typename aux::quick_sort<
               Sequence, Predicate
@@ -102,7 +103,7 @@ struct sort_traits
     };
 };
 
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(2,sort_traits)
+BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(2,sort_impl)
 
 } // namespace mpl
 } // namespace boost

@@ -17,8 +17,6 @@
 #ifndef BOOST_MPL_AUX_ITERATOR_CATEGORY_HPP_INCLUDED
 #define BOOST_MPL_AUX_ITERATOR_CATEGORY_HPP_INCLUDED
 
-#include <boost/mpl/aux_/config/internals.hpp>
-
 #if defined(BOOST_MPL_INTERNALS_USE_ITERATOR_CATEGORY)
 
 #   include <boost/mpl/iterator_category.hpp>

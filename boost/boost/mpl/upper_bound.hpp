@@ -35,7 +35,6 @@
 #   include <boost/mpl/int.hpp>
 #   include <boost/mpl/apply_if.hpp>
 #   include <boost/mpl/apply.hpp>
-#   include <boost/mpl/aux_/apply.hpp>
 #   include <boost/mpl/aux_/deref_wknd.hpp>
 #   include <boost/mpl/aux_/value_wknd.hpp>
 #else
@@ -105,11 +104,11 @@ struct upper_bound_step_impl
     typedef typename divides< Distance, integral_c<long,2> >::type offset_;
     typedef typename DeferredIterator::type iter_;
     typedef typename advance< iter_,offset_ >::type middle_;
-    typedef typename BOOST_MPL_AUX_APPLY2(
+    typedef typename apply2<
               Predicate
             , T
             , typename BOOST_MPL_AUX_DEREF_WNKD(middle_)
-            )::type cond_;
+            >::type cond_;
 
     typedef typename minus< Distance, offset_, integral_c<long,1> >::type step_;
     typedef upper_bound_step< offset_,Predicate,T,DeferredIterator > step_forward_;

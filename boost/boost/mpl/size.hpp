@@ -15,8 +15,8 @@
 // $Revision$
 
 #include <boost/mpl/size_fwd.hpp>
+#include <boost/mpl/sequence_tag.hpp>
 #include <boost/mpl/aux_/size_impl.hpp>
-#include <boost/mpl/aux_/sequence_tag.hpp>
 #include <boost/mpl/aux_/na_spec.hpp>
 #include <boost/mpl/aux_/lambda_support.hpp>
 #include <boost/mpl/aux_/msvc_eti_base.hpp>
@@ -29,7 +29,7 @@ template<
     >
 struct size
     : aux::msvc_eti_base<
-        typename size_impl< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+        typename size_impl< typename sequence_tag<Sequence>::type >
             ::template apply< Sequence >::type
       >::type
 {

@@ -19,7 +19,7 @@
 
 #include <boost/mpl/aux_/partition_op.hpp>
 #include <boost/mpl/clear.hpp>
-#include <boost/mpl/iter_fold_backward.hpp>
+#include <boost/mpl/reverse_iter_fold.hpp>
 #include <boost/mpl/lambda.hpp>
 #include <boost/mpl/pair.hpp>
 #include <boost/mpl/protect.hpp>
@@ -42,7 +42,7 @@ private:
     typedef typename clear<Sequence>::type cleared_;
 
 public:
-    typedef typename iter_fold_backward<
+    typedef typename reverse_iter_fold<
           Sequence
         , pair< cleared_,cleared_ >
         , protect< aux::partition_op<pred_> >

@@ -15,8 +15,8 @@
 // $Revision$
 
 #include <boost/mpl/O1_size_fwd.hpp>
+#include <boost/mpl/sequence_tag.hpp>
 #include <boost/mpl/aux_/O1_size_impl.hpp>
-#include <boost/mpl/aux_/sequence_tag.hpp>
 #include <boost/mpl/aux_/na_spec.hpp>
 
 namespace boost {

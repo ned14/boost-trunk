@@ -14,7 +14,7 @@
 // $Date$
 // $Revision$
 
-#include <boost/mpl/copy_backward.hpp>
+#include <boost/mpl/reverse_fold.hpp>
 #include <boost/mpl/iterator_range.hpp>
 #include <boost/mpl/clear.hpp>
 #include <boost/mpl/push_front.hpp>
@@ -48,13 +48,13 @@ struct insert_impl
             , typename end<Sequence>::type
             > second_half_;
 
-        typedef typename copy_backward<
+        typedef typename reverse_fold<
               second_half_
             , typename clear<Sequence>::type
             , push_front<_,_>
             >::type half_sequence_;
 
-        typedef typename copy_backward<
+        typedef typename reverse_fold<
               first_half_
             , typename push_front<half_sequence_,T>::type
             , push_front<_,_>

@@ -24,7 +24,7 @@
 namespace boost {
 namespace mpl {
 
-template< typename Tag > struct sort_traits;
+template< typename Tag > struct sort_impl;
 
 BOOST_MPL_AUX_AGLORITHM_NAMESPACE_BEGIN
 

@@ -19,6 +19,7 @@
 #include <boost/mpl/less.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/if.hpp>
+#include <boost/mpl/apply.hpp>
 #include <boost/mpl/iterator_tag.hpp>
 #include <boost/mpl/aux_/advance_forward.hpp>
 #include <boost/mpl/aux_/advance_backward.hpp>
@@ -48,7 +49,7 @@ struct advance_impl
         , aux::advance_forward< BOOST_MPL_AUX_VALUE_WKND(offset_)::value >
         >::type algo_;
 
-    typedef typename BOOST_MPL_AUX_APPLY1(algo_,Iterator)::type type;
+    typedef typename apply1<algo_,Iterator>::type type;
 };
 
 // random-access iterators

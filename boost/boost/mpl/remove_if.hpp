@@ -16,7 +16,7 @@
 // $Revision$
 
 #include <boost/mpl/fold.hpp>
-#include <boost/mpl/fold_backward.hpp>
+#include <boost/mpl/reverse_fold.hpp>
 #include <boost/mpl/apply_if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <boost/mpl/protect.hpp>
@@ -63,7 +63,7 @@ template<
     , typename Inserter
     >
 struct reverse_remove_if_impl
-    : fold_backward<
+    : reverse_fold<
           Sequence
         , typename Inserter::state
         , protect< aux::remove_if_helper<

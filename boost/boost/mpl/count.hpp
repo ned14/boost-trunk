@@ -14,8 +14,8 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 #include <boost/mpl/count_fwd.hpp>
+#include <boost/mpl/sequence_tag.hpp>
 #include <boost/mpl/aux_/count_impl.hpp>
-#include <boost/mpl/aux_/sequence_tag.hpp>
 #include <boost/mpl/aux_/na_spec.hpp>
 #include <boost/mpl/aux_/lambda_support.hpp>
 
@@ -29,7 +29,7 @@ template<
     , typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct count
-    : count_impl< typename BOOST_MPL_AUX_SEQUENCE_TAG(Sequence) >
+    : count_impl< typename sequence_tag<Sequence>::type >
         ::template apply<Sequence,T>
 {
     BOOST_MPL_AUX_LAMBDA_SUPPORT(2,count,(Sequence,T))

@@ -17,20 +17,19 @@
 #ifndef BOOST_MPL_AUX_ITER_FOLD_IF_IMPL_HPP_INCLUDED
 #define BOOST_MPL_AUX_ITER_FOLD_IF_IMPL_HPP_INCLUDED
 
-#include <boost/mpl/aux_/apply.hpp>
-
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include <boost/mpl/identity.hpp>
 #   include <boost/mpl/next.hpp>
 #   include <boost/mpl/if.hpp>
+#   include <boost/mpl/apply.hpp>
 #   include <boost/mpl/aux_/value_wknd.hpp>
 #   include <boost/mpl/aux_/bool_value_wknd.hpp>
 #endif
 
 #include <boost/mpl/aux_/config/use_preprocessed.hpp>
 
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) && \
-    !defined(BOOST_MPL_PREPROCESSING_MODE)
+#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
+    && !defined(BOOST_MPL_PREPROCESSING_MODE)
 
 #   define BOOST_MPL_PREPROCESSED_HEADER iter_fold_if_impl.hpp
 #   include <boost/mpl/aux_/include_preprocessed.hpp>

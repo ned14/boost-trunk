@@ -22,7 +22,6 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include <boost/mpl/aux_/apply.hpp>
 #include <boost/mpl/aux_/next.hpp>
 #include <boost/mpl/aux_/config/eti.hpp>
 
