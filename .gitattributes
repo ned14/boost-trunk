@@ -152,7 +152,6 @@ boost/development/persistence/persistence_demo.cpp svneol=native#text/plain
 boost/development/persistence/persistence_test.cpp svneol=native#text/plain
 boost/development/persistence/text.hpp svneol=native#text/plain
 boost/development/persistence/xdr.hpp svneol=native#text/plain
-boost/development/py_cpp/tru64.mak svneol=native#text/plain
 boost/index.htm svneol=native#text/html
 boost/libs/array/array.hpp.html svneol=native#text/html
 boost/libs/array/array.html svneol=native#text/html
