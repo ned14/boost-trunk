@@ -6606,7 +6606,6 @@ boost/libs/serialization/test/test_pimpl.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_polymorphic.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_polymorphic_A.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_polymorphic_A.hpp svneol=native#text/plain
-boost/libs/serialization/test/test_polymorphic_archive_data.hpp svneol=native#text/plain
 boost/libs/serialization/test/test_primitive.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_private_ctor.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_recursion.cpp svneol=native#text/plain
@@ -6642,6 +6641,7 @@ boost/libs/serialization/vc6ide/Attic/demo_fast_binary_archive.dsp -text svneol=
 boost/libs/serialization/vc6ide/Attic/demo_mi.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/Attic/demo_pimpl.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/Attic/demo_plugin.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/Attic/demo_portable_archive.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/Attic/demo_shared_ptr.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/Attic/demo_xml.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/Attic/demo_xml_load.dsp -text svneol=CRLF#unset
@@ -6708,7 +6708,7 @@ boost/libs/serialization/vc6ide/demo_fast_binary_archive.dsp -text svneol=CRLF#u
 boost/libs/serialization/vc6ide/demo_mi.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/demo_pimpl.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/demo_plugin.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/demo_portable_binary_archive.dsp -text svneol=CRLF#unset
+boost/libs/serialization/vc6ide/demo_portable_archive.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/demo_shared_ptr.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/demo_xml.dsp -text svneol=CRLF#unset
 boost/libs/serialization/vc6ide/demo_xml_load.dsp -text svneol=CRLF#unset
@@ -6794,19 +6794,17 @@ boost/libs/serialization/vc7ide/test_delete_pointer.vcproj -text
 boost/libs/serialization/vc7ide/test_deque.vcproj -text
 boost/libs/serialization/vc7ide/test_derived.vcproj -text
 boost/libs/serialization/vc7ide/test_derived_class.vcproj -text
-boost/libs/serialization/vc7ide/test_derived_class_ptr..vcproj -text
+boost/libs/serialization/vc7ide/test_derived_class_ptr.vcproj -text
 boost/libs/serialization/vc7ide/test_diamond.vcproj -text
 boost/libs/serialization/vc7ide/test_exported.vcproj -text
 boost/libs/serialization/vc7ide/test_iterattors.vcproj -text
 boost/libs/serialization/vc7ide/test_iterattors_base64.vcproj -text
-boost/libs/serialization/vc7ide/test_level_class_info_load.vcproj -text
 boost/libs/serialization/vc7ide/test_list.vcproj -text
 boost/libs/serialization/vc7ide/test_list_ptrs.vcproj -text
 boost/libs/serialization/vc7ide/test_map.vcproj -text
 boost/libs/serialization/vc7ide/test_mi.vcproj -text
 boost/libs/serialization/vc7ide/test_mult_archive_types.vcproj -text
 boost/libs/serialization/vc7ide/test_multiple_ptrs.vcproj -text
-boost/libs/serialization/vc7ide/test_multiplel_ptrs..vcproj -text
 boost/libs/serialization/vc7ide/test_no_rtti.vcproj -text
 boost/libs/serialization/vc7ide/test_non_default_ctor.vcproj -text
 boost/libs/serialization/vc7ide/test_non_default_ctor2.vcproj -text
