@@ -6825,6 +6825,7 @@ boost/libs/serialization/vc7ide/demo_xml_save.vcproj -text
 boost/libs/serialization/vc7ide/readme.txt svneol=native#text/plain
 boost/libs/serialization/vc7ide/test_array.vcproj -text
 boost/libs/serialization/vc7ide/test_binary.vcproj -text
+boost/libs/serialization/vc7ide/test_class_info_load.vcproj -text
 boost/libs/serialization/vc7ide/test_class_info_save.vcproj -text
 boost/libs/serialization/vc7ide/test_codecvt_null.vcproj -text
 boost/libs/serialization/vc7ide/test_const.vcproj -text
@@ -6837,6 +6838,8 @@ boost/libs/serialization/vc7ide/test_derived_class.vcproj -text
 boost/libs/serialization/vc7ide/test_derived_class_ptr.vcproj -text
 boost/libs/serialization/vc7ide/test_diamond.vcproj -text
 boost/libs/serialization/vc7ide/test_exported.vcproj -text
+boost/libs/serialization/vc7ide/test_iterators.vcproj -text
+boost/libs/serialization/vc7ide/test_iterators_base64.vcproj -text
 boost/libs/serialization/vc7ide/test_list.vcproj -text
 boost/libs/serialization/vc7ide/test_list_ptrs.vcproj -text
 boost/libs/serialization/vc7ide/test_map.vcproj -text
