@@ -3333,6 +3333,7 @@ boost/libs/bind/test/bind_dm_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_eq_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_fastcall_mf_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_fastcall_test.cpp svneol=native#text/plain
+boost/libs/bind/test/bind_not_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_stateful_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_stdcall_mf_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_stdcall_test.cpp svneol=native#text/plain
