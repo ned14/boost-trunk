@@ -33,6 +33,7 @@ boost/boost/detail/ob_type_traits.hpp svneol=native#text/plain
 boost/boost/detail/select_type.hpp svneol=native#text/plain
 boost/boost/detail/type_traits.hpp svneol=native#text/plain
 boost/boost/functional.hpp svneol=native#text/plain
+boost/boost/graph/adjacency_iterator.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_matrix.hpp svneol=native#text/plain
 boost/boost/graph/bellman_ford_shortest_paths.hpp svneol=native#text/plain
