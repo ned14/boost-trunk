@@ -386,6 +386,7 @@ boost/libs/bind/bind_visitor.cpp svneol=native#text/plain
 boost/libs/bind/mem_fn.html svneol=native#text/html
 boost/libs/bind/mem_fn_stdcall_test.cpp svneol=native#text/plain
 boost/libs/bind/mem_fn_test.cpp svneol=native#text/plain
+boost/libs/bind/mem_fn_void_test.cpp svneol=native#text/plain
 boost/libs/bind/ref.html svneol=native#text/html
 boost/libs/compatibility/generate_cpp_c_headers.py svneol=native#text/x-python
 boost/libs/compatibility/index.html svneol=native#text/html
