@@ -145,6 +145,7 @@ boost/boost/timer.hpp svneol=native#text/plain
 boost/boost/type_traits.hpp svneol=native#text/plain
 boost/boost/utility.hpp svneol=native#text/plain
 boost/c++boost.gif -text svneol=unset#image/gif
+boost/development/more/directory-structure.htm svneol=native#text/html
 boost/development/persistence/binary.hpp svneol=native#text/plain
 boost/development/persistence/persistence.hpp svneol=native#text/plain
 boost/development/persistence/persistence.html svneol=native#text/html
