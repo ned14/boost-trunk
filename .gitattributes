@@ -103,6 +103,7 @@ boost/tools/build/v2/kernel/errors.jam svneol=native#text/plain
 boost/tools/build/v2/kernel/modules.jam svneol=native#text/plain
 boost/tools/build/v2/nightly.sh svneol=native#text/x-sh
 boost/tools/build/v2/options/help.jam svneol=native#text/plain
+boost/tools/build/v2/python/Overview.txt svneol=native#text/plain
 boost/tools/build/v2/python/boost/__init__.py svneol=native#text/x-python
 boost/tools/build/v2/python/boost/build/__init__.py svneol=native#text/x-python
 boost/tools/build/v2/python/boost/build/build/__init__.py svneol=native#text/x-python
