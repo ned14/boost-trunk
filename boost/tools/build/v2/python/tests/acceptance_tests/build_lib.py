@@ -30,10 +30,10 @@ def run ():
     requirements2 = ['<define>YUI', '<location-prefix>test']
     obj2 = project.obj ('y.o', sources2, requirements2)
 
-    lib = project.shared_lib ('x', [obj1, obj2], ['<location-prefix>test'])
+    lib = project.shared_lib ('direct_lib', [obj1, obj2], ['<location-prefix>test'])
     manager.construct ([], [lib])
 
-    project.shared_lib ('mylib', ['x.cpp', 'y.cpp'])
+    project.shared_lib ('direct_lib', ['x.cpp', 'y.cpp'])
 
 #    manager.construct (['<link-runtime>static', 'debug', 'release', '<define>DEF', '<user-interface>gui', '<user-interface>console'], [project.target ()])
 #    manager.construct (['debug', '<location-prefix>test'], [project.target ()])
