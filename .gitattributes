@@ -2544,6 +2544,13 @@ boost/tools/build/test/project_test1.py svneol=native#text/x-python
 boost/tools/build/test/project_test2.py svneol=native#text/x-python
 boost/tools/build/test/readme.txt svneol=native#text/plain
 boost/tools/build/test/recursive.jam svneol=native#text/plain
+boost/tools/build/test/startup/boost-root/boost-build.jam svneol=native#text/plain
+boost/tools/build/test/startup/boost-root/tools/build/bootstrap.jam svneol=native#text/plain
+boost/tools/build/test/startup/bootstrap-env/boost-build.jam svneol=native#text/plain
+boost/tools/build/test/startup/bootstrap-explicit/boost-build.jam svneol=native#text/plain
+boost/tools/build/test/startup/no-bootstrap1/boost-build.jam svneol=native#text/plain
+boost/tools/build/test/startup/no-bootstrap2/boost-build.jam svneol=native#text/plain
+boost/tools/build/test/startup/no-bootstrap3/boost-build.jam svneol=native#text/plain
 boost/tools/build/test/startup_v1.py svneol=native#text/x-python
 boost/tools/build/test/startup_v2.py svneol=native#text/x-python
 boost/tools/build/test/subdir1/file-to-bind -text
@@ -2674,6 +2681,13 @@ boost/tools/build/v2/test/project_test1.py svneol=native#text/x-python
 boost/tools/build/v2/test/project_test2.py svneol=native#text/x-python
 boost/tools/build/v2/test/readme.txt svneol=native#text/plain
 boost/tools/build/v2/test/recursive.jam svneol=native#text/plain
+boost/tools/build/v2/test/startup/boost-root/boost-build.jam svneol=native#text/plain
+boost/tools/build/v2/test/startup/boost-root/tools/build/bootstrap.jam svneol=native#text/plain
+boost/tools/build/v2/test/startup/bootstrap-env/boost-build.jam svneol=native#text/plain
+boost/tools/build/v2/test/startup/bootstrap-explicit/boost-build.jam svneol=native#text/plain
+boost/tools/build/v2/test/startup/no-bootstrap1/boost-build.jam svneol=native#text/plain
+boost/tools/build/v2/test/startup/no-bootstrap2/boost-build.jam svneol=native#text/plain
+boost/tools/build/v2/test/startup/no-bootstrap3/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/test/startup_v1.py svneol=native#text/x-python
 boost/tools/build/v2/test/startup_v2.py svneol=native#text/x-python
 boost/tools/build/v2/test/subdir1/file-to-bind -text
