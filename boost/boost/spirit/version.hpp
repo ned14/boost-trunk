@@ -1,5 +1,5 @@
 /*=============================================================================
-    Copyright (c) 2001-2003 Hartmut Kaiser
+    Copyright (c) 2001-2004 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
     Use, modification and distribution is subject to the Boost Software
@@ -17,7 +17,7 @@
 #include <boost/version.hpp>
 
 #if BOOST_VERSION < 103200
-#error "Spirit V1.8.1 needs at least Boost V1.32.0 to compile successfully."
+#error "Spirit V1.6.2 needs at least Boost V1.32.0 to compile successfully."
 #endif 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -25,7 +25,7 @@
 //  This is the version of the current Spirit distribution
 //
 ///////////////////////////////////////////////////////////////////////////////
-#define SPIRIT_VERSION 0x1801
-#define SPIRIT_PIZZA_VERSION SPIRIT_FOUR_SEASONS  // :-)
+#define SPIRIT_VERSION 0x1602
+#define SPIRIT_PIZZA_VERSION SPIRIT_DIAVOLO  // :-)
 
 #endif // defined(SPIRIT_VERSION_HPP)
