@@ -7686,7 +7686,9 @@ boost/libs/serialization/vc7ide/test_polymorphic.vcproj -text
 boost/libs/serialization/vc7ide/test_primitive.vcproj -text
 boost/libs/serialization/vc7ide/test_private_ctor.vcproj -text
 boost/libs/serialization/vc7ide/test_recursion.vcproj -text
+boost/libs/serialization/vc7ide/test_recusion.vcproj -text
 boost/libs/serialization/vc7ide/test_registered.vcproj -text
+boost/libs/serialization/vc7ide/test_reset_object_address.vcproj -text
 boost/libs/serialization/vc7ide/test_set.vcproj -text
 boost/libs/serialization/vc7ide/test_shared_ptr.vcproj -text
 boost/libs/serialization/vc7ide/test_simple_class.vcproj -text
@@ -7699,6 +7701,7 @@ boost/libs/serialization/vc7ide/test_traits_fail.vcproj -text
 boost/libs/serialization/vc7ide/test_traits_pass.vcproj -text
 boost/libs/serialization/vc7ide/test_unregistered.vcproj -text
 boost/libs/serialization/vc7ide/test_utf8_codecvt.vcproj -text
+boost/libs/serialization/vc7ide/test_variant.vcproj -text
 boost/libs/serialization/vc7ide/test_vector.vcproj -text
 boost/libs/serialization/vc7ide/test_void_cast.vcproj -text
 boost/libs/signals/build/Jamfile svneol=native#text/plain
