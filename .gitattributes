@@ -6076,6 +6076,7 @@ boost/tools/boostbook/xsl/html.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/index.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/library.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/lookup.xsl svneol=native#text/xml
+boost/tools/boostbook/xsl/macro.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/manpages.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/reference.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/source-highlight.xsl svneol=native#text/xml
