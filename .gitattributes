@@ -3611,7 +3611,7 @@ boost/tools/build/test/echo_args.jam svneol=native#text/plain
 boost/tools/build/test/empty.jam svneol=native#text/plain
 boost/tools/build/test/generators-test/Jamfile svneol=native#text/plain
 boost/tools/build/test/generators-test/a.cpp svneol=native#text/plain
-boost/tools/build/test/generators-test/b.cpp svneol=native#text/plain
+boost/tools/build/test/generators-test/b.cxx -text
 boost/tools/build/test/generators-test/c.ui -text
 boost/tools/build/test/generators-test/d.wd -text
 boost/tools/build/test/generators-test/e.cpp svneol=native#text/plain
@@ -3831,7 +3831,7 @@ boost/tools/build/v2/test/echo_args.jam svneol=native#text/plain
 boost/tools/build/v2/test/empty.jam svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/a.cpp svneol=native#text/plain
-boost/tools/build/v2/test/generators-test/b.cpp svneol=native#text/plain
+boost/tools/build/v2/test/generators-test/b.cxx -text
 boost/tools/build/v2/test/generators-test/c.ui -text
 boost/tools/build/v2/test/generators-test/d.wd -text
 boost/tools/build/v2/test/generators-test/e.cpp svneol=native#text/plain
