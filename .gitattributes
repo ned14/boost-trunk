@@ -1871,6 +1871,7 @@ boost/libs/python/doc/v2/lvalue_from_pytype.html svneol=native#text/html
 boost/libs/python/doc/v2/make_function.html svneol=native#text/html
 boost/libs/python/doc/v2/manage_new_object.html svneol=native#text/html
 boost/libs/python/doc/v2/module.html svneol=native#text/html
+boost/libs/python/doc/v2/operators.html svneol=native#text/html
 boost/libs/python/doc/v2/overview.html svneol=native#text/html
 boost/libs/python/doc/v2/ptr.html svneol=native#text/html
 boost/libs/python/doc/v2/rationale.html svneol=native#text/html
