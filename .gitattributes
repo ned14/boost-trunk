@@ -4399,6 +4399,7 @@ boost/libs/numeric/ublas/doc/matrix_sparse.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/overview.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/readme.txt svneol=native#text/plain
 boost/libs/numeric/ublas/doc/samples/Jamfile svneol=native#text/plain
+boost/libs/numeric/ublas/doc/samples/Jamfile.v2 svneol=native#text/plain
 boost/libs/numeric/ublas/doc/samples/banded_adaptor.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/doc/samples/banded_matrix.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/doc/samples/bounded_array.cpp svneol=native#text/plain
