@@ -442,6 +442,7 @@ boost/boost/python/args.hpp svneol=native#text/plain
 boost/boost/python/back_reference.hpp svneol=native#text/plain
 boost/boost/python/base_type_traits.hpp svneol=native#text/plain
 boost/boost/python/bases.hpp svneol=native#text/plain
+boost/boost/python/borrowed.hpp svneol=native#text/plain
 boost/boost/python/call.hpp svneol=native#text/plain
 boost/boost/python/call_method.hpp svneol=native#text/plain
 boost/boost/python/callback.hpp svneol=native#text/plain
