@@ -23,16 +23,24 @@
 #include "boost/mpl/make_fun.hpp"
 #include "boost/mpl/limits/arity.hpp"
 #include "boost/mpl/aux_/arity.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
-#include "boost/mpl/aux_/preprocessor/enum.hpp"
-#include "boost/mpl/aux_/preprocessor/project1st.hpp"
-#include "boost/mpl/aux_/config/lambda_support.hpp"
 
-#include "boost/preprocessor/comma_if.hpp"
-#include "boost/preprocessor/repeat.hpp"
-#include "boost/preprocessor/if.hpp"
-#include "boost/preprocessor/inc.hpp"
-#include "boost/preprocessor/cat.hpp"
+#include "boost/mpl/aux_/config/use_preprocessed.hpp"
+
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/aux_/preprocessed/lambda.hpp"
+
+#else
+
+#   include "boost/mpl/aux_/config/lambda_support.hpp"
+#   include "boost/mpl/aux_/preprocessor/params.hpp"
+#   include "boost/mpl/aux_/preprocessor/enum.hpp"
+#   include "boost/mpl/aux_/preprocessor/project1st.hpp"
+#   include "boost/preprocessor/comma_if.hpp"
+#   include "boost/preprocessor/repeat.hpp"
+#   include "boost/preprocessor/if.hpp"
+#   include "boost/preprocessor/inc.hpp"
+#   include "boost/preprocessor/cat.hpp"
 
 namespace boost {
 namespace mpl {
@@ -195,5 +203,7 @@ struct arity< lambda<T>, N >
 
 } // namespace mpl
 } // namespace boost
+
+#endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
 
 #endif // BOOST_MPL_LAMBDA_HPP_INCLUDED

@@ -17,11 +17,19 @@
 #ifndef BOOST_MPL_LIST_AUX_IMPL_HPP_INCLUDED
 #define BOOST_MPL_LIST_AUX_IMPL_HPP_INCLUDED
 
-#include "boost/mpl/limits/list.hpp"
-#include "boost/preprocessor/cat.hpp"
-#include "boost/preprocessor/stringize.hpp"
+#include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
-#define AUX_LIST_HEADER \
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/aux_/preprocessed/impl.hpp"
+
+#else
+
+#   include "boost/mpl/limits/list.hpp"
+#   include "boost/preprocessor/cat.hpp"
+#   include "boost/preprocessor/stringize.hpp"
+
+#   define AUX_LIST_HEADER \
     BOOST_PP_STRINGIZE( \
         BOOST_PP_CAT( \
               BOOST_PP_CAT(boost/mpl/list/list, BOOST_MPL_LIMIT_LIST_SIZE) \
@@ -29,16 +37,15 @@
         ) \
 /**/
 
-#include AUX_LIST_HEADER
-#undef AUX_LIST_HEADER
+#   include AUX_LIST_HEADER
+#   undef AUX_LIST_HEADER
 
-#include "boost/mpl/aux_/count_if_not.hpp"
-#include "boost/mpl/aux_/none.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
-#include "boost/mpl/aux_/preprocessor/default_params.hpp"
-
-#include "boost/preprocessor/repeat_2nd.hpp"
-#include "boost/preprocessor/if.hpp"
+#   include "boost/mpl/aux_/count_if_not.hpp"
+#   include "boost/mpl/aux_/none.hpp"
+#   include "boost/mpl/aux_/preprocessor/params.hpp"
+#   include "boost/mpl/aux_/preprocessor/default_params.hpp"
+#   include "boost/preprocessor/repeat_2nd.hpp"
+#   include "boost/preprocessor/if.hpp"
 
 namespace boost {
 namespace mpl {
@@ -111,5 +118,7 @@ BOOST_MPL_AUX_COUNT_IF_NOT(list, BOOST_MPL_LIMIT_LIST_SIZE)
 
 } // namespace mpl
 } // namespace boost
+
+#endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
 
 #endif // BOOST_MPL_LIST_AUX_IMPL_HPP_INCLUDED

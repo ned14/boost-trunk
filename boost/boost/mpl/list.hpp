@@ -17,16 +17,18 @@
 #ifndef BOOST_MPL_LIST_HPP_INCLUDED
 #define BOOST_MPL_LIST_HPP_INCLUDED
 
+#include "boost/mpl/list/aux_/impl.hpp"
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
-#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include "boost/mpl/aux_/preprocessed/list.hpp"
+
 #else
 
-#include "boost/mpl/list/aux_/impl.hpp"
-#include "boost/mpl/limits/list.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
-#include "boost/mpl/aux_/preprocessor/default_params.hpp"
+#   include "boost/mpl/limits/list.hpp"
+#   include "boost/mpl/aux_/preprocessor/params.hpp"
+#   include "boost/mpl/aux_/preprocessor/default_params.hpp"
 
 namespace boost {
 namespace mpl {

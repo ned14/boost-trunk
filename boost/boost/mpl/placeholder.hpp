@@ -19,9 +19,17 @@
 
 #include "boost/mpl/limits/arity.hpp"
 
-#include "boost/preprocessor/repeat.hpp"
-#include "boost/preprocessor/inc.hpp"
-#include "boost/preprocessor/cat.hpp"
+#include "boost/mpl/aux_/config/use_preprocessed.hpp"
+
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/aux_/preprocessed/placeholder.hpp"
+
+#else
+
+#   include "boost/preprocessor/repeat.hpp"
+#   include "boost/preprocessor/inc.hpp"
+#   include "boost/preprocessor/cat.hpp"
 
 namespace boost {
 namespace mpl {
@@ -60,5 +68,7 @@ BOOST_PP_REPEAT(
 
 } // namespace mpl
 } // namespace boost 
+
+#endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
 
 #endif // BOOST_MPL_PLACEHOLDER_HPP_INCLUDED

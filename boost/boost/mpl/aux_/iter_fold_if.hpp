@@ -17,18 +17,26 @@
 #ifndef BOOST_MPL_AUX_ITER_FOLD_IF_HPP_INCLUDED
 #define BOOST_MPL_AUX_ITER_FOLD_IF_HPP_INCLUDED
 
-#include "boost/mpl/limits/unrolling.hpp"
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/next.hpp"
 #include "boost/mpl/bool_c.hpp"
 #include "boost/mpl/apply.hpp"
 #include "boost/mpl/select_if.hpp"
 
-#include "boost/preprocessor/arithmetic/sub.hpp"
-#include "boost/preprocessor/repeat.hpp"
-#include "boost/preprocessor/inc.hpp"
-#include "boost/preprocessor/dec.hpp"
-#include "boost/preprocessor/cat.hpp"
+#include "boost/mpl/aux_/config/use_preprocessed.hpp"
+
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/aux_/preprocessed/iter_fold_if.hpp"
+
+#else
+
+#   include "boost/mpl/limits/unrolling.hpp"
+#   include "boost/preprocessor/arithmetic/sub.hpp"
+#   include "boost/preprocessor/repeat.hpp"
+#   include "boost/preprocessor/inc.hpp"
+#   include "boost/preprocessor/dec.hpp"
+#   include "boost/preprocessor/cat.hpp"
 
 namespace boost {
 namespace mpl {
@@ -229,5 +237,7 @@ struct iter_fold_if
 } // namespace aux
 } // namespace mpl
 } // namespace boost
+
+#endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
 
 #endif // #ifndef BOOST_MPL_AUX_ITER_FOLD_IF_HPP_INCLUDED

@@ -17,13 +17,14 @@
 #ifndef BOOST_MPL_LIST_LIST20_HPP_INCLUDED
 #define BOOST_MPL_LIST_LIST20_HPP_INCLUDED
 
+#include "boost/mpl/list/list10.hpp"
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
-#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include "boost/mpl/aux_/preprocessed/list20.hpp"
-#else
 
-#   include "boost/mpl/list/list10.hpp"
+#else
 
 #   define BOOST_MPL_AUX_NUMBERED_LIST_BLOCK_START 11
 #   define BOOST_MPL_AUX_NUMBERED_LIST_BLOCK_SIZE 10

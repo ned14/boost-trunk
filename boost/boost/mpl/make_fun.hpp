@@ -18,12 +18,20 @@
 #define BOOST_MPL_MAKE_FUN_HPP_INCLUDED
 
 #include "boost/mpl/limits/arity.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
-#include "boost/mpl/aux_/config/ttp.hpp"
 
-#include "boost/preprocessor/repeat_2nd.hpp"
-#include "boost/preprocessor/inc.hpp"
-#include "boost/preprocessor/if.hpp"
+#include "boost/mpl/aux_/config/use_preprocessed.hpp"
+
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/aux_/preprocessed/make_fun.hpp"
+
+#else
+
+#   include "boost/mpl/aux_/config/ttp.hpp"
+#   include "boost/mpl/aux_/preprocessor/params.hpp"
+#   include "boost/preprocessor/repeat_2nd.hpp"
+#   include "boost/preprocessor/inc.hpp"
+#   include "boost/preprocessor/if.hpp"
 
 namespace boost {
 namespace mpl {
@@ -124,5 +132,7 @@ struct make_f_yx
 
 } // namespace mpl
 } // namespace boost
+
+#endif // #if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
 
 #endif // BOOST_MPL_MAKE_FUN_HPP_INCLUDED

@@ -17,33 +17,35 @@
 #ifndef BOOST_MPL_APPLY_HPP_INCLUDED
 #define BOOST_MPL_APPLY_HPP_INCLUDED
 
-#include "boost/mpl/aux_/config/use_preprocessed.hpp"
-
-#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
-#   include "boost/mpl/aux_/preprocessed/apply.hpp"
-#else
-
 #include "boost/mpl/placeholder.hpp"
 #include "boost/mpl/limits/arity.hpp"
-#include "boost/mpl/aux_/lambda_spec.hpp"
-#include "boost/mpl/aux_/count_if_not.hpp"
 #include "boost/mpl/aux_/arity.hpp"
 #include "boost/mpl/aux_/none.hpp"
-#include "boost/mpl/aux_/msvc_workarounds.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
-#include "boost/mpl/aux_/preprocessor/default_params.hpp"
-#include "boost/mpl/aux_/preprocessor/enum.hpp"
-#include "boost/mpl/aux_/preprocessor/project1st.hpp"
-#include "boost/mpl/aux_/config/dtp.hpp"
 
-#include "boost/preprocessor/arithmetic/add.hpp"
-#include "boost/preprocessor/arithmetic/sub.hpp"
-#include "boost/preprocessor/repeat_2nd.hpp"
-#include "boost/preprocessor/repeat_3rd.hpp"
-#include "boost/preprocessor/comma_if.hpp"
-#include "boost/preprocessor/if.hpp"
-#include "boost/preprocessor/inc.hpp"
-#include "boost/config.hpp"
+#include "boost/mpl/aux_/config/use_preprocessed.hpp"
+
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
+#   include "boost/mpl/aux_/preprocessed/apply.hpp"
+
+#else
+
+#   include "boost/mpl/aux_/lambda_spec.hpp"
+#   include "boost/mpl/aux_/msvc_workarounds.hpp"
+#   include "boost/mpl/aux_/config/dtp.hpp"
+#   include "boost/mpl/aux_/count_if_not.hpp"
+#   include "boost/mpl/aux_/preprocessor/params.hpp"
+#   include "boost/mpl/aux_/preprocessor/default_params.hpp"
+#   include "boost/mpl/aux_/preprocessor/enum.hpp"
+#   include "boost/mpl/aux_/preprocessor/project1st.hpp"
+#   include "boost/preprocessor/arithmetic/add.hpp"
+#   include "boost/preprocessor/arithmetic/sub.hpp"
+#   include "boost/preprocessor/repeat_2nd.hpp"
+#   include "boost/preprocessor/repeat_3rd.hpp"
+#   include "boost/preprocessor/comma_if.hpp"
+#   include "boost/preprocessor/if.hpp"
+#   include "boost/preprocessor/inc.hpp"
+#   include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {

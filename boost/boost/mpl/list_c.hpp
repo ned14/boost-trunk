@@ -17,24 +17,25 @@
 #ifndef BOOST_MPL_LIST_C_HPP_INCLUDED
 #define BOOST_MPL_LIST_C_HPP_INCLUDED
 
+#include "boost/mpl/integral_c.hpp"
+#include "boost/mpl/list/aux_/impl.hpp"
+#include <climits>
+
 #include "boost/mpl/aux_/config/use_preprocessed.hpp"
 
-#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS)
+#if defined(BOOST_MPL_USE_PREPROCESSED_HEADERS) && \
+    !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include "boost/mpl/aux_/preprocessed/list_c.hpp"
+
 #else
 
-#include "boost/mpl/list/aux_/impl.hpp"
-#include "boost/mpl/limits/list.hpp"
-#include "boost/mpl/integral_c.hpp"
-#include "boost/mpl/aux_/preprocessor/params.hpp"
-#include "boost/mpl/aux_/preprocessor/default_params.hpp"
-#include "boost/mpl/aux_/preprocessor/enum.hpp"
-#include "boost/mpl/aux_/config/msvc_typename.hpp"
-
-#include "boost/preprocessor/tuple/elem.hpp"
-#include "boost/config.hpp"
-
-#include <climits>
+#   include "boost/mpl/limits/list.hpp"
+#   include "boost/mpl/aux_/preprocessor/params.hpp"
+#   include "boost/mpl/aux_/preprocessor/default_params.hpp"
+#   include "boost/mpl/aux_/preprocessor/enum.hpp"
+#   include "boost/mpl/aux_/config/msvc_typename.hpp"
+#   include "boost/preprocessor/tuple/elem.hpp"
+#   include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {
