@@ -661,6 +661,7 @@ boost/boost/mpl/aux_/begin_end_impl.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/clear_impl.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/common_name_wknd.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/comparison_op.hpp svneol=native#text/plain
+boost/boost/mpl/aux_/config/adl.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/arrays.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/bind.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/config/compiler.hpp svneol=native#text/plain
