@@ -5680,6 +5680,7 @@ boost/libs/preprocessor/test/list.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/logical.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/repetition.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/selection.cpp svneol=native#text/plain
+boost/libs/preprocessor/test/seq.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/slot.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/test.h svneol=native#text/plain
 boost/libs/preprocessor/test/tuple.cpp svneol=native#text/plain
