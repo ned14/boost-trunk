@@ -4121,6 +4121,7 @@ boost/libs/math/special_functions/index.html svneol=native#text/html
 boost/libs/math/special_functions/inverse_hyperbolic.html svneol=native#text/html
 boost/libs/math/special_functions/output.txt svneol=native#text/plain
 boost/libs/math/special_functions/output_more.txt svneol=native#text/plain
+boost/libs/math/special_functions/sinc_sinhc.html svneol=native#text/html
 boost/libs/math/special_functions/sinc_test.hpp svneol=native#text/plain
 boost/libs/math/special_functions/sinhc_test.hpp svneol=native#text/plain
 boost/libs/math/special_functions/special_functions.html svneol=native#text/html
