@@ -8105,6 +8105,7 @@ boost/libs/smart_ptr/test/shared_from_this_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_ptr_alloc_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_ptr_assign_fail.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_ptr_basic_test.cpp svneol=native#text/plain
+boost/libs/smart_ptr/test/shared_ptr_delete_fail.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_ptr_mt_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_ptr_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/shared_ptr_timing_test.cpp svneol=native#text/plain
