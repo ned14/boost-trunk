@@ -225,7 +225,7 @@ namespace boost { namespace spirit {
                 //  not have a push_back() member function, so we can't use
                 //  std::copy with back_inserter. This is the best solution I
                 //  could come up with.
-
+                ref.clear();
                 for (IteratorT i = f; i != l; ++i)
                     ref += *i;
             }
