@@ -521,6 +521,7 @@ boost/boost/python/cross_module.hpp svneol=native#text/plain
 boost/boost/python/data_members.hpp svneol=native#text/plain
 boost/boost/python/default_call_policies.hpp svneol=native#text/plain
 boost/boost/python/detail/aix_init_module.hpp svneol=native#text/plain
+boost/boost/python/detail/api_placeholder.hpp svneol=native#text/plain
 boost/boost/python/detail/arg_tuple_size.hpp svneol=native#text/plain
 boost/boost/python/detail/base_object.hpp svneol=native#text/plain
 boost/boost/python/detail/borrowed_ptr.hpp svneol=native#text/plain
