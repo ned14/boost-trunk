@@ -34,7 +34,7 @@ class BjamBuildSystem (log_engine.LogBuildSystem):
         for name, value in variables.iteritems ():
             for variable, values in value.iteritems ():
                 result += variable + ' on "' + name + '" = ' + self.__quote (values)
-            result += ' ;\n'
+                result += ' ;\n'
     
         return result
 

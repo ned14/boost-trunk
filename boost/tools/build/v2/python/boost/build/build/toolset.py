@@ -4,15 +4,17 @@
 #  warranty, and with no claim as to its suitability for any purpose.
 
 """ Support for toolset definition.
+In BBv2, toolsets where defined using the a.b.c notation. In this port, '_' should be used instead of '.'.
 """
 
 import feature, property, generators
 from boost.build.util.utility import *
 from boost.build.util import set
 
-__re_split_last_dot = re.compile (r'^(.+)\\.([^\\.])*')
+__re_split_last_segment = re.compile (r'^(.+)_([^_])*')
 __re_two_ampersands = re.compile ('(&&)')
-__re_first_dot = re.compile ('([^.]*).*')
+__re_first_segment = re.compile ('([^_]*).*')
+__re_first_group = re.compile (r'[^_]*_(.*)')
 
 def reset ():
     """ Clear the module state. This is mainly for testing purposes.
@@ -63,7 +65,7 @@ def normalize_condition (property_sets):
 
     return result
 
-def flags (rule_or_module, variable_name, condition, values):
+def flags (rule_or_module, variable_name, condition, values = []):
     """ Specifies the flags (variables) that must be set on targets under certain
         conditions, described by arguments.
         rule_or_module:   If contains dot, should be a rule name.
@@ -111,10 +113,10 @@ def flags (rule_or_module, variable_name, condition, values):
 def set_target_variables (manager, rule_or_module, targets, properties):
     """
     """
-    key = str (rule_or_module) + '.' + str (properties)
+    key = str (rule_or_module.__name__) + '.' + str (properties)
     settings = __stv.get (key, None)
     if not settings:
-        settings = __set_target_variables_aux  (manager ,rule_or_module, properties)
+        settings = __set_target_variables_aux  (manager, rule_or_module.__name__, properties)
 
         __stv [key] = settings
         
@@ -179,9 +181,7 @@ def inherit_flags (toolset, base, prohibited_properties = []):
         entry = __rules [rule_or_module][f]
         
         if set.difference (entry ['condition'], prohibited_properties) or not entry ['condition']:
-            __re_first_dotted_group = re.compile (r'[^.]*\.(.*)')
-
-            match = __re_first_dotted_group.match (rule_or_module)
+            match = __re_first_group.match (rule_or_module)
             rule_ = None
             if match:
                 rule_ = match.group (1)
@@ -207,7 +207,7 @@ def __set_target_variables_aux (manager, rule_or_module, properties):
     """
     result = []
 
-    key = str (rule_or_module)
+    key = rule_or_module
     if __rules.has_key (key):
         for f in __rules [key]['flags']:
             entry = __rules [key][f]
@@ -226,10 +226,10 @@ def __set_target_variables_aux (manager, rule_or_module, properties):
                     result.append ((variable, r))
     
     # strip away last dot separated part and recurse.
-    next = __re_split_last_dot.match (key)
+    next = __re_split_last_segment.match (key)
     
     if next:
-        result.extend (__set_target_variables_aux (next.group (1), properties))
+        result.extend (__set_target_variables_aux (manager, next.group (1), properties))
 
     return result
 
@@ -278,6 +278,10 @@ def __add_flag (rule_or_module, variable_name, condition, values):
     """ Adds a new flag setting with the specified values.
         Does no checking.
     """
+    # Not '.' in names, use '_' instead.
+    assert (not '.' in rule_or_module)
+
+    rule_or_module.replace ('.', '_')
     if __rules.has_key (rule_or_module):
         current = __rules [rule_or_module]
     else:
@@ -298,7 +302,7 @@ def __add_flag (rule_or_module, variable_name, condition, values):
     __rules [rule_or_module] = current
     
     # Store all flags for a module
-    m = __re_first_dot.match (rule_or_module)
+    m = __re_first_segment.match (rule_or_module)
     if m:
         module_ = m.group (1)
         if not __module_flags.has_key (module_): __module_flags [module_] = []

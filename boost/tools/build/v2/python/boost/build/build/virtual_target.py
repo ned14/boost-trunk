@@ -62,7 +62,8 @@ import os.path
 import string
 
 from boost.build.util import path, utility, set
-from boost.build.util.utility import add_grist, get_grist, ungrist, replace_grist, unique
+from boost.build.util.utility import add_grist, get_grist, ungrist, replace_grist
+from boost.build.util.sequence import unique
 from boost.build.tools import common
 from boost.build.exceptions import *
 import toolset, type, action
@@ -151,7 +152,7 @@ class VirtualTargetRegistry:
         """ Appends the suffix appropriate to 'type/property_set' combination
             to the specified name and returns the result.
         """
-        suffix = type.generated_target_suffix (file_type, prop_set.raw ())
+        suffix = type.generated_target_suffix (file_type, prop_set)
 
         if suffix:
             return specified_name + '.' + suffix
@@ -664,12 +665,14 @@ class Action:
 
         self.engine_.add_dependency (actual_targets, self.actual_sources_ + self.dependency_only_sources_)
 
+        raw_properties = properties.raw ()
+
         # TODO: check the comment below. Was self.action_name_ [1]
         # Action name can include additional argument to rule, which should not
         # be passed to 'set-target-variables'
-        toolset.set_target_variables (self.manager_, self.action_name_, actual_targets, properties)
+        toolset.set_target_variables (self.manager_, self.action_name_, actual_targets, raw_properties)
         
-        self.action_name_ (actual_targets, self.actual_sources_, properties.raw ())
+        self.action_name_ (self.manager_, actual_targets, self.actual_sources_, raw_properties)
         
         engine = self.manager_.engine ()
         action_name = str (self.action_name_)

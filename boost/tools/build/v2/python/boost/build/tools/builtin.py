@@ -7,8 +7,9 @@
 """
 
 import sys
-from boost.build.build import feature, property, virtual_target, generators, type
+from boost.build.build import feature, property, virtual_target, generators, type, property_set
 from boost.build.util.utility import *
+from boost.build.util import path
 import boost.build.tools.types 
 
 # Records explicit properties for a variant.
@@ -460,7 +461,7 @@ class LinkingGenerator (generators.Generator):
     """ The generator class for handling EXE and SHARED_LIB creation.
     """
     def __init__ (self, id, rule, composing, source_types, target_types, requirements):
-        Generator.__init__ (self, id, rule, composing, source_types, target_types, requirements)
+        generators.Generator.__init__ (self, id, rule, composing, source_types, target_types, requirements)
         
     def run (self, project, name, prop_set, sources, multiple):
         sources.extend (prop_set.get ('<library>'))
@@ -472,7 +473,7 @@ class LinkingGenerator (generators.Generator):
                 search = s.search ()
                 extra.append (replace_grist (search, '<library-path>'))
                    
-        if prop_set.get ('<hardcode-dll-paths>') == ['true'] and type.is_derived (self.target_types [0], 'EXE'):
+        if prop_set.get ('<hardcode-dll-paths>') == ['true'] and type.is_derived (self.target_types_ [0], 'EXE'):
             xdll_path = prop_set.get ('<xdll-path>')
             # It's possible that we have libraries in sources which did not came
             # from 'lib' target. For example, libraries which are specified
@@ -491,7 +492,7 @@ class LinkingGenerator (generators.Generator):
         if extra:
             prop_set = prop_set.add_raw (extra)
                         
-        result = Generator.run (project, name, prop_set, sources, multiple)
+        result = generators.Generator.run (self, project, name, prop_set, sources, multiple)
         
         return (self.extra_usage_requirements (result, prop_set), result)
     
@@ -511,7 +512,7 @@ class LinkingGenerator (generators.Generator):
             
             for t in created_targets:
                 if type.is_derived (t.type (), 'SHARED_LIB'):
-                    paths.apppend (path.root (path.make (t.path ()), pwd))
+                    paths.append (path.root (path.make (t.path ()), pwd))
 
             extra += replace_grist (paths, '<xdll-path>')
         
@@ -561,7 +562,7 @@ class LinkingGenerator (generators.Generator):
         properties2 += '&&'.join (replace_grist (fsa, '<find-shared-library>'))
         properties2 += '&&'.join (replace_grist (fst, '<find-static-library>'))
                 
-        spawn = generator.generated_targets (sources2, property_set.create (properties2), project, name)
+        spawn = generators.Generator.generated_targets (self, sources2, property_set.create (properties2), project, name)
         
         return spawn
 

@@ -12,7 +12,7 @@ class LogBuildSystem (BuildSystem):
         self.dependencies_ = {}
         self.actions_bindings_ = []
 
-    def set_target_variable (self, target, variable, value):
+    def do_set_target_variable (self, target, variable, value):
         if not self.variables_.has_key (target):
             self.variables_ [target] = {}
         

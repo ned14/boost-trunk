@@ -111,17 +111,6 @@ def replace_suffix (name, new_suffix):
     split = os.path.splitext (name)
     return split [0] + new_suffix
 
-def unique (values):
-    # TODO: is this the most efficient way?
-    #       consider using a set from Python 2.4.
-    cache = {}
-    result = []
-    for v in values:
-        if not cache.has_key (str (v)):
-            cache [str (v)] = None
-            result.append (v)
-    return result
-
 def forward_slashes (s):
     """ Converts all backslashes to forward slashes.
     """

@@ -6,6 +6,7 @@
 import re
 from boost.build.util.utility import *
 from boost.build.build import feature
+from boost.build.util import sequence, set
 
 __re_two_ampersands = re.compile ('&&')
 __re_comma = re.compile (',')
@@ -403,70 +404,63 @@ def __validate1 (property):
 #       return $(result) ;
 #   }
 
-#   # Class which maintains a property set -> string
-#   # mapping
-#   class property-map
-#   {
-#       import numbers ;
-#       import sequence ;
-#       import errors : error ;
-#       
-#       rule __init__ ( )
-#       {        
-#           next-flag = 1 ;
-#       }
-#       
-#       # Associate 'value' with 'properties'
-#       rule insert ( properties + : value )
-#       {
-#           all-flags += $(next-flag) ;
-#           properties.$(next-flag) = $(properties) ;
-#           value.$(next-flag) = $(value) ;
-#   
-#           next-flag = [ numbers.increment $(next-flag) ] ;
-#       }
-#   
-#       # Return the value associated with 'properties'
-#       # or any subset of it. If more than one
-#       # subset has value assigned to it, return the
-#       # value for the longest subset, if it's unique.
-#       rule find ( properties + )
-#       {
-#           return [ find-replace $(properties) ] ;
-#       }
-#       
-#       # Find the value associated with 'properties'.
-#       # If 'value' parameter is given, replaces the found value
-#       # Returns the value that were stored originally.
-#       rule find-replace ( properties + : value ? )
-#       {
-#           # First find all matches
-#           local matches ;
-#           local match-ranks ;
-#           for local i in $(all-flags)
-#           {
-#               if $(properties.$(i)) in $(properties)
-#               {
-#                   matches += $(i) ;
-#                   match-ranks += [ sequence.length 
-#                       $(properties.$(i)) ] ;
-#               }
-#           }
-#           local best = [ sequence.select-highest-ranked 
-#               $(matches) : $(match-ranks) ] ;
-#           if $(best[2])
-#           {
-#               error "Ambiguous key" ;
-#           }        
-#           local original = $(value.$(best)) ;
-#           if $(value)
-#           {
-#               value.$(best) = $(value) ;
-#           }        
-#           return $(original) ;
-#       }      
-#   }
-#   
+
+class PropertyMap:
+    """ Class which maintains a property set -> string mapping.
+    """
+    def __init__ (self):
+        self.__next_flag = 0
+        self.__all_flags = []
+        self.__properties = {}
+        self.__values = {}
+    
+    def insert (self, properties, value):
+        """ Associate 'value' with 'properties'.
+        """
+        self.__all_flags.append (self.__next_flag)
+        self.__properties [self.__next_flag] = properties
+        self.__values [self.__next_flag] = value
+
+        self.__next_flag = self.__next_flag + 1
+
+    def find (self, properties):
+        """ Return the value associated with 'properties'
+            or any subset of it. If more than one
+            subset has value assigned to it, return the
+            value for the longest subset, if it's unique.
+        """
+        return self.find_replace (properties)
+    
+    def find_replace (self, properties, value = None):
+        """ Find the value associated with 'properties'.
+            If 'value' parameter is given, replaces the found value
+            Returns the value that were stored originally.
+        """
+        # First find all matches
+        matches = []
+        match_ranks = []
+        for i in self.__all_flags:
+            if set.contains (self.__properties [i], properties):
+                matches.append (i)
+                match_ranks.append (len (self.__properties [i]))
+
+        best = sequence.select_highest_ranked (matches, match_ranks)
+
+        if not best:
+            return None
+
+        if len (best) > 1:
+            raise NoBestMatchingAlternative ()
+
+        best = best [0]
+            
+        original = self.__values.get (best, None)
+
+        if value:
+            self.__values [best] = value
+
+        return original
+
 #   local rule __test__ ( )
 #   {
 #       import errors : try catch ;
@@ -561,21 +555,6 @@ def __validate1 (property):
 #       
 #       assert.result <toolset>kylix <include>a 
 #           : change <toolset>gcc <include>a : <toolset> kylix ;
-#   
-#       pm = [ new property-map ] ;
-#       $(pm).insert <toolset>gcc : o ;
-#       $(pm).insert <toolset>gcc <os>NT : obj ;
-#       $(pm).insert <toolset>gcc <os>CYGWIN : obj ;
-#   
-#       assert.equal o
-#         : [ $(pm).find <toolset>gcc ] ;
-#   
-#       assert.equal obj
-#         : [ $(pm).find <toolset>gcc <os>NT ] ;
-#   
-#       try ;
-#           $(pm).find <toolset>gcc <os>NT <os>CYGWIN ;
-#       catch "Ambiguous key" ;
 #   
 #       # Test ordinary properties 
 #       assert.result 

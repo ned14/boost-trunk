@@ -16,7 +16,7 @@ class RuleRecorder:
     def __init__ (self):
         self.entries_ = []
 
-    def make_rule (self, target, sources, properties):
+    def make_rule (self, manager, target, sources, properties):
         self.entries_.append ((target, sources, properties))
         
     def entries (self): return self.entries_

@@ -3,6 +3,8 @@
 #  all copies. This software is provided "as is" without express or implied
 #  warranty, and with no claim as to its suitability for any purpose.
 
+from utility import to_seq
+
 def difference (b, a):
     """ Returns the elements of B that are not in A.
     """
@@ -25,6 +27,9 @@ def intersection (set1, set2):
 def contains (small, large):
     """ Returns true iff all elements of 'small' exist in 'large'.
     """
+    small = to_seq (small)
+    large = to_seq (large)
+
     for s in small:
         if not s in large:
             return False

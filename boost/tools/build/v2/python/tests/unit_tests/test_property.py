@@ -7,6 +7,23 @@ import unittest, helpers
 
 from boost.build.build import property, feature
 from boost.build.manager import Manager
+from boost.build.exceptions import *
+
+class TestPropertyMap (unittest.TestCase):
+    
+    def setUp (self):
+        self.pm = property.PropertyMap ()
+
+        self.pm.insert (['<toolset>gcc'], 'o')
+        self.pm.insert (['<toolset>gcc', '<os>NT'], 'obj')
+        self.pm.insert (['<toolset>gcc', '<os>CYGWIN'], 'obj')
+   
+    def test_find (self):
+        self.assertEqual ('o', self.pm.find (['<toolset>gcc']))
+        self.assertEqual ('obj', self.pm.find (['<toolset>gcc', '<os>NT']))
+   
+    def test_find (self):
+        self.assertRaises (NoBestMatchingAlternative, self.pm.find, ['<toolset>gcc', '<os>NT', '<os>CYGWIN'])
 
 class TestProperty (unittest.TestCase):
     

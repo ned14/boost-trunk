@@ -44,9 +44,6 @@ class TestGrist (unittest.TestCase):
         self.assertEqual ('A.zzz.k.yyy', replace_suffix ('A.zzz.k.xxx', '.yyy'))
         self.assertEqual ('A', replace_suffix ('A.xxx', ''))
     
-    def test_unique (self):
-        self.assertEqual (['a', 'c', 'b'], unique (['a', 'c', 'a', 'c', 'b', 'b']))
-    
     def test_forward_slashes (self):
         self.assertEqual (r'a/b/c/d/e', forward_slashes (r'a/b\c/d\e'))
 

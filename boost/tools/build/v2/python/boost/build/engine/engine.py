@@ -17,6 +17,16 @@ class BuildSystem:
         for target in targets:
             for source in sources:
                 self.do_add_dependency (target, source)
+    
+    def set_target_variable (self, targets, variable, value):
+        """ Sets a target variable.
+            When building 'target', 'variable' will be set with 'value'
+        """
+        if isinstance (targets, str): 
+            targets = [targets]
+
+        for target in targets:
+            self.do_set_target_variable (target, variable, value)
 
     def set_update_action (self, action_name, targets, sources):
         """ Binds a target to the corresponding update action.
@@ -27,12 +37,6 @@ class BuildSystem:
         self.do_set_update_action (action_name, targets, sources)
 
     # Overridables
-    
-    def set_target_variable (self, target, variable, value):
-        """ Sets a target variable.
-            When building 'target', 'variable' will be set with 'value'
-        """
-        pass
 
     def build (self):
     	    """ Builds all targets in the dependency tree.
@@ -46,6 +50,12 @@ class BuildSystem:
 
     def add_not_file_target (self, target):
         """ Adds a target that is not a file.
+        """
+        pass
+
+    def do_set_target_variable (self, target, variable, value):
+        """ Sets a target variable.
+            When building 'target', 'variable' will be set with 'value'
         """
         pass
 

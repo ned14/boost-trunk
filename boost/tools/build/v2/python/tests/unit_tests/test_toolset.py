@@ -11,6 +11,8 @@ from boost.build.manager import Manager
 from boost.build.engine.engine import BuildSystem
 from boost.build.engine.log_engine import *
 
+def dummy_compile (): pass
+
 class TestToolset (unittest.TestCase):
     
     def setUp (self):
@@ -39,11 +41,12 @@ class TestToolset (unittest.TestCase):
         self.assertEqual (None, toolset.find_property_subset (['<a>0/<b>0/<c>9/<d>9/<e>5', '<a>9'], p))
 
     def test_set_target_variables (self):
+        
         self.__setup_features_and_flags ()
-        toolset.set_target_variables (self.manager, 'gcc.compile', ['TargetA'], ['<optimization>off'])
-        toolset.set_target_variables (self.manager, 'gcc.compile', ['TargetA'], ['<optimization>space'])
-        toolset.set_target_variables (self.manager, 'gcc.compile', ['TargetB'], ['<inlining>full'])
-        toolset.set_target_variables (self.manager, 'gcc.compile', ['TargetB'], ['<define>A', '<define>B'])
+        toolset.set_target_variables (self.manager, dummy_compile, ['TargetA'], ['<optimization>off'])
+        toolset.set_target_variables (self.manager, dummy_compile, ['TargetA'], ['<optimization>space'])
+        toolset.set_target_variables (self.manager, dummy_compile, ['TargetB'], ['<inlining>full'])
+        toolset.set_target_variables (self.manager, dummy_compile, ['TargetB'], ['<define>A', '<define>B'])
 
         variables = {
             'TargetA': { 
@@ -62,11 +65,11 @@ class TestToolset (unittest.TestCase):
         self.assert_ ('a' in feature.values ('<toolset>'))
         
     def __setup_features_and_flags (self):
-        toolset.flags ('gcc.compile', 'OPTIONS', '<optimization>off', ['-O0'])
-        toolset.flags ('gcc.compile', 'OPTIONS', '<optimization>speed', ['-O3'])
-        toolset.flags ('gcc.compile', 'OPTIONS', '<inlining>full', ['-finline-functions', '-Wno-inline'])
+        toolset.flags ('dummy_compile', 'OPTIONS', '<optimization>off', ['-O0'])
+        toolset.flags ('dummy_compile', 'OPTIONS', '<optimization>speed', ['-O3'])
+        toolset.flags ('dummy_compile', 'OPTIONS', '<inlining>full', ['-finline-functions', '-Wno-inline'])
 
-        toolset.flags ('gcc.compile', 'DEFINES', '<define>', [])
+        toolset.flags ('dummy_compile', 'DEFINES', '<define>', [])
 
     def test_inherit_generators (self):
         # TODO: implement this

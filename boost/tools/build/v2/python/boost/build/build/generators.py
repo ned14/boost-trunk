@@ -47,6 +47,7 @@ import type, virtual_target, property_set, property
 from boost.build.util.logger import *
 from boost.build.util.utility import *
 from boost.build.util import set
+from boost.build.util.sequence import unique
 
 def reset ():
     """ Clear the module state. This is mainly for testing purposes.
@@ -261,7 +262,7 @@ class Generator:
         # bypassed: Targets that can't be consumed and will be returned as-is.
         
         if self.composing_:
-            (consumed, bypassed) = self.convert_multiple_sources_to_consumable_types (project, prop_set, sources)
+            (consumed, bypassed) = self.convert_multiple_sources_to_consumable_types (project, prop_set, sources, multiple)
 
         else:
             (consumed, bypassed) = self.convert_to_consumable_types (project, name, prop_set, sources, multiple, False)
@@ -453,7 +454,7 @@ class Generator:
         # a usable type.
         for s in sources:
             # TODO: need to check for failure on each source.
-            (c, b) = convert_to_consumable_types (project, None, prop_set, s, multiple, True)
+            (c, b) = self.convert_to_consumable_types (project, None, prop_set, [s], multiple, True)
             if not c:
                 project.manager ().logger ().log (__name__, " failed to convert ", s)
 
@@ -654,7 +655,7 @@ def try_one_generator_really (project, name, generator, multiple, target_type, p
     usage_requirements = []
     if targets and isinstance (targets [0], property_set.PropertySet):
         usage_requirements = targets [0]
-        targets = targets [1:]
+        targets = targets [1]
 
     else:
         usage_requirements = property_set.empty ()
@@ -966,20 +967,21 @@ def construct (project, name, target_type, multiple, prop_set, sources, allowed_
         
     __construct_stack = __construct_stack [1:]
     
-    if not __construct_stack:
-        result = (result [0], result [1] + intermediate)
-            
-    # For all targets of 'allowed_type', reset the 'intermediate' attribute.
-    if not __construct_stack and allowed_type != '*': # This is first invocation in stack
-        result2 = []
-        for t in result [1]:
-            t_type = t.type ()
-
-            # Return only targets of the requested type, unless 'return-all'
-            # is specified. If we don't do this, then all targets calling
-            # 'construct' will get unused target returned, which will break
-            # checking for unused sources a bit harder.
-            if t_type and (t_type == target_type or type.is_derived (t_type, allowed_type)):
-                t.set_intermediate (False)
+    if result:
+        if not __construct_stack:
+            result = (result [0], result [1] + intermediate)
+                
+        # For all targets of 'allowed_type', reset the 'intermediate' attribute.
+        if not __construct_stack and allowed_type != '*': # This is first invocation in stack
+            result2 = []
+            for t in result [1]:
+                t_type = t.type ()
+    
+                # Return only targets of the requested type, unless 'return-all'
+                # is specified. If we don't do this, then all targets calling
+                # 'construct' will get unused target returned, which will break
+                # checking for unused sources a bit harder.
+                if t_type and (t_type == target_type or type.is_derived (t_type, allowed_type)):
+                    t.set_intermediate (False)
             
     return result  

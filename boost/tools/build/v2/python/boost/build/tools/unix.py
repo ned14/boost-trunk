@@ -10,15 +10,17 @@
 """
 
 import builtin
-from boost.build.build import action, generators
+from boost.build.build import action, generators, type
+from boost.build.util.utility import *
+from boost.build.util import set
 
 class UnixLinkingGenerator (builtin.LinkingGenerator):
     
-    def __init__ (self, id, rule, composing, source_types, target_types, requirements):
-        LinkingGenerator.__init__ (self, id, rule, composing, source_types, target_types, requirements)
+    def __init__ (self, id, rule, source_types, target_types, requirements):
+        builtin.LinkingGenerator.__init__ (self, id, rule, True, source_types, target_types, requirements)
     
     def run (self, project, name, prop_set, sources, multiple):
-        result = LinkingGenerator.run (project, name, prop_set, sources, multiple)
+        result = builtin.LinkingGenerator.run (self, project, name, prop_set, sources, multiple)
         set_library_order (sources, prop_set, result [1])
                                 
         return result
@@ -35,7 +37,7 @@ class UnixLinkingGenerator (builtin.LinkingGenerator):
         
         sources = sources2 + order_libraries (libraries)
         
-        return LinkingGenerator.generated_targets (sources, prop_set, project, name)
+        return builtin.LinkingGenerator.generated_targets (self, sources, prop_set, project, name)
 
 
 class UnixArchiveGenerator (builtin.ArchiveGenerator):
@@ -112,55 +114,33 @@ generators.register (UnixPrebuiltLibGenerator ('unix.prebuilt', prebuilt, False,
 ### 
 ### actions prebuilt {
 ### }
-### 
-###     
-### 
-### 
-### 
-### .order = [ new order ] ;
-### 
-### rule set_library_order_aux ( from * : to * )
-### {        
-###     for local f in $(from)
-###     {
-###         for local t in $(to)
-###         {            
-###             if $(f) != $(t)
-###             {                
-###                 $(.order).add-pair $(f) $(t) ;
-###             }            
-###         }        
-###     }    
-### }
-### 
-### rule set_library_order ( sources * : prop_set : result * )
-### {
-###     local used-libraries ;
-###     local deps = [ $(prop_set).dependency ] ;        
-###     for local l in $(sources) $(deps:G=)        
-###     {
-###         if [ $(l).type ] && [ type.is-derived [ $(l).type ] LIB ]
-###         {
-###             used-libraries += $(l) ;
-###         }
-###     }
-### 
-###     local created-libraries ;
-###     for local l in $(result)
-###     {
-###         if [ $(l).type ] && [ type.is-derived [ $(l).type ] LIB ] 
-###         {
-###             created-libraries += $(l) ;
-###         }            
-###     }
-###     
-###     created-libraries = [ set.difference $(created-libraries) : $(used-libraries) ] ;
-###     set_library_order_aux $(created-libraries) : $(used-libraries) ;
-### }
-### 
-### rule order_libraries ( libraries * )
-### {
-###     local r = [ $(.order).order $(libraries) ] ;
-###     return $(r) ;
-### }
-###      
+
+
+from boost.build.util.order import Order
+__order = Order ()
+
+def set_library_order_aux (from_libs, to_libs):
+    for f in from_libs:
+        for t in to_libs:
+            if f != t:
+                __order.add_pair (f, t)
+
+def set_library_order (sources, prop_set, result):
+    used_libraries = []
+    deps = prop_set.dependency ()
+    
+    for l in sources + get_value (deps):
+        if l.type () and type.is_derived (l.type (), 'LIB'):
+            used_libraries.append (l)
+
+    created_libraries = []
+    for l in result:
+        if l.type () and type.is_derived (l.type (), 'LIB'):
+            created_libraries.append (l)
+    
+    created_libraries = set.difference (created_libraries, used_libraries)
+    set_library_order_aux (created_libraries, used_libraries)
+
+def order_libraries (libraries):
+    return __order.order (libraries)
+     

@@ -209,7 +209,7 @@ class ProjectRegistry:
         return project
     
     def projects (self):
-        return self.projects_
+        return self.projects_.iteritems ()
 
 
 ###################################################################

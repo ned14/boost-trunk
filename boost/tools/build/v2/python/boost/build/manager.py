@@ -71,12 +71,21 @@ class Manager:
             properties:  the build properties.
             targets:     the targets to consider. If none is specified, uses all.
         """
+        if not targets:
+            for name, project in self.projects ().projects ():
+                targets.append (project.target ())
+            
         property_groups = build_request.expand_no_defaults (properties)
 
         virtual_targets = []
+        build_prop_sets = []
         for p in property_groups:
-            build_properties = property_set.create (feature.split (p))
-        
+            build_prop_sets.append (property_set.create (feature.split (p)))
+
+        if not build_prop_sets:
+            build_prop_sets = [property_set.empty ()]
+
+        for build_properties in build_prop_sets:
             for target in targets:
                 result = target.generate (build_properties)
                 virtual_targets.extend (result [1])

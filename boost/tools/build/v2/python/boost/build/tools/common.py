@@ -251,10 +251,10 @@ def handle_options (tool, condition, command, options):
         - OPTIONs for link to the value of <linkflags> in options
     """
     toolset.flags (tool, 'CONFIG_COMMAND', condition, [command])
-    toolset.flags (tool + '.compile', 'OPTIONS', condition, feature.get_values ('<compileflags>', options))
-    toolset.flags (tool + '.compile.c', 'OPTIONS', condition, feature.get_values ('<cflags>', options))
-    toolset.flags (tool + '.compile.c++', 'OPTIONS', condition, feature.get_values ('<cxxflags>', options))
-    toolset.flags (tool + '.link', 'OPTIONS', condition, feature.get_values ('<linkflags>', options))
+    toolset.flags (tool + '_compile', 'OPTIONS', condition, feature.get_values ('<compileflags>', options))
+    toolset.flags (tool + '_compile_c', 'OPTIONS', condition, feature.get_values ('<cflags>', options))
+    toolset.flags (tool + '_compile_c++', 'OPTIONS', condition, feature.get_values ('<cxxflags>', options))
+    toolset.flags (tool + '_link', 'OPTIONS', condition, feature.get_values ('<linkflags>', options))
 
 
 ### # returns the location of the "program files" directory on a windows

@@ -6,6 +6,7 @@
 from boost.build.util.utility import *
 import property, feature
 from boost.build.exceptions import *
+from boost.build.util.sequence import unique
 
 def reset ():
     """ Clear the module state. This is mainly for testing purposes.

@@ -72,6 +72,7 @@ from boost.build.util.utility import *
 import property, project, virtual_target, property_set, feature, generators
 from virtual_target import Subvariant
 from boost.build.exceptions import *
+from boost.build.util.sequence import unique
 
 _re_separate_target_from_properties = re.compile (r'^([^<]*)(/(<.*))?$')
 
@@ -246,7 +247,7 @@ class AbstractTarget:
     def full_name (self):
         """ Returns a user-readable name for this target.
         """
-        location = self.project.get ('location')
+        location = self.project ().get ('location')
         return location + '/' + self.name_
         
     def generate (self, property_set):

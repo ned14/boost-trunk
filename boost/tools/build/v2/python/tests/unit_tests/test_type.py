@@ -5,7 +5,7 @@
 import unittest, helpers
 ######################################################################
 
-from boost.build.build import type
+from boost.build.build import type, property_set, feature
 from boost.build.engine import *
 from boost.build.exceptions import *
 
@@ -18,7 +18,7 @@ class TestType (unittest.TestCase):
         type.register ('B1', ['b1'], 'A')
         type.register ('B2', ['b2'], 'A')
         type.register ('C1', ['c1'], 'B1')
-        
+             
     def test_register (self):
         self.assert_ (type.registered ('A'))
         self.assert_ (type.registered ('B1'))
@@ -50,13 +50,16 @@ class TestType (unittest.TestCase):
         self.assert_ (not type.is_derived ('C1', 'B2'))
     
     def test_generated_target_suffix (self):
-        self.assertEqual ('a', type.generated_target_suffix ('A', []))
+        feature.feature ('x', ['X'])
+        feature.feature ('y', ['Y'])
+
+        self.assertEqual ('a', type.generated_target_suffix ('A', property_set.empty ()))
         type.register ('D', [], 'C1')
-        self.assertEqual ('c1', type.generated_target_suffix ('D', []))
+        self.assertEqual ('c1', type.generated_target_suffix ('D', property_set.empty ()))
         
         type.set_generated_target_suffix ('A', ['<x>X', '<y>Y'], 'axy')
-        self.assertEqual ('axy', type.generated_target_suffix ('A', ['<x>X', '<y>Y']))
-        self.assertEqual (None, type.generated_target_suffix ('A', ['<x>X']))
+        self.assertEqual ('axy', type.generated_target_suffix ('A', property_set.create (['<x>X', '<y>Y'])))
+        self.assertEqual ('a', type.generated_target_suffix ('A', property_set.create (['<x>X'])))
     
     def test_type (self):
         self.assertEqual ('A', type.type ('file.a'))

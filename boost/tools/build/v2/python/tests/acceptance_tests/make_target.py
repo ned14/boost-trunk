@@ -11,7 +11,7 @@ from boost.build.manager import Manager
 from boost.build.engine.bjam import *
 import boost.build.tools.builtin
 
-def make_rule (target, sources, properties):
+def make_rule (manager, target, sources, properties):
     pass
 
 action.action (make_rule, ['cp $(>) $(<)'])

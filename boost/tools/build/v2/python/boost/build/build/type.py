@@ -8,7 +8,7 @@ import os
 import os.path
 from boost.build.util.utility import replace_grist, os_name
 from boost.build.exceptions import *
-from boost.build.build import feature
+from boost.build.build import feature, property
 
 __re_hyphen = re.compile ('-')
 
@@ -26,13 +26,12 @@ def reset ():
     """ Clear the module state. This is mainly for testing purposes.
         Note that this must be called _after_ resetting the module 'feature'.
     """    
-    global __suffixes, __suffixes_to_types, __types, __rule_names_to_types
+    global __suffixes, __suffixes_to_types, __types, __rule_names_to_types, __target_suffixes_cache
     
     __register_features ()
 
     # Stores suffixes for generated targets.
-    # The key is the stringified set of properties, the value is the suffix.
-    __suffixes = {}
+    __suffixes = property.PropertyMap ()
     
     # Maps suffixes to types
     __suffixes_to_types = {}
@@ -46,6 +45,9 @@ def reset ():
 
     # Maps main rule names to the corresponding type.
     __rule_names_to_types = {}
+    
+    # Caches suffixes for targets with certain properties.
+    __target_suffixes_cache = {}
     
 reset ()
 
@@ -85,9 +87,9 @@ def register (type, suffixes = [], base_type = None):
         # Specify mapping from suffixes to type
         register_suffixes (suffixes, type)
     
-    feature.extend_feature ('target-type', type)
-    feature.extend_feature ('main-target-type', type)
-    feature.extend_feature ('base-target-type', type)
+    feature.extend_feature ('target-type', [type])
+    feature.extend_feature ('main-target-type', [type])
+    feature.extend_feature ('base-target-type', [type])
 
     if base_type:
         feature.compose ('<target-type>' + type, replace_grist (base_type, '<base-target-type>'))
@@ -131,7 +133,7 @@ def get_scanner (type, property_set):
         scanner = __types [type]['scanner']
         if scanner:
             # TODO: implement this
-#            return [ scanner.get $(.scanner.$(type)) : [ $(property-set).raw ] ] ;
+#            return [ scanner.get $(.scanner.$(type)) : [ $(prop_set).raw ] ] ;
             pass
             
     return None
@@ -184,28 +186,52 @@ def set_generated_target_suffix (type, properties, suffix):
         no suffix should be used.
     """
     properties.append ('<target-type>' + type)
-    __suffixes [str (properties)] = suffix
+    __suffixes.insert (properties, suffix)
 
 def change_generated_target_suffix (type, properties, suffix):
     """ Change the suffix previously registered for this type/properties 
         combination. If suffix is not yet specified, sets it.
     """
-    set_generated_target_suffix (type, properties, suffix)
+    properties.append ('<target-type>' + type)
+    prev = __suffixes.find_replace (properties, suffix)
 
-def generated_target_suffix (type, properties):
+    if not prev:
+        set_generated_target_suffix (type, properties, suffix)
+
+def generated_target_suffix_real (type, properties):
+    """Actual implementation of generated_target_suffix.
+    """ 
+    result = ''
+    found = False
+    while type and not found:
+        result = __suffixes.find (['<target-type>' + type] + properties)
+
+        # If the suffix is explicitly set to empty string, we consider suffix
+        # to be found. If we did not compare with "", there would be no
+        # way for user to set empty suffix.
+        if result:
+            found = True
+
+        type = __types [type]['base']
+
+    if result == '':
+        result = None
+
+    return result
+
+def generated_target_suffix (type, prop_set):
     """ Returns suffix that should be used when generating target of 'type',
         with the specified properties. If not suffix were specified for
         'type', returns suffix for base type, if any.
     """
-    while type:
-        all_properties = properties + ['<target-type>' + type]
-        all_properties_str = str (all_properties)
-        if __suffixes.has_key (all_properties_str):
-            return __suffixes [all_properties_str]
+    key = type + str (prop_set)
+    v = __target_suffixes_cache.get (key, None)
 
-        type = __types [type]['base']
-
-    return None
+    if not v:
+        v = generated_target_suffix_real (type, prop_set.raw ())
+        __target_suffixes_cache [key] = v
+    
+    return v
 
 def type (filename):
     """ Returns file type given it's name. If there are several dots in filename,
@@ -237,6 +263,11 @@ def register_type (type, suffixes, base_type = None, os = []):
 ######################################################################################
 # Private functions
 
+def main_target_rule (type, project, name, sources, requirements = [], default_build = None, usage_requirements = []):
+    targets = project.manager ().targets ()
+    return targets.create_typed_target (type, project.target (), name, sources, requirements, default_build, usage_requirements)
+
+    
 def __register_main_rule (type):
     # We used to declare a main target rule only when 'main' parameter is specified. 
     # However, it's hard to decide that a type *never* will need a main target rule 
@@ -247,7 +278,10 @@ def __register_main_rule (type):
     __rule_names_to_types [main_rule_name] = type
 
     import boost.build.build.project
-    boost.build.build.project.ProjectModule.__dict__ [main_rule_name] = main_target_rule
+    def xpto (project, name, sources, requirements = [], default_build = None, usage_requirements = []):
+        return main_target_rule (type, project, name, sources, requirements, default_build, usage_requirements)
+        
+    boost.build.build.project.ProjectModule.__dict__ [main_rule_name] = xpto
 
 
 def type_to_rule_name (type):
@@ -256,23 +290,3 @@ def type_to_rule_name (type):
     """
     # Lowercase everything.
     return type.lower ()
-
-#   # Returns a type, given the name of a main rule.
-#   rule type-from-rule-name ( main-target-name )
-#   {
-#       return $(.main-target-type.$(main-target-name)) ;
-#   }
-
-def main_target_rule (project, name, sources, requirements = [], default_build = None, usage_requirements = []):
-
-    # TODO: get this
-    type = 'OBJ'
-
-    targets = project.manager ().targets ()
-    return targets.create_typed_target (type, project.target (), name, sources, requirements, default_build, usage_requirements)
-
-
-def make (project, target_name, sources, generating_rule, requirements):
-    """ Declares the 'make' main target.
-    """
-    targets = project.manager ().targets ()
