@@ -10,9 +10,6 @@ boost/libs/python/pyste/tests/*.lib
 boost/libs/python/pyste/tests/*.obj
 boost/libs/python/pyste/tests/*.pyc
 boost/libs/python/pyste/tests/.sconsign
-boost/libs/spirit/example/application/cpp_lexer/*.gprof
-boost/libs/spirit/example/application/cpp_lexer/*.out
-boost/libs/spirit/example/application/cpp_lexer/*.output
 boost/libs/test/build/bin
 boost/libs/test/build/msvc65_proj/*.ncb
 boost/libs/test/build/msvc65_proj/*.opt
