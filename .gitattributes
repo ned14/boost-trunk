@@ -819,7 +819,6 @@ boost/libs/graph/example/bfs-example.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs-name-printer.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs.expected -text
-boost/libs/graph/example/bfs_basics.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs_basics.expected -text
 boost/libs/graph/example/bfs_neighbor.cpp svneol=native#text/plain
 boost/libs/graph/example/biconnected_components.cpp svneol=native#text/plain
@@ -910,12 +909,10 @@ boost/libs/graph/example/kevin_bacon.cpp svneol=native#text/plain
 boost/libs/graph/example/kevin_bacon.dat -text
 boost/libs/graph/example/kevin_bacon.expected -text
 boost/libs/graph/example/knights-tour.cpp svneol=native#text/plain
-boost/libs/graph/example/knights_tour.cpp svneol=native#text/plain
 boost/libs/graph/example/knights_tour.expected -text
 boost/libs/graph/example/koenig-lookup.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal-example.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal-telephone.cpp svneol=native#text/plain
-boost/libs/graph/example/kruskal.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal.expected -text
 boost/libs/graph/example/last-mod-time.cpp svneol=native#text/plain
 boost/libs/graph/example/leda-concept-check.cpp svneol=native#text/plain
@@ -939,7 +936,6 @@ boost/libs/graph/example/ospf-example.cpp svneol=native#text/plain
 boost/libs/graph/example/parallel-compile-time.cpp svneol=native#text/plain
 boost/libs/graph/example/prim-example.cpp svneol=native#text/plain
 boost/libs/graph/example/prim-telephone.cpp svneol=native#text/plain
-boost/libs/graph/example/prim.cpp svneol=native#text/plain
 boost/libs/graph/example/prim.expected -text
 boost/libs/graph/example/print-adjacent-vertices.cpp svneol=native#text/plain
 boost/libs/graph/example/print-edges.cpp svneol=native#text/plain
@@ -976,7 +972,6 @@ boost/libs/graph/example/subgraph.expected -text
 boost/libs/graph/example/target-compile-costs.dat -text
 boost/libs/graph/example/tc.dot -text
 boost/libs/graph/example/test-adj-list.cpp svneol=native#text/plain
-boost/libs/graph/example/topo-sort-example.cpp svneol=native#text/plain
 boost/libs/graph/example/topo-sort-file-dep.cpp svneol=native#text/plain
 boost/libs/graph/example/topo-sort-file-dep2.cpp svneol=native#text/plain
 boost/libs/graph/example/topo-sort-with-leda.cpp svneol=native#text/plain
@@ -990,7 +985,6 @@ boost/libs/graph/example/transpose-example.cpp svneol=native#text/plain
 boost/libs/graph/example/undirected.cpp svneol=native#text/plain
 boost/libs/graph/example/undirected.expected -text
 boost/libs/graph/example/vector-as-graph.cpp svneol=native#text/plain
-boost/libs/graph/example/vector_as_graph.cpp svneol=native#text/plain
 boost/libs/graph/example/vector_as_graph.expected -text
 boost/libs/graph/example/vertex-name-property.cpp svneol=native#text/plain
 boost/libs/graph/example/vertex_basics.cpp svneol=native#text/plain
