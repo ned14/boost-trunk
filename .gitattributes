@@ -8321,6 +8321,8 @@ boost/tools/build/v2/example/customization/codegen.cpp svneol=native#text/plain
 boost/tools/build/v2/example/customization/inline_file.py svneol=native#text/x-python
 boost/tools/build/v2/example/customization/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/example/customization/readme.txt svneol=native#text/plain
+boost/tools/build/v2/example/customization/t1.verbatim -text
+boost/tools/build/v2/example/customization/t2.verbatim -text
 boost/tools/build/v2/example/customization/usage.verbatim -text
 boost/tools/build/v2/example/customization/verbatim.jam svneol=native#text/plain
 boost/tools/build/v2/example/gettext/Jamfile svneol=native#text/plain
