@@ -1888,6 +1888,7 @@ boost/libs/date_time/doc/exp-time_math.html svneol=native#text/html
 boost/libs/date_time/doc/exp-time_periods.html svneol=native#text/html
 boost/libs/date_time/doc/gregorian.html svneol=native#text/html
 boost/libs/date_time/doc/index.html svneol=native#text/html
+boost/libs/date_time/doc/license.html svneol=native#text/html
 boost/libs/date_time/doc/local_time_adjust.html svneol=native#text/html
 boost/libs/date_time/doc/posix_time.html svneol=native#text/html
 boost/libs/date_time/doc/time_duration_inherit.png -text svneol=unset#image/png
