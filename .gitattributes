@@ -3123,10 +3123,11 @@ boost/libs/graph/src/README svneol=native#text/plain
 boost/libs/graph/src/graphviz.grammar -text
 boost/libs/graph/src/graphviz_digraph_lex.cpp svneol=native#text/plain
 boost/libs/graph/src/graphviz_digraph_parser.cpp svneol=native#text/plain
+boost/libs/graph/src/graphviz_digraph_parser.hpp svneol=native#text/plain
 boost/libs/graph/src/graphviz_graph_lex.cpp svneol=native#text/plain
 boost/libs/graph/src/graphviz_graph_parser.cpp svneol=native#text/plain
+boost/libs/graph/src/graphviz_graph_parser.hpp svneol=native#text/plain
 boost/libs/graph/src/graphviz_lex.ll -text
-boost/libs/graph/src/graphviz_parser.h svneol=native#text/plain
 boost/libs/graph/src/graphviz_parser.yy -text
 boost/libs/graph/src/yystype.h svneol=native#text/plain
 boost/libs/graph/test/Jamfile svneol=native#text/plain
