@@ -427,6 +427,7 @@ boost/boost/python/object/class_converters.hpp svneol=native#text/plain
 boost/boost/python/object/class_object.hpp svneol=native#text/plain
 boost/boost/python/object/class_wrapper.hpp svneol=native#text/plain
 boost/boost/python/object/construct.hpp svneol=native#text/plain
+boost/boost/python/object/find_instance.hpp svneol=native#text/plain
 boost/boost/python/object/forward.hpp svneol=native#text/plain
 boost/boost/python/object/function.hpp svneol=native#text/plain
 boost/boost/python/object/inheritance.hpp svneol=native#text/plain
