@@ -833,6 +833,7 @@ boost/libs/graph/doc/isomorphism-impl.pdf -text svneol=unset#application/pdf
 boost/libs/graph/doc/isomorphism-impl.w -text
 boost/libs/graph/doc/isomorphism.html svneol=native#text/html
 boost/libs/graph/doc/johnson_all_pairs_shortest.html svneol=native#text/html
+boost/libs/graph/doc/jwebfrob.pl svneol=native#text/x-perl
 boost/libs/graph/doc/kevin_bacon.html svneol=native#text/html
 boost/libs/graph/doc/known_problems.html svneol=native#text/html
 boost/libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
@@ -841,6 +842,7 @@ boost/libs/graph/doc/lgrind.sty -text
 boost/libs/graph/doc/math.sty -text
 boost/libs/graph/doc/minimum_degree_ordering.html svneol=native#text/html
 boost/libs/graph/doc/minimum_degree_ordering.w -text
+boost/libs/graph/doc/mungeaux.csh -text
 boost/libs/graph/doc/null_visitor.html svneol=native#text/html
 boost/libs/graph/doc/opposite.html svneol=native#text/html
 boost/libs/graph/doc/predecessor_recorder.html svneol=native#text/html
