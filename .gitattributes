@@ -535,6 +535,7 @@ boost/boost/python/detail/construct.hpp svneol=native#text/plain
 boost/boost/python/detail/convertible.hpp svneol=native#text/plain
 boost/boost/python/detail/cv_category.hpp svneol=native#text/plain
 boost/boost/python/detail/decorated_type_id.hpp svneol=native#text/plain
+boost/boost/python/detail/def_helper.hpp svneol=native#text/plain
 boost/boost/python/detail/dependent.hpp svneol=native#text/plain
 boost/boost/python/detail/destroy.hpp svneol=native#text/plain
 boost/boost/python/detail/extension_class.hpp svneol=native#text/plain
