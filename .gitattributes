@@ -3978,6 +3978,7 @@ boost/libs/graph/example/in_edges.expected -text
 boost/libs/graph/example/incremental-components-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/incremental_components.cpp svneol=native#text/plain
 boost/libs/graph/example/incremental_components.expected -text
+boost/libs/graph/example/interior_pmap_bundled.cpp svneol=native#text/plain
 boost/libs/graph/example/interior_property_map.cpp svneol=native#text/plain
 boost/libs/graph/example/interior_property_map.expected -text
 boost/libs/graph/example/iohb.c svneol=native#text/plain
