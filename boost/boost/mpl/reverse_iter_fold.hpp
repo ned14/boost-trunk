@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// boost mpl/iter_fold_backward.hpp header file
+// boost mpl/reverse_iter_fold.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
@@ -21,7 +21,7 @@
 #include <boost/mpl/O1_size.hpp>
 #include <boost/mpl/arg.hpp>
 #include <boost/mpl/lambda.hpp>
-#include <boost/mpl/aux_/iter_fold_backward_impl.hpp>
+#include <boost/mpl/aux_/reverse_iter_fold_impl.hpp>
 #include <boost/mpl/aux_/na_spec.hpp>
 #include <boost/mpl/aux_/lambda_support.hpp>
 
@@ -34,9 +34,9 @@ template<
     , typename BOOST_MPL_AUX_NA_PARAM(BackwardOp)
     , typename ForwardOp = arg<1>
     >
-struct iter_fold_backward
+struct reverse_iter_fold
 {
-    typedef typename aux::iter_fold_backward_impl<
+    typedef typename aux::reverse_iter_fold_impl<
           ::boost::mpl::O1_size<Sequence>::value
         , typename begin<Sequence>::type
         , typename end<Sequence>::type
@@ -47,12 +47,12 @@ struct iter_fold_backward
 
     BOOST_MPL_AUX_LAMBDA_SUPPORT(
           4
-        , iter_fold_backward
+        , reverse_iter_fold
         , (Sequence,State,BackwardOp,ForwardOp)
         )
 };
 
-BOOST_MPL_AUX_NA_SPEC(3, iter_fold_backward)
+BOOST_MPL_AUX_NA_SPEC(3, reverse_iter_fold)
 
 } // namespace mpl
 } // namespace boost
