@@ -1670,6 +1670,7 @@ boost/libs/python/test/m2.cpp svneol=native#text/plain
 boost/libs/python/test/module_tail.cpp svneol=native#text/plain
 boost/libs/python/test/newtest.py svneol=native#text/x-python
 boost/libs/python/test/pointer_type_id_test.cpp svneol=native#text/plain
+boost/libs/python/test/select_from_python_test.cpp svneol=native#text/plain
 boost/libs/python/test/simple_type.hpp svneol=native#text/plain
 boost/libs/python/test/test_builtin_converters.cpp svneol=native#text/plain
 boost/libs/python/test/test_builtin_converters.py svneol=native#text/x-python
