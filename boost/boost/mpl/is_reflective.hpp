@@ -46,6 +46,7 @@ struct is_reflective
 		, aux::reflective_type_base
 		>
 {
+	typedef is_reflective type;
 };
 
 #else

@@ -85,6 +85,7 @@ boost/boost/mpl/compose/f_gx_hy.hpp svneol=native#text/plain
 boost/boost/mpl/compose/f_gxy.hpp svneol=native#text/plain
 boost/boost/mpl/compose/f_x_hy.hpp svneol=native#text/plain
 boost/boost/mpl/compose/f_x_x.hpp svneol=native#text/plain
+boost/boost/mpl/contains.hpp svneol=native#text/plain
 boost/boost/mpl/copy.hpp svneol=native#text/plain
 boost/boost/mpl/copy_backward.hpp svneol=native#text/plain
 boost/boost/mpl/copy_backward_if.hpp svneol=native#text/plain

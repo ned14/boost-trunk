@@ -59,7 +59,7 @@ struct max_element
     typedef typename iter_fold<
           Sequence
         , typename begin<Sequence>::type
-        , aux::select_max<Predicate>
+	, protect< aux::select_max<Predicate> >
         >::type type;
 };
 

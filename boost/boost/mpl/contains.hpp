@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------
-// boost mpl/aux_/config/dependent_nttp.hpp header file
+// boost mpl/contains.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
 // Copyright (c) 2002
-// Aleksey Gurtovoy
+// Eric Friedman
 //
 // Permission to use, copy, modify, distribute and sell this software
 // and its documentation for any purpose is hereby granted without fee, 
@@ -14,17 +14,29 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_MPL_AUX_CONFIG_DEPENDENT_NTTP_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_DEPENDENT_NTTP_HPP_INCLUDED
+#ifndef BOOST_MPL_CONTAINS_HPP_INCLUDED
+#define BOOST_MPL_CONTAINS_HPP_INCLUDED
 
-// GCC and EDG-based compilers incorrectly reject the following code:
-//   template< typename T, T n > struct a;
-//   template< typename T > struct b;
-//   template< typename T, T n > struct b< a<T,n> > {};
+#include "boost/mpl/begin_end.hpp"
+#include "boost/mpl/find.hpp"
+#include "boost/mpl/type_traits/is_not_same.hpp"
+#include "boost/mpl/aux_/lambda_spec.hpp"
 
-#if defined(__EDG__)	\
- || defined(__GNUC__)
-#   define BOOST_NO_DEPENDENT_NON_TYPE_PARAMETER_IN_PARTIAL_SPECIALIZATION
-#endif
+namespace boost {
+namespace mpl {
 
-#endif // BOOST_MPL_AUX_CONFIG_DEPENDENT_NTTP_HPP_INCLUDED
+template< typename Sequence, typename T >
+struct contains
+    : is_not_same<
+          typename find<Sequence,T>::type
+        , typename end<Sequence>::type
+        >
+{
+};
+
+BOOST_MPL_AUX_LAMBDA_SPEC(2, contains)
+
+} // namespace mpl
+} // namespace boost
+
+#endif // BOOST_MPL_CONTAINS_HPP_INCLUDED

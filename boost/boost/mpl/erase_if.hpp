@@ -17,9 +17,10 @@
 #ifndef BOOST_MPL_ERASE_IF_HPP_INCLUDED
 #define BOOST_MPL_ERASE_IF_HPP_INCLUDED
 
-#include "boost/mpl/fold_reverse.hpp"
+#include "boost/mpl/fold_backward.hpp"
 #include "boost/mpl/clear.hpp"
 #include "boost/mpl/lambda.hpp"
+#include "boost/mpl/protect.hpp"
 #include "boost/mpl/identity.hpp"
 #include "boost/mpl/apply_if.hpp"
 #include "boost/mpl/sequence_tag.hpp"
@@ -35,7 +36,7 @@ template< typename Pred > struct eraser
     template< typename Sequence, typename U > struct apply
     {
         typedef typename apply_if<
-              typename apply2<Sequence,T,U>::type
+			  typename apply1<Pred, U>::type
             , identity<Sequence>
             , push_front<Sequence,U>
             >::type type;
@@ -49,10 +50,10 @@ struct erase_if_algorithm_traits
 {
     template< typename Sequence, typename Pred > struct algorithm
     {
-        typedef typename fold_reverse<
-              Seq
+        typedef typename fold_backward<
+              Sequence
             , typename clear<Sequence>::type
-            , aux::eraser<Pred>
+            , protect< aux::eraser<Pred> >
             >::type type;
     };
 };
