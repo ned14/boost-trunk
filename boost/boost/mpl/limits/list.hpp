@@ -15,7 +15,7 @@
 // $Revision$
 
 #if !defined(BOOST_MPL_LIMIT_LIST_SIZE)
-#   define BOOST_MPL_LIMIT_LIST_SIZE 10
+#   define BOOST_MPL_LIMIT_LIST_SIZE 20
 #endif
 
 #endif // BOOST_MPL_LIMITS_LIST_HPP_INCLUDED

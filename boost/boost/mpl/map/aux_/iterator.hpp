@@ -55,14 +55,14 @@ struct next_order<Map,max_order,max_order>
 template< typename Map, long order, long max_order >
 struct m_iter
 {
-    typedef fwd_iter_tag_   category;
+    typedef forward_iterator_tag category;
     typedef typename item_by_order<Map,order>::type type;
 };
 
 template< typename Map, long max_order >
 struct m_iter<Map,max_order,max_order>
 {
-    typedef fwd_iter_tag_   category;
+    typedef forward_iterator_tag category;
 };
 
 

@@ -15,7 +15,7 @@
 // $Revision$
 
 #if !defined(BOOST_MPL_LIMIT_VECTOR_SIZE)
-#   define BOOST_MPL_LIMIT_VECTOR_SIZE 10
+#   define BOOST_MPL_LIMIT_VECTOR_SIZE 20
 #endif
 
 #endif // BOOST_MPL_LIMITS_VECTOR_HPP_INCLUDED

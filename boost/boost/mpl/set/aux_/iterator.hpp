@@ -31,9 +31,9 @@ template< typename Set, typename Tail > struct s_iter;
 
 template< typename Set, typename Tail > struct s_iter_impl
 {
-    typedef Tail                tail_;
-    typedef fwd_iter_tag_       category;
-    typedef typename Tail::type type;
+    typedef Tail                    tail_;
+    typedef forward_iterator_tag    category;
+    typedef typename Tail::type     type;
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
     typedef typename apply_if< 
@@ -69,7 +69,7 @@ template< typename Set, typename Tail > struct s_iter
 
 template< typename Set > struct s_iter<Set, set0<> >
 {
-    typedef fwd_iter_tag_  category;
+    typedef forward_iterator_tag category;
 };
 
 #else

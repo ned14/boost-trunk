@@ -1,7 +1,9 @@
 namespace boost { namespace mpl {
 
 namespace aux {
-template< AUX778076_NTTP_DECL(int, N) > struct vector_chooser;
+template< nttp_int N >
+struct vector_chooser;
+
 }
 
 namespace aux {
@@ -235,7 +237,9 @@ template<
     >
 struct vector_impl
 {
-    typedef aux::vector_count_args< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 > arg_num_;
+    typedef aux::vector_count_args<
+          T0, T1, T2, T3, T4, T5, T6, T7, T8, T9
+        > arg_num_;
     typedef typename aux::vector_chooser< arg_num_::value >
         ::template result_< T0,T1,T2,T3,T4,T5,T6,T7,T8,T9 >::type type;
 };

@@ -15,6 +15,7 @@
 // $Revision$
 
 #include <boost/mpl/aux_/test/test_case.hpp>
+#include <boost/mpl/aux_/test/data.hpp>
 #include <boost/mpl/aux_/test/assert.hpp>
 
 int main()

@@ -22,7 +22,7 @@
 
 struct UDT {};
 struct incomplete;
-class abstract { virtual ~abstract() = 0; };
+class abstract { public: virtual ~abstract() = 0; };
 using boost::noncopyable;
 
 // to do: add function types for compilers that are able to handle them
