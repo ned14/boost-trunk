@@ -3138,6 +3138,7 @@ boost/libs/mpl/test/insert_range.cpp svneol=native#text/plain
 boost/libs/mpl/test/int_c.cpp svneol=native#text/plain
 boost/libs/mpl/test/integral_c.cpp svneol=native#text/plain
 boost/libs/mpl/test/is_placeholder.cpp svneol=native#text/plain
+boost/libs/mpl/test/is_sequence.cpp svneol=native#text/plain
 boost/libs/mpl/test/joint_view.cpp svneol=native#text/plain
 boost/libs/mpl/test/lambda.cpp svneol=native#text/plain
 boost/libs/mpl/test/lambda_args.cpp svneol=native#text/plain
