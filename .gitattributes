@@ -1246,6 +1246,7 @@ boost/boost/preprocessor/repetition/enum_params_with_defaults.hpp svneol=native#
 boost/boost/preprocessor/repetition/enum_shifted.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/enum_shifted_params.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/enum_trailing.hpp svneol=native#text/plain
+boost/boost/preprocessor/repetition/enum_trailing_binary_params.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/enum_trailing_params.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/for.hpp svneol=native#text/plain
 boost/boost/preprocessor/repetition/repeat.hpp svneol=native#text/plain
