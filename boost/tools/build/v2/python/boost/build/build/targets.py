@@ -73,6 +73,7 @@ import property, project, virtual_target, property_set, feature, generators
 from virtual_target import Subvariant
 from boost.build.exceptions import *
 from boost.build.util.sequence import unique
+from boost.build.util import set
 
 _re_separate_target_from_properties = re.compile (r'^([^<]*)(/(<.*))?$')
 
@@ -580,7 +581,7 @@ class BasicTarget (AbstractTarget):
     
         self.sources_ = sources
         
-        if not sources: sources = property_set.empty ()
+        if not requirements: requirements = property_set.empty ()
         self.requirements_ = requirements
 
         if not default_build: default_build = property_set.empty ()
