@@ -263,7 +263,6 @@ boost/libs/graph/docs/using_adjacency_list.html svneol=native#text/html
 boost/libs/graph/docs/using_boost_graph_algorithms.html svneol=native#text/html
 boost/libs/graph/docs/using_boost_graph_library.html svneol=native#text/html
 boost/libs/graph/docs/using_property_accessors.html svneol=native#text/html
-boost/libs/graph/docs/visitor_classes.html svneol=native#text/html
 boost/libs/graph/docs/visitor_concepts.html svneol=native#text/html
 boost/libs/graph/examples/LEDA_concept_check.cpp svneol=native#text/plain
 boost/libs/graph/examples/adjacency_list.cpp svneol=native#text/plain
