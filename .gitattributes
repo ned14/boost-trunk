@@ -355,6 +355,7 @@ boost/libs/graph/doc/figs/graph_search.fig -text
 boost/libs/graph/doc/figs/graph_search.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/knights_tour.fig -text
 boost/libs/graph/doc/figs/knights_tour.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/max-flow.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/quick_start.fig -text
 boost/libs/graph/doc/figs/quick_start.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/search_states.fig -text
