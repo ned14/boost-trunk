@@ -1,6 +1,7 @@
 boost/libs/optional/test/bin
 boost/libs/spirit/example/application/cpp_lexer/*.gprof
 boost/libs/spirit/example/application/cpp_lexer/*.out
+boost/libs/spirit/example/application/cpp_lexer/*.output
 boost/libs/test/build/*.ncb
 boost/libs/test/build/*.opt
 boost/libs/test/build/*.plg
