@@ -1660,6 +1660,7 @@ boost/boost/shared_ptr.hpp svneol=native#text/plain
 boost/boost/signal.hpp svneol=native#text/plain
 boost/boost/signals.hpp svneol=native#text/plain
 boost/boost/signals/connection.hpp svneol=native#text/plain
+boost/boost/signals/detail/config.hpp svneol=native#text/plain
 boost/boost/signals/detail/gen_signal_N.pl svneol=native#text/x-perl
 boost/boost/signals/detail/signal_base.hpp svneol=native#text/plain
 boost/boost/signals/detail/signals_common.hpp svneol=native#text/plain
