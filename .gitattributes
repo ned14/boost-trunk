@@ -4709,6 +4709,7 @@ boost/libs/spirit/example/application/quickdoc/doc/theme/u_arr.gif -text svneol=
 boost/libs/spirit/example/application/quickdoc/index.html svneol=native#text/html
 boost/libs/spirit/example/application/quickdoc/quickdoc.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/quickdoc/quickdoc.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/quickdoc/quickdoc.txt svneol=native#text/plain
 boost/libs/spirit/example/application/rfcdate/mystyle.xls -text svneol=unset#application/vnd.ms-excel
 boost/libs/spirit/example/application/rfcdate/peti.css svneol=native#text/css
 boost/libs/spirit/example/application/rfcdate/peti.dsl -text
