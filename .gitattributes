@@ -6003,6 +6003,7 @@ boost/libs/statechart/doc/HelloWorld.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/JoinAndFork.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/LCA.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/OrthogonalStates.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/OutermostUnstableState.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/SimpleEventDispatch.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/StopWatch.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/ThrowingEntryAction.gif -text svneol=unset#image/gif
