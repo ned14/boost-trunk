@@ -192,6 +192,7 @@ boost/boost/detail/lwm_nop.hpp svneol=native#text/plain
 boost/boost/detail/lwm_pthreads.hpp svneol=native#text/plain
 boost/boost/detail/lwm_win32.hpp svneol=native#text/plain
 boost/boost/detail/lwm_win32_cs.hpp svneol=native#text/plain
+boost/boost/detail/lwm_win32_nt.hpp svneol=native#text/plain
 boost/boost/detail/named_template_params.hpp svneol=native#text/plain
 boost/boost/detail/numeric_traits.hpp svneol=native#text/plain
 boost/boost/detail/ob_call_traits.hpp svneol=native#text/plain
