@@ -10,9 +10,27 @@
 //  support partial specialisation. (C) John Maddock 2000
 
 /* Release notes:
+   31st July 2000:
+      Added is_convertable, alignment_of.
    23rd July 2000:
       Fixed is_void specialization. (JM)
 */
+
+//
+// partial copyright for is_convertible:
+//
+// Copyright (C) 2000 Jeremy Siek (jsiek@lsc.nd.edu)
+// Copyright (C) 1999, 2000 Jaakko J„rvi (jaakko.jarvi@cs.utu.fi)
+//
+// Permission to copy and use this software is granted,
+// provided this copyright notice appears in all copies.
+// Permission to modify the code and to distribute modified code is granted,
+// provided this copyright notice appears in all copies, and a notice
+// that the code was modified is included with the copyright notice.
+//
+// This software is provided "as is" without express or implied warranty,
+// and with no claim as to its suitability for any purpose.
+
 
 #ifndef BOOST_OB_TYPE_TRAITS_HPP
 #define BOOST_OB_TYPE_TRAITS_HPP
@@ -337,6 +355,7 @@ class alignment_of
    {
       char c;
       T t;
+      padded();
    };
 public:
    enum{ value = sizeof(padded) - sizeof(T) };

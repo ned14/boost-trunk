@@ -7,9 +7,27 @@
 //  See http://www.boost.org for most recent version including documentation.
 
 /* Release notes:
+   31st July 2000:
+      Added is_convertable, alignment_of, modified is_empty.
    23rd July 2000:
       Added Borland specific fixes for reference types (Steve Cleary).
 */
+
+//
+// partial copyright for is_convertible:
+//
+// Copyright (C) 2000 Jeremy Siek (jsiek@lsc.nd.edu)
+// Copyright (C) 1999, 2000 Jaakko J„rvi (jaakko.jarvi@cs.utu.fi)
+//
+// Permission to copy and use this software is granted, 
+// provided this copyright notice appears in all copies. 
+// Permission to modify the code and to distribute modified code is granted, 
+// provided this copyright notice appears in all copies, and a notice 
+// that the code was modified is included with the copyright notice.
+//
+// This software is provided "as is" without express or implied warranty, 
+// and with no claim as to its suitability for any purpose.
+
 
 #ifndef BOOST_DETAIL_TYPE_TRAITS_HPP
 #define BOOST_DETAIL_TYPE_TRAITS_HPP
@@ -473,9 +491,19 @@ class alignment_of
    {
       char c;
       T t;
+      padded();
    };
 public:
    static const unsigned value = sizeof(padded) - sizeof(T);
+};
+//
+// references have to be treated specially, assume
+// that a reference is just a special pointer:
+template <class T>
+class alignment_of<T&>
+{
+public:
+   static const unsigned value = alignment_of<T*>::value;
 };
 
 //

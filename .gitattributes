@@ -42,4 +42,5 @@ boost/libs/utility/operators.htm svneol=native#text/html
 boost/libs/utility/operators_test.cpp svneol=native#text/plain
 boost/libs/utility/type_traits.htm svneol=native#text/html
 boost/libs/utility/type_traits_test.cpp svneol=native#text/plain
+boost/libs/utility/type_traits_test.hpp svneol=native#text/plain
 boost/libs/utility/utility.htm svneol=native#text/html
