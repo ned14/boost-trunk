@@ -7823,6 +7823,7 @@ boost/tools/build/v1/borland-tools.jam svneol=native#text/plain
 boost/tools/build/v1/build_system.htm svneol=native#text/html
 boost/tools/build/v1/como-tools.html svneol=native#text/html
 boost/tools/build/v1/como-tools.jam svneol=native#text/plain
+boost/tools/build/v1/como-win32-4.3.3-vc7-tools.jam svneol=native#text/plain
 boost/tools/build/v1/como-win32-tools.jam svneol=native#text/plain
 boost/tools/build/v1/cw-tools.html svneol=native#text/html
 boost/tools/build/v1/cw-tools.jam svneol=native#text/plain
