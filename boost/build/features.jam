@@ -104,31 +104,28 @@ common-properties =
     <profiling>off
     <struct-alignment>auto
     <eh-model>default
-    # <threading>multi
+    <threading>single
     <user-interface>console
     <wide-character-support>on
     <exception-handling>on
-    # <runtime-link>dynamic
+    <user-interface>console
     ;
     
 variant debug :
     $(common-properties)
-    <threading>multi
     <debug-symbols>on
     <runtime-build>debug
     <optimization>off
     <inlining>off
-    <borland><inlining>on # example only
     ;
 
 variant release : 
     $(common-properties)
-    <threading>multi
     <debug-symbols>off
     <runtime-build>release
     <optimization>speed
     <inlining>full
-    <msvc><inlining>off # - example only
-    <define>NDEBUG ;
+    <define>NDEBUG
+    ;
 
 
