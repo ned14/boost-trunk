@@ -3503,6 +3503,7 @@ boost/libs/mpl/test/for_each.cpp svneol=native#text/plain
 boost/libs/mpl/test/front.cpp svneol=native#text/plain
 boost/libs/mpl/test/identity.cpp svneol=native#text/plain
 boost/libs/mpl/test/if.cpp svneol=native#text/plain
+boost/libs/mpl/test/index_of.cpp svneol=native#text/plain
 boost/libs/mpl/test/inherit.cpp svneol=native#text/plain
 boost/libs/mpl/test/insert.cpp svneol=native#text/plain
 boost/libs/mpl/test/insert_range.cpp svneol=native#text/plain
