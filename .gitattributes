@@ -3702,6 +3702,7 @@ boost/libs/graph/doc/bfs_visitor.html svneol=native#text/html
 boost/libs/graph/doc/bgl-cover.jpg -text svneol=unset#image/jpeg
 boost/libs/graph/doc/bgl_named_params.html svneol=native#text/html
 boost/libs/graph/doc/bibliography.html svneol=native#text/html
+boost/libs/graph/doc/biconnected_components.html svneol=native#text/html
 boost/libs/graph/doc/biconnected_components.w -text
 boost/libs/graph/doc/breadth_first_search.html svneol=native#text/html
 boost/libs/graph/doc/breadth_first_visit.html svneol=native#text/html
@@ -3746,6 +3747,8 @@ boost/libs/graph/doc/figs/bfs_family.fig -text
 boost/libs/graph/doc/figs/bfs_family.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/bfs_visitor.fig -text
 boost/libs/graph/doc/figs/bfs_visitor.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/biconnected.dot -text
+boost/libs/graph/doc/figs/biconnected.png -text svneol=unset#image/png
 boost/libs/graph/doc/figs/central_point_dominance.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/concepts.fig -text
 boost/libs/graph/doc/figs/concepts.gif -text svneol=unset#image/gif
