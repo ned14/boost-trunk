@@ -310,7 +310,6 @@ boost/boost/regex/src.cpp svneol=native#text/plain
 boost/boost/regex/user.hpp svneol=native#text/plain
 boost/boost/smart_ptr.hpp svneol=native#text/plain
 boost/boost/static_assert.hpp svneol=native#text/plain
-boost/boost/stdint.h svneol=native#text/plain
 boost/boost/test/cpp_main.cpp svneol=native#text/plain
 boost/boost/test/test_main.cpp svneol=native#text/plain
 boost/boost/test/test_tools.hpp svneol=native#text/plain
