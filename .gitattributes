@@ -736,6 +736,7 @@ boost/boost/mpl/begin_end_fwd.hpp svneol=native#text/plain
 boost/boost/mpl/bind.hpp svneol=native#text/plain
 boost/boost/mpl/bitand.hpp svneol=native#text/plain
 boost/boost/mpl/bitor.hpp svneol=native#text/plain
+boost/boost/mpl/bitwise.hpp svneol=native#text/plain
 boost/boost/mpl/bitxor.hpp svneol=native#text/plain
 boost/boost/mpl/bool.hpp svneol=native#text/plain
 boost/boost/mpl/bool_fwd.hpp svneol=native#text/plain
