@@ -1893,13 +1893,16 @@ boost/libs/dynamic_bitset/example2.cpp svneol=native#text/plain
 boost/libs/dynamic_bitset/example3.cpp svneol=native#text/plain
 boost/libs/dynamic_bitset/index.html svneol=native#text/html
 boost/libs/dynamic_bitset/timing_tests.cpp svneol=native#text/plain
+boost/libs/format/Jamfile svneol=native#text/plain
 boost/libs/format/doc/choices.html svneol=native#text/html
 boost/libs/format/doc/format.html svneol=native#text/html
+boost/libs/format/example/Jamfile svneol=native#text/plain
 boost/libs/format/example/sample_advanced.cpp svneol=native#text/plain
 boost/libs/format/example/sample_formats.cpp svneol=native#text/plain
 boost/libs/format/example/sample_new_features.cpp svneol=native#text/plain
 boost/libs/format/example/sample_userType.cpp svneol=native#text/plain
 boost/libs/format/index.htm svneol=native#text/html
+boost/libs/format/test/Jamfile svneol=native#text/plain
 boost/libs/format/test/format_test1.cpp svneol=native#text/plain
 boost/libs/format/test/format_test2.cpp svneol=native#text/plain
 boost/libs/format/test/regression.cfg -text
