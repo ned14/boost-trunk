@@ -1433,6 +1433,7 @@ boost/boost/python/detail/not_specified.hpp svneol=native#text/plain
 boost/boost/python/detail/operator_id.hpp svneol=native#text/plain
 boost/boost/python/detail/overloads_fwd.hpp svneol=native#text/plain
 boost/boost/python/detail/pointee.hpp svneol=native#text/plain
+boost/boost/python/detail/prefix.hpp svneol=native#text/plain
 boost/boost/python/detail/preprocessor.hpp svneol=native#text/plain
 boost/boost/python/detail/python22_fixed.h svneol=native#text/plain
 boost/boost/python/detail/raw_pyobject.hpp svneol=native#text/plain
