@@ -1692,6 +1692,13 @@ boost/boost/spirit/utility/refactoring.hpp svneol=native#text/plain
 boost/boost/spirit/utility/regex.hpp svneol=native#text/plain
 boost/boost/spirit/utility/scoped_lock.hpp svneol=native#text/plain
 boost/boost/statechart/custom_handler.hpp svneol=native#text/plain
+boost/boost/statechart/detail/counted_base.hpp svneol=native#text/plain
+boost/boost/statechart/detail/event_base.hpp svneol=native#text/plain
+boost/boost/statechart/detail/event_handler.hpp svneol=native#text/plain
+boost/boost/statechart/detail/leaf_state.hpp svneol=native#text/plain
+boost/boost/statechart/detail/node_state.hpp svneol=native#text/plain
+boost/boost/statechart/detail/state_base.hpp svneol=native#text/plain
+boost/boost/statechart/detail/universal_state.hpp svneol=native#text/plain
 boost/boost/statechart/event.hpp svneol=native#text/plain
 boost/boost/statechart/simple_exception_translator.hpp svneol=native#text/plain
 boost/boost/statechart/simple_state.hpp svneol=native#text/plain
@@ -4953,8 +4960,38 @@ boost/libs/spirit/test/symbols_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/traverse_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_p_as_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_tests.cpp svneol=native#text/plain
-boost/libs/statechart/doc/FsmDiscussion.html svneol=native#text/html
-boost/libs/statechart/example/FSM.cpp svneol=native#text/plain
+boost/libs/statechart/doc/A.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/Camera.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/Camera2.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/DispatchCost.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/HelloWorld.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/LCA.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/StopWatch.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/acknowledgments.html svneol=native#text/html
+boost/libs/statechart/doc/index.html svneol=native#text/html
+boost/libs/statechart/doc/rationale.html svneol=native#text/html
+boost/libs/statechart/doc/tutorial.html svneol=native#text/html
+boost/libs/statechart/example/BitMachine/BitMachine.cpp svneol=native#text/plain
+boost/libs/statechart/example/BitMachine/BitMachine.sln -text
+boost/libs/statechart/example/BitMachine/BitMachine.vcproj -text
+boost/libs/statechart/example/Camera/Camera.cpp svneol=native#text/plain
+boost/libs/statechart/example/Camera/Camera.hpp svneol=native#text/plain
+boost/libs/statechart/example/Camera/Camera.sln -text
+boost/libs/statechart/example/Camera/Camera.vcproj -text
+boost/libs/statechart/example/Camera/Configuring.cpp svneol=native#text/plain
+boost/libs/statechart/example/Camera/Configuring.hpp svneol=native#text/plain
+boost/libs/statechart/example/Camera/Main.cpp svneol=native#text/plain
+boost/libs/statechart/example/Camera/Precompiled.cpp svneol=native#text/plain
+boost/libs/statechart/example/Camera/Precompiled.hpp svneol=native#text/plain
+boost/libs/statechart/example/Camera/Shooting.cpp svneol=native#text/plain
+boost/libs/statechart/example/Camera/Shooting.hpp svneol=native#text/plain
+boost/libs/statechart/example/StateSize/StateSize.cpp svneol=native#text/plain
+boost/libs/statechart/example/StateSize/StateSize.sln -text
+boost/libs/statechart/example/StateSize/StateSize.vcproj -text
+boost/libs/statechart/example/StopWatch/StopWatch.cpp svneol=native#text/plain
+boost/libs/statechart/example/StopWatch/StopWatch.sln -text
+boost/libs/statechart/example/StopWatch/StopWatch.vcproj -text
+boost/libs/statechart/index.html svneol=native#text/html
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/index.html svneol=native#text/html
 boost/libs/static_assert/static_assert.htm svneol=native#text/html
