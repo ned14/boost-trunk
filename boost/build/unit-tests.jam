@@ -76,6 +76,17 @@ assert_equal [ distribute-feature <feature>value1 ] : <feature>value1 ;
 assert_equal [ distribute-feature <feature>value1/value2 ] : <feature>value1 <feature>value2 ;
 assert_equal [ distribute-feature <feature>value1/value2/value3 ] : <feature>value1 <feature>value2 <feature>value3 ;
 
+# segregate-free-properties
+{
+    local gFREE_FEATURES = <a> <c> <e> ;
+    local x = <a>b <b>c <d>e ;
+    local y = <a>b <a>c <b>c <e>f ;
+    local free = [ segregate-free-properties x y ] ;
+    assert_equal $(free) : <a>b <a>c <e>f ;
+    assert_equal $(x) : <b>c <d>e ;
+    assert_equal $(y) : <b>c ;
+}
+
 # set-insert
 {
     local gTEST_SET = 1 2 3 ;
@@ -90,9 +101,18 @@ assert_equal [ equal-sets 1 2 3 : 3 2 2 1 ] : true ;
 assert_equal [ equal-sets 1 2 3 3 : 3 2 2 1 ] : true ;
 assert_equal [ equal-sets 1 2 3 3 4 : 3 2 2 1 ] : ;
 
+# segregate-overrides
+{
+    local base = <a>b <c>d <e>f ;
+    local overrides = <a>b <c>c <d>e <f>g ;
+    segregate-overrides overrides : base ;
+    assert_equal $(overrides) : <c>c <d>e <f>g ;
+    assert_equal $(base) : <a>b <e>f ;
+}
+
 # select-properties
 {
-local TEST_PROPERTIES = <inlining>off <define>FOO <*><release><inlining>on
+    local TEST_PROPERTIES = <inlining>off <define>FOO <*><release><inlining>on
                   <debug><define>DEBUG <msvc><release><foo>bar
                   <gcc><*><inlining>on
                   <msvc><*><foo>baz
@@ -165,7 +185,6 @@ assert_equal [ directory-of a$(SLASH)b c d$(SLASH)e$(SLASH)f ] : a . d$(SLASH)e 
 
 # flags
 {
-    ECHO testing flags ;
     local gBUILD_PROPERTIES = <a>b <c>d <e>f ;
     local FLAGS1 FLAGS2 FLAGS3 ;
     flags toolset FLAGS1 <a>b/<c>d <a>b/<e>f <x>y <a>/<c> <e> : foobar ;

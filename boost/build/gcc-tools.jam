@@ -23,19 +23,33 @@ flags gcc STDLIBPATH : $(gcc.root-directory)$(SLASH)lib ;
 
 flags gcc CFLAGS <shared-linkable>true : -fPIC ;
 flags gcc LINKFLAGS <shared-linkable>true : -fPIC ;
+
 flags gcc LINKFLAGS <target-type>DLL : -shared ;
 
 #### Link ####
 
 rule Link-action
 {
-    gcc-Link-action $(<) : $(>) ;
+    if $(NT) && ( $(3) = DLL )
+    {
+        gcc-DLL-action $(<) : $(>) ;
+    }
+    else
+    {
+        gcc-Link-action $(<) : $(>) ;
+    }
 }
 
 # for gcc, we repeat all libraries so that dependencies are always resolved
 actions gcc-Link-action bind NEEDLIBS
 {
-    $(gcc.bin-directory)g++ $(LINKFLAGS) -o "$(<[1])" $(UNDEFS) -L$(STDLIBPATH) "$(>)" $(NEEDLIBS) $(NEEDLIBS)
+    $(gcc.bin-directory)g++ $(LINKFLAGS) -o "$(<[1])" -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)"
+}
+
+actions gcc-DLL-action bind NEEDLIBS 
+{
+    $(gcc.bin-directory)dlltool -e $(<[1]:S=:D=:G=) -l "$(<[2])" "$(>)"
+    $(gcc.bin-directory)g++ $(LINKFLAGS) -L$(STDLIBPATH) "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" -o "$(<[1])"
 }
 
 #### Cc #####
@@ -58,7 +72,7 @@ rule C++-action
 
 actions gcc-C++-action
 {
-    $(gcc.bin-directory)g++ -c  -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
+    $(gcc.bin-directory)g++ -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o"$(<)" "$(>)"
 }
 
 #### Archive ####

@@ -24,6 +24,8 @@ feature profiling : off on ; # Profiling feature by Toon Knapen <toon@si-lab.com
 # Can the target participate in a shared library?
 feature shared-linkable : false true ;
 
+gLINK_COMPATIBLE(<shared-linkable>true) = YES ;
+gLINK_COMPATIBLE(<target-type>) = YES ;
 
 ##### Requirements by target type #####
 gTARGET_TYPE_REQUIREMENTS(DLL) = <shared-linkable>true ;
