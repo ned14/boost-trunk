@@ -177,6 +177,7 @@ boost/development/py_cpp/subclass.h svneol=native#text/plain
 boost/development/py_cpp/test_example1.py svneol=native#text/x-python
 boost/development/py_cpp/test_extclass.py svneol=native#text/x-python
 boost/development/py_cpp/todo.txt svneol=native#text/plain
+boost/development/py_cpp/tru64.mak svneol=native#text/plain
 boost/development/py_cpp/under-the-hood.html svneol=native#text/html
 boost/development/py_cpp/vc6_prj/test_demo.py svneol=native#text/x-python
 boost/development/py_cpp/vc6_prj/test_hello.py svneol=native#text/x-python
