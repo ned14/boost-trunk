@@ -8301,6 +8301,7 @@ boost/tools/build/v2/build/toolset.jam svneol=native#text/plain
 boost/tools/build/v2/build/type.jam svneol=native#text/plain
 boost/tools/build/v2/build/version.jam svneol=native#text/plain
 boost/tools/build/v2/build/virtual-target.jam svneol=native#text/plain
+boost/tools/build/v2/changes.txt svneol=native#text/plain
 boost/tools/build/v2/debian/boost-build.docs -text
 boost/tools/build/v2/debian/boost-build.examples -text
 boost/tools/build/v2/debian/changelog -text
