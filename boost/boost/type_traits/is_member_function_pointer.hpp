@@ -55,7 +55,7 @@ struct is_member_function_pointer_select<false>
     template <typename T> struct result_
     {
         static T& make_t;
-        typedef result<T> self_type;
+        typedef result_<T> self_type;
         
         BOOST_STATIC_CONSTANT(
             bool, value = (

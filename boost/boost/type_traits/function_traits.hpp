@@ -13,7 +13,10 @@
 #ifndef BOOST_TT_FUNCTION_TRAITS_HPP_INCLUDED
 #define BOOST_TT_FUNCTION_TRAITS_HPP_INCLUDED
 
+#include <boost/config.hpp>
 #include "boost/type_traits/is_function.hpp"
+
+namespace boost {
 
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 namespace detail {
@@ -228,5 +231,6 @@ struct function_traits
 };
 
 #endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+}
 
 #endif // BOOST_TT_FUNCTION_TRAITS_HPP_INCLUDED
