@@ -4579,6 +4579,10 @@ boost/libs/spirit/example/application/cpp/cpplexer/test/test_re2c_lexer.cpp svne
 boost/libs/spirit/example/application/cpp/cpplexer/test/test_re2c_lexer.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/test/test_slex_lexer.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/cpplexer/test/test_slex_lexer.hpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/doc/readme.html svneol=native#text/html
+boost/libs/spirit/example/application/cpp/doc/theme/bkd.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/cpp/doc/theme/bullet.gif -text svneol=unset#image/gif
+boost/libs/spirit/example/application/cpp/doc/theme/style.css svneol=native#text/css
 boost/libs/spirit/example/application/cpp/instantiate_cpp_exprgrammar.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/instantiate_cpp_grammar.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/instantiate_cpp_literalgrammars.cpp svneol=native#text/plain
