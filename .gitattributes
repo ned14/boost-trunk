@@ -1935,6 +1935,7 @@ boost/libs/utility/operators_test.cpp svneol=native#text/plain
 boost/libs/utility/permutation_iterator.htm svneol=native#text/html
 boost/libs/utility/projection_iterator.htm svneol=native#text/html
 boost/libs/utility/projection_iterator_example.cpp svneol=native#text/plain
+boost/libs/utility/ref_test.cpp svneol=native#text/plain
 boost/libs/utility/reverse_iterator.htm svneol=native#text/html
 boost/libs/utility/reverse_iterator_example.cpp svneol=native#text/plain
 boost/libs/utility/tie.html svneol=native#text/html
