@@ -419,7 +419,6 @@ boost/libs/graph/example/bucket_sorter.cpp svneol=native#text/plain
 boost/libs/graph/example/city_visitor.cpp svneol=native#text/plain
 boost/libs/graph/example/components_on_edgelist.cpp svneol=native#text/plain
 boost/libs/graph/example/components_on_edgelist.expected -text
-boost/libs/graph/example/concept_checks.cpp svneol=native#text/plain
 boost/libs/graph/example/concept_checks.expected -text
 boost/libs/graph/example/connected_components.cpp svneol=native#text/plain
 boost/libs/graph/example/connected_components.expected -text
