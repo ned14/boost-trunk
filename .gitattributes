@@ -5550,6 +5550,7 @@ boost/libs/test/build/msvc65_proj/unit_test_framework.dsp -text svneol=CRLF#unse
 boost/libs/test/build/msvc65_proj/unit_test_suite_ex_test.dsp -text svneol=CRLF#unset
 boost/libs/test/build/msvc71_proj/.cvsignore -text
 boost/libs/test/build/msvc71_proj/auto_unit_test_test.vcproj -text
+boost/libs/test/build/msvc71_proj/auto_unit_test_test_mult.vcproj -text
 boost/libs/test/build/msvc71_proj/boost_test_library.sln -text
 boost/libs/test/build/msvc71_proj/errors_handling_test.vcproj -text
 boost/libs/test/build/msvc71_proj/minimal_test.vcproj -text
