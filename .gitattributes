@@ -2836,6 +2836,7 @@ boost/libs/math/octonion/index.html svneol=native#text/html
 boost/libs/math/octonion/octonion.html svneol=native#text/html
 boost/libs/math/octonion/octonion_test.cpp svneol=native#text/plain
 boost/libs/math/octonion/output.txt svneol=native#text/plain
+boost/libs/math/octonion/output_more.txt svneol=native#text/plain
 boost/libs/math/quaternion/HSO3.hpp svneol=native#text/plain
 boost/libs/math/quaternion/HSO3SO4.cpp svneol=native#text/plain
 boost/libs/math/quaternion/HSO4.hpp svneol=native#text/plain
