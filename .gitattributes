@@ -30,6 +30,7 @@ boost/boost/detail/numeric_traits.hpp svneol=native#text/plain
 boost/boost/detail/ob_call_traits.hpp svneol=native#text/plain
 boost/boost/detail/ob_compressed_pair.hpp svneol=native#text/plain
 boost/boost/detail/select_type.hpp svneol=native#text/plain
+boost/boost/function_output_iterator.hpp svneol=native#text/plain
 boost/boost/functional.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_iterator.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list.hpp svneol=native#text/plain
