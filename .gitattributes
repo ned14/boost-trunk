@@ -4875,6 +4875,7 @@ boost/libs/regex/doc/thread_safety.html svneol=native#text/html
 boost/libs/regex/doc/uarrow.gif -text svneol=unset#image/gif
 boost/libs/regex/doc/vc71-performance.html svneol=native#text/html
 boost/libs/regex/example/Jamfile svneol=native#text/plain
+boost/libs/regex/example/Jamfile.v2 svneol=native#text/plain
 boost/libs/regex/example/iso8859_1_regex_traits/iso8859_1_regex_traits.cpp svneol=native#text/plain
 boost/libs/regex/example/iso8859_1_regex_traits/iso8859_1_regex_traits.hpp svneol=native#text/plain
 boost/libs/regex/example/iso8859_1_regex_traits/readme.txt svneol=native#text/plain
