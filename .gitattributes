@@ -727,6 +727,7 @@ boost/boost/mpl/aux_/msvc_never_true.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/msvc_type.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/na.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/na_assert.hpp svneol=native#text/plain
+boost/boost/mpl/aux_/na_fwd.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/na_spec.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/nested_type_wknd.hpp svneol=native#text/plain
 boost/boost/mpl/aux_/nttp_decl.hpp svneol=native#text/plain
