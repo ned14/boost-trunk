@@ -27,15 +27,16 @@
 template< bool C > struct ASSERT { enum { ASSERTION_FAILED }; };
 template<> struct ASSERT<false> {};
 
-#   define BOOST_MPL_MESSAGE( c, msg ) \
+#   define BOOST_MPL_ASSERT_MSG( c, msg ) \
     struct BOOST_PP_CAT(__ASSERTION__,msg) : ASSERT<c> {}; \
-    enum { n = BOOST_PP_CAT(__ASSERTION__,msg)::ASSERTION_FAILED }\
+    enum { BOOST_PP_CAT(BOOST_PP_CAT(msg,__in_line__),__LINE__) \
+        = BOOST_PP_CAT(__ASSERTION__,msg)::ASSERTION_FAILED } \
 /**/
 #else
 template< bool C > struct ASSERTION_FAILED { ASSERTION_FAILED(void const volatile*); };
 template<> struct ASSERTION_FAILED<false> {};
 
-#   define BOOST_MPL_MESSAGE( c, msg ) \
+#   define BOOST_MPL_ASSERT_MSG( c, msg ) \
     void msg##_( ASSERTION_FAILED<c> = (struct BOOST_PP_CAT(__ASSERTION__,msg)*)(0) ) \
 /**/
 #endif

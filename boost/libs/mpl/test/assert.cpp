@@ -13,24 +13,24 @@
 
 #include <boost/mpl/assert.hpp>
 
-// global scope
-BOOST_MPL_MESSAGE( false, GLOBAL_SCOPE_ERROR );
+BOOST_MPL_ASSERT_MSG( true, GLOBAL_SCOPE_ERROR );
+BOOST_MPL_ASSERT_MSG( true, ANOTHER_GLOBAL_SCOPE_ERROR );
 
 namespace my {
-// namespace scope
-BOOST_MPL_MESSAGE( false, NAMESPACE_SCOPE_ERROR );
+BOOST_MPL_ASSERT_MSG( true, NAMESPACE_SCOPE_ERROR );
+BOOST_MPL_ASSERT_MSG( true, ANOTHER_NAMESPACE_SCOPE_ERROR );
 }
 
 struct her
 {
-    // class/template scope
-    BOOST_MPL_MESSAGE( false, CLASS_SCOPE_ERROR );
+    BOOST_MPL_ASSERT_MSG( true, CLASS_SCOPE_ERROR );
+    BOOST_MPL_ASSERT_MSG( true, ANOTHER_CLASS_SCOPE_ERROR );
 };
 
 
 int main()
 {
-    // function scope
-    BOOST_MPL_MESSAGE( false, FUNCTION_SCOPE_ERROR );
+    BOOST_MPL_ASSERT_MSG( true, FUNCTION_SCOPE_ERROR );
+    BOOST_MPL_ASSERT_MSG( true, ANOTHER_FUNCTION_SCOPE_ERROR );
     return 0;
 }
