@@ -4605,6 +4605,8 @@ boost/libs/spirit/example/application/cpp/test/list_includes/list_includes.cpp s
 boost/libs/spirit/example/application/cpp/test/list_includes/list_includes.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test/list_includes/list_includes_version.hpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test1.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test_files/test10.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test_files/test11.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test2.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test3.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test4.cpp svneol=native#text/plain
@@ -4612,6 +4614,7 @@ boost/libs/spirit/example/application/cpp/test_files/test5.cpp svneol=native#tex
 boost/libs/spirit/example/application/cpp/test_files/test6.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test7.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp/test_files/test8.cpp svneol=native#text/plain
+boost/libs/spirit/example/application/cpp/test_files/test9.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/.cvsignore -text
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.cpp svneol=native#text/plain
 boost/libs/spirit/example/application/cpp_lexer/cpp_lexer.hpp svneol=native#text/plain
