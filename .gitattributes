@@ -49,6 +49,7 @@ boost/boost/graph/detail/list_base.hpp svneol=native#text/plain
 boost/boost/graph/detail/self_avoiding_walk.hpp svneol=native#text/plain
 boost/boost/graph/dijkstra_shortest_paths.hpp svneol=native#text/plain
 boost/boost/graph/edge_list.hpp svneol=native#text/plain
+boost/boost/graph/filtered_edge_graph.hpp svneol=native#text/plain
 boost/boost/graph/graph_as_tree.hpp svneol=native#text/plain
 boost/boost/graph/graph_concepts.hpp svneol=native#text/plain
 boost/boost/graph/graph_traits.hpp svneol=native#text/plain
