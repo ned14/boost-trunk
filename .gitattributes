@@ -44,6 +44,7 @@ boost/boost/graph/detail/adj_list_edge_iterator.hpp svneol=native#text/plain
 boost/boost/graph/detail/adjacency_list.hpp svneol=native#text/plain
 boost/boost/graph/detail/array_binary_tree.hpp svneol=native#text/plain
 boost/boost/graph/detail/connected_components.hpp svneol=native#text/plain
+boost/boost/graph/detail/dynamic_components.hpp svneol=native#text/plain
 boost/boost/graph/detail/edge.hpp svneol=native#text/plain
 boost/boost/graph/detail/incidence_iterator.hpp svneol=native#text/plain
 boost/boost/graph/detail/is_same.hpp svneol=native#text/plain
