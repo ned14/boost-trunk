@@ -43,6 +43,7 @@ struct if_c<false,T1,T2>
     typedef T2 type;
 };
 
+#if !defined(__BORLANDC__)
 template<
       typename C
     , typename T1
@@ -56,6 +57,28 @@ struct if_
         , T2
         >::type type;
 };
+
+#else 
+// Borland workaround
+namespace aux {
+template< typename C > struct bcc_value : C {};
+}
+
+template<
+      typename C
+    , typename T1
+    , typename T2
+    >
+struct if_
+{
+    typedef typename if_c<
+          ::boost::mpl::aux::bcc_value<C>::value
+        , T1
+        , T2
+        >::type type;
+};
+
+#endif // __BORLANDC__
 
 #elif defined(BOOST_MSVC) && (BOOST_MSVC <= 1200)
 
