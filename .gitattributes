@@ -741,6 +741,7 @@ boost/libs/graph/doc/adjacency_iterator.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_list.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_list_traits.html svneol=native#text/html
 boost/libs/graph/doc/adjacency_matrix.html svneol=native#text/html
+boost/libs/graph/doc/awpaper.sty -text
 boost/libs/graph/doc/bandwidth.html svneol=native#text/html
 boost/libs/graph/doc/bellman_ford_shortest.html svneol=native#text/html
 boost/libs/graph/doc/bellman_visitor.html svneol=native#text/html
