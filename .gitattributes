@@ -5786,6 +5786,7 @@ boost/libs/test/doc/components/unit_test_framework/components/test_case/index.ht
 boost/libs/test/doc/components/unit_test_framework/components/test_case/parameterized_boost_function_test_case.html svneol=native#text/html
 boost/libs/test/doc/components/unit_test_framework/components/test_case/parameterized_class_test_case.html svneol=native#text/html
 boost/libs/test/doc/components/unit_test_framework/components/test_case/parameterized_function_test_case.html svneol=native#text/html
+boost/libs/test/doc/components/unit_test_framework/components/test_case/test_case_template.html svneol=native#text/html
 boost/libs/test/doc/components/unit_test_framework/components/test_log/custom_log_formatter.html svneol=native#text/html
 boost/libs/test/doc/components/unit_test_framework/components/test_log/index.html svneol=native#text/html
 boost/libs/test/doc/components/unit_test_framework/components/test_result/index.html svneol=native#text/html
