@@ -958,6 +958,7 @@ boost/libs/mpl/preprocessed/list/list50.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/list/list50_c.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/pp.py svneol=native#text/x-python
 boost/libs/mpl/preprocessed/preprocess.py svneol=native#text/x-python
+boost/libs/mpl/preprocessed/preprocess_vector.py svneol=native#text/x-python
 boost/libs/mpl/preprocessed/src/advance_backward.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/src/advance_forward.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/src/and.cpp svneol=native#text/plain
