@@ -829,6 +829,7 @@ boost/libs/graph/example/bellman-example.cpp svneol=native#text/plain
 boost/libs/graph/example/bellman-ford-internet.cpp svneol=native#text/plain
 boost/libs/graph/example/bellman_ford.expected -text
 boost/libs/graph/example/bfs-example.cpp svneol=native#text/plain
+boost/libs/graph/example/bfs-example2.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs-name-printer.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs.cpp svneol=native#text/plain
 boost/libs/graph/example/bfs.expected -text
