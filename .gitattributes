@@ -2406,7 +2406,6 @@ boost/libs/preprocessor/regression/logical.cpp svneol=native#text/plain
 boost/libs/preprocessor/regression/repetition.cpp svneol=native#text/plain
 boost/libs/preprocessor/regression/selection.cpp svneol=native#text/plain
 boost/libs/preprocessor/regression/slot.cpp svneol=native#text/plain
-boost/libs/preprocessor/regression/test.cpp svneol=native#text/plain
 boost/libs/preprocessor/regression/test.h svneol=native#text/plain
 boost/libs/preprocessor/regression/tuple.cpp svneol=native#text/plain
 boost/libs/preprocessor/test/arithmetic_test.cpp svneol=native#text/plain
