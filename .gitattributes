@@ -5905,6 +5905,7 @@ boost/libs/variant/test/variant_comparison_test.cpp svneol=native#text/plain
 boost/libs/variant/test/variant_reference_test.cpp svneol=native#text/plain
 boost/libs/variant/test/variant_visit_test.cpp svneol=native#text/plain
 boost/more/bibliography.html svneol=native#text/html
+boost/more/blanket-permission.txt svneol=native#text/plain
 boost/more/borland_cpp.html svneol=native#text/html
 boost/more/bugs.htm svneol=native#text/html
 boost/more/count_bdy.htm svneol=native#text/html
