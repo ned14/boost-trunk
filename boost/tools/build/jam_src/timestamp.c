@@ -1,5 +1,5 @@
 /*
- * Copyright 1993, 1995 Christopher Seiwald.
+ * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -15,6 +15,7 @@
 # include "jam.h"
 # include "hash.h"
 # include "filesys.h"
+# include "pathsys.h"
 # include "timestamp.h"
 # include "newstr.h"
 # include "strings.h"
@@ -49,7 +50,7 @@ struct _binding {
 } ;
 
 static struct hash *bindhash = 0;
-static void time_enter( char *target, int found, time_t time );
+static void time_enter( void *, char *, int , time_t  );
 
 static char *time_progress[] =
 {
@@ -70,7 +71,7 @@ timestamp(
 	char	*target,
 	time_t	*time )
 {
-	FILENAME f1, f2;
+	PATHNAME f1, f2;
 	BINDING	binding, *b = &binding;
 	string buf[1];
 
@@ -108,7 +109,7 @@ timestamp(
 
 	/* Not found - have to scan for it */
 
-	file_parse( target, &f1 );
+	path_parse( target, &f1 );
 
 	/* Scan directory if not already done so */
 
@@ -117,8 +118,8 @@ timestamp(
 
 	    f2 = f1;
 	    f2.f_grist.len = 0;
-	    file_parent( &f2 );
-	    file_build( &f2, buf, 0 );
+	    path_parent( &f2 );
+	    path_build( &f2, buf, 0 );
 
 	    b->name = buf->value;
 	    b->time = b->flags = 0;
@@ -129,7 +130,13 @@ timestamp(
 
 	    if( !( b->flags & BIND_SCANNED ) )
 	    {
+<<<<<<< variant A
 		file_dirscan( buf->value, time_enter );
+>>>>>>> variant B
+		file_dirscan( buf, time_enter, bindhash );
+####### Ancestor
+		file_dirscan( buf, time_enter );
+======= end
 		b->flags |= BIND_SCANNED;
 	    }
 	}
@@ -143,8 +150,14 @@ timestamp(
 	    f2 = f1;
 	    f2.f_grist.len = 0;
 	    f2.f_member.len = 0;
+<<<<<<< variant A
             string_truncate( buf, 0 );
 	    file_build( &f2, buf, 0 );
+>>>>>>> variant B
+	    path_build( &f2, buf, 0 );
+####### Ancestor
+	    file_build( &f2, buf, 0 );
+======= end
 
 	    b->name = buf->value;
 	    b->time = b->flags = 0;
@@ -155,7 +168,13 @@ timestamp(
 
 	    if( !( b->flags & BIND_SCANNED ) )
 	    {
+<<<<<<< variant A
 		file_archscan( buf->value, time_enter );
+>>>>>>> variant B
+		file_archscan( buf, time_enter, bindhash );
+####### Ancestor
+		file_archscan( buf, time_enter );
+======= end
 		b->flags |= BIND_SCANNED;
 	    }
 	}
@@ -179,11 +198,13 @@ timestamp(
 
 static void
 time_enter( 
+	void	*closure,
 	char	*target,
 	int	found,
 	time_t	time )
 {
 	BINDING	binding, *b = &binding;
+	struct hash *bindhash = (struct hash *)closure;
 
 # ifdef DOWNSHIFT_PATHS
 	char path[ MAXJPATH ];

@@ -1,5 +1,5 @@
 /*
- * Copyright 1993, 2000 Christopher Seiwald.
+ * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -25,6 +25,7 @@
 
 void compile_builtins();
 
+<<<<<<< variant A
 LIST *compile_append( PARSE *parse, FRAME *frame );
 LIST *compile_foreach( PARSE *parse, FRAME *frame );
 LIST *compile_if( PARSE *parse, FRAME *frame );
@@ -46,6 +47,40 @@ LIST *compile_while( PARSE *parse, FRAME *frame );
 LIST *evaluate_rule( char *rulename, FRAME *frame );
 
 regexp* regex_compile( const char* pattern );
+>>>>>>> variant B
+LIST *compile_append( PARSE *parse, LOL *args );
+LIST *compile_foreach( PARSE *parse, LOL *args );
+LIST *compile_if( PARSE *parse, LOL *args );
+LIST *compile_eval( PARSE *parse, LOL *args );
+LIST *compile_include( PARSE *parse, LOL *args );
+LIST *compile_list( PARSE *parse, LOL *args );
+LIST *compile_local( PARSE *parse, LOL *args );
+LIST *compile_null( PARSE *parse, LOL *args );
+LIST *compile_on( PARSE *parse, LOL *args );
+LIST *compile_rule( PARSE *parse, LOL *args );
+LIST *compile_rules( PARSE *parse, LOL *args );
+LIST *compile_set( PARSE *parse, LOL *args );
+LIST *compile_setcomp( PARSE *parse, LOL *args );
+LIST *compile_setexec( PARSE *parse, LOL *args );
+LIST *compile_settings( PARSE *parse, LOL *args );
+LIST *compile_switch( PARSE *parse, LOL *args );
+LIST *compile_while( PARSE *parse, LOL *args );
+####### Ancestor
+LIST *compile_append( PARSE *parse, LOL *args );
+LIST *compile_foreach( PARSE *parse, LOL *args );
+LIST *compile_if( PARSE *parse, LOL *args );
+LIST *compile_include( PARSE *parse, LOL *args );
+LIST *compile_list( PARSE *parse, LOL *args );
+LIST *compile_local( PARSE *parse, LOL *args );
+LIST *compile_null( PARSE *parse, LOL *args );
+LIST *compile_rule( PARSE *parse, LOL *args );
+LIST *compile_rules( PARSE *parse, LOL *args );
+LIST *compile_set( PARSE *parse, LOL *args );
+LIST *compile_setcomp( PARSE *parse, LOL *args );
+LIST *compile_setexec( PARSE *parse, LOL *args );
+LIST *compile_settings( PARSE *parse, LOL *args );
+LIST *compile_switch( PARSE *parse, LOL *args );
+======= end
 
 void profile_dump();
 
@@ -66,10 +101,11 @@ void profile_dump();
 
 /* Conditions for compile_if() */
 
-# define COND_NOT	0	/* ! cond */
-# define COND_AND	1	/* cond && cond */
-# define COND_OR	2	/* cond || cond */
+# define EXPR_NOT	0	/* ! cond */
+# define EXPR_AND	1	/* cond && cond */
+# define EXPR_OR	2	/* cond || cond */
 
+<<<<<<< variant A
 # define COND_EXISTS	3	/* arg */
 # define COND_EQUALS	4	/* arg = arg */
 # define COND_NOTEQ	5	/* arg != arg */
@@ -81,3 +117,22 @@ void profile_dump();
 
 #endif // COMPILE_DWA20011022_H
 
+>>>>>>> variant B
+# define EXPR_EXISTS	3	/* arg */
+# define EXPR_EQUALS	4	/* arg = arg */
+# define EXPR_NOTEQ	5	/* arg != arg */
+# define EXPR_LESS	6	/* arg < arg  */
+# define EXPR_LESSEQ	7	/* arg <= arg */
+# define EXPR_MORE	8	/* arg > arg  */
+# define EXPR_MOREEQ	9	/* arg >= arg */
+# define EXPR_IN	10	/* arg in arg */
+####### Ancestor
+# define COND_EXISTS	3	/* arg */
+# define COND_EQUALS	4	/* arg = arg */
+# define COND_NOTEQ	5	/* arg != arg */
+# define COND_LESS	6	/* arg < arg  */
+# define COND_LESSEQ	7	/* arg <= arg */
+# define COND_MORE	8	/* arg > arg  */
+# define COND_MOREEQ	9	/* arg >= arg */
+# define COND_IN	10	/* arg in arg */
+======= end

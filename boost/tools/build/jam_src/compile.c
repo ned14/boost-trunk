@@ -1,5 +1,5 @@
 /*
- * Copyright 1993, 2000 Christopher Seiwald.
+ * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -21,7 +21,6 @@
 # include "expand.h"
 # include "rules.h"
 # include "newstr.h"
-# include "make.h"
 # include "search.h"
 # include "hdrmacro.h"
 # include "hash.h"
@@ -44,6 +43,7 @@
  *  compile_list() - expand and return a list 
  *  compile_local() - declare (and set) local variables
  *  compile_null() - do nothing -- a stub for parsing
+ *	compile_on() - run rule under influence of on-target variables
  *  compile_rule() - compile a single user defined rule
  *  compile_rules() - compile a chain of rules
  *  compile_set() - compile the "set variable" statement
@@ -58,11 +58,6 @@
  *
  *  evaluate_if() - evaluate if to determine which leg to compile
  *  evaluate_rule() - execute a rule invocation
- *
- *  builtin_depends() - DEPENDS/INCLUDES rule
- *  builtin_echo() - ECHO rule
- *  builtin_exit() - EXIT rule
- *  builtin_flags() - NOCARE, NOTFILE, TEMPORARY rule
  *
  * 02/03/94 (seiwald) - Changed trace output to read "setting" instead of 
  *          the awkward sounding "settings".
@@ -82,9 +77,12 @@
  *          New compile_append() and compile_list() in
  *          support of building lists here, rather than
  *          in jamgram.yy.
+ * 01/10/00 (seiwald) - built-ins split out to builtin.c.
  */
 
+<<<<<<< variant A
 static void debug_compile( int which, char *s, FRAME* frame );
+int glob( char *s, char *c );
 
 static int evaluate_if( PARSE *parse, FRAME *frame );
 
@@ -103,13 +101,44 @@ static LIST *builtin_import( PARSE *parse, FRAME *frame );
 static LIST *builtin_export( PARSE *parse, FRAME *frame );
 static LIST *builtin_caller_module( PARSE *parse, FRAME *frame );
 static LIST *builtin_backtrace( PARSE *parse, FRAME *frame );
-
-
-LIST *builtin_subst( PARSE  *parse, FRAME *frame );
-
+>>>>>>> variant B
+static void debug_compile( int which, char *s );
 int glob( char *s, char *c );
+####### Ancestor
+static void debug_compile( int which, char *s );
+======= end
 
+
+<<<<<<< variant A
+LIST *builtin_subst( PARSE  *parse, FRAME *frame );
+>>>>>>> variant B
+####### Ancestor
+static LIST *builtin_depends( PARSE *parse, LOL *args );
+static LIST *builtin_echo( PARSE *parse, LOL *args );
+static LIST *builtin_exit( PARSE *parse, LOL *args );
+static LIST *builtin_flags( PARSE *parse, LOL *args );
+======= end
+
+<<<<<<< variant A
+>>>>>>> variant B
+/*
+ * compile_append() - append list results of two statements
+ *
+ *	parse->left	more compile_append() by left-recursion
+ *	parse->right	single rule
+ */
+####### Ancestor
+int glob( char *s, char *c );
+======= end
+
+LIST *
+compile_append(
+	PARSE	*parse,
+	LOL	*args )
+{
+	/* Append right to left. */
 
+<<<<<<< variant A
 void frame_init( FRAME* frame )
 {
     frame->prev = 0;
@@ -123,14 +152,42 @@ void frame_free( FRAME* frame )
 {
     lol_free( frame->args );
 }
+>>>>>>> variant B
+	return list_append( 
+		(*parse->left->func)( parse->left, args ),
+		(*parse->right->func)( parse->right, args ) );
+}
+####### Ancestor
+======= end
 
 /*
- * compile_builtin() - define builtin rules
+ * compile_eval() - evaluate if to determine which leg to compile
+ *
+ * Returns:
+ *	list 	if expression true - compile 'then' clause
+ *	L0	if expression false - compile 'else' clause
  */
 
-# define P0 (PARSE *)0
-# define C0 (char *)0
+static int
+lcmp( LIST *t, LIST *s )
+{
+	int status = 0;
 
+	while( !status && ( t || s ) )
+	{
+	    char *st = t ? t->string : "";
+	    char *ss = s ? s->string : "";
+
+	    status = strcmp( st, ss );
+
+	    t = t ? list_next( t ) : t;
+	    s = s ? list_next( s ) : s;
+	}
+
+	return status;
+}
+
+<<<<<<< variant A
 static void lol_build( LOL* lol, char** elements )
 {
     LIST* l = L0;
@@ -175,7 +232,17 @@ static RULE* duplicate_rule( char* name, RULE* other )
 
 void
 compile_builtins()
+>>>>>>> variant B
+LIST *
+compile_eval(
+	PARSE	*parse,
+	LOL	*args )
+####### Ancestor
+void
+compile_builtins()
+======= end
 {
+<<<<<<< variant A
     duplicate_rule( "Always", bind_builtin( "ALWAYS", builtin_flags, T_FLAG_TOUCHED, 0 ) );
     duplicate_rule( "Depends", bind_builtin( "DEPENDS", builtin_depends, T_DEPS_DEPENDS, 0 ) );
     duplicate_rule( "Echo", bind_builtin( "ECHO", builtin_echo, 0, 0 ) );
@@ -203,15 +270,60 @@ compile_builtins()
         char* args[] = { "string", "pattern", "replacements", "+", 0 };
         duplicate_rule( "subst", bind_builtin( "SUBST", builtin_subst, 0, args ) );
     }
+>>>>>>> variant B
+	LIST *ll = (*parse->left->func)( parse->left, args );
+	LIST *lr = (*parse->right->func)( parse->right, args );
+	LIST *s, *t;
+	int status = 0;
+
+	switch( parse->num )
+	{
+	case EXPR_EXISTS:
+		if( ll && ll->string[0] ) status = 1;
+		break;
+
+	case EXPR_NOT:	
+		if( !ll ) status = 1;
+		break;
+
+	case EXPR_AND:
+		if( ll && lr ) status = 1;
+		break;
+####### Ancestor
+    bindrule( "Always" )->procedure = 
+    bindrule( "ALWAYS" )->procedure = 
+	parse_make( builtin_flags, P0, P0, P0, C0, C0, T_FLAG_TOUCHED );
+======= end
     
+<<<<<<< variant A
     {
         char* args[] = {
             "module", "?", 0
         };
+>>>>>>> variant B
+	case EXPR_OR:
+		if( ll || lr ) status = 1;
+		break;
+####### Ancestor
+    bindrule( "Depends" )->procedure = 
+    bindrule( "DEPENDS" )->procedure = 
+	parse_make( builtin_depends, P0, P0, P0, C0, C0, T_DEPS_DEPENDS );
+======= end
         
+<<<<<<< variant A
         bind_builtin( "RULENAMES", builtin_rulenames, 0, args );
     }
+>>>>>>> variant B
+	case EXPR_IN:
+		/* "a in b": make sure each of */
+		/* ll is equal to something in lr. */
+####### Ancestor
+    bindrule( "Echo" )->procedure = 
+    bindrule( "ECHO" )->procedure = 
+	parse_make( builtin_echo, P0, P0, P0, C0, C0, 0 );
+======= end
 
+<<<<<<< variant A
     {
         char* args[] = {
             "source_module", "?"
@@ -220,48 +332,144 @@ compile_builtins()
             , ":", "target_rules", "*"
             , ":", "localize", "?", 0
         };
+>>>>>>> variant B
+		for( t = ll; t; t = list_next( t ) )
+		{
+		    for( s = lr; s; s = list_next( s ) )
+			if( !strcmp( t->string, s->string ) )
+			    break;
+		    if( !s ) break;
+		}
+####### Ancestor
+    bindrule( "Exit" )->procedure = 
+    bindrule( "EXIT" )->procedure = 
+	parse_make( builtin_exit, P0, P0, P0, C0, C0, 0 );
+======= end
         
+<<<<<<< variant A
         bind_builtin( "IMPORT", builtin_import, 0, args );
     }
+>>>>>>> variant B
+		/* No more ll? Success */
+####### Ancestor
+    bindrule( "Includes" )->procedure = 
+    bindrule( "INCLUDES" )->procedure = 
+	parse_make( builtin_depends, P0, P0, P0, C0, C0, T_DEPS_INCLUDES );
+======= end
 
+<<<<<<< variant A
+>>>>>>> variant B
+		if( !t ) status = 1;
+####### Ancestor
+    bindrule( "Leaves" )->procedure = 
+    bindrule( "LEAVES" )->procedure = 
+	parse_make( builtin_flags, P0, P0, P0, C0, C0, T_FLAG_LEAVES );
+======= end
 
+<<<<<<< variant A
     {
         char* args[] = {
             "module", "?"
             , ":", "rules", "*", 0
         };
+>>>>>>> variant B
+		break;
+####### Ancestor
+    bindrule( "NoCare" )->procedure = 
+    bindrule( "NOCARE" )->procedure = 
+	parse_make( builtin_flags, P0, P0, P0, C0, C0, T_FLAG_NOCARE );
+======= end
         
+<<<<<<< variant A
         bind_builtin( "EXPORT", builtin_export, 0, args );
     }
+>>>>>>> variant B
+	case EXPR_EQUALS:	if( lcmp( ll, lr ) == 0 ) status = 1; break;
+	case EXPR_NOTEQ:	if( lcmp( ll, lr ) != 0 ) status = 1; break;
+	case EXPR_LESS:		if( lcmp( ll, lr ) < 0  ) status = 1; break;
+	case EXPR_LESSEQ:	if( lcmp( ll, lr ) <= 0 ) status = 1; break;
+	case EXPR_MORE:		if( lcmp( ll, lr ) > 0  ) status = 1; break;
+	case EXPR_MOREEQ:	if( lcmp( ll, lr ) >= 0 ) status = 1; break;
+####### Ancestor
+    bindrule( "NOTIME" )->procedure = 
+    bindrule( "NotFile" )->procedure = 
+    bindrule( "NOTFILE" )->procedure = 
+	parse_make( builtin_flags, P0, P0, P0, C0, C0, T_FLAG_NOTFILE );
+======= end
     
+<<<<<<< variant A
     {
         char* args[] = { "levels", "?", 0 };
         bind_builtin( "CALLER_MODULE", builtin_caller_module, 0, args );
     }
+>>>>>>> variant B
+	}
+####### Ancestor
+    bindrule( "NoUpdate" )->procedure = 
+    bindrule( "NOUPDATE" )->procedure = 
+	parse_make( builtin_flags, P0, P0, P0, C0, C0, T_FLAG_NOUPDATE );
+======= end
 
+<<<<<<< variant A
     {
         char* args[] = { 0 };
         bind_builtin( "BACKTRACE", builtin_backtrace, 0, args );
     }
 }
+>>>>>>> variant B
+	if( DEBUG_IF )
+	{
+	    debug_compile( 0, "if" );
+	    list_print( ll );
+	    printf( "(%d) ", status );
+	    list_print( lr );
+	    printf( "\n" );
+	}
+####### Ancestor
+    bindrule( "Temporary" )->procedure = 
+    bindrule( "TEMPORARY" )->procedure = 
+	parse_make( builtin_flags, P0, P0, P0, C0, C0, T_FLAG_TEMP );
+}
+======= end
 
-/*
- * compile_append() - append list results of two statements
- *
- *  parse->left more compile_append() by left-recursion
- *  parse->right    single rule
- */
+	/* Find something to return. */
+	/* In odd circumstances (like "" = "") */
+	/* we'll have to return a new string. */
 
+<<<<<<< variant A
 LIST *
 compile_append(
     PARSE   *parse,
     FRAME *frame )
 {
     /* Append right to left. */
+>>>>>>> variant B
+	if( !status ) t = 0;
+	else if( ll ) t = ll, ll = 0;
+	else if( lr ) t = lr, lr = 0;
+	else t = list_new( L0, newstr( "1" ) );
+####### Ancestor
+LIST *
+compile_append(
+	PARSE	*parse,
+	LOL	*args )
+{
+	/* Append right to left. */
+======= end
 
+<<<<<<< variant A
     return list_append( 
         parse_evaluate( parse->left, frame ),
         parse_evaluate( parse->right, frame ) );
+>>>>>>> variant B
+	if( ll ) list_free( ll );
+	if( lr ) list_free( lr );
+	return t;
+####### Ancestor
+	return list_append( 
+		(*parse->left->func)( parse->left, args ),
+		(*parse->right->func)( parse->right, args ) );
+======= end
 }
 
 /*
@@ -322,9 +530,24 @@ compile_if(
     PARSE   *p,
     FRAME *frame )
 {
+<<<<<<< variant A
     if( evaluate_if( p->left, frame ) )
+>>>>>>> variant B
+	LIST *l = (*p->left->func)( p->left, args );
+
+	if( l )
+####### Ancestor
+	if( evaluate_if( p->left, args ) )
+======= end
     {
+<<<<<<< variant A
         return parse_evaluate( p->right, frame );
+>>>>>>> variant B
+	    list_free( l );
+	    return (*p->right->func)( p->right, args );
+####### Ancestor
+	    return (*p->right->func)( p->right, args );
+======= end
     }
     else
     {
@@ -345,6 +568,7 @@ compile_while(
 }
 
 /*
+<<<<<<< variant A
  * evaluate_if() - evaluate if to determine which leg to compile
  *
  * Returns:
@@ -460,6 +684,124 @@ evaluate_if(
 }
 
 /*
+>>>>>>> variant B
+####### Ancestor
+ * evaluate_if() - evaluate if to determine which leg to compile
+ *
+ * Returns:
+ *	!0	if expression true - compile 'then' clause
+ *	0	if expression false - compile 'else' clause
+ */
+
+static int
+evaluate_if(
+	PARSE	*parse,
+	LOL	*args )
+{
+	int	status;
+
+	if( parse->num <= COND_OR )
+	{
+	    /* Handle one of the logical operators */
+
+	    switch( parse->num )
+	    {
+	    case COND_NOT:
+		status = !evaluate_if( parse->left, args );
+		break;
+
+	    case COND_AND:
+		status = evaluate_if( parse->left, args ) &&
+			 evaluate_if( parse->right, args );
+		break;
+
+	    case COND_OR:
+		status = evaluate_if( parse->left, args ) ||
+			 evaluate_if( parse->right, args );
+		break;
+
+	    default:
+		status = 0;	/* can't happen */
+	    }
+	}
+	else
+	{
+	    /* Handle one of the comparison operators */
+	    /* Expand targets and sources */
+
+	    LIST *nt = (*parse->left->func)( parse->left, args );
+	    LIST *ns = (*parse->right->func)( parse->right, args );
+
+	    /* "a in b" make sure each of a is equal to something in b. */
+	    /* Otherwise, step through pairwise comparison. */
+
+	    if( parse->num == COND_IN )
+	    {
+		LIST *s, *t;
+
+		/* Try each t until failure. */
+
+		for( status = 1, t = nt; status && t; t = list_next( t ) )
+		{
+		    int stat1;
+
+		    /* Try each s until success */
+
+		    for( stat1 = 0, s = ns; !stat1 && s; s = list_next( s ) )
+			stat1 = !strcmp( t->string, s->string );
+
+		    status = stat1;
+		}
+	    }
+	    else
+	    {
+		LIST *s = ns, *t = nt;
+
+		status = 0;
+
+		while( !status && ( t || s ) )
+		{
+		    char *st = t ? t->string : "";
+		    char *ss = s ? s->string : "";
+
+		    status = strcmp( st, ss );
+
+		    t = t ? list_next( t ) : t;
+		    s = s ? list_next( s ) : s;
+		}
+	    }
+
+	    switch( parse->num )
+	    {
+	    case COND_EXISTS:	status = status > 0 ; break;
+	    case COND_EQUALS:	status = !status; break;
+	    case COND_NOTEQ:	status = status != 0; break;
+	    case COND_LESS:	status = status < 0; break;
+	    case COND_LESSEQ:	status = status <= 0; break;
+	    case COND_MORE:	status = status > 0; break;
+	    case COND_MOREEQ:	status = status >= 0; break;
+	    case COND_IN:	/* status = status */ break;
+	    }
+
+	    if( DEBUG_IF )
+	    {
+		debug_compile( 0, "if" );
+		list_print( nt );
+		printf( "(%d)", status );
+		list_print( ns );
+		printf( "\n" );
+	    }
+
+	    list_free( nt );
+	    list_free( ns );
+
+	}
+
+	return status;
+}
+
+/*
+======= end
  * compile_include() - support for 'include' - call include() on file
  *
  *  parse->left list of files to include (can only do 1)
@@ -613,6 +955,47 @@ compile_null(
 {
     return L0;
 }
+
+/*
+ * compile_on() - run rule under influence of on-target variables
+ *
+ * 	parse->left	list of files to include (can only do 1)
+ *	parse->right	rule to run
+ *
+ * EXPERIMENTAL!
+ */
+
+LIST *
+compile_on(
+	PARSE	*parse,
+	LOL	*args )
+{
+	LIST	*nt = (*parse->left->func)( parse->left, args );
+	LIST	*result = 0;
+
+	if( DEBUG_COMPILE )
+	{
+	    debug_compile( 0, "on" );
+	    list_print( nt );
+	    printf( "\n" );
+	}
+
+	if( nt )
+	{
+	    TARGET *t = bindtarget( nt->string );
+
+	    pushsettings( t->settings );
+	    result = (*parse->right->func)( parse->right, args );
+	    t->boundname = search( t->name, &t->time );
+	    popsettings( t->settings );
+
+	}
+
+	list_free( nt );
+
+	return result;
+}
+
 
 /*
  * compile_rule() - compile a single user defined rule
@@ -952,8 +1335,8 @@ evaluate_rule(
 /*
  * compile_rules() - compile a chain of rules
  *
- *  parse->left more compile_rules() by left-recursion
- *  parse->right    single rule
+ *	parse->left	single rule
+ *	parse->right	more compile_rules() by right-recursion
  */
 
 LIST *
@@ -962,9 +1345,20 @@ compile_rules(
     FRAME *frame )
 {
     /* Ignore result from first statement; return the 2nd. */
+	/* Optimize recursion on the right by looping. */
 
+<<<<<<< variant A
     list_free( parse_evaluate( parse->left, frame ) );
     return parse_evaluate( parse->right, frame );
+>>>>>>> variant B
+	do list_free( (*parse->left->func)( parse->left, args ) );
+	while( (parse = parse->right)->func == compile_rules );
+
+	return (*parse->func)( parse, args );
+####### Ancestor
+	list_free( (*parse->left->func)( parse->left, args ) );
+	return (*parse->right->func)( parse->right, args );
+======= end
 }
 
 /*
@@ -1077,6 +1471,7 @@ compile_setcomp(
 {
     argument_list* arg_list = 0;
     
+<<<<<<< variant A
     /* Create new LOL describing argument requirements if supplied */
     if ( parse->right )
     {
@@ -1085,6 +1480,37 @@ compile_setcomp(
         for( p = parse->right; p; p = p->left )
             lol_add( arg_list->data, parse_evaluate( p->right, frame ) );
     }
+>>>>>>> variant B
+	if( DEBUG_COMPILE )
+	{
+	    debug_compile( 0, "rule" );
+	    printf( " %s\n", parse->string );
+	}
+
+	/* Free old one, if present */
+
+	if( rule->procedure )
+	    parse_free( rule->procedure );
+
+	rule->procedure = parse->left;
+
+	/* we now own this parse tree */
+	/* don't let parse_free() release it */
+
+	parse_refer( parse->left );
+####### Ancestor
+	/* Free old one, if present */
+
+	if( rule->procedure )
+	    parse_free( rule->procedure );
+
+	rule->procedure = parse->left;
+
+	/* we now own this parse tree */
+	/* don't let parse_free() release it */
+
+	parse->left = 0;	
+======= end
     
     new_rule_body( frame->module, parse->string, arg_list, parse->left, !parse->num );
     return L0;
@@ -1211,32 +1637,53 @@ compile_switch(
     return result;
 }
 
-
-
 /*
- * builtin_depends() - DEPENDS/INCLUDES rule
+ * compile_while() - compile 'while' rule
  *
- * The DEPENDS builtin rule appends each of the listed sources on the 
- * dependency list of each of the listed targets.  It binds both the 
- * targets and sources as TARGETs.
+ *	parse->left		condition tree
+ *	parse->right		execution tree
  */
 
+<<<<<<< variant A
 static LIST *
 builtin_depends(
     PARSE   *parse,
     FRAME *frame )
+>>>>>>> variant B
+LIST *
+compile_while(
+	PARSE	*p,
+	LOL	*args )
+####### Ancestor
+static LIST *
+builtin_depends(
+	PARSE	*parse,
+	LOL	*args )
+======= end
 {
+<<<<<<< variant A
     LIST *targets = lol_get( frame->args, 0 );
     LIST *sources = lol_get( frame->args, 1 );
     int which = parse->num;
+>>>>>>> variant B
+	LIST *r = 0;
+####### Ancestor
+	LIST *targets = lol_get( args, 0 );
+	LIST *sources = lol_get( args, 1 );
+	int which = parse->num;
+======= end
     LIST *l;
 
-    for( l = targets; l; l = list_next( l ) )
+	/* Returns the value from the last execution of the block */
+
+	while( l = (*p->left->func)( p->left, args ) )
     {
-        TARGET *t = bindtarget( l->string );
-        t->deps[ which ] = targetlist( t->deps[ which ], sources );
+	    list_free( l );
+	    if( r ) list_free( r );
+	    r = (*p->right->func)( p->right, args );
     }
 
+<<<<<<< variant A
     return L0;
 }
 
@@ -1293,6 +1740,66 @@ builtin_flags(
         bindtarget( l->string )->flags |= parse->num;
 
     return L0;
+>>>>>>> variant B
+	return r;
+####### Ancestor
+	return L0;
+}
+
+/*
+ * builtin_echo() - ECHO rule
+ *
+ * The ECHO builtin rule echoes the targets to the user.  No other 
+ * actions are taken.
+ */
+
+static LIST *
+builtin_echo(
+	PARSE	*parse,
+	LOL	*args )
+{
+	list_print( lol_get( args, 0 ) );
+	printf( "\n" );
+	return L0;
+}
+
+/*
+ * builtin_exit() - EXIT rule
+ *
+ * The EXIT builtin rule echoes the targets to the user and exits
+ * the program with a failure status.
+ */
+
+static LIST *
+builtin_exit(
+	PARSE	*parse,
+	LOL	*args )
+{
+	list_print( lol_get( args, 0 ) );
+	printf( "\n" );
+	exit( EXITBAD ); /* yeech */
+	return L0;
+}
+
+/*
+ * builtin_flags() - NOCARE, NOTFILE, TEMPORARY rule
+ *
+ * Builtin_flags() marks the target with the appropriate flag, for use
+ * by make0().  It binds each target as a TARGET.
+ */
+
+static LIST *
+builtin_flags(
+	PARSE	*parse,
+	LOL	*args )
+{
+	LIST *l = lol_get( args, 0 );
+
+	for( ; l; l = list_next( l ) )
+	    bindtarget( l->string )->flags |= parse->num;
+
+	return L0;
+======= end
 }
 
 

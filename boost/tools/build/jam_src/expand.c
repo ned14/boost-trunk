@@ -1,5 +1,5 @@
 /*
- * Copyright 1993, 1995 Christopher Seiwald.
+ * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -15,7 +15,7 @@
 # include "lists.h"
 # include "variable.h"
 # include "expand.h"
-# include "filesys.h"
+# include "pathsys.h"
 # include "newstr.h"
 # include "strings.h"
 
@@ -30,22 +30,45 @@
  *
  * Internal routines:
  *
- *     var_edit() - copy input target name to output, performing : modifiers
- *     var_mods() - parse : modifiers into FILENAME structure
+ *	var_edit_parse() - parse : modifiers into PATHNAME structure
+ *	var_edit_file() - copy input target name to output, modifying filename
+ *	var_edit_shift() - do upshift/downshift mods
  *
  * 01/25/94 (seiwald) - $(X)$(UNDEF) was expanding like plain $(X)
  * 04/13/94 (seiwald) - added shorthand L0 for null list pointer
+ * 01/11/01 (seiwald) - added support for :E=emptyvalue, :J=joinval
  */
 
 typedef struct {
+	PATHNAME	f;		/* :GDBSMR -- pieces */
+	char		parent;		/* :P -- go to parent directory */
+	char		filemods;	/* one of the above applied */
 	char	downshift;	/* :L -- downshift result */
 	char	upshift;	/* :U -- upshift result */
+<<<<<<< variant A
 	char	parent;		/* :P -- go to parent directory */
         char    to_slashes;     /* :T -- convert "\" to "/" */
 } VAR_ACTS ;
+>>>>>>> variant B
+	PATHPART	empty;		/* :E -- default for empties */
+	PATHPART	join;		/* :J -- join list with char */
+} VAR_EDITS ;
+####### Ancestor
+	char	parent;		/* :P -- go to parent directory */
+} VAR_ACTS ;
+======= end
 
+<<<<<<< variant A
 static void var_edit( char *in, char *mods, string *out );
 static void var_mods( char *mods, FILENAME *f, VAR_ACTS *acts );
+>>>>>>> variant B
+static void var_edit_parse( char *mods, VAR_EDITS *edits );
+static void var_edit_file( char *in, char *out, VAR_EDITS *edits );
+static void var_edit_shift( char *out, VAR_EDITS *edits );
+####### Ancestor
+static void var_edit( char *in, char *mods, char *out );
+static void var_mods( char *mods, FILENAME *f, VAR_ACTS *acts );
+======= end
 
 static int adjust_index( int index, int length );
 
@@ -219,12 +242,21 @@ var_expand(
 
 	    for( vars = variables; vars; vars = list_next( vars ) )
 	    {
-		LIST *value;
+		LIST *value, *evalue = 0;
 		char *colon;
 		char *bracket;
+<<<<<<< variant A
 		int i, sub1, sub2;
 		string variable;
                 char *varname;
+>>>>>>> variant B
+		char varname[ MAXSYM ];
+		int sub1 = 0, sub2 = -1;
+		VAR_EDITS edits;
+####### Ancestor
+		char varname[ MAXSYM ];
+		int i, sub1, sub2;
+======= end
 
 		/* Look for a : modifier in the variable name */
 		/* Must copy into varname so we can modify it */
@@ -233,14 +265,28 @@ var_expand(
                 varname = variable.value;
 
 		if( colon = strchr( varname, MAGIC_COLON ) )
+<<<<<<< variant A
                 {
 		    string_truncate( &variable, colon - varname );
                 }
+>>>>>>> variant B
+		{
+		    *colon = '\0';
+		    var_edit_parse( colon + 1, &edits );
+		}
+
+		/* Look for [x-y] subscripting */
+		/* sub1 is x (0 default) */
+		/* sub2 is length (-1 means forever) */
+####### Ancestor
+		    *colon = '\0';
+======= end
 
 		if( bracket = strchr( varname, MAGIC_LEFT ) )
 		{
 		    char *dash = 0;
 
+<<<<<<< variant A
 		    if( bracket[1] && ( dash = strchr( bracket + 2, '-' ) ) )
 		    {
                         if( dash == bracket + 2 && *( bracket + 1 ) == '-')
@@ -253,34 +299,44 @@ var_expand(
 		    {
 			sub1 = sub2 = atoi( bracket + 1 );
 		    }
+>>>>>>> variant B
+		    if( dash = strchr( bracket + 1, '-' ) )
+			*dash = '\0';
+
+		    sub1 = atoi( bracket + 1 ) - 1;
+
+		    if( !dash )		sub2 = 1;
+		    else if( !dash[1] )	sub2 = -1;
+		    else 		sub2 = atoi( dash + 1 ) - sub1;
+####### Ancestor
+		    if( dash = strchr( bracket + 1, '-' ) )
+		    {
+			*dash = '\0';
+			sub1 = atoi( bracket + 1 );
+			sub2 = atoi( dash + 1 );
+		    }
+		    else
+		    {
+			sub1 = sub2 = atoi( bracket + 1 );
+		    }
+======= end
 
                     string_truncate( &variable, bracket - varname );
-		}
-		else
-		{
-		    sub1 = sub2 = 0;	/* not needed */
 		}
 
 		/* Get variable value, specially handling $(<), $(>), $(n) */
 		
 		if( varname[0] == '<' && !varname[1] )
-		{
 		    value = lol_get( lol, 0 );
-		}
 		else if( varname[0] == '>' && !varname[1] )
-		{
 		    value = lol_get( lol, 1 );
-		}
 		else if( varname[0] >= '1' && varname[0] <= '9' && !varname[1] )
-		{
 		    value = lol_get( lol, varname[0] - '1' );
-		}
 		else 
-		{
 		    value = var_get( varname );
-		}
                 
 		/* The fast path: $(x) - just copy the variable value. */
+		/* This is only an optimization */
 
 		if( out == buf->value && !bracket && !colon && in == end )
 		{
@@ -289,6 +345,7 @@ var_expand(
 		    continue;
 		}
 
+<<<<<<< variant A
                 /* Adjust negative indices */
                 if ( sub1 < 0 || sub2 < 0 )
                 {
@@ -297,25 +354,71 @@ var_expand(
                     sub2 = adjust_index( sub2, length );
                 }
 
+>>>>>>> variant B
+		/* Handle start subscript */
+
+		while( sub1 > 0 && value )
+		    --sub1, value = list_next( value );
+
+		/* Empty w/ :E=default? */
+
+		if( !value && colon && edits.empty.ptr )
+		    evalue = value = list_new( L0, newstr( edits.empty.ptr ) );
+
+####### Ancestor
+======= end
 		/* For each variable value */
+<<<<<<< variant A
 		for( i = 1; value; i++, value = list_next( value ) )
+>>>>>>> variant B
+
+		for( ; value; value = list_next( value ) )
+####### Ancestor
+
+		for( i = 1; value; i++, value = list_next( value ) )
+======= end
 		{
 		    LIST *rem;
                     size_t postfix_start;
 
-		    /* Skip members not in subscript */
+		    /* Handle end subscript (length actually) */
 
-		    if( bracket && ( i < sub1 || sub2 && i > sub2 ) )
-			continue;
+		    if( sub2 >= 0 && --sub2 < 0 )
+			break;
 
                     string_truncate( buf, prefix_length );
 
 		    /* Apply : mods, if present */
 
+<<<<<<< variant A
 		    if( colon )
 			var_edit( value->string, colon + 1, buf );
+>>>>>>> variant B
+		    if( colon && edits.filemods )
+			var_edit_file( value->string, out, &edits );
+####### Ancestor
+		    if( colon )
+			var_edit( value->string, colon + 1, out );
+======= end
 		    else
                         string_append( buf, value->string );
+
+		    if( colon && ( edits.upshift || edits.downshift ) )
+			var_edit_shift( out, &edits );
+
+		    /* Handle :J=joinval */
+		    /* If we have more values for this var, just */
+		    /* keep appending them (with the join value) */
+		    /* rather than creating separate LIST elements. */
+
+		    if( colon && edits.join.ptr && 
+		      ( list_next( value ) || list_next( vars ) ) )
+		    {
+			out += strlen( out );
+			strcpy( out, edits.join.ptr );
+			out += strlen( out );
+			continue;
+		    }
 
 		    /* If no remainder, append result to output chain. */
 
@@ -325,13 +428,12 @@ var_expand(
 			continue;
 		    }
 
+		    /* For each remainder, append the complete string */
+		    /* to the output chain. */
 		    /* Remember the end of the variable expansion so */
 		    /* we can just tack on each instance of 'remainder' */
 
 		    postfix_start = buf->size;
-
-		    /* For each remainder, or just once if no remainder, */
-		    /* append the complete string to the output chain */
 
 		    for( rem = remainder; rem; rem = list_next( rem ) )
 		    {
@@ -340,7 +442,16 @@ var_expand(
 			l = list_new( l, newstr( buf->value ) );
 		    }
 		}
+<<<<<<< variant A
                 string_free( &variable );
+>>>>>>> variant B
+
+		/* Toss used empty */
+
+		if( evalue )
+		    list_free( evalue );
+####### Ancestor
+======= end
 	    }
 
 	    /* variables & remainder were gifts from var_expand */
@@ -364,6 +475,7 @@ var_expand(
 }
 
 /*
+<<<<<<< variant A
  * var_edit() - copy input target name to output, performing : modifiers
  */
 	
@@ -440,10 +552,80 @@ var_edit(
 
 /*
  * var_mods() - parse : modifiers into FILENAME structure
+>>>>>>> variant B
+ * var_edit_parse() - parse : modifiers into PATHNAME structure
+####### Ancestor
+ * var_edit() - copy input target name to output, performing : modifiers
+ */
+	
+static void
+var_edit( 
+	char	*in,
+	char	*mods,
+	char	*out )
+{
+	FILENAME oldf, newf;
+	VAR_ACTS acts;
+
+	/* Parse apart original filename, putting parts into "oldf" */
+
+	file_parse( in, &oldf );
+
+	/* Parse apart modifiers, putting them into "newf" */
+
+	var_mods( mods, &newf, &acts );
+
+	/* Replace any oldf with newf */
+
+	if( newf.f_grist.ptr )
+	    oldf.f_grist = newf.f_grist;
+
+	if( newf.f_root.ptr )
+	    oldf.f_root = newf.f_root;
+
+	if( newf.f_dir.ptr )
+	    oldf.f_dir = newf.f_dir;
+
+	if( newf.f_base.ptr )
+	    oldf.f_base = newf.f_base;
+
+	if( newf.f_suffix.ptr )
+	    oldf.f_suffix = newf.f_suffix;
+
+	if( newf.f_member.ptr )
+	    oldf.f_member = newf.f_member;
+
+	/* If requested, modify oldf to point to parent */
+
+	if( acts.parent )
+	    file_parent( &oldf );
+
+	/* Put filename back together */
+
+	file_build( &oldf, out, 0 );
+
+	/* Handle upshifting, downshifting now */
+
+	if( acts.upshift )
+	{
+	    for( ; *out; ++out )
+		*out = toupper( *out );
+	}
+	else if( acts.downshift )
+	{
+	    for( ; *out; ++out )
+		*out = tolower( *out );
+	}
+}
+
+
+/*
+ * var_mods() - parse : modifiers into FILENAME structure
+======= end
  *
  * The : modifiers in a $(varname:modifier) currently support replacing
  * or omitting elements of a filename, and so they are parsed into a 
- * FILENAME structure (which contains pointers into the original string).
+ * PATHNAME structure (which contains pointers into the original string).
  *
  * Modifiers of the form "X=value" replace the component X with
  * the given value.  Modifiers without the "=value" cause everything 
@@ -470,44 +652,43 @@ var_edit(
  *	f->f_xxx.len = 0
  *		-> omit component xxx
  *
- * var_edit() above and file_build() obligingly follow this convention.
+ * var_edit_file() below and path_build() obligingly follow this convention.
  */
 
 static void
-var_mods(
+var_edit_parse(
 	char		*mods,
-	FILENAME	*f,
-	VAR_ACTS	*acts )
+	VAR_EDITS	*edits )
 {
+<<<<<<< variant A
 	char *flags = "GRDBSMT";
+>>>>>>> variant B
+####### Ancestor
+	char *flags = "GRDBSM";
+======= end
 	int havezeroed = 0;
-	memset( (char *)f, 0, sizeof( *f ) );
-	memset( (char *)acts, 0, sizeof( *acts ) );
+	memset( (char *)edits, 0, sizeof( *edits ) );
 
 	while( *mods )
 	{
-	    char *fl;
-	    FILEPART *fp;
+	    char *p;
+	    PATHPART *fp;
 
-	    /* First take care of :U or :L (upshift, downshift) */
+	    switch( *mods++ )
+	    {
+	    case 'L': edits->downshift = 1; continue;
+	    case 'U': edits->upshift = 1; continue;
+	    case 'P': edits->parent = edits->filemods = 1; continue;
+	    case 'E': fp = &edits->empty; goto strval;
+	    case 'J': fp = &edits->join; goto strval;
+	    case 'G': fp = &edits->f.f_grist; goto fileval;
+	    case 'R': fp = &edits->f.f_root; goto fileval;
+	    case 'D': fp = &edits->f.f_dir; goto fileval;
+	    case 'B': fp = &edits->f.f_base; goto fileval;
+	    case 'S': fp = &edits->f.f_suffix; goto fileval;
+	    case 'M': fp = &edits->f.f_member; goto fileval;
 
-	    if( *mods == 'L' )
-	    {
-		acts->downshift = 1;
-		++mods;
-		continue;
-	    }
-	    else if( *mods == 'U' )
-	    {
-		acts->upshift = 1;
-		++mods;
-		continue;
-	    }
-	    else if( *mods == 'P' )
-	    {
-		acts->parent = 1;
-		++mods;
-		continue;
+	    default: return; /* should complain, but so what... */
 	    }
             else if ( *mods == 'T' )
             {
@@ -516,49 +697,121 @@ var_mods(
               continue;
             }
 
-	    /* Now handle the file component flags */
+	fileval:
 
-	    if( !( fl = strchr( flags, *mods++ ) ) )
-		break;	/* should complain, but so what... */
+	    /* Handle :CHARS, where each char (without a following =) */
+	    /* selects a particular file path element.  On the first such */
+	    /* char, we deselect all others (by setting ptr = "", len = 0) */
+	    /* and for each char we select that element (by setting ptr = 0) */
 
-	    fp = &f->part[ fl - flags ];
+	    edits->filemods = 1;
 
-	    if( *mods++ != '=' )
+	    if( *mods != '=' )
 	    {
-		/* :X - turn everything but X off */
-
 		int i;
-
-		mods--;
 
 		if( !havezeroed++ )
 		    for( i = 0; i < 6; i++ )
 		{
-		    f->part[ i ].len = 0;
-		    f->part[ i ].ptr = "";
+		    edits->f.part[ i ].len = 0;
+		    edits->f.part[ i ].ptr = "";
 		}
 
 		fp->ptr = 0;
+		continue;
 	    }
-	    else
+
+	strval:
+
+	    /* Handle :X=value, or :X */
+
+	    if( *mods != '=' )
 	    {
-		/* :X=value - set X to value */
-
-		char *p;
-
-		if( p = strchr( mods, MAGIC_COLON ) )
+		fp->ptr = "";
+		fp->len = 0;
+	    }
+	    else if( p = strchr( mods, MAGIC_COLON ) )
 		{
-		    fp->ptr = mods;
+		*p = 0;
+		fp->ptr = ++mods;
 		    fp->len = p - mods;
 		    mods = p + 1;
 		}
 		else
 		{
-		    fp->ptr = mods;
+		fp->ptr = ++mods;
 		    fp->len = strlen( mods );
 		    mods += fp->len;
 		}
 	    }
+}
+
+/*
+ * var_edit_file() - copy input target name to output, modifying filename
+ */
+	
+static void
+var_edit_file( 
+	char	*in,
+	char	*out,
+	VAR_EDITS *edits )
+{
+	PATHNAME pathname;
+
+	/* Parse apart original filename, putting parts into "pathname" */
+
+	path_parse( in, &pathname );
+
+	/* Replace any pathname with edits->f */
+
+	if( edits->f.f_grist.ptr )
+	    pathname.f_grist = edits->f.f_grist;
+
+	if( edits->f.f_root.ptr )
+	    pathname.f_root = edits->f.f_root;
+
+	if( edits->f.f_dir.ptr )
+	    pathname.f_dir = edits->f.f_dir;
+
+	if( edits->f.f_base.ptr )
+	    pathname.f_base = edits->f.f_base;
+
+	if( edits->f.f_suffix.ptr )
+	    pathname.f_suffix = edits->f.f_suffix;
+
+	if( edits->f.f_member.ptr )
+	    pathname.f_member = edits->f.f_member;
+
+	/* If requested, modify pathname to point to parent */
+
+	if( edits->parent )
+	    path_parent( &pathname );
+
+	/* Put filename back together */
+
+	path_build( &pathname, out, 0 );
+}
+
+/*
+ * var_edit_shift() - do upshift/downshift mods
+ */
+
+static void
+var_edit_shift( 
+	char	*out,
+	VAR_EDITS *edits )
+{
+	/* Handle upshifting, downshifting now */
+
+	if( edits->upshift )
+	{
+	    for( ; *out; ++out )
+		*out = toupper( *out );
+	}
+	else if( edits->downshift )
+	{
+	    for( ; *out; ++out )
+		*out = tolower( *out );
 	}
 }
 

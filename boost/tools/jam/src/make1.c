@@ -1,5 +1,5 @@
 /*
- * Copyright 1993, 1995 Christopher Seiwald.
+ * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -240,8 +240,16 @@ make1b( TARGET *t )
 
             if( t->actions )
             {
+<<<<<<< variant A
                 ++counts->total;
                 if( DEBUG_MAKE && !( counts->total % 100 ) )
+>>>>>>> variant B
+		++counts->total;
+
+		if( DEBUG_MAKE && !( counts->total % 100 ) )
+####### Ancestor
+		if( DEBUG_MAKE && !( ++counts->total % 100 ) )
+======= end
                     printf( "...on %dth target...\n", counts->total );
 
                 pushsettings( t->settings );

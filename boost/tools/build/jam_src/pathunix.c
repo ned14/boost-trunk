@@ -1,5 +1,5 @@
 /*
- * Copyright 1993, 1995 Christopher Seiwald.
+ * Copyright 1993-2002 Christopher Seiwald and Perforce Software, Inc.
  *
  * This file is part of Jam - see jam.c for Copyright information.
  */
@@ -13,8 +13,14 @@
  */
 
 # include "jam.h"
+<<<<<<< variant A
 # include "filesys.h"
 # include "strings.h"
+>>>>>>> variant B
+# include "pathsys.h"
+####### Ancestor
+# include "filesys.h"
+======= end
 
 # ifdef USE_PATHUNIX
 
@@ -23,15 +29,15 @@
  *
  * External routines:
  *
- *	file_parse() - split a file name into dir/base/suffix/member
- *	file_build() - build a filename given dir/base/suffix/member
- *	file_parent() - make a FILENAME point to its parent dir
+ *	path_parse() - split a file name into dir/base/suffix/member
+ *	path_build() - build a filename given dir/base/suffix/member
+ *	path_parent() - make a PATHNAME point to its parent dir
  *
- * File_parse() and file_build() just manipuate a string and a structure;
+ * File_parse() and path_build() just manipuate a string and a structure;
  * they do not make system calls.
  *
  * 04/08/94 (seiwald) - Coherent/386 support added.
- * 12/26/93 (seiwald) - handle dir/.suffix properly in file_build()
+ * 12/26/93 (seiwald) - handle dir/.suffix properly in path_build()
  * 12/19/94 (mikem) - solaris string table insanity support
  * 12/21/94 (wingerd) Use backslashes for pathnames - the NT way.
  * 02/14/95 (seiwald) - parse and build /xxx properly
@@ -43,16 +49,17 @@
  * 05/03/96 (seiwald) - split from filent.c, fileunix.c
  * 12/20/96 (seiwald) - when looking for the rightmost . in a file name,
  *		      don't include the archive member name.
+ * 01/13/01 (seiwald) - turn on \ handling on UNIX, on by accident
  */
 
 /*
- * file_parse() - split a file name into dir/base/suffix/member
+ * path_parse() - split a file name into dir/base/suffix/member
  */
 
 void
-file_parse( 
+path_parse( 
 	char	*file,
-	FILENAME *f )
+	PATHNAME *f )
 {
 	char *p, *q;
 	char *end;
@@ -72,14 +79,12 @@ file_parse(
 
 	p = strrchr( file, '/' );
 
-# ifndef UNIX
-# ifndef AMIGA
+# if PATH_DELIM == '\\'
 	/* On NT, look for dir\ as well */
 	{
 	    char *p1 = strrchr( file, '\\' );
 	    p = p1 > p ? p1 : p;
 	}
-# endif
 # endif
 
 	if( p )
@@ -92,13 +97,11 @@ file_parse(
 	    if( !f->f_dir.len )
 		f->f_dir.len = 1;
 
-# ifndef UNIX
-# ifndef AMIGA
+# if PATH_DELIM == '\\'
 	    /* Special case for D:/ - dirname is D:/, not "D:" */
 
 	    if( f->f_dir.len == 2 && file[1] == ':' )
 		f->f_dir.len = 3;
-# endif
 # endif
 
 	    file = p + 1;
@@ -138,13 +141,23 @@ file_parse(
 }
 
 /*
- * file_build() - build a filename given dir/base/suffix/member
+ * path_build() - build a filename given dir/base/suffix/member
  */
 
 void
+<<<<<<< variant A
 file_build(
 	FILENAME *f,
 	string	*file,
+>>>>>>> variant B
+path_build(
+	PATHNAME *f,
+	char	*file,
+####### Ancestor
+file_build(
+	FILENAME *f,
+	char	*file,
+======= end
 	int	binding )
 {
     file_build1( f, file );
@@ -210,11 +223,11 @@ file_build(
 }
 
 /*
- *	file_parent() - make a FILENAME point to its parent dir
+ *	path_parent() - make a PATHNAME point to its parent dir
  */
 
 void
-file_parent( FILENAME *f )
+path_parent( PATHNAME *f )
 {
 	/* just set everything else to nothing */
 
