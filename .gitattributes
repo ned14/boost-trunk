@@ -2736,6 +2736,7 @@ boost/boost/statechart/exception_translator.hpp svneol=native#text/plain
 boost/boost/statechart/fifo_scheduler.hpp svneol=native#text/plain
 boost/boost/statechart/fifo_worker.hpp svneol=native#text/plain
 boost/boost/statechart/history.hpp svneol=native#text/plain
+boost/boost/statechart/null_exception_translator.hpp svneol=native#text/plain
 boost/boost/statechart/processor_container.hpp svneol=native#text/plain
 boost/boost/statechart/result.hpp svneol=native#text/plain
 boost/boost/statechart/shallow_history.hpp svneol=native#text/plain
