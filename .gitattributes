@@ -2277,9 +2277,6 @@ boost/libs/format/test/format_test1.cpp svneol=native#text/plain
 boost/libs/format/test/format_test2.cpp svneol=native#text/plain
 boost/libs/format/test/format_test_wstring.cpp svneol=native#text/plain
 boost/libs/format/test/regression.cfg -text
-boost/libs/function/doc/faq.html svneol=native#text/html
-boost/libs/function/doc/reference.html svneol=native#text/html
-boost/libs/function/doc/tutorial.html svneol=native#text/html
 boost/libs/function/example/bind1st.cpp svneol=native#text/plain
 boost/libs/function/example/int_div.cpp svneol=native#text/plain
 boost/libs/function/example/sum_avg.cpp svneol=native#text/plain
