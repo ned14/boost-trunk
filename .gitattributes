@@ -8305,9 +8305,7 @@ boost/tools/build/v2/debian/copyright -text
 boost/tools/build/v2/debian/excludes -text
 boost/tools/build/v2/debian/rules -text
 boost/tools/build/v2/doc/Jamfile.v2 svneol=native#text/plain
-boost/tools/build/v2/doc/architecture.html svneol=native#text/html
 boost/tools/build/v2/doc/development_plan.html svneol=native#text/html
-boost/tools/build/v2/doc/extending.html svneol=native#text/html
 boost/tools/build/v2/doc/src/advanced.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/architecture.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/catalog.xml svneol=native#text/xml
