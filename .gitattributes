@@ -2973,6 +2973,7 @@ boost/libs/multi_array/test/iterators.cpp svneol=native#text/plain
 boost/libs/multi_array/test/range1.cpp svneol=native#text/plain
 boost/libs/multi_array/test/regression.cfg -text
 boost/libs/multi_array/test/reshape.cpp svneol=native#text/plain
+boost/libs/multi_array/test/resize.cpp svneol=native#text/plain
 boost/libs/multi_array/test/slice.cpp svneol=native#text/plain
 boost/libs/multi_array/test/stl_interaction.cpp svneol=native#text/plain
 boost/libs/multi_array/test/storage_order.cpp svneol=native#text/plain
