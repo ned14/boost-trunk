@@ -628,6 +628,7 @@ boost/libs/graph/example/min_max_paths.cpp svneol=native#text/plain
 boost/libs/graph/example/minimum_degree_ordering.cpp svneol=native#text/plain
 boost/libs/graph/example/modify_graph.cpp svneol=native#text/plain
 boost/libs/graph/example/modify_graph.expected -text
+boost/libs/graph/example/neighbor_bfs.cpp svneol=native#text/plain
 boost/libs/graph/example/ordered_out_edges.cpp svneol=native#text/plain
 boost/libs/graph/example/ordered_out_edges.expected -text
 boost/libs/graph/example/prim.cpp svneol=native#text/plain
