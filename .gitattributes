@@ -4524,7 +4524,6 @@ boost/libs/iostreams/test/read_wide_input_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/regex_filter_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/regex_filter_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/reverse_test.cpp svneol=native#text/plain
-boost/libs/iostreams/test/seek_test..hpp svneol=native#text/plain
 boost/libs/iostreams/test/seek_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/seekable_file_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/seekable_file_test.hpp svneol=native#text/plain
