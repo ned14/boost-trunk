@@ -4282,6 +4282,7 @@ boost/libs/utility/CopyConstructible.html svneol=native#text/html
 boost/libs/utility/LessThanComparable.html svneol=native#text/html
 boost/libs/utility/MultiPassInputIterator.html svneol=native#text/html
 boost/libs/utility/addressof_test.cpp svneol=native#text/plain
+boost/libs/utility/assert.html svneol=native#text/html
 boost/libs/utility/assert_test.cpp svneol=native#text/plain
 boost/libs/utility/base_from_member.html svneol=native#text/html
 boost/libs/utility/base_from_member_test.cpp svneol=native#text/plain
