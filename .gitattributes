@@ -4218,6 +4218,7 @@ boost/libs/python/pyste/tests/infosUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/policiesUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/runtests.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/test_all.bat svneol=native#text/plain
+boost/libs/python/pyste/tests/test_all_linux.py svneol=native#text/x-python
 boost/libs/python/release_notes.txt svneol=native#text/plain
 boost/libs/python/src/aix_init_module.cpp svneol=native#text/plain
 boost/libs/python/src/converter/arg_to_python_base.cpp svneol=native#text/plain
