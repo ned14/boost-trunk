@@ -352,6 +352,7 @@ boost/boost/date_time/posix_time/posix_time.hpp svneol=native#text/plain
 boost/boost/date_time/posix_time/posix_time_config.hpp svneol=native#text/plain
 boost/boost/date_time/posix_time/posix_time_duration.hpp svneol=native#text/plain
 boost/boost/date_time/posix_time/posix_time_io.hpp svneol=native#text/plain
+boost/boost/date_time/posix_time/posix_time_legacy_io.hpp svneol=native#text/plain
 boost/boost/date_time/posix_time/posix_time_system.hpp svneol=native#text/plain
 boost/boost/date_time/posix_time/posix_time_types.hpp svneol=native#text/plain
 boost/boost/date_time/posix_time/ptime.hpp svneol=native#text/plain
