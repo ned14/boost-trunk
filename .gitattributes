@@ -538,6 +538,7 @@ boost/libs/property_map/property_map.html svneol=native#text/html
 boost/libs/python/build/bpl_static.dsp -text svneol=CRLF#unset
 boost/libs/python/build/build.dsw -text svneol=CRLF#unset
 boost/libs/python/build/build.opt -text
+boost/libs/python/build/como.mak svneol=native#text/plain
 boost/libs/python/build/example1/example1.dsp -text svneol=CRLF#unset
 boost/libs/python/build/gcc.mak svneol=native#text/plain
 boost/libs/python/build/rwgk1/rwgk1.dsp -text svneol=CRLF#unset
