@@ -2212,6 +2212,7 @@ boost/people/vesa_karvonen.jpg -text svneol=unset#image/jpeg
 boost/people/william_kempf.htm svneol=native#text/html
 boost/people/william_kempf.jpg -text svneol=unset#image/jpeg
 boost/people/william_kempf_small.jpg -text svneol=unset#image/jpeg
+boost/project-root.jam svneol=native#text/plain
 boost/status/.cvsignore -text
 boost/status/Jamfile svneol=native#text/plain
 boost/status/compiler.cfg -text
