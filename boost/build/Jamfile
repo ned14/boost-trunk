@@ -1,8 +1,7 @@
-SubDir TOP ;
+subproject ; # Hmm, this doesn't look too good, does it?
 
 exe foo : foo.cpp ;
 lib top : top.cpp ;
 
-SubInclude TOP x ;
-SubInclude TOP y ;
+subinclude x y ;
 
