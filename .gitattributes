@@ -323,6 +323,7 @@ boost/boost/date_time/iso_format.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/dst_transition_day_rules.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/local_date_time.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/local_time.hpp svneol=native#text/plain
+boost/boost/date_time/local_time/local_time_types.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/posix_time_zone.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/time_zone.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/tz_database.hpp svneol=native#text/plain
