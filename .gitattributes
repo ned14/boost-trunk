@@ -201,6 +201,7 @@ boost/boost/detail/select_type.hpp svneol=native#text/plain
 boost/boost/detail/shared_array_nmt.hpp svneol=native#text/plain
 boost/boost/detail/shared_count.hpp svneol=native#text/plain
 boost/boost/detail/shared_ptr_nmt.hpp svneol=native#text/plain
+boost/boost/detail/templated_streams.hpp svneol=native#text/plain
 boost/boost/detail/workaround.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset_fwd.hpp svneol=native#text/plain
