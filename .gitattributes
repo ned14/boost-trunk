@@ -2818,6 +2818,7 @@ boost/boost/spirit/fusion/iterator/transform_view_iterator.hpp svneol=native#tex
 boost/boost/spirit/fusion/iterator/tuple_iterator.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/iterator/type_sequence_iterator.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/iterator/value_of.hpp svneol=native#text/plain
+boost/boost/spirit/fusion/sequence/append_view.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/as_fusion_sequence.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/at.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/sequence/begin.hpp svneol=native#text/plain
