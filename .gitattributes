@@ -3471,6 +3471,7 @@ boost/libs/date_time/test/posix_time/testtime_period.cpp svneol=native#text/plai
 boost/libs/date_time/test/posix_time/testtime_serialize.cpp svneol=native#text/plain
 boost/libs/date_time/test/posix_time/testtime_wstream.cpp svneol=native#text/plain
 boost/libs/date_time/test/testconstrained_value.cpp svneol=native#text/plain
+boost/libs/date_time/test/testfrom_facet.cpp svneol=native#text/plain
 boost/libs/date_time/test/testgeneric_period.cpp svneol=native#text/plain
 boost/libs/date_time/test/testgregorian_calendar.cpp svneol=native#text/plain
 boost/libs/date_time/test/testint64_range.cpp svneol=native#text/plain
