@@ -3141,6 +3141,7 @@ boost/libs/mpl/test/aux_/has_xxx.cpp svneol=native#text/plain
 boost/libs/mpl/test/aux_/typeof.cpp svneol=native#text/plain
 boost/libs/mpl/test/back.cpp svneol=native#text/plain
 boost/libs/mpl/test/bind.cpp svneol=native#text/plain
+boost/libs/mpl/test/bitwise.cpp svneol=native#text/plain
 boost/libs/mpl/test/bool.cpp svneol=native#text/plain
 boost/libs/mpl/test/comparison.cpp svneol=native#text/plain
 boost/libs/mpl/test/contains.cpp svneol=native#text/plain
