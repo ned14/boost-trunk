@@ -857,12 +857,10 @@ boost/libs/graph/example/dfs-example.cpp svneol=native#text/plain
 boost/libs/graph/example/dfs-parenthesis.cpp svneol=native#text/plain
 boost/libs/graph/example/dfs.cpp svneol=native#text/plain
 boost/libs/graph/example/dfs.expected -text
-boost/libs/graph/example/dfs_basics.cpp svneol=native#text/plain
 boost/libs/graph/example/dfs_basics.expected -text
 boost/libs/graph/example/dfs_parenthesis.cpp svneol=native#text/plain
 boost/libs/graph/example/dfs_parenthesis.expected -text
 boost/libs/graph/example/dijkstra-example.cpp svneol=native#text/plain
-boost/libs/graph/example/dijkstra.cpp svneol=native#text/plain
 boost/libs/graph/example/dijkstra.expected -text
 boost/libs/graph/example/edge-connectivity.cpp svneol=native#text/plain
 boost/libs/graph/example/edge-function.cpp svneol=native#text/plain
@@ -881,7 +879,6 @@ boost/libs/graph/example/exterior_properties.expected -text
 boost/libs/graph/example/exterior_property_map.cpp svneol=native#text/plain
 boost/libs/graph/example/exterior_property_map.expected -text
 boost/libs/graph/example/family-tree-eg.cpp svneol=native#text/plain
-boost/libs/graph/example/family_tree.cpp svneol=native#text/plain
 boost/libs/graph/example/family_tree.expected -text
 boost/libs/graph/example/fibonacci_heap.cpp svneol=native#text/plain
 boost/libs/graph/example/fibonacci_heap.expected -text
