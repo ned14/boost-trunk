@@ -129,6 +129,7 @@ boost/development/py_cpp/caller.h svneol=native#text/plain
 boost/development/py_cpp/cast.h svneol=native#text/plain
 boost/development/py_cpp/class_wrapper.h svneol=native#text/plain
 boost/development/py_cpp/comparisons.html svneol=native#text/html
+boost/development/py_cpp/data_structures.txt svneol=native#text/plain
 boost/development/py_cpp/doctest.py svneol=native#text/x-python
 boost/development/py_cpp/doxyfile -text
 boost/development/py_cpp/errors.h svneol=native#text/plain
