@@ -2657,6 +2657,7 @@ boost/tools/build/v1/unit-tests.jam svneol=native#text/plain
 boost/tools/build/v1/vacpp-tools.html svneol=native#text/html
 boost/tools/build/v1/vacpp-tools.jam svneol=native#text/plain
 boost/tools/build/v1/variables.html svneol=native#text/html
+boost/tools/build/v1/vc7-tools.html svneol=native#text/html
 boost/tools/build/v1/vc7-tools.jam svneol=native#text/plain
 boost/tools/build/v2/architecture.html svneol=native#text/html
 boost/tools/build/v2/boost.css svneol=native#text/css
@@ -2780,6 +2781,7 @@ boost/tools/build/v2/util/utility.jam svneol=native#text/plain
 boost/tools/build/vacpp-tools.html svneol=native#text/html
 boost/tools/build/vacpp-tools.jam svneol=native#text/plain
 boost/tools/build/variables.html svneol=native#text/html
+boost/tools/build/vc7-tools.html svneol=native#text/html
 boost/tools/build/vc7-tools.jam svneol=native#text/plain
 boost/tools/jam/src/Build.com -text
 boost/tools/jam/src/Build.mpw -text
