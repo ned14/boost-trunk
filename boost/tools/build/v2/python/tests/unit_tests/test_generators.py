@@ -17,6 +17,7 @@ class TestGenerators (unittest.TestCase):
         helpers.reset ()
 
         self.manager_ = Manager (None)
+        self.logger_ = self.manager_.logger ()
     
         type.register ('A', ['a'])
         type.register ('B', ['b'])
@@ -50,25 +51,25 @@ class TestGenerators (unittest.TestCase):
     def test__find_viable_generators_aux (self):
         target_type = 'B'
         prop_set1 = property_set.create ([])
-        viable = generators.find_viable_generators_aux (target_type, prop_set1)
+        viable = generators.find_viable_generators_aux (self.logger_, target_type, prop_set1)
         self.assertEqual (1, len (viable))
         
         prop_set2 = property_set.create (['<define>ABC'])
-        viable = generators.find_viable_generators_aux (target_type, prop_set2)
+        viable = generators.find_viable_generators_aux (self.logger_, target_type, prop_set2)
         self.assertEqual (2, len (viable))
 
     def test__find_viable_generators (self):
         target_type = 'B'
         prop_set1 = property_set.create ([])
-        viable = generators.find_viable_generators (target_type, prop_set1)
+        viable = generators.find_viable_generators (self.logger_, target_type, prop_set1)
         self.assertEqual (1, len (viable))
         
         prop_set2 = property_set.create (['<define>ABC'])
-        viable = generators.find_viable_generators (target_type, prop_set2)
+        viable = generators.find_viable_generators (self.logger_, target_type, prop_set2)
         self.assertEqual (2, len (viable))
         
         # Check cache.
-        viable = generators.find_viable_generators (target_type, prop_set2)
+        viable = generators.find_viable_generators (self.logger_, target_type, prop_set2)
         self.assertEqual (2, len (viable))
         # TODO: check overrides
         

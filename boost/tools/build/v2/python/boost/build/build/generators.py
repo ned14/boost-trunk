@@ -70,51 +70,6 @@ reset ()
 
 _re_separate_types_prefix_and_postfix = re.compile ('([^\\(]*)(\\((.*)%(.*)\\))?')
 
-# TODO: we should use the logger in the manager class.
-_logger = NullLogger ()
-#_logger = TextLogger ()
-
-
-### import "class" : is-a new ;
-### import container ;
-### import utility : str equal ;
-### import set sequence ;
-### import assert ;
-### import virtual-target ;
-### import property_set ;
-### 
-### if "--debug-generators" in [ modules.peek : ARGV ] 
-### {    
-###     .debug = true ;
-### }
-### 
-### # Outputs a debug message if generators debugging is on.
-### # Each element of 'message' is checked to see if it's class instance.
-### # If so, instead of the value, the result of 'str' call is output.
-### local rule generators.dout ( message * )
-### {
-###     if $(.debug)
-###     {                
-###         ECHO [ sequence.transform utility.str : $(message) ] ;
-###     }    
-### }
-### 
-### 
-### local rule indent ( )
-### {
-###     return $(.indent:J="") ;
-### }
-### 
-### local rule increase-indent ( )
-### {
-###     .indent += "    " ;
-### }
-### 
-### local rule decrease-indent ( )
-### {
-###     .indent = $(.indent[2-]) ;
-### }
-
 def normalize_target_list (targets):
     """ Takes a vector of 'virtual-target' instances and makes a normalized
         representation, which is the same for given set of targets,
@@ -276,10 +231,10 @@ class Generator:
                           # remove the parameter altogether in the
                           # next revision to see what I learn -- DWA 2003/5/6
         
-        if _logger.on ():
-            _logger.log (__name__, "  generator '%s'" % self.id_)
-            _logger.log (__name__, "  multiple: '%s'" % multiple)
-            _logger.log (__name__, "  composing: '%s'" % self.composing_)
+        if self.manager_.logger ().on ():
+            self.manager_.logger ().log (__name__, "  generator '%s'" % self.id_)
+            self.manager_.logger ().log (__name__, "  multiple: '%s'" % multiple)
+            self.manager_.logger ().log (__name__, "  composing: '%s'" % self.composing_)
         
         if not self.composing_ and len (sources) > 1 and len (self.source_types_) > 1:
             raise BaseException ("Unsupported source/source_type combination")
@@ -319,11 +274,11 @@ class Generator:
             result.extend (bypassed)
 
         if result:
-            if _logger.on ():
-                _logger.log (__name__, "  SUCCESS: ", result)
+            if self.manager_.logger ().on ():
+                self.manager_.logger ().log (__name__, "  SUCCESS: ", result)
 
         else:
-                _logger.log (__name__, "  FAILURE")
+                self.manager_.logger ().log (__name__, "  FAILURE")
 
         return result
 
@@ -342,15 +297,15 @@ class Generator:
         result = []
         # If this is 1->1 transformation, apply it to all consumed targets in order.
         if len (self.source_types_) < 2 and not self.composing_:
-            if _logger.on ():
-                _logger.log (__name__, "alt1")
+            if self.manager_.logger ().on ():
+                self.manager_.logger ().log (__name__, "alt1")
 
             for r in consumed:
                 result.extend (self.generated_targets ([r], prop_set, project, name))
 
         else:
-            if _logger.on ():
-                _logger.log (__name__, "alt2 : consumed is ", consumed)
+            if self.manager_.logger ().on ():
+                self.manager_.logger ().log (__name__, "alt2 : consumed is ", consumed)
 
             if consumed:
                 result.extend (self.generated_targets (consumed, prop_set, project, name))
@@ -488,36 +443,26 @@ class Generator:
     
 
     def convert_multiple_sources_to_consumable_types (self, project, prop_set, sources, multiple):
-          """ Converts several files to consumable types.
-          """
-          return ([], [])
-###     {
-###         multiple ?= * ;
-###         # We process each source one-by-one, trying to convert it to
-###         # a usable type.
-###         local failed ;
-###         while $(sources) && ! $(failed)
-###         {
-###             local _c ;
-###             local _b ;
-###             # TODO: need to check for failure on each source.
-###             convert_to_consumable_types $(project) : $(prop_set)
-###               : $(sources[1]) : $(multiple) : true : _c _b ;
-###             if ! $(_c)
-###             {
-###                 generators.dout [ indent ] " failed to convert " $(sources[1]) ;
-###                 # failed = true ;
-###             }
-###             $(consumed-var) += $(_c) ;            
-###             $(bypassed-var) += $(_b) ;
-###             sources = $(sources[2-]) ;
-###         }           
-###         if $(failed)
-###         {
-###             $(consumed-var) = ;
-###             $(bypassed-var) = ;
-###         }        
-###     }
+        """ Converts several files to consumable types.
+        """
+        if not multiple:
+            multiple = '*'
+        
+        consumed = []
+        bypassed = []
+
+        # We process each source one-by-one, trying to convert it to
+        # a usable type.
+        for s in sources:
+            # TODO: need to check for failure on each source.
+            (c, b) = convert_to_consumable_types (project, None, prop_set, s, multiple, True)
+            if not c:
+                self.manager_.logger ().log (__name__, " failed to convert ", s)
+
+            consumed.extend (c)
+            bypassed.extend (b)
+
+        return (consumed, bypassed)
 
     def consume_directly (self, source):
         real_source_type = source.type ()
@@ -581,29 +526,22 @@ def register_standard (manager, id, rule, source_types, target_types, requiremen
     """
     g = Generator (manager, id, rule, False, source_types, target_types, requirements)
     register (id, g)
-    return (g)
+    return g
 
-### # Creates new instance of the 'composing-generator' class and
-### # registers it.
-### rule register-composing ( id : source_types + : target_types + : requirements * )
-### {
-###     local g = [ new generator $(id) true : $(source_types) 
-###                 : $(target_types) : $(requirements) ] ;
-###     register $(g) ;
-###     return $(g) ;
-### }
-### 
-### # Returns all generators which belong to 'toolset', i.e. which
-### # ids are $(toolset).<something>
-### rule generators-for-toolset ( toolset )
-### {
-###     return $(__generators_for_toolset.$(toolset)) ;
-### }
-### 
-### rule override ( overrider-id : overridee-id )
-### {
-###     .override.$(overrider-id) += $(overridee-id) ;    
-### }
+def register_composing (id, rule, source_types, target_types, requirements = []):
+    g = Generator (id, rule, True, source_types, target_types, requirements)
+    register (id, g)
+    return g
+
+def generators_for_toolset (toolset):
+    """ Returns all generators which belong to 'toolset'.
+    """
+    return __generators_for_toolset.get (toolset, [])
+
+def override (overrider_id, overridee_id):
+    prev = __overrides.get (overrider_id, [])
+    prev.append (overridee_id)
+    __overrides.get [overrider_id] = prev
 
 def base_to_derived_type_conversion (targets, target_types):
     """ For all t in 'targets':
@@ -741,9 +679,9 @@ def try_one_generator_really (project, name, generator, multiple, target_type, p
     else:
         extra2 = extra
 
-    if _logger.on ():
-        _logger.log (__name__, "  generator '%s' spawned " % generator.id ())
-        _logger.log (__name__, " '%s' -- '%s'" % (result, extra2))
+    if project.manager ().logger ().on ():
+        project.manager ().logger ().log (__name__, "  generator '%s' spawned " % generator.id ())
+        project.manager ().logger ().log (__name__, " '%s' -- '%s'" % (result, extra2))
 
     if targets:
         result = (usage_requirements, result)
@@ -764,11 +702,11 @@ def try_one_generator (project, name, generator, multiple, target_type, properti
     viable_source_types = viable_source_types_for_generator (generator)
     
     if  source_types and viable_source_types != ['*'] and not set.intersection (source_types, viable_source_types):
-        if _logger.on ():
+        if project.manager ().on ():
             id = generator.id ()
-            _logger.log (__name__, "generator '%s' pruned" % id)
-            _logger.log (__name__, "source_types" '%s' % source_types)
-            _logger.log (__name__, "viable_source_types '%s'" % viable_source_types)
+            project.manager ().log (__name__, "generator '%s' pruned" % id)
+            project.manager ().log (__name__, "source_types" '%s' % source_types)
+            project.manager ().log (__name__, "viable_source_types '%s'" % viable_source_types)
         
         return []
 
@@ -802,21 +740,15 @@ def construct_types (project, name, target_types, multiple, prop_set, sources):
     else:
         return (usage_requirements, sources)
 
-### # Ensures all 'targets' have types. If this is not so, exists with 
-### # error.
-### local rule __ensure_type ( targets * )
-### {
-###     for local t in $(targets)
-###     {
-###         if ! [ $(t).type ]
-###         {
-###             errors.error "target" [ $(t).str ] "has no type" ;
-###         }        
-###     }    
-### }
+def __ensure_type (targets):
+    """ Ensures all 'targets' have types. If this is not so, exists with 
+        error.
+    """
+    for t in targets:
+        if not t.type ():
+            raise BaseException ("target '%s' has no type" % t.str ())
 
-
-def find_viable_generators_aux (target_type, prop_set):
+def find_viable_generators_aux (logger, target_type, prop_set):
     """ Returns generators which can be used to construct target of specified type
         with specified properties. Uses the following algorithm:
         - iterates over requested target_type and all it's bases (in the order returned bt
@@ -837,19 +769,19 @@ def find_viable_generators_aux (target_type, prop_set):
     # quite specific requirements.
     t = ['*'] + type.all_bases (target_type)
     
-    _logger.log (__name__, "find_viable_generators target_type = '%s'  property_set = '%s'" % (target_type, prop_set.as_path ()))
+    logger.log (__name__, "find_viable_generators target_type = '%s'  property_set = '%s'" % (target_type, prop_set.as_path ()))
     
     while t:
-        _logger.log (__name__, "trying type ", t [0])
+        logger.log (__name__, "trying type ", t [0])
         
         generators_for_this_type = __type_to_generators.get (t [0], [])
 
         for g in generators_for_this_type:
-            _logger.log (__name__, "trying generator '%s' (%s -> %s)" % (g.id (), g.source_types (), g.target_types ()))
+            logger.log (__name__, "trying generator '%s' (%s -> %s)" % (g.id (), g.source_types (), g.target_types ()))
     
             m = g.match_rank (prop_set)
             if m:
-                _logger.log (__name__, "  is viable")
+                logger.log (__name__, "  is viable")
                 viable_generators.append (g)
                 t = []
 
@@ -857,13 +789,13 @@ def find_viable_generators_aux (target_type, prop_set):
 
     return viable_generators
 
-def find_viable_generators (target_type, prop_set):
+def find_viable_generators (logger, target_type, prop_set):
     key = target_type + '.' + str (prop_set)
 
     l = __viable_generators_cache.get (key, None)
 
     if not l:
-        l = find_viable_generators_aux (target_type, prop_set)
+        l = find_viable_generators_aux (logger, target_type, prop_set)
 
         __viable_generators_cache [key] = l
 
@@ -901,7 +833,7 @@ def find_viable_generators (target_type, prop_set):
     return result
 
     
-def select_dependency_graph (options):
+def select_dependency_graph (logger, options):
     """ Given a vector of vectors, each one of them representing results of running some 
         generator, returns the 'best' result, it exists. Otherwise, exit with
         an error. Result is returned as plain sequence.
@@ -917,8 +849,8 @@ def select_dependency_graph (options):
     
     for r in options:
         r = normalize_target_list (r)
-        if _logger.on ():
-            _logger.log (__name__, r [1:])
+        if logger.on ():
+            logger.log (__name__, r [1:])
     
     # One note why we can compare object names directly,
     # without using deep copy. All the targets here are
@@ -948,11 +880,11 @@ def __construct_really (project, name, target_type, multiple, prop_set, sources)
     """ Attempts to construct target by finding viable generators, running them
         and selecting the dependency graph.
     """
-    viable_generators = find_viable_generators (target_type, prop_set)
+    viable_generators = find_viable_generators (project.manager ().logger (), target_type, prop_set)
                     
     result = []
     
-    _logger.log (__name__, "*** %d viable generators" % len (viable_generators))
+    project.manager ().logger ().log (__name__, "*** %d viable generators" % len (viable_generators))
     
     for g in viable_generators:
         # This variable will be restored on exit from this scope.
@@ -965,7 +897,7 @@ def __construct_really (project, name, target_type, multiple, prop_set, sources)
         if r:
             result.append (r)
     
-    return select_dependency_graph (result)
+    return select_dependency_graph (project.manager ().logger (), result)
 
 
 
@@ -1016,23 +948,23 @@ def construct (project, name, target_type, multiple, prop_set, sources, allowed_
         
     __construct_stack.append (1)
 
-    if _logger.on ():
-        _logger.increase_indent ()
+    if project.manager ().logger ().on ():
+        project.manager ().logger ().increase_indent ()
         
         m = ''
         if multiple:
             m = " (may return multiple targets)"
 
-        _logger.log (__name__, "*** construct ", target_type, m)
+        project.manager ().logger ().log (__name__, "*** construct ", target_type, m)
         
         for s in sources:
-            _logger.log (__name__, "    from ", s)
+            project.manager ().logger ().log (__name__, "    from ", s)
 
-        _logger.log (__name__, "    properties: ", prop_set.raw ())
+        project.manager ().logger ().log (__name__, "    properties: ", prop_set.raw ())
              
     result = __construct_really (project, name, target_type, multiple, prop_set, sources)
 
-    _logger.decrease_indent ()
+    project.manager ().logger ().decrease_indent ()
         
     __construct_stack = __construct_stack [1:]
     
