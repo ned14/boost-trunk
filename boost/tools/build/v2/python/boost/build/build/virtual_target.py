@@ -348,7 +348,6 @@ class AbstractFileTarget (VirtualTarget):
                 self.__adjust_name (name)
         
         self.actual_name_ = None
-        self.suffix_ = None
         self.path_ = None
         self.intermediate_ = False
         self.creating_subvariant_ = None
