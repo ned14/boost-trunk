@@ -19,13 +19,18 @@
 
 #include "boost/mpl/lambda_fwd.hpp"
 #include "boost/mpl/aux_/preprocessor/params.hpp"
+#include "boost/mpl/aux_/lambda_arity_param.hpp"
 #include "boost/mpl/aux_/config/lambda_support.hpp"
 
 #if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
 
 #   define BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(i, name) \
-template< BOOST_MPL_PP_PARAMS(i, typename T) > struct lambda< \
+template< \
+      BOOST_MPL_PP_PARAMS(i, typename T) \
+    > \
+struct lambda< \
       name< BOOST_MPL_PP_PARAMS(i, T) > \
+    BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(-1) \
     > \
 { \
     typedef name< BOOST_MPL_PP_PARAMS(i, T) > type; \

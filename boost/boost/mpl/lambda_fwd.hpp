@@ -20,7 +20,14 @@
 namespace boost {
 namespace mpl {
 
-template< typename T > struct lambda;
+#include "boost/mpl/aux_/lambda_arity_param.hpp"
+
+#if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
+template< typename T BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(long Arity) >
+struct lambda;
+#else
+template< typename T, bool Protect > struct lambda;
+#endif
 
 } // namespace mpl
 } // namespace boost

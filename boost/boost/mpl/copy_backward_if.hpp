@@ -22,34 +22,28 @@
 #include "boost/mpl/lambda.hpp"
 #include "boost/mpl/protect.hpp"
 #include "boost/mpl/aux_/void_spec.hpp"
-#include "boost/mpl/aux_/lambda_support.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(InputSequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Operation)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(OutputSequence)
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(State)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(BinaryOp)
     , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Predicate)
     >
 struct copy_backward_if
 {
  private:
-    typedef typename lambda<Operation>::type op_;
+    typedef typename lambda<BinaryOp>::type op_;
     typedef typename lambda<Predicate>::type pred_;
 
  public:
     typedef typename fold_backward<
-          InputSequence
-        , OutputSequence
+          Sequence
+        , State
         , protect< aux::copy_if_op<op_,pred_> >
         >::type type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(4
-        ,  copy_backward_if
-        , (InputSequence,Operation,OutputSequence,Predicate)
-        )
 };
 
 BOOST_MPL_AUX_VOID_SPEC(4, copy_backward_if)

@@ -17,9 +17,10 @@
 #ifndef BOOST_MPL_TRANSFORM_VIEW_HPP_INCLUDED
 #define BOOST_MPL_TRANSFORM_VIEW_HPP_INCLUDED
 
-#include "boost/mpl/iterator_range.hpp"
 #include "boost/mpl/begin_end.hpp"
+#include "boost/mpl/lambda.hpp"
 #include "boost/mpl/apply.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 #include "boost/mpl/aux_/lambda_spec.hpp"
 
 namespace boost {
@@ -38,16 +39,21 @@ struct transform_iter
         >::type type;
 };
 
-template< typename Sequence, typename F >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(F)
+    >
 struct transform_view
-    : iterator_range<
-          transform_iter< typename begin<Sequence>::type,F >
-        , transform_iter< typename end<Sequence>::type,F >
-        >
 {
+    struct tag;
+    typedef transform_view type;
+    typedef typename lambda<F>::type f_;
+    typedef transform_iter< typename begin<Sequence>::type,f_ > begin;
+    typedef transform_iter< typename end<Sequence>::type,f_ > end;
 };
 
 BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(2,transform_iter)
+BOOST_MPL_AUX_VOID_SPEC(2, transform_view)
 
 } // namespace mpl
 } // namespace boost

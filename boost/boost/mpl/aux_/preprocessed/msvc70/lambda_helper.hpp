@@ -33,7 +33,8 @@ struct lambda_helper2
         enum { arity = 2 };
         typedef T1 arg1;
         typedef T2 arg2;
-                template< typename U1, typename U2 > struct apply
+        
+        template< typename U1, typename U2 > struct apply
             : F< U1,U2 >
         {
         };
@@ -52,7 +53,8 @@ struct lambda_helper3
         typedef T1 arg1;
         typedef T2 arg2;
         typedef T3 arg3;
-                template< typename U1, typename U2, typename U3 > struct apply
+        
+        template< typename U1, typename U2, typename U3 > struct apply
             : F< U1,U2,U3 >
         {
         };
@@ -72,7 +74,8 @@ struct lambda_helper4
         typedef T2 arg2;
         typedef T3 arg3;
         typedef T4 arg4;
-                template<
+        
+        template<
               typename U1, typename U2, typename U3, typename U4
             >
         struct apply
@@ -100,7 +103,8 @@ struct lambda_helper5
         typedef T3 arg3;
         typedef T4 arg4;
         typedef T5 arg5;
-                template<
+        
+        template<
               typename U1, typename U2, typename U3, typename U4
             , typename U5
             >

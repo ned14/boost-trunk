@@ -12,7 +12,8 @@ template<
     >
 struct vector31_c
     : vector_node<
-          integral_c< T,C0 >
+          31
+        , integral_c< T,C0 >
         , vector30_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30 >
         >
 {
@@ -27,7 +28,8 @@ template<
     >
 struct vector32_c
     : vector_node<
-          integral_c< T,C0 >
+          32
+        , integral_c< T,C0 >
         , vector31_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31 >
         >
 {
@@ -42,7 +44,8 @@ template<
     >
 struct vector33_c
     : vector_node<
-          integral_c< T,C0 >
+          33
+        , integral_c< T,C0 >
         , vector32_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32 >
         >
 {
@@ -57,7 +60,8 @@ template<
     >
 struct vector34_c
     : vector_node<
-          integral_c< T,C0 >
+          34
+        , integral_c< T,C0 >
         , vector33_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33 >
         >
 {
@@ -72,7 +76,8 @@ template<
     >
 struct vector35_c
     : vector_node<
-          integral_c< T,C0 >
+          35
+        , integral_c< T,C0 >
         , vector34_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34 >
         >
 {
@@ -87,7 +92,8 @@ template<
     >
 struct vector36_c
     : vector_node<
-          integral_c< T,C0 >
+          36
+        , integral_c< T,C0 >
         , vector35_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35 >
         >
 {
@@ -102,7 +108,8 @@ template<
     >
 struct vector37_c
     : vector_node<
-          integral_c< T,C0 >
+          37
+        , integral_c< T,C0 >
         , vector36_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36 >
         >
 {
@@ -117,7 +124,8 @@ template<
     >
 struct vector38_c
     : vector_node<
-          integral_c< T,C0 >
+          38
+        , integral_c< T,C0 >
         , vector37_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37 >
         >
 {
@@ -132,7 +140,8 @@ template<
     >
 struct vector39_c
     : vector_node<
-          integral_c< T,C0 >
+          39
+        , integral_c< T,C0 >
         , vector38_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38 >
         >
 {
@@ -147,7 +156,8 @@ template<
     >
 struct vector40_c
     : vector_node<
-          integral_c< T,C0 >
+          40
+        , integral_c< T,C0 >
         , vector39_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39 >
         >
 {

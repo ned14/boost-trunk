@@ -10,7 +10,8 @@ template<
     >
 struct vector11_c
     : vector_node<
-          integral_c< T,C0 >
+          11
+        , integral_c< T,C0 >
         , vector10_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10 >
         >
 {
@@ -23,7 +24,8 @@ template<
     >
 struct vector12_c
     : vector_node<
-          integral_c< T,C0 >
+          12
+        , integral_c< T,C0 >
         , vector11_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11 >
         >
 {
@@ -36,7 +38,8 @@ template<
     >
 struct vector13_c
     : vector_node<
-          integral_c< T,C0 >
+          13
+        , integral_c< T,C0 >
         , vector12_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12 >
         >
 {
@@ -49,7 +52,8 @@ template<
     >
 struct vector14_c
     : vector_node<
-          integral_c< T,C0 >
+          14
+        , integral_c< T,C0 >
         , vector13_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13 >
         >
 {
@@ -62,7 +66,8 @@ template<
     >
 struct vector15_c
     : vector_node<
-          integral_c< T,C0 >
+          15
+        , integral_c< T,C0 >
         , vector14_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14 >
         >
 {
@@ -75,7 +80,8 @@ template<
     >
 struct vector16_c
     : vector_node<
-          integral_c< T,C0 >
+          16
+        , integral_c< T,C0 >
         , vector15_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 >
         >
 {
@@ -88,7 +94,8 @@ template<
     >
 struct vector17_c
     : vector_node<
-          integral_c< T,C0 >
+          17
+        , integral_c< T,C0 >
         , vector16_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16 >
         >
 {
@@ -101,7 +108,8 @@ template<
     >
 struct vector18_c
     : vector_node<
-          integral_c< T,C0 >
+          18
+        , integral_c< T,C0 >
         , vector17_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17 >
         >
 {
@@ -114,7 +122,8 @@ template<
     >
 struct vector19_c
     : vector_node<
-          integral_c< T,C0 >
+          19
+        , integral_c< T,C0 >
         , vector18_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18 >
         >
 {
@@ -127,7 +136,8 @@ template<
     >
 struct vector20_c
     : vector_node<
-          integral_c< T,C0 >
+          20
+        , integral_c< T,C0 >
         , vector19_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19 >
         >
 {

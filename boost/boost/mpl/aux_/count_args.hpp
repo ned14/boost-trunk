@@ -60,7 +60,7 @@
     BOOST_PP_CAT(is_,BOOST_PP_CAT(BOOST_MPL_AUX_COUNT_ARGS_PREFIX,_arg)) \
 /**/
 
-#define AUX_COUNT_ARGS_FUNC(i, param) \
+#define AUX_COUNT_ARGS_FUNC(z, i, param) \
     BOOST_PP_EXPR_IF(i, +) \
     AUX_IS_ARG_TEMPLATE_NAME<BOOST_PP_CAT(param,BOOST_PP_INC(i))>::value \
 /**/

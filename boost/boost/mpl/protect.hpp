@@ -17,6 +17,9 @@
 #ifndef BOOST_MPL_PROTECT_HPP_INCLUDED
 #define BOOST_MPL_PROTECT_HPP_INCLUDED
 
+#include "boost/mpl/aux_/arity.hpp"
+#include "boost/mpl/aux_/config/dtp.hpp"
+
 namespace boost {
 namespace mpl {
 
@@ -25,6 +28,16 @@ struct protect : T
 {
     typedef protect type;
 };
+
+#if defined(BOOST_NO_DEFAULT_TEMPLATE_PARAMETERS_IN_NESTED_TEMPLATES)
+namespace aux {
+template< typename T, int N > 
+struct arity< protect<T>, N >
+    : arity<T,N>
+{
+};
+}
+#endif
 
 } // namespace mpl
 } // namespace boost

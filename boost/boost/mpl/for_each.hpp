@@ -22,11 +22,31 @@
 #include "boost/mpl/bool_c.hpp"
 #include "boost/mpl/lambda.hpp"
 #include "boost/type_traits/is_same.hpp"
+#include <boost/utility/value_init.hpp>
 
 namespace boost {
 namespace mpl {
 
 namespace aux {
+
+template<
+      typename Iterator
+    , typename LastIterator
+    , typename TransformFunc
+    , typename F
+    >
+inline
+void for_each_impl(
+      F
+    , true_c
+#if defined(BOOST_MSVC) && BOOST_MSVC < 1301
+    , Iterator* = 0
+    , LastIterator* = 0
+    , TransformFunc* = 0
+#endif
+    )
+{
+}
 
 // agurt, 17/mar/02: pointer default parameters are necessary to workaround 
 // MSVC 6.5 function template signature's mangling bug
@@ -50,28 +70,13 @@ void for_each_impl(
     typedef typename Iterator::type item;
     typedef typename Iterator::next iter;
     typedef bool_c< boost::is_same<iter,LastIterator>::value > is_last;
-    typename apply1<TransformFunc,item>::type x;
-    f(x);
+    typedef typename apply1<TransformFunc,item>::type arg;
+    
+    // dwa 2002/9/10 -- make sure not to invoke undefined behavior
+    // when we pass arg.
+    value_initialized<arg> x;
+    f(get(x));
     for_each_impl< iter,LastIterator,TransformFunc >(f, is_last());
-}
-
-template<
-      typename Iterator
-    , typename LastIterator
-    , typename TransformFunc
-    , typename F
-    >
-inline
-void for_each_impl(
-      F
-    , true_c
-#if defined(BOOST_MSVC) && BOOST_MSVC < 1301
-    , Iterator* = 0
-    , LastIterator* = 0
-    , TransformFunc* = 0
-#endif
-    )
-{
 }
 
 } // namespace aux
@@ -82,7 +87,7 @@ template<
     , typename F
     >
 inline
-void for_each(F f)
+void for_each(F f, Sequence* = 0, TransformOp* = 0)
 {
     typedef typename begin<Sequence>::type first;
     typedef typename end<Sequence>::type last;

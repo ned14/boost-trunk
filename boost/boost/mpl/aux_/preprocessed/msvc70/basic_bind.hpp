@@ -60,6 +60,7 @@ namespace aux {
 template< int > struct bind_impl_chooser;
 
 aux::no_tag is_bind_helper(...);
+template< typename T > aux::no_tag is_bind_helper(protect<T>*);
 
 template<
       typename F, typename T1, typename T2, typename T3, typename T4

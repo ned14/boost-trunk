@@ -18,30 +18,19 @@
 #define BOOST_MPL_COPY_BACKWARD_HPP_INCLUDED
 
 #include "boost/mpl/fold_backward.hpp"
-#include "boost/mpl/aux_/copy_op.hpp"
-#include "boost/mpl/lambda.hpp"
-#include "boost/mpl/protect.hpp"
 #include "boost/mpl/aux_/void_spec.hpp"
 
 namespace boost {
 namespace mpl {
 
 template<
-      typename InputSequence
-    , typename Operation
-    , typename OutputSequence
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(State)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(BinaryOp)
     >
 struct copy_backward
+    : fold_backward< Sequence,State,BinaryOp >
 {
- private:
-    typedef typename lambda<Operation>::type op_;
-
- public:
-    typedef typename fold_backward<
-          InputSequence
-        , OutputSequence
-        , protect< aux::copy_op<op_> >
-        >::type type;
 };
 
 BOOST_MPL_AUX_VOID_SPEC(3, copy_backward)

@@ -41,7 +41,8 @@ template<
     >
 struct BOOST_PP_CAT(vector,i)
     : vector_node<
-          T0
+          i
+        , T0
         , MPL_AUX_VECTOR_TAIL(vector,i,T)
         >
 {
@@ -77,24 +78,25 @@ struct BOOST_PP_CAT(vector,i)
 };
 
 template<>
-struct push_back_traits< aux::vector_tag<BOOST_PP_DEC(i)> >
+struct push_front_traits< aux::vector_tag<BOOST_PP_DEC(i)> >
 {
     template< typename Vector, typename T > struct algorithm
     {
         typedef BOOST_PP_CAT(vector,i)<
+              T
+              BOOST_PP_COMMA_IF(BOOST_PP_DEC(i))
               BOOST_PP_ENUM_PARAMS(BOOST_PP_DEC(i), typename Vector::item)
-            BOOST_PP_COMMA_IF(BOOST_PP_DEC(i)) T
             > type;
     };
 };
 
 template<>
-struct pop_back_traits< aux::vector_tag<i> >
+struct pop_front_traits< aux::vector_tag<i> >
 {
     template< typename Vector > struct algorithm
     {
         typedef BOOST_PP_CAT(vector,BOOST_PP_DEC(i))<
-              BOOST_PP_ENUM_PARAMS(BOOST_PP_DEC(i), typename Vector::item)
+              BOOST_PP_ENUM_SHIFTED_PARAMS(i, typename Vector::item)
             > type;
     };
 };

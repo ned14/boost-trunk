@@ -5,22 +5,12 @@ namespace boost {
 namespace mpl {
 
 template<
-      
-    >
-struct vector0
-    : vector_node<
-          T0
-        , vector0<  >
-        >
-{
-};
-
-template<
       typename T0
     >
 struct vector1
     : vector_node<
-          T0
+          1
+        , T0
         , vector0<  >
         >
 {
@@ -31,7 +21,8 @@ template<
     >
 struct vector2
     : vector_node<
-          T0
+          2
+        , T0
         , vector1<T1>
         >
 {
@@ -42,7 +33,8 @@ template<
     >
 struct vector3
     : vector_node<
-          T0
+          3
+        , T0
         , vector2< T1,T2 >
         >
 {
@@ -53,7 +45,8 @@ template<
     >
 struct vector4
     : vector_node<
-          T0
+          4
+        , T0
         , vector3< T1,T2,T3 >
         >
 {
@@ -64,7 +57,8 @@ template<
     >
 struct vector5
     : vector_node<
-          T0
+          5
+        , T0
         , vector4< T1,T2,T3,T4 >
         >
 {
@@ -76,7 +70,8 @@ template<
     >
 struct vector6
     : vector_node<
-          T0
+          6
+        , T0
         , vector5< T1,T2,T3,T4,T5 >
         >
 {
@@ -88,7 +83,8 @@ template<
     >
 struct vector7
     : vector_node<
-          T0
+          7
+        , T0
         , vector6< T1,T2,T3,T4,T5,T6 >
         >
 {
@@ -100,7 +96,8 @@ template<
     >
 struct vector8
     : vector_node<
-          T0
+          8
+        , T0
         , vector7< T1,T2,T3,T4,T5,T6,T7 >
         >
 {
@@ -112,7 +109,8 @@ template<
     >
 struct vector9
     : vector_node<
-          T0
+          9
+        , T0
         , vector8< T1,T2,T3,T4,T5,T6,T7,T8 >
         >
 {
@@ -124,7 +122,8 @@ template<
     >
 struct vector10
     : vector_node<
-          T0
+          10
+        , T0
         , vector9< T1,T2,T3,T4,T5,T6,T7,T8,T9 >
         >
 {

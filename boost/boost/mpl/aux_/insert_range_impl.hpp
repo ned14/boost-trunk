@@ -17,6 +17,7 @@
 #ifndef BOOST_MPL_AUX_INSERT_RANGE_IMPL_HPP_INCLUDED
 #define BOOST_MPL_AUX_INSERT_RANGE_IMPL_HPP_INCLUDED
 
+#include "boost/mpl/iter_fold_backward.hpp"
 #include "boost/mpl/fold_backward.hpp"
 #include "boost/mpl/clear.hpp"
 #include "boost/mpl/push_front.hpp"
@@ -46,7 +47,7 @@ struct iter_range_inserter
     {
         typedef typename aux::iter_push_front<
               typename apply_if<
-                  is_same<Pos,Iterator>
+                  is_same<Pos,typename Iterator::next>
                 , fold_backward< Range, Sequence, push_front<_,_> >
                 , identity<Sequence>
                 >::type
@@ -68,11 +69,10 @@ struct insert_range_traits
         >
     struct algorithm
     {
-        typedef typename iter_fold<
+        typedef typename iter_fold_backward<
               Sequence
             , typename clear<Sequence>::type
-            , project1st<_,_>
-            , aux::iter_range_inserter<Pos,T>
+            , aux::iter_range_inserter<Pos,Range>
             >::type type;
     };
 };

@@ -36,8 +36,8 @@ struct reverse
  public:
     typedef typename copy<
           Sequence
-        , push_front<_,_>
         , result_
+        , push_front<_,_>
         >::type type;
 };
 

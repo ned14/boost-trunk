@@ -53,5 +53,7 @@ using boost::mpl::_6;
 } // namespace boost 
 
 // injecting the unnumbered placeholder into global namespace
-using boost::mpl::_;
+// namespace {
+// using boost::mpl::_;
+// }
 

@@ -29,7 +29,7 @@ namespace mpl {
 template< typename V, long N >
 struct vector_item
 {
-    typedef __typeof__(V::item(integral_c<long,N>())) wrapped_type_;
+    typedef __typeof__(V::item(integral_c<long,V::size::value - N - 1>())) wrapped_type_;
     typedef typename wrapped_type_::type type;
 };
 

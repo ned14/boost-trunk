@@ -72,11 +72,13 @@ struct replace_unnamed_arg
 
 } // namespace aux
 
+#if 0
 template<
       typename F, typename T1 = void_, typename T2 = void_
     , typename T3 = void_, typename T4 = void_, typename T5 = void_
     >
 struct bind;
+#endif
 
 template< typename F, typename T > struct bind1st;
 template< typename F, typename T > struct bind2nd;
@@ -86,12 +88,15 @@ namespace aux {
 template< int > struct bind_impl_chooser;
 
 aux::no_tag is_bind_helper(...);
+template< typename T > aux::no_tag is_bind_helper(protect<T>*);
 
+#if 0
 template<
       typename F, typename T1, typename T2, typename T3, typename T4
     , typename T5
     >
 aux::yes_tag is_bind_helper(bind< F,T1,T2,T3,T4,T5 >*);
+#endif
 
 template< int N >
 aux::yes_tag is_bind_helper(arg<N>*);
@@ -508,6 +513,7 @@ struct bind_count_args
 
 }
 
+#if 0
 template<
       typename F, typename T1, typename T2, typename T3, typename T4
     , typename T5
@@ -518,6 +524,7 @@ struct bind
         >::template result_< F,T1,T2,T3,T4,T5 >::type
 {
 };
+#endif
 
 template< typename F, typename T >
 struct bind1st

@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------
-// boost mpl/copy.hpp header file
+// boost mpl/aux_/lambda_arity_param.hpp header file
 // See http://www.boost.org for updates, documentation, and revision history.
 //-----------------------------------------------------------------------------
 //
-// Copyright (c) 2000-02
+// Copyright (c) 2001-02
 // Aleksey Gurtovoy
 //
 // Permission to use, copy, modify, distribute and sell this software
@@ -14,28 +14,15 @@
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
 
-#ifndef BOOST_MPL_COPY_HPP_INCLUDED
-#define BOOST_MPL_COPY_HPP_INCLUDED
+#ifndef BOOST_MPL_AUX_LAMBDA_ARITY_PARAM_HPP_INCLUDED
+#define BOOST_MPL_AUX_LAMBDA_ARITY_PARAM_HPP_INCLUDED
 
-#include "boost/mpl/fold.hpp"
-#include "boost/mpl/aux_/void_spec.hpp"
+#include "boost/mpl/aux_/config/lambda_support.hpp"
 
-namespace boost {
-namespace mpl {
+#if !defined(BOOST_EXTENDED_TEMPLATE_PARAMETERS_MATCHING)
+#   define BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(param)    
+#else
+#   define BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(param) , param
+#endif
 
-template<
-      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(State)
-    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(BinaryOp)
-    >
-struct copy
-    : fold< Sequence,State,BinaryOp >
-{
-};
-
-BOOST_MPL_AUX_VOID_SPEC(3, copy)
-
-} // namespace mpl
-} // namespace boost
-
-#endif // BOOST_MPL_COPY_HPP_INCLUDED
+#endif // BOOST_MPL_AUX_LAMBDA_ARITY_PARAM_HPP_INCLUDED

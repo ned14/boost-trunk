@@ -17,7 +17,8 @@ template<
     >
 struct vector41
     : vector_node<
-          T0
+          41
+        , T0
         , vector40< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40 >
         >
 {
@@ -36,7 +37,8 @@ template<
     >
 struct vector42
     : vector_node<
-          T0
+          42
+        , T0
         , vector41< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41 >
         >
 {
@@ -55,7 +57,8 @@ template<
     >
 struct vector43
     : vector_node<
-          T0
+          43
+        , T0
         , vector42< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42 >
         >
 {
@@ -74,7 +77,8 @@ template<
     >
 struct vector44
     : vector_node<
-          T0
+          44
+        , T0
         , vector43< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43 >
         >
 {
@@ -93,7 +97,8 @@ template<
     >
 struct vector45
     : vector_node<
-          T0
+          45
+        , T0
         , vector44< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44 >
         >
 {
@@ -113,7 +118,8 @@ template<
     >
 struct vector46
     : vector_node<
-          T0
+          46
+        , T0
         , vector45< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45 >
         >
 {
@@ -133,7 +139,8 @@ template<
     >
 struct vector47
     : vector_node<
-          T0
+          47
+        , T0
         , vector46< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46 >
         >
 {
@@ -153,7 +160,8 @@ template<
     >
 struct vector48
     : vector_node<
-          T0
+          48
+        , T0
         , vector47< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47 >
         >
 {
@@ -173,7 +181,8 @@ template<
     >
 struct vector49
     : vector_node<
-          T0
+          49
+        , T0
         , vector48< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48 >
         >
 {
@@ -193,7 +202,8 @@ template<
     >
 struct vector50
     : vector_node<
-          T0
+          50
+        , T0
         , vector49< T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48,T49 >
         >
 {

@@ -54,15 +54,15 @@ struct erase_traits
 
         typedef typename copy_backward<
               second_half_
-            , push_front<_,_>
             , typename clear<Sequence>::type
+            , push_front<_,_>
             >::type half_sequence_;
 
      public:
         typedef typename copy_backward<
               first_half_
-            , push_front<_,_>
             , half_sequence_
+            , push_front<_,_>
             >::type type;
     };
 

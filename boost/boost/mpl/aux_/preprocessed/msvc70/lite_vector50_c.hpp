@@ -13,7 +13,8 @@ template<
     >
 struct vector41_c
     : vector_node<
-          integral_c< T,C0 >
+          41
+        , integral_c< T,C0 >
         , vector40_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40 >
         >
 {
@@ -29,7 +30,8 @@ template<
     >
 struct vector42_c
     : vector_node<
-          integral_c< T,C0 >
+          42
+        , integral_c< T,C0 >
         , vector41_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41 >
         >
 {
@@ -45,7 +47,8 @@ template<
     >
 struct vector43_c
     : vector_node<
-          integral_c< T,C0 >
+          43
+        , integral_c< T,C0 >
         , vector42_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42 >
         >
 {
@@ -61,7 +64,8 @@ template<
     >
 struct vector44_c
     : vector_node<
-          integral_c< T,C0 >
+          44
+        , integral_c< T,C0 >
         , vector43_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43 >
         >
 {
@@ -77,7 +81,8 @@ template<
     >
 struct vector45_c
     : vector_node<
-          integral_c< T,C0 >
+          45
+        , integral_c< T,C0 >
         , vector44_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44 >
         >
 {
@@ -93,7 +98,8 @@ template<
     >
 struct vector46_c
     : vector_node<
-          integral_c< T,C0 >
+          46
+        , integral_c< T,C0 >
         , vector45_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45 >
         >
 {
@@ -109,7 +115,8 @@ template<
     >
 struct vector47_c
     : vector_node<
-          integral_c< T,C0 >
+          47
+        , integral_c< T,C0 >
         , vector46_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45,C46 >
         >
 {
@@ -125,7 +132,8 @@ template<
     >
 struct vector48_c
     : vector_node<
-          integral_c< T,C0 >
+          48
+        , integral_c< T,C0 >
         , vector47_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45,C46,C47 >
         >
 {
@@ -141,7 +149,8 @@ template<
     >
 struct vector49_c
     : vector_node<
-          integral_c< T,C0 >
+          49
+        , integral_c< T,C0 >
         , vector48_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45,C46,C47,C48 >
         >
 {
@@ -157,7 +166,8 @@ template<
     >
 struct vector50_c
     : vector_node<
-          integral_c< T,C0 >
+          50
+        , integral_c< T,C0 >
         , vector49_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45,C46,C47,C48,C49 >
         >
 {

@@ -20,7 +20,9 @@
 #include "boost/mpl/find_if.hpp"
 #include "boost/mpl/iterator_range.hpp"
 #include "boost/mpl/begin_end.hpp"
+#include "boost/mpl/lambda.hpp"
 #include "boost/mpl/apply.hpp"
+#include "boost/mpl/aux_/void_spec.hpp"
 #include "boost/mpl/aux_/lambda_spec.hpp"
 
 namespace boost {
@@ -67,24 +69,26 @@ struct filter_iter
     typedef typename base::type type;
 };
 
-template< typename Sequence, typename F >
+template<
+      typename BOOST_MPL_AUX_VOID_SPEC_PARAM(Sequence)
+    , typename BOOST_MPL_AUX_VOID_SPEC_PARAM(F)
+    >
 struct filter_view
-    : iterator_range<
-          typename aux::next_filter_iter<
-              typename begin<Sequence>::type
-            , typename end<Sequence>::type
-            , F
-            >::type
-        , filter_iter<
-              typename end<Sequence>::type
-            , typename end<Sequence>::type
-            , F
-            >
-        >
 {
+ private:    
+    typedef typename lambda<F>::type f_;
+    typedef typename begin<Sequence>::type first_;
+    typedef typename end<Sequence>::type last_;
+
+ public:
+    struct tag;
+    typedef filter_view type;
+    typedef typename aux::next_filter_iter< first_,last_,f_ >::type begin;
+    typedef filter_iter< last_,last_,f_ > end;
 };
 
 BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(3,filter_iter)
+BOOST_MPL_AUX_VOID_SPEC(2, filter_view)
 
 } // namespace mpl
 } // namespace boost

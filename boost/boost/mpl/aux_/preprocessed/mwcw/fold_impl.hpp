@@ -42,6 +42,7 @@ struct fold_impl< 1,First,Last,State,ForwardOp >
     typedef typename apply2<ForwardOp, state0, typename iter0::type>::type state1;
     typedef typename iter0::next iter1;
     
+
     typedef state1 state;
     typedef iter1 iterator;
 };
@@ -61,6 +62,7 @@ struct fold_impl< 2,First,Last,State,ForwardOp >
     typedef typename apply2<ForwardOp, state1, typename iter1::type>::type state2;
     typedef typename iter1::next iter2;
     
+
     typedef state2 state;
     typedef iter2 iterator;
 };
@@ -82,6 +84,7 @@ struct fold_impl< 3,First,Last,State,ForwardOp >
     typedef typename apply2<ForwardOp, state2, typename iter2::type>::type state3;
     typedef typename iter2::next iter3;
     
+
     typedef state3 state;
     typedef iter3 iterator;
 };
@@ -105,6 +108,7 @@ struct fold_impl< 4,First,Last,State,ForwardOp >
     typedef typename apply2<ForwardOp, state3, typename iter3::type>::type state4;
     typedef typename iter3::next iter4;
     
+
     typedef state4 state;
     typedef iter4 iterator;
 };

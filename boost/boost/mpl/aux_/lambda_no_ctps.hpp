@@ -24,6 +24,8 @@
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include "boost/mpl/lambda_fwd.hpp"
 #   include "boost/mpl/bind.hpp"
+#   include "boost/mpl/protect.hpp"
+#   include "boost/mpl/bool_c.hpp"
 #   include "boost/mpl/aux_/template_arity.hpp"
 #endif
 
@@ -45,6 +47,8 @@
 #   include "boost/preprocessor/inc.hpp"
 #   include "boost/preprocessor/cat.hpp"
 
+#   include "boost/config.hpp"
+
 namespace boost {
 namespace mpl {
 
@@ -55,7 +59,7 @@ namespace mpl {
 
 namespace aux {
 
-template< int arity > struct lambda_impl
+template< int arity, bool Protect > struct lambda_impl
 {
     template< typename T > struct result_
     {
@@ -69,9 +73,13 @@ template< int arity > struct lambda_impl
 
 } // namespace aux
 
-template< typename T >
+template< typename T, bool Protect = true >
 struct lambda
-    : aux::lambda_impl< ::boost::mpl::aux::template_arity<T>::value >
+#if !defined(BOOST_MSVC) || BOOST_MSVC > 1200
+    : aux::lambda_impl< ::boost::mpl::aux::template_arity<T>::value, Protect >
+#else
+    : aux::lambda_impl< ::boost::mpl::aux::template_arity<T>::value, bool_c<Protect>::value >
+#endif
         ::template result_<T>
 {
 };
@@ -90,10 +98,13 @@ struct lambda
 #define i BOOST_PP_FRAME_ITERATION(1)
 
 #   define AUX_LAMBDA_INVOCATION(i, T) \
-    , typename lambda< typename f_::BOOST_PP_CAT(arg,BOOST_PP_INC(i)) >::type \
+    , typename lambda< \
+          typename f_::BOOST_PP_CAT(arg,BOOST_PP_INC(i)) \
+        , false \
+        >::type \
     /**/
 
-template<> struct lambda_impl<i>
+template<> struct lambda_impl<i,false>
 {
     template< typename F > struct result_
     {
@@ -102,6 +113,18 @@ template<> struct lambda_impl<i>
               f_
             BOOST_MPL_PP_REPEAT(i, AUX_LAMBDA_INVOCATION, T)
             > type;
+    };
+};
+
+template<> struct lambda_impl<i,true>
+{
+    template< typename F > struct result_
+    {
+        typedef typename F::rebind f_;
+        typedef protect< BOOST_PP_CAT(bind,i)<
+              f_
+            BOOST_MPL_PP_REPEAT(i, AUX_LAMBDA_INVOCATION, T)
+            > > type;
     };
 };
 

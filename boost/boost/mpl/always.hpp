@@ -17,13 +17,13 @@
 #ifndef BOOST_MPL_ALWAYS_HPP_INCLUDED
 #define BOOST_MPL_ALWAYS_HPP_INCLUDED
 
+#include <boost/config.hpp>
 #include "boost/mpl/aux_/preprocessor/def_params_tail.hpp"
 #include "boost/mpl/limits/arity.hpp"
 #include "boost/mpl/void.hpp"
 #include "boost/mpl/aux_/arity.hpp"
 #include "boost/mpl/aux_/lambda_spec.hpp"
 #include "boost/mpl/aux_/config/dtp.hpp"
-#include "boost/config.hpp"
 
 namespace boost {
 namespace mpl {

@@ -22,11 +22,13 @@
 #define BOOST_MPL_BIND_HPP_INCLUDED
 
 #include "boost/mpl/aux_/apply.hpp"
+#include "boost/mpl/aux_/config/bind.hpp"
 #include "boost/mpl/aux_/config/lambda_support.hpp"
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include "boost/mpl/placeholder.hpp"
 #   include "boost/mpl/void.hpp"
+#   include "boost/mpl/protect.hpp"
 #   include "boost/mpl/limits/arity.hpp"
 #   include "boost/mpl/aux_/arity.hpp"
 #   include "boost/mpl/aux_/type_wrapper.hpp"
@@ -260,6 +262,7 @@ struct resolve_bind_arg< bind2nd<F,T>, AUX_BIND_PARAMS(U) >
 template< int > struct bind_impl_chooser;
 
 aux::no_tag is_bind_helper(...);
+template< typename T > aux::no_tag is_bind_helper(protect<T>*);
 
 // overload for "main" form
 // agurt, 15/mar/02: MSVC 6.5 fails to properly resolve the overload 
@@ -324,7 +327,8 @@ struct arity< bind2nd<F,T>,N >
 #include BOOST_PP_ITERATE()
 
 // real C++ version is already taken care of
-#if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+#if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
+   && !defined(BOOST_MPL_NO_BIND_TEMPLATE)
 
 namespace aux {
 // apply_count_args
@@ -346,6 +350,7 @@ struct bind
 };
 
 #endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+       // && !defined(BOOST_MPL_NO_BIND_TEMPLATE)
 
 // bind1st/bind2nd, lightweight, for simple cases/backward compatibility
 template< typename F, typename T >

@@ -56,6 +56,7 @@ struct fold_backward_chunk<1>
         typedef typename ForwardOp::template apply<fwd_state0, typename iter0::type>::type fwd_state1;
         typedef typename iter0::next iter1;
         
+
         typedef fwd_state1 bkwd_state1;
         typedef typename BackwardOp::template apply<bkwd_state1, typename iter0::type>::type bkwd_state0;
         typedef bkwd_state0 state;
@@ -82,10 +83,12 @@ struct fold_backward_chunk<2>
         typedef typename ForwardOp::template apply<fwd_state1, typename iter1::type>::type fwd_state2;
         typedef typename iter1::next iter2;
         
+
         typedef fwd_state2 bkwd_state2;
         typedef typename BackwardOp::template apply<bkwd_state2, typename iter1::type>::type bkwd_state1;
         typedef typename BackwardOp::template apply<bkwd_state1, typename iter0::type>::type bkwd_state0;
         
+
         typedef bkwd_state0 state;
         typedef iter2 iterator;
     };
@@ -112,11 +115,13 @@ struct fold_backward_chunk<3>
         typedef typename ForwardOp::template apply<fwd_state2, typename iter2::type>::type fwd_state3;
         typedef typename iter2::next iter3;
         
+
         typedef fwd_state3 bkwd_state3;
         typedef typename BackwardOp::template apply<bkwd_state3, typename iter2::type>::type bkwd_state2;
         typedef typename BackwardOp::template apply<bkwd_state2, typename iter1::type>::type bkwd_state1;
         typedef typename BackwardOp::template apply<bkwd_state1, typename iter0::type>::type bkwd_state0;
         
+
         typedef bkwd_state0 state;
         typedef iter3 iterator;
     };
@@ -145,12 +150,14 @@ struct fold_backward_chunk<4>
         typedef typename ForwardOp::template apply<fwd_state3, typename iter3::type>::type fwd_state4;
         typedef typename iter3::next iter4;
         
+
         typedef fwd_state4 bkwd_state4;
         typedef typename BackwardOp::template apply<bkwd_state4, typename iter3::type>::type bkwd_state3;
         typedef typename BackwardOp::template apply<bkwd_state3, typename iter2::type>::type bkwd_state2;
         typedef typename BackwardOp::template apply<bkwd_state2, typename iter1::type>::type bkwd_state1;
         typedef typename BackwardOp::template apply<bkwd_state1, typename iter0::type>::type bkwd_state0;
         
+
         typedef bkwd_state0 state;
         typedef iter4 iterator;
     };
@@ -179,6 +186,7 @@ struct fold_backward_chunk
         typedef typename ForwardOp::template apply<fwd_state3, typename iter3::type>::type fwd_state4;
         typedef typename iter3::next iter4;
         
+
         typedef fold_backward_impl<
               ( (N - 4) < 0 ? 0 : N - 4 )
             , iter4
@@ -194,6 +202,7 @@ struct fold_backward_chunk
         typedef typename BackwardOp::template apply<bkwd_state2, typename iter1::type>::type bkwd_state1;
         typedef typename BackwardOp::template apply<bkwd_state1, typename iter0::type>::type bkwd_state0;
         
+
         typedef bkwd_state0 state;
         typedef typename nested_chunk::iterator iterator;
     };

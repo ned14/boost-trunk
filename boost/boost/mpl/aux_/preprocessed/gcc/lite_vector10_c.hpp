@@ -10,7 +10,8 @@ template<
     >
 struct vector1_c
     : vector_node<
-          integral_c< T,C0 >
+          1
+        , integral_c< T,C0 >
         , vector0_c<T>
         >
 {
@@ -22,7 +23,8 @@ template<
     >
 struct vector2_c
     : vector_node<
-          integral_c< T,C0 >
+          2
+        , integral_c< T,C0 >
         , vector1_c< T,C1 >
         >
 {
@@ -34,7 +36,8 @@ template<
     >
 struct vector3_c
     : vector_node<
-          integral_c< T,C0 >
+          3
+        , integral_c< T,C0 >
         , vector2_c< T,C1,C2 >
         >
 {
@@ -46,7 +49,8 @@ template<
     >
 struct vector4_c
     : vector_node<
-          integral_c< T,C0 >
+          4
+        , integral_c< T,C0 >
         , vector3_c< T,C1,C2,C3 >
         >
 {
@@ -58,7 +62,8 @@ template<
     >
 struct vector5_c
     : vector_node<
-          integral_c< T,C0 >
+          5
+        , integral_c< T,C0 >
         , vector4_c< T,C1,C2,C3,C4 >
         >
 {
@@ -70,7 +75,8 @@ template<
     >
 struct vector6_c
     : vector_node<
-          integral_c< T,C0 >
+          6
+        , integral_c< T,C0 >
         , vector5_c< T,C1,C2,C3,C4,C5 >
         >
 {
@@ -82,7 +88,8 @@ template<
     >
 struct vector7_c
     : vector_node<
-          integral_c< T,C0 >
+          7
+        , integral_c< T,C0 >
         , vector6_c< T,C1,C2,C3,C4,C5,C6 >
         >
 {
@@ -94,7 +101,8 @@ template<
     >
 struct vector8_c
     : vector_node<
-          integral_c< T,C0 >
+          8
+        , integral_c< T,C0 >
         , vector7_c< T,C1,C2,C3,C4,C5,C6,C7 >
         >
 {
@@ -106,7 +114,8 @@ template<
     >
 struct vector9_c
     : vector_node<
-          integral_c< T,C0 >
+          9
+        , integral_c< T,C0 >
         , vector8_c< T,C1,C2,C3,C4,C5,C6,C7,C8 >
         >
 {
@@ -118,7 +127,8 @@ template<
     >
 struct vector10_c
     : vector_node<
-          integral_c< T,C0 >
+          10
+        , integral_c< T,C0 >
         , vector9_c< T,C1,C2,C3,C4,C5,C6,C7,C8,C9 >
         >
 {

@@ -71,7 +71,7 @@ struct template_arity< \
       name< BOOST_MPL_PP_ENUM(i, void_) > \
     > \
 { \
-    BOOST_STATIC_CONSTANT(int, value = -1 ); \
+    BOOST_STATIC_CONSTANT(int, value = j ); \
 }; \
 } \
 /**/

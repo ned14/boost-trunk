@@ -41,7 +41,8 @@ template<
     >
 struct BOOST_PP_CAT(BOOST_PP_CAT(vector,i),_c)
     : vector_node<
-          integral_c<T,C0>
+          i
+        , integral_c<T,C0>
         , MPL_AUX_VECTOR_TAIL(vector,i,C)
         >
 {

@@ -23,7 +23,7 @@ struct list_c<
         >
     : list0_c<T>
 {
-    typedef list0_c<T> type;
+    typedef typename list0_c<T>::type type;
 };
 
 template<
@@ -36,7 +36,7 @@ struct list_c<
         >
     : list1_c< T,C0 >
 {
-    typedef list1_c< T,C0 > type;
+    typedef typename list1_c< T,C0 >::type type;
 };
 
 template<
@@ -49,7 +49,7 @@ struct list_c<
         >
     : list2_c< T,C0,C1 >
 {
-    typedef list2_c< T,C0,C1 > type;
+    typedef typename list2_c< T,C0,C1 >::type type;
 };
 
 template<
@@ -62,7 +62,7 @@ struct list_c<
         >
     : list3_c< T,C0,C1,C2 >
 {
-    typedef list3_c< T,C0,C1,C2 > type;
+    typedef typename list3_c< T,C0,C1,C2 >::type type;
 };
 
 template<
@@ -75,7 +75,7 @@ struct list_c<
         >
     : list4_c< T,C0,C1,C2,C3 >
 {
-    typedef list4_c< T,C0,C1,C2,C3 > type;
+    typedef typename list4_c< T,C0,C1,C2,C3 >::type type;
 };
 
 template<
@@ -88,7 +88,7 @@ struct list_c<
         >
     : list5_c< T,C0,C1,C2,C3,C4 >
 {
-    typedef list5_c< T,C0,C1,C2,C3,C4 > type;
+    typedef typename list5_c< T,C0,C1,C2,C3,C4 >::type type;
 };
 
 template<
@@ -100,7 +100,7 @@ struct list_c<
         >
     : list6_c< T,C0,C1,C2,C3,C4,C5 >
 {
-    typedef list6_c< T,C0,C1,C2,C3,C4,C5 > type;
+    typedef typename list6_c< T,C0,C1,C2,C3,C4,C5 >::type type;
 };
 
 template<
@@ -110,7 +110,7 @@ template<
 struct list_c< T,C0,C1,C2,C3,C4,C5,C6,LONG_MAX,LONG_MAX,LONG_MAX >
     : list7_c< T,C0,C1,C2,C3,C4,C5,C6 >
 {
-    typedef list7_c< T,C0,C1,C2,C3,C4,C5,C6 > type;
+    typedef typename list7_c< T,C0,C1,C2,C3,C4,C5,C6 >::type type;
 };
 
 template<
@@ -120,7 +120,7 @@ template<
 struct list_c< T,C0,C1,C2,C3,C4,C5,C6,C7,LONG_MAX,LONG_MAX >
     : list8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >
 {
-    typedef list8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 > type;
+    typedef typename list8_c< T,C0,C1,C2,C3,C4,C5,C6,C7 >::type type;
 };
 
 template<
@@ -131,7 +131,7 @@ template<
 struct list_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,LONG_MAX >
     : list9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >
 {
-    typedef list9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 > type;
+    typedef typename list9_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8 >::type type;
 };
 
 // primary template (not a specialization!)
@@ -143,7 +143,7 @@ template<
 struct list_c
     : list10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >
 {
-    typedef list10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 > type;
+    typedef typename list10_c< T,C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 >::type type;
 };
 
 } // namespace mpl

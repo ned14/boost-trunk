@@ -25,6 +25,9 @@ namespace boost {
 namespace mpl {
 namespace aux {
 
+// gcc ICEs on |has_rebind|
+#if !defined(__GNUC__)
+
 template< bool >
 struct template_arity_impl
 {
@@ -50,6 +53,16 @@ struct template_arity
         ::template result_<F>
 {
 };
+
+#else
+
+template< typename F >
+struct template_arity
+{
+    BOOST_STATIC_CONSTANT(int, value = -1);
+};
+
+#endif // __GNUC__
 
 #if defined(BOOST_MSVC) && BOOST_MSVC == 1300
 // workaround for MSVC 7.0 "early template instantiation bug"

@@ -190,7 +190,7 @@ template<
 struct list_c
     : AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) >
 {
-    typedef AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) > type;
+    typedef typename AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) >::type type;
 };
 
 #else
@@ -202,7 +202,7 @@ template<
 struct list_c< T,AUX_LIST_C_N_PARTIAL_SPEC_PARAMS(i, C, LONG_MAX) >
     : AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) >
 {
-    typedef AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) > type;
+    typedef typename AUX_LIST_C(i)< T AUX_LIST_C_N_PARAMS(i, C) >::type type;
 };
 
 #endif // i == BOOST_MPL_LIMIT_LIST_SIZE
@@ -220,9 +220,9 @@ struct list_c_impl_chooser<i>
         >
     struct result_
     {
-        typedef AUX_LIST_C(i)<
+        typedef typename AUX_LIST_C(i)<
               T AUX_LIST_C_N_PARAMS(i, C)
-            > type;
+            >::type type;
     };
 };
 

@@ -3,14 +3,11 @@
 // copyright notice appears in all copies. This software is provided
 // "as is" without express or implied warranty, and with no claim as
 // to its suitability for any purpose.
-#ifndef TYPE_LIST_DWA200222_HPP
-# define TYPE_LIST_DWA200222_HPP
-# include <boost/mpl/list.hpp>
+#ifndef BIND_DWA2002910_HPP
+# define BIND_DWA2002910_HPP
 
-namespace boost { namespace python { namespace detail { 
-
-struct empty_list : boost::mpl::list<>::type {};
-
-}}} // namespace boost::python::detail
-
-#endif // TYPE_LIST_DWA200222_HPP
+# include <boost/config.hpp>
+# if defined(BOOST_MSVC) && BOOST_MSVC <= 1300
+#  define BOOST_MPL_NO_BIND_TEMPLATE
+# endif 
+#endif // BIND_DWA2002910_HPP
