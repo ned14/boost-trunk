@@ -44,7 +44,7 @@
 int glob( char *s, char *c );
 
 static void lol_build( LOL* lol, char** elements );
-static void backtrace( FRAME *frame );
+void backtrace( FRAME *frame );
 void backtrace_line( FRAME *frame );
 void print_source_line( PARSE* p );
 
@@ -498,7 +498,7 @@ void backtrace_line( FRAME *frame )
 /*  Print the entire backtrace from the given frame to the Jambase
  *  which invoked it.
  */
-static void backtrace( FRAME *frame )
+void backtrace( FRAME *frame )
 {
     while ( frame = frame->prev )
     {
