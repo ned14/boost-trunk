@@ -3181,6 +3181,7 @@ boost/libs/type_traits/tests/object_type_traits_test.cpp svneol=native#text/plai
 boost/libs/type_traits/tests/transform_traits_test.cpp svneol=native#text/plain
 boost/libs/type_traits/tools/specialisations.cpp svneol=native#text/plain
 boost/libs/utility/Assignable.html svneol=native#text/html
+boost/libs/utility/Collection.html svneol=native#text/html
 boost/libs/utility/CopyConstructible.html svneol=native#text/html
 boost/libs/utility/LessThanComparable.html svneol=native#text/html
 boost/libs/utility/MultiPassInputIterator.html svneol=native#text/html
