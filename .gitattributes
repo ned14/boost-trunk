@@ -7075,6 +7075,7 @@ boost/libs/serialization/src/extended_type_info_no_rtti.cpp svneol=native#text/p
 boost/libs/serialization/src/extended_type_info_typeid.cpp svneol=native#text/plain
 boost/libs/serialization/src/polymorphic_iarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/polymorphic_oarchive.cpp svneol=native#text/plain
+boost/libs/serialization/src/stl_port.cpp svneol=native#text/plain
 boost/libs/serialization/src/text_iarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/text_oarchive.cpp svneol=native#text/plain
 boost/libs/serialization/src/text_wiarchive.cpp svneol=native#text/plain
