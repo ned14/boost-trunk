@@ -113,6 +113,7 @@ boost/boost/function/function8.hpp svneol=native#text/plain
 boost/boost/function/function9.hpp svneol=native#text/plain
 boost/boost/function/function_base.hpp svneol=native#text/plain
 boost/boost/function/function_template.hpp svneol=native#text/plain
+boost/boost/function/gen_function_N.pl svneol=native#text/x-perl
 boost/boost/function_output_iterator.hpp svneol=native#text/plain
 boost/boost/functional.hpp svneol=native#text/plain
 boost/boost/generator_iterator.hpp svneol=native#text/plain
