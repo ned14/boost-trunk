@@ -17,7 +17,6 @@
 #ifndef BOOST_MPL_INTEGRAL_C_HPP_INCLUDED
 #define BOOST_MPL_INTEGRAL_C_HPP_INCLUDED
 
-#include "boost/mpl/is_reflective.hpp"
 #include "boost/config.hpp"
 
 namespace boost {
@@ -25,18 +24,20 @@ namespace mpl {
 
 template< typename T, T N >
 struct integral_c
-#if defined(BOOST_MPL_NO_IS_REFLECTIVE_TRAIT_SPECIALIZATION)
-    : aux::reflective_type_base
-#endif
 {
     BOOST_STATIC_CONSTANT(T, value = N);
     typedef integral_c type;
     typedef T value_type;
 
-    // agurt, 15/jan/02: MSVC6.5 workaround; the compiler gives an ICE 
-    // if you write 'N + 1' instead of 'value + 1'    
+    // have to #ifdef here: some compilers don't like the 'N + 1' form (MSVC),
+    // while some other don't like 'value + 1' (Borland)
+#if !defined(__BORLANDC__)
     typedef integral_c<T, value + 1> next;
     typedef integral_c<T, value - 1> prior;
+#else
+    typedef integral_c<T, N + 1> next;
+    typedef integral_c<T, N - 1> prior;
+#endif
 
     // enables uniform function call syntax for families of overloaded 
     // functions that return objects of both arithmetic ('int', 'long',
@@ -45,26 +46,16 @@ struct integral_c
     operator T() const { return this->value; } 
 };
 
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && (!defined(BOOST_MSVC) && (BOOST_MSVC != 1301))
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
+ && (!defined(BOOST_MSVC) && (BOOST_MSVC != 1301)) \
+ && !defined(__BORLANDC__)
 // 'bool' constant doesn't have 'next'/'prior' members
 template< bool C >
 struct integral_c<bool, C>
-#if defined(BOOST_MPL_NO_IS_REFLECTIVE_TRAIT_SPECIALIZATION)
-    : aux::reflective_type_base
-#endif
 {
     BOOST_STATIC_CONSTANT(bool, value = C);
     typedef integral_c type;
     operator bool() const { return this->value; }
-};
-#endif
-
-#if !defined(BOOST_MPL_NO_IS_REFLECTIVE_TRAIT_SPECIALIZATION)
-template< typename T, T N >
-struct is_reflective< integral_c<T,N> >
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-    typedef is_reflective type;
 };
 #endif
 
