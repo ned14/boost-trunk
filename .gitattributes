@@ -8454,6 +8454,7 @@ boost/tools/regression/xsl_reports/utils/makedirs.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/utils/send_mail.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/utils/sourceforge.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/utils/tar.py svneol=native#text/x-python
+boost/tools/regression/xsl_reports/utils/zip.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/xsl/add_expected_results.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/common.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/exslt/functions/replace/str.replace.function.xsl svneol=native#text/xml
