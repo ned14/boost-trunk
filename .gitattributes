@@ -51,7 +51,6 @@ boost/boost/graph/detail/array_binary_tree.hpp svneol=native#text/plain
 boost/boost/graph/detail/bitset.hpp svneol=native#text/plain
 boost/boost/graph/detail/bitset_adaptor.hpp svneol=native#text/plain
 boost/boost/graph/detail/connected_components.hpp svneol=native#text/plain
-boost/boost/graph/detail/dual_iterator.hpp svneol=native#text/plain
 boost/boost/graph/detail/edge.hpp svneol=native#text/plain
 boost/boost/graph/detail/incidence_iterator.hpp svneol=native#text/plain
 boost/boost/graph/detail/incremental_components.hpp svneol=native#text/plain
