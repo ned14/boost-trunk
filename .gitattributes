@@ -358,6 +358,7 @@ boost/boost/date_time/time.hpp svneol=native#text/plain
 boost/boost/date_time/time_clock.hpp svneol=native#text/plain
 boost/boost/date_time/time_defs.hpp svneol=native#text/plain
 boost/boost/date_time/time_duration.hpp svneol=native#text/plain
+boost/boost/date_time/time_facet.hpp svneol=native#text/plain
 boost/boost/date_time/time_formatting_streams.hpp svneol=native#text/plain
 boost/boost/date_time/time_iterator.hpp svneol=native#text/plain
 boost/boost/date_time/time_parsing.hpp svneol=native#text/plain
