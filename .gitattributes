@@ -7915,6 +7915,7 @@ boost/libs/smart_ptr/src/sp_collector.cpp svneol=native#text/plain
 boost/libs/smart_ptr/src/sp_debug_hooks.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/Jamfile svneol=native#text/plain
 boost/libs/smart_ptr/test/Jamfile.v2 svneol=native#text/plain
+boost/libs/smart_ptr/test/atomic_count_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/collector_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/get_deleter_test.cpp svneol=native#text/plain
 boost/libs/smart_ptr/test/intrusive_ptr_test.cpp svneol=native#text/plain
