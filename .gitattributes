@@ -133,7 +133,6 @@ boost/development/py_cpp/extclass.h svneol=native#text/plain
 boost/development/py_cpp/extclass_demo.cpp svneol=native#text/plain
 boost/development/py_cpp/extclass_demo.h svneol=native#text/plain
 boost/development/py_cpp/extclass_demo.py svneol=native#text/x-python
-boost/development/py_cpp/extclass_pygen.h svneol=native#text/plain
 boost/development/py_cpp/functions.cpp svneol=native#text/plain
 boost/development/py_cpp/functions.h svneol=native#text/plain
 boost/development/py_cpp/gcc.mak svneol=native#text/plain
