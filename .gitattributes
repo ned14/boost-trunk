@@ -413,6 +413,7 @@ boost/boost/python/detail/type_list.hpp svneol=native#text/plain
 boost/boost/python/detail/types.hpp svneol=native#text/plain
 boost/boost/python/detail/unwind_type.hpp svneol=native#text/plain
 boost/boost/python/detail/void_adaptor.hpp svneol=native#text/plain
+boost/boost/python/detail/void_ptr.hpp svneol=native#text/plain
 boost/boost/python/detail/wrap_function.hpp svneol=native#text/plain
 boost/boost/python/detail/wrap_python.hpp svneol=native#text/plain
 boost/boost/python/errors.hpp svneol=native#text/plain
