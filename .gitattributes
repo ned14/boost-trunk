@@ -621,7 +621,6 @@ boost/boost/iostreams/detail/adapter/concept_adapter.hpp svneol=native#text/plai
 boost/boost/iostreams/detail/adapter/direct_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/mode_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/output_iterator_adapter.hpp svneol=native#text/plain
-boost/boost/iostreams/detail/adapter/random_access_container_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/range_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/add_facet.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/bool_trait_def.hpp svneol=native#text/plain
