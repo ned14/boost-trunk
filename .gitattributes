@@ -6785,6 +6785,7 @@ boost/libs/property_map/index.html svneol=native#text/html
 boost/libs/property_map/iterator_property_map.html svneol=native#text/html
 boost/libs/property_map/property_map.html svneol=native#text/html
 boost/libs/property_map/test/Jamfile svneol=native#text/plain
+boost/libs/property_map/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/property_map/test/dynamic_properties_test.cpp svneol=native#text/plain
 boost/libs/property_map/test/property_map_cc.cpp svneol=native#text/plain
 boost/libs/property_map/vector_property_map.html svneol=native#text/html
