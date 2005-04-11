@@ -6789,6 +6789,7 @@ boost/libs/property_map/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/property_map/test/dynamic_properties_test.cpp svneol=native#text/plain
 boost/libs/property_map/test/property_map_cc.cpp svneol=native#text/plain
 boost/libs/property_map/vector_property_map.html svneol=native#text/html
+boost/libs/ptr_container/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/ptr_container/doc/associative_ptr_container.html svneol=native#text/html
 boost/libs/ptr_container/doc/associative_ptr_container.rst svneol=native#text/plain
 boost/libs/ptr_container/doc/cboost.gif -text svneol=unset#image/gif
