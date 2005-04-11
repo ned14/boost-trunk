@@ -619,7 +619,6 @@ boost/boost/iostreams/copy.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/access_control.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/concept_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/direct_adapter.hpp svneol=native#text/plain
-boost/boost/iostreams/detail/adapter/forward_container_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/mode_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/output_iterator_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/adapter/random_access_container_adapter.hpp svneol=native#text/plain
