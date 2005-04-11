@@ -1935,6 +1935,7 @@ boost/boost/operators.hpp svneol=native#text/plain
 boost/boost/optional.hpp svneol=native#text/plain
 boost/boost/optional/optional.hpp svneol=native#text/plain
 boost/boost/optional/optional_fwd.hpp svneol=native#text/plain
+boost/boost/parameter.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/arg_list.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/default.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/overloads.hpp svneol=native#text/plain
