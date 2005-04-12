@@ -4784,6 +4784,7 @@ boost/libs/iostreams/test/newline_filter_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/null_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/offset_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/pipable_test.cpp svneol=native#text/plain
+boost/libs/iostreams/test/positioning_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/putback_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/read_bidir_filter_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/read_bidir_streambuf_test.hpp svneol=native#text/plain
