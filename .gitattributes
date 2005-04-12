@@ -2277,7 +2277,6 @@ boost/boost/ptr_container/ptr_deque.hpp svneol=native#text/plain
 boost/boost/ptr_container/ptr_list.hpp svneol=native#text/plain
 boost/boost/ptr_container/ptr_map.hpp svneol=native#text/plain
 boost/boost/ptr_container/ptr_map_adapter.hpp svneol=native#text/plain
-boost/boost/ptr_container/ptr_predicate.hpp svneol=native#text/plain
 boost/boost/ptr_container/ptr_sequence_adapter.hpp svneol=native#text/plain
 boost/boost/ptr_container/ptr_set.hpp svneol=native#text/plain
 boost/boost/ptr_container/ptr_set_adapter.hpp svneol=native#text/plain
