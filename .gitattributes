@@ -701,6 +701,7 @@ boost/boost/iostreams/filtering_streambuf.hpp svneol=native#text/plain
 boost/boost/iostreams/offset.hpp svneol=native#text/plain
 boost/boost/iostreams/operations.hpp svneol=native#text/plain
 boost/boost/iostreams/pipeline.hpp svneol=native#text/plain
+boost/boost/iostreams/positioning.hpp svneol=native#text/plain
 boost/boost/iostreams/reverse.hpp svneol=native#text/plain
 boost/boost/iostreams/skip.hpp svneol=native#text/plain
 boost/boost/iostreams/stream_facade.hpp svneol=native#text/plain
