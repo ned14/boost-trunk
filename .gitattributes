@@ -1959,6 +1959,7 @@ boost/boost/parameter/aux_/void.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/yesno.hpp svneol=native#text/plain
 boost/boost/parameter/config.hpp svneol=native#text/plain
 boost/boost/parameter/keyword.hpp svneol=native#text/plain
+boost/boost/parameter/macros.hpp svneol=native#text/plain
 boost/boost/parameter/parameters.hpp svneol=native#text/plain
 boost/boost/pending/bucket_sorter.hpp svneol=native#text/plain
 boost/boost/pending/container_traits.hpp svneol=native#text/plain
