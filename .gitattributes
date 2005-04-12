@@ -8929,7 +8929,6 @@ boost/libs/test/example/env/global_id.cpp svneol=native#text/plain
 boost/libs/test/example/env/modifier_combination.cpp svneol=native#text/plain
 boost/libs/test/example/env/validation/Jamfile svneol=native#text/plain
 boost/libs/test/example/env/validation/need_typed_access.cpp svneol=native#text/plain
-boost/libs/test/example/env/validation/res -text
 boost/libs/test/example/env/variable_ex.cpp svneol=native#text/plain
 boost/libs/test/example/exec_mon_example.cpp svneol=native#text/plain
 boost/libs/test/example/named_param_example.cpp svneol=native#text/plain
