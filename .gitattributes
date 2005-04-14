@@ -5086,6 +5086,7 @@ boost/libs/libraries.htm svneol=native#text/html
 boost/libs/logic/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/logic/doc/tribool.boostbook -text
 boost/libs/logic/test/Jamfile svneol=native#text/plain
+boost/libs/logic/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/logic/test/tribool_io_test.cpp svneol=native#text/plain
 boost/libs/logic/test/tribool_rename_test.cpp svneol=native#text/plain
 boost/libs/logic/test/tribool_test.cpp svneol=native#text/plain
@@ -5791,6 +5792,7 @@ boost/libs/mpl/preprocessed/vector/vector40_c.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/vector/vector50.cpp svneol=native#text/plain
 boost/libs/mpl/preprocessed/vector/vector50_c.cpp svneol=native#text/plain
 boost/libs/mpl/test/Jamfile svneol=native#text/plain
+boost/libs/mpl/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/mpl/test/advance.cpp svneol=native#text/plain
 boost/libs/mpl/test/always.cpp svneol=native#text/plain
 boost/libs/mpl/test/apply.cpp svneol=native#text/plain
