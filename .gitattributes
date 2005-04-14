@@ -8503,6 +8503,7 @@ boost/libs/spirit/phoenix/test/stl_tests.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/test/tuples_tests.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/test/unary_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/Jamfile svneol=native#text/plain
+boost/libs/spirit/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/spirit/test/actor/action_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/actor/action_tests.hpp svneol=native#text/plain
 boost/libs/spirit/test/actor/assign_key_test.cpp svneol=native#text/plain
