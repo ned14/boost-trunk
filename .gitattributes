@@ -3449,6 +3449,7 @@ boost/libs/assign/doc/my_vector_example.html svneol=native#text/html
 boost/libs/assign/doc/style.css svneol=native#text/css
 boost/libs/assign/index.html svneol=native#text/html
 boost/libs/assign/test/Jamfile svneol=native#text/plain
+boost/libs/assign/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/assign/test/TODO svneol=native#text/plain
 boost/libs/assign/test/array.cpp svneol=native#text/plain
 boost/libs/assign/test/basic.cpp svneol=native#text/plain
