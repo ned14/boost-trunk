@@ -9305,6 +9305,7 @@ boost/libs/utility/current_function.html svneol=native#text/html
 boost/libs/utility/current_function_test.cpp svneol=native#text/plain
 boost/libs/utility/enable_if.html svneol=native#text/html
 boost/libs/utility/enable_if/test/Jamfile svneol=native#text/plain
+boost/libs/utility/enable_if/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/utility/enable_if/test/constructors.cpp svneol=native#text/plain
 boost/libs/utility/enable_if/test/dummy_arg_disambiguation.cpp svneol=native#text/plain
 boost/libs/utility/enable_if/test/lazy.cpp svneol=native#text/plain
