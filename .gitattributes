@@ -3408,6 +3408,7 @@ boost/libs/algorithm/string/doc/external_concepts.html svneol=native#text/html
 boost/libs/algorithm/string/doc/intro.xml svneol=native#text/xml
 boost/libs/algorithm/string/doc/quickref.xml svneol=native#text/xml
 boost/libs/algorithm/string/doc/rationale.xml svneol=native#text/xml
+boost/libs/algorithm/string/doc/release_notes.xml svneol=native#text/xml
 boost/libs/algorithm/string/doc/string_algo.xml svneol=native#text/xml
 boost/libs/algorithm/string/doc/usage.xml svneol=native#text/xml
 boost/libs/algorithm/string/example/Jamfile svneol=native#text/plain
