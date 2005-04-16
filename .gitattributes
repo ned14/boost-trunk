@@ -8705,6 +8705,8 @@ boost/libs/statechart/test/UnsupportedDeepHistoryTest.cpp svneol=native#text/pla
 boost/libs/statechart/test/UnsupportedDeepHistoryTest.vcproj -text
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/Jamfile.v2 svneol=native#text/plain
+boost/libs/static_assert/doc/Jamfile.v2 svneol=native#text/plain
+boost/libs/static_assert/doc/static_assert.qbk svneol=native#text/plain
 boost/libs/static_assert/index.html svneol=native#text/html
 boost/libs/static_assert/static_assert.htm svneol=native#text/html
 boost/libs/static_assert/static_assert_example_1.cpp svneol=native#text/plain
