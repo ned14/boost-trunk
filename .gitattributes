@@ -4118,6 +4118,7 @@ boost/libs/functional/hash/test/hash_sequence_test.hpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_set_test.cpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_set_test.hpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_string_test.cpp svneol=native#text/plain
+boost/libs/functional/hash/test/hash_value_array_test.cpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_vector_test.cpp svneol=native#text/plain
 boost/libs/functional/index.html svneol=native#text/html
 boost/libs/functional/mem_fun.html svneol=native#text/html
