@@ -9057,7 +9057,6 @@ boost/libs/test/test/test_files/test_undef.cfg -text
 boost/libs/test/test/test_fp_comparisons.cpp svneol=native#text/plain
 boost/libs/test/test/test_tools_test.cpp svneol=native#text/plain
 boost/libs/test/test/token_iterator_test.cpp svneol=native#text/plain
-boost/libs/test/test/unit_test_suite_ex_test.cpp svneol=native#text/plain
 boost/libs/thread/build/.cvsignore -text
 boost/libs/thread/build/Jamfile svneol=native#text/plain
 boost/libs/thread/build/Jamfile.v2 svneol=native#text/plain
