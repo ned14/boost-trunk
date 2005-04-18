@@ -8895,6 +8895,12 @@ boost/libs/test/doc/usage/msvc_net.html svneol=native#text/html
 boost/libs/test/doc/usage/recomendations.html svneol=native#text/html
 boost/libs/test/example/.cvsignore -text
 boost/libs/test/example/Jamfile svneol=native#text/plain
+boost/libs/test/example/auto_unit_test_example1.cpp svneol=native#text/plain
+boost/libs/test/example/auto_unit_test_example2.cpp svneol=native#text/plain
+boost/libs/test/example/auto_unit_test_example3.cpp svneol=native#text/plain
+boost/libs/test/example/auto_unit_test_example4.cpp svneol=native#text/plain
+boost/libs/test/example/auto_unit_test_example5.cpp svneol=native#text/plain
+boost/libs/test/example/auto_unit_test_example6.cpp svneol=native#text/plain
 boost/libs/test/example/cla/Jamfile svneol=native#text/plain
 boost/libs/test/example/cla/assign_to.cpp svneol=native#text/plain
 boost/libs/test/example/cla/basic_float.cpp svneol=native#text/plain
