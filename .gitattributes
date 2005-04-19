@@ -4254,6 +4254,8 @@ boost/libs/graph/doc/figs/graph_search.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/knights_tour.fig -text
 boost/libs/graph/doc/figs/knights_tour.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/max-flow.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/python.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/python_ico.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/quick_start.fig -text
 boost/libs/graph/doc/figs/quick_start.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/rel_betweenness_centrality.gif -text svneol=unset#image/gif
@@ -4327,6 +4329,7 @@ boost/libs/graph/doc/property_map.html svneol=native#text/html
 boost/libs/graph/doc/property_writer.html svneol=native#text/html
 boost/libs/graph/doc/publications.html svneol=native#text/html
 boost/libs/graph/doc/push_relabel_max_flow.html svneol=native#text/html
+boost/libs/graph/doc/python.html svneol=native#text/html
 boost/libs/graph/doc/quick_tour.html svneol=native#text/html
 boost/libs/graph/doc/random.html svneol=native#text/html
 boost/libs/graph/doc/random_layout.html svneol=native#text/html
@@ -4520,6 +4523,7 @@ boost/libs/graph/example/property_iterator.cpp svneol=native#text/plain
 boost/libs/graph/example/push-relabel-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/put-get-helper-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/python/biconnected_components.dot -text
+boost/libs/graph/example/python/breadth_first_search.py svneol=native#text/x-python
 boost/libs/graph/example/python/disconnected.dot -text
 boost/libs/graph/example/python/mst.dot -text
 boost/libs/graph/example/python/vis.py svneol=native#text/x-python
