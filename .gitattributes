@@ -423,6 +423,7 @@ boost/boost/detail/shared_count.hpp svneol=native#text/plain
 boost/boost/detail/shared_ptr_nmt.hpp svneol=native#text/plain
 boost/boost/detail/sp_counted_base.hpp svneol=native#text/plain
 boost/boost/detail/sp_counted_base_cw_ppc.hpp svneol=native#text/plain
+boost/boost/detail/sp_counted_base_gcc_ia64.hpp svneol=native#text/plain
 boost/boost/detail/sp_counted_base_gcc_ppc.hpp svneol=native#text/plain
 boost/boost/detail/sp_counted_base_gcc_x86.hpp svneol=native#text/plain
 boost/boost/detail/sp_counted_base_nt.hpp svneol=native#text/plain
