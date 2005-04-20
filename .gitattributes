@@ -4106,6 +4106,7 @@ boost/libs/functional/hash/examples/Jamfile.v2 svneol=native#text/plain
 boost/libs/functional/hash/examples/books.cpp svneol=native#text/plain
 boost/libs/functional/hash/examples/point.cpp svneol=native#text/plain
 boost/libs/functional/hash/examples/portable.cpp svneol=native#text/plain
+boost/libs/functional/hash/index.html svneol=native#text/html
 boost/libs/functional/hash/test/Jamfile svneol=native#text/plain
 boost/libs/functional/hash/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/functional/hash/test/compile_time.hpp svneol=native#text/plain
