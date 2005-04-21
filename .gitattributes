@@ -3369,6 +3369,7 @@ boost/doc/html/array.html svneol=native#text/html
 boost/doc/html/boostbook.css svneol=native#text/css
 boost/doc/html/boostbook.html svneol=native#text/html
 boost/doc/html/function.html svneol=native#text/html
+boost/doc/html/hash.html svneol=native#text/html
 boost/doc/html/images/blank.png -text svneol=unset#image/png
 boost/doc/html/images/caution.png -text svneol=unset#image/png
 boost/doc/html/images/draft.png -text svneol=unset#image/png
