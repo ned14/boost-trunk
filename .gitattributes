@@ -7912,7 +7912,6 @@ boost/libs/serialization/test/test_binary.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_class_info_load.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_class_info_save.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_codecvt_null.cpp svneol=native#text/plain
-boost/libs/serialization/test/test_const.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_contained_class.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_cyclic_ptrs.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_delete_pointer.cpp svneol=native#text/plain
