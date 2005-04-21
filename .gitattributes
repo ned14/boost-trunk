@@ -7805,6 +7805,7 @@ boost/libs/serialization/doc/derivation.html svneol=native#text/html
 boost/libs/serialization/doc/dot.gif -text svneol=unset#image/gif
 boost/libs/serialization/doc/exception_safety.html svneol=native#text/html
 boost/libs/serialization/doc/exceptions.html svneol=native#text/html
+boost/libs/serialization/doc/extended_type_info.html svneol=native#text/html
 boost/libs/serialization/doc/faq.html svneol=native#text/html
 boost/libs/serialization/doc/headers.html svneol=native#text/html
 boost/libs/serialization/doc/history.html svneol=native#text/html
