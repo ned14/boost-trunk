@@ -3400,7 +3400,6 @@ boost/doc/html/variant.html svneol=native#text/html
 boost/doc/src/boost.xml svneol=native#text/xml
 boost/google_logo_40wht.png -text svneol=unset#image/png
 boost/index.htm svneol=native#text/html
-boost/index_1_33_0.htm svneol=native#text/html
 boost/libs/algorithm/minmax/doc/minmax_benchs.html svneol=native#text/html
 boost/libs/algorithm/minmax/doc/minmax_synopsis.html svneol=native#text/html
 boost/libs/algorithm/minmax/example/Jamfile svneol=native#text/plain
