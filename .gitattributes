@@ -6341,6 +6341,7 @@ boost/libs/optional/test/optional_test_tie.cpp svneol=native#text/plain
 boost/libs/parameter/test/Jamfile svneol=native#text/plain
 boost/libs/parameter/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/parameter/test/basics.cpp svneol=native#text/plain
+boost/libs/parameter/test/basics.hpp svneol=native#text/plain
 boost/libs/parameter/test/macros.cpp svneol=native#text/plain
 boost/libs/parameter/test/sfinae.cpp svneol=native#text/plain
 boost/libs/pool/TODO.txt svneol=native#text/plain
