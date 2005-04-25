@@ -5,12 +5,15 @@ boost/libs/python/pyste/src/*.pyc
 boost/libs/python/pyste/src/Pyste/*.pyc
 boost/libs/python/pyste/src/Pyste/.project
 boost/libs/python/pyste/tests/*.arg
+boost/libs/python/pyste/tests/*.cpp
 boost/libs/python/pyste/tests/*.dll
 boost/libs/python/pyste/tests/*.exp
 boost/libs/python/pyste/tests/*.lib
 boost/libs/python/pyste/tests/*.obj
+boost/libs/python/pyste/tests/*.pch
 boost/libs/python/pyste/tests/*.pyc
 boost/libs/python/pyste/tests/.sconsign
+boost/libs/python/pyste/tests/cache
 boost/libs/test/build/bin
 boost/libs/test/build/msvc71_proj/*.ncb
 boost/libs/test/build/msvc71_proj/*.rsp
