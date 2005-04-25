@@ -10613,6 +10613,7 @@ boost/tools/build/v2/tools/msvc.jam svneol=native#text/plain
 boost/tools/build/v2/tools/python-config.jam svneol=native#text/plain
 boost/tools/build/v2/tools/python.jam svneol=native#text/plain
 boost/tools/build/v2/tools/qt.jam svneol=native#text/plain
+boost/tools/build/v2/tools/quickbook-config.jam svneol=native#text/plain
 boost/tools/build/v2/tools/quickbook.jam svneol=native#text/plain
 boost/tools/build/v2/tools/rc.jam svneol=native#text/plain
 boost/tools/build/v2/tools/stage.jam svneol=native#text/plain
