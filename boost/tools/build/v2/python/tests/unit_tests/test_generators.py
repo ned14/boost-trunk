@@ -25,25 +25,16 @@ class TestGenerators (unittest.TestCase):
         feature.feature ('define', [], ['free'])
 
         g = generators.register_standard ('a_b', ['A'], ['B'], ['<define>XYZ'])
-        g = generators.register_standard ('a_b_<define>ABC', ['A'], ['B'], ['<define>ABC'])
+        g = generators.register_standard ('a_b_define_ABC', ['A'], ['B'], ['<define>ABC'])
         g = generators.register_standard ('ab_c', ['A', 'B'], ['C'])
         g = generators.register_standard ('a_e', ['A'], ['E'])
         
     def test_register (self):
         self.assertEqual ('a_b', generators.find ('a_b').id ())
-        self.assertEqual ('a_b_<define>ABC', generators.find ('a_b_<define>ABC').id ())
+        self.assertEqual ('a_b_define_ABC', generators.find ('a_b_define_ABC').id ())
         
     def test_construct (self):
         project = self.manager_.projects ().create ('.')
-        
-
-
-
-        from boost.build.util.logger import TextLogger
-        self.manager_.set_logger (TextLogger ())
-
-
-
         name = None
         target_type = 'B'
         multiple = False
@@ -54,23 +45,23 @@ class TestGenerators (unittest.TestCase):
         # TODO: check return value
 #        self.assert_ (targets)
 
-    def test__find_viable_generators_aux (self):
+    def test_find_viable_generators_aux (self):
         target_type = 'B'
-        prop_set1 = property_set.create ([])
+        prop_set1 = property_set.create (['<define>ABC'])
         viable = generators.find_viable_generators_aux (self.logger_, target_type, prop_set1)
         self.assertEqual (1, len (viable))
         
-        prop_set2 = property_set.create (['<define>ABC'])
+        prop_set2 = property_set.create (['<define>ABC', '<define>XYZ'])
         viable = generators.find_viable_generators_aux (self.logger_, target_type, prop_set2)
         self.assertEqual (2, len (viable))
 
-    def test__find_viable_generators (self):
+    def test_find_viable_generators (self):
         target_type = 'B'
-        prop_set1 = property_set.create ([])
+        prop_set1 = property_set.create (['<define>ABC'])
         viable = generators.find_viable_generators (self.logger_, target_type, prop_set1)
         self.assertEqual (1, len (viable))
         
-        prop_set2 = property_set.create (['<define>ABC'])
+        prop_set2 = property_set.create (['<define>ABC', '<define>XYZ'])
         viable = generators.find_viable_generators (self.logger_, target_type, prop_set2)
         self.assertEqual (2, len (viable))
         
@@ -116,7 +107,7 @@ class TestGenerators (unittest.TestCase):
         pass
 
     def test_clone (self):
-        original_g = generators.find ('a_b_<define>ABC')
+        original_g = generators.find ('a_b_define_ABC')
         new_g = original_g.clone ('new_a_b', ['<define>NEW_GEN'])
         self.assertEqual ('new_a_b', new_g.id ())
         self.assertEqual (['<define>ABC', '<define>NEW_GEN'], new_g.requirements ())

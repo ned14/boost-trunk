@@ -41,11 +41,11 @@ class UnixLinkingGenerator (builtin.LinkingGenerator):
 
 
 class UnixArchiveGenerator (builtin.ArchiveGenerator):
-    def __init__ (self, id, composing, source_types, target_types, requirements):
-        builtin.ArchiveGenerator.__init__ (self, id, composing, source_types, target_types, requirements)
+    def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
+        builtin.ArchiveGenerator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
         
     def run (self, project, name, prop_set, sources, multiple):
-        result = ArchiveGenerator.run (project, name, prop_set, sources, multiple)
+        result = builtin.ArchiveGenerator.run (self, project, name, prop_set, sources, multiple)
         set_library_order (sources, prop_set, result)
         return result
 
@@ -85,10 +85,8 @@ generators.register (UnixPrebuiltLibGenerator ('unix.prebuilt', False, [], ['LIB
 ### # Declare generators
 ### generators.register [ new UnixLinkingGenerator unix.link : LIB OBJ : EXE 
 ###     : <toolset>unix ] ;
-### 
-### generators.register [ new UnixArchiveGenerator unix.archive : OBJ : STATIC_LIB 
-###     : <toolset>unix ] ;
-### 
+generators.register (UnixArchiveGenerator ('unix.archive', True, ['OBJ'], ['STATIC_LIB'], ['<toolset>unix']))
+
 ### generators.register [ new UnixLinkingGenerator unix.link.dll : LIB OBJ : SHARED_LIB 
 ###     : <toolset>unix ] ;
 ### 
@@ -102,10 +100,12 @@ generators.register (UnixPrebuiltLibGenerator ('unix.prebuilt', False, [], ['LIB
 ### 
 ### actions link.dll {
 ### }
-### 
-### actions archive {    
-### }
-### 
+
+def unix_archive (manager, targets, sources, properties):
+    pass
+
+action.register ('unix.archive', unix_archive, [''])
+
 ### actions searched-lib-generator {    
 ### }
 ### 

@@ -670,7 +670,7 @@ def try_one_generator_really (project, name, generator, multiple, target_type, p
     extra2 = []
     if multiple:
         for e in extra:
-            try2 = construct_types (project, name, target_type, False, properties, e)
+            try2 = construct_types (project, name, [target_type], False, properties, [e])
             usage_requirements = usage_requirements.add (try2 [0])
             result.extend (try2 [1:])
 
@@ -684,7 +684,17 @@ def try_one_generator_really (project, name, generator, multiple, target_type, p
     if targets:
         result = (usage_requirements, result)
 
-    return (result [0], result [1] + extra2)
+    ret_targets = []
+    if result and len (result) > 1:
+        ret_targets.extend (result [1])
+    ret_targets.extend (extra2)
+    
+    if result:
+        ret_usage_requirements = result [0]
+    else:
+        ret_usage_requirements = property_set.empty ()
+    
+    return (ret_usage_requirements, ret_targets)
 
 
 def try_one_generator (project, name, generator, multiple, target_type, properties, sources):
@@ -779,6 +789,7 @@ def find_viable_generators_aux (logger, target_type, prop_set):
     
             m = g.match_rank (prop_set)
             if m:
+                logger.log (__name__, "***** Rank: %s (%s)" % (m, prop_set.raw ()))
                 logger.log (__name__, "  is viable")
                 viable_generators.append (g)
                 t = []

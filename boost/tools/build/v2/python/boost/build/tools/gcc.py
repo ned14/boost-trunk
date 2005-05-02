@@ -67,7 +67,7 @@ def gcc_compile_c (manager, targets, sources, properties):
     # If we use the name g++ then default file suffix -> language mapping
     # does not work. So have to pass -x option. Maybe, we can work around this
     # by allowing the user to specify both C and C++ compiler names.
-    manager.engine ().set_target_variable (targets, 'LANG', "-x c")
+    manager.engine ().set_target_variable (targets, 'LANG', '-x c')
 
 action.register ('gcc.compile.c', gcc_compile_c, ['"$(CONFIG_COMMAND)" $(LANG) -Wall $(OPTIONS) -D$(DEFINES) -I"$(INCLUDES)" -c -o "$(<)" "$(>)"'])
 
@@ -146,22 +146,21 @@ generators.register (GccLinkingGenerator ('gcc.link.dll', True, ['LIB', 'OBJ'], 
 
 ### generators.override gcc.prebuilt : builtin.prebuilt ;
 ### generators.override gcc.searched-lib-generator : searched-lib-generator ;
-### 
-### 
-### 
-### # Declare flags for linking
-### # First, the common flags
-### flags gcc.link OPTIONS <debug-symbols>on : -g ;
-### flags gcc.link OPTIONS <profiling>on : -pg ;
-### flags gcc.link OPTIONS <linkflags> ;
-### flags gcc.link LINKPATH <library-path> ;
-### flags gcc.link FINDLIBS-ST <find-static-library> ;
-### flags gcc.link FINDLIBS-SA <find-shared-library> ;
-### flags gcc.link LIBRARIES <library-file> ;
-### 
+
+
+# Declare flags for linking
+# First, the common flags
+toolset.flags ('gcc.link', 'OPTIONS', '<debug-symbols>on', ['-g'])
+toolset.flags ('gcc.link', 'OPTIONS', '<profiling>on', ['-pg'])
+toolset.flags ('gcc.link', 'OPTIONS', '<linkflags>')
+toolset.flags ('gcc.link', 'LINKPATH', '<library-path>')
+toolset.flags ('gcc.link', 'FINDLIBS-ST', '<find-static-library>')
+toolset.flags ('gcc.link', 'FINDLIBS-SA', '<find-shared-library>')
+toolset.flags ('gcc.link', 'LIBRARIES', '<library-file>')
+
 ### # For <link-runtime>static we made sure there are no dynamic libraries 
 ### # in the link
-### flags gcc.link OPTIONS <link-runtime>static : -static ;
+toolset.flags ('gcc.link', 'OPTIONS', '<link-runtime>static', ['-static'])
 
 def init_link_flags (tool, linker, condition):
     """ Sets the vendor specific flags.
@@ -218,12 +217,13 @@ def init_link_flags (tool, linker, condition):
 ### # The 'c' letter means suppresses warning in case the archive
 ### #   does not exists yet. That warning is produced only on
 ### #   some platforms, for whatever reasons.
-### actions piecemeal archive 
-### {
-###     ar ruc "$(<)" "$(>)"
-### }
-### 
-### 
+def gcc_archive (manager, targets, sources, properties):
+    pass
+
+action.register ('gcc.archive', gcc_archive, ['ar ruc "$(<)" "$(>)"'])
+
+builtin.register_c_compiler ('gcc.compile.c++', ['CPP'], ['OBJ'], ['<toolset>gcc'])
+
 ### # Set up threading support. It's somewhat contrived, so perform it at the end,
 ### # to avoid cluttering other code.
 ### 

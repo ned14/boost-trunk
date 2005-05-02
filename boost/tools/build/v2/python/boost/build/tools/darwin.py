@@ -51,8 +51,7 @@ action.register ('darwin.compile.cpp', None, ['$(CONFIG_COMMAND) $(ST_OPTIONS) -
 # TODO: how to set 'bind LIBRARIES'?
 action.register ('darwin.link.dll', None, ['$(CONFIG_COMMAND) -dynamiclib -L"$(LINKPATH)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-SA) -l$(FINDLIBS-ST) -framework$(_)$(FRAMEWORK) $(OPTIONS)'])
 
-### actions piecemeal archive
-### {
-###     ar -c -r -s $(ARFLAGS) "$(<:T)" "$(>:T)"
-### }
-### 
+def darwin_archive (manager, targets, sources, properties):
+    pass
+
+action.register ('darwin.archive', darwin_archive, ['ar -c -r -s $(ARFLAGS) "$(<:T)" "$(>:T)"'])

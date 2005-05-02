@@ -61,8 +61,15 @@ class TestPropertySet (unittest.TestCase):
         pass
     
     def test_add_defaults (self):
-        # TODO: implement this
-        pass
+        ps = property_set.empty ()
+        self.assertEqual ([], ps.raw ())
+
+        ps = ps.add_defaults ()
+        self.assertEqual (['<a>A1', '<d>D', '<e>E'], ps.raw ())
+
+        # Make sure it didn't touch the original
+        ps = property_set.empty ()
+        self.assertEqual ([], ps.raw ())
 
     def test_target_path (self):
         # TODO: implement this

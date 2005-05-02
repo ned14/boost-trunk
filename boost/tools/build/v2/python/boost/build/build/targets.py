@@ -1034,23 +1034,23 @@ class MainTarget (AbstractTarget):
 
         return (usage_requirements, unique (result))
         
-    def __generate_really (self, property_set):
+    def __generate_really (self, prop_set):
         """ Generates the main target with the given property set
             and returns a list which first element is property_set object
             containing usage_requirements of generated target and with
             generated virtual target in other elements. It's possible
             that no targets are generated.
         """
-        best_alternative = self.__select_alternatives (property_set)
+        best_alternative = self.__select_alternatives (prop_set)
 
         if not best_alternative:
             raise NoBestMatchingAlternative (
                 "Failed to build '%s'\n"
                 "with properties '%s'\n"
                 "because no best-matching alternative could be found."
-                  % (full_name, property_set.raw ()))
+                  % (full_name, prop_set.raw ()))
                   
-        result = best_alternative.generate (property_set)
+        result = best_alternative.generate (prop_set)
                     
         # Now return virtual targets for the only alternative
         return result

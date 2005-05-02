@@ -11,11 +11,8 @@ from boost.build.util.sequence import unique
 def reset ():
     """ Clear the module state. This is mainly for testing purposes.
     """
-    global __cache, __empty
+    global __cache
 
-    # The empty property set singleton.
-    __empty = {}
-    
     # A cache of property sets
     # TODO: use a map of weak refs?
     __cache = {}
@@ -49,11 +46,7 @@ def create_with_validation (raw_properties):
 def empty ():
     """ Returns PropertySet with empty set of properties.
     """
-    # TODO: uncomment the following
-    #if not __empty:
-    __empty = create ()
-    
-    return __empty
+    return create ()
     
 
 
@@ -218,12 +211,14 @@ class PropertySet:
 
     def add_defaults (self):
         if self.defaults_ == None:
-            self.defaults_ = create (feature.add_defaults (self.raw_))
+            expanded = feature.add_defaults (self.raw_)
+            self.defaults_ = create (expanded)
         return self.defaults_
 
     def expand (self):
         if self.expanded_ == None:
-            self.expanded_ = create (feature.expand (self.raw_))
+            expanded = feature.expand (self.raw_)
+            self.expanded_ = create (expanded)
         return self.expanded_
 
     def propagated (self):

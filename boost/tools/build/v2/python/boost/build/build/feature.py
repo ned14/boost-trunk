@@ -478,6 +478,8 @@ def add_defaults (properties):
          
           and that's kind of strange.        
     """
+    result = [ x for x in properties ]
+    
     for v in replace_grist (properties, ''):
         if v in properties:
             raise BaseException ("'add_defaults' requires explicitly specified features, but '%s' appears to be the value of an un-expanded implicit feature" % v)
@@ -490,7 +492,7 @@ def add_defaults (properties):
     xproperties = [ property for property in properties if __re_no_hyphen.match (property) ]
     missing_top = set.difference (__all_top_features, get_grist (xproperties))
     more =  defaults (missing_top)
-    properties += more
+    result += more
     xproperties += more
     
     # Add defaults for subfeatures of features which are present
@@ -503,10 +505,10 @@ def add_defaults (properties):
         
         xbase = ['<%s-%s>' % (f, xs) for xs in s]
             
-        missing_subs = set.difference (xbase, get_grist (properties))
-        properties += defaults (__select_subfeatures (p, missing_subs))
+        missing_subs = set.difference (xbase, get_grist (result))
+        result += defaults (__select_subfeatures (p, missing_subs))
     
-    return properties
+    return result
 
 def minimize (properties):
     """ Given an expanded property set, eliminate all redundancy: properties

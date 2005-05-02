@@ -269,59 +269,45 @@ class SearchedLibTarget (virtual_target.AbstractFileTarget):
 ### 
 ### type.set-scanner CPP : c-scanner ;
 
-### # The generator class for libraries (target type LIB). Depending on properties it will
-### # request building of the approapriate specific type -- SHARED_LIB, STATIC_LIB or 
-### # SHARED_LIB.
-### class lib-generator : generator
-### {
-###     rule __init__ ( * : * )
-###     {
-###         generator.__init__ $(1) : $(2) : $(3) : $(4) : $(5) : $(6) : $(7) : $(8) : $(9) ;
-###     }
-###     
-###     rule run ( project name ? : prop_set : sources * : multiple ? )
-###     {
-###         # The lib generator is composing, and can be only invoked with
-###         # explicit name. This check is present in generator.run (and so in
-###         # builtin.LinkingGenerator), but duplicate it here to avoid doing
-###         # extra work.
-###         if $(name)
-###         {            
-###             local properties = [ $(prop_set).raw ] ;
-###             # Determine the needed target type
-###             local actual-type ;
-###             if <search> in $(properties:G) || <name> in $(properties:G)
-###             {
-###                 actual-type = SEARCHED_LIB ;
-###             }
-###             else if <file> in $(properties:G)
-###             {
-###                 # The generator for 
-###                 actual-type = LIB ;
-###             }        
-###             else if <link>shared in $(properties)
-###             {
-###                 actual-type = SHARED_LIB ;
-###             }
-###             else 
-###             {
-###                 actual-type = STATIC_LIB ;
-###             }
-###             prop_set = [ $(prop_set).add-raw <main-target-type>LIB ] ;
-###             # Construct the target.
-###             return [ generators.construct $(project) $(name) : $(actual-type) 
-###               : $(prop_set) : $(sources) : LIB ] ;        
-###         }  
-###     }    
-###     
-###     rule viable-source_types ( )
-###     {
-###         return * ;
-###     }    
-### }
-### 
-### generators.register [ new lib-generator builtin.lib-generator :  : LIB ] ;
-### 
+class LibGenerator (generators.Generator):
+    """ The generator class for libraries (target type LIB). Depending on properties it will
+        request building of the approapriate specific type -- SHARED_LIB, STATIC_LIB or 
+        SHARED_LIB.
+    """
+
+    def __init__ (self, id = 'LibGenerator', composing = True, source_types = [], target_types_and_names = ['LIB'], requirements = []):
+        generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
+    
+    def run (self, project, name, prop_set, sources, multiple):
+        # The lib generator is composing, and can be only invoked with
+        # explicit name. This check is present in generator.run (and so in
+        # builtin.LinkingGenerator), but duplicate it here to avoid doing
+        # extra work.
+        if name:
+            properties = prop_set.raw ()
+            # Determine the needed target type
+            actual_type = None
+            properties_grist = get_grist (properties)
+            if '<search>' in properties_grist or '<name>' in properties_grist:
+                actual_type = 'SEARCHED_LIB'
+            elif '<file>' in properties_grist:
+                # The generator for 
+                actual_type = 'LIB'
+            elif '<link>shared' in properties:
+                actual_type = 'SHARED_LIB'
+            else:
+                actual_type = 'STATIC_LIB'
+
+            prop_set = prop_set.add_raw (['<main-target-type>LIB'])
+
+            # Construct the target.
+            return generators.construct (project, name, actual_type, True, prop_set, sources, 'LIB')
+
+    def viable_source_types (self):
+        return ['*']
+
+generators.register (LibGenerator ())
+
 ### # The implementation of the 'lib' rule. Beyond standard syntax that rule allows
 ### # simplified:
 ### #    lib a b c ;
@@ -576,13 +562,13 @@ class LinkingGenerator (generators.Generator):
 class ArchiveGenerator (generators.Generator):
     """ The generator class for handling STATIC_LIB creation.
     """
-    def __init__ (self, manager, id, rule, composing, source_types, target_types, requirements):
-        Generator.__init__ (self, manager, id, rule, composing, source_types, target_types, requirements)
+    def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
+        generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
         
     def run (self, project, name, prop_set, sources, multiple):
         sources += prop_set.get ('<library>')
         
-        result = Generator.run (project, name, prop_set, sources, multiple)
+        result = generators.Generator.run (self, project, name, prop_set, sources, multiple)
              
         return result
 
