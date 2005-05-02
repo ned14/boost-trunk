@@ -6269,7 +6269,6 @@ boost/libs/numeric/ublas/doc/types_overview.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/ublas.css svneol=native#text/css
 boost/libs/numeric/ublas/doc/unbounded_array.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector.htm svneol=native#text/html
-boost/libs/numeric/ublas/doc/vector.html svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_expression.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_proxy.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_sparse.htm svneol=native#text/html
