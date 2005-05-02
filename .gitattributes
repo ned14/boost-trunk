@@ -4844,7 +4844,6 @@ boost/libs/iostreams/src/file_descriptor.cpp svneol=native#text/plain
 boost/libs/iostreams/src/mapped_file.cpp svneol=native#text/plain
 boost/libs/iostreams/src/zlib.cpp svneol=native#text/plain
 boost/libs/iostreams/test/Jamfile svneol=native#text/plain
-boost/libs/iostreams/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/iostreams/test/array_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/auto_close_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/buffer_size_test.cpp svneol=native#text/plain
