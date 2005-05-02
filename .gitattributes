@@ -7061,7 +7061,6 @@ boost/libs/python/doc/polymorphism.txt svneol=native#text/plain
 boost/libs/python/doc/projects.html svneol=native#text/html
 boost/libs/python/doc/support.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/Jamfile.v2 svneol=native#text/plain
-boost/libs/python/doc/tutorial/doc/html/HTML.manifest -text
 boost/libs/python/doc/tutorial/doc/html/boostbook.css svneol=native#text/css
 boost/libs/python/doc/tutorial/doc/html/images/alert.png -text svneol=unset#image/png
 boost/libs/python/doc/tutorial/doc/html/images/home.png -text svneol=unset#image/png
