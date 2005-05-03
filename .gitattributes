@@ -334,6 +334,7 @@ boost/boost/date_time/gregorian_calendar.ipp svneol=native#text/plain
 boost/boost/date_time/int_adapter.hpp svneol=native#text/plain
 boost/boost/date_time/iso_format.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/conversion.hpp svneol=native#text/plain
+boost/boost/date_time/local_time/custom_time_zone.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/date_duration_operators.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/dst_transition_day_rules.hpp svneol=native#text/plain
 boost/boost/date_time/local_time/local_date_time.hpp svneol=native#text/plain
