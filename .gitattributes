@@ -4839,7 +4839,6 @@ boost/libs/iostreams/example/test.cpp svneol=native#text/plain
 boost/libs/iostreams/example/unix2dos_filter.hpp svneol=native#text/plain
 boost/libs/iostreams/index.html svneol=native#text/html
 boost/libs/iostreams/src/bzip2.cpp svneol=native#text/plain
-boost/libs/iostreams/src/bzip2_export.cpp svneol=native#text/plain
 boost/libs/iostreams/src/file_descriptor.cpp svneol=native#text/plain
 boost/libs/iostreams/src/mapped_file.cpp svneol=native#text/plain
 boost/libs/iostreams/src/zlib.cpp svneol=native#text/plain
