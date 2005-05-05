@@ -699,6 +699,7 @@ boost/boost/iostreams/filter/bzip2.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/counter.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/gzip.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/line_filter.hpp svneol=native#text/plain
+boost/boost/iostreams/filter/newline.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/newline_filter.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/one_step_filter.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/regex_filter.hpp svneol=native#text/plain
