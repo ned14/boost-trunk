@@ -4869,6 +4869,7 @@ boost/libs/iostreams/test/gzip_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/line_filter_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/mapped_file_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/newline_filter_test.cpp svneol=native#text/plain
+boost/libs/iostreams/test/newline_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/null_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/offset_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/pipeline_test.cpp svneol=native#text/plain
