@@ -10754,6 +10754,7 @@ boost/tools/regression/xsl_reports/test/restrict_to_library.xsl svneol=native#te
 boost/tools/regression/xsl_reports/test/run.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/test/run_notes_regression.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/test/run_v1.py svneol=native#text/x-python
+boost/tools/regression/xsl_reports/test/test_boost_wide_report.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/test_results.xsd svneol=native#text/xml
 boost/tools/regression/xsl_reports/utils/__init__.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/utils/accept_args.py svneol=native#text/x-python
