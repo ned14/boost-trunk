@@ -9716,6 +9716,8 @@ boost/libs/wave/test/testwave/testfiles/t_9_010.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_9_011.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_9_012.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_9_013.cpp svneol=native#text/plain
+boost/libs/wave/test/testwave/testfiles/t_9_014.cpp svneol=native#text/plain
+boost/libs/wave/test/testwave/testfiles/t_9_015.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/test.cfg -text
 boost/libs/wave/test/testwave/testwave.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testwave_app.cpp svneol=native#text/plain
