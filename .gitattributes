@@ -3981,6 +3981,7 @@ boost/libs/date_time/xmldoc/ex_simple_time_zone.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/ex_time_math.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/ex_time_periods.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/examples.xml svneol=native#text/xml
+boost/libs/date_time/xmldoc/exclusive_date_time.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/gregorian.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/gregorian_autodoc.boostbook -text
 boost/libs/date_time/xmldoc/gregorian_calendar.xml svneol=native#text/xml
