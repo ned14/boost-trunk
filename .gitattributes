@@ -1971,6 +1971,7 @@ boost/boost/parameter/aux_/unwrap_cv_reference.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/void.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/yesno.hpp svneol=native#text/plain
 boost/boost/parameter/config.hpp svneol=native#text/plain
+boost/boost/parameter/index_result.hpp svneol=native#text/plain
 boost/boost/parameter/keyword.hpp svneol=native#text/plain
 boost/boost/parameter/macros.hpp svneol=native#text/plain
 boost/boost/parameter/parameters.hpp svneol=native#text/plain
