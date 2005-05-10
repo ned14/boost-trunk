@@ -7025,7 +7025,6 @@ boost/libs/ptr_container/test/test_data.hpp svneol=native#text/plain
 boost/libs/ptr_container/test/tree_test.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/tut1.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/tut34.cpp svneol=native#text/plain
-boost/libs/ptr_container/test/tut5.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/view_example.cpp svneol=native#text/plain
 boost/libs/python/build/Attic/python_v1.zip -text svneol=unset#application/zip
 boost/libs/python/build/Jamfile svneol=native#text/plain
