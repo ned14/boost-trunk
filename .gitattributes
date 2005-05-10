@@ -8641,6 +8641,7 @@ boost/libs/spirit/test/tree_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_p_as_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_tests.cpp svneol=native#text/plain
 boost/libs/statechart/Fsm.sln -text
+boost/libs/statechart/Statechart.sln -text
 boost/libs/statechart/doc/A.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/Camera.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/Camera2.gif -text svneol=unset#image/gif
