@@ -6122,6 +6122,7 @@ boost/libs/numeric/conversion/test/test_helpers.cpp svneol=native#text/plain
 boost/libs/numeric/conversion/test/test_helpers2.cpp svneol=native#text/plain
 boost/libs/numeric/conversion/test/test_helpers3.cpp svneol=native#text/plain
 boost/libs/numeric/conversion/test/traits_test.cpp svneol=native#text/plain
+boost/libs/numeric/conversion/test/udt_example_0.cpp svneol=native#text/plain
 boost/libs/numeric/conversion/test/udt_support_test.cpp svneol=native#text/plain
 boost/libs/numeric/index.html svneol=native#text/html
 boost/libs/numeric/interval/doc/checking.htm svneol=native#text/html
