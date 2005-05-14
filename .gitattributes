@@ -7077,7 +7077,6 @@ boost/libs/python/doc/tutorial/doc/html/python/iterators.html svneol=native#text
 boost/libs/python/doc/tutorial/doc/html/python/object.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/html/python/techniques.html svneol=native#text/html
 boost/libs/python/doc/tutorial/doc/tutorial.qbk svneol=native#text/plain
-boost/libs/python/doc/tutorial/doc/tutorial.xml svneol=native#text/xml
 boost/libs/python/doc/tutorial/index.html svneol=native#text/html
 boost/libs/python/doc/v2/Apr2002.html svneol=native#text/html
 boost/libs/python/doc/v2/CallPolicies.html svneol=native#text/html
@@ -7174,6 +7173,7 @@ boost/libs/python/example/test_getting_started1.py svneol=native#text/x-python
 boost/libs/python/example/test_getting_started2.py svneol=native#text/x-python
 boost/libs/python/example/test_std_pair.py svneol=native#text/x-python
 boost/libs/python/example/tutorial/Jamfile svneol=native#text/plain
+boost/libs/python/example/tutorial/Jamrules svneol=native#text/plain
 boost/libs/python/example/tutorial/hello.cpp svneol=native#text/plain
 boost/libs/python/index.html svneol=native#text/html
 boost/libs/python/pyste/NEWS -text
