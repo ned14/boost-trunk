@@ -26,6 +26,7 @@ boost/libs/filesystem/src/convenience.cpp svneol=native#text/plain
 boost/libs/filesystem/src/exception.cpp svneol=native#text/plain
 boost/libs/filesystem/src/operations.cpp svneol=native#text/plain
 boost/libs/filesystem/src/path.cpp svneol=native#text/plain
+boost/libs/filesystem/src/portability.cpp svneol=native#text/plain
 boost/libs/filesystem/src/utf8_codecvt_facet.cpp svneol=native#text/plain
 boost/libs/filesystem/src/utf8_codecvt_facet.hpp svneol=native#text/plain
 boost/libs/filesystem/test/Jamfile svneol=native#text/plain
