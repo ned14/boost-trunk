@@ -8761,6 +8761,7 @@ boost/libs/static_assert/static_assert_test_fail_6.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_7.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_8.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_9.cpp svneol=native#text/plain
+boost/libs/static_assert/static_assert_test_fail_function.cpp svneol=native#text/plain
 boost/libs/test/README svneol=native#text/plain
 boost/libs/test/build/.cvsignore -text
 boost/libs/test/build/Jamfile svneol=native#text/plain
