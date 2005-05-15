@@ -3918,6 +3918,7 @@ boost/libs/date_time/test/local_time/testdst_transition_day_rule.cpp svneol=nati
 boost/libs/date_time/test/local_time/testlocal_time.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testlocal_time_facet.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testlocal_time_input_facet.cpp svneol=native#text/plain
+boost/libs/date_time/test/local_time/testlocal_time_iterator.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testlocal_time_period.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testposix_time_zone.cpp svneol=native#text/plain
 boost/libs/date_time/test/local_time/testtime_zone.cpp svneol=native#text/plain
