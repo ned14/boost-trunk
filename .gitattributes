@@ -688,7 +688,6 @@ boost/boost/iostreams/detail/system_failure.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/template_params.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/translate_int_type.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/vc6/close.hpp svneol=native#text/plain
-boost/boost/iostreams/detail/vc6/operations.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/vc6/read.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/vc6/write.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/wrap_unwrap.hpp svneol=native#text/plain
