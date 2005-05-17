@@ -4857,7 +4857,6 @@ boost/libs/iostreams/example/finite_state_filter.hpp svneol=native#text/plain
 boost/libs/iostreams/example/line_wrapping_filter.hpp svneol=native#text/plain
 boost/libs/iostreams/example/shell_comments_filter.hpp svneol=native#text/plain
 boost/libs/iostreams/example/tab_expanding_filter.hpp svneol=native#text/plain
-boost/libs/iostreams/example/test.cpp svneol=native#text/plain
 boost/libs/iostreams/example/unix2dos_filter.hpp svneol=native#text/plain
 boost/libs/iostreams/index.html svneol=native#text/html
 boost/libs/iostreams/src/bzip2.cpp svneol=native#text/plain
