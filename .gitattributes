@@ -9542,7 +9542,6 @@ boost/libs/wave/test/build/Jamfile svneol=native#text/plain
 boost/libs/wave/test/testlexers/cpp_tokens.hpp svneol=native#text/plain
 boost/libs/wave/test/testlexers/test_re2c_lexer.cpp svneol=native#text/plain
 boost/libs/wave/test/testlexers/test_slex_lexer.cpp svneol=native#text/plain
-boost/libs/wave/test/testlexers/test_xlex_lexer.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/cmd_line_utils.hpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_1_001.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_1_002.cpp svneol=native#text/plain
