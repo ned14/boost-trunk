@@ -9,7 +9,7 @@
 
 import re
 
-from boost.build.build import action, toolset, feature
+from boost.build.build import action, feature
 from boost.build.util.utility import *
 from boost.build.util import path
 
@@ -253,6 +253,8 @@ def handle_options (tool, condition, command, options):
         - OPTIOns for compile to the value of <compileflags> in options
         - OPTIONs for link to the value of <linkflags> in options
     """
+    from boost.build.build import toolset
+
     assert (command)
     toolset.flags (tool, 'CONFIG_COMMAND', condition, [command])
     toolset.flags (tool + '_compile', 'OPTIONS', condition, feature.get_values ('<compileflags>', options))

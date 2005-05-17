@@ -126,26 +126,30 @@ class Scanner:
 #           scanner.propagate $(__name__) : $(matches) : $(target) ;     
 #       }
 #   }
-#   
-#   
-#   
-#   
-#   # Installs the specified scanner on actual target 'target'. 
-#   rule install ( scanner : target 
-#       vtarget # virtual target from which 'target' was actualized
-#   )
-#   {
-#       HDRSCAN on $(target) = [ $(scanner).pattern ] ;
-#       SCANNER on $(target) = $(scanner) ;
-#       HDRRULE on $(target) = scanner.hdrrule ;
-#       
-#       # scanner reflects difference in properties affecting    
-#       # binding of 'target', which will be known when processing
-#       # includes for it, will give information on how to
-#       # interpret quoted includes.
-#       HDRGRIST on $(target) = $(scanner) ;
-#   }
-#   
+
+
+
+class ScannerRegistry:
+    
+    def __init__ (self, manager):
+        self.manager_ = manager
+
+    def install (self, scanner, target, vtarget):
+        """ Installs the specified scanner on actual target 'target'. 
+            vtarget: virtual target from which 'target' was actualized.
+        """
+        # TODO: actaully implement this
+#        HDRSCAN on $(target) = [ $(scanner).pattern ] ;
+#        SCANNER on $(target) = $(scanner) ;
+#        HDRRULE on $(target) = scanner.hdrrule ;
+        
+        # scanner reflects difference in properties affecting    
+        # binding of 'target', which will be known when processing
+        # includes for it, will give information on how to
+        # interpret quoted includes.
+#        HDRGRIST on $(target) = $(scanner) ;
+        pass
+
 #   # Propagate scanner setting from 'including-target' to 'targets'.
 #   rule propagate ( scanner : targets * : including-target )
 #   {

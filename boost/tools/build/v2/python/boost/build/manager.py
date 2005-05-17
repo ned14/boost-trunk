@@ -5,6 +5,7 @@
 from build.virtual_target import VirtualTargetRegistry
 from build.targets import TargetRegistry
 from build.project import ProjectRegistry
+from build.scanner import ScannerRegistry
 from boost.build.util.logger import NullLogger
 from build import build_request, property_set, feature
 
@@ -22,6 +23,7 @@ class Manager:
         self.projects_ = ProjectRegistry (self)
         self.targets_ = TargetRegistry ()
         self.logger_ = NullLogger ()
+        self.scanners_ = ScannerRegistry (self)
         
         # Object Map.
         # TODO: This is a kludge: maps object names to the actual instances.
@@ -88,7 +90,7 @@ class Manager:
         for build_properties in build_prop_sets:
             for target in targets:
                 result = target.generate (build_properties)
-                virtual_targets.extend (result [1])
+                virtual_targets.extend (result.targets ())
 
         actual_targets = []
         for virtual_target in virtual_targets:

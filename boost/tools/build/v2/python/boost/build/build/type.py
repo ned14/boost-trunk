@@ -8,7 +8,7 @@ import os
 import os.path
 from boost.build.util.utility import replace_grist, os_name
 from boost.build.exceptions import *
-from boost.build.build import feature, property
+from boost.build.build import feature, property, scanner
 
 __re_hyphen = re.compile ('-')
 
@@ -126,14 +126,13 @@ def set_scanner (type, scanner):
     validate (type)
     __types [type]['scanner'] = scanner
 
-def get_scanner (type, property_set):
+def get_scanner (type, prop_set):
     """ Returns a scanner instance appropriate to 'type' and 'property_set'.
     """
     if registered (type):
-        scanner = __types [type]['scanner']
-        if scanner:
-            # TODO: implement this
-#            return [ scanner.get $(.scanner.$(type)) : [ $(prop_set).raw ] ] ;
+        scanner_type = __types [type]['scanner']
+        if scanner_type:
+            return scanner.get (scanner_type, prop_set.raw ())
             pass
             
     return None

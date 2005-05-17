@@ -754,7 +754,7 @@ def __ensure_type (targets):
     """
     for t in targets:
         if not t.type ():
-            raise BaseException ("target '%s' has no type" % t.str ())
+            raise BaseException ("target '%s' has no type" % str (t))
 
 def find_viable_generators_aux (logger, target_type, prop_set):
     """ Returns generators which can be used to construct target of specified type

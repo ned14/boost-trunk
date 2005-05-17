@@ -57,8 +57,8 @@ class TestMake (unittest.TestCase):
         recorder = RuleRecorder ()
         result = self.__doGenerate (recorder)
         
-        build_properties = result [0]
-        virtual_targets = result [1]
+        build_properties = result.usage_requirements ()
+        virtual_targets = result.targets ()
         self.assertEqual (property_set.empty (), build_properties)
         self.assertEqual (1, len (virtual_targets))
         vt = virtual_targets [0]
@@ -69,12 +69,12 @@ class TestMake (unittest.TestCase):
         recorder = RuleRecorder ()
         result = self.__doGenerate (recorder)
         
-        virtual_targets = result [1]
+        virtual_targets = result.targets ()
         self.assertEqual (1, len (virtual_targets))
         virtual_target = virtual_targets [0]
 
         actual_targets = virtual_target.actualize ()
-        expected = [(['<p./bin/>MakeTarget'], ['<l.>x.cpp'], ['<a>A1', '<b>B1', '<b>B2', '<e>E'])]
+        expected = [(['<p./bin/>MakeTarget'], ['<l.>test_make/x.cpp'], ['<a>A1', '<b>B1', '<b>B2', '<e>E'])]
         self.assertEqual (expected, recorder.entries ())
 
     def test_make_rule (self):
@@ -82,7 +82,7 @@ class TestMake (unittest.TestCase):
 
         module = self.manager_.projects ().create ('.')
         
-        sources = ['x.cpp']
+        sources = ['test_make/x.cpp']
         make_rule = recorder.make_rule
         make (module, 'MakeTarget', sources, recorder.make_rule, ['<a>A1', '<b>B1', '<e>E'])
         
@@ -90,7 +90,7 @@ class TestMake (unittest.TestCase):
         module = self.manager_.projects ().create ('.')
         name = 'MakeTarget'
         project = ProjectTarget ('Project', module, None, [], [])
-        sources = ['x.cpp']
+        sources = ['test_make/x.cpp']
         requirements = property_set.create (['<a>A1', '<b>B1', '<e>E'])
         make_rule = recorder.make_rule
         action.register ('my_make_rule', make_rule, [])

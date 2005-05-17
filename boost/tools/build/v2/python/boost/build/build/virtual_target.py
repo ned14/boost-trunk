@@ -10,7 +10,7 @@
 #
 #
 #                       +--------------------------+
-#                       | virtual_target           |
+#                       | VirtualTarget           |
 #                       +==========================+
 #                       | actualize                |
 #                       +--------------------------+
@@ -23,7 +23,7 @@
 #                                      +-+-+
 #                                        |
 #    +---------------------+     +-------+--------------+
-#    | action              |     | AbstractFileTarget   |
+#    | Action              |     | AbstractFileTarget   |
 #    +=====================|   * +======================+
 #    | action_name         |  +--+ action               |
 #    | properties          |  |  +----------------------+
@@ -39,7 +39,7 @@
 #         +-+-+                +-------------+-------------+
 #           |                  |                           |
 #           |           +------+---------------+  +--------+-------------+
-#           |           | FileTarget           |  | searched-lib-target  |
+#           |           | FileTarget           |  | SearchedLibTarget    |
 #           |           +======================+  +======================+
 #           |           | actualize-location() |  | actualize-location() |
 #           |           +----------------------+  +----------------------+
@@ -47,13 +47,13 @@
 #         +-+------------------------------+
 #         |                                |
 #    +----+----------------+     +---------+-----------+
-#    | compile-action      |     | link-action         |
+#    | CompileAction       |     | LinkAction          |
 #    +=====================+     +=====================+
 #    | adjust_properties() |     | adjust_properties() |
 #    +---------------------+     | actualize_sources() |
 #                                +---------------------+
 #
-# The 'compile-action' and 'link-action' classes are defined not here,
+# The 'CompileAction' and 'LinkAction' classes are defined not here,
 # but in builtin.jam modules. They are shown in the diagram to give
 # the big picture.
 
@@ -226,7 +226,7 @@ class VirtualTarget:
 
 
     def depends (self, d):
-        """ Adds additional instances of 'virtual_target' that this
+        """ Adds additional instances of 'VirtualTarget' that this
             one depends on.
         """
         self.dependencies_ = unique (self.dependencies_ + d).sort ()
@@ -253,18 +253,18 @@ class VirtualTarget:
 
         else:
             # Add the scanner instance to the grist for name.
-            g = '-'.join ([ungrist (get_grist (actual_name)), scanner])
+            g = '-'.join ([ungrist (get_grist (actual_name)), str (scanner)])
 
-            name = replace_grist (actual_name, g)
+            name = replace_grist (actual_name, '<' + g + '>')
 
             if not self.made_.has_key (name):
                 self.made_ [name] = True
 
-                self.manager_.engine ().add_dependency (name, actual_name)
+                self.project_.manager ().engine ().add_dependency (name, actual_name)
 
                 self.actualize_location (name)
 
-                self.manager_.scanners ().install (scanner, name, self (str))
+                self.project_.manager ().scanners ().install (scanner, name, str (self))
 
             return name
 
@@ -609,7 +609,7 @@ class FileTarget (AbstractFileTarget):
 
 class Action:
     """ Class which represents an action.
-        Both 'targets' and 'sources' should list instances of 'virtual_target'.
+        Both 'targets' and 'sources' should list instances of 'VirtualTarget'.
         Action name should name a rule with this prototype
             rule action_name ( targets + : sources * : properties * )
         Targets and sources are passed as actual jam targets. The rule may

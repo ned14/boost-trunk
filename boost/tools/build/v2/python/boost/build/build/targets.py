@@ -73,7 +73,7 @@ import property, project, virtual_target, property_set, feature, generators
 from virtual_target import Subvariant
 from boost.build.exceptions import *
 from boost.build.util.sequence import unique
-from boost.build.util import set
+from boost.build.util import set, path
 
 _re_separate_target_from_properties = re.compile (r'^([^<]*)(/(<.*))?$')
 
@@ -197,6 +197,27 @@ class TargetRegistry:
             self.main_target_default_build (default_build, project),
             self.main_target_usage_requirements (usage_requirements, project)))
 
+class GenerateResult:
+    
+    def __init__ (self, ur = None, targets = []):
+        self.__usage_requirements = ur
+        self.__targets = targets
+
+        if not self.__usage_requirements:
+            self.__usage_requirements = property_set.empty ()
+
+    def usage_requirements (self):
+        return self.__usage_requirements
+
+    def targets (self):
+        return self.__targets
+    
+    def extend (self, other):
+        assert (isinstance (other, GenerateResult))
+        
+        self.__usage_requirements = self.__usage_requirements.add (other.usage_requirements ())
+        self.__targets.extend (other.targets ())
+        self.__targets = unique (self.__targets)
 
 class AbstractTarget:
     """ Base class for all abstract targets.
@@ -255,13 +276,12 @@ class AbstractTarget:
         """ Takes a property set.  Generates virtual targets for this abstract
             target, using the specified properties, unless a different value of some
             feature is required by the target. 
-            On
-            success, returns: 
-            - a property_set with the usage requirements to be
-              applied to dependents 
-            - a list of produced virtual targets, which may be
-               empty.  
-            If 'property_set' are empty, performs default build of this
+            On success, returns a GenerateResult instance with:
+                - a property_set with the usage requirements to be
+                  applied to dependents 
+                - a list of produced virtual targets, which may be
+                   empty.  
+            If 'property_set' is empty, performs default build of this
             target, in a way specific to derived class.
         """
         raise BaseException ("method should be defined in derived classes")
@@ -334,17 +354,15 @@ class ProjectTarget (AbstractTarget):
         if self.manager_.logger ().on ():
             self.manager_.logger ().log (__name__, "Building project '%s' with '%s'" % (self.name (), ps.raw ()))
             self.manager_.logger ().increase_indent ()
-                
-        usage_requirements = property_set.empty ()
-        targets = []
+        
+        result = GenerateResult ()
                 
         for t in self.targets_to_build ():
             g = t.generate (ps)
-            usage_requirements = usage_requirements.add (g [0])
-            targets.extend (g [1])
+            result.extend (g)
 
         self.manager_.logger ().decrease_indent ()
-        return (usage_requirements, unique (targets))
+        return result
 
     def add_alternative (self, target_instance):
         """ Add new target alternative.
@@ -385,19 +403,15 @@ class ProjectTarget (AbstractTarget):
 #           # rule is called before main target instaces are created.
 #           self.explicit_targets_ += $(target-name) ;
 #       }
-#       
-#               
-#       # Returns a 'MainTarget' class instance corresponding to the 'name'.
-#       rule main-target ( name )
-#       {
-#           if ! $(self.built_main_targets_)
-#           {
-#               build_main_targets ;
-#           }
-#                           
-#           return $(self.main_targets_.$(name)) ;
-#       }
-#   
+
+    def create_main_target (self, name):
+        """ Returns a 'MainTarget' class instance corresponding to the 'name'.
+        """
+        if not self.built_main_targets_:
+            self.build_main_targets ()
+                        
+        return self.main_targets_.get (name, None)
+
 #       # Tells if a main target with the specified name exists.
 #       rule has-main-target ( name )
 #       {
@@ -413,67 +427,53 @@ class ProjectTarget (AbstractTarget):
 #       }
 #   
 
-    # Find and return the target with the specified id, treated
-    # relative to self.
     def find_really (self, id):
-        # TODO: really implement this
-        return FileReference (self.manager_, os.path.normpath (id), self.project_)
+        """ Find and return the target with the specified id, treated
+            relative to self.
+        """
+        result = None
+        current_location = self.get ('location')
 
-#       {
-#           local result ;    
-#           local project = $(self.project_) ;
-#           local current-location = [ get location ] ;
-#           
-#           local split = [ MATCH (.*)//(.*) : $(id) ] ;        
-#           local project-part = $(split[1]) ;
-#           local target-part = $(split[2]) ;
-#   
-#           local extra-error-message ;
-#           if $(project-part)
-#           {
-#               # There's explicit project part in id. Looks up the
-#               # project and pass the request to it.
-#               local pm = [ project.find $(project-part) : $(current-location) ] ;
-#               if $(pm)
-#               {
-#                   project_target = [ project.target $(pm) ] ;                
-#                   result = [ $(project_target).find $(target-part) : no_error ] ;
-#               }                      
-#               else
-#               {
-#                   extra-error-message = "error: could not find project '$(project-part)'" ;
-#               }            
-#           }
-#           else
-#           {   
-#               # Interpret as filename            
-#               result = [ new FileReference [ path.make $(id) ] : $(project) ] ;        
-#               if ! [ $(result).exists ]
-#               {
-#                   # File actually does not exist.
-#                   # Reset 'target' so that an error is issued.
-#                   result = ;
-#               }            
-#               
-#               # Interpret target-name as name of main target
-#               if ! $(result)
-#               {
-#                   result = [ main-target $(id) ] ;
-#               }
-#               
-#               # Interpret id as project-id
-#               if ! $(result)
-#               {                
-#                   local project_module = [ project.find $(id) : $(current-location) ] ;
-#                   if $(project_module)
-#                   {
-#                       result = [ project.target $(project_module) ] ;
-#                   }                                
-#               }            
-#           }
-#                   
-#           return $(result) ;
-#       }
+        __re_split_project_target = re.compile (r'(.*)//(.*)')
+        split = __re_split_project_target.match (id)
+
+        project_part = None
+        target_part = id
+
+        if split:
+            project_part = split.group (1)
+            target_part = split.group (2)
+
+        project_registry = self.project_.manager ().projects ()
+        
+        extra_error_message = ''
+        if project_part:
+            # There's explicit project part in id. Looks up the
+            # project and pass the request to it.
+            pm = project_registry.find (project_part, current_location)
+            
+            if pm:
+                project_target = project.target (pm)
+                result = project_target.find (target_part, true)
+
+            else:
+                extra_error_message = "error: could not find project '$(project_part)'"
+
+        else:
+            # Interpret as filename            
+            result = FileReference (self.manager_, path.make (id), self.project_)
+            if not result.exists ():
+                # File actually does not exist.            
+                # Interpret target-name as name of main target
+                result = self.create_main_target (id)
+                
+                # Interpret id as project-id
+                if not result:
+                    project_module = project_registry.find (id, current_location)
+                    if project_module:
+                        result = project.target (project_module)
+                
+        return result
 
     def find (self, id, no_error = False):
         v = self.ids_cache_.get (id, None)
@@ -656,6 +656,8 @@ class BasicTarget (AbstractTarget):
             
             # TODO: check use of "@error".
             if not "@error" in str (rproperties):
+                result = GenerateResult ()
+
                 properties = rproperties.non_dependency ()
                 
                 (p, u) = self.generate_dependencies (rproperties.dependency (), rproperties)
@@ -690,9 +692,9 @@ class BasicTarget (AbstractTarget):
                 ur = self.compute_usage_requirements (s)
                 ur = ur.add (gur)
                 s.set_usage_requirements (ur)
-                self.generated_ [str (ps)] = (ur, result)
+                self.generated_ [str (ps)] = GenerateResult (ur, result)
             else:
-                self.generated_ [str (ps)] = (rproperties, [])
+                self.generated_ [str (ps)] = GenerateResult (rproperties, [])
         else:
             if self.manager ().logger ().on ():
                 self.manager ().logger ().log (__name__, "Already built")
@@ -805,10 +807,10 @@ class BasicTarget (AbstractTarget):
         
             # TODO: this is a problem: the grist must be kept and the value
             #       is the object itself. This won't work in python.
-            targets = [ self.manager_.register_object (x) for x in result [1:]]
+            targets = [ self.manager_.register_object (x) for x in result.targets () ]
             
             result_var += replace_grist (targets, grist)
-            usage_requirements += result [0].raw ()
+            usage_requirements += result.usage_requirements ().raw ()
 
         return (result_var, usage_requirements)
     
@@ -1022,17 +1024,15 @@ class MainTarget (AbstractTarget):
         ps = ps.expand ()
         
         all_property_sets = self.apply_default_build (ps)
-        usage_requirements = property_set.empty ()
 
-        result = []
+        result = GenerateResult ()
+        
         for p in all_property_sets:
-            r = self.__generate_really (p)
-            usage_requirements = usage_requirements.add (r [0])
-            result.extend (r [1])
+            result.extend (self.__generate_really (p))
 
         self.manager_.targets ().end_building (self)
 
-        return (usage_requirements, unique (result))
+        return result
         
     def __generate_really (self, prop_set):
         """ Generates the main target with the given property set
@@ -1076,18 +1076,18 @@ class FileReference (AbstractTarget):
         AbstractTarget.__init__ (self, file, project)
     
     def generate (self, properties):
-         return property_set.empty (), self.manager_.virtual_targets ().from_file (self.name_, self.project_)
+         return GenerateResult (None, [ self.manager_.virtual_targets ().from_file (self.name_, self.project_) ])
 
     def exists (self):
         """ Returns true if the referred file really exists.
         """
-        location = Path.native (self.location ())
+        location = path.native (self.location ())
         location = self.location ()
         return os.path.isfile (location) or os.path.islink (location)
 
     def location (self):
         source_location = self.project_.get ('source-location')
-        return Path.root (self.name, source_location)
+        return path.root (self.name (), source_location)
 
 
 

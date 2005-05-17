@@ -235,6 +235,8 @@ class ProjectRegistry:
         self.projects_ = {}
         # A map from project id to ProjectModule instance
         self.id_to_module_ = {}
+        # A map from project modules to the corresponding project target
+        self.project_modules_to_targets_ = {}
         
     def create (self, location, parent=None):        
         project = ProjectModule (self, location, parent)
@@ -341,45 +343,42 @@ class ProjectRegistry:
 #   }
 #   
 #   
-#   # Given 'name' which can be project-id or plain directory name,
-#   # return project module corresponding to that id or directory.
-#   # Returns nothing of project is not found.
-#   rule find ( name : current-location )
-#   {
-#       local project-module ;
-#       
-#       # Try interpreting name as project id.
-#       if [ path.is-rooted $(name) ]
-#       {            
-#           project-module =  $($(name).jamfile-module) ;
-#       }            
-#                   
-#       if ! $(project-module)
-#       {            
-#           local location = [ path.root 
-#               [ path.make $(name) ] $(current-location) ] ;
-#           # If no project is registered for the given location, try to
-#           # load it. First see if we have Jamfile. If not we might have project
-#           # root, willing to act as Jamfile. In that case, project-root
-#           # must be placed in the directory referred by id.
+    # Given 'name' which can be project-id or plain directory name,
+    # return project module corresponding to that id or directory.
+    # Returns nothing of project is not found.
+    def find (self, name, current_location):
+        project_module = None
+        
+        # Try interpreting name as project id.
+        if path.is_rooted (name):
+            project_module =  self.id_to_module_.get (name, None)
+                    
+        if not project_module:
+            location = path.root (path.make (name), current_location)
+            
+            raise Exception ('Cannot load Jamfiles yet')
+            # If no project is registered for the given location, try to
+            # load it. First see if we have Jamfile. If not we might have project
+            # root, willing to act as Jamfile. In that case, project-root
+            # must be placed in the directory referred by id.
+            
+#               project_module = [ module_name $(location) ] ;
+#               if ! $(project_module) in $(.jamfile-modules) 
+#               {
+#                   if [ find-jamfile $(location) : no-error ]
+#                   {
+#                       project_module = [ load $(location) ] ;            
+#                   }        
+#                   else
+#                   {
+#                       project_module = ;
+#                   }
+#               }                    
+#           }
 #           
-#           project-module = [ module_name $(location) ] ;
-#           if ! $(project-module) in $(.jamfile-modules) 
-#           {
-#               if [ find-jamfile $(location) : no-error ]
-#               {
-#                   project-module = [ load $(location) ] ;            
-#               }        
-#               else
-#               {
-#                   project-module = ;
-#               }
-#           }                    
+#           return $(project_module) ;
 #       }
-#       
-#       return $(project-module) ;
-#   }
-#   
+    
 #   #
 #   # Returns the name of module corresponding to 'jamfile-location'.
 #   # If no module corresponds to location yet, associates default
@@ -564,10 +563,10 @@ class ProjectRegistry:
 #       .current-project = [ target $(module_name) ] $(.current-project) ;
 #   }
 #   
-#   # Make 'project-module' inherit attributes of project root and parent module.
-#   rule inherit-attributes ( project-module : parent-module )
+#   # Make 'project_module' inherit attributes of project root and parent module.
+#   rule inherit-attributes ( project_module : parent-module )
 #   {
-#       local attributes = $($(project-module).attributes) ;        
+#       local attributes = $($(project_module).attributes) ;        
 #       local pattributes = [ attributes $(parent-module) ] ;
 #       $(attributes).set parent : [ path.parent 
 #           [ path.make [ modules.binding $(parent-module) ] ] ] ;
@@ -584,7 +583,7 @@ class ProjectRegistry:
 #           # Convert both paths to absolute, since we cannot
 #           # find relative path from ".." to "."
 #           
-#           local location = [ attribute $(project-module) location ] ;
+#           local location = [ attribute $(project_module) location ] ;
 #           local parent-location = [ attribute $(parent-module) location ] ;
 #           
 #           local pwd = [ path.pwd ] ;
@@ -596,16 +595,11 @@ class ProjectRegistry:
 #   }
 #   
 #
-    def register_id(self, id, project_module):
-        self.id_to_module_[id] = project_module
+    def register_id (self, id, project_module):
+        """ Associate the given id with the given project module.
+        """
+        self.id_to_module_ [id] = project_module
 
-        
-#   # Associate the given id with the given project module
-#   rule register-id ( id : module )
-#   {
-#       $(id).jamfile-module = $(module) ;
-#   }
-#   
 #       # Returns the value of the given attribute.
 #       rule get ( attribute )
 #       {
@@ -648,36 +642,37 @@ class ProjectRegistry:
 #       return [ $($(project).attributes).get $(attribute) ] ;        
 #   }
 #   
-#   # Returns the project target corresponding to the 'project-module'.
-#   rule target ( project-module )
-#   {
-#       if ! $(.target.$(project-module))
-#       {
-#           .target.$(project-module) = [ new project-target $(project-module) 
-#             : $(project-module) 
-#              : [ attribute $(project-module) requirements ] ] ;
-#       }
-#       return $(.target.$(project-module)) ;    
-#   }
-#   
+
+    def target (self, project_module):
+        """ Returns the project target corresponding to the 'project_module'.
+        """
+        id = str (project_module)
+        t = self.project_modules_to_targets_.get (id, None)
+        
+        if not t:
+            t = targets.ProjectTarget (id, project_module, None, project_module.attribute ('requirements'))
+            self.project_modules_to_targets_ [id] = t
+
+        return t
+
 #   # Use/load a project.
 #   rule use ( id : location )
 #   {
 #       local saved-project = $(.current-project) ;
-#       local project-module = [ project.load $(location) ] ;
-#       local declared-id = [ project.attribute $(project-module) id ] ;
+#       local project_module = [ project.load $(location) ] ;
+#       local declared-id = [ project.attribute $(project_module) id ] ;
 #          
 #       if ! $(declared-id) || $(declared-id) != $(id)
 #       {
 #           # The project at 'location' either have no id or
 #           # that id is not equal to the 'id' parameter.
 #           if $($(id).jamfile-module) 
-#             && $($(id).jamfile-module) != $(project-module)
+#             && $($(id).jamfile-module) != $(project_module)
 #           {
 #               errors.user-error 
 #                 "Attempt to redeclare already existing project id" ;
 #           }                  
-#           $(id).jamfile-module = $(project-module) ;
+#           $(id).jamfile-module = $(project_module) ;
 #       }
 #       .current-project = $(saved-project) ;
 #   }

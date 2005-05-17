@@ -12,7 +12,7 @@
 import builtin
 from boost.build.build import action, generators, type
 from boost.build.util.utility import *
-from boost.build.util import set
+from boost.build.util import set, sequence
 
 class UnixLinkingGenerator (builtin.LinkingGenerator):
     
@@ -21,7 +21,7 @@ class UnixLinkingGenerator (builtin.LinkingGenerator):
     
     def run (self, project, name, prop_set, sources, multiple):
         result = builtin.LinkingGenerator.run (self, project, name, prop_set, sources, multiple)
-        set_library_order (sources, prop_set, result [1])
+        set_library_order (project.manager (), sources, prop_set, result [1])
                                 
         return result
     
@@ -122,11 +122,14 @@ def set_library_order_aux (from_libs, to_libs):
             if f != t:
                 __order.add_pair (f, t)
 
-def set_library_order (sources, prop_set, result):
+def set_library_order (manager, sources, prop_set, result):
     used_libraries = []
     deps = prop_set.dependency ()
     
-    for l in sources + get_value (deps):
+    [ sources.append (manager.get_object (get_value (x))) for x in deps ]
+    sources = sequence.unique (sources)
+
+    for l in sources:
         if l.type () and type.is_derived (l.type (), 'LIB'):
             used_libraries.append (l)
 

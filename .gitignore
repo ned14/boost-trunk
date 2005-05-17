@@ -1,0 +1,3 @@
+boost/tools/build/v2/python/tests/acceptance_tests/build_lib/Jamfile
+boost/tools/build/v2/python/tests/acceptance_tests/build_lib/bin
+boost/tools/build/v2/python/tests/acceptance_tests/build_lib/project-root.jam

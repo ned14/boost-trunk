@@ -55,6 +55,12 @@ def pwd ():
     """
     return make (os.getcwd ())
 
+def is_rooted (path):
+    """ Tests if a path is rooted.
+    """
+    return path and path [0] == '/'
+
+
 ###################################################################
 # Still to port.
 # Original lines are prefixed with "#   "

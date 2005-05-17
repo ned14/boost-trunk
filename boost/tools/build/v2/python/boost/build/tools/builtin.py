@@ -7,9 +7,9 @@
 """
 
 import sys
-from boost.build.build import feature, property, virtual_target, generators, type, property_set
+from boost.build.build import feature, property, virtual_target, generators, type, property_set, scanner
 from boost.build.util.utility import *
-from boost.build.util import path
+from boost.build.util import path, regex
 import boost.build.tools.types 
 
 # Records explicit properties for a variant.
@@ -210,31 +210,19 @@ class SearchedLibTarget (virtual_target.AbstractFileTarget):
         pass
 
 
-###################################################################
-# Still to port.
-# Original lines are prefixed with "### "
+class CScanner (scanner.Scanner):
+    def __init__ (self, includes):
+        scanner.Scanner.__init__ (self)
+    
+        self.includes_ = includes
 
-### class c-scanner : scanner 
-### {
-###     import regex virtual-target path scanner ;    
-###     
-###     rule __init__ ( includes * )
-###     {
-###         scanner.__init__ ;
-###     
-###         self.includes = $(includes) ;
-###     }    
-### 
-###     rule pattern ( )
-###     {
-###         return "#[ \t]*include[ ]*(<(.*)>|\"(.*)\")" ;
-###     }
-### 
-###     rule process ( target : matches * : binding )
-###     {
-###         local angle = [ regex.transform $(matches) : "<(.*)>" ] ;
-###         local quoted = [ regex.transform $(matches) : "\"(.*)\"" ] ;
-### 
+    def pattern (self):
+        return r'#[ \t]*include[ ]*(<(.*)>|"(.*)")'
+
+    def process (self, target, matches, binding):
+        angle = regex.transform (matches, "<(.*)>")
+        quoted = regex.transform (matches, '"(.*)"')
+
 ###         # CONSIDER: the new scoping rule seem to defeat "on target" variables.
 ###         local g = [ on $(target) return $(HDRGRIST) ] ;  
 ###         local b = [ NORMALIZE_PATH $(binding:D) ] ;
@@ -258,16 +246,14 @@ class SearchedLibTarget (virtual_target.AbstractFileTarget):
 ###         NOCARE $(all) ;
 ###         SEARCH on $(angle) = $(self.includes:G=) ;
 ###         SEARCH on $(quoted) = $(b) $(self.includes:G=) ;
-###         
+### 
 ###         # Just propagate current scanner to includes, in a hope
 ###         # that includes do not change scanners. 
 ###         scanner.propagate $(__name__) : $(angle) $(quoted) : $(target) ;
-###     }        
-### }
 ### 
-### scanner.register c-scanner : include ;
+### scanner.register (CScanner, 'include')
 ### 
-### type.set-scanner CPP : c-scanner ;
+### type.set_scanner ('CPP', CScanner)
 
 class LibGenerator (generators.Generator):
     """ The generator class for libraries (target type LIB). Depending on properties it will
@@ -449,7 +435,8 @@ class LinkingGenerator (generators.Generator):
         generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
         
     def run (self, project, name, prop_set, sources, multiple):
-        sources.extend (prop_set.get ('<library>'))
+        lib_sources = prop_set.get ('<library>')
+        [ sources.append (project.manager ().get_object (x)) for x in lib_sources ]
         
         # Add <library-path> properties for all searched libraries
         extra = []

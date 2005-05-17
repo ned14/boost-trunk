@@ -4,6 +4,9 @@
 
 import sys
 
+import os.path
+sys.path.append (os.path.split (os.getcwd ()) [0])
+
 import helpers
 from boost.build.tools.make import *
 from boost.build.build.project import ProjectModule
