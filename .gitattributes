@@ -665,7 +665,6 @@ boost/boost/iostreams/detail/forward.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/fstream.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/ios.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/iostream.hpp svneol=native#text/plain
-boost/boost/iostreams/detail/is_custom.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/is_dereferenceable.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/is_iterator_range.hpp svneol=native#text/plain
 boost/boost/iostreams/detail/newline.hpp svneol=native#text/plain
