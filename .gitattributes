@@ -4881,6 +4881,7 @@ boost/libs/iostreams/test/detail/utf8_codecvt_facet.cpp svneol=native#text/plain
 boost/libs/iostreams/test/detail/utf8_codecvt_facet.hpp svneol=native#text/plain
 boost/libs/iostreams/test/detail/verification.hpp svneol=native#text/plain
 boost/libs/iostreams/test/direct_adapter_test.cpp svneol=native#text/plain
+boost/libs/iostreams/test/example_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/file_descriptor_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/filter_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/filtering_stream_test.cpp svneol=native#text/plain
