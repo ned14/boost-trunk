@@ -8248,6 +8248,7 @@ boost/libs/signals/example/Jamfile svneol=native#text/plain
 boost/libs/signals/example/button_click.cpp svneol=native#text/plain
 boost/libs/signals/example/difference_connection.cpp svneol=native#text/plain
 boost/libs/signals/example/disconnect_all.cpp svneol=native#text/plain
+boost/libs/signals/example/doc_view.cpp svneol=native#text/plain
 boost/libs/signals/example/first_positive.cpp svneol=native#text/plain
 boost/libs/signals/example/maximum.cpp svneol=native#text/plain
 boost/libs/signals/example/no_function.cpp svneol=native#text/plain
