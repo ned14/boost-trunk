@@ -4853,7 +4853,6 @@ boost/libs/iostreams/doc/tree/tree.js svneol=native#text/javascript
 boost/libs/iostreams/doc/tutorial.html svneol=native#text/html
 boost/libs/iostreams/example/cpp_comments_filter.hpp svneol=native#text/plain
 boost/libs/iostreams/example/dictionary_filter.hpp svneol=native#text/plain
-boost/libs/iostreams/example/example_test.cpp svneol=native#text/plain
 boost/libs/iostreams/example/finite_state_filter.hpp svneol=native#text/plain
 boost/libs/iostreams/example/line_wrapping_filter.hpp svneol=native#text/plain
 boost/libs/iostreams/example/shell_comments_filter.hpp svneol=native#text/plain
