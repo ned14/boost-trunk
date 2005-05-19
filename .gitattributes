@@ -22,7 +22,6 @@ boost/libs/filesystem/example/Jamfile.v2 svneol=native#text/plain
 boost/libs/filesystem/example/file_size.cpp svneol=native#text/plain
 boost/libs/filesystem/example/simple_ls.cpp svneol=native#text/plain
 boost/libs/filesystem/index.html svneol=native#text/html
-boost/libs/filesystem/src/convenience.cpp svneol=native#text/plain
 boost/libs/filesystem/src/exception.cpp svneol=native#text/plain
 boost/libs/filesystem/src/operations.cpp svneol=native#text/plain
 boost/libs/filesystem/src/path.cpp svneol=native#text/plain
