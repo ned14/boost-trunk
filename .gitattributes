@@ -617,6 +617,7 @@ boost/boost/iostreams/categories.hpp svneol=native#text/plain
 boost/boost/iostreams/chain.hpp svneol=native#text/plain
 boost/boost/iostreams/char_traits.hpp svneol=native#text/plain
 boost/boost/iostreams/character.hpp svneol=native#text/plain
+boost/boost/iostreams/checked_operations.hpp svneol=native#text/plain
 boost/boost/iostreams/close.hpp svneol=native#text/plain
 boost/boost/iostreams/code_converter.hpp svneol=native#text/plain
 boost/boost/iostreams/combine.hpp svneol=native#text/plain
