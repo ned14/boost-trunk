@@ -729,6 +729,7 @@ boost/boost/iostreams/seek.hpp svneol=native#text/plain
 boost/boost/iostreams/skip.hpp svneol=native#text/plain
 boost/boost/iostreams/stream_facade.hpp svneol=native#text/plain
 boost/boost/iostreams/streambuf_facade.hpp svneol=native#text/plain
+boost/boost/iostreams/tee.hpp svneol=native#text/plain
 boost/boost/iostreams/traits.hpp svneol=native#text/plain
 boost/boost/iostreams/traits_fwd.hpp svneol=native#text/plain
 boost/boost/iostreams/write.hpp svneol=native#text/plain
