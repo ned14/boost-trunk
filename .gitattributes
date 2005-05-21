@@ -8015,7 +8015,6 @@ boost/libs/serialization/test/test_vector.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_void_cast.cpp svneol=native#text/plain
 boost/libs/serialization/test/text_archive.hpp svneol=native#text/plain
 boost/libs/serialization/test/text_warchive.hpp svneol=native#text/plain
-boost/libs/serialization/test/throw_exception.hpp svneol=native#text/plain
 boost/libs/serialization/test/xml_archive.hpp svneol=native#text/plain
 boost/libs/serialization/test/xml_warchive.hpp svneol=native#text/plain
 boost/libs/serialization/vc6ide/Attic/Library.dsp -text svneol=CRLF#unset
