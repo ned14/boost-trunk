@@ -4871,6 +4871,7 @@ boost/libs/iostreams/test/buffer_size_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/bzip2_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/code_converter_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/component_access_test.cpp svneol=native#text/plain
+boost/libs/iostreams/test/compose_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/copy_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/counter_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/detail/constants.hpp svneol=native#text/plain
