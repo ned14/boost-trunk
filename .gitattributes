@@ -710,7 +710,6 @@ boost/boost/iostreams/flush.hpp svneol=native#text/plain
 boost/boost/iostreams/get.hpp svneol=native#text/plain
 boost/boost/iostreams/imbue.hpp svneol=native#text/plain
 boost/boost/iostreams/input_sequence.hpp svneol=native#text/plain
-boost/boost/iostreams/offset.hpp svneol=native#text/plain
 boost/boost/iostreams/operations.hpp svneol=native#text/plain
 boost/boost/iostreams/operations_fwd.hpp svneol=native#text/plain
 boost/boost/iostreams/optimal_buffer_size.hpp svneol=native#text/plain
