@@ -4910,7 +4910,6 @@ boost/libs/iostreams/test/read_seekable_seq_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/read_seekable_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/regex_filter_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/restrict_test.cpp svneol=native#text/plain
-boost/libs/iostreams/test/reverse_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/seek_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/seekable_file_test.cpp svneol=native#text/plain
 boost/libs/iostreams/test/seekable_filter_test.cpp svneol=native#text/plain
