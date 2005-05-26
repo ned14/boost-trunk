@@ -720,7 +720,6 @@ boost/boost/iostreams/positioning.hpp svneol=native#text/plain
 boost/boost/iostreams/put.hpp svneol=native#text/plain
 boost/boost/iostreams/putback.hpp svneol=native#text/plain
 boost/boost/iostreams/read.hpp svneol=native#text/plain
-boost/boost/iostreams/reverse.hpp svneol=native#text/plain
 boost/boost/iostreams/seek.hpp svneol=native#text/plain
 boost/boost/iostreams/skip.hpp svneol=native#text/plain
 boost/boost/iostreams/stream_facade.hpp svneol=native#text/plain
