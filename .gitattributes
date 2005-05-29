@@ -4820,7 +4820,6 @@ boost/libs/iostreams/doc/examples/zlib_output.html svneol=native#text/html
 boost/libs/iostreams/doc/exceptions.html svneol=native#text/html
 boost/libs/iostreams/doc/file_based_devices.html svneol=native#text/html
 boost/libs/iostreams/doc/filtering_streams.html svneol=native#text/html
-boost/libs/iostreams/doc/functions/adapt.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/close.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/combine.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/copy.html svneol=native#text/html
