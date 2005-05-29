@@ -4771,7 +4771,6 @@ boost/libs/iostreams/doc/classes/alphabetically.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/array.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/back_inserter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/bzip2.html svneol=native#text/html
-boost/libs/iostreams/doc/classes/converter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/device.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/file.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/file_descriptor.html svneol=native#text/html
