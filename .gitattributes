@@ -10463,6 +10463,7 @@ boost/tools/build/v2/test/regression.py svneol=native#text/x-python
 boost/tools/build/v2/test/relative_sources.py svneol=native#text/x-python
 boost/tools/build/v2/test/searched_lib.py svneol=native#text/x-python
 boost/tools/build/v2/test/skipping.py svneol=native#text/x-python
+boost/tools/build/v2/test/source_locations.py svneol=native#text/x-python
 boost/tools/build/v2/test/stage.py svneol=native#text/x-python
 boost/tools/build/v2/test/standalone.py svneol=native#text/x-python
 boost/tools/build/v2/test/startup/boost-root/boost-build.jam svneol=native#text/plain
