@@ -10546,6 +10546,7 @@ boost/tools/build/v2/tools/fortran.jam svneol=native#text/plain
 boost/tools/build/v2/tools/gcc.jam svneol=native#text/plain
 boost/tools/build/v2/tools/gettext.jam svneol=native#text/plain
 boost/tools/build/v2/tools/gfortran.jam svneol=native#text/plain
+boost/tools/build/v2/tools/hpfortran.jam svneol=native#text/plain
 boost/tools/build/v2/tools/ifort.jam svneol=native#text/plain
 boost/tools/build/v2/tools/intel-linux.jam svneol=native#text/plain
 boost/tools/build/v2/tools/intel-win.jam svneol=native#text/plain
