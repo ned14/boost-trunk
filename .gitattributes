@@ -10575,6 +10575,7 @@ boost/tools/build/v2/tools/types/register.jam svneol=native#text/plain
 boost/tools/build/v2/tools/types/rsp.jam svneol=native#text/plain
 boost/tools/build/v2/tools/unix.jam svneol=native#text/plain
 boost/tools/build/v2/tools/vacpp.jam svneol=native#text/plain
+boost/tools/build/v2/tools/whale.jam svneol=native#text/plain
 boost/tools/build/v2/tools/xlf.jam svneol=native#text/plain
 boost/tools/build/v2/tools/xsltproc-config.jam svneol=native#text/plain
 boost/tools/build/v2/tools/xsltproc.jam svneol=native#text/plain
