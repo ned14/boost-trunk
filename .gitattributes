@@ -5160,6 +5160,7 @@ boost/libs/logic/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/logic/test/tribool_io_test.cpp svneol=native#text/plain
 boost/libs/logic/test/tribool_rename_test.cpp svneol=native#text/plain
 boost/libs/logic/test/tribool_test.cpp svneol=native#text/plain
+boost/libs/maintainers.txt svneol=native#text/plain
 boost/libs/math/doc/common_factor.html svneol=native#text/html
 boost/libs/math/doc/index.html svneol=native#text/html
 boost/libs/math/index.html svneol=native#text/html
