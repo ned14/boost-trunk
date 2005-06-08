@@ -1,4 +1,5 @@
 * text=auto !eol
+boost/boost/filesystem/cerrno.hpp svneol=native#text/plain
 boost/boost/filesystem/config.hpp svneol=native#text/plain
 boost/boost/filesystem/convenience.hpp svneol=native#text/plain
 boost/boost/filesystem/exception.hpp svneol=native#text/plain
