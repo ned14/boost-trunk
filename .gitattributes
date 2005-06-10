@@ -8499,6 +8499,7 @@ boost/libs/spirit/example/techniques/nabialek.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules/no_rule1.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules/no_rule2.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules/no_rule3.cpp svneol=native#text/plain
+boost/libs/spirit/example/techniques/right_recursion.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/typeof.cpp svneol=native#text/plain
 boost/libs/spirit/fusion/readme.txt svneol=native#text/plain
 boost/libs/spirit/fusion/test/Jamfile svneol=native#text/plain
