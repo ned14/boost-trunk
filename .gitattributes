@@ -4852,6 +4852,7 @@ boost/libs/iostreams/doc/guide/convenience.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/exceptions.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/file_based_devices.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/filtering_streams.html svneol=native#text/html
+boost/libs/iostreams/doc/guide/generic_streams.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/guide.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/modes.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/text_processing.html svneol=native#text/html
