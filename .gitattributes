@@ -3984,7 +3984,6 @@ boost/libs/date_time/xmldoc/date_time_autodoc.boostbook -text
 boost/libs/date_time/xmldoc/date_time_documentation_howto.html svneol=native#text/html
 boost/libs/date_time/xmldoc/date_time_fo_stylesheet.xsl svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_time_io.xml svneol=native#text/xml
-boost/libs/date_time/xmldoc/day_clock_class.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/design_concepts.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/design_goals.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/details.xml svneol=native#text/xml
@@ -4019,7 +4018,6 @@ boost/libs/date_time/xmldoc/io_tutorial.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/license.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/local_date_time.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/local_time.xml svneol=native#text/xml
-boost/libs/date_time/xmldoc/local_time_adjust.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/local_time_autodoc.boostbook -text
 boost/libs/date_time/xmldoc/motivation.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/posix_time.xml svneol=native#text/xml
