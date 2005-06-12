@@ -4021,6 +4021,7 @@ boost/libs/date_time/xmldoc/license.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/local_date_time.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/local_time.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/local_time_autodoc.boostbook -text
+boost/libs/date_time/xmldoc/local_time_period.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/motivation.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/posix_time.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/posix_time_autodoc.boostbook -text
@@ -4029,6 +4030,7 @@ boost/libs/date_time/xmldoc/ptime_class.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/ref_tag_fix.pl svneol=native#text/x-perl
 boost/libs/date_time/xmldoc/references.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/serialization.xml svneol=native#text/xml
+boost/libs/date_time/xmldoc/snap_to_details.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/table_template.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/terminology.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/tests.xml svneol=native#text/xml
