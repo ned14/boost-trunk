@@ -3885,6 +3885,7 @@ boost/libs/date_time/example/gregorian/period_calc.cpp svneol=native#text/plain
 boost/libs/date_time/example/gregorian/print_holidays.cpp svneol=native#text/plain
 boost/libs/date_time/example/gregorian/print_month.cpp svneol=native#text/plain
 boost/libs/date_time/example/local_time/calc_rules.cpp svneol=native#text/plain
+boost/libs/date_time/example/local_time/flight.cpp svneol=native#text/plain
 boost/libs/date_time/example/local_time/local_date_time.cpp svneol=native#text/plain
 boost/libs/date_time/example/local_time/seconds_since_epoch.cpp svneol=native#text/plain
 boost/libs/date_time/example/local_time/simple_time_zone.cpp svneol=native#text/plain
