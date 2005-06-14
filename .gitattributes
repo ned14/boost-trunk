@@ -402,6 +402,7 @@ boost/boost/detail/call_traits.hpp svneol=native#text/plain
 boost/boost/detail/catch_exceptions.hpp svneol=native#text/plain
 boost/boost/detail/compressed_pair.hpp svneol=native#text/plain
 boost/boost/detail/dynamic_bitset.hpp svneol=native#text/plain
+boost/boost/detail/endian.hpp svneol=native#text/plain
 boost/boost/detail/indirect_traits.hpp svneol=native#text/plain
 boost/boost/detail/interlocked.hpp svneol=native#text/plain
 boost/boost/detail/is_function_ref_tester.hpp svneol=native#text/plain
