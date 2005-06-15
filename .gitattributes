@@ -8787,6 +8787,12 @@ boost/libs/statechart/test/InvalidChartTest2.cpp svneol=native#text/plain
 boost/libs/statechart/test/InvalidChartTest2.vcproj -text
 boost/libs/statechart/test/InvalidChartTest3.cpp svneol=native#text/plain
 boost/libs/statechart/test/InvalidChartTest3.vcproj -text
+boost/libs/statechart/test/InvalidResultAssignTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/InvalidResultAssignTest.vcproj -text
+boost/libs/statechart/test/InvalidResultCopyTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/InvalidResultCopyTest.vcproj -text
+boost/libs/statechart/test/InvalidResultDefCtorTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/InvalidResultDefCtorTest.vcproj -text
 boost/libs/statechart/test/InvalidTransitionTest1.cpp svneol=native#text/plain
 boost/libs/statechart/test/InvalidTransitionTest1.vcproj -text
 boost/libs/statechart/test/InvalidTransitionTest2.cpp svneol=native#text/plain
@@ -8804,10 +8810,13 @@ boost/libs/statechart/test/StateIterationTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/StateIterationTest.vcproj -text
 boost/libs/statechart/test/TerminationTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TerminationTest.vcproj -text
+boost/libs/statechart/test/ThrowingBoostAssert.hpp svneol=native#text/plain
 boost/libs/statechart/test/TransitionTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TransitionTest.vcproj -text
 boost/libs/statechart/test/TypeInfoTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TypeInfoTest.vcproj -text
+boost/libs/statechart/test/UnconsumedResultTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/UnconsumedResultTest.vcproj -text
 boost/libs/statechart/test/UnsupportedDeepHistoryTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/UnsupportedDeepHistoryTest.vcproj -text
 boost/libs/static_assert/Jamfile svneol=native#text/plain
