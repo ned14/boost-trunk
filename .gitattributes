@@ -92,6 +92,7 @@ boost/boost/archive/detail/archive_pointer_iserializer.hpp svneol=native#text/pl
 boost/boost/archive/detail/archive_pointer_oserializer.hpp svneol=native#text/plain
 boost/boost/archive/detail/auto_link_archive.hpp svneol=native#text/plain
 boost/boost/archive/detail/auto_link_warchive.hpp svneol=native#text/plain
+boost/boost/archive/detail/basic_archive_impl.hpp svneol=native#text/plain
 boost/boost/archive/detail/basic_config.hpp svneol=native#text/plain
 boost/boost/archive/detail/basic_iarchive.hpp svneol=native#text/plain
 boost/boost/archive/detail/basic_iserializer.hpp svneol=native#text/plain
