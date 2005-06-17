@@ -7611,6 +7611,7 @@ boost/libs/regex/build/vc7-stlport.mak svneol=native#text/plain
 boost/libs/regex/build/vc7.mak svneol=native#text/plain
 boost/libs/regex/build/vc71-stlport.mak svneol=native#text/plain
 boost/libs/regex/build/vc71.mak svneol=native#text/plain
+boost/libs/regex/build/vc8.mak svneol=native#text/plain
 boost/libs/regex/build/vc_gen.sh svneol=native#text/x-sh
 boost/libs/regex/doc/Attic/bad_expression.html svneol=native#text/html
 boost/libs/regex/doc/Attic/basic_regex.html svneol=native#text/html
