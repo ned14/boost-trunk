@@ -8267,6 +8267,7 @@ boost/libs/serialization/vc7ide/test_registered.vcproj -text
 boost/libs/serialization/vc7ide/test_reset_object_address.vcproj -text
 boost/libs/serialization/vc7ide/test_set.vcproj -text
 boost/libs/serialization/vc7ide/test_shared_ptr.vcproj -text
+boost/libs/serialization/vc7ide/test_shared_ptr_132.vcproj -text
 boost/libs/serialization/vc7ide/test_simple_class.vcproj -text
 boost/libs/serialization/vc7ide/test_simple_class_ptr.vcproj -text
 boost/libs/serialization/vc7ide/test_smart_cast.vcproj -text
