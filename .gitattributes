@@ -2653,7 +2653,6 @@ boost/boost/scoped_array.hpp svneol=native#text/plain
 boost/boost/scoped_ptr.hpp svneol=native#text/plain
 boost/boost/serialization/access.hpp svneol=native#text/plain
 boost/boost/serialization/base_object.hpp svneol=native#text/plain
-boost/boost/serialization/basic_helper.hpp svneol=native#text/plain
 boost/boost/serialization/binary_object.hpp svneol=native#text/plain
 boost/boost/serialization/collection_traits.hpp svneol=native#text/plain
 boost/boost/serialization/collections_load_imp.hpp svneol=native#text/plain
