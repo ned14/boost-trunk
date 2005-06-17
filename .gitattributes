@@ -8052,6 +8052,7 @@ boost/libs/serialization/test/test_registered.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_reset_object_address.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_set.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_shared_ptr.cpp svneol=native#text/plain
+boost/libs/serialization/test/test_shared_ptr_132.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_simple_class.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_simple_class_ptr.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_smart_cast.cpp svneol=native#text/plain
