@@ -7856,6 +7856,7 @@ boost/libs/regex/test/regress/vc6-stlport.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc6.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc7.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc71.mak svneol=native#text/plain
+boost/libs/regex/test/regress/vc8.mak svneol=native#text/plain
 boost/libs/regex/test/static_mutex/static_mutex_test.cpp svneol=native#text/plain
 boost/libs/regex/test/unicode/unicode_iterator_test.cpp svneol=native#text/plain
 boost/libs/regex/tools/generate/tables.cpp svneol=native#text/plain
