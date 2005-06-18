@@ -2682,6 +2682,7 @@ boost/boost/serialization/scoped_ptr.hpp svneol=native#text/plain
 boost/boost/serialization/serialization.hpp svneol=native#text/plain
 boost/boost/serialization/set.hpp svneol=native#text/plain
 boost/boost/serialization/shared_ptr.hpp svneol=native#text/plain
+boost/boost/serialization/shared_ptr_132.hpp svneol=native#text/plain
 boost/boost/serialization/slist.hpp svneol=native#text/plain
 boost/boost/serialization/split_free.hpp svneol=native#text/plain
 boost/boost/serialization/split_member.hpp svneol=native#text/plain
