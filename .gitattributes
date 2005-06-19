@@ -8771,6 +8771,8 @@ boost/libs/statechart/test/FifoSchedulerTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/FifoSchedulerTest.vcproj -text
 boost/libs/statechart/test/HistoryTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/HistoryTest.vcproj -text
+boost/libs/statechart/test/InStateReactionTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/InStateReactionTest.vcproj -text
 boost/libs/statechart/test/InconsistentHistoryTest1.cpp svneol=native#text/plain
 boost/libs/statechart/test/InconsistentHistoryTest1.vcproj -text
 boost/libs/statechart/test/InconsistentHistoryTest2.cpp svneol=native#text/plain
