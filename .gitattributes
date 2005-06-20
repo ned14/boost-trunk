@@ -6411,6 +6411,7 @@ boost/libs/optional/test/optional_test_ref_fail2.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_ref_fail3.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_ref_fail4.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_tie.cpp svneol=native#text/plain
+boost/libs/parameter/doc/reference.rst svneol=native#text/plain
 boost/libs/parameter/test/Jamfile svneol=native#text/plain
 boost/libs/parameter/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/parameter/test/basics.cpp svneol=native#text/plain
