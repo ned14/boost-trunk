@@ -4716,6 +4716,7 @@ boost/libs/graph/test/bidir_vec_remove_edge.cpp svneol=native#text/plain
 boost/libs/graph/test/bundled_properties.cpp svneol=native#text/plain
 boost/libs/graph/test/copy.cpp svneol=native#text/plain
 boost/libs/graph/test/cuthill_mckee_ordering.cpp svneol=native#text/plain
+boost/libs/graph/test/dag_longest_paths.cpp svneol=native#text/plain
 boost/libs/graph/test/dfs.cpp svneol=native#text/plain
 boost/libs/graph/test/dfs_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/dijkstra_cc.cpp svneol=native#text/plain
