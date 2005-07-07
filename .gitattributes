@@ -3977,7 +3977,6 @@ boost/libs/date_time/xmldoc/README svneol=native#text/plain
 boost/libs/date_time/xmldoc/acknowledgements.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/buildinfo.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/calculations.xml svneol=native#text/xml
-boost/libs/date_time/xmldoc/catalog.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/changes.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/conceptual.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/custom_time_zone.xml svneol=native#text/xml
