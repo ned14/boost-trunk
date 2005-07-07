@@ -9819,6 +9819,7 @@ boost/libs/wave/test/testwave/testfiles/test.cfg -text
 boost/libs/wave/test/testwave/testwave.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testwave_app.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testwave_app.hpp svneol=native#text/plain
+boost/more/background.html svneol=native#text/html
 boost/more/bibliography.html svneol=native#text/html
 boost/more/blanket-permission.txt svneol=native#text/plain
 boost/more/boost_1_33_0.jpg -text svneol=unset#image/jpeg
