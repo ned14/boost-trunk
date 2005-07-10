@@ -4884,6 +4884,7 @@ boost/libs/iostreams/doc/macros/macros.html svneol=native#text/html
 boost/libs/iostreams/doc/macros/workarounds.html svneol=native#text/html
 boost/libs/iostreams/doc/menu.html svneol=native#text/html
 boost/libs/iostreams/doc/portability.html svneol=native#text/html
+boost/libs/iostreams/doc/quick_reference.html svneol=native#text/html
 boost/libs/iostreams/doc/rationale.html svneol=native#text/html
 boost/libs/iostreams/doc/reference.html svneol=native#text/html
 boost/libs/iostreams/doc/theme/iostreams.css svneol=native#text/css
