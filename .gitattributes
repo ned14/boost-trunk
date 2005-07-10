@@ -4824,6 +4824,7 @@ boost/libs/iostreams/doc/concepts/multi_character.html svneol=native#text/html
 boost/libs/iostreams/doc/concepts/optimally_buffered.html svneol=native#text/html
 boost/libs/iostreams/doc/concepts/output_filter.html svneol=native#text/html
 boost/libs/iostreams/doc/concepts/peekable.html svneol=native#text/html
+boost/libs/iostreams/doc/concepts/pipable.html svneol=native#text/html
 boost/libs/iostreams/doc/concepts/seekable_device.html svneol=native#text/html
 boost/libs/iostreams/doc/concepts/seekable_filter.html svneol=native#text/html
 boost/libs/iostreams/doc/concepts/sink.html svneol=native#text/html
