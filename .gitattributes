@@ -4335,7 +4335,7 @@ boost/libs/graph/doc/figs/quick_start.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/rel_betweenness_centrality.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/search_states.fig -text
 boost/libs/graph/doc/figs/search_states.gif -text svneol=unset#image/gif
-boost/libs/graph/doc/figs/sequential_vertex_coloring.graffle -text svneol=unset#application/octet-stream
+boost/libs/graph/doc/figs/seq_vertex_coloring.graffle -text
 boost/libs/graph/doc/figs/sequential_vertex_coloring.png -text svneol=unset#image/png
 boost/libs/graph/doc/figs/sigma_st.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/sigma_stv.gif -text svneol=unset#image/gif
