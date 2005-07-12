@@ -4802,7 +4802,6 @@ boost/libs/iostreams/doc/classes/gzip.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/line_filter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/mapped_file.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/mode.html svneol=native#text/html
-boost/libs/iostreams/doc/classes/multichar_filter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/newline_filter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/null.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/one_step_filter.html svneol=native#text/html
