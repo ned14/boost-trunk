@@ -8852,6 +8852,7 @@ boost/libs/static_assert/static_assert_example_2.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_example_3.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_1.cpp svneol=native#text/plain
+boost/libs/static_assert/static_assert_test_fail_10.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_2.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_3.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_4.cpp svneol=native#text/plain
@@ -8860,7 +8861,6 @@ boost/libs/static_assert/static_assert_test_fail_6.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_7.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_8.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_9.cpp svneol=native#text/plain
-boost/libs/static_assert/static_assert_test_fail_function.cpp svneol=native#text/plain
 boost/libs/test/README svneol=native#text/plain
 boost/libs/test/build/.cvsignore -text
 boost/libs/test/build/Jamfile svneol=native#text/plain
