@@ -3396,6 +3396,7 @@ boost/boost/wave/wave_config.hpp svneol=native#text/plain
 boost/boost/wave/wave_version.hpp svneol=native#text/plain
 boost/boost/weak_ptr.hpp svneol=native#text/plain
 boost/doc/Jamfile.v2 svneol=native#text/plain
+boost/doc/html/CopyConstructible.html svneol=native#text/html
 boost/doc/html/any.html svneol=native#text/html
 boost/doc/html/array.html svneol=native#text/html
 boost/doc/html/boost_staticassert.html svneol=native#text/html
