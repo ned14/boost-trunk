@@ -4784,7 +4784,6 @@ boost/libs/iostreams/build/bzip2.jam svneol=native#text/plain
 boost/libs/iostreams/build/zlib.jam svneol=native#text/plain
 boost/libs/iostreams/doc/acknowledgments.html svneol=native#text/html
 boost/libs/iostreams/doc/bibliography.html svneol=native#text/html
-boost/libs/iostreams/doc/classes/alphabetically.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/array.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/back_inserter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/bzip2.html svneol=native#text/html
