@@ -1947,6 +1947,7 @@ boost/boost/numeric/ublas/detail/returntype_deduction.hpp svneol=native#text/pla
 boost/boost/numeric/ublas/detail/temporary.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/detail/vector_assign.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/exception.hpp svneol=native#text/plain
+boost/boost/numeric/ublas/expression_types.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/functional.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/fwd.hpp svneol=native#text/plain
 boost/boost/numeric/ublas/hermitian.hpp svneol=native#text/plain
