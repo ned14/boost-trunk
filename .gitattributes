@@ -3993,7 +3993,7 @@ boost/libs/date_time/xmldoc/date_iterators.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_period.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_time.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_time_autodoc.boostbook -text
-boost/libs/date_time/xmldoc/date_time_documentation_howto.html svneol=native#text/html
+boost/libs/date_time/xmldoc/date_time_docs_howto.html svneol=native#text/html
 boost/libs/date_time/xmldoc/date_time_fo_stylesheet.xsl svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_time_io.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/design_concepts.xml svneol=native#text/xml
