@@ -6283,7 +6283,6 @@ boost/libs/numeric/ublas/bench4/bench43.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/doc/banded.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/blas.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/bounded_array.htm svneol=native#text/html
-boost/libs/numeric/ublas/doc/container.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/container_concept.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/doxygen.css svneol=native#text/css
 boost/libs/numeric/ublas/doc/expression_concept.htm svneol=native#text/html
