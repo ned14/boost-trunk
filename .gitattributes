@@ -6351,7 +6351,6 @@ boost/libs/numeric/ublas/doc/samples/vector_unary.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/doc/samples/vector_unary_redux.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/doc/samples/zero_matrix.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/doc/samples/zero_vector.cpp svneol=native#text/plain
-boost/libs/numeric/ublas/doc/storage.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/storage_concept.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/storage_sparse.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/symmetric.htm svneol=native#text/html
