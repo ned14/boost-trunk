@@ -2668,7 +2668,6 @@ boost/boost/serialization/export.hpp svneol=native#text/plain
 boost/boost/serialization/extended_type_info.hpp svneol=native#text/plain
 boost/boost/serialization/extended_type_info_no_rtti.hpp svneol=native#text/plain
 boost/boost/serialization/extended_type_info_typeid.hpp svneol=native#text/plain
-boost/boost/serialization/extended_type_info_typeid_fwd.hpp svneol=native#text/plain
 boost/boost/serialization/force_include.hpp svneol=native#text/plain
 boost/boost/serialization/hash_map.hpp svneol=native#text/plain
 boost/boost/serialization/hash_set.hpp svneol=native#text/plain
