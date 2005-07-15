@@ -4820,7 +4820,6 @@ boost/libs/iostreams/doc/classes/null.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/regex_filter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/stdio_filter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/symmetric_filter.html svneol=native#text/html
-boost/libs/iostreams/doc/classes/symmetric_filter_adapter.html svneol=native#text/html
 boost/libs/iostreams/doc/classes/zlib.html svneol=native#text/html
 boost/libs/iostreams/doc/concepts/bidirectional_device.html svneol=native#text/html
 boost/libs/iostreams/doc/concepts/bidirectional_filter.html svneol=native#text/html
