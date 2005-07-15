@@ -708,6 +708,7 @@ boost/boost/iostreams/filter/regex.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/regex_filter.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/stdio.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/stdio_filter.hpp svneol=native#text/plain
+boost/boost/iostreams/filter/symmetric.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/symmetric_filter_adapter.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/test.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/zlib.hpp svneol=native#text/plain
