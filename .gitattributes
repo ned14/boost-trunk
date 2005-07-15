@@ -697,6 +697,7 @@ boost/boost/iostreams/device/file.hpp svneol=native#text/plain
 boost/boost/iostreams/device/file_descriptor.hpp svneol=native#text/plain
 boost/boost/iostreams/device/mapped_file.hpp svneol=native#text/plain
 boost/boost/iostreams/device/null.hpp svneol=native#text/plain
+boost/boost/iostreams/filter/aggregate.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/bzip2.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/counter.hpp svneol=native#text/plain
 boost/boost/iostreams/filter/gzip.hpp svneol=native#text/plain
