@@ -6440,6 +6440,7 @@ boost/libs/parameter/test/basics.hpp svneol=native#text/plain
 boost/libs/parameter/test/macros.cpp svneol=native#text/plain
 boost/libs/parameter/test/sfinae.cpp svneol=native#text/plain
 boost/libs/parameter/test/unwrap_cv_reference.cpp svneol=native#text/plain
+boost/libs/platform_maintainers.txt svneol=native#text/plain
 boost/libs/pool/TODO.txt svneol=native#text/plain
 boost/libs/pool/doc/concepts.html svneol=native#text/html
 boost/libs/pool/doc/copyright.html svneol=native#text/html
