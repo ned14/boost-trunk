@@ -9833,6 +9833,7 @@ boost/more/count_bdy.htm svneol=native#text/html
 boost/more/cpp_committee_meetings.html svneol=native#text/html
 boost/more/css_0/boost_bullet.gif -text svneol=unset#image/gif
 boost/more/css_0/common.css svneol=native#text/css
+boost/more/css_0/csshover.htc -text
 boost/more/css_0/front.css svneol=native#text/css
 boost/more/css_0/heading-background.jpg -text svneol=unset#image/jpeg
 boost/more/css_0/inner.css svneol=native#text/css
