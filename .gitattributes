@@ -7916,6 +7916,7 @@ boost/libs/serialization/doc/strong_typedef.html svneol=native#text/html
 boost/libs/serialization/doc/style.css svneol=native#text/css
 boost/libs/serialization/doc/traits.html svneol=native#text/html
 boost/libs/serialization/doc/tutorial.html svneol=native#text/html
+boost/libs/serialization/doc/void_cast.html svneol=native#text/html
 boost/libs/serialization/doc/wrappers.html svneol=native#text/html
 boost/libs/serialization/example/Jamfile svneol=native#text/plain
 boost/libs/serialization/example/demo.cpp svneol=native#text/plain
