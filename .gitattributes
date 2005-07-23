@@ -8038,6 +8038,7 @@ boost/libs/serialization/test/test_derived_class.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_derived_class_ptr.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_diamond.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_exported.cpp svneol=native#text/plain
+boost/libs/serialization/test/test_inclusion.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_iterators.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_iterators_base64.cpp svneol=native#text/plain
 boost/libs/serialization/test/test_list.cpp svneol=native#text/plain
@@ -8254,6 +8255,7 @@ boost/libs/serialization/vc7ide/test_derived_class.vcproj -text
 boost/libs/serialization/vc7ide/test_derived_class_ptr.vcproj -text
 boost/libs/serialization/vc7ide/test_diamond.vcproj -text
 boost/libs/serialization/vc7ide/test_exported.vcproj -text
+boost/libs/serialization/vc7ide/test_inclusion.vcproj -text
 boost/libs/serialization/vc7ide/test_iterators.vcproj -text
 boost/libs/serialization/vc7ide/test_iterators_base64.vcproj -text
 boost/libs/serialization/vc7ide/test_list.vcproj -text
