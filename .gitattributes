@@ -7902,6 +7902,7 @@ boost/libs/serialization/doc/rationale.html svneol=native#text/html
 boost/libs/serialization/doc/release.html svneol=native#text/html
 boost/libs/serialization/doc/serialization.html svneol=native#text/html
 boost/libs/serialization/doc/shared_ptr.html svneol=native#text/html
+boost/libs/serialization/doc/shared_ptr2.html svneol=native#text/html
 boost/libs/serialization/doc/smart_cast.html svneol=native#text/html
 boost/libs/serialization/doc/special.html svneol=native#text/html
 boost/libs/serialization/doc/state_saver.html svneol=native#text/html
