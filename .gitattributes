@@ -9938,6 +9938,7 @@ boost/people/vesa_karvonen.htm svneol=native#text/html
 boost/people/vladimir_prus.htm svneol=native#text/html
 boost/people/william_kempf.htm svneol=native#text/html
 boost/project-root.jam svneol=native#text/plain
+boost/regression/.htaccess svneol=native#text/plain
 boost/rst.css svneol=native#text/css
 boost/status/.cvsignore -text
 boost/status/Jamfile svneol=native#text/plain
