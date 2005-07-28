@@ -5570,7 +5570,6 @@ boost/libs/mpl/doc/src/refmanual/BidirectionalSequence.rst svneol=native#text/pl
 boost/libs/mpl/doc/src/refmanual/CFG_NO_HAS_XXX.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/CFG_NO_PREPROCESSED.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/Categorized.rst svneol=native#text/plain
-boost/libs/mpl/doc/src/refmanual/Data.Integral.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/Data.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/ExtensibleAssociativeSequence.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/ExtensibleSequence.rst svneol=native#text/plain
