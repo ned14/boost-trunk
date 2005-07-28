@@ -4854,7 +4854,6 @@ boost/libs/iostreams/doc/functions/put.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/putback.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/read.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/restrict.html svneol=native#text/html
-boost/libs/iostreams/doc/functions/reverse.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/seek.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/tee.html svneol=native#text/html
 boost/libs/iostreams/doc/functions/write.html svneol=native#text/html
