@@ -10354,6 +10354,7 @@ boost/tools/build/v2/options/help.jam svneol=native#text/plain
 boost/tools/build/v2/release_procedure.txt svneol=native#text/plain
 boost/tools/build/v2/roll.sh svneol=native#text/x-sh
 boost/tools/build/v2/site-config.jam svneol=native#text/plain
+boost/tools/build/v2/test/.cvsignore -text
 boost/tools/build/v2/test/BoostBuild.py svneol=native#text/x-python
 boost/tools/build/v2/test/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/Jamrules svneol=native#text/plain
