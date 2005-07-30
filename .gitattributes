@@ -4834,7 +4834,6 @@ boost/libs/iostreams/doc/guide/asynchronous.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/buffering.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/code_conversion.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/concepts.html svneol=native#text/html
-boost/libs/iostreams/doc/guide/convenience.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/exceptions.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/filtering_streams.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/generic_streams.html svneol=native#text/html
