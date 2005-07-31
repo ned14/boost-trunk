@@ -10793,6 +10793,7 @@ boost/tools/build/v2/doc/src/tutorial.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/userman.xml svneol=native#text/xml
 boost/tools/build/v2/doc/tools.html svneol=native#text/html
 boost/tools/build/v2/doc/tracker.html svneol=native#text/html
+boost/tools/build/v2/doc/userman.pdf -text svneol=unset#application/pdf
 boost/tools/build/v2/example/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/example/customization/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/customization/class.verbatim -text
