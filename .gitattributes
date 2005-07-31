@@ -6992,6 +6992,7 @@ boost/libs/numeric/ublas/doc/vector.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_expression.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_proxy.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_sparse.htm svneol=native#text/html
+boost/libs/numeric/ublas/index.html svneol=native#text/html
 boost/libs/numeric/ublas/test/Jamfile svneol=native#text/plain
 boost/libs/numeric/ublas/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/numeric/ublas/test/README svneol=native#text/plain
