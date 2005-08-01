@@ -8833,6 +8833,10 @@ boost/libs/statechart/test/TerminationTest.vcproj -text
 boost/libs/statechart/test/ThrowingBoostAssert.hpp svneol=native#text/plain
 boost/libs/statechart/test/TransitionTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TransitionTest.vcproj -text
+boost/libs/statechart/test/TuTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/TuTest.hpp svneol=native#text/plain
+boost/libs/statechart/test/TuTest.vcproj -text
+boost/libs/statechart/test/TuTestMain.cpp svneol=native#text/plain
 boost/libs/statechart/test/TypeInfoTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TypeInfoTest.vcproj -text
 boost/libs/statechart/test/UnconsumedResultTest.cpp svneol=native#text/plain
