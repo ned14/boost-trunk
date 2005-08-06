@@ -65,7 +65,7 @@ namespace boost { namespace spirit {
                 if (this->derived().test(ch))
                 {
                     iterator_t save(scan.first);
-                    ++scan;
+                    ++scan.first;
                     return scan.create_match(1, ch, save, scan.first);
                 }
             }
@@ -521,13 +521,13 @@ namespace boost { namespace spirit {
 
             if (!scan.at_end() && *scan == '\r')    // CR
             {
-                ++scan;
+                ++scan.first;
                 ++len;
             }
 
-            if (!scan.at_end() && *scan == '\n')    // LF
+            if (scan.first != scan.last && *scan == '\n')    // LF
             {
-                ++scan;
+                ++scan.first;
                 ++len;
             }
 
