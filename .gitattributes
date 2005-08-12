@@ -4875,7 +4875,6 @@ boost/libs/iostreams/doc/guide/asynchronous.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/buffering.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/code_conversion.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/concepts.html svneol=native#text/html
-boost/libs/iostreams/doc/guide/convenience.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/exceptions.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/filtering_streams.html svneol=native#text/html
 boost/libs/iostreams/doc/guide/generic_streams.html svneol=native#text/html
@@ -6361,6 +6360,7 @@ boost/libs/numeric/ublas/doc/vector.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_expression.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_proxy.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/vector_sparse.htm svneol=native#text/html
+boost/libs/numeric/ublas/index.html svneol=native#text/html
 boost/libs/numeric/ublas/test/Jamfile svneol=native#text/plain
 boost/libs/numeric/ublas/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/numeric/ublas/test/README svneol=native#text/plain
@@ -8278,7 +8278,7 @@ boost/libs/serialization/vc7ide/test_private_ctor.vcproj -text
 boost/libs/serialization/vc7ide/test_recursion.vcproj -text
 boost/libs/serialization/vc7ide/test_recusion.vcproj -text
 boost/libs/serialization/vc7ide/test_registered.vcproj -text
-boost/libs/serialization/vc7ide/test_reset_object_address.vcproj -text
+boost/libs/serialization/vc7ide/test_reset_object_addr.vcproj -text
 boost/libs/serialization/vc7ide/test_set.vcproj -text
 boost/libs/serialization/vc7ide/test_shared_ptr.vcproj -text
 boost/libs/serialization/vc7ide/test_shared_ptr_132.vcproj -text
@@ -9833,6 +9833,7 @@ boost/libs/wave/test/testwave/testwave_app.hpp svneol=native#text/plain
 boost/more/background.html svneol=native#text/html
 boost/more/bibliography.html svneol=native#text/html
 boost/more/blanket-permission.txt svneol=native#text/plain
+boost/more/boost-dark-trans.png -text svneol=unset#image/png
 boost/more/boost_1_33_0.jpg -text svneol=unset#image/jpeg
 boost/more/borland_cpp.html svneol=native#text/html
 boost/more/bugs.htm svneol=native#text/html
@@ -9855,6 +9856,7 @@ boost/more/css_0/sidebar-shadow-right.png -text svneol=unset#image/png
 boost/more/discussion_policy.htm svneol=native#text/html
 boost/more/error_handling.html svneol=native#text/html
 boost/more/faq.htm svneol=native#text/html
+boost/more/favicon.ico -text svneol=unset#image/ico
 boost/more/feature_model_diagrams.htm svneol=native#text/html
 boost/more/formal_review_process.htm svneol=native#text/html
 boost/more/formal_review_schedule.html svneol=native#text/html
@@ -10295,6 +10297,7 @@ boost/tools/build/v2/doc/src/tutorial.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/userman.xml svneol=native#text/xml
 boost/tools/build/v2/doc/tools.html svneol=native#text/html
 boost/tools/build/v2/doc/tracker.html svneol=native#text/html
+boost/tools/build/v2/doc/userman.pdf -text svneol=unset#application/pdf
 boost/tools/build/v2/example/boost-build.jam svneol=native#text/plain
 boost/tools/build/v2/example/customization/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/customization/class.verbatim -text
