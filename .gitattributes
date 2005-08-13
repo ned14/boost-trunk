@@ -3024,6 +3024,7 @@ boost/boost/statechart/detail/avoid_unused_warning.hpp svneol=native#text/plain
 boost/boost/statechart/detail/constructor.hpp svneol=native#text/plain
 boost/boost/statechart/detail/counted_base.hpp svneol=native#text/plain
 boost/boost/statechart/detail/leaf_state.hpp svneol=native#text/plain
+boost/boost/statechart/detail/memory.hpp svneol=native#text/plain
 boost/boost/statechart/detail/node_state.hpp svneol=native#text/plain
 boost/boost/statechart/detail/rtti_policy.hpp svneol=native#text/plain
 boost/boost/statechart/detail/state_base.hpp svneol=native#text/plain
