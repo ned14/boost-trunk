@@ -3,6 +3,7 @@ boost/boost/filesystem/cerrno.hpp svneol=native#text/plain
 boost/boost/filesystem/config.hpp svneol=native#text/plain
 boost/boost/filesystem/convenience.hpp svneol=native#text/plain
 boost/boost/filesystem/exception.hpp svneol=native#text/plain
+boost/boost/filesystem/filesystem.hpp svneol=native#text/plain
 boost/boost/filesystem/fstream.hpp svneol=native#text/plain
 boost/boost/filesystem/operations.hpp svneol=native#text/plain
 boost/boost/filesystem/path.hpp svneol=native#text/plain
