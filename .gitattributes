@@ -4903,6 +4903,7 @@ boost/libs/iostreams/doc/quick_reference.html svneol=native#text/html
 boost/libs/iostreams/doc/rationale.html svneol=native#text/html
 boost/libs/iostreams/doc/reference.html svneol=native#text/html
 boost/libs/iostreams/doc/theme/boost.png -text svneol=unset#image/png
+boost/libs/iostreams/doc/theme/boost_small.png -text svneol=unset#image/png
 boost/libs/iostreams/doc/theme/iostreams.css svneol=native#text/css
 boost/libs/iostreams/doc/theme/wedge.gif -text svneol=unset#image/gif
 boost/libs/iostreams/doc/tree/tree.css svneol=native#text/css
