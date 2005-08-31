@@ -8864,18 +8864,18 @@ boost/libs/statechart/example/Camera/Shooting.cpp svneol=native#text/plain
 boost/libs/statechart/example/Camera/Shooting.hpp svneol=native#text/plain
 boost/libs/statechart/example/Handcrafted/Handcrafted.cpp svneol=native#text/plain
 boost/libs/statechart/example/Handcrafted/Handcrafted.vcproj -text
-boost/libs/statechart/example/InStateVsTransition/InStateVsTransition.cpp svneol=native#text/plain
-boost/libs/statechart/example/InStateVsTransition/InStateVsTransition.vcproj -text
 boost/libs/statechart/example/Jamfile svneol=native#text/plain
 boost/libs/statechart/example/Jamfile.v2 svneol=native#text/plain
 boost/libs/statechart/example/Keyboard/Keyboard.cpp svneol=native#text/plain
 boost/libs/statechart/example/Keyboard/Keyboard.vcproj -text
+boost/libs/statechart/example/Performance/InStateVsTransitionCharts.xls -text svneol=unset#application/vnd.ms-excel
+boost/libs/statechart/example/Performance/Performance.cpp svneol=native#text/plain
+boost/libs/statechart/example/Performance/Performance.vcproj -text
 boost/libs/statechart/example/PingPong/PingPong.cpp svneol=native#text/plain
 boost/libs/statechart/example/PingPong/PingPong.vcproj -text
 boost/libs/statechart/example/StopWatch/StopWatch.cpp svneol=native#text/plain
 boost/libs/statechart/example/StopWatch/StopWatch.vcproj -text
 boost/libs/statechart/example/StopWatch/StopWatch2.cpp svneol=native#text/plain
-boost/libs/statechart/example/run/InStateVsTransitionCharts.xls -text svneol=unset#application/vnd.ms-excel
 boost/libs/statechart/index.html svneol=native#text/html
 boost/libs/statechart/test/CustomReactionTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/CustomReactionTest.vcproj -text
