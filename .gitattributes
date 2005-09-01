@@ -2684,6 +2684,7 @@ boost/boost/serialization/variant.hpp svneol=native#text/plain
 boost/boost/serialization/vector.hpp svneol=native#text/plain
 boost/boost/serialization/version.hpp svneol=native#text/plain
 boost/boost/serialization/void_cast.hpp svneol=native#text/plain
+boost/boost/serialization/void_cast_fwd.hpp svneol=native#text/plain
 boost/boost/serialization/weak_ptr.hpp svneol=native#text/plain
 boost/boost/shared_array.hpp svneol=native#text/plain
 boost/boost/shared_container_iterator.hpp svneol=native#text/plain
