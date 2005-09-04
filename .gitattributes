@@ -2652,6 +2652,7 @@ boost/boost/serialization/deque.hpp svneol=native#text/plain
 boost/boost/serialization/detail/shared_count_132.hpp svneol=native#text/plain
 boost/boost/serialization/detail/shared_ptr_132.hpp svneol=native#text/plain
 boost/boost/serialization/detail/shared_ptr_nmt_132.hpp svneol=native#text/plain
+boost/boost/serialization/detail/stack_constructor.hpp svneol=native#text/plain
 boost/boost/serialization/export.hpp svneol=native#text/plain
 boost/boost/serialization/extended_type_info.hpp svneol=native#text/plain
 boost/boost/serialization/extended_type_info_no_rtti.hpp svneol=native#text/plain
