@@ -8235,6 +8235,7 @@ boost/libs/range/test/compat1.cpp svneol=native#text/plain
 boost/libs/range/test/compat2.cpp svneol=native#text/plain
 boost/libs/range/test/compat3.cpp svneol=native#text/plain
 boost/libs/range/test/const_ranges.cpp svneol=native#text/plain
+boost/libs/range/test/extension_mechanism.cpp svneol=native#text/plain
 boost/libs/range/test/iterator_pair.cpp svneol=native#text/plain
 boost/libs/range/test/iterator_range.cpp svneol=native#text/plain
 boost/libs/range/test/mfc.cpp svneol=native#text/plain
