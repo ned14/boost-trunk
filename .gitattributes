@@ -5302,6 +5302,7 @@ boost/libs/graph/src/graphviz_graph_parser.cpp svneol=native#text/plain
 boost/libs/graph/src/graphviz_graph_parser.hpp svneol=native#text/plain
 boost/libs/graph/src/graphviz_lex.ll -text
 boost/libs/graph/src/graphviz_parser.yy -text
+boost/libs/graph/src/python/adjlist.cpp svneol=native#text/plain
 boost/libs/graph/src/python/basic_graph.cpp svneol=native#text/plain
 boost/libs/graph/src/python/basic_graph.hpp svneol=native#text/plain
 boost/libs/graph/src/python/bellman_ford_events.hpp svneol=native#text/plain
