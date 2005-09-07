@@ -574,6 +574,7 @@ boost/boost/graph/king_ordering.hpp svneol=native#text/plain
 boost/boost/graph/kruskal_min_spanning_tree.hpp svneol=native#text/plain
 boost/boost/graph/leda_graph.hpp svneol=native#text/plain
 boost/boost/graph/matrix_as_graph.hpp svneol=native#text/plain
+boost/boost/graph/maximum_cardinality_matching.hpp svneol=native#text/plain
 boost/boost/graph/minimum_degree_ordering.hpp svneol=native#text/plain
 boost/boost/graph/named_function_params.hpp svneol=native#text/plain
 boost/boost/graph/neighbor_bfs.hpp svneol=native#text/plain
@@ -4405,6 +4406,8 @@ boost/libs/graph/doc/figs/graph_search.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/knights_tour.fig -text
 boost/libs/graph/doc/figs/knights_tour.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/max-flow.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/maximal-match.png -text svneol=unset#image/png
+boost/libs/graph/doc/figs/maximum-match.png -text svneol=unset#image/png
 boost/libs/graph/doc/figs/python.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/python_ico.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/quick_start.fig -text
@@ -4466,6 +4469,7 @@ boost/libs/graph/doc/layout_tolerance.html svneol=native#text/html
 boost/libs/graph/doc/leda_conversion.html svneol=native#text/html
 boost/libs/graph/doc/lgrind.sty -text
 boost/libs/graph/doc/math.sty -text
+boost/libs/graph/doc/maximum_matching.html svneol=native#text/html
 boost/libs/graph/doc/minimum_degree_ordering.html svneol=native#text/html
 boost/libs/graph/doc/minimum_degree_ordering.w -text
 boost/libs/graph/doc/mungeaux.csh -text
@@ -4646,6 +4650,7 @@ boost/libs/graph/example/leda-regression.cfg -text
 boost/libs/graph/example/loops_dfs.cpp svneol=native#text/plain
 boost/libs/graph/example/makefile-dependencies.dat svneol=native#text/plain
 boost/libs/graph/example/makefile-target-names.dat svneol=native#text/plain
+boost/libs/graph/example/matching_example.cpp svneol=native#text/plain
 boost/libs/graph/example/max_flow.cpp svneol=native#text/plain
 boost/libs/graph/example/max_flow.dat -text
 boost/libs/graph/example/max_flow.expected -text
@@ -4819,6 +4824,7 @@ boost/libs/graph/test/king_ordering.cpp svneol=native#text/plain
 boost/libs/graph/test/layout_test.cpp svneol=native#text/plain
 boost/libs/graph/test/leda_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/lvalue_pmap.cpp svneol=native#text/plain
+boost/libs/graph/test/matching_test.cpp svneol=native#text/plain
 boost/libs/graph/test/property_iter.cpp svneol=native#text/plain
 boost/libs/graph/test/python/biconnected_components.dot -text
 boost/libs/graph/test/python/biconnected_components.py svneol=native#text/x-python
@@ -4826,6 +4832,7 @@ boost/libs/graph/test/python/circle_layout.py svneol=native#text/x-python
 boost/libs/graph/test/python/fruchterman_reingold.py svneol=native#text/x-python
 boost/libs/graph/test/python/kamada_kawai_spring_layout.py svneol=native#text/x-python
 boost/libs/graph/test/python/py_dijkstra.py svneol=native#text/x-python
+boost/libs/graph/test/random_matching_test.cpp svneol=native#text/plain
 boost/libs/graph/test/regression.cfg -text
 boost/libs/graph/test/relaxed_heap_test.cpp svneol=native#text/plain
 boost/libs/graph/test/reverse_graph_cc.cpp svneol=native#text/plain
