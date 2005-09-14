@@ -3133,6 +3133,7 @@ boost/boost/thread/barrier.hpp svneol=native#text/plain
 boost/boost/thread/condition.hpp svneol=native#text/plain
 boost/boost/thread/detail/config.hpp svneol=native#text/plain
 boost/boost/thread/detail/force_cast.hpp svneol=native#text/plain
+boost/boost/thread/detail/lightweight_mutex_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/lock.hpp svneol=native#text/plain
 boost/boost/thread/detail/once_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/read_write_lock.hpp svneol=native#text/plain
