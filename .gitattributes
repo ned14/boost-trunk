@@ -494,6 +494,7 @@ boost/boost/function/gen_function_N.pl svneol=native#text/x-perl
 boost/boost/function_equal.hpp svneol=native#text/plain
 boost/boost/function_output_iterator.hpp svneol=native#text/plain
 boost/boost/functional.hpp svneol=native#text/plain
+boost/boost/functional/detail/container_fwd.hpp svneol=native#text/plain
 boost/boost/functional/detail/float_functions.hpp svneol=native#text/plain
 boost/boost/functional/hash.hpp svneol=native#text/plain
 boost/boost/functional/hash/Attic/deque.hpp svneol=native#text/plain
