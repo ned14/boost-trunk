@@ -10,6 +10,7 @@
 // basic_binary_oarchive.hpp
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+// size_type modifications (C) Copyright 2005 Matthias Troyer. 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -100,6 +101,11 @@ protected:
     }
     void save_override(const tracking_type & t, int){
         char x = t.t;
+        * this->This() << x;
+    }
+    void save_override(const container_size_type & t, int){
+        // for backward compatibility. a 64 bit integer would be better
+        uint_least32_t x = t.t;
         * this->This() << x;
     }
 

@@ -10,6 +10,7 @@
 // basic_binary_oprimitive.hpp
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+// Fast array serialization (C) Copyright 2005 Matthias Troyer 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -96,6 +97,14 @@ public:
     ~basic_binary_oprimitive();
 public:
     void save_binary(const void *address, std::size_t count);
+	
+    // fast saving of arrays of fundamental types
+    template<class T>
+    void save_array(T const *address, std::size_t count)
+    {
+        save_binary(address, count*sizeof(T));
+    }
+
 };
 
 template<class Archive, class OStream>

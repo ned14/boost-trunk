@@ -56,6 +56,7 @@
 
 // the following is need only for dynamic cast of polymorphic pointers
 #include <boost/archive/detail/basic_oarchive.hpp>
+#include <boost/archive/basic_archive.hpp>
 #include <boost/archive/detail/basic_oserializer.hpp>
 #include <boost/archive/detail/archive_pointer_oserializer.hpp>
 
@@ -68,6 +69,9 @@
 #include <boost/serialization/nvp.hpp>
 
 #include <boost/archive/archive_exception.hpp>
+
+#include <boost/archive/traits.hpp>
+#include <boost/utility/enable_if.hpp>
 
 namespace boost {
 
@@ -480,17 +484,40 @@ struct save_enum_type
 template<class Archive, class T>
 struct save_array_type
 {
+
+	template <class X>
+    static void save_array_contents(
+	    Archive &ar,
+		X const *p, 
+		std::size_t count,
+		typename boost::disable_if<boost::archive::fast_array_serialization<Archive,X> >::type* =0
+	){
+        std::size_t i;
+        for(i = 0; i < count; ++i)
+            ar << boost::serialization::make_nvp("item", p[i]);
+	}
+	
+	template <class X>
+    static void save_array_contents(
+	    Archive &ar,
+		X const *p, 
+		std::size_t count,
+		typename boost::enable_if<boost::archive::fast_array_serialization<Archive,X> >::type* =0
+	){
+        ar.save_array(p,count);
+	}
+	  
     static void invoke(Archive &ar, const T &t){
         save_access::end_preamble(ar);
         // consider alignment
-        int count = sizeof(t) / (
+        std::size_t c = sizeof(t) / (
             static_cast<const char *>(static_cast<const void *>(&t[1])) 
             - static_cast<const char *>(static_cast<const void *>(&t[0]))
         );
+		const container_size_type count(c);
         ar << BOOST_SERIALIZATION_NVP(count);
-        int i;
-        for(i = 0; i < count; ++i)
-            ar << boost::serialization::make_nvp("item", t[i]);
+		
+		save_array_contents(ar,t,count);
     }
 };
 
@@ -557,9 +584,9 @@ struct check_tracking {
 
 template<class Archive, class T>
 inline void save(Archive & ar, T &t){
-    // if your program traps here, it indicates taht your doing one of the following:
+    // if your program traps here, it indicates that you're doing one of the following:
     // a) serializing an object of a type marked "track_never" through a pointer.
-    // b) saving an non-const object of a type not markd "track_never)
+    // b) saving an non-const object of a type not marked "track_never"
     // Either of these conditions may be an indicator of an error usage of the
     // serialization library and should be double checked.  See documentation on
     // object tracking.

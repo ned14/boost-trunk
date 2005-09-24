@@ -10,6 +10,7 @@
 // binary_woarchive.hpp
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+// Fast array serialization (C) Copyright 2005 Matthias Troyer 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -25,6 +26,8 @@
 #include <boost/archive/detail/auto_link_warchive.hpp>
 #include <boost/archive/basic_binary_oprimitive.hpp>
 #include <boost/archive/basic_binary_oarchive.hpp>
+#include <boost/archive/traits.hpp>
+#include <boost/type_traits/is_fundamental.hpp>
 
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header
 
@@ -72,6 +75,15 @@ public:
     {}
     ~binary_woarchive(){}
 };
+
+// specialize fast_array_serialization
+// the binary archive provides fast array serialization for all fundamental types
+
+template <class Type>
+struct fast_array_serialization<binary_woarchive,Type>
+  : public is_fundamental<Type>
+{};
+
 
 } // namespace archive
 } // namespace boost

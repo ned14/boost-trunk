@@ -10,6 +10,7 @@
 // basic_archive.hpp:
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+// size_type modification (C) Copyright 2005 Matthias Troyer. 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -37,6 +38,7 @@ BOOST_STRONG_TYPEDEF(int, class_id_optional_type)
 BOOST_STRONG_TYPEDEF(int, class_id_reference_type)
 BOOST_STRONG_TYPEDEF(unsigned int, object_id_type)
 BOOST_STRONG_TYPEDEF(unsigned int, object_reference_type)
+BOOST_STRONG_TYPEDEF(std::size_t, container_size_type)
 
 struct tracking_type {
     typedef bool value_type;
@@ -121,6 +123,7 @@ BOOST_CLASS_IMPLEMENTATION(boost::archive::class_name_type, primitive_type)
 BOOST_CLASS_IMPLEMENTATION(boost::archive::object_id_type, primitive_type)
 BOOST_CLASS_IMPLEMENTATION(boost::archive::object_reference_type, primitive_type)
 BOOST_CLASS_IMPLEMENTATION(boost::archive::tracking_type, primitive_type)
+BOOST_CLASS_IMPLEMENTATION(boost::archive::container_size_type, primitive_type)
 
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // Make sure that the export.hpp header isn't included before any archive header

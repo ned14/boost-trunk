@@ -77,6 +77,9 @@ namespace std{
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/binary_object.hpp>
 
+#include <boost/archive/traits.hpp>
+#include <boost/utility/enable_if.hpp>
+
 namespace boost {
 
 namespace serialization {
@@ -494,21 +497,42 @@ struct load_enum_type {
 
 template<class Archive, class T>
 struct load_array_type {
+
+	template <class X>
+    static void load_array_contents(
+	    Archive &ar,
+		X *p, 
+		std::size_t count,
+		typename boost::disable_if<boost::archive::fast_array_serialization<Archive,X> >::type* =0
+	){
+        std::size_t i;
+        for(i = 0; i < count; ++i)
+            ar >> boost::serialization::make_nvp("item", p[i]);
+	}
+	
+	template <class X>
+    static void load_array_contents(
+	    Archive &ar,
+		X *p, 
+		std::size_t count,
+		typename boost::enable_if<boost::archive::fast_array_serialization<Archive,X> >::type* =0
+	){
+        ar.load_array(p,count);
+	}
+
     static void invoke(Archive &ar, T &t){
-        // convert integers to correct enum to load
-        int current_count = sizeof(t) / (
+        // consider alignment
+        std::size_t current_count = sizeof(t) / (
             static_cast<char *>(static_cast<void *>(&t[1])) 
             - static_cast<char *>(static_cast<void *>(&t[0]))
         );
-        int count;
+        container_size_type count;
         ar >> BOOST_SERIALIZATION_NVP(count);
         if(count > current_count)
             boost::throw_exception(archive::archive_exception(
                 boost::archive::archive_exception::array_size_too_short
             ));
-        int i;
-        for(i = 0; i < count; ++i)
-            ar >> boost::serialization::make_nvp("item", t[i]);
+        load_array_contents(ar,t,count);
     }
 };
 

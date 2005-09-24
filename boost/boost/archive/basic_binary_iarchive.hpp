@@ -17,6 +17,7 @@
 // ON PLATFORM APART FROM THE ONE THEY ARE CREATED ON
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+// size_type modifications (C) Copyright 2005 Matthias Troyer. 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -62,7 +63,7 @@ protected:
 protected:
 #endif
     // intermediate level to support override of operators
-    // fot templates in the absence of partial function 
+    // for templates in the absence of partial function 
     // template ordering
     template<class T>
     void load_override(T & t, BOOST_PFTO int)
@@ -108,6 +109,12 @@ protected:
         char x;
         * this->This() >> x;
         t = (0 != x);
+    }
+    void load_override(container_size_type & t, int){
+        // upto 2G objects
+        uint_least32_t x;
+        * this->This() >> x;
+        t = container_size_type(x);
     }
 
     BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
