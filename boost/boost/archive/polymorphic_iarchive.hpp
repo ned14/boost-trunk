@@ -136,6 +136,8 @@ public:
             const boost::serialization::extended_type_info & type
         )
     ) = 0;
+	
+	virtual ~polymorphic_iarchive() {}
 };
 
 } // namespace archive
