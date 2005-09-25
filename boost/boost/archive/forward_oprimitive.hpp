@@ -69,7 +69,7 @@ public:
     template<class T>
     void save(const T & t)
     {
-	  implementation_archive.save(t);
+	  implementation_archive << t;
     }
 	
 private:

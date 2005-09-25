@@ -69,7 +69,7 @@ public:
     template<class T>
     void load(T & t)
     {
-	  implementation_archive.load(t);
+	  implementation_archive >> t;
     }
 	
 private:

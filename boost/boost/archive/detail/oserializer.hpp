@@ -70,7 +70,7 @@
 
 #include <boost/archive/archive_exception.hpp>
 
-#include <boost/archive/traits.hpp>
+#include <boost/archive/fast_array_serialization.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace boost {

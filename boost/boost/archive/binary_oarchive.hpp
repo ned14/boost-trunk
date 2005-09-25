@@ -21,7 +21,7 @@
 #include <boost/archive/detail/auto_link_archive.hpp>
 #include <boost/archive/basic_binary_oprimitive.hpp>
 #include <boost/archive/basic_binary_oarchive.hpp>
-#include <boost/archive/traits.hpp>
+#include <boost/archive/fast_array_serialization.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header

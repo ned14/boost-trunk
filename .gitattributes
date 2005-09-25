@@ -109,7 +109,6 @@ boost/boost/archive/text_oarchive.hpp svneol=native#text/plain
 boost/boost/archive/text_wiarchive.hpp svneol=native#text/plain
 boost/boost/archive/text_woarchive.hpp svneol=native#text/plain
 boost/boost/archive/tmpdir.hpp svneol=native#text/plain
-boost/boost/archive/traits.hpp svneol=native#text/plain
 boost/boost/archive/wcslen.hpp svneol=native#text/plain
 boost/boost/archive/xml_iarchive.hpp svneol=native#text/plain
 boost/boost/archive/xml_oarchive.hpp svneol=native#text/plain
