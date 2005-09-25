@@ -14,6 +14,7 @@
 // collections_load_imp.hpp: serialization for loading stl collections
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+// size_type modifications (C) Copyright 2005 Matthias Troyer. 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -31,6 +32,8 @@
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/serialization.hpp>
+
+#include <boost/archive/basic_archive.hpp>
 
 namespace boost{
 namespace serialization {
@@ -182,7 +185,7 @@ template<class Container>
 class reserve_imp
 {
 public:
-    void operator()(Container &s, unsigned int count) const {
+    void operator()(Container &s, std::size_t count) const {
         s.reserve(count);
     }
 };
@@ -191,7 +194,7 @@ template<class Container>
 class no_reserve_imp
 {
 public:
-    void operator()(Container & /* s */, unsigned int /* count */) const{}
+    void operator()(Container & /* s */, std::size_t /* count */) const{}
 };
 
 template<class Archive, class Container, class InputFunction, class R>
@@ -199,7 +202,7 @@ inline void rebuild_collection(Archive & ar, Container &s)
 {
     s.clear();
     // retrieve number of elements
-    unsigned int count;
+    boost::archive::container_size_type count;
     ar >> BOOST_SERIALIZATION_NVP(count);
     R rx;
     rx(s, count);
@@ -213,7 +216,7 @@ template<class Archive, class Container>
 inline void copy_collection(Archive & ar, Container &s)
 {
     // retrieve number of elements
-    unsigned int count;
+    boost::archive::container_size_type count;
     ar >> BOOST_SERIALIZATION_NVP(count);
     assert(count == s.size());
     BOOST_DEDUCED_TYPENAME Container::iterator it = s.begin();

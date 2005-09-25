@@ -10,6 +10,7 @@
 // collections_save_imp.hpp: serialization for stl collections
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+// size_type modifications (C) Copyright 2005 Matthias Troyer. 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -20,6 +21,8 @@
 
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/serialization.hpp>
+
+#include <boost/archive/basic_archive.hpp>
 
 namespace boost{
 namespace serialization {
@@ -33,8 +36,8 @@ template<class Archive, class Container>
 inline void save_collection(Archive & ar, const Container &s)
 {
     // record number of elements
-    unsigned int count = s.size();
-    ar << make_nvp("count", const_cast<const unsigned int &>(count));
+    boost::archive::container_size_type count (s.size());
+    ar << make_nvp("count", const_cast<const boost::archive::container_size_type&>(count));
     BOOST_DEDUCED_TYPENAME Container::const_iterator it = s.begin();
     while(count-- > 0){
         //if(0 == (ar.get_flags() & boost::archive::no_object_creation))
