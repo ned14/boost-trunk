@@ -10,6 +10,7 @@
 // vector.hpp: serialization for stl vector templates
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+// Fast array serialization (C) Copyright 2005 Matthias Troyer 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -24,6 +25,9 @@
 #include <boost/serialization/collections_save_imp.hpp>
 #include <boost/serialization/collections_load_imp.hpp>
 #include <boost/serialization/split_free.hpp>
+
+#include <boost/archive/fast_array_serialization.hpp>
+#include <boost/utility/enable_if.hpp>
 
 // function specializations must be defined in the appropriate
 // namespace - boost::serialization
@@ -42,18 +46,35 @@ template<class Archive, class U, class Allocator>
 inline void save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */
+    const unsigned int /* file_version */ ,
+	typename boost::disable_if<boost::archive::fast_array_serialization<Archive,U> >::type* =0
 ){
     boost::serialization::stl::save_collection<Archive, STD::vector<U, Allocator> >(
         ar, t
     );
 }
 
+// with fast array serialization
+template<class Archive, class U, class Allocator>
+inline void save(
+    Archive & ar,
+    const STD::vector<U, Allocator> &t,
+    const unsigned int /* file_version */,
+	typename boost::enable_if<boost::archive::fast_array_serialization<Archive,U> >::type* =0
+){
+    const boost::archive::container_size_type count(t.size());
+    ar << BOOST_SERIALIZATION_NVP(count);
+	if (count)
+      ar.save_array(&(const_cast<STD::vector<U, Allocator> &>(t)[0]),t.size());
+}
+
+
 template<class Archive, class U, class Allocator>
 inline void load(
     Archive & ar,
     STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */
+    const unsigned int /* file_version */,
+	typename boost::disable_if<boost::archive::fast_array_serialization<Archive,U> >::type* =0
 ){
     boost::serialization::stl::load_collection<
         Archive,
@@ -63,6 +84,24 @@ inline void load(
         >,
         boost::serialization::stl::reserve_imp<STD::vector<U, Allocator> >
     >(ar, t);
+}
+
+template<class Archive, class U, class Allocator>
+inline void load(
+    Archive & ar,
+    STD::vector<U, Allocator> &t,
+    const unsigned int /* file_version */,
+	typename boost::enable_if<boost::archive::fast_array_serialization<Archive,U> >::type* =0
+){
+    t.clear();
+    // retrieve number of elements
+    boost::archive::container_size_type count;
+    ar >> BOOST_SERIALIZATION_NVP(count);
+	if (count)
+	{
+	  t.resize(count);
+      ar.load_array(&(t[0]),t.size());
+	}
 }
 
 // split non-intrusive serialization function member into separate
@@ -87,7 +126,7 @@ inline void save(
     const unsigned int /* file_version */
 ){
     // record number of elements
-    unsigned int count = t.size();
+    boost::archive::container_size_type count = t.size();
     ar << BOOST_SERIALIZATION_NVP(count);
     STD::vector<bool>::const_iterator it = t.begin();
     while(count-- > 0){
@@ -103,7 +142,7 @@ inline void load(
     const unsigned int /* file_version */
 ){
     // retrieve number of elements
-    unsigned int count;
+    boost::archive::container_size_type count;
     ar >> BOOST_SERIALIZATION_NVP(count);
     t.clear();
     while(count-- > 0){
