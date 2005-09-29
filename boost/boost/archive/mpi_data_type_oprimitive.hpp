@@ -14,8 +14,7 @@
 #endif
 
 
-#include <mpi.h>
-
+#include <mpicxx.h>
 #include <cstddef> // size_t
 
 #include <boost/config.hpp>
@@ -26,30 +25,13 @@ namespace std{
 #endif
 
 #include <boost/archive/detail/mpi_type.hpp>
-#include <boost/archive/mpi_data_type.hpp>
-#include <boost/optional.hpp>
+#include <boost/archive/detail/get_data.hpp>
+#include <boost/throw_exception.hpp>
+#include <stdexcept>
 #include <vector>
-
 
 namespace boost {
 namespace archive {
-
-namespace detail {
-
-  template <class T, class Allocator>
-  const T* get_data(std::vector<T>& v)
-  {
-    return &(v[0]);
-  }
-
-  template <class T, class Allocator>
-  const T* get_data(const std::vector<T>& v)
-  {
-    return get_data(const_cast< std::vector<T>&>(v));
-  }
-
-}
-
 
 /////////////////////////////////////////////////////////////////////////
 // class mpi_data_type_oprimitive - creation of custom MPI data types
@@ -60,6 +42,7 @@ public:
     
 	// trivial default constructor
     mpi_data_type_oprimitive()
+	 : is_committed(false)
 	{}
 	
     void save_binary(void const *address, std::size_t count)
@@ -75,26 +58,39 @@ public:
     }
 
     // create and return the custom MPI data type
-    const mpi_data_type& data_type() const 
+	MPI::Datatype data_type() 
 	{
-	  if (!datatype.is_commited()) // we did not create the data type yet
+	  if (!is_committed)
 	  {
-	    int err = MPI_Type_struct
+	  
+#ifndef BOOST_USE_MPI_C_BINDINGS
+	    datatype.Create_struct
 		            (
 					  addresses.size(), 
-					  detail::get_data(lengths),
-					  detail::get_data(addresses),
-					  detail::get_data(types),
-					  datatype.get_ptr()
+					  boost::detail::get_data(lengths),
+					  boost::detail::get_data(addresses),
+					  boost::detail::get_data(types)
 					);
-    
- 	    if (err != MPI_SUCCESS)
-   		   boost::throw_exception(std::runtime_error("invalid MPI datatype"));
-    
-	    datatype.commit();
+#else  
+        MPI_Datatype d;
+  		int err=MPI_Type_create_struct
+		            (
+					  addresses.size(), 
+					  boost::detail::get_data(lengths),
+					  boost::detail::get_data(addresses),
+					  boost::detail::get_data(types),
+					  &d
+					);
+		if (err)
+		  boost::throw_exception(std::runtime_error("Error calling MPI_Type_struct"));
+		  
+		datatype = d;
+#endif
+	    datatype.Commit();
+		is_committed = true;
 	  }
 	  
-	  return datatype.get();
+	  return datatype;
 	}
 	
 #ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
@@ -115,23 +111,24 @@ private:
 
     void save_impl(void const * p, MPI_Datatype t, int l)
 	{
-	  BOOST_ASSERT ( !datatype.is_commited() );
-	  
-	  // convert pointer to an MPI address
-	  MPI_Aint addr;
-	  MPI_Address(p,&addr);
+	  BOOST_ASSERT ( !is_committed );
 	  
 	  // store address, type and length
-	  addresses.push_back(addr);
+	  addresses.push_back(MPI::Get_address(const_cast<void *>(p)));
 	  types.push_back(t);
 	  lengths.push_back(l);
 	}
 	
-    std::vector<MPI_Aint> addresses;
+    std::vector<MPI::Aint> addresses;
+#ifndef BOOST_USE_MPI_C_BINDINGS
+    std::vector<MPI::Datatype> types;
+#else
     std::vector<MPI_Datatype> types;
+#endif
     std::vector<int> lengths;
 	
-	mutable mpi_data_type datatype;
+	bool is_committed;
+	MPI::Datatype datatype;
 };
 
 

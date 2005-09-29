@@ -58,28 +58,14 @@ public:
     friend class save_access;
 #endif
     // primitive types the only ones permitted by polymorphic archives
-    virtual void save(const bool t) = 0;
+#define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)   \
+    virtual void save(T const t) =0;                       \
+    virtual void save_array(T const * p, std::size_t len);
 
-    virtual void save(const char t) = 0;
-    virtual void save(const signed char t) = 0;
-    virtual void save(const unsigned char t) = 0;
-    #ifndef BOOST_NO_CWCHAR
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    virtual void save(const wchar_t t) = 0;
-    #endif
-    #endif
-    virtual void save(const short t) = 0;
-    virtual void save(const unsigned short t) = 0;
-    virtual void save(const int t) = 0;
-    virtual void save(const unsigned int t) = 0;
-    virtual void save(const long t) = 0;
-    virtual void save(const unsigned long t) = 0;
-    #if !defined(BOOST_NO_INTRINSIC_INT64_T)
-    virtual void save(const boost::int64_t t) = 0;
-    virtual void save(const boost::uint64_t t) = 0;
-    #endif
-    virtual void save(const float t) = 0;
-    virtual void save(const double t) = 0;
+    // declare the save and save_array function for all primitive types
+#include <boost/archive/detail/implement_polymorphic_function.hpp>
+
+#undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
 
     // string types are treated as primitives
     virtual void save(const std::string & t) = 0;
@@ -132,6 +118,11 @@ public:
     virtual ~polymorphic_oarchive() {}
 
 };
+
+template <class Type>
+struct fast_array_serialization<polymorphic_oarchive,Type>
+  : public is_fundamental<Type>
+{};
 
 } // namespace archive
 } // namespace boost

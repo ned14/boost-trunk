@@ -64,58 +64,44 @@ private:
     virtual void save_null_pointer(){
         ArchiveImplementation::save_null_pointer();
     }
+
+	template <class T>
+	void save_array_impl
+	       (
+	         T const* p, std::size_t len, 
+			 boost::enable_if<fast_array_serialization<ArchiveImplementation,T> >::type *=0
+		   )
+	{
+	  ArchiveImplementation::save_array(p,len);
+	}
+
+	template <class T>
+	void save_array_impl
+	       (
+	         T const* p, std::size_t len, 
+			 boost::disable_if<fast_array_serialization<ArchiveImplementation,T> >::type *=0
+		   )
+	{
+	  polymorphic_oarchive::save_array(p,len);
+	}
+
     // primitive types the only ones permitted by polymorphic archives
-    virtual void save(const bool t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const char t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const signed char t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const unsigned char t){
-        ArchiveImplementation::save(t);
-    }
-    #ifndef BOOST_NO_CWCHAR
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    virtual void save(const wchar_t t){
-        ArchiveImplementation::save(t);
-    }
-    #endif
-    #endif
-    virtual void save(const short t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const unsigned short t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const int t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const unsigned int t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const long t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const unsigned long t){
-        ArchiveImplementation::save(t);
-    }
-    #if !defined(BOOST_NO_INTRINSIC_INT64_T)
-    virtual void save(const boost::int64_t t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const boost::uint64_t t){
-        ArchiveImplementation::save(t);
-    }
-    #endif
-    virtual void save(const float t){
-        ArchiveImplementation::save(t);
-    }
-    virtual void save(const double t){
-        ArchiveImplementation::save(t);
-    }
+
+#define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)  \
+    virtual void save(T const & t)                        \
+	{                                                     \
+        ArchiveImplementation::save(t);                   \
+    }                                                     \
+                                                          \
+    virtual void save_array(T const * p, std::size_t len) \
+	{                                                     \
+	  save_array_impl(p,len);                             \
+	}
+
+#include <boost/archive/detail/implement_polymorphic_function.hpp>
+	
+#undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
+
     virtual void save(const std::string & t){
         ArchiveImplementation::save(t);
     }

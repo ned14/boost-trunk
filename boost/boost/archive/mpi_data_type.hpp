@@ -16,8 +16,9 @@
 #include <mpi.h>
 #include <boost/throw_exception.hpp>
 #include <boost/noncopyable.hpp>
-#include <stdexcept>
 #include <boost/assert.hpp>
+#include <boost/shared_ptr.hpp>
+#include <stdexcept>
 
 namespace boost {
 
@@ -35,7 +36,7 @@ public:
   void commit()
   {
     BOOST_ASSERT ( ! committed_ );
-	int err = MPI_Type_commit(get_ptr());
+	int err = MPI_Type_commit(&datatype_);
 	if (err)
 	  boost::throw_exception(std::runtime_error("MPI error on committing datatype"));
 	committed_ = true;
@@ -43,31 +44,27 @@ public:
   
   void free()
   {
-    BOOST_ASSERT( committed );
+    BOOST_ASSERT( committed_ );
     int err=MPI_Type_free(&datatype_);
 	if (err)
 	  boost::throw_exception(std::runtime_error("MPI error on freeing datatype"));
 	committed_ = false;
   }
   
-  bool is_commited() const
+  bool is_committed() const
   {
     return committed_;
   }
   
-  operator bool() const
-  {
-    return is_commited;
-  } 
-  
-  MPI_Datatype& get()
+  operator MPI_Datatype() const
   {
     return datatype_;
   }
 
-  const MPI_Datatype& get() const
+  ~mpi_data_type_impl()
   {
-    return datatype_;
+    if (committed_)
+      free();
   }
 
   MPI_Datatype* get_ptr()
@@ -78,12 +75,6 @@ public:
   const MPI_Datatype* get_ptr() const
   {
     return &datatype_;
-  }
-  
-  ~mpi_data_type_impl()
-  {
-    if (committed)
-      destroy();
   }
   
 private:
@@ -111,24 +102,14 @@ public:
     pimpl_->free();
   }
   
-  bool is_commited() const
+  bool is_committed() const
   {
     return pimpl_->is_committed();
   }
   
-  operator bool() const
+  operator MPI_Datatype() const
   {
     return *pimpl_;
-  } 
-
-  MPI_Datatype& get()
-  {
-    return pimpl_->get();
-  }
-
-  const MPI_Datatype& get() const
-  {
-    return pimpl_->get();
   }
 
   MPI_Datatype* get_ptr()
@@ -140,6 +121,7 @@ public:
   {
     return pimpl_->get_ptr();
   }
+
 
 private:
   boost::shared_ptr<mpi_data_type_impl> pimpl_;

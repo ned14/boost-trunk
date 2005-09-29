@@ -92,7 +92,7 @@ inline void serialize(
 
 #include <boost/serialization/collection_traits.hpp>
 
-BOOST_SERIALIZATION_COLLECTION_TRAITS(STD::vector)
+BOOST_SERIALIZATION_COLLECTION_TRAITS(STD::string)
 #undef STD
 
 #endif

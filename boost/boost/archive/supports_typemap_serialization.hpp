@@ -86,6 +86,8 @@ struct supports_typemap_serialization<Archive, STD::vector<U,Allocator> >
  : public supports_typemap_serialization<Archive,U>
 {};
 
+// exception: std::vecctor<bool> cannot be optimized
+
 template <class Archive, class Allocator>
 struct supports_typemap_serialization<Archive, STD::vector<bool,Allocator> >
  : public mpl::bool_<false>
@@ -106,7 +108,7 @@ struct supports_typemap_serialization<Archive, STD::deque<U,Allocator> >
  : public supports_typemap_serialization<Archive,U>
 {};
 
-// specialization for atd::slist
+// specialization for std::slist
 
 #ifdef BOOST_HAS_SLIST
 template <class Archive, class U, class Allocator>

@@ -59,29 +59,15 @@ public:
     friend class load_access;
 #endif
     // primitive types the only ones permitted by polymorphic archives
-    virtual void load(bool & t) = 0;
 
-    virtual void load(char & t) = 0;
-    virtual void load(signed char & t) = 0;
-    virtual void load(unsigned char & t) = 0;
-    #ifndef BOOST_NO_CWCHAR
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    virtual void load(wchar_t & t) = 0;
-    #endif
-    #endif
-    virtual void load(short & t) = 0;
-    virtual void load(unsigned short & t) = 0;
-    virtual void load(int & t) = 0;
-    virtual void load(unsigned int & t) = 0;
-    virtual void load(long & t) = 0;
-    virtual void load(unsigned long & t) = 0;
+#define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T) \
+    virtual void load(T & t) =0;                         \
+    virtual void load_array(T * p, std::size_t len);
 
-    #if !defined(BOOST_NO_INTRINSIC_INT64_T)
-    virtual void load(boost::int64_t & t) = 0;
-    virtual void load(boost::uint64_t & t) = 0;
-    #endif
-    virtual void load(float & t) = 0;
-    virtual void load(double & t) = 0;
+    // declare the laod and load_array function for all primitive types
+#include <boost/archive/detail/implement_polymorphic_function.hpp>
+	
+#undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
 
     // string types are treated as primitives
     virtual void load(std::string & t) = 0;
@@ -139,6 +125,11 @@ public:
 	
 	virtual ~polymorphic_iarchive() {}
 };
+
+template <class Type>
+struct fast_array_serialization<polymorphic_iarchive,Type>
+  : public is_fundamental<Type>
+{};
 
 } // namespace archive
 } // namespace boost

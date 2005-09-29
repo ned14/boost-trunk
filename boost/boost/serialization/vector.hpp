@@ -27,6 +27,7 @@
 #include <boost/serialization/split_free.hpp>
 
 #include <boost/archive/fast_array_serialization.hpp>
+#include <boost/archive/detail/get_data.hpp>
 #include <boost/utility/enable_if.hpp>
 
 // function specializations must be defined in the appropriate
@@ -65,7 +66,7 @@ inline void save(
     const boost::archive::container_size_type count(t.size());
     ar << BOOST_SERIALIZATION_NVP(count);
 	if (count)
-      ar.save_array(&(const_cast<STD::vector<U, Allocator> &>(t)[0]),t.size());
+      ar.save_array(boost::detail::get_data(t),t.size());
 }
 
 
@@ -100,7 +101,7 @@ inline void load(
 	if (count)
 	{
 	  t.resize(count);
-      ar.load_array(&(t[0]),t.size());
+      ar.load_array(boost::detail::get_data(t),t.size());
 	}
 }
 
