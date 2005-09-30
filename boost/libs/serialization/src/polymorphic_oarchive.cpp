@@ -25,5 +25,18 @@ namespace archive {
 
 template class detail::archive_pointer_oserializer<polymorphic_oarchive> ;
 
+// default implementations for arrays by loops
+
+#define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)  \
+void polymorphic_oarchive::save_array(T const * p, std::size_t length)  \
+{                                                                       \
+  while (length--)                                                      \
+    save(*p--);                                                         \
+}
+
+#include <boost/archive/detail/implement_polymorphic_function.hpp>
+	
+#undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
+
 } // namespace archive
 } // namespace boost
