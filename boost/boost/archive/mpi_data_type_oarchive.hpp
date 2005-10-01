@@ -19,6 +19,7 @@
 #include <boost/archive/fast_array_serialization.hpp>
 #include <boost/archive/ignore_structure_oarchive.hpp>
 #include <boost/archive/mpi_data_type_oprimitive.hpp>
+#include <boost/archive/impl/archive_pointer_oserializer.ipp>
 
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header
 

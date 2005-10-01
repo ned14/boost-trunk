@@ -5,8 +5,8 @@
 
 //  See http://www.boost.org for updates, documentation, and revision history.
 
-#ifndef BOOST_ARCHIVE_SUPPORTS_TYPEMAP_SERIALIZATION_HPP
-#define BOOST_ARCHIVE_SUPPORTS_TYPEMAP_SERIALIZATION_HPP
+#ifndef BOOST_ARCHIVE_IS_TYPEMAP_SERIALIZABLE_HPP
+#define BOOST_ARCHIVE_IS_TYPEMAP_SERIALIZABLE_HPP
 
 // MS compatible compilers support #pragma once
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
@@ -61,70 +61,80 @@ namespace archive {
 /// has to proceed by serializing all data members directly, and the objects must be constructible only
 /// using information serialized through the special types of the serialization library
 
-template <class Archive, class Type>
-struct supports_typemap_serialization;
+template <class Type>
+struct is_relocatable_typemap_serializable;
 
-template <class Archive, class Type>
-struct supports_typemap_serialization
+template <class Type>
+struct is_relocatable_typemap_serializable
  : public mpl::if_
             < 
-			  is_pointer<Type>,
-			  supports_typemap_serialization<Archive,typename remove_pointer<Type>::type>,
-			  mpl::if_
-                <
-				  is_array<Type>,
-				  supports_typemap_serialization<Archive,typename remove_extent<Type>::type>,
-			      is_fundamental<Type>
-				>
+			  is_array<Type>,
+			  is_relocatable_typemap_serializable<typename remove_extent<Type>::type>,
+			  is_fundamental<Type>
 			>::type
 {};
 
+
+template <class Type>
+struct is_typemap_serializable;
+
+template <class Type>
+struct is_typemap_serializable
+ : public mpl::if_
+            < 
+			  is_pointer<Type>,
+			  is_typemap_serializable<typename remove_pointer<Type>::type>,
+			  is_relocatable_typemap_serializable<Type>
+			>::type
+{};
+
+
 // specialization for std::vector
 
-template <class Archive, class U, class Allocator>
-struct supports_typemap_serialization<Archive, STD::vector<U,Allocator> >
- : public supports_typemap_serialization<Archive,U>
+template <class U, class Allocator>
+struct is_typemap_serializable< STD::vector<U,Allocator> >
+ : public is_typemap_serializable<U>
 {};
 
 // exception: std::vecctor<bool> cannot be optimized
 
-template <class Archive, class Allocator>
-struct supports_typemap_serialization<Archive, STD::vector<bool,Allocator> >
+template <class Allocator>
+struct is_typemap_serializable< STD::vector<bool,Allocator> >
  : public mpl::bool_<false>
 {};
 
 // specialization for std::list
 
-template <class Archive, class U, class Allocator>
-struct supports_typemap_serialization<Archive, STD::list<U,Allocator> >
- : public supports_typemap_serialization<Archive,U>
+template <class U, class Allocator>
+struct is_typemap_serializable< STD::list<U,Allocator> >
+ : public is_typemap_serializable<U>
 {};
 
 
 // specialization for std::deque
 
-template <class Archive, class U, class Allocator>
-struct supports_typemap_serialization<Archive, STD::deque<U,Allocator> >
- : public supports_typemap_serialization<Archive,U>
+template <class U, class Allocator>
+struct is_typemap_serializable< STD::deque<U,Allocator> >
+ : public is_typemap_serializable<U>
 {};
 
 // specialization for std::slist
 
 #ifdef BOOST_HAS_SLIST
-template <class Archive, class U, class Allocator>
-struct supports_typemap_serialization<Archive, STD::slist<U,Allocator> >
- : public supports_typemap_serialization<Archive,U>
+template <class U, class Allocator>
+struct is_typemap_serializable< STD::slist<U,Allocator> >
+ : public is_typemap_serializable<U>
 {};
 #endif
 
 // specialization for boost::shared_ptr
 
-template <class Archive, class T>
-struct supports_typemap_serialization<Archive, boost::shared_ptr<T> >
- : public supports_typemap_serialization<Archive,T>
+template <class T>
+struct is_typemap_serializable< boost::shared_ptr<T> >
+ : public is_typemap_serializable<T>
 {};
 
 } // namespace archive
 } // namespace boost
 
-#endif // BOOST_ARCHIVE_SUPPORTS_TYPEMAP_SERIALIZATION_HPP
+#endif // BOOST_ARCHIVE_IS_TYPEMAP_SERIALIZABLE_HPP

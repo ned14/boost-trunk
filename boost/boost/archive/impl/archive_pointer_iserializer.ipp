@@ -1,3 +1,6 @@
+#ifndef BOOST_ARCHIVE_DETAIL_ARCHIVE_POINTER_ISERIALIZER_IPP
+#define BOOST_ARCHIVE_DETAIL_ARCHIVE_POINTER_ISERIALIZER_IPP
+
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // pointer_iserializer.ipp: 
 
@@ -46,3 +49,6 @@ archive_pointer_iserializer<Archive>::find(
 } // namespace detail
 } // namespace archive
 } // namespace boost
+
+#endif // BOOST_ARCHIVE_DETAIL_ARCHIVE_POINTER_ISERIALIZER_IPP
+

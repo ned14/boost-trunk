@@ -72,17 +72,25 @@ public:
         save_impl(&t, mpi_type<T>::value, 1);
     }
 
+	void save(const std::string &s)
+	{
+      unsigned int l = static_cast<unsigned int>(s.size());
+      save(l);
+      save_array(s.data(),l);
+	}
+
 private:
 
     void save_impl(void const * p, MPI_Datatype t, int l)
 	{
 	  // allocate enough memory
-	  int memory_needed = MPI::Pack_size(l,t,comm);
+	  MPI::Datatype dt(t);
+	  int memory_needed = dt.Pack_size(l,comm);
 	  int position = buffer.size();
 	  buffer.resize(position + memory_needed);
 	  
 	  // pack the data into the buffer
-	  MPI::Pack(p, l, detail::get_data(buffer), buffer.size(), position, comm);
+	  dt.Pack(p, l, boost::detail::get_data(buffer), buffer.size(), position, comm);
 	  
 	  // reduce the buffer size if needed
 	  BOOST_ASSERT(position <= buffer.size());

@@ -73,12 +73,26 @@ public:
         load_impl(&t, mpi_type<T>::value, 1);
     }
 
+    void load( std::string & s)
+    {
+        unsigned int l;
+        load(l);
+        // borland de-allocator fixup
+        #if BOOST_WORKAROUND(_RWSTD_VER, BOOST_TESTED_AT(20101))
+        if(NULL != s.data())
+        #endif
+        s.resize(l);
+        // note breaking a rule here - could be a problem on some platform
+        load_binary(const_cast<char *>(s.data()), l);
+	}
+
 private:
 
     void load_impl(void * p, MPI_Datatype t, int l)
 	{
 	  // unpack the data from the buffer
-	  MPI::Unpack(detail::get_data(buffer), buffer.size(), position, p, l, comm);
+	  MPI::Datatype dt(t);
+	  dt.Unpack(boost::detail::get_data(buffer), buffer.size(), p, l, position, comm);
 	}
 	
 	std::vector<char> const & buffer;

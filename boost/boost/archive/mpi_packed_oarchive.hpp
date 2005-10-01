@@ -18,6 +18,7 @@
 #include <boost/archive/basic_binary_oarchive.hpp>
 #include <boost/archive/fast_array_serialization.hpp>
 #include <boost/archive/mpi_packed_oprimitive.hpp>
+#include <boost/archive/impl/archive_pointer_oserializer.ipp>
 
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header
 
@@ -45,7 +46,7 @@ public:
     mpi_packed_oarchive
 	  (
 	    std::vector<char> & b, 
-		unsigned int flags = 0
+		unsigned int flags
 	  ) 
 	 : mpi_packed_oprimitive(b,MPI::COMM_WORLD),
 	   basic_binary_oarchive<mpi_packed_oarchive>(flags)

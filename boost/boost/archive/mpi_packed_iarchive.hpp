@@ -18,6 +18,8 @@
 #include <boost/archive/basic_binary_iarchive.hpp>
 #include <boost/archive/fast_array_serialization.hpp>
 #include <boost/archive/mpi_packed_iprimitive.hpp>
+#include <boost/archive/impl/archive_pointer_iserializer.ipp>
+#include <boost/archive/impl/basic_binary_iarchive.ipp>
 
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header
 
@@ -45,7 +47,7 @@ public:
     mpi_packed_iarchive
 	  (
 	    std::vector<char> const & b, 
-		unsigned int flags = 0
+		unsigned int flags
 	  ) 
 	 : mpi_packed_iprimitive(b,MPI::COMM_WORLD),
 	   basic_binary_iarchive<mpi_packed_iarchive>(flags)
