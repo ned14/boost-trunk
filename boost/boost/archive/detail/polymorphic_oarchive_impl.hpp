@@ -68,8 +68,8 @@ private:
 	template <class T>
 	void save_array_impl
 	       (
-	         T const* p, std::size_t len, 
-			 boost::enable_if<fast_array_serialization<ArchiveImplementation,T> >::type *=0
+	           T const* p, std::size_t len
+			 , typename boost::enable_if<fast_array_serialization<ArchiveImplementation,T> >::type * =0
 		   )
 	{
 	  ArchiveImplementation::save_array(p,len);
@@ -79,7 +79,7 @@ private:
 	void save_array_impl
 	       (
 	         T const* p, std::size_t len, 
-			 boost::disable_if<fast_array_serialization<ArchiveImplementation,T> >::type *=0
+			 typename boost::disable_if<fast_array_serialization<ArchiveImplementation,T> >::type * =0
 		   )
 	{
 	  polymorphic_oarchive::save_array(p,len);
@@ -88,14 +88,14 @@ private:
     // primitive types the only ones permitted by polymorphic archives
 
 #define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)  \
-    virtual void save(T const & t)                        \
+    virtual void save(T const t)                          \
 	{                                                     \
         ArchiveImplementation::save(t);                   \
     }                                                     \
                                                           \
     virtual void save_array(T const * p, std::size_t len) \
 	{                                                     \
-	  save_array_impl(p,len);                             \
+	    save_array_impl(p,len);                           \
 	}
 
 #include <boost/archive/detail/implement_polymorphic_function.hpp>
