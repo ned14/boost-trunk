@@ -54,6 +54,7 @@ class polymorphic_oarchive :
 #ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 public:
 #else
+protected:
     friend class detail::interface_oarchive<polymorphic_oarchive>;
     friend class save_access;
 #endif
