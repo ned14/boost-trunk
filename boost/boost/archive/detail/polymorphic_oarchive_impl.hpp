@@ -21,6 +21,8 @@
 #include <boost/noncopyable.hpp>
 #include <boost/cstdint.hpp>
 #include <cstddef> // size_t
+#include <boost/utility/enable_if.hpp>
+#include <boost/archive/fast_array_serialization.hpp>
 
 #include <boost/config.hpp>
 #if defined(BOOST_NO_STDC_NAMESPACE)

@@ -1,5 +1,5 @@
-#ifndef BOOST_ARCHIVE_DETAIL_BASIC_BINARY_IARCHIVE_IPP
-#define BOOST_ARCHIVE_DETAIL_BASIC_BINARY_IARCHIVE_IPP
+#ifndef BOOST_ARCHIVE_DETAIL_BASIC_BINARY_OARCHIVE_IPP
+#define BOOST_ARCHIVE_DETAIL_BASIC_BINARY_OARCHIVE_IPP
 
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // basic_binary_oarchive.ipp:
@@ -48,5 +48,5 @@ basic_binary_oarchive<Archive>::init(){
 } // namespace archive
 } // namespace boost
 
-#endif // BOOST_ARCHIVE_DETAIL_BASIC_BINARY_IARCHIVE_IPP
+#endif // BOOST_ARCHIVE_DETAIL_BASIC_BINARY_OARCHIVE_IPP
 
