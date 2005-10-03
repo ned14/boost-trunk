@@ -2,7 +2,6 @@
 // polymorphic_text_iarchive.cpp:
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
-// fast array serialization (C) Copyright 2005 Matthias Troyer
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -25,19 +24,6 @@ namespace boost {
 namespace archive {
 
 template class detail::archive_pointer_iserializer<polymorphic_iarchive> ;
-
-// default implementations for arrays by loops
-
-#define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)  \
-void polymorphic_iarchive::load_array(T * p, std::size_t length)  \
-{                                                                       \
-  while (length--)                                                      \
-    load(*p--);                                                         \
-}
-
-#include <boost/archive/detail/implement_polymorphic_function.hpp>
-	
-#undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
 
 } // namespace serialization
 } // namespace boost

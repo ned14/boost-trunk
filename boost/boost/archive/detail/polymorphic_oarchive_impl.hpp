@@ -84,7 +84,8 @@ private:
 			 typename boost::disable_if<fast_array_serialization<ArchiveImplementation,T> >::type * =0
 		   )
 	{
-	  polymorphic_oarchive::save_array(p,len);
+	  while (len--)
+	    ArchiveImplementation::save(*p++)
 	}
 
     // primitive types the only ones permitted by polymorphic archives

@@ -61,7 +61,7 @@ protected:
     // primitive types the only ones permitted by polymorphic archives
 #define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)   \
     virtual void save(T const t) =0;                       \
-    virtual void save_array(T const * p, std::size_t len);
+    virtual void save_array(T const * p, std::size_t len) =0;
 
     // declare the save and save_array function for all primitive types
 #include <boost/archive/detail/implement_polymorphic_function.hpp>
