@@ -114,7 +114,7 @@ private:
         ArchiveImplementation::load(t);                   \
     }                                                     \
                                                           \
-    virtual void save_array(T * p, std::size_t len)       \
+    virtual void load_array(T * p, std::size_t len)       \
 	{                                                     \
 	    load_array_impl(p,len);                           \
 	}
