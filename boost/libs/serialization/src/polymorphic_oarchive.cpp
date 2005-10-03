@@ -17,7 +17,7 @@
 #define BOOST_ARCHIVE_SOURCE
 #include <boost/archive/polymorphic_oarchive.hpp>
 
-// explicitly instantiate for this type of text stream
+// explicitly instantiate for this type of stream
 #include <boost/archive/impl/archive_pointer_oserializer.ipp>
 
 namespace boost {
