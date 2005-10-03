@@ -9850,6 +9850,7 @@ boost/libs/wave/test/testwave/testfiles/t_3_004.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_4_001.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_4_002.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_4_003.cpp svneol=native#text/plain
+boost/libs/wave/test/testwave/testfiles/t_4_004.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_5_001.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_5_002.cpp svneol=native#text/plain
 boost/libs/wave/test/testwave/testfiles/t_5_003.cpp svneol=native#text/plain
