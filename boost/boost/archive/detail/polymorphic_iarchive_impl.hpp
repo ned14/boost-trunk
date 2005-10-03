@@ -103,7 +103,7 @@ private:
 		   )
 	{
 	  while (len--)
-	    ArchiveImplementation::load(*p++)
+	    ArchiveImplementation::load(*p++);
 	}
 
     // primitive types the only ones permitted by polymorphic archives

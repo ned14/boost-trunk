@@ -85,7 +85,7 @@ private:
 		   )
 	{
 	  while (len--)
-	    ArchiveImplementation::save(*p++)
+	    ArchiveImplementation::save(*p++);
 	}
 
     // primitive types the only ones permitted by polymorphic archives
