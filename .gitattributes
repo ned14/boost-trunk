@@ -10398,6 +10398,7 @@ boost/tools/boostbook/xsl/dtd/dtd2boostbook.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/error.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/fo.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/function.xsl svneol=native#text/xml
+boost/tools/boostbook/xsl/global.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/html-single.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/html.xsl svneol=native#text/xml
 boost/tools/boostbook/xsl/index.xsl svneol=native#text/xml
