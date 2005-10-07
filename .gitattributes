@@ -3597,6 +3597,7 @@ boost/boost/xpressive/xpressive_dynamic.hpp svneol=native#text/plain
 boost/boost/xpressive/xpressive_fwd.hpp svneol=native#text/plain
 boost/boost/xpressive/xpressive_static.hpp svneol=native#text/plain
 boost/boost/xpressive/xpressive_typeof.hpp svneol=native#text/plain
+boost/configure svneol=native#text/plain
 boost/doc/Jamfile.v2 svneol=native#text/plain
 boost/doc/html/CopyConstructible.html svneol=native#text/html
 boost/doc/html/any.html svneol=native#text/html
