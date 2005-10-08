@@ -10157,7 +10157,6 @@ boost/libs/xpressive/doc/tips_n_tricks.qbk svneol=native#text/plain
 boost/libs/xpressive/doc/tokenization.qbk svneol=native#text/plain
 boost/libs/xpressive/doc/traits.qbk svneol=native#text/plain
 boost/libs/xpressive/doc/xpressive.qbk svneol=native#text/plain
-boost/libs/xpressive/doc/xpressive.xml svneol=native#text/xml
 boost/libs/xpressive/example/Jamfile svneol=native#text/plain
 boost/libs/xpressive/example/Jamfile.v2 svneol=native#text/plain
 boost/libs/xpressive/example/example.vcproj -text
