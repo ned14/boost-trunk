@@ -30,6 +30,7 @@ namespace std{
 #include <boost/pfto.hpp>
 #include <boost/archive/detail/oserializer.hpp>
 #include <boost/archive/detail/interface_oarchive.hpp>
+#include <boost/archive/has_fast_array_serialization.hpp>
 #include <boost/serialization/nvp.hpp>
 
 // determine if its necessary to handle (u)int64_t specifically
@@ -115,13 +116,13 @@ public:
         const void * t,
         const detail::basic_pointer_oserializer * bpos_ptr
     ) = 0;
-	
+
     virtual ~polymorphic_oarchive() {}
 
 };
 
 template <class Type>
-struct fast_array_serialization<polymorphic_oarchive,Type>
+struct has_fast_array_serialization<polymorphic_oarchive,Type>
   : public is_fundamental<Type>
 {};
 

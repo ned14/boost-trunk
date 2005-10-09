@@ -112,7 +112,7 @@ protected:
     }
     void load_override(container_size_type & t, int){
         // upto 2G objects
-        uint_least32_t x;
+        unsigned int x;
         * this->This() >> x;
         t = container_size_type(x);
     }

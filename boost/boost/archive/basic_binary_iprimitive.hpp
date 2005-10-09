@@ -100,8 +100,8 @@ public:
 public:
     void
     load_binary(void *address, std::size_t count);
-	
-	// fast loading of arrays of fundamental types
+
+    // fast loading of arrays of fundamental types
     template<class T>
     void load_array(T *address, std::size_t count)
     {

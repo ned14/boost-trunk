@@ -26,7 +26,7 @@ namespace archive {
 /// Traits class to specify whether an archive provides fast array serialization for a type
 
 template <class Archive, class Type>
-struct fast_array_serialization 
+struct has_fast_array_serialization 
   : public mpl::bool_<false> 
 {};
   

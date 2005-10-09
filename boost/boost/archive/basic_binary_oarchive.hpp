@@ -105,7 +105,7 @@ protected:
     }
     void save_override(const container_size_type & t, int){
         // for backward compatibility. a 64 bit integer would be better
-        uint_least32_t x = t.t;
+        unsigned int x = t.t;
         * this->This() << x;
     }
 

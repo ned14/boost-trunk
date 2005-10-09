@@ -77,7 +77,7 @@ namespace std{
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/binary_object.hpp>
 
-#include <boost/archive/fast_array_serialization.hpp>
+#include <boost/archive/has_fast_array_serialization.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace boost {
@@ -498,27 +498,27 @@ struct load_enum_type {
 template<class Archive, class T>
 struct load_array_type {
 
-	template <class X>
+    template <class X>
     static void load_array_contents(
-	    Archive &ar,
-		X *p, 
-		std::size_t count,
-		typename boost::disable_if<boost::archive::fast_array_serialization<Archive,X> >::type* =0
-	){
+        Archive &ar,
+        X *p, 
+        std::size_t count,
+        typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,X> >::type* =0
+    ){
         std::size_t i;
         for(i = 0; i < count; ++i)
             ar >> boost::serialization::make_nvp("item", p[i]);
-	}
-	
-	template <class X>
+    }
+    
+    template <class X>
     static void load_array_contents(
-	    Archive &ar,
-		X *p, 
-		std::size_t count,
-		typename boost::enable_if<boost::archive::fast_array_serialization<Archive,X> >::type* =0
-	){
+        Archive &ar,
+        X *p, 
+        std::size_t count,
+        typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,X> >::type* =0
+    ){
         ar.load_array(p,count);
-	}
+    }
 
     static void invoke(Archive &ar, T &t){
         // consider alignment

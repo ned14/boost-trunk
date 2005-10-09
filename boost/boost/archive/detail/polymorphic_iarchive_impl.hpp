@@ -22,7 +22,7 @@
 #include <boost/noncopyable.hpp>
 #include <boost/cstdint.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/archive/fast_array_serialization.hpp>
+#include <boost/archive/has_fast_array_serialization.hpp>
 
 #include <boost/config.hpp>
 #if defined(BOOST_NO_STDC_NAMESPACE)
@@ -85,42 +85,42 @@ private:
         ArchiveImplementation::load_binary(t, size);
     }
 
-	template <class T>
-	void load_array_impl
-	       (
-	           T * p, std::size_t len
-			 , typename boost::enable_if<fast_array_serialization<ArchiveImplementation,T> >::type * =0
-		   )
-	{
-	  ArchiveImplementation::load_array(p,len);
-	}
+    template <class T>
+    void load_array_impl
+           (
+               T * p, std::size_t len
+             , typename boost::enable_if<has_fast_array_serialization<ArchiveImplementation,T> >::type * =0
+           )
+    {
+      ArchiveImplementation::load_array(p,len);
+    }
 
-	template <class T>
-	void load_array_impl
-	       (
-	         T * p, std::size_t len, 
-			 typename boost::disable_if<fast_array_serialization<ArchiveImplementation,T> >::type * =0
-		   )
-	{
-	  while (len--)
-	    ArchiveImplementation::load(*p++);
-	}
+    template <class T>
+    void load_array_impl
+           (
+             T * p, std::size_t len, 
+             typename boost::disable_if<has_fast_array_serialization<ArchiveImplementation,T> >::type * =0
+           )
+    {
+      while (len--)
+        ArchiveImplementation::load(*p++);
+    }
 
     // primitive types the only ones permitted by polymorphic archives
 
 #define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)  \
     virtual void load(T & t)                              \
-	{                                                     \
+    {                                                     \
         ArchiveImplementation::load(t);                   \
     }                                                     \
                                                           \
     virtual void load_array(T * p, std::size_t len)       \
-	{                                                     \
-	    load_array_impl(p,len);                           \
-	}
+    {                                                     \
+        load_array_impl(p,len);                           \
+    }
 
 #include <boost/archive/detail/implement_polymorphic_function.hpp>
-	
+
 #undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
 
     virtual void load(std::string & t){

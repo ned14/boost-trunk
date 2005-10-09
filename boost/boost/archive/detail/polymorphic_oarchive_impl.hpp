@@ -22,7 +22,7 @@
 #include <boost/cstdint.hpp>
 #include <cstddef> // size_t
 #include <boost/utility/enable_if.hpp>
-#include <boost/archive/fast_array_serialization.hpp>
+#include <boost/archive/has_fast_array_serialization.hpp>
 
 #include <boost/config.hpp>
 #if defined(BOOST_NO_STDC_NAMESPACE)
@@ -67,42 +67,42 @@ private:
         ArchiveImplementation::save_null_pointer();
     }
 
-	template <class T>
-	void save_array_impl
-	       (
-	           T const* p, std::size_t len
-			 , typename boost::enable_if<fast_array_serialization<ArchiveImplementation,T> >::type * =0
-		   )
-	{
-	  ArchiveImplementation::save_array(p,len);
-	}
+    template <class T>
+    void save_array_impl
+           (
+               T const* p, std::size_t len
+             , typename boost::enable_if<has_fast_array_serialization<ArchiveImplementation,T> >::type * =0
+           )
+    {
+      ArchiveImplementation::save_array(p,len);
+    }
 
-	template <class T>
-	void save_array_impl
-	       (
-	         T const* p, std::size_t len, 
-			 typename boost::disable_if<fast_array_serialization<ArchiveImplementation,T> >::type * =0
-		   )
-	{
-	  while (len--)
-	    ArchiveImplementation::save(*p++);
-	}
+    template <class T>
+    void save_array_impl
+           (
+             T const* p, std::size_t len, 
+             typename boost::disable_if<has_fast_array_serialization<ArchiveImplementation,T> >::type * =0
+           )
+    {
+      while (len--)
+        ArchiveImplementation::save(*p++);
+    }
 
     // primitive types the only ones permitted by polymorphic archives
 
 #define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)  \
     virtual void save(T const t)                          \
-	{                                                     \
+    {                                                     \
         ArchiveImplementation::save(t);                   \
     }                                                     \
                                                           \
     virtual void save_array(T const * p, std::size_t len) \
-	{                                                     \
-	    save_array_impl(p,len);                           \
-	}
+    {                                                     \
+        save_array_impl(p,len);                           \
+    }
 
 #include <boost/archive/detail/implement_polymorphic_function.hpp>
-	
+
 #undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
 
     virtual void save(const std::string & t){

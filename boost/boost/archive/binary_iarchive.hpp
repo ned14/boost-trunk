@@ -21,7 +21,7 @@
 #include <boost/archive/detail/auto_link_archive.hpp>
 #include <boost/archive/basic_binary_iarchive.hpp>
 #include <boost/archive/basic_binary_iprimitive.hpp>
-#include <boost/archive/fast_array_serialization.hpp>
+#include <boost/archive/has_fast_array_serialization.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header
@@ -83,12 +83,12 @@ public:
     {}
 };
 
-// specialize fast_array_serialization
+// specialize has_fast_array_serialization
 // the binary archive provides fast array serialization for all fundamental types
 
 
 template <class Type>
-struct fast_array_serialization<binary_iarchive,Type>
+struct has_fast_array_serialization<binary_iarchive,Type>
   : public is_fundamental<Type>
 {};
 

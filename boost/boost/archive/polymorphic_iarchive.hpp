@@ -31,6 +31,7 @@ namespace std{
 #include <boost/pfto.hpp>
 #include <boost/archive/detail/iserializer.hpp>
 #include <boost/archive/detail/interface_iarchive.hpp>
+#include <boost/archive/has_fast_array_serialization.hpp>
 #include <boost/serialization/nvp.hpp>
 
 // determine if its necessary to handle (u)int64_t specifically
@@ -67,7 +68,7 @@ protected:
 
     // declare the laod and load_array function for all primitive types
 #include <boost/archive/detail/implement_polymorphic_function.hpp>
-	
+
 #undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
 
     // string types are treated as primitives
@@ -123,12 +124,12 @@ public:
             const boost::serialization::extended_type_info & type
         )
     ) = 0;
-	
-	virtual ~polymorphic_iarchive() {}
+
+    virtual ~polymorphic_iarchive() {}
 };
 
 template <class Type>
-struct fast_array_serialization<polymorphic_iarchive,Type>
+struct has_fast_array_serialization<polymorphic_iarchive,Type>
   : public is_fundamental<Type>
 {};
 

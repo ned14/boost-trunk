@@ -97,7 +97,7 @@ public:
     ~basic_binary_oprimitive();
 public:
     void save_binary(const void *address, std::size_t count);
-	
+
     // fast saving of arrays of fundamental types
     template<class T>
     void save_array(T const *address, std::size_t count)
