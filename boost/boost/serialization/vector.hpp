@@ -26,7 +26,7 @@
 #include <boost/serialization/collections_load_imp.hpp>
 #include <boost/serialization/split_free.hpp>
 
-#include <boost/archive/fast_array_serialization.hpp>
+#include <boost/archive/has_fast_array_serialization.hpp>
 #include <boost/archive/detail/get_data.hpp>
 #include <boost/utility/enable_if.hpp>
 
@@ -48,7 +48,7 @@ inline void save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
     const unsigned int /* file_version */ ,
-	typename boost::disable_if<boost::archive::fast_array_serialization<Archive,U> >::type* =0
+    typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type* =0
 ){
     boost::serialization::stl::save_collection<Archive, STD::vector<U, Allocator> >(
         ar, t
@@ -61,11 +61,11 @@ inline void save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
     const unsigned int /* file_version */,
-	typename boost::enable_if<boost::archive::fast_array_serialization<Archive,U> >::type* =0
+    typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type* =0
 ){
     const boost::archive::container_size_type count(t.size());
     ar << BOOST_SERIALIZATION_NVP(count);
-	if (count)
+    if (count)
       ar.save_array(boost::detail::get_data(t),t.size());
 }
 
@@ -75,7 +75,7 @@ inline void load(
     Archive & ar,
     STD::vector<U, Allocator> &t,
     const unsigned int /* file_version */,
-	typename boost::disable_if<boost::archive::fast_array_serialization<Archive,U> >::type* =0
+    typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type* =0
 ){
     boost::serialization::stl::load_collection<
         Archive,
@@ -92,17 +92,17 @@ inline void load(
     Archive & ar,
     STD::vector<U, Allocator> &t,
     const unsigned int /* file_version */,
-	typename boost::enable_if<boost::archive::fast_array_serialization<Archive,U> >::type* =0
+    typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type* =0
 ){
     t.clear();
     // retrieve number of elements
     boost::archive::container_size_type count;
     ar >> BOOST_SERIALIZATION_NVP(count);
-	if (count)
-	{
-	  t.resize(count);
+    if (count)
+    {
+      t.resize(count);
       ar.load_array(boost::detail::get_data(t),t.size());
-	}
+    }
 }
 
 // split non-intrusive serialization function member into separate
