@@ -3579,6 +3579,7 @@ boost/boost/xpressive/proto/op_tags.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/operators.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/proto.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/proto_fwd.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/proto_typeof.hpp svneol=native#text/plain
 boost/boost/xpressive/regex_algorithms.hpp svneol=native#text/plain
 boost/boost/xpressive/regex_compiler.hpp svneol=native#text/plain
 boost/boost/xpressive/regex_constants.hpp svneol=native#text/plain
