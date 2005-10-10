@@ -1,6 +1,3 @@
-#ifndef BOOST_ARCHIVE_DETAIL_ARCHIVE_POINTER_OSERIALIZER_IPP
-#define BOOST_ARCHIVE_DETAIL_ARCHIVE_POINTER_OSERIALIZER_IPP
-
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // archive_pointer_oserializer.ipp: 
 
@@ -50,5 +47,3 @@ archive_pointer_oserializer<Archive>::find(
 } // namespace detail
 } // namespace archive
 } // namespace boost
-
-#endif // BOOST_ARCHIVE_DETAIL_ARCHIVE_POINTER_OSERIALIZER_IPP

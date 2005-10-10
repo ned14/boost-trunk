@@ -1,6 +1,3 @@
-#ifndef BOOST_ARCHIVE_DETAIL_BASIC_BINARY_IARCHIVE_IPP
-#define BOOST_ARCHIVE_DETAIL_BASIC_BINARY_IARCHIVE_IPP
-
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // basic_binary_iarchive.ipp:
 
@@ -81,5 +78,3 @@ basic_binary_iarchive<Archive>::init(){
 
 } // namespace archive
 } // namespace boost
-
-#endif
