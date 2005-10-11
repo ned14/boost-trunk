@@ -408,6 +408,7 @@ boost/boost/detail/indirect_traits.hpp svneol=native#text/plain
 boost/boost/detail/interlocked.hpp svneol=native#text/plain
 boost/boost/detail/is_function_ref_tester.hpp svneol=native#text/plain
 boost/boost/detail/is_incrementable.hpp svneol=native#text/plain
+boost/boost/detail/is_xxx.hpp svneol=native#text/plain
 boost/boost/detail/iterator.hpp svneol=native#text/plain
 boost/boost/detail/lightweight_mutex.hpp svneol=native#text/plain
 boost/boost/detail/lightweight_test.hpp svneol=native#text/plain
