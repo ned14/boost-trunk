@@ -6700,6 +6700,7 @@ boost/libs/parameter/test/efficiency.cpp svneol=native#text/plain
 boost/libs/parameter/test/macros.cpp svneol=native#text/plain
 boost/libs/parameter/test/sfinae.cpp svneol=native#text/plain
 boost/libs/parameter/test/timings.txt svneol=native#text/plain
+boost/libs/parameter/test/tutorial.cpp svneol=native#text/plain
 boost/libs/parameter/test/unnamed.cpp svneol=native#text/plain
 boost/libs/parameter/test/unwrap_cv_reference.cpp svneol=native#text/plain
 boost/libs/platform_maintainers.txt svneol=native#text/plain
