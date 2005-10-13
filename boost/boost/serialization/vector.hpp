@@ -44,11 +44,11 @@ namespace serialization {
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // vector<T>
 template<class Archive, class U, class Allocator>
-inline void save(
+inline boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
+save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */ ,
-    typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type* =0
+    const unsigned int /* file_version */
 ){
     boost::serialization::stl::save_collection<Archive, STD::vector<U, Allocator> >(
         ar, t
@@ -57,11 +57,11 @@ inline void save(
 
 // with fast array serialization
 template<class Archive, class U, class Allocator>
-inline void save(
+inline boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
+save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */,
-    typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type* =0
+    const unsigned int /* file_version */
 ){
     const boost::archive::container_size_type count(t.size());
     ar << BOOST_SERIALIZATION_NVP(count);
@@ -71,11 +71,11 @@ inline void save(
 
 
 template<class Archive, class U, class Allocator>
-inline void load(
+inline boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
+load(
     Archive & ar,
     STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */,
-    typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type* =0
+    const unsigned int /* file_version */
 ){
     boost::serialization::stl::load_collection<
         Archive,
@@ -88,11 +88,11 @@ inline void load(
 }
 
 template<class Archive, class U, class Allocator>
-inline void load(
+inline boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
+load(
     Archive & ar,
     STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */,
-    typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type* =0
+    const unsigned int /* file_version */
 ){
     t.clear();
     // retrieve number of elements
