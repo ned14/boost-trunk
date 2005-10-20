@@ -515,7 +515,7 @@ struct load_array_type {
         Archive &ar,
         X *p, 
         std::size_t count,
-        typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,X> >::type* =0
+         typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,X> >::type* =0
     ){
         ar.load_array(p,count);
     }
