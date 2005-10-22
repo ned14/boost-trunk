@@ -44,7 +44,7 @@ namespace serialization {
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // vector<T>
 template<class Archive, class U, class Allocator>
-inline boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
+inline typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
 save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
@@ -57,7 +57,7 @@ save(
 
 // with fast array serialization
 template<class Archive, class U, class Allocator>
-inline boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
+inline typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
 save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
@@ -71,7 +71,7 @@ save(
 
 
 template<class Archive, class U, class Allocator>
-inline boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
+inline typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
 load(
     Archive & ar,
     STD::vector<U, Allocator> &t,
@@ -88,7 +88,7 @@ load(
 }
 
 template<class Archive, class U, class Allocator>
-inline boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
+inline typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
 load(
     Archive & ar,
     STD::vector<U, Allocator> &t,
