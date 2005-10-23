@@ -8543,6 +8543,7 @@ boost/libs/serialization/doc/overview.html svneol=native#text/html
 boost/libs/serialization/doc/pimpl.html svneol=native#text/html
 boost/libs/serialization/doc/plus.gif -text svneol=unset#image/gif
 boost/libs/serialization/doc/rationale.html svneol=native#text/html
+boost/libs/serialization/doc/reference.html svneol=native#text/html
 boost/libs/serialization/doc/release.html svneol=native#text/html
 boost/libs/serialization/doc/serialization.html svneol=native#text/html
 boost/libs/serialization/doc/shared_ptr.html svneol=native#text/html
