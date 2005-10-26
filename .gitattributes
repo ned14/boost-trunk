@@ -5333,6 +5333,7 @@ boost/libs/graph/src/python/isomorphism.cpp svneol=native#text/plain
 boost/libs/graph/src/python/kamada_kawai_spring_layout.cpp svneol=native#text/plain
 boost/libs/graph/src/python/king_ordering.cpp svneol=native#text/plain
 boost/libs/graph/src/python/kruskal_min_spanning_tree.cpp svneol=native#text/plain
+boost/libs/graph/src/python/minimum_degree_ordering.cpp svneol=native#text/plain
 boost/libs/graph/src/python/module.cpp svneol=native#text/plain
 boost/libs/graph/src/python/page_rank.cpp svneol=native#text/plain
 boost/libs/graph/src/python/pickle.cpp svneol=native#text/plain
