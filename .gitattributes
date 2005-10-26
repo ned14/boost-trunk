@@ -3357,6 +3357,7 @@ boost/boost/wave/util/unput_queue_iterator.hpp svneol=native#text/plain
 boost/boost/wave/wave_config.hpp svneol=native#text/plain
 boost/boost/wave/wave_version.hpp svneol=native#text/plain
 boost/boost/weak_ptr.hpp svneol=native#text/plain
+boost/configure svneol=native#text/plain
 boost/doc/Jamfile.v2 svneol=native#text/plain
 boost/doc/html/Assignable.html svneol=native#text/html
 boost/doc/html/BOOST_ONCE_INIT.html svneol=native#text/html
