@@ -9943,7 +9943,6 @@ boost/libs/tr1/test/type_traits/tr1_is_void_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_is_volatile_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_rank_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_remove_all_extents_test.cpp svneol=native#text/plain
-boost/libs/tr1/test/type_traits/tr1_remove_bounds_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_remove_const_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_remove_cv_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_remove_extent_test.cpp svneol=native#text/plain
