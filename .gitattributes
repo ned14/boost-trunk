@@ -11164,7 +11164,7 @@ boost/tools/build/v2/test/gcc_runtime.py svneol=native#text/x-python
 boost/tools/build/v2/test/generators-test/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/a.cpp svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/b.cxx -text
-boost/tools/build/v2/test/generators-test/c.ui -text
+boost/tools/build/v2/test/generators-test/c.tui -text
 boost/tools/build/v2/test/generators-test/d.wd -text
 boost/tools/build/v2/test/generators-test/e.cpp svneol=native#text/plain
 boost/tools/build/v2/test/generators-test/extra.jam svneol=native#text/plain
