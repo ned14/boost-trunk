@@ -11437,6 +11437,8 @@ boost/tools/inspect/minmax_check.hpp svneol=native#text/plain
 boost/tools/inspect/tab_check.cpp svneol=native#text/plain
 boost/tools/inspect/tab_check.hpp svneol=native#text/plain
 boost/tools/inspect/wrong_line_ends_test.cpp svneol=native#text/plain
+boost/tools/jam/doc/bjam.qbk svneol=native#text/plain
+boost/tools/jam/doc/build.jam svneol=native#text/plain
 boost/tools/jam/src/Jam.html svneol=native#text/html
 boost/tools/jam/src/Jambase -text
 boost/tools/jam/src/Jambase.html svneol=native#text/html
