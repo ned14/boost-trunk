@@ -10,7 +10,7 @@
 // vector.hpp: serialization for stl vector templates
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
-// Fast array serialization (C) Copyright 2005 Matthias Troyer 
+// fast array serialization (C) Copyright 2005 Matthias Troyer 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -26,9 +26,11 @@
 #include <boost/serialization/collections_load_imp.hpp>
 #include <boost/serialization/split_free.hpp>
 
-#include <boost/archive/has_fast_array_serialization.hpp>
-#include <boost/archive/detail/get_data.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/has_trivial_constructor.hpp>
+#include <boost/type_traits/has_trivial_destructor.hpp>
+#include <boost/mpl/and.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/serialization/detail/get_data.hpp>
 
 // function specializations must be defined in the appropriate
 // namespace - boost::serialization
@@ -43,39 +45,63 @@ namespace serialization {
 
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // vector<T>
+
+
+// if the value type is not trivially constructable or destructable, then
+// we have to use save_collection
+
 template<class Archive, class U, class Allocator>
-inline typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
-save(
+inline void save_optimized(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */
+    const unsigned int /* file_version */,
+    mpl::false_
 ){
     boost::serialization::stl::save_collection<Archive, STD::vector<U, Allocator> >(
         ar, t
     );
 }
 
-// with fast array serialization
+// if the value type is trivially constructable and destructable, then
+// we can use either the default save_array function or an optimized overload
+
 template<class Archive, class U, class Allocator>
 inline typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
 save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */
+    const unsigned int file_version,
+    mpl::true_
 ){
     const boost::archive::container_size_type count(t.size());
     ar << BOOST_SERIALIZATION_NVP(count);
-    if (count)
-      ar.save_array(boost::detail::get_data(t),t.size());
+    save_array(ar,boost::detail::get_data(t),t.size(),file_version);
+}
+
+// dispatch the save depending on whether save_collection or save_array should be used
+template<class Archive, class U, class Allocator>
+inline void save(
+    Archive & ar,
+    STD::vector<U, Allocator> const &t,
+    const unsigned int file_version
+)
+{
+    save_optimized(
+        ar,t,file_version,
+        mpl::and_<type_traits::has_trivial_constructor<U>, type_traits::has_trivial_destructor<U> >::type()
+      );   
 }
 
 
+// if the value type is not trivially constructable or destructable, then
+// we have to use load_collection
+
 template<class Archive, class U, class Allocator>
-inline typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
-load(
+inline void load_optimized(
     Archive & ar,
     STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */
+    const unsigned int /* file_version */,
+    mpl::false_
 ){
     boost::serialization::stl::load_collection<
         Archive,
@@ -87,22 +113,37 @@ load(
     >(ar, t);
 }
 
+
+// if the value type is trivially constructable and destructable, then
+// we can use either the default load_array function or an optimized overload
+
 template<class Archive, class U, class Allocator>
-inline typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
-load(
+inline void load_optimized(
     Archive & ar,
     STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */
+    const unsigned int file_version,
+    mpl::true_
 ){
     t.clear();
     // retrieve number of elements
     boost::archive::container_size_type count;
     ar >> BOOST_SERIALIZATION_NVP(count);
-    if (count)
-    {
-      t.resize(count);
-      ar.load_array(boost::detail::get_data(t),t.size());
-    }
+    t.resize(count);
+    serialization::load_array(ar,detail::get_data(t),t.size(),file_version)
+}
+
+// dispatch the load depending on whether load_collection or load_array should be used
+template<class Archive, class U, class Allocator>
+inline void load(
+    Archive & ar,
+    STD::vector<U, Allocator> &t,
+    const unsigned int file_version
+)
+{
+    load_optimized(
+        ar,t,file_version,
+        mpl::and_<type_traits::has_trivial_constructor<U>, type_traits::has_trivial_destructor<U> >::type()
+      );   
 }
 
 // split non-intrusive serialization function member into separate
