@@ -10255,6 +10255,9 @@ boost/libs/wave/samples/waveidl/instantiate_re2c_lexer_str.cpp svneol=native#tex
 boost/libs/wave/src/cpplexer/re2clex/aq.cpp svneol=native#text/plain
 boost/libs/wave/src/cpplexer/re2clex/cpp.re -text
 boost/libs/wave/src/cpplexer/re2clex/cpp_re.cpp svneol=native#text/plain
+boost/libs/wave/src/cpplexer/re2clex/cpp_re.inc -text
+boost/libs/wave/src/cpplexer/re2clex/strict_cpp.re -text
+boost/libs/wave/src/cpplexer/re2clex/strict_cpp_re.inc -text
 boost/libs/wave/src/instantiate_cpp_exprgrammar.cpp svneol=native#text/plain
 boost/libs/wave/src/instantiate_cpp_grammar.cpp svneol=native#text/plain
 boost/libs/wave/src/instantiate_cpp_literalgrs.cpp svneol=native#text/plain
