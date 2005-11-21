@@ -30,10 +30,7 @@ public:
     
     // we provide an optimized load for all fundamental types
     
-    template <class ValueType>
-    struct use_array_optimization 
-      : public is_fundamental<ValueType> 
-    {};
+    typedef is_fundamental<mpl::_1> use_array_optimization;
 
     // the optimized load_array dispatches to load_binary 
     

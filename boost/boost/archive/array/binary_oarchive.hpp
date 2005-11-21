@@ -29,10 +29,7 @@ public:
 
     // we provide an optimized save for all fundamental types
     
-    template <class ValueType>
-    struct use_array_optimization 
-      : public is_fundamental<ValueType> 
-    {};
+    typedef is_fundamental<mpl::_1> use_array_optimization;
 
     // the optimized save_array dispatches to save_binary 
     
