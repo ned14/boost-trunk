@@ -31,6 +31,12 @@ T* get_data(STD::vector<T,Allocator>& v)
   return &(v[0]);
 }
 
+template <class T, class Allocator>
+T* get_data(STD::vector<T,Allocator> const & v)
+{
+  return get_data(const_cast<STD::vector<T,Allocator>&>(v));
+}
+
 
 template <class T>
 T* get_data(STD::valarray<T>& v)
@@ -38,10 +44,10 @@ T* get_data(STD::valarray<T>& v)
   return &(v[0]);
 }
 
-template <class T, class Allocator>
-const T* get_data(T const& v)
+template <class T>
+const T* get_data(STD::valarray<T> const& v)
 {
-  return get_data(const_cast<T&>(v));
+  return get_data(const_cast<STD::valarray<T>&>(v));
 }
 
 } } } //namespace boost::serialization::detail

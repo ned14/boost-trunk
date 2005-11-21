@@ -76,6 +76,30 @@ struct known_archive_types {
                 #if defined(BOOST_ARCHIVE_POLYMORPHIC_IARCHIVE_HPP)
                     , boost::archive::polymorphic_iarchive
                 #endif
+                #if defined(BOOST_ARCHIVE_ARRAY_BINARY_OARCHIVE_HPP)
+                    , boost::archive::array::binary_oarchive
+                #endif
+                #if defined(BOOST_ARCHIVE_ARRAY_BINARY_IARCHIVE_HPP)
+                    , boost::archive::array::binary_iarchive
+                #endif
+                #if defined(BOOST_PARALLEL_MPI_PACKED_OARCHIVE_HPP)
+                    , boost::parallel::mpi::packed_oarchive
+                #endif
+                #if defined(BOOST_PARALLEL_MPI_PACKED_IARCHIVE_HPP)
+                    , boost::parallel::mpi::packed_iarchive
+                #endif
+                #if defined(BOOST_PARALLEL_MPI_PACKED_SKELETON_OARCHIVE_HPP)
+                    , boost::parallel::mpi::packed_skeleton_oarchive
+                #endif
+                #if defined(BOOST_PARALLEL_MPI_PACKED_SKELETON_IARCHIVE_HPP)
+                    , boost::parallel::mpi::packed_skeleton_iarchive
+                #endif
+                #if defined(BOOST_PARALLEL_MPI_TEXT_SKELETON_OARCHIVE_HPP)
+                    , boost::parallel::mpi::text_skeleton_oarchive
+                #endif
+                #if defined(BOOST_PARALLEL_MPI_DETAIL_CONTENT_OARCHIVE_HPP)
+                    , boost::parallel::mpi::detail::content_oarchive
+                #endif
                 #if defined(BOOST_ARCHIVE_CUSTOM_IARCHIVE_TYPES)
                     , BOOST_ARCHIVE_CUSTOM_IARCHIVE_TYPES
                 #endif

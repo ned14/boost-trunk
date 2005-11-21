@@ -17,7 +17,6 @@
 // ON PLATFORM APART FROM THE ONE THEY ARE CREATED ON
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
-// Fast array serialization (C) Copyright 2005 Matthias Troyer 
 // Use, modification and distribution is subject to the Boost Software
 // License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -100,14 +99,6 @@ public:
 public:
     void
     load_binary(void *address, std::size_t count);
-
-    // fast loading of arrays of fundamental types
-    template<class T>
-    void load_array(T *address, std::size_t count)
-    {
-        load_binary(address, count*sizeof(T));
-    }
-
 };
 
 template<class Archive, class IStream>

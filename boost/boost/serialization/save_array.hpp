@@ -8,7 +8,7 @@
 
 #include <boost/mpl/bool.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <boost/serialization.hpp>
+#include <boost/serialization/serialization.hpp>
 #include <boost/pfto.hpp>
 
 namespace boost { namespace serialization {
@@ -32,7 +32,7 @@ void save_array_optimized(Archive& ar, ValueType const * p, std::size_t n, unsig
 //  to be overloaded by archive implementors
 
 template <class Archive, class ValueType>
-inline void save_array_override(Archive& ar, ValueType const * p, std::size_t n, unsigned BOOST_PFTO int version)
+inline void save_array_override(Archive& ar, ValueType const * p, std::size_t n, unsigned BOOST_PFTO version)
 {
   serialization::save_array_optimized(ar, p, n, version, boost::mpl::false_() );
 }
@@ -42,10 +42,12 @@ inline void save_array_override(Archive& ar, ValueType const * p, std::size_t n,
 template <class Archive, class ValueType>
 inline void save_array(Archive& ar, ValueType const * p, std::size_t n, unsigned int version)
 {
-  save_array_override(ar, p, boost::serialization::version_type(version) );
+  save_array_override(ar, p, n, boost::serialization::version_type(version) );
 }
 
 
 } } // end namespace boost::serialization
+
+#include <boost/archive/array/optimized.hpp>
 
 #endif //BOOST_SERIALIZATION_SAVE_ARRAY_HPP

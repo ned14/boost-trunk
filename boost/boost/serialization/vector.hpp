@@ -66,8 +66,7 @@ inline void save_optimized(
 // we can use either the default save_array function or an optimized overload
 
 template<class Archive, class U, class Allocator>
-inline typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,U> >::type
-save(
+inline void save_optimized(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
     const unsigned int file_version,
@@ -75,7 +74,7 @@ save(
 ){
     const boost::archive::container_size_type count(t.size());
     ar << BOOST_SERIALIZATION_NVP(count);
-    save_array(ar,boost::detail::get_data(t),t.size(),file_version);
+    save_array(ar,detail::get_data(t),t.size(),file_version);
 }
 
 // dispatch the save depending on whether save_collection or save_array should be used
@@ -88,7 +87,7 @@ inline void save(
 {
     save_optimized(
         ar,t,file_version,
-        mpl::and_<type_traits::has_trivial_constructor<U>, type_traits::has_trivial_destructor<U> >::type()
+        typename mpl::and_<has_trivial_constructor<U>, has_trivial_destructor<U> >::type()
       );   
 }
 
@@ -129,7 +128,7 @@ inline void load_optimized(
     boost::archive::container_size_type count;
     ar >> BOOST_SERIALIZATION_NVP(count);
     t.resize(count);
-    serialization::load_array(ar,detail::get_data(t),t.size(),file_version)
+    serialization::load_array(ar,detail::get_data(t),t.size(),file_version);
 }
 
 // dispatch the load depending on whether load_collection or load_array should be used
@@ -142,7 +141,7 @@ inline void load(
 {
     load_optimized(
         ar,t,file_version,
-        mpl::and_<type_traits::has_trivial_constructor<U>, type_traits::has_trivial_destructor<U> >::type()
+        typename mpl::and_<has_trivial_constructor<U>, has_trivial_destructor<U> >::type()
       );   
 }
 

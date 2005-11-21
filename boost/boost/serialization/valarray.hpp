@@ -43,7 +43,7 @@ void save( Archive & ar, const STD::valarray<U> &t, const unsigned int file_vers
   const boost::archive::container_size_type count(t.size());
   ar << BOOST_SERIALIZATION_NVP(count);
   if (count)
-    save_array(ar, boost::detail::get_data(t), t.size(), file_version);
+    save_array(ar, detail::get_data(t), t.size(), file_version);
 }
 
 
@@ -54,7 +54,7 @@ void load( Archive & ar, STD::valarray<U> &t,  const unsigned int file_version )
   ar >> BOOST_SERIALIZATION_NVP(count);
   t.resize(count);
   if (count)
-    load_array(ar, boost::detail::get_data(t), t.size(), file_version);
+    load_array(ar, detail::get_data(t), t.size(), file_version);
 }
 
 // split non-intrusive serialization function member into separate

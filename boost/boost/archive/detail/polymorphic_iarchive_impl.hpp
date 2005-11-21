@@ -21,8 +21,6 @@
 #include <ostream>
 #include <boost/noncopyable.hpp>
 #include <boost/cstdint.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/archive/has_fast_array_serialization.hpp>
 
 #include <boost/config.hpp>
 #if defined(BOOST_NO_STDC_NAMESPACE)
@@ -84,45 +82,58 @@ private:
     virtual void load_binary(void * t, std::size_t size){
         ArchiveImplementation::load_binary(t, size);
     }
-
-    template <class T>
-    void load_array_impl
-           (
-               T * p, std::size_t len
-             , typename boost::enable_if<has_fast_array_serialization<ArchiveImplementation,T> >::type * =0
-           )
-    {
-      ArchiveImplementation::load_array(p,len);
-    }
-
-    template <class T>
-    void load_array_impl
-           (
-             T * p, std::size_t len, 
-             typename boost::disable_if<has_fast_array_serialization<ArchiveImplementation,T> >::type * =0
-           )
-    {
-      while (len--)
-        ArchiveImplementation::load(*p++);
-    }
-
     // primitive types the only ones permitted by polymorphic archives
-
-#define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)  \
-    virtual void load(T & t)                              \
-    {                                                     \
-        ArchiveImplementation::load(t);                   \
-    }                                                     \
-                                                          \
-    virtual void load_array(T * p, std::size_t len)       \
-    {                                                     \
-        load_array_impl(p,len);                           \
+    virtual void load(bool & t){
+        ArchiveImplementation::load(t);
     }
-
-#include <boost/archive/detail/implement_polymorphic_function.hpp>
-
-#undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
-
+    virtual void load(char & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(signed char & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(unsigned char & t){
+        ArchiveImplementation::load(t);
+    }
+    #ifndef BOOST_NO_CWCHAR
+    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
+    virtual void load(wchar_t & t){
+        ArchiveImplementation::load(t);
+    }
+    #endif
+    #endif
+    virtual void load(short & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(unsigned short & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(int & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(unsigned int & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(long & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(unsigned long & t){
+        ArchiveImplementation::load(t);
+    }
+    #if !defined(BOOST_NO_INTRINSIC_INT64_T)
+    virtual void load(boost::int64_t & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(boost::uint64_t & t){
+        ArchiveImplementation::load(t);
+    }
+    #endif
+    virtual void load(float & t){
+        ArchiveImplementation::load(t);
+    }
+    virtual void load(double & t){
+        ArchiveImplementation::load(t);
+    }
     virtual void load(std::string & t){
         ArchiveImplementation::load(t);
     }

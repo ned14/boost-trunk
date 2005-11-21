@@ -70,8 +70,7 @@
 
 #include <boost/archive/archive_exception.hpp>
 
-#include <boost/archive/has_fast_array_serialization.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <boost/serialization/save_array.hpp>
 
 namespace boost {
 
@@ -484,28 +483,6 @@ struct save_enum_type
 template<class Archive, class T>
 struct save_array_type
 {
-
-    template <class X>
-    static void save_array_contents(
-        Archive &ar,
-        X const *p, 
-        std::size_t count,
-        typename boost::disable_if<boost::archive::has_fast_array_serialization<Archive,X> >::type* =0
-    ){
-        std::size_t i;
-        for(i = 0; i < count; ++i)
-            ar << boost::serialization::make_nvp("item", p[i]);
-    }
-    
-    template <class X>
-    static void save_array_contents(
-        Archive &ar,
-        X const *p, 
-        std::size_t count,
-        typename boost::enable_if<boost::archive::has_fast_array_serialization<Archive,X> >::type* =0
-    ){
-        ar.save_array(p,count);
-    }
       
     static void invoke(Archive &ar, const T &t){
         save_access::end_preamble(ar);
@@ -517,7 +494,7 @@ struct save_array_type
         const container_size_type count(c);
         ar << BOOST_SERIALIZATION_NVP(count);
         
-        save_array_contents(ar,t,count);
+        serialization::save_array(ar,t,count,ar.get_library_version());
     }
 };
 

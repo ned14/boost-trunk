@@ -21,8 +21,6 @@
 #include <boost/noncopyable.hpp>
 #include <boost/cstdint.hpp>
 #include <cstddef> // size_t
-#include <boost/utility/enable_if.hpp>
-#include <boost/archive/has_fast_array_serialization.hpp>
 
 #include <boost/config.hpp>
 #if defined(BOOST_NO_STDC_NAMESPACE)
@@ -66,45 +64,58 @@ private:
     virtual void save_null_pointer(){
         ArchiveImplementation::save_null_pointer();
     }
-
-    template <class T>
-    void save_array_impl
-           (
-               T const* p, std::size_t len
-             , typename boost::enable_if<has_fast_array_serialization<ArchiveImplementation,T> >::type * =0
-           )
-    {
-      ArchiveImplementation::save_array(p,len);
-    }
-
-    template <class T>
-    void save_array_impl
-           (
-             T const* p, std::size_t len, 
-             typename boost::disable_if<has_fast_array_serialization<ArchiveImplementation,T> >::type * =0
-           )
-    {
-      while (len--)
-        ArchiveImplementation::save(*p++);
-    }
-
     // primitive types the only ones permitted by polymorphic archives
-
-#define BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION(T)  \
-    virtual void save(T const t)                          \
-    {                                                     \
-        ArchiveImplementation::save(t);                   \
-    }                                                     \
-                                                          \
-    virtual void save_array(T const * p, std::size_t len) \
-    {                                                     \
-        save_array_impl(p,len);                           \
+    virtual void save(const bool t){
+        ArchiveImplementation::save(t);
     }
-
-#include <boost/archive/detail/implement_polymorphic_function.hpp>
-
-#undef BOOST_ARCHIVE_IMPLEMENT_POLYMPORPHIC_FUNCTION
-
+    virtual void save(const char t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const signed char t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const unsigned char t){
+        ArchiveImplementation::save(t);
+    }
+    #ifndef BOOST_NO_CWCHAR
+    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
+    virtual void save(const wchar_t t){
+        ArchiveImplementation::save(t);
+    }
+    #endif
+    #endif
+    virtual void save(const short t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const unsigned short t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const int t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const unsigned int t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const long t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const unsigned long t){
+        ArchiveImplementation::save(t);
+    }
+    #if !defined(BOOST_NO_INTRINSIC_INT64_T)
+    virtual void save(const boost::int64_t t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const boost::uint64_t t){
+        ArchiveImplementation::save(t);
+    }
+    #endif
+    virtual void save(const float t){
+        ArchiveImplementation::save(t);
+    }
+    virtual void save(const double t){
+        ArchiveImplementation::save(t);
+    }
     virtual void save(const std::string & t){
         ArchiveImplementation::save(t);
     }
