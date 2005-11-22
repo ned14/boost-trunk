@@ -8,6 +8,7 @@
 
 
 #include <boost/archive/basic_archive.hpp>
+#include <boost/archive/archive_exception.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/load_array.hpp>
 #include <boost/serialization/detail/get_data.hpp>
@@ -18,6 +19,7 @@
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/pfto.hpp>
+#include <boost/throw_exception.hpp>
 
 
 namespace boost { namespace archive { namespace array {
