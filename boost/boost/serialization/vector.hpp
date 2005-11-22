@@ -26,11 +26,13 @@
 #include <boost/serialization/collections_load_imp.hpp>
 #include <boost/serialization/split_free.hpp>
 
+#ifdef BOOST_ARRAY_SLIGHTLY_INTRUSIVE
 #include <boost/type_traits/has_trivial_constructor.hpp>
 #include <boost/type_traits/has_trivial_destructor.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/serialization/detail/get_data.hpp>
+#endif
 
 // function specializations must be defined in the appropriate
 // namespace - boost::serialization
@@ -47,6 +49,18 @@ namespace serialization {
 // vector<T>
 
 
+#ifndef BOOST_ARRAY_SLIGHTLY_INTRUSIVE
+template<class Archive, class U, class Allocator>
+inline void save(
+    Archive & ar,
+    const STD::vector<U, Allocator> &t,
+    const unsigned int /* file_version */
+){
+    boost::serialization::stl::save_collection<Archive, STD::vector<U, Allocator> >(
+        ar, t
+    );
+}
+#else
 // if the value type is not trivially constructable or destructable, then
 // we have to use save_collection
 
@@ -90,7 +104,7 @@ inline void save(
         typename mpl::and_<has_trivial_constructor<U>, has_trivial_destructor<U> >::type()
       );   
 }
-
+#endif
 
 // if the value type is not trivially constructable or destructable, then
 // we have to use load_collection
@@ -112,6 +126,26 @@ inline void load_optimized(
     >(ar, t);
 }
 
+
+#ifndef BOOST_ARRAY_SLIGHTLY_INTRUSIVE
+
+template<class Archive, class U, class Allocator>
+inline void load(
+    Archive & ar,
+    STD::vector<U, Allocator> &t,
+    const unsigned int /* file_version */
+){
+    boost::serialization::stl::load_collection<
+        Archive,
+        STD::vector<U, Allocator>,
+        boost::serialization::stl::archive_input_seq<
+            Archive, STD::vector<U, Allocator> 
+        >,
+        boost::serialization::stl::reserve_imp<STD::vector<U, Allocator> >
+    >(ar, t);
+}
+
+#else
 
 // if the value type is trivially constructable and destructable, then
 // we can use either the default load_array function or an optimized overload
@@ -144,6 +178,8 @@ inline void load(
         typename mpl::and_<has_trivial_constructor<U>, has_trivial_destructor<U> >::type()
       );   
 }
+
+#endif
 
 // split non-intrusive serialization function member into separate
 // non intrusive save/load member functions

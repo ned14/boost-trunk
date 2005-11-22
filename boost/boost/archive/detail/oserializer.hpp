@@ -70,7 +70,10 @@
 
 #include <boost/archive/archive_exception.hpp>
 
+#ifdef BOOST_ARRAY_SLIGHTLY_INTRUSIVE
 #include <boost/serialization/save_array.hpp>
+#endif
+
 
 namespace boost {
 
@@ -493,8 +496,13 @@ struct save_array_type
         );
         const container_size_type count(c);
         ar << BOOST_SERIALIZATION_NVP(count);
-        
+#ifndef BOOST_ARRAY_SLIGHTLY_INTRUSIVE        
+        int i;
+        for(i = 0; i < c; ++i)
+            ar << boost::serialization::make_nvp("item", t[i]);
+#else
         serialization::save_array(ar,t,count,ar.get_library_version());
+#endif
     }
 };
 
