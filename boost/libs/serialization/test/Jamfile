@@ -28,6 +28,7 @@ if ! $(BOOST_ARCHIVE_LIST) {
         "binary_archive.hpp" 
         "xml_archive.hpp" 
         "xml_warchive.hpp" 
+        "array_binary_archive.hpp" 
     ;
     # enable the tests which don't depend on a particular archive
     BOOST_SERIALIZATION_TEST = true ;
@@ -232,6 +233,8 @@ test-suite "serialization" :
      [ test-bsl-run_files test_split ]
      [ test-bsl-run_files test_tracking ]
      [ test-bsl-run_files test_unregistered ]
+     [ test-bsl-run_files test_variant ]
+     [ test-bsl-run_files test_valarray ]
      [ test-bsl-run_files test_variant ]
      [ test-bsl-run_files test_vector ]
      [ test-bsl-run_files test_optional ]

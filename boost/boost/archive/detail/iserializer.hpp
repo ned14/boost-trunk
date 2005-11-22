@@ -514,7 +514,7 @@ struct load_array_type {
             ));
             
 #ifndef BOOST_ARRAY_SLIGHTLY_INTRUSIVE        
-        int i;
+        std::size_t i;
         std::size_t c = count;
         for(i = 0; i < c; ++i)
             ar >> boost::serialization::make_nvp("item", t[i]);

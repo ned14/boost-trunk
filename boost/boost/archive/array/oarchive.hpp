@@ -47,11 +47,6 @@ class oarchive
 public:
   oarchive() {}
   
-  // replace the forwarding constructors by preprocessor magic
-  template <class T1>
-  oarchive(T1 x1) : Base(x1) 
-  {}
-
   template <class T1>
   oarchive(T1 & x1) : Base(x1) 
   {}
