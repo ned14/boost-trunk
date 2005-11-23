@@ -147,7 +147,6 @@ optimize_array(archive::array::iarchive<Derived,Base>*, ValueType*)
         BOOST_DEDUCED_TYPENAME Derived::use_array_optimization
       , ValueType
     >::type result;
-    
     return result();
 }
 

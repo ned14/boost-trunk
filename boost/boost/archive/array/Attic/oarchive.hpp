@@ -14,11 +14,11 @@
 #include <boost/serialization/collections_save_imp.hpp>
 #include <boost/type_traits/has_trivial_constructor.hpp>
 #include <boost/type_traits/has_trivial_destructor.hpp>
+#include <boost/type_traits/remove_const.hpp>
 #include <boost/mpl/apply.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/pfto.hpp>
-
 
 namespace boost { namespace archive { namespace array {
 
@@ -123,15 +123,14 @@ namespace boost { namespace serialization {
 template <class Derived, class Base, class ValueType>
 typename mpl::apply1<
     typename Derived::use_array_optimization
-  , ValueType
+  , typename remove_const<ValueType>::type
 >::type
 optimize_array(archive::array::oarchive<Derived,Base>*, ValueType*)
 {
     typedef typename mpl::apply1<
         BOOST_DEDUCED_TYPENAME Derived::use_array_optimization
-      , ValueType
+      , BOOST_DEDUCED_TYPENAME remove_const<ValueType>::type
     >::type result;
-    
     return result();
 }
 
