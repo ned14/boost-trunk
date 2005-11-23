@@ -8,6 +8,7 @@
 
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/array.hpp>
+#include <iostream>
 
 namespace boost { namespace serialization {
 
@@ -63,7 +64,5 @@ inline void save_array(Archive& ar, ValueType const * p, std::size_t n, unsigned
 
 
 } } // end namespace boost::serialization
-
-#include <boost/archive/array/optimized.hpp>
 
 #endif //BOOST_SERIALIZATION_SAVE_ARRAY_HPP
