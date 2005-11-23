@@ -8,7 +8,6 @@
 
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/array.hpp>
-#include <iostream>
 
 namespace boost { namespace serialization {
 
