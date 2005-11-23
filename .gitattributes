@@ -11372,6 +11372,7 @@ boost/tools/build/v2/tools/intel.jam svneol=native#text/plain
 boost/tools/build/v2/tools/kylix.jam svneol=native#text/plain
 boost/tools/build/v2/tools/lex.jam svneol=native#text/plain
 boost/tools/build/v2/tools/make.jam svneol=native#text/plain
+boost/tools/build/v2/tools/midl.jam svneol=native#text/plain
 boost/tools/build/v2/tools/msvc-config.jam svneol=native#text/plain
 boost/tools/build/v2/tools/msvc.jam svneol=native#text/plain
 boost/tools/build/v2/tools/notfile.jam svneol=native#text/plain
