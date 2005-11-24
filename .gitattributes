@@ -7534,6 +7534,7 @@ boost/libs/ptr_container/test/ptr_vector.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/ptr_vector_size.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/sequence_point.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/sequence_test_data.hpp svneol=native#text/plain
+boost/libs/ptr_container/test/serialization.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/simple_test.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/test_data.hpp svneol=native#text/plain
 boost/libs/ptr_container/test/tree_test.cpp svneol=native#text/plain
