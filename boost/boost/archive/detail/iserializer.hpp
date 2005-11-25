@@ -77,10 +77,6 @@ namespace std{
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/binary_object.hpp>
 
-#ifdef BOOST_ARRAY_SLIGHTLY_INTRUSIVE        
-#include <boost/serialization/load_array.hpp>
-#endif
-
 namespace boost {
 
 namespace serialization {
@@ -513,14 +509,10 @@ struct load_array_type {
                 boost::archive::archive_exception::array_size_too_short
             ));
             
-#ifndef BOOST_ARRAY_SLIGHTLY_INTRUSIVE        
         std::size_t i;
         std::size_t c = count;
         for(i = 0; i < c; ++i)
             ar >> boost::serialization::make_nvp("item", t[i]);
-#else
-        serialization::load_array(ar,t,count,ar.get_library_version());
-#endif
     }
 };
 
