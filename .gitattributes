@@ -10177,6 +10177,7 @@ boost/libs/wave/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/wave/doc/acknowledgements.html svneol=native#text/html
 boost/libs/wave/doc/class_reference_context.html svneol=native#text/html
 boost/libs/wave/doc/class_reference_ctxpolicy.html svneol=native#text/html
+boost/libs/wave/doc/class_reference_ctxws_policy.html svneol=native#text/html
 boost/libs/wave/doc/class_reference_filepos.html svneol=native#text/html
 boost/libs/wave/doc/class_reference_inptpolcy.html svneol=native#text/html
 boost/libs/wave/doc/class_reference_lexer.html svneol=native#text/html
