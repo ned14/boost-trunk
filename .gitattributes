@@ -4847,6 +4847,7 @@ boost/libs/graph/example/connected_components.expected -text
 boost/libs/graph/example/container_gen.cpp svneol=native#text/plain
 boost/libs/graph/example/container_gen.expected -text
 boost/libs/graph/example/copy-example.cpp svneol=native#text/plain
+boost/libs/graph/example/csr-example.cpp svneol=native#text/plain
 boost/libs/graph/example/cuthill_mckee_ordering.cpp svneol=native#text/plain
 boost/libs/graph/example/cuthill_mckee_ordering.expected -text
 boost/libs/graph/example/cycle-file-dep.cpp svneol=native#text/plain
