@@ -8793,6 +8793,7 @@ boost/libs/smart_ptr/index.html svneol=native#text/html
 boost/libs/smart_ptr/intrusive_ptr.html svneol=native#text/html
 boost/libs/smart_ptr/msvcspeed.gif -text svneol=unset#image/gif
 boost/libs/smart_ptr/pointer_cast.html svneol=native#text/html
+boost/libs/smart_ptr/pointer_to_other.html svneol=native#text/html
 boost/libs/smart_ptr/scoped_array.htm svneol=native#text/html
 boost/libs/smart_ptr/scoped_ptr.htm svneol=native#text/html
 boost/libs/smart_ptr/shared_array.htm svneol=native#text/html
