@@ -6858,6 +6858,7 @@ boost/libs/parameter/test/duplicates.cpp svneol=native#text/plain
 boost/libs/parameter/test/efficiency.cpp svneol=native#text/plain
 boost/libs/parameter/test/macros.cpp svneol=native#text/plain
 boost/libs/parameter/test/sfinae.cpp svneol=native#text/plain
+boost/libs/parameter/test/singular.cpp svneol=native#text/plain
 boost/libs/parameter/test/timings.txt svneol=native#text/plain
 boost/libs/parameter/test/tutorial.cpp svneol=native#text/plain
 boost/libs/parameter/test/unnamed.cpp svneol=native#text/plain
