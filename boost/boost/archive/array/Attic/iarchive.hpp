@@ -10,16 +10,13 @@
 #include <boost/archive/basic_archive.hpp>
 #include <boost/archive/archive_exception.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <boost/serialization/load_array.hpp>
+#include <boost/serialization/array.hpp>
 #include <boost/serialization/detail/get_data.hpp>
-#include <boost/serialization/collections_load_imp.hpp>
 #include <boost/type_traits/has_trivial_constructor.hpp>
-#include <boost/type_traits/has_trivial_destructor.hpp>
 #include <boost/mpl/apply.hpp>
-#include <boost/mpl/and.hpp>
+#include <boost/mpl/or.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/pfto.hpp>
-#include <boost/throw_exception.hpp>
 
 
 namespace boost { namespace archive { namespace array {
@@ -34,7 +31,7 @@ namespace boost { namespace archive { namespace array {
   //     procedure for serializing arrays of T (for appropriate T)
   //
   //       template <class T>
-  //       load_array(T* p, size_t nelems, unsigned version)
+  //       load_array(serialization::array<T> &, unsigned int)
   //
   //   * add a unary MPL lambda expression member called
   //     use_array_optimization whose result is convertible to
@@ -62,10 +59,20 @@ public:
   iarchive(T1& x1, T2 x2) : Base(x1,x2) 
   {}
 
-  // to load a vector:
-  // if the value type is trivially constructable and destructable, then
-  // we can use either the default load_array function or an optimized overload
+  // save_override for std::vector and serialization::array dispatches to 
+  // save_optimized with an additional argument.
+  // 
+  // If that argument is of type mpl::true_, an optimized serialization is provided
+  // If it is false, we just forward to the default serialization in the base class
+  
+  //the default version dispatches to the base class
+  template<class T>
+  void load_optimized(T &t, unsigned int version, mpl::false_)
+  {
+    Base::load_override(t, version);
+  }
 
+  // the optimized implementation for vector uses serialization::array
   template<class U, class Allocator>
   void load_optimized(
     std::vector<U, Allocator> &t, unsigned int version, mpl::true_)
@@ -75,43 +82,42 @@ public:
     boost::archive::container_size_type count;
     *this->This() >> BOOST_SERIALIZATION_NVP(count);
     t.resize(count);
-    serialization::load_array(*this->This(),serialization::detail::get_data(t),t.size(),version);
+    * this->This() >> serialization::make_array(serialization::detail::get_data(t),t.size());
   }
 
-  // otherwise use the default version
-  template<class U, class Allocator>
-  void load_optimized( std::vector<U, Allocator> &t, unsigned int, mpl::false_)
+  // the optimized implementation for serialization::array uses save_array
+  template<class ValueType>
+  void load_optimized(
+    serialization::array<ValueType> &t, unsigned int version, mpl::true_)
   {
-    serialization::stl::load_collection<
-        iarchive,
-        std::vector<U, Allocator>,
-        boost::serialization::stl::archive_input_seq<
-            iarchive, std::vector<U, Allocator> 
-        >,
-        serialization::stl::reserve_imp<STD::vector<U, Allocator> >
-    >(*this -> This(), t);
+    This()->load_array(t,version);
   }
 
 
-  // overriding the std::vector serialization by dispaching to one of the two functions above
-  template<class U, class Allocator>
-  void load_override(std::vector<U,Allocator> &x, unsigned int version)
+  // to load a vector:
+  // if the value type is trivially constructable or an optimized array save exists, 
+  // then we can use the optimized version
+
+  template<class ValueType, class Allocator>
+  void load_override(std::vector<ValueType,Allocator> &x, unsigned int version)
   {
-    load_optimized(x,version,
-        typename mpl::and_<has_trivial_constructor<U>, has_trivial_destructor<U> >::type() );   
+    typedef typename mpl::apply1<
+        BOOST_DEDUCED_TYPENAME Derived::use_array_optimization
+      , ValueType
+    >::type use_optimized;
+    load_optimized(x,version, mpl::or_<use_optimized,has_trivial_constructor<ValueType> >() );   
   }
   
   
-  // override the builtin array serialization using load_array
-  template<class T, std::size_t N>
-  void load_override(T (&x)[N], unsigned int version)
+  // dispatch loading of arrays to the optimized version where supported
+  template<class ValueType>
+  void load_override(serialization::array<ValueType> const& x, unsigned int version)
   {
-    container_size_type count;
-    * this->This() >> BOOST_SERIALIZATION_NVP(count);
-    if(count > N)
-      boost::throw_exception(archive::archive_exception(
-            boost::archive::archive_exception::array_size_too_short));
-    serialization::load_array(* this->This(),x,N,version);
+    typedef typename mpl::apply1<
+        BOOST_DEDUCED_TYPENAME Derived::use_array_optimization
+      , ValueType
+    >::type use_optimized;
+    load_optimized(const_cast<serialization::array<ValueType>&>(x),version,use_optimized());
   }
 
   // Load everything else in the usual way, forwarding on to the
@@ -131,26 +137,6 @@ private:
 
 } } } // end namespace boost::archive::array
 
-
-namespace boost { namespace serialization {
-
-
-// Overload optimize for optimized archives
-template <class Derived, class Base, class ValueType>
-typename mpl::apply1<
-    typename Derived::use_array_optimization
-  , ValueType
->::type
-optimize_array(archive::array::iarchive<Derived,Base>*, ValueType*)
-{
-    typedef typename mpl::apply1<
-        BOOST_DEDUCED_TYPENAME Derived::use_array_optimization
-      , ValueType
-    >::type result;
-    return result();
-}
-
-} } // end namespace boost::serialization
 
 
 #endif // BOOST_ARCHIVE_ARRAY_OARCHIVE_HPP

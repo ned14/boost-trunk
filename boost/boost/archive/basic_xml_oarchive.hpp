@@ -25,6 +25,7 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/tracking.hpp>
 #include <boost/serialization/string.hpp>
+#include <boost/serialization/array.hpp>
 
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header
 
@@ -98,6 +99,20 @@ protected:
         this->This()->save_start(t.name());
         archive::save(* this->This(), t.const_value()); 
         this->This()->save_end(t.name());
+    }
+
+    // specific overrides for arrays
+    // want to trap them before the above "fall through"
+
+    template<class T>
+    void save_override(
+                #ifndef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
+                const
+                #endif
+                ::boost::serialization::array<T> & t, 
+                int
+        ){
+        archive::save(* this->This(), t); 
     }
 
     // specific overrides for attributes - not name value pairs so we

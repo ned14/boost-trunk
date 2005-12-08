@@ -22,9 +22,14 @@
 #include <boost/config.hpp>
 #include <boost/detail/workaround.hpp>
 
+#include <boost/archive/basic_archive.hpp>
 #include <boost/serialization/collections_save_imp.hpp>
 #include <boost/serialization/collections_load_imp.hpp>
 #include <boost/serialization/split_free.hpp>
+#include <boost/type_traits/has_trivial_constructor.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/serialization/array.hpp>
+#include <boost/serialization/detail/get_data.hpp>
 
 // function specializations must be defined in the appropriate
 // namespace - boost::serialization
@@ -40,11 +45,14 @@ namespace serialization {
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
 // vector<T>
 
+// the default versions
+
 template<class Archive, class U, class Allocator>
 inline void save(
     Archive & ar,
     const STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */
+    const unsigned int /* file_version */,
+    mpl::false_
 ){
     boost::serialization::stl::save_collection<Archive, STD::vector<U, Allocator> >(
         ar, t
@@ -55,7 +63,8 @@ template<class Archive, class U, class Allocator>
 inline void load(
     Archive & ar,
     STD::vector<U, Allocator> &t,
-    const unsigned int /* file_version */
+    const unsigned int /* file_version */,
+    mpl::false_
 ){
     boost::serialization::stl::load_collection<
         Archive,
@@ -65,6 +74,53 @@ inline void load(
         >,
         boost::serialization::stl::reserve_imp<STD::vector<U, Allocator> >
     >(ar, t);
+}
+
+// the optimized versions
+
+template<class Archive, class U, class Allocator>
+inline void save(
+    Archive & ar,
+    const STD::vector<U, Allocator> &t,
+    const unsigned int /* file_version */,
+    mpl::true_
+){
+    const boost::archive::container_size_type count(t.size());
+    ar << BOOST_SERIALIZATION_NVP(count);
+    ar << make_array(detail::get_data(t),t.size());
+}
+
+template<class Archive, class U, class Allocator>
+inline void load(
+    Archive & ar,
+    STD::vector<U, Allocator> &t,
+    const unsigned int /* file_version */,
+    mpl::true_
+){
+    boost::archive::container_size_type count(t.size());
+    ar >> BOOST_SERIALIZATION_NVP(count);
+    t.resize(count);
+    ar >> make_array(detail::get_data(t),t.size());
+  }
+
+// dispatch to either default or optimized versions
+
+template<class Archive, class U, class Allocator>
+inline void save(
+    Archive & ar,
+    const STD::vector<U, Allocator> &t,
+    const unsigned int file_version
+){
+    save(ar,t,file_version, has_trivial_constructor<U>());
+}
+
+template<class Archive, class U, class Allocator>
+inline void load(
+    Archive & ar,
+    STD::vector<U, Allocator> &t,
+    const unsigned int file_version
+){
+    load(ar,t,file_version, has_trivial_constructor<U>());
 }
 
 // split non-intrusive serialization function member into separate

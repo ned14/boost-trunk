@@ -32,9 +32,9 @@ public:
     // the optimized load_array dispatches to load_binary 
     
     template <class ValueType>
-    void load_array(ValueType* p, std::size_t n, unsigned int /* file_version */)
+    void load_array(serialization::array<ValueType>& a, unsigned int)
     {
-      load_binary(p,n*sizeof(ValueType));
+      load_binary(a.address(),a.count()*sizeof(ValueType));
     }
 };
 

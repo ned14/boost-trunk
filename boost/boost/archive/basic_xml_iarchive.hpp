@@ -26,6 +26,7 @@
 
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/string.hpp>
+#include <boost/serialization/array.hpp>
 
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header
 
@@ -79,6 +80,19 @@ protected:
         load_start(t.name());
         archive::load(* this->This(), t.value());
         load_end(t.name());
+    }
+
+
+    // specific overrides for arrays
+    template<class T>
+    void load_override(
+                #ifndef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
+                const
+                #endif
+                boost::serialization::array<T> & t, 
+                int
+        ){
+        archive::load(* this->This(), t);
     }
 
     // specific overrides for attributes - handle as

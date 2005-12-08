@@ -76,6 +76,7 @@ namespace std{
 #include <boost/serialization/type_info_implementation.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/binary_object.hpp>
+#include <boost/serialization/array.hpp>
 
 namespace boost {
 
@@ -509,10 +510,7 @@ struct load_array_type {
                 boost::archive::archive_exception::array_size_too_short
             ));
             
-        std::size_t i;
-        std::size_t c = count;
-        for(i = 0; i < c; ++i)
-            ar >> boost::serialization::make_nvp("item", t[i]);
+        ar >> serialization::make_array(&t[0],count);
     }
 };
 
@@ -587,6 +585,10 @@ inline void load(Archive &ar, const serialization::nvp<T> &t){
 template<class Archive>
 inline void load(Archive &ar, const serialization::binary_object &t){
         boost::archive::load(ar, const_cast<serialization::binary_object &>(t));
+}
+template<class Archive, class T>
+inline void load(Archive &ar, const serialization::array<T> &t){
+        boost::archive::load(ar, const_cast<serialization::array<T> &>(t));
 }
 
 //template<class Archive, class T>

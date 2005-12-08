@@ -32,9 +32,9 @@ public:
     // the optimized save_array dispatches to save_binary 
     
     template <class ValueType>
-    void save_array(ValueType const* p, std::size_t n, unsigned int)
+    void save_array(serialization::array<ValueType> const& a, unsigned int)
     {
-      save_binary(p,n*sizeof(ValueType));
+      save_binary(a.address(),a.count()*sizeof(ValueType));
     }
 };
 
