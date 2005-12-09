@@ -8,13 +8,10 @@
 
 
 #include <boost/archive/basic_archive.hpp>
-#include <boost/serialization/nvp.hpp>
 #include <boost/serialization/array.hpp>
 #include <boost/serialization/detail/get_data.hpp>
-#include <boost/type_traits/has_trivial_constructor.hpp>
 #include <boost/type_traits/remove_const.hpp>
 #include <boost/mpl/apply.hpp>
-#include <boost/mpl/or.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/pfto.hpp>
 
@@ -101,7 +98,7 @@ public:
         BOOST_DEDUCED_TYPENAME Derived::use_array_optimization
       , BOOST_DEDUCED_TYPENAME remove_const<ValueType>::type
     >::type use_optimized;
-    save_optimized(x,version, mpl::or_<use_optimized,has_trivial_constructor<ValueType> >() );   
+    save_optimized(x,version,use_optimized() );   
   }
   
   
