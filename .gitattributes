@@ -4097,6 +4097,7 @@ boost/libs/config/test/link/vc7.mak svneol=native#text/plain
 boost/libs/config/test/link/vc71-stlport.mak svneol=native#text/plain
 boost/libs/config/test/link/vc71.mak svneol=native#text/plain
 boost/libs/config/test/link/vc_gen.sh svneol=native#text/x-sh
+boost/libs/config/test/math_info.cpp svneol=native#text/plain
 boost/libs/config/test/no_arg_dep_lookup_fail.cpp svneol=native#text/plain
 boost/libs/config/test/no_arg_dep_lookup_pass.cpp svneol=native#text/plain
 boost/libs/config/test/no_array_type_spec_fail.cpp svneol=native#text/plain
