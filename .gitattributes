@@ -10073,6 +10073,7 @@ boost/libs/typeof/test/Jamfile svneol=native#text/plain
 boost/libs/typeof/test/data_member.cpp svneol=native#text/plain
 boost/libs/typeof/test/function.cpp svneol=native#text/plain
 boost/libs/typeof/test/function_ptr.cpp svneol=native#text/plain
+boost/libs/typeof/test/function_ptr_from_tpl.cpp svneol=native#text/plain
 boost/libs/typeof/test/function_ref.cpp svneol=native#text/plain
 boost/libs/typeof/test/lvalue.cpp svneol=native#text/plain
 boost/libs/typeof/test/member_function.cpp svneol=native#text/plain
