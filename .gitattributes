@@ -3137,6 +3137,7 @@ boost/boost/test/unit_test_log.hpp svneol=native#text/plain
 boost/boost/test/unit_test_log_formatter.hpp svneol=native#text/plain
 boost/boost/test/unit_test_monitor.hpp svneol=native#text/plain
 boost/boost/test/unit_test_suite.hpp svneol=native#text/plain
+boost/boost/test/unit_test_suite_impl.hpp svneol=native#text/plain
 boost/boost/test/utils/algorithm.hpp svneol=native#text/plain
 boost/boost/test/utils/assign_op.hpp svneol=native#text/plain
 boost/boost/test/utils/basic_cstring/basic_cstring.hpp svneol=native#text/plain
