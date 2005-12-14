@@ -9613,9 +9613,9 @@ boost/libs/test/test/.cvsignore -text
 boost/libs/test/test/Jamfile svneol=native#text/plain
 boost/libs/test/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/test/test/algorithms_test.cpp svneol=native#text/plain
-boost/libs/test/test/auto_unit_test_test.cpp svneol=native#text/plain
-boost/libs/test/test/auto_unit_test_test_mult1.cpp svneol=native#text/plain
-boost/libs/test/test/auto_unit_test_test_mult2.cpp svneol=native#text/plain
+boost/libs/test/test/auto-link-test/.cvsignore -text
+boost/libs/test/test/auto-link-test/Jamfile svneol=native#text/plain
+boost/libs/test/test/auto-link-test/run_bjam.bat svneol=native#text/plain
 boost/libs/test/test/basic_cstring_test.cpp svneol=native#text/plain
 boost/libs/test/test/boost_check_equal_str.cpp svneol=native#text/plain
 boost/libs/test/test/class_properties_test.cpp svneol=native#text/plain

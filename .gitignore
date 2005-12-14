@@ -22,6 +22,7 @@ boost/libs/test/build/msvc71_proj/debug
 boost/libs/test/build/msvc71_proj/pattern.*
 boost/libs/test/build/msvc71_proj/release
 boost/libs/test/example/bin
+boost/libs/test/test/auto-link-test/res
 boost/libs/test/test/bin
 boost/libs/test/test/pattern.*
 boost/libs/test/test/res
