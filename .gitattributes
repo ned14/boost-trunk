@@ -3097,6 +3097,7 @@ boost/boost/test/floating_point_comparison.hpp svneol=native#text/plain
 boost/boost/test/framework.hpp svneol=native#text/plain
 boost/boost/test/impl/compiler_log_formatter.ipp svneol=native#text/plain
 boost/boost/test/impl/cpp_main.ipp svneol=native#text/plain
+boost/boost/test/impl/exception_safety.ipp svneol=native#text/plain
 boost/boost/test/impl/execution_monitor.ipp svneol=native#text/plain
 boost/boost/test/impl/framework.ipp svneol=native#text/plain
 boost/boost/test/impl/plain_report_formatter.ipp svneol=native#text/plain
