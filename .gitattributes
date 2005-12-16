@@ -451,6 +451,7 @@ boost/boost/dynamic_bitset/dynamic_bitset.hpp svneol=native#text/plain
 boost/boost/dynamic_bitset_fwd.hpp svneol=native#text/plain
 boost/boost/dynamic_property_map.hpp svneol=native#text/plain
 boost/boost/enable_shared_from_this.hpp svneol=native#text/plain
+boost/boost/filesystem.hpp svneol=native#text/plain
 boost/boost/filesystem/config.hpp svneol=native#text/plain
 boost/boost/filesystem/convenience.hpp svneol=native#text/plain
 boost/boost/filesystem/exception.hpp svneol=native#text/plain
