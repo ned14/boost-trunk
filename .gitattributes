@@ -4714,6 +4714,8 @@ boost/libs/graph/doc/figs/digraph.fig -text
 boost/libs/graph/doc/figs/digraph.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/disjoint_set_family.fig -text
 boost/libs/graph/doc/figs/disjoint_set_family.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/dominator-tree1.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/dominator-tree2.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/edge_list.fig -text
 boost/libs/graph/doc/figs/edge_list.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/file_dep.fig -text
@@ -4789,6 +4791,7 @@ boost/libs/graph/doc/known_problems.html svneol=native#text/html
 boost/libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
 boost/libs/graph/doc/layout_tolerance.html svneol=native#text/html
 boost/libs/graph/doc/leda_conversion.html svneol=native#text/html
+boost/libs/graph/doc/lengauer_tarjan_dominator_tree.htm svneol=native#text/html
 boost/libs/graph/doc/lgrind.sty -text
 boost/libs/graph/doc/math.sty -text
 boost/libs/graph/doc/maximum_matching.html svneol=native#text/html
