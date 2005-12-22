@@ -4497,6 +4497,7 @@ boost/libs/foreach/test/call_once.cpp svneol=native#text/plain
 boost/libs/foreach/test/cstr_byref.cpp svneol=native#text/plain
 boost/libs/foreach/test/cstr_byval.cpp svneol=native#text/plain
 boost/libs/foreach/test/dependent_type.cpp svneol=native#text/plain
+boost/libs/foreach/test/noncopyable.cpp svneol=native#text/plain
 boost/libs/foreach/test/pair_byref.cpp svneol=native#text/plain
 boost/libs/foreach/test/pair_byval.cpp svneol=native#text/plain
 boost/libs/foreach/test/rvalue_const.cpp svneol=native#text/plain
