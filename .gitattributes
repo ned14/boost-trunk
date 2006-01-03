@@ -2888,6 +2888,7 @@ boost/boost/spirit/fusion/iterator/detail/cons_iterator/deref_traits.hpp svneol=
 boost/boost/spirit/fusion/iterator/detail/cons_iterator/next_traits.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/iterator/detail/cons_iterator/value_traits.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/iterator/detail/filter_view_iterator/deref_traits.hpp svneol=native#text/plain
+boost/boost/spirit/fusion/iterator/detail/filter_view_iterator/equal_to_traits.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/iterator/detail/filter_view_iterator/next_traits.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/iterator/detail/filter_view_iterator/value_traits.hpp svneol=native#text/plain
 boost/boost/spirit/fusion/iterator/detail/iterator_base.hpp svneol=native#text/plain
