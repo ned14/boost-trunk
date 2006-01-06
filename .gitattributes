@@ -4969,6 +4969,7 @@ boost/libs/graph/example/kevin-bacon.cpp svneol=native#text/plain
 boost/libs/graph/example/kevin-bacon.dat -text
 boost/libs/graph/example/kevin-bacon2.cpp svneol=native#text/plain
 boost/libs/graph/example/kevin-bacon2.dat -text
+boost/libs/graph/example/kevin-bacon2.expected -text
 boost/libs/graph/example/kevin_bacon.expected -text
 boost/libs/graph/example/king_ordering.cpp svneol=native#text/plain
 boost/libs/graph/example/knights-tour.cpp svneol=native#text/plain
