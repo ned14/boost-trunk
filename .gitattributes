@@ -519,6 +519,7 @@ boost/boost/functional/hash/set.hpp svneol=native#text/plain
 boost/boost/functional/hash/vector.hpp svneol=native#text/plain
 boost/boost/generator_iterator.hpp svneol=native#text/plain
 boost/boost/get_pointer.hpp svneol=native#text/plain
+boost/boost/graph/adj_list_serialize.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_iterator.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list.hpp svneol=native#text/plain
 boost/boost/graph/adjacency_list_io.hpp svneol=native#text/plain
