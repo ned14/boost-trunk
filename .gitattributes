@@ -205,6 +205,7 @@ boost/boost/bind/mem_fn_template.hpp svneol=native#text/plain
 boost/boost/bind/mem_fn_vw.hpp svneol=native#text/plain
 boost/boost/bind/placeholders.hpp svneol=native#text/plain
 boost/boost/bind/protect.hpp svneol=native#text/plain
+boost/boost/bind/storage.hpp svneol=native#text/plain
 boost/boost/blank.hpp svneol=native#text/plain
 boost/boost/blank_fwd.hpp svneol=native#text/plain
 boost/boost/call_traits.hpp svneol=native#text/plain
