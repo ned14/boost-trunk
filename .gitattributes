@@ -244,6 +244,7 @@ boost/boost/config/compiler/common_edg.hpp svneol=native#text/plain
 boost/boost/config/compiler/compaq_cxx.hpp svneol=native#text/plain
 boost/boost/config/compiler/digitalmars.hpp svneol=native#text/plain
 boost/boost/config/compiler/gcc.hpp svneol=native#text/plain
+boost/boost/config/compiler/gcc_xml.hpp svneol=native#text/plain
 boost/boost/config/compiler/greenhills.hpp svneol=native#text/plain
 boost/boost/config/compiler/hp_acc.hpp svneol=native#text/plain
 boost/boost/config/compiler/intel.hpp svneol=native#text/plain
