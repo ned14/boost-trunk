@@ -2041,6 +2041,7 @@ boost/boost/pending/lowest_bit.hpp svneol=native#text/plain
 boost/boost/pending/mutable_heap.hpp svneol=native#text/plain
 boost/boost/pending/mutable_queue.hpp svneol=native#text/plain
 boost/boost/pending/property.hpp svneol=native#text/plain
+boost/boost/pending/property_serialize.hpp svneol=native#text/plain
 boost/boost/pending/queue.hpp svneol=native#text/plain
 boost/boost/pending/relaxed_heap.hpp svneol=native#text/plain
 boost/boost/pending/stringtok.hpp svneol=native#text/plain
