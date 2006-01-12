@@ -2456,6 +2456,7 @@ boost/boost/python/detail/void_return.hpp svneol=native#text/plain
 boost/boost/python/detail/wrap_python.hpp svneol=native#text/plain
 boost/boost/python/detail/wrapper_base.hpp svneol=native#text/plain
 boost/boost/python/dict.hpp svneol=native#text/plain
+boost/boost/python/docstring_options.hpp svneol=native#text/plain
 boost/boost/python/enum.hpp svneol=native#text/plain
 boost/boost/python/errors.hpp svneol=native#text/plain
 boost/boost/python/exception_translator.hpp svneol=native#text/plain
