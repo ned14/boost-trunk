@@ -7665,6 +7665,7 @@ boost/libs/python/doc/v2/def_visitor.html svneol=native#text/html
 boost/libs/python/doc/v2/default_call_policies.html svneol=native#text/html
 boost/libs/python/doc/v2/definitions.html svneol=native#text/html
 boost/libs/python/doc/v2/dict.html svneol=native#text/html
+boost/libs/python/doc/v2/docstring_options.html svneol=native#text/html
 boost/libs/python/doc/v2/enum.html svneol=native#text/html
 boost/libs/python/doc/v2/errors.html svneol=native#text/html
 boost/libs/python/doc/v2/exception_translator.html svneol=native#text/html
