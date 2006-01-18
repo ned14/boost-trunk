@@ -3873,6 +3873,7 @@ boost/libs/compatibility/generate_cpp_c_headers.py svneol=native#text/x-python
 boost/libs/compatibility/index.html svneol=native#text/html
 boost/libs/compose/index.htm svneol=native#text/html
 boost/libs/concept_check/Jamfile svneol=native#text/plain
+boost/libs/concept_check/Jamfile.v2 svneol=native#text/plain
 boost/libs/concept_check/bad_error_eg.cpp svneol=native#text/plain
 boost/libs/concept_check/bibliography.htm svneol=native#text/html
 boost/libs/concept_check/class_concept_check_test.cpp svneol=native#text/plain
