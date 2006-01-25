@@ -7,6 +7,11 @@
 
 //  SGI C++ compiler setup:
 
+#define BOOST_CXX_SGI BOOST_VERSION_NUMBER(\
+    _COMPILER_VERSION/100,\
+    (_COMPILER_VERSION-_COMPILER_VERSION/100*100)/10,\
+    _COMPILER_VERSION-_COMPILER_VERSION/10*10)
+
 #define BOOST_COMPILER "SGI Irix compiler version " BOOST_STRINGIZE(_COMPILER_VERSION)
 
 #include "boost/config/compiler/common_edg.hpp"
@@ -20,5 +25,3 @@
 //
 // version check:
 // probably nothing to do here?
-
-

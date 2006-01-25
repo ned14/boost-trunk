@@ -1,6 +1,7 @@
 //  (C) Copyright John Maddock 2001 - 2003.
 //  (C) Copyright David Abrahams 2002 - 2003.
 //  (C) Copyright Aleksey Gurtovoy 2002.
+//  (C) Copyright Rene Rivera 2006.
 //  Use, modification and distribution are subject to the
 //  Boost Software License, Version 1.0. (See accompanying file
 //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -9,18 +10,30 @@
 
 //  Borland C++ compiler setup:
 
+#define BOOST_CXX_BORLANDC BOOST_VERSION_NUMBER(\
+    (__BORLANDC__ & 0xFF00)>>8,\
+    (__BORLANDC__ & 0xF0)>>4,\
+    __BORLANDC__ & 0xF)
+
+#if defined(_MSC_VER)
+#   define BOOST_CXX_MSVC BOOST_VERSION_NUMBER(\
+        _MSC_VER/100-6,\
+        _MSC_VER-(_MSC_VER/100*100),\
+        _MSC_FULL_VER-(_MSC_VER*10000))
+#endif
+
 // Version 5.0 and below:
-#   if __BORLANDC__ <= 0x0550
+#   if (BOOST_CXX_BORLANDC <= BOOST_VERSION_NUMBER(5,5,0))
 // Borland C++Builder 4 and 5:
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-#     if __BORLANDC__ == 0x0550
+#     if (BOOST_CXX_BORLANDC == BOOST_VERSION_NUMBER(5,5,0))
 // Borland C++Builder 5, command-line compiler 5.5:
 #       define BOOST_NO_OPERATORS_IN_NAMESPACE
 #     endif
 #   endif
 
 // Version 5.51 and below:
-#if (__BORLANDC__ <= 0x551)
+#if (BOOST_CXX_BORLANDC <= BOOST_VERSION_NUMBER(5,5,1))
 #  define BOOST_NO_CV_SPECIALIZATIONS
 #  define BOOST_NO_CV_VOID_SPECIALIZATIONS
 #  define BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
@@ -37,7 +50,7 @@
 #endif
 
 // Version 7.0 (Kylix) and below:
-#if (__BORLANDC__ <= 0x570)
+#if (BOOST_CXX_BORLANDC <= BOOST_VERSION_NUMBER(5,7,0))
 #  define BOOST_NO_SFINAE
 #  define BOOST_NO_INTEGRAL_INT64_T
 #  define BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
@@ -65,7 +78,7 @@
 
 //
 // new bug in 5.61:
-#if (__BORLANDC__ >= 0x561) && (__BORLANDC__ <= 0x570)
+#if (BOOST_CXX_BORLANDC >= BOOST_VERSION_NUMBER(5,6,1)) && (BOOST_CXX_BORLANDC <= BOOST_VERSION_NUMBER(5,7,0))
    // this seems to be needed by the command line compiler, but not the IDE:
 #  define BOOST_NO_MEMBER_FUNCTION_SPECIALIZATIONS
 #endif
@@ -83,7 +96,7 @@
 
 //
 // Post 0x561 we have long long and stdint.h:
-#if __BORLANDC__ >= 0x561
+#if (BOOST_CXX_BORLANDC >= BOOST_VERSION_NUMBER(5,6,1))
 #  ifndef __NO_LONG_LONG
 #     define BOOST_HAS_LONG_LONG
 #  endif
@@ -96,7 +109,7 @@
 // Borland C++Builder 6 defaults to using STLPort.  If _USE_OLD_RW_STL is
 // defined, then we have 0x560 or greater with the Rogue Wave implementation
 // which presumably has the std::DBL_MAX bug.
-#if ((__BORLANDC__ >= 0x550) && (__BORLANDC__ < 0x560)) || defined(_USE_OLD_RW_STL)
+#if ((BOOST_CXX_BORLANDC >= BOOST_VERSION_NUMBER(5,5,0)) && (BOOST_CXX_BORLANDC < BOOST_VERSION_NUMBER(5,6,0)) || defined(_USE_OLD_RW_STL)
 // <climits> is partly broken, some macros define symbols that are really in
 // namespace std, so you end up having to use illegal constructs like
 // std::DBL_MAX, as a fix we'll just include float.h and have done with:
@@ -105,7 +118,7 @@
 //
 // __int64:
 //
-#if (__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__)
+#if (BOOST_CXX_BORLANDC >= BOOST_VERSION_NUMBER(5,3,0)) && !defined(__STRICT_ANSI__)
 #  define BOOST_HAS_MS_INT64
 #endif
 //
@@ -129,7 +142,8 @@
 //
 // ABI fixing headers:
 //
-#if __BORLANDC__ < 0x600 // not implemented for version 6 compiler yet
+#if (BOOST_CXX_BORLANDC < BOOST_VERSION_NUMBER(6,0,0))
+// not implemented for version 6 compiler yet
 #ifndef BOOST_ABI_PREFIX
 #  define BOOST_ABI_PREFIX "boost/config/abi/borland_prefix.hpp"
 #endif
@@ -140,7 +154,7 @@
 //
 // Disable Win32 support in ANSI mode:
 //
-#if __BORLANDC__ < 0x600
+#if (BOOST_CXX_BORLANDC < BOOST_VERSION_NUMBER(6,0,0))
 #  pragma defineonoption BOOST_DISABLE_WIN32 -A
 #elif defined(__STRICT_ANSI__)
 #  define BOOST_DISABLE_WIN32
@@ -149,7 +163,7 @@
 // MSVC compatibility mode does some nasty things:
 // TODO: look up if this doesn't apply to the whole 12xx range
 //
-#if defined(_MSC_VER) && (_MSC_VER <= 1200)
+#if defined(BOOST_CXX_MSVC) && (BOOST_CXX_MSVC <= BOOST_VERSION_NUMBER(6,0,0))
 #  define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
 #  define BOOST_NO_VOID_RETURNS
 #endif
@@ -159,25 +173,17 @@
 //
 // versions check:
 // we don't support Borland prior to version 5.4:
-#if __BORLANDC__ < 0x540
+#if (BOOST_CXX_BORLANDC < BOOST_VERSION_NUMBER(5,4,0))
 #  error "Compiler not supported or configured - please reconfigure"
 #endif
 //
 // last known and checked version is 1536 (Builder X preview)
 // Or 0x580 (Borland C++ Builder 6 2006 Preview):
-#if (__BORLANDC__ > 1536) || ((__BORLANDC__ < 0x600) && (__BORLANDC__ > 0x580))
+#if (BOOST_CXX_BORLANDC > BOOST_VERSION_NUMBER(6,0,0)) \
+    || ((BOOST_CXX_BORLANDC > BOOST_VERSION_NUMBER(5,8,0)) && (BOOST_CXX_BORLANDC < BOOST_VERSION_NUMBER(6,0,0)))
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  else
 #     pragma message( "Unknown compiler version - please run the configure tests and report the results")
 #  endif
 #endif
-
-
-
-
-
-
-
-
-

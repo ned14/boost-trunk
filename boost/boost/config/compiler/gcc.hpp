@@ -5,6 +5,7 @@
 //  (C) Copyright Douglas Gregor 2002. 
 //  (C) Copyright David Abrahams 2002 - 2003. 
 //  (C) Copyright Synge Todo 2003. 
+//  (C) Copyright Rene Rivera 2006.
 //  Use, modification and distribution are subject to the 
 //  Boost Software License, Version 1.0. (See accompanying file 
 //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -13,28 +14,30 @@
 
 //  GNU C++ compiler setup:
 
-#if __GNUC__ < 3
-#   if __GNUC_MINOR__ == 91
+#define BOOST_CXX_GNUC BOOST_VERSION_NUMBER(__GNUC__,__GNUC_MINOR__,__GNUC_PATCHLEVEL__)
+
+#if (BOOST_CXX_GNUC < BOOST_VERSION_NUMBER(3,0,0))
+#   if (BOOST_CXX_GNUC >= BOOST_VERSION(2,91,0)) (BOOST_CXX_GNUC <= BOOST_VERSION_NUMBER(2,92,0))
        // egcs 1.1 won't parse shared_ptr.hpp without this:
 #      define BOOST_NO_AUTO_PTR
 #   endif
-#   if __GNUC_MINOR__ < 95
+#   if (BOOST_CXX_GNUC < BOOST_VERION_NUMBER(2,95,0))
       //
       // Prior to gcc 2.95 member templates only partly
       // work - define BOOST_MSVC6_MEMBER_TEMPLATES
       // instead since inline member templates mostly work.
       //
 #     define BOOST_NO_MEMBER_TEMPLATES
-#     if __GNUC_MINOR__ >= 9
+#     if (BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(2,9,0))
 #       define BOOST_MSVC6_MEMBER_TEMPLATES
 #     endif
 #   endif
 
-#   if __GNUC_MINOR__ < 96
+#   if (BOOST_CXX_GNUC < BOOST_VERSION_NUMBER(2,96,0))
 #     define BOOST_NO_SFINAE
 #   endif
 
-#   if __GNUC_MINOR__ <= 97
+#   if (BOOST_CXX_GNUC < BOOST_VERSION_NUMBER(2,98,0))
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #     define BOOST_NO_OPERATORS_IN_NAMESPACE
 #   endif
@@ -42,16 +45,16 @@
 #   define BOOST_NO_USING_DECLARATION_OVERLOADS_FROM_TYPENAME_BASE
 #   define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #   define BOOST_NO_IS_ABSTRACT
-#elif __GNUC__ == 3
+#elif (BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(3,0,0)) && (BOOST_CXX_GNUC < BOOST_VERSION_NUMBER(4,0,0))
    //
    // gcc-3.x problems:
    //
    // Bug specific to gcc 3.1 and 3.2:
    //
-#  if ((__GNUC_MINOR__ == 1) || (__GNUC_MINOR__ == 2))
+#  if (BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(3,1,0)) && (BOOST_CXX_GNUC < BOOST_VERSION_NUMBER(3,3,0))
 #     define BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
 #  endif
-#  if __GNUC_MINOR__ < 4
+#  if (BOOST_CXX_GNUC < BOOST_VERSION_NUMBER(3,4,0))
 #     define BOOST_NO_IS_ABSTRACT
 #  endif
 #endif
@@ -78,7 +81,7 @@
 //
 // gcc implements the named return value optimization since version 3.1
 //
-#if __GNUC__ > 3 || ( __GNUC__ == 3 && __GNUC_MINOR__ >= 1 )
+#if (BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(3,1,0))
 #define BOOST_HAS_NRVO
 #endif
 
@@ -87,12 +90,12 @@
 //
 // versions check:
 // we don't know gcc prior to version 2.90:
-#if (__GNUC__ == 2) && (__GNUC_MINOR__ < 90)
+#if (BOOST_CXX_GNUC < BOOST_VERSION_NUMBER(2,90,0))
 #  error "Compiler not configured - please reconfigure"
 #endif
 //
 // last known and checked version is 4.0 (Pre-release):
-#if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 0))
+#if (BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(4,1,0))
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  else
@@ -101,5 +104,3 @@
 //#     warning "Unknown compiler version - please run the configure tests and report the results"
 #  endif
 #endif
-
-

@@ -55,3 +55,4 @@ boost/boost/config/stdlib/stlport.hpp svneol=native#text/plain
 boost/boost/config/stdlib/vacpp.hpp svneol=native#text/plain
 boost/boost/config/suffix.hpp svneol=native#text/plain
 boost/boost/config/user.hpp svneol=native#text/plain
+boost/boost/config/version_number.hpp svneol=native#text/plain

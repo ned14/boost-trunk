@@ -8,6 +8,7 @@
 //  (C) Copyright David Abrahams 2002 - 2003.
 //  (C) Copyright Gennaro Prota 2003.
 //  (C) Copyright Eric Friedman 2003.
+//  (C) Copyright Rene Rivera 2005.
 //  Use, modification and distribution are subject to the
 //  Boost Software License, Version 1.0. (See accompanying file
 //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -25,6 +26,76 @@
 #define BOOST_CONFIG_SUFFIX_HPP
 
 //
+// A. Define *all* compiler versions that are left, to indicate
+//    that they are not available. It is important to keep this in
+//    sync with the set of compilers.
+//
+// Comeau C++
+#ifndef BOOST_CXX_COMO
+#define BOOST_CXX_COMO 0
+#endif
+// Digital Mars C++
+#ifndef BOOST_CXX_DMC
+#define BOOST_CXX_DMC 0
+#endif
+// Intel C++
+#ifndef BOOST_CXX_INTELC
+#define BOOST_CXX_INTELC 0
+#endif
+// GNU C++
+#ifndef BOOST_CXX_GNUC
+#define BOOST_CXX_GNUC 0
+#endif
+// Kai C++
+#ifndef BOOST_CXX_KCC
+#define BOOST_CXX_KCC 0
+#endif
+// SGI MIPSpro C++
+#ifndef BOOST_CXX_SGI
+#define BOOST_CXX_SGI 0
+#endif
+// Dec Alpha True64 C++
+#ifndef BOOST_CXX_DEC
+#define BOOST_CXX_DEC 0
+#endif
+// Greenhills C++
+#ifndef BOOST_CXX_GHS
+#define BOOST_CXX_GHS 0
+#endif
+// Borland C++
+#ifndef BOOST_CXX_BORLANDC
+#define BOOST_CXX_BORLANDC 0
+#endif
+// Metrowerks C++
+#ifndef BOOST_CXX_CW
+#define BOOST_CXX_CW 0
+#endif
+// Sun C++
+#ifndef BOOST_CXX_SUNPRO
+#define BOOST_CXX_SUNPRO 0
+#endif
+// HP aCC C++
+#ifndef BOOST_CXX_ACC
+#define BOOST_CXX_ACC 0
+#endif
+// MPW C++
+#ifndef BOOST_CXX_MPW
+#define BOOST_CXX_MPW 0
+#endif
+// Visual Age (IBM) C++
+#ifndef BOOST_CXX_IBMCPP
+#define BOOST_CXX_IBMCPP 0
+#endif
+// Microsoft Visual C++
+#ifndef BOOST_CXX_MSVC
+#define BOOST_CXX_MSVC 0
+#endif
+// Common EDG Frontend
+#ifndef BOOST_CXX_EDG
+#define BOOST_CXX_EDG 0
+#endif
+
+//
 // look for long long by looking for the appropriate macros in <limits.h>.
 // Note that we use limits.h rather than climits for maximal portability,
 // remember that since these just declare a bunch of macros, there should be
@@ -32,7 +103,7 @@
 //
 #include <limits.h>
 # if !defined(BOOST_HAS_LONG_LONG)                                              \
-   && !defined(BOOST_MSVC) && !defined(__BORLANDC__)     \
+   && (!BOOST_CXX_MSVC) && (!BOOST_CXX_BORLANDC)                                \
    && (defined(ULLONG_MAX) || defined(ULONG_LONG_MAX) || defined(ULONGLONG_MAX))
 #  define BOOST_HAS_LONG_LONG
 #endif
@@ -40,7 +111,7 @@
 // GCC 3.x will clean up all of those nasty macro definitions that
 // BOOST_NO_CTYPE_FUNCTIONS is intended to help work around, so undefine
 // it under GCC 3.x.
-#if defined(__GNUC__) && (__GNUC__ >= 3) && defined(BOOST_NO_CTYPE_FUNCTIONS)
+#if (BOOST_CXX_GNUC >= BOOST_VERSION_NUMBER(3,0,0) && defined(BOOST_NO_CTYPE_FUNCTIONS)
 #  undef BOOST_NO_CTYPE_FUNCTIONS
 #endif
 
@@ -409,7 +480,7 @@ namespace std {
 //
 #if defined(BOOST_HAS_LONG_LONG)
 namespace boost{
-#  ifdef __GNUC__
+#  if BOOST_CXX_GNUC
    __extension__ typedef long long long_long_type;
    __extension__ typedef unsigned long long ulong_long_type;
 #  else
@@ -541,7 +612,3 @@ namespace boost{
 #  endif
 
 #endif
-
-
-
-

@@ -13,8 +13,39 @@
 //  See http://www.boost.org for most recent version.
 
 //  Intel compiler setup:
+#if defined(__INTEL_COMPILER)
+#   define BOOST_CXX_INTELC_ __INTEL_COMPILER
+#elif defined(__ICL)
+#   define BOOST_CXX_INTELC __ICL
+#elif defined(__ICC)
+#   define BOOST_CXX_INTELC __ICC
+#elif defined(__ECC)
+#   define BOOST_CXX_INTELC __ECC
+#endif
+
+#define BOOST_CXX_INTELC BOOST_VERSION_NUMBER(\
+    BOOST_CXX_INTELC_/100,\
+    (BOOST_CXX_INTELC_-BOOST_CXX_INTELC_/100*100)/10,\
+    BOOST_CXX_INTELC_-BOOST_CXX_INTELC_/10*10)
+
+#if defined(_MSC_VER)
+#   define BOOST_CXX_MSVC BOOST_VERSION_NUMBER(\
+        _MSC_VER/100-6,\
+        _MSC_VER-(_MSC_VER/100*100),\
+        _MSC_FULL_VER-(_MSC_VER*10000))
+#endif
+
+#if defined(__GNUC__)
+#   define BOOST_CXX_GNUC BOOST_VERSION_NUMBER(__GNUC__,__GNUC_MINOR__,__GNUC_PATCHLEVEL__)
+#endif
 
 #include "boost/config/compiler/common_edg.hpp"
+
+#define BOOST_COMPILER "Intel C++ version " BOOST_STRINGIZE(BOOST_CXX_INTELC_)
+
+#undef BOOST_CXX_INTELC_
+
+// === These should be removed when the BOOST_CXX_INTELC def is used...
 
 #if defined(__INTEL_COMPILER)
 #  define BOOST_INTEL_CXX_VERSION __INTEL_COMPILER
@@ -26,7 +57,6 @@
 #  define BOOST_INTEL_CXX_VERSION __ECC
 #endif
 
-#define BOOST_COMPILER "Intel C++ version " BOOST_STRINGIZE(BOOST_INTEL_CXX_VERSION)
 #define BOOST_INTEL BOOST_INTEL_CXX_VERSION
 
 #if defined(_WIN32) || defined(_WIN64)
@@ -35,14 +65,16 @@
 #  define BOOST_INTEL_LINUX BOOST_INTEL
 #endif
 
-#if (BOOST_INTEL_CXX_VERSION <= 500) && defined(_MSC_VER)
+// ===
+
+#if (BOOST_CXX_INTELC <= BOOST_VERSION_NUMBER(5,0,0)) && defined(BOOST_CXX_MSVC)
 #  define BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
 #  define BOOST_NO_TEMPLATE_TEMPLATES
 #endif
 
-#if (BOOST_INTEL_CXX_VERSION <= 600)
+#if (BOOST_CXX_INTELC <= BOOST_VERSION_NUMBER(6,0,0))
 
-#  if defined(_MSC_VER) && (_MSC_VER <= 1300) // added check for <= VC 7 (Peter Dimov)
+#  if defined(BOOST_CXX_MSVC) && (BOOST_CXX_MSVC <= BOOST_VERSION_NUMBER(7,0,0)) // added check for <= VC 7 (Peter Dimov)
 
 // Boost libraries assume strong standard conformance unless otherwise
 // indicated by a config macro. As configured by Intel, the EDG front-end
@@ -60,19 +92,19 @@
 
 // Void returns, 64 bit integrals don't work when emulating VC 6 (Peter Dimov)
 
-#  if defined(_MSC_VER) && (_MSC_VER <= 1200)
+#  if defined(BOOST_CXX_MSVC) && (BOOST_CXX_MSVC <= BOOST_VERSION_NUMBER(6,0,0))
 #     define BOOST_NO_VOID_RETURNS
 #     define BOOST_NO_INTEGRAL_INT64_T
 #  endif
 
 #endif
 
-#if (BOOST_INTEL_CXX_VERSION <= 710) && defined(_WIN32)
+#if (BOOST_CXX_INTELC <= BOOST_VERSION_NUMBER(7,1,0)) && defined(_WIN32)
 #  define BOOST_NO_POINTER_TO_MEMBER_TEMPLATE_PARAMETERS
 #endif
 
 // See http://aspn.activestate.com/ASPN/Mail/Message/boost/1614864
-#if BOOST_INTEL_CXX_VERSION < 600
+#if (BOOST_CXX_INTELC < BOOST_VERSION_NUMBER(6,0,0))
 #  define BOOST_NO_INTRINSIC_WCHAR_T
 #else
 // We should test the macro _WCHAR_T_DEFINED to check if the compiler
@@ -88,14 +120,14 @@
 #  endif
 #endif
 
-#if defined(__GNUC__) && !defined(BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL)
+#if defined(BOOST_CXX_GNUC) && !defined(BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL)
 //
 // Figure out when Intel is emulating this gcc bug
 // (All Intel versions prior to 9.0.26, and versions
 // later than that if they are set up to emulate gcc 3.2
 // or earlier):
 //
-#  if ((__GNUC__ == 3) && (__GNUC_MINOR__ <= 2)) || (BOOST_INTEL < 900) || (__INTEL_COMPILER_BUILD_DATE < 20050912)
+#  if (BOOST_CXX_GNUC <= BOOST_VERSION_NUMBER(3,2,0)) || (BOOST_CXX_INTELC < BOOST_VERSION_NUMBER(9,0,0)) || (__INTEL_COMPILER_BUILD_DATE < 20050912)
 #     define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #  endif
 #endif
@@ -120,8 +152,8 @@ template<> struct assert_intrinsic_wchar_t<wchar_t> {};
 template<> struct assert_intrinsic_wchar_t<unsigned short> {};
 #endif
 
-#if _MSC_VER+0 >= 1000
-#  if _MSC_VER >= 1200
+#if defined(BOOST_CXX_MSVC) && (BOOST_CXX_MSVC >= BOOST_VERSION_NUMBER(4,0,0))
+#  if (BOOST_CXX_MSVC >= BOOST_VERSION_NUMBER(6,0,0))
 #     define BOOST_HAS_MS_INT64
 #  endif
 #  define BOOST_NO_SWPRINTF
@@ -132,27 +164,22 @@ template<> struct assert_intrinsic_wchar_t<unsigned short> {};
 // I checked version 6.0 build 020312Z, it implements the NRVO.
 // Correct this as you find out which version of the compiler
 // implemented the NRVO first.  (Daniel Frey)
-#if (BOOST_INTEL_CXX_VERSION >= 600)
+#if (BOOST_CXX_INTELC >= BOOST_VERSION_NUMBER(6,0,0))
 #  define BOOST_HAS_NRVO
 #endif
 
 //
 // versions check:
 // we don't support Intel prior to version 5.0:
-#if BOOST_INTEL_CXX_VERSION < 500
+#if (BOOST_CXX_INTELC < BOOST_VERSION_NUMBER(5,0,0))
 #  error "Compiler not supported or configured - please reconfigure"
 #endif
 //
 // last known and checked version:
-#if (BOOST_INTEL_CXX_VERSION > 910)
+#if (BOOST_CXX_VERSION > BOOST_VERSION_NUMBER(9,1,0))
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
-#  elif defined(_MSC_VER)
+#  elif defined(BOOST_CXX_MSVC)
 #     pragma message("Unknown compiler version - please run the configure tests and report the results")
 #  endif
 #endif
-
-
-
-
-

@@ -1,5 +1,6 @@
 //  Copyright (C) Christof Meerwald 2003
 //  Copyright (C) Dan Watkins 2003
+//  Copyright Rene Rivera 2005. 
 //
 //  Use, modification and distribution are subject to the 
 //  Boost Software License, Version 1.0. (See accompanying file 
@@ -7,18 +8,19 @@
 
 //  Digital Mars C++ compiler setup:
 #define BOOST_COMPILER __DMC_VERSION_STRING__
+#define BOOST_CXX_DMC BOOST_VERSION_NUMBER((__DMC__ & 0xF00)>>8,__DMC__ & 0xFF,0)
 
 #define BOOST_HAS_LONG_LONG
 #define BOOST_HAS_PRAGMA_ONCE
 
-#if (__DMC__ <= 0x833)
+#if (BOOST_CXX_DMC <= BOOST_VERSION_NUMBER(8,33,0))
 #define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #define BOOST_NO_TEMPLATE_TEMPLATES
 #define BOOST_NEEDS_TOKEN_PASTING_OP_FOR_TOKENS_JUXTAPOSING
 #define BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS
 #define BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
 #endif
-#if (__DMC__ <= 0x840) || !defined(BOOST_STRICT_CONFIG)
+#if (BOOST_CXX_DMC <= BOOST_VERSION_NUMBER(8,40,0)) || !defined(BOOST_STRICT_CONFIG)
 #define BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
 #define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #define BOOST_NO_OPERATORS_IN_NAMESPACE
@@ -30,7 +32,7 @@
 
 //
 // has macros:
-#if (__DMC__ >= 0x840)
+#if (BOOST_CXX_DMC >= BOOST_VERSION_NUMBER(8,40,0))
 #define BOOST_HAS_DIRENT_H
 #define BOOST_HAS_STDINT_H
 #define BOOST_HAS_WINTHREADS
@@ -42,7 +44,7 @@
 #  define BOOST_NO_EXCEPTIONS
 #endif
 
-#if (__DMC__ < 0x840)
+#if (BOOST_CXX_DMC < BOOST_VERSION_NUMBER(8,40,0))
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  endif
