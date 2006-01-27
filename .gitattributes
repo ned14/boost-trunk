@@ -11703,9 +11703,9 @@ boost/tools/quickbook/phrase.hpp svneol=native#text/plain
 boost/tools/quickbook/syntax_highlight.hpp svneol=native#text/plain
 boost/tools/quickbook/test/Jamfile.v2 svneol=native#text/plain
 boost/tools/quickbook/test/quickbook-testing.jam svneol=native#text/plain
+boost/tools/quickbook/test/src/text_diff.cpp svneol=native#text/plain
 boost/tools/quickbook/test/test1.gold -text
 boost/tools/quickbook/test/test1.quickbook -text
-boost/tools/quickbook/test/text_diff.cpp svneol=native#text/plain
 boost/tools/regression/build/Jamfile svneol=native#text/plain
 boost/tools/regression/build/Jamfile.v2 svneol=native#text/plain
 boost/tools/regression/build/vcide/process_jam_log.sln -text
