@@ -5424,6 +5424,7 @@ boost/libs/iostreams/test/write_output_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/write_seekable_seq_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/write_seekable_test.hpp svneol=native#text/plain
 boost/libs/iostreams/test/zlib_test.cpp svneol=native#text/plain
+boost/libs/iterator/doc/.cvsignore -text
 boost/libs/iterator/doc/BidirectionalTraversal.html svneol=native#text/html
 boost/libs/iterator/doc/BidirectionalTraversal.rst svneol=native#text/plain
 boost/libs/iterator/doc/ForwardTraversal.html svneol=native#text/html
