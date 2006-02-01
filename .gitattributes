@@ -8474,6 +8474,7 @@ boost/libs/serialization/test/C.hpp svneol=native#text/plain
 boost/libs/serialization/test/D.hpp svneol=native#text/plain
 boost/libs/serialization/test/J.hpp svneol=native#text/plain
 boost/libs/serialization/test/Jamfile svneol=native#text/plain
+boost/libs/serialization/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/serialization/test/binary_archive.hpp svneol=native#text/plain
 boost/libs/serialization/test/binary_warchive.hpp svneol=native#text/plain
 boost/libs/serialization/test/polymorphic_binary_archive.hpp svneol=native#text/plain
