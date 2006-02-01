@@ -9469,7 +9469,6 @@ boost/libs/test/doc/components/test_tools/output_test_stream.html svneol=native#
 boost/libs/test/doc/components/test_tools/output_test_stream_spec.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/BOOST_BITWISE_EQUAL.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/BOOST_CHECK.html svneol=native#text/html
-boost/libs/test/doc/components/test_tools/reference/BOOST_CHECKPOINT.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/BOOST_CHECK_CLOSE.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/BOOST_CHECK_EQUAL.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/BOOST_CHECK_EQUAL_COLL.html svneol=native#text/html
@@ -9482,7 +9481,6 @@ boost/libs/test/doc/components/test_tools/reference/BOOST_CHECK_THROW.html svneo
 boost/libs/test/doc/components/test_tools/reference/BOOST_ERROR.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/BOOST_FAIL.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/BOOST_IS_DEFINED.html svneol=native#text/html
-boost/libs/test/doc/components/test_tools/reference/BOOST_MESSAGE.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/blank.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/browse.html svneol=native#text/html
 boost/libs/test/doc/components/test_tools/reference/copyright.html svneol=native#text/html
