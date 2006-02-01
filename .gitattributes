@@ -11709,6 +11709,7 @@ boost/tools/quickbook/test/code-block-2.gold -text
 boost/tools/quickbook/test/code-block-2.quickbook -text
 boost/tools/quickbook/test/code-snippet.gold -text
 boost/tools/quickbook/test/code-snippet.quickbook -text
+boost/tools/quickbook/test/escape.qbk svneol=native#text/plain
 boost/tools/quickbook/test/link-side-by-side.gold -text
 boost/tools/quickbook/test/link-side-by-side.quickbook -text
 boost/tools/quickbook/test/preformatted.gold -text
