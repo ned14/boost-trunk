@@ -6906,6 +6906,7 @@ boost/libs/parameter/test/earwicker.cpp svneol=native#text/plain
 boost/libs/parameter/test/efficiency.cpp svneol=native#text/plain
 boost/libs/parameter/test/macros.cpp svneol=native#text/plain
 boost/libs/parameter/test/mpl.cpp svneol=native#text/plain
+boost/libs/parameter/test/ntp.cpp svneol=native#text/plain
 boost/libs/parameter/test/sfinae.cpp svneol=native#text/plain
 boost/libs/parameter/test/singular.cpp svneol=native#text/plain
 boost/libs/parameter/test/timings.txt svneol=native#text/plain
