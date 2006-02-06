@@ -6569,6 +6569,7 @@ boost/libs/multi_index/doc/advanced_topics.html svneol=native#text/html
 boost/libs/multi_index/doc/compiler_specifics.html svneol=native#text/html
 boost/libs/multi_index/doc/examples.html svneol=native#text/html
 boost/libs/multi_index/doc/future_work.html svneol=native#text/html
+boost/libs/multi_index/doc/hector.jpg -text svneol=unset#image/jpeg
 boost/libs/multi_index/doc/index.html svneol=native#text/html
 boost/libs/multi_index/doc/lopez.jpg -text svneol=unset#image/jpeg
 boost/libs/multi_index/doc/multi_index_cont_example.png -text svneol=unset#image/png
