@@ -1874,6 +1874,7 @@ boost/boost/multi_index/detail/index_proxy.hpp svneol=native#text/plain
 boost/boost/multi_index/detail/index_saver.hpp svneol=native#text/plain
 boost/boost/multi_index/detail/invariant_assert.hpp svneol=native#text/plain
 boost/boost/multi_index/detail/is_index_list.hpp svneol=native#text/plain
+boost/boost/multi_index/detail/iter_adaptor.hpp svneol=native#text/plain
 boost/boost/multi_index/detail/modify_key_adaptor.hpp svneol=native#text/plain
 boost/boost/multi_index/detail/msvc_index_specifier.hpp svneol=native#text/plain
 boost/boost/multi_index/detail/no_duplicate_tags.hpp svneol=native#text/plain
