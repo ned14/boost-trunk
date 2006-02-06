@@ -6600,6 +6600,7 @@ boost/libs/multi_index/doc/tutorial/debug.html svneol=native#text/html
 boost/libs/multi_index/doc/tutorial/index.html svneol=native#text/html
 boost/libs/multi_index/doc/tutorial/indices.html svneol=native#text/html
 boost/libs/multi_index/doc/tutorial/key_extraction.html svneol=native#text/html
+boost/libs/multi_index/doc/tutorial/multi_index_cont_example.png -text svneol=unset#image/png
 boost/libs/multi_index/doc/up.gif -text svneol=unset#image/gif
 boost/libs/multi_index/example/Jamfile svneol=native#text/plain
 boost/libs/multi_index/example/basic.cpp svneol=native#text/plain
