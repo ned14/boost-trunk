@@ -3133,6 +3133,7 @@ boost/boost/test/impl/xml_log_formatter.ipp svneol=native#text/plain
 boost/boost/test/impl/xml_report_formatter.ipp svneol=native#text/plain
 boost/boost/test/included/prg_exec_monitor.hpp svneol=native#text/plain
 boost/boost/test/included/test_exec_monitor.hpp svneol=native#text/plain
+boost/boost/test/included/unit_test.hpp svneol=native#text/plain
 boost/boost/test/included/unit_test_framework.hpp svneol=native#text/plain
 boost/boost/test/interaction_based.hpp svneol=native#text/plain
 boost/boost/test/logged_expectations.hpp svneol=native#text/plain
