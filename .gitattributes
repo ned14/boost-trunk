@@ -6611,6 +6611,7 @@ boost/libs/multi_index/example/composite_keys.cpp svneol=native#text/plain
 boost/libs/multi_index/example/hashed.cpp svneol=native#text/plain
 boost/libs/multi_index/example/memfun_key.cpp svneol=native#text/plain
 boost/libs/multi_index/example/non_default_ctor.cpp svneol=native#text/plain
+boost/libs/multi_index/example/random_access.cpp svneol=native#text/plain
 boost/libs/multi_index/example/sequenced.cpp svneol=native#text/plain
 boost/libs/multi_index/example/serialization.cpp svneol=native#text/plain
 boost/libs/multi_index/index.html svneol=native#text/html
