@@ -4608,6 +4608,7 @@ boost/libs/functional/hash/test/hash_function_pointer_test.cpp svneol=native#tex
 boost/libs/functional/hash/test/hash_fwd_test.hpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_fwd_test_1.cpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_fwd_test_2.cpp svneol=native#text/plain
+boost/libs/functional/hash/test/hash_global_namespace_test.cpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_list_test.cpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_map_test.cpp svneol=native#text/plain
 boost/libs/functional/hash/test/hash_map_test.hpp svneol=native#text/plain
