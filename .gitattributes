@@ -9219,6 +9219,7 @@ boost/libs/spirit/test/impl/var.hpp svneol=native#text/plain
 boost/libs/spirit/test/lazy_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/loops_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/match_tests.cpp svneol=native#text/plain
+boost/libs/spirit/test/mix_and_match_trees.cpp svneol=native#text/plain
 boost/libs/spirit/test/multi_pass_compile_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/multi_pass_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/negated_eps_p_test.cpp svneol=native#text/plain
