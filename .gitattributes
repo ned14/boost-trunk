@@ -11252,6 +11252,7 @@ boost/tools/build/v2/test/boostbook/a.hpp svneol=native#text/plain
 boost/tools/build/v2/test/boostbook/docs.xml svneol=native#text/xml
 boost/tools/build/v2/test/build_dir.py svneol=native#text/x-python
 boost/tools/build/v2/test/build_file.py svneol=native#text/x-python
+boost/tools/build/v2/test/build_no.py svneol=native#text/x-python
 boost/tools/build/v2/test/c_file.py svneol=native#text/x-python
 boost/tools/build/v2/test/chain.py svneol=native#text/x-python
 boost/tools/build/v2/test/check-arguments.jam svneol=native#text/plain
