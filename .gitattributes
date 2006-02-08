@@ -10395,6 +10395,7 @@ boost/libs/wave/src/instantiate_re2c_lexer.cpp svneol=native#text/plain
 boost/libs/wave/src/instantiate_re2c_lexer_str.cpp svneol=native#text/plain
 boost/libs/wave/src/token_ids.cpp svneol=native#text/plain
 boost/libs/wave/test/build/Jamfile svneol=native#text/plain
+boost/libs/wave/test/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/wave/test/testlexers/cpp_tokens.hpp svneol=native#text/plain
 boost/libs/wave/test/testlexers/test_re2c_lexer.cpp svneol=native#text/plain
 boost/libs/wave/test/testlexers/test_slex_lexer.cpp svneol=native#text/plain
