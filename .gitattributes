@@ -11503,6 +11503,7 @@ boost/tools/build/v2/tools/como.jam svneol=native#text/plain
 boost/tools/build/v2/tools/cw-config.jam svneol=native#text/plain
 boost/tools/build/v2/tools/cw.jam svneol=native#text/plain
 boost/tools/build/v2/tools/darwin.jam svneol=native#text/plain
+boost/tools/build/v2/tools/dmc.jam svneol=native#text/plain
 boost/tools/build/v2/tools/docutils.jam svneol=native#text/plain
 boost/tools/build/v2/tools/doxygen-config.jam svneol=native#text/plain
 boost/tools/build/v2/tools/doxygen.jam svneol=native#text/plain
