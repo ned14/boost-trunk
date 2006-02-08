@@ -11538,6 +11538,7 @@ boost/tools/build/v2/tools/stlport.jam svneol=native#text/plain
 boost/tools/build/v2/tools/sun.jam svneol=native#text/plain
 boost/tools/build/v2/tools/symlink.jam svneol=native#text/plain
 boost/tools/build/v2/tools/testing.jam svneol=native#text/plain
+boost/tools/build/v2/tools/tru64.jam svneol=native#text/plain
 boost/tools/build/v2/tools/types/asm.jam svneol=native#text/plain
 boost/tools/build/v2/tools/types/cpp.jam svneol=native#text/plain
 boost/tools/build/v2/tools/types/exe.jam svneol=native#text/plain
