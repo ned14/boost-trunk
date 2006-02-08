@@ -11300,6 +11300,7 @@ boost/tools/build/v2/test/direct-request-test/b.cpp svneol=native#text/plain
 boost/tools/build/v2/test/direct-request-test/b_inverse.cpp svneol=native#text/plain
 boost/tools/build/v2/test/direct-request-test/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/direct_request_test.py svneol=native#text/x-python
+boost/tools/build/v2/test/disambiguation.py svneol=native#text/x-python
 boost/tools/build/v2/test/dll_path.py svneol=native#text/x-python
 boost/tools/build/v2/test/double_loading.py svneol=native#text/x-python
 boost/tools/build/v2/test/duplicate.py svneol=native#text/x-python
