@@ -11261,6 +11261,7 @@ boost/tools/build/v2/test/check-arguments.jam svneol=native#text/plain
 boost/tools/build/v2/test/check-bindrule.jam svneol=native#text/plain
 boost/tools/build/v2/test/check-jam-patches.jam svneol=native#text/plain
 boost/tools/build/v2/test/check-test-tools.jam svneol=native#text/plain
+boost/tools/build/v2/test/clean.py svneol=native#text/x-python
 boost/tools/build/v2/test/composite.py svneol=native#text/x-python
 boost/tools/build/v2/test/conditionals.py svneol=native#text/x-python
 boost/tools/build/v2/test/conditionals2.py svneol=native#text/x-python
