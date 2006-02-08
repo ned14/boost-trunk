@@ -2861,6 +2861,7 @@ boost/boost/spirit/core/safe_bool.hpp svneol=native#text/plain
 boost/boost/spirit/core/scanner/impl/skipper.ipp svneol=native#text/plain
 boost/boost/spirit/core/scanner/scanner.hpp svneol=native#text/plain
 boost/boost/spirit/core/scanner/skipper.hpp svneol=native#text/plain
+boost/boost/spirit/core/scanner/skipper_fwd.hpp svneol=native#text/plain
 boost/boost/spirit/debug.hpp svneol=native#text/plain
 boost/boost/spirit/debug/debug_node.hpp svneol=native#text/plain
 boost/boost/spirit/debug/impl/parser_names.ipp svneol=native#text/plain
