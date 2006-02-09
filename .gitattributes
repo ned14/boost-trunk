@@ -2806,6 +2806,7 @@ boost/boost/spirit/actor/typeof.hpp svneol=native#text/plain
 boost/boost/spirit/attribute.hpp svneol=native#text/plain
 boost/boost/spirit/attribute/closure.hpp svneol=native#text/plain
 boost/boost/spirit/attribute/closure_context.hpp svneol=native#text/plain
+boost/boost/spirit/attribute/closure_fwd.hpp svneol=native#text/plain
 boost/boost/spirit/attribute/parametric.hpp svneol=native#text/plain
 boost/boost/spirit/core.hpp svneol=native#text/plain
 boost/boost/spirit/core/assert.hpp svneol=native#text/plain
