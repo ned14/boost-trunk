@@ -2874,6 +2874,7 @@ boost/boost/spirit/debug/debug_node.hpp svneol=native#text/plain
 boost/boost/spirit/debug/impl/parser_names.ipp svneol=native#text/plain
 boost/boost/spirit/debug/minimal.hpp svneol=native#text/plain
 boost/boost/spirit/debug/parser_names.hpp svneol=native#text/plain
+boost/boost/spirit/debug/typeof.hpp svneol=native#text/plain
 boost/boost/spirit/dynamic.hpp svneol=native#text/plain
 boost/boost/spirit/dynamic/for.hpp svneol=native#text/plain
 boost/boost/spirit/dynamic/if.hpp svneol=native#text/plain
