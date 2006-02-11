@@ -651,6 +651,7 @@ boost/libs/python/test/vector_indexing_suite.cpp svneol=native#text/plain
 boost/libs/python/test/vector_indexing_suite.py svneol=native#text/x-python
 boost/libs/python/test/virtual_functions.cpp svneol=native#text/plain
 boost/libs/python/test/virtual_functions.py svneol=native#text/x-python
+boost/libs/python/test/voidptr.py svneol=native#text/x-python
 boost/libs/python/test/wrapper_held_type.cpp svneol=native#text/plain
 boost/libs/python/test/wrapper_held_type.py svneol=native#text/x-python
 boost/libs/python/todo.html svneol=native#text/html
