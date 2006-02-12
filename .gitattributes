@@ -3099,6 +3099,7 @@ boost/boost/spirit/utility/lists.hpp svneol=native#text/plain
 boost/boost/spirit/utility/lists_fwd.hpp svneol=native#text/plain
 boost/boost/spirit/utility/loops.hpp svneol=native#text/plain
 boost/boost/spirit/utility/regex.hpp svneol=native#text/plain
+boost/boost/spirit/utility/rule_parser.hpp svneol=native#text/plain
 boost/boost/spirit/utility/scoped_lock.hpp svneol=native#text/plain
 boost/boost/spirit/utility/typeof.hpp svneol=native#text/plain
 boost/boost/spirit/version.hpp svneol=native#text/plain
