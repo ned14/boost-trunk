@@ -11637,15 +11637,12 @@ boost/tools/inspect/minmax_check.hpp svneol=native#text/plain
 boost/tools/inspect/tab_check.cpp svneol=native#text/plain
 boost/tools/inspect/tab_check.hpp svneol=native#text/plain
 boost/tools/inspect/wrong_line_ends_test.cpp svneol=native#text/plain
+boost/tools/jam/build_dist.bat svneol=native#text/plain
+boost/tools/jam/build_dist.sh svneol=native#text/x-sh
 boost/tools/jam/doc/bjam.qbk svneol=native#text/plain
 boost/tools/jam/doc/build.jam svneol=native#text/plain
-boost/tools/jam/src/Jam.html svneol=native#text/html
+boost/tools/jam/index.html svneol=native#text/html
 boost/tools/jam/src/Jambase -text
-boost/tools/jam/src/Jambase.html svneol=native#text/html
-boost/tools/jam/src/Jamfile.html svneol=native#text/html
-boost/tools/jam/src/Porting -text
-boost/tools/jam/src/README svneol=native#text/plain
-boost/tools/jam/src/RELNOTES -text
 boost/tools/jam/src/boost-jam.spec -text
 boost/tools/jam/src/build.bat svneol=native#text/plain
 boost/tools/jam/src/build.jam svneol=native#text/plain
@@ -11692,7 +11689,6 @@ boost/tools/jam/src/hdrmacro.c svneol=native#text/plain
 boost/tools/jam/src/hdrmacro.h svneol=native#text/plain
 boost/tools/jam/src/headers.c svneol=native#text/plain
 boost/tools/jam/src/headers.h svneol=native#text/plain
-boost/tools/jam/src/index.html svneol=native#text/html
 boost/tools/jam/src/jam.c svneol=native#text/plain
 boost/tools/jam/src/jam.h svneol=native#text/plain
 boost/tools/jam/src/jambase.c svneol=native#text/plain
