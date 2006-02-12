@@ -3084,6 +3084,7 @@ boost/boost/spirit/utility/escape_char_fwd.hpp svneol=native#text/plain
 boost/boost/spirit/utility/flush_multi_pass.hpp svneol=native#text/plain
 boost/boost/spirit/utility/functor_parser.hpp svneol=native#text/plain
 boost/boost/spirit/utility/grammar_def.hpp svneol=native#text/plain
+boost/boost/spirit/utility/grammar_def_fwd.hpp svneol=native#text/plain
 boost/boost/spirit/utility/impl/chset.ipp svneol=native#text/plain
 boost/boost/spirit/utility/impl/chset/basic_chset.hpp svneol=native#text/plain
 boost/boost/spirit/utility/impl/chset/basic_chset.ipp svneol=native#text/plain
