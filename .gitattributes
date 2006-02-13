@@ -6531,7 +6531,6 @@ boost/libs/multi_array/doc/test_cases.html svneol=native#text/html
 boost/libs/multi_array/doc/user.html svneol=native#text/html
 boost/libs/multi_array/doc/xml/MultiArray.xml svneol=native#text/xml
 boost/libs/multi_array/doc/xml/const_multi_array_ref.xml svneol=native#text/xml
-boost/libs/multi_array/doc/xml/main.xml svneol=native#text/xml
 boost/libs/multi_array/doc/xml/multi_array.xml svneol=native#text/xml
 boost/libs/multi_array/doc/xml/multi_array_ref.xml svneol=native#text/xml
 boost/libs/multi_array/doc/xml/reference.xml svneol=native#text/xml
