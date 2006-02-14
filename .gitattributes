@@ -3836,6 +3836,7 @@ boost/libs/algorithm/string/test/Jamfile svneol=native#text/plain
 boost/libs/algorithm/string/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/algorithm/string/test/conv_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/find_test.cpp svneol=native#text/plain
+boost/libs/algorithm/string/test/join_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/predicate_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/regex_test.cpp svneol=native#text/plain
 boost/libs/algorithm/string/test/replace_test.cpp svneol=native#text/plain
