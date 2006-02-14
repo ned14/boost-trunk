@@ -50,6 +50,7 @@ boost/boost/algorithm/string/find_iterator.hpp svneol=native#text/plain
 boost/boost/algorithm/string/finder.hpp svneol=native#text/plain
 boost/boost/algorithm/string/formatter.hpp svneol=native#text/plain
 boost/boost/algorithm/string/iter_find.hpp svneol=native#text/plain
+boost/boost/algorithm/string/join.hpp svneol=native#text/plain
 boost/boost/algorithm/string/predicate.hpp svneol=native#text/plain
 boost/boost/algorithm/string/predicate_facade.hpp svneol=native#text/plain
 boost/boost/algorithm/string/regex.hpp svneol=native#text/plain
