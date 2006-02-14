@@ -9097,6 +9097,7 @@ boost/libs/spirit/example/techniques/nabialek.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules/no_rule1.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules/no_rule2.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules/no_rule3.cpp svneol=native#text/plain
+boost/libs/spirit/example/techniques/no_rules_with_typeof/opaque_rule_parser.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules_with_typeof/rule_parser_1_1.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules_with_typeof/rule_parser_1_2.cpp svneol=native#text/plain
 boost/libs/spirit/example/techniques/no_rules_with_typeof/rule_parser_2_1.cpp svneol=native#text/plain
