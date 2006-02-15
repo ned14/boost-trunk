@@ -3959,6 +3959,7 @@ boost/libs/config/config.htm svneol=native#text/html
 boost/libs/config/configure svneol=native#text/plain
 boost/libs/config/index.html svneol=native#text/html
 boost/libs/config/test/Jamfile svneol=native#text/plain
+boost/libs/config/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/config/test/abi/abi_test.cpp svneol=native#text/plain
 boost/libs/config/test/abi/abi_test.hpp svneol=native#text/plain
 boost/libs/config/test/abi/main.cpp svneol=native#text/plain
