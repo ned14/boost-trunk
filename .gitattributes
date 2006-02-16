@@ -11484,6 +11484,7 @@ boost/tools/build/v2/tools/package.jam svneol=native#text/plain
 boost/tools/build/v2/tools/pch.jam svneol=native#text/plain
 boost/tools/build/v2/tools/python-config.jam svneol=native#text/plain
 boost/tools/build/v2/tools/python.jam svneol=native#text/plain
+boost/tools/build/v2/tools/qcc.jam svneol=native#text/plain
 boost/tools/build/v2/tools/qt.jam svneol=native#text/plain
 boost/tools/build/v2/tools/qt4.jam svneol=native#text/plain
 boost/tools/build/v2/tools/quickbook-config.jam svneol=native#text/plain
