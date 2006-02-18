@@ -7652,7 +7652,6 @@ boost/libs/ptr_container/doc/tutorial.html svneol=native#text/html
 boost/libs/ptr_container/doc/tutorial.rst svneol=native#text/plain
 boost/libs/ptr_container/index.html svneol=native#text/html
 boost/libs/ptr_container/test/Jamfile svneol=native#text/plain
-boost/libs/ptr_container/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/ptr_container/test/associative_test_data.hpp svneol=native#text/plain
 boost/libs/ptr_container/test/incomplete_type_test.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/indirect_fun.cpp svneol=native#text/plain
