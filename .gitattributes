@@ -9733,7 +9733,6 @@ boost/libs/test/example/logged_exp_example.cpp svneol=native#text/plain
 boost/libs/test/example/named_param_example.cpp svneol=native#text/plain
 boost/libs/test/example/prg_exec_example.cpp svneol=native#text/plain
 boost/libs/test/example/test_case_template_example.cpp svneol=native#text/plain
-boost/libs/test/example/test_exec_example.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example_01.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example_02.cpp svneol=native#text/plain
 boost/libs/test/example/unit_test_example_03.cpp svneol=native#text/plain
