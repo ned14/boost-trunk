@@ -9665,6 +9665,7 @@ boost/libs/test/doc/tests/test_exec_fail4.html svneol=native#text/html
 boost/libs/test/doc/tests/test_fp_comparisons.html svneol=native#text/html
 boost/libs/test/doc/tests/test_tools_test.html svneol=native#text/html
 boost/libs/test/doc/tests/unit_test_suite_ex_test.html svneol=native#text/html
+boost/libs/test/doc/tutorials/intro_in_testing.html svneol=native#text/html
 boost/libs/test/doc/usage/command_line.html svneol=native#text/html
 boost/libs/test/doc/usage/generic.html svneol=native#text/html
 boost/libs/test/doc/usage/imgs/post_build_event.jpg -text svneol=unset#image/jpeg
