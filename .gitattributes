@@ -9667,7 +9667,6 @@ boost/libs/test/doc/usage/generic.html svneol=native#text/html
 boost/libs/test/doc/usage/imgs/post_build_event.jpg -text svneol=unset#image/jpeg
 boost/libs/test/doc/usage/imgs/post_build_out.jpg -text svneol=unset#image/jpeg
 boost/libs/test/doc/usage/imgs/run_args.jpg -text svneol=unset#image/jpeg
-boost/libs/test/doc/usage/msvc65.html svneol=native#text/html
 boost/libs/test/doc/usage/msvc_net.html svneol=native#text/html
 boost/libs/test/doc/usage/recomendations.html svneol=native#text/html
 boost/libs/test/example/.cvsignore -text
