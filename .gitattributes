@@ -9604,9 +9604,6 @@ boost/libs/test/doc/components/utf/components/test_log/custom_log_formatter.html
 boost/libs/test/doc/components/utf/components/test_log/index.html svneol=native#text/html
 boost/libs/test/doc/components/utf/components/test_result/index.html svneol=native#text/html
 boost/libs/test/doc/components/utf/components/test_suite/index.html svneol=native#text/html
-boost/libs/test/doc/components/utf/getting_started/const_string.hpp svneol=native#text/plain
-boost/libs/test/doc/components/utf/getting_started/const_string_test.cpp svneol=native#text/plain
-boost/libs/test/doc/components/utf/getting_started/index.html svneol=native#text/html
 boost/libs/test/doc/components/utf/index.html svneol=native#text/html
 boost/libs/test/doc/components/utf/parameters/build_info.html svneol=native#text/html
 boost/libs/test/doc/components/utf/parameters/catch_system_errors.html svneol=native#text/html
