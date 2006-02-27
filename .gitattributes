@@ -5202,6 +5202,7 @@ boost/libs/graph/src/yystype.h svneol=native#text/plain
 boost/libs/graph/test/Jamfile svneol=native#text/plain
 boost/libs/graph/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/graph/test/adj_list_cc.cpp svneol=native#text/plain
+boost/libs/graph/test/adj_list_edge_list_set.cpp svneol=native#text/plain
 boost/libs/graph/test/adj_list_test.cpp svneol=native#text/plain
 boost/libs/graph/test/adj_matrix_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/adjacency_matrix_test.cpp svneol=native#text/plain
