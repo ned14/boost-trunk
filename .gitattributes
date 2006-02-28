@@ -3915,6 +3915,7 @@ boost/libs/bind/test/bind_stdcall_mf_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_stdcall_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_unary_addr.cpp svneol=native#text/plain
+boost/libs/bind/test/bind_visit_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_cdecl_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_derived_test.cpp svneol=native#text/plain
 boost/libs/bind/test/mem_fn_dm_test.cpp svneol=native#text/plain
