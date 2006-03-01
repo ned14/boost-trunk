@@ -9556,7 +9556,6 @@ boost/libs/test/build/msvc71_proj/unit_test_framework.vcproj -text
 boost/libs/test/build/msvc71_proj/unit_test_framework_dll.vcproj -text
 boost/libs/test/doc/acknowledgements.html svneol=native#text/html
 boost/libs/test/doc/btl1.gif -text svneol=unset#image/gif
-boost/libs/test/doc/compilation.html svneol=native#text/html
 boost/libs/test/doc/components/execution_monitor/compilation.html svneol=native#text/html
 boost/libs/test/doc/components/execution_monitor/execution_aborted.html svneol=native#text/html
 boost/libs/test/doc/components/execution_monitor/execution_exception.html svneol=native#text/html
