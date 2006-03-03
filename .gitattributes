@@ -3131,6 +3131,7 @@ boost/boost/test/utils/xml_printer.hpp svneol=native#text/plain
 boost/boost/thread.hpp svneol=native#text/plain
 boost/boost/thread/barrier.hpp svneol=native#text/plain
 boost/boost/thread/condition.hpp svneol=native#text/plain
+boost/boost/thread/detail/basic_checked_mutex_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/basic_mutex_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/basic_recursive_mutex_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/condition_win32.hpp svneol=native#text/plain
