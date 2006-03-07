@@ -10699,6 +10699,7 @@ boost/libs/xpressive/perf/main.cpp svneol=native#text/plain
 boost/libs/xpressive/perf/msvc/long_twain_search.xml svneol=native#text/xml
 boost/libs/xpressive/perf/msvc/short_matches.xml svneol=native#text/xml
 boost/libs/xpressive/perf/msvc/short_twain_search.xml svneol=native#text/xml
+boost/libs/xpressive/perf/regex_comparison.hpp svneol=native#text/plain
 boost/libs/xpressive/perf/time_boost.cpp svneol=native#text/plain
 boost/libs/xpressive/perf/time_dynamic_xpressive.cpp svneol=native#text/plain
 boost/libs/xpressive/perf/time_static_xpressive.cpp svneol=native#text/plain
