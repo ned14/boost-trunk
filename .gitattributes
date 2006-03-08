@@ -3134,6 +3134,7 @@ boost/boost/thread/condition.hpp svneol=native#text/plain
 boost/boost/thread/detail/basic_checked_mutex_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/basic_mutex_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/basic_recursive_mutex_win32.hpp svneol=native#text/plain
+boost/boost/thread/detail/basic_timed_mutex_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/condition_win32.hpp svneol=native#text/plain
 boost/boost/thread/detail/config.hpp svneol=native#text/plain
 boost/boost/thread/detail/force_cast.hpp svneol=native#text/plain
