@@ -4634,6 +4634,7 @@ boost/libs/functional/function_test.cpp svneol=native#text/plain
 boost/libs/functional/function_traits.html svneol=native#text/html
 boost/libs/functional/hash/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/functional/hash/doc/changes.qbk svneol=native#text/plain
+boost/libs/functional/hash/doc/disable.qbk svneol=native#text/plain
 boost/libs/functional/hash/doc/hash.qbk svneol=native#text/plain
 boost/libs/functional/hash/doc/intro.qbk svneol=native#text/plain
 boost/libs/functional/hash/doc/links.qbk svneol=native#text/plain
