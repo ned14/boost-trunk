@@ -623,6 +623,7 @@ boost/boost/graph/topological_sort.hpp svneol=native#text/plain
 boost/boost/graph/transitive_closure.hpp svneol=native#text/plain
 boost/boost/graph/transpose_graph.hpp svneol=native#text/plain
 boost/boost/graph/tree_traits.hpp svneol=native#text/plain
+boost/boost/graph/two_bit_color_map.hpp svneol=native#text/plain
 boost/boost/graph/undirected_dfs.hpp svneol=native#text/plain
 boost/boost/graph/vector_as_graph.hpp svneol=native#text/plain
 boost/boost/graph/visitors.hpp svneol=native#text/plain
