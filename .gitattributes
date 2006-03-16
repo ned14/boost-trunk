@@ -10262,6 +10262,7 @@ boost/libs/typeof/test/function_ptr_from_tpl.cpp svneol=native#text/plain
 boost/libs/typeof/test/function_ref.cpp svneol=native#text/plain
 boost/libs/typeof/test/member_function.cpp svneol=native#text/plain
 boost/libs/typeof/test/modifiers.cpp svneol=native#text/plain
+boost/libs/typeof/test/nested_typedef.cpp svneol=native#text/plain
 boost/libs/typeof/test/noncopyable.cpp svneol=native#text/plain
 boost/libs/typeof/test/odr.hpp svneol=native#text/plain
 boost/libs/typeof/test/odr1.cpp svneol=native#text/plain
