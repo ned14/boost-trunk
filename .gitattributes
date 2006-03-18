@@ -3566,6 +3566,7 @@ boost/boost/wave/cpplexer/cpp_lex_interface.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/cpp_lex_iterator.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/cpp_lex_token.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/cpplexer_exceptions.hpp svneol=native#text/plain
+boost/boost/wave/cpplexer/detect_include_guards.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/re2clex/aq.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/re2clex/cpp_re.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/re2clex/cpp_re2c_lexer.hpp svneol=native#text/plain
