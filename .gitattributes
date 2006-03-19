@@ -10255,6 +10255,7 @@ boost/libs/type_traits/test/udt_specialisations.cpp svneol=native#text/plain
 boost/libs/type_traits/tools/specialisations.cpp svneol=native#text/plain
 boost/libs/typeof/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/typeof/doc/typeof.qbk svneol=native#text/plain
+boost/libs/typeof/index.html svneol=native#text/html
 boost/libs/typeof/test/Jamfile svneol=native#text/plain
 boost/libs/typeof/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/typeof/test/data_member.cpp svneol=native#text/plain
