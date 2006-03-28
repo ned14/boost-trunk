@@ -3779,6 +3779,7 @@ boost/doc/Jamfile.v2 svneol=native#text/plain
 boost/doc/html/CopyConstructible.html svneol=native#text/html
 boost/doc/html/any.html svneol=native#text/html
 boost/doc/html/array.html svneol=native#text/html
+boost/doc/html/boost_math.html svneol=native#text/html
 boost/doc/html/boost_math_tr1_additions/C99.html svneol=native#text/html
 boost/doc/html/boost_math_tr1_additions/inverse_complex.html svneol=native#text/html
 boost/doc/html/boost_staticassert.html svneol=native#text/html
