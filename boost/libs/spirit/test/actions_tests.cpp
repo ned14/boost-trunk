@@ -18,8 +18,8 @@
 using namespace std;
 
 //#define BOOST_SPIRIT_DEBUG
-#include "boost/spirit/core.hpp"
-#include "boost/ref.hpp"
+#include <boost/spirit/core.hpp>
+#include <boost/ref.hpp>
 using namespace boost::spirit;
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -11,9 +11,9 @@
 #define BOOST_SPIRIT_PARAMETRIC_HPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/composite/composite.hpp"
-#include "boost/spirit/core/primitives/primitives.hpp"
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/composite/composite.hpp>
+#include <boost/spirit/core/primitives/primitives.hpp>
 
 namespace boost { namespace spirit {
 

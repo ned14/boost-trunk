@@ -18,8 +18,8 @@
 #include <string>
 #include <vector>
 
-#include "boost/config.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/config.hpp>
+#include <boost/static_assert.hpp>
 
 #ifdef BOOST_NO_STRINGSTREAM
 #include <strstream>
@@ -39,7 +39,7 @@ std::string GETSTRING(std::ostrstream& ss)
 
 #define BOOST_SPIRIT_DEBUG    // needed for parser_name functions
 
-#include "boost/spirit/core.hpp"
+#include <boost/spirit/core.hpp>
 
 using namespace std;
 using namespace boost::spirit;

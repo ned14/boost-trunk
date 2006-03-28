@@ -11,7 +11,7 @@
 #if !defined(BOOST_SPIRIT_PARSER_TYPE_HPP)
 #define BOOST_SPIRIT_PARSER_TYPE_HPP
 
-#include "boost/spirit/core/primitives/primitives.hpp"
+#include <boost/spirit/core/primitives/primitives.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

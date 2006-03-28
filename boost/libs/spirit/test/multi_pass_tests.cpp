@@ -7,8 +7,8 @@
     (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
-#include "boost/config.hpp"
-#include "boost/spirit/iterator/multi_pass.hpp"
+#include <boost/config.hpp>
+#include <boost/spirit/iterator/multi_pass.hpp>
 #include <iterator>
 #include <string>
 #ifdef BOOST_NO_STRINGSTREAM

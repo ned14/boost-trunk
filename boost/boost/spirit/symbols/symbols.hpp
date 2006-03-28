@@ -13,10 +13,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <string>
 
-#include "boost/ref.hpp"
+#include <boost/ref.hpp>
 
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/composite/directives.hpp"
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/composite/directives.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -234,5 +234,5 @@ private:
 ///////////////////////////////////////////////////////////////////////////////
 }} // namespace boost::spirit
 
-#include "boost/spirit/symbols/impl/symbols.ipp"
+#include <boost/spirit/symbols/impl/symbols.ipp>
 #endif

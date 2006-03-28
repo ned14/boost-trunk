@@ -3,7 +3,7 @@
 
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/symbols/symbols.hpp>
-#include "boost/spirit/attribute.hpp"
+#include <boost/spirit/attribute.hpp>
 #include <boost/spirit/phoenix/primitives.hpp>
 #include <boost/spirit/phoenix/operators.hpp>
 #include <boost/spirit/phoenix/binders.hpp>

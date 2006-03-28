@@ -16,7 +16,7 @@
 #include <cassert>
 #include <iostream>
 
-#include "boost/spirit/core.hpp"
+#include <boost/spirit/core.hpp>
 
 using namespace std;
 using namespace boost::spirit;

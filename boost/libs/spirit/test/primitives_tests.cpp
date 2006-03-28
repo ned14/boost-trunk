@@ -13,7 +13,7 @@
 
 using namespace std;
 
-#include "boost/spirit/core.hpp"
+#include <boost/spirit/core.hpp>
 using namespace boost::spirit;
 
 ///////////////////////////////////////////////////////////////////////////////

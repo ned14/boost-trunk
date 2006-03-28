@@ -10,7 +10,7 @@
 #if !defined(BOOST_SPIRIT_ERROR_HANDLING_MAIN_HPP)
 #define BOOST_SPIRIT_ERROR_HANDLING_MAIN_HPP
 
-#include "boost/spirit/version.hpp"
+#include <boost/spirit/version.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -18,6 +18,6 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "boost/spirit/error_handling/exceptions.hpp"
+#include <boost/spirit/error_handling/exceptions.hpp>
 
 #endif // !defined(BOOST_SPIRIT_ERROR_HANDLING_MAIN_HPP)

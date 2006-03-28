@@ -12,23 +12,23 @@
 #define BOOST_SPIRIT_PRIMITIVES_HPP
 
 #if !defined(BOOST_REF_HPP_INCLUDED)
-#include "boost/ref.hpp"
+#include <boost/ref.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_ASSERT_HPP)
-#include "boost/spirit/core/assert.hpp"
+#include <boost/spirit/core/assert.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_PARSER_HPP)
-#include "boost/spirit/core/parser.hpp"
+#include <boost/spirit/core/parser.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_DIRECTIVES_IPP)
-#include "boost/spirit/core/composite/impl/directives.ipp"
+#include <boost/spirit/core/composite/impl/directives.ipp>
 #endif
 
 #if !defined(BOOST_SPIRIT_PRIMITIVES_IPP)
-#include "boost/spirit/core/primitives/impl/primitives.ipp"
+#include <boost/spirit/core/primitives/impl/primitives.ipp>
 #endif
 
 namespace boost { namespace spirit {

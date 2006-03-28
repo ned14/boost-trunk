@@ -11,19 +11,19 @@
 #if !defined(BOOST_SPIRIT_SUBRULE_HPP)
 #define BOOST_SPIRIT_SUBRULE_HPP
 
-#include "boost/type_traits.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/type_traits.hpp>
+#include <boost/static_assert.hpp>
 
 #if !defined(BOOST_SPIRIT_PARSER_HPP)
-#include "boost/spirit/core/parser.hpp"
+#include <boost/spirit/core/parser.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_PARSER_CONTEXT_HPP)
-#include "boost/spirit/core/non_terminal/parser_context.hpp"
+#include <boost/spirit/core/non_terminal/parser_context.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_SUBRULE_IPP)
-#include "boost/spirit/core/non_terminal/impl/subrule.ipp"
+#include <boost/spirit/core/non_terminal/impl/subrule.ipp>
 #endif
 
 namespace boost { namespace spirit {

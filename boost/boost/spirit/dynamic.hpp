@@ -12,7 +12,7 @@
 #ifndef BOOST_SPIRIT_DYNAMIC_HPP
 #define BOOST_SPIRIT_DYNAMIC_HPP
 
-#include "boost/spirit/version.hpp"
+#include <boost/spirit/version.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -20,15 +20,15 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 #if !defined(BOOST_SPIRIT_IF_HPP)
-#include "boost/spirit/dynamic/if.hpp"
+#include <boost/spirit/dynamic/if.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_FOR_HPP)
-#include "boost/spirit/dynamic/for.hpp"
+#include <boost/spirit/dynamic/for.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_WHILE_HPP)
-#include "boost/spirit/dynamic/while.hpp"
+#include <boost/spirit/dynamic/while.hpp>
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

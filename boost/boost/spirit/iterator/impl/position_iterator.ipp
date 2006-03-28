@@ -21,10 +21,10 @@
 #if !defined(BOOST_ITERATOR_ADAPTORS_VERSION) || \
      BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
 
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 
 #if defined(BOOST_MSVC)
-#include "boost/spirit/core/impl/msvc.hpp"
+#include <boost/spirit/core/impl/msvc.hpp>
 #endif
 
 #if defined(BOOST_NO_STD_ITERATOR_TRAITS)

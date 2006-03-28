@@ -11,7 +11,7 @@
 #if !defined(BOOST_SPIRIT_DEBUG_MAIN_HPP)
 #define BOOST_SPIRIT_DEBUG_MAIN_HPP
 
-#include "boost/spirit/version.hpp"
+#include <boost/spirit/version.hpp>
 
 ///////////////////////////////////////////////////////////////////////////
 #if defined(BOOST_SPIRIT_DEBUG)
@@ -24,7 +24,7 @@
 
     #include <iostream>
     #if defined(__BORLANDC__) && (__BORLANDC__ <= 0x561)
-    #include "boost/spirit/core/impl/borland.hpp"
+    #include <boost/spirit/core/impl/borland.hpp>
     #endif
 
     ///////////////////////////////////////////////////////////////////////////
@@ -138,11 +138,11 @@
     #endif // !defined(BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR_NAME)
 
     //////////////////////////////////
-    #include "boost/spirit/debug/debug_node.hpp"
+    #include <boost/spirit/debug/debug_node.hpp>
 
 #else
     //////////////////////////////////
-    #include "boost/spirit/debug/minimal.hpp"
+    #include <boost/spirit/debug/minimal.hpp>
 
 #endif // BOOST_SPIRIT_DEBUG
 

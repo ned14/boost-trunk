@@ -12,11 +12,11 @@
 #if !defined(BOOST_SPIRIT_PARSER_TRAITS_HPP)
 #define BOOST_SPIRIT_PARSER_TRAITS_HPP
 
-#include "boost/type_traits.hpp"
-#include "boost/static_assert.hpp"
+#include <boost/type_traits.hpp>
+#include <boost/static_assert.hpp>
 
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/meta/impl/parser_traits.ipp"
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/meta/impl/parser_traits.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

@@ -15,19 +15,19 @@
 #include <algorithm>
 
 #if !defined(BOOST_SPIRIT_PARSER_HPP)
-#include "boost/spirit/core/parser.hpp"
+#include <boost/spirit/core/parser.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_PRIMITIVES_HPP)
-#include "boost/spirit/core/primitives/primitives.hpp"
+#include <boost/spirit/core/primitives/primitives.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_COMPOSITE_HPP)
-#include "boost/spirit/core/composite/composite.hpp"
+#include <boost/spirit/core/composite/composite.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_DIRECTIVES_IPP)
-#include "boost/spirit/core/composite/impl/directives.ipp"
+#include <boost/spirit/core/composite/impl/directives.ipp>
 #endif
 
 namespace boost { namespace spirit {

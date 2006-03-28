@@ -12,11 +12,11 @@
 #define BOOST_SPIRIT_NUMERICS_HPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/composite/directives.hpp"
-#include "boost/spirit/core/primitives/impl/numerics.ipp"
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/composite/directives.hpp>
+#include <boost/spirit/core/primitives/impl/numerics.ipp>
 
 //  VC++6 chokes and ICEs with parser_result on the real parser traits when
 //  the real parser is used inside a grammar. This workaround solves the

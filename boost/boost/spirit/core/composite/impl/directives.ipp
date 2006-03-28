@@ -14,7 +14,7 @@
 #define BOOST_SPIRIT_DIRECTIVES_IPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/spirit/core/scanner/skipper.hpp"
+#include <boost/spirit/core/scanner/skipper.hpp>
 
 namespace boost { namespace spirit {
 

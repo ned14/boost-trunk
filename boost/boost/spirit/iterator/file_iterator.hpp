@@ -310,5 +310,5 @@ bool operator >= (
 
 ///////////////////////////////////////////////////////////////////////////////
 #if !defined FILE_ITERATOR_IPP
-   #include "boost/spirit/iterator/impl/file_iterator.ipp"
+   #include <boost/spirit/iterator/impl/file_iterator.ipp>
 #endif

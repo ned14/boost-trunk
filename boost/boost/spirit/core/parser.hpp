@@ -11,11 +11,11 @@
 #define BOOST_SPIRIT_PARSER_HPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/config.hpp"
-#include "boost/spirit/core/scanner/scanner.hpp"
+#include <boost/config.hpp>
+#include <boost/spirit/core/scanner/scanner.hpp>
 
 #if defined(BOOST_MSVC)
-#include "boost/spirit/core/impl/msvc.hpp"
+#include <boost/spirit/core/impl/msvc.hpp>
 #endif
 
 #if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
@@ -242,5 +242,5 @@ namespace boost
 
 #endif
 
-#include "boost/spirit/core/impl/parser.ipp"
+#include <boost/spirit/core/impl/parser.ipp>
 #undef BOOST_SPIRIT_PARSER_RESULT_ARGS

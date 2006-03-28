@@ -12,15 +12,15 @@
 #define BOOST_SPIRIT_FOR_HPP
 ////////////////////////////////////////////////////////////////////////////////
 #if !defined(BOOST_SPIRIT_PARSER_HPP)
-#include "boost/spirit/core/parser.hpp"
+#include <boost/spirit/core/parser.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_COMPOSITE_HPP)
-#include "boost/spirit/core/composite/composite.hpp"
+#include <boost/spirit/core/composite/composite.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_CONDITIONS_IPP)
-#include "boost/spirit/dynamic/impl/conditions.ipp"
+#include <boost/spirit/dynamic/impl/conditions.ipp>
 #endif
 ////////////////////////////////////////////////////////////////////////////////
 

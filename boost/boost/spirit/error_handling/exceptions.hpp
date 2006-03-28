@@ -10,10 +10,10 @@
 #ifndef BOOST_SPIRIT_EXCEPTIONS_HPP
 #define BOOST_SPIRIT_EXCEPTIONS_HPP
 
-#include "boost/config.hpp"
-#include "boost/throw_exception.hpp"
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/composite/composite.hpp"
+#include <boost/config.hpp>
+#include <boost/throw_exception.hpp>
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/composite/composite.hpp>
 #include <exception>
 
 namespace boost { namespace spirit {
@@ -336,6 +336,6 @@ namespace boost { namespace spirit {
 
 }} // namespace boost::spirit
 
-#include "boost/spirit/error_handling/impl/exceptions.ipp"
+#include <boost/spirit/error_handling/impl/exceptions.ipp>
 #endif
 

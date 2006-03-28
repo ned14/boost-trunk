@@ -16,7 +16,7 @@
 #include <cctype>
 #include <boost/limits.hpp>
 
-#include "boost/spirit/utility/impl/escape_char.ipp"
+#include <boost/spirit/utility/impl/escape_char.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

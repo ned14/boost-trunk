@@ -16,7 +16,7 @@
 #if !defined(BOOST_SPIRIT_UTILITY_MAIN_HPP)
 #define BOOST_SPIRIT_UTILITY_MAIN_HPP
 
-#include "boost/spirit/version.hpp"
+#include <boost/spirit/version.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -24,12 +24,12 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "boost/spirit/utility/chset.hpp"
-#include "boost/spirit/utility/chset_operators.hpp"
-#include "boost/spirit/utility/escape_char.hpp"
-#include "boost/spirit/utility/functor_parser.hpp"
-#include "boost/spirit/utility/loops.hpp"
-#include "boost/spirit/utility/confix.hpp"
-#include "boost/spirit/utility/lists.hpp"
+#include <boost/spirit/utility/chset.hpp>
+#include <boost/spirit/utility/chset_operators.hpp>
+#include <boost/spirit/utility/escape_char.hpp>
+#include <boost/spirit/utility/functor_parser.hpp>
+#include <boost/spirit/utility/loops.hpp>
+#include <boost/spirit/utility/confix.hpp>
+#include <boost/spirit/utility/lists.hpp>
 
 #endif // !defined(BOOST_SPIRIT_UTILITY_MAIN_HPP)

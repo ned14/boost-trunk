@@ -11,8 +11,8 @@
 #if !defined(BOOST_SPIRIT_ASSERT_HPP)
 #define BOOST_SPIRIT_ASSERT_HPP
 
-#include "boost/config.hpp"
-#include "boost/throw_exception.hpp"
+#include <boost/config.hpp>
+#include <boost/throw_exception.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //

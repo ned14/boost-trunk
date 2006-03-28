@@ -14,10 +14,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <algorithm>
 
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/primitives/primitives.hpp"
-#include "boost/spirit/core/composite/composite.hpp"
-#include "boost/spirit/core/meta/impl/parser_type.hpp"
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/primitives/primitives.hpp>
+#include <boost/spirit/core/composite/composite.hpp>
+#include <boost/spirit/core/meta/impl/parser_type.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -1086,4 +1086,4 @@ operator%(wchar_t const* a, parser<B> const& b);
 
 #endif
 
-#include "boost/spirit/core/composite/impl/operators.ipp"
+#include <boost/spirit/core/composite/impl/operators.ipp>

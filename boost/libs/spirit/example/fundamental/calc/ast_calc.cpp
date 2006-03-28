@@ -9,9 +9,9 @@
 =============================================================================*/
 #define BOOST_SPIRIT_DUMP_PARSETREE_AS_XML
 
-#include "boost/spirit/core.hpp"
-#include "boost/spirit/tree/ast.hpp"
-#include "boost/spirit/tree/tree_to_xml.hpp"
+#include <boost/spirit/core.hpp>
+#include <boost/spirit/tree/ast.hpp>
+#include <boost/spirit/tree/tree_to_xml.hpp>
 #include "tree_calc_grammar.hpp"
 
 #include <iostream>

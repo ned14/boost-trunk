@@ -11,7 +11,7 @@
 #define BOOST_SPIRIT_BASICS_HPP
 
 #if defined(__BORLANDC__) && (__BORLANDC__ <= 0x561)
-#include "boost/spirit/core/impl/borland.hpp"
+#include <boost/spirit/core/impl/borland.hpp>
 #endif
 
 #include <boost/config.hpp>
@@ -20,7 +20,7 @@
 #include <boost/mpl/bool.hpp>
 
 #if defined(BOOST_MSVC) || defined(BOOST_INTEL_CXX_VERSION)
-#include "boost/spirit/core/impl/msvc.hpp"
+#include <boost/spirit/core/impl/msvc.hpp>
 #endif
 
 #if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)

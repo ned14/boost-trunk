@@ -11,7 +11,7 @@
 #if !defined(BOOST_SPIRIT_ITERATOR_MAIN_HPP)
 #define BOOST_SPIRIT_ITERATOR_MAIN_HPP
 
-#include "boost/spirit/version.hpp"
+#include <boost/spirit/version.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -19,13 +19,13 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "boost/spirit/iterator/file_iterator.hpp"
-#include "boost/spirit/iterator/fixed_size_queue.hpp"
-#include "boost/spirit/iterator/position_iterator.hpp"
+#include <boost/spirit/iterator/file_iterator.hpp>
+#include <boost/spirit/iterator/fixed_size_queue.hpp>
+#include <boost/spirit/iterator/position_iterator.hpp>
 
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 #if !defined(BOOST_MSVC) || (BOOST_MSVC > 1300)
-#include "boost/spirit/iterator/multi_pass.hpp"
+#include <boost/spirit/iterator/multi_pass.hpp>
 #endif
 
 #endif // !defined(BOOST_SPIRIT_ITERATOR_MAIN_HPP)

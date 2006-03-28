@@ -11,9 +11,9 @@
 #define BOOST_SPIRIT_CONFIX_HPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/spirit/core/meta/impl/parser_type.hpp"
-#include "boost/spirit/core/composite/operators.hpp"
-#include "boost/spirit/utility/impl/confix.ipp"
+#include <boost/spirit/core/meta/impl/parser_type.hpp>
+#include <boost/spirit/core/composite/operators.hpp>
+#include <boost/spirit/utility/impl/confix.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

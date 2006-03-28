@@ -11,10 +11,10 @@
 #define BOOST_SPIRIT_LISTS_HPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/spirit/core/meta/impl/parser_type.hpp"
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/composite/composite.hpp"
-#include "boost/spirit/utility/impl/lists.ipp"
+#include <boost/spirit/core/meta/impl/parser_type.hpp>
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/composite/composite.hpp>
+#include <boost/spirit/utility/impl/lists.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

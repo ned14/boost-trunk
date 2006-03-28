@@ -12,7 +12,7 @@
 #define BOOST_SPIRIT_GRAMMAR_IPP
 
 #if !defined(BOOST_SPIRIT_SINGLE_GRAMMAR_INSTANCE)
-#include "boost/spirit/core/non_terminal/impl/object_with_id.ipp"
+#include <boost/spirit/core/non_terminal/impl/object_with_id.ipp>
 #include <algorithm>
 #include <functional>
 #include <memory> // for std::auto_ptr
@@ -20,8 +20,8 @@
 #endif
 
 #ifdef BOOST_SPIRIT_THREADSAFE
-#include "boost/thread/tss.hpp"
-#include "boost/thread/mutex.hpp"
+#include <boost/thread/tss.hpp>
+#include <boost/thread/mutex.hpp>
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -18,7 +18,7 @@
 
 #include <boost/static_assert.hpp>
 
-#include "boost/spirit/core.hpp"
+#include <boost/spirit/core.hpp>
 
 using namespace std;
 using namespace boost::spirit;

@@ -14,12 +14,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <iterator>
 
-#include "boost/config.hpp"
-#include "boost/spirit/core/match.hpp"
-#include "boost/spirit/core/non_terminal/parser_id.hpp"
+#include <boost/config.hpp>
+#include <boost/spirit/core/match.hpp>
+#include <boost/spirit/core/non_terminal/parser_id.hpp>
 
 #if defined(BOOST_MSVC)
-#include "boost/spirit/core/impl/msvc.hpp"
+#include <boost/spirit/core/impl/msvc.hpp>
 #endif
 
 #if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)

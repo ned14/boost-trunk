@@ -10,7 +10,7 @@
 #if !defined(BOOST_SPIRIT_SYMBOLS_MAIN_HPP)
 #define BOOST_SPIRIT_SYMBOLS_MAIN_HPP
 
-#include "boost/spirit/version.hpp"
+#include <boost/spirit/version.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -18,6 +18,6 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "boost/spirit/symbols/symbols.hpp"
+#include <boost/spirit/symbols/symbols.hpp>
 
 #endif // !defined(BOOST_SPIRIT_SYMBOLS_MAIN_HPP)

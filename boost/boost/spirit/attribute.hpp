@@ -17,7 +17,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "boost/spirit/version.hpp"
+#include <boost/spirit/version.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -33,7 +33,7 @@
 #endif // !defined(PHOENIX_LIMIT)
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/spirit/attribute/parametric.hpp"
-#include "boost/spirit/attribute/closure.hpp"
+#include <boost/spirit/attribute/parametric.hpp>
+#include <boost/spirit/attribute/closure.hpp>
 
 #endif // !defined(BOOST_SPIRIT_ATTRIBUTE_MAIN_HPP)

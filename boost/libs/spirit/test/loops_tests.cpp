@@ -13,8 +13,8 @@
 using namespace std;
 
 //#define BOOST_SPIRIT_DEBUG
-#include "boost/spirit/core.hpp"
-#include "boost/spirit/utility.hpp"
+#include <boost/spirit/core.hpp>
+#include <boost/spirit/utility.hpp>
 using namespace boost::spirit;
 
 ///////////////////////////////////////////////////////////////////////////////

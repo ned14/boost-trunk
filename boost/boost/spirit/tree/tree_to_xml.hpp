@@ -66,7 +66,7 @@ namespace boost { namespace spirit {
 
 }} // namespace boost::spirit
 
-#include "boost/spirit/tree/impl/tree_to_xml.ipp"
+#include <boost/spirit/tree/impl/tree_to_xml.ipp>
 
 #endif // !defined(TREE_TO_XML_HPP)
 

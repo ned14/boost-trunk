@@ -14,7 +14,7 @@
 #if defined(BOOST_SPIRIT_DEBUG)
 
 //////////////////////////////////
-#include "boost/spirit/core.hpp"
+#include <boost/spirit/core.hpp>
 
 namespace boost { namespace spirit {
 
@@ -241,7 +241,7 @@ namespace boost { namespace spirit {
 
 //////////////////////////////////
 #if !defined(BOOST_SPIRIT_PARSER_NAMES_IPP)
-#include "boost/spirit/debug/impl/parser_names.ipp"
+#include <boost/spirit/debug/impl/parser_names.ipp>
 #endif
 
 #endif // defined(BOOST_SPIRIT_DEBUG)

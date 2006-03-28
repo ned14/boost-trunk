@@ -12,7 +12,7 @@
 #if !defined(BOOST_SPIRIT_PARSER_TRAITS_IPP)
 #define BOOST_SPIRIT_PARSER_TRAITS_IPP
 
-#include "boost/spirit/core/composite/operators.hpp"
+#include <boost/spirit/core/composite/operators.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

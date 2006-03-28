@@ -13,8 +13,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <cctype>
 
-#include "boost/spirit/core/scanner/scanner.hpp"
-#include "boost/spirit/core/primitives/impl/primitives.ipp"
+#include <boost/spirit/core/scanner/scanner.hpp>
+#include <boost/spirit/core/primitives/impl/primitives.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -165,6 +165,6 @@ typedef scanner<char const*, scanner_policies_t>    phrase_scanner_t;
 ///////////////////////////////////////////////////////////////////////////////
 }} // namespace boost::spirit
 
-#include "boost/spirit/core/scanner/impl/skipper.ipp"
+#include <boost/spirit/core/scanner/impl/skipper.ipp>
 #endif
 

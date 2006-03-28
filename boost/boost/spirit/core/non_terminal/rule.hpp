@@ -12,10 +12,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 #include "boost/scoped_ptr.hpp" // for scoped_ptr
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/scanner/scanner.hpp"
-#include "boost/spirit/core/non_terminal/parser_context.hpp"
-#include "boost/spirit/core/non_terminal/parser_id.hpp"
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/scanner/scanner.hpp>
+#include <boost/spirit/core/non_terminal/parser_context.hpp>
+#include <boost/spirit/core/non_terminal/parser_id.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -110,5 +110,5 @@ namespace boost { namespace spirit {
 ///////////////////////////////////////////////////////////////////////////////
 }} // namespace boost::spirit
 
-#include "boost/spirit/core/non_terminal/impl/rule.ipp"
+#include <boost/spirit/core/non_terminal/impl/rule.ipp>
 #endif

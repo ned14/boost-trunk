@@ -11,8 +11,8 @@
 #define BOOST_SPIRIT_CONFIX_IPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/spirit/utility/refactoring.hpp"
-#include "boost/spirit/core/composite/impl/directives.ipp"
+#include <boost/spirit/utility/refactoring.hpp>
+#include <boost/spirit/core/composite/impl/directives.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

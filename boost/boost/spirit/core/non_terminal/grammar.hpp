@@ -16,9 +16,9 @@
 #undef BOOST_SPIRIT_SINGLE_GRAMMAR_INSTANCE
 #endif
 
-#include "boost/spirit/core/parser.hpp"
-#include "boost/spirit/core/non_terminal/parser_context.hpp"
-#include "boost/spirit/core/non_terminal/impl/grammar.ipp"
+#include <boost/spirit/core/parser.hpp>
+#include <boost/spirit/core/non_terminal/parser_context.hpp>
+#include <boost/spirit/core/non_terminal/impl/grammar.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

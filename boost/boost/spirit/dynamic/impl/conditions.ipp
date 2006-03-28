@@ -12,11 +12,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 #if !defined(BOOST_SPIRIT_PARSER_TRAITS_HPP)
-#include "boost/spirit/core/meta/parser_traits.hpp"
+#include <boost/spirit/core/meta/parser_traits.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_EPSILON_HPP)
-#include "boost/spirit/core/composite/epsilon.hpp"
+#include <boost/spirit/core/composite/epsilon.hpp>
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////

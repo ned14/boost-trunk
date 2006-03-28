@@ -13,15 +13,15 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 #if !defined(BOOST_SPIRIT_PARSER_HPP)
-#include "boost/spirit/core/parser.hpp"
+#include <boost/spirit/core/parser.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_PARSER_TRAITS_HPP)
-#include "boost/spirit/core/meta/parser_traits.hpp"
+#include <boost/spirit/core/meta/parser_traits.hpp>
 #endif
 
 #if !defined(BOOST_SPIRIT_COMPOSITE_HPP)
-#include "boost/spirit/core/composite/composite.hpp"
+#include <boost/spirit/core/composite/composite.hpp>
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

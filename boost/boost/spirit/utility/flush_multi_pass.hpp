@@ -11,8 +11,8 @@
 #define BOOST_SPIRIT_FLUSH_MULTI_PASS_HPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/spirit/core.hpp"
-#include "boost/spirit/iterator/multi_pass.hpp"
+#include <boost/spirit/core.hpp>
+#include <boost/spirit/iterator/multi_pass.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {

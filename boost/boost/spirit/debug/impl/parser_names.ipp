@@ -17,7 +17,7 @@
 #include <iostream>
 #include <map>
 
-#include "boost/config.hpp"
+#include <boost/config.hpp>
 #ifdef BOOST_NO_STRINGSTREAM
 #include <strstream>
 #define BOOST_SPIRIT_SSTREAM std::strstream

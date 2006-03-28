@@ -11,7 +11,7 @@
 #ifndef BOOST_SPIRIT_TREE_COMMON_HPP
 #define BOOST_SPIRIT_TREE_COMMON_HPP
 
-#include "boost/spirit/core.hpp"
+#include <boost/spirit/core.hpp>
 
 #if BOOST_WORKAROUND(BOOST_MSVC , <= 1300)
 #include <boost/spirit/tree/msvc/common.hpp>
