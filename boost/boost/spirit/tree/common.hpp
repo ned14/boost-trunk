@@ -100,7 +100,7 @@ struct tree_node
 // Intel V5.0.1 has a problem without this explicit operator=
     tree_node &operator= (tree_node const &rhs)
     {
-        tree_node(rhs).swap(*this);
+        tree_node<T>(rhs).swap(*this);
         return *this;
     }
 };
