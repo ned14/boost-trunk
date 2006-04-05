@@ -29,8 +29,8 @@ class extent_gen {
 public:
   typedef boost::detail::multi_array::index index;
   typedef boost::detail::multi_array::size_type size_type;
-  typedef extent_range<index,size_type> range;
 private:
+  typedef extent_range<index,size_type> range;
   typedef typename range_list_generator<range,NumRanges>::type range_list;
 public:
   template <std::size_t Ranges>

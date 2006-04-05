@@ -28,9 +28,9 @@ namespace multi_array {
 template <int NumRanges, int NumDims>
 struct index_gen {
 private:
-  typedef ::boost::detail::multi_array::index index;
-  typedef ::boost::detail::multi_array::size_type size_type;
-  typedef index_range<index,size_type> range;
+  typedef ::boost::detail::multi_array::index Index;
+  typedef std::size_t SizeType;
+  typedef index_range<Index,SizeType> range;
 public:
   template <int Dims, int Ranges>
   struct gen_type {
@@ -44,27 +44,27 @@ public:
 
   template <int ND>
   explicit index_gen(const index_gen<NumRanges-1,ND>& rhs,
-            const range& r)
+            const index_range<Index,SizeType>& range)
   {
     std::copy(rhs.ranges_.begin(),rhs.ranges_.end(),ranges_.begin());
-    *ranges_.rbegin() = r;
+    *ranges_.rbegin() = range;
   }
 
   index_gen<NumRanges+1,NumDims+1>
-  operator[](const range& r) const
+  operator[](const index_range<Index,SizeType>& range) const
   {
     index_gen<NumRanges+1,NumDims+1> tmp;
     std::copy(ranges_.begin(),ranges_.end(),tmp.ranges_.begin());
-    *tmp.ranges_.rbegin() = r;
+    *tmp.ranges_.rbegin() = range;
     return tmp;
   }
 
   index_gen<NumRanges+1,NumDims>
-  operator[](index idx) const
+  operator[](Index idx) const
   {
     index_gen<NumRanges+1,NumDims> tmp;
     std::copy(ranges_.begin(),ranges_.end(),tmp.ranges_.begin());
-    *tmp.ranges_.rbegin() = range(idx);
+    *tmp.ranges_.rbegin() = index_range<Index,SizeType>(idx);
     return tmp;
   }    
 
