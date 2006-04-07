@@ -11187,6 +11187,10 @@ boost/tools/build/v2/example/qt/qt3/moccable-cpp/main.cpp svneol=native#text/pla
 boost/tools/build/v2/example/qt/qt3/uic/Jamroot -text
 boost/tools/build/v2/example/qt/qt3/uic/hello_world_widget.ui -text
 boost/tools/build/v2/example/qt/qt3/uic/main.cpp svneol=native#text/plain
+boost/tools/build/v2/example/qt/qt4/hello/Jamroot -text
+boost/tools/build/v2/example/qt/qt4/hello/arrow.cpp svneol=native#text/plain
+boost/tools/build/v2/example/qt/qt4/hello/arrow.h svneol=native#text/plain
+boost/tools/build/v2/example/qt/qt4/hello/main.cpp svneol=native#text/plain
 boost/tools/build/v2/example/qt/qt4/moccable-cpp/Jamroot -text
 boost/tools/build/v2/example/qt/qt4/moccable-cpp/main.cpp svneol=native#text/plain
 boost/tools/build/v2/example/qt/qt4/uic/Jamroot -text
