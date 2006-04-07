@@ -2708,6 +2708,7 @@ boost/libs/spirit/phoenix/test/stl_tests.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/test/tuples_tests.cpp svneol=native#text/plain
 boost/libs/spirit/phoenix/test/unary_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/Jamfile svneol=native#text/plain
+boost/libs/spirit/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/spirit/test/actions_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/ast_calc_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/bug_000001.cpp svneol=native#text/plain
