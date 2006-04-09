@@ -6994,6 +6994,7 @@ boost/libs/parameter/doc/html/index.html svneol=native#text/html
 boost/libs/parameter/doc/html/reference.html svneol=native#text/html
 boost/libs/parameter/doc/html/rst.css svneol=native#text/css
 boost/libs/parameter/doc/index.rst svneol=native#text/plain
+boost/libs/parameter/doc/python.rst svneol=native#text/plain
 boost/libs/parameter/doc/reference.rst svneol=native#text/plain
 boost/libs/parameter/index.html svneol=native#text/html
 boost/libs/parameter/test/Jamfile svneol=native#text/plain
