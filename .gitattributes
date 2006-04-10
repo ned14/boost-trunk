@@ -4437,7 +4437,6 @@ boost/libs/date_time/xmldoc/date_input_facet.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_iterators.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_period.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_time.xml svneol=native#text/xml
-boost/libs/date_time/xmldoc/date_time_autodoc.boostbook -text
 boost/libs/date_time/xmldoc/date_time_docs_howto.html svneol=native#text/html
 boost/libs/date_time/xmldoc/date_time_fo_stylesheet.xsl svneol=native#text/xml
 boost/libs/date_time/xmldoc/date_time_io.xml svneol=native#text/xml
@@ -4469,18 +4468,15 @@ boost/libs/date_time/xmldoc/examples.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/exclusive_date_time.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/format_flags.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/gregorian.xml svneol=native#text/xml
-boost/libs/date_time/xmldoc/gregorian_autodoc.boostbook -text
 boost/libs/date_time/xmldoc/gregorian_calendar.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/io_objects.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/io_tutorial.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/license.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/local_date_time.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/local_time.xml svneol=native#text/xml
-boost/libs/date_time/xmldoc/local_time_autodoc.boostbook -text
 boost/libs/date_time/xmldoc/local_time_period.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/motivation.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/posix_time.xml svneol=native#text/xml
-boost/libs/date_time/xmldoc/posix_time_autodoc.boostbook -text
 boost/libs/date_time/xmldoc/posix_time_zone.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/ptime_class.xml svneol=native#text/xml
 boost/libs/date_time/xmldoc/ref_tag_fix.pl svneol=native#text/x-perl
