@@ -3418,7 +3418,6 @@ boost/libs/thread/build/.cvsignore -text
 boost/libs/thread/build/Jamfile svneol=native#text/plain
 boost/libs/thread/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/thread/build/threads.jam svneol=native#text/plain
-boost/libs/thread/build/threads.mcp -text svneol=unset#unset
 boost/libs/thread/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/thread/doc/acknowledgements.xml svneol=native#text/xml
 boost/libs/thread/doc/barrier-ref.xml svneol=native#text/xml
