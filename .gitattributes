@@ -3129,10 +3129,12 @@ boost/boost/test/utils/trivial_singleton.hpp svneol=native#text/plain
 boost/boost/test/utils/wrap_stringstream.hpp svneol=native#text/plain
 boost/boost/test/utils/xml_printer.hpp svneol=native#text/plain
 boost/boost/thread.hpp svneol=native#text/plain
+boost/boost/thread/barrier.hpp svneol=native#text/plain
 boost/boost/thread/condition.hpp svneol=native#text/plain
 boost/boost/thread/detail/platform.hpp svneol=native#text/plain
 boost/boost/thread/exceptions.hpp svneol=native#text/plain
 boost/boost/thread/mutex.hpp svneol=native#text/plain
+boost/boost/thread/once.hpp svneol=native#text/plain
 boost/boost/thread/pthread/condition.hpp svneol=native#text/plain
 boost/boost/thread/pthread/config.hpp svneol=native#text/plain
 boost/boost/thread/pthread/exceptions.hpp svneol=native#text/plain
@@ -3140,9 +3142,11 @@ boost/boost/thread/pthread/lock.hpp svneol=native#text/plain
 boost/boost/thread/pthread/mutex.hpp svneol=native#text/plain
 boost/boost/thread/pthread/thread.hpp svneol=native#text/plain
 boost/boost/thread/pthread/xtime.hpp svneol=native#text/plain
+boost/boost/thread/recursive_mutex.hpp svneol=native#text/plain
 boost/boost/thread/thread.hpp svneol=native#text/plain
 boost/boost/thread/win32/basic_checked_mutex.hpp svneol=native#text/plain
 boost/boost/thread/win32/basic_mutex.hpp svneol=native#text/plain
+boost/boost/thread/win32/basic_recursive_mutex.hpp svneol=native#text/plain
 boost/boost/thread/win32/basic_timed_mutex.hpp svneol=native#text/plain
 boost/boost/thread/win32/condition.hpp svneol=native#text/plain
 boost/boost/thread/win32/config.hpp svneol=native#text/plain
@@ -3150,6 +3154,8 @@ boost/boost/thread/win32/exceptions.hpp svneol=native#text/plain
 boost/boost/thread/win32/interlocked_read.hpp svneol=native#text/plain
 boost/boost/thread/win32/lock.hpp svneol=native#text/plain
 boost/boost/thread/win32/mutex.hpp svneol=native#text/plain
+boost/boost/thread/win32/once.hpp svneol=native#text/plain
+boost/boost/thread/win32/recursive_mutex.hpp svneol=native#text/plain
 boost/boost/thread/win32/thread.hpp svneol=native#text/plain
 boost/boost/thread/win32/thread_primitives.hpp svneol=native#text/plain
 boost/boost/thread/win32/xtime.hpp svneol=native#text/plain
@@ -3463,6 +3469,7 @@ boost/libs/thread/src/pthread/timeconv.inl -text
 boost/libs/thread/src/win32/exceptions.cpp svneol=native#text/plain
 boost/libs/thread/src/win32/thread.cpp svneol=native#text/plain
 boost/libs/thread/src/win32/timeconv.inl -text
+boost/libs/thread/src/win32/xtime.cpp svneol=native#text/plain
 boost/libs/thread/test/.cvsignore -text
 boost/libs/thread/test/Carbon.r -text
 boost/libs/thread/test/Jamfile svneol=native#text/plain
