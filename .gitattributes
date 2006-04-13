@@ -10973,6 +10973,7 @@ boost/tools/build/v1/boost-base.jam svneol=native#text/plain
 boost/tools/build/v1/bootstrap.jam svneol=native#text/plain
 boost/tools/build/v1/borland-5_5_1-tools.jam svneol=native#text/plain
 boost/tools/build/v1/borland-5_6_4-tools.jam svneol=native#text/plain
+boost/tools/build/v1/borland-5_8_2-tools.jam svneol=native#text/plain
 boost/tools/build/v1/borland-tools.html svneol=native#text/html
 boost/tools/build/v1/borland-tools.jam svneol=native#text/plain
 boost/tools/build/v1/build_system.htm svneol=native#text/html
