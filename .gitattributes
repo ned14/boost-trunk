@@ -1,5 +1,6 @@
 * text=auto !eol
 boost/Jamfile svneol=native#text/plain
+boost/Jamfile.v2 svneol=native#text/plain
 boost/Jamrules svneol=native#text/plain
 boost/LICENSE_1_0.txt svneol=native#text/plain
 boost/README svneol=native#text/plain
