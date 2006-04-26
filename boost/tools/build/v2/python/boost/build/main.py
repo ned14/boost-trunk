@@ -21,10 +21,10 @@ def main(argv):
     loader = ProjectLoader(manager.projects());
     project_here = loader.load('.')
 
-    targets = project_here.target().generate(property_set.empty())
+    result = project_here.target().generate(property_set.empty())
 
     actual_targets = []
-    for t in targets[1]:
+    for t in result.targets():
         actual_targets.append(t.actualize())
         
     bjam.call("set-top-level-targets", actual_targets)

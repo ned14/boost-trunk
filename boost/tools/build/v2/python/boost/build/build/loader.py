@@ -12,6 +12,7 @@ import os
 
 import project
 from boost.build.util import path, set
+import boost.build.build.action
 import bjam
 
 
@@ -215,8 +216,13 @@ class ProjectContext:
         import boost.build.tools.make
 
         from boost.build.build.action import BjamActionWrapper
+
+        boost.build.build.action.register(generating_rule[0],
+                                          lambda a1, a2, a3, a4: None,
+                                          "")
+        
         
         boost.build.tools.make.make(self.project_module_, target_name[0],
-                                    sources, BjamActionWrapper(generating_rule[0]),
+                                    sources, generating_rule[0],
                                     requirements)
 

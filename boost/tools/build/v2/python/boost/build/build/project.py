@@ -58,7 +58,7 @@ class ProjectAttributes:
         self.attributes_ = {}
         
         self.attributes_['location'] = location
-        self.attributes_['source-location'] = location
+        self.attributes_['source-location'] = os.path.dirname(location)
         empty = property_set.empty ()
         self.attributes_['requirements'] = empty
         self.attributes_['usage-requirements'] = empty
@@ -643,17 +643,17 @@ class ProjectRegistry:
 #   }
 #   
 
-    def target (self, project_module):
-        """ Returns the project target corresponding to the 'project_module'.
-        """
-        id = str (project_module)
-        t = self.project_modules_to_targets_.get (id, None)
-        
-        if not t:
-            t = targets.ProjectTarget (id, project_module, None, project_module.attribute ('requirements'))
-            self.project_modules_to_targets_ [id] = t
-
-        return t
+#    def target (self, project_module):
+#        """ Returns the project target corresponding to the 'project_module'.
+#        """
+#        id = str (project_module)
+#        t = self.project_modules_to_targets_.get (id, None)
+#        
+#        if not t:
+#            t = targets.ProjectTarget (id, project_module, None, project_module.attribute ('requirements'))
+#            self.project_modules_to_targets_ [id] = t
+#
+#        return t
 
 #   # Use/load a project.
 #   rule use ( id : location )
