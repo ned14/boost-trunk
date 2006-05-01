@@ -241,6 +241,8 @@ boost/boost/compatibility/cpp_c_headers/cwctype -text
 boost/boost/compressed_pair.hpp svneol=native#text/plain
 boost/boost/concept/assert.hpp svneol=native#text/plain
 boost/boost/concept/detail/borland.hpp svneol=native#text/plain
+boost/boost/concept/detail/concept_def.hpp svneol=native#text/plain
+boost/boost/concept/detail/concept_undef.hpp svneol=native#text/plain
 boost/boost/concept/detail/general.hpp svneol=native#text/plain
 boost/boost/concept/detail/has_constraints.hpp svneol=native#text/plain
 boost/boost/concept/detail/msvc.hpp svneol=native#text/plain
