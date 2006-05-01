@@ -72,6 +72,7 @@ boost/boost/archive/add_facet.hpp svneol=native#text/plain
 boost/boost/archive/archive_exception.hpp svneol=native#text/plain
 boost/boost/archive/array/binary_iarchive.hpp svneol=native#text/plain
 boost/boost/archive/array/binary_oarchive.hpp svneol=native#text/plain
+boost/boost/archive/array/detail/forward_constructor.hpp svneol=native#text/plain
 boost/boost/archive/array/iarchive.hpp svneol=native#text/plain
 boost/boost/archive/array/oarchive.hpp svneol=native#text/plain
 boost/boost/archive/basic_archive.hpp svneol=native#text/plain
