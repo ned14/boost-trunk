@@ -7033,6 +7033,7 @@ boost/libs/optional/test/optional_test_ref_fail4.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_tie.cpp svneol=native#text/plain
 boost/libs/parameter/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/parameter/doc/html/index.html svneol=native#text/html
+boost/libs/parameter/doc/html/python.html svneol=native#text/html
 boost/libs/parameter/doc/html/reference.html svneol=native#text/html
 boost/libs/parameter/doc/html/rst.css svneol=native#text/css
 boost/libs/parameter/doc/index.rst svneol=native#text/plain
