@@ -11772,12 +11772,15 @@ boost/tools/quickbook/Jamfile.v2 svneol=native#text/plain
 boost/tools/quickbook/block.hpp svneol=native#text/plain
 boost/tools/quickbook/detail/actions.cpp svneol=native#text/plain
 boost/tools/quickbook/detail/actions.hpp svneol=native#text/plain
+boost/tools/quickbook/detail/actions_class.hpp svneol=native#text/plain
+boost/tools/quickbook/detail/markups.hpp svneol=native#text/plain
 boost/tools/quickbook/detail/post_process.cpp svneol=native#text/plain
 boost/tools/quickbook/detail/post_process.hpp svneol=native#text/plain
 boost/tools/quickbook/detail/quickbook.cpp svneol=native#text/plain
 boost/tools/quickbook/detail/utils.cpp svneol=native#text/plain
 boost/tools/quickbook/detail/utils.hpp svneol=native#text/plain
 boost/tools/quickbook/doc/Jamfile.v2 svneol=native#text/plain
+boost/tools/quickbook/doc/html/HTML.manifest -text
 boost/tools/quickbook/doc/html/boostbook.css svneol=native#text/css
 boost/tools/quickbook/doc/html/images/alert.png -text svneol=unset#image/png
 boost/tools/quickbook/doc/html/images/caution.png -text svneol=unset#image/png
@@ -11821,6 +11824,8 @@ boost/tools/quickbook/test/quickbook-manual.gold -text
 boost/tools/quickbook/test/quickbook-manual.quickbook -text
 boost/tools/quickbook/test/quickbook-testing.jam svneol=native#text/plain
 boost/tools/quickbook/test/src/text_diff.cpp svneol=native#text/plain
+boost/tools/quickbook/test/templates.gold -text
+boost/tools/quickbook/test/templates.quickbook -text
 boost/tools/regression/build/Jamfile svneol=native#text/plain
 boost/tools/regression/build/Jamfile.v2 svneol=native#text/plain
 boost/tools/regression/build/vcide/process_jam_log.sln -text
