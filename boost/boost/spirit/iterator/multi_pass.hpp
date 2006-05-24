@@ -40,7 +40,7 @@
 #endif
 
 #if (defined(BOOST_INTEL_CXX_VERSION) && !defined(_STLPORT_VERSION))
-# include "boost/spirit/core/impl/msvc.hpp"  // for more compatible iterator_traits
+# include <boost/spirit/core/impl/msvc.hpp>  // for more compatible iterator_traits
 #undef BOOST_SPIRIT_IT_NS
 #define BOOST_SPIRIT_IT_NS impl
 #endif
