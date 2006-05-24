@@ -33,7 +33,7 @@
 #include <boost/spirit/core/assert.hpp> // for BOOST_SPIRIT_ASSERT
 
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-# include "boost/spirit/core/impl/msvc.hpp"  // for more compatible iterator_traits
+# include <boost/spirit/core/impl/msvc.hpp>  // for more compatible iterator_traits
 #define BOOST_SPIRIT_IT_NS impl
 #else
 #define BOOST_SPIRIT_IT_NS std
