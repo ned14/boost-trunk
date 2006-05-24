@@ -14,7 +14,7 @@
 #include <iterator>
 #include <cstddef>
 
-#include "boost/spirit/core/assert.hpp" // for BOOST_SPIRIT_ASSERT
+#include <boost/spirit/core/assert.hpp> // for BOOST_SPIRIT_ASSERT
 
 // FIXES for broken compilers
 #include <boost/config.hpp>

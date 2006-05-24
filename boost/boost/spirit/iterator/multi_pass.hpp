@@ -29,8 +29,8 @@
 #include <boost/limits.hpp>
 #include <boost/iterator.hpp>
 
-#include "fixed_size_queue.hpp"
-#include "boost/spirit/core/assert.hpp" // for BOOST_SPIRIT_ASSERT
+#include <fixed_size_queue.hpp>
+#include <boost/spirit/core/assert.hpp> // for BOOST_SPIRIT_ASSERT
 
 #if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
 # include "boost/spirit/core/impl/msvc.hpp"  // for more compatible iterator_traits

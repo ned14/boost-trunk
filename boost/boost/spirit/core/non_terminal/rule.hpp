@@ -11,7 +11,7 @@
 #define BOOST_SPIRIT_RULE_HPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include "boost/scoped_ptr.hpp" // for scoped_ptr
+#include <boost/scoped_ptr.hpp> // for scoped_ptr
 #include <boost/spirit/core/parser.hpp>
 #include <boost/spirit/core/scanner/scanner.hpp>
 #include <boost/spirit/core/non_terminal/parser_context.hpp>
