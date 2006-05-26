@@ -132,6 +132,7 @@ private:
 template <class Derived, class Base>
 class void_caster_primitive : 
     public void_caster
+  , public archive::detail::dynamically_initialized<void_caster_primitive<Derived,Base> const>
 {
     virtual void const* downcast( void const * t ) const {
         Derived * d = boost::smart_cast<const Derived *, const Base *>(
@@ -147,26 +148,27 @@ class void_caster_primitive :
     }
 
 public:
-    static const void_caster_primitive instance;
-    void_caster_primitive() BOOST_USED;
+    BOOST_DLLEXPORT void_caster_primitive() BOOST_USED;
 };
 
 template <class Derived, class Base>
-void_caster_primitive<Derived, Base>::void_caster_primitive() :
+BOOST_DLLEXPORT void_caster_primitive<Derived, Base>::void_caster_primitive() :
     void_caster( 
         * type_info_implementation<Derived>::type::get_instance(), 
         * type_info_implementation<Base>::type::get_instance() 
     )
 {
-    this->static_register(& instance);
+    this->static_register(this->instance);
 }
 
+#if 0
 // the purpose of this class is to create to->from and from->to instances
 // of void_caster_primitive for each related pair of types.  This has to be
 // done a pre-execution time - hence the usage of static variable.
 template<class Derived, class Base>
 const void_caster_primitive<Derived, Base>
     void_caster_primitive<Derived, Base>::instance;
+#endif
 
 } // void_cast_detail 
 

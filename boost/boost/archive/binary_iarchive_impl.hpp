@@ -24,7 +24,7 @@
 namespace boost { 
 namespace archive {
 
-template<class Archive, class Elem, class Tr>
+template<class Archive, class Elem = std::istream::char_type, class Tr = std::istream::traits_type>
 class binary_iarchive_impl : 
     public basic_binary_iprimitive<Archive, Elem, Tr>,
     public basic_binary_iarchive<Archive>

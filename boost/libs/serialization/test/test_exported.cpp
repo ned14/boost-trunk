@@ -49,7 +49,12 @@ public:
     virtual ~polymorphic_derived1(){}
 };
 
+typedef boost::archive::detail::guid_initializer<int> x;
+
 BOOST_CLASS_EXPORT(polymorphic_derived1)
+
+// MWerks users can do this to make their code work
+BOOST_SERIALIZATION_MWERKS_BASE_AND_DERIVED(polymorphic_base, polymorphic_derived1)
 
 class polymorphic_derived2 : public polymorphic_base
 {
@@ -63,6 +68,9 @@ public:
 };
 
 BOOST_CLASS_EXPORT(polymorphic_derived2)
+
+// MWerks users can do this to make their code work
+BOOST_SERIALIZATION_MWERKS_BASE_AND_DERIVED(polymorphic_base, polymorphic_derived2)
 
 // save exported polymorphic class
 void save_exported(const char *testfile)

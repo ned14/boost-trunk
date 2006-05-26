@@ -234,7 +234,8 @@ test-suite "serialization" :
      [ test-bsl-run_files test_derived_class ]
      [ test-bsl-run_files test_derived_class_ptr ]
      [ test-bsl-run_files test_diamond ]
-     [ test-bsl-run_files test_exported ]
+       [ test-suite serialization_export : 
+           [ test-bsl-run_files test_exported ] ]
      [ test-bsl-run_files test_class_info_load ]
      [ test-bsl-run_files test_class_info_save ]
      [ test-bsl-run_files test_object ]
