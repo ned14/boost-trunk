@@ -9574,6 +9574,7 @@ boost/libs/static_assert/static_assert_test_fail_6.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_7.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_8.cpp svneol=native#text/plain
 boost/libs/static_assert/static_assert_test_fail_9.cpp svneol=native#text/plain
+boost/libs/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/test/README svneol=native#text/plain
 boost/libs/test/build/.cvsignore -text
 boost/libs/test/build/Jamfile svneol=native#text/plain
@@ -9756,6 +9757,7 @@ boost/libs/test/doc/usage/msvc_net.html svneol=native#text/html
 boost/libs/test/doc/usage/recomendations.html svneol=native#text/html
 boost/libs/test/example/.cvsignore -text
 boost/libs/test/example/Jamfile svneol=native#text/plain
+boost/libs/test/example/Jamfile.v2 svneol=native#text/plain
 boost/libs/test/example/cla/Jamfile svneol=native#text/plain
 boost/libs/test/example/cla/assign_to.cpp svneol=native#text/plain
 boost/libs/test/example/cla/basic_float.cpp svneol=native#text/plain
