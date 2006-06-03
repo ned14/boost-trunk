@@ -3919,6 +3919,7 @@ boost/libs/any/test.hpp svneol=native#text/plain
 boost/libs/any/test/Jamfile svneol=native#text/plain
 boost/libs/any/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/any/test/any_cast_cv_failed.cpp svneol=native#text/plain
+boost/libs/array/array0.cpp svneol=native#text/plain
 boost/libs/array/array1.cpp svneol=native#text/plain
 boost/libs/array/array2.cpp svneol=native#text/plain
 boost/libs/array/array3.cpp svneol=native#text/plain
