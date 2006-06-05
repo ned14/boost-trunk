@@ -3468,6 +3468,7 @@ boost/boost/typeof/integral_template_param.hpp svneol=native#text/plain
 boost/boost/typeof/message.hpp svneol=native#text/plain
 boost/boost/typeof/modifiers.hpp svneol=native#text/plain
 boost/boost/typeof/msvc/typeof_impl.hpp svneol=native#text/plain
+boost/boost/typeof/native.hpp svneol=native#text/plain
 boost/boost/typeof/pointers_data_members.hpp svneol=native#text/plain
 boost/boost/typeof/register_functions.hpp svneol=native#text/plain
 boost/boost/typeof/register_functions_iterate.hpp svneol=native#text/plain
