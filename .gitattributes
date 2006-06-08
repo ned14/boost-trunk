@@ -3479,6 +3479,7 @@ boost/libs/thread/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/thread/test/test.mcp -text svneol=unset#unset
 boost/libs/thread/test/test_barrier.cpp svneol=native#text/plain
 boost/libs/thread/test/test_condition.cpp svneol=native#text/plain
+boost/libs/thread/test/test_lock_concept.cpp svneol=native#text/plain
 boost/libs/thread/test/test_mutex.cpp svneol=native#text/plain
 boost/libs/thread/test/test_once.cpp svneol=native#text/plain
 boost/libs/thread/test/test_read_write_mutex.cpp svneol=native#text/plain
