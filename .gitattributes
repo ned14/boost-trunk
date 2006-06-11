@@ -3511,7 +3511,6 @@ boost/boost/type_traits/same_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/transform_traits.hpp svneol=native#text/plain
 boost/boost/type_traits/transform_traits_spec.hpp svneol=native#text/plain
 boost/boost/type_traits/type_with_alignment.hpp svneol=native#text/plain
-boost/boost/typeof/binding_workaround.hpp svneol=native#text/plain
 boost/boost/typeof/encode_decode.hpp svneol=native#text/plain
 boost/boost/typeof/encode_decode_params.hpp svneol=native#text/plain
 boost/boost/typeof/increment_registration_group.hpp svneol=native#text/plain
