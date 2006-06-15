@@ -11020,6 +11020,7 @@ boost/libs/wave/ChangeLog -text
 boost/libs/wave/build/Jamfile svneol=native#text/plain
 boost/libs/wave/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/wave/doc/acknowledgements.html svneol=native#text/html
+boost/libs/wave/doc/class_ref_ctxpolicy_depr.html svneol=native#text/html
 boost/libs/wave/doc/class_reference_context.html svneol=native#text/html
 boost/libs/wave/doc/class_reference_ctxpolicy.html svneol=native#text/html
 boost/libs/wave/doc/class_reference_filepos.html svneol=native#text/html
