@@ -3468,6 +3468,7 @@ boost/libs/thread/src/pthread/exceptions.cpp svneol=native#text/plain
 boost/libs/thread/src/pthread/mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/pthread/thread.cpp svneol=native#text/plain
 boost/libs/thread/src/pthread/timeconv.inl -text
+boost/libs/thread/src/pthread/xtime.cpp svneol=native#text/plain
 boost/libs/thread/src/win32/exceptions.cpp svneol=native#text/plain
 boost/libs/thread/src/win32/thread.cpp svneol=native#text/plain
 boost/libs/thread/src/win32/timeconv.inl -text
