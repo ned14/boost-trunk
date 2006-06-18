@@ -10024,8 +10024,11 @@ boost/libs/statechart/doc/future_and_history.html svneol=native#text/html
 boost/libs/statechart/doc/index.html svneol=native#text/html
 boost/libs/statechart/doc/performance.html svneol=native#text/html
 boost/libs/statechart/doc/rationale.html svneol=native#text/html
+boost/libs/statechart/doc/rationale.pdf -text svneol=unset#application/pdf
 boost/libs/statechart/doc/reference.html svneol=native#text/html
+boost/libs/statechart/doc/reference.pdf -text svneol=unset#application/pdf
 boost/libs/statechart/doc/tutorial.html svneol=native#text/html
+boost/libs/statechart/doc/tutorial.pdf -text svneol=unset#application/pdf
 boost/libs/statechart/doc/uml_mapping.html svneol=native#text/html
 boost/libs/statechart/example/BitMachine/BitMachine.cpp svneol=native#text/plain
 boost/libs/statechart/example/BitMachine/BitMachine.vcproj -text
