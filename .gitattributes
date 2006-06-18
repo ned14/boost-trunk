@@ -9452,10 +9452,6 @@ boost/libs/statechart/test/InvalidTransitionTest1.cpp svneol=native#text/plain
 boost/libs/statechart/test/InvalidTransitionTest1.vcproj -text
 boost/libs/statechart/test/InvalidTransitionTest2.cpp svneol=native#text/plain
 boost/libs/statechart/test/InvalidTransitionTest2.vcproj -text
-boost/libs/statechart/test/InvalidTransitionTest3.cpp svneol=native#text/plain
-boost/libs/statechart/test/InvalidTransitionTest3.vcproj -text
-boost/libs/statechart/test/InvalidTransitionTest4.cpp svneol=native#text/plain
-boost/libs/statechart/test/InvalidTransitionTest4.vcproj -text
 boost/libs/statechart/test/Jamfile svneol=native#text/plain
 boost/libs/statechart/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/statechart/test/OuterOrthogonal.hpp svneol=native#text/plain
