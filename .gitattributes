@@ -11833,6 +11833,10 @@ boost/tools/build/v2/example/libraries/util/foo/include/lib1.h svneol=native#tex
 boost/tools/build/v2/example/make/Jamroot -text
 boost/tools/build/v2/example/make/main.cpp.pro -text
 boost/tools/build/v2/example/make/readme.txt svneol=native#text/plain
+boost/tools/build/v2/example/python_modules/Jamroot -text
+boost/tools/build/v2/example/python_modules/python_helpers.jam svneol=native#text/plain
+boost/tools/build/v2/example/python_modules/python_helpers.py svneol=native#text/x-python
+boost/tools/build/v2/example/python_modules/readme.txt svneol=native#text/plain
 boost/tools/build/v2/example/qt/README.txt svneol=native#text/plain
 boost/tools/build/v2/example/qt/qt3/hello/Jamroot -text
 boost/tools/build/v2/example/qt/qt3/hello/canvas.cpp svneol=native#text/plain
