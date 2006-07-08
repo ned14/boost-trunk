@@ -433,6 +433,7 @@ boost/boost/config/platform/qnxnto.hpp svneol=native#text/plain
 boost/boost/config/platform/solaris.hpp svneol=native#text/plain
 boost/boost/config/platform/win32.hpp svneol=native#text/plain
 boost/boost/config/posix_features.hpp svneol=native#text/plain
+boost/boost/config/prefix.hpp svneol=native#text/plain
 boost/boost/config/requires_threads.hpp svneol=native#text/plain
 boost/boost/config/select_compiler_config.hpp svneol=native#text/plain
 boost/boost/config/select_platform_config.hpp svneol=native#text/plain
