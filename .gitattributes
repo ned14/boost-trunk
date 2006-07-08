@@ -10020,6 +10020,7 @@ boost/libs/statechart/doc/ThrowingTransitionAction.gif -text svneol=unset#image/
 boost/libs/statechart/doc/TransitionsAcrossOrthogonalRegions.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/acknowledgments.html svneol=native#text/html
 boost/libs/statechart/doc/configuration.html svneol=native#text/html
+boost/libs/statechart/doc/contact.html svneol=native#text/html
 boost/libs/statechart/doc/definitions.html svneol=native#text/html
 boost/libs/statechart/doc/faq.html svneol=native#text/html
 boost/libs/statechart/doc/future_and_history.html svneol=native#text/html
