@@ -12262,6 +12262,7 @@ boost/tools/inspect/long_name_check.cpp svneol=native#text/plain
 boost/tools/inspect/long_name_check.hpp svneol=native#text/plain
 boost/tools/inspect/minmax_check.cpp svneol=native#text/plain
 boost/tools/inspect/minmax_check.hpp svneol=native#text/plain
+boost/tools/inspect/run_inspect.sh svneol=native#text/x-sh
 boost/tools/inspect/tab_check.cpp svneol=native#text/plain
 boost/tools/inspect/tab_check.hpp svneol=native#text/plain
 boost/tools/inspect/wrong_line_ends_test.cpp svneol=native#text/plain
