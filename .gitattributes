@@ -9340,7 +9340,6 @@ boost/libs/statechart/doc/CameraWithHistory2.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/DeepHistoryLimitation1.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/DeepHistoryLimitation2.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/EventDispatch.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/ExceptionsAndOrthogonalStates.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/HelloWorld.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/JoinAndFork.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/LCA.gif -text svneol=unset#image/gif
@@ -9363,7 +9362,6 @@ boost/libs/statechart/doc/StopWatch.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/ThrowingEntryAction.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/ThrowingInStateReaction.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/ThrowingTransitionAction.gif -text svneol=unset#image/gif
-boost/libs/statechart/doc/TransitionsAcrossOrthogonalRegions.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/acknowledgments.html svneol=native#text/html
 boost/libs/statechart/doc/configuration.html svneol=native#text/html
 boost/libs/statechart/doc/definitions.html svneol=native#text/html
@@ -9472,8 +9470,6 @@ boost/libs/statechart/test/TypeInfoTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TypeInfoTest.vcproj -text
 boost/libs/statechart/test/UnconsumedResultTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/UnconsumedResultTest.vcproj -text
-boost/libs/statechart/test/UnsupportedDeepHistoryTest.cpp svneol=native#text/plain
-boost/libs/statechart/test/UnsupportedDeepHistoryTest.vcproj -text
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/Jamfile.v2 svneol=native#text/plain
 boost/libs/static_assert/doc/Jamfile.v2 svneol=native#text/plain
