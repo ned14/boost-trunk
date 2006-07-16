@@ -8442,7 +8442,6 @@ boost/libs/regex/test/regress/test_sets.cpp svneol=native#text/plain
 boost/libs/regex/test/regress/test_simple_repeats.cpp svneol=native#text/plain
 boost/libs/regex/test/regress/test_tricky_cases.cpp svneol=native#text/plain
 boost/libs/regex/test/regress/test_unicode.cpp svneol=native#text/plain
-boost/libs/regex/test/regress/tests.txt svneol=native#text/plain
 boost/libs/regex/test/regress/vc6-stlport.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc6.mak svneol=native#text/plain
 boost/libs/regex/test/regress/vc7.mak svneol=native#text/plain
