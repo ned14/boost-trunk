@@ -7477,7 +7477,6 @@ boost/libs/numeric/ublas/bench4/bench41.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/bench4/bench42.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/bench4/bench43.cpp svneol=native#text/plain
 boost/libs/numeric/ublas/doc/Release_notes.txt svneol=native#text/plain
-boost/libs/numeric/ublas/doc/array_adaptor.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/banded.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/blas.htm svneol=native#text/html
 boost/libs/numeric/ublas/doc/bounded_array.htm svneol=native#text/html
