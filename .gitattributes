@@ -3452,6 +3452,8 @@ boost/libs/thread/doc/xtime-ref.xml svneol=native#text/xml
 boost/libs/thread/example/.cvsignore -text
 boost/libs/thread/example/Jamfile svneol=native#text/plain
 boost/libs/thread/example/Jamfile.v2 svneol=native#text/plain
+boost/libs/thread/example/Jamrules svneol=native#text/plain
+boost/libs/thread/example/boost-build.jam svneol=native#text/plain
 boost/libs/thread/example/condition.cpp svneol=native#text/plain
 boost/libs/thread/example/monitor.cpp svneol=native#text/plain
 boost/libs/thread/example/mutex.cpp svneol=native#text/plain
