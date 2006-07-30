@@ -6972,6 +6972,7 @@ boost/libs/optional/test/optional_test_ref_fail4.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_tie.cpp svneol=native#text/plain
 boost/libs/parameter/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/parameter/doc/html/index.html svneol=native#text/html
+boost/libs/parameter/doc/html/python.html svneol=native#text/html
 boost/libs/parameter/doc/html/reference.html svneol=native#text/html
 boost/libs/parameter/doc/html/rst.css svneol=native#text/css
 boost/libs/parameter/doc/index.rst svneol=native#text/plain
@@ -9340,6 +9341,7 @@ boost/libs/statechart/doc/CameraWithHistory2.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/DeepHistoryLimitation1.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/DeepHistoryLimitation2.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/EventDispatch.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/ExceptionsAndOrthStates.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/HelloWorld.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/JoinAndFork.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/LCA.gif -text svneol=unset#image/gif
@@ -9362,6 +9364,7 @@ boost/libs/statechart/doc/StopWatch.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/ThrowingEntryAction.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/ThrowingInStateReaction.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/ThrowingTransitionAction.gif -text svneol=unset#image/gif
+boost/libs/statechart/doc/TransAcrossOrthRegions.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/acknowledgments.html svneol=native#text/html
 boost/libs/statechart/doc/configuration.html svneol=native#text/html
 boost/libs/statechart/doc/definitions.html svneol=native#text/html
@@ -9470,6 +9473,8 @@ boost/libs/statechart/test/TypeInfoTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/TypeInfoTest.vcproj -text
 boost/libs/statechart/test/UnconsumedResultTest.cpp svneol=native#text/plain
 boost/libs/statechart/test/UnconsumedResultTest.vcproj -text
+boost/libs/statechart/test/UnsuppDeepHistoryTest.cpp svneol=native#text/plain
+boost/libs/statechart/test/UnsuppDeepHistoryTest.vcproj -text
 boost/libs/static_assert/Jamfile svneol=native#text/plain
 boost/libs/static_assert/Jamfile.v2 svneol=native#text/plain
 boost/libs/static_assert/doc/Jamfile.v2 svneol=native#text/plain
@@ -10856,6 +10861,7 @@ boost/more/writingdoc/template/index.html svneol=native#text/html
 boost/more/writingdoc/template/overview.html svneol=native#text/html
 boost/more/writingdoc/template/rationale.html svneol=native#text/html
 boost/people/aleksey_gurtovoy.htm svneol=native#text/html
+boost/people/andreas_huber.html svneol=native#text/html
 boost/people/beman_dawes.html svneol=native#text/html
 boost/people/darin_adler.htm svneol=native#text/html
 boost/people/daryle_walker.html svneol=native#text/html
@@ -11177,6 +11183,10 @@ boost/tools/build/v2/example/libraries/util/foo/include/lib1.h svneol=native#tex
 boost/tools/build/v2/example/make/Jamroot -text
 boost/tools/build/v2/example/make/main.cpp.pro -text
 boost/tools/build/v2/example/make/readme.txt svneol=native#text/plain
+boost/tools/build/v2/example/python_modules/Jamroot -text
+boost/tools/build/v2/example/python_modules/python_helpers.jam svneol=native#text/plain
+boost/tools/build/v2/example/python_modules/python_helpers.py svneol=native#text/x-python
+boost/tools/build/v2/example/python_modules/readme.txt svneol=native#text/plain
 boost/tools/build/v2/example/qt/README.txt svneol=native#text/plain
 boost/tools/build/v2/example/qt/qt3/hello/Jamroot -text
 boost/tools/build/v2/example/qt/qt3/hello/canvas.cpp svneol=native#text/plain
