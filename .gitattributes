@@ -12245,6 +12245,7 @@ boost/tools/build/v2/util/sequence.jam svneol=native#text/plain
 boost/tools/build/v2/util/set.jam svneol=native#text/plain
 boost/tools/build/v2/util/string.jam svneol=native#text/plain
 boost/tools/build/v2/util/utility.jam svneol=native#text/plain
+boost/tools/common/time_string.hpp svneol=native#text/plain
 boost/tools/index.html svneol=native#text/html
 boost/tools/inspect/build/Jamfile svneol=native#text/plain
 boost/tools/inspect/build/Jamfile.v2 svneol=native#text/plain
