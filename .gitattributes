@@ -2013,6 +2013,7 @@ boost/boost/parameter/aux_/default.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/maybe.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/overloads.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/parameter_requirements.hpp svneol=native#text/plain
+boost/boost/parameter/aux_/parenthesized_type.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/preprocessor/flatten.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/preprocessor/for_each.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/python/invoker.hpp svneol=native#text/plain
