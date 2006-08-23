@@ -3622,6 +3622,7 @@ boost/boost/wave/grammars/cpp_intlit_grammar.hpp svneol=native#text/plain
 boost/boost/wave/grammars/cpp_literal_grammar_gen.hpp svneol=native#text/plain
 boost/boost/wave/grammars/cpp_predef_macros_gen.hpp svneol=native#text/plain
 boost/boost/wave/grammars/cpp_predef_macros_grammar.hpp svneol=native#text/plain
+boost/boost/wave/grammars/cpp_value_error.hpp svneol=native#text/plain
 boost/boost/wave/language_support.hpp svneol=native#text/plain
 boost/boost/wave/preprocessing_hooks.hpp svneol=native#text/plain
 boost/boost/wave/token_ids.hpp svneol=native#text/plain
