@@ -2690,6 +2690,7 @@ boost/boost/parameter/config.hpp svneol=native#text/plain
 boost/boost/parameter/keyword.hpp svneol=native#text/plain
 boost/boost/parameter/macros.hpp svneol=native#text/plain
 boost/boost/parameter/match.hpp svneol=native#text/plain
+boost/boost/parameter/name.hpp svneol=native#text/plain
 boost/boost/parameter/parameters.hpp svneol=native#text/plain
 boost/boost/parameter/preprocessor.hpp svneol=native#text/plain
 boost/boost/parameter/python.hpp svneol=native#text/plain
