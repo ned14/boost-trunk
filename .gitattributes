@@ -3842,6 +3842,7 @@ boost/doc/html/images/toc-plus.png -text svneol=unset#image/png
 boost/doc/html/images/up.png -text svneol=unset#image/png
 boost/doc/html/images/up_disabled.png -text svneol=unset#image/png
 boost/doc/html/images/warning.png -text svneol=unset#image/png
+boost/doc/html/jam.html svneol=native#text/html
 boost/doc/html/jam/building.html svneol=native#text/html
 boost/doc/html/lambda.html svneol=native#text/html
 boost/doc/html/program_options.html svneol=native#text/html
