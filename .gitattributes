@@ -3810,6 +3810,7 @@ boost/doc/html/CopyConstructible.html svneol=native#text/html
 boost/doc/html/any.html svneol=native#text/html
 boost/doc/html/array.html svneol=native#text/html
 boost/doc/html/bbv2.html svneol=native#text/html
+boost/doc/html/bbv2/installation.html svneol=native#text/html
 boost/doc/html/boost_math.html svneol=native#text/html
 boost/doc/html/boost_math/greatest_common_divisor_and_least_common_multiple.html svneol=native#text/html
 boost/doc/html/boost_math/inverse_complex.html svneol=native#text/html
