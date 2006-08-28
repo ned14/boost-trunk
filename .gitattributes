@@ -6307,11 +6307,9 @@ boost/libs/mpl/doc/src/refmanual/push_back.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/push_front.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/quote.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/range_c.rst svneol=native#text/plain
-boost/libs/mpl/doc/src/refmanual/refmanual.gen -text
 boost/libs/mpl/doc/src/refmanual/refmanual.py svneol=native#text/x-python
 boost/libs/mpl/doc/src/refmanual/refmanual.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/refmanual.toc -text
-boost/libs/mpl/doc/src/refmanual/refmanual.toc.~1.1.~ -text
 boost/libs/mpl/doc/src/refmanual/remove.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/remove_if.rst svneol=native#text/plain
 boost/libs/mpl/doc/src/refmanual/replace.rst svneol=native#text/plain
