@@ -13007,6 +13007,7 @@ boost/tools/jam/src/lists.h svneol=native#text/plain
 boost/tools/jam/src/make.c svneol=native#text/plain
 boost/tools/jam/src/make.h svneol=native#text/plain
 boost/tools/jam/src/make1.c svneol=native#text/plain
+boost/tools/jam/src/mem.h svneol=native#text/plain
 boost/tools/jam/src/mkjambase.c svneol=native#text/plain
 boost/tools/jam/src/modules.c svneol=native#text/plain
 boost/tools/jam/src/modules.h svneol=native#text/plain
