@@ -11484,7 +11484,6 @@ boost/libs/tr1/test/type_traits/tr1_remove_volatile_test.cpp svneol=native#text/
 boost/libs/tr1/test/type_traits/tr1_tky_abstract_type_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_tky_function_type_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_tky_incomp_type_test.cpp svneol=native#text/plain
-boost/libs/tr1/test/type_traits/tr1_tky_incomplete_type_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_tky_partial_spec_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_tricky_add_pointer_test.cpp svneol=native#text/plain
 boost/libs/tr1/test/type_traits/tr1_tricky_is_enum_test.cpp svneol=native#text/plain
