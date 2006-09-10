@@ -13056,6 +13056,7 @@ boost/tools/jam/src/variable.h svneol=native#text/plain
 boost/tools/jam/src/w32_getreg.c svneol=native#text/plain
 boost/tools/jam/src/yyacc.c svneol=native#text/plain
 boost/tools/jam/test/builtin_shell.jam svneol=native#text/plain
+boost/tools/jam/test/builtin_w32_getregnames.jam svneol=native#text/plain
 boost/tools/jam/test/test.bat svneol=native#text/plain
 boost/tools/jam/test/test.sh svneol=native#text/x-sh
 boost/tools/litre/cplusplus.py svneol=native#text/x-python
