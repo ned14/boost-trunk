@@ -5681,6 +5681,7 @@ boost/libs/fusion/doc/references.qbk svneol=native#text/plain
 boost/libs/fusion/doc/sequences.qbk svneol=native#text/plain
 boost/libs/fusion/doc/support.qbk svneol=native#text/plain
 boost/libs/fusion/doc/tuples.qbk svneol=native#text/plain
+boost/libs/fusion/example/cookbook/fill_em_up.cpp svneol=native#text/plain
 boost/libs/fusion/example/extension/Jamfile.v2 svneol=native#text/plain
 boost/libs/fusion/example/extension/detail/advance_impl.hpp svneol=native#text/plain
 boost/libs/fusion/example/extension/detail/at_impl.hpp svneol=native#text/plain
