@@ -746,6 +746,7 @@ boost/boost/fusion/iterator/mpl/fusion_iterator.hpp svneol=native#text/plain
 boost/boost/fusion/iterator/next.hpp svneol=native#text/plain
 boost/boost/fusion/iterator/prior.hpp svneol=native#text/plain
 boost/boost/fusion/iterator/value_of.hpp svneol=native#text/plain
+boost/boost/fusion/mpl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/adapted.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/adapted/array.hpp svneol=native#text/plain
