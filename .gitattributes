@@ -12771,6 +12771,7 @@ boost/tools/build/v2/test/rebuilds.py svneol=native#text/x-python
 boost/tools/build/v2/test/recursive.jam svneol=native#text/plain
 boost/tools/build/v2/test/regression.py svneol=native#text/x-python
 boost/tools/build/v2/test/relative_sources.py svneol=native#text/x-python
+boost/tools/build/v2/test/remove_requirement.py svneol=native#text/x-python
 boost/tools/build/v2/test/resolution.py svneol=native#text/x-python
 boost/tools/build/v2/test/searched_lib.py svneol=native#text/x-python
 boost/tools/build/v2/test/skipping.py svneol=native#text/x-python
