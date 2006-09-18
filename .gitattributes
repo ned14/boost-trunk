@@ -2681,6 +2681,7 @@ boost/boost/parameter/aux_/preprocessor/for_each.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/python/invoker.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/python/invoker_iterate.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/result_of0.hpp svneol=native#text/plain
+boost/boost/parameter/aux_/set.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/tag.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/tagged_argument.hpp svneol=native#text/plain
 boost/boost/parameter/aux_/template_keyword.hpp svneol=native#text/plain
