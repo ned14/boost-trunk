@@ -3421,6 +3421,7 @@ boost/boost/weak_ptr.hpp svneol=native#text/plain
 boost/libs/thread/build/.cvsignore -text
 boost/libs/thread/build/Jamfile svneol=native#text/plain
 boost/libs/thread/build/Jamfile.v2 svneol=native#text/plain
+boost/libs/thread/build/thread.jam svneol=native#text/plain
 boost/libs/thread/build/threads.jam svneol=native#text/plain
 boost/libs/thread/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/thread/doc/acknowledgements.xml svneol=native#text/xml
