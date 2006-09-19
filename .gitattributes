@@ -7039,6 +7039,7 @@ boost/libs/parameter/test/basics.cpp svneol=native#text/plain
 boost/libs/parameter/test/basics.hpp svneol=native#text/plain
 boost/libs/parameter/test/compose.cpp svneol=native#text/plain
 boost/libs/parameter/test/deduced.cpp svneol=native#text/plain
+boost/libs/parameter/test/deduced_unmatched_arg.cpp svneol=native#text/plain
 boost/libs/parameter/test/duplicates.cpp svneol=native#text/plain
 boost/libs/parameter/test/earwicker.cpp svneol=native#text/plain
 boost/libs/parameter/test/efficiency.cpp svneol=native#text/plain
