@@ -5591,7 +5591,6 @@ boost/libs/iterator/doc/filter_iterator.pdf -text svneol=unset#application/pdf
 boost/libs/iterator/doc/filter_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/filter_iterator_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/filter_iterator_eg.rst svneol=native#text/plain
-boost/libs/iterator/doc/filter_iterator_ref.html svneol=native#text/html
 boost/libs/iterator/doc/filter_iterator_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/func_output_iter_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/func_output_iter_ref.rst svneol=native#text/plain
@@ -5608,7 +5607,6 @@ boost/libs/iterator/doc/indirect_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_iterator_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_iterator_eg.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_iterator_ref.diff -text
-boost/libs/iterator/doc/indirect_iterator_ref.html svneol=native#text/html
 boost/libs/iterator/doc/indirect_iterator_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_reference_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/interoperability-revisited.rst svneol=native#text/plain
@@ -5623,7 +5621,6 @@ boost/libs/iterator/doc/iterator_adaptor_abstract.diff -text
 boost/libs/iterator/doc/iterator_adaptor_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor_body.diff -text
 boost/libs/iterator/doc/iterator_adaptor_body.rst svneol=native#text/plain
-boost/libs/iterator/doc/iterator_adaptor_ref.html svneol=native#text/html
 boost/libs/iterator/doc/iterator_adaptor_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor_tutorial.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_archetypes.html svneol=native#text/html
@@ -5643,7 +5640,6 @@ boost/libs/iterator/doc/iterator_traits.html svneol=native#text/html
 boost/libs/iterator/doc/iterator_traits.pdf -text svneol=unset#application/pdf
 boost/libs/iterator/doc/iterator_traits.rst svneol=native#text/plain
 boost/libs/iterator/doc/make_counting_iterator.rst svneol=native#text/plain
-boost/libs/iterator/doc/make_filter_iterator.html svneol=native#text/html
 boost/libs/iterator/doc/make_filter_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/make_reverse_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/make_transform_iterator.rst svneol=native#text/plain
