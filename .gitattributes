@@ -6933,7 +6933,6 @@ boost/libs/iterator/doc/indirect_reference_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/interoperability-revisited.rst svneol=native#text/plain
 boost/libs/iterator/doc/issues.html svneol=native#text/html
 boost/libs/iterator/doc/issues.rst svneol=native#text/plain
-boost/libs/iterator/doc/iter-issue-list.html svneol=native#text/html
 boost/libs/iterator/doc/iter-issue-list.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor.html svneol=native#text/html
 boost/libs/iterator/doc/iterator_adaptor.pdf -text svneol=unset#application/pdf
