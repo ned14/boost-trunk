@@ -2698,6 +2698,7 @@ boost/boost/parameter/name.hpp svneol=native#text/plain
 boost/boost/parameter/parameters.hpp svneol=native#text/plain
 boost/boost/parameter/preprocessor.hpp svneol=native#text/plain
 boost/boost/parameter/python.hpp svneol=native#text/plain
+boost/boost/parameter/value_type.hpp svneol=native#text/plain
 boost/boost/pending/bucket_sorter.hpp svneol=native#text/plain
 boost/boost/pending/container_traits.hpp svneol=native#text/plain
 boost/boost/pending/cstddef.hpp svneol=native#text/plain
