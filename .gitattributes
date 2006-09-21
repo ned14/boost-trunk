@@ -5581,7 +5581,6 @@ boost/libs/iterator/doc/counting_iterator_eg.rst svneol=native#text/plain
 boost/libs/iterator/doc/counting_iterator_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/default.css svneol=native#text/css
 boost/libs/iterator/doc/docutils.sty -text
-boost/libs/iterator/doc/facade-and-adaptor.diff -text
 boost/libs/iterator/doc/facade-and-adaptor.html svneol=native#text/html
 boost/libs/iterator/doc/facade-and-adaptor.pdf -text svneol=unset#application/pdf
 boost/libs/iterator/doc/facade-and-adaptor.rst svneol=native#text/plain
@@ -5606,7 +5605,6 @@ boost/libs/iterator/doc/indirect_iterator.pdf -text svneol=unset#application/pdf
 boost/libs/iterator/doc/indirect_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_iterator_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_iterator_eg.rst svneol=native#text/plain
-boost/libs/iterator/doc/indirect_iterator_ref.diff -text
 boost/libs/iterator/doc/indirect_iterator_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/indirect_reference_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/interoperability-revisited.rst svneol=native#text/plain
@@ -5617,9 +5615,7 @@ boost/libs/iterator/doc/iter-issue-list.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor.html svneol=native#text/html
 boost/libs/iterator/doc/iterator_adaptor.pdf -text svneol=unset#application/pdf
 boost/libs/iterator/doc/iterator_adaptor.rst svneol=native#text/plain
-boost/libs/iterator/doc/iterator_adaptor_abstract.diff -text
 boost/libs/iterator/doc/iterator_adaptor_abstract.rst svneol=native#text/plain
-boost/libs/iterator/doc/iterator_adaptor_body.diff -text
 boost/libs/iterator/doc/iterator_adaptor_body.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/iterator_adaptor_tutorial.rst svneol=native#text/plain
@@ -5696,7 +5692,6 @@ boost/libs/iterator/doc/transform_iterator.pdf -text svneol=unset#application/pd
 boost/libs/iterator/doc/transform_iterator.rst svneol=native#text/plain
 boost/libs/iterator/doc/transform_iterator_abstract.rst svneol=native#text/plain
 boost/libs/iterator/doc/transform_iterator_eg.rst svneol=native#text/plain
-boost/libs/iterator/doc/transform_iterator_ref.diff -text
 boost/libs/iterator/doc/transform_iterator_ref.rst svneol=native#text/plain
 boost/libs/iterator/doc/traversal.png -text svneol=unset#image/png
 boost/libs/iterator/doc/zip_iterator.html svneol=native#text/html
