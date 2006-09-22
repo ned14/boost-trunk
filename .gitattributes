@@ -13079,6 +13079,7 @@ boost/tools/jam/test/builtin_w32_getregnames.jam svneol=native#text/plain
 boost/tools/jam/test/stress_var_expand.jam svneol=native#text/plain
 boost/tools/jam/test/target_var.jam svneol=native#text/plain
 boost/tools/jam/test/test.bat svneol=native#text/plain
+boost/tools/jam/test/test.jam svneol=native#text/plain
 boost/tools/jam/test/test.sh svneol=native#text/x-sh
 boost/tools/litre/cplusplus.py svneol=native#text/x-python
 boost/tools/litre/litre.py svneol=native#text/x-python
