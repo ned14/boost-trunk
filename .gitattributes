@@ -680,6 +680,7 @@ boost/boost/functional/hash/Attic/pair.hpp svneol=native#text/plain
 boost/boost/functional/hash/Attic/set.hpp svneol=native#text/plain
 boost/boost/functional/hash/Attic/vector.hpp svneol=native#text/plain
 boost/boost/functional/hash/deque.hpp svneol=native#text/plain
+boost/boost/functional/hash/extensions.hpp svneol=native#text/plain
 boost/boost/functional/hash/hash.hpp svneol=native#text/plain
 boost/boost/functional/hash/list.hpp svneol=native#text/plain
 boost/boost/functional/hash/map.hpp svneol=native#text/plain
