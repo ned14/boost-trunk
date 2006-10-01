@@ -5693,7 +5693,6 @@ boost/libs/fusion/example/extension/detail/distance_impl.hpp svneol=native#text/
 boost/libs/fusion/example/extension/detail/end_impl.hpp svneol=native#text/plain
 boost/libs/fusion/example/extension/detail/equal_to_impl.hpp svneol=native#text/plain
 boost/libs/fusion/example/extension/detail/has_key_impl.hpp svneol=native#text/plain
-boost/libs/fusion/example/extension/detail/is_associative_impl.hpp svneol=native#text/plain
 boost/libs/fusion/example/extension/detail/is_sequence_impl.hpp svneol=native#text/plain
 boost/libs/fusion/example/extension/detail/is_view_impl.hpp svneol=native#text/plain
 boost/libs/fusion/example/extension/detail/next_impl.hpp svneol=native#text/plain
