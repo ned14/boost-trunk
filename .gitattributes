@@ -12719,6 +12719,7 @@ boost/tools/build/v2/test/notfile.py svneol=native#text/x-python
 boost/tools/build/v2/test/ordered_properties.py svneol=native#text/x-python
 boost/tools/build/v2/test/out_of_tree.py svneol=native#text/x-python
 boost/tools/build/v2/test/path_features.py svneol=native#text/x-python
+boost/tools/build/v2/test/pch.py svneol=native#text/x-python
 boost/tools/build/v2/test/prebuilt.py svneol=native#text/x-python
 boost/tools/build/v2/test/prebuilt/Jamfile svneol=native#text/plain
 boost/tools/build/v2/test/prebuilt/ext/Jamfile svneol=native#text/plain
