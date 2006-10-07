@@ -5749,6 +5749,7 @@ boost/libs/fusion/test/algorithm/replace_if.cpp svneol=native#text/plain
 boost/libs/fusion/test/algorithm/reverse.cpp svneol=native#text/plain
 boost/libs/fusion/test/algorithm/transform.cpp svneol=native#text/plain
 boost/libs/fusion/test/algorithm/zip.cpp svneol=native#text/plain
+boost/libs/fusion/test/algorithm/zip2.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/array.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/as_list.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/as_map.cpp svneol=native#text/plain
