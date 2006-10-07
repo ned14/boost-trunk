@@ -13124,6 +13124,7 @@ boost/tools/quickbook/doc/html/images/warning.png -text svneol=unset#image/png
 boost/tools/quickbook/doc/html/index.html svneol=native#text/html
 boost/tools/quickbook/doc/html/quickbook/change_log.html svneol=native#text/html
 boost/tools/quickbook/doc/html/quickbook/installation_and_configuration.html svneol=native#text/html
+boost/tools/quickbook/doc/html/quickbook/installation_and_configuration/debian__ubuntu.html svneol=native#text/html
 boost/tools/quickbook/doc/html/quickbook/installation_and_configuration/windows_2000__xp__2003__vista.html svneol=native#text/html
 boost/tools/quickbook/doc/html/quickbook/intro.html svneol=native#text/html
 boost/tools/quickbook/doc/html/quickbook/ref.html svneol=native#text/html
