@@ -89,7 +89,7 @@ local multi-threading = <library>/boost/thread//boost_thread
         ;
 
     test-suite "spirit.attribute"
-        : [ spirit-run closure_tests.cpp : : : $(opt-metrowerks) ]
+        : [ spirit-run dynamic_scope_tests.cpp : : : $(opt-metrowerks) ]
           [        run bug_000008.cpp : : : $(multi-threading) ]
           [ spirit-run parametric_tests.cpp ]
         ;
