@@ -1,1 +1,0 @@
-extern int dummy_variabled_need_to_suppress_empty_file_warning_on_hp_cxx_compiler;
