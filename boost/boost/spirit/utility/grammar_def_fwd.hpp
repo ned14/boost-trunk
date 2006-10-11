@@ -9,8 +9,11 @@
 #if !defined(BOOST_SPIRIT_GRAMMAR_DEF_FWD_HPP)
 #define BOOST_SPIRIT_GRAMMAR_DEF_FWD_HPP
 
-#include <boost/spirit/phoenix/tuples.hpp>
+#include <boost/fusion/sequence/container/vector.hpp>
+#include <boost/spirit/phoenix/core/limits.hpp>
+#include <boost/spirit/phoenix/core/limits.hpp>
 
+#include <boost/preprocessor/dec.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 #include <boost/preprocessor/facilities/intercept.hpp>
 
@@ -18,26 +21,23 @@
 #define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT PHOENIX_LIMIT
 #endif
 
-//  Calculate an integer rounded up to the nearest integer dividable by 3
-#if BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 12
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     15
-#elif BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 9
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     12
-#elif BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 6
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     9
-#elif BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 3
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     6
-#else
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     3
-#endif
+namespace boost { namespace fusion 
+{    
+    struct void_;
+}}
+
+namespace boost { namespace phoenix 
+{    
+    typedef fusion::void_ void_;
+}}
 
 namespace boost { namespace spirit {
 
     template <
         typename T,
         BOOST_PP_ENUM_BINARY_PARAMS(
-            BOOST_PP_DEC(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A),
-            typename T, = phoenix::nil_t BOOST_PP_INTERCEPT
+            BOOST_PP_DEC(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT),
+            typename T, = phoenix::void_ BOOST_PP_INTERCEPT
         )
     >
     class grammar_def;

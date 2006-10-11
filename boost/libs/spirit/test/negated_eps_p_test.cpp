@@ -15,7 +15,7 @@
 #include <string>
 
 using namespace boost::spirit;
-using namespace phoenix;
+using namespace boost::phoenix;
 
 int main()
 {
@@ -26,7 +26,7 @@ int main()
     bool f = false;
 
     rule<> start =
-    while_p(~eps_p(anychar_p[var(f) = true]))
+    while_p(~eps_p(anychar_p[ref(f) = true]))
     [
         anychar_p
     ];

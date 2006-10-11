@@ -144,7 +144,7 @@ namespace impl {
     }
 #endif  // BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_NODES
 
-#if BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_CLOSURES
+#if BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_DYNAMIC_SCOPES
     template <typename ResultT>
     inline ResultT &
     print_closure_info(ResultT &hit, int level, std::string const& name)
@@ -164,7 +164,7 @@ namespace impl {
         }
         return hit;
     }
-#endif // BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_CLOSURES
+#endif // BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_DYNAMIC_SCOPES
 
 }
 
@@ -290,7 +290,7 @@ namespace impl {
         ResultT&
         post_parse(ResultT& hit, ParserT const& p, ScannerT &scan)
         {
-#if BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_CLOSURES
+#if BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_DYNAMIC_SCOPES
             if (hit && trace_parser(p.derived())) {
             // for now, print out the return value only
                 return impl::print_closure_info(
@@ -299,7 +299,7 @@ namespace impl {
                     parser_name(p.derived())
                 );
             }
-#endif // BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_CLOSURES
+#endif // BOOST_SPIRIT_DEBUG_FLAGS & BOOST_SPIRIT_DEBUG_FLAGS_DYNAMIC_SCOPES
 
             return this->base_t::post_parse(hit, p, scan);
         }

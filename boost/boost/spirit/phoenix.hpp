@@ -1,5 +1,5 @@
 /*=============================================================================
-    Phoenix V1.2.1
+    Phoenix 2.0
     Copyright (c) 2001-2002 Joel de Guzman
 
     Use, modification and distribution is subject to the Boost Software
@@ -9,18 +9,15 @@
 #if !defined(BOOST_SPIRIT_PHOENIX_HPP)
 #define BOOST_SPIRIT_PHOENIX_HPP
 
-#include <boost/spirit/phoenix/tuples.hpp>
-#include <boost/spirit/phoenix/tuple_helpers.hpp>
-#include <boost/spirit/phoenix/actor.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/phoenix/composite.hpp>
-#include <boost/spirit/phoenix/functions.hpp>
-#include <boost/spirit/phoenix/operators.hpp>
-#include <boost/spirit/phoenix/special_ops.hpp>
-#include <boost/spirit/phoenix/statements.hpp>
-#include <boost/spirit/phoenix/binders.hpp>
-#include <boost/spirit/phoenix/closures.hpp>
-#include <boost/spirit/phoenix/casts.hpp>
-#include <boost/spirit/phoenix/new.hpp>
+#include <boost/spirit/phoenix/version.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/object.hpp>
+#include <boost/spirit/phoenix/bind.hpp>
+#include <boost/spirit/phoenix/container.hpp>
+#include <boost/spirit/phoenix/function.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
+#include <boost/spirit/phoenix/scope.hpp>
+#include <boost/spirit/phoenix/statement.hpp>
+#include <boost/spirit/phoenix/stl.hpp>
 
 #endif // !defined(BOOST_SPIRIT_PHOENIX_HPP)

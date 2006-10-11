@@ -5,29 +5,29 @@
 #ifndef XML_G_H
 #define XML_G_H
 #define BOOST_SPIRIT_DEBUG
-#ifndef BOOST_SPIRIT_CLOSURE_LIMIT
-#define BOOST_SPIRIT_CLOSURE_LIMIT  10
+#ifndef BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT
+#define BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT  10
 #endif
 
 #ifndef PHOENIX_LIMIT
 #define PHOENIX_LIMIT   10
 #endif
 
-#if BOOST_SPIRIT_CLOSURE_LIMIT < 6
-#undef BOOST_SPIRIT_CLOSURE_LIMIT
-#define BOOST_SPIRIT_CLOSURE_LIMIT  6
+#if BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT < 6
+#undef BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT
+#define BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT  6
 #endif
 
-#if PHOENIX_LIMIT < BOOST_SPIRIT_CLOSURE_LIMIT
+#if PHOENIX_LIMIT < BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT
 #undef PHOENIX_LIMIT
-#define PHOENIX_LIMIT BOOST_SPIRIT_CLOSURE_LIMIT
+#define PHOENIX_LIMIT BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT
 #endif
 
 #if 0
 #ifdef BOOST_SPIRIT_DEBUG_FLAGS
 #undef BOOST_SPIRIT_DEBUG_FLAGS
 #endif
-#define BOOST_SPIRIT_DEBUG_FLAGS (BOOST_SPIRIT_DEBUG_FLAGS_MAX - BOOST_SPIRIT_DEBUG_FLAGS_CLOSURES)
+#define BOOST_SPIRIT_DEBUG_FLAGS (BOOST_SPIRIT_DEBUG_FLAGS_MAX - BOOST_SPIRIT_DEBUG_FLAGS_DYNAMIC_SCOPES)
 #endif
 
 #include <boost/spirit/core.hpp>
@@ -46,10 +46,13 @@ using phoenix::arg2;
 using phoenix::construct_;
 using phoenix::var;
 
-struct str_cls:SP::closure<str_cls,std::string>
-{ member1 value;};
+struct str_cls:SP::dynamic_scope<str_cls,std::string>
+{ 
+    str_cls() : value(*this) {}
+    member1 value;
+};
 
-struct attrib_cls:SP::closure
+struct attrib_cls:SP::dynamic_scope
 <
     attrib_cls,
     std::pair<std::string,std::string>,
@@ -57,12 +60,13 @@ struct attrib_cls:SP::closure
     std::string
 >
 {
+    attrib_cls() : value(*this), first(*this), second(*this) {}
     member1 value;
     member2 first;
     member3 second;
 };
 
-struct tagged_cls:SP::closure
+struct tagged_cls:SP::dynamic_scope
 <
     tagged_cls,
     tag,
@@ -71,6 +75,7 @@ struct tagged_cls:SP::closure
     std::list<typename tag::variant_type>
 >
 {
+    tagged_cls() : value(*this), ID(*this), attribs(*this), children(*this) {}
     member1 value;
     member2 ID;
     member3 attribs;

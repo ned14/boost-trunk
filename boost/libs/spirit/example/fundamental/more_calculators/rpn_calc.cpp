@@ -18,14 +18,16 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/attribute.hpp>
-#include <boost/spirit/phoenix/functions.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
+#include <boost/spirit/phoenix/function.hpp>
 #include <iostream>
 #include <string>
 
 ///////////////////////////////////////////////////////////////////////////////
 using namespace std;
 using namespace boost::spirit;
-using namespace phoenix;
+using namespace boost::phoenix;
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -50,9 +52,9 @@ using namespace phoenix;
 //  to it, it's very easy to follow.
 //
 //  Note:   The top rule propagates the expression result (value) upwards
-//          to the calculator grammar self.val closure member which is
+//          to the calculator grammar self.val dynamic_scope member which is
 //          then visible outside the grammar (i.e. since self.val is the
-//          member1 of the closure, it becomes the attribute passed by
+//          member1 of the dynamic_scope, it becomes the attribute passed by
 //          the calculator to an attached semantic action. See the
 //          driver code that uses the calculator below).
 //
@@ -73,13 +75,14 @@ struct pow_
 //  Notice how power(x, y) is lazily implemented using Phoenix function.
 function<pow_> power;
 
-struct calc_closure : boost::spirit::closure<calc_closure, double, double>
+struct calc_dynamic_scope : boost::spirit::dynamic_scope<calc_dynamic_scope, double, double>
 {
+    calc_dynamic_scope() : x(*this), y(*this) {}
     member1 x;
     member2 y;
 };
 
-struct calculator : public grammar<calculator, calc_closure::context_t>
+struct calculator : public grammar<calculator, calc_dynamic_scope::context_t>
 {
     template <typename ScannerT>
     struct definition {
@@ -103,7 +106,7 @@ struct calculator : public grammar<calculator, calc_closure::context_t>
                 ;
         }
 
-        typedef rule<ScannerT, calc_closure::context_t> rule_t;
+        typedef rule<ScannerT, calc_dynamic_scope::context_t> rule_t;
         rule_t expr;
         rule<ScannerT> top;
 
@@ -134,7 +137,7 @@ main()
             break;
 
         double n = 0;
-        parse_info<> info = parse(str.c_str(), calc[var(n) = arg1], space_p);
+        parse_info<> info = parse(str.c_str(), calc[ref(n) = arg1], space_p);
 
         //  calc[var(n) = arg1] invokes the calculator and extracts
         //  the result of the computation. See calculator grammar

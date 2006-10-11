@@ -9,29 +9,36 @@
 ////////////////////////////////////////////////////////////////////////////
 //
 //  HTML/XML like tag matching grammar
-//  Demonstrates phoenix and closures and parametric parsers
-//  This is discussed in the "Closures" chapter in the Spirit User's Guide.
+//  Demonstrates phoenix and dynamic_scopes and parametric parsers
+//  This is discussed in the "Dynamic Scopes" chapter in the Spirit User's Guide.
 //
 //  [ JDG 6/30/2002 ]
 //
 ////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/attribute.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
+#include <boost/spirit/phoenix/object.hpp>
+#include <boost/spirit/phoenix/object.hpp>
+#include <boost/spirit/phoenix/object.hpp>
+#include <boost/spirit/phoenix/stl.hpp>
 #include <iostream>
 #include <string>
 
 ////////////////////////////////////////////////////////////////////////////
 using namespace std;
 using namespace boost::spirit;
-using namespace phoenix;
+using namespace boost::phoenix;
 
 ////////////////////////////////////////////////////////////////////////////
 //
 //  HTML/XML like tag matching grammar
 //
 ////////////////////////////////////////////////////////////////////////////
-struct tags_closure : boost::spirit::closure<tags_closure, string> 
+struct tags_dynamic_scope : boost::spirit::dynamic_scope<tags_dynamic_scope, string> 
 {
+    tags_dynamic_scope() : tag(*this) {}
     member1 tag;
 };
 
@@ -53,18 +60,18 @@ struct tags : public grammar<tags>
                             //  construct string from arg1 and arg2 lazily
                             //  and assign to element.tag
 
-                            element.tag = construct_<string>(arg1, arg2)
+                            element.tag = construct<string>(arg1, arg2)
                         ]
                     ]
                 >> '>';
 
-            end_tag = "</" >> f_str_p(element.tag) >> '>';
+            end_tag = "</" >> f_str_p(begin(element.tag), end(element.tag)) >> '>';
         }
 
-        rule<ScannerT, tags_closure::context_t> element;
+        rule<ScannerT, tags_dynamic_scope::context_t> element;
         rule<ScannerT> start_tag, end_tag;
 
-        rule<ScannerT, tags_closure::context_t> const&
+        rule<ScannerT, tags_dynamic_scope::context_t> const&
         start() const { return element; }
     };
 };

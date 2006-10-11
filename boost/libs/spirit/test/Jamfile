@@ -136,7 +136,7 @@ else
         ;
 
     test-suite "spirit.attribute"
-        : [ spirit-run $(spirit-src)closure_tests.cpp <template>opt-metrowerks ]
+        : [ spirit-run $(spirit-src)dynamic_scope_tests.cpp <template>opt-metrowerks ]
           [        run $(spirit-src)bug_000008.cpp <template>multi-threading ]
           [ spirit-run $(spirit-src)parametric_tests.cpp <template>normal ]
         ;

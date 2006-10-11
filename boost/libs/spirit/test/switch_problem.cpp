@@ -27,6 +27,7 @@
 #include <string>
 
 namespace spirit = boost::spirit;
+namespace phoenix = boost::phoenix;
 
 typedef unsigned int uint;
 
@@ -52,7 +53,7 @@ switch_grammar::definition<ScannerT>::definition(switch_grammar const & self)
     using boost::cref;
 
     using phoenix::arg1;
-    using phoenix::var;
+    using phoenix::ref;
 
     using spirit::case_p;
     using spirit::for_p;
@@ -63,11 +64,11 @@ switch_grammar::definition<ScannerT>::definition(switch_grammar const & self)
 
     expression =
         str_p("NNODES") >>
-        uint_p[var(nnodes) = arg1] >>
+        uint_p[ref(nnodes) = arg1] >>
 
-        for_p(var(index) = 1,
-              var(index) <= var(nnodes),
-              var(index)++)
+        for_p(ref(index) = 1,
+              ref(index) <= ref(nnodes),
+              ref(index)++)
         [
             limit_d(cref(index), cref(index))[uint_p] >>
 

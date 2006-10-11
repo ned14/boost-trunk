@@ -122,7 +122,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 using namespace std;
 using namespace boost::spirit;
-using namespace phoenix;
+using namespace boost::phoenix;
 
 struct ipv4_prefix_data
 {
@@ -152,15 +152,15 @@ struct ipv4 : public grammar<ipv4>
         {
             packet =
                 '\xff'
-                >> anychar_p[var(self.data.packet_len) = arg1]
+                >> anychar_p[ref(self.data.packet_len) = arg1]
                 >> payload
             ;
 
             payload =
-                anychar_p[var(self.data.header_len) = arg1]
-                >>  for_p(var(i) = 0, var(i) < var(self.data.header_len), ++var(i))
+                anychar_p[ref(self.data.header_len) = arg1]
+                >>  for_p(ref(i) = 0, ref(i) < ref(self.data.header_len), ++ref(i))
                     [
-                        anychar_p[var(self.data.header) += arg1]
+                        anychar_p[ref(self.data.header) += arg1]
                     ]
                 >> *ipv4_prefix
              ;
@@ -168,25 +168,25 @@ struct ipv4 : public grammar<ipv4>
             ipv4_prefix =
                 anychar_p
                 [
-                    var(temp.prefix_len) = arg1,
-                    var(temp.n0) = 0,
-                    var(temp.n1) = 0,
-                    var(temp.n2) = 0,
-                    var(temp.n3) = 0
+                    ref(temp.prefix_len) = arg1,
+                    ref(temp.n0) = 0,
+                    ref(temp.n1) = 0,
+                    ref(temp.n2) = 0,
+                    ref(temp.n3) = 0
                 ]
 
-                >>  if_p(var(temp.prefix_len) > 0x00)
+                >>  if_p(ref(temp.prefix_len) > 0x00)
                     [
-                        anychar_p[var(temp.n0) = arg1]
-                        >>  if_p(var(temp.prefix_len) > 0x08)
+                        anychar_p[ref(temp.n0) = arg1]
+                        >>  if_p(ref(temp.prefix_len) > 0x08)
                             [
-                                anychar_p[var(temp.n1) = arg1]
-                                >>  if_p(var(temp.prefix_len) > 0x10)
+                                anychar_p[ref(temp.n1) = arg1]
+                                >>  if_p(ref(temp.prefix_len) > 0x10)
                                     [
-                                        anychar_p[var(temp.n2) = arg1]
-                                        >>  if_p(var(temp.prefix_len) > 0x18)
+                                        anychar_p[ref(temp.n2) = arg1]
+                                        >>  if_p(ref(temp.prefix_len) > 0x18)
                                             [
-                                                anychar_p[var(temp.n3) = arg1]
+                                                anychar_p[ref(temp.n3) = arg1]
                                             ]
                                     ]
                             ]
@@ -249,7 +249,7 @@ parse_ipv4(char const* str, unsigned len)
         cout << "header length = " << as_byte(data.header_len) << endl;
         cout << "header = " << data.header << endl;
 
-        for_each(data.prefixes.begin(), data.prefixes.end(), print_prefix);
+        std::for_each(data.prefixes.begin(), data.prefixes.end(), print_prefix);
         cout << "-------------------------\n";
     }
     else

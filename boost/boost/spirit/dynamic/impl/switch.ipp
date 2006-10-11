@@ -23,8 +23,7 @@
 #include <boost/spirit/core/composite/composite.hpp>
 #include <boost/spirit/meta/as_parser.hpp>
 
-#include <boost/spirit/phoenix/actor.hpp>
-#include <boost/spirit/phoenix/tuples.hpp>
+#include <boost/spirit/phoenix/core.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -506,7 +505,7 @@ struct cond_actor {
     template <typename ScannerT>
     struct result
     {
-        typedef typename phoenix::actor_result<ActorT, phoenix::tuple<> >::type
+        typedef typename boost::result_of<ActorT()>::type
             type;
     };
 

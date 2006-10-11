@@ -37,7 +37,7 @@ namespace boost { namespace spirit {
     template <
         typename ScannerT, 
         unsigned long ID = 0,
-        typename ContextT = parser_context<> >
+        typename ContextT = parser_context>
     class rule_id 
         : public rule<ScannerT, ContextT, parser_tag<ID> >
     {
@@ -330,7 +330,7 @@ struct run_test
         typedef tree_node<node_t> tree_t;
 
         iterator_t text_begin = gram.pattern();
-        iterator_t text_end = text_begin + test_impl::string_length(text_begin);
+        iterator_t text_end = text_begin + string_length(text_begin);
 
         tree_parse_info<iterator_t, factory_t> info =
             ast_parse(text_begin, text_end, gram);

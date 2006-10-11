@@ -12,7 +12,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/core/parser.hpp>
-#include <boost/spirit/phoenix/actor.hpp>
+#include <boost/spirit/phoenix/core.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -28,8 +28,9 @@ namespace boost { namespace spirit
     struct lazy_parser : parser<lazy_parser<ActorT> >
     {
         typedef lazy_parser<ActorT> self_t;
-        typedef typename phoenix::actor_result<
-            ActorT, phoenix::tuple<> >::plain_type actor_result_t;
+        typedef typename boost::remove_reference<
+            typename boost::result_of<ActorT()>::type
+        >::type actor_result_t;
 
         template<typename ScannerT>
         struct result

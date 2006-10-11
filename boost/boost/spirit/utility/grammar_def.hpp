@@ -19,7 +19,10 @@
 #include <boost/preprocessor/enum_params.hpp>
 #include <boost/preprocessor/repeat.hpp>
 #include <boost/preprocessor/repeat_from_to.hpp>
-#include <boost/spirit/phoenix/tuples.hpp>
+#include <boost/fusion/sequence/container/vector.hpp>
+#include <boost/fusion/sequence/intrinsic/at.hpp>
+#include <boost/fusion/sequence/intrinsic/value_at.hpp>
+#include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/spirit/core/assert.hpp>
 #include <boost/spirit/utility/grammar_def_fwd.hpp>
 
@@ -42,13 +45,19 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // ensure BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT <= PHOENIX_LIMIT and
-//        BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT <= 15 and
-//        BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 0
 //
 ///////////////////////////////////////////////////////////////////////////////
 BOOST_STATIC_ASSERT(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT <= PHOENIX_LIMIT);
-BOOST_STATIC_ASSERT(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT <= 15);
-BOOST_STATIC_ASSERT(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 0);
+
+namespace boost { namespace fusion 
+{    
+    struct void_;
+}}
+
+namespace boost { namespace phoenix 
+{    
+    typedef fusion::void_ void_;
+}}
 
 //////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -79,12 +88,12 @@ namespace impl {
             ptr_type;
 
     public:
-        // If the type in question is phoenix::nil_t, then the returned type
-        // is still phoenix::nil_t, otherwise a constant pointer type to the
+        // If the type in question is phoenix::void_, then the returned type
+        // is still phoenix::void_, otherwise a constant pointer type to the
         // inspected type is returned.
         typedef typename boost::mpl::if_c<
-                    boost::is_same<T, phoenix::nil_t>::value,
-                    phoenix::nil_t,
+                    boost::is_same<T, phoenix::void_>::value,
+                    phoenix::void_,
                     ptr_type
                 >::type
             type;
@@ -95,11 +104,11 @@ namespace impl {
     struct assign_zero_to_tuple_member {
 
         template <typename TupleT>
-        static void do_(TupleT &t) { t[phoenix::tuple_index<N>()] = 0; }
+        static void do_(TupleT &t) { fusion::at_c<N>(t) = 0; }
     };
 
     template <int N>
-    struct assign_zero_to_tuple_member<N, phoenix::nil_t> {
+    struct assign_zero_to_tuple_member<N, phoenix::void_> {
 
         template <typename TupleT>
         static void do_(TupleT& /*t*/) {}
@@ -107,7 +116,7 @@ namespace impl {
 
     struct phoenix_nil_type {
 
-        typedef phoenix::nil_t type;
+        typedef phoenix::void_ type;
     };
 
     template <int N>
@@ -118,8 +127,8 @@ namespace impl {
         do_(TupleT &t)
         {
             typedef typename boost::mpl::eval_if_c<
-                        (N < TupleT::length),
-                        phoenix::tuple_element<N, TupleT>,
+                        (N < fusion::result_of::size<TupleT>::value),
+                        fusion::result_of::value_at_c<TupleT, N>,
                         phoenix_nil_type
                     >::type
                 element_type;
@@ -154,7 +163,7 @@ namespace impl {
 template <
     typename T,
     BOOST_PP_ENUM_PARAMS(
-        BOOST_PP_DEC(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A), typename T)
+        BOOST_PP_DEC(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT), typename T)
 >
 class grammar_def {
 
@@ -175,10 +184,10 @@ private:
         typename impl::make_const_pointer<T, BOOST_PP_CAT(T, N)>::type \
         /**/
 
-    typedef phoenix::tuple<
+    typedef fusion::vector<
             typename impl::make_const_pointer<T>::type,
             BOOST_PP_ENUM(
-                BOOST_PP_DEC(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A),
+                BOOST_PP_DEC(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT),
                 BOOST_SPIRIT_GRAMMARDEF_TUPLE_PARAM,
                 _
             )
@@ -197,8 +206,7 @@ protected:
     //      template <typename TC0, ...>
     //      void start_parsers (TC0 const &t0, ...)
     //      {
-    //          using phoenix::tuple_index_names::_1;
-    //          t[_1] = &t0;
+    //          fusion::at_c<0>(t) = &t0;
     //          ...
     //      }
     //
@@ -209,8 +217,7 @@ protected:
         BOOST_PP_CAT(TC, N) const &BOOST_PP_CAT(t, N) \
         /**/
     #define BOOST_SPIRIT_GRAMMARDEF_ENUM_ASSIGN(z, N, _) \
-        using phoenix::tuple_index_names::BOOST_PP_CAT(_, BOOST_PP_INC(N)); \
-        t[BOOST_PP_CAT(_, BOOST_PP_INC(N))] = &BOOST_PP_CAT(t, N); \
+        fusion::at_c<N>(t) = &BOOST_PP_CAT(t, N); \
         /**/
     #define BOOST_SPIRIT_GRAMMARDEF_ENUM_START(z, N, _) \
         template <BOOST_PP_ENUM_PARAMS_Z(z, BOOST_PP_INC(N), typename TC)> \
@@ -224,7 +231,7 @@ protected:
         /**/
 
     BOOST_PP_REPEAT(
-        BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A,
+        BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT,
         BOOST_SPIRIT_GRAMMARDEF_ENUM_START, _)
 
     #undef BOOST_SPIRIT_GRAMMARDEF_ENUM_START
@@ -248,10 +255,9 @@ protected:
 
     grammar_def()
     {
-        using phoenix::tuple_index_names::_1;
-        t[_1] = 0;
+        fusion::at_c<0>(t) = 0;
         BOOST_PP_REPEAT_FROM_TO(
-            1, BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A,
+            1, BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT,
             BOOST_SPIRIT_GRAMMARDEF_ENUM_INIT, _)
     }
 
@@ -266,19 +272,18 @@ public:
     //  the start_parser() function from inside the constructor of your
     //  embedded definition class to initialize the start parsers to be exposed
     //  from your grammar.
-        using phoenix::tuple_index_names::_1;
-        BOOST_SPIRIT_ASSERT(0 != t[_1]);
-        return *t[_1];
+        BOOST_SPIRIT_ASSERT(0 != fusion::at_c<0>(t));
+        return *fusion::at_c<0>(t);
     }
 
     template <int N>
-    typename phoenix::tuple_element<N, tuple_t>::crtype
+    typename fusion::result_of::at_c<tuple_t const, N>::type
     get_start_parser() const
     {
     //  If the following expression yields a compiler error, you have probably
     //  tried to access a start rule, which isn't exposed as such from your
     //  grammar.
-        BOOST_STATIC_ASSERT(N > 0 && N < tuple_t::length);
+        BOOST_STATIC_ASSERT(N > 0 && N < fusion::result_of::size<tuple_t>::value);
 
     //  If the following assertion is fired, you have probably forgot to call
     //  the start_parser() function from inside the constructor of your
@@ -287,16 +292,16 @@ public:
     //  Another reason may be, that there is a count mismatch between
     //  the number of template parameters to the grammar_def<> class and the
     //  number of parameters used while calling start_parsers().
-        BOOST_SPIRIT_ASSERT(0 != t[phoenix::tuple_index<N>()]);
+        BOOST_SPIRIT_ASSERT(0 != fusion::at_c<N>(t));
 
-        return t[phoenix::tuple_index<N>()];
+        return fusion::at_c<N>(t);
     }
 
 private:
     tuple_t t;
 };
 
-#undef BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A
+#undef BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT
 
 }} // namespace boost::spirit
 

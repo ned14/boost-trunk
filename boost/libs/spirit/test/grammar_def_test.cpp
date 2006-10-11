@@ -37,13 +37,14 @@ struct my_grammar1
     };
 };
 
-struct my_closure : boost::spirit::closure<my_closure, int>
+struct my_dynamic_scope : boost::spirit::dynamic_scope<my_dynamic_scope, int>
 {
+    my_dynamic_scope() : value(*this) {}
     member1 value;
 };
 
 struct my_grammar2
-    : boost::spirit::grammar<my_grammar2, my_closure::context_t>
+    : boost::spirit::grammar<my_grammar2, my_dynamic_scope::context_t>
 {
     template <typename Scanner>
     struct definition

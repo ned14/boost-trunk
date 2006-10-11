@@ -15,10 +15,10 @@ using namespace std;
 
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/attribute/parametric.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/phoenix/operators.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
 using namespace boost::spirit;
-using namespace phoenix;
+using namespace boost::phoenix;
 
 #include <boost/detail/lightweight_test.hpp>
 
@@ -54,7 +54,7 @@ void
 narrow_f_ch_p()
 {
     char ch;
-    rule<> r = anychar_p[var(ch) = arg1] >> *f_ch_p(const_(ch));
+    rule<> r = anychar_p[ref(ch) = arg1] >> *f_ch_p(cref(ch));
     parse_info<char const*> pi;
 
     pi = parse("aaaaaaaaa", r);
@@ -71,7 +71,7 @@ void
 wide_f_ch_p()
 {
     wchar_t ch;
-    wrule_t r = anychar_p[var(ch) = arg1] >> *f_ch_p(const_(ch));
+    wrule_t r = anychar_p[ref(ch) = arg1] >> *f_ch_p(cref(ch));
     parse_info<wchar_t const*> pi;
 
     pi = parse(L"aaaaaaaaa", r);
@@ -92,7 +92,7 @@ narrow_f_range_p()
 
     parse_info<char const*> pi;
 
-    rule<> r2 = *f_range_p(const_(from), const_(to));
+    rule<> r2 = *f_range_p(cref(from), cref(to));
     pi = parse("abcdefghijklmnopqrstuvwxyz", r2);
     BOOST_TEST(pi.hit);
     BOOST_TEST(pi.full);
@@ -111,7 +111,7 @@ wide_f_range_p()
 
     parse_info<wchar_t const*> pi;
 
-    wrule_t r2 = *f_range_p(const_(from), const_(to));
+    wrule_t r2 = *f_range_p(cref(from), cref(to));
     pi = parse(L"abcdefghijklmnopqrstuvwxyz", r2);
     BOOST_TEST(pi.hit);
     BOOST_TEST(pi.full);
@@ -129,7 +129,7 @@ narrow_f_str_p()
 
     char const* start = "kim";
     char const* end = start + length(start);
-    rule<> r3 = +f_str_p(const_(start), const_(end));
+    rule<> r3 = +f_str_p(cref(start), cref(end));
 
     pi = parse("kimkimkimkimkimkimkimkimkim", r3);
     BOOST_TEST(pi.hit);
@@ -151,7 +151,7 @@ wide_f_str_p()
 
     wchar_t const* start = L"kim";
     wchar_t const* end = start + length(start);
-    wrule_t r3 = +f_str_p(const_(start), const_(end));
+    wrule_t r3 = +f_str_p(cref(start), cref(end));
 
     pi = parse(L"kimkimkimkimkimkimkimkimkim", r3);
     BOOST_TEST(pi.hit);

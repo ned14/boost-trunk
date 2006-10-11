@@ -13,7 +13,7 @@ using namespace std;
 
 #define BOOST_SPIRIT_SWITCH_CASE_LIMIT 6
 #define BOOST_SPIRIT_SELECT_LIMIT 6
-#define PHOENIX_LIMIT 6
+#define BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT 6
 
 //#define BOOST_SPIRIT_DEBUG
 #include <boost/mpl/list.hpp>
@@ -27,7 +27,9 @@ using namespace std;
 #include <boost/spirit/core/non_terminal/grammar.hpp>
 #include <boost/spirit/dynamic/switch.hpp>
 #include <boost/spirit/dynamic/select.hpp>
-#include <boost/spirit/attribute/closure.hpp>
+#include <boost/spirit/attribute/dynamic_scope.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
 
 using namespace boost::spirit;
 
@@ -147,8 +149,9 @@ namespace test_grammars {
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Test the switch_p usage given an actor as the switch condition
-    struct select_result : public boost::spirit::closure<select_result, int>
+    struct select_result : boost::spirit::dynamic_scope<select_result, int>
     {
+        select_result() : val(*this) {}
         member1 val;
     };
 
@@ -160,7 +163,7 @@ namespace test_grammars {
         {
             definition(switch_grammar_actor_single const& /*self*/)
             {
-                using phoenix::arg1;
+                using boost::phoenix::arg1;
                 r = select_p('a')[r.val = arg1] >>
                     switch_p(r.val) [
                         case_p<0>(int_p)
@@ -181,7 +184,7 @@ namespace test_grammars {
         {
             definition(switch_grammar_actor_default_single1 const& /*self*/)
             {
-                using phoenix::arg1;
+                using boost::phoenix::arg1;
                 r = select_p('d')[r.val = arg1] >>
                     switch_p(r.val) [
                         default_p(str_p("default"))
@@ -202,7 +205,7 @@ namespace test_grammars {
         {
             definition(switch_grammar_actor_default_single2 const& /*self*/)
             {
-                using phoenix::arg1;
+                using boost::phoenix::arg1;
                 r = select_p('d')[r.val = arg1] >>
                     switch_p(r.val) [
                         default_p

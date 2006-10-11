@@ -9,8 +9,8 @@
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/actor/assign_actor.hpp>
 #include <boost/spirit/dynamic/lazy.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/phoenix/operators.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
 #include <boost/detail/lightweight_test.hpp>
 
 using namespace boost;

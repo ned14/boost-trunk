@@ -16,40 +16,23 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/core.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/phoenix/operators.hpp>
-#include <boost/spirit/phoenix/functions.hpp>
-#include <boost/spirit/phoenix/casts.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
+#include <boost/spirit/phoenix/stl.hpp>
+#include <boost/spirit/phoenix/object.hpp>
 #include <iostream>
 #include <string>
 
 ///////////////////////////////////////////////////////////////////////////////
 using namespace std;
 using namespace boost::spirit;
-using namespace phoenix;
+using namespace boost::phoenix;
 
 ///////////////////////////////////////////////////////////////////////////////
 //
 //  Our comma separated list parser
 //
 ///////////////////////////////////////////////////////////////////////////////
-struct push_back_impl
-{
-    template <typename Container, typename Item>
-    struct result
-    {
-        typedef void type;
-    };
-
-    template <typename Container, typename Item>
-    void operator()(Container& c, Item const& item) const
-    {
-        c.push_back(item);
-    }
-};
-
-function<push_back_impl> const push_back = push_back_impl();
-
 bool
 parse_identifiers(char const* str, vector<std::string>& v)
 {
@@ -59,13 +42,13 @@ parse_identifiers(char const* str, vector<std::string>& v)
         (
             (+alpha_p)
             [
-                push_back(var(v), construct_<std::string>(arg1, arg2))
+                push_back(ref(v), construct<std::string>(arg1, arg2))
             ]
             >>
             *(',' >>
                 (+alpha_p)
                 [
-                    push_back(var(v), construct_<std::string>(arg1, arg2))
+                    push_back(ref(v), construct<std::string>(arg1, arg2))
                 ]
             )
         )

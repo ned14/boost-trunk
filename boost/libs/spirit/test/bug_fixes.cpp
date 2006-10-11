@@ -49,7 +49,7 @@ void bug_001()
 //
 //  bug_001
 //
-//  mismatch closure return type bug
+//  mismatch dynamic_scope return type bug
 //  http://article.gmane.org/gmane.comp.parsers.spirit.general/3678
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -58,14 +58,15 @@ void bug_001()
 
 typedef std::string member_type;
 
-struct my_closure: closure<my_closure, member_type>
+struct my_dynamic_scope: dynamic_scope<my_dynamic_scope, member_type>
 {
+    my_dynamic_scope() : val(*this) {}
     member1 val;
 };
 
 void bug_002()
 {
-    rule<scanner<char const*>, my_closure::context_t> my_rule = real_p;
+    rule<scanner<char const*>, my_dynamic_scope::context_t> my_rule = real_p;
     BOOST_TEST(parse("1", my_rule).full);
 }
 

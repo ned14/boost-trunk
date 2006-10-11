@@ -25,22 +25,22 @@
 //  parser to return the overall sum.
 //
 //  To achive this when base ("bin" or "dec") is parsed, in semantic action
-//  we store a pointer to the appropriate numeric parser in the closure
+//  we store a pointer to the appropriate numeric parser in the dynamic_scope
 //  variable block.int_rule. Than, when we need to parse a number we use lazy_p
 //  parser to invoke the parser stored in the block.int_rule pointer.
 //
 //-----------------------------------------------------------------------------
 #include <cassert>
 #include <boost/cstdlib.hpp>
-#include <boost/spirit/phoenix.hpp>
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/symbols.hpp>
 #include <boost/spirit/attribute.hpp>
 #include <boost/spirit/dynamic.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
 
-using namespace boost;
-using namespace spirit;
-using namespace phoenix;
+using namespace boost::spirit;
+using namespace boost::phoenix;
 
 //-----------------------------------------------------------------------------
 //  my grammar
@@ -55,21 +55,22 @@ struct my_grammar
         typedef rule<ScannerT> rule_t;
         typedef stored_rule<ScannerT, parser_context<int> > number_rule_t;
 
-        struct block_closure;
-        typedef spirit::closure<
-            block_closure,
+        struct block_dynamic_scope;
+        typedef dynamic_scope<
+            block_dynamic_scope,
             int,
             typename number_rule_t::alias_t>
-        closure_base_t;
+        dynamic_scope_base_t;
 
-        struct block_closure : closure_base_t
+        struct block_dynamic_scope : dynamic_scope_base_t
         {           
-            typename closure_base_t::member1 sum;
-            typename closure_base_t::member2 int_rule;
+            block_dynamic_scope() : sum(*this), int_rule(*this) {}
+            typename dynamic_scope_base_t::member1 sum;
+            typename dynamic_scope_base_t::member2 int_rule;
         };
 
         // block rule type
-        typedef rule<ScannerT, typename block_closure::context_t> block_rule_t;
+        typedef rule<ScannerT, typename block_dynamic_scope::context_t> block_rule_t;
 
         block_rule_t block;
         rule_t block_item;
@@ -80,7 +81,7 @@ struct my_grammar
             block =
                     base[
                         block.sum = 0,
-                        // store a number rule in a closure member
+                        // store a number rule in a dynamic_scope member
                         block.int_rule = arg1
                     ]
                 >>  "{"
@@ -116,11 +117,11 @@ int main()
     parse_info<> info;
 
     int result;
-    info = parse("bin{1 dec{1 2 3} 10}", gram[var(result) = arg1], space_p);
+    info = parse("bin{1 dec{1 2 3} 10}", gram[ref(result) = arg1], space_p);
     assert(info.full);
     assert(result == 9);
 
-    return exit_success;
+    return 0;
 }
 
 //-----------------------------------------------------------------------------

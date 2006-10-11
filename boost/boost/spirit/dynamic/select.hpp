@@ -18,8 +18,9 @@
 #include <boost/preprocessor/facilities/intercept.hpp>
 
 #include <boost/spirit/core/parser.hpp>
-
-#include <boost/spirit/phoenix/tuples.hpp>
+#include <boost/fusion/sequence/container/vector.hpp>
+#include <boost/fusion/sequence/intrinsic/at.hpp>
+#include <boost/fusion/sequence/intrinsic/size.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -34,16 +35,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // ensure   BOOST_SPIRIT_SELECT_LIMIT <= PHOENIX_LIMIT and 
-//          BOOST_SPIRIT_SELECT_LIMIT > 0
-//          BOOST_SPIRIT_SELECT_LIMIT <= 15
-//
-//  [Pushed this down a little to make CW happy with BOOST_STATIC_ASSERT]
-//  [Otherwise, it complains: 'boost_static_assert_test_42' redefined]
 //
 ///////////////////////////////////////////////////////////////////////////////
 BOOST_STATIC_ASSERT(BOOST_SPIRIT_SELECT_LIMIT <= PHOENIX_LIMIT);
-BOOST_STATIC_ASSERT(BOOST_SPIRIT_SELECT_LIMIT > 0);
-BOOST_STATIC_ASSERT(BOOST_SPIRIT_SELECT_LIMIT <= 15);
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -51,17 +45,6 @@ BOOST_STATIC_ASSERT(BOOST_SPIRIT_SELECT_LIMIT <= 15);
 //  integer dividable by 3
 //
 ///////////////////////////////////////////////////////////////////////////////
-#if BOOST_SPIRIT_SELECT_LIMIT > 12
-#define BOOST_SPIRIT_SELECT_LIMIT_A     15
-#elif BOOST_SPIRIT_SELECT_LIMIT > 9
-#define BOOST_SPIRIT_SELECT_LIMIT_A     12
-#elif BOOST_SPIRIT_SELECT_LIMIT > 6
-#define BOOST_SPIRIT_SELECT_LIMIT_A     9
-#elif BOOST_SPIRIT_SELECT_LIMIT > 3
-#define BOOST_SPIRIT_SELECT_LIMIT_A     6
-#else
-#define BOOST_SPIRIT_SELECT_LIMIT_A     3
-#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -117,7 +100,7 @@ struct select_parser
         
         if (!scan.at_end()) {
             return impl::parse_tuple_element<
-                TupleT::length, result_t, TupleT, BehaviourT>::do_(t, scan);
+                fusion::result_of::size<TupleT>::value, result_t, TupleT, BehaviourT>::do_(t, scan);
         }
         return impl::select_match_gen<result_t, BehaviourT>::do_(scan);
     }
@@ -136,7 +119,7 @@ struct select_parser_gen {
     //
     //      template <typename ParserT0, ...>
     //      select_parser<
-    //          phoenix::tuple<
+    //          fusion::vector<
     //              typename impl::as_embedded_parser<ParserT0>::type,
     //              ...
     //          >,
@@ -148,7 +131,7 @@ struct select_parser_gen {
     //          typedef impl::as_embedded_parser<ParserT0> parser_t0;
     //          ...
     //
-    //          typedef phoenix::tuple< 
+    //          typedef fusion::vector< 
     //                  parser_t0::type,
     //                  ...
     //              > tuple_t; 
@@ -180,7 +163,7 @@ struct select_parser_gen {
             BOOST_PP_ENUM_PARAMS_Z(z, BOOST_PP_INC(N), typename ParserT)    \
         >                                                                   \
         select_parser<                                                      \
-            phoenix::tuple<                                                 \
+            fusion::vector<                                                 \
                 BOOST_PP_ENUM_ ## z(BOOST_PP_INC(N),                        \
                     BOOST_SPIRIT_SELECT_EMBEDDED, _)                        \
             >,                                                              \
@@ -195,7 +178,7 @@ struct select_parser_gen {
             BOOST_PP_REPEAT_ ## z(BOOST_PP_INC(N),                          \
                 BOOST_SPIRIT_SELECT_EMBEDDED_TYPEDEF, _)                    \
                                                                             \
-            typedef phoenix::tuple<                                         \
+            typedef fusion::vector<                                         \
                     BOOST_PP_ENUM_BINARY_PARAMS_Z(z, BOOST_PP_INC(N),       \
                         typename parser_t, ::type BOOST_PP_INTERCEPT)       \
                 > tuple_t;                                                  \
@@ -208,7 +191,7 @@ struct select_parser_gen {
         }                                                                   \
         /**/
         
-    BOOST_PP_REPEAT(BOOST_SPIRIT_SELECT_LIMIT_A, 
+    BOOST_PP_REPEAT(BOOST_SPIRIT_SELECT_LIMIT, 
         BOOST_SPIRIT_SELECT_PARSER, _)
         
     #undef BOOST_SPIRIT_SELECT_PARSER

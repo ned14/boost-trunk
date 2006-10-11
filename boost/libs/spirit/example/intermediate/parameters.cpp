@@ -12,7 +12,7 @@
 // Parser parameters are used to pass some values from the outer parsing scope
 // to the next inner scope. They can be imagined as the opposite to the return
 // value paradigm, which returns some value from the inner to the next outer
-// scope. See the "Closures" chapter in the User's Guide.
+// scope. See the "Dynamic Scope" chapter in the User's Guide.
 
 #include <string>
 #include <iostream>
@@ -26,15 +26,15 @@
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/symbols/symbols.hpp>
 
-#include <boost/spirit/phoenix/tuples.hpp>
-#include <boost/spirit/phoenix/tuple_helpers.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/attribute/closure.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
+#include <boost/spirit/phoenix/object.hpp>
+#include <boost/spirit/attribute/dynamic_scope.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 // used namespaces
 using namespace boost::spirit;
-using namespace phoenix;
+using namespace boost::phoenix;
 using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -96,11 +96,12 @@ private:
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-//  used closure type
+//  used dynamic_scope type
 //
 ///////////////////////////////////////////////////////////////////////////////
-struct var_decl_closure : boost::spirit::closure<var_decl_closure, declaration_type>
+struct var_decl_dynamic_scope : boost::spirit::dynamic_scope<var_decl_dynamic_scope, declaration_type>
 {
+    var_decl_dynamic_scope() : val(*this) {}
     member1 val;
 };
 
@@ -150,14 +151,14 @@ symbols_gen(symbol_inserter<T, boost::spirit::impl::tst<T, CharT> > const &add_,
 // The var_decl_list grammar parses variable declaration list
 
 struct var_decl_list :
-    public grammar<var_decl_list, var_decl_closure::context_t>
+    public grammar<var_decl_list, var_decl_dynamic_scope::context_t>
 {
     template <typename ScannerT>
     struct definition
     {
         definition(var_decl_list const &self)
         {
-        // pass variable type returned from 'type' to list closure member 0
+        // pass variable type returned from 'type' to list dynamic_scope member 0
             decl = type[self.val = arg1] >> +space_p >> list(self.val);
 
         // m0 to access arg 0 of list --> passing variable type down to ident
@@ -166,10 +167,10 @@ struct var_decl_list :
         // store identifier and type into the symbol table
             ident = (*alnum_p)[symbols_gen(symtab.add, ident.val)];
 
-        // the type of the decl is returned in type's closure member 0
+        // the type of the decl is returned in type's dynamic_scope member 0
             type =
-                    str_p("int")[type.val = construct_<string>(arg1, arg2)]
-                |   str_p("real")[type.val = construct_<string>(arg1, arg2)]
+                    str_p("int")[type.val = construct<string>(arg1, arg2)]
+                |   str_p("real")[type.val = construct<string>(arg1, arg2)]
                 ;
 
             BOOST_SPIRIT_DEBUG_RULE(decl);
@@ -182,7 +183,7 @@ struct var_decl_list :
         start() const { return decl; }
 
     private:
-        typedef rule<ScannerT, var_decl_closure::context_t> rule_t;
+        typedef rule<ScannerT, var_decl_dynamic_scope::context_t> rule_t;
         rule_t type;
         rule_t list;
         rule_t ident;

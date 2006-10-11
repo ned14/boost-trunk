@@ -13,7 +13,7 @@
 
 #include <boost/spirit/core/typeof.hpp>
 
-#include <boost/spirit/attribute/closure_fwd.hpp>
+#include <boost/spirit/attribute/dynamic_scope_fwd.hpp>
 
 namespace boost { namespace spirit {
 
@@ -37,28 +37,12 @@ BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::f_chseq,2)
 BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::f_strlit,2)
 
 
-// closure.hpp (has forward header)
+// dynamic_scope.hpp (has forward header)
 
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::closure,BOOST_SPIRIT_CLOSURE_LIMIT)
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::closure_context,1)
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::init_closure_context,1)
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::init_closure_parser,2)
-
-
-#if BOOST_SPIRIT_CLOSURE_LIMIT  > 12
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::closure,12)
-#endif
-#if BOOST_SPIRIT_CLOSURE_LIMIT > 9
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::closure, 9)
-#endif
-#if BOOST_SPIRIT_CLOSURE_LIMIT > 6
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::closure, 6)
-#endif
-#if BOOST_SPIRIT_CLOSURE_LIMIT > 3
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::closure, 3)
-#endif
-
-
+BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::dynamic_scope,BOOST_SPIRIT_DYNAMIC_SCOPE_LIMIT)
+BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::dynamic_scope_context,1)
+BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::init_dynamic_scope_context,1)
+BOOST_TYPEOF_REGISTER_TEMPLATE(boost::spirit::init_dynamic_scope_parser,2)
 
 #endif
 

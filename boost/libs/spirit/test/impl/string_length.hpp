@@ -6,14 +6,14 @@
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
-#if !defined(SPIRIT_TEST_IMPL_STRING_LEN_HPP)
-#define SPIRIT_TEST_IMPL_STRING_LEN_HPP
+#if !defined(SPIRIT_TEST_IMPL_STRING_len_HPP)
+#define SPIRIT_TEST_IMPL_STRING_len_HPP
 
 // We use our own string_len function instead of std::strlen
 // to avoid the namespace confusion on different compilers. Some
-// have it in namespace std. Some have it in global namespace. 
+// have itin namespace std. Some have it in global namespace. 
 // Some have it in both.
-namespace test_impl
+namespace
 {
     template <typename Char>
     inline unsigned int

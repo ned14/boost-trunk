@@ -28,11 +28,11 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 #if !defined(PHOENIX_LIMIT)
-#define PHOENIX_LIMIT 3
+#define PHOENIX_LIMIT 10
 #endif // !defined(PHOENIX_LIMIT)
 
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/attribute/parametric.hpp>
-#include <boost/spirit/attribute/closure.hpp>
+#include <boost/spirit/attribute/dynamic_scope.hpp>
 
 #endif // !defined(BOOST_SPIRIT_ATTRIBUTE_MAIN_HPP)

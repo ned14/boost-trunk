@@ -16,8 +16,10 @@
 #endif
 
 #if !defined(__MWERKS__) && !defined(__GNUC__)
-#error "typeof not supported by your compiler"
-#endif
+// Note: native typeof not supported by your compiler. 
+// Use Spirit typeof facility instead
+int main() { return 0; }
+#else
 
 #include <iostream>
 #include <boost/spirit/core.hpp>
@@ -44,4 +46,6 @@ main()
     std::cout << "SUCCESS!!!\n";
     return 0;
 }
+
+#endif
 

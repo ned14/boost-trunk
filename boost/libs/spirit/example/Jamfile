@@ -145,8 +145,8 @@ exe refactoring
 
 exe regular_expression
     : fundamental/regular_expression.cpp
+      <lib>../../regex/build/boost_regex
     : <sysinclude>$(BOOST_ROOT)
-    :
     ;
 
 exe roman_numerals
@@ -261,6 +261,7 @@ exe parameters
 
 exe regex_convert
     : intermediate/regex_convert.cpp
+      <lib>../../regex/build/boost_regex
     : <sysinclude>$(BOOST_ROOT)
     :
     ;

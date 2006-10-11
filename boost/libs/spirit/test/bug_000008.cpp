@@ -11,7 +11,7 @@
   // or https://sf.net/mailarchive/forum.php?thread_id=2692308&forum_id=1595
   // for a description of the bug being tested for by this program
   //
-  // the problem should be solved with version 1.3 of phoenix/closures.hpp
+  // the problem should be solved with version 1.3 of phoenix/dynamic_scopes.hpp
 
 #if defined(BOOST_SPIRIT_DEBUG) && defined(__GNUC__) && defined(__WIN32__)
 // It seems that MinGW has some problems with threads and iostream ?
@@ -47,19 +47,21 @@ main()
 #define PHOENIX_THREADSAFE
 
 #include <boost/spirit/core.hpp>
-#include <boost/spirit/attribute/closure.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
+#include <boost/spirit/attribute/dynamic_scope.hpp>
 #include <boost/thread.hpp>
 
 static const int number_of_calls_to_parse_per_thread=20000;
 
-struct test_closure
-    : boost::spirit::closure<test_closure, char const*>
+struct test_dynamic_scope
+    : boost::spirit::dynamic_scope<test_dynamic_scope, char const*>
 {
+    test_dynamic_scope() : b(*this) {}
     member1 b;
 };
 
 struct test_grammar
-    : boost::spirit::grammar<test_grammar, test_closure::context_t>
+    : boost::spirit::grammar<test_grammar, test_dynamic_scope::context_t>
 {
     test_grammar() {}
 
@@ -68,7 +70,7 @@ struct test_grammar
     {
         definition(test_grammar const &self)
         {
-            using namespace phoenix;
+            using namespace boost::phoenix;
             rule = boost::spirit::epsilon_p[self.b = arg1];
         }
 
@@ -78,11 +80,12 @@ struct test_grammar
     };
 };
 
-test_grammar const g;
 
 void
 in_thread(void)
 {
+    test_grammar g; // should now be a local
+
     char const text[]="foo";
     for(int i=0; i<number_of_calls_to_parse_per_thread; ++i)
     {

@@ -50,13 +50,13 @@
     //  Basic constants are defined in debug/minimal.hpp.
     //
     ///////////////////////////////////////////////////////////////////////////
-    #define BOOST_SPIRIT_DEBUG_FLAGS_NODES        0x0001  // node diagnostics
-    #define BOOST_SPIRIT_DEBUG_FLAGS_ESCAPE_CHAR  0x0002  // escape_char_parse diagnostics
-    #define BOOST_SPIRIT_DEBUG_FLAGS_TREES        0x0004  // parse tree/ast diagnostics
-    #define BOOST_SPIRIT_DEBUG_FLAGS_CLOSURES     0x0008  // closure diagnostics
-    #define BOOST_SPIRIT_DEBUG_FLAGS_SLEX         0x8000  // slex diagnostics
+    #define BOOST_SPIRIT_DEBUG_FLAGS_NODES          0x0001  // node diagnostics
+    #define BOOST_SPIRIT_DEBUG_FLAGS_ESCAPE_CHAR    0x0002  // escape_char_parse diagnostics
+    #define BOOST_SPIRIT_DEBUG_FLAGS_TREES          0x0004  // parse tree/ast diagnostics
+    #define BOOST_SPIRIT_DEBUG_FLAGS_DYNAMIC_SCOPES 0x0008  // closure diagnostics
+    #define BOOST_SPIRIT_DEBUG_FLAGS_SLEX           0x8000  // slex diagnostics
 
-    #define BOOST_SPIRIT_DEBUG_FLAGS_MAX          0xFFFF  // print maximal diagnostics
+    #define BOOST_SPIRIT_DEBUG_FLAGS_MAX            0xFFFF  // print maximal diagnostics
 
     #if !defined(BOOST_SPIRIT_DEBUG_FLAGS)
     #define BOOST_SPIRIT_DEBUG_FLAGS BOOST_SPIRIT_DEBUG_FLAGS_MAX

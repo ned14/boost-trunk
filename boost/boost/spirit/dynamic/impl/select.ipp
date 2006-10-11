@@ -12,6 +12,7 @@
 #include <boost/spirit/core/parser.hpp>
 #include <boost/spirit/core/composite/composite.hpp>
 #include <boost/spirit/meta/as_parser.hpp>
+#include <boost/fusion/sequence/intrinsic/value_at.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -60,21 +61,21 @@ struct select_match_gen<ResultT, select_default_fail> {
 template <int N, typename ResultT, typename TupleT, typename BehaviourT>
 struct parse_tuple_element {
 
-    BOOST_STATIC_CONSTANT(int, index = (TupleT::length - N));
+    BOOST_STATIC_CONSTANT(int, index = (fusion::result_of::size<TupleT>::value - N));
     
     template <typename ScannerT>
     static ResultT
     do_(TupleT const &t, ScannerT const &scan)
     {
-        typedef typename phoenix::tuple_element<index, TupleT>::type parser_t;
+        typedef typename fusion::result_of::value_at_c<TupleT, index>::type parser_t;
         typedef typename ScannerT::iterator_t                       iterator_t;
         typedef typename parser_result<parser_t, ScannerT>::type    result_t;
     
     iterator_t save(scan.first);
-    result_t result(t[phoenix::tuple_index<index>()].parse(scan));
+    result_t result(fusion::at_c<index>(t).parse(scan));
 
         if (result) {
-            return scan.create_match(result.length(), TupleT::length - N, 
+            return scan.create_match(result.length(), fusion::result_of::size<TupleT>::value - N, 
                 save, scan.first);
         }
         scan.first = save;    // reset the input stream 
@@ -86,21 +87,21 @@ struct parse_tuple_element {
 template <typename ResultT, typename TupleT, typename BehaviourT>
 struct parse_tuple_element<1, ResultT, TupleT, BehaviourT> {
 
-    BOOST_STATIC_CONSTANT(int, index = (TupleT::length - 1));
+    BOOST_STATIC_CONSTANT(int, index = (fusion::result_of::size<TupleT>::value - 1));
     
     template <typename ScannerT>
     static ResultT
     do_(TupleT const &t, ScannerT const &scan)
     {
-        typedef typename phoenix::tuple_element<index, TupleT>::type  parser_t;
+        typedef typename fusion::result_of::value_at_c<TupleT, index>::type  parser_t;
         typedef typename ScannerT::iterator_t                       iterator_t;
         typedef typename parser_result<parser_t, ScannerT>::type    result_t;
         
     iterator_t save(scan.first);
-    result_t result(t[phoenix::tuple_index<index>()].parse(scan));
+    result_t result(fusion::at_c<index>(t).parse(scan));
 
         if (result) {
-            return scan.create_match(result.length(), TupleT::length - 1, 
+            return scan.create_match(result.length(), fusion::result_of::size<TupleT>::value - 1, 
                 save, scan.first);
         }
         scan.first = save;    // reset the input stream 

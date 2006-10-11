@@ -9,15 +9,16 @@
 
 #include <boost/spirit/core.hpp>
 
-#include <boost/spirit/attribute/closure.hpp>
+#include <boost/spirit/attribute/dynamic_scope.hpp>
 
 #include <boost/spirit/tree/ast.hpp>
 #include <boost/spirit/tree/parse_tree.hpp>
 
 using namespace boost::spirit;
 
-struct test_closure : public closure<test_closure, int>
+struct test_dynamic_scope : dynamic_scope<test_dynamic_scope, int>
 {
+    test_dynamic_scope() : value(*this) {}
     member1 value;
 };
 
@@ -30,12 +31,12 @@ struct test_grammar : public grammar<test_grammar>
         {
         }
 
-        rule<ScannerT, test_closure::context_t> const & start() const
+        rule<ScannerT, test_dynamic_scope::context_t> const & start() const
         {
             return first;
         }
 
-        rule<ScannerT, test_closure::context_t> first;
+        rule<ScannerT, test_dynamic_scope::context_t> first;
     };
 };
 

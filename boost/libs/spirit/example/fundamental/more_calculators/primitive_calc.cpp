@@ -15,15 +15,15 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/core.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/phoenix/operators.hpp>
+#include <boost/spirit/phoenix/core.hpp>
+#include <boost/spirit/phoenix/operator.hpp>
 #include <iostream>
 #include <string>
 
 ///////////////////////////////////////////////////////////////////////////////
 using namespace std;
 using namespace boost::spirit;
-using namespace phoenix;
+using namespace boost::phoenix;
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -37,9 +37,9 @@ bool primitive_calc(IteratorT first, IteratorT last, double& n)
 
         //  Begin grammar
         (
-            real_p[var(n) = arg1]
-            >> *(   ('+' >> real_p[var(n) += arg1])
-                |   ('-' >> real_p[var(n) -= arg1])
+            real_p[ref(n) = arg1]
+            >> *(   ('+' >> real_p[ref(n) += arg1])
+                |   ('-' >> real_p[ref(n) -= arg1])
                 )
         )
         ,

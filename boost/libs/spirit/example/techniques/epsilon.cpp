@@ -47,7 +47,7 @@ int main()
 
     int i(0);
 
-    r = int_p[var(i) += arg1];
+    r = int_p[phoenix::ref(i) += arg1];
 
     parse_info<> info = parse(
         "1",
