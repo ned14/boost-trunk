@@ -14,6 +14,7 @@
   // This code is borrowed from Spirit's bug_000008.cpp test for multithreads.
 #include <iostream>
 #include <boost/config.hpp>
+#include <boost/assert.hpp>
 #include <boost/detail/lightweight_test.hpp>
 
 #if defined(DONT_HAVE_BOOST)                        \
@@ -45,7 +46,7 @@ main()
 #include <boost/spirit/phoenix/scope/dynamic.hpp>
 #include <boost/thread.hpp>
 
-static const int number_of_calls_to_parse_per_thread=20000;
+static const int number_of_calls_per_thread=20000;
 
 struct test_dynamic : boost::phoenix::dynamic<int>
 {
@@ -58,14 +59,16 @@ in_thread(void)
 {
     test_dynamic s; // should now be a local
 
-    for (int i = 0; i < number_of_calls_to_parse_per_thread; ++i)
+    for (int i = 0; i < number_of_calls_per_thread; ++i)
     {
         boost::phoenix::dynamic_frame<test_dynamic::self_type> frame(s);
         (s.b = 123)();
         {
             boost::phoenix::dynamic_frame<test_dynamic::self_type> frame(s);
             (s.b = 456)();
+            BOOST_ASSERT((s.b == 456)());
         }
+        BOOST_ASSERT((s.b == 123)());
     }
 }
 
