@@ -1,5 +1,6 @@
 /*=============================================================================
     Copyright (c) 2006 Tobias Schwinger
+    Copyright (c) 2002-2006 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
     Use, modification and distribution is subject to the Boost Software
@@ -9,16 +10,29 @@
 #if !defined(BOOST_SPIRIT_POSITION_ITERATOR_FWD_HPP)
 #define BOOST_SPIRIT_POSITION_ITERATOR_FWD_HPP
 
+#include <string>
+#include <boost/detail/iterator.hpp> // for boost::detail::iterator_traits
 #include <boost/spirit/core/nil.hpp>
 
 namespace boost { namespace spirit {
 
-    struct file_position;
-    struct file_position_without_column;
+    template <typename String = std::string> 
+    struct file_position_base;
+    
+    typedef file_position_base<std::string> file_position;
+
+    template <typename String = std::string> 
+    struct file_position_without_column_base;
+
+    typedef file_position_without_column_base<std::string> file_position_without_column;
 
     template <
         typename ForwardIteratorT,
-        typename PositionT = file_position,
+        typename PositionT = file_position_base<
+            std::basic_string<
+                typename boost::detail::iterator_traits<ForwardIteratorT>::value_type
+            > 
+        >,
         typename SelfT = nil_t
     >
     class position_iterator;
@@ -26,7 +40,11 @@ namespace boost { namespace spirit {
     template
     <
         typename ForwardIteratorT,
-        typename PositionT = file_position
+        typename PositionT = file_position_base<
+            std::basic_string<
+                typename boost::detail::iterator_traits<ForwardIteratorT>::value_type
+            > 
+        >
     >
     class position_iterator2;
 
