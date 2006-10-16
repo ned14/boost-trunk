@@ -4669,6 +4669,7 @@ boost/libs/bind/test/bind_not_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_placeholder_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_rel_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_rv_sp_test.cpp svneol=native#text/plain
+boost/libs/bind/test/bind_rvalue_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_stateful_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_stdcall_mf_test.cpp svneol=native#text/plain
 boost/libs/bind/test/bind_stdcall_test.cpp svneol=native#text/plain
