@@ -12175,6 +12175,7 @@ boost/more/bibliography.html svneol=native#text/html
 boost/more/blanket-permission.txt svneol=native#text/plain
 boost/more/boost-dark-trans.png -text svneol=unset#image/png
 boost/more/boost_1_33_0.jpg -text svneol=unset#image/jpeg
+boost/more/boost_soc_06_overview.html svneol=native#text/html
 boost/more/borland_cpp.html svneol=native#text/html
 boost/more/bugs.htm svneol=native#text/html
 boost/more/count_bdy.htm svneol=native#text/html
