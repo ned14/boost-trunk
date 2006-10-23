@@ -9413,6 +9413,7 @@ boost/libs/statechart/doc/ThrowingTransitionAction.gif -text svneol=unset#image/
 boost/libs/statechart/doc/TransAcrossOrthRegions.gif -text svneol=unset#image/gif
 boost/libs/statechart/doc/acknowledgments.html svneol=native#text/html
 boost/libs/statechart/doc/configuration.html svneol=native#text/html
+boost/libs/statechart/doc/contact.html svneol=native#text/html
 boost/libs/statechart/doc/definitions.html svneol=native#text/html
 boost/libs/statechart/doc/faq.html svneol=native#text/html
 boost/libs/statechart/doc/future_and_history.html svneol=native#text/html
@@ -11243,6 +11244,7 @@ boost/tools/build/v2/example/libraries/util/foo/include/lib1.h svneol=native#tex
 boost/tools/build/v2/example/make/Jamroot -text
 boost/tools/build/v2/example/make/main.cpp.pro -text
 boost/tools/build/v2/example/make/readme.txt svneol=native#text/plain
+boost/tools/build/v2/example/pch/Jamroot -text
 boost/tools/build/v2/example/pch/include/pch.hpp svneol=native#text/plain
 boost/tools/build/v2/example/pch/source/hello_world.cpp svneol=native#text/plain
 boost/tools/build/v2/example/python_modules/Jamroot -text
