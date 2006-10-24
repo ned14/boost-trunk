@@ -2602,6 +2602,7 @@ boost/boost/numeric/interval/detail/bugs.hpp svneol=native#text/plain
 boost/boost/numeric/interval/detail/c99_rounding_control.hpp svneol=native#text/plain
 boost/boost/numeric/interval/detail/c99sub_rounding_control.hpp svneol=native#text/plain
 boost/boost/numeric/interval/detail/division.hpp svneol=native#text/plain
+boost/boost/numeric/interval/detail/ia64_rounding_control.hpp svneol=native#text/plain
 boost/boost/numeric/interval/detail/interval_prototype.hpp svneol=native#text/plain
 boost/boost/numeric/interval/detail/msvc_rounding_control.hpp svneol=native#text/plain
 boost/boost/numeric/interval/detail/ppc_rounding_control.hpp svneol=native#text/plain
