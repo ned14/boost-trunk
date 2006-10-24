@@ -12722,7 +12722,6 @@ boost/tools/build/v2/test/generators-test/x.l -text
 boost/tools/build/v2/test/generators-test/y.x_pro -text
 boost/tools/build/v2/test/generators-test/z.cpp svneol=native#text/plain
 boost/tools/build/v2/test/generators_test.py svneol=native#text/x-python
-boost/tools/build/v2/test/glob.py svneol=native#text/x-python
 boost/tools/build/v2/test/implicit_dependency.py svneol=native#text/x-python
 boost/tools/build/v2/test/indirect_conditional.py svneol=native#text/x-python
 boost/tools/build/v2/test/inherit_toolset.py svneol=native#text/x-python
@@ -12799,6 +12798,7 @@ boost/tools/build/v2/test/project-test4/lib2/Jamfile2 -text
 boost/tools/build/v2/test/project-test4/project-root.jam svneol=native#text/plain
 boost/tools/build/v2/test/project-test4/readme.txt svneol=native#text/plain
 boost/tools/build/v2/test/project_dependencies.py svneol=native#text/x-python
+boost/tools/build/v2/test/project_glob.py svneol=native#text/x-python
 boost/tools/build/v2/test/project_root_constants.py svneol=native#text/x-python
 boost/tools/build/v2/test/project_root_rule.py svneol=native#text/x-python
 boost/tools/build/v2/test/project_test1.py svneol=native#text/x-python
