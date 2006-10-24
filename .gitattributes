@@ -11393,7 +11393,6 @@ boost/tools/build/v2/test/generators-test/x.l -text
 boost/tools/build/v2/test/generators-test/y.x_pro -text
 boost/tools/build/v2/test/generators-test/z.cpp svneol=native#text/plain
 boost/tools/build/v2/test/generators_test.py svneol=native#text/x-python
-boost/tools/build/v2/test/glob.py svneol=native#text/x-python
 boost/tools/build/v2/test/implicit_dependency.py svneol=native#text/x-python
 boost/tools/build/v2/test/indirect_conditional.py svneol=native#text/x-python
 boost/tools/build/v2/test/inherit_toolset.py svneol=native#text/x-python
