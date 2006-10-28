@@ -5084,6 +5084,7 @@ boost/libs/conversion/test/Jamfile svneol=native#text/plain
 boost/libs/conversion/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/conversion/test/implicit_cast.cpp svneol=native#text/plain
 boost/libs/conversion/test/implicit_cast_fail.cpp svneol=native#text/plain
+boost/libs/conversion/test/lexical_cast_loopback_test.cpp svneol=native#text/plain
 boost/libs/crc/crc.html svneol=native#text/html
 boost/libs/crc/crc_example.cpp svneol=native#text/plain
 boost/libs/crc/crc_test.cpp svneol=native#text/plain
