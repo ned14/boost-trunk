@@ -1002,6 +1002,7 @@ boost/boost/fusion/sequence/view/single_view/single_view_iterator.hpp svneol=nat
 boost/boost/fusion/sequence/view/transform_view.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/detail/advance_impl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/detail/apply_transform_result.hpp svneol=native#text/plain
+boost/boost/fusion/sequence/view/transform_view/detail/at_impl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/detail/begin_impl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/detail/deref_impl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/detail/distance_impl.hpp svneol=native#text/plain
