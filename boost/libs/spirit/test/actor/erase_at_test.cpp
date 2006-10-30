@@ -12,8 +12,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "action_tests.hpp"
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/erase_actor.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/actor/erase_actor.hpp>
 #include <map>
 
 void erase_action_test()

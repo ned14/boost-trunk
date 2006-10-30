@@ -14,8 +14,8 @@
 //  [ Pavel Baranov 8/27/2003 ]
 // 
 /////////////////////////////////////////////////////////////////////////////// 
-#include <boost/spirit/core.hpp> 
-#include <boost/spirit/utility/functor_parser.hpp> 
+#include <boost/spirit/classic/core.hpp> 
+#include <boost/spirit/classic/utility/functor_parser.hpp> 
 #include <iostream> 
 #include <string> 
 

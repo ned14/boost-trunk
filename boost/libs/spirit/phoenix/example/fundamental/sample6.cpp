@@ -9,10 +9,10 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-#include <boost/spirit/phoenix/operators.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/phoenix/composite.hpp>
-#include <boost/spirit/phoenix/special_ops.hpp>
+#include <boost/spirit/classic/phoenix/operators.hpp>
+#include <boost/spirit/classic/phoenix/primitives.hpp>
+#include <boost/spirit/classic/phoenix/composite.hpp>
+#include <boost/spirit/classic/phoenix/special_ops.hpp>
 
 using namespace std;
 using namespace phoenix;

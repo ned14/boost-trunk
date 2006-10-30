@@ -32,11 +32,11 @@
 //-----------------------------------------------------------------------------
 #include <cassert>
 #include <boost/cstdlib.hpp>
-#include <boost/spirit/phoenix.hpp>
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/symbols.hpp>
-#include <boost/spirit/attribute.hpp>
-#include <boost/spirit/dynamic.hpp>
+#include <boost/spirit/classic/phoenix.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/symbols.hpp>
+#include <boost/spirit/classic/attribute.hpp>
+#include <boost/spirit/classic/dynamic.hpp>
 
 using namespace boost;
 using namespace spirit;

@@ -8,8 +8,8 @@
 =============================================================================*/
 
 #define BOOST_TYPEOF_EMULATION
-#include <boost/spirit/tree/typeof.hpp>
+#include <boost/spirit/classic/tree/typeof.hpp>
 
-#include <boost/spirit/tree/ast.hpp>
-#include <boost/spirit/tree/parse_tree.hpp>
+#include <boost/spirit/classic/tree/ast.hpp>
+#include <boost/spirit/classic/tree/parse_tree.hpp>
 

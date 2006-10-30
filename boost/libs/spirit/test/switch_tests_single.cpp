@@ -19,15 +19,15 @@ using namespace std;
 #include <boost/mpl/list.hpp>
 #include <boost/mpl/for_each.hpp>
 
-#include <boost/spirit/core/primitives/primitives.hpp>
-#include <boost/spirit/core/primitives/numerics.hpp>
-#include <boost/spirit/core/composite/actions.hpp>
-#include <boost/spirit/core/composite/operators.hpp>
-#include <boost/spirit/core/non_terminal/rule.hpp>
-#include <boost/spirit/core/non_terminal/grammar.hpp>
-#include <boost/spirit/dynamic/switch.hpp>
-#include <boost/spirit/dynamic/select.hpp>
-#include <boost/spirit/attribute/closure.hpp>
+#include <boost/spirit/classic/core/primitives/primitives.hpp>
+#include <boost/spirit/classic/core/primitives/numerics.hpp>
+#include <boost/spirit/classic/core/composite/actions.hpp>
+#include <boost/spirit/classic/core/composite/operators.hpp>
+#include <boost/spirit/classic/core/non_terminal/rule.hpp>
+#include <boost/spirit/classic/core/non_terminal/grammar.hpp>
+#include <boost/spirit/classic/dynamic/switch.hpp>
+#include <boost/spirit/classic/dynamic/select.hpp>
+#include <boost/spirit/classic/attribute/closure.hpp>
 
 using namespace boost::spirit;
 

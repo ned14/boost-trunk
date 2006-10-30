@@ -17,9 +17,9 @@
 #if qDebug
 #define BOOST_SPIRIT_DEBUG
 #endif
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/dynamic/if.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/dynamic/if.hpp>
+#include <boost/spirit/classic/actor/assign_actor.hpp>
 #include <boost/ref.hpp>
 #include "impl/string_length.hpp"
 

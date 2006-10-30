@@ -6,11 +6,11 @@
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
-#include <boost/spirit/dynamic/lazy.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/phoenix/operators.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/actor/assign_actor.hpp>
+#include <boost/spirit/classic/dynamic/lazy.hpp>
+#include <boost/spirit/classic/phoenix/primitives.hpp>
+#include <boost/spirit/classic/phoenix/operators.hpp>
 #include <boost/detail/lightweight_test.hpp>
 
 using namespace boost;

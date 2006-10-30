@@ -15,10 +15,10 @@
 //  [ JDG 1/12/2004 ]
 //
 ///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
-#include <boost/spirit/phoenix/operators.hpp>
-#include <boost/spirit/phoenix/functions.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/phoenix/primitives.hpp>
+#include <boost/spirit/classic/phoenix/operators.hpp>
+#include <boost/spirit/classic/phoenix/functions.hpp>
 #include <iostream>
 #include <string>
 

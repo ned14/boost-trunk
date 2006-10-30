@@ -15,8 +15,8 @@
 //  [ JDG 12/16/2003 ]
 //
 ///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/actor/assign_actor.hpp>
 #include <iostream>
 #include <string>
 

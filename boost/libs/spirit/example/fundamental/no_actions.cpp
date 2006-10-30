@@ -18,7 +18,7 @@
 #include <cassert>
 #include <iostream>
 #include <boost/cstdlib.hpp>
-#include <boost/spirit/core.hpp>
+#include <boost/spirit/classic/core.hpp>
 
 using namespace std;
 using namespace boost;

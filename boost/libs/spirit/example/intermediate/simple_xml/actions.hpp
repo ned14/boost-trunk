@@ -4,7 +4,7 @@
 
 #ifndef ACTIONS_H
 #define ACTIONS_H
-#include <boost/spirit/phoenix.hpp>
+#include <boost/spirit/classic/phoenix.hpp>
 #include <boost/variant.hpp>
 #include "tag.hpp"
 

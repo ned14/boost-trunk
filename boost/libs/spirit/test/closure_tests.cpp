@@ -11,10 +11,10 @@
 
 using namespace std;
 
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/attribute/closure.hpp>
-#include <boost/spirit/attribute/parametric.hpp>
-#include <boost/spirit/phoenix/binders.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/attribute/closure.hpp>
+#include <boost/spirit/classic/attribute/parametric.hpp>
+#include <boost/spirit/classic/phoenix/binders.hpp>
 using namespace boost::spirit;
 using namespace phoenix;
 

@@ -9,8 +9,8 @@
 #include <cassert>
 #include <iostream>
 #include <boost/cstdlib.hpp>
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/utility/distinct.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/utility/distinct.hpp>
 
 using namespace std;
 using namespace boost;

@@ -13,8 +13,8 @@
 //  [ JDG 9/18/2002 ]
 //
 ///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/symbols/symbols.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/symbols/symbols.hpp>
 #include <iostream>
 #include <stack>
 #include <functional>

@@ -8,10 +8,10 @@
 =============================================================================*/
 
 #define BOOST_TYPEOF_EMULATION
-#include <boost/spirit/dynamic/typeof.hpp>
-#include <boost/spirit/dynamic.hpp>
+#include <boost/spirit/classic/dynamic/typeof.hpp>
+#include <boost/spirit/classic/dynamic.hpp>
 
 // currently not in the masted header
-#include <boost/spirit/dynamic/switch.hpp>
-#include <boost/spirit/dynamic/select.hpp>
+#include <boost/spirit/classic/dynamic/switch.hpp>
+#include <boost/spirit/classic/dynamic/select.hpp>
 

@@ -11,11 +11,11 @@
 
 #define BOOST_SPIRIT_DEBUG
 
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/error_handling.hpp>
-#include <boost/spirit/iterator.hpp>
-#include <boost/spirit/symbols.hpp>
-#include <boost/spirit/utility.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/error_handling.hpp>
+#include <boost/spirit/classic/iterator.hpp>
+#include <boost/spirit/classic/symbols.hpp>
+#include <boost/spirit/classic/utility.hpp>
 
 using namespace boost::spirit;
 

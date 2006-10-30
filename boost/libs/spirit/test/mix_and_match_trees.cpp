@@ -15,9 +15,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/tree/ast.hpp>
-#include <boost/spirit/tree/parse_tree.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/tree/ast.hpp>
+#include <boost/spirit/classic/tree/parse_tree.hpp>
 
 using namespace boost::spirit;
 

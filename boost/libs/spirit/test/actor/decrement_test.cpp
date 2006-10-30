@@ -12,8 +12,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "action_tests.hpp"
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/decrement_actor.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/actor/decrement_actor.hpp>
 
 void decrement_action_test()
 {

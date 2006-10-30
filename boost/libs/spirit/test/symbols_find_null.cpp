@@ -6,9 +6,13 @@
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
-
-#include <boost/spirit/core/scanner/scanner.hpp>
-#include <boost/spirit/symbols/impl/tst.ipp>
+#include <boost/spirit/classic/core/config.hpp>
+#include <boost/spirit/classic/core/scanner/scanner.hpp>
+#if defined(BOOST_SPIRIT_CLASSIC_1_8)
+# include <boost/spirit/classic/v1_8/symbols/impl/tst.ipp>
+#else
+# include <boost/spirit/classic/v1_6/symbols/impl/tst.ipp>
+#endif
 #include <boost/utility/addressof.hpp>
 
 typedef char char_type;

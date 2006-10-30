@@ -12,8 +12,8 @@
 using namespace std;
 
 //#define BOOST_SPIRIT_DEBUG
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/utility/loops.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/utility/loops.hpp>
 using namespace boost::spirit;
 
 ///////////////////////////////////////////////////////////////////////////////

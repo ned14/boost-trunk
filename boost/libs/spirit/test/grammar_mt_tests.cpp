@@ -31,9 +31,9 @@ main()
 #define BOOST_SPIRIT_THREADSAFE
 
 #include <boost/thread/thread.hpp>
-#include <boost/spirit/core/non_terminal/grammar.hpp>
-#include <boost/spirit/core/non_terminal/rule.hpp>
-#include <boost/spirit/core/composite/epsilon.hpp>
+#include <boost/spirit/classic/core/non_terminal/grammar.hpp>
+#include <boost/spirit/classic/core/non_terminal/rule.hpp>
+#include <boost/spirit/classic/core/composite/epsilon.hpp>
 #include <boost/thread/xtime.hpp>
 #include <boost/ref.hpp>
 

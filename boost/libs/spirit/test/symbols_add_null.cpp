@@ -19,8 +19,13 @@ struct spirit_exception
     char const * message;
 };
 
-#include <boost/spirit/core/scanner/scanner.hpp>
-#include <boost/spirit/symbols/impl/tst.ipp>
+#include <boost/spirit/classic/core/config.hpp>
+#include <boost/spirit/classic/core/scanner/scanner.hpp>
+#if defined(BOOST_SPIRIT_CLASSIC_1_8)
+# include <boost/spirit/classic/v1_8/symbols/impl/tst.ipp>
+#else
+# include <boost/spirit/classic/v1_6/symbols/impl/tst.ipp>
+#endif
 #include <boost/utility/addressof.hpp>
 
 #include <boost/detail/lightweight_test.hpp>

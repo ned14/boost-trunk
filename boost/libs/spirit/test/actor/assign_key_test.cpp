@@ -12,14 +12,14 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "action_tests.hpp"
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/utility/confix.hpp>
-#include <boost/spirit/utility/lists.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/utility/confix.hpp>
+#include <boost/spirit/classic/utility/lists.hpp>
 #include <map>
 #include <cstring>
 #include <iostream>
-#include <boost/spirit/actor/assign_key_actor.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
+#include <boost/spirit/classic/actor/assign_key_actor.hpp>
+#include <boost/spirit/classic/actor/assign_actor.hpp>
 
 void assign_key_single_argument_test()
 {

@@ -9,8 +9,8 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-#include <boost/spirit/phoenix/functions.hpp>
-#include <boost/spirit/phoenix/primitives.hpp>
+#include <boost/spirit/classic/phoenix/functions.hpp>
+#include <boost/spirit/classic/phoenix/primitives.hpp>
 
 using namespace std;
 using namespace phoenix;

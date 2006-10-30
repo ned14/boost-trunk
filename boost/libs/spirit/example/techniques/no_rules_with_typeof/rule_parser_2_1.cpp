@@ -17,10 +17,10 @@
 
 #include <boost/typeof/typeof.hpp>
 
-#include <boost/spirit/core.hpp>
-#include <boost/spirit/core/typeof.hpp>
+#include <boost/spirit/classic/core.hpp>
+#include <boost/spirit/classic/core/typeof.hpp>
 
-#include <boost/spirit/utility/rule_parser.hpp>
+#include <boost/spirit/classic/utility/rule_parser.hpp>
 
 // Don't forget to
 #include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()

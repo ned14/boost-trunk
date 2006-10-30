@@ -7,8 +7,8 @@
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 
-#include <boost/spirit/core/primitives/primitives.hpp>
-#include <boost/spirit/core/non_terminal/rule.hpp>
+#include <boost/spirit/classic/core/primitives/primitives.hpp>
+#include <boost/spirit/classic/core/non_terminal/rule.hpp>
 
 int main()
 {
