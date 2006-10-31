@@ -12132,6 +12132,7 @@ boost/libs/xpressive/test/Jamfile svneol=native#text/plain
 boost/libs/xpressive/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/xpressive/test/c_traits.cpp svneol=native#text/plain
 boost/libs/xpressive/test/ext_/proto_fusion_s.cpp svneol=native#text/plain
+boost/libs/xpressive/test/ext_/toy_spirit.cpp svneol=native#text/plain
 boost/libs/xpressive/test/misc1.cpp svneol=native#text/plain
 boost/libs/xpressive/test/multiple_defs1.cpp svneol=native#text/plain
 boost/libs/xpressive/test/multiple_defs2.cpp svneol=native#text/plain
