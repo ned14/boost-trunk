@@ -1009,6 +1009,7 @@ boost/boost/fusion/sequence/view/transform_view/detail/distance_impl.hpp svneol=
 boost/boost/fusion/sequence/view/transform_view/detail/end_impl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/detail/next_impl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/detail/prior_impl.hpp svneol=native#text/plain
+boost/boost/fusion/sequence/view/transform_view/detail/value_at_impl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/detail/value_of_impl.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/transform_view.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/view/transform_view/transform_view_fwd.hpp svneol=native#text/plain
