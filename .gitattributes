@@ -5160,7 +5160,6 @@ boost/libs/graph/example/quick_tour.expected -text
 boost/libs/graph/example/reachable-loop-head.cpp svneol=native#text/plain
 boost/libs/graph/example/reachable-loop-tail.cpp svneol=native#text/plain
 boost/libs/graph/example/regression.cfg -text
-boost/libs/graph/example/regrtest.py svneol=native#text/x-python
 boost/libs/graph/example/remove_edge_if_bidir.cpp svneol=native#text/plain
 boost/libs/graph/example/remove_edge_if_bidir.expected -text
 boost/libs/graph/example/remove_edge_if_dir.cpp svneol=native#text/plain
