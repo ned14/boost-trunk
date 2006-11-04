@@ -4354,6 +4354,7 @@ boost/boost/xpressive/proto/compiler/transform.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/extends.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/fusion.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/make_expr.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/matches.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/operators.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/proto.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/proto_fwd.hpp svneol=native#text/plain
