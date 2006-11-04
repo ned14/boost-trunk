@@ -358,6 +358,7 @@ boost/boost/blank.hpp svneol=native#text/plain
 boost/boost/blank_fwd.hpp svneol=native#text/plain
 boost/boost/call_traits.hpp svneol=native#text/plain
 boost/boost/cast.hpp svneol=native#text/plain
+boost/boost/cerrno.hpp svneol=native#text/plain
 boost/boost/checked_delete.hpp svneol=native#text/plain
 boost/boost/compatibility/cpp_c_headers/cassert -text
 boost/boost/compatibility/cpp_c_headers/cctype -text
