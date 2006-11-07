@@ -3924,6 +3924,7 @@ boost/libs/array/array5.cpp svneol=native#text/plain
 boost/libs/array/doc/array.xml svneol=native#text/xml
 boost/libs/array/index.html svneol=native#text/html
 boost/libs/array/print.hpp svneol=native#text/plain
+boost/libs/asio/index.html svneol=native#text/html
 boost/libs/assign/doc/email_example.html svneol=native#text/html
 boost/libs/assign/doc/index.html svneol=native#text/html
 boost/libs/assign/doc/multi_index_container.html svneol=native#text/html
@@ -4714,6 +4715,7 @@ boost/libs/functional/mem_fun.html svneol=native#text/html
 boost/libs/functional/negators.html svneol=native#text/html
 boost/libs/functional/ptr_fun.html svneol=native#text/html
 boost/libs/functional/sublibs -text
+boost/libs/fusion/index.html svneol=native#text/html
 boost/libs/graph/LICENSE -text
 boost/libs/graph/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/graph/doc/AStarHeuristic.html svneol=native#text/html
@@ -5294,6 +5296,7 @@ boost/libs/integer/integer_traits_test.cpp svneol=native#text/plain
 boost/libs/integer/test/integer_mask_test.cpp svneol=native#text/plain
 boost/libs/integer/test/static_log2_test.cpp svneol=native#text/plain
 boost/libs/integer/test/static_min_max_test.cpp svneol=native#text/plain
+boost/libs/interprocess/index.html svneol=native#text/html
 boost/libs/io/doc/index.html svneol=native#text/html
 boost/libs/io/doc/ios_state.html svneol=native#text/html
 boost/libs/io/index.html svneol=native#text/html
