@@ -10886,6 +10886,7 @@ boost/libs/system/build/Jamfile svneol=native#text/plain
 boost/libs/system/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/system/doc/error_code.html svneol=native#text/html
 boost/libs/system/doc/system_error.html svneol=native#text/html
+boost/libs/system/index.html svneol=native#text/html
 boost/libs/system/src/error_code.cpp svneol=native#text/plain
 boost/libs/system/test/Jamfile svneol=native#text/plain
 boost/libs/system/test/Jamfile.v2 svneol=native#text/plain
