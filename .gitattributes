@@ -3924,7 +3924,6 @@ boost/libs/array/array5.cpp svneol=native#text/plain
 boost/libs/array/doc/array.xml svneol=native#text/xml
 boost/libs/array/index.html svneol=native#text/html
 boost/libs/array/print.hpp svneol=native#text/plain
-boost/libs/asio/index.html svneol=native#text/html
 boost/libs/assign/doc/email_example.html svneol=native#text/html
 boost/libs/assign/doc/index.html svneol=native#text/html
 boost/libs/assign/doc/multi_index_container.html svneol=native#text/html
