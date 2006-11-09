@@ -920,6 +920,7 @@ boost/boost/fusion/sequence/intrinsic/begin.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/intrinsic/empty.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/intrinsic/end.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/intrinsic/ext_/segments.hpp svneol=native#text/plain
+boost/boost/fusion/sequence/intrinsic/ext_/size_s.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/intrinsic/front.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/intrinsic/has_key.hpp svneol=native#text/plain
 boost/boost/fusion/sequence/intrinsic/mpl.hpp svneol=native#text/plain
