@@ -12954,6 +12954,7 @@ boost/tools/build/v2/tools/doxygen.jam svneol=native#text/plain
 boost/tools/build/v2/tools/fop.jam svneol=native#text/plain
 boost/tools/build/v2/tools/fortran.jam svneol=native#text/plain
 boost/tools/build/v2/tools/gcc.jam svneol=native#text/plain
+boost/tools/build/v2/tools/generate.jam svneol=native#text/plain
 boost/tools/build/v2/tools/gettext.jam svneol=native#text/plain
 boost/tools/build/v2/tools/gfortran.jam svneol=native#text/plain
 boost/tools/build/v2/tools/hp_cxx.jam svneol=native#text/plain
