@@ -5830,6 +5830,7 @@ boost/libs/fusion/test/sequence/tuple_mutate.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/tuple_tie.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/unpack_args.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/value_at.hpp svneol=native#text/plain
+boost/libs/fusion/test/sequence/variant.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/vector_comparison.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/vector_construction.cpp svneol=native#text/plain
 boost/libs/fusion/test/sequence/vector_copy.cpp svneol=native#text/plain
