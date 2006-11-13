@@ -4284,6 +4284,7 @@ boost/boost/xpressive/detail/dynamic/parser_traits.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/dynamic/sequence.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/as_xpr.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/compile.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/grammar.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/is_pure.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/modifier.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/placeholders.hpp svneol=native#text/plain
