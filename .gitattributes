@@ -7759,6 +7759,7 @@ boost/libs/mpl/doc/tutorial/the-lambda-metafunction.html svneol=native#text/html
 boost/libs/mpl/doc/tutorial/tutorial-metafunctions.html svneol=native#text/html
 boost/libs/mpl/doc/tutorial/tutorial_toc.html svneol=native#text/html
 boost/libs/mpl/example/Jamfile svneol=native#text/plain
+boost/libs/mpl/example/fsm/README.txt svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/STT_impl_gen.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/base_event.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/event.hpp svneol=native#text/plain
