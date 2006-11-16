@@ -13224,6 +13224,7 @@ boost/tools/quickbook/doc/quickbook.xml svneol=native#text/xml
 boost/tools/quickbook/doc_info.hpp svneol=native#text/plain
 boost/tools/quickbook/index.html svneol=native#text/html
 boost/tools/quickbook/phrase.hpp svneol=native#text/plain
+boost/tools/quickbook/preprocessor.hpp svneol=native#text/plain
 boost/tools/quickbook/syntax_highlight.hpp svneol=native#text/plain
 boost/tools/quickbook/test/Jamfile.v2 svneol=native#text/plain
 boost/tools/quickbook/test/code-block-1.gold -text
