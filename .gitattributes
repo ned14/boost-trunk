@@ -3150,7 +3150,6 @@ boost/boost/thread/recursive_mutex.hpp svneol=native#text/plain
 boost/boost/thread/thread.hpp svneol=native#text/plain
 boost/boost/thread/tss.hpp svneol=native#text/plain
 boost/boost/thread/win32/basic_checked_mutex.hpp svneol=native#text/plain
-boost/boost/thread/win32/basic_mutex.hpp svneol=native#text/plain
 boost/boost/thread/win32/basic_recursive_mutex.hpp svneol=native#text/plain
 boost/boost/thread/win32/basic_timed_mutex.hpp svneol=native#text/plain
 boost/boost/thread/win32/condition.hpp svneol=native#text/plain
