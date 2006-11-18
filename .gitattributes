@@ -4714,7 +4714,6 @@ boost/libs/functional/mem_fun.html svneol=native#text/html
 boost/libs/functional/negators.html svneol=native#text/html
 boost/libs/functional/ptr_fun.html svneol=native#text/html
 boost/libs/functional/sublibs -text
-boost/libs/fusion/index.html svneol=native#text/html
 boost/libs/graph/LICENSE -text
 boost/libs/graph/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/graph/doc/AStarHeuristic.html svneol=native#text/html
