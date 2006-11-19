@@ -13261,6 +13261,7 @@ boost/tools/regression/process_jam_log.cpp svneol=native#text/plain
 boost/tools/regression/regression-logs.pl svneol=native#text/x-perl
 boost/tools/regression/run_tests.sh svneol=native#text/x-sh
 boost/tools/regression/test/Jamfile svneol=native#text/plain
+boost/tools/regression/test/Jamfile.v2 svneol=native#text/plain
 boost/tools/regression/test/compile-fail~fail.cpp svneol=native#text/plain
 boost/tools/regression/test/compile-fail~pass.cpp svneol=native#text/plain
 boost/tools/regression/test/compile~fail.cpp svneol=native#text/plain
