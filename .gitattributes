@@ -12270,6 +12270,7 @@ boost/more/formal_review_schedule.html svneol=native#text/html
 boost/more/generic_exception_safety.html svneol=native#text/html
 boost/more/generic_programming.html svneol=native#text/html
 boost/more/getting_started.html svneol=native#text/html
+boost/more/getting_started.rst svneol=native#text/plain
 boost/more/google_logo_25wht.gif -text svneol=unset#image/gif
 boost/more/header.htm svneol=native#text/html
 boost/more/imp_vars.htm svneol=native#text/html
