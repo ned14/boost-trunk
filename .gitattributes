@@ -13279,6 +13279,8 @@ boost/tools/regression/test/run~note.cpp svneol=native#text/plain
 boost/tools/regression/test/run~pass.cpp svneol=native#text/plain
 boost/tools/regression/test/run~warn-note.cpp svneol=native#text/plain
 boost/tools/regression/test/run~warn.cpp svneol=native#text/plain
+boost/tools/regression/test/test-cases/general/bjam.log -text
+boost/tools/regression/test/test-cases/general/expected/results.xml svneol=native#text/xml
 boost/tools/regression/test/test.bat svneol=native#text/plain
 boost/tools/regression/test/test.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/boost_wide_report.py svneol=native#text/x-python
