@@ -13284,6 +13284,12 @@ boost/tools/regression/test/run~note.cpp svneol=native#text/plain
 boost/tools/regression/test/run~pass.cpp svneol=native#text/plain
 boost/tools/regression/test/run~warn-note.cpp svneol=native#text/plain
 boost/tools/regression/test/run~warn.cpp svneol=native#text/plain
+boost/tools/regression/test/test-boost-build/ignored_rc/ignored_rc.jam svneol=native#text/plain
+boost/tools/regression/test/test-boost-build/ignored_rc/recognized_rc.jam svneol=native#text/plain
+boost/tools/regression/test/test-boost-build/missing_dependencies/Jamfile.v2 svneol=native#text/plain
+boost/tools/regression/test/test-boost-build/missing_dependencies/lib/Jamfile.v2 svneol=native#text/plain
+boost/tools/regression/test/test-boost-build/missing_dependencies/lib/lib.cpp svneol=native#text/plain
+boost/tools/regression/test/test-boost-build/missing_dependencies/test.cpp svneol=native#text/plain
 boost/tools/regression/test/test-cases/general/bjam.log -text
 boost/tools/regression/test/test-cases/general/expected/results.xml svneol=native#text/xml
 boost/tools/regression/test/test.bat svneol=native#text/plain
