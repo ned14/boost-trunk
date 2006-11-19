@@ -13290,6 +13290,10 @@ boost/tools/regression/test/test-boost-build/missing_dependencies/Jamfile.v2 svn
 boost/tools/regression/test/test-boost-build/missing_dependencies/lib/Jamfile.v2 svneol=native#text/plain
 boost/tools/regression/test/test-boost-build/missing_dependencies/lib/lib.cpp svneol=native#text/plain
 boost/tools/regression/test/test-boost-build/missing_dependencies/test.cpp svneol=native#text/plain
+boost/tools/regression/test/test-cases/Huber2629/.cvsignore -text
+boost/tools/regression/test/test-cases/Huber2629/bjam.log -text
+boost/tools/regression/test/test-cases/Huber2629/expected/results.xml svneol=native#text/xml
+boost/tools/regression/test/test-cases/general/.cvsignore -text
 boost/tools/regression/test/test-cases/general/bjam.log -text
 boost/tools/regression/test/test-cases/general/expected/results.xml svneol=native#text/xml
 boost/tools/regression/test/test.bat svneol=native#text/plain
