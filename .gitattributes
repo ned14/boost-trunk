@@ -12236,6 +12236,7 @@ boost/libs/xpressive/test/test_sub_match.cpp svneol=native#text/plain
 boost/more/BoostCon07.html svneol=native#text/html
 boost/more/BoostCon07.rst svneol=native#text/plain
 boost/more/BoostCon07_session_call.html svneol=native#text/html
+boost/more/Jamfile.v2 svneol=native#text/plain
 boost/more/background.html svneol=native#text/html
 boost/more/bibliography.html svneol=native#text/html
 boost/more/blanket-permission.txt svneol=native#text/plain
