@@ -1133,6 +1133,7 @@ boost/boost/graph/iteration_macros_undef.hpp svneol=native#text/plain
 boost/boost/graph/johnson_all_pairs_shortest.hpp svneol=native#text/plain
 boost/boost/graph/kamada_kawai_spring_layout.hpp svneol=native#text/plain
 boost/boost/graph/king_ordering.hpp svneol=native#text/plain
+boost/boost/graph/kolmogorov_max_flow.hpp svneol=native#text/plain
 boost/boost/graph/kruskal_min_spanning_tree.hpp svneol=native#text/plain
 boost/boost/graph/leda_graph.hpp svneol=native#text/plain
 boost/boost/graph/matrix_as_graph.hpp svneol=native#text/plain
@@ -1169,6 +1170,7 @@ boost/boost/graph/undirected_dfs.hpp svneol=native#text/plain
 boost/boost/graph/vector_as_graph.hpp svneol=native#text/plain
 boost/boost/graph/visitors.hpp svneol=native#text/plain
 boost/boost/graph/wavefront.hpp svneol=native#text/plain
+boost/boost/graph/write_dimacs.hpp svneol=native#text/plain
 boost/boost/implicit_cast.hpp svneol=native#text/plain
 boost/boost/indirect_reference.hpp svneol=native#text/plain
 boost/boost/integer.hpp svneol=native#text/plain
@@ -5982,6 +5984,7 @@ boost/libs/graph/doc/figs/graph_search.fig -text
 boost/libs/graph/doc/figs/graph_search.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/knights_tour.fig -text
 boost/libs/graph/doc/figs/knights_tour.gif -text svneol=unset#image/gif
+boost/libs/graph/doc/figs/kolmogorov_max_flow.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/max-flow.gif -text svneol=unset#image/gif
 boost/libs/graph/doc/figs/maximal-match.png -text svneol=unset#image/png
 boost/libs/graph/doc/figs/maximum-match.png -text svneol=unset#image/png
@@ -6041,6 +6044,7 @@ boost/libs/graph/doc/kamada_kawai_spring_layout.html svneol=native#text/html
 boost/libs/graph/doc/kevin_bacon.html svneol=native#text/html
 boost/libs/graph/doc/king_ordering.html svneol=native#text/html
 boost/libs/graph/doc/known_problems.html svneol=native#text/html
+boost/libs/graph/doc/kolmogorov_max_flow.html svneol=native#text/html
 boost/libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
 boost/libs/graph/doc/layout_tolerance.html svneol=native#text/html
 boost/libs/graph/doc/leda_conversion.html svneol=native#text/html
@@ -6066,6 +6070,7 @@ boost/libs/graph/doc/python.html svneol=native#text/html
 boost/libs/graph/doc/quick_tour.html svneol=native#text/html
 boost/libs/graph/doc/random.html svneol=native#text/html
 boost/libs/graph/doc/random_layout.html svneol=native#text/html
+boost/libs/graph/doc/read_dimacs.html svneol=native#text/html
 boost/libs/graph/doc/read_graphviz.html svneol=native#text/html
 boost/libs/graph/doc/read_graphviz.rst svneol=native#text/plain
 boost/libs/graph/doc/reverse_graph.html svneol=native#text/html
@@ -6095,6 +6100,7 @@ boost/libs/graph/doc/using_property_maps.html svneol=native#text/html
 boost/libs/graph/doc/visitor_concepts.html svneol=native#text/html
 boost/libs/graph/doc/wavefront.htm svneol=native#text/html
 boost/libs/graph/doc/write-graphviz.html svneol=native#text/html
+boost/libs/graph/doc/write_dimacs.html svneol=native#text/html
 boost/libs/graph/example/Jamfile svneol=native#text/plain
 boost/libs/graph/example/accum-compile-times.cpp svneol=native#text/plain
 boost/libs/graph/example/actor_clustering.cpp svneol=native#text/plain
@@ -6223,6 +6229,7 @@ boost/libs/graph/example/kevin_bacon.expected -text
 boost/libs/graph/example/king_ordering.cpp svneol=native#text/plain
 boost/libs/graph/example/knights-tour.cpp svneol=native#text/plain
 boost/libs/graph/example/knights_tour.expected -text
+boost/libs/graph/example/kolmogorov-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal-example.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal-telephone.cpp svneol=native#text/plain
 boost/libs/graph/example/kruskal.expected -text
@@ -6239,6 +6246,12 @@ boost/libs/graph/example/max_flow.dat -text
 boost/libs/graph/example/max_flow.expected -text
 boost/libs/graph/example/max_flow2.dat -text
 boost/libs/graph/example/max_flow3.dat -text
+boost/libs/graph/example/max_flow4.dat -text
+boost/libs/graph/example/max_flow5.dat -text
+boost/libs/graph/example/max_flow6.dat -text
+boost/libs/graph/example/max_flow7.dat -text
+boost/libs/graph/example/max_flow8.dat -text
+boost/libs/graph/example/max_flow9.dat -text
 boost/libs/graph/example/miles_span.cpp svneol=native#text/plain
 boost/libs/graph/example/miles_span.expected -text
 boost/libs/graph/example/min_max_paths.cpp svneol=native#text/plain
@@ -6273,6 +6286,7 @@ boost/libs/graph/example/quick_tour.expected -text
 boost/libs/graph/example/reachable-loop-head.cpp svneol=native#text/plain
 boost/libs/graph/example/reachable-loop-tail.cpp svneol=native#text/plain
 boost/libs/graph/example/read_graphviz.cpp svneol=native#text/plain
+boost/libs/graph/example/read_write_dimacs-eg.cpp svneol=native#text/plain
 boost/libs/graph/example/regression.cfg -text
 boost/libs/graph/example/regrtest.py svneol=native#text/x-python
 boost/libs/graph/example/remove_edge_if_bidir.cpp svneol=native#text/plain
@@ -6408,10 +6422,12 @@ boost/libs/graph/test/gursoy_atun_layout_test.cpp svneol=native#text/plain
 boost/libs/graph/test/isomorphism.cpp svneol=native#text/plain
 boost/libs/graph/test/johnson-test.cpp svneol=native#text/plain
 boost/libs/graph/test/king_ordering.cpp svneol=native#text/plain
+boost/libs/graph/test/kolmogorov_max_flow_test.cpp svneol=native#text/plain
 boost/libs/graph/test/layout_test.cpp svneol=native#text/plain
 boost/libs/graph/test/leda_graph_cc.cpp svneol=native#text/plain
 boost/libs/graph/test/lvalue_pmap.cpp svneol=native#text/plain
 boost/libs/graph/test/matching_test.cpp svneol=native#text/plain
+boost/libs/graph/test/max_flow_test.cpp svneol=native#text/plain
 boost/libs/graph/test/property_iter.cpp svneol=native#text/plain
 boost/libs/graph/test/python/biconnected_components.dot -text
 boost/libs/graph/test/python/biconnected_components.py svneol=native#text/x-python
