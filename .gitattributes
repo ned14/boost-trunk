@@ -4363,6 +4363,7 @@ boost/boost/xpressive/proto/compiler/fold.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/compiler/pass_through.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/compiler/switch.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/compiler/transform.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/deep_copy.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/expr.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/extends.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/fusion.hpp svneol=native#text/plain
