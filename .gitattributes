@@ -4176,6 +4176,7 @@ boost/boost/wave/cpp_iteration_context.hpp svneol=native#text/plain
 boost/boost/wave/cpp_throw.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/convert_trigraphs.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/cpp_lex_interface.hpp svneol=native#text/plain
+boost/boost/wave/cpplexer/cpp_lex_interface_generator.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/cpp_lex_iterator.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/cpp_lex_token.hpp svneol=native#text/plain
 boost/boost/wave/cpplexer/cpplexer_exceptions.hpp svneol=native#text/plain
