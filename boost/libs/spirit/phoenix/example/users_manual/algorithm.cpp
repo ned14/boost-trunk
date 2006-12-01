@@ -6,10 +6,10 @@
     http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <iostream>
+#include <boost/spirit/phoenix/core.hpp>
 #include <boost/spirit/phoenix/algorithm.hpp>
 
 using namespace boost::phoenix;
-using namespace std;
 
 int
 main()
