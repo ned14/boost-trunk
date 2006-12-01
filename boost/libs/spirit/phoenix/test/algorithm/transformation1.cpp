@@ -34,6 +34,20 @@ namespace
         };
     };
 
+    void swap_test()
+    {
+        using namespace boost::phoenix;
+        int a = 123;
+        int b = 456;
+        swap(ref(a), ref(b))();
+        BOOST_TEST(a == 456 && b == 123);
+        swap(ref(a), _1)(b);
+        BOOST_TEST(a == 123 && b == 456);
+        swap(_1, _2)(a, b);
+        BOOST_TEST(a == 456 && b == 123);
+        return;
+    }
+
     void copy_test()
     {
         using namespace boost::phoenix;

@@ -34,9 +34,24 @@
 
 #include <boost/type_traits/is_void.hpp>
 
-namespace boost { namespace phoenix {
-namespace impl
+namespace boost { namespace phoenix { namespace impl
 {
+    struct swap
+    {
+        template <class A, class B>
+        struct result
+        {
+            typedef void type;
+        };
+
+        template <class A, class B>
+        void operator()(A& a, B& b) const
+        {
+            using std::swap;
+            swap(a, b);
+        }
+    };
+
     struct copy
     {
         template<class R, class I>
@@ -1002,53 +1017,55 @@ namespace impl
         }
     };
 
-}
+}}} // boost::phoenix::impl
 
-function<impl::copy> const copy = impl::copy();
-function<impl::copy_backward> const copy_backward = impl::copy_backward();
-function<impl::transform> const transform = impl::transform();
-function<impl::replace> const replace = impl::replace();
-function<impl::replace_if> const replace_if = impl::replace_if();
-function<impl::replace_copy> const replace_copy = impl::replace_copy();
-function<impl::replace_copy_if> const replace_copy_if = impl::replace_copy_if();
-function<impl::fill> const fill = impl::fill();
-function<impl::fill_n> const fill_n = impl::fill_n();
-function<impl::generate> const generate = impl::generate();
-function<impl::generate_n> const generate_n = impl::generate_n();
-function<impl::remove> const remove = impl::remove();
-function<impl::remove_if> const remove_if = impl::remove_if();
-function<impl::remove_copy> const remove_copy = impl::remove_copy();
-function<impl::remove_copy_if> const remove_copy_if = impl::remove_copy_if();
-function<impl::unique> const unique = impl::unique();
-function<impl::unique_copy> const unique_copy = impl::unique_copy();
-function<impl::reverse> const reverse = impl::reverse();
-function<impl::reverse_copy> const reverse_copy = impl::reverse_copy();
-function<impl::rotate> const rotate = impl::rotate();
-function<impl::rotate_copy> const rotate_copy = impl::rotate_copy();
-function<impl::random_shuffle> const random_shuffle = impl::random_shuffle();
-function<impl::partition> const partition = impl::partition();
-function<impl::stable_partition> const stable_partition = impl::stable_partition();
-function<impl::sort> const sort = impl::sort();
-function<impl::stable_sort> const stable_sort = impl::stable_sort();
-function<impl::partial_sort> const partial_sort = impl::partial_sort();
-function<impl::partial_sort_copy> const partial_sort_copy = impl::partial_sort_copy();
-function<impl::nth_element> const nth_element = impl::nth_element();
-function<impl::merge> const merge = impl::merge();
-function<impl::inplace_merge> const inplace_merge = impl::inplace_merge();
-function<impl::next_permutation> const next_permutation = impl::next_permutation();
-function<impl::prev_permutation> const prev_permutation = impl::prev_permutation();
-function<impl::inner_product> const inner_product = impl::inner_product();
-function<impl::partial_sum> const partial_sum = impl::partial_sum();
-function<impl::adjacent_difference> const adjacent_difference = impl::adjacent_difference();
-function<impl::push_heap> const push_heap = impl::push_heap();
-function<impl::pop_heap> const pop_heap = impl::pop_heap();
-function<impl::make_heap> const make_heap = impl::make_heap();
-function<impl::sort_heap> const sort_heap = impl::sort_heap();
-function<impl::set_union> const set_union = impl::set_union();
-function<impl::set_intersection> const set_intersection = impl::set_intersection();
-function<impl::set_difference> const set_difference = impl::set_difference();
-function<impl::set_symmetric_difference> const set_symmetric_difference = impl::set_symmetric_difference();
-
+namespace boost { namespace phoenix
+{
+    function<impl::swap> const swap = impl::swap();
+    function<impl::copy> const copy = impl::copy();
+    function<impl::copy_backward> const copy_backward = impl::copy_backward();
+    function<impl::transform> const transform = impl::transform();
+    function<impl::replace> const replace = impl::replace();
+    function<impl::replace_if> const replace_if = impl::replace_if();
+    function<impl::replace_copy> const replace_copy = impl::replace_copy();
+    function<impl::replace_copy_if> const replace_copy_if = impl::replace_copy_if();
+    function<impl::fill> const fill = impl::fill();
+    function<impl::fill_n> const fill_n = impl::fill_n();
+    function<impl::generate> const generate = impl::generate();
+    function<impl::generate_n> const generate_n = impl::generate_n();
+    function<impl::remove> const remove = impl::remove();
+    function<impl::remove_if> const remove_if = impl::remove_if();
+    function<impl::remove_copy> const remove_copy = impl::remove_copy();
+    function<impl::remove_copy_if> const remove_copy_if = impl::remove_copy_if();
+    function<impl::unique> const unique = impl::unique();
+    function<impl::unique_copy> const unique_copy = impl::unique_copy();
+    function<impl::reverse> const reverse = impl::reverse();
+    function<impl::reverse_copy> const reverse_copy = impl::reverse_copy();
+    function<impl::rotate> const rotate = impl::rotate();
+    function<impl::rotate_copy> const rotate_copy = impl::rotate_copy();
+    function<impl::random_shuffle> const random_shuffle = impl::random_shuffle();
+    function<impl::partition> const partition = impl::partition();
+    function<impl::stable_partition> const stable_partition = impl::stable_partition();
+    function<impl::sort> const sort = impl::sort();
+    function<impl::stable_sort> const stable_sort = impl::stable_sort();
+    function<impl::partial_sort> const partial_sort = impl::partial_sort();
+    function<impl::partial_sort_copy> const partial_sort_copy = impl::partial_sort_copy();
+    function<impl::nth_element> const nth_element = impl::nth_element();
+    function<impl::merge> const merge = impl::merge();
+    function<impl::inplace_merge> const inplace_merge = impl::inplace_merge();
+    function<impl::next_permutation> const next_permutation = impl::next_permutation();
+    function<impl::prev_permutation> const prev_permutation = impl::prev_permutation();
+    function<impl::inner_product> const inner_product = impl::inner_product();
+    function<impl::partial_sum> const partial_sum = impl::partial_sum();
+    function<impl::adjacent_difference> const adjacent_difference = impl::adjacent_difference();
+    function<impl::push_heap> const push_heap = impl::push_heap();
+    function<impl::pop_heap> const pop_heap = impl::pop_heap();
+    function<impl::make_heap> const make_heap = impl::make_heap();
+    function<impl::sort_heap> const sort_heap = impl::sort_heap();
+    function<impl::set_union> const set_union = impl::set_union();
+    function<impl::set_intersection> const set_intersection = impl::set_intersection();
+    function<impl::set_difference> const set_difference = impl::set_difference();
+    function<impl::set_symmetric_difference> const set_symmetric_difference = impl::set_symmetric_difference();
 }}
 
 #endif

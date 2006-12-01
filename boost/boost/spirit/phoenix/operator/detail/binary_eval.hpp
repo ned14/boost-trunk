@@ -18,10 +18,10 @@
     struct eval_name                                                            \
     {                                                                           \
         template <typename Env, typename A0, typename A1>                       \
-        struct result                                                           \
+        struct result                                                            \
         {                                                                       \
-            typedef typename A0::template result<Env>::type x_type;             \
-            typedef typename A1::template result<Env>::type y_type;             \
+            typedef typename A0::template result<Env>::type x_type;              \
+            typedef typename A1::template result<Env>::type y_type;              \
                                                                                 \
             typedef typename                                                    \
                 mpl::eval_if<                                                   \
