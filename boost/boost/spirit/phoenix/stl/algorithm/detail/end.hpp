@@ -21,6 +21,15 @@ namespace boost { namespace phoenix { namespace detail
     {
         return boost::end(r);
     }
+
+#if defined( BOOST_MSVC ) && (BOOST_MSVC < 1400) // VC7.1 workaround
+    template <class T, std::size_t N>
+    T* end_(T (&r)[N])
+    {
+        return r+N;
+    }
+#endif
+
 }}}
 
 #endif

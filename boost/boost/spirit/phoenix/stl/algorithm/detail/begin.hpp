@@ -15,12 +15,21 @@
 
 namespace boost { namespace phoenix { namespace detail
 {
-    template<class R>
+    template <class R>
     typename range_result_iterator<R>::type
     begin_(R& r)
     {
         return boost::begin(r);
     }
+
+#if defined( BOOST_MSVC ) && (BOOST_MSVC < 1400) // VC7.1 workaround
+    template <class T, std::size_t N>
+    T* begin_(T (&r)[N])
+    {
+        return r;
+    }
+#endif
+
 }}}
 
 #endif
