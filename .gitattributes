@@ -6977,7 +6977,6 @@ boost/libs/parameter/test/unwrap_cv_reference.cpp svneol=native#text/plain
 boost/libs/platform_maintainers.txt svneol=native#text/plain
 boost/libs/pool/TODO.txt svneol=native#text/plain
 boost/libs/pool/doc/concepts.html svneol=native#text/html
-boost/libs/pool/doc/copyright.html svneol=native#text/html
 boost/libs/pool/doc/implementation/alignment.html svneol=native#text/html
 boost/libs/pool/doc/implementation/ct_gcd_lcm.html svneol=native#text/html
 boost/libs/pool/doc/implementation/for.html svneol=native#text/html
