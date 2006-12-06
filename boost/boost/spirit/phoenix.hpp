@@ -10,6 +10,7 @@
 #define BOOST_SPIRIT_PHOENIX_HPP
 
 #include <boost/spirit/phoenix/version.hpp>
+#include <boost/spirit/phoenix/algorithm.hpp>
 #include <boost/spirit/phoenix/core.hpp>
 #include <boost/spirit/phoenix/object.hpp>
 #include <boost/spirit/phoenix/bind.hpp>
