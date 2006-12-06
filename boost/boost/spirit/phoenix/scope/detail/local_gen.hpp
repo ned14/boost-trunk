@@ -18,7 +18,7 @@
   , fusion::vector<local_variable<K##n>, V##n> > > const& a##n
 
 #define PHOENIX_LOCAL_GEN_ACTOR(z, n, data)                                     \
-    fusion::at_c<1>(a##n)
+    fusion::at_c<1>(a##n.eval_tuple)
 
 #define BOOST_PP_ITERATION_PARAMS_1                                             \
     (3, (3, PHOENIX_LOCAL_LIMIT,                                                \

@@ -70,8 +70,8 @@ namespace boost { namespace phoenix
         operator[](Else const& else_) const
         {
             return compose<if_else_eval>(
-                fusion::at_c<0>(source) // cond
-              , fusion::at_c<1>(source) // then
+                fusion::at_c<0>(source.eval_tuple) // cond
+              , fusion::at_c<1>(source.eval_tuple) // then
               , else_ // else
             );
         }

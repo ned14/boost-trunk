@@ -29,7 +29,7 @@
 
     template <BOOST_PP_ENUM_PARAMS(N, typename U)>
     composite(BOOST_PP_ENUM_BINARY_PARAMS(N, U, & _))
-        : base_type(BOOST_PP_ENUM_PARAMS(N, _)) {}
+        : eval_tuple(BOOST_PP_ENUM_PARAMS(N, _)) {}
 
 #undef N
 #endif // defined(BOOST_PP_IS_ITERATING)

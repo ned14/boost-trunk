@@ -57,11 +57,11 @@ main()
         char const* s = "Hi";
         int x = 123;
 
-        BOOST_TEST(at_c<0>(compose<X>(1, arg1, val(1)))
+        BOOST_TEST(at_c<0>(compose<X>(1, arg1, val(1)).eval_tuple)
             .eval(basic_environment<>()) == 1);
-        BOOST_TEST(at_c<1>(compose<X>(1, arg1, val(456)))
+        BOOST_TEST(at_c<1>(compose<X>(1, arg1, val(456)).eval_tuple)
             .eval(basic_environment<char const*>(s)) == s);
-        BOOST_TEST(at_c<2>(compose<X>(1, arg1, val(456)))
+        BOOST_TEST(at_c<2>(compose<X>(1, arg1, val(456)).eval_tuple)
             .eval(basic_environment<>()) == 456);
         BOOST_TEST(compose<X>(9876, arg1, val(456))
             .eval(basic_environment<int>(x)) == 10455);

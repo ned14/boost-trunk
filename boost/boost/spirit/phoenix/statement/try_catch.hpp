@@ -40,7 +40,7 @@ namespace boost { namespace phoenix {
         template<typename Composite, typename Actor>
         struct try_catch_composite_push_back
         {
-            typedef typename Composite::base_type actor_tuple;
+            typedef typename Composite::eval_tuple_type actor_tuple;
             typedef try_catch_composite<
                 typename fusion::result_of::as_vector<
                 typename fusion::result_of::push_back<
@@ -50,8 +50,7 @@ namespace boost { namespace phoenix {
         template<typename Composite, typename Actor>
         struct catch_all_composite_push_back
         {
-            typedef typename Composite::base_type actor_tuple;
-
+            typedef typename Composite::eval_tuple_type actor_tuple;
             typedef composite<
                 catch_all_eval,
                 typename fusion::result_of::as_vector<
@@ -77,7 +76,7 @@ namespace boost { namespace phoenix {
                 typedef typename result<Composite, Actor>::type result;
                 return result(
                     fusion::as_vector(
-                        fusion::push_back(composite, actor)));
+                        fusion::push_back(composite.eval_tuple, actor)));
             }
         };
 
@@ -96,7 +95,7 @@ namespace boost { namespace phoenix {
                 typedef typename result<Composite, Actor>::type result;
                 return result(
                     fusion::as_vector(
-                        fusion::push_back(composite, actor)));
+                        fusion::push_back(composite.eval_tuple, actor)));
             }
         };
 
@@ -155,7 +154,7 @@ namespace boost { namespace phoenix {
 
         try_catch_composite(
             const try_catch_composite& rhs)
-            : composite<catch_eval, Tuple>(rhs),
+            : composite<catch_eval, Tuple>(rhs.eval_tuple),
               catch_all(*this) { }
 
         template<typename Exception>

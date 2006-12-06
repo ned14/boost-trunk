@@ -14,6 +14,8 @@
 #include <boost/fusion/sequence/intrinsic/at.hpp>
 #include <boost/fusion/sequence/intrinsic/size.hpp>
 #include <boost/fusion/sequence/intrinsic/mpl.hpp>
+#include <boost/type_traits/is_base_of.hpp>
+#include <boost/detail/workaround.hpp>
 #include <boost/mpl/fold.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/or.hpp>
@@ -42,9 +44,9 @@ namespace boost { namespace phoenix
     }
 
     template <typename EvalPolicy, typename EvalTuple>
-    struct composite : EvalTuple
+    struct composite
     {
-        typedef EvalTuple base_type;
+        typedef EvalTuple eval_tuple_type;
         typedef composite<EvalPolicy, EvalTuple> self_type;
         typedef EvalPolicy eval_policy_type;
         
@@ -61,24 +63,30 @@ namespace boost { namespace phoenix
         {
             typedef
                 typename detail::composite_eval<
-                    fusion::result_of::size<base_type>::value>::
+                    fusion::result_of::size<eval_tuple_type>::value>::
                 template result<self_type, Env>::type
             type;
         };
 
         composite()
-            : base_type() {}
+            : eval_tuple() {}
 
-        composite(base_type const& base)
-            : base_type(base) {}
+        composite(eval_tuple_type const& eval_tuple)
+            : eval_tuple(eval_tuple) {}
 
+#if BOOST_WORKAROUND(BOOST_MSVC, <= 1400)
         template <typename U0>
         composite(U0& _0)
-            : base_type(_0) {}
+            : eval_tuple(ctor_helper(_0, is_base_of<composite, U0>())) {}
+#else
+        template <typename U0>
+        composite(U0& _0)
+            : eval_tuple(_0) {}
+#endif
 
         template <typename U0, typename U1>
         composite(U0& _0, U1& _1)
-            : base_type(_0, _1) {}
+            : eval_tuple(_0, _1) {}
 
         template <typename Env>
         typename result<Env>::type
@@ -86,12 +94,29 @@ namespace boost { namespace phoenix
         {
             typedef typename result<Env>::type return_type;
             return detail::
-                composite_eval<fusion::result_of::size<base_type>::value>::template
+                composite_eval<fusion::result_of::size<eval_tuple_type>::value>::template
                     call<return_type>(*this, env);
         }
 
         //  Bring in the rest of the constructors
         #include <boost/spirit/phoenix/core/detail/composite.hpp>
+        
+        EvalTuple eval_tuple;
+
+#if BOOST_WORKAROUND(BOOST_MSVC, <= 1400)
+        static EvalTuple const& 
+        ctor_helper(composite const& rhs, mpl::true_)
+        {
+            return rhs.eval_tuple;
+        }
+
+        template <typename T>
+        static T const& 
+        ctor_helper(T const& rhs, mpl::false_)
+        {
+            return rhs;
+        }
+#endif
     };
 
     //  Bring in the detail::composite_eval<0..N> definitions

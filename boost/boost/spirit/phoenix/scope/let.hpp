@@ -121,7 +121,7 @@ namespace boost { namespace phoenix
             actor<composite<assign_eval, fusion::vector<local_variable<K0>, V0> > > const& a0
         ) const
         {
-            return fusion::vector<V0>(fusion::at_c<1>(a0));
+            return fusion::vector<V0>(fusion::at_c<1>(a0.eval_tuple));
         }
     
         template <typename K0, typename K1, typename V0, typename V1>
@@ -134,7 +134,9 @@ namespace boost { namespace phoenix
           , actor<composite<assign_eval, fusion::vector<local_variable<K1>, V1> > > const& a1
         ) const
         {
-            return fusion::vector<V0, V1>(fusion::at_c<1>(a0), fusion::at_c<1>(a1));
+            return fusion::vector<V0, V1>(
+                fusion::at_c<1>(a0.eval_tuple)
+              , fusion::at_c<1>(a1.eval_tuple));
         }
         
         // Bring in the rest...

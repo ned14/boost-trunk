@@ -49,11 +49,12 @@
 
 #define PHOENIX_GET_ACTOR_TYPE(z, n, data)                                      \
     typedef                                                                     \
-        typename fusion::result_of::value_at_c<Composite, n>::type              \
+        typename fusion::result_of::value_at_c<                                 \
+            typename Composite::eval_tuple_type, n>::type                       \
     BOOST_PP_CAT(actor, n);
 
 #define PHOENIX_GET_ACTOR(z, n, data)                                           \
-    fusion::at_c<n>(composite)
+    fusion::at_c<n>(composite.eval_tuple)
 
 #define BOOST_PP_ITERATION_PARAMS_1                                             \
     (3, (1, PHOENIX_COMPOSITE_LIMIT,                                            \
