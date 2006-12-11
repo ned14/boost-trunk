@@ -7796,7 +7796,6 @@ boost/libs/python/example/test_getting_started1.py svneol=native#text/x-python
 boost/libs/python/example/test_getting_started2.py svneol=native#text/x-python
 boost/libs/python/example/test_std_pair.py svneol=native#text/x-python
 boost/libs/python/example/tutorial/Jamroot -text
-boost/libs/python/example/tutorial/Jamrules svneol=native#text/plain
 boost/libs/python/example/tutorial/hello.cpp svneol=native#text/plain
 boost/libs/python/index.html svneol=native#text/html
 boost/libs/python/pyste/NEWS -text
