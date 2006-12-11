@@ -45,3 +45,4 @@ boost/tools/build/v2/test/*.pyc
 boost/tools/build/v2/test/failed_test
 boost/tools/build/v2/test/test-config.jam
 boost/tools/build/v2/test/test_results.txt
+boost/tools/regression/test/test-cases/general/actual

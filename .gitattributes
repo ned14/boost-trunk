@@ -6321,6 +6321,7 @@ boost/libs/mpl/doc/tutorial/the-importance-of-being.html svneol=native#text/html
 boost/libs/mpl/doc/tutorial/the-lambda-metafunction.html svneol=native#text/html
 boost/libs/mpl/doc/tutorial/tutorial-metafunctions.html svneol=native#text/html
 boost/libs/mpl/doc/tutorial/tutorial_toc.html svneol=native#text/html
+boost/libs/mpl/example/fsm/README.txt svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/STT_impl_gen.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/base_event.hpp svneol=native#text/plain
 boost/libs/mpl/example/fsm/aux_/event.hpp svneol=native#text/plain
@@ -7783,6 +7784,7 @@ boost/libs/python/doc/v2/with_custodian_and_ward.html svneol=native#text/html
 boost/libs/python/doc/v2/wrapper.html svneol=native#text/html
 boost/libs/python/example/Attic/project.zip -text svneol=unset#application/zip
 boost/libs/python/example/Jamfile.v2 svneol=native#text/plain
+boost/libs/python/example/Jamroot -text
 boost/libs/python/example/Jamrules svneol=native#text/plain
 boost/libs/python/example/README svneol=native#text/plain
 boost/libs/python/example/boost-build.jam svneol=native#text/plain
@@ -7793,6 +7795,7 @@ boost/libs/python/example/std_pair.cpp svneol=native#text/plain
 boost/libs/python/example/test_getting_started1.py svneol=native#text/x-python
 boost/libs/python/example/test_getting_started2.py svneol=native#text/x-python
 boost/libs/python/example/test_std_pair.py svneol=native#text/x-python
+boost/libs/python/example/tutorial/Jamroot -text
 boost/libs/python/example/tutorial/Jamrules svneol=native#text/plain
 boost/libs/python/example/tutorial/hello.cpp svneol=native#text/plain
 boost/libs/python/index.html svneol=native#text/html
@@ -10718,6 +10721,7 @@ boost/libs/xpressive/test/test_regex_token_iterator.cpp svneol=native#text/plain
 boost/libs/xpressive/test/test_regex_traits.cpp svneol=native#text/plain
 boost/libs/xpressive/test/test_static.cpp svneol=native#text/plain
 boost/libs/xpressive/test/test_sub_match.cpp svneol=native#text/plain
+boost/more/Jamfile.v2 svneol=native#text/plain
 boost/more/background.html svneol=native#text/html
 boost/more/bibliography.html svneol=native#text/html
 boost/more/blanket-permission.txt svneol=native#text/plain
@@ -10973,6 +10977,10 @@ boost/tools/build/v2/example/customization/t1.verbatim -text
 boost/tools/build/v2/example/customization/t2.verbatim -text
 boost/tools/build/v2/example/customization/usage.verbatim -text
 boost/tools/build/v2/example/customization/verbatim.jam svneol=native#text/plain
+boost/tools/build/v2/example/generator/Jamroot -text
+boost/tools/build/v2/example/generator/README.txt svneol=native#text/plain
+boost/tools/build/v2/example/generator/foo.gci -text
+boost/tools/build/v2/example/generator/soap.jam svneol=native#text/plain
 boost/tools/build/v2/example/gettext/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/gettext/main.cpp svneol=native#text/plain
 boost/tools/build/v2/example/gettext/project-root.jam svneol=native#text/plain
@@ -11609,6 +11617,7 @@ boost/tools/regression/test/run~note.cpp svneol=native#text/plain
 boost/tools/regression/test/run~pass.cpp svneol=native#text/plain
 boost/tools/regression/test/run~warn-note.cpp svneol=native#text/plain
 boost/tools/regression/test/run~warn.cpp svneol=native#text/plain
+boost/tools/regression/test/test-cases/general/.cvsignore -text
 boost/tools/regression/test/test.bat svneol=native#text/plain
 boost/tools/regression/test/test.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/boost_wide_report.py svneol=native#text/x-python
