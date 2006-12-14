@@ -4905,7 +4905,6 @@ boost/libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
 boost/libs/graph/doc/layout_tolerance.html svneol=native#text/html
 boost/libs/graph/doc/leda_conversion.html svneol=native#text/html
 boost/libs/graph/doc/lengauer_tarjan_dominator.htm svneol=native#text/html
-boost/libs/graph/doc/lengauer_tarjan_dominator_tree.htm svneol=native#text/html
 boost/libs/graph/doc/lgrind.sty -text
 boost/libs/graph/doc/math.sty -text
 boost/libs/graph/doc/maximum_matching.html svneol=native#text/html
@@ -4935,7 +4934,6 @@ boost/libs/graph/doc/sloan_ordering.htm svneol=native#text/html
 boost/libs/graph/doc/sloan_start_end_vertices.htm svneol=native#text/html
 boost/libs/graph/doc/small_world_generator.html svneol=native#text/html
 boost/libs/graph/doc/sorted_erdos_renyi_gen.html svneol=native#text/html
-boost/libs/graph/doc/sorted_erdos_renyi_generator.html svneol=native#text/html
 boost/libs/graph/doc/sparse_matrix_ordering.html svneol=native#text/html
 boost/libs/graph/doc/stanford_graph.html svneol=native#text/html
 boost/libs/graph/doc/strong_components.html svneol=native#text/html
