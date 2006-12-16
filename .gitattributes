@@ -10907,6 +10907,7 @@ boost/tools/build/v2/doc/src/architecture.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/catalog.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/extending.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/faq.xml svneol=native#text/xml
+boost/tools/build/v2/doc/src/fragments.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/howto.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/install.xml svneol=native#text/xml
 boost/tools/build/v2/doc/src/recipes.xml svneol=native#text/xml
