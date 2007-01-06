@@ -11321,7 +11321,6 @@ boost/tools/build/v2/tools/ifort.jam svneol=native#text/plain
 boost/tools/build/v2/tools/intel-linux.jam svneol=native#text/plain
 boost/tools/build/v2/tools/intel-win.jam svneol=native#text/plain
 boost/tools/build/v2/tools/intel.jam svneol=native#text/plain
-boost/tools/build/v2/tools/kylix.jam svneol=native#text/plain
 boost/tools/build/v2/tools/lex.jam svneol=native#text/plain
 boost/tools/build/v2/tools/make.jam svneol=native#text/plain
 boost/tools/build/v2/tools/mc.jam svneol=native#text/plain
