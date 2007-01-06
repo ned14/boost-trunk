@@ -10956,6 +10956,9 @@ boost/tools/build/v2/example/customization/t1.verbatim -text
 boost/tools/build/v2/example/customization/t2.verbatim -text
 boost/tools/build/v2/example/customization/usage.verbatim -text
 boost/tools/build/v2/example/customization/verbatim.jam svneol=native#text/plain
+boost/tools/build/v2/example/generate/Jamroot -text
+boost/tools/build/v2/example/generate/REAME.txt svneol=native#text/plain
+boost/tools/build/v2/example/generate/a.cpp svneol=native#text/plain
 boost/tools/build/v2/example/generator/Jamroot -text
 boost/tools/build/v2/example/generator/README.txt svneol=native#text/plain
 boost/tools/build/v2/example/generator/foo.gci -text
