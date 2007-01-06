@@ -10977,7 +10977,6 @@ boost/tools/build/v2/example/libraries/util/foo/Jamfile svneol=native#text/plain
 boost/tools/build/v2/example/libraries/util/foo/bar.cpp svneol=native#text/plain
 boost/tools/build/v2/example/libraries/util/foo/include/lib1.h svneol=native#text/plain
 boost/tools/build/v2/example/make/Jamroot -text
-boost/tools/build/v2/example/make/main.cpp.pro -text
 boost/tools/build/v2/example/make/main_cpp.pro -text
 boost/tools/build/v2/example/make/readme.txt svneol=native#text/plain
 boost/tools/build/v2/example/pch/Jamroot -text
