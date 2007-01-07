@@ -5247,7 +5247,6 @@ boost/libs/integer/integer_traits_test.cpp svneol=native#text/plain
 boost/libs/integer/test/integer_mask_test.cpp svneol=native#text/plain
 boost/libs/integer/test/static_log2_test.cpp svneol=native#text/plain
 boost/libs/integer/test/static_min_max_test.cpp svneol=native#text/plain
-boost/libs/interprocess/index.html svneol=native#text/html
 boost/libs/io/doc/index.html svneol=native#text/html
 boost/libs/io/doc/ios_state.html svneol=native#text/html
 boost/libs/io/index.html svneol=native#text/html
