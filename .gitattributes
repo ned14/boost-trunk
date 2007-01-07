@@ -9748,7 +9748,7 @@ boost/libs/test/test/token_iterator_test.cpp svneol=native#text/plain
 boost/libs/test/tools/console_test_runner/src/console_test_runner.cpp svneol=native#text/plain
 boost/libs/test/tools/console_test_runner/test/test_runner_test.cpp svneol=native#text/plain
 boost/libs/thread/build/.cvsignore -text
-boost/libs/thread/build/Jamfile svneol=native#text/plain
+boost/libs/thread/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/thread/doc/Jamfile.v2 svneol=native#text/plain
 boost/libs/thread/doc/acknowledgements.xml svneol=native#text/xml
 boost/libs/thread/doc/barrier-ref.xml svneol=native#text/xml
