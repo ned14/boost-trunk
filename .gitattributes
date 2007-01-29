@@ -11602,6 +11602,9 @@ boost/tools/regression/test/test-cases/general/.cvsignore -text
 boost/tools/regression/test/test.bat svneol=native#text/plain
 boost/tools/regression/test/test.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/boost_wide_report.py svneol=native#text/x-python
+boost/tools/regression/xsl_reports/db/load.py svneol=native#text/x-python
+boost/tools/regression/xsl_reports/db/sqlserver_schemas.sql svneol=native#text/x-sql
+boost/tools/regression/xsl_reports/db/test-runs.xsd svneol=native#text/xml
 boost/tools/regression/xsl_reports/email_maintainers.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/empty_expected_results.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/make_snapshot.py svneol=native#text/x-python
