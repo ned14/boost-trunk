@@ -11599,6 +11599,7 @@ boost/tools/regression/test/run~warn-note.cpp svneol=native#text/plain
 boost/tools/regression/test/run~warn.cpp svneol=native#text/plain
 boost/tools/regression/test/test-cases/borland/bjam.log -text
 boost/tools/regression/test/test-cases/general/.cvsignore -text
+boost/tools/regression/test/test-cases/libs/bjam.log -text
 boost/tools/regression/test/test.bat svneol=native#text/plain
 boost/tools/regression/test/test.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/boost_wide_report.py svneol=native#text/x-python
