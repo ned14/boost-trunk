@@ -11626,6 +11626,7 @@ boost/tools/regression/xsl_reports/test/run_v1.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/test/test-components/test.py svneol=native#text/x-python
 boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/compile-fail.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/completed.xml svneol=native#text/xml
+boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/expected/compile-fail.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/expected/completed.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/expected/misfire.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/expected/no-run.xml svneol=native#text/xml
