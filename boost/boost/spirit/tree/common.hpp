@@ -1,5 +1,6 @@
 /*=============================================================================
     Copyright (c) 2001-2003 Daniel Nuffer
+    Revised 2007, Copyright (c) Tobias Schwinger
     http://spirit.sourceforge.net/
 
     Use, modification and distribution is subject to the Boost Software
@@ -456,7 +457,7 @@ public:
             for (typename ContainerT::const_iterator i = nodes.begin();
                  i != i_end; ++i)
             {
-                // See docs: token_node_d or leaf_node_d cannot be used with a
+                // See docs: reduced_node_d cannot be used with a
                 // rule inside the [].
                 assert(i->children.size() == 0);
                 c.insert(c.end(), i->value.begin(), i->value.end());
@@ -500,8 +501,6 @@ public:
             for (typename ContainerT::const_iterator i = nodes.begin();
                     i != i_end; ++i)
             {
-                // See docs: token_node_d or leaf_node_d cannot be used with a
-                // rule inside the [].
                 assert(i->children.size() == 0);
                 c.insert(c.end(), i->value.begin(), i->value.end());
             }
@@ -560,9 +559,6 @@ public:
     tree_match(std::size_t length, parse_node_t const& n)
     : match<T>(length), trees()
     { 
-#if !defined(BOOST_SPIRIT_USE_LIST_FOR_TREES)
-        trees.reserve(10); // this is more or less an arbitrary number...
-#endif
         trees.push_back(node_t(n)); 
     }
 
@@ -851,7 +847,6 @@ struct no_tree_gen_node_parser
     }
 };
 
-//////////////////////////////////
 struct no_tree_gen_node_parser_gen
 {
     template <typename T>
@@ -875,9 +870,72 @@ struct no_tree_gen_node_parser_gen
     }
 };
 
-//////////////////////////////////
 const no_tree_gen_node_parser_gen no_node_d = no_tree_gen_node_parser_gen();
 
+//////////////////////////////////
+
+struct leaf_node_parser_gen;
+
+template<typename T>
+struct leaf_node_parser
+:   public unary<T, parser<leaf_node_parser<T> > >
+{
+    typedef leaf_node_parser<T> self_t;
+    typedef leaf_node_parser_gen parser_generator_t;
+    typedef unary_parser_category parser_category_t;
+
+    leaf_node_parser(T const& a)
+    : unary<T, parser<leaf_node_parser<T> > >(a) {}
+
+    template <typename ScannerT>
+    typename parser_result<self_t, ScannerT>::type
+    parse(ScannerT const& scanner) const
+    {
+        typedef scanner_policies< typename ScannerT::iteration_policy_t,
+            match_policy, typename ScannerT::action_policy_t > policies_t;
+
+        typedef typename ScannerT::iterator_t iterator_t;
+        typedef typename parser_result<self_t, ScannerT>::type result_t;
+        typedef typename result_t::node_factory_t factory_t;
+
+        iterator_t from = scanner.first;
+        result_t hit = impl::contiguous_parser_parse<result_t>(this->subject(),
+            scanner.change_policies(policies_t(scanner,match_policy(),scanner)),
+            scanner);
+
+        if (hit)
+            return result_t(hit.length(), 
+                factory_t::create_node(from, scanner.first, true));
+        else
+            return result_t(hit.length());
+    }
+};
+
+struct leaf_node_parser_gen
+{
+    template <typename T>
+    struct result {
+
+        typedef leaf_node_parser<T> type;
+    };
+
+    template <typename T>
+    static leaf_node_parser<T>
+    generate(parser<T> const& s)
+    {
+        return leaf_node_parser<T>(s.derived());
+    }
+
+    template <typename T>
+    leaf_node_parser<T>
+    operator[](parser<T> const& s) const
+    {
+        return leaf_node_parser<T>(s.derived());
+    }
+};
+
+const leaf_node_parser_gen leaf_node_d = leaf_node_parser_gen();
+const leaf_node_parser_gen token_node_d = leaf_node_parser_gen();
 
 //////////////////////////////////
 namespace impl {
@@ -919,7 +977,6 @@ struct node_parser
     }
 };
 
-//////////////////////////////////
 template <typename NodeParserT>
 struct node_parser_gen
 {
@@ -943,20 +1000,8 @@ struct node_parser_gen
         return node_parser<T, NodeParserT>(s.derived());
     }
 };
-
-struct discard_node_op
-{
-    template <typename MatchT>
-    void operator()(MatchT& m) const
-    {
-        m.trees.clear();
-    }
-};
-
-const node_parser_gen<discard_node_op> discard_node_d =
-    node_parser_gen<discard_node_op>();
-
-struct leaf_node_op
+//////////////////////////////////
+struct reduced_node_op
 {
     template <typename MatchT>
     void operator()(MatchT& m) const
@@ -973,10 +1018,21 @@ struct leaf_node_op
     }
 };
 
-const node_parser_gen<leaf_node_op> leaf_node_d =
-    node_parser_gen<leaf_node_op>();
-const node_parser_gen<leaf_node_op> token_node_d =
-    node_parser_gen<leaf_node_op>();
+const node_parser_gen<reduced_node_op> reduced_node_d =
+    node_parser_gen<reduced_node_op>();
+
+
+struct discard_node_op
+{
+    template <typename MatchT>
+    void operator()(MatchT& m) const
+    {
+        m.trees.clear();
+    }
+};
+
+const node_parser_gen<discard_node_op> discard_node_d =
+    node_parser_gen<discard_node_op>();
 
 struct infix_node_op
 {
