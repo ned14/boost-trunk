@@ -29,6 +29,7 @@ struct U : T
 struct VT
 {
     virtual string foo() { return "T"; }
+    virtual ~VT() {}
 };
 
 struct VU : VT
