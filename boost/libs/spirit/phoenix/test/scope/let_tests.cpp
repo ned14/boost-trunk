@@ -95,7 +95,7 @@ main()
         BOOST_TEST(
             let(_x = val(_1)) // _x holds x by value 
             [
-                _x += 888
+                val(_x += 888)
             ]
             (x) == x + 888
         );
