@@ -11672,6 +11672,7 @@ boost/tools/regression/xsl_reports/xsl/summary_page.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/test/test_re_match.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/test/test_re_match.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/v2/add_expected_results.xsl svneol=native#text/xml
+boost/tools/regression/xsl_reports/xsl/v2/boostbook_log.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/v2/common.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/v2/dump_toolsets.xsl svneol=native#text/xml
 boost/tools/regression/xsl_reports/xsl/v2/expected_to_1_33_format.xsl svneol=native#text/xml
