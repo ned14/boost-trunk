@@ -11640,6 +11640,9 @@ boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complet
 boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/run_pyd.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/test-case.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_is_test_log_complete/test-driver.xsl svneol=native#text/xml
+boost/tools/regression/xsl_reports/test/test-components/test_re_match/expected/test_re_match.xml svneol=native#text/xml
+boost/tools/regression/xsl_reports/test/test-components/test_re_match/test-driver.xsl svneol=native#text/xml
+boost/tools/regression/xsl_reports/test/test-components/test_re_match/test_re_match.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_test_case_status/a.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_test_case_status/expected/a.xml svneol=native#text/xml
 boost/tools/regression/xsl_reports/test/test-components/test_test_case_status/explicit-failures-markup.xml.test -text
