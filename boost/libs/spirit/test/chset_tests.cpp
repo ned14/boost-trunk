@@ -60,7 +60,7 @@ namespace
     //////////////////////////////////
     template <typename CharT>
     void
-    chset_tests(sstream_t& out, CharT const* a_, CharT b1_, CharT b2_, CharT e1_)
+    chset_tests_helper(sstream_t& out, CharT const* a_, CharT b1_, CharT b2_, CharT e1_)
     {
         chset<CharT>    a(a_);
         range<CharT>    b_(b1_, b2_);
@@ -303,8 +303,8 @@ namespace
 
         tout << expected_output;
 
-        chset_tests(aout, "0-9A-Z", '5', 'J', '2');
-        chset_tests(bout, L"0-9A-Z", L'5', L'J', L'2');
+        chset_tests_helper(aout, "0-9A-Z", '5', 'J', '2');
+        chset_tests_helper(bout, L"0-9A-Z", L'5', L'J', L'2');
 
 #define narrow_chset_works (getstring(aout) == getstring(tout))
 #define wide_chset_works   (getstring(bout) == getstring(tout))
