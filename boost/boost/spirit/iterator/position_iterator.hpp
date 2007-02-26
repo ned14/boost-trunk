@@ -341,8 +341,13 @@ public:
 
     position_iterator& operator=(const position_iterator& iter)
     {
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582))
+        static_cast<base_t &>(*this) = iter;
+        static_cast<position_policy_t &>(*this) = iter;
+#else
         base_t::operator=(iter);
         position_policy_t::operator=(iter);
+#endif
         _end = iter._end;
         _pos = iter._pos;
         _isend = iter._isend;
