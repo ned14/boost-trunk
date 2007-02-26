@@ -18,6 +18,8 @@
 #include <boost/spirit/phoenix/statements.hpp>
 #include <boost/spirit/phoenix/functions.hpp>
 
+#include <boost/detail/workaround.hpp>
+
 namespace phoenix {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -296,7 +298,11 @@ struct local_function {
     typename impl::make_local_function_actor<N, Parent, T0>::type
     operator()(T0 const& _0) const
     {
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582))
         return impl::make_local_function_actor<N, Parent, T0>::composite_type(_0);
+#else
+        return typename impl::make_local_function_actor<N, Parent, T0>::composite_type(_0);
+#endif
     }
 
     template <int PIndex>
@@ -480,7 +486,7 @@ main()
 {
     int _10 = 10;
 
-#ifndef __BORLANDC__
+#if ! BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582))
 
     context<nil_t>
     (
