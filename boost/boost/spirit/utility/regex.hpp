@@ -22,30 +22,10 @@
 //
 //  Include the regular expression library of boost (Boost.Regex)
 //
-//  Note though, that this library is not distributed with Spirit. You have to
-//  obtain a separate copy from http://www.boost.org.
+//  Note that this library is not available with the Spirit only distribution.
 //
 ///////////////////////////////////////////////////////////////////////////////
-#if defined(BOOST_SPIRIT_NO_REGEX_LIB)
-//
-//  Include all the Boost.regex library. Please note that this will not work,
-//  if you are using the boost/spirit/regex.hpp header from more than one
-//  translation units.
-//
-#define BOOST_REGEX_NO_LIB
-#define BOOST_REGEX_STATIC_LINK
-#define BOOST_REGEX_NO_EXTERNAL_TEMPLATES
 #include <boost/regex.hpp>
-#include <boost/regex/src.cpp>
-
-#else
-//
-//  Include the Boost.Regex headers only. Note, that you will have to link your
-//  application against the Boost.Regex library as described in the related
-//  documentation.
-//
-#include <boost/regex.hpp>
-#endif // defined(BOOST_SPIRIT_NO_REGEX_LIB)
 
 #include <boost/static_assert.hpp>
 
