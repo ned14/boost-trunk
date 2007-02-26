@@ -52,7 +52,7 @@ namespace boost { namespace spirit {
         {
             typedef typename  mutex_t::scoped_lock scoped_lock_t;
             scoped_lock_t lock(mutex);
-            return subject().parse(scan);
+            return this->subject().parse(scan);
         }
 
         mutex_t &mutex;
