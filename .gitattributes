@@ -2775,3 +2775,5 @@ boost/libs/spirit/test/traverse_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/tree_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_p_as_parser_tests.cpp svneol=native#text/plain
 boost/libs/spirit/test/while_tests.cpp svneol=native#text/plain
+boost/top-level-dir/readme.html svneol=native#text/html
+boost/top-level-dir/readme_standalone.html svneol=native#text/html
