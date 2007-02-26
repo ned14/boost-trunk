@@ -1,0 +1,27 @@
+#==============================================================================
+#   Copyright (c) 2002 Joel de Guzman
+#   Copyright (c) 2007 Nicola Musatti
+#   http://spirit.sourceforge.net/
+#
+#   Distributed under the Boost Software
+#   License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+#   http://www.boost.org/LICENSE_1_0.txt)
+#==============================================================================
+#
+#  Phoenix tests boost-jam file
+#  Joel de Guzman [Sept 27, 2002]
+#
+
+test-suite phoenix :
+    [ run binary_tests.cpp ]
+    [ run binders_tests.cpp ]
+    [ run functors_tests.cpp ]
+    [ run iostream_tests.cpp ]
+    [ run mixed_binary_tests.cpp ]
+    [ run more_expressions_tests.cpp ]
+    [ run primitives_tests.cpp ]
+    [ run statements_tests.cpp ]
+    [ run stl_tests.cpp ]
+    [ run tuples_tests.cpp ]
+    [ run unary_tests.cpp ]
+    ;

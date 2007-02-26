@@ -1,0 +1,132 @@
+# Copyright Joel de Guzman 2002.
+# Copyright Nicola Musatti 2007.
+# Distributed under the Boost Software License, Version 1.0.
+# (See accompanying file LICENSE_1_0.txt
+# or copy at http://www.boost.org/LICENSE_1_0.txt)
+
+project libs/spirit/example 
+    : requirements <hardcode-dll-paths>true
+    ;
+
+exe boiler_plate : fundamental/boiler_plate.cpp ;
+
+exe comments : fundamental/comments.cpp ;
+
+exe complex_number : fundamental/complex_number.cpp ;
+
+exe dynamic_parser : fundamental/dynamic_parser.cpp ;
+
+exe file_parser : fundamental/file_parser.cpp ;
+
+exe functor_parser : fundamental/functor_parser.cpp ;
+
+exe list_parser : fundamental/list_parser.cpp ;
+
+exe polynomial : fundamental/polynomial.cpp ;
+
+exe matching_tags : fundamental/matching_tags.cpp ;
+
+exe position_iterator : fundamental/position_iterator/position_iterator.cpp ;
+
+exe number_list : fundamental/number_list.cpp ;
+
+exe parameters : fundamental/parameters.cpp ;
+
+exe refactoring : fundamental/refactoring.cpp ;
+
+exe regex_convert
+    : fundamental/regex_convert.cpp
+    : <library>../../regex/build//boost_regex <link>shared:<define>BOOST_REGEX_DYN_LINK=1
+    ;
+
+exe regular_expression
+    : fundamental/regular_expression.cpp
+    : <library>../../regex/build//boost_regex <link>shared:<define>BOOST_REGEX_DYN_LINK=1
+    ;
+
+exe rfc821 : fundamental/rfc821.cpp ;
+
+exe roman_numerals : fundamental/roman_numerals.cpp ;
+
+exe spirit_bind : fundamental/spirit_bind.cpp ;
+
+exe sum : fundamental/sum.cpp ;
+
+exe ast_calc : fundamental/calc/ast_calc.cpp ;
+
+exe ast_calc2 : fundamental/calc/ast_calc2.cpp ;
+
+exe calc_with_variables : fundamental/calc/calc_with_variables.cpp ;
+
+exe calc_plain : fundamental/calc/calc_plain.cpp ;
+
+exe full_calc : fundamental/calc/full_calc.cpp ;
+
+exe parse_tree_calc1 : fundamental/calc/parse_tree_calc1.cpp ;
+
+exe phoenix_calc : fundamental/calc/phoenix_calc.cpp ;
+
+exe phoenix_subrule_calc : fundamental/calc/phoenix_subrule_calc.cpp ;
+
+exe primitive_calc : fundamental/calc/primitive_calc.cpp ;
+
+exe rpn_calc : fundamental/calc/rpn_calc.cpp ;
+
+exe subrule_calc : fundamental/calc/subrule_calc.cpp ;
+
+exe vmachine_calc : fundamental/calc/vmachine_calc.cpp ;
+
+exe c_grammar : application/c/c_grammar.cpp ;
+
+exe cpp_lexer_simple_test
+    : application/cpp_lexer/cpp_lexer_simple_test.cpp
+      application/cpp_lexer/cpp_lexer.cpp
+      application/cpp_lexer/cpp_lexer_token.cpp
+    ;
+
+exe cpp_lexer_test
+    : application/cpp_lexer/cpp_lexer_test.cpp
+      application/cpp_lexer/cpp_lexer.cpp
+      application/cpp_lexer/cpp_lexer_token.cpp
+    ;
+
+exe cpp_to_html : application/cpp_to_html/cpp_to_html.cpp : <toolset>msvc:<build>no ;
+
+exe cpp_to_html_vc6_7 : application/cpp_to_html/cpp_to_html_vc6_7.cpp ;
+
+exe sg_pascal : application/pascal/sg_pascal.cpp ;
+
+exe quickdoc : application/quickdoc/quickdoc.cpp ;
+
+exe rfcdate-compile-test : application/rfcdate/rfcdate-compile-test.cpp ;
+
+exe rfcdate-test : application/rfcdate/rfcdate-test.cpp ;
+
+exe rfcskipper-compile-test : application/rfcdate/rfcskipper-compile-test.cpp ;
+
+exe skipper-test : application/rfcdate/skipper-test.cpp ;
+
+exe timestamp-compile-test : application/rfcdate/timestamp-compile-test.cpp ;
+
+exe callback : application/slex/callback.cpp ;
+
+exe lexer : application/slex/lexer.cpp ;
+
+exe lextest : application/slex/lextest.cpp ;
+
+exe xml : application/xml/xml.cpp ;
+
+exe simplexml : application/xml/simplexml.cpp ;
+
+exe ast_xml : application/xml/ast_xml.cpp ;
+
+exe test1 : application/xml/test1.cpp ;
+
+exe test2 : application/xml/test2.cpp ;
+
+exe test3 : application/xml/test3.cpp ;
+
+exe test4 : application/xml/test4.cpp ;
+
+exe test5 : application/xml/test5.cpp ;
+
