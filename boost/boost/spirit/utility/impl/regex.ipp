@@ -63,7 +63,7 @@ public:
     }
 
 private:
-    boost::reg_expression<CharT> rxstr;    // regular expression to match
+    boost::reg_expression<CharT, boost::regex_traits<CharT> > rxstr;    // regular expression to match
 };
 
 }   // namespace impl
