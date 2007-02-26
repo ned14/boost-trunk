@@ -24,6 +24,8 @@
 #include <boost/spirit/phoenix/composite.hpp>
 #include <boost/config.hpp>
 
+#include <climits>
+
 ///////////////////////////////////////////////////////////////////////////////
 namespace phoenix {
 
