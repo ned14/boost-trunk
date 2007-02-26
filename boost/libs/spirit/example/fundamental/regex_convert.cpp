@@ -36,18 +36,14 @@
 #include <boost/function.hpp>
 #include <boost/spirit/core.hpp>
 
+#include <boost/detail/workaround.hpp>
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 //  The following header must be included, if regular expression support is
 //  required for Spirit.
 //
-//  The BOOST_SPIRIT_NO_REGEX_LIB PP constant should be defined, if you're using the
-//  Boost.Regex library from one translation unit only. Otherwise you have to
-//  link with the Boost.Regex library as defined in the related documentation
-//  (see. http://www.boost.org).
-//
 ///////////////////////////////////////////////////////////////////////////////
-#define BOOST_SPIRIT_NO_REGEX_LIB
 #include <boost/spirit/utility/regex.hpp>
 
 using namespace boost::spirit;
@@ -87,7 +83,11 @@ namespace {
 
     struct emit_modified_subscript
     {
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582)) || BOOST_WORKAROUND(BOOST_MSVC, < 1300)
+        emit_modified_subscript(boost::function1<long, long> const &f)
+#else
         emit_modified_subscript(boost::function<long (long)> const &f)
+#endif
             : modifier(f)
         {}
 
@@ -106,7 +106,11 @@ namespace {
 
     private:
 
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582)) || BOOST_WORKAROUND(BOOST_MSVC, < 1300)
+        boost::function1<long, long> modifier;
+#else
         boost::function<long (long)> modifier;
+#endif
     };
 }
 
