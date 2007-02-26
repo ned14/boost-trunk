@@ -1,7 +1,7 @@
 #ifndef INCLUDED_TIMESTAMP_HPP
 #define INCLUDED_TIMESTAMP_HPP
 
-#include <ctime>
+#include <time.h>
 #include <iostream>
 #include <string>
 
