@@ -824,7 +824,6 @@ struct no_tree_gen_node_parser
     typedef no_tree_gen_node_parser<T> self_t;
     typedef no_tree_gen_node_parser_gen parser_generator_t;
     typedef unary_parser_category parser_category_t;
-//    typedef no_tree_gen_node_parser<T> const &embed_t;
 
     no_tree_gen_node_parser(T const& a)
     : unary<T, parser<no_tree_gen_node_parser<T> > >(a) {}
@@ -842,7 +841,8 @@ struct no_tree_gen_node_parser
             action_policy_t
         > policies_t;
 
-        return this->subject().parse(scanner.change_policies(policies_t()));
+        return this->subject().parse(scanner.change_policies(policies_t(
+            scanner,match_policy(),scanner)));
     }
 };
 
@@ -873,6 +873,70 @@ struct no_tree_gen_node_parser_gen
 //////////////////////////////////
 const no_tree_gen_node_parser_gen no_node_d = no_tree_gen_node_parser_gen();
 
+//////////////////////////////////
+
+struct leaf_node_parser_gen;
+
+template<typename T>
+struct leaf_node_parser
+:   public unary<T, parser<leaf_node_parser<T> > >
+{
+    typedef leaf_node_parser<T> self_t;
+    typedef leaf_node_parser_gen parser_generator_t;
+    typedef unary_parser_category parser_category_t;
+
+    leaf_node_parser(T const& a)
+    : unary<T, parser<leaf_node_parser<T> > >(a) {}
+
+    template <typename ScannerT>
+    typename parser_result<self_t, ScannerT>::type
+    parse(ScannerT const& scanner) const
+    {
+        typedef scanner_policies< typename ScannerT::iteration_policy_t,
+            match_policy, typename ScannerT::action_policy_t > policies_t;
+
+        typedef typename ScannerT::iterator_t iterator_t;
+        typedef typename parser_result<self_t, ScannerT>::type result_t;
+        typedef typename result_t::node_factory_t factory_t;
+
+        iterator_t from = scanner.first;
+        result_t hit = impl::contiguous_parser_parse<result_t>(this->subject(),
+            scanner.change_policies(policies_t(scanner,match_policy(),scanner)),
+            scanner);
+
+        if (hit)
+            return result_t(hit.length(),
+                factory_t::create_node(from, scanner.first, true));
+        else
+            return result_t(hit.length());
+    }
+};
+
+struct leaf_node_parser_gen
+{
+    template <typename T>
+    struct result {
+
+        typedef leaf_node_parser<T> type;
+    };
+
+    template <typename T>
+    static leaf_node_parser<T>
+    generate(parser<T> const& s)
+    {
+        return leaf_node_parser<T>(s.derived());
+    }
+
+    template <typename T>
+    leaf_node_parser<T>
+    operator[](parser<T> const& s) const
+    {
+        return leaf_node_parser<T>(s.derived());
+    }
+};
+
+const leaf_node_parser_gen leaf_node_d = leaf_node_parser_gen();
+const leaf_node_parser_gen token_node_d = leaf_node_parser_gen();
 
 //////////////////////////////////
 namespace impl {
@@ -950,7 +1014,7 @@ struct discard_node_op
 const node_parser_gen<discard_node_op> discard_node_d =
     node_parser_gen<discard_node_op>();
 
-struct leaf_node_op
+struct reduced_node_op
 {
     template <typename MatchT>
     void operator()(MatchT& m) const
@@ -967,10 +1031,8 @@ struct leaf_node_op
     }
 };
 
-const node_parser_gen<leaf_node_op> leaf_node_d =
-    node_parser_gen<leaf_node_op>();
-const node_parser_gen<leaf_node_op> token_node_d =
-    node_parser_gen<leaf_node_op>();
+const node_parser_gen<reduced_node_op> reduced_node_d =
+    node_parser_gen<reduced_node_op>();
 
 struct infix_node_op
 {
@@ -1385,3 +1447,4 @@ struct tree_parse_info {
 
 #endif
 #endif
+
