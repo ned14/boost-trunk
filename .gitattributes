@@ -7965,6 +7965,8 @@ boost/libs/python/test/extract.py svneol=native#text/x-python
 boost/libs/python/test/if_else.cpp svneol=native#text/plain
 boost/libs/python/test/implicit.cpp svneol=native#text/plain
 boost/libs/python/test/implicit.py svneol=native#text/x-python
+boost/libs/python/test/import_.cpp svneol=native#text/plain
+boost/libs/python/test/import_.py svneol=native#text/x-python
 boost/libs/python/test/indirect_traits_test.cpp svneol=native#text/plain
 boost/libs/python/test/injected.cpp svneol=native#text/plain
 boost/libs/python/test/injected.py svneol=native#text/x-python
@@ -11599,6 +11601,11 @@ boost/tools/regression/test/run~warn-note.cpp svneol=native#text/plain
 boost/tools/regression/test/run~warn.cpp svneol=native#text/plain
 boost/tools/regression/test/test-cases/borland/bjam.log -text
 boost/tools/regression/test/test-cases/general/.cvsignore -text
+boost/tools/regression/test/test-cases/general/bjam.log -text
+boost/tools/regression/test/test-cases/general/expected/results.xml svneol=native#text/xml
+boost/tools/regression/test/test-cases/incremental/bjam.log -text
+boost/tools/regression/test/test-cases/incremental/bjam.log.1 -text
+boost/tools/regression/test/test-cases/incremental/expected/results.xml svneol=native#text/xml
 boost/tools/regression/test/test-cases/libs/bjam.log -text
 boost/tools/regression/test/test.bat svneol=native#text/plain
 boost/tools/regression/test/test.py svneol=native#text/x-python
