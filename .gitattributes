@@ -6888,7 +6888,6 @@ boost/libs/optional/test/optional_test_inplace_fail2.cpp svneol=native#text/plai
 boost/libs/optional/test/optional_test_io.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_ref.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_ref_fail1.cpp svneol=native#text/plain
-boost/libs/optional/test/optional_test_ref_fail2.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_ref_fail3.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_ref_fail4.cpp svneol=native#text/plain
 boost/libs/optional/test/optional_test_tie.cpp svneol=native#text/plain
