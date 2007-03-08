@@ -75,7 +75,7 @@ rule init ( version ? : command * : options * )
     #   Autodetect the version and flavor if not given.
     if $(command)
     {
-        # The 'command' variable can have multiple-element. When calling
+        # The 'command' variable can have multiple elements. When calling
         # the SHELL builtin we need a single string.
         local command-string = $(command:J=" ") ;
         local command-info = [ MATCH "^[^ ]+[ ]+[^ ]+[ ]+([^ ]+)[^(]*[(]?([^)]*)"

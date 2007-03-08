@@ -32,6 +32,11 @@ import os ;
 import common ;
 import toolset : flags ;
 import regex ;
+import numbers ;
+import string ;
+import property ;
+import sequence ;
+import path ;
 
 # Make this module a project
 project.initialize $(__name__) ;
@@ -64,7 +69,7 @@ lib rt ;
 #        guessed from 'root'
 # - 'libraries' -- the path to Python libraries. If empty, will be guessed
 #        from 'root'
-# - 'cygwin-condition' -- if specified, should be a set of properties which
+# - 'specifics' -- if specified, should be a set of properties which
 #   are present when we're building with cygwin gcc. 
 #   This argument is not used yet.
 #
@@ -75,31 +80,29 @@ lib rt ;
 #                                   # will be guessed
 #    
 rule init ( version ? : root ? : includes ? : libraries ? 
-    : cygwin-condition * )
+    : specifics * )
 {
     .configured = true ;
     
     project.push-current $(.project) ;
-               
-    if [ os.name ] = NT
+         
+    debug-message Configuring python... ;
+    for local v in version root includes libraries specifics
     {
-        init-nt $(version) : $(root) : $(includes) : $(libraries) : $(cygwin-condition) ;
+        if $($(v))
+        {
+            debug-message "  user-specified "$(v): \"$($(v))\" ;
+        }
     }
-    else if [ os.name ] = MACOSX
+    
+    if [ os.name ] = MACOSX
     {
         init-mac $(version) : $(root) : $(includes) : $(libraries) ;
     } 
-    else if [ modules.peek : UNIX ]
+    else
     {
-        init-unix $(version) : $(root) : $(includes) : $(libraries) : $(cygwin-condition) ;
+        init-unix-nt $(version) : $(root) : $(includes) : $(libraries) : $(specifics) ;
     }
-    
-    if [ os.on-windows ] && ! $(.alias-defined)
-    {
-        .alias-defined = true ;
-        alias python_for_extensions : python ;
-    }
-    
     
     project.pop-current ;
 }
@@ -116,37 +119,115 @@ rule get-python-version ( )
   return [ python-version [ get-python-interpreter ] ] ;
 }
 
-local rule python-version ( cmd )
+# A simpler version of SHELL that grabs stderr as well as stdout, but
+# returns nothing if there's an error.
+local rule shell-cmd ( cmd )
 {
-    cmd ?= python ;
-    local version = [ SHELL $(cmd)" -c 'import sys; print sys.version'" : exit-status ] ;
+    # debug-message running command '$(cmd)' ;
+    x = [ SHELL $(cmd)" 2>&1" : exit-status ] ;
+    if $(x[2]) = 0
+    {
+        return $(x[1]) ;
+    }
+    else
+    {
+        return ;
+    }
+}
+
+# Invoke the given python interpreter command, import everything from
+# sys, and return the result of printing the given python expression
+# in that context.
+local rule python-print ( interpreter-cmd : expression )
+{
+    local nl = "
+
+" ;
+    local full-cmd = $(interpreter-cmd)" -c \"from sys import *; print "$(expression)\" ;
+    return [ MATCH ^([^$(nl)]+).* : [ shell-cmd $(full-cmd) ] : 1 ] ;
+}
+
+# Try to identify Cygwin symlinks.  Invoking such a file directly as
+# an NT executable from a native Windows build of bjam would be fatal
+# to the bjam process.  One /can/ invoke them through sh.exe or
+# bash.exe, if you can prove that those aren't also symlinks ;-)
+#
+# Note: 1. only works on NT  2. path is a native path.
+local rule is-cygwin-symlink ( path )
+{
+    local is-symlink = ;
     
-    if $(version[2]) = 0
+    # Look for a file with the given path having the S attribute set,
+    # as cygwin symlinks do.  /-C means "do not use thousands
+    # separators in file sizes."
+    local dir-listing = [ shell-cmd "dir /-C /A:S "$(path) ] ;
+
+    if $(dir-listing)
     {
-        return [ MATCH ^([0-9]+.[0-9]+) : $(version[1]) : 1 ] ;
+        # escape any special regex characters in the base part of the path
+        local base-pat = [ regex.escape $(path:D=) : ].[()*+?|\\$^ : \\ ] ;
+        
+        # extract the file's size from the directory listing
+        local size-of-system-file = [ MATCH "([0-9]+) "$(base-pat) : $(dir-listing) : 1 ] ;
+        
+        # if the file has a reasonably small size, look for the
+        # special symlink identification text
+        if $(size-of-system-file) && [ numbers.less $(size-of-system-file) 1000 ]
+        {
+            local link = [ SHELL "FIND /OFF \"!<symlink>\" \""$(path)"\" 2>&1" ] ;
+            if $(link[2]) != 0
+            {
+                local nl = "
+
+" ;
+                is-symlink = [ *nix-path [ MATCH ".*!<symlink>([^"$(nl)"]*)" : $(link[1]) : 1 ] ] ;
+            }
+        }
     }
-    else
+    return $(is-symlink) ;
+}
+
+# Append ext to each member of names that does not contain '.'
+local rule default-extension ( names * : ext * )
+{
+    local result ;
+    for local n in $(names)
     {
-        return ;
+        switch $(n)
+        {
+            case *.* : result += $(n) ;
+            case * : result += $(n)$(ext) ;
+        }
+    }
+    return $(result) ;
+}
+
+# Find the path to the python executable invoked by the given command
+#
+# Tries to determine whether invoking "cmd" would actually attempt to
+# launch a cygwin symlink.
+#
+# Note: only works on NT
+local rule invokes-cygwin-symlink ( cmd )
+{
+    local dirs = $(cmd:D) ;
+    if ! $(dirs)
+    {
+        dirs = . [ os.executable-path ] ;
+    }
+    local base = [ default-extension $(cmd:D=) : .exe .bat ] ;
+    local paths = [ GLOB $(dirs) : $(base) ] ;
+    if $(paths)
+    {
+        # Make sure we didn't find a Cygwin symlink.  Invoking such a
+        # file as an NT executable will be fatal to the bjam process.
+        return [ is-cygwin-symlink $(paths[1]) ] ;
     }
 }
 
-local rule python-interpreter ( cmd )
+local rule unix-python-root ( cmd )
 {
-    local which = [ SHELL "which "$(cmd) : exit-status ] ;
-    if $(which[2]) = 0
-    {
-        return $(which[1]) ;
-    }
-    else
-    {
-        return ;
-    }
-}
-
-local rule python-root ( cmd )
-{
-    return [ MATCH (.*)/bin/[^/]* : [ SHELL "which "$(cmd) ] : 1 ] ;
+    return [ MATCH (.*)/bin/[^/]* : [ python-path $(cmd) ] : 1 ] ;
 }
 
 
@@ -154,81 +235,348 @@ local rule debug-message ( message * )
 {
     if --debug-configuration in [ modules.peek : ARGV ]
     {
-        ECHO notice: $(message) ;
+        ECHO notice: [python-cfg] $(message) ;
+    }
+}
+
+# Convert an NT path to native
+local rule nt-path ( path )
+{
+    if [ os.name ] = NT
+    {
+        return $(path) ;
+    }
+    else
+    {
+        path = $(path:T) ;
+        parts = [ MATCH ^([A-Za-z]):/(.*) : $(path) : 1 2 ] ;
+        if $(parts)
+        {
+            path = /cygdrive/$(parts[1])/$(parts[2]) ;
+        }
+    }
+}
+
+# Like W32_GETREG, except prepend HKEY_CURRENT_USER and
+# HKEY_LOCAL_MACHINE to the argument, returning the first result
+# found.
+local rule registry-value ( path : data ? )
+{
+    local result ;
+    for local root in HKEY_CURRENT_USER HKEY_LOCAL_MACHINE
+    {
+        if ! $(result)
+        {
+            result = [ W32_GETREG $(root)"\\"$(path) : $(data) ] ;
+        }
+    }
+    return $(result) ;
+}
+
+# Convert a *nix path to native.  
+local rule *nix-path ( path )
+{
+    if [ os.name ] = NT
+    {
+        path = $(path:R="") ; # strip any trailing slash
+        
+        local parts = [ MATCH ^/cygdrive/([[a-zA-Z])/(.*) : $(path) : 1 2 ] ;
+        if $(parts)
+        {
+            path = $(parts[1]):/$(parts[2]) ;
+        }
+        else if $(path:R=/x) = $(path) # already rooted?
+        {
+            # Look for a cygwin mount that includes each head sequence in $(path).
+            local head = $(path) ;
+            local tail = "" ;
+
+            while $(head)
+            {
+                local root = [ 
+                  registry-value "SOFTWARE\\Cygnus Solutions\\Cygwin\\mounts v2\\"$(head) 
+                  : native 
+                ] ;
+                
+                if $(root)
+                {
+                    path = $(tail:R=$(root)) ;
+                    head = ;
+                }
+                tail = $(tail:R=$(head:D=)) ;
+                
+                if $(head) = /
+                {
+                    head = ;
+                }
+                else
+                {
+                    head = $(head:D) ;
+                }
+            }
+        }
+        path = [ regex.replace $(path:R="") / \\ ] ;
+    }
+    return $(path) ;
+}
+  
+# Validate the version string and extract the major/minor part we care
+# about
+local rule split-version ( version ? )
+{
+    local major-minor = [ MATCH ^([0-9]+)\.([0-9]+)(.*)$ : $(version) : 1 2 3 ] ;
+    if ! $(major-minor[2]) || $(major-minor[3])
+    {
+        ECHO "Warning: \"using python\" expects a two part (major, minor) version number; got" $(version) instead ;
+        
+        # Add a zero to account for the missing digit if necessary.
+        major-minor += 0 ;
+    }
+    
+    return $(major-minor[1]) $(major-minor[2]) ;
+}
+
+local rule win32-python-commands ( bin-directories * )
+{
+    # Logic:
+    #
+    # Specified: 
+    #    version    root    search-order
+    #    no         no      %PATH%, registry from highest to lowest
+    #    no         yes     $(root) $(root)/PCBuild
+    #    yes        no      %PATH%, registry for given version
+    #    yes        yes     $(root) $(root)/PCBuild
+    
+    # Look for the specific version given, or else versions from
+    # highest to lowest.  Once the legendary Python 3.0 comes out,
+    # this file will be out-of-date.  To date we're at python 2.5
+    local looking-for-versions = $(major-minor:J="") ;
+    if ! $(looking-for-versions)
+    {
+        looking-for-versions = [ sequence.reverse [ numbers.range 15 29 ] ] ;
+    }
+    
+    # Start by looking for Python relative to the specific root
+    # directory given, or in the PATH
+    local cmds = $(:E=python:R=$(bin-directories:E="")) ;
+    
+    # Then add any installation locations given in the registry
+    # for the versions we're interested in.
+    for local v in $(looking-for-versions)
+    {
+        local vv = [ string.chars $(v) ] ;
+        for local x64elt in "" "Wow6432node\\"
+        {
+            local install-path = [ 
+              registry-value "SOFTWARE\\"$(x64elt)"Python\\PythonCore\\"$(vv[1]).$(vv[2])"\\InstallPath" ] ;
+            
+            if $(install-path)
+            {
+                debug-message Found installed Python at \"$(install-path)\" ;
+            }
+            
+            cmds += $(:E=python:R=$(install-path)) ;
+        }
+    }
+    return $(cmds) ;
+}
+
+# Assume "cmd" invokes a python interpreter and invoke it to extract
+# the interpreter version.  If cmd does not invoke a python
+# interpreter, returns void.
+rule interpreter-version ( cmd )
+{
+    # Avoid invoking a Cygwin symlink on NT
+    local skip-symlink ;
+    if [ os.name ] = NT
+    {
+        skip-symlink = [ invokes-cygwin-symlink $(cmd) ] ;
+    }
+    
+    if $(skip-symlink)
+    {
+        debug-message -------------------------------------------------------------------- ;
+        debug-message \"$(cmd)\" would attempt to invoke a Cygwin symlink, ;
+        debug-message causing an NT build of bjam to hang. ;
+        debug-message ;
+        debug-message If you intend to target a Cygwin build of Python, please ;
+        debug-message replace the path to the link with the path to a real executable ;
+        debug-message (guessing: \"$(skip-symlink)\") "in" your 'using python' line ;
+        debug-message "in" user-config.jam or site-config.jam. ;
+        debug-message -------------------------------------------------------------------- ;
+    }
+    else
+    {
+        return [ 
+          python-print $(interpreter-cmd) : "'%d.%d' % (version_info[0], version_info[1])" ] ;
     }
 }
 
 # condition is a list of properties for which this python initialization applies.
-rule init-unix ( version ? : root ? : includes ? : libraries ? : condition * )
+rule init-unix-nt ( version ? : root ? : includes ? : libraries ? : condition * )
 {
+    # compute the string Python's sys.platform needs to match.  If not targeting
+    # windows or cygwin we'll assume only native builds can possibly run, so we
+    # won't require a match and we leave sys.platform blank.
+    local sys.platform ;
+    local target-os = [ property.select target-os : $(condition) ] [ os.name ] ;
+    target-os = $(target-os[1]:G="") ;
+    
+    switch $(target-os) 
+    {
+        case NT :
+          sys.platform = win32 ;
+        case CYGWIN :
+          sys.platform = cygwin ;
+    }
+    if $(sys.platform)
+    {
+          debug-message seeking sys.platform: $(sys.platform) ;
+    }
+    
     #
     # Autoconfiguration sequence
     #
-    if $(version)
+    
+    local major-minor ;
+    if $(version) 
     {
-        local v = [ MATCH ^([0-9]+\.[0-9]+)(.*)$ : $(version) : 1 2 ] ;
-        if ! $(v) || $(v[2])
-        {
-            ECHO "Warning: \"using python\" expects a two part (major, minor) version number; got" $(version) instead ;
-            if $(v)
-            {
-                version = $(v[1]) ;
-            }
-        }
-        debug-message looking for python $(version) ;
+        major-minor = [ split-version $(version) ] ;
+        debug-message Looking for python version $(major-minor:J=.)... ;
+    }
+    else
+    {
+        debug-message Looking for any python version...  ;
+    }
+
+    #
+    # Construct the list of subdirectories of an explicitly-specified
+    # root in which to look for the Python binary.
+    #
+    local bin ;
+    if $(sys.platform) = win32
+    {
+        # on Windows, look in the root directory itself and, to work
+        # with the result of a build-from-source, the PCBuild directory
+        bin = PCBuild8 PCBuild ""  ; 
+    }
+    else
+    {
+        # if root is explicitly specified, look in its bin subdirectory
+        local bin = bin ;
     }
     
-    # if root is explicitly specified, look in its bin subdirectory
-    local bin = bin/ ;
     bin = $(bin:R=$(root)) ; # will null out $(bin) if $(root) is empty.
-    
     if $(bin)
     {
-        debug-message searching for python binaries in $(bin) ;
+        debug-message searching for python binaries in: $(bin) ;
     }
     
-    # Form the python commands to try in order.  First look for python
-    # with the explicit version number, then without it
-    local python = python ;
-    local cmds = $(python:D=$(bin:E=""))$(version:E="") $(python:D=$(bin:E="")) ;
-
-    local interpreter ;
+    local cmds ;
+    if $(sys.platform) = win32
+    {
+        cmds = [ win32-python-commands $(bin) ] ;
+    }
+    else
+    {
+        # First look for python with the explicit version number, then without it
+        cmds = $(:E=python:R=$(bin:E=""))$(major-minor:J=.:E="") $(:E=python:R=$(bin:E="")) ;
+    }
+    
+    # Look through the list of cmds for an interpreter with an
+    # appropriate version number.
+    local interpreter-cmd ;
     while $(cmds)
     {
         # pop a command
-        interpreter = $(cmds[0]) ; cmds = $(cmds[2-]) ;
-        debug-message trying Python interpreter command $(interpreter) ;
+        interpreter-cmd = $(cmds[0]) ; cmds = $(cmds[2-]) ;
+        debug-message Trying Python interpreter command \"$(interpreter-cmd)\"... ;
           
         # Check to see what version that command actually runs, if any
-        local true-version = [ python-version $(interpreter) ] ;
+        local found-version = [ interpreter-version $(interpreter-cmd) ] ;
         
-        if ! $(true-version)
+        if ! $(found-version)
         {
-            debug-message $(interpreter) does not invoke a working Python interpreter ;
+            debug-message \"$(interpreter-cmd)\" does not invoke a working Python interpreter ;
+            interpreter-cmd = ;
         }
         else
         {
-            debug-message $(interpreter) invokes actual Python (major,minor) version $(true-version) ;
+            debug-message \"$(interpreter-cmd)\" invokes actual Python (major,minor) version $(found-version) ;
             
-            # if no version was specified, assume that's OK
-            version ?= $(true-version) ;
+            # if no version was specified, assume the version found is OK
+            version ?= $(found-version) ;
             
-            # if the version is a match, stop searching
-            if $(version) = $(true-version)
+            # ditto for platform
+            local found-platform = [ python-print $(interpreter-cmd) : platform ] ;
+            sys.platform ?= $(found-platform) ;
+            
+            # if the version is a match and it targets the right platform, stop searching
+            if $(version) = $(found-version) && $(sys.platform) = $(found-platform)
             {
-                debug-message qualifying Python interpreter found ;
-                root ?= [ python-root $(interpreter) ] ;
+                # compute default library and include search paths
+                if $(sys.platform) = win32
+                {
+                    # The exec-prefix is where you're supposed to look
+                    # for machine-specific libraries.
+                    local exec-prefix = [ nt-path [ python-print $(interpreter-cmd) :  exec_prefix ] ] ;
+                    local default-library-path = $(:E=libs:R=$(exec-prefix)) ;
+                    local default-include-path = $(:E=Include:R=$(exec-prefix)) ;
+                    
+                    # If the interpreter was found in a directory
+                    # called "PCBuild" or "PCBuild8," assume we're
+                    # looking at a Python built from the source
+                    # distro, and go up one additional level to the
+                    # default root.  Otherwise, the default root is
+                    # the directory where the interpreter was found.
+                    
+                    # We ask Python itself what the executable path is
+                    # in case of intermediate symlinks or shell
+                    # scripts.
+                    local executable-path = [ nt-path [ python-print $(interpreter-cmd) :  executable ] ] ;
+                    local executable-dir = $(executable-path:D) ;
+                    
+                    
+                    if [ MATCH ^(PCBuild) : $(executable-dir:D=) : 1 ]
+                    {
+                        debug-message "This Python appears to reside in a source distribution;" ;
+                        debug-message "adding \""$(executable-dir)"\" to default library search path" ;
+                        
+                        default-library-path = $(executable-dir) $(default-library-path) ;
+                        default-include-path = $(:E=PC:R=$(executable-dir:D)) $(default-include-path) ;
+                        debug-message "and \""$(default-include-path[1])"\" to default #include path" ;
+                    }
+                    libraries ?= $(default-library-path) ;
+                    includes ?= $(default-include-path) ;
+                }
+                else
+                {
+                    local prefix = [ python-print $(interpreter-cmd) :  prefix ] ;
+                    includes ?= [ *nix-path $(prefix)/include/python$(version) ] ;
+                    
+                    local exec-prefix = [ python-print $(interpreter-cmd) : exec_prefix ] ;
+                    libraries ?= [ *nix-path $(exec-prefix)/lib/python$(version)/config ]
+                      [ *nix-path $(exec-prefix)/lib ] ;
+                }
                 cmds = ; # break
+            }
+            else
+            {
+                interpreter-cmd = ;
             }
         }
     }
-    debug-message "Python interpreter command is" $(interpreter) ;
     
-    includes ?= $(root)/include/python$(version) ;
-    debug-message "Python include path is" $(includes) ;
-    
-    libraries ?= $(root)/lib/python$(version)/config ;
-    debug-message "Python library path is" $(libraries) ;
+    if $(interpreter-cmd)
+    {
+        debug-message "Python interpreter command is" \"$(interpreter-cmd)\" ;
+        debug-message "Python include path is" \"$(includes)\" ;
+        debug-message "Python library path is" \"$(libraries)\" ;
+    }
+    else
+    {
+        debug-message "*** No suitable Python interpreter found ***" ;
+    }
     
     #
     # End autoconfiguration sequence
@@ -241,11 +589,11 @@ rule init-unix ( version ? : root ? : includes ? : libraries ? : condition * )
     # override the global value.
     if ! $(condition)
     {
-        PYTHON = $(interpreter) ;
+        PYTHON = $(interpreter-cmd) ;
     }
     else
     {              
-        flags python.capture-output PYTHON $(condition:J=/) : $(interpreter) ;
+        flags python.capture-output PYTHON $(condition:J=/) : $(interpreter-cmd) ;
     }   
 
     # Provide system library dependencies for targets linking with
@@ -273,8 +621,9 @@ rule init-unix ( version ? : root ? : includes ? : libraries ? : condition * )
     # used to form more specific target alternatives.
     
     local extra-libs extra-libs-conditional ;
-
-    switch [ os.name ]
+    local lib-version = $(version) ;
+    
+    switch $(target-os)
     {
         case SOLARIS :
         {
@@ -294,8 +643,12 @@ rule init-unix ( version ? : root ? : includes ? : libraries ? : condition * )
         }
         
         case QNX* :    
+          
+        case NT :
         {
             extra-libs =                 ;
+            major-minor = [ split-version $(version) ] ;
+            lib-version = $(major-minor:J="") ;
         }
         
         case HPUX :
@@ -306,21 +659,11 @@ rule init-unix ( version ? : root ? : includes ? : libraries ? : condition * )
         case * :       extra-libs = pthread dl util ;
     }
     
-    if ! [ os.on-windows ]
-    {
-        # On *nix, we don't want to link either Boost.Python or Python
-        # extensions to libpython, because the Python interpreter itself
-        # provides all those symbols. If we linked to libpython, we'd get
-        # duplicate symbols. So declare two targets -- one for building
-        # extensions and another for embedding
-        alias python_for_extensions
-                     :  
-                     : $(condition)
-                     :
-                     : <include>$(includes) 
-                     ;
-    }
+    local libpython-name = python $(version) $(sys.platform) ;
+    libpython-name = $(libpython-name:J=-) ;
+    lib $(libpython-name) : : <name>python$(lib-version) ;
     
+    debug-message lib-version= $(lib-version) ;
     
     # This should really be called python_for_embedding
     alias python
@@ -329,8 +672,27 @@ rule init-unix ( version ? : root ? : includes ? : libraries ? : condition * )
                  :
                  : <include>$(includes) 
                    <library-path>$(libraries)
-                   <find-shared-library>python$(version)
+                   <library>$(libpython-name)
                  ;
+
+    # On *nix, we don't want to link either Boost.Python or Python
+    # extensions to libpython, because the Python interpreter itself
+    # provides all those symbols. If we linked to libpython, we'd get
+    # duplicate symbols. So declare two targets -- one for building
+    # extensions and another for embedding
+    if [ os.on-windows ]
+    {
+        alias python_for_extensions : python : $(condition) ;
+    }
+    else
+    {
+        alias python_for_extensions
+                     :  
+                     : $(condition)
+                     :
+                     : <include>$(includes) 
+                     ;
+    }
 }
 
 rule init-mac ( version : root ? : includes ? : libraries ? )
@@ -386,112 +748,8 @@ rule init-mac ( version : root ? : includes ? : libraries ? )
     # against the Python framework, even when building extensions. 
     # Note that framework builds of Python always use shared libraries,
     # so we do not need to worry about duplicate Python symbols.
-    .alias-defined = true ;
     alias python_for_extensions : python ;
 }
-
-rule init-nt ( version : root ? : includes ? : libraries ? : cygwin-condition ? )
-{
-    if ! $(cygwin-condition)
-    {        
-        # The name of Python library file does not have a dot between
-        # major and minor version. 
-        local PYTHON_VERSION_NODOT = [ regex.match ([0-9]+)[.]([0-9]+).* : $(version) : 1 2 ] ;
-
-        PYTHON_VERSION_NODOT = $(PYTHON_VERSION_NODOT:J="") ;
-
-        root ?= c:/python$(PYTHON_VERSION_NODOT) ;
-	          
-        local PATH = [ modules.peek : PATH ] ;
-        local PATH = [ modules.peek : Path ] ;        
-        
-        PYTHON_INCLUDES = $(includes) ;
-        PYTHON_LIB_PATH = $(libraries) ;
-
-        PYTHON_LIB_PATH ?= $(root)/libs [ GLOB $(root) : PCbuild ] ;
-        
-        PYTHON_INCLUDES ?= $(root)/include [ GLOB $(root) : PC ] ;
-        
-        
-        PYTHON_DLL ?= [ GLOB $(PATH) $(Path) : python$(PYTHON_VERSION_NODOT).dll ] ;
-        PYTHON_DEBUG_DLL ?= [ GLOB $(PATH) $(Path) : python$(PYTHON_VERSION_NODOT)_d.dll ] ;
-        PYTHON_IMPORT_LIB ?= [ GLOB $(PYTHON_LIB_PATH) : libpython$(PYTHON_VERSION_NODOT).* ] ;
-        PYTHON_DEBUG_IMPORT_LIB ?= [ GLOB $(PYTHON_LIB_PATH) : libpython$(PYTHON_VERSION_NODOT).* ] ;        
-        
-        local interpreter = [ common.get-invocation-command 
-            python.exe : python.exe : : $(root)/bin 
-                                          $(root)
-                                          $(root)/PCBuild
-                                            : path-last ] ;
-        
-        if --debug-configuration in [ modules.peek : ARGV ]
-        {
-            ECHO "notice: Python include path is" $(PYTHON_INCLUDES) ;
-            ECHO "notice: Python library path is" $(PYTHON_LIB_PATH) ;
-            ECHO "notice: Python interpreter is" $(interpreter) ;        
-            ECHO "notice: Python library name is" python$(PYTHON_VERSION_NODOT) ;
-        }
-        
-        PYTHON = $(interpreter) ;
-        flags python.capture-output PYTHON : $(interpreter) ;
-               
-        properties += <library-path>$(PYTHON_LIB_PATH) ;
-            
-        # msvc compilers auto-find the python library
-        # declare two alternatives -- one for msvc and another
-        # for the rest of the world
-        alias python 
-          :
-          : <toolset>msvc 
-          :
-          : <library-path>$(PYTHON_LIB_PATH) 
-            <include>$(PYTHON_INCLUDES)
-          ;
-                       
-        local lib = python$(PYTHON_VERSION_NODOT) ;
-        
-        alias python
-          :
-          :
-          :
-          : <library-path>$(PYTHON_LIB_PATH)    
-            <include>$(PYTHON_INCLUDES)
-            <find-shared-library>$(lib) ;                
-    }
-    else
-    {        
-        root ?= /usr ;  
-        if $(root) = /usr
-        {
-            CYGWIN_PYTHON_DLL_PATH ?= /bin ;
-        }
-        else
-        {
-            CYGWIN_PYTHON_DLL_PATH ?= $(root)/bin ;
-        }
-        CYGWIN_PYTHON_LIB_PATH ?= $(CYGWIN_PYTHON_ROOT)/lib/python$(version)/config ;
-      
-        CYGWIN_PYTHON_DEBUG_VERSION ?= $(version) ;
-        CYGWIN_PYTHON_DEBUG_ROOT ?= /usr/local/pydebug ;
-        CYGWIN_PYTHON_DEBUG_DLL_PATH ?= $(CYGWIN_PYTHON_DEBUG_ROOT)/bin ;
-        CYGWIN_PYTHON_DEBUG_LIB_PATH ?= $(CYGWIN_PYTHON_DEBUG_ROOT)/lib/python$(CYGWIN_PYTHON_DEBUG_VERSION)/config ;        
-        
-        local properties ;
-
-        properties += <library-path>$(CYGWIN_PYTHON_LIB_PATH) 
-                      <find-shared-library>python$(CYGWIN_PYTHON_VERSION).dll ;
-        
-        properties += <include>$(root)/include/python$(version) ;          
-          
-        alias python
-          :
-          : $(cygwin-condition)
-          :
-          : $(properties)
-          ;        
-    }    
-}
-
 
 rule configured ( ) 
 {
@@ -505,8 +763,8 @@ type.register PYTHON_EXTENSION : : SHARED_LIB ;
 # ordinary library. Therefore, we specify only suffixes
 # used for generation of targets.
 type.set-generated-target-suffix PYTHON_EXTENSION : : so ;
-type.set-generated-target-suffix PYTHON_EXTENSION : <os>NT : pyd ;
-type.set-generated-target-suffix PYTHON_EXTENSION : <os>CYGWIN : dll ;
+type.set-generated-target-suffix PYTHON_EXTENSION : <target-os>windows : pyd ;
+type.set-generated-target-suffix PYTHON_EXTENSION : <target-os>cygwin : dll ;
 
 # Unset 'lib' prefix for PYTHON_EXTENSION
 type.set-generated-target-prefix PYTHON_EXTENSION : : "" ;
