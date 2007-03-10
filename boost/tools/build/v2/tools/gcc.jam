@@ -44,6 +44,9 @@ generators.override gcc.searched-lib-generator : searched-lib-generator ;
 type.set-generated-target-suffix OBJ : <toolset>gcc : o ;
 type.set-generated-target-suffix STATIC_LIB : <toolset>gcc : a ;
 
+type.set-generated-target-suffix IMPORT_LIB : <toolset>gcc <target-os>cygwin : dll.a ;
+type.set-generated-target-suffix IMPORT_LIB : <toolset>gcc <target-os>windows : a ;
+
 import rc ;
 
 # Initializes the gcc toolset for the given version.
@@ -427,8 +430,19 @@ class gcc-linking-generator : unix-linking-generator
         }
         else
         {
-            return [ unix-linking-generator.run $(project) $(name)
+            local generated-targets = [ unix-linking-generator.run $(project) $(name)
                 : $(property-set) : $(sources) ] ;
+            
+            # If more than one target was generated, throw out the
+            # last one, which on windows just leaves the import
+            # library.  Most generators on windows simply don't accept
+            # shared libraries as input, but being able to link
+            # directly to a shared library without an import library
+            # is an important capability of GCC.  Therefore, we remove
+            # the target after the action sees it so that dependent
+            # targets don't try to link to both the import library and
+            # the DLL.
+            return $(generated-targets[1-2]) ;
         }
     }
 }
@@ -436,9 +450,17 @@ class gcc-linking-generator : unix-linking-generator
 generators.register [ new gcc-linking-generator gcc.link : LIB OBJ : EXE 
     : <toolset>gcc ] ;
 
-generators.register [ new gcc-linking-generator gcc.link.dll : LIB OBJ : SHARED_LIB 
-    : <toolset>gcc ] ;
+.IMPLIB-COMMAND = ;
+.IMPLIB-TYPE = IMPORT_LIB ;
+if [ os.on-windows ]
+{
+    .IMPLIB-COMMAND = "-Wl,--out-implib," ;
+    .IMPLIB-COMMAND = IMPORT_LIB ;
+}
 
+generators.register 
+  [ new gcc-linking-generator gcc.link.dll : LIB OBJ : $(.IMPLIB-TYPE) SHARED_LIB 
+    : <toolset>gcc ] ;
 
 # Declare flags for linking
 # First, the common flags
@@ -601,7 +623,7 @@ rule link.dll ( targets * : sources * : properties * )
 # Differ from 'link' above only by -shared.
 actions link.dll bind LIBRARIES
 {
-    "$(CONFIG_COMMAND)" -L"$(LINKPATH)" -Wl,$(RPATH_OPTION:E=-R)$(SPACE)-Wl,"$(RPATH)" -o "$(<)" $(HAVE_SONAME)-Wl,$(SONAME_OPTION)$(SPACE)-Wl,$(<[1]:D=) -shared $(START-GROUP) "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA) $(END-GROUP) $(OPTIONS) $(USER_OPTIONS)
+    "$(CONFIG_COMMAND)" -L"$(LINKPATH)" -Wl,$(RPATH_OPTION:E=-R)$(SPACE)-Wl,"$(RPATH)" "$(.IMPLIB-COMMAND)$(<[1])" -o "$(<[-1])" $(HAVE_SONAME)-Wl,$(SONAME_OPTION)$(SPACE)-Wl,$(<[-1]:D=) -shared $(START-GROUP) "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA) $(END-GROUP) $(OPTIONS) $(USER_OPTIONS)
 }
 
 # Set up threading support. It's somewhat contrived, so perform it at the end,
