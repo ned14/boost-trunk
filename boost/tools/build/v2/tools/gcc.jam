@@ -451,11 +451,11 @@ generators.register [ new gcc-linking-generator gcc.link : LIB OBJ : EXE
     : <toolset>gcc ] ;
 
 .IMPLIB-COMMAND = ;
-.IMPLIB-TYPE = IMPORT_LIB ;
+.IMPLIB-TYPE = ;
 if [ os.on-windows ]
 {
     .IMPLIB-COMMAND = "-Wl,--out-implib," ;
-    .IMPLIB-COMMAND = IMPORT_LIB ;
+    .IMPLIB-TYPE = IMPORT_LIB ;
 }
 
 generators.register 
