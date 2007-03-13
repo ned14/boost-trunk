@@ -442,7 +442,14 @@ class gcc-linking-generator : unix-linking-generator
             # the target after the action sees it so that dependent
             # targets don't try to link to both the import library and
             # the DLL.
-            return $(generated-targets[1-2]) ;
+            if [ $(property-set).get <suppress-import-lib> ] = true
+            {
+                return $(generated-targets[0]) $(generated-targets[-1]) ;
+            }
+            else
+            {
+                return $(generated-targets[1-2]) ;
+            }
         }
     }
 }

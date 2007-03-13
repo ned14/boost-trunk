@@ -177,6 +177,8 @@ feature xdll-path : : free path ;
 #provides means to specify def-file for windows dlls.
 feature def-file : : free dependency ;
 
+feature.feature suppress-import-lib : false true : incidental ; 
+
 # This is internal feature which is used to store the name of 
 # bjam action to call when building a target.
 feature.feature action : : free ;
