@@ -18,21 +18,22 @@ rule environ ( variable-names + )
 .platform = [ modules.peek : OSPLAT ] ;
 .version = [ modules.peek : OSVER ] ;
 
-local rule constant ( c )
+local rule constant ( c : os ? )
 {
+    os ?= $(.name) ;
     # First look for platform-specific name, then general value
-    local variables = .$(c)-$(.name) .$(c) ;
+    local variables = .$(c)-$(os) .$(c) ;
     local result = $($(variables)) ;
     return $(result[1]) ;
 }
 
-rule get-constant  ( )
+rule get-constant  ( os ? )
 {
     # Find the name of the constant being accessed, which is
     # equal to the name used to invoke us.
     local bt = [ BACKTRACE 1 ] ;
     local rulename = [ MATCH ([^.]*)$ : $(bt[4]) ] ;
-    return [ constant $(rulename) ] ;
+    return [ constant $(rulename) : $(os) ] ;
 }
 
 

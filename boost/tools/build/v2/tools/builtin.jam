@@ -73,14 +73,13 @@ local rule default-host-os ( )
 # to list all the values to prevent unkown value errors.
 # Both set the default value to the current OS to account for
 # the default use case of building on the target OS.
-feature host-os
-    :   $(.os-names)
-    :   optional ;
-        feature.set-default host-os : [ default-host-os ] ;
+feature host-os :  $(.os-names) ;
+feature.set-default host-os : [ default-host-os ] ;
+
 feature target-os
     :   $(.os-names)
     :   propagated link-incompatible ;
-        feature.set-default target-os : [ default-host-os ] ;
+feature.set-default target-os : [ default-host-os ] ;
 
 
 feature toolset : : implicit propagated symmetric ;

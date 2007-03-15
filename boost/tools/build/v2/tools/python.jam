@@ -216,24 +216,6 @@ local rule debug-message ( message * )
     }
 }
 
-# Convert an NT path to native
-local rule windows-path-to-native ( path )
-{
-    if [ os.name ] = NT
-    {
-        return $(path) ;
-    }
-    else
-    {
-        path = $(path:T) ;
-        parts = [ MATCH ^([A-Za-z]):/(.*) : $(path) : 1 2 ] ;
-        if $(parts)
-        {
-            path = /cygdrive/$(parts[1])/$(parts[2]) ;
-        }
-    }
-}
-
 # Like W32_GETREG, except prepend HKEY_CURRENT_USER and
 # HKEY_LOCAL_MACHINE to the argument, returning the first result
 # found.
@@ -250,62 +232,109 @@ local rule registry-value ( path : data ? )
     return $(result) ;
 }
 
-# Convert a *nix path to native.  
+.windows-drive-letter-re = ^([A-Za-z]):[\\/](.*) ;
+.cygwin-drive-letter-re = ^/cygdrive/([a-z])/(.*) ;
+
+.working-directory = [ PWD ] ;
+.working-drive-letter = [ SUBST $(.working-directory) $(.windows-drive-letter-re) $1 ] ; 
+.working-drive-letter ?= [ SUBST $(.working-directory) $(.cygwin-drive-letter-re) $1 ] ;
+  
+local rule windows-to-cygwin-path ( path )
+{
+    # if path is rooted with a drive letter, rewrite it using the
+    # /cygdrive mountpoint
+    local p = [ SUBST $(path:T) $(.windows-drive-letter-re) /cygdrive/$1/$2 ] ;
+    
+    # else if path is rooted without a drive letter, use the working directory
+    p ?=  [ SUBST $(path:T) ^/(.*) /cygdrive/$(.working-drive-letter:L)/$2 ] ;
+    
+    # else return the path unchanged
+    return $(p:E=$(path:T)) ;
+}
+
+# :W only works in Cygwin builds of bjam.  This one works on NT builds
+# as well.
+local rule cygwin-to-windows-path ( path )
+{
+    path = $(path:R="") ; # strip any trailing slash
+    
+    local drive-letter = [ SUBST $(path) $(.cygwin-drive-letter-re) $1:/$2 ] ;
+    if $(drive-letter)
+    {
+        path = $(drive-letter) ;
+    }
+    else if $(path:R=/x) = $(path) # already rooted?
+    {
+        # Look for a cygwin mount that includes each head sequence in $(path).
+        local head = $(path) ;
+        local tail = "" ;
+
+        while $(head)
+        {
+            local root = [ 
+              registry-value "SOFTWARE\\Cygnus Solutions\\Cygwin\\mounts v2\\"$(head) 
+                : native 
+            ] ;
+            
+            if $(root)
+            {
+                path = $(tail:R=$(root)) ;
+                head = ;
+            }
+            tail = $(tail:R=$(head:D=)) ;
+            
+            if $(head) = /
+            {
+                head = ;
+            }
+            else
+            {
+                head = $(head:D) ;
+            }
+        }
+    }
+    return [ regex.replace $(path:R="") / \\ ] ;
+}
+
+# Convert a *nix path to native
 local rule *nix-path-to-native ( path )
 {
     if [ os.name ] = NT
     {
-        path = $(path:R="") ; # strip any trailing slash
-        
-        local parts = [ MATCH ^/cygdrive/([a-zA-Z])/(.*) : $(path) : 1 2 ] ;
-        if $(parts)
-        {
-            path = $(parts[1]):/$(parts[2]) ;
-        }
-        else if $(path:R=/x) = $(path) # already rooted?
-        {
-            # Look for a cygwin mount that includes each head sequence in $(path).
-            local head = $(path) ;
-            local tail = "" ;
-
-            while $(head)
-            {
-                local root = [ 
-                  registry-value "SOFTWARE\\Cygnus Solutions\\Cygwin\\mounts v2\\"$(head) 
-                  : native 
-                ] ;
-                
-                if $(root)
-                {
-                    path = $(tail:R=$(root)) ;
-                    head = ;
-                }
-                tail = $(tail:R=$(head:D=)) ;
-                
-                if $(head) = /
-                {
-                    head = ;
-                }
-                else
-                {
-                    head = $(head:D) ;
-                }
-            }
-        }
-        path = [ regex.replace $(path:R="") / \\ ] ;
+        path = [ cygwin-to-windows-path $(path) ] ;
     }
     return $(path) ;
 }
   
-local rule path-to-native ( path : source-os )
+# Convert an NT path to native
+local rule windows-path-to-native ( path )
 {
-    if $(source-os) = windows
+    if [ os.name ] = NT
+    {
+        return $(path) ;
+    }
+    else
+    {
+        return [ windows-to-cygwin-path $(path) ] ;
+    }
+}
+
+# Return nonempty if path looks like a windows path, i.e. it starts
+# with a drive letter or contains backslashes.
+local rule guess-windows-path ( path )
+{
+    return [ SUBST $(path) ($(.windows-drive-letter-re)|.*([\\]).*) $1 ] ;
+}
+
+local rule path-to-native ( path )
+{
+    if [ guess-windows-path $(path) ]
     {
         return [ windows-path-to-native $(path) ] ;
     }
     else
     {
-        return [ *nix-path-to-native $(path) ] ;
+        return [ *nix-path-to-native $(path:T) ] ;
     }
 }
 
@@ -349,6 +378,7 @@ local rule windows-installed-pythons ( version ? )
             
             if $(install-path)
             {
+                install-path = [ windows-path-to-native $(install-path) ] ;
                 debug-message Registry indicates Python $(v) installed at \"$(install-path)\" ;
             }
             
@@ -451,6 +481,15 @@ local rule compute-default-paths (
         local default-library-path = $(:E=libs:R=$(exec-prefix)) ;
         local default-include-path = $(:E=Include:R=$(prefix)) ;
         
+        if $(default-library-path)
+        {
+            default-library-path = [ path-to-native $(default-library-path) ] ;
+        }
+        if $(default-include-path)
+        {
+            default-include-path = [ path-to-native $(default-include-path) ] ;
+        }
+        
         # If the interpreter was found in a directory
         # called "PCBuild" or "PCBuild8," assume we're
         # looking at a Python built from the source
@@ -468,8 +507,12 @@ local rule compute-default-paths (
             debug-message "This Python appears to reside in a source distribution;" ;
             debug-message "prepending \""$(executable-dir)"\" to default library search path" ;
             
-            default-library-path = $(executable-dir) $(default-library-path) ;
-            default-include-path = $(:E=PC:R=$(executable-dir:D)) $(default-include-path) ;
+            default-library-path = [ path-to-native $(executable-dir) ] 
+              $(default-library-path) ;
+            
+            default-include-path = [ path-to-native $(:E=PC:R=$(executable-dir:D)) ] 
+              $(default-include-path) ;
+            
             debug-message "and \""$(default-include-path[1])"\" to default #include path" ;
         }
         
@@ -479,11 +522,12 @@ local rule compute-default-paths (
     else
     {
         # $(prefix)/include/python$(version) 
-        includes ?= $(:E=python$(version):R=$(:E=include:R=$(prefix))) ;
+        includes ?= [ path-to-native $(:E=python$(version):R=$(:E=include:R=$(prefix))) ] ;
         
         # $(exec-prefix)/lib/python$(version)/config $(exec-prefix)/lib
-        local lib = $(:E=lib:R=$(exec-prefix)) ;
-        libraries ?= $(:E=config:R=$(:E=python$(version):R=$(lib))) $(lib) ;
+        local lib = [ path-to-native $(:E=lib:R=$(exec-prefix)) ] ;
+        libraries ?= [ path-to-native $(:E=config:R=$(:E=python$(version):R=$(lib))) ] 
+          [ path-to-native $(lib) ] ;
     }
 }
 
@@ -494,6 +538,11 @@ feature.feature python : : propagated ;
 # interpreter.
 local rule candidate-interpreters ( version ? : prefix ? : target-os )
 {
+    if $(prefix)
+    {
+        prefix = [ path-to-native $(prefix) ] ;
+    }
+    
     local bin-path = bin ;
     if $(target-os) = windows
     {
@@ -684,9 +733,9 @@ local rule configure (
                     
                     compute-default-paths
                       $(target-os) : $(sys.version) 
-                        : [ path-to-native $(sys.prefix) : $(target-os) ]
-                          : [ path-to-native $(sys.exec_prefix) : $(target-os) ]
-                            : [ path-to-native $(sys.executable) : $(target-os) ] 
+                        : $(sys.prefix)
+                          : $(sys.exec_prefix)
+                            : $(sys.executable)
                               ;
                     version = $(sys.version) ;
                     interpreter-cmd ?= $(cmd) ;
@@ -749,6 +798,8 @@ local rule configure (
             system-libs += $(x) ;
         }
     }      
+    
+    condition += <target-os>$(target-os) ;
     
     # Set up the PYTHON variable to point at the interpreter.
     flags python.capture-output PYTHON $(condition:J=/) : $(interpreter-cmd) ;
@@ -936,6 +987,19 @@ generators.register
 generators.register-standard testing.expect-success 
   : RUN_PYD_OUTPUT : RUN_PYD ;
 
+# There are two different ways of spelling OS names.  One is used for
+# [ os.name ] and the other is used for the <host-os> and <target-os>
+# properties.  Until that is remedied, this sets up a crude mapping
+# from the latter to the former, that will work *for the purposes of
+# cygwin/NT cross-builds only*.  Couldn't think of a better name than
+# "translate"
+.translate-os-windows = NT ;
+.translate-os-cygwin = CYGWIN ;
+local rule translate-os ( src-os )
+{
+    local x = $(.translate-os-$(src-os)) [ os.name ] ;
+    return $(x[1]) ;
+}
 
 # The flag settings on testing.capture-output do not
 # apply to python.capture output at the moment.
@@ -949,13 +1013,32 @@ rule capture-output ( target : sources * : properties * )
     # so RUN_PATH variable on $(sources[2]) is not consulted. Move it
     # over explicitly.
     RUN_PATH on $(sources[1]) = [ on $(sources[2]) return $(RUN_PATH) ] ;
+    
     PYTHONPATH = [ on $(sources[2]) return $(LOCATE) ] ;
     # After test is run, we remove the Python module, but not the Python
     # script.
     testing.capture-output $(target) : $(sources[1]) : $(properties) 
       : $(sources[2]) ;
-    local c = [ common.prepend-path-variable-command PYTHONPATH : $(PYTHONPATH) ] ;
-    LAUNCHER on $(target) = $(c) [ on $(target) return $(PYTHON) ] ;
+
+    # PYTHONPATH is different; it will be interpreted by whichever
+    # Python is invoked and so must follow path rules for the target
+    # os.  The only OSes where we can run pythons for other OSes
+    # currently are NT and CYGWIN, so we only need to handle those
+    # cases.
+    local target-os = [ feature.get-values target-os : $(properties) ] ;
+    # oddly, host-os isn't in properties, so grab the default value.
+    local host-os = [ feature.defaults host-os ] ; 
+    host-os = $(host-os:G=) ;
+    if $(target-os) != $(host-os)
+    {
+        PYTHONPATH = 
+          [ sequence.transform $(host-os)-to-$(target-os)-path : $(PYTHONPATH) ] ;
+    }
+    local path-separator = 
+      [ os.path-separator [ translate-os $(target-os) ] ] ;
+    local set-PYTHONPATH = 
+      [ common.variable-setting-command PYTHONPATH : $(PYTHONPATH:J=$(path-separator)) ] ;
+    LAUNCHER on $(target) = $(set-PYTHONPATH) [ on $(target) return $(PYTHON) ] ;
 }
 
 rule bpl-test ( name : sources * : requirements * )
