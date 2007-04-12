@@ -10222,6 +10222,7 @@ boost/libs/utility/shared_iterator_test.cpp svneol=native#text/plain
 boost/libs/utility/sublibs -text
 boost/libs/utility/test/Jamfile.v2 svneol=native#text/plain
 boost/libs/utility/test/next_prior_test.cpp svneol=native#text/plain
+boost/libs/utility/test/none_test.cpp svneol=native#text/plain
 boost/libs/utility/test/result_of_test.cpp svneol=native#text/plain
 boost/libs/utility/throw_exception.html svneol=native#text/html
 boost/libs/utility/utility.htm svneol=native#text/html
