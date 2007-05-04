@@ -7737,15 +7737,18 @@ boost/libs/python/doc/v2/tuple.html svneol=native#text/html
 boost/libs/python/doc/v2/type_id.html svneol=native#text/html
 boost/libs/python/doc/v2/with_custodian_and_ward.html svneol=native#text/html
 boost/libs/python/doc/v2/wrapper.html svneol=native#text/html
-boost/libs/python/example/Attic/project.zip -text svneol=unset#application/zip
-boost/libs/python/example/Jamfile.v2 svneol=native#text/plain
 boost/libs/python/example/Jamroot -text
-boost/libs/python/example/Jamrules svneol=native#text/plain
 boost/libs/python/example/README svneol=native#text/plain
 boost/libs/python/example/boost-build.jam svneol=native#text/plain
 boost/libs/python/example/getting_started1.cpp svneol=native#text/plain
 boost/libs/python/example/getting_started2.cpp svneol=native#text/plain
 boost/libs/python/example/project.zip -text svneol=unset#application/zip
+boost/libs/python/example/quickstart/Jamroot -text
+boost/libs/python/example/quickstart/boost-build.jam svneol=native#text/plain
+boost/libs/python/example/quickstart/embedding.cpp svneol=native#text/plain
+boost/libs/python/example/quickstart/extending.cpp svneol=native#text/plain
+boost/libs/python/example/quickstart/script.py svneol=native#text/x-python
+boost/libs/python/example/quickstart/test_extending.py svneol=native#text/x-python
 boost/libs/python/example/std_pair.cpp svneol=native#text/plain
 boost/libs/python/example/test_getting_started1.py svneol=native#text/x-python
 boost/libs/python/example/test_getting_started2.py svneol=native#text/x-python
