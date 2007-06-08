@@ -7885,7 +7885,6 @@ boost/libs/python/pyste/tests/wrappertest.pyste -text
 boost/libs/python/pyste/tests/wrappertestUT.py svneol=native#text/x-python
 boost/libs/python/pyste/tests/wrappertest_wrappers.h svneol=native#text/plain
 boost/libs/python/release_notes.txt svneol=native#text/plain
-boost/libs/python/src/aix_init_module.cpp svneol=native#text/plain
 boost/libs/python/src/converter/arg_to_python_base.cpp svneol=native#text/plain
 boost/libs/python/src/converter/builtin_converters.cpp svneol=native#text/plain
 boost/libs/python/src/converter/from_python.cpp svneol=native#text/plain
