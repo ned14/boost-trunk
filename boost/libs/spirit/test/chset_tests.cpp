@@ -1,22 +1,25 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     Copyright (c) 2001-2003 Daniel Nuffer
     Copyright (c) 2003      Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #include <iostream>
-#include <boost/detail/lightweight_test.hpp>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
+#include <boost/test/included/unit_test_framework.hpp>
+#include "impl/util.ipp"
 #include "impl/sstream.hpp"
 
 #include <boost/spirit/utility/chset.hpp>
 
 using namespace std;
 using namespace boost::spirit;
+namespace ut = boost::unit_test_framework;
 
 namespace
 {
@@ -46,7 +49,7 @@ namespace
         out << "\t";
 
         for (int i = '!'; i < '^'; i++)
-            if (a.test(CharT(i)))
+            if (a.test(i))
                 out << '*';
             else
                 out << " ";
@@ -57,7 +60,7 @@ namespace
     //////////////////////////////////
     template <typename CharT>
     void
-    chset_tests(sstream_t& out, CharT const* a_, CharT b1_, CharT b2_, CharT e1_)
+    chset_tests_helper(sstream_t& out, CharT const* a_, CharT b1_, CharT b2_, CharT e1_)
     {
         chset<CharT>    a(a_);
         range<CharT>    b_(b1_, b2_);
@@ -300,8 +303,8 @@ namespace
 
         tout << expected_output;
 
-        chset_tests(aout, "0-9A-Z", '5', 'J', '2');
-        chset_tests(bout, L"0-9A-Z", L'5', L'J', L'2');
+        chset_tests_helper(aout, "0-9A-Z", '5', 'J', '2');
+        chset_tests_helper(bout, L"0-9A-Z", L'5', L'J', L'2');
 
 #define narrow_chset_works (getstring(aout) == getstring(tout))
 #define wide_chset_works   (getstring(bout) == getstring(tout))
@@ -316,16 +319,31 @@ namespace
                 getstring(bout);
         }
 
-        BOOST_TEST(narrow_chset_works);
-        BOOST_TEST(wide_chset_works);
+        BOOST_CHECK(narrow_chset_works);
+        BOOST_CHECK(wide_chset_works);
     }
 
 } // namespace
 
-int
-main(int argc, char *argv[])
+///////////////////////////////////////////////////////////////////////////////
+//
+//  Main
+//
+///////////////////////////////////////////////////////////////////////////////
+
+char const banner_name[]="Character set tests";
+char const suite_name[]="spirit::chset tests";
+
+ut::test_suite *
+init_unit_test_suite(int argc, char *argv[])
 {
-    chset_tests();
-    return boost::report_errors();
+    test::init(argc, argv);
+    test::banner(banner_name);
+
+    ut::test_suite* suite = BOOST_TEST_SUITE(suite_name);
+
+    suite->add(BOOST_TEST_CASE(chset_tests));
+
+    return suite;
 }
 

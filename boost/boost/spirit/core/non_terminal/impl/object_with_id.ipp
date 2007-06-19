@@ -1,10 +1,11 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Joel de Guzman
     Copyright (c) 2002-2003 Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined BOOST_SPIRIT_OBJECT_WITH_ID_IPP
@@ -15,7 +16,6 @@
 
 #ifdef BOOST_SPIRIT_THREADSAFE
 #include <boost/thread/mutex.hpp>
-#include <boost/thread/once.hpp>
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ namespace boost { namespace spirit {
     namespace impl {
 
         //////////////////////////////////
-        template <typename IdT = std::size_t>
+        template <typename IdT = unsigned long>
         struct object_with_id_base_supply
         {
             typedef IdT                     object_id;
@@ -43,7 +43,7 @@ namespace boost { namespace spirit {
         };
 
         //////////////////////////////////
-        template <typename TagT, typename IdT = std::size_t>
+        template <typename TagT, typename IdT = unsigned long>
         struct object_with_id_base
         {
             typedef TagT        tag_t;
@@ -55,16 +55,12 @@ namespace boost { namespace spirit {
             void                release_object_id(object_id);
 
         private:
-#ifdef BOOST_SPIRIT_THREADSAFE
-            static boost::mutex &mutex_instance();
-            static void mutex_init();
-#endif
 
             boost::shared_ptr<object_with_id_base_supply<IdT> > id_supply;
         };
 
         //////////////////////////////////
-        template<class TagT, typename IdT = std::size_t>
+        template<class TagT, typename IdT = unsigned long>
         struct object_with_id : private object_with_id_base<TagT, IdT>
         {
             typedef object_with_id<TagT, IdT>       self_t;
@@ -132,9 +128,7 @@ namespace boost { namespace spirit {
         {
             {
 #ifdef BOOST_SPIRIT_THREADSAFE
-                static boost::once_flag been_here = BOOST_ONCE_INIT;
-                boost::call_once(mutex_init, been_here);
-                boost::mutex &mutex = mutex_instance();
+                static boost::mutex mutex;
                 boost::mutex::scoped_lock lock(mutex);
 #endif
                 static boost::shared_ptr<object_with_id_base_supply<IdT> >
@@ -155,27 +149,6 @@ namespace boost { namespace spirit {
         {
             id_supply->release(id);
         }
-
-        //////////////////////////////////
-#ifdef BOOST_SPIRIT_THREADSAFE
-        template <typename TagT, typename IdT>
-        inline boost::mutex &
-        object_with_id_base<TagT, IdT>::mutex_instance()
-        {
-            static boost::mutex mutex;
-            return mutex;
-        }
-#endif
-
-        //////////////////////////////////
-#ifdef BOOST_SPIRIT_THREADSAFE
-        template <typename TagT, typename IdT>
-        inline void 
-        object_with_id_base<TagT, IdT>::mutex_init()
-        {
-            mutex_instance();
-        }
-#endif
 
     } // namespace impl
 

@@ -2,15 +2,15 @@
     Phoenix V1.2.1
     Copyright (c) 2001-2003 Joel de Guzman
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <string>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 
 #include <boost/config.hpp>
 #ifdef BOOST_NO_STRINGSTREAM
@@ -74,7 +74,7 @@ main()
     SSTREAM sstr;
     (sstr << arg1)(out);
     (sstr >> arg1)(in);
-    BOOST_TEST(in == out);
+    assert(in == out);
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -82,5 +82,8 @@ main()
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-    return boost::report_errors();    
+    cout << "///////////////////////////////////////////////////////////////////////////////\n";
+    cout << "\t\tTests concluded\n";
+    cout << "\t\tSUCCESS!!!\n";
+    cout << "///////////////////////////////////////////////////////////////////////////////\n";
 }

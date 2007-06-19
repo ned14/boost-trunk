@@ -1,21 +1,24 @@
 /*=============================================================================
-    Copyright (c) 2003 Giovanni Bajo
-    Copyrigh (c) 2003 Martin Wille
-    http://spirit.sourceforge.net/
+  Spirit V1.6.2
+  Copyright (c) 2003 Giovanni Bajo
+  Copyright (c) 2003 Martin Wille
+  http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
+ =============================================================================*/
+
 #include <boost/spirit/iterator/multi_pass.hpp>
 #include <iterator>
+#include "impl/util.ipp"
 #include "impl/sstream.hpp"
-#include <boost/detail/lightweight_test.hpp>
+//#include <boost/test/included/unit_test_framework.hpp>
 
 using namespace std;
 using namespace boost::spirit;
 
-// Test for bug #720917 
+// Test for bug #720917
 // http://sf.net/tracker/index.php?func=detail&aid=720917&group_id=28447&atid=393386
 //
 // Check that it's possible to use multi_pass
@@ -81,35 +84,51 @@ void construct_string_from(void)
     IterT mp1(a);
 
     std::string dummy;
-#ifndef BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
-    dummy.assign(mp1, mpend);
+#ifdef __BORLANDC__ //  Should have used boost::spirit::assign_actor but
+                    //  Borland has a linker error BC it couldn't find
+                    //  the string::replace code.
+        copy(mp1, mpend, back_insert_iterator<std::string>(dummy));
 #else
-    copy(mp1, mpend, inserter(dummy, dummy.end()));
+    dummy.assign(mp1, mpend);
 #endif
 }
 
 template <>
-void construct_string_from<functor_multi_pass_t>(void) 
+void construct_string_from<functor_multi_pass_t>(void)
 {
     functor_multi_pass_t mpend;
     functor_multi_pass_t mp1 = functor_multi_pass_t(my_functor());
 
     std::string dummy;
-#ifndef BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
-    dummy.assign(mp1, mpend);
+#ifdef __BORLANDC__ //  Should have used boost::spirit::assign_actor but
+                    //  Borland has a linker error BC it couldn't find
+                    //  the string::replace code.
+        copy(mp1, mpend, back_insert_iterator<std::string>(dummy));
 #else
-    copy(mp1, mpend, inserter(dummy, dummy.end()));
+    dummy.assign(mp1, mpend);
 #endif
 }
 
 ////////////////////////////////////////////////
 // Definition of the test suite
-int
-main()
+//boost::unit_test_framework::test_suite*
+int main(int argc, char* argv[])
 {
+//    test::init(argc, argv);
+//    test::banner("sf_bug_720917");
+//
+//    boost::unit_test_framework::test_suite* s =
+//        BOOST_TEST_SUITE("spirit::sf_bug_720917");
+
+//    s->add(BOOST_TEST_CASE(construct_string_from<default_multi_pass_t>));
+//    s->add(BOOST_TEST_CASE(construct_string_from<fixed_multi_pass_t>));
+//    s->add(BOOST_TEST_CASE(construct_string_from<first_owner_multi_pass_t>));
+//    s->add(BOOST_TEST_CASE(construct_string_from<functor_multi_pass_t>));
+
     construct_string_from<default_multi_pass_t>();
     construct_string_from<fixed_multi_pass_t>();
     construct_string_from<first_owner_multi_pass_t>();
     construct_string_from<functor_multi_pass_t>();
-    return boost::report_errors();
+
+    return 0;
 }

@@ -1,19 +1,20 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Joel de Guzman
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_DEBUG_MAIN_HPP)
 #define BOOST_SPIRIT_DEBUG_MAIN_HPP
 
+#include <boost/spirit/version.hpp>
+
 ///////////////////////////////////////////////////////////////////////////
 #if defined(BOOST_SPIRIT_DEBUG)
-
-#include <boost/spirit/version.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -22,6 +23,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
     #include <iostream>
+    #if defined(__BORLANDC__) && (__BORLANDC__ <= 0x561)
+    #include <boost/spirit/core/impl/borland.hpp>
+    #endif
 
     ///////////////////////////////////////////////////////////////////////////
     //

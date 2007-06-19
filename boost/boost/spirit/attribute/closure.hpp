@@ -1,22 +1,25 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Joel de Guzman
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_CLOSURE_HPP
 #define BOOST_SPIRIT_CLOSURE_HPP
 
+#if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+#error "Sorry, this module does not support VC6 and VC7. Please upgrade to at least VC7.1"
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/core/parser.hpp>
 #include <boost/spirit/core/composite/composite.hpp>
-#include <boost/spirit/core/non_terminal/parser_context.hpp>
 #include <boost/spirit/attribute/parametric.hpp>
 #include <boost/spirit/attribute/closure_context.hpp>
-#include <boost/spirit/attribute/closure_fwd.hpp>
 
 #include <boost/spirit/phoenix/closures.hpp>
 #include <boost/spirit/phoenix/primitives.hpp>
@@ -59,7 +62,7 @@ namespace boost { namespace spirit {
     //
     ///////////////////////////////////////////////////////////////////////////
     template <typename ClosureT>
-    class closure_context : public parser_context_base
+    class closure_context
     {
     public:
 
@@ -79,7 +82,7 @@ namespace boost { namespace spirit {
 
         template <typename ResultT, typename ParserT, typename ScannerT>
         ResultT& post_parse(ResultT& hit, ParserT const&, ScannerT const&)
-        { hit.value(frame[phoenix::tuple_index<0>()]); return hit; }
+        { hit.value() = frame[phoenix::tuple_index<0>()]; return hit; }
 
     private:
 
@@ -102,7 +105,7 @@ namespace boost { namespace spirit {
     ///////////////////////////////////////////////////////////////////////////
 
     template <typename ClosureT>
-    class init_closure_context : public parser_context_base
+    class init_closure_context
     {
         typedef typename ClosureT::tuple_t      tuple_t;
         typedef typename ClosureT::closure_t    closure_t;
@@ -115,11 +118,11 @@ namespace boost { namespace spirit {
         ~init_closure_context() {}
 
         template <typename ParserT, typename ScannerT>
-        void pre_parse(ParserT const& /*p*/, ScannerT const&) {}
+        void pre_parse(ParserT const& p, ScannerT const&) {}
 
         template <typename ResultT, typename ParserT, typename ScannerT>
         ResultT& post_parse(ResultT& hit, ParserT const&, ScannerT const&)
-        { hit.value(frame[phoenix::tuple_index<0>()]); return hit; }
+        { hit.value() = frame[phoenix::tuple_index<0>()]; return hit; }
 
     private:
 
@@ -179,29 +182,30 @@ namespace boost { namespace spirit {
     ///////////////////////////////////////////////////////////////////////////
     template <
             typename DerivedT
-        ,   typename T0
-        ,   typename T1
-        ,   typename T2
+        ,   typename T0 = phoenix::nil_t
+        ,   typename T1 = phoenix::nil_t
+        ,   typename T2 = phoenix::nil_t
 
     #if BOOST_SPIRIT_CLOSURE_LIMIT > 3
-        ,   typename T3
-        ,   typename T4
-        ,   typename T5
+        ,   typename T3 = phoenix::nil_t
+        ,   typename T4 = phoenix::nil_t
+        ,   typename T5 = phoenix::nil_t
 
     #if BOOST_SPIRIT_CLOSURE_LIMIT > 6
-        ,   typename T6
-        ,   typename T7
-        ,   typename T8
+        ,   typename T6 = phoenix::nil_t
+        ,   typename T7 = phoenix::nil_t
+        ,   typename T8 = phoenix::nil_t
 
     #if BOOST_SPIRIT_CLOSURE_LIMIT > 9
-        ,   typename T9
-        ,   typename T10
-        ,   typename T11
+        ,   typename T9 = phoenix::nil_t
+        ,   typename T10 = phoenix::nil_t
+        ,   typename T11 = phoenix::nil_t
 
     #if BOOST_SPIRIT_CLOSURE_LIMIT > 12
-        ,   typename T12
-        ,   typename T13
-        ,   typename T14
+        ,   typename T12 = phoenix::nil_t
+        ,   typename T13 = phoenix::nil_t
+        ,   typename T14 = phoenix::nil_t
+
     #endif
     #endif
     #endif

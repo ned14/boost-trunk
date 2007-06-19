@@ -1,9 +1,10 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_RANGE_RUN_HPP
@@ -47,16 +48,6 @@ namespace boost { namespace spirit { namespace utility { namespace impl {
 
         bool operator()(range<CharT> const& x, const CharT y) const
         { return x.first < y; }
-        
-        bool operator()(const CharT x, range<CharT> const& y) const
-        { return x < y.first; }
-        
-        // This additional operator is required for the checked STL shipped
-        // with VC8 testing the ordering of the iterators passed to the
-        // std::lower_bound algo this range_char_compare<> predicate is passed
-        // to.
-        bool operator()(range<CharT> const& x, range<CharT> const& y) const
-        { return x.first < y.first; }
     };
 
     //////////////////////////////////

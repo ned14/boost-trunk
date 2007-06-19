@@ -1,23 +1,37 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_PARSER_HPP)
 #define BOOST_SPIRIT_PARSER_HPP
 
+///////////////////////////////////////////////////////////////////////////////
 #include <boost/config.hpp>
-#include <boost/type_traits.hpp>
 #include <boost/spirit/core/scanner/scanner.hpp>
-#include <boost/spirit/core/nil.hpp>
 
-namespace boost { namespace spirit
+#if defined(BOOST_MSVC)
+#include <boost/spirit/core/impl/msvc.hpp>
+#endif
+
+#if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+#define BOOST_SPIRIT_PARSER_RESULT_ARGS typename ScannerT, typename Pizza = nil_t
+#else
+#define BOOST_SPIRIT_PARSER_RESULT_ARGS typename ScannerT
+#endif
+
+///////////////////////////////////////////////////////////////////////////////
+namespace boost
 {
+    namespace spirit
+    {
+
     template <typename ParserT, typename ActionT>
-    class action; //  forward declaration
+    class action;   //  forward declaration
 
     ///////////////////////////////////////////////////////////////////////////
     //
@@ -54,12 +68,28 @@ namespace boost { namespace spirit
     //      typename parser_result<ParserT, ScannerT>::type
     //
     ///////////////////////////////////////////////////////////////////////////
+    #if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+
+    BOOST_SPIRIT_DEPENDENT_TEMPLATE_WRAPPER(parser_result_wrapper, result);
+
+    //////////////////////////////////
     template <typename ParserT, typename ScannerT>
     struct parser_result
     {
-        typedef typename boost::remove_reference<ParserT>::type parser_type;
-        typedef typename parser_type::template result<ScannerT>::type type;
+        typedef typename impl::parser_result_wrapper<ParserT>
+            ::template result_<ScannerT>::type type;
     };
+
+    #else
+
+    //////////////////////////////////
+    template <typename ParserT, typename ScannerT>
+    struct parser_result
+    {
+        typedef typename ParserT::template result<ScannerT>::type type;
+    };
+
+    #endif
 
     ///////////////////////////////////////////////////////////////////////////
     //
@@ -84,7 +114,7 @@ namespace boost { namespace spirit
     //      Concrete sub-classes inheriting from parser in most cases need to
     //      have a nested meta-function result that returns the result type
     //      of the parser's parse member function, given a scanner type. The
-    //      meta-function has the form:
+    //      meta- function has the form:
     //
     //          template <typename ScannerT>
     //          struct result
@@ -118,28 +148,22 @@ namespace boost { namespace spirit
         typedef DerivedT                derived_t;
         typedef plain_parser_category   parser_category_t;
 
-        template <typename ScannerT>
+        template <BOOST_SPIRIT_PARSER_RESULT_ARGS>
         struct result
         {
             typedef typename match_result<ScannerT, nil_t>::type type;
         };
 
         DerivedT& derived()
-        {
-            return *static_cast<DerivedT*>(this);
-        }
+        { return *static_cast<DerivedT*>(this); }
 
         DerivedT const& derived() const
-        {
-            return *static_cast<DerivedT const*>(this);
-        }
+        { return *static_cast<DerivedT const*>(this); }
 
         template <typename ActionT>
         action<DerivedT, ActionT>
         operator[](ActionT const& actor) const
-        {
-            return action<DerivedT, ActionT>(derived(), actor);
-        }
+        { return action<DerivedT, ActionT>(derived(), actor); }
     };
 
     ///////////////////////////////////////////////////////////////////////////
@@ -160,7 +184,8 @@ namespace boost { namespace spirit
     //
     //      length: The number of characters consumed by the parser.
     //              This is valid only if we have a successful hit
-    //              (either partial or full).
+    //              (either partial or full). A negative value means
+    //              that the hit is unsucessful.
     //
     ///////////////////////////////////////////////////////////////////////////
     template <typename IteratorT = char const*>
@@ -169,13 +194,13 @@ namespace boost { namespace spirit
         IteratorT   stop;
         bool        hit;
         bool        full;
-        std::size_t length;
+        unsigned    length;
 
         parse_info(
             IteratorT const& stop_ = IteratorT(),
             bool hit_ = false,
             bool full_ = false,
-            std::size_t length_ = 0)
+            unsigned length_ = 0)
         : stop(stop_)
         , hit(hit_)
         , full(full_)
@@ -212,8 +237,10 @@ namespace boost { namespace spirit
         CharT const*            str,
         parser<DerivedT> const& p);
 
-}} // namespace boost::spirit
+    } // namespace spirit
+} // namespace boost
 
 #endif
 
 #include <boost/spirit/core/impl/parser.ipp>
+#undef BOOST_SPIRIT_PARSER_RESULT_ARGS

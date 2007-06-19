@@ -1,21 +1,20 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 ///////////////////////////////////////////////////////////////////////////////
 //
-//  This sample demontrates a parser for a comma separated list of numbers
-//  This is discussed in the "Quick Start" chapter in the Spirit User's Guide.
+//  A parser for a comma separated list of numbers
 //
 //  [ JDG 5/10/2002 ]
 //
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/push_back_actor.hpp>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -36,7 +35,7 @@ parse_numbers(char const* str, vector<double>& v)
 
         //  Begin grammar
         (
-            real_p[push_back_a(v)] >> *(',' >> real_p[push_back_a(v)])
+            real_p[append(v)] >> *(',' >> real_p[append(v)])
         )
         ,
         //  End grammar

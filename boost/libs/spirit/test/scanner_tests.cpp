@@ -1,19 +1,19 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #include <iostream>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 #include <list>
 
 using namespace std;
 
 #include <boost/spirit/core.hpp>
-#include "impl/string_length.hpp"
 using namespace boost::spirit;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ using namespace boost::spirit;
 struct to_upper_iter_policy : public iteration_policy {
 
     char filter(char ch) const
-    { return char(toupper(ch)); }
+    { return toupper(ch); }
 };
 
 inline bool test_isspace(char c)
@@ -54,7 +54,7 @@ scanner_tests()
 {
     char const* cp = "The Big Brown Fox Jumped \n\tOver The Lazy Dog's Back";
     char const* cp_first = cp;
-    char const* cp_last = cp + test_impl::string_length(cp);
+    char const* cp_last = cp + strlen(cp);
 
     scanner<char const*>
         pp1(cp_first, cp_last);
@@ -73,6 +73,11 @@ scanner_tests()
     cout << '\n';
     cp_first = cp;
 
+#if (defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)) \
+    || defined(BOOST_INTEL_CXX_VERSION)
+#else
+//  VC++6 Cannot handle iterator traits properly
+
     list<char>              li(cp_first, cp_last);
     list<char>::iterator    li_first = li.begin();
     list<char>::iterator    li_last = li.end();
@@ -88,13 +93,15 @@ scanner_tests()
     cout << '\n';
     li_first = li.begin();
 
+#endif
+
     scanner<char const*, scanner_policies<to_upper_iter_policy> >
         pp3(cp_first, cp_last);
 
     while (!pp3.at_end())
     {
         cout << *pp3;
-        BOOST_TEST(!test_islower(*pp3));
+        assert(!test_islower(*pp3));
         ++pp3;
     }
     cout << '\n';
@@ -110,7 +117,7 @@ scanner_tests()
     while (!pp4.at_end())
     {
         cout << *pp4;
-        BOOST_TEST(!test_isspace(*pp4));
+        assert(!test_isspace(*pp4));
         ++pp4;
     }
     cout << '\n';
@@ -119,12 +126,12 @@ scanner_tests()
     cout << "sizeof(scanner<>) == " << sizeof(scanner<>) << '\n';
 
     parse_info<> pi = parse("12abcdefg12345ABCDEFG789", +digit_p, alpha_p);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
+    assert(pi.hit);
+    assert(pi.full);
 
     pi = parse("abcdefg12345ABCDEFG789", +digit_p, alpha_p);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
+    assert(pi.hit);
+    assert(pi.full);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -136,6 +143,7 @@ int
 main()
 {
     scanner_tests();
-    return boost::report_errors();
+    cout << "Tests concluded successfully\n";
+    return 0;
 }
 

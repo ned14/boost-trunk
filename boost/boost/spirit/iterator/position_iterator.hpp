@@ -1,22 +1,21 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002 Juan Carlos Arevalo-Baeza
-    Copyright (c) 2002-2006 Hartmut Kaiser
-    Copyright (c) 2003 Giovanni Bajo
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_POSITION_ITERATOR_HPP
 #define BOOST_SPIRIT_POSITION_ITERATOR_HPP
 
+///////////////////////////////////////////////////////////////////////////////
 #include <string>
-#include <boost/config.hpp>
-#include <boost/concept_check.hpp>
+#include <iterator>
+#include <boost/iterator.hpp>
 
-#include <boost/spirit/iterator/position_iterator_fwd.hpp>
-
+///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -27,18 +26,17 @@ namespace boost { namespace spirit {
 //  and the line number
 //
 ///////////////////////////////////////////////////////////////////////////////
-template <typename String>
-struct file_position_without_column_base {
-    String file;
+struct file_position_without_column {
+    std::string file;
     int line;
 
-    file_position_without_column_base(String const& file_ = String(),
+    file_position_without_column(std::string const& file_ = std::string(),
                   int line_ = 1):
         file    (file_),
         line    (line_)
     {}
 
-    bool operator==(const file_position_without_column_base& fp) const
+    bool operator==(const file_position_without_column& fp) const
     { return line == fp.line && file == fp.file; }
 };
 
@@ -50,19 +48,19 @@ struct file_position_without_column_base {
 //  line and column number
 //
 ///////////////////////////////////////////////////////////////////////////////
-template <typename String>
-struct file_position_base : public file_position_without_column_base<String> {
+struct file_position : public file_position_without_column {
     int column;
 
-    file_position_base(String const& file_ = String(),
-                       int line_ = 1, int column_ = 1):
-        file_position_without_column_base<String> (file_, line_),
+    file_position(std::string const& file_ = std::string(),
+                  int line_ = 1, int column_ = 1):
+        file_position_without_column (file_, line_),
         column                       (column_)
     {}
 
-    bool operator==(const file_position_base& fp) const
-    { return column == fp.column && this->line == fp.line && this->file == fp.file; }
+    bool operator==(const file_position& fp) const
+    { return column == fp.column && line == fp.line && file == fp.file; }
 };
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -84,14 +82,20 @@ struct file_position_base : public file_position_without_column_base<String> {
 //      been reached.
 //
 ///////////////////////////////////////////////////////////////////////////////
-template <typename PositionT> class position_policy;
+template <typename PositionT>
+class position_policy;
+
+
+// Forward declaration
+template <typename ForwardIteratorT, typename PositionT, typename SelfT>
+class position_iterator;
 
 ///////////////////////////////////////////////////////////////////////////////
 }} /* namespace boost::spirit */
 
 
 // This must be included here for full compatibility with old MSVC
-#include "boost/spirit/iterator/impl/position_iterator.ipp"
+#include <boost/spirit/iterator/impl/position_iterator.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -127,8 +131,126 @@ namespace boost { namespace spirit {
 ///////////////////////////////////////////////////////////////////////////////
 
 #if !defined(BOOST_ITERATOR_ADAPTORS_VERSION) || \
-     BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
-#error "Please use at least Boost V1.31.0 while compiling the position_iterator class!"
+    BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//  Uses the iterator_adaptor version from Boost V1.30.0
+//
+///////////////////////////////////////////////////////////////////////////////
+
+template
+<
+    typename ForwardIteratorT,
+    typename PositionT = file_position,
+    typename SelfT = nil_t
+>
+class position_iterator
+    :
+      public iterator_::impl::position_iterator_generator
+      <
+        SelfT,
+        ForwardIteratorT,
+        PositionT
+      >::type
+{
+private:
+
+    typedef typename iterator_::impl::position_iterator_generator
+    <
+        SelfT,
+        ForwardIteratorT,
+        PositionT
+    >::type base_t;
+
+protected:
+    typedef typename base_t::policies_type iter_policy_t;
+
+public:
+
+    typedef PositionT position_t;
+
+    position_iterator()
+    {}
+
+    position_iterator(
+        const ForwardIteratorT& begin,
+        const ForwardIteratorT& end):
+        base_t(begin, iter_policy_t(PositionT(), end))
+    {}
+
+    template <typename FileNameT>
+    position_iterator(
+        const ForwardIteratorT& begin,
+        const ForwardIteratorT& end,
+        FileNameT fileName):
+        base_t(begin, iter_policy_t(PositionT(fileName), end))
+    {}
+
+    template <typename FileNameT, typename LineT>
+    position_iterator(
+        const ForwardIteratorT& begin,
+        const ForwardIteratorT& end,
+        FileNameT fileName, LineT line):
+        base_t(begin, iter_policy_t(PositionT(fileName, line), end))
+    {}
+
+    template <typename FileNameT, typename LineT, typename ColumnT>
+    position_iterator(
+        const ForwardIteratorT& begin,
+        const ForwardIteratorT& end,
+        FileNameT fileName, LineT line, ColumnT column):
+        base_t(begin, iter_policy_t(PositionT(fileName, line, column), end))
+    {}
+
+    position_iterator(
+        const ForwardIteratorT& begin,
+        const ForwardIteratorT& end,
+        const PositionT& pos):
+        base_t(begin, iter_policy_t(PositionT(pos), end))
+    {}
+
+    position_iterator(const position_iterator& iter)
+        : base_t(iter.base(), iter.policies())
+    {}
+
+    position_iterator& operator=(const position_iterator& iter)
+    {
+        base_t::operator=(iter);
+        return *this;
+    }
+
+    void set_position(PositionT const& newpos)
+    { this->policies()._pos = newpos; }
+
+    PositionT& get_position()
+    { return this->policies()._pos; }
+
+    PositionT const& get_position() const
+    { return this->policies()._pos; }
+
+    void set_tabchars(unsigned int chars)
+    {
+        // This function (which comes from the position_policy) has a
+        //  different name on purpose, to avoid messing with using
+        //  declarations or qualified calls to access the base template
+        //  function, which might break some compilers.
+        this->policies().set_tab_chars(chars);
+    }
+
+protected:
+
+    //  JDG 4-15-03
+    //  Borland can't take in position_iterator without
+    //  the template parameters.
+    typedef position_iterator<ForwardIteratorT, PositionT, SelfT> self_t;
+    friend struct iterator_::impl::position_iterator_policy<
+            self_t, ForwardIteratorT, PositionT>;
+
+    void newline(void)
+    {}
+};
+
 #else // BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -139,11 +261,11 @@ namespace boost { namespace spirit {
 ///////////////////////////////////////////////////////////////////////////////
 template <
     typename ForwardIteratorT,
-    typename PositionT,
-    typename SelfT
+    typename PositionT = file_position,
+    typename SelfT = nil_t
 >
 class position_iterator
-:   public iterator_::impl::position_iterator_base_generator<
+:   public iterator_::impl::position_iterator_generator<
         SelfT,
         ForwardIteratorT,
         PositionT
@@ -153,12 +275,12 @@ class position_iterator
 private:
 
     typedef position_policy<PositionT> position_policy_t;
-    typedef typename iterator_::impl::position_iterator_base_generator<
+    typedef typename iterator_::impl::position_iterator_generator<
             SelfT,
             ForwardIteratorT,
             PositionT
         >::type base_t;
-    typedef typename iterator_::impl::position_iterator_base_generator<
+    typedef typename iterator_::impl::position_iterator_generator<
             SelfT,
             ForwardIteratorT,
             PositionT
@@ -219,8 +341,13 @@ public:
 
     position_iterator& operator=(const position_iterator& iter)
     {
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582))
+        static_cast<base_t &>(*this) = iter;
+        static_cast<position_policy_t &>(*this) = iter;
+#else
         base_t::operator=(iter);
         position_policy_t::operator=(iter);
+#endif
         _end = iter._end;
         _pos = iter._pos;
         _isend = iter._isend;
@@ -315,7 +442,7 @@ protected:
 template
 <
     typename ForwardIteratorT,
-    typename PositionT 
+    typename PositionT = file_position
 >
 class position_iterator2
     : public position_iterator
@@ -407,6 +534,28 @@ public:
 protected:
     ForwardIteratorT _startline;
 
+#if !defined(BOOST_ITERATOR_ADAPTORS_VERSION) || \
+    BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
+
+    ForwardIteratorT get_endline() const
+    {
+        ForwardIteratorT endline = _startline;
+        while (endline != this->policies()._end && *endline != '\r' &&
+            *endline != '\n')
+        {
+            ++endline;
+        }
+        return endline;
+    }
+
+    //  JDG 4-15-03
+    //  Borland can't take in position_iterator2 without
+    //  the template parameters.
+    typedef position_iterator2<ForwardIteratorT, PositionT> self_t;
+    friend struct iterator_::impl::position_iterator_policy<
+            self_t, ForwardIteratorT, PositionT>;
+
+#else
     friend class position_iterator<ForwardIteratorT, PositionT,
         position_iterator2<ForwardIteratorT, PositionT> >;
 
@@ -419,11 +568,13 @@ protected:
         }
         return endline;
     }
+#endif // BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
 
     void newline(void)
     { _startline = this->base(); }
 };
 
+///////////////////////////////////////////////////////////////////////////////
 }} // namespace boost::spirit
 
 #endif

@@ -1,9 +1,10 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 ///////////////////////////////////////////////////////////////////////////////
@@ -12,16 +13,15 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 #include <iostream>
+
 #include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
 
 using namespace std;
 using namespace boost::spirit;
 
-typedef ref_value_actor<char, assign_action> assign_actor;
-
+///////////////////////////////////////////////////////////////////////////////
 //  Test parser_traits templates
 void
 parser_traits_tests()
@@ -29,7 +29,7 @@ parser_traits_tests()
 // is_parser_category_tests
     typedef chlit<char> plain_t;
     typedef optional<chlit<char> > unary_t;
-    typedef action<chlit<char>, assign_actor> action_t;
+    typedef action<chlit<char>, assign_actor<char> > action_t;
     typedef sequence<chlit<char>, anychar_parser> binary_t;
 
 // is_parser
@@ -227,7 +227,7 @@ parser_extraction_tests()
 {
     typedef chlit<char> plain_t;
     typedef optional<chlit<char> > unary_t;
-    typedef action<chlit<char>, assign_actor> action_t;
+    typedef action<chlit<char>, assign_actor<char> > action_t;
     typedef sequence<chlit<char>, anychar_parser> binary_t;
 
 // parser type extraction templates
@@ -241,7 +241,7 @@ parser_extraction_tests()
             >::value));
     BOOST_STATIC_ASSERT((
         ::boost::is_same<
-                assign_actor, semantic_action<action_t>::type
+                assign_actor<char>, semantic_action<action_t>::type
             >::value));
     BOOST_STATIC_ASSERT((
         ::boost::is_same<
@@ -253,20 +253,20 @@ parser_extraction_tests()
             >::value));
 
 // parser object extraction functions
-    BOOST_TEST(1 == parse("aaaa", get_unary_subject(*ch_p('a'))).length);
+    assert(1 == parse("aaaa", get_unary_subject(*ch_p('a'))).length);
 
 char c = 'b';
 
-    BOOST_TEST(1 == parse("aaaa", get_action_subject(ch_p('a')[assign(c)])).length);
-    BOOST_TEST(c == 'b');
+    assert(1 == parse("aaaa", get_action_subject(ch_p('a')[assign(c)])).length);
+    assert(c == 'b');
 
-    BOOST_TEST(1 == parse("aaaa",
+    assert(1 == parse("aaaa",
         ch_p('a')[ get_semantic_action(ch_p('b')[assign(c)]) ]).length);
-    BOOST_TEST(c == 'a');
+    assert(c == 'a');
 
-    BOOST_TEST(1 == parse("abab",
+    assert(1 == parse("abab",
         get_binary_left_subject(ch_p('a') >> ch_p('b'))).length);
-    BOOST_TEST(1 == parse("baba",
+    assert(1 == parse("baba",
         get_binary_right_subject(ch_p('a') >> ch_p('b'))).length);
 }
 
@@ -281,6 +281,7 @@ main()
     parser_traits_tests();
     parser_extraction_tests();
 
-    return boost::report_errors();
+    cout << "Tests concluded successfully\n";
+    return 0;
 }
 

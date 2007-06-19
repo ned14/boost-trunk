@@ -1,11 +1,12 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Joel de Guzman
     Copyright (c) 2002 Juan Carlos Arevalo-Baeza
     Copyright (c) 2002-2003 Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_DYNAMIC_HPP
@@ -18,12 +19,17 @@
 //  Master header for Spirit.Dynamic
 //
 ///////////////////////////////////////////////////////////////////////////////
+#if !defined(BOOST_SPIRIT_IF_HPP)
 #include <boost/spirit/dynamic/if.hpp>
+#endif
+
+#if !defined(BOOST_SPIRIT_FOR_HPP)
 #include <boost/spirit/dynamic/for.hpp>
+#endif
+
+#if !defined(BOOST_SPIRIT_WHILE_HPP)
 #include <boost/spirit/dynamic/while.hpp>
-#include <boost/spirit/dynamic/lazy.hpp>
-#include <boost/spirit/dynamic/stored_rule.hpp>
-#include <boost/spirit/dynamic/rule_alias.hpp>
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 #endif // BOOST_SPIRIT_DYNAMIC_HPP

@@ -1,9 +1,10 @@
 /*=============================================================================
+    Spirit V1.6.2
     Copyright (c) 2003 Giovanni Bajo
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #include <boost/spirit/core.hpp>
@@ -23,8 +24,7 @@
 #include <string>
 
 #include <fstream>
-#include <boost/detail/lightweight_test.hpp>
-#include "impl/string_length.hpp"
+#include <assert.h>
 
 #define DEBUG_DUMP_TREES    (1)
 
@@ -37,7 +37,7 @@ namespace boost { namespace spirit {
     template <
         typename ScannerT, 
         unsigned long ID = 0,
-        typename ContextT = parser_context<> >
+        typename ContextT = parser_context>
     class rule_id 
         : public rule<ScannerT, ContextT, parser_tag<ID> >
     {
@@ -50,6 +50,9 @@ namespace boost { namespace spirit {
 
         template <typename T>
         rule_id(const T& a) 
+        : base_t(a) {}
+
+        rule_id(const rule_id& a) 
         : base_t(a) {}
 
         template <typename T>
@@ -292,7 +295,7 @@ struct test_banal : public grammar<test_banal>
     }
 
     template <typename TreeT>
-    TreeT expected_tree(void)
+    TreeT expected_tree()
     {
         return fold<TreeT>(
             ID_ROOT, fold<TreeT>(
@@ -330,13 +333,13 @@ struct run_test
         typedef tree_node<node_t> tree_t;
 
         iterator_t text_begin = gram.pattern();
-        iterator_t text_end = text_begin + test_impl::string_length(text_begin);
+        iterator_t text_end = text_begin + strlen(text_begin);
 
         tree_parse_info<iterator_t, factory_t> info =
             ast_parse(text_begin, text_end, gram);
 
-        BOOST_TEST(info.full);
-
+        assert(info.full);
+#if! BOOST_WORKAROUND(BOOST_MSVC,<=1300) 
         tree_t expected = gram.template expected_tree<tree_t>();
 
 #if DEBUG_DUMP_TREES
@@ -344,7 +347,8 @@ struct run_test
         dump(cout, expected);
 #endif
 
-        BOOST_TEST(equal(info.trees[0], expected));
+        assert(equal(info.trees[0], expected));
+#endif
     }
 };
 
@@ -357,7 +361,7 @@ namespace boost
     void throw_exception(std::exception const & )
     {
         std::cerr << "Exception caught" << std::endl;
-        BOOST_TEST(0);
+        assert(0);
     }
 }
 
@@ -379,5 +383,7 @@ int main()
 
     mpl::for_each<tests_t, mpl::_> (run_test());
 
-    return boost::report_errors();
+	cout << "Test completed successfully" << endl;
+
+    return 0;
 }

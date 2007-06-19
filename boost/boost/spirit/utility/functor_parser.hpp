@@ -1,10 +1,11 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Joel de Guzman
     Copyright (c) 2002-2003 Juan Carlos Arevalo-Baeza
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_FUNCTOR_PARSER_HPP
@@ -53,12 +54,12 @@ namespace boost { namespace spirit {
 
             iterator_t const s(scan.first);
             functor_result_t result;
-            std::ptrdiff_t len = functor(scan, result);
+            int const len = functor(scan, result);
 
             if (len < 0)
                 return scan.no_match();
             else
-                return scan.create_match(std::size_t(len), result, s, scan.first);
+                return scan.create_match(len, result, s, scan.first);
         }
     };
 

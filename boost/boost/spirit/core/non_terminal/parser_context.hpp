@@ -1,10 +1,11 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Joel de Guzman
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_PARSER_CONTEXT_HPP)
@@ -29,25 +30,17 @@ namespace boost
 
     ///////////////////////////////////////////////////////////////////////////
     //
-    //  parser_context_base class { base class of all context classes }
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct parser_context_base {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
     //  parser_context class { default context }
     //
     ///////////////////////////////////////////////////////////////////////////
     struct nil_t;
     template<typename ContextT> struct parser_context_linker;
 
-    template<typename AttrT = nil_t>
-    struct parser_context : parser_context_base
+    struct parser_context
     {
-        typedef AttrT attr_t;
+        typedef nil_t attr_t;
         typedef default_parser_context_base base_t;
-        typedef parser_context_linker<parser_context<AttrT> > context_linker_t;
+        typedef parser_context_linker<parser_context> context_linker_t;
 
         template <typename ParserT>
         parser_context(ParserT const&) {}
@@ -75,8 +68,22 @@ namespace boost
     //      idiom (Curiously recurring template pattern).
     //
     ///////////////////////////////////////////////////////////////////////////
+    #if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+    BOOST_SPIRIT_DEPENDENT_TEMPLATE_WRAPPER(context_base_wrapper, aux);
+
+    //////////////////////////////////
+    template <typename ContextT, typename DerivedT,
+        typename AuxT =
+            impl::context_base_wrapper<ContextT::base_t>
+                ::template result_<DerivedT> >
+    struct context_aux : public AuxT {};
+
+    #else
+
     template <typename ContextT, typename DerivedT>
     struct context_aux : public ContextT::base_t::template aux<DerivedT> {};
+
+    #endif
 
     ///////////////////////////////////////////////////////////////////////////
     //

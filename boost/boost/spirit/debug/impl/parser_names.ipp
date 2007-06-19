@@ -1,10 +1,11 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Joel de Guzman
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_PARSER_NAMES_IPP)
@@ -422,22 +423,9 @@ namespace boost { namespace spirit {
         }
     }   // namespace impl
 
-    template<
-        typename DerivedT, typename EmbedT, 
-        typename T0, typename T1, typename T2
-    >
+    template<typename ContextT, typename ScannerT, typename TagT>
     inline std::string
-    parser_name(impl::rule_base<DerivedT, EmbedT, T0, T1, T2> const& p)
-    {
-        return std::string("rule_base")
-            + std::string("(")
-            + impl::get_node_registry().find_node(&p)
-            + std::string(")");
-    }
-
-    template<typename T0, typename T1, typename T2>
-    inline std::string
-    parser_name(rule<T0, T1, T2> const& p)
+    parser_name(rule<ContextT, ScannerT, TagT> const& p)
     {
         return std::string("rule")
             + std::string("(")
@@ -494,20 +482,9 @@ namespace boost { namespace spirit {
 
 ///////////////////////////////////////////////////////////////////////////////
 //  decide, if a node is to be traced or not
-    template<
-        typename DerivedT, typename EmbedT, 
-        typename T0, typename T1, typename T2
-    >
+    template<typename ContextT, typename ScannerT, typename TagT>
     inline bool
-    trace_parser(impl::rule_base<DerivedT, EmbedT, T0, T1, T2> 
-        const& p)
-    {
-        return impl::get_node_registry().trace_node(&p);
-    }
-
-    template<typename T0, typename T1, typename T2>
-    inline bool
-    trace_parser(rule<T0, T1, T2> const& p)
+    trace_parser(rule<ContextT, ScannerT, TagT> const& p)
     {
         return impl::get_node_registry().trace_node(&p);
     }
@@ -515,13 +492,6 @@ namespace boost { namespace spirit {
     template <typename DerivedT, typename ContextT>
     inline bool
     trace_parser(grammar<DerivedT, ContextT> const& p)
-    {
-        return impl::get_node_registry().trace_node(&p);
-    }
-
-    template <typename DerivedT, int N, typename ContextT>
-    inline bool
-    trace_parser(impl::entry_grammar<DerivedT, N, ContextT> const& p)
     {
         return impl::get_node_registry().trace_node(&p);
     }

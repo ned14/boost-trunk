@@ -1,136 +1,114 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
+// vi:ts=4:sw=4:et
+// Tests for boost::spirit::epsilon_p
+// [30-Dec-2002]
+////////////////////////////////////////////////////////////////////////////////
+#define qDebug 0
 #include <iostream>
 #include <cstring>
-#include <boost/detail/lightweight_test.hpp>
-
-// This test program only includes the epsilon.hpp header from Spirit
+#include <cassert>
+#if qDebug
+#define BOOST_SPIRIT_DEBUG
+#endif
 #include <boost/spirit/core/composite/epsilon.hpp>
-#include <boost/detail/lightweight_test.hpp>
-#include "impl/var.hpp"
-#include "impl/string_length.hpp"
+#include <boost/ref.hpp>
+////////////////////////////////////////////////////////////////////////////////
 
-using namespace test;
-static boost::spirit::parse_info<char const *> pi;
+namespace local
+{
+    template <typename T>
+    struct var_wrapper
+        : public ::boost::reference_wrapper<T>
+    {
+        typedef ::boost::reference_wrapper<T> parent;
 
-////////////////////////////////////////////////
-// These macros are used with BOOST_TEST
-#define matches (pi.hit)
-#define full_match (pi.hit && pi.full)
-#define partial_match (pi.hit && !pi.full)
-#define no_match (!pi.hit && !pi.full)
-#define zero_length_match (pi.length == 0)
-#define stop_equals_start (pi.stop == s)
+        explicit inline var_wrapper(T& t) : parent(t) {}
+
+        inline T& operator()() const { return parent::get(); }
+    };
+
+    template <typename T>
+    inline var_wrapper<T>
+    var(T& t)
+    {
+        return var_wrapper<T>(t);
+    }
+}
+
+boost::spirit::parse_info<char const *> pi;
 
 template<typename ParserT>
-static void
+void
 parse(char const *s, ParserT const &p, bool match)
 {
-    
-    pi = boost::spirit::parse(s, s + test_impl::string_length(s), p);
+    using namespace std;
+    pi = boost::spirit::parse(s, s+strlen(s), p);
     if (match)
     {
-        BOOST_TEST(matches);
-        BOOST_TEST(zero_length_match);
-        BOOST_TEST(stop_equals_start);
+        assert(pi.hit);
+        assert(pi.length == 0);
+        assert(pi.stop == s);
     }
     else
     {
-        BOOST_TEST(no_match);
+        assert(!pi.hit);
     }
-}
-
-static char const empty[] = "";
-static char const not_empty[] = "asdfgh";
-
-////////////////////////////////////////////////
-// Test wether epsilon_p/eps_p work as
-// primitive parsers
-static void
-epsilon_as_primitive()
-{
-    // This test case also is a compile time check wether
-    // both eps_p and epsilon_p are present.
-
-    parse(empty, boost::spirit::epsilon_p, true);
-    BOOST_TEST(full_match);
-    parse(not_empty, boost::spirit::epsilon_p, true);
-    BOOST_TEST(partial_match);
-
-    parse(empty, boost::spirit::eps_p, true);
-    BOOST_TEST(full_match);
-    parse(not_empty, boost::spirit::eps_p, true);
-    BOOST_TEST(partial_match);
-}
-
-////////////////////////////////////////////////
-// Test wether epsilon_p/eps_p work correctly as
-// a parser generator for creating parsers from
-// functors
-static void
-epsilon_as_parser_generator_for_functors()
-{
-    bool       flag = false;
-    parse(empty, boost::spirit::epsilon_p(var(flag)), flag);
-    BOOST_TEST(no_match);
-
-    flag = true;
-    parse(empty, boost::spirit::epsilon_p(var(flag)), flag);
-    BOOST_TEST(full_match);
-}
-
-////////////////////////////////////////////////
-// Test wether epsilon_p/eps_p work correctly as
-// a parser generator for creating parsers from
-// other parsers
-static void
-epsilon_as_parser_generator_for_parsers()
-{
-    // This test case uses a parser created by epsilon_p
-    // as body-parser for another invokation of epsilon_p
-
-    bool        flag = false;
-    parse(empty, boost::spirit::epsilon_p(
-            boost::spirit::epsilon_p(var(flag))), flag);
-    BOOST_TEST(no_match);
-
-    flag = true;
-    parse(empty, boost::spirit::epsilon_p(
-            boost::spirit::epsilon_p(var(flag))), flag);
-    BOOST_TEST(full_match);
-}
-
-////////////////////////////////////////////////
-// Test wether epsilon_p/eps_p support negation
-static void
-negation_operator_for_epsilon()
-{
-    bool       flag = false;
-    parse(empty, ~boost::spirit::epsilon_p(var(flag)), !flag);
-    BOOST_TEST(full_match);
-    parse(empty, ~~boost::spirit::epsilon_p(var(flag)), flag);
-    BOOST_TEST(no_match);
-
-    flag = true;
-    parse(empty, ~boost::spirit::epsilon_p(var(flag)), !flag);
-    BOOST_TEST(no_match);
-    parse(empty, ~~boost::spirit::epsilon_p(var(flag)), flag);
-    BOOST_TEST(full_match);
 }
 
 int
 main()
 {
-    epsilon_as_primitive();
-    epsilon_as_parser_generator_for_functors();
-    epsilon_as_parser_generator_for_parsers();
-    negation_operator_for_epsilon();
+    using namespace std;
 
-    return boost::report_errors();
+    char const empty[]="";
+    char const not_empty[]="asdfgh";
+
+    ////////////////////////////////////////////////
+    // Test wether epsilon_p/eps_p work correctly as
+    // a primitive parser
+
+    parse(empty, boost::spirit::epsilon_p, true);
+    assert(pi.full);
+    parse(not_empty, boost::spirit::epsilon_p, true);
+    assert(!pi.full);
+
+    parse(empty, boost::spirit::eps_p, true);
+    assert(pi.full);
+    parse(not_empty, boost::spirit::eps_p, true);
+    assert(!pi.full);
+
+    ////////////////////////////////////////////////
+    // Test wether epsilon_p/eps_p work correctly as
+    // a parser generator for functors
+
+    bool       flag = false;
+    parse(empty, boost::spirit::epsilon_p(local::var(flag)), flag);
+    assert(!pi.full);
+
+    flag = true;
+    parse(empty, boost::spirit::epsilon_p(local::var(flag)), flag);
+    assert(pi.full);
+
+    ////////////////////////////////////////////////
+    // Test wether epsilon_p/eps_p work correctly as
+    // a parser generator for creating parsers from
+    // other parsers
+
+    flag = false;
+    parse(empty, boost::spirit::epsilon_p(boost::spirit::epsilon_p(local::var(flag))), flag);
+    assert(!pi.full);
+
+    flag = true;
+    parse(empty, boost::spirit::epsilon_p(boost::spirit::epsilon_p(local::var(flag))), flag);
+    assert(pi.full);
+
+    return 0;
 }

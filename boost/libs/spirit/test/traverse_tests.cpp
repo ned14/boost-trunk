@@ -1,9 +1,10 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 ///////////////////////////////////////////////////////////////////////////////
@@ -12,7 +13,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -36,18 +37,12 @@ std::string GETSTRING(std::ostrstream& ss)
 #define OSSTREAM std::ostringstream
 #endif
 
-#ifndef BOOST_SPIRIT_DEBUG
 #define BOOST_SPIRIT_DEBUG    // needed for parser_name functions
-#endif
 
 #include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
-#include <boost/spirit/meta.hpp>
 
 using namespace std;
 using namespace boost::spirit;
-
-typedef ref_value_actor<char, assign_action> assign_actor;
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -57,39 +52,39 @@ typedef ref_value_actor<char, assign_action> assign_actor;
 void
 traverse_identity_tests()
 {
-    //  test type equality
-    typedef sequence<chlit<char>, chlit<char> > test_sequence1_t;
-    BOOST_STATIC_ASSERT((
-        ::boost::is_same<
-            test_sequence1_t,
-            post_order::result<identity_transform, test_sequence1_t>::type
-        >::value
-    ));
-
-    //  test (rough) runtime equality
-    BOOST_TEST(
-        parse(
-            "ab",
-            post_order::traverse(identity_transform(), ch_p('a') >> 'b')
-        ).full
-    );
-    BOOST_TEST(
-        !parse(
-            "ba",
-            post_order::traverse(identity_transform(), ch_p('a') >> 'b')
-        ).hit
-    );
-
-    ///////////////////////////////////////////////////////////////////////////
-    BOOST_TEST(
-        !parse(
-            "cba",
-            post_order::traverse(
-                identity_transform(),
-                ch_p('a') >> 'b' >> 'c'
-            )
-        ).hit
-    );
+//    //  test type equality
+//    typedef sequence<chlit<char>, chlit<char> > test_sequence1_t;
+//    BOOST_STATIC_ASSERT((
+//        ::boost::is_same<
+//            test_sequence1_t,
+//            post_order::result<identity_transform, test_sequence1_t>::type
+//        >::value
+//    ));
+//
+//    //  test (rough) runtime equality
+//    assert(
+//        parse(
+//            "ab",
+//            post_order::traverse(identity_transform(), ch_p('a') >> 'b')
+//        ).full
+//    );
+//    assert(
+//        !parse(
+//            "ba",
+//            post_order::traverse(identity_transform(), ch_p('a') >> 'b')
+//        ).hit
+//    );
+//
+//    ///////////////////////////////////////////////////////////////////////////
+//    assert(
+//        !parse(
+//            "cba",
+//            post_order::traverse(
+//                identity_transform(),
+//                ch_p('a') >> 'b' >> 'c'
+//            )
+//        ).hit
+//    );
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Test more complex sequences
@@ -102,7 +97,7 @@ char c;
             sequence<
                 sequence<
                     kleene_star<chlit<> >,
-                    action<chlit<>, assign_actor>
+                    action<chlit<>, assign_actor<char> >
                 >,
                 chlit<>
             >,
@@ -117,16 +112,16 @@ char c;
     ));
 
     c = 0;
-    BOOST_TEST(
+    assert(
         parse(
             "aabcd",
             post_order::traverse(
                 identity_transform(),
-                ((*ch_p('a') >> ch_p('b')[assign_a(c)]) >> 'c') >> !ch_p('d')
+                ((*ch_p('a') >> ch_p('b')[assign(c)]) >> 'c') >> !ch_p('d')
             )
         ).full
     );
-    BOOST_TEST(c == 'b');
+    assert(c == 'b');
 
 ///////////////////////////////////////////////////////////////////////////////
 //  test: (a >> (b >> c)) >> d
@@ -135,7 +130,7 @@ char c;
             sequence<
                 kleene_star<chlit<> >,
                 sequence<
-                    action<chlit<>, assign_actor>,
+                    action<chlit<>, assign_actor<char> >,
                     chlit<>
                 >
             >,
@@ -150,16 +145,16 @@ char c;
     ));
 
     c = 0;
-    BOOST_TEST(
+    assert(
         parse(
             "aabcd",
             post_order::traverse(
                 identity_transform(),
-                (*ch_p('a') >> (ch_p('b')[assign_a(c)] >> 'c')) >> !ch_p('d')
+                (*ch_p('a') >> (ch_p('b')[assign(c)] >> 'c')) >> !ch_p('d')
             )
         ).full
     );
-    BOOST_TEST(c == 'b');
+    assert(c == 'b');
 
 ///////////////////////////////////////////////////////////////////////////////
 //  test: a >> (b >> (c >> d))
@@ -167,7 +162,7 @@ char c;
         sequence<
             kleene_star<chlit<> >,
             sequence<
-                action<chlit<>, assign_actor>,
+                action<chlit<>, assign_actor<char> >,
                 sequence<
                     chlit<>,
                     optional<chlit<> >
@@ -183,16 +178,16 @@ char c;
     ));
 
     c = 0;
-    BOOST_TEST(
+    assert(
         parse(
             "aabcd",
             post_order::traverse(
                 identity_transform(),
-                *ch_p('a') >> (ch_p('b')[assign_a(c)] >> ('c' >> !ch_p('d')))
+                *ch_p('a') >> (ch_p('b')[assign(c)] >> ('c' >> !ch_p('d')))
             )
         ).full
     );
-    BOOST_TEST(c == 'b');
+    assert(c == 'b');
 
 ///////////////////////////////////////////////////////////////////////////////
 //  test: a >> ((b >> c) >> d)
@@ -201,7 +196,7 @@ char c;
             kleene_star<chlit<> >,
             sequence<
                 sequence<
-                    action<chlit<>, assign_actor>,
+                    action<chlit<>, assign_actor<char> >,
                     chlit<>
                 >,
                 optional<chlit<> >
@@ -216,16 +211,16 @@ char c;
     ));
 
     c = 0;
-    BOOST_TEST(
+    assert(
         parse(
             "aabcd",
             post_order::traverse(
                 identity_transform(),
-                *ch_p('a') >> ((ch_p('b')[assign_a(c)] >> 'c') >> !ch_p('d'))
+                *ch_p('a') >> ((ch_p('b')[assign(c)] >> 'c') >> !ch_p('d'))
             )
         ).full
     );
-    BOOST_TEST(c == 'b');
+    assert(c == 'b');
 
 ///////////////////////////////////////////////////////////////////////////////
 //  test: (a >> b) >> (c >> d)
@@ -233,7 +228,7 @@ char c;
         sequence<
             sequence<
                 kleene_star<chlit<> >,
-                action<chlit<>, assign_actor>
+                action<chlit<>, assign_actor<char> >
             >,
             sequence<
                 chlit<>,
@@ -249,16 +244,16 @@ char c;
     ));
 
     c = 0;
-    BOOST_TEST(
+    assert(
         parse(
             "aabcd",
             post_order::traverse(
                 identity_transform(),
-                (*ch_p('a') >> ch_p('b')[assign_a(c)]) >> ('c' >> !ch_p('d'))
+                (*ch_p('a') >> ch_p('b')[assign(c)]) >> ('c' >> !ch_p('d'))
             )
         ).full
     );
-    BOOST_TEST(c == 'b');
+    assert(c == 'b');
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -363,13 +358,13 @@ trace_identity_transform trace_vector;
 std::vector<std::string>::const_iterator it = trace_vector.get_output().begin();
 std::vector<std::string>::const_iterator end = trace_vector.get_output().end();
 
-    BOOST_TEST(cnt == trace_vector.get_output().size());
+    assert(cnt == trace_vector.get_output().size());
     for (/**/;  it != end; ++it)
     {
         if (std::find(first, first + cnt, *it) == first + cnt)
             cerr << "node in question: " << *it << endl;
 
-        BOOST_TEST(std::find(first, first + cnt, *it) != first + cnt);
+        assert(std::find(first, first + cnt, *it) != first + cnt);
     }
 
 // re-find all expected strings in the vector of trace strings
@@ -381,7 +376,7 @@ char const *expected = first[0];
         if (std::find(begin, end, std::string(expected)) == end)
             cerr << "node in question: " << expected << endl;
 
-        BOOST_TEST(std::find(begin, end, std::string(expected)) != end);
+        assert(std::find(begin, end, std::string(expected)) != end);
     }
 }
 
@@ -418,7 +413,7 @@ const char *test_result2[] = {
     };
 
     post_order_trace_test(
-        ((*ch_p('a') >> ch_p('b')[assign_a(c)]) >> 'c') >> !ch_p('d'),
+        ((*ch_p('a') >> ch_p('b')[assign(c)]) >> 'c') >> !ch_p('d'),
         test_result2, _countof(test_result2)
     );
 
@@ -437,7 +432,7 @@ const char *test_result3[] = {
     };
 
     post_order_trace_test(
-        (*ch_p('a') >> (ch_p('b')[assign_a(c)] >> 'c')) >> !ch_p('d'),
+        (*ch_p('a') >> (ch_p('b')[assign(c)] >> 'c')) >> !ch_p('d'),
         test_result3, _countof(test_result3)
     );
 
@@ -456,7 +451,7 @@ const char *test_result4[] = {
     };
 
     post_order_trace_test(
-        *ch_p('a') >> (ch_p('b')[assign_a(c)] >> ('c' >> !ch_p('d'))),
+        *ch_p('a') >> (ch_p('b')[assign(c)] >> ('c' >> !ch_p('d'))),
         test_result4, _countof(test_result4)
     );
 
@@ -475,7 +470,7 @@ const char *test_result5[] = {
     };
 
     post_order_trace_test(
-        *ch_p('a') >> ((ch_p('b')[assign_a(c)] >> 'c') >> !ch_p('d')),
+        *ch_p('a') >> ((ch_p('b')[assign(c)] >> 'c') >> !ch_p('d')),
         test_result5, _countof(test_result5)
     );
 
@@ -494,7 +489,7 @@ const char *test_result6[] = {
     };
 
     post_order_trace_test(
-        (*ch_p('a') >> ch_p('b')[assign_a(c)]) >> ('c' >> !ch_p('d')),
+        (*ch_p('a') >> ch_p('b')[assign(c)]) >> ('c' >> !ch_p('d')),
         test_result6, _countof(test_result6)
     );
 }
@@ -510,6 +505,7 @@ main()
     traverse_identity_tests();
     traverse_trace_tests();
 
-    return boost::report_errors();
+    cout << "Tests concluded successfully\n";
+    return 0;
 }
 

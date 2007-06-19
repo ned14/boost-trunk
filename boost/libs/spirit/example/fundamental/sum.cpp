@@ -1,15 +1,16 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 ///////////////////////////////////////////////////////////////////////////////
 //
-//  A parser for summing a list of numbers. Demonstrating phoenix
-//  This is discussed in the "Phoenix" chapter in the Spirit User's Guide.
+//  A parser for summing a list of numbers.
+//  [ demonstrating phoenix ]
 //
 //  [ JDG 6/28/2002 ]
 //
@@ -37,7 +38,7 @@ bool adder(IteratorT first, IteratorT last, double& n)
 
         //  Begin grammar
         (
-            real_p[var(n) = arg1] >> *(',' >> real_p[var(n) += arg1])
+            real_p[var(n) = arg1] >> *real_p[var(n) += arg1]
         )
         ,
         //  End grammar
@@ -57,7 +58,7 @@ main()
     cout << "\t\tA parser for summing a list of numbers...\n\n";
     cout << "/////////////////////////////////////////////////////////\n\n";
 
-    cout << "Give me a comma separated list of numbers.\n";
+    cout << "Give me a space separated list of numbers.\n";
     cout << "The numbers are added using Phoenix.\n";
     cout << "Type [q or Q] to quit\n\n";
 

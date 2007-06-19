@@ -2,12 +2,12 @@
     Phoenix V1.2.1
     Copyright (c) 2001-2003 Joel de Guzman
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <iostream>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 
 #define PHOENIX_LIMIT 15
 #include <boost/spirit/phoenix/primitives.hpp>
@@ -30,13 +30,16 @@ main()
 ///////////////////////////////////////////////////////////////////////////////
     cout << val("Hello")() << val(' ')() << val("World")() << endl;
 
-    BOOST_TEST(arg1(c1) == c1);
-    BOOST_TEST(arg1(i1, i2) == i1);
-    BOOST_TEST(arg2(i1, s2) == s2);
+    assert(arg1(c1) == c1);
+    assert(arg1(i1, i2) == i1);
+    assert(arg2(i1, s2) == s2);
 
-    BOOST_TEST(val(3)() == 3);
-    BOOST_TEST(var(i)() == 4);
-    BOOST_TEST(var(++i)() == 5);
+    assert(val(3)() == 3);
+    assert(var(i)() == 4);
+    assert(var(++i)() == 5);
 
-    return boost::report_errors();    
+    cout << "///////////////////////////////////////////////////////////////////////////////\n";
+    cout << "\t\tTests concluded\n";
+    cout << "\t\tSUCCESS!!!\n";
+    cout << "///////////////////////////////////////////////////////////////////////////////\n";
 }

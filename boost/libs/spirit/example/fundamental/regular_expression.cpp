@@ -1,15 +1,15 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 ///////////////////////////////////////////////////////////////////////////////
 //
 //  Demonstrate regular expression parser objects
-//  See the "Regular Expression Parser" chapter in the User's Guide.
 //
 //  This sample requires an installed version of the boost regex library
 //  (http://www.boost.org) The sample was tested with boost V1.28.0
@@ -18,7 +18,6 @@
 #include <string>
 #include <iostream>
 
-#include <boost/version.hpp>
 #include <boost/spirit/core.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -26,18 +25,10 @@
 //  The following header must be included, if regular expression support is
 //  required for Spirit.
 //
-//  The BOOST_SPIRIT_NO_REGEX_LIB PP constant should be defined, if you're
-//  using the Boost.Regex library from one translation unit only. Otherwise
-//  you have to link with the Boost.Regex library as defined in the related
-//  documentation (see. http://www.boost.org).
-//
-//  For Boost > V1.32.0 you'll always have to link against the Boost.Regex 
-//  libraries.
+//  Note that you have to link with the Boost.Regex library as defined in
+//  the related documentation (see. http://www.boost.org).
 //
 ///////////////////////////////////////////////////////////////////////////////
-#if BOOST_VERSION <= 103200
-#define BOOST_SPIRIT_NO_REGEX_LIB
-#endif
 #include <boost/spirit/utility/regex.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////

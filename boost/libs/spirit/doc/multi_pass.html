@@ -20,7 +20,7 @@
 </td>
     <td width="30"><a href="../index.html"><img src="theme/u_arr.gif" border="0"></a></td>
     <td width="30"><a href="trees.html"><img src="theme/l_arr.gif" border="0"></a></td>
-    <td width="30"><a href="file_iterator.html"><img src="theme/r_arr.gif" border="0"></a></td>
+    <td width="20"><a href="file_iterator.html"><img src="theme/r_arr.gif" border="0"></a></td>
    </tr>
 </tbody></table>
 <p>Backtracking in Spirit requires the use of the following types of iterator: 
@@ -101,7 +101,7 @@ not the case. &nbsp;If your grammar is deterministic, you can make use of flush_
         make_multi_pass(std::istreambuf_iterator&lt;char_t&gt;(in)));
 
     scanner_t <span class="identifier">scan</span><span class="special">(</span>
-        first<span class="special">,</span> make_multi_pass(std::istreambuf_iterator<span class="special">&lt;</span><span class="identifier">char_t</span><span class="special">&gt;()),</span>
+        first, make_multi_pass(std::istreambuf_iterator<span class="special">&lt;</span><span class="identifier">char_t</span><span class="special">&gt;()),</span>
         <span class="identifier">policies</span><span class="special">)</span>;
 <span class="special"><br>    </span><span class="identifier">rule_t      n_list </span><span class="special">= </span><span class="identifier">real_p </span><span class="special">&gt;&gt; *(</span><span class="literal">',' </span><span class="special">&gt;&gt; </span><span class="identifier">real_p</span><span class="special">);<br>    </span><span class="identifier">match</span><span class="special">&lt;&gt;</span><span class="identifier">     m </span><span class="special">= </span><span class="identifier">n_list</span><span class="special">.</span><span class="identifier">parse</span><span class="special">(</span><span class="identifier">scan</span><span class="special">);<br></span></code></pre>
 <a name="flush_multi_pass"></a> 
@@ -261,16 +261,16 @@ not the case. &nbsp;If your grammar is deterministic, you can make use of flush_
 </td>
     <td width="30"><a href="../index.html"><img src="theme/u_arr.gif" border="0"></a></td>
     <td width="30"><a href="trees.html"><img src="theme/l_arr.gif" border="0"></a></td>
-    <td width="30"><a href="file_iterator.html"><img src="theme/r_arr.gif" border="0"></a></td>
+    <td width="20"><a href="file_iterator.html"><img src="theme/r_arr.gif" border="0"></a></td>
   </tr>
 </tbody></table>
 <br>
 <hr size="1">
 <p class="copyright">Copyright &copy; 2001-2002 Daniel C. Nuffer<br>
   <br>
-  <font size="2">Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt) </font> </p>
+<font size="2">Distributed under the Boost Software License, Version 1.0.
+ (See accompanying file LICENSE_1_0.txt or copy at
+ <a href="http://www.boost.org/LICENSE_1_0.txt">http://www.boost.org/LICENSE_1_0.txt</a>)</font> </p>
 <p class="copyright">&nbsp;</p>
 <br>
 </body></html>

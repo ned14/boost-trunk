@@ -1,27 +1,40 @@
 /*=============================================================================
-    Copyright (c) 2003 Martin Wille
-    http://spirit.sourceforge.net/
+  Spirit V1.6.2
+  Copyright (c) 2003 Martin Wille
+  http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
+ =============================================================================*/
+
 #include <iostream>
 #include <boost/config.hpp>
-#include <boost/detail/lightweight_test.hpp>
+#include <boost/test/included/unit_test_framework.hpp>
+#include "impl/util.ipp"
 
-#if defined(DONT_HAVE_BOOST) || !defined(BOOST_HAS_THREADS) || defined(BOOST_DISABLE_THREADS)
+namespace ut = boost::unit_test_framework;
+using namespace test;
+
+static char const test_banner_name[]="grammar tests (MT)";
+static char const test_suite_name[]="spirit::grammar_tests (MT)";
+
+#if defined(DONT_HAVE_BOOST) || !defined(BOOST_HAS_THREADS)
 // we end here if we can't do multithreading
 static void skipped()
 {
-    std::cout << "skipped\n";
+    if (test::verbose_runtests)
+        std::cout << "skipped\n";
 }
 
-int
-main()
+ut::test_suite*
+init_unit_test_suite( int argc, char* argv[] )
 {
-    skipped();
-    return 0;
+    test::init(argc, argv);
+    test::banner(test_banner_name);
+    ut::test_suite* test= BOOST_TEST_SUITE(test_suite_name);
+    test->add(BOOST_TEST_CASE(skipped));
+    return test;
 }
 
 #else
@@ -45,7 +58,7 @@ struct simple : public boost::spirit::grammar<simple>
     template <typename ScannerT>
     struct definition
     {
-        definition(simple const& /*self*/)
+        definition(simple const &self)
         {
             top = boost::spirit::epsilon_p;
             boost::mutex::scoped_lock lock(simple_mutex);
@@ -133,13 +146,13 @@ multiple_attempts_to_instantiate_a_definition_from_a_single_thread()
     make_definition(simple1_p);
     make_definition(simple1_p);
 
-    BOOST_TEST(exactly_one_instance_created);
+    BOOST_CHECK(exactly_one_instance_created);
 
     make_definition(simple2_p);
     make_definition(simple2_p);
     make_definition(simple2_p);
 
-    BOOST_TEST(exactly_two_instances_created);
+    BOOST_CHECK(exactly_two_instances_created);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -171,7 +184,7 @@ single_local_grammar_object_multiple_threads()
     t3.join();
     t4.join();
 
-    BOOST_TEST(exactly_four_instances_created);
+    BOOST_CHECK(exactly_four_instances_created);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -205,7 +218,7 @@ multiple_local_grammar_objects_multiple_threads()
     t3.join();
     t4.join();
 
-    BOOST_TEST(exactly_eight_instances_created);
+    BOOST_CHECK(exactly_eight_instances_created);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -237,7 +250,7 @@ single_global_grammar_object_multiple_threads()
     t3.join();
     t4.join();
 
-    BOOST_TEST(exactly_four_instances_created);
+    BOOST_CHECK(exactly_four_instances_created);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -271,19 +284,24 @@ multiple_global_grammar_objects_multiple_threads()
     t3.join();
     t4.join();
 
-    BOOST_TEST(exactly_eight_instances_created);
+    BOOST_CHECK(exactly_eight_instances_created);
 }
 ////////////////////////////////////////////////////////////////////////////////
-int
-main()
+ut::test_suite *
+init_unit_test_suite( int argc, char *argv[] )
 {
-    multiple_attempts_to_instantiate_a_definition_from_a_single_thread();
-    single_local_grammar_object_multiple_threads();
-    multiple_local_grammar_objects_multiple_threads();
-    single_global_grammar_object_multiple_threads();
-    multiple_global_grammar_objects_multiple_threads();
+    test::init(argc, argv);
+    test::banner(test_banner_name);
 
-    return boost::report_errors();
+    ut::test_suite *suite = BOOST_TEST_SUITE(test_suite_name);
+
+    suite->add(BOOST_TEST_CASE(multiple_attempts_to_instantiate_a_definition_from_a_single_thread));
+    suite->add(BOOST_TEST_CASE(single_local_grammar_object_multiple_threads));
+    suite->add(BOOST_TEST_CASE(multiple_local_grammar_objects_multiple_threads));
+    suite->add(BOOST_TEST_CASE(single_global_grammar_object_multiple_threads));
+    suite->add(BOOST_TEST_CASE(multiple_global_grammar_objects_multiple_threads));
+
+    return suite;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -291,7 +309,7 @@ main()
 static boost::spirit::parse_info<char const *> pi;
 
 ////////////////////////////////////////////////
-// These macros are used with BOOST_TEST
+// These macros are used with BOOST_CHECK
 
 
 

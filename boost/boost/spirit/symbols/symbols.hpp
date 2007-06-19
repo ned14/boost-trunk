@@ -1,9 +1,10 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_SYMBOLS_HPP
@@ -17,11 +18,20 @@
 #include <boost/spirit/core/parser.hpp>
 #include <boost/spirit/core/composite/directives.hpp>
 
-#include <boost/spirit/symbols/symbols_fwd.hpp>
-
-
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
+
+///////////////////////////////////////////////////////////////////////////////
+//  Forward Declarations
+
+namespace impl
+{
+    template <typename CharT, typename T>
+    class tst;
+}
+
+template <typename T, typename SetT>
+class symbol_inserter;
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -65,7 +75,12 @@ namespace boost { namespace spirit {
 //          sym.add("hello", 1)("crazy", 2)("world", 3);
 //
 ///////////////////////////////////////////////////////////////////////////////
-template <typename T, typename CharT, typename SetT>
+template
+<
+    typename T = int,
+    typename CharT = char,
+    typename SetT = impl::tst<T, CharT>
+>
 class symbols
 :   private SetT
 ,   public parser<symbols<T, CharT, SetT> >
@@ -181,8 +196,8 @@ public:
     symbol_inserter(SetT& set_)
     : set(set_) {}
 
-    typedef symbol_inserter const & result_type;
-
+    typedef symbol_inserter const& result_type;
+    
     template <typename IteratorT>
     symbol_inserter const&
     operator()(IteratorT first, IteratorT const& last, T const& data = T()) const

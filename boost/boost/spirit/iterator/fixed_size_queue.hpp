@@ -1,10 +1,10 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001, Daniel C. Nuffer
-    Copyright (c) 2003, Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef FIXED_SIZE_QUEUE
@@ -18,7 +18,12 @@
 
 // FIXES for broken compilers
 #include <boost/config.hpp>
-#include <boost/iterator_adaptors.hpp>
+
+//// fix for cygwin
+//#ifdef size_t
+//#undef size_t
+//namespace std { typedef unsigned size_t; }
+//#endif
 
 #define BOOST_SPIRIT_ASSERT_FSQ_SIZE \
     BOOST_SPIRIT_ASSERT(((m_tail + N + 1) - m_head) % (N+1) == m_size % (N+1)) \
@@ -28,161 +33,13 @@
 namespace boost { namespace spirit {
 
 ///////////////////////////////////////////////////////////////////////////////
-namespace impl {
-
-#if !defined(BOOST_ITERATOR_ADAPTORS_VERSION) || \
-    BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
-#error "Please use at least Boost V1.31.0 while compiling the fixed_size_queue class!"
-#else // BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
-
-template <typename QueueT, typename T, typename PointerT>
-class fsq_iterator
-:   public boost::iterator_adaptor<
-        fsq_iterator<QueueT, T, PointerT>, 
-        PointerT,
-        T,
-        std::random_access_iterator_tag
-    >
-{
-public:
-    typedef typename QueueT::position_t position;
-    typedef boost::iterator_adaptor<
-            fsq_iterator<QueueT, T, PointerT>, PointerT, T,
-            std::random_access_iterator_tag
-        > base_t;
-
-    fsq_iterator() {}
-    fsq_iterator(position const &p_) : p(p_) {}
-    
-    position const &get_position() const { return p; }
-    
-private:
-    friend class boost::iterator_core_access;
-    
-    typename base_t::reference dereference() const
-    {
-        return p.self->m_queue[p.pos];
-    }
-
-    void increment()
-    {
-        ++p.pos;
-        if (p.pos == QueueT::MAX_SIZE+1)
-            p.pos = 0;
-    }
-
-    void decrement()
-    {
-        if (p.pos == 0)
-            p.pos = QueueT::MAX_SIZE;
-        else
-            --p.pos;
-    }
-
-    template <
-        typename OtherDerivedT, typename OtherIteratorT, 
-        typename V, typename C, typename R, typename D
-    >   
-    bool equal(iterator_adaptor<OtherDerivedT, OtherIteratorT, V, C, R, D> 
-        const &x) const
-    {
-        position const &rhs_pos = 
-            static_cast<OtherDerivedT const &>(x).get_position();
-        return (p.self == rhs_pos.self) && (p.pos == rhs_pos.pos);
-    }
-
-    template <
-        typename OtherDerivedT, typename OtherIteratorT, 
-        typename V, typename C, typename R, typename D
-    >   
-    typename base_t::difference_type distance_to(
-        iterator_adaptor<OtherDerivedT, OtherIteratorT, V, C, R, D> 
-        const &x) const
-    {
-        typedef typename base_t::difference_type diff_t;
-
-        position const &p2 = 
-            static_cast<OtherDerivedT const &>(x).get_position();
-        std::size_t pos1 = p.pos;
-        std::size_t pos2 = p2.pos;
-
-        // Undefined behaviour if the iterators come from different
-        //  containers
-        BOOST_SPIRIT_ASSERT(p.self == p2.self);
-
-        if (pos1 < p.self->m_head)
-            pos1 += QueueT::MAX_SIZE;
-        if (pos2 < p2.self->m_head)
-            pos2 += QueueT::MAX_SIZE;
-
-        if (pos2 > pos1)
-            return diff_t(pos2 - pos1);
-        else
-            return -diff_t(pos1 - pos2);
-    }
-
-    void advance(typename base_t::difference_type n)
-    {
-        // Notice that we don't care values of n that can
-        //  wrap around more than one time, since it would
-        //  be undefined behaviour anyway (going outside
-        //  the begin/end range). Negative wrapping is a bit
-        //  cumbersome because we don't want to case p.pos
-        //  to signed.
-        if (n < 0)
-        {
-            n = -n;
-            if (p.pos < (std::size_t)n)
-                p.pos = QueueT::MAX_SIZE+1 - (n - p.pos);
-            else
-                p.pos -= n;
-        }
-        else
-        {
-            p.pos += n;
-            if (p.pos >= QueueT::MAX_SIZE+1)
-                p.pos -= QueueT::MAX_SIZE+1;
-        }
-    }
-    
-private:
-    position p;
-};
-
-#endif // BOOST_ITERATOR_ADAPTORS_VERSION < 0x0200
-
-///////////////////////////////////////////////////////////////////////////////
-} /* namespace impl */
+template <typename T, std::size_t N>
+class fixed_size_queue_iterator;
 
 template <typename T, std::size_t N>
 class fixed_size_queue
 {
-private:
-    struct position
-    {
-        fixed_size_queue* self;
-        std::size_t pos;
-
-        position() : self(0), pos(0) {}
-
-        // The const_cast here is just to avoid to have two different
-        //  position structures for the const and non-const case.
-        // The const semantic is guaranteed by the iterator itself
-        position(const fixed_size_queue* s, std::size_t p)
-            : self(const_cast<fixed_size_queue*>(s)), pos(p)
-        {}
-    };
-
 public:
-    // Declare the iterators
-    typedef impl::fsq_iterator<fixed_size_queue<T, N>, T, T*> iterator;
-    typedef impl::fsq_iterator<fixed_size_queue<T, N>, T const, T const*> 
-        const_iterator;
-    typedef position position_t;
-
-    friend class impl::fsq_iterator<fixed_size_queue<T, N>, T, T*>;
-    friend class impl::fsq_iterator<fixed_size_queue<T, N>, T const, T const*>;
-    
     fixed_size_queue();
     fixed_size_queue(const fixed_size_queue& x);
     fixed_size_queue& operator=(const fixed_size_queue& x);
@@ -193,37 +50,30 @@ public:
     void serve(T& e);
     void pop_front();
 
-    bool empty() const
+    bool empty()
     {
         return m_size == 0;
     }
 
-    bool full() const
+    bool full()
     {
         return m_size == N;
     }
 
+
+    typedef fixed_size_queue_iterator<T, N> iterator;
+
     iterator begin()
     {
-        return iterator(position(this, m_head));
-    }
-
-    const_iterator begin() const
-    {
-        return const_iterator(position(this, m_head));
+        return iterator(this, m_head);
     }
 
     iterator end()
     {
-        return iterator(position(this, m_tail));
+        return iterator(this, m_tail);
     }
 
-    const_iterator end() const
-    {
-        return const_iterator(position(this, m_tail));
-    }
-
-    std::size_t size() const
+    std::size_t size()
     {
         return m_size;
     }
@@ -233,20 +83,77 @@ public:
         return m_queue[m_head];
     }
 
-    const T& front() const
-    {
-        return m_queue[m_head];
-    }
-
 private:
-    // Redefine the template parameters to avoid using partial template
-    //  specialization on the iterator policy to extract N.
-    BOOST_STATIC_CONSTANT(std::size_t, MAX_SIZE = N);
+
+    //friend class iterator;
+    friend class fixed_size_queue_iterator<T, N>;
 
     std::size_t m_head;
     std::size_t m_tail;
     std::size_t m_size;
     T m_queue[N+1];
+
+};
+
+
+template <typename T, std::size_t N>
+class fixed_size_queue_iterator
+{
+public:
+
+    typedef std::forward_iterator_tag iterator_category;
+    typedef T value_type;
+    typedef std::ptrdiff_t difference_type;
+    typedef T* pointer;
+    typedef T& reference;
+    typedef fixed_size_queue<T, N> queue;
+
+    fixed_size_queue_iterator(queue* q, std::size_t p)
+        : m_queue(q)
+        , pos(p)
+    {}
+
+    fixed_size_queue_iterator& operator++()
+    {
+        ++pos;
+        if (pos == N+1)
+            pos = 0;
+
+        return *this;
+    }
+
+    fixed_size_queue_iterator operator++(int)
+    {
+        fixed_size_queue_iterator tmp = *this;
+        ++*this;
+        return tmp;
+    }
+
+    T& operator*()
+    {
+        return m_queue->m_queue[pos];
+    }
+
+    bool operator==(const fixed_size_queue_iterator& x)
+    {
+        return pos == x.pos && m_queue == x.m_queue;
+    }
+
+    bool operator<(const fixed_size_queue_iterator& x)
+    {
+        std::size_t p1 = pos < m_queue->m_head ? pos + N : pos;
+        std::size_t p2 = x.pos < x.m_queue->m_head ? x.pos + N : x.pos;
+        return p1 < p2;
+    }
+
+    bool operator!=(const fixed_size_queue_iterator& x)
+    {
+        return !(*this == x);
+    }
+
+private:
+    queue* m_queue;
+    std::size_t pos;
 };
 
 template <typename T, std::size_t N>

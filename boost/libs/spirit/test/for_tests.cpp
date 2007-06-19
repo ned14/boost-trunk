@@ -1,15 +1,20 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2003 Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 // vi:ts=4:sw=4:et
 // Tests for spirit::for_p
 // [13-Jan-2003]
 ////////////////////////////////////////////////////////////////////////////////
+#if defined (__BORLANDC__)
+#define _RWSTD_COMPILE_INSTANTIATE // Borland Workaround [JDG]
+#endif
+
 #define qDebug 0
 #include <iostream>
 #include <cstring>
@@ -18,10 +23,9 @@
 #endif
 #include <string>
 #include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
 #include <boost/spirit/dynamic/for.hpp>
 #include <boost/ref.hpp>
-#include "impl/string_length.hpp"
+////////////////////////////////////////////////////////////////////////////////
 
 namespace local
 {
@@ -94,16 +98,15 @@ test_for
 )
 {
     using namespace std;
-    
     ++test_count;
 
     iterations_performed = 0;
 
-    ::boost::spirit::parse_info<> m = ::boost::spirit::parse(s, s + test_impl::string_length(s), r);
+    ::boost::spirit::parse_info<> m = ::boost::spirit::parse(s, s+strlen(s), r);
 
     bool result = (succeed==m.full)?good:bad;
 
-    if (m.full && (m.length != test_impl::string_length(s)))
+    if (m.full && (m.length != strlen(s)))
         result = bad;
 
     result &= iterations_expected == iterations_performed;
@@ -150,7 +153,7 @@ main()
 
     using boost::spirit::uint_p;
     using boost::spirit::for_p;
-    using boost::spirit::assign_a;
+    using boost::spirit::assign;
 
 #if qDebug
     SPIRIT_DEBUG_RULE(for_rule);
@@ -158,14 +161,14 @@ main()
 #endif
 
     for_rule
-        =   uint_p[assign_a(iterations_desired)] >> ':'
+        =   uint_p[assign(iterations_desired)] >> ':'
         >>  for_p(&zero, cmp(), inc())["xy"]
-            [assign_a(input_matched)]
+            [assign(input_matched)]
         ;
 
     for_rule2
         =   for_p(&zero, '.', inc())["xy"]
-            [assign_a(input_matched)]
+            [assign(input_matched)]
         ;
 
     cout << "/////////////////////////////////////////////////////////\n";
@@ -193,4 +196,5 @@ main()
 
     return error_count!=0;
 }
-
+////////////////////////////////////////////////////////////////////////////////
+// End of File

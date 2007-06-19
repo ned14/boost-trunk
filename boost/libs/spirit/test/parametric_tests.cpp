@@ -1,14 +1,14 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Joel de Guzman
-    Copyright (c)      2003 Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #include <iostream>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 #include <string>
 
 using namespace std;
@@ -20,167 +20,67 @@ using namespace std;
 using namespace boost::spirit;
 using namespace phoenix;
 
-#include <boost/detail/lightweight_test.hpp>
-
 ///////////////////////////////////////////////////////////////////////////////
 //
 //  Parametric tests
 //
 ///////////////////////////////////////////////////////////////////////////////
-
-template <typename T>
-static unsigned
-length(T const *p)
-{
-    unsigned result = 0;
-    while (*p++)
-        ++result;
-    return result;
-}
-
-template <typename T>
-bool
-is_equal(T const* a, T const* b)
-{
-    while (*a && *b)
-        if (*a++ != *b++)
-            return false;
-    return true;
-}
-
-typedef rule< scanner<wchar_t const *> > wrule_t;
-
 void
-narrow_f_ch_p()
+parametric_tests()
 {
     char ch;
     rule<> r = anychar_p[var(ch) = arg1] >> *f_ch_p(const_(ch));
-    parse_info<char const*> pi;
 
+    parse_info<char const*> pi;
     pi = parse("aaaaaaaaa", r);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
+    assert(pi.hit);
+    assert(pi.full);
 
     pi = parse("aaaaabaaa", r);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(!pi.full);
-    BOOST_TEST(is_equal(pi.stop, "baaa"));
-}
+    assert(pi.hit);
+    assert(!pi.full);
+    assert(string(pi.stop) == "baaa");
 
-void
-wide_f_ch_p()
-{
-    wchar_t ch;
-    wrule_t r = anychar_p[var(ch) = arg1] >> *f_ch_p(const_(ch));
-    parse_info<wchar_t const*> pi;
-
-    pi = parse(L"aaaaaaaaa", r);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
-
-    pi = parse(L"aaaaabaaa", r);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(!pi.full);
-    BOOST_TEST(is_equal(pi.stop, L"baaa"));
-}
-
-void
-narrow_f_range_p()
-{
     char from = 'a';
     char to = 'z';
 
-    parse_info<char const*> pi;
-
     rule<> r2 = *f_range_p(const_(from), const_(to));
     pi = parse("abcdefghijklmnopqrstuvwxyz", r2);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
+    assert(pi.hit);
+    assert(pi.full);
 
     pi = parse("abcdefghijklmnopqrstuvwxyz123", r2);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(!pi.full);
-    BOOST_TEST(is_equal(pi.stop, "123"));
-}
-
-void
-wide_f_range_p()
-{
-    wchar_t from = L'a';
-    wchar_t to = L'z';
-
-    parse_info<wchar_t const*> pi;
-
-    wrule_t r2 = *f_range_p(const_(from), const_(to));
-    pi = parse(L"abcdefghijklmnopqrstuvwxyz", r2);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
-
-    pi = parse(L"abcdefghijklmnopqrstuvwxyz123", r2);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(!pi.full);
-    BOOST_TEST(is_equal(pi.stop, L"123"));
-}
-
-void
-narrow_f_str_p()
-{
-    parse_info<char const*> pi;
+    assert(pi.hit);
+    assert(!pi.full);
+    assert(string(pi.stop) == "123");
 
     char const* start = "kim";
-    char const* end = start + length(start);
+    char const* end = start + strlen(start);
     rule<> r3 = +f_str_p(const_(start), const_(end));
 
     pi = parse("kimkimkimkimkimkimkimkimkim", r3);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
+    assert(pi.hit);
+    assert(pi.full);
 
     pi = parse("kimkimkimkimkimkimkimkimkimmama", r3);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(!pi.full);
-    BOOST_TEST(is_equal(pi.stop, "mama"));
+    assert(pi.hit);
+    assert(!pi.full);
+    assert(string(pi.stop) == "mama");
 
     pi = parse("joel", r3);
-    BOOST_TEST(!pi.hit);
-}
-
-void
-wide_f_str_p()
-{
-    parse_info<wchar_t const*> pi;
-
-    wchar_t const* start = L"kim";
-    wchar_t const* end = start + length(start);
-    wrule_t r3 = +f_str_p(const_(start), const_(end));
-
-    pi = parse(L"kimkimkimkimkimkimkimkimkim", r3);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
-
-    pi = parse(L"kimkimkimkimkimkimkimkimkimmama", r3);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(!pi.full);
-    BOOST_TEST(is_equal(pi.stop, L"mama"));
-
-    pi = parse(L"joel", r3);
-    BOOST_TEST(!pi.hit);
+    assert(!pi.hit);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-//  test suite
+//  Main
 //
 ///////////////////////////////////////////////////////////////////////////////
 int
 main()
 {
-    narrow_f_ch_p();
-    wide_f_ch_p();
-    narrow_f_range_p();
-    wide_f_range_p();
-    narrow_f_str_p();
-    wide_f_str_p();
-
-    return boost::report_errors();
+    parametric_tests();
+    cout << "Tests concluded successfully\n";
+    return 0;
 }
 

@@ -1,19 +1,22 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/error_handling/exceptions.hpp>
 #include <iostream>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 
+///////////////////////////////////////////////////////////////////////////////
 using namespace std;
 using namespace boost::spirit;
 
+///////////////////////////////////////////////////////////////////////////////
 struct handler
 {
     template <typename ScannerT, typename ErrorT>
@@ -25,6 +28,7 @@ struct handler
     }
 };
 
+///////////////////////////////////////////////////////////////////////////////
 int
 main()
 {
@@ -43,7 +47,7 @@ main()
             ]
         ).full;
 
-    BOOST_TEST(!r);
-    return boost::report_errors();
+    assert(!r);
+    return 0;
 }
 

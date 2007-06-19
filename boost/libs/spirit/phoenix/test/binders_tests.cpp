@@ -2,13 +2,13 @@
     Phoenix V1.2.1
     Copyright (c) 2001-2003 Joel de Guzman
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <iostream>
 #include <functional>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 
 #define PHOENIX_LIMIT 15
 #include <boost/spirit/phoenix/primitives.hpp>
@@ -102,11 +102,11 @@ main()
 //  Member var binders
 
     printer.x = 3;
-    BOOST_TEST(bind(&print_::x)(arg1)(printer) == 3);
-    BOOST_TEST(print_x(arg1)(printer) == 3);
-    BOOST_TEST(print_x(printer)() == 3);
-    BOOST_TEST(0 != (print_x(var(printer))() = 4));
-    BOOST_TEST(printer.x == 4);
+    assert(bind(&print_::x)(arg1)(printer) == 3);
+    assert(print_x(arg1)(printer) == 3);
+    assert(print_x(printer)() == 3);
+    assert(0 != (print_x(var(printer))() = 4));
+    assert(printer.x == 4);
 
 //  Bound member functions
 
@@ -118,5 +118,8 @@ main()
     bound_print_foo2(111, 222)();
     bound_print_foo2(111, arg1)(i100);
 
-    return boost::report_errors();
+    cout << "///////////////////////////////////////////////////////////////////////////////\n";
+    cout << "\t\tTests concluded\n";
+    cout << "\t\tSUCCESS!!!\n";
+    cout << "///////////////////////////////////////////////////////////////////////////////\n";
 }

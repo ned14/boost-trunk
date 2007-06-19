@@ -1,9 +1,10 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 ///////////////////////////////////////////////////////////////////////////////
@@ -18,12 +19,16 @@
 #include <string>
 #include <iostream>
 #include <cassert>
-#include <vector>
 
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/utility/confix.hpp>
 #include <boost/spirit/utility/lists.hpp>
 #include <boost/spirit/utility/escape_char.hpp>
+
+#include <iostream>
+#include <cassert>
+#include <string>
+#include <vector>
 
 ///////////////////////////////////////////////////////////////////////////////
 using namespace std;
@@ -59,7 +64,7 @@ int main ()
     std::vector<std::string>    vec_list;
 
     list_wo_item =
-            list_p[push_back_a(vec_list)]
+            list_p[append(vec_list)]
         ;
 
     parse_info<> result = parse (plist_wo_item, list_wo_item);
@@ -96,23 +101,22 @@ int main ()
     // 2. parsing a CSV list (comma separated values - strings, integers or
     // reals)
     char const *plist_csv = "\"string\",\"string with an embedded \\\"\","
-        "12345,0.12345e4,,2";
+        "12345,0.12345e4";
     rule<> list_csv, list_csv_item;
     std::vector<std::string> vec_item;
 
     vec_list.clear();
 
     list_csv_item =
-        !(
-                confix_p('\"', *c_escape_ch_p, '\"')
-            |   longest_d[real_p | int_p]
-        );
+            confix_p('\"', *c_escape_ch_p, '\"')
+        |   longest_d[real_p | int_p]
+        ;
 
     list_csv =
             list_p(
-                list_csv_item[push_back_a(vec_item)],
+                list_csv_item[append(vec_item)],
                 ','
-            )[push_back_a(vec_list)]
+            )[append(vec_list)]
         ;
 
     result = parse (plist_csv, list_csv);

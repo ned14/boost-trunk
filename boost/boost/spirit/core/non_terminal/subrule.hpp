@@ -1,23 +1,30 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Joel de Guzman
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_SUBRULE_HPP)
 #define BOOST_SPIRIT_SUBRULE_HPP
 
-#include <boost/config.hpp>
+#include <boost/type_traits.hpp>
 #include <boost/static_assert.hpp>
 
+#if !defined(BOOST_SPIRIT_PARSER_HPP)
 #include <boost/spirit/core/parser.hpp>
-#include <boost/spirit/core/non_terminal/parser_context.hpp>
+#endif
 
-#include <boost/spirit/core/non_terminal/subrule_fwd.hpp>
+#if !defined(BOOST_SPIRIT_PARSER_CONTEXT_HPP)
+#include <boost/spirit/core/non_terminal/parser_context.hpp>
+#endif
+
+#if !defined(BOOST_SPIRIT_SUBRULE_IPP)
 #include <boost/spirit/core/non_terminal/impl/subrule.ipp>
+#endif
 
 namespace boost { namespace spirit {
 
@@ -51,7 +58,7 @@ namespace boost { namespace spirit {
         change_policies(PoliciesT const& policies) const
         {
             typedef subrules_scanner<
-                BOOST_DEDUCED_TYPENAME
+                BOOST_SPIRIT_TYPENAME
                     rebind_scanner_policies<ScannerT, PoliciesT>::type,
                 ListT>
             subrules_scanner_t;
@@ -76,7 +83,7 @@ namespace boost { namespace spirit {
         change_iterator(IteratorT const& first, IteratorT const &last) const
         {
             typedef subrules_scanner<
-                BOOST_DEDUCED_TYPENAME
+                BOOST_SPIRIT_TYPENAME
                     rebind_scanner_iterator<ScannerT, IteratorT>::type,
                 ListT>
             subrules_scanner_t;
@@ -103,11 +110,19 @@ namespace boost { namespace spirit {
           typedef subrules_scanner<ScannerT, ListT> type;
     };
 
+    #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+    //
+    //  MSVC doesn't support PTS. The default implementation
+    //  still works. It just generates a whole lot more
+    //  template instantiations.
+
     template <typename ScannerT, typename ListT>
     struct subrules_scanner_finder<subrules_scanner<ScannerT, ListT>, ListT>
     {
           typedef subrules_scanner<ScannerT, ListT> type;
     };
+
+    #endif
 
     ///////////////////////////////////////////////////////////////////////////
     //
@@ -127,17 +142,18 @@ namespace boost { namespace spirit {
         template <typename ScannerT>
         struct result
         {
-            typedef typename parser_result<FirstT, ScannerT>::type type;
+            typedef typename FirstT::def_t parser_t;
+            typedef typename parser_result<parser_t, ScannerT>::type type;
         };
 
         template <typename ScannerT>
         typename parser_result<self_t, ScannerT>::type
         parse(ScannerT const& scan) const
         {
-            typedef typename subrules_scanner_finder<ScannerT, self_t>::type
-            subrules_scanner_t;
+                typedef typename subrules_scanner_finder<ScannerT, self_t>::type
+                subrules_scanner_t;
             subrules_scanner_t g_arg(scan, *this);
-            return first.start.parse(g_arg);
+            return first.rhs.parse(g_arg);
         }
 
         template <int ID, typename DefT, typename ContextT>
@@ -168,6 +184,9 @@ namespace boost { namespace spirit {
     //  subrule_parser class
     //
     ///////////////////////////////////////////////////////////////////////////
+    template <int ID, typename ContextT = parser_context>
+    struct subrule; // Forward declaration
+
     template <int ID, typename DefT, typename ContextT>
     struct subrule_parser
     : public parser<subrule_parser<ID, DefT, ContextT> >
@@ -284,8 +303,9 @@ namespace boost { namespace spirit {
         //  assignment of subrules is not allowed. Use subrules
         //  with identical IDs if you want to have aliases.
 
+    #if !defined(BOOST_MSVC) && (BOOST_MSVC > 1200)
         subrule& operator=(subrule const&);
-
+    #endif
         template <int ID2, typename ContextT2>
         subrule& operator=(subrule<ID2, ContextT2> const&);
     };

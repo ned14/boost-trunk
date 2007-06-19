@@ -1,9 +1,10 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_EXCEPTIONS_IPP
@@ -39,7 +40,7 @@ namespace boost { namespace spirit { namespace impl {
             #endif
             }
 
-            catch (parser_error<error_descr_t, iterator_t>& error)
+            catch (parser_error<error_descr_t, iterator_t> error)
             {
                 scan.first = save;
                 hr = p.handler(scan, error);
@@ -49,7 +50,7 @@ namespace boost { namespace spirit { namespace impl {
                         return scan.no_match();
                     case error_status_t::accept:
                         return scan.create_match
-                            (std::size_t(hr.length), hr.value, save, scan.first);
+                            (hr.length, hr.value, save, scan.first);
                     case error_status_t::rethrow:
                          boost::throw_exception(error);
                     default:
@@ -72,9 +73,7 @@ namespace boost { namespace spirit { namespace impl {
     template <typename ParserT, typename ScannerT>
     typename parser_result<ParserT, ScannerT>::type
     fallback_parser_helper(ParserT const& p, ScannerT const& scan)
-    {
-        return p.subject().parse(scan);
-    }
+    { return p.subject().parse(scan); }
 
 #endif
 

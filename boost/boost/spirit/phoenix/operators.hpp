@@ -2,8 +2,8 @@
     Phoenix V1.2.1
     Copyright (c) 2001-2002 Joel de Guzman
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #ifndef PHOENIX_OPERATORS_HPP
@@ -23,7 +23,8 @@
 #include <boost/spirit/phoenix/actor.hpp>
 #include <boost/spirit/phoenix/composite.hpp>
 #include <boost/config.hpp>
-#include <boost/mpl/if.hpp>
+
+#include <climits>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace phoenix {
@@ -239,7 +240,7 @@ struct unary_operator<positive_op, T> {
 template <typename T>
 struct unary_operator<logical_not_op, T> {
 
-    typedef T const result_type;
+    typedef bool result_type;
     static result_type eval(T const& v)
     { return !v; }
 };
@@ -374,8 +375,8 @@ template <> struct rank<long>               { static int const value = 90; };
 template <> struct rank<unsigned long>      { static int const value = 100; };
 
 #ifdef BOOST_HAS_LONG_LONG
-template <> struct rank< ::boost::long_long_type>          { static int const value = 110; };
-template <> struct rank< ::boost::ulong_long_type> { static int const value = 120; };
+template <> struct rank<long long>          { static int const value = 110; };
+template <> struct rank<unsigned long long> { static int const value = 120; };
 #endif
 
 template <> struct rank<float>              { static int const value = 130; };
@@ -400,9 +401,21 @@ template <typename T, int N> struct rank<T[N]>
 ///////////////////////////////////////////////////////////////////////////////
 template <typename T0, typename T1>
 struct higher_rank {
-    typedef typename boost::mpl::if_c<
-        rank<T0>::value < rank<T1>::value,
-        T1, T0>::type type;
+
+    enum {
+
+        rank1 = rank<T0>::value,
+        rank2 = rank<T1>::value,
+
+#if defined __BORLANDC__ && __BORLANDC__ >= 0x561
+        siz = (rank<T0>::value < rank<T1>::value) ? 1 : 2
+#else
+        siz = (rank1 < rank2) ? 1 : 2
+#endif
+    };
+
+    typedef char compare_rank[siz];
+    typedef typename impl::if_t<compare_rank, T1, T0>::type type;
 };
 
 ///////////////////////////////////////////////////////////////////////////////

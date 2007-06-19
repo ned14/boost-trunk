@@ -2,8 +2,8 @@
     Phoenix v1.2
     Copyright (c) 2001-2002 Joel de Guzman
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #ifndef PHOENIX_ACTOR_HPP
@@ -28,6 +28,23 @@ namespace impl {
 
     template <typename OperationT, typename BaseT, typename B>
     struct make_binary1;
+}
+
+namespace impl {
+
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //      if_t selects type A or B depending on the condition C If C is of
+    //      type char[2], B is selected, otherwise A
+    //
+    //      TODO: This should be part of a common meta-library
+    //
+    ///////////////////////////////////////////////////////////////////////////
+    template <typename C, typename A, typename B>
+    struct if_t { typedef A type; };
+
+    template <typename A, typename B>
+    struct if_t<char[2], A, B> { typedef B type; };
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -69,7 +86,7 @@ struct unpack_tuple : public TupleT {
 //
 //          arg0 ---------|
 //          arg1 ---------|
-//          arg2 ---------|---> tupled_args ---> base.eval
+//          arg3 ---------|---> tupled_args ---> base.eval
 //          ...           |
 //          argN ---------|
 //

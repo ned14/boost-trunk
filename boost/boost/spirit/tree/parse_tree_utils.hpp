@@ -1,10 +1,11 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Daniel Nuffer
     Copyright (c) 2001-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 
@@ -58,6 +59,6 @@ get_node_range (tree_node<T> const &node, parser_id node_to_search,
 }   // namespace spirit
 }   // namespace boost
 
-#include "boost/spirit/tree/impl/parse_tree_utils.ipp"
+#include <boost/spirit/tree/impl/parse_tree_utils.ipp>
 
 #endif // !defined(PARSE_TREE_UTILS_HPP)

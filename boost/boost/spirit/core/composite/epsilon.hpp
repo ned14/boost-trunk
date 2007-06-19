@@ -1,20 +1,28 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     Copyright (c) 2002-2003 Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_EPSILON_HPP
 #define BOOST_SPIRIT_EPSILON_HPP
 
 ////////////////////////////////////////////////////////////////////////////////
+#if !defined(BOOST_SPIRIT_PARSER_HPP)
 #include <boost/spirit/core/parser.hpp>
-#include <boost/spirit/meta/parser_traits.hpp>
+#endif
+
+#if !defined(BOOST_SPIRIT_PARSER_TRAITS_HPP)
+#include <boost/spirit/core/meta/parser_traits.hpp>
+#endif
+
+#if !defined(BOOST_SPIRIT_COMPOSITE_HPP)
 #include <boost/spirit/core/composite/composite.hpp>
-#include <boost/spirit/core/composite/no_actions.hpp>
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -24,61 +32,61 @@ namespace boost { namespace spirit {
 //  condition_parser class
 //
 //      handles expresions of the form
-//
 //          epsilon_p(cond)
-//
-//      where cond is a function or a functor that returns a value suitable
-//      to be used in boolean context. The expression returns a parser that
-//      returns an empty match when the condition evaluates to true.
+//      where cond is a function or a functor that returns a value
+//      suitable to be used in boolean context. The expression returns
+//      a parser that returns an empty match when the condition evaluates
+//      to true.
 //
 ///////////////////////////////////////////////////////////////////////////////
-    template <typename CondT, bool positive_ = true>
-    struct condition_parser : parser<condition_parser<CondT, positive_> >
+template <typename CondT, bool positive = true>
+struct condition_parser
+    : public impl::subject<CondT, parser<condition_parser<CondT, positive> > >
+{
+    typedef condition_parser<CondT, positive> self_t;
+    typedef impl::subject<CondT, parser<self_t> > base_t;
+
+    // not explicit! (needed for implementation of if_p et al.)
+    condition_parser(CondT const &cond) : base_t(cond) {}
+    condition_parser() : base_t() {}
+
+    template <typename ScannerT>
+    typename parser_result<self_t, ScannerT>::type
+    parse(ScannerT const& scan) const
     {
-        typedef condition_parser<CondT, positive_> self_t;
+        if (positive == this->get()())
+            return scan.empty_match();
+        else
+            return scan.no_match();
+    }
 
-        // not explicit! (needed for implementation of if_p et al.)
-        condition_parser(CondT const& cond_) : cond(cond_) {}
+    condition_parser<CondT, !positive>
+    negate() const
+    {
+        return condition_parser<CondT, !positive>(this->get());
+    }
 
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            if (positive_ == bool(cond())) // allow cond to return int
-                return scan.empty_match();
-            else
-                return scan.no_match();
-        }
+private:
+};
 
-        condition_parser<CondT, !positive_>
-        negate() const
-        { return condition_parser<CondT, !positive_>(cond); }
+#if BOOST_WORKAROUND(BOOST_MSVC, == 1310) // VC 7.1
+template <typename CondT>
+inline condition_parser<CondT, false>
+operator~(condition_parser<CondT, true> const& p)
+{ return p.negate(); }
 
-    private:
-
-        CondT cond;
-    };
-
-#if BOOST_WORKAROUND(BOOST_MSVC, == 1310) || \
-    BOOST_WORKAROUND(BOOST_MSVC, == 1400) || \
-    BOOST_WORKAROUND(__SUNPRO_CC, <= 0x580)
-// VC 7.1, VC8 and Sun CC <= 5.8 do not support general
-// expressions of non-type template parameters in instantiations
-    template <typename CondT>
-    inline condition_parser<CondT, false>
-    operator~(condition_parser<CondT, true> const& p)
-    { return p.negate(); }
-
-    template <typename CondT>
-    inline condition_parser<CondT, true>
-    operator~(condition_parser<CondT, false> const& p)
-    { return p.negate(); }
-#else // BOOST_WORKAROUND(BOOST_MSVC, == 1310) || == 1400
-    template <typename CondT, bool positive>
-    inline condition_parser<CondT, !positive>
-    operator~(condition_parser<CondT, positive> const& p)
-    { return p.negate(); }
-#endif // BOOST_WORKAROUND(BOOST_MSVC, == 1310) || == 1400
+template <typename CondT>
+inline condition_parser<CondT, true>
+operator~(condition_parser<CondT, false> const& p)
+{ return p.negate(); }
+#else // BOOST_WORKAROUND(BOOST_MSVC, == 1310)
+template <typename CondT, bool positive>
+inline condition_parser<CondT, !positive>
+operator~(condition_parser<CondT, positive> const &p)
+{
+    return p.negate();
+}
+#endif // BOOST_WORKAROUND(BOOST_MSVC, == 1310)
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -90,131 +98,140 @@ namespace boost { namespace spirit {
 //      parser that returns an empty match if the subject parser matches.
 //
 ///////////////////////////////////////////////////////////////////////////////
-    struct empty_match_parser_gen;
-    struct negated_empty_match_parser_gen;
+struct empty_match_parser_gen;
+struct negated_empty_match_parser_gen;
 
-    template <typename SubjectT>
-    struct negated_empty_match_parser; // Forward declaration
+template<typename SubjectT> struct negated_empty_match_parser;
 
-    template<typename SubjectT>
-    struct empty_match_parser
-    : unary<SubjectT, parser<empty_match_parser<SubjectT> > >
+template<typename SubjectT>
+struct empty_match_parser
+    : public unary<SubjectT, parser<empty_match_parser<SubjectT> > >
+{
+    typedef empty_match_parser<SubjectT>        self_t;
+    typedef unary<SubjectT, parser<self_t> >    base_t;
+    typedef unary_parser_category               parser_category_t;
+    typedef empty_match_parser_gen              parser_genererator_t;
+    typedef self_t embed_t;
+
+    explicit empty_match_parser(SubjectT const &p) : base_t(p) {}
+    empty_match_parser() : base_t() {}
+
+    template <typename ScannerT>
+    struct result
     {
-        typedef empty_match_parser<SubjectT>        self_t;
-        typedef unary<SubjectT, parser<self_t> >    base_t;
-        typedef unary_parser_category               parser_category_t;
-        typedef empty_match_parser_gen              parser_genererator_t;
-        typedef self_t embed_t;
-
-        explicit empty_match_parser(SubjectT const& p) : base_t(p) {}
-
-        template <typename ScannerT>
-        struct result
-        { typedef typename match_result<ScannerT, nil_t>::type type; };
-
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typename ScannerT::iterator_t save(scan.first);
-            
-            typedef typename no_actions_scanner<ScannerT>::policies_t
-                policies_t;
-
-            bool matches = this->subject().parse(
-                scan.change_policies(policies_t(scan)));
-            if (matches)
-            {
-                scan.first = save; // reset the position
-                return scan.empty_match();
-            }
-            else
-            {
-                return scan.no_match();
-            }
-        }
-
-        negated_empty_match_parser<SubjectT>
-        negate() const
-        { return negated_empty_match_parser<SubjectT>(this->subject()); }
+        typedef typename match_result<ScannerT, nil_t>::type type;
     };
 
-    template<typename SubjectT>
-    struct negated_empty_match_parser
+    template <typename ScannerT>
+    typename parser_result<self_t, ScannerT>::type
+    parse(ScannerT const& scan) const
+    {
+        typename ScannerT::iterator_t save(scan.first);
+        bool matches = this->subject().parse(scan);
+        if (matches)
+        {
+            scan.first = save; // reset the position
+            return scan.empty_match();
+        }
+        else
+            return scan.no_match();
+    }
+
+    negated_empty_match_parser<SubjectT>
+    negate() const
+    {
+        return negated_empty_match_parser<SubjectT>(this->subject());
+    }
+};
+
+template<typename SubjectT>
+struct negated_empty_match_parser
     : public unary<SubjectT, parser<negated_empty_match_parser<SubjectT> > >
+{
+    typedef negated_empty_match_parser<SubjectT>    self_t;
+    typedef unary<SubjectT, parser<self_t> >        base_t;
+    typedef unary_parser_category                   parser_category_t;
+    typedef negated_empty_match_parser_gen          parser_genererator_t;
+
+    explicit negated_empty_match_parser(SubjectT const &p) : base_t(p) {}
+    negated_empty_match_parser() : base_t() {}
+
+    template <typename ScannerT>
+    struct result
     {
-        typedef negated_empty_match_parser<SubjectT>    self_t;
-        typedef unary<SubjectT, parser<self_t> >        base_t;
-        typedef unary_parser_category                   parser_category_t;
-        typedef negated_empty_match_parser_gen          parser_genererator_t;
+        typedef typename match_result<ScannerT, nil_t>::type type;
+    };
 
-        explicit negated_empty_match_parser(SubjectT const& p) : base_t(p) {}
+    template <typename ScannerT>
+    typename parser_result<self_t, ScannerT>::type
+    parse(ScannerT const& scan) const
+    {
+        typename ScannerT::iterator_t save(scan.first);
 
-        template <typename ScannerT>
-        struct result
-        { typedef typename match_result<ScannerT, nil_t>::type type; };
-
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
+        bool matches = this->subject().parse(scan);
+        if (!matches)
         {
-            typename ScannerT::iterator_t save(scan.first);
-
-            typedef typename no_actions_scanner<ScannerT>::policies_t
-                policies_t;
-
-            bool matches = this->subject().parse(
-                scan.change_policies(policies_t(scan)));
-            if (!matches)
-            {
-                scan.first = save; // reset the position
-                return scan.empty_match();
-            }
-            else
-            {
-                return scan.no_match();
-            }
+            scan.first = save; // reset the position
+            return scan.empty_match();
         }
+        else
+            return scan.no_match();
+    }
 
-        empty_match_parser<SubjectT>
-        negate() const
-        { return empty_match_parser<SubjectT>(this->subject()); }
-    };
-
-    struct empty_match_parser_gen
+    empty_match_parser<SubjectT>
+    negate() const
     {
-        template <typename SubjectT>
-        struct result
-        { typedef empty_match_parser<SubjectT> type; };
+        return empty_match_parser<SubjectT>(this->subject());
+    }
+};
 
-        template <typename SubjectT>
-        static empty_match_parser<SubjectT>
-        generate(parser<SubjectT> const& subject)
-        { return empty_match_parser<SubjectT>(subject.derived()); }
-    };
-
-    struct negated_empty_match_parser_gen
-    {
-        template <typename SubjectT>
-        struct result
-        { typedef negated_empty_match_parser<SubjectT> type; };
-
-        template <typename SubjectT>
-        static negated_empty_match_parser<SubjectT>
-        generate(parser<SubjectT> const& subject)
-        { return negated_empty_match_parser<SubjectT>(subject.derived()); }
-    };
-
-    //////////////////////////////
+//////////////////////////////
+struct empty_match_parser_gen
+{
     template <typename SubjectT>
-    inline negated_empty_match_parser<SubjectT>
-    operator~(empty_match_parser<SubjectT> const& p)
-    { return p.negate(); }
+    struct result
+    {
+        typedef empty_match_parser<SubjectT> type;
+    };
 
     template <typename SubjectT>
-    inline empty_match_parser<SubjectT>
-    operator~(negated_empty_match_parser<SubjectT> const& p)
-    { return p.negate(); }
+    static empty_match_parser<SubjectT>
+    generate(parser<SubjectT> const &subject)
+    {
+        return empty_match_parser<SubjectT>(subject.derived());
+    }
+};
+
+struct negated_empty_match_parser_gen
+{
+    template <typename SubjectT>
+    struct result
+    {
+        typedef negated_empty_match_parser<SubjectT> type;
+    };
+
+    template <typename SubjectT>
+    static negated_empty_match_parser<SubjectT>
+    generate(parser<SubjectT> const &subject)
+    {
+        return negated_empty_match_parser<SubjectT>(subject.derived());
+    }
+};
+
+//////////////////////////////
+template <typename SubjectT>
+inline /*struct*/ negated_empty_match_parser<SubjectT>
+operator ~(empty_match_parser<SubjectT> const &p)
+{
+    return p.negate();
+}
+
+template <typename SubjectT>
+inline /*struct*/ empty_match_parser<SubjectT>
+operator ~(negated_empty_match_parser<SubjectT> const &p)
+{
+    return p.negate();
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -228,43 +245,44 @@ namespace boost { namespace spirit {
 //      is returned by operator().
 //
 ///////////////////////////////////////////////////////////////////////////////
-    namespace impl
+namespace impl
+{
+    template <typename SubjectT>
+    struct epsilon_selector
     {
-        template <typename SubjectT>
-        struct epsilon_selector
-        {
-            typedef typename as_parser<SubjectT>::type subject_t;
-            typedef typename
-                mpl::if_<
-                    is_parser<subject_t>
-                    ,empty_match_parser<subject_t>
-                    ,condition_parser<subject_t>
+        typedef typename as_parser<SubjectT>::type subject_t;
+        typedef typename
+            mpl::if_<
+                is_parser<subject_t>
+                ,empty_match_parser<subject_t>
+                ,condition_parser<subject_t>
                 >::type type;
-        };
-    }
-
-    struct epsilon_parser : public parser<epsilon_parser>
-    {
-        typedef epsilon_parser self_t;
-
-        epsilon_parser() {}
-
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        { return scan.empty_match(); }
-
-        template <typename SubjectT>
-        typename impl::epsilon_selector<SubjectT>::type
-        operator()(SubjectT const& subject) const
-        {
-            typedef typename impl::epsilon_selector<SubjectT>::type result_t;
-            return result_t(subject);
-        }
     };
+} // namespace impl
 
-    epsilon_parser const epsilon_p = epsilon_parser();
-    epsilon_parser const eps_p = epsilon_parser();
+struct epsilon_parser : public parser<epsilon_parser>
+{
+    typedef epsilon_parser self_t;
+
+    epsilon_parser() {}
+
+    template <typename ScannerT>
+    typename parser_result<self_t, ScannerT>::type
+    parse(ScannerT const& scan) const
+    { return scan.empty_match(); }
+
+    template <typename SubjectT>
+    typename impl::epsilon_selector<SubjectT>::type
+    operator()(SubjectT const &subject) const
+    {
+        typedef typename impl::epsilon_selector<SubjectT>::type result_t;
+        return result_t(subject);
+    }
+};
+
+//////////////////////////////////
+epsilon_parser const epsilon_p = epsilon_parser();
+epsilon_parser const eps_p = epsilon_parser();
 
 ///////////////////////////////////////////////////////////////////////////////
 }} // namespace boost::spirit

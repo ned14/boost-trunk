@@ -1,10 +1,11 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Joel de Guzman
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_PARSER_NAMES_HPP)
@@ -190,9 +191,9 @@ namespace boost { namespace spirit {
 
 ///////////////////////////////////////////////////////////////////////////////
 //  from rule.hpp
-    template<typename T0, typename T1, typename T2>
+    template<typename ContextT, typename ScannerT, typename TagT>
     std::string
-    parser_name(rule<T0, T1, T2> const& p);
+    parser_name(rule<ContextT, ScannerT, TagT> const& p);
 
 ///////////////////////////////////////////////////////////////////////////////
 //  from subrule.hpp
@@ -216,13 +217,9 @@ namespace boost { namespace spirit {
 //  Decide, if a node is to be traced or not
 //
 ///////////////////////////////////////////////////////////////////////////////
-    template<
-        typename DerivedT, typename EmbedT, 
-        typename T0, typename T1, typename T2
-    >
+    template<typename ContextT, typename ScannerT, typename TagT>
     bool
-    trace_parser(impl::rule_base<DerivedT, EmbedT, T0, T1, T2> 
-        const& p);
+    trace_parser(rule<ContextT, ScannerT, TagT> const& p);
 
     template <typename DerivedT, typename ContextT>
     bool
@@ -243,7 +240,9 @@ namespace boost { namespace spirit {
 }} // namespace boost::spirit
 
 //////////////////////////////////
+#if !defined(BOOST_SPIRIT_PARSER_NAMES_IPP)
 #include <boost/spirit/debug/impl/parser_names.ipp>
+#endif
 
 #endif // defined(BOOST_SPIRIT_DEBUG)
 

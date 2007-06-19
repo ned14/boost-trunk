@@ -1,16 +1,17 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_COMPOSITE_HPP)
 #define BOOST_SPIRIT_COMPOSITE_HPP
 
 ///////////////////////////////////////////////////////////////////////////////
-#include <boost/compressed_pair.hpp>
+#include <boost/spirit/core/composite/impl/composite.ipp>
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -46,29 +47,32 @@ namespace boost { namespace spirit {
     //
     ///////////////////////////////////////////////////////////////////////////
     template <typename S, typename BaseT>
-    class unary : public BaseT
+    class unary : public impl::subject<typename S::embed_t, BaseT>
     {
+        typedef impl::subject<typename S::embed_t, BaseT>   base_t;
+        typedef typename base_t::param_t                    param_t;
+        typedef typename base_t::return_t                   return_t;
+
     public:
 
-        typedef BaseT                                           base_t;
-        typedef typename boost::call_traits<S>::param_type      param_t;
-        typedef typename boost::call_traits<S>::const_reference return_t;
-        typedef S                                               subject_t;
-        typedef typename S::embed_t                             subject_embed_t;
+        typedef S                       subject_t;
+        typedef typename S::embed_t     subject_embed_t;
 
-        unary(param_t subj_)
-        : base_t(), subj(subj_) {}
+        unary()
+        : base_t() {}
 
-        unary(BaseT const& base, param_t subj_)
-        : base_t(base), subj(subj_) {}
+        unary(BaseT const& base)
+        : base_t(base) {}
+
+        unary(param_t s)
+        : base_t(s) {}
+
+        unary(BaseT const& base, param_t s)
+        : base_t(base, s) {}
 
         return_t
         subject() const
-        { return subj; }
-
-    private:
-
-        subject_embed_t subj;
+        { return base_t::get(); }
     };
 
     ///////////////////////////////////////////////////////////////////////////
@@ -103,34 +107,42 @@ namespace boost { namespace spirit {
     //
     ///////////////////////////////////////////////////////////////////////////////
     template <typename A, typename B, typename BaseT>
-    class binary : public BaseT
+    class binary
+    : public
+        impl::left_subject<typename A::embed_t,
+        impl::right_subject<typename B::embed_t, BaseT> >
     {
+        typedef
+            impl::left_subject<typename A::embed_t,
+            impl::right_subject<typename B::embed_t, BaseT> >   left_base_t;
+        typedef typename left_base_t::param_t                   left_param_t;
+        typedef typename left_base_t::return_t                  left_return_t;
+
+        typedef impl::right_subject<typename B::embed_t, BaseT> right_base_t;
+        typedef typename right_base_t::param_t                  right_param_t;
+        typedef typename right_base_t::return_t                 right_return_t;
+
     public:
 
-        typedef BaseT                                           base_t;
-        typedef typename boost::call_traits<A>::param_type      left_param_t;
-        typedef typename boost::call_traits<A>::const_reference left_return_t;
-        typedef typename boost::call_traits<B>::param_type      right_param_t;
-        typedef typename boost::call_traits<B>::const_reference right_return_t;
-        typedef A                                               left_t;
-        typedef typename A::embed_t                             left_embed_t;
-        typedef B                                               right_t;
-        typedef typename B::embed_t                             right_embed_t;
+        typedef A                       left_t;
+        typedef typename A::embed_t     left_embed_t;
+
+        typedef B                       right_t;
+        typedef typename B::embed_t     right_embed_t;
+
+        binary()
+        : left_base_t(right_base_t()) {}
 
         binary(left_param_t a, right_param_t b)
-        : base_t(), subj(a, b) {}
+        : left_base_t(right_base_t(b), a) {}
 
         left_return_t
         left() const
-        { return subj.first(); }
+        { return left_base_t::left(); }
 
         right_return_t
         right() const
-        { return subj.second(); }
-
-    private:
-
-        boost::compressed_pair<left_embed_t, right_embed_t> subj;
+        { return right_base_t::right(); }
     };
 
 }} // namespace boost::spirit

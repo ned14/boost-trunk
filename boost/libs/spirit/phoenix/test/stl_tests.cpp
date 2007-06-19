@@ -2,15 +2,15 @@
     Phoenix V1.2.1
     Copyright (c) 2001-2003 Joel de Guzman
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 #include <iostream>
 #include <vector>
 #include <list>
 #include <algorithm>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 
 #define PHOENIX_LIMIT 15
 #include <boost/spirit/phoenix/primitives.hpp>
@@ -53,7 +53,7 @@ main()
     for (int m = 0; m < 5; ++m, (cout << ','))
     {
         cout << v[m];
-        BOOST_TEST(v[m] == (m+1)*2);
+        assert(v[m] == (m+1)*2);
     }
     cout << endl;
 
@@ -69,8 +69,8 @@ main()
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-    BOOST_TEST((arg1[0])(v) == v[0]);
-    BOOST_TEST((arg1[1])(v) == v[1]);
+    assert((arg1[0])(v) == v[0]);
+    assert((arg1[1])(v) == v[1]);
 
     list<int> l;
     l.push_back(1);
@@ -82,8 +82,8 @@ main()
     list<int>::iterator first = l.begin();
     list<int>::iterator last = l.end();
 
-    BOOST_TEST((*(++arg1))(first) == 2);
-    BOOST_TEST((*(----arg1))(last) == 4);
+    assert((*(++arg1))(first) == 2);
+    assert((*(----arg1))(last) == 4);
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -91,5 +91,8 @@ main()
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-    return boost::report_errors();    
+    cout << "///////////////////////////////////////////////////////////////////////////////\n";
+    cout << "\t\tTests concluded\n";
+    cout << "\t\tSUCCESS!!!\n";
+    cout << "///////////////////////////////////////////////////////////////////////////////\n";
 }

@@ -1,9 +1,10 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (C) 2003 Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 
@@ -22,7 +23,7 @@ void banner()
     std::cout << "\n";
 }
 
-#if defined(DONT_HAVE_BOOST) || !defined(BOOST_HAS_THREADS) || defined(BOOST_DISABLE_THREADS)
+#if defined(DONT_HAVE_BOOST) || !defined(BOOST_HAS_THREADS)
 // if boost libraries are not available we have to skip the tests
 int
 main()
@@ -36,7 +37,7 @@ main()
 #include <boost/thread/mutex.hpp>
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/utility/scoped_lock.hpp>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 
 int
 main()
@@ -52,10 +53,12 @@ main()
     mutex m;
     rule<> r = scoped_lock_d(m)['x'];
     parse_info<> pi = parse("x", r);
-    BOOST_TEST(pi.hit);
-    BOOST_TEST(pi.full);
+    assert(pi.hit);
+    assert(pi.full);
 
-    return boost::report_errors();
+    std::cout  << "Test concluded successfully\n";
+
+    return 0;
 }
 
-#endif // defined(DONT_HAVE_BOOST)
+#endif // !defined(HAVE_BOOST)

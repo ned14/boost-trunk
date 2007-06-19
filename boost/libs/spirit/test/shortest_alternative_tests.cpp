@@ -1,18 +1,22 @@
 //
 //  Copyright (c) 2004 Joao Abecasis
 //
-//  Use, modification and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
+//    Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at 
+//    http://www.boost.org/LICENSE_1_0.txt)
 //
 
 #include <boost/spirit/core.hpp>
-#include <boost/detail/lightweight_test.hpp>
+#include <boost/test/included/unit_test_framework.hpp>
 
+using namespace boost::unit_test_framework;
 using namespace boost::spirit;
 
 void shortest_alternative_parser_test()
 {
+#if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+    typedef rule<> parser_t;
+#else
     typedef
         shortest_alternative<
             shortest_alternative<
@@ -22,6 +26,7 @@ void shortest_alternative_parser_test()
                 strlit<> >,
             strlit<> >
     parser_t;
+#endif
 
     parser_t short_rule =
         shortest_d[
@@ -31,10 +36,10 @@ void shortest_alternative_parser_test()
             | str_p("aaaa")
         ];
 
-    BOOST_TEST(parse("a", short_rule).full);
-    BOOST_TEST(parse("aa", short_rule).length == 1);
-    BOOST_TEST(parse("aaa", short_rule).length == 1);
-    BOOST_TEST(parse("aaaa", short_rule).length == 1);
+    BOOST_CHECK(parse("a", short_rule).full);
+    BOOST_CHECK(parse("aa", short_rule).length == 1);
+    BOOST_CHECK(parse("aaa", short_rule).length == 1);
+    BOOST_CHECK(parse("aaaa", short_rule).length == 1);
 
     short_rule =
         shortest_d[
@@ -44,15 +49,18 @@ void shortest_alternative_parser_test()
             | str_p("abcd")
         ];
 
-    BOOST_TEST(parse("d", short_rule).full);
-    BOOST_TEST(parse("cd", short_rule).full);
-    BOOST_TEST(parse("bcd", short_rule).full);
-    BOOST_TEST(parse("abcd", short_rule).full);
+    BOOST_CHECK(parse("d", short_rule).full);
+    BOOST_CHECK(parse("cd", short_rule).full);
+    BOOST_CHECK(parse("bcd", short_rule).full);
+    BOOST_CHECK(parse("abcd", short_rule).full);
+
 }
 
-int 
-main()
+test_suite* init_unit_test_suite(int /*argc*/, char* /*argv*/[])
 {
-    shortest_alternative_parser_test();
-    return boost::report_errors();
+    test_suite* test = BOOST_TEST_SUITE("shortest_alternative parser test");
+
+    test->add(BOOST_TEST_CASE(&shortest_alternative_parser_test));
+
+    return test;
 }

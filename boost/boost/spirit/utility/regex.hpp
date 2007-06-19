@@ -1,53 +1,38 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #ifndef BOOST_SPIRIT_REGEX_HPP
 #define BOOST_SPIRIT_REGEX_HPP
 
-#include <boost/version.hpp>
+#include <boost/spirit/core/impl/msvc.hpp>
+
+#if defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+#define BOOST_SPIRIT_IT_NS impl
+#else
+#define BOOST_SPIRIT_IT_NS std
+#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 //
 //  Include the regular expression library of boost (Boost.Regex)
 //
-//  Note though, that this library is not distributed with Spirit. You have to
-//  obtain a separate copy from http://www.boost.org.
+//  Note that this library is not available with the Spirit only distribution.
 //
 ///////////////////////////////////////////////////////////////////////////////
-#if defined(BOOST_SPIRIT_NO_REGEX_LIB) && BOOST_VERSION < 103300
-//
-//  Include all the Boost.regex library. Please note that this will not work,
-//  if you are using the boost/spirit/regex.hpp header from more than one
-//  translation units.
-//
-#define BOOST_REGEX_NO_LIB
-#define BOOST_REGEX_STATIC_LINK
-#define BOOST_REGEX_NO_EXTERNAL_TEMPLATES
 #include <boost/regex.hpp>
-#include <boost/regex/src.cpp>
-
-#else
-//
-//  Include the Boost.Regex headers only. Note, that you will have to link your
-//  application against the Boost.Regex library as described in the related
-//  documentation.
-//  This is the only way for Boost newer than V1.32.0
-//
-#include <boost/regex.hpp>
-#endif // defined(BOOST_SPIRIT_NO_REGEX_LIB)
 
 #include <boost/static_assert.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/meta/as_parser.hpp>
+#include <boost/spirit/core/meta/impl/parser_type.hpp>
 #include <boost/spirit/core/parser.hpp>
 #include <boost/spirit/utility/impl/regex.ipp>
-#include <boost/detail/iterator.hpp> // for boost::detail::iterator_traits
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace boost { namespace spirit {
@@ -73,7 +58,7 @@ struct rxstrlit : public parser<rxstrlit<CharT> > {
     //  forward iterators do not work here.
         typedef typename ScannerT::iterator_t iterator_t;
         typedef
-            typename boost::detail::iterator_traits<iterator_t>::iterator_category
+            typename BOOST_SPIRIT_IT_NS::iterator_traits<iterator_t>::iterator_category
             iterator_category;
 
         BOOST_STATIC_ASSERT((
@@ -104,5 +89,7 @@ regex_p(CharT const *first, CharT const *last)
 
 ///////////////////////////////////////////////////////////////////////////////
 }} // namespace boost::spirit
+
+#undef BOOST_SPIRIT_IT_NS
 
 #endif // BOOST_SPIRIT_REGEX_HPP

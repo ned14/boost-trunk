@@ -47,18 +47,16 @@ This class is a protocol class for all actors. This class is essentially an inte
 An actor is a functor that is capable of accepting arguments up to a predefined maximum. It is up to the base class to do the actual processing or possibly to limit the arity (no. of arguments) passed in. Upon invocation of the functor through a supplied operator(), the actor funnels the arguments passed in by the client into a tuple and calls the base class' eval member function.</p>
 <p>
 Schematically:</p>
-<code>
-<pre>
+<code><pre>
     <span class=identifier>arg0 </span><span class=special>---------|
     </span><span class=identifier>arg1 </span><span class=special>---------|
-    </span><span class=identifier>arg2 </span><span class=special>---------|---&gt; </span><span class=identifier>tupled_args </span><span class=special>---&gt; </span><span class=identifier>base</span><span class=special>.</span><span class=identifier>eval
+    </span><span class=identifier>arg3 </span><span class=special>---------|---&gt; </span><span class=identifier>tupled_args </span><span class=special>---&gt; </span><span class=identifier>base</span><span class=special>.</span><span class=identifier>eval
     </span><span class=special>...           |
     </span><span class=identifier>argN </span><span class=special>---------|
 
     </span><span class=identifier>actor</span><span class=special>::</span><span class=keyword>operator</span><span class=special>()(</span><span class=identifier>arg0</span><span class=special>, </span><span class=identifier>arg1</span><span class=special>... </span><span class=identifier>argN</span><span class=special>)
       ---&gt; </span><span class=identifier>BaseT</span><span class=special>::</span><span class=identifier>eval</span><span class=special>(</span><span class=identifier>tupled_args</span><span class=special>);
-</span></pre>
-</code>
+</span></pre></code>
 <p>
 Actor base classes from which this class inherits from are expected to have a corresponding member function eval compatible with the conceptual Interface:</p>
 <code><pre>
@@ -122,7 +120,7 @@ For reference, here's a typical actor::operator() that accepts two (2) arguments
 <hr size="1">
 <p class="copyright">Copyright &copy; 2001-2002 Joel de Guzman<br>
   <br>
-<font size="2">Use, modification and distribution is subject to the Boost Software
+<font size="2">Distributed under the Boost Software
     License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
     http://www.boost.org/LICENSE_1_0.txt) </font> </p>
 </body>

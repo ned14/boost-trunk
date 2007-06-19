@@ -1,25 +1,51 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 2001-2003 Daniel Nuffer
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
+#include <boost/config.hpp>
 #include <boost/spirit/iterator/multi_pass.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <iterator>
 #include <string>
-#include <boost/detail/lightweight_test.hpp>
-#include "impl/sstream.hpp"
+#ifdef BOOST_NO_STRINGSTREAM
+#include <strstream>
+#define SSTREAM strstream
+std::string GETSTRING(std::strstream& ss)
+{
+    ss << ends;
+    std::string rval = ss.str();
+    ss.freeze(false);
+    return rval;
+}
+#else
+#include <sstream>
+#define GETSTRING(ss) ss.str()
+#define SSTREAM stringstream
+#endif
+#include <cassert>
+#include <memory> // for auto_ptr
 
 using namespace std;
 using namespace boost::spirit;
 
-sstream_t res;
+SSTREAM res;
 
 typedef multi_pass<istream_iterator<char> > default_multi_pass_t;
 
+/*
+typedef multi_pass<
+    istream_iterator<char>,
+    multi_pass_policies::input_iterator,
+    multi_pass_policies::first_owner,
+    multi_pass_policies::no_check,
+    multi_pass_policies::fixed_size_queue<6>
+> fixed_multi_pass_t;
+*/
+// this replaces the above
 typedef look_ahead<istream_iterator<char>, 6> fixed_multi_pass_t;
 
 typedef multi_pass<
@@ -67,14 +93,14 @@ void test_default_multi_pass()
 {
     res << "-*= test_default_multi_pass =*-\n";
     istream_iterator<char> end;
-    boost::scoped_ptr<default_multi_pass_t> mpend(new default_multi_pass_t(end));
+    auto_ptr<default_multi_pass_t> mpend(new default_multi_pass_t(end));
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
 
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<default_multi_pass_t> mp1(new default_multi_pass_t(a));
+        auto_ptr<default_multi_pass_t> mp1(new default_multi_pass_t(a));
 
         while (*mp1 != *mpend)
         {
@@ -85,11 +111,11 @@ void test_default_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> b(ss);
-        boost::scoped_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(b));
-        boost::scoped_ptr<default_multi_pass_t> mp3(new default_multi_pass_t(b));
+        auto_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(b));
+        auto_ptr<default_multi_pass_t> mp3(new default_multi_pass_t(b));
         *mp3 = *mp2;
 
         for (int i = 0; i < 4; ++i)
@@ -110,11 +136,11 @@ void test_default_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<default_multi_pass_t> mp1(new default_multi_pass_t(a));
-        boost::scoped_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(*mp1));
+        auto_ptr<default_multi_pass_t> mp1(new default_multi_pass_t(a));
+        auto_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(*mp1));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -138,11 +164,11 @@ void test_default_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> b(ss);
-        boost::scoped_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(b));
-        boost::scoped_ptr<default_multi_pass_t> mp3(new default_multi_pass_t(b));
+        auto_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(b));
+        auto_ptr<default_multi_pass_t> mp3(new default_multi_pass_t(b));
         *mp3 = *mp2;
 
         for (int i = 0; i < 4; ++i)
@@ -164,76 +190,76 @@ void test_default_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<default_multi_pass_t> mp1(new default_multi_pass_t(a));
-        boost::scoped_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(*mp1));
+        auto_ptr<default_multi_pass_t> mp1(new default_multi_pass_t(a));
+        auto_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(*mp1));
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         for (int i = 0; i < 4; ++i)
         {
             res << **mp1;
             ++*mp1;
         }
 
-        BOOST_TEST(*mp1 != *mp2);
-        BOOST_TEST(*mp1 > *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp2 < *mp1);
-        BOOST_TEST(*mp2 <= *mp1);
+        assert(*mp1 != *mp2);
+        assert(*mp1 > *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp2 < *mp1);
+        assert(*mp2 <= *mp1);
         while (*mp2 != *mp1)
         {
             res << **mp2;
             ++*mp2;
         }
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         while (*mp1 != *mpend)
         {
             res << **mp1;
             ++*mp1;
         }
 
-        BOOST_TEST(*mp1 != *mp2);
-        BOOST_TEST(*mp1 > *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp2 < *mp1);
-        BOOST_TEST(*mp2 <= *mp1);
+        assert(*mp1 != *mp2);
+        assert(*mp1 > *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp2 < *mp1);
+        assert(*mp2 <= *mp1);
         while (*mp2 != *mpend)
         {
             res << **mp2;
             ++*mp2;
         }
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         res << endl;
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<default_multi_pass_t> mp1(new default_multi_pass_t(a));
-        boost::scoped_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(a));
-        BOOST_TEST(*mp1 != *mp2);
+        auto_ptr<default_multi_pass_t> mp1(new default_multi_pass_t(a));
+        auto_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(a));
+        assert(*mp1 != *mp2);
         ++*mp1;
-        BOOST_TEST(*mp1 != *mp2);
+        assert(*mp1 != *mp2);
 
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> b(ss);
-        boost::scoped_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(b));
-        boost::scoped_ptr<default_multi_pass_t> mp3(new default_multi_pass_t(b));
+        auto_ptr<default_multi_pass_t> mp2(new default_multi_pass_t(b));
+        auto_ptr<default_multi_pass_t> mp3(new default_multi_pass_t(b));
         *mp3 = *mp2;
 
         for (int i = 0; i < 4; ++i)
@@ -253,9 +279,9 @@ void test_default_multi_pass()
         try
         {
             res << **mp3; // this should throw illegal_backtracking
-            BOOST_TEST(0);
+            assert(0);
         }
-        catch (const boost::spirit::multi_pass_policies::illegal_backtracking& /*e*/)
+        catch (const boost::spirit::multi_pass_policies::illegal_backtracking& e)
         {
         }
         res << endl;
@@ -268,14 +294,14 @@ void test_fixed_multi_pass()
 {
     res << "-*= test_fixed_multi_pass =*-\n";
     istream_iterator<char> end;
-    boost::scoped_ptr<fixed_multi_pass_t> mpend(new fixed_multi_pass_t(end));
+    auto_ptr<fixed_multi_pass_t> mpend(new fixed_multi_pass_t(end));
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
 
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<fixed_multi_pass_t> mp1(new fixed_multi_pass_t(a));
+        auto_ptr<fixed_multi_pass_t> mp1(new fixed_multi_pass_t(a));
 
         while (*mp1 != *mpend)
         {
@@ -286,11 +312,11 @@ void test_fixed_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> b(ss);
-        boost::scoped_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(b));
-        boost::scoped_ptr<fixed_multi_pass_t> mp3(new fixed_multi_pass_t(*mp2));
+        auto_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(b));
+        auto_ptr<fixed_multi_pass_t> mp3(new fixed_multi_pass_t(*mp2));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -310,11 +336,11 @@ void test_fixed_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<fixed_multi_pass_t> mp1(new fixed_multi_pass_t(a));
-        boost::scoped_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(*mp1));
+        auto_ptr<fixed_multi_pass_t> mp1(new fixed_multi_pass_t(a));
+        auto_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(*mp1));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -338,11 +364,11 @@ void test_fixed_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> b(ss);
-        boost::scoped_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(b));
-        boost::scoped_ptr<fixed_multi_pass_t> mp3(new fixed_multi_pass_t(*mp2));
+        auto_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(b));
+        auto_ptr<fixed_multi_pass_t> mp3(new fixed_multi_pass_t(*mp2));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -363,67 +389,67 @@ void test_fixed_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<fixed_multi_pass_t> mp1(new fixed_multi_pass_t(a));
-        boost::scoped_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(*mp1));
+        auto_ptr<fixed_multi_pass_t> mp1(new fixed_multi_pass_t(a));
+        auto_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(*mp1));
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         for (int i = 0; i < 4; ++i)
         {
             res << **mp1;
             ++*mp1;
         }
 
-        BOOST_TEST(*mp1 != *mp2);
-        BOOST_TEST(*mp1 > *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp2 < *mp1);
-        BOOST_TEST(*mp2 <= *mp1);
+        assert(*mp1 != *mp2);
+        assert(*mp1 > *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp2 < *mp1);
+        assert(*mp2 <= *mp1);
         while (*mp2 != *mp1)
         {
             res << **mp2;
             ++*mp2;
         }
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         while (*mp1 != *mpend)
         {
             res << **mp1;
             ++*mp1;
         }
 
-        BOOST_TEST(*mp1 != *mp2);
-        BOOST_TEST(*mp1 > *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp2 < *mp1);
-        BOOST_TEST(*mp2 <= *mp1);
+        assert(*mp1 != *mp2);
+        assert(*mp1 > *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp2 < *mp1);
+        assert(*mp2 <= *mp1);
         while (*mp2 != *mpend)
         {
             res << **mp2;
             ++*mp2;
         }
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         res << endl;
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<fixed_multi_pass_t> mp1(new fixed_multi_pass_t(a));
-        boost::scoped_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(a));
-        BOOST_TEST(*mp1 != *mp2);
+        auto_ptr<fixed_multi_pass_t> mp1(new fixed_multi_pass_t(a));
+        auto_ptr<fixed_multi_pass_t> mp2(new fixed_multi_pass_t(a));
+        assert(*mp1 != *mp2);
         ++*mp1;
-        BOOST_TEST(*mp1 != *mp2);
+        assert(*mp1 != *mp2);
 
     }
 
@@ -433,14 +459,14 @@ void test_first_owner_multi_pass()
 {
     res << "-*= test_first_owner_multi_pass =*-\n";
     istream_iterator<char> end;
-    boost::scoped_ptr<first_owner_multi_pass_t> mpend(new first_owner_multi_pass_t(end));
+    auto_ptr<first_owner_multi_pass_t> mpend(new first_owner_multi_pass_t(end));
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
 
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<first_owner_multi_pass_t> mp1(new first_owner_multi_pass_t(a));
+        auto_ptr<first_owner_multi_pass_t> mp1(new first_owner_multi_pass_t(a));
 
         while (*mp1 != *mpend)
         {
@@ -451,11 +477,11 @@ void test_first_owner_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> b(ss);
-        boost::scoped_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(b));
-        boost::scoped_ptr<first_owner_multi_pass_t> mp3(new first_owner_multi_pass_t(*mp2));
+        auto_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(b));
+        auto_ptr<first_owner_multi_pass_t> mp3(new first_owner_multi_pass_t(*mp2));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -475,11 +501,11 @@ void test_first_owner_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<first_owner_multi_pass_t> mp1(new first_owner_multi_pass_t(a));
-        boost::scoped_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(*mp1));
+        auto_ptr<first_owner_multi_pass_t> mp1(new first_owner_multi_pass_t(a));
+        auto_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(*mp1));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -503,11 +529,11 @@ void test_first_owner_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> b(ss);
-        boost::scoped_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(b));
-        boost::scoped_ptr<first_owner_multi_pass_t> mp3(new first_owner_multi_pass_t(*mp2));
+        auto_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(b));
+        auto_ptr<first_owner_multi_pass_t> mp3(new first_owner_multi_pass_t(*mp2));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -528,76 +554,76 @@ void test_first_owner_multi_pass()
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<first_owner_multi_pass_t> mp1(new first_owner_multi_pass_t(a));
-        boost::scoped_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(*mp1));
+        auto_ptr<first_owner_multi_pass_t> mp1(new first_owner_multi_pass_t(a));
+        auto_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(*mp1));
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         for (int i = 0; i < 4; ++i)
         {
             res << **mp1;
             ++*mp1;
         }
 
-        BOOST_TEST(*mp1 != *mp2);
-        BOOST_TEST(*mp1 > *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp2 < *mp1);
-        BOOST_TEST(*mp2 <= *mp1);
+        assert(*mp1 != *mp2);
+        assert(*mp1 > *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp2 < *mp1);
+        assert(*mp2 <= *mp1);
         while (*mp2 != *mp1)
         {
             res << **mp2;
             ++*mp2;
         }
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         while (*mp1 != *mpend)
         {
             res << **mp1;
             ++*mp1;
         }
 
-        BOOST_TEST(*mp1 != *mp2);
-        BOOST_TEST(*mp1 > *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp2 < *mp1);
-        BOOST_TEST(*mp2 <= *mp1);
+        assert(*mp1 != *mp2);
+        assert(*mp1 > *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp2 < *mp1);
+        assert(*mp2 <= *mp1);
         while (*mp2 != *mpend)
         {
             res << **mp2;
             ++*mp2;
         }
 
-        BOOST_TEST(*mp1 == *mp2);
-        BOOST_TEST(*mp1 >= *mp2);
-        BOOST_TEST(*mp1 <= *mp2);
+        assert(*mp1 == *mp2);
+        assert(*mp1 >= *mp2);
+        assert(*mp1 <= *mp2);
         res << endl;
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> a(ss);
-        boost::scoped_ptr<first_owner_multi_pass_t> mp1(new first_owner_multi_pass_t(a));
-        boost::scoped_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(a));
-        BOOST_TEST(*mp1 != *mp2);
+        auto_ptr<first_owner_multi_pass_t> mp1(new first_owner_multi_pass_t(a));
+        auto_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(a));
+        assert(*mp1 != *mp2);
         ++*mp1;
-        BOOST_TEST(*mp1 != *mp2);
+        assert(*mp1 != *mp2);
 
     }
 
     {
-        sstream_t ss;
+        SSTREAM ss;
         ss << "test string";
         istream_iterator<char> b(ss);
-        boost::scoped_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(b));
-        boost::scoped_ptr<first_owner_multi_pass_t> mp3(new first_owner_multi_pass_t(*mp2));
+        auto_ptr<first_owner_multi_pass_t> mp2(new first_owner_multi_pass_t(b));
+        auto_ptr<first_owner_multi_pass_t> mp3(new first_owner_multi_pass_t(*mp2));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -616,9 +642,9 @@ void test_first_owner_multi_pass()
         try
         {
             res << **mp3; // this should throw illegal_backtracking
-            BOOST_TEST(0);
+            assert(0);
         }
-        catch (const boost::spirit::multi_pass_policies::illegal_backtracking& /*e*/)
+        catch (const boost::spirit::multi_pass_policies::illegal_backtracking& e)
         {
         }
         res << endl;
@@ -672,58 +698,58 @@ void test_functor_multi_pass()
         functor_multi_pass_t mp1 = functor_multi_pass_t(my_functor());
         functor_multi_pass_t mp2 = functor_multi_pass_t(mp1);
 
-        BOOST_TEST(mp1 == mp2);
-        BOOST_TEST(mp1 >= mp2);
-        BOOST_TEST(mp1 <= mp2);
+        assert(mp1 == mp2);
+        assert(mp1 >= mp2);
+        assert(mp1 <= mp2);
         for (int i = 0; i < 4; ++i)
         {
             res << *mp1;
             ++mp1;
         }
 
-        BOOST_TEST(mp1 != mp2);
-        BOOST_TEST(mp1 > mp2);
-        BOOST_TEST(mp1 >= mp2);
-        BOOST_TEST(mp2 < mp1);
-        BOOST_TEST(mp2 <= mp1);
+        assert(mp1 != mp2);
+        assert(mp1 > mp2);
+        assert(mp1 >= mp2);
+        assert(mp2 < mp1);
+        assert(mp2 <= mp1);
         while (mp2 != mp1)
         {
             res << *mp2;
             ++mp2;
         }
 
-        BOOST_TEST(mp1 == mp2);
-        BOOST_TEST(mp1 >= mp2);
-        BOOST_TEST(mp1 <= mp2);
+        assert(mp1 == mp2);
+        assert(mp1 >= mp2);
+        assert(mp1 <= mp2);
         while (mp1 != mpend)
         {
             res << *mp1;
             ++mp1;
         }
 
-        BOOST_TEST(mp1 != mp2);
-        BOOST_TEST(mp1 > mp2);
-        BOOST_TEST(mp1 >= mp2);
-        BOOST_TEST(mp2 < mp1);
-        BOOST_TEST(mp2 <= mp1);
+        assert(mp1 != mp2);
+        assert(mp1 > mp2);
+        assert(mp1 >= mp2);
+        assert(mp2 < mp1);
+        assert(mp2 <= mp1);
         while (mp2 != mpend)
         {
             res << *mp2;
             ++mp2;
         }
 
-        BOOST_TEST(mp1 == mp2);
-        BOOST_TEST(mp1 >= mp2);
-        BOOST_TEST(mp1 <= mp2);
+        assert(mp1 == mp2);
+        assert(mp1 >= mp2);
+        assert(mp1 <= mp2);
         res << endl;
     }
 
     {
         functor_multi_pass_t mp1 = functor_multi_pass_t(my_functor());
         functor_multi_pass_t mp2 = functor_multi_pass_t(my_functor());
-        BOOST_TEST(mp1 != mp2);
+        assert(mp1 != mp2);
         ++mp1;
-        BOOST_TEST(mp1 != mp2);
+        assert(mp1 != mp2);
 
     }
 }
@@ -736,7 +762,7 @@ int main(int, char**)
     test_first_owner_multi_pass();
     test_functor_multi_pass();
 
-    BOOST_TEST(getstring(res) == "-*= test_default_multi_pass =*-\n"
+    assert(GETSTRING(res) == "-*= test_default_multi_pass =*-\n"
             "teststring\n"
             "teststring\n"
             "testteststringstring\n"
@@ -760,6 +786,5 @@ int main(int, char**)
             "ABCDEFGHIJKL\n"
             "ABCDABCDEFGHIJKLEFGHIJKL\n"
             "ABCDABCDEFGHIJKLEFGHIJKL\n");
-
-    return boost::report_errors();
 }
+

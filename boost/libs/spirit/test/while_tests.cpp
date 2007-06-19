@@ -1,9 +1,9 @@
 /*=============================================================================
-    Phoenix V1.0
+    Spirit 1.6.2
     Copyright (c) 2002-2003 Martin Wille
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 ==============================================================================*/
 // vi:ts=4:sw=4:et
@@ -16,12 +16,10 @@
 #if qDebug
 #define BOOST_SPIRIT_DEBUG
 #endif
-
-#include "impl/string_length.hpp"
 #include <boost/spirit/core.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
 #include <boost/spirit/dynamic/while.hpp>
 #include <boost/ref.hpp>
+////////////////////////////////////////////////////////////////////////////////
 
 namespace local
 {
@@ -90,19 +88,18 @@ test_while(
     unsigned int iterations_wanted)
 {
     using namespace std;
-    
     ++test_count;
 
     number_result = 0;
     iterations_performed = 0;
 
-    boost::spirit::parse_info<> m = boost::spirit::parse(s, s+ test_impl::string_length(s), r);
+    boost::spirit::parse_info<> m = boost::spirit::parse(s, s+strlen(s), r);
 
     bool result = wanted == kError?(m.full?bad:good): (number_result==wanted);
 
     result &= iterations_performed == iterations_wanted;
 
-    if (m.full && (m.length != test_impl::string_length(s)))
+    if (m.full && (m.length != strlen(s)))
         result = bad;
 
     if (result==good)
@@ -153,7 +150,7 @@ main()
     using ::boost::spirit::uint_p;
     using ::boost::spirit::while_p;
     using ::boost::spirit::do_p;
-    using ::boost::spirit::assign_a;
+    using ::boost::spirit::assign;
 
 #if qDebug
     BOOST_SPIRIT_DEBUG_RULE(while_rule);
@@ -161,7 +158,7 @@ main()
 #endif
 
     while_rule
-        =   uint_p[assign_a(number_result)]
+        =   uint_p[assign(number_result)]
         >>  while_p('+')
             [
                 uint_p[add(number_result)][inc(iterations_performed)]
@@ -202,5 +199,12 @@ main()
         cout << error_count << " of " << test_count << " while_p-tests failed\n"
              << "Test failed\n";
 
+    //////////////////////////////////
+    // check wether as_parser<> works:
+    while_p('"')['"'];
+    do_p['"'].while_p('"');
+
     return error_count!=0;
 }
+////////////////////////////////////////////////////////////////////////////////
+// End of File

@@ -2,12 +2,22 @@
     Copyright (c) 2003 Hartmut Kaiser
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
+
+#include <boost\config.hpp>
+#include <boost\detail\workaround.hpp>
+#if BOOST_WORKAROUND( BOOST_MSVC, <= 1300)                                                            
+
+#pragma warning (disable:4786)
+#pragma warning (disable:4761)
+
+#endif
+
 #include <iostream>
-#include <boost/detail/lightweight_test.hpp>
+#include <cassert>
 
 using namespace std;
 
@@ -26,8 +36,8 @@ using namespace std;
 #include <boost/spirit/core/non_terminal/rule.hpp>
 #include <boost/spirit/core/non_terminal/grammar.hpp>
 #include <boost/spirit/dynamic/switch.hpp>
-#include <boost/spirit/dynamic/select.hpp>
-#include <boost/spirit/attribute/closure.hpp>
+//#include <boost/spirit/dynamic/select.hpp>
+//#include <boost/spirit/attribute/closure.hpp>
 
 using namespace boost::spirit;
 
@@ -165,7 +175,7 @@ namespace test_grammars {
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Test the switch_p usage given an actor as the switch condition
-    struct select_result : public boost::spirit::closure<select_result, int>
+/*    struct select_result : public boost::spirit::closure<select_result, int>
     {
         member1 val;
     };
@@ -176,7 +186,7 @@ namespace test_grammars {
         template <typename ScannerT>
         struct definition 
         {
-            definition(switch_grammar_actor_default4 const& /*self*/)
+            definition(switch_grammar_actor_default4 const& self)
             {
                 using phoenix::arg1;
                 r = select_p('a', 'b', 'c', 'd')[r.val = arg1] >>
@@ -200,7 +210,7 @@ namespace test_grammars {
         template <typename ScannerT>
         struct definition 
         {
-            definition(switch_grammar_actor_default5 const& /*self*/)
+            definition(switch_grammar_actor_default5 const& self)
             {
                 using phoenix::arg1;
                 r = select_p('a', 'b', 'c', 'd')[r.val = arg1] >>
@@ -224,7 +234,7 @@ namespace test_grammars {
         template <typename ScannerT>
         struct definition 
         {
-            definition(switch_grammar_actor_default6 const& /*self*/)
+            definition(switch_grammar_actor_default6 const& self)
             {
                 using phoenix::arg1;
                 r = select_p('a', 'b', 'c', 'd')[r.val = arg1] >>
@@ -240,7 +250,7 @@ namespace test_grammars {
             rule<ScannerT, select_result::context_t> const& 
             start() const { return r; }
         };
-    };
+    };*/
     
 }   // namespace test_grammars
 
@@ -255,29 +265,29 @@ namespace tests {
         {
             GrammarT g;
             
-            BOOST_TEST(parse("a1", g).full);
-            BOOST_TEST(!parse("a,", g).hit);
-            BOOST_TEST(!parse("abcd", g).hit);
+            assert(parse("a1", g).full);
+            assert(!parse("a,", g).hit);
+            assert(!parse("abcd", g).hit);
             
-            BOOST_TEST(parse("a 1", g, space_p).full);
-            BOOST_TEST(!parse("a ,", g, space_p).hit);
-            BOOST_TEST(!parse("a bcd", g, space_p).hit);
+            assert(parse("a 1", g, space_p).full);
+            assert(!parse("a ,", g, space_p).hit);
+            assert(!parse("a bcd", g, space_p).hit);
             
-            BOOST_TEST(!parse("b1", g).hit);
-            BOOST_TEST(parse("b,", g).full);
-            BOOST_TEST(!parse("bbcd", g).hit);
+            assert(!parse("b1", g).hit);
+            assert(parse("b,", g).full);
+            assert(!parse("bbcd", g).hit);
             
-            BOOST_TEST(!parse("b 1", g, space_p).hit);
-            BOOST_TEST(parse("b ,", g, space_p).full);
-            BOOST_TEST(!parse("b bcd", g, space_p).hit);
+            assert(!parse("b 1", g, space_p).hit);
+            assert(parse("b ,", g, space_p).full);
+            assert(!parse("b bcd", g, space_p).hit);
             
-            BOOST_TEST(!parse("c1", g).hit);
-            BOOST_TEST(!parse("c,", g).hit);
-            BOOST_TEST(parse("cbcd", g).full);
+            assert(!parse("c1", g).hit);
+            assert(!parse("c,", g).hit);
+            assert(parse("cbcd", g).full);
             
-            BOOST_TEST(!parse("c 1", g, space_p).hit);
-            BOOST_TEST(!parse("c ,", g, space_p).hit);
-            BOOST_TEST(parse("c bcd", g, space_p).full);
+            assert(!parse("c 1", g, space_p).hit);
+            assert(!parse("c ,", g, space_p).hit);
+            assert(parse("c bcd", g, space_p).full);
         }
     };
 
@@ -290,9 +300,8 @@ namespace tests {
         {
             GrammarT g;
             
-            BOOST_TEST(parse("d", g).full);
-            BOOST_TEST(parse(" d", g, space_p).full); // JDG 10-18-2005 removed trailing ' ' to
-                                                  // avoid post skip problems
+            assert(parse("d", g).full);
+            assert(parse("d ", g, space_p).full);
         }
     };
     
@@ -312,17 +321,17 @@ main()
     // switch_p(parser) syntax
         test_grammars::switch_grammar_parser_default4,
         test_grammars::switch_grammar_parser_default5,
-        test_grammars::switch_grammar_parser_default6,
+        test_grammars::switch_grammar_parser_default6/*,
         
     // switch_p(actor) syntax
         test_grammars::switch_grammar_actor_default4,
         test_grammars::switch_grammar_actor_default5,
-        test_grammars::switch_grammar_actor_default6
+        test_grammars::switch_grammar_actor_default6*/
     > default_epsilon_list_t;
     
     boost::mpl::for_each<default_epsilon_list_t>(tests::check_grammar_known());
     boost::mpl::for_each<default_epsilon_list_t>(
         tests::check_grammar_default_plain());
 
-    return boost::report_errors();
+    return 0;
 }

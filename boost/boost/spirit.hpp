@@ -1,4 +1,5 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     Copyright (c) 2001-2003 Daniel Nuffer
     Copyright (c) 2001-2003 Hartmut Kaiser
@@ -7,13 +8,10 @@
     Copyright (c) 2002 Raghavendra Satish
     Copyright (c) 2002 Jeff Westfahl
     Copyright (c) 2001 Bruce Florman
-    Copyright (c) 2003 Giovanni Bajo
-    Copyright (c) 2003 Vaclav Vesely
-    Copyright (c) 2003 Jonathan de Halleux
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(SPIRIT_HPP)
@@ -21,18 +19,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-//  If BOOST_SPIRIT_DEBUG is defined, the following header includes the
+//  If SPIRIT_DEBUG is defined, the following header includes the
 //  Spirit.Debug layer, otherwise the non-debug Spirit.Core is included.
 //
 ///////////////////////////////////////////////////////////////////////////////
 #include <boost/spirit/core.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Spirit.Meta
-//
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/meta.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -67,6 +58,8 @@
 //  Spirit.Attributes
 //
 ///////////////////////////////////////////////////////////////////////////////
+#if !defined(BOOST_MSVC) || (BOOST_MSVC > 1300)
 #include <boost/spirit/attribute.hpp>
+#endif
 
 #endif // !defined(SPIRIT_HPP)

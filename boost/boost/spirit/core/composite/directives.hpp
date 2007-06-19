@@ -1,10 +1,11 @@
 /*=============================================================================
+    Spirit v1.6.2
     Copyright (c) 1998-2003 Joel de Guzman
     Copyright (c) 2001 Daniel Nuffer
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 #if !defined(BOOST_SPIRIT_DIRECTIVES_HPP)
@@ -13,13 +14,45 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include <algorithm>
 
+#if !defined(BOOST_SPIRIT_PARSER_HPP)
 #include <boost/spirit/core/parser.hpp>
-#include <boost/spirit/core/scanner/skipper.hpp> 
+#endif
+
+#if !defined(BOOST_SPIRIT_PRIMITIVES_HPP)
 #include <boost/spirit/core/primitives/primitives.hpp>
+#endif
+
+#if !defined(BOOST_SPIRIT_COMPOSITE_HPP)
 #include <boost/spirit/core/composite/composite.hpp>
+#endif
+
+#if !defined(BOOST_SPIRIT_DIRECTIVES_IPP)
 #include <boost/spirit/core/composite/impl/directives.ipp>
+#endif
 
 namespace boost { namespace spirit {
+
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //  no_skipper_iteration_policy class
+    //
+    ///////////////////////////////////////////////////////////////////////////
+    template <typename BaseT>
+    struct no_skipper_iteration_policy : public BaseT
+    {
+        typedef BaseT base_t;
+
+        no_skipper_iteration_policy()
+        : BaseT() {}
+
+        template <typename PolicyT>
+        no_skipper_iteration_policy(PolicyT const& other)
+        : BaseT(other) {}
+
+        template <typename ScannerT>
+        void
+        skip(ScannerT const& /*scan*/) const {}
+    };
 
     ///////////////////////////////////////////////////////////////////////////
     //
@@ -42,6 +75,9 @@ namespace boost { namespace spirit {
         {
             typedef typename parser_result<ParserT, ScannerT>::type type;
         };
+
+        contiguous()
+        : base_t(ParserT()) {}
 
         contiguous(ParserT const& p)
         : base_t(p) {}
@@ -148,6 +184,9 @@ namespace boost { namespace spirit {
         {
             typedef typename parser_result<ParserT, ScannerT>::type type;
         };
+
+        inhibit_case()
+        : base_t(ParserT()) {}
 
         inhibit_case(ParserT const& p)
         : base_t(p) {}
@@ -265,6 +304,9 @@ namespace boost { namespace spirit {
         typedef longest_parser_gen              parser_generator_t;
         typedef binary<A, B, parser<self_t> >   base_t;
 
+        longest_alternative()
+        : base_t(A(), B()) {}
+
         longest_alternative(A const& a, B const& b)
         : base_t(a, b) {}
 
@@ -346,6 +388,9 @@ namespace boost { namespace spirit {
         typedef binary_parser_category          parser_category_t;
         typedef shortest_parser_gen             parser_generator_t;
         typedef binary<A, B, parser<self_t> >   base_t;
+
+        shortest_alternative()
+        : base_t(A(), B()) {}
 
         shortest_alternative(A const& a, B const& b)
         : base_t(a, b) {}
@@ -436,6 +481,9 @@ namespace boost { namespace spirit {
             typedef typename parser_result<ParserT, ScannerT>::type type;
         };
 
+        min_bounded()
+        : base_t(ParserT()) {}
+
         min_bounded(ParserT const& p, BoundsT const& min__)
         : base_t(p)
         , min_(min__) {}
@@ -446,7 +494,7 @@ namespace boost { namespace spirit {
         {
             typedef typename parser_result<self_t, ScannerT>::type result_t;
             result_t hit = this->subject().parse(scan);
-            if (hit.has_valid_attribute() && hit.value() < min_)
+            if (hit.value() < min_)
                 return scan.no_match();
             return hit;
         }
@@ -496,6 +544,9 @@ namespace boost { namespace spirit {
             typedef typename parser_result<ParserT, ScannerT>::type type;
         };
 
+        max_bounded()
+        : base_t(ParserT()) {}
+
         max_bounded(ParserT const& p, BoundsT const& max__)
         : base_t(p)
         , max_(max__) {}
@@ -506,7 +557,7 @@ namespace boost { namespace spirit {
         {
             typedef typename parser_result<self_t, ScannerT>::type result_t;
             result_t hit = this->subject().parse(scan);
-            if (hit.has_valid_attribute() && hit.value() > max_)
+            if (hit.value() > max_)
                 return scan.no_match();
             return hit;
         }
@@ -557,6 +608,9 @@ namespace boost { namespace spirit {
             typedef typename parser_result<ParserT, ScannerT>::type type;
         };
 
+        bounded()
+        : base_t(ParserT()) {}
+
         bounded(ParserT const& p, BoundsT const& min__, BoundsT const& max__)
         : base_t(p)
         , min_(min__)
@@ -568,9 +622,8 @@ namespace boost { namespace spirit {
         {
             typedef typename parser_result<self_t, ScannerT>::type result_t;
             result_t hit = this->subject().parse(scan);
-            if (hit.has_valid_attribute() &&
-                (hit.value() < min_ || hit.value() > max_))
-                    return scan.no_match();
+            if (hit.value() < min_ || hit.value() > max_)
+                return scan.no_match();
             return hit;
         }
 

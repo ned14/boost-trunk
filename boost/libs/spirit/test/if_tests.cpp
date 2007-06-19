@@ -1,10 +1,10 @@
 /*=============================================================================
-    Copyright (c) 2004 Stefan Slapeta
+    Spirit v1.6.2
     Copyright (c) 2002-2003 Martin Wille
     http://spirit.sourceforge.net/
 
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at 
     http://www.boost.org/LICENSE_1_0.txt)
 =============================================================================*/
 // vi:ts=4:sw=4:et
@@ -19,9 +19,8 @@
 #endif
 #include <boost/spirit/core.hpp>
 #include <boost/spirit/dynamic/if.hpp>
-#include <boost/spirit/actor/assign_actor.hpp>
 #include <boost/ref.hpp>
-#include "impl/string_length.hpp"
+////////////////////////////////////////////////////////////////////////////////
 
 namespace local
 {
@@ -45,8 +44,6 @@ namespace local
 }
 
 typedef ::boost::spirit::rule<> rule_t;
-typedef ::boost::spirit::rule<boost::spirit::no_actions_scanner<>::type >
-    no_actions_rule_t;
 
 unsigned int test_count = 0;
 unsigned int error_count = 0;
@@ -56,8 +53,7 @@ static const unsigned int kError = 999;
 static const bool good = true;
 static const bool bad = false;
 
-rule_t hex_prefix;
-no_actions_rule_t oct_prefix;
+rule_t hex_prefix, oct_prefix;
 rule_t hex_rule, oct_rule, dec_rule;
 
 rule_t auto_number_rule;
@@ -67,17 +63,16 @@ void
 test_number(char const *s, unsigned int wanted, rule_t const &r)
 {
     using namespace std;
-    
     ++test_count;
 
     number_result = wanted-1;
-    ::boost::spirit::parse_info<> m = ::boost::spirit::parse(s, s + test_impl::string_length(s), r);
+    ::boost::spirit::parse_info<> m = ::boost::spirit::parse(s, s+strlen(s), r);
 
     bool result = wanted == kError?(m.full?bad:good): (number_result==wanted);
 
-    if (m.full && (m.length != test_impl::string_length(s)))
+    if (m.full && (m.length != strlen(s)))
         result = bad;
-
+        
 
     if (result==good)
         cout << "PASSED";
@@ -96,45 +91,6 @@ test_number(char const *s, unsigned int wanted, rule_t const &r)
     cout << "\n";
 }
 
-void
-test_enclosed_fail()
-{
-    using namespace std;
-
-    using ::boost::spirit::if_p;
-    using ::boost::spirit::str_p;
-    using ::boost::spirit::nothing_p;
-
-  cout << "\nfail enclosed parser:\n";
-
-    const char *p = "abc";
-
-    ::boost::spirit::strlit<const char*> success_p = str_p(p);
-    ::boost::spirit::strlit<const char*> fail_p = str_p("xxx");
-
-    ::boost::spirit::rule<> r = if_p(success_p)[nothing_p];
-
-    ::boost::spirit::parse_info<> m = ::boost::spirit::parse(p, r);
-
-    if (m.full) {
-        cout << "FAILED: if --> match" << endl;
-        ++error_count;
-    } else {
-        cout << "PASSED: if --> no_match" << endl;
-    }
-
-    r = if_p(fail_p)[success_p].else_p[nothing_p];
-
-    m = ::boost::spirit::parse(p, r);
-
-    if (m.full) {
-        cout << "FAILED: else --> match" << endl;
-        ++error_count;
-    } else {
-        cout << "PASSED: else --> no_match" << endl;
-    }
-}
-
 int
 main()
 {
@@ -145,7 +101,7 @@ main()
     using ::boost::spirit::hex_p;
     using ::boost::spirit::str_p;
     using ::boost::spirit::ch_p;
-    using ::boost::spirit::assign_a;
+    using ::boost::spirit::assign;
 
     cout << "/////////////////////////////////////////////////////////\n";
     cout << "\n";
@@ -169,9 +125,9 @@ main()
     hex_prefix = str_p("0x");
     oct_prefix = ch_p('0');
 
-    hex_rule = hex_p[assign_a(number_result)];
-    oct_rule = oct_p[assign_a(number_result)];
-    dec_rule = uint_p[assign_a(number_result)];
+    hex_rule = hex_p[assign(number_result)];
+    oct_rule = oct_p[assign(number_result)];
+    dec_rule = uint_p[assign(number_result)];
 
     auto_number_rule =
         if_p(hex_prefix)
@@ -237,8 +193,6 @@ main()
     else
         std::cout << "PASSED: \"junk\" ==> <empty match>\n";
 
-    test_enclosed_fail();
-
 
     //////////////////////////////////
     // report results
@@ -250,5 +204,13 @@ main()
         cout << error_count << " of " << test_count << " if_p-tests failed\n"
              << "Test failed\n";
 
+
+
+    //////////////////////////////////
+    // compile time check wether as_parser<> works for if_p
+    ::boost::spirit::if_p('"')['"'].else_p['"'];
+
     return error_count!=0;
 }
+////////////////////////////////////////////////////////////////////////////////
+// End of File
