@@ -3141,6 +3141,7 @@ boost/boost/thread/pthread/exceptions.hpp svneol=native#text/plain
 boost/boost/thread/pthread/lock.hpp svneol=native#text/plain
 boost/boost/thread/pthread/mutex.hpp svneol=native#text/plain
 boost/boost/thread/pthread/once.hpp svneol=native#text/plain
+boost/boost/thread/pthread/read_write_mutex.hpp svneol=native#text/plain
 boost/boost/thread/pthread/recursive_mutex.hpp svneol=native#text/plain
 boost/boost/thread/pthread/thread.hpp svneol=native#text/plain
 boost/boost/thread/pthread/tss.hpp svneol=native#text/plain
