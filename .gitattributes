@@ -1,4 +1,6 @@
 * text=auto !eol
+jam-src/boost/tools/build/index.html svneol=native#text/html
+jam-src/boost/tools/build/v1/index.html svneol=native#text/html
 pipe_rule/boost/tools/jam/build_dist.bat svneol=native#text/plain
 pipe_rule/boost/tools/jam/build_dist.sh svneol=native#text/x-sh
 pipe_rule/boost/tools/jam/doc/bjam.qbk svneol=native#text/plain
