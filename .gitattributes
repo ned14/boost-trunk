@@ -880,7 +880,6 @@ boost/fusion/algorithm/query/detail/assoc_find.hpp svneol=native#text/plain
 boost/fusion/algorithm/query/detail/count.hpp svneol=native#text/plain
 boost/fusion/algorithm/query/detail/count_if.hpp svneol=native#text/plain
 boost/fusion/algorithm/query/detail/find_if.hpp svneol=native#text/plain
-boost/fusion/algorithm/query/detail/none.hpp svneol=native#text/plain
 boost/fusion/algorithm/query/ext_/find_if_s.hpp svneol=native#text/plain
 boost/fusion/algorithm/query/find.hpp svneol=native#text/plain
 boost/fusion/algorithm/query/find_if.hpp svneol=native#text/plain
