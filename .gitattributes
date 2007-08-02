@@ -13576,11 +13576,9 @@ libs/xpressive/proto/doc/implementation.qbk svneol=native#text/plain
 libs/xpressive/proto/doc/installation.qbk svneol=native#text/plain
 libs/xpressive/proto/doc/preface.qbk svneol=native#text/plain
 libs/xpressive/proto/doc/proto.qbk svneol=native#text/plain
-libs/xpressive/proto/doc/protodoc.boostbook -text
 libs/xpressive/proto/doc/protodoc.xml svneol=native#text/xml
 libs/xpressive/proto/doc/quick_start.qbk svneol=native#text/plain
 libs/xpressive/proto/doc/rationale.qbk svneol=native#text/plain
-libs/xpressive/proto/doc/reference.qbk svneol=native#text/plain
 libs/xpressive/proto/doc/transforms.qbk svneol=native#text/plain
 libs/xpressive/proto/example/Jamfile.v2 svneol=native#text/plain
 libs/xpressive/proto/example/calc1.cpp svneol=native#text/plain
