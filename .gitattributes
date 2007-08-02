@@ -1,1 +1,3 @@
 * text=auto !eol
+jam-src/boost/tools/build/index.html svneol=native#text/html
+jam-src/boost/tools/build/v1/index.html svneol=native#text/html
