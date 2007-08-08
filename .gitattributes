@@ -1,5 +1,5 @@
 * text=auto !eol
-/Jamfile.v2 svneol=native#text/plain
+/Jamroot svneol=native#text/plain
 /LICENSE_1_0.txt svneol=native#text/plain
 /README svneol=native#text/plain
 /boost-build.jam svneol=native#text/plain
@@ -13661,7 +13661,6 @@ people/thorsten_ottosen.html svneol=native#text/html
 people/vesa_karvonen.htm svneol=native#text/html
 people/vladimir_prus.htm svneol=native#text/html
 people/william_kempf.htm svneol=native#text/html
-/project-root.jam svneol=native#text/plain
 regression/.htaccess svneol=native#text/plain
 /rst.css svneol=native#text/css
 status/.cvsignore -text
