@@ -13078,6 +13078,7 @@ libs/wave/samples/real_positions/instantiate_cpp_grammar.cpp svneol=native#text/
 libs/wave/samples/real_positions/instantiate_cpp_literalgrs.cpp svneol=native#text/plain
 libs/wave/samples/real_positions/instantiate_defined_grammar.cpp svneol=native#text/plain
 libs/wave/samples/real_positions/instantiate_re2c_lexer.cpp svneol=native#text/plain
+libs/wave/samples/real_positions/instantiate_re2c_lexer_str.cpp svneol=native#text/plain
 libs/wave/samples/real_positions/real_position_token.hpp svneol=native#text/plain
 libs/wave/samples/real_positions/real_positions.cpp svneol=native#text/plain
 libs/wave/samples/token_statistics/build/Jamfile.v2 svneol=native#text/plain
