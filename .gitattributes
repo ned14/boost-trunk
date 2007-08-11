@@ -14382,6 +14382,7 @@ tools/jam/src/w32_getreg.c svneol=native#text/plain
 tools/jam/src/yyacc.c svneol=native#text/plain
 tools/jam/test/builtin_shell.jam svneol=native#text/plain
 tools/jam/test/builtin_w32_getregnames.jam svneol=native#text/plain
+tools/jam/test/option_n.jam svneol=native#text/plain
 tools/jam/test/parallel_actions.jam svneol=native#text/plain
 tools/jam/test/stress_var_expand.jam svneol=native#text/plain
 tools/jam/test/target_var.jam svneol=native#text/plain
