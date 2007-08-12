@@ -6118,7 +6118,6 @@ libs/dynamic_bitset/example/example2.cpp svneol=native#text/plain
 libs/dynamic_bitset/example/example3.cpp svneol=native#text/plain
 libs/dynamic_bitset/example/timing_tests.cpp svneol=native#text/plain
 libs/dynamic_bitset/index.html svneol=native#text/html
-libs/expected_results.xml svneol=native#text/xml
 libs/filesystem/build/Jamfile.v2 svneol=native#text/plain
 libs/filesystem/doc/design.htm svneol=native#text/html
 libs/filesystem/doc/do-list.htm svneol=native#text/html
@@ -13668,6 +13667,7 @@ status/.cvsignore -text
 status/Jamfile.v2 svneol=native#text/plain
 status/borland_logo.gif -text svneol=unset#image/gif
 status/compiler_status.html svneol=native#text/html
+status/expected_results.xml svneol=native#text/xml
 status/explicit-failures-markup.xml svneol=native#text/xml
 status/explicit-failures.xsd svneol=native#text/xml
 status/index.html svneol=native#text/html
