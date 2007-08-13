@@ -13512,6 +13512,7 @@ libs/xpressive/tools/Jamfile.v2 svneol=native#text/plain
 libs/xpressive/tools/perl2xpr.cpp svneol=native#text/plain
 more/BoostCon07.html svneol=native#text/html
 more/BoostCon07_session_call.html svneol=native#text/html
+more/BoostSponsorshipAgreement.pdf -text svneol=unset#application/pdf
 more/Jamfile.v2 svneol=native#text/plain
 more/background.html svneol=native#text/html
 more/bibliography.html svneol=native#text/html
