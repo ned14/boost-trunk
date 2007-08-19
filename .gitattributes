@@ -4700,6 +4700,7 @@ nested_dynamic_regex/boost/xpressive/detail/core/matcher/assert_word_matcher.hpp
 nested_dynamic_regex/boost/xpressive/detail/core/matcher/attr_begin_matcher.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/detail/core/matcher/attr_end_matcher.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/detail/core/matcher/attr_matcher.hpp svneol=native#text/plain
+nested_dynamic_regex/boost/xpressive/detail/core/matcher/basic_regex_ptr_matcher.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/detail/core/matcher/charset_matcher.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/detail/core/matcher/end_matcher.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/detail/core/matcher/epsilon_matcher.hpp svneol=native#text/plain
@@ -4782,6 +4783,7 @@ nested_dynamic_regex/boost/xpressive/detail/utility/tracking_ptr.hpp svneol=nati
 nested_dynamic_regex/boost/xpressive/detail/utility/traits_utils.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/detail/utility/width.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/match_results.hpp svneol=native#text/plain
+nested_dynamic_regex/boost/xpressive/nested_dynamic_compiler.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/proto/args.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/proto/context.hpp svneol=native#text/plain
 nested_dynamic_regex/boost/xpressive/proto/context/callable.hpp svneol=native#text/plain
