@@ -7690,7 +7690,6 @@ libs/interprocess/test/adaptive_pool_test.cpp svneol=native#text/plain
 libs/interprocess/test/allocation_test_template.hpp svneol=native#text/plain
 libs/interprocess/test/allocator_v1.hpp svneol=native#text/plain
 libs/interprocess/test/allocexcept_test.cpp svneol=native#text/plain
-libs/interprocess/test/barrier_test.cpp svneol=native#text/plain
 libs/interprocess/test/boost_interprocess_check.hpp svneol=native#text/plain
 libs/interprocess/test/bufferstream_test.cpp svneol=native#text/plain
 libs/interprocess/test/cached_adaptive_pool_test.cpp svneol=native#text/plain
