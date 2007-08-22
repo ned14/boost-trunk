@@ -12124,6 +12124,7 @@ libs/static_assert/static_assert_test_fail_6.cpp svneol=native#text/plain
 libs/static_assert/static_assert_test_fail_7.cpp svneol=native#text/plain
 libs/static_assert/static_assert_test_fail_8.cpp svneol=native#text/plain
 libs/static_assert/static_assert_test_fail_9.cpp svneol=native#text/plain
+libs/system/build/Jamfile svneol=native#text/plain
 libs/system/build/Jamfile.v2 svneol=native#text/plain
 libs/system/doc/error_code.html svneol=native#text/html
 libs/system/doc/system_error.html svneol=native#text/html
