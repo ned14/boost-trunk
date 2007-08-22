@@ -9182,6 +9182,7 @@ libs/multi_array/example/subview2.cpp svneol=native#text/plain
 libs/multi_array/index.html svneol=native#text/html
 libs/multi_array/test/Jamfile.v2 svneol=native#text/plain
 libs/multi_array/test/access.cpp svneol=native#text/plain
+libs/multi_array/test/assert.cpp svneol=native#text/plain
 libs/multi_array/test/assign.cpp svneol=native#text/plain
 libs/multi_array/test/assign_to_array.cpp svneol=native#text/plain
 libs/multi_array/test/compare.cpp svneol=native#text/plain
