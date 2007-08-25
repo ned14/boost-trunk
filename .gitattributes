@@ -36,3 +36,7 @@ filesystem/filesystem/test/lpath.hpp svneol=native#text/plain
 filesystem/filesystem/test/operations_test.cpp svneol=native#text/plain
 filesystem/filesystem/test/path_test.cpp svneol=native#text/plain
 filesystem/filesystem/test/wide_test.cpp svneol=native#text/plain
+system/boost/cerrno.hpp svneol=native#text/plain
+system/boost/system/config.hpp svneol=native#text/plain
+system/boost/system/error_code.hpp svneol=native#text/plain
+system/boost/system/system_error.hpp svneol=native#text/plain
