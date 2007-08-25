@@ -1583,7 +1583,6 @@ boost/interprocess/smart_ptr/detail/sp_counted_impl.hpp svneol=native#text/plain
 boost/interprocess/smart_ptr/enable_shared_from_this.hpp svneol=native#text/plain
 boost/interprocess/smart_ptr/intrusive_ptr.hpp svneol=native#text/plain
 boost/interprocess/smart_ptr/scoped_ptr.hpp svneol=native#text/plain
-boost/interprocess/smart_ptr/segment_deleter.hpp svneol=native#text/plain
 boost/interprocess/smart_ptr/shared_ptr.hpp svneol=native#text/plain
 boost/interprocess/smart_ptr/unique_ptr.hpp svneol=native#text/plain
 boost/interprocess/smart_ptr/weak_ptr.hpp svneol=native#text/plain
