@@ -7682,6 +7682,7 @@ libs/interprocess/test/file_mapping_test.cpp svneol=native#text/plain
 libs/interprocess/test/flat_map_index_allocation_test.cpp svneol=native#text/plain
 libs/interprocess/test/flat_tree_test.cpp svneol=native#text/plain
 libs/interprocess/test/get_compiler_name.hpp svneol=native#text/plain
+libs/interprocess/test/get_process_id_name.hpp svneol=native#text/plain
 libs/interprocess/test/intrusive_ptr_test.cpp svneol=native#text/plain
 libs/interprocess/test/iset_index_allocation_test.cpp svneol=native#text/plain
 libs/interprocess/test/iunordered_set_index_allocation_test.cpp svneol=native#text/plain
