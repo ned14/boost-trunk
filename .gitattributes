@@ -711,6 +711,7 @@ boost/detail/sp_counted_base_solaris.hpp svneol=native#text/plain
 boost/detail/sp_counted_base_sync.hpp svneol=native#text/plain
 boost/detail/sp_counted_base_w32.hpp svneol=native#text/plain
 boost/detail/sp_counted_impl.hpp svneol=native#text/plain
+boost/detail/sp_typeinfo.hpp svneol=native#text/plain
 boost/detail/templated_streams.hpp svneol=native#text/plain
 boost/detail/utf8_codecvt_facet.hpp svneol=native#text/plain
 boost/detail/workaround.hpp svneol=native#text/plain
