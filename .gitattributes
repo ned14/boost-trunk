@@ -8878,7 +8878,6 @@ libs/interprocess/test/deque_test.cpp svneol=native#text/plain
 libs/interprocess/test/dummy_test_allocator.hpp svneol=native#text/plain
 libs/interprocess/test/expand_bwd_test_allocator.hpp svneol=native#text/plain
 libs/interprocess/test/expand_bwd_test_template.hpp svneol=native#text/plain
-libs/interprocess/test/file_lock_test.cpp svneol=native#text/plain
 libs/interprocess/test/file_mapping_test.cpp svneol=native#text/plain
 libs/interprocess/test/flat_map_index_allocation_test.cpp svneol=native#text/plain
 libs/interprocess/test/flat_tree_test.cpp svneol=native#text/plain
