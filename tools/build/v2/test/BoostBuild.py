@@ -64,9 +64,10 @@ def glob_remove(sequence,pattern):
 features = [ 'threading-multi' ]
 
 lib_prefix = 1
+dll_prefix = 1
 if windows:
-    lib_prefix = 0
-        
+    #~ lib_prefix = 0
+    dll_prefix = 0
     
     
 #
@@ -288,8 +289,10 @@ class Tester(TestCmd.TestCmd):
         for name in names:
             n = self.native_file_name(name)
             n = glob.glob(n)
+            if n: n = n[0]
+            if not n:
+                n = self.glob_file(string.replace(name, "$toolset", self.toolset+"*"))
             if n:
-                n = n[0]
                 if os.path.isdir(n):
                     shutil.rmtree(n, ignore_errors=0)
                 else:
@@ -410,7 +413,9 @@ class Tester(TestCmd.TestCmd):
                     result = self.native_file_name(f)
                     break
         if not result:
-            result = glob.glob(self.native_file_name(name))[0]
+            result = glob.glob(self.native_file_name(name))
+            if result:
+                result = result[0]
         return result
 
     def read(self, name):
@@ -418,7 +423,7 @@ class Tester(TestCmd.TestCmd):
             if self.toolset:
                 name = string.replace(name, "$toolset", self.toolset+"*")
             name = self.glob_file(name)
-            return open(name, "rb").read()
+            return open(name, "rU").read()
         except:
             self.fail_test(1)
             return ''
@@ -681,9 +686,14 @@ class Tester(TestCmd.TestCmd):
         pos = string.rfind(name, ".")
         if pos != -1:
             suffix = name[pos:]
-            if suffix in [".lib", ".dll"]:
+            if suffix == ".lib":
                 (head, tail) = os.path.split(name)
                 if lib_prefix:
+                    tail = "lib" + tail
+                    result = os.path.join(head, tail)
+            elif suffix == ".dll":
+                (head, tail) = os.path.split(name)
+                if dll_prefix:
                     tail = "lib" + tail
                     result = os.path.join(head, tail)
         return result
