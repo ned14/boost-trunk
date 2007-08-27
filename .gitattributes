@@ -15877,6 +15877,7 @@ tools/quickbook/test/templates.gold -text
 tools/quickbook/test/templates.quickbook -text
 tools/quickbook/test/xinclude.gold -text
 tools/quickbook/test/xinclude.quickbook -text
+tools/regression/boost_svn_export_archive.sh svneol=native#text/x-sh
 tools/regression/build/Jamfile.v2 svneol=native#text/plain
 tools/regression/build/vcide/compiler_status.vcproj svneol=native#text/xml
 tools/regression/build/vcide/library_status.vcproj svneol=native#text/xml
