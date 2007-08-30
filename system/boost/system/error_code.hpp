@@ -233,8 +233,17 @@ namespace boost
                                      const error_condition & rhs )
       {
         return lhs.m_cat == rhs.m_cat && lhs.m_val == rhs.m_val;
+      }                  
+
+      inline friend bool operator<( const error_condition & lhs,
+                                    const error_condition & rhs )
+        //  the more symmetrical non-member syntax allows enum
+        //  conversions work for both rhs and lhs.
+      {
+        return lhs.m_cat < rhs.m_cat
+          || (lhs.m_cat == rhs.m_cat && lhs.m_val < rhs.m_val);
       }
-                  
+
     private:
       int                     m_val;
       const error_category *  m_cat;
@@ -312,6 +321,15 @@ namespace boost
       {
         return lhs.m_cat == rhs.m_cat && lhs.m_val == rhs.m_val;
       }
+
+      inline friend bool operator<( const error_code & lhs,
+                                    const error_code & rhs )
+        //  the more symmetrical non-member syntax allows enum
+        //  conversions work for both rhs and lhs.
+      {
+        return lhs.m_cat < rhs.m_cat
+          || (lhs.m_cat == rhs.m_cat && lhs.m_val < rhs.m_val);
+      }
                   
       private:
       int                     m_val;
@@ -333,11 +351,11 @@ namespace boost
       return !(lhs == rhs);
     }
 
-    inline bool operator==( const error_code & lhs,
-                            const error_condition & rhs )
+    inline bool operator==( const error_code & code,
+                            const error_condition & condition )
     {
-      return lhs.category().equivalent( lhs.value(), rhs )
-        || rhs.category().equivalent( lhs, rhs.value() );
+      return code.category().equivalent( code.value(), condition )
+        || condition.category().equivalent( code, condition.value() );
     }
                 
     inline bool operator!=( const error_code & lhs,
@@ -346,11 +364,11 @@ namespace boost
       return !(lhs == rhs);
     }
                 
-    inline bool operator==( const error_condition & lhs,
-                            const error_code & rhs )
+    inline bool operator==( const error_condition & condition,
+                            const error_code & code )
     {
-      return lhs.category().equivalent( rhs, lhs.value() )
-        || rhs.category().equivalent( rhs.value(), lhs );
+      return condition.category().equivalent( code, condition.value() )
+        || code.category().equivalent( code.value(), condition );
     }
                 
     inline bool operator!=( const error_condition & lhs,
@@ -631,6 +649,10 @@ namespace boost
 } // namespace boost
 
 #include <boost/config/abi_suffix.hpp> // pops abi_prefix.hpp pragmas
+
+# ifdef BOOST_ERROR_CODE_HEADER_ONLY
+#   include <boost/../libs/system/src/error_code.cpp>
+# endif
 
 #endif // BOOST_ERROR_CODE_HPP
 

@@ -10,7 +10,7 @@
 //----------------------------------------------------------------------------// 
 
 //  VC++ 8.0 warns on usage of certain Standard Library and API functions that
-//  can be cause buffer overruns or no_posix_equivalent possible security issues if misused.
+//  can be cause buffer overruns or other possible security issues if misused.
 //  See http://msdn.microsoft.com/msdnmag/issues/05/05/SafeCandC/default.aspx
 //  But the wording of the warning is misleading and unsettling, there are no
 //  portable altersystem functions, and VC++ 8.0's own libraries use the
@@ -69,6 +69,10 @@ int test_main( int, char ** )
   BOOST_CHECK( ec == posix::success );
   BOOST_CHECK( ec.category() == system_category );
   BOOST_CHECK( ec.category().name() == "system" );
+  BOOST_CHECK( !(ec < error_code( 0, system_category )) );
+  BOOST_CHECK( !(error_code( 0, system_category ) < ec) );
+  BOOST_CHECK( ec < error_code( 1, system_category ) );
+  BOOST_CHECK( !(error_code( 1, system_category ) < ec) );
 
   error_code ec_0_system( 0, system_category );
   BOOST_CHECK( !ec_0_system );

@@ -51,4 +51,5 @@ system/system/test/Jamfile svneol=native#text/plain
 system/system/test/Jamfile.v2 svneol=native#text/plain
 system/system/test/error_code_test.cpp svneol=native#text/plain
 system/system/test/error_code_user_test.cpp svneol=native#text/plain
+system/system/test/header_only_test.cpp svneol=native#text/plain
 system/system/test/system_error_test.cpp svneol=native#text/plain
