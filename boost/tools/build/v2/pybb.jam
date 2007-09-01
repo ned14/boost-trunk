@@ -12,6 +12,10 @@ module python_interface
     rule load ( module-name : location )
     {        
         USER_MODULE $(module-name) ;
+	# Make all rules in the loaded module available in
+	# the global namespace, so that we don't have
+	# to bother specifying "right" module when calling
+	# from Python.
         module $(module-name)
         {
             __name__ = $(1) ;
@@ -96,8 +100,3 @@ module PyBB
 {
     main ;
 }
-
-
-
-
-
