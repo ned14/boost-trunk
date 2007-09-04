@@ -201,17 +201,17 @@ namespace
   class posix_error_category : public error_category
   {
   public:
-    const std::string &   name() const;
-    std::string           message( int ev ) const;
+    const char *   name() const;
+    std::string    message( int ev ) const;
   };
 
   class system_error_category : public error_category
   {
   public:
-    const std::string &   name() const;
-    posix::posix_errno    posix( int ev ) const;
-    std::string           message( int ev ) const;
-    error_condition       default_error_condition( int ev ) const;
+    const char *        name() const;
+    posix::posix_errno  posix( int ev ) const;
+    std::string         message( int ev ) const;
+    error_condition     default_error_condition( int ev ) const;
   };
 
   const posix_error_category posix_category_const;
@@ -219,10 +219,9 @@ namespace
 
   //  posix_error_category implementation  ---------------------------------//
 
-  const std::string & posix_error_category::name() const
+  const char * posix_error_category::name() const
   {
-    static const std::string s( "POSIX" );
-    return s;
+    return "POSIX";
   }
 
   std::string posix_error_category::message( int ev ) const
@@ -290,10 +289,9 @@ namespace
   }
   //  system_error_category implementation  --------------------------------// 
 
-  const std::string & system_error_category::name() const
+  const char * system_error_category::name() const
   {
-    static const std::string s( "system" );
-    return s;
+    return "system";
   }
 
   posix_errno system_error_category::posix( int ev ) const

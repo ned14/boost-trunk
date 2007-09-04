@@ -10,7 +10,7 @@
 //----------------------------------------------------------------------------// 
 
 //  VC++ 8.0 warns on usage of certain Standard Library and API functions that
-//  can be cause buffer overruns or other possible security issues if misused.
+//  can cause buffer overruns or other possible security issues if misused.
 //  See http://msdn.microsoft.com/msdnmag/issues/05/05/SafeCandC/default.aspx
 //  But the wording of the warning is misleading and unsettling, there are no
 //  portable alternative functions, and VC++ 8.0's own libraries use the
@@ -59,12 +59,16 @@ int test_main( int, char *[] )
   system_error se_1_m( 1, system_category, "se_1_m" ); 
   system_error se_0_nm( error_code(0, system_category), "" ); 
   system_error se_1_nm( 1, system_category, "" ); 
+  system_error se_0_nmx( error_code(0, system_category), "" ); 
+  system_error se_1_nmx( 1, system_category, "" ); 
   system_error se_1u_m( uvalue, system_category, "se_1u_m" );
 
   TEST( se_0_m, 0, "se_0_m" );
   TEST( se_1_m, 1, "se_1_m: Incorrect function" );
   TEST( se_0_nm, 0, "" );
   TEST( se_1_nm, 1, "Incorrect function" );
+  TEST( se_0_nmx, 0, "" );
+  TEST( se_1_nmx, 1, "Incorrect function" );
   TEST( se_1u_m, 1, "se_1u_m: Incorrect function" );
 
 

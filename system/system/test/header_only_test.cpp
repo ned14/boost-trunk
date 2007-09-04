@@ -1,6 +1,6 @@
 //  error_code_test.cpp  -----------------------------------------------------//
 
-//  Copyright Beman Dawes 2006
+//  Copyright Beman Dawes 2007
 
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
 //  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -10,7 +10,7 @@
 //----------------------------------------------------------------------------// 
 
 //  VC++ 8.0 warns on usage of certain Standard Library and API functions that
-//  can be cause buffer overruns or other possible security issues if misused.
+//  can cause buffer overruns or other possible security issues if misused.
 //  See http://msdn.microsoft.com/msdnmag/issues/05/05/SafeCandC/default.aspx
 //  But the wording of the warning is misleading and unsettling, there are no
 //  portable altersystem functions, and VC++ 8.0's own libraries use the

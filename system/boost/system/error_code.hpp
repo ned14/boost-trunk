@@ -19,6 +19,7 @@
 #include <boost/utility/enable_if.hpp>
 #include <ostream>
 #include <string>
+#include <cstring>
 #include <stdexcept>
 
 // TODO: undef these macros if not already defined
@@ -147,15 +148,15 @@ namespace boost
     {
     public:
       virtual ~error_category(){}
-      virtual const std::string & name() const;  // see implementation note below
-      virtual std::string message( int ev ) const;   // see implementation note below
+      virtual const char *    name() const;  // see implementation note below
+      virtual std::string     message( int ev ) const;   // see implementation note below
       virtual error_condition default_error_condition( int ev ) const;
       virtual bool equivalent( int code, const error_condition & condition ) const;
       virtual bool equivalent( const error_code & code, int condition ) const;
 
       bool operator==(const error_category & rhs) const { return this == &rhs; }
       bool operator!=(const error_category & rhs) const { return !(*this == rhs); }
-      bool operator<( const error_category & rhs ) const{ return name() < rhs.name(); }
+      bool operator<( const error_category & rhs ) const{ return std::strcmp(name(), rhs.name()) < 0; }
     };
 
     //  predefined error categories  -----------------------------------------//
@@ -390,10 +391,7 @@ namespace boost
     inline std::size_t hash_value( const error_code & ec )
     {
       return static_cast<std::size_t>(ec.value())
-        + (ec.category().name().size()
-            ? (static_cast<std::size_t>(ec.category().name()
-              [ec.category().name().size()-1]) << 16)
-            : 0);
+        + reinterpret_cast<std::size_t>(&ec.category());
     }
 
     //  make_* functions for posix::posix_errno  -----------------------------//
@@ -427,10 +425,9 @@ namespace boost
 
     //  error_category implementation note: VC++ 8.0 objects to name() and
     //  message() being pure virtual functions. Thus these implementations.
-    inline const std::string & error_category::name() const
+    inline const char * error_category::name() const
     { 
-      static std::string s("error: should never be called");
-      return s;
+      return "error: should never be called";
     }
 
     inline std::string error_category::message( int ev ) const
@@ -451,9 +448,9 @@ namespace boost
     //    a single category (system_category), even for POSIX-like operating
     //    systems that return some POSIX errno values and some native errno
     //    values. This code should not have to pay the cost of distinguishing
-    //    between categories, since it is not yet know if that is needed.
+    //    between categories, since it is not yet known if that is needed.
     //
-    //  * Users wishing to write system-specific code should have enums for
+    //  * Users wishing to write system-specific code should be given enums for
     //    at least the common error cases.
     //
     //  * System specific code should fail at compile time if moved to another
@@ -492,7 +489,7 @@ namespace boost
 
 # elif defined(linux) || defined(__linux) || defined(__linux__)
 
-    namespace lnx  // linux obvious name preempted by its use as predefined macro
+    namespace Linux  // linux lowercase name preempted by use as predefined macro
     {
       enum linux_error
       {
@@ -549,12 +546,12 @@ namespace boost
         unattached = EUNATCH,
         unclean = EUCLEAN,
       };
-    }  // namespace lnx
+    }  // namespace Linux
 
-    template<> struct is_error_code_enum<lnx::linux_errno>
+    template<> struct is_error_code_enum<Linux::linux_errno>
       { static const bool value = true; };
 
-    inline error_code make_error_code(lnx::linux_error e)
+    inline error_code make_error_code(Linux::linux_error e)
       { return error_code( e, system_category ); }
 
 # endif

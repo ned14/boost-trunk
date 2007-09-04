@@ -10,7 +10,7 @@
 //----------------------------------------------------------------------------// 
 
 //  VC++ 8.0 warns on usage of certain Standard Library and API functions that
-//  can be cause buffer overruns or other possible security issues if misused.
+//  can cause buffer overruns or other possible security issues if misused.
 //  See http://msdn.microsoft.com/msdnmag/issues/05/05/SafeCandC/default.aspx
 //  But the wording of the warning is misleading and unsettling, there are no
 //  portable altersystem functions, and VC++ 8.0's own libraries use the
@@ -22,6 +22,8 @@
 #include <boost/system/error_code.hpp>
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <cstring>
 #include <boost/cerrno.hpp>
 
 //  Although using directives are not the best programming practice, testing
@@ -68,7 +70,7 @@ int test_main( int, char ** )
   BOOST_CHECK( dec.category() == posix_category );
   BOOST_CHECK( ec == posix::success );
   BOOST_CHECK( ec.category() == system_category );
-  BOOST_CHECK( ec.category().name() == "system" );
+  BOOST_CHECK( std::strcmp( ec.category().name(), "system") == 0 );
   BOOST_CHECK( !(ec < error_code( 0, system_category )) );
   BOOST_CHECK( !(error_code( 0, system_category ) < ec) );
   BOOST_CHECK( ec < error_code( 1, system_category ) );
@@ -82,7 +84,7 @@ int test_main( int, char ** )
   BOOST_CHECK( dec.category() == posix_category );
   BOOST_CHECK( ec_0_system == posix::success );
   BOOST_CHECK( ec_0_system.category() == system_category );
-  BOOST_CHECK( ec_0_system.category().name() == "system" );
+  BOOST_CHECK( std::strcmp( ec_0_system.category().name(), "system") == 0 );
   check_ostream( ec_0_system, "system:0" );
 
   BOOST_CHECK( ec_0_system == ec );
@@ -106,7 +108,7 @@ int test_main( int, char ** )
   BOOST_CHECK( posix::permission_denied == dec );
   BOOST_CHECK( ec == posix::permission_denied );
   BOOST_CHECK( ec.category() == system_category );
-  BOOST_CHECK( ec.category().name() == "system" );
+  BOOST_CHECK( std::strcmp( ec.category().name(), "system") == 0 );
 
   // test the explicit make_error_code conversion for posix
   ec = make_error_code( posix::bad_message );

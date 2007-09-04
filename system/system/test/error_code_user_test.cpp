@@ -105,10 +105,9 @@ namespace boost
     class lib3_error_category_imp : public boost::system::error_category
     {
     public:
-      const std::string & name() const
+      const char * name() const
       {
-        static std::string s( "lib3" );
-        return s;
+        return "lib3";
       }
 
       boost::system::error_condition default_error_condition( int ev ) const
@@ -163,10 +162,9 @@ namespace lib4
   class lib4_error_category_imp : public boost::system::error_category
   {
   public:
-    const std::string & name() const
+    const char * name() const
     {
-      static std::string s( "lib4" );
-      return s;
+      return "lib4";
     }
 
     boost::system::error_condition default_error_condition( int ev ) const
