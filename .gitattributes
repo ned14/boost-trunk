@@ -40,14 +40,12 @@ system/boost/cerrno.hpp svneol=native#text/plain
 system/boost/system/config.hpp svneol=native#text/plain
 system/boost/system/error_code.hpp svneol=native#text/plain
 system/boost/system/system_error.hpp svneol=native#text/plain
-system/system/build/Jamfile svneol=native#text/plain
 system/system/build/Jamfile.v2 svneol=native#text/plain
 system/system/doc/error_code.html svneol=native#text/html
 system/system/doc/system_error.html svneol=native#text/html
 system/system/index.html svneol=native#text/html
 system/system/library.config -text
 system/system/src/error_code.cpp svneol=native#text/plain
-system/system/test/Jamfile svneol=native#text/plain
 system/system/test/Jamfile.v2 svneol=native#text/plain
 system/system/test/error_code_test.cpp svneol=native#text/plain
 system/system/test/error_code_user_test.cpp svneol=native#text/plain
