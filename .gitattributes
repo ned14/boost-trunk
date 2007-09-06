@@ -4532,6 +4532,7 @@ boost/type_traits/same_traits.hpp svneol=native#text/plain
 boost/type_traits/transform_traits.hpp svneol=native#text/plain
 boost/type_traits/transform_traits_spec.hpp svneol=native#text/plain
 boost/type_traits/type_with_alignment.hpp svneol=native#text/plain
+boost/typeof/dmc/typeof_impl.hpp svneol=native#text/plain
 boost/typeof/encode_decode.hpp svneol=native#text/plain
 boost/typeof/encode_decode_params.hpp svneol=native#text/plain
 boost/typeof/incr_registration_group.hpp svneol=native#text/plain
