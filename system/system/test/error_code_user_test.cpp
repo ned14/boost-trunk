@@ -112,11 +112,11 @@ namespace boost
 
       boost::system::error_condition default_error_condition( int ev ) const
       {
-        return boost::system::error_condition(
-          ev == boo_boo
-            ? boost::system::posix::io_error
-            : boost::system::posix::no_posix_equivalent,
-          boost::system::posix_category );
+        return ev == boo_boo
+          ? boost::system::error_condition( boost::system::posix::io_error,
+              boost::system::posix_category )
+          : boost::system::error_condition( ev,
+              boost::lib3::lib3_error_category );
       }
       
       std::string message( int ev ) const
@@ -169,11 +169,10 @@ namespace lib4
 
     boost::system::error_condition default_error_condition( int ev ) const
     {
-      return boost::system::error_condition(
-        ev == boo_boo.value()
-          ? boost::system::posix::io_error
-          : boost::system::posix::no_posix_equivalent,
-        boost::system::posix_category );
+      return ev == boo_boo.value()
+        ? boost::system::error_condition( boost::system::posix::io_error,
+            boost::system::posix_category )
+        : boost::system::error_condition( ev, lib4::lib4_error_category );
     }
     
     std::string message( int ev ) const
@@ -363,7 +362,9 @@ int test_main( int, char *[] )
 
   boost::system::error_code ec3( boost::lib3::boo_boo+100,
     boost::lib3::lib3_error_category );
-  BOOST_CHECK( ec3 == boost::system::posix::no_posix_equivalent );
+  BOOST_CHECK( ec3.category() == boost::lib3::lib3_error_category );
+  BOOST_CHECK( ec3.default_error_condition().category()
+    == boost::lib3::lib3_error_category );
 
   // Library 4 tests:
 
@@ -379,7 +380,8 @@ int test_main( int, char *[] )
 
   boost::system::error_code ec4( lib4::boo_boo.value()+100,
     lib4::lib4_error_category );
-  BOOST_CHECK( ec4 == boost::system::posix::no_posix_equivalent );
+  BOOST_CHECK( ec4.default_error_condition().category()
+    == lib4::lib4_error_category );
 
   // Test 3
 

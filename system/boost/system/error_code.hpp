@@ -133,8 +133,6 @@ namespace boost
         too_many_synbolic_link_levels = ELOOP,
         value_too_large = EOVERFLOW,
         wrong_protocol_type = EPROTOTYPE,
-
-        no_posix_equivalent = -1 // TODO: is this a safe value?
       };
 
     } // namespace posix
@@ -548,7 +546,7 @@ namespace boost
       };
     }  // namespace Linux
 
-    template<> struct is_error_code_enum<Linux::linux_errno>
+    template<> struct is_error_code_enum<Linux::linux_error>
       { static const bool value = true; };
 
     inline error_code make_error_code(Linux::linux_error e)

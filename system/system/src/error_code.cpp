@@ -304,12 +304,15 @@ namespace
       ++cur;
     } while ( cur != system_to_posix
       + sizeof(system_to_posix)/sizeof(system_to_posix_t) );
-    return boost::system::posix::no_posix_equivalent;
+    return static_cast<posix::posix_errno>(-1);
   }
 
   error_condition system_error_category::default_error_condition( int ev ) const
   {
-    return error_condition( posix(ev), posix_category );
+    int tmp = posix(ev);
+    return tmp >= 0
+      ? error_condition( tmp, posix_category )
+      : error_condition( ev, system_category );
   }
 
 # if !defined( BOOST_WINDOWS_API )

@@ -133,30 +133,34 @@ int test_main( int, char ** )
   BOOST_CHECK( ec.value() == ERROR_FILE_NOT_FOUND );
   BOOST_CHECK( ec == posix::no_such_file_or_directory );
   BOOST_CHECK( ec.default_error_condition().value() == posix::no_such_file_or_directory );
+  BOOST_CHECK( ec.default_error_condition().category() == posix_category );
 
   //   test the second entry in the decoder table:
   ec = error_code( ERROR_PATH_NOT_FOUND, system_category );
   BOOST_CHECK( ec.value() == ERROR_PATH_NOT_FOUND );
   BOOST_CHECK( ec == posix::no_such_file_or_directory );
   BOOST_CHECK( ec.default_error_condition().value() == posix::no_such_file_or_directory );
+  BOOST_CHECK( ec.default_error_condition().category() == posix_category );
 
   //   test the third entry in the decoder table:
   ec = error_code( ERROR_ACCESS_DENIED, system_category );
   BOOST_CHECK( ec.value() == ERROR_ACCESS_DENIED );
   BOOST_CHECK( ec == posix::permission_denied );
   BOOST_CHECK( ec.default_error_condition().value() == posix::permission_denied );
+  BOOST_CHECK( ec.default_error_condition().category() == posix_category );
 
   //   test the last regular entry in the decoder table:
   ec = error_code( ERROR_WRITE_PROTECT, system_category );
   BOOST_CHECK( ec.value() == ERROR_WRITE_PROTECT );
   BOOST_CHECK( ec == posix::permission_denied );
   BOOST_CHECK( ec.default_error_condition().value() == posix::permission_denied );
+  BOOST_CHECK( ec.default_error_condition().category() == posix_category );
 
   //   test not-in-table condition:
   ec = error_code( 1234567890, system_category );
   BOOST_CHECK( ec.value() == 1234567890 );
-  BOOST_CHECK( ec == posix::no_posix_equivalent );
-  BOOST_CHECK( ec.default_error_condition().value() == posix::no_posix_equivalent );
+  BOOST_CHECK( ec.default_error_condition().value() == 1234567890 );
+  BOOST_CHECK( ec.default_error_condition().category() == system_category );
 
 #else // POSIX
 
@@ -166,6 +170,8 @@ int test_main( int, char ** )
   BOOST_CHECK( error_code( posix::permission_denied, system_category ) == ec );
   BOOST_CHECK( ec == posix::permission_denied );
   BOOST_CHECK( posix::permission_denied == ec );
+  BOOST_CHECK( ec.default_error_condition().value() == posix::permission_denied );
+  BOOST_CHECK( ec.default_error_condition().category() == posix_category );
 
 # ifdef __CYGWIN__
 
@@ -174,16 +180,16 @@ int test_main( int, char ** )
   BOOST_CHECK( ec == cygwin::no_package );
   BOOST_CHECK( ec == error_code( ENOPKG, system_category ) );
   BOOST_CHECK( ec == error_code( cygwin::no_package, system_category ) );
-  BOOST_CHECK( ec == posix::no_posix_equivalent );
+  BOOST_CHECK( ec.default_error_condition().category() == system_category );
 
 # elif defined(linux) || defined(__linux) || defined(__linux__)
 
   std::cout << "Linux tests...\n";
-  ec = lnx::dot_dot_error;
-  BOOST_CHECK( ec == lnx::dot_dot_error );
+  ec = Linux::dot_dot_error;
+  BOOST_CHECK( ec == Linux::dot_dot_error );
   BOOST_CHECK( ec == error_code( EDOTDOT, system_category ) );
-  BOOST_CHECK( ec == error_code( lnx::dot_dot_error, system_category ) );
-  BOOST_CHECK( ec == posix::no_posix_equivalent );
+  BOOST_CHECK( ec == error_code( Linux::dot_dot_error, system_category ) );
+  BOOST_CHECK( ec.default_error_condition().category() == posix_category );
 
 # endif
 
