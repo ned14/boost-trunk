@@ -61,6 +61,14 @@ int test_main( int, char ** )
 
   std::cout << "General tests...\n";
   // unit tests:
+
+  BOOST_CHECK( posix_category == posix_category );
+  BOOST_CHECK( system_category == system_category );
+  BOOST_CHECK( posix_category != system_category );
+  BOOST_CHECK( system_category != posix_category );
+  BOOST_CHECK( posix_category < system_category );
+  BOOST_CHECK( !(system_category < posix_category) );
+
   error_code ec;
   error_condition dec;
   BOOST_CHECK( !ec );
