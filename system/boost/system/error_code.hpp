@@ -19,8 +19,8 @@
 #include <boost/utility/enable_if.hpp>
 #include <ostream>
 #include <string>
-#include <cstring>
 #include <stdexcept>
+#include <functional>
 
 // TODO: undef these macros if not already defined
 #include <boost/cerrno.hpp> 
@@ -153,8 +153,11 @@ namespace boost
       virtual bool equivalent( const error_code & code, int condition ) const;
 
       bool operator==(const error_category & rhs) const { return this == &rhs; }
-      bool operator!=(const error_category & rhs) const { return !(*this == rhs); }
-      bool operator<( const error_category & rhs ) const{ return std::strcmp(name(), rhs.name()) < 0; }
+      bool operator!=(const error_category & rhs) const { return this != &rhs; }
+      bool operator<( const error_category & rhs ) const
+      {
+        return std::less<const error_category*>()( this, &rhs );
+      }
     };
 
     //  predefined error categories  -----------------------------------------//
