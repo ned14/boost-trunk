@@ -16120,6 +16120,7 @@ tools/regression/test/test.bat svneol=native#text/plain
 tools/regression/test/test.py svneol=native#text/x-python
 tools/regression/xsl_reports/boost_wide_report.py svneol=native#text/x-python
 tools/regression/xsl_reports/boostbook_report.py svneol=native#text/x-python
+tools/regression/xsl_reports/build_results.sh svneol=native#text/x-sh
 tools/regression/xsl_reports/email_maintainers.py svneol=native#text/x-python
 tools/regression/xsl_reports/empty_expected_results.xml svneol=native#text/xml
 tools/regression/xsl_reports/make_snapshot.py svneol=native#text/x-python
