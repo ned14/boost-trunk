@@ -15518,7 +15518,6 @@ tools/build/v2/test/v1_testing/project-root.jam svneol=native#text/plain
 tools/build/v2/test/wrapper.py svneol=native#text/x-python
 tools/build/v2/test/wrong_project.py svneol=native#text/x-python
 tools/build/v2/tools/acc.jam svneol=native#text/plain
-tools/build/v2/tools/acc_pa_risc.jam svneol=native#text/plain
 tools/build/v2/tools/bison.jam svneol=native#text/plain
 tools/build/v2/tools/boostbook-config.jam svneol=native#text/plain
 tools/build/v2/tools/boostbook.jam svneol=native#text/plain
