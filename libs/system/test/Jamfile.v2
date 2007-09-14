@@ -11,12 +11,16 @@ project
     : requirements
       <library>/boost/system//boost_system
       <define>BOOST_ALL_NO_LIB
+      <toolset>msvc:<asynch-exceptions>on
     ;
 
    test-suite "system"
        : [ run error_code_test.cpp
-           :  :  : <define>BOOST_SYSTEM_STATIC_LINK 
-                   <runtime-link>static <link>static
+           : # command line
+           : # input files
+           : # requirements
+                   <define>BOOST_SYSTEM_STATIC_LINK 
+                   <link>static
          ]
          [ run error_code_test.cpp
            :  :  : <define>BOOST_SYSTEM_DYN_LINK 
@@ -24,18 +28,21 @@ project
          ]
          [ run error_code_user_test.cpp
            :  :  : <define>BOOST_SYSTEM_STATIC_LINK 
-                   <runtime-link>static <link>static
+                   <link>static
          ]
          [ run error_code_user_test.cpp
            :  :  : <define>BOOST_SYSTEM_DYN_LINK 
                  : error_code_user_test_dll
          ]
          [ run system_error_test.cpp
-           :  :  : <define>BOOST_ESYSTEM_STATIC_LINK 
-                   <runtime-link>static <link>static
+           :  :  : <define>BOOST_SYSTEM_STATIC_LINK 
+                   <link>static
          ]
          [ run system_error_test.cpp
             :  :  : <define>BOOST_SYSTEM_DYN_LINK 
                   : system_error_test_dll
+         ]
+         [ run header_only_test.cpp
+           :  :  : <link>static
          ]
          ;
