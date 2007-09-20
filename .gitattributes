@@ -4332,6 +4332,7 @@ boost/tokenizer.hpp svneol=native#text/plain
 boost/tr1/array.hpp svneol=native#text/plain
 boost/tr1/complex.hpp svneol=native#text/plain
 boost/tr1/detail/config.hpp svneol=native#text/plain
+boost/tr1/detail/config_all.hpp svneol=native#text/plain
 boost/tr1/detail/functor2iterator.hpp svneol=native#text/plain
 boost/tr1/detail/math_overloads.hpp svneol=native#text/plain
 boost/tr1/functional.hpp svneol=native#text/plain
