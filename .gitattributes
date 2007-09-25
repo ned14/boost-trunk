@@ -7398,6 +7398,7 @@ libs/graph/example/vertex_basics.cpp svneol=native#text/plain
 libs/graph/example/vertex_basics.expected -text
 libs/graph/example/visitor.cpp svneol=native#text/plain
 libs/graph/example/visitor.expected -text
+libs/graph/example/write_graphviz.cpp svneol=native#text/plain
 libs/graph/index.html svneol=native#text/html
 libs/graph/src/graphml.cpp svneol=native#text/plain
 libs/graph/src/python/basic_graph.cpp svneol=native#text/plain
