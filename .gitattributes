@@ -15665,6 +15665,7 @@ tools/jam/build_dist.bat svneol=native#text/plain
 tools/jam/build_dist.sh svneol=native#text/x-sh
 tools/jam/doc/bjam.qbk svneol=native#text/plain
 tools/jam/doc/build.jam svneol=native#text/plain
+tools/jam/doc/history.qbk svneol=native#text/plain
 tools/jam/index.html svneol=native#text/html
 tools/jam/src/Jambase -text
 tools/jam/src/boehm_gc/AmigaOS.c svneol=native#text/plain
