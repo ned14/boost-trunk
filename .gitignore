@@ -1,0 +1,4 @@
+Milestone_12/build/v2/test/*.pyc
+Milestone_12/build/v2/test/failed_test
+Milestone_12/build/v2/test/test-config.jam
+Milestone_12/build/v2/test/test_results.txt
