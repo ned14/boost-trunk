@@ -490,6 +490,7 @@ Milestone_12/jam/build_dist.bat svneol=native#text/plain
 Milestone_12/jam/build_dist.sh svneol=native#text/x-sh
 Milestone_12/jam/doc/bjam.qbk svneol=native#text/plain
 Milestone_12/jam/doc/build.jam svneol=native#text/plain
+Milestone_12/jam/doc/history.qbk svneol=native#text/plain
 Milestone_12/jam/index.html svneol=native#text/html
 Milestone_12/jam/src/Jambase -text
 Milestone_12/jam/src/boehm_gc/AmigaOS.c svneol=native#text/plain
