@@ -159,6 +159,9 @@ class ProjectLoader:
         project_module.attributes().dump()
         return project_module
 
+bjam.define_action("bla-blah", """
+    cp $(>) $(<)
+""", [], 0)
 
 
 class ProjectContext:
@@ -216,6 +219,8 @@ class ProjectContext:
         import boost.build.tools.make
 
         from boost.build.build.action import BjamActionWrapper
+	
+	generating_rule = ["bla-blah"]
 
         boost.build.build.action.register(generating_rule[0],
                                           lambda a1, a2, a3, a4: None,

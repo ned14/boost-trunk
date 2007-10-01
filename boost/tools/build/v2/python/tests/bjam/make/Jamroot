@@ -1,10 +1,12 @@
 
 make a : a.cpp : $(__name__).copy ;
 
-actions copy
+rule copy ( targets : sources : properties * )
 {
-    cp $(>) $(<)
+    ECHO "XXXXXXXXXXX copy $(targets) : $(sources) : $(properties)" ;
 }
 
-# Ugly hack.
-IMPORT $(__name__) : copy : : $(__name__).copy ;
+actions copy
+{
+    asdascp $(>) $(<)
+}
