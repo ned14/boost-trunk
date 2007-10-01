@@ -1,0 +1,70 @@
+
+This document outlines internal design of the Boost.Build V2
+port to Python. This design is essentially the same
+as for Boost.Build V2 and is documented here because:
+
+    - There's no single internal design document for Boost.Build V2
+    - There are some slight changes
+
+The entire code base is divided in two parts -- Boost.Build proper and bjam.
+Boost.Build is written in Python. bjam is a build engine, written in C, and
+provides two major features:
+    - Parsing of project description files, called Jamfiles
+    - Build engine functionality -- detecting out-of-date
+    targets and running commands to make them out of date.
+    
+The entry point is bjam, which is linked to Python interpreter. 
+    
+bjam is build tool written in C, that provides 
+    
+There's one top-level object -- manager -- of type boost.build.Manager.
+It holds all global definitions -- set of tools, features, project
+tree.
+
+- Project loading level
+- Metatargets level
+
+- Virtual targets level.
+
+    
+Bjam <-> Python interface
+=========================
+
+Bjam side
+--------
+
+The EXTRA_PYTHONPATH variable, in the global module,
+should be a list with directories where Python modules
+QWERTY
+
+From Bjam side, a single extra rule is available:
+
+     PYTHON_IMPORT_RULE <python-module> : <callable> 
+                      : <bjam-module> : <name> ;
+
+This imports a python callable object from the
+specified module into bjam.
+QWERTY
+
+Python side
+-----------
+
+The following functions are avaiable from python, in the
+bjam module.
+
+1. call <name>, <param0>, <param1>, ....
+Looksup <name> in bjam module 'python_interface'. If found, calls
+that rule, passsing <param0>, <paramN>. Each <paramI> should be
+a list of strings.
+
+2. import_rule <bjam module>, <bjam name>, <callable>
+Adds new rule <bjam name> to <bjam module>. Calling that rule
+will call back to Python <callable> -- which should accept
+lists of strings as parameters.
+
+3. define_action action_name, action_body, bind_list, flags.
+
+Defines new action with specified name, body, list if bound
+variables and flags. The action is created in the global module.
+
+
