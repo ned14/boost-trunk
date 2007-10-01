@@ -10650,6 +10650,7 @@ libs/numeric/ublas/doc/doxygen.css svneol=native#text/css
 libs/numeric/ublas/doc/expression_concept.htm svneol=native#text/html
 libs/numeric/ublas/doc/hermitian.htm svneol=native#text/html
 libs/numeric/ublas/doc/index.htm svneol=native#text/html
+libs/numeric/ublas/doc/index.html svneol=native#text/html
 libs/numeric/ublas/doc/iterator_concept.htm svneol=native#text/html
 libs/numeric/ublas/doc/matrix.htm svneol=native#text/html
 libs/numeric/ublas/doc/matrix_expression.htm svneol=native#text/html
