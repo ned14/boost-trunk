@@ -14731,6 +14731,8 @@ libs/wave/test/testwave/testfiles/test.cfg -text
 libs/wave/test/testwave/testwave.cpp svneol=native#text/plain
 libs/wave/test/testwave/testwave_app.cpp svneol=native#text/plain
 libs/wave/test/testwave/testwave_app.hpp svneol=native#text/plain
+libs/wave/test/testwave/testwave_app_dll.cpp svneol=native#text/plain
+libs/wave/test/testwave/testwave_dll.cpp svneol=native#text/plain
 libs/xpressive/doc/Jamfile.v2 svneol=native#text/plain
 libs/xpressive/doc/acknowledgements.qbk svneol=native#text/plain
 libs/xpressive/doc/actions.qbk svneol=native#text/plain
