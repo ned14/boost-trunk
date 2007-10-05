@@ -3475,7 +3475,6 @@ boost/libs/thread/index.html svneol=native#text/html
 boost/libs/thread/src/pthread/condition.cpp svneol=native#text/plain
 boost/libs/thread/src/pthread/exceptions.cpp svneol=native#text/plain
 boost/libs/thread/src/pthread/mutex.cpp svneol=native#text/plain
-boost/libs/thread/src/pthread/once.cpp svneol=native#text/plain
 boost/libs/thread/src/pthread/recursive_mutex.cpp svneol=native#text/plain
 boost/libs/thread/src/pthread/thread.cpp svneol=native#text/plain
 boost/libs/thread/src/pthread/timeconv.inl -text
