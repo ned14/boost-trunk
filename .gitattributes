@@ -4322,7 +4322,6 @@ boost/thread/detail/tss_hooks.hpp svneol=native#text/plain
 boost/thread/exceptions.hpp svneol=native#text/plain
 boost/thread/mutex.hpp svneol=native#text/plain
 boost/thread/once.hpp svneol=native#text/plain
-boost/thread/read_write_mutex.hpp svneol=native#text/plain
 boost/thread/recursive_mutex.hpp svneol=native#text/plain
 boost/thread/thread.hpp svneol=native#text/plain
 boost/thread/tss.hpp svneol=native#text/plain
@@ -13693,10 +13692,7 @@ libs/test/test/token_iterator_test.cpp svneol=native#text/plain
 libs/test/tools/console_test_runner/src/console_test_runner.cpp svneol=native#text/plain
 libs/test/tools/console_test_runner/test/test_runner_test.cpp svneol=native#text/plain
 libs/thread/build/.cvsignore -text
-libs/thread/build/Jamfile svneol=native#text/plain
 libs/thread/build/Jamfile.v2 svneol=native#text/plain
-libs/thread/build/threads.jam svneol=native#text/plain
-libs/thread/build/threads.mcp -text svneol=unset#unset
 libs/thread/doc/Jamfile.v2 svneol=native#text/plain
 libs/thread/doc/acknowledgements.xml svneol=native#text/xml
 libs/thread/doc/barrier-ref.xml svneol=native#text/xml
@@ -13776,7 +13772,6 @@ libs/thread/src/mac/thread_cleanup.hpp svneol=native#text/plain
 libs/thread/src/mutex.cpp svneol=native#text/plain
 libs/thread/src/mutex.inl -text
 libs/thread/src/once.cpp svneol=native#text/plain
-libs/thread/src/read_write_mutex.cpp svneol=native#text/plain
 libs/thread/src/recursive_mutex.cpp svneol=native#text/plain
 libs/thread/src/thread.cpp svneol=native#text/plain
 libs/thread/src/timeconv.inl -text
@@ -13794,12 +13789,10 @@ libs/thread/test/test_barrier.cpp svneol=native#text/plain
 libs/thread/test/test_condition.cpp svneol=native#text/plain
 libs/thread/test/test_mutex.cpp svneol=native#text/plain
 libs/thread/test/test_once.cpp svneol=native#text/plain
-libs/thread/test/test_read_write_mutex.cpp svneol=native#text/plain
 libs/thread/test/test_thread.cpp svneol=native#text/plain
 libs/thread/test/test_tss.cpp svneol=native#text/plain
 libs/thread/test/test_xtime.cpp svneol=native#text/plain
 libs/thread/test/util.inl -text
-libs/thread/tutorial/Jamfile svneol=native#text/plain
 libs/thread/tutorial/bounded_buffer.cpp svneol=native#text/plain
 libs/thread/tutorial/counter.cpp svneol=native#text/plain
 libs/thread/tutorial/factorial.cpp svneol=native#text/plain
