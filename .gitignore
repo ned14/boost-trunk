@@ -1,3 +1,7 @@
+build/M11_rc2/boost/tools/build/v2/test/*.pyc
+build/M11_rc2/boost/tools/build/v2/test/failed_test
+build/M11_rc2/boost/tools/build/v2/test/test-config.jam
+build/M11_rc2/boost/tools/build/v2/test/test_results.txt
 build/Milestone_11/boost/tools/build/v2/test/*.pyc
 build/Milestone_11/boost/tools/build/v2/test/failed_test
 build/Milestone_11/boost/tools/build/v2/test/test-config.jam
