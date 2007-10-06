@@ -8,3 +8,4 @@ build/Milestone_11/boost/tools/build/v2/test/test-config.jam
 build/Milestone_11/boost/tools/build/v2/test/test_results.txt
 build/Milestone_3/boost/tools/build/test/*.pyc
 build/Milestone_4/boost/tools/build/test/*.pyc
+build/Milestone_6/boost/tools/build/test/*.pyc
