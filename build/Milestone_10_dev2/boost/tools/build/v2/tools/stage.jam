@@ -1,0 +1,267 @@
+#  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
+#  distribute this software is granted provided this copyright notice appears in
+#  all copies. This software is provided "as is" without express or implied
+#  warranty, and with no claim as to its suitability for any purpose.
+
+#  This module defines the 'stage' rule, used to copy a set of targets to
+#  a single location
+#
+#  Typical usage:
+#
+#  stage dist : hello_world : <location>/usr/bin ;
+#
+#  The source target will be copied to the specified location. Some targets will
+#  we specially processed. In particular, binaries will be relinked. Free properties
+#  from stage dist will be included to properties used for relinking. For example
+#
+#  stage dist : hello_world : <location>/usr/bin <dll-path>/opt/lib ;
+# 
+#  will cause 'hello_world' to be relinked to the new location, and <dll-path>
+#  property will be added when relinking.
+#
+#  Two properties specifically control 'stage' rule.
+# 
+#  - <location> tells where to put targets. If not specified, directory
+#    with the same name as stage name will be used.
+#  
+#  - <name> tells the new name of the staged target. In this case, only
+#    one target can be specified in sources.
+#
+#  The stage rule can also traverse dependencies, for example to install a
+#  program an all required libraries. Two properties affect this.
+#
+#  - <traverse-dependencies>on tells that dependencies should be traversed.
+#    For each target in 'stage' sources, all sources to that target and all
+#    dependency properties are traversed. Sources and dependecy properties of
+#    those target are traversed recursively.
+#
+#  - <include-type>SOME_TYPE tells that targets of SOME_TYPE or a type derived
+#    from SOME_TYPE, should be included.
+#    If no such property is specified, then all found targets will be staged.
+#    Otherwise, only targets with types mentioned in <include-type> property
+#    will be included.
+#    
+#    Example usage::
+#
+#      stage dist : hello_world : 
+#        <traverse-dependencies>on <include-type>EXE <include-type>SHARED_LIB ;
+#
+
+import targets ;
+import "class" : new ;
+import property ;
+import errors : error ;
+import type : type ;
+import type ;
+import regex ;
+import generators ;
+import feature ;
+
+feature.feature <traverse-dependencies> : off on : incidental ;
+feature.feature <include-type> : : free incidental ;
+
+class stage-target-class : basic-target
+{
+    import feature project type errors generators ;    
+    import "class" : new ;
+    
+    rule __init__ ( name-and-dir : project : sources * : requirements * : default-build * )
+    {
+        basic-target.__init__ $(name-and-dir) : $(project) : $(sources) : $(requirements) 
+          : $(default-build) ;
+    }
+        
+    rule construct ( source-targets * : property-set )
+    {
+        local name = [ $(property-set).get <name> ] ;
+        if $(name) && $(source-targets[2])
+        {
+            errors.error "<name> property cannot be specified when staging several targets" ;
+        }
+        
+        if [ $(property-set).get <traverse-dependencies> ] = "on"
+        {
+            source-targets = [ collect-targets $(source-targets) 
+              : [ $(property-set).get <include-type> ] ] ;
+        }
+                                
+        local location = [ feature.get-values <location> : 
+            [ $(property-set).raw ] ] ;
+        if ! $(location)
+        {
+            location = [ project.path-relative-to-project-location $(self.name)
+              $(self.project) ] ;
+        }
+                
+        local result ;
+        for local i in $(source-targets)
+        {
+            local i2 ; # Staged target(s)
+            
+            local t = [ $(i).type ] ;           
+            
+            # See if something special should be done when staging this
+            # type. It is indicated by presense of special "staged" type            
+            if $(t) && [ type.registered STAGED_$(t) ]
+            {
+                i2 = [ generators.construct $(self.project) : STAGED_$(t) :
+                      $(property-set) : $(i) : * ] ;
+                if ! $(i2)
+                {                    
+                    errors.error "Unable to generate staged version of " [ $(i).str ] ;
+                }                
+            }
+            else             
+            {                
+                local n = [ $(i).name ] ;
+                if $(name)
+                {
+                    n = $(name) ;
+                }
+                
+                i2 = [ new file-target $(n:D=) : [ $(i).type ] 
+                  : $(self.project) ] ;
+                local a = [ $(i).action ] ;
+                local new-a ;
+                if $(a)
+                {                    
+                    # Copy the properties of original target. They, in particular
+                    # can affect the suffix of the target.
+                    new-a = [ new action $(i2) : $(i) : common.copy : [ $(a).properties ] ] ;
+                }
+                else
+                {
+                    new-a = [ new action $(i2) : $(i) : common.copy ] ;
+                }                                
+                $(i2).suffix [ $(i).suffix ] ;
+                $(i2).action $(new-a) ;
+            }
+            
+            # FIXME: Since we can have <location> property, it might be better
+            # to use it to distinguish staged copies with different locations.
+            for t in $(i2)
+            {                
+                $(t).set-path $(location) ;
+                result += [ virtual-target.register $(t) ] ;                
+            }            
+
+        }
+        return $(result) ;
+    }   
+    
+    rule collect-targets ( targets * : types-to-include * )
+    {
+        # Find subvariants
+        local s ;        
+        for local t in $(targets)
+        {
+            s += [ $(t).creating-subvariant ] ;
+        }
+        s = [ sequence.unique $(s) ] ;
+        
+        local result = $(targets) ;
+        for local i in $(s)
+        {
+            result += [ $(i).all-referenced-targets ] ;
+        }
+        result = [ sequence.unique $(result) ] ;
+        
+        if $(types-to-include)
+        {
+            local result2 ;
+            for local r in $(result)
+            {
+                if [ include-type [ $(r).type ] : $(types-to-include) ]                  
+                {
+                    result2 += $(r) ;
+                }                
+            }           
+            return $(result2) ;
+        }
+        else
+        {
+            return $(result) ;        
+        }                                
+    }
+        
+    # Don't do nothing.
+    rule check-for-unused-sources ( result * : sources * )
+    {        
+    }
+    
+    rule check-for-link-compatibility ( * : * )
+    {
+    }
+        
+    # Returns true iff 'type' is subtype of some element of 'types-to-include'.
+    local rule include-type ( type : types-to-include * )
+    {
+        local found ;
+        while $(types-to-include) && ! $(found)
+        {
+            if [ type.is-subtype $(type) $(types-to-include[1]) ]
+            {
+                found = true ;
+            }            
+            types-to-include = $(types-to-include[2-]) ;
+        }
+        
+        return $(found) ;
+    }
+    
+    
+}
+
+# Declare staged version of the EXE type. Generator for this type will
+# cause relinking to the new location.
+type.register STAGED_EXE : : EXE ;
+
+class stage-exe-generator : generator
+{
+    import type property-set modules ;    
+    
+    rule __init__ ( )
+    {
+        generator.__init__ stage-exe : EXE : STAGED_EXE ;
+    }
+    
+    rule run ( project name ? : property-set : source : multiple ? )
+    {
+        local action = [ $(source).action ] ;
+                       
+        # stage can affect the relinking details.
+        local ps = [ $(action).properties ] ;
+        local new-ps = [ $(ps).add [ property-set.create [ $(property-set).free ] ] ] ;
+        
+        local cloned-action = [ virtual-target.clone-action $(action) : $(project) :
+          "" : $(new-ps) ] ;
+        local result = [ $(cloned-action).targets ] ;                        
+        return $(result) ;
+        
+    }    
+}
+
+generators.register [ new stage-exe-generator ] ;
+
+
+
+# Declares a stage target. When build, it will construct all sources
+# and place in one directory. The directory can be specified in requirements
+# with 'location' property. If not specified, the directory name will be
+# the same as target name, relative to the project where the target 
+# is declared.
+rule stage ( name : sources * : requirements * : default-build * )
+{
+    local project = [ CALLER_MODULE ] ;
+    
+    targets.main-target-alternative
+      [ new stage-target-class $(name) : $(project) : $(sources)
+        : [ targets.main-target-requirements $(requirements) : $(project) ] 
+        : [ targets.main-target-default-build $(default-build) : $(project) ] 
+      ] ;
+}
+
+IMPORT $(__name__) : stage : : stage ;
+
+
+
