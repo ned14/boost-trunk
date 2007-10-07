@@ -19,5 +19,5 @@ class BjamBuildSystem (log_engine.LogBuildSystem):
         bjam_interface.call("set-target-variable", target, variable, value)
     
     def do_add_dependency (self, target, source):
-        bjam_interface.call("add-dependency", target, source)
+        bjam_interface.call("DEPENDS", target, source)
         

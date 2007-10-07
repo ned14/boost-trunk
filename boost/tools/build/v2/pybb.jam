@@ -36,6 +36,13 @@ module python_interface
         $(action) $(targets) : $(sources) ;
     }
     
+    rule set-target-variable ( targets + : variable : value * )
+    {
+        ECHO "$(variable) on $(targets) = $(value)" ;
+        
+	$(variable) on $(targets) = $(value) ;
+    }
+    
     rule MkDir
     {
         # If dir exists, don't update it
