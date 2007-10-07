@@ -30,4 +30,10 @@ from Python.
 2. The current way to make rules available to Jamfiles is nasty --
 only functions defined in ProjectContext class are exported.
 
-	
+3. boost.build.engine.engine.Engine is nasty -- any
+better Python solution?
+
+4. The error messages, so far, are truly terrible -- if Python
+code throws does something wrong we get lots of backtrace.
+
+5. Can one have nested classes in Python.

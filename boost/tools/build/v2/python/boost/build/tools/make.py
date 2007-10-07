@@ -29,6 +29,8 @@ def make (project, target_name, sources, generating_rule, requirements):
     """ Declares the 'make' main target.
     """
     targets = project.manager ().targets ()
+    engine = project.manager().engine()
+    engine.register_bjam_action(generating_rule)
     
     targets.main_target_alternative (MakeTarget (project.target (), 
         target_name,

@@ -1,6 +1,8 @@
 
 make a : a.cpp : $(__name__).copy ;
 
+FOO = 1 ;
+
 rule copy ( targets : sources : properties * )
 {
     ECHO "XXXXXXXXXXX copy $(targets) : $(sources) : $(properties)" ;
@@ -8,5 +10,5 @@ rule copy ( targets : sources : properties * )
 
 actions copy
 {
-    asdascp $(>) $(<)
+    cp $(FOO) $(>) $(<)
 }

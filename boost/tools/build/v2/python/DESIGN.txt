@@ -1,10 +1,33 @@
 
-This document outlines internal design of the Boost.Build V2
-port to Python. This design is essentially the same
-as for Boost.Build V2 and is documented here because:
+This document outlines the goals, and internal design of the Boost.Build V2
+port to Python. 
 
-    - There's no single internal design document for Boost.Build V2
-    - There are some slight changes
+= Goals =
+
+Using of bjam language as implementation language has two drawbacks:
+
+    - No user knows that language
+    - The language decisions (like using list of strings as primary
+    datatype) makes implementation slow and memory-hungry.
+
+The primary goal of the port is to replicate exactly the same functionality,
+and the same design and the same code, and get all the tests still work.
+The only design/code changes allowed during the port are:
+
+    - No globals -- all data that is global in existing code will be
+    kepts inside Python object that are kept inside single top-level
+    "manager" object
+    - Build actions in Python -- in case where jam code, for a given
+    command line, has both a command line proper and procedural
+    code to setup something, said procedural code will be moved in
+    Python -- while the command line will be declared using Jam syntax.
+    - Using of Python facilities. Python datatypes and builtin modules
+    will be used.
+    - Using of the property_set class. Unless required for compatibility
+    with Jamfiles, we'll be using property_set in all remaining cases
+    where raw property list is used now.
+      
+= Design: Physical structure =
 
 The entire code base is divided in two parts -- Boost.Build proper and bjam.
 Boost.Build is written in Python. bjam is a build engine, written in C, and
@@ -13,9 +36,12 @@ provides two major features:
     - Build engine functionality -- detecting out-of-date
     targets and running commands to make them out of date.
     
-The entry point is bjam, which is linked to Python interpreter. 
+The entry point is bjam, which is linked to Python interpreter. On startup,
+bjam imports Python main function and calls it, from which point Python
+is in control. We can alternatively create an extension library from
+bjam, and call that from Python, but this is not important design aspect.
     
-bjam is build tool written in C, that provides 
+= Design: Logical structure =
     
 There's one top-level object -- manager -- of type boost.build.Manager.
 It holds all global definitions -- set of tools, features, project
@@ -23,15 +49,39 @@ tree.
 
 - Project loading level
 - Metatargets level
-
 - Virtual targets level.
+- Engine level
+
+== Bjam engine level ==
+
+On the bjam engine level, we have bjam targets and bjam
+actions. Bjam target is just a string. It can have arbitrary
+set of (variable-name,value) pairs associated with it.
+
+
+An action has a name, and a body. Body actually specifies the
+command that should be executed, and body can make use
+of the variables defined on targets. See bjam docs for more details.
+
+In Python port, the bjam engine level is represented by the boost.build.engine
+package. The Engine class is abstract base, and BjamEngine is concrete
+implementation. The basic operation is to specify that certain targets
+are produced from other other targets using specified action. This
+is done by the 'set_update_action' method.
+
+The targets are strings, they don't need any declarations. The actions
+however do need declarations. There are two 
+
+
+The bjam targets are strings, and don't need special
+declaration.  The actions, however, do need special declaration, and
+there are two methods to declare a target
 
     
-Bjam <-> Python interface
-=========================
+= Bjam <-> Python interface =
 
-Bjam side
---------
+
+== Bjam side ==
 
 The EXTRA_PYTHONPATH variable, in the global module,
 should be a list with directories where Python modules
@@ -44,10 +94,8 @@ From Bjam side, a single extra rule is available:
 
 This imports a python callable object from the
 specified module into bjam.
-QWERTY
 
-Python side
------------
+== Python side ==
 
 The following functions are avaiable from python, in the
 bjam module.
@@ -66,5 +114,3 @@ lists of strings as parameters.
 
 Defines new action with specified name, body, list if bound
 variables and flags. The action is created in the global module.
-
-

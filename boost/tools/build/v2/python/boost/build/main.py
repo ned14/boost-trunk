@@ -6,18 +6,23 @@
 
 import bjam
 import sys
-from boost.build.engine.bjam import *
+from boost.build.engine.engine import Engine
 from boost.build.manager import Manager
 from boost.build.build.loader import ProjectLoader
 import boost.build.tools.builtin
 from boost.build.build import property_set
 
+import boost.build.tools.common
+
 def main(argv):    
     print "Starting Boost.Build V2/Python"
     sys.argv = argv
 
-    build_system = BjamBuildSystem()
-    manager = Manager(build_system)
+    engine = Engine()
+    manager = Manager(engine)
+
+    boost.build.tools.common.init(manager)
+    
     loader = ProjectLoader(manager.projects());
     project_here = loader.load('.')
 

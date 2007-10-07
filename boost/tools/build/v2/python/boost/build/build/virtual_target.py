@@ -66,7 +66,7 @@ from boost.build.util.utility import add_grist, get_grist, ungrist, replace_gris
 from boost.build.util.sequence import unique
 from boost.build.tools import common
 from boost.build.exceptions import *
-import toolset, type, action
+import toolset, type
 
 __re_starts_with_at = re.compile ('^@(.*)')
 
@@ -558,7 +558,8 @@ class FileTarget (AbstractFileTarget):
             # Make sure the path exists.
             engine.set_target_variable (target, 'LOCATE', file_path)
             engine.add_dependency (target, file_path)
-            engine.set_update_action ('MkDir', file_path, [])
+            #engine.set_update_action ('MkDir', file_path, [], None)
+            common.mkdir(engine, file_path)
 
         else:
             # This is a source file.
@@ -670,21 +671,16 @@ class Action:
         # Action name can include additional argument to rule, which should not
         # be passed to 'set-target-variables'
         toolset.set_target_variables (self.manager_, self.action_name_, actual_targets, raw_properties)
-        
-        rule = action.find_rule (self.action_name_)
-        rule (self.manager_, actual_targets, self.actual_sources_, raw_properties)
-        
+             
         engine = self.manager_.engine ()
-        action_name = str (self.action_name_)
-
-        #if not action.exists (action_name):
-        #    raise NoAction ("No action defined for rule '%s'" % action_name)
         
-        self.manager_.engine ().set_update_action (self.action_name_, actual_targets, self.actual_sources_)
+        self.manager_.engine ().set_update_action (self.action_name_, actual_targets, self.actual_sources_,
+                                                   properties)
         
         # Since we set up creating action here, we also set up
         # action for cleaning up
-        self.manager_.engine ().set_update_action ('Clean', 'clean', actual_targets)
+        self.manager_.engine ().set_update_action ('common.Clean', 'clean',
+                                                   actual_targets, None)
 
         return actual_targets
 

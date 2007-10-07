@@ -12,7 +12,6 @@ import os
 
 import project
 from boost.build.util import path, set
-import boost.build.build.action
 import bjam
 
 
@@ -159,11 +158,6 @@ class ProjectLoader:
         project_module.attributes().dump()
         return project_module
 
-bjam.define_action("bla-blah", """
-    cp $(>) $(<)
-""", [], 0)
-
-
 class ProjectContext:
     """Class which provides basic rules callable inside Jamfile.
 
@@ -217,15 +211,6 @@ class ProjectContext:
 
     def make(self, target_name, sources, generating_rule, requirements=[]):
         import boost.build.tools.make
-
-        from boost.build.build.action import BjamActionWrapper
-	
-	generating_rule = ["bla-blah"]
-
-        boost.build.build.action.register(generating_rule[0],
-                                          lambda a1, a2, a3, a4: None,
-                                          "")
-        
         
         boost.build.tools.make.make(self.project_module_, target_name[0],
                                     sources, generating_rule[0],

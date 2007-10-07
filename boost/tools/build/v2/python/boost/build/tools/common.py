@@ -8,8 +8,9 @@
 """
 
 import re
+import bjam
 
-from boost.build.build import action, feature
+from boost.build.build import feature
 from boost.build.util.utility import *
 from boost.build.util import path
 
@@ -34,11 +35,6 @@ def reset ():
     __all_signatures = {}
     
 reset ()
-
-# TODO: check this.
-action.register ('Clean', None, 'rm -rf "$(>)"')
-action.register ('MkDir', None, 'mkdir -p "$(<)"')
-
 
 def check_init_parameters (toolset, *args):
     """ The rule checks toolset parameters. Each trailing parameter 
@@ -541,4 +537,38 @@ def handle_options (tool, condition, command, options):
 ### 
 ###     modules.poke os : name : $(save-os) ;      
 ###       
-### }    
+### }
+
+# FIXME: global variable
+made_dirs = {}
+
+def mkdir(engine, path_target):
+    """Creates dependencies that cause directory 'path_target' to be created"""
+
+    # If dir exists, don't update it
+    # Do this even for $(DOT).
+    bjam.call("NOUPDATE", path_target)
+
+    if path_target != "." and not made_dirs.has_key(path_target):
+        made_dirs[path_target] = 1
+        engine.set_update_action("common.MkDir1", path_target, [], None)
+
+        parent = os.path.dirname(path_target)
+        # Part of original Jam code, supposed to prevent
+        # calling mkdir on drive letters.
+        if len(parent) == 2 and parent[1] == ':':
+            parent = None
+        if len(parent) == 3 and parent[1] == ':' and parent[2] == '\\':
+            parent = None
+
+        if parent and parent != path_target:
+            engine.add_dependency(path_target, parent)
+            mkdir(engine, parent)
+        elif parent:
+            bjam.call("NOTFILE", parent)
+
+def init(manager):
+    engine = manager.engine()
+
+    engine.register_action ("common.MkDir1", 'mkdir "$(<)"')
+    engine.register_action ("common.Clean", 'rm -rf "$(>)"')
