@@ -16114,6 +16114,7 @@ libs/xpressive/doc/regexpp_diffs.qbk svneol=native#text/plain
 libs/xpressive/doc/results.qbk svneol=native#text/plain
 libs/xpressive/doc/static_regexes.qbk svneol=native#text/plain
 libs/xpressive/doc/substitutions.qbk svneol=native#text/plain
+libs/xpressive/doc/symbols.qbk svneol=native#text/plain
 libs/xpressive/doc/tips_n_tricks.qbk svneol=native#text/plain
 libs/xpressive/doc/tokenization.qbk svneol=native#text/plain
 libs/xpressive/doc/traits.qbk svneol=native#text/plain
