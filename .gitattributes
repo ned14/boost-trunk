@@ -14759,6 +14759,7 @@ libs/xpressive/doc/xpressive.qbk svneol=native#text/plain
 libs/xpressive/example/Jamfile.v2 svneol=native#text/plain
 libs/xpressive/example/example.vcproj -text
 libs/xpressive/example/main.cpp svneol=native#text/plain
+libs/xpressive/example/numbers.cpp svneol=native#text/plain
 libs/xpressive/index.html svneol=native#text/html
 libs/xpressive/perf/Jamfile.v2 svneol=native#text/plain
 libs/xpressive/perf/command_line.cpp svneol=native#text/plain
