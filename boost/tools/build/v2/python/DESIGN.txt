@@ -16,7 +16,8 @@ The only design/code changes allowed during the port are:
 
     - No globals -- all data that is global in existing code will be
     kepts inside Python object that are kept inside single top-level
-    "manager" object
+    "manager" object. This applies only to core code -- the
+    tools layer will use globals for now.
     - Build actions in Python -- in case where jam code, for a given
     command line, has both a command line proper and procedural
     code to setup something, said procedural code will be moved in
@@ -26,6 +27,10 @@ The only design/code changes allowed during the port are:
     - Using of the property_set class. Unless required for compatibility
     with Jamfiles, we'll be using property_set in all remaining cases
     where raw property list is used now.
+    - Path normalization. We only need path normalization when loading
+    Jamfiles, to make sure we don't load the same Jamfile twice,
+    no matter what path is used to refer to is. Other than that,
+    all path normalization logic will be dropped.
       
 = Design: Physical structure =
 
@@ -76,6 +81,12 @@ however do need declarations. There are two
 The bjam targets are strings, and don't need special
 declaration.  The actions, however, do need special declaration, and
 there are two methods to declare a target
+
+= Hints =
+
+All code callable from Jam gets string *list* and *every*
+argument. When logically, only a single string is allowed,
+use [0].
 
     
 = Bjam <-> Python interface =

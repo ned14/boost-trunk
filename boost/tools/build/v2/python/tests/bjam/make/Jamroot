@@ -1,12 +1,13 @@
 
-make a : a.cpp : $(__name__).copy ;
+foobar param ;
 
-FOO = 1 ;
+make a : a.cpp : $(__name__).copy ;
 
 rule copy ( targets : sources : properties * )
 {
     ECHO "XXXXXXXXXXX copy $(targets) : $(sources) : $(properties)" ;
 }
+
 
 actions copy
 {

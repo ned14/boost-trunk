@@ -572,3 +572,5 @@ def init(manager):
 
     engine.register_action ("common.MkDir1", 'mkdir "$(<)"')
     engine.register_action ("common.Clean", 'rm -rf "$(>)"')
+
+    import boost.build.tools.make

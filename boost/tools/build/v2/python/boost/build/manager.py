@@ -9,18 +9,24 @@ from build.scanner import ScannerRegistry
 from boost.build.util.logger import NullLogger
 from build import build_request, property_set, feature
 
+# To simplify implementation of tools level, we'll
+# have a global variable keeping the current manager.
+the_manager = None
+def get_manager():
+    return the_manager
+
 class Manager:
     """ This class is a facade to the Boost.Build system.
         It serves as the root to access all data structures in use.
     """
 	
-    def __init__ (self, engine):
+    def __init__ (self, engine, global_build_dir):
         """ Constructor.
             engine: the build engine that will actually construct the targets.
         """
         self.engine_ = engine
         self.virtual_targets_ = VirtualTargetRegistry (self)
-        self.projects_ = ProjectRegistry (self)
+        self.projects_ = ProjectRegistry (self, global_build_dir)
         self.targets_ = TargetRegistry ()
         self.logger_ = NullLogger ()
         self.scanners_ = ScannerRegistry (self)
@@ -30,6 +36,9 @@ class Manager:
         # Sometimes, objects are stored in properties, along with some grist.
         # This map is used to store the value and return an id, which can be later on used to retriev it back.
         self.object_map_ = {}
+
+        global the_manager
+        the_manager = self
         
     def scanners (self):
         return self.scanners_

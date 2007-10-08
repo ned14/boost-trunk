@@ -114,6 +114,9 @@ def register_globals ():
     feature.feature ('version', [], ['free'])
     
     feature.feature ('location-prefix', [], ['free'])
+
+    feature.feature ('action', [], ['free'])
+
     
     # The following features are incidental, since
     # in themself they have no effect on build products.

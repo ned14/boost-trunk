@@ -129,7 +129,7 @@ def translate_paths (properties, path):
     """ Interpret all path properties in 'properties' as relative to 'path'
         The property values are assumed to be in system-specific form, and
         will be translated into normalized form.
-    """
+        """
     result = []
 
     for p in properties:

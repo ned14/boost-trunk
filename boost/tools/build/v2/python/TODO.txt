@@ -1,31 +1,4 @@
 
-1. Current mechanism for interfacing with jam build engine is
-nasty.  Ideally, we should have this:
-
-    - The virtual_target.Action class holds action id.
-    - There's a map from action id into callable. Said
-    callable takes list of jam targets, list of jam
-    sources of a property set.  When the callable is called,
-    it typically just calls bjam's action.
-    - A new action id should be registered with 'action registry'
-    in one of those ways:
-    
-	- By saying that certain action id is already
-	defined on jam side.  In which case a callable will
-	be created that just calls bjam.
-	- By providing a action block to be associated
-	with id.  In this case, the action block will
-	be sent to bjam side. The callable will just
-	relay to bjam.
-	- By providing an action block and a python
-	function for additional setting of variables.
-	The callable will the call the variable-setting
-	code and relay to bjam.  This is equivalent to
-	jams rule/action pair, except we prefer to specify
-	variable-setting code in Python, not in Jam.
-	
-To implement the above, we need a way to define action block
-from Python.
 
 2. The current way to make rules available to Jamfiles is nasty --
 only functions defined in ProjectContext class are exported.
@@ -37,3 +10,36 @@ better Python solution?
 code throws does something wrong we get lots of backtrace.
 
 5. Can one have nested classes in Python.
+
+-> 6. Need to consider how to reimplement the 'errors' modules.
+
+-> 7. Pass bjam's argv to Python
+
+8. For some reason, if Python exports a function taking no
+arguments to bjam, and bjam calls it with no arguments, bjam
+passes 1 argument (empty list).
+
+9. What to do about 'using' and 'import'?
+
+10. In the make example, the action is called fine but
+the associated procedural code is not executed.
+
+
+Sanity checks:
+--------------
+
+- Review all FIXME in code
+- Remove all porting state comments at the top of files.
+
+
+Post-port
+---------
+
+- Use 'Metetarget' for classes in the 'targets' module.
+
+- The 'exact' parameter to FileTarget should be passed using
+keyword arguments.
+
+- Keep all information pertaining to a project inside project
+target. Kill ProjectAttributes class.
+

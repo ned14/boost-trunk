@@ -123,7 +123,7 @@ class TargetRegistry:
             project:        Project where the main target is to be declared
         """
         manager = project.manager ()
-        
+       
         loc = project.get ('location')
         requirements = property.translate_paths (specification, loc)
         requirements = property.expand_subfeatures_in_conditions (requirements)
@@ -304,11 +304,11 @@ class ProjectTarget (AbstractTarget):
         - The first time 'main-target' or 'has-main-target' rule is called,
           all alternatives are enumerated an main targets are created.
     """
-    def __init__ (self, name, project_module, parent_project, requirements, default_build):
-        AbstractTarget.__init__ (self, name, self, project_module.manager ())
+    def __init__ (self, manager, name, project_module, parent_project, requirements, default_build):
+        AbstractTarget.__init__ (self, name, self, manager)
 
         self.project_module_ = project_module
-        self.location_ = project_module.attribute ('location')
+        self.location_ = manager.projects().attribute (project_module, 'location')
         self.requirements_ = requirements
         self.default_build_ = default_build
        
@@ -338,7 +338,8 @@ class ProjectTarget (AbstractTarget):
         return self.project_module_
     
     def get (self, attribute):
-        return self.project_module_.attribute (attribute)
+        return self.manager().projects().attribute(
+            self.project_module_, attribute)
 
     def build_dir (self):
         if not self.build_dir_:
@@ -651,7 +652,7 @@ class BasicTarget (AbstractTarget):
 
         if not self.generated_.has_key (str (ps)):
             rproperties = self.common_properties (ps, self.requirements_)
-            
+
             if self.manager ().logger ().on ():
                 self.manager ().logger ().log (__name__, "Common properties are '%s'" % str (rproperties.raw ()))
             
@@ -686,7 +687,7 @@ class BasicTarget (AbstractTarget):
                 result = self.construct (self.name_, source_targets, rproperties)
 
                 gur = result [0]
-                result = result [1]
+                result = result [1:]
 
                 s = self.create_subvariant (result, ps, source_targets, rproperties, usage_requirements)
 

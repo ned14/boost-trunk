@@ -1,43 +1,52 @@
-#  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
-#  distribute this software is granted provided this copyright notice appears in
-#  all copies. This software is provided "as is" without express or implied
-#  warranty, and with no claim as to its suitability for any purpose.
+# Copyright 2003 Dave Abrahams 
+# Copyright 2003 Douglas Gregor 
+# Copyright 2006 Rene Rivera 
+# Copyright 2002, 2003, 2004, 2005, 2006 Vladimir Prus 
+# Distributed under the Boost Software License, Version 1.0. 
+# (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt) 
 
-""" This module defines the 'make' main target rule.
-"""
-import os
+#  This module defines the 'make' main target rule.
+
 from boost.build.build.targets import BasicTarget
-from boost.build.build.virtual_target import FileTarget, Action
-from boost.build.build import property_set, type
-from boost.build.util.utility import replace_suffix
-from boost.build.exceptions import *
+from boost.build.build.virtual_target import Action, FileTarget
+from boost.build.build import type
+from boost.build.manager import get_manager
+import boost.build.build.property_set
 
-class MakeTarget (BasicTarget):
-    def __init__ (self, project, name, sources, requirements, make_rule, default_build):
-        BasicTarget.__init__ (self, name, project, sources, requirements, default_build)
-       
-        self.project_ = project
-        self.make_rule_ = make_rule
-        
-    def construct (self, name, source_targets, ps):
-        a = Action (self.manager_, source_targets, self.make_rule_, ps)
-        t = FileTarget (self.name_, True, type.type (self.name_), self.project_, a)
+class MakeTarget(BasicTarget):
+  
+    def construct(self, name, source_targets, property_set):
 
-        return (property_set.empty (), [ self.manager ().virtual_targets ().register (t) ])
+        action_name = property_set.get("<action>")[0]
 
-def make (project, target_name, sources, generating_rule, requirements):
-    """ Declares the 'make' main target.
-    """
-    targets = project.manager ().targets ()
-    engine = project.manager().engine()
+        action = Action(get_manager(), source_targets, action_name, property_set)
+        # FIXME: type.type uses global data.
+        target = FileTarget(self.name(), 1, type.type(self.name()),
+                            self.project(), action)    
+        return [ boost.build.build.property_set.empty(),
+                 self.project().manager().virtual_targets().register(target)]
+
+# FIXME: should not have 'self' at all.
+def make (self, target_name, sources, generating_rule,
+          requirements=[], usage_requirements=[]):
+
+    target_name = target_name[0]
+    generating_rule = generating_rule[0]
+
+    requirements.append("<action>%s" % generating_rule)
+    m = get_manager()
+    targets = m.targets()
+    project = m.projects().current()
+    engine = m.engine()
     engine.register_bjam_action(generating_rule)
-    
-    targets.main_target_alternative (MakeTarget (project.target (), 
-        target_name,
-        targets.main_target_sources (sources, target_name),
-        targets.main_target_requirements (requirements, project.target ()),
-        generating_rule,
-        targets.main_target_default_build ([], project.target ())))
 
-import boost.build.build.project
-boost.build.build.project.ProjectModule.__dict__ ['make'] = make
+    targets.main_target_alternative(MakeTarget(
+        target_name, project,
+        targets.main_target_sources(sources, target_name),
+        targets.main_target_requirements(requirements, project),
+        targets.main_target_default_build([], project),
+        targets.main_target_usage_requirements(usage_requirements, project)))
+
+get_manager().projects().add_rule("make", make)
+
+

@@ -19,14 +19,26 @@ def main(argv):
     sys.argv = argv
 
     engine = Engine()
-    manager = Manager(engine)
+
+
+    global_build_dir = None
+    
+# FIXME:
+#.global-build-dir = [ MATCH --build-dir=(.*) : [ modules.peek : ARGV ] ] ;
+#if $(.global-build-dir)
+#{    
+#    # If the option is specified several times, take the last value.    
+#    .global-build-dir = [ path.make $(.global-build-dir[-1]) ] ;
+#}
+
+    manager = Manager(engine, global_build_dir)
 
     boost.build.tools.common.init(manager)
     
-    loader = ProjectLoader(manager.projects());
-    project_here = loader.load('.')
+    project_here = manager.projects().load('.')
 
-    result = project_here.target().generate(property_set.empty())
+    result = manager.projects().target(project_here).generate(
+        property_set.empty())
 
     actual_targets = []
     for t in result.targets():

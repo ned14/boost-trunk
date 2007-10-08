@@ -279,8 +279,9 @@ def __register_main_rule (type):
     import boost.build.build.project
     def xpto (project, name, sources, requirements = [], default_build = None, usage_requirements = []):
         return main_target_rule (type, project, name, sources, requirements, default_build, usage_requirements)
-        
-    boost.build.build.project.ProjectModule.__dict__ [main_rule_name] = xpto
+
+    # FIXME
+    #boost.build.build.project.ProjectModule.__dict__ [main_rule_name] = xpto
 
 
 def type_to_rule_name (type):

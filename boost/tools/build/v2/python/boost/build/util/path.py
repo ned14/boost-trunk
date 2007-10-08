@@ -16,6 +16,7 @@
 
 import os.path
 from utility import to_seq
+from glob import glob as builtin_glob
 
 def root (path, root):
     """ If 'path' is relative, it is rooted at 'root'. Otherwise, it's unchanged.
@@ -805,3 +806,50 @@ def programs_path ():
 #       modules.poke path : os : $(save-os) ;
 #   
 #   }
+
+#
+
+
+def glob(dir, patterns):
+    result = []
+    for pattern in patterns:
+        result.extend(builtin_glob(os.path.join(dir, pattern)))
+    return result
+
+def glob_in_parents(dir, patterns, upper_limit=None):
+    result = []
+    absolute_dir = os.path.join(os.getcwd(), dir)
+
+    while absolute_dir:
+        result = glob(absolute_dir, patterns)
+        if result:
+            break
+        absolute_dir = os.path.dirname(absolute_dir)
+
+    return result
+
+
+# The relpath functionality is written by
+# Cimarron Taylor
+def pathsplit(p, rest=[]):
+    (h,t) = os.path.split(p)
+    if len(h) < 1: return [t]+rest
+    if len(t) < 1: return [h]+rest
+    return pathsplit(h,[t]+rest)
+
+def commonpath(l1, l2, common=[]):
+    if len(l1) < 1: return (common, l1, l2)
+    if len(l2) < 1: return (common, l1, l2)
+    if l1[0] != l2[0]: return (common, l1, l2)
+    return commonpath(l1[1:], l2[1:], common+[l1[0]])
+
+def relpath(p1, p2):
+    (common,l1,l2) = commonpath(pathsplit(p1), pathsplit(p2))
+    p = []
+    if len(l1) > 0:
+        p = [ '../' * len(l1) ]
+    p = p + l2
+    if p:
+        return os.path.join( *p )
+    else:
+        return "."
