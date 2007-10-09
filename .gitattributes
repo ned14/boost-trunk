@@ -2095,6 +2095,7 @@ boost/math/tools/test_data.hpp svneol=native#text/plain
 boost/math/tools/toms748_solve.hpp svneol=native#text/plain
 boost/math/tools/traits.hpp svneol=native#text/plain
 boost/math/tools/user.hpp svneol=native#text/plain
+boost/math/tools/workaround.hpp svneol=native#text/plain
 boost/math_fwd.hpp svneol=native#text/plain
 boost/mem_fn.hpp svneol=native#text/plain
 boost/mpi.hpp svneol=native#text/plain
