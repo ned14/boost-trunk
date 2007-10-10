@@ -685,12 +685,11 @@ class BasicTarget (AbstractTarget):
                 source_targets = unique (source_targets)
 
                 result = self.construct (self.name_, source_targets, rproperties)
-
+                assert len(result) == 2
                 gur = result [0]
-                result = result [1:]
+                result = result [1]
 
                 s = self.create_subvariant (result, ps, source_targets, rproperties, usage_requirements)
-
                 ur = self.compute_usage_requirements (s)
                 ur = ur.add (gur)
                 s.set_usage_requirements (ur)
