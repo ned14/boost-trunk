@@ -574,3 +574,4 @@ def init(manager):
     engine.register_action ("common.Clean", 'rm -rf "$(>)"')
 
     import boost.build.tools.make
+    import boost.build.build.alias
