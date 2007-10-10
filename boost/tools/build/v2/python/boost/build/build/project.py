@@ -1,3 +1,5 @@
+# Status: being ported by Vladimir Prus
+
 # Copyright 2002, 2003 Dave Abrahams 
 # Copyright 2002, 2005, 2006 Rene Rivera 
 # Copyright 2002, 2003, 2004, 2005, 2006 Vladimir Prus 

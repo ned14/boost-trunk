@@ -1,3 +1,5 @@
+# Status: being ported by Vladimir Prus
+
 # Copyright 2003 Dave Abrahams 
 # Copyright 2003 Douglas Gregor 
 # Copyright 2006 Rene Rivera 
