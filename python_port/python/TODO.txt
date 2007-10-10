@@ -1,0 +1,45 @@
+
+
+2. The current way to make rules available to Jamfiles is nasty --
+only functions defined in ProjectContext class are exported.
+
+3. boost.build.engine.engine.Engine is nasty -- any
+better Python solution?
+
+4. The error messages, so far, are truly terrible -- if Python
+code throws does something wrong we get lots of backtrace.
+
+5. Can one have nested classes in Python.
+
+-> 6. Need to consider how to reimplement the 'errors' modules.
+
+-> 7. Pass bjam's argv to Python
+
+8. For some reason, if Python exports a function taking no
+arguments to bjam, and bjam calls it with no arguments, bjam
+passes 1 argument (empty list).
+
+9. What to do about 'using' and 'import'?
+
+10. In the make example, the action is called fine but
+the associated procedural code is not executed.
+
+
+Sanity checks:
+--------------
+
+- Review all FIXME in code
+- Remove all porting state comments at the top of files.
+
+
+Post-port
+---------
+
+- Use 'Metetarget' for classes in the 'targets' module.
+
+- The 'exact' parameter to FileTarget should be passed using
+keyword arguments.
+
+- Keep all information pertaining to a project inside project
+target. Kill ProjectAttributes class.
+

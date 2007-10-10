@@ -2,3 +2,6 @@ Milestone_12/build/v2/test/*.pyc
 Milestone_12/build/v2/test/failed_test
 Milestone_12/build/v2/test/test-config.jam
 Milestone_12/build/v2/test/test_results.txt
+python_port/python/tests/acceptance_tests/build_lib/Jamfile
+python_port/python/tests/acceptance_tests/build_lib/bin
+python_port/python/tests/acceptance_tests/build_lib/project-root.jam

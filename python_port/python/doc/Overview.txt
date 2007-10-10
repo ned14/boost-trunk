@@ -1,0 +1,251 @@
+Proposal for porting Boost.Build to Python
+==========================================
+
+:Author: Pedro Ferreira (pedro.ferreira@mog-solutions.com)
+:Date: January 2005
+
+Goal
+----
+Create a Python-based Boost.Build library.
+All the functionality available to BBv2 users shall be provided in the form of a library with a well-documented API. Parsers for higher-level languages, such as bjam, may be developed and use that API.
+An abstract interface between the library and the build engine shall be defined and used, thus avoiding mixing library code with direct calls to a specific build engine and simplifying integration with different build engines.
+
+Rationale
+---------
+The conjunction of Boost.Build and bjam has proved to be an excellent all-purpose, cross-platform build tool.
+However, as more complex systems use it, some intrinsic problems become more and more evident.
+
+These include:
+
+	Performance
+
+		bjam has severe performance problems when the number of targets grows above a quite low limit.
+		Effort has been put in place to minimize this, with some good results, but requires hard work and extensive knowledge of bjam's internals.
+		Plus, the work is done for the sake of bjam only, while if it were a general-purpose language, benefits could be reaped by more people.
+	
+	Specialized language... for the wrong task
+
+		jam, and thus bjam, was designed to be a build system language. It is very good to write Jamfiles but not so good to write the build system.
+	
+		Altough the enhancements made over time turned it into a more 'usable' language, it is not a general-purpose one.
+		This makes it difficult to use in a number of simple scenarios and, probably worse, make it almost impossible to find peole who are, at the same time, willing to collaborate in Boost.Build development and proficient in the language.
+
+		Using a general-purpose language would certainly make it easier to use, bring more people in and inherit all the performace enhancements made to such a language over time.
+	
+	Build systems do more than just build
+
+		Boost.Build only allows people to build systems. A more advanced tool could take advantage of a Boost.Build library to do other chores.
+		For example, a GUI could show a tree of dependencies, or use reflection capabilities to show the available options, or show a list of targets, or provide customized views of the build process, etc.
+
+	Limited build engine
+
+		bjam works quite well as a build engine. However, better tools exist today. Among these, SCons is probably the best one.
+
+For all the reasons above - and certainly more - it is proposed to port Boost.Build to Python.
+
+The outcome of this effort would be:
+
+	- A Python library with the Boost.Build engine that uses an abstract build engine interface (from now on to be called 'PyBB' - no, I don't mean to use it as the official name. It's just an abbreviation);
+	- An implementation of the above-mentioned interface for SCons;
+	- A bjam-based parser for Jamfiles that uses the Python library.
+
+Proposed Architecture
+---------------------
+Unlike the current incarnation of Boost.Build, PyBB is supposed to deal with several consecutive builds on the same process.
+For this reason, global variables should only be used for what are, in fact, constants to the build system. 
+
+Among these are features, types, generators, etc. All other artifacts that define targets or are created in the process of a build should be stored in class members.
+
+The proposed approach to use a class - boost.build.Manager - that acts as a facade and is the root to access all nong-global data structures.
+These include things such as a TargetRegistry, which contains all variables related to target registration that are global in BBv2.
+
+.. image:: doc/images/registries.png
+
+Mechanisms must be put in place that allow to clean the dynamically create artifacts between builds, thus allowing the process to be repeated without having to perform "static" re-initialization.
+
+PyBB needs not, and should not, enforce the concept of a Jamfile or similar. This would add an additional burden for applications that do not use "project" files.
+
+However, the grouping of targets in projects makes sense because it is used in most real world applications. In addition to this, associating names with projects make it easier to refer to other targets.
+So, PyBB has the concept of projects, which group releated targets and provide a foundation for referring to targets via name.
+
+Parsers for specification languages can map projects and the files that define them appropriately, e.g. the bjam parser can map projects to the corresponding Jamfile.
+
+.. image:: doc/images/project_registry.png
+
+In order to abstract out the build system, an interface is defined that allows the engine to specify the actual targets, their dependencies, actions and substitution variables.
+
+Actual implementations must be developed, e.g., for SCons or Bjam.
+
+.. image:: doc/images/engine.png
+
+Usage Example
+-------------
+
+	types.register ('CPP', 'cpp')
+	types.register ('LIB', 'so')
+	types.register ('SHARED_LIB', 'so', 'LIB')
+	...
+	features.register ('link', ['shared', 'static'], 'propagated')
+	...
+	engine = boost.build.Engine.SCons ()
+	manager = boost.build.Manager (engine)
+	
+	project1 = manager.projects ().add ('/work/src/project1', 'project1')
+	project1.add ('LIB', 'MyLib', 'MyLib.cpp', '<link>shared')
+	...
+	manager.build ()
+	manager.build (['/project1//MyLib'], ['release', '<optimization>off'])
+
+Guidelines
+----------
+- Avoid porting features already available in Python.
+- During the initial phase, avoid doing any design changes. Later on, a redesign may take advantage Python-features.
+- If a feature is needed but someone else is porting it, write a mock-up.
+- Raise exceptions to signal errors. Use a Exceptions.BaseException subclass. If none of the existing ones suit, define another one.
+- In variable names: convert '-' to '_'
+- In class names: convert 'abc-def' to 'AbcDef'
+- In file names: convert 'abc.jam' to 'abc.py'
+- Prepend '__' to names of private methods and global variables.
+- Append '_' to instance variables
+  Reason: many methods have the same name as instance variables. This is not possible in Python.
+- Convert util.vector instances to lists. Note that lists are 0 based, but vectors are 1-based.
+- Convert bjam strings used as lists to Python lists. E.g., convert::
+
+        local a = X ;
+        a += Y ;
+  
+  to::
+
+        a = ['X']
+        a.append ('Y')
+
+  Then, in conditions convert::
+ 
+        if $(a)
+        {
+            ...
+        }
+
+  to::
+
+        if a:
+            ...
+
+- Beware of concatenation of strings with spaces in bjam. In bjam::
+
+        a = x y
+        b = z$(a)
+        -> b = zx zy
+	
+  In python::
+
+        a = 'x y'
+        b = z + a
+        -> b = z x y
+	
+This is a good reason to use lists rather than strings.
+
+- Replace '__name__' with 'str (self)'
+
+- Beware of slices::
+
+    bjam: 
+        y = $(x[1])
+    Python: 
+        y = x [0]
+ 
+    bjam:
+        y = $(x[1--2])
+    Python:
+        y = x [0:-1]
+ 
+- Beware of the in operator with sequences::
+
+	bjam: 
+        a = 1 2 ;
+        b = 2 1 3 ;
+        $(a) in (b) == true
+	
+	Python: 
+        a = [1, 2]
+        b = [2, 1, 3]
+        a in b == false
+        set.contains (a, b) == true
+
+Testing
+-------
+- Unit tests should be created for each class. 
+- Functional system testing shall be added as soon as a basic set of functionality is developed.
+
+Documentation
+-------------
+- Proper documentation should be added for each class and method. These should include the relationship with the system as a whole, its expect usage, requirements, etc.
+- Architectural docs: use the existing ones with the relevant updates?
+
+Administrativia
+---------------
+- Baseline for the intial port: tag BOOST_BUILD_PYTHON_BASE.
+- Python version? SCons uses 1.5.2. I'd rather use at least 2.2 due to some important features. Guidance please.
+
+Doubts
+------
+- Scanners: not really sure how these work and their relation with bjam. Guidance please.
+
+File list
+---------
+
+I tried to sort these in such a way that we can build a testable system really soon.
+
+- To port now:
+
+    - build/feature.jam
+    - build/property.jam
+    - build/property-set.jam
+    - build/type.jam
+    - build/scanner.jam
+    - build/toolset.jam
+    - build/targets.jam
+    - build/virtual-target.jam
+    - build/generators.jam
+    - tools/make.jam
+    - build/project.jam
+    - tools/types/register.jam
+    - tools/types/cpp.jam
+    - tools/types/exe.jam
+    - tools/types/html.jam
+    - tools/types/lib.jam
+    - tools/types/obj.jam
+    - tools/types/rsp.jam
+
+- To port later:
+
+    - build-system.jam (to be partially integrated in the Manager class)
+
+    - tools/builtin.jam
+    - tools/stage.jam
+    - tools/* (except the ones mentioned elsewhere)
+    - build/alias.jam
+    - build/build-request.jam
+    - build/version.jam
+
+- Unsure (port if/when needed?):
+
+    - util/order.jam
+    - util/path.jam (I think most of this should be readily available in Python)
+    - util/sequence.jam (select-highest-ranked must be implemented)
+    - util/set.jam (intersection and difference: are these already implemented in Python?)
+    - util/utility.jam: we will probably need methods to deal with grists
+
+- Not needed:
+
+    - kernel/*
+    - examples/*
+    - test/*
+    - options/help.jam
+    - util/* (except the ones mentioned elsewhere)
+    - boost-build.jam
+    - bootstrap.jam
+    - site-config.jam
+    - user-config.jam
+    - build/modifiers.jam (not even working currently)
+
