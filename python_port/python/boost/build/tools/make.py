@@ -26,7 +26,7 @@ class MakeTarget(BasicTarget):
         target = FileTarget(self.name(), 1, type.type(self.name()),
                             self.project(), action)    
         return [ boost.build.build.property_set.empty(),
-                 self.project().manager().virtual_targets().register(target)]
+                 [self.project().manager().virtual_targets().register(target)]]
 
 # FIXME: should not have 'self' at all.
 def make (self, target_name, sources, generating_rule,
