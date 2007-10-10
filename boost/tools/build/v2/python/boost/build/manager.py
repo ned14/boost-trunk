@@ -8,6 +8,7 @@ from build.project import ProjectRegistry
 from build.scanner import ScannerRegistry
 from boost.build.util.logger import NullLogger
 from build import build_request, property_set, feature
+import bjam
 
 # To simplify implementation of tools level, we'll
 # have a global variable keeping the current manager.
@@ -30,6 +31,7 @@ class Manager:
         self.targets_ = TargetRegistry ()
         self.logger_ = NullLogger ()
         self.scanners_ = ScannerRegistry (self)
+        self.argv_ = bjam.variable("ARGV")
         
         # Object Map.
         # TODO: This is a kludge: maps object names to the actual instances.
@@ -54,6 +56,9 @@ class Manager:
 
     def projects (self):
         return self.projects_
+
+    def argv (self):
+        return self.argv_
     
     def logger (self):
         return self.logger_

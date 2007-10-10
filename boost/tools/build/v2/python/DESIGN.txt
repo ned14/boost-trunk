@@ -125,3 +125,8 @@ lists of strings as parameters.
 
 Defines new action with specified name, body, list if bound
 variables and flags. The action is created in the global module.
+
+4. variable name
+
+Obtains the value of a variable 'name' in Jam's global module.
+

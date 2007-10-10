@@ -109,8 +109,8 @@ class ProjectRegistry:
         If the jamfile at that location is loaded already, does nothing.
         Returns the project module for the Jamfile."""
 
-        if "--debug-loading" in sys.argv:
-            print "Loading Jamfile at" '$(jamfile-location)'
+        if "--debug-loading" in self.manager.argv():
+            print "Loading Jamfile at '%s'" % jamfile_location
 
             
         mname = self.module_name(jamfile_location)
@@ -273,9 +273,7 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
         """Load a Jamfile at the given directory. Returns nothing.
         Will attempt to load the file as indicated by the JAMFILE patterns.
         Effect of calling this rule twice with the same 'dir' is underfined."""
-
-        print "Loading jamfile for", dir
-        
+      
         # See if the Jamfile is where it should be.
         
         jamfile_to_load = boost.build.util.path.glob(dir, self.JAMROOT)
@@ -283,8 +281,6 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
             jamfile_to_load = self.find_jamfile(dir)
         else:
             jamfile_to_load = jamfile_to_load[0]
-
-        print "Jamfile found at", jamfile_to_load
             
         # The module of the jamfile.
         dir = os.path.realpath(os.path.dirname(jamfile_to_load))
@@ -350,7 +346,7 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
                  If not specified, stanalone project will be initialized
         """
 
-        if "--debug-loading" in sys.argv:
+        if "--debug-loading" in self.manager.argv():
             print "Initializing project '%s'" % module_name
 
         # TODO: need to consider if standalone projects can do anything but defining
@@ -669,6 +665,7 @@ class ProjectAttributes:
                                "source-location", "parent",
                                "projects-to-build", "project-root"]:
             pass
+            # FIXME
             #errors.error "Invalid project attribute '$(attribute)' specified "
             #                   "for project at '$(self.location)'" ;
         else:
@@ -677,22 +674,26 @@ class ProjectAttributes:
     def get(self, attribute):
         return self.__dict__.get(attribute, [])
 
-    # FIXME
-    # Prints the project attributes.
-    #rule print ( )
-    #{
-    #    local id = $(self.id) ; id ?= (none) ;
-    #    local parent = $(self.parent) ; parent ?= (none) ;
-    #    print.section "'"$(id)"'" ;
-    #    print.list-start ;
-    #    print.list-item "Parent project:" $(parent) ;
-    #    print.list-item "Requirements:" [ $(self.requirements).raw ] ;
-    #    print.list-item "Default build:" $(self.default-build) ;
-    #    print.list-item "Source location:" $(self.source-location) ;
-    #    print.list-item "Projects to build:" 
-    #                        [ sequence.insertion-sort $(self.projects-to-build) ] ;
-    #    print.list-end ;
-    #}
+    def dump(self):
+        """Prints the project attributes."""
+        id = self.get("id")
+        if not id:
+            id = "(none)"
+        else:
+            id = id[0]
+
+        parent = self.get("parent")
+        if not parent:
+            parent = "(none)"
+        else:
+            parent = parent[0]
+
+        print "'%s'" % id
+        print "Parent project:%s", parent
+        print "Requirements:%s", self.get("requirements")
+        print "Default build:%s", string.join(self.get("debuild-build"))
+        print "Source location:%s", string.join(self.get("source-location"))
+        print "Projects to build:%s", string.join(self.get("projects-to-build").sort());
 
 class ProjectRules:
     """Class keeping all rules that are made available to Jamfile."""

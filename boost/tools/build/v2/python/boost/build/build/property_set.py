@@ -4,7 +4,7 @@
 #  warranty, and with no claim as to its suitability for any purpose.
 
 from boost.build.util.utility import *
-import property, feature
+import property, feature, string
 from boost.build.exceptions import *
 from boost.build.util.sequence import unique
 
@@ -144,6 +144,9 @@ class PropertySet:
         """ Returns the list of stored properties.
         """
         return self.raw_
+
+    def __str__(self):
+        return string.join(self.raw_)
     
     def base (self):
         """ Returns properties that are neither incidental nor free.
