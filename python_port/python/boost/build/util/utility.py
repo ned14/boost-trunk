@@ -9,6 +9,7 @@
 
 import re
 import os
+import bjam
 from boost.build.exceptions import *
 
 __re_grist_and_value = re.compile (r'(<[^>]*>)(.*)')
@@ -128,59 +129,25 @@ def split_action_id (id):
         name = split [1]
     return (toolset, name)
 
-
-# NOTE: Moved the functions below from os.jam because os confilicted with Python's os. Renamed some of the functions.
-#
-# TODO: Below are the values defined in jam for OSMAJOR, OSMINOR and OSPLAT. Most haven't yet been implemented in this port.
-#
-# OSMAJOR:
-#      VMS, NT, MINGW, OS2, MAC, UNIX
-#
-# OSMINOR:
-#      VMS, NT, AS400, MINGW, OS2, MAC, AIX, AMIGA, BEOS, BSDI, COHERENT, CYGWIN, FREEBSD, DRAGONFLYBSD, 
-#      DGUX, HPUX, INTERIX, IRIX, ISC, LINUX, LYNX, MACHTEN, MPEIX, MVS, NCR, NETBSD, QNXNTO, QNX, 
-#      RHAPSODY, NEXT, MACOSX, OSF, PTX, SCO, SINIX, SOLARIS, SUNOS, ULTRIX, UNICOS, UNIXWARE, OPENBSD
-#
-# OSPLAT:  
-#      VAX, PPC, AXP, X86, SPARC, MIPS, IA64, 390
-
-__major_map = {
-    'Darwin': 'UNIX',
-    'Linux': 'UNIX'
-}
-
-__minor_map = {
-    'Darwin': 'MACOSX',
-    'Linux': 'Linux'
-}
-
-__platform_map = {
-    'Darwin': 'PPC',
-    'Linux': 'x86'
-}
-
-__major = __major_map [os.uname () [0]]
-__minor = __minor_map [os.uname () [0]]
-__platform = __platform_map [os.uname () [0]]
-__version = os.uname () [2]
-
 def os_name ():
-    return __minor
+    return bjam.variable("OS")
 
 def platform ():
-    return __platform
-
+    return bjam.variable("OSPLAT")
+    
 def os_version ():
-    return __version
-
+    return bjam.variable("OSVER")
 
 def on_windows ():
     """ Returns true if running on windows, whether in cygwin or not.
     """
-    if __major == 'NT':
+    if bjam.variable("NT"):
         return True
 
-    elif __minor == 'CYGWIN':
-        return True
+    elif bjam.variable("UNIX"):
+
+        uname = bjam.variable("JAMUNAME")
+        if uname and uname[0].startswith("CYGWIN"):
+            return True
 
     return False
