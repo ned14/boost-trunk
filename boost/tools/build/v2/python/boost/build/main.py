@@ -33,18 +33,22 @@ def main(argv):
 
     manager = Manager(engine, global_build_dir)
 
-    boost.build.tools.common.init(manager)
-    
-    project_here = manager.projects().load('.')
+    try:
+        boost.build.tools.common.init(manager)
+        
+        project_here = manager.projects().load('.')
 
-    result = manager.projects().target(project_here).generate(
+        result = manager.projects().target(project_here).generate(
         property_set.empty())
 
-    actual_targets = []
-    for t in result.targets():
-        actual_targets.append(t.actualize())
-        
-    bjam.call("set-top-level-targets", actual_targets)
-    return []
+        actual_targets = []
+        for t in result.targets():
+            actual_targets.append(t.actualize())
+            
+            bjam.call("set-top-level-targets", actual_targets)
+        return []
+    except Exception, e:
+        print e.message
+        return []
     
     

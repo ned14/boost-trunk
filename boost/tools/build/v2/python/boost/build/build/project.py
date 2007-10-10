@@ -42,10 +42,11 @@ from boost.build.build import property_set
 import boost.build.build.targets
 
 import bjam
-import re
 
+import re
 import sys
 import os
+import string
 
 class ProjectRegistry:
 
@@ -82,10 +83,7 @@ class ProjectRegistry:
 
         self.saved_current_project = []
 
-        # FIXME: need to have a way to grab this
-        # from environment
-        # JAMROOT ?= [ peek : JAMROOT ] ;
-        self.JAMROOT = None
+        self.JAMROOT = self.manager.getenv("JAMROOT");
 
         # Note the use of character groups, as opposed to listing
         # 'Jamroot' and 'jamroot'. With the latter, we'd get duplicate
@@ -95,10 +93,7 @@ class ProjectRegistry:
 
         # Default patterns to search for the Jamfiles to use for build
         # declarations.
-        #
-        # FIXME: need to grab from environment
-        #JAMFILE = [ modules.peek : JAMFILE ] ;
-        self.JAMFILE = None
+        self.JAMFILE = self.manager.getenv("JAMFILE")
 
         if not self.JAMFILE:
             self.JAMFILE = ["[Bb]uild.jam", "[Jj]amfile.v2", "[Jj]amfile",
@@ -169,9 +164,8 @@ class ProjectRegistry:
         error."""
 
         if self.module_name(location) in self.jamfile_modules:
-            # FIXME
-            print "Jamfile was already loaded for '$(location)'" ;
-            # errors.error "Jamfile was already loaded for '$(location)'" ;
+            self.manager.errors()(
+                "Jamfile was already loaded for '%s'" % location)
     
         # Set up non-default mapping from location to module.
         self.location2module[location] = module
@@ -231,7 +225,7 @@ class ProjectRegistry:
         # Glob for all the possible Jamfiles according to the match pattern.
         #
         jamfile_glob = None
-        if not parent_root:
+        if parent_root:
             parent = self.dir2parent_jamfile.get(dir)
             if not parent:
                 parent = boost.build.util.path.glob_in_parents(dir,
@@ -261,13 +255,12 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
     
         # Could not find it, error.
         if not no_errors and not jamfile_glob:
-            print "Unable to load Jamfile"
-            # FIXME:
-            #errors.error
-            #"Unable to load Jamfile." :
-            #    "Could not find a Jamfile in directory '$(dir)'". : 
-            #        "Attempted to find it with pattern '"$(JAMFILE:J=" ")"'." :
-            #            "Please consult the documentation at 'http://www.boost.org'." ;
+            self.manager.errors()(
+                """Unable to load Jamfile.
+Could not find a Jamfile in directory '%s'
+Attempted to find it with pattern '%s'.
+Please consult the documentation at 'http://boost.org/boost-build2'."""
+                % (dir, string.join(self.JAMFILE)))
 
         return jamfile_glob[0]
     
@@ -277,7 +270,7 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
         Effect of calling this rule twice with the same 'dir' is underfined."""
       
         # See if the Jamfile is where it should be.
-        
+
         jamfile_to_load = boost.build.util.path.glob(dir, self.JAMROOT)
         if not jamfile_to_load:
             jamfile_to_load = self.find_jamfile(dir)
@@ -310,14 +303,13 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
                         
         # Now do some checks
         if self.current_project != saved_project:
-            print "The value of self.current_project magically changed"
-            # FIXME:
-            #errors.error "The value of the .current-project variable"
-            #: "has magically changed after loading a Jamfile."
-            #: "This means some of the targets might be defined a the wrong project."
-            #: "after loading " $(jamfile-module) 
-            #: "expected value " $(saved-project)  
-            #: "actual value " $(.current-project)
+            self.manager.errors()(
+"""The value of the .current-project variable
+has magically changed after loading a Jamfile.
+This means some of the targets might be defined a the wrong project.
+after loading %s
+expected value %s
+actual value %s""" % (jamfile_module, saved_project, self.current_project))
           
         if self.global_build_dir:
             id = self.attribute(jamfile_module, "id")
@@ -327,6 +319,8 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
             if location and project_root == dir:
                 # This is Jamroot
                 if not id:
+                    # FIXME: go via errors module, so that contexts are
+                    # shown?
                     print "warning: the --build-dir option was specified"
                     print "warning: but Jamroot at '%s'" % dir
                     print "warning: specified no project id"
@@ -386,7 +380,7 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
             # We search for parent/project-root only if jamfile was specified 
             # --- i.e
             # if the project is not standalone.
-            parent_module = load_parent(location)
+            parent_module = self.load_parent(location)
         else:
             # It's either jamroot, or standalone project.
             # If it's jamroot, inherit from user-config.
@@ -413,7 +407,8 @@ Loading the first one: '%s'.""" % (dir, jamfile_glob[0])
             target = boost.build.build.targets.ProjectTarget(self.manager,
                 module_name, module_name, parent,
                 self.attribute(module_name,"requirements"),
-                # FIXME: why we need this?
+                # FIXME: why we need to pass this? It's not
+                # passed in jam code.
                 self.attribute(module_name, "default-build"))
             self.module2target[module_name] = target
     

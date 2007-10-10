@@ -6,6 +6,7 @@ from build.virtual_target import VirtualTargetRegistry
 from build.targets import TargetRegistry
 from build.project import ProjectRegistry
 from build.scanner import ScannerRegistry
+from build.errors import Errors
 from boost.build.util.logger import NullLogger
 from build import build_request, property_set, feature
 import bjam
@@ -32,6 +33,7 @@ class Manager:
         self.logger_ = NullLogger ()
         self.scanners_ = ScannerRegistry (self)
         self.argv_ = bjam.variable("ARGV")
+        self.errors_ = Errors()
         
         # Object Map.
         # TODO: This is a kludge: maps object names to the actual instances.
@@ -65,6 +67,12 @@ class Manager:
 
     def set_logger (self, logger):
         self.logger_ = logger
+
+    def errors (self):
+        return self.errors_
+
+    def getenv(self, name):
+        return bjam.variable(name)
 
     def register_object (self, value):
         """ Stores an object in a map and returns a key that can be used to retrieve it.
