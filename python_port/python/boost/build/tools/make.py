@@ -30,10 +30,13 @@ class MakeTarget(BasicTarget):
 
 # FIXME: should not have 'self' at all.
 def make (self, target_name, sources, generating_rule,
-          requirements=[], usage_requirements=[]):
+          requirements=None, usage_requirements=None):
 
     target_name = target_name[0]
     generating_rule = generating_rule[0]
+
+    if not requirements:
+        requirements = []
 
     requirements.append("<action>%s" % generating_rule)
     m = get_manager()
@@ -47,8 +50,7 @@ def make (self, target_name, sources, generating_rule,
         targets.main_target_sources(sources, target_name),
         targets.main_target_requirements(requirements, project),
         targets.main_target_default_build([], project),
-        targets.main_target_usage_requirements(usage_requirements, project)))
+        targets.main_target_usage_requirements(usage_requirements or [], project)))
 
 get_manager().projects().add_rule("make", make)
-
 
