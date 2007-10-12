@@ -900,7 +900,6 @@ python_port/kernel/modules.jam svneol=native#text/plain
 python_port/nightly.sh svneol=native#text/x-sh
 python_port/options/help.jam svneol=native#text/plain
 python_port/pybb.jam svneol=native#text/plain
-python_port/python/DESIGN.txt svneol=native#text/plain
 python_port/python/README.txt svneol=native#text/plain
 python_port/python/TODO.txt svneol=native#text/plain
 python_port/python/boost/__init__.py svneol=native#text/x-python
