@@ -11054,6 +11054,7 @@ libs/math/test/erf_large_data.ipp svneol=native#text/plain
 libs/math/test/erf_small_data.ipp svneol=native#text/plain
 libs/math/test/erfc_inv_big_data.ipp svneol=native#text/plain
 libs/math/test/erfc_inv_data.ipp svneol=native#text/plain
+libs/math/test/functor.hpp svneol=native#text/plain
 libs/math/test/gamma_inv_big_data.ipp svneol=native#text/plain
 libs/math/test/gamma_inv_data.ipp svneol=native#text/plain
 libs/math/test/gamma_inv_small_data.ipp svneol=native#text/plain
