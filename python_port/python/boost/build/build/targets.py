@@ -332,6 +332,9 @@ class ProjectTarget (AbstractTarget):
         # Targets marked as explicit.
         self.explicit_targets_ = []
 
+        # The constants defined for this project.
+        self.constants_ = {}
+
     # TODO: This is needed only by the 'make' rule. Need to find the
     # way to make 'make' work without this method.
     def project_module (self):
@@ -500,32 +503,24 @@ class ProjectTarget (AbstractTarget):
                 self.main_targets_ [name] = t
             
             self.main_targets_ [name].add_alternative (a)
-    
-#       # Accessor, add a constant.
-#       rule add-constant (
-#           name # Variable name of the constant.
-#           : value # Value of the constant.
-#           : type ? # Optional type of value.
-#           )
-#       {
-#           switch $(type)
-#           {
-#               case path :
-#                   value = [ path.root [ path.make $(value) ] $(self.location_) ] ;
-#                   # Now make the value absolute path
-#                   value = [ path.root $(value) [ path.pwd ] ] ;
-#                   # Constants should be in platform-native form
-#                   value = [ path.native $(value) ] ;
-#           }
-#           if ! $(name) in $(self.constants)
-#           {
-#               self.constants += $(name) ;
-#           }
-#           self.constant.$(name) = $(value) ;
-#           # Inject the constant in the scope of project-root module
-#           modules.poke $(self.project_module_) : $(name) : $(value) ;
-#       }
-#       
+
+    def add_constant(self, name, value, path=0):
+        """Adds a new constant for this project.
+
+        The constant will be available for use in Jamfile
+        module for this project. If 'path' is true,
+        the constant will be interpreted relatively
+        to the location of project.
+        """
+
+        if path:
+            value = os.path.join(self.location_, value)
+            # Now make the value absolute path
+            value = os.path.join(os.getcwd(), value)
+            
+        self.constants_[name] = value
+        bjam.call("set-variable", self.project_module(), name, value)
+
 #       rule inherit ( parent )
 #       {
 #           for local c in [ modules.peek $(parent) : self.constants ] 

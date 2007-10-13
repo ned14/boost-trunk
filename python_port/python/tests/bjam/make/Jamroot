@@ -1,5 +1,8 @@
 
-foobar param ;
+project test : requirements <variant>release ;
+
+constant FOO : foo ;
+ECHO "FOO is" $(FOO) ;
 
 make a : a.cpp : $(__name__).copy ;
 

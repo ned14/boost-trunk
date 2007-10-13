@@ -53,9 +53,9 @@ class ProjectRegistry:
     def __init__(self, manager, global_build_dir):
         self.manager = manager
         self.global_build_dir = None
-        self.project_rules = ProjectRules()
+        self.project_rules = ProjectRules(self)
 
-        # The project that is being loaded now
+        # The target corresponding to the project being loaded now
         self.current_project = None
         
         # The set of names of loaded project modules
@@ -411,7 +411,7 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
                 # passed in jam code.
                 self.attribute(module_name, "default-build"))
             self.module2target[module_name] = target
-    
+
         self.current_project = self.target(module_name)
 
     def inherit_attributes(self, project_module, parent_module):
@@ -609,11 +609,14 @@ class ProjectAttributes:
             
         elif attribute == "requirements":
             try:
-                result = property_set.refine_from_user_input(
-                    self.requirements, specification,
-                    self.project_module, self.location)
+                # FIXME: refine_from_user_input not ported yet.                
+                result = self.requirements.refine(
+                    property_set.create(specification))
+                #result = property_set.refine_from_user_input(
+                #    self.requirements, specification,
+                #    self.project_module, self.location)
             except Exception, e:
-                print "Conflicting parent properties requirements", e.value
+                print "Conflicting parent properties requirements", e.message
                 # FIXME:
                 #errors.error
                 #    "Requirements for project at '$(self.location)'"
@@ -695,9 +698,11 @@ class ProjectAttributes:
 class ProjectRules:
     """Class keeping all rules that are made available to Jamfile."""
 
-    def __init__(self):
+    def __init__(self, registry):
+        self.registry = registry
         self.rules = {}
-
+        self.add_rule("path-constant", self.path_constant)
+    
     def add_rule(self, name, callable):
         self.rules[name] = callable
 
@@ -716,6 +721,71 @@ class ProjectRules:
         for n in self.rules:
             bjam.import_rule(project_module, n, self.rules[n])
 
+    def project(self, *args):
+
+        jamfile_module = self.registry.current().project_module()
+        print "Setting 'test'"
+        bjam.call("set-variable", jamfile_module, "test", "passed")
+        attributes = self.registry.attributes(jamfile_module)
+        
+        id = None
+        if args and args[0]:
+            id = args[0][0]
+
+        if id:
+            if id[0] != '/':
+                id = '/' + id
+            self.registry.register_id (id, jamfile_module)
+
+        explicit_build_dir = None
+        for a in args:
+            if a:
+                attributes.set(a[0], a[1:], exact=0)
+                if a[0] == "build-dir":
+                    explicit_build_dir = a[1]
+        
+        # If '--build-dir' is specified, change the build dir for the project.
+        if self.registry.global_build_dir:
+
+            location = attributes.get("location")
+            # Project with empty location is 'standalone' project, like
+            # user-config, or qt.  It has no build dir.
+            # If we try to set build dir for user-config, we'll then
+            # try to inherit it, with either weird, or wrong consequences.
+            if location and location == attributes.get("project-root"):
+                # This is Jamroot.
+                if id:
+                    if explicit_build_dir and os.path.isabs(explicit_build_dir):
+                        self.register.manager.errors()(
+"""Absolute directory specified via 'build-dir' project attribute
+Don't know how to combine that with the --build-dir option.""")
+
+                    rid = id
+                    if rid[0] == '/':
+                        rid = rid[1:]
+
+                    p = os.path.join(self.registry.global_build_dir,
+                                     rid, explicit_build_dir)
+                    attributes.set("build-dir", p, exact=1)
+            elif explicit_build_dir:
+                self.registry.manager.errors()(
+"""When --build-dir is specified, the 'build-project'
+attribute is allowed only for top-level 'project' invocations""")
+
+    def constant(self, name, value):
+        """Declare and set a project global constant.
+        Project global constants are normal variables but should
+        not be changed. They are applied to every child Jamfile."""
+        m = "Jamfile</home/ghost/Work/Boost/boost-svn/tools/build/v2_python/python/tests/bjam/make>"
+        self.registry.current().add_constant(name[0], value)
+
+    def path_constant(self, name, value):
+        """Declare and set a project global constant, whose value is a path. The
+        path is adjusted to be relative to the invocation directory. The given
+        value path is taken to be either absolute, or relative to this project
+        root."""
+        self.registry.current().add_constant(name[0], value, path=1)
+                
     def foobar(self, param):
         print "foobar called!"
     
@@ -763,107 +833,10 @@ class ProjectRules:
 ##     }
 
         
-##     rule project ( id ? : options * : * )
-##     {
-##         import project ;
-##         import path ;
-##         import errors ;
-                        
-##         local attributes = [ project.attributes $(__name__) ] ;
-##         if $(id) 
-##         {
-##            id = [ path.root $(id) / ] ;
-##            project.register-id $(id) : $(__name__) ;
-##            $(attributes).set id : $(id) ;
-##         }
-        
-##         local explicit-build-dir ;
-        
-##         for n in 2 3 4 5 6 7 8 9
-##         {
-##             local option = $($(n)) ;
-##             if $(option) 
-##             {
-##                 $(attributes).set $(option[1]) : $(option[2-]) ;
-##             }
-##             if $(option[1]) = "build-dir"
-##             {
-##                 explicit-build-dir = [ path.make $(option[2-]) ] ;
-##             }            
-##         }
-        
-##         # If '--build-dir' is specified, change the build dir for the project.
-##         local global-build-dir = 
-##           [ modules.peek project : .global-build-dir ] ;
-        
-##         if $(global-build-dir)
-##         {                
-##             local location = [ $(attributes).get location ] ;
-##             # Project with empty location is 'standalone' project, like
-##             # user-config, or qt.  It has no build dir.
-##             # If we try to set build dir for user-config, we'll then
-##             # try to inherit it, with either weird, or wrong consequences.
-##             if $(location) && $(location) = [ $(attributes).get project-root ]
-##             {
-##                 # This is Jamroot.
-##                 if $(id)
-##                 {                    
-##                     if $(explicit-build-dir) 
-##                       && [ path.is-rooted $(explicit-build-dir) ]
-##                     {
-##                         errors.user-error "Absolute directory specified via 'build-dir' project attribute" 
-##                           : "Don't know how to combine that with the --build-dir option." 
-##                           ;                                          
-##                     }
-##                     # Strip the leading slash from id.
-##                     local rid = [ MATCH /(.*) : $(id) ] ;                
-##                     local p = [ path.join 
-##                         $(global-build-dir) $(rid) $(explicit-build-dir) ] ;
-
-##                     $(attributes).set build-dir : $(p) : exact ;
-##                 }                
-##             }                
-##             else 
-##             {
-##                 # Not Jamroot
-##                 if $(explicit-build-dir)
-##                 {                    
-##                     errors.user-error "When --build-dir is specified, the 'build-project'"
-##                       : "attribute is allowed only for top-level 'project' invocations" ;                      
-##                 }                
-##             }                
-##         }
         
 
 ##     }
     
-##     # Declare and set a project global constant. Project global constants are
-##     # normal variables but should not be changed. They are applied to every
-##     # child Jamfile.
-##     #
-##     rule constant (
-##         name # Variable name of the constant.
-##         : value + # Value of the constant.
-##         )
-##     {
-##         import project ;
-##         local p = [ project.target $(__name__) ] ;
-##         $(p).add-constant $(name) : $(value) ;        
-##     }
-    
-##     # Declare and set a project global constant, whose value is a path. The
-##     # path is adjusted to be relative to the invocation directory. The given
-##     # value path is taken to be either absolute, or relative to this project
-##     # root.  
-##     rule path-constant (
-##         name # Variable name of the constant.
-##         : value + # Value of the constant.
-##         )
-##     {
-##         import project ;
-##         local p = [ project.target $(__name__) ] ;
-##         $(p).add-constant $(name) : $(value) : path ;
-##     }
 
 
 ##     rule use-project ( id : where )
