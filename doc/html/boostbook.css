@@ -176,7 +176,6 @@
     
     .spirit-nav a
     {
-        color: white;
         padding-left: 0.5em;
     }
     
@@ -244,6 +243,20 @@
         padding: 0.5em 0.5em 0.5em 0.5em;
         border: 1pt solid white;
         font-size: 80%;
+    }
+
+    table.simplelist
+    {
+        width: auto !important;
+        margin: 0em !important;
+        padding: 0em !important;
+    }
+    table.simplelist td
+    {
+        margin: 0em !important;
+        padding: 0em !important;
+        text-align: left !important;
+        font-size: 9pt !important;
     }
 
 /*=============================================================================
@@ -432,6 +445,11 @@
             background-color: #F0F0F0;
             border: 1px solid #DCDCDC;
         }
+
+        table.simplelist tr td
+        {
+            border: none !important;
+        }
     
     /* Misc */
         span.highlight
@@ -500,6 +518,11 @@
         div.table table tr th
         {
             border: 1px solid gray;
+        }
+
+        table.simplelist tr td
+        {
+            border: none !important;
         }
     
     /* Misc */

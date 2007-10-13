@@ -620,7 +620,6 @@ def build_book( **kargs ):
     finally:
         os.chdir( cwd )
 
-
 def collect_logs(
           tag
         , runner
@@ -629,7 +628,7 @@ def collect_logs(
         , comment
         , incremental
         , dart_server
-        , http_proxy
+        , ftp_proxy
         , args
         , **unused
         ):
@@ -650,10 +649,25 @@ def collect_logs(
     else:           run_type = 'full'
 
     source = 'tarball'
+    revision = ''
     svn_root_file = os.path.join( boost_root, '.svn' )
+    svn_info_file = os.path.join( boost_root, 'svn_info.txt' )
     if os.path.exists( svn_root_file ):
         source = 'SVN'
+        svn_command( 'user', 'info ' + boost_root + ' >' + svn_info_file )
 
+    if os.path.exists( svn_info_file ):
+        f = open( svn_info_file, 'r' )
+        svn_info = f.read()
+        f.close()
+        i = svn_info.find( 'Revision:' )
+        if i >= 0:
+            i += 10
+            while svn_info[i] >= '0' and svn_info[i] <= '9':
+              revision += svn_info[i]
+              i += 1
+      
+      
     from runner import collect_logs
     collect_logs(
           regression_results
@@ -666,7 +680,8 @@ def collect_logs(
         , source
         , run_type
         , dart_server
-        , http_proxy
+        , ftp_proxy
+        , revision
         )
 
 
@@ -716,18 +731,15 @@ def upload_book( tag, runner, ftp_proxy, debug_level, **unused ):
 def update_itself( tag, **unused ):
     source = os.path.join( xsl_reports_dir, 'runner', os.path.basename( sys.argv[0] ) )
     self = os.path.join( regression_root, os.path.basename( sys.argv[0] ) )
-
+    
+    # Through revision 38985, the update copy was not done if
+    # os.stat(self).st_mtime > os.stat(source).st_mtime. This was not
+    # reliable on all systems, so the copy is now done unconditionally.
+    log( '    Saving a backup copy of the current script...' )
+    os.chmod( self, stat.S_IWRITE ) # Win32 workaround
+    shutil.move( self, '%s~' % self )
     log( 'Updating %s from %s...' % ( self, source )  )
-    log( '    Checking modification dates...' )
-    if os.stat( self ).st_mtime > os.stat( source ).st_mtime:
-        log( 'Warning: The current version of script appears to be newer than the source.' )
-        log( '         Update skipped.' )
-    else:
-        log( '    Saving a backup copy of the current script...' )
-        os.chmod( self, stat.S_IWRITE ) # Win32 workaround
-        shutil.move( self, '%s~' % self )
-        log( '    Replacing %s with a newer version...' % self )
-        shutil.copy2( source, self )
+    shutil.copy2( source, self )
 
 
 def send_mail( smtp_login, mail, subject, msg = '', debug_level = 0 ):
@@ -768,6 +780,8 @@ def regression(
         , incremental
         , send_bjam_log
         , force_update
+        , have_source
+        , skip_tests
         , monitored
         , timeout
         , mail = None
@@ -800,6 +814,8 @@ def regression(
             log( 'Tag: "%s"' % tag  )
 
             unpack_tarball( local, regression_root )
+        elif have_source:
+            if not incremental: cleanup( [ 'bin' ] )
         else:
             if incremental or force_update:
                 if not incremental: cleanup( [ 'bin' ] )
@@ -815,8 +831,8 @@ def regression(
         # that would mean to use Boost.Build default ones
         # We can skip test only we were explictly 
         # told to have no toolsets in command line "--toolset="
-        if  toolsets != '': # --toolset=,
-            test( toolsets, bjam_options, monitored, timeout, v2, [] )
+        if toolsets != '': # --toolset=,
+            if not skip_tests: test( toolsets, bjam_options, monitored, timeout, v2, [] )
             collect_logs( tag, runner, platform, user, comment, incremental, dart_server, proxy, [] )
             upload_logs( tag, runner, user, ftp_proxy, debug_level, send_bjam_log, dart_server )
 
@@ -857,7 +873,7 @@ def show_revision( **unused ):
 
     import re
     re_keyword_value = re.compile( r'^\$\w+:\s+(.*)\s+\$$' )
-    print '\n\tResivion: %s' % re_keyword_value.match( revision ).group( 1 )
+    print '\n\tRevision: %s' % re_keyword_value.match( revision ).group( 1 )
     print '\tLast modified on: %s\n' % re_keyword_value.match( modified ).group( 1 )
 
 
@@ -882,6 +898,8 @@ def accept_args( args ):
         , 'debug-level='
         , 'incremental'
         , 'force-update'
+        , 'have-source'
+        , 'skip-tests'
         , 'dont-send-bjam-log'
         , 'monitored'
         , 'help'
@@ -932,6 +950,8 @@ def accept_args( args ):
         , 'incremental'     : options.has_key( '--incremental' )
         , 'send_bjam_log'   : not options.has_key( '--dont-send-bjam-log' )
         , 'force_update'    : options.has_key( '--force-update' )
+        , 'have_source'     : options.has_key( '--have-source' )
+        , 'skip_tests'      : options.has_key( '--skip-tests' )
         , 'monitored'       : options.has_key( '--monitored' )
         , 'timeout'         : options[ '--timeout' ]
         , 'mail'            : options[ '--mail' ]
@@ -978,6 +998,9 @@ Options:
 \t                do not send full bjam log of the regression run
 \t--force-update  do an SVN update (if applicable) instead of a clean
 \t                checkout, even when performing a full run
+\t--have-source   do neither a tarball download nor an SVN update;
+\t                used primarily for testing script changes
+\t--skip-tests    do no run bjam; used for testing script changes
 \t--monitored     do a monitored run
 \t--timeout       specifies the timeout, in minutes, for a single test
 \t                run/compilation (enforced only in monitored runs, 5 by

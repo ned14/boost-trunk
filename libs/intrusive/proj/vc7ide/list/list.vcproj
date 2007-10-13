@@ -27,7 +27,7 @@
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="5"
-				DisableLanguageExtensions="TRUE"
+				DisableLanguageExtensions="FALSE"
 				ForceConformanceInForLoopScope="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -41,6 +41,7 @@
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/list.pdb"
+				GenerateMapFile="FALSE"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -75,6 +76,8 @@
 				AdditionalIncludeDirectories="../../../../../"
 				PreprocessorDefinitions="BOOST_DATE_TIME_NO_LIB"
 				RuntimeLibrary="4"
+				DisableLanguageExtensions="FALSE"
+				ForceConformanceInForLoopScope="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"

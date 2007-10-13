@@ -29,6 +29,9 @@ int main()
 
 t.write("foo.cpp", """
 #ifdef FOO
+#ifdef _WIN32
+__declspec(dllexport)
+#endif
 void foo() {}
 #endif
 """)
@@ -37,6 +40,6 @@ void foo() {}
 # target, we'll get a link error at this point.
 t.run_build_system("hello define=FOO")
 
-t.expect_addition("bin/$toolset/debug/hello")
+t.expect_addition("bin/$toolset/debug/hello.exe")
 
 t.cleanup()

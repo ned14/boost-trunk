@@ -37,6 +37,7 @@ namespace xml = boost::tiny_xml;
 #include <string>
 #include <vector>
 #include <set>
+#include <utility>  // for make_pair on STLPort
 #include <map>
 #include <algorithm>
 #include <iostream>
@@ -44,6 +45,7 @@ namespace xml = boost::tiny_xml;
 #include <ctime>
 #include <stdexcept>
 #include <cassert>
+#include <utility>
 
 using std::string;
 
@@ -88,12 +90,12 @@ namespace
 
     struct col_node {
         int rows, cols;
-        bool is_leaf_directory;
-        typedef std::map<const std::string, col_node> subcolumns_t;
+        bool has_leaf;
+        typedef std::map<std::string, col_node> subcolumns_t;
         subcolumns_t m_subcolumns;
         bool operator<(const col_node &cn) const;
         col_node() :
-            is_leaf_directory(false)
+            has_leaf(false)
         {}
         std::pair<int, int> get_spans();
     };
@@ -101,20 +103,28 @@ namespace
     std::pair<int, int> col_node::get_spans(){
         rows = 1;
         cols = 0;
-        if(is_leaf_directory)
+        if(has_leaf){
             cols = 1;
-        subcolumns_t::iterator itr;
-        for(itr = m_subcolumns.begin(); itr != m_subcolumns.end(); ++itr){
-            std::pair<int, int> spans;
-            spans = itr->second.get_spans();
-            rows = std::max(rows, spans.first);
-            cols += spans.second;
         }
-        return std::make_pair(rows + 1, cols);
+        if(! m_subcolumns.empty()){
+            subcolumns_t::iterator itr;
+            for(itr = m_subcolumns.begin(); itr != m_subcolumns.end(); ++itr){
+                std::pair<int, int> spans;
+                spans = itr->second.get_spans();
+                rows = std::max(rows, spans.first);
+                cols += spans.second;
+            }
+            ++rows;
+        }
+        return std::make_pair(rows, cols);
     }
 
     void build_node_tree(const fs::path & dir_root, col_node & node){
-        bool is_leaf_directory = true;
+        fs::path xml_file_path( dir_root / "test_log.xml" );
+        if (fs::exists( xml_file_path ) )
+        {
+            node.has_leaf = true;
+        }
         fs::directory_iterator itr(dir_root);
         while(itr != end_itr){
             if(fs::is_directory(*itr)){
@@ -123,11 +133,9 @@ namespace
                         std::make_pair(itr->leaf(), col_node())
                     );
                 build_node_tree(*itr, result.first->second);
-                is_leaf_directory = false;
             }
             ++itr;
         }
-        node.is_leaf_directory = is_leaf_directory;
     }
 
     fs::ofstream report;
@@ -209,7 +217,7 @@ namespace
     const string & element_content(
         const xml::element & root, const string & name )
     {
-        static string empty_string;
+        const static string empty_string;
         xml::element_list::const_iterator itr;
         for ( itr = root.elements.begin();
             itr != root.elements.end() && (*itr)->name != name;
@@ -222,7 +230,7 @@ namespace
     const xml::element & find_element(
         const xml::element & root, const string & name )
     {
-        const xml::element empty_element;
+        static const xml::element empty_element;
         xml::element_list::const_iterator itr;
         for ( itr = root.elements.begin();
             itr != root.elements.end() && (*itr)->name != name;
@@ -245,7 +253,7 @@ namespace
             if(atr->name == attribute_name)
                 return atr->value;
         }
-        const static string empty_string;
+        static const string empty_string;
         return empty_string;
     }
 
@@ -295,12 +303,12 @@ namespace
         }
 
         links_file << "<h2><a name=\"";
-        links_file << make_pair(
+        links_file << std::make_pair(
             html_from_path(target_dir.string().begin()), 
             html_from_path(target_dir.string().end())
             )
             << "\">"
-            << make_pair(
+            << std::make_pair(
             html_from_path(target_dir.string().begin()), 
             html_from_path(target_dir.string().end())
             )
@@ -337,13 +345,13 @@ namespace
                 "See <a href=\"#"
                 << source_library_name << "-"
                 << object_library_name << "-" 
-                << make_pair(
+                << std::make_pair(
                 html_from_path(target_dir.string().begin()), 
                 html_from_path(target_dir.string().end())
                 )
                 << source_library_name << " - "
                 << object_library_name << " - " 
-                << make_pair(
+                << std::make_pair(
                 html_from_path(target_dir.string().begin()), 
                 html_from_path(target_dir.string().end())
                 )
@@ -369,13 +377,13 @@ namespace
                 {
                     links_file << "<h2><a name=\""
                         << object_library_name << "-" 
-                        << make_pair(
+                        << std::make_pair(
                         html_from_path(target_dir.string().begin()), 
                         html_from_path(target_dir.string().end())
                         )
                         << "\">"
                         << object_library_name << " - " 
-                        << make_pair(
+                        << std::make_pair(
                         html_from_path(target_dir.string().begin()), 
                         html_from_path(target_dir.string().end())
                         )
@@ -537,7 +545,7 @@ namespace
         bool profile
     ){
         bool retval = false;
-        if(node.is_leaf_directory){
+        if(node.has_leaf){
             retval = do_cell(
                 dir_root,
                 lib_name,
@@ -686,9 +694,10 @@ namespace
             }
             return;
         }
-        if(node.is_leaf_directory && ! node.m_subcolumns.empty()){
+        if(node.has_leaf && ! node.m_subcolumns.empty()){
             header_cell(row_count - current_row, 1, std::string(""));
         }
+
         col_node::subcolumns_t::const_iterator itr;
         for(itr = node.m_subcolumns.begin(); itr != node.m_subcolumns.end(); ++itr){
             if(1 == itr->second.rows)

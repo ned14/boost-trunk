@@ -32,11 +32,24 @@
 /// \brief  Various utilities not specific to the image library. Some are non-standard STL extensions or generic iterator adaptors
 /// \author Lubomir Bourdev and Hailin Jin \n
 ///         Adobe Systems Incorporated
+/// \date   2005-2007 \n Last updated on September 18, 2007
 ///
 ///
 ////////////////////////////////////////////////////////////////////////////////////////
 
 namespace boost { namespace gil {
+
+/**
+\addtogroup PointModel
+
+Example:
+\code
+point2<std::ptrdiff_t> p(3,2);
+assert((p[0] == p.x) && (p[1] == p.y));
+assert(axis_value<0>(p) == 3);
+assert(axis_value<1>(p) == 2);
+\endcode
+*/
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //                           CLASS point2
@@ -61,8 +74,8 @@ public:
 
     point2& operator=(const point2& p)            { x=p.x; y=p.y; return *this; }
 
-    point2        operator<<(int shift)         const   { return point2(x<<shift,y<<shift); }
-    point2        operator>>(int shift)         const   { return point2(x>>shift,y>>shift); }
+    point2        operator<<(std::ptrdiff_t shift)         const   { return point2(x<<shift,y<<shift); }
+    point2        operator>>(std::ptrdiff_t shift)         const   { return point2(x>>shift,y>>shift); }
     point2& operator+=(const point2& p)           { x+=p.x; y+=p.y; return *this; }
     point2& operator-=(const point2& p)           { x-=p.x; y-=p.y; return *this; }
     point2& operator/=(double t)                  { x/=t; y/=t; return *this; }
@@ -99,10 +112,10 @@ template <typename T> GIL_FORCEINLINE
 point2<double> operator/(const point2<T>& p, double t)      { return t==0 ? point2<double>(0,0):point2<double>(p.x/t,p.y/t); }
 /// \ingroup PointModel
 template <typename T> GIL_FORCEINLINE
-point2<T> operator*(const point2<T>& p, int t)      { return point2<T>(p.x*t,p.y*t); }
+point2<T> operator*(const point2<T>& p, std::ptrdiff_t t)      { return point2<T>(p.x*t,p.y*t); }
 /// \ingroup PointModel
 template <typename T> GIL_FORCEINLINE
-point2<T> operator*(int t, const point2<T>& p)      { return point2<T>(p.x*t,p.y*t); }
+point2<T> operator*(std::ptrdiff_t t, const point2<T>& p)      { return point2<T>(p.x*t,p.y*t); }
 
 /// \ingroup PointModel
 template <std::size_t K, typename T> GIL_FORCEINLINE
@@ -118,25 +131,34 @@ template <std::size_t K, typename T> GIL_FORCEINLINE
 ///
 ////////////////////////////////////////////////////////////////////////////////////////
 
-inline int iround(float x ) { return static_cast<int>(x + (x < 0.0f ? -0.5f : 0.5f)); }
-inline int iround(double x) { return static_cast<int>(x + (x < 0.0 ? -0.5 : 0.5)); }
-inline int ifloor(float x ) { return static_cast<int>(std::floor(x)); }
-inline int ifloor(double x) { return static_cast<int>(std::floor(x)); }
-inline int iceil(float x )  { return static_cast<int>(std::ceil(x)); }
-inline int iceil(double x)  { return static_cast<int>(std::ceil(x)); }
+inline std::ptrdiff_t iround(float x ) { return static_cast<std::ptrdiff_t>(x + (x < 0.0f ? -0.5f : 0.5f)); }
+inline std::ptrdiff_t iround(double x) { return static_cast<std::ptrdiff_t>(x + (x < 0.0 ? -0.5 : 0.5)); }
+inline std::ptrdiff_t ifloor(float x ) { return static_cast<std::ptrdiff_t>(std::floor(x)); }
+inline std::ptrdiff_t ifloor(double x) { return static_cast<std::ptrdiff_t>(std::floor(x)); }
+inline std::ptrdiff_t iceil(float x )  { return static_cast<std::ptrdiff_t>(std::ceil(x)); }
+inline std::ptrdiff_t iceil(double x)  { return static_cast<std::ptrdiff_t>(std::ceil(x)); }
+
+/**
+\addtogroup PointAlgorithm
+
+Example:
+\code
+assert(iround(point2<double>(3.1, 3.9)) == point2<std::ptrdiff_t>(3,4));
+\endcode
+*/
 
 /// \ingroup PointAlgorithm
-inline point2<int> iround(const point2<float >& p)  { return point2<int>(iround(p.x),iround(p.y)); }
+inline point2<std::ptrdiff_t> iround(const point2<float >& p)  { return point2<std::ptrdiff_t>(iround(p.x),iround(p.y)); }
 /// \ingroup PointAlgorithm
-inline point2<int> iround(const point2<double>& p)  { return point2<int>(iround(p.x),iround(p.y)); }
+inline point2<std::ptrdiff_t> iround(const point2<double>& p)  { return point2<std::ptrdiff_t>(iround(p.x),iround(p.y)); }
 /// \ingroup PointAlgorithm
-inline point2<int> ifloor(const point2<float >& p)  { return point2<int>(ifloor(p.x),ifloor(p.y)); }
+inline point2<std::ptrdiff_t> ifloor(const point2<float >& p)  { return point2<std::ptrdiff_t>(ifloor(p.x),ifloor(p.y)); }
 /// \ingroup PointAlgorithm
-inline point2<int> ifloor(const point2<double>& p)  { return point2<int>(ifloor(p.x),ifloor(p.y)); }
+inline point2<std::ptrdiff_t> ifloor(const point2<double>& p)  { return point2<std::ptrdiff_t>(ifloor(p.x),ifloor(p.y)); }
 /// \ingroup PointAlgorithm
-inline point2<int> iceil (const point2<float >& p)  { return point2<int>(iceil(p.x), iceil(p.y)); }
+inline point2<std::ptrdiff_t> iceil (const point2<float >& p)  { return point2<std::ptrdiff_t>(iceil(p.x), iceil(p.y)); }
 /// \ingroup PointAlgorithm
-inline point2<int> iceil (const point2<double>& p)  { return point2<int>(iceil(p.x), iceil(p.y)); }
+inline point2<std::ptrdiff_t> iceil (const point2<double>& p)  { return point2<std::ptrdiff_t>(iceil(p.x), iceil(p.y)); }
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ///
@@ -149,22 +171,34 @@ inline T align(T val, std::size_t alignment) {
     return val+(alignment - val%alignment)%alignment; 
 }
 
+/// \brief Helper base class for pixel dereference adaptors. 
+/// \ingroup PixelDereferenceAdaptorModel
+///
+template <typename ConstT, typename Value, typename Reference, typename ConstReference,
+          typename ArgType, typename ResultType, bool IsMutable>
+struct deref_base : public std::unary_function<ArgType, ResultType> {
+    typedef ConstT         const_t;
+    typedef Value          value_type;
+    typedef Reference      reference;
+    typedef ConstReference const_reference;
+    BOOST_STATIC_CONSTANT(bool, is_mutable = IsMutable);
+};
+
 /// \brief Composes two dereference function objects. Similar to std::unary_compose but needs to pull some typedefs from the component types.  Models: PixelDereferenceAdaptorConcept
 /// \ingroup PixelDereferenceAdaptorModel
 ///
 template <typename D1, typename D2>
-class deref_compose {
+class deref_compose : public deref_base<
+      deref_compose<typename D1::const_t, typename D2::const_t>,
+      typename D1::value_type, typename D1::reference, typename D1::const_reference, 
+      typename D2::argument_type, typename D1::result_type, D1::is_mutable && D2::is_mutable>
+{
 public:
     D1 _fn1;
     D2 _fn2;
 
-    typedef deref_compose<typename D1::const_t, typename D2::const_t> const_t;
-    typedef typename D1::value_type      value_type;
-    typedef typename D1::reference       reference;
-    typedef typename D1::const_reference const_reference;
     typedef typename D2::argument_type   argument_type;
     typedef typename D1::result_type     result_type;
-    BOOST_STATIC_CONSTANT(bool, is_mutable=D1::is_mutable && D2::is_mutable);
 
     deref_compose() {}
     deref_compose(const D1& x, const D2& y) : _fn1(x), _fn2(y) {}

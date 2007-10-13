@@ -72,11 +72,13 @@ suffixes = {}
 def prepare_suffix_map(toolset):
     global windows, suffixes    
     suffixes = {'.exe': '', '.dll': '.so', '.lib': '.a', '.obj': '.o'}
+    suffixes['.implib'] = '.no_implib_files_on_this_platform'
     if windows:
         suffixes = {}
         if toolset in ["gcc"]:
             suffixes['.lib'] = '.a' # static libs have '.a' suffix with mingw...
             suffixes['.obj'] = '.o'
+        suffixes['.implib'] = '.lib'
     if os.__dict__.has_key('uname') and os.uname()[0] == 'Darwin':
         suffixes['.dll'] = '.dylib'
 
@@ -716,6 +718,9 @@ class Tester(TestCmd.TestCmd):
                 if dll_prefix:
                     tail = "lib" + tail
                     result = os.path.join(head, tail)
+        # If we try to use this name in Jamfile, we better
+        # convert \ to /, as otherwise we'd have to quote \.
+        result = string.replace(result, "\\", "/")
         return result
                 
     def adjust_suffix(self, name):
