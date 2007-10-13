@@ -695,10 +695,11 @@ class ProjectAttributes:
 class ProjectRules:
     """Class keeping all rules that are made available to Jamfile."""
 
-    def __init__(self): pass
+    def __init__(self):
+        self.rules = {}
 
     def add_rule(self, name, callable):
-        self.__class__.__dict__[name] = callable
+        self.rules[name] = callable
 
     def init_project(self, project_module):
         
@@ -711,6 +712,9 @@ class ProjectRules:
             if callable(v):
                 print "Importing '%s' to bjam" % n
                 bjam.import_rule(project_module, n, v)
+
+        for n in self.rules:
+            bjam.import_rule(project_module, n, self.rules[n])
 
     def foobar(self, param):
         print "foobar called!"

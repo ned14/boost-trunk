@@ -28,8 +28,7 @@ class MakeTarget(BasicTarget):
         return [ boost.build.build.property_set.empty(),
                  [self.project().manager().virtual_targets().register(target)]]
 
-# FIXME: should not have 'self' at all.
-def make (self, target_name, sources, generating_rule,
+def make (target_name, sources, generating_rule,
           requirements=None, usage_requirements=None):
 
     target_name = target_name[0]
