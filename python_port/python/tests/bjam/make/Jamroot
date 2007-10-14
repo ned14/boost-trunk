@@ -4,6 +4,8 @@ project test : requirements <variant>release ;
 constant FOO : foo ;
 ECHO "FOO is" $(FOO) ;
 
+#ECHO "GLOB RESULT:" [ glob-tree * ] ;
+
 make a : a.cpp : $(__name__).copy ;
 
 rule copy ( targets : sources : properties * )

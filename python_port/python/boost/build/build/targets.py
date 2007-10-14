@@ -399,15 +399,14 @@ class ProjectTarget (AbstractTarget):
             result.append (self.project_module_.registry ().target (p))
                         
         return result
-    
-#       # Add 'target' to the list of targets in this project that should be build
-#       # only by explicit request
-#       rule mark-target-as-explicit ( target-name )
-#       {
-#           # Record the name of the target, not instance, since this
-#           # rule is called before main target instaces are created.
-#           self.explicit_targets_ += $(target-name) ;
-#       }
+
+    def mark_target_as_explicit (self, target_name):
+        """Add 'target' to the list of targets in this project
+        that should be build only by explicit request."""
+        
+        # Record the name of the target, not instance, since this
+        # rule is called before main target instaces are created.
+        self.explicit_.append(target_name)
 
     def create_main_target (self, name):
         """ Returns a 'MainTarget' class instance corresponding to the 'name'.

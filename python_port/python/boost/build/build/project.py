@@ -81,6 +81,13 @@ class ProjectRegistry:
         # Map from project module to target for the project
         self.module2target = {}
 
+        # Map from project target to the list of
+        # (id,location) pairs corresponding to all 'use-project'
+        # invocations.
+        # TODO: should not have a global map, keep this
+        # in ProjectTarget.
+        self.used_projects = {}
+
         self.saved_current_project = []
 
         self.JAMROOT = self.manager.getenv("JAMROOT");
@@ -123,7 +130,7 @@ class ProjectRegistry:
             #
             # While "build-project" and "use-project" can potentially refer
             # to child projects from parent projects, we don't immediately
-            # loading child projects when seing those attributes. Instead,
+            # load child projects when seing those attributes. Instead,
             # we record the minimal information that will be used only later.
             
             self.load_used_projects(mname)
@@ -131,18 +138,15 @@ class ProjectRegistry:
         return mname
 
     def load_used_projects(self, module_name):
-        ### FIXME:
         # local used = [ modules.peek $(module-name) : .used-projects ] ;
-        used = []
+        used = self.used_projects[module_name]
     
         location = self.attribute(module_name, "location")
-        while used:
-            id = used[0]
-            where = used[1]
+        for u in used:
+            id = u[0]
+            where = u[1]
 
-            use(id, os.path.join(location, where))
-            del used[0]
-            del used[1]
+            self.use(id, os.path.join(location, where))
 
     def load_parent(self, location):
         """Loads parent of Jamfile at 'location'.
@@ -287,6 +291,8 @@ Please consult the documentation at 'http://boost.org/boost-build2'."""
         self.initialize(jamfile_module, dir, os.path.basename(jamfile_to_load))
 
         saved_project = self.current_project
+
+        self.used_projects[jamfile_module] = []
         
         # Now load the Jamfile in it's own context.
         # Initialization might have load parent Jamfiles, which might have
@@ -515,6 +521,35 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         Calling that rule wil relay to 'callable'."""
         self.project_rules.add_rule(name, callable)
 
+    def glob_internal(self, project, wildcards, excludes, rule_name):
+        location = project.get("source-location")
+
+        result = []
+        callable = boost.build.util.path.__dict__[rule_name]
+        
+        paths = callable(location, wildcards, excludes)
+        has_dir = 0
+        for w in wildcards:
+            if os.path.dirname(w):
+                has_dir = 1
+                break
+
+        if has_dir or rule_name != "glob":
+            # The paths we've found are relative to current directory,
+            # but the names specified in sources list are assumed to
+            # be relative to source directory of the corresponding
+            # prject. So, just make the name absolute.
+            result = [os.path.join(os.getcwd(), p) for p in paths]
+        else:
+            # There were not directory in wildcard, so the files are all
+            # in the source directory of the project. Just drop the
+            # directory, instead of making paths absolute.
+            result = [os.path.basename(p) for p in paths]
+            
+        return result
+
+
+# FIXME:
 # Defines a Boost.Build extension project. Such extensions usually
 # contain library targets and features that can be used by many people.
 # Even though extensions are really projects, they can be initialize as
@@ -554,36 +589,6 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
 #        project.inherit-attributes $(__name__) : $(root-project) ;
 #        $(attributes).set parent-module : $(root-project) : exact ;
 #    }
-#}
-
-#rule glob-internal ( project : wildcards + : excludes * : rule-name )
-#{
-#    local location = [ $(project).get source-location ] ;
-#    
-#    local result ;
-#    local paths = [ path.$(rule-name) $(location) 
-#      : [ sequence.transform path.make : $(wildcards) ] 
-#        : [ sequence.transform path.make : $(excludes) ] ] ;
-#    if $(wildcards:D) || $(rule-name) != glob
-#    {
-#        # The paths we've found are relative to current directory,
-#        # but the names specified in sources list are assumed to
-#        # be relative to source directory of the corresponding
-#        # prject. So, just make the name absolute.
-#        for local p in $(paths)
-#        {
-#            result += [ path.root $(p) [ path.pwd ] ] ;
-#        }                
-#    }
-#    else 
-#    {
-#        # There were not directory in wildcard, so the files are all
-#        # in the source directory of the project. Just drop the
-#        # directory, instead of making paths absolute.
-#        result = $(paths:D="") ;
-#    }
-#    
-#    return $(result) ;                
 #}
         
 
@@ -715,6 +720,7 @@ class ProjectRules:
             # while using self.__dict__[r] would give unbound one.
             v = getattr(self, n)
             if callable(v):
+                n = string.replace(n, "_", "-")
                 print "Importing '%s' to bjam" % n
                 bjam.import_rule(project_module, n, v)
 
@@ -724,8 +730,6 @@ class ProjectRules:
     def project(self, *args):
 
         jamfile_module = self.registry.current().project_module()
-        print "Setting 'test'"
-        bjam.call("set-variable", jamfile_module, "test", "passed")
         attributes = self.registry.attributes(jamfile_module)
         
         id = None
@@ -785,9 +789,44 @@ attribute is allowed only for top-level 'project' invocations""")
         value path is taken to be either absolute, or relative to this project
         root."""
         self.registry.current().add_constant(name[0], value, path=1)
-                
-    def foobar(self, param):
-        print "foobar called!"
+
+    def use_project(self, id, where):
+        # See comment in 'load' for explanation why we record the
+        # parameters as opposed to loading the project now.
+        m = self.registry.current().project_module();
+        self.registry.used_projects[m].append((id, where))
+        
+    def build_project(self, dir):
+        jamfile_module = self.registry.current().project_module()
+        attributes = self.registry.attributes(jamfile_module)
+        now = attributes.get("projects-to-build")
+        attributes.set("projects-to-build", now.append(dir))
+
+    def explicit(self, target_names):
+        t = self.registry.current()
+        for n in target_names:
+            t.mark_target_as_explicit(n)
+
+    def glob(self, wildcards, excludes=None):
+        return self.registry.glob_internal(self.registry.current(),
+                                           wildcards, excludes, "glob")
+
+    def glob_tree(self, wildcards, excludes=None):
+        bad = 0
+        for p in wildcards:
+            if os.path.dirname(p):
+                bad = 1
+
+        if excludes:
+            for p in excludes:
+                if os.path.dirname(p):
+                    bad = 1
+
+        if bad:
+            self.registry.manager().errors()(
+"The patterns to 'glob-tree' may not include directory")
+        return self.registry.glob_internal(self.registry.current(),
+                                           wildcards, excludes, "glob_tree")
     
 
 # FIXME
@@ -839,53 +878,7 @@ attribute is allowed only for top-level 'project' invocations""")
     
 
 
-##     rule use-project ( id : where )
-##     {
-##         # See comment in 'load' for explanation.
-##         .used-projects += $(id) $(where) ;
-##     }
 
-##     rule build-project ( dir )
-##     {
-##         import project ;
-##         local attributes = [ project.attributes $(__name__) ] ;
-
-##         local now = [ $(attributes).get projects-to-build ] ;
-##         $(attributes).set projects-to-build : $(now) $(dir) ;
-##     }
-    
-##     rule explicit ( target-names * )
-##     {
-##         import project ;
-##         # If 'explicit' is used in a helper rule defined in Jamroot,
-##         # and inherited by children, then most of the time 
-##         # we want 'explicit' to operate on the Jamfile where
-##         # the helper rule is invoked.
-##         local t = [ project.current ] ;
-##         for local n in $(target-names)
-##         {            
-##             $(t).mark-target-as-explicit $(n) ;
-##         }        
-##     }    
-    
-##     rule glob ( wildcards + : excludes * )
-##     {
-##         import project ;
-##         return [ project.glob-internal [ project.current ] 
-##           : $(wildcards) : $(excludes) : glob ] ;
-##     }
-
-##     rule glob-tree ( wildcards + : excludes * )
-##     {
-##         import project ;
-        
-##         if $(wildcards:D) || $(excludes:D)
-##         {
-##             errors.user-error "The patterns to 'glob-tree' may not include directory" ;
-##         }
-##         return [ project.glob-internal [ project.current ] 
-##           : $(wildcards) : $(excludes) : glob-tree ] ;
-##     }
 
 ##     # Calculates conditional requirements for multiple requirements
 ##     # at once. This is a shorthand to be reduce duplication and to
@@ -898,10 +891,4 @@ attribute is allowed only for top-level 'project' invocations""")
 ##     {
 ##         return $(condition:J=,):$(requirements) ;
 ##     }
-## }
-
-
-## local rule __test__ ( )
-## {
-##     import assert ;
 ## }

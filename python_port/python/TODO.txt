@@ -24,12 +24,15 @@ passes 1 argument (empty list).
 10. In the make example, the action is called fine but
 the associated procedural code is not executed.
 
+11. Test the 'use-project' rule, 'build-project' too.
+
 
 Sanity checks:
 --------------
 
 - Review all FIXME in code
 - Remove all porting state comments at the top of files.
+- Update copyrights, add Pedro to copyrights.
 
 
 Post-port
@@ -43,3 +46,4 @@ keyword arguments.
 - Keep all information pertaining to a project inside project
 target. Kill ProjectAttributes class.
 
+********************************************************************************

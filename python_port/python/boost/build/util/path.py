@@ -1,3 +1,7 @@
+# Status: this module is ported on demand by however needs something
+# from it.  Functionality that is not needed by Python port will
+# be dropped.
+
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in
 #  all copies. This software is provided "as is" without express or implied
@@ -810,10 +814,55 @@ def programs_path ():
 #
 
 
-def glob(dir, patterns):
-    result = []
-    for pattern in patterns:
-        result.extend(builtin_glob(os.path.join(dir, pattern)))
+#def glob(dir, patterns):
+#    result = []
+#    for pattern in patterns:
+#        result.extend(builtin_glob(os.path.join(dir, pattern)))
+#    return result
+
+def glob(dirs, patterns, exclude_patterns=None):
+    """Returns the list of files matching the given pattern in the
+    specified directory.  Both directories and patterns are 
+    supplied as portable paths. Each pattern should be non-absolute
+    path, and can't contain '.' or '..' elements. Each slash separated
+    element of pattern can contain the following special characters:
+    -  '?', which match any character
+    -  '*', which matches arbitrary number of characters.
+    A file $(d)/e1/e2/e3 (where 'd' is in $(dirs)) matches pattern p1/p2/p3
+    if and only if e1 matches p1, e2 matches p2 and so on.
+    For example: 
+        [ glob . : *.cpp ] 
+        [ glob . : */build/Jamfile ]
+    """
+    if not exclude_patterns:
+        exclude_patterns = []
+
+    real_patterns = [os.path.join(d, p) for p in patterns for d in dirs]    
+    real_exclude_patterns = [os.path.join(d, p) for p in exclude_patterns
+                             for d in dirs]
+
+    inc = [os.path.normpath(name) for p in real_patterns
+           for name in builtin_glob(p)]
+    exc = [os.path.normpath(name) for p in real_exclude_patterns
+           for name in builtin_glob(p)]
+    return [x for x in inc if x not in exc]
+
+def glob_tree(roots, patterns, exclude_patterns=None):
+    """Recursive version of GLOB. Builds the glob of files while
+    also searching in the subdirectories of the given roots. An
+    optional set of exclusion patterns will filter out the
+    matching entries from the result. The exclusions also apply
+    to the subdirectory scanning, such that directories that
+    match the exclusion patterns will not be searched."""
+
+    if not exclude_patterns:
+        exclude_patterns = []
+
+    result = glob(roots, patterns, exclude_patterns)
+    subdirs = [s for s in result if s != "." and s != ".." and os.path.isdir(s)]
+    if subdirs:
+        result.extend(glob_tree(subdirs, patterns, exclude_patterns))
+        
     return result
 
 def glob_in_parents(dir, patterns, upper_limit=None):
