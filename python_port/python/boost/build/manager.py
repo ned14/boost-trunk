@@ -33,6 +33,7 @@ class Manager:
         self.logger_ = NullLogger ()
         self.scanners_ = ScannerRegistry (self)
         self.argv_ = bjam.variable("ARGV")
+        self.boost_build_path_ = bjam.variable("BOOST_BUILD_PATH")
         self.errors_ = Errors()
         
         # Object Map.
@@ -73,6 +74,9 @@ class Manager:
 
     def getenv(self, name):
         return bjam.variable(name)
+
+    def boost_build_path(self):
+        return self.boost_build_path_
 
     def register_object (self, value):
         """ Stores an object in a map and returns a key that can be used to retrieve it.

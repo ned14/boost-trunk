@@ -1,4 +1,11 @@
 
+using tool : 1.0 ;
+using tool : 2.0 ;
+import util : say2 : say2local ;
+
+util.say "hi" ;
+say2local "howdy" ;
+
 project test : requirements <variant>release ;
 
 constant FOO : foo ;

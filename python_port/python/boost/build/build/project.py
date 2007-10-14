@@ -47,6 +47,7 @@ import re
 import sys
 import os
 import string
+import imp
 
 class ProjectRegistry:
 
@@ -80,6 +81,10 @@ class ProjectRegistry:
 
         # Map from project module to target for the project
         self.module2target = {}
+
+        # Map from names to Python modules, for modules loaded
+        # via 'using' and 'import' rules in Jamfiles.
+        self.loaded_tool_modules_ = {}
 
         # Map from project target to the list of
         # (id,location) pairs corresponding to all 'use-project'
@@ -548,6 +553,49 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
             
         return result
 
+    def load_module(self, name, extra_path=None):
+        """Find a Python module called 'name' in Boost.Build search
+        path and load it.  The module is not entered in sys.modules.
+        The motivation here is to have disjoint namespace of modules
+        loaded via 'import/using' in Jamfile, and ordinary Python
+        modules. We don't want 'using foo' in Jamfile to load ordinary
+        Python module 'foo' which is going to not work. And we
+        also don't want 'import foo' in regular Python module to
+        accidentally grab module named foo that is internal to
+        Boost.Build and intended to provide interface to Jamfiles."""
+
+        existing = self.loaded_tool_modules_.get(name)
+        if existing:
+            return existing
+        
+        path = extra_path
+        if not path:
+            path = []
+        path.extend(self.manager.boost_build_path())
+        location = None
+        for p in path:
+            l = os.path.join(p, name + ".py")
+            if os.path.exists(l):
+                location = l
+                break
+
+        if not location:
+            self.manager.errors()("Cannot find module '%s'" % name)
+
+        mname = "__build_build_temporary__"
+        file = open(location)
+        try:
+            # TODO: this means we'll never make use of .pyc module,
+            # which might be a problem, or not.
+            module = imp.load_module(mname, file, os.path.basename(location),
+                                     (".py", "r", imp.PY_SOURCE))
+            del sys.modules[mname]
+            self.loaded_tool_modules_[name] = module
+            return module
+        finally:
+            file.close()
+        
+
 
 # FIXME:
 # Defines a Boost.Build extension project. Such extensions usually
@@ -720,7 +768,10 @@ class ProjectRules:
             # while using self.__dict__[r] would give unbound one.
             v = getattr(self, n)
             if callable(v):
-                n = string.replace(n, "_", "-")
+                if n == "import_":
+                    n = "import"
+                else:
+                    n = string.replace(n, "_", "-")
                 print "Importing '%s' to bjam" % n
                 bjam.import_rule(project_module, n, v)
 
@@ -829,66 +880,53 @@ attribute is allowed only for top-level 'project' invocations""")
                                            wildcards, excludes, "glob_tree")
     
 
-# FIXME
-## # This module defines rules common to all projects
-## module project-rules
-## {                
-##     rule using ( toolset-module : * )
-##     {
-##         import toolset ;
-##         import modules ;
-##         import project ;
+    def using(self, toolset, *args):
+        # The module referred by 'using' can be placed in
+        # the same directory as Jamfile, and the user
+        # will expect the module to be found even though
+        # the directory is not in BOOST_BUILD_PATH.
+        # So temporary change the search path.
+        jamfile_module = self.registry.current().project_module()
+        attributes = self.registry.attributes(jamfile_module)
+        location = attributes.get("location")
+
+        m = self.registry.load_module(toolset[0], [location])
+        m.init(*args)
+
+
+    def import_(self, name, names_to_import=None, local_names=None):
+
+        name = name[0]
+        jamfile_module = self.registry.current().project_module()
+        attributes = self.registry.attributes(jamfile_module)
+        location = attributes.get("location")
+
+        m = self.registry.load_module(name, [location])
+
+        for f in m.__dict__:
+            v = m.__dict__[f]
+            if callable(v):
+                bjam.import_rule(jamfile_module, name + "." + f, v)
+
+        if names_to_import:
+            if not local_names:
+                local_names = names_to_import
+
+            if len(names_to_import) != len(local_names):
+                self.registry.manager.errors()(
+"""The number of names to import and local names do not match.""")
+
+            for n, l in zip(names_to_import, local_names):
+                bjam.import_rule(jamfile_module, l, m.__dict__[n])
         
-##         # The module referred by 'using' can be placed in
-##         # the same directory as Jamfile, and the user
-##         # will expect the module to be found even though
-##         # the directory is not in BOOST_BUILD_PATH.
-##         # So temporary change the search path.
-##         local x = [ modules.peek : BOOST_BUILD_PATH ] ;
-##         local caller = [ modules.binding $(__name__) ] ;
-##         modules.poke : BOOST_BUILD_PATH : $(caller:D) $(x) ;
-##         toolset.using $(1) : $(2) : $(3) : $(4) : $(5) : $(6) : $(7) : $(8) : $(9) ;
-##         modules.poke : BOOST_BUILD_PATH : $(x) ;
-        
-##         # The above might have clobbered .current-project
-##         # Restore the the right value.
-##         modules.poke project : .current-project 
-##           : [ project.target $(__name__) ] ;
-##     }
-    
-##     import modules ;
-    
-##     rule import ( * : * : * )
-##     {
-##         modules.import project ;
-                
-##         local caller = [ CALLER_MODULE ] ;
-##         local saved = [ modules.peek project : .current-project ] ;
-##         module $(caller)
-##         {
-##             modules.import $(1) : $(2) : $(3) ;
-##         }
-##         modules.poke project : .current-project : $(saved) ;        
-##     }
+    def conditional(self, condition, requirements):
+        """Calculates conditional requirements for multiple requirements
+        at once. This is a shorthand to be reduce duplication and to
+        keep an inline declarative syntax. For example:
 
-        
-        
+            lib x : x.cpp : [ conditional <toolset>gcc <variant>debug :
+                <define>DEBUG_EXCEPTION <define>DEBUG_TRACE ] ;
+        """
 
-##     }
-    
-
-
-
-
-##     # Calculates conditional requirements for multiple requirements
-##     # at once. This is a shorthand to be reduce duplication and to
-##     # keep an inline declarative syntax. For example:
-##     #
-##     #   lib x : x.cpp : [ conditional <toolset>gcc <variant>debug :
-##     #       <define>DEBUG_EXCEPTION <define>DEBUG_TRACE ] ;
-##     #
-##     rule conditional ( condition + : requirements * )
-##     {
-##         return $(condition:J=,):$(requirements) ;
-##     }
-## }
+        c = string.join(condition, ",")
+        return [c + ":" + r for r in requirements]

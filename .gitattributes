@@ -964,6 +964,8 @@ python_port/python/tests/acceptance_tests/make_target/y.cpp svneol=native#text/p
 python_port/python/tests/bjam/README.txt svneol=native#text/plain
 python_port/python/tests/bjam/make/Jamroot -text
 python_port/python/tests/bjam/make/a.cpp svneol=native#text/plain
+python_port/python/tests/bjam/make/tool.py svneol=native#text/plain
+python_port/python/tests/bjam/make/util.py svneol=native#text/plain
 python_port/python/tests/unit_tests/helpers.py svneol=native#text/x-python
 python_port/python/tests/unit_tests/runTests.py svneol=native#text/x-python
 python_port/python/tests/unit_tests/test_action.py svneol=native#text/x-python
