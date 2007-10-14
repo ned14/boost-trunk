@@ -42,15 +42,19 @@ class AliasTarget(targets.BasicTarget):
         # look like 100% alias.
         return base.add(subvariant.sources_usage_requirements())
 
-def alias(name, sources, requirements=[], default_build=[], usage_requirements=[]):
+def alias(name, sources, requirements=None, default_build=None, usage_requirements=None):
     project = get_manager().projects().current()
     targets = get_manager().targets()
+
+    if default_build:
+        default_build = default_build[0]
+
     targets.main_target_alternative(AliasTarget(
         name[0], project,
         targets.main_target_sources(sources, name),
-        targets.main_target_requirements(requirements, project),
+        targets.main_target_requirements(requirements or [], project),
         targets.main_target_default_build(default_build, project),
-        targets.main_target_usage_requirements(usage_requirements, project)))
+        targets.main_target_usage_requirements(usage_requirements or [], project)))
 
 # Declares the 'alias' target. It will build sources, and return them unaltered.
 get_manager().projects().add_rule("alias", alias)
