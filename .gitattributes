@@ -919,6 +919,7 @@ python_port/python/boost/build/build/targets.py svneol=native#text/x-python
 python_port/python/boost/build/build/toolset.py svneol=native#text/x-python
 python_port/python/boost/build/build/type.py svneol=native#text/x-python
 python_port/python/boost/build/build/virtual_target.py svneol=native#text/x-python
+python_port/python/boost/build/build_system.py svneol=native#text/plain
 python_port/python/boost/build/engine/__init__.py svneol=native#text/x-python
 python_port/python/boost/build/engine/engine.py svneol=native#text/x-python
 python_port/python/boost/build/exceptions.py svneol=native#text/x-python
