@@ -19,12 +19,28 @@ module python_interface
         module $(module-name)
         {
             __name__ = $(1) ;
-           include $(2) ;
-           local rules = [ RULENAMES $(1) ] ;
-           IMPORT $(1) : $(rules) : $(1) : $(1).$(rules) ;
+            include $(2) ;
+            local rules = [ RULENAMES $(1) ] ;
+            IMPORT $(1) : $(rules) : $(1) : $(1).$(rules) ;
         }
     }    
     
+    rule peek ( module-name ? : variables + )
+    {
+        module $(<)
+        {
+            return $($(>)) ;
+        }
+    }
+        
+    rule set-variable ( module-name : name : value * )
+    {
+        module $(<)
+        {
+            $(>) = $(3) ;
+        }        
+    }
+        
     rule set-top-level-targets ( targets * )
     {
         DEPENDS all : $(targets) ;
@@ -39,12 +55,19 @@ module python_interface
     {
 	$(variable) on $(targets) = $(value) ;
     }        
+
+    rule import-rules-from-parent ( parent-module : this-module : user-rules )
+    {
+        IMPORT $(parent-module) : $(user-rules) : $(this-module) : $(user-rules) ;
+        EXPORT $(this-module) : $(user-rules) ;
+    }   
+
 }
 
 
 PYTHON_IMPORT_RULE boost.build.main : main : PyBB : main ;
 
 module PyBB
-{
+{    
     main ;
 }
