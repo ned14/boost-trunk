@@ -1,4 +1,5 @@
 # Status: being ported by Vladimir Prus
+# TODO: need to re-compare with mainline of .jam
 #
 #  (C) Copyright David Abrahams 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in
@@ -80,120 +81,68 @@ def __x_product_aux (property_sets, x_product_seen, x_product_used, feature_spac
 
     return result
 
+def looks_like_implicit_value(v):
+    """Returns true if 'v' is either implicit value, or
+    the part before the first '-' symbol is implicit value."""
+    if feature.is_implicit_value(v):
+        return 1
+    else:
+        split = v.split("-")
+        if feature.is_implicit_value(split[0]):
+            return 1
 
+    return 0
 
+def from_command_line(command_line):
+    """Takes the command line tokens (such as taken from ARGV rule)
+    and constructs build request from it. Returns a list of two
+    lists. First is the set of targets specified in the command line,
+    and second is the set of requested build properties."""
 
-###################################################################
-# Still to port.
-# Original lines are prefixed with "### "
-#
-### import sequence ;
-### import set ;
-### import regex ;
-### import feature ;
-### import property ;
-### import numbers ;
-### import container ;
-### import "class" : new ;
-### import string ;
-### 
-### 
-### # Returns true if 'v' is either implicit value, or
-### # the part before the first '-' symbol is implicit value
-### local rule looks-like-implicit-value ( v )
-### {
-###     
-###     if [ feature.is-implicit-value $(v) ]
-###     {
-###         return true ;
-###     }
-###     else
-###     {
-###         local split = [ regex.split $(v) - ] ;
-###         if [ feature.is-implicit-value $(split[1]) ]
-###         {
-###             return true ;
-###         }        
-###     }
-### }
-### 
-### 
-### # Takes the command line tokens (such as taken from ARGV rule) and constructs
-### # build request from it.
-### # Returns a vector of two vectors (where "vector" means container.jam's "vector"). 
-### # First is the set of targets specified in the command line, and second is
-### # the set of requested build properties. 
-### rule from-command-line ( command-line * )
-### {
-###     local targets ;
-###     local properties ;
-### 
-###     command-line = $(command-line[2-]) ;
-###     for local e in $(command-line)
-###     {
-###         if ! [ MATCH "^(-).*" : $(e) ] 
-###         {
-###             # Build request spec either has "=" in it, or completely
-###             # consists of implicit feature values.
-###             local fs = feature_space ;
-###             if [ MATCH "(.*=.*)" : $(e) ] 
-###                || [ looks-like-implicit-value $(e:D=) : $(feature_space) ] 
-###             {
-###                 properties += [ convert-command-line-element $(e) : $(feature_space) ] ;
-###             }
-###             else
-###             {
-###                 targets += $(e) ;
-###             }
-###         }
-###     }
-###     return [ new vector [ new vector $(targets) ] [ new vector $(properties) ] ] ;
-### }
-### 
-### # Converts one element of command line build request specification into
-### # internal form.
-### local rule convert-command-line-element ( e )
-### {
-###     local result ;
-###     local parts = [ regex.split $(e) "/" ] ;
-###     for local p in $(parts) 
-###     {
-###         local m = [ MATCH "([^=]*)=(.*)" : $(p) ] ;
-###         local lresult ;
-###         if $(m) 
-###         {
-###             local feature = $(m[1]) ;
-###             local values = [ regex.split $(m[2]) "," ] ;            
-###             lresult = <$(feature)>$(values) ;            
-###         }
-###         else
-###         {
-###             lresult = [ regex.split $(p) "," ] ;
-###         }
-### 
-###         if ! [ MATCH (.*-.*) : $(p) ]
-###         {          
-###             # property.validate cannot handle subfeatures,
-###             # so we avoid the check here.
-###             for local p in $(lresult)
-###             {
-###                 property.validate $(p) : $(feature_space) ;
-###             }
-###         }
-###         
-### 
-###         if ! $(result) 
-###         {
-###             result = $(lresult) ;
-###         }
-###         else
-###         {
-###             result = $(result)/$(lresult) ;
-###         }
-###     }  
-###     
-###     return $(result) ;
-### }
+    targets = []
+    properties = []
+
+    for e in command_line:
+        if e[0] != "-":
+            # Build request spec either has "=" in it, or completely
+            # consists of implicit feature values.
+            if e.find("=") != -1 or looks_like_implicit_value(e.split("/")[0]):                
+                properties += convert_command_line_element(e)
+            else:
+                targets.append(e)
+
+    return [targets, properties]
+ 
+# Converts one element of command line build request specification into
+# internal form.
+def convert_command_line_element(e):
+
+    result = None
+    parts = e.split("/")
+    for p in parts:
+        m = p.split("=")
+        if len(m) > 1:
+            feature = m[0]
+            values = m[1].split(",")
+            lresult = [("<%s>%s" % (feature, v)) for v in values]
+        else:
+            lresult = p.split(",")
+            
+        if p.find('-') == -1:
+            # FIXME: first port property.validate
+            # property.validate cannot handle subfeatures,
+            # so we avoid the check here.
+            #for p in lresult:
+            #    property.validate(p)
+            pass
+
+        if not result:
+            result = lresult
+        else:
+            result = [e1 + "/" + e2 for e1 in result for e2 in lresult]
+
+    return result
+
 ### 
 ### rule __test__ ( )
 ### {
