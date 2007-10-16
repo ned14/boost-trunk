@@ -306,7 +306,7 @@ class ProjectTarget (AbstractTarget):
     """
     def __init__ (self, manager, name, project_module, parent_project, requirements, default_build):
         AbstractTarget.__init__ (self, name, self, manager)
-
+        
         self.project_module_ = project_module
         self.location_ = manager.projects().attribute (project_module, 'location')
         self.requirements_ = requirements
@@ -457,8 +457,8 @@ class ProjectTarget (AbstractTarget):
             pm = project_registry.find (project_part, current_location)
             
             if pm:
-                project_target = project.target (pm)
-                result = project_target.find (target_part, true)
+                project_target = project_registry.target (pm)
+                result = project_target.find (target_part, no_error=1)
 
             else:
                 extra_error_message = "error: could not find project '$(project_part)'"
@@ -520,28 +520,24 @@ class ProjectTarget (AbstractTarget):
         self.constants_[name] = value
         bjam.call("set-variable", self.project_module(), name, value)
 
-#       rule inherit ( parent )
-#       {
-#           for local c in [ modules.peek $(parent) : self.constants ] 
-#           {
-#               # No need to pass the type. Path constants were converted to
-#               # absolute paths already by parent.
-#               add-constant $(c) 
-#                 : [ modules.peek $(parent) : self.constant.$(c) ] ;
-#           }       
-#   
-#           # Import rules from parent 
-#           local this-module = [ project_module ] ;
-#           local parent-module = [ $(parent).project_module ] ;
-#           # Don't import rules which comes from 'project-rules', they
-#           # must be imported localized.
-#           local user-rules = [ set.difference 
-#               [ RULENAMES $(parent-module) ] :
-#               [ RULENAMES project-rules ] ] ;
-#           IMPORT $(parent-module) : $(user-rules) : $(this-module) : $(user-rules) ;
-#           EXPORT $(this-module) : $(user-rules) ;
-#       }
-#       
+    def inherit(self, parent_project):
+        for c in parent_project.constants_:
+            # No need to pass the type. Path constants were converted to
+            # absolute paths already by parent.
+            self.add-constant(parent_project.constants_[c])
+        
+        # Import rules from parent 
+        this_module = self.project_module()
+        parent_module = parent_project.project_module()
+
+        rules = bjam.call("RULENAMES", parent_module)
+        if not rules:
+            rules = []
+        user_rules = [x for x in rules
+                      if x not in self.manager().projects().project_rules()]
+        if user_rules:
+            bjam.call("import-rules-from-parent", parent_module, this_module, user_rules)
+        
 #       
 #       # Intern the constants from this project into the specified module.
 #       #
