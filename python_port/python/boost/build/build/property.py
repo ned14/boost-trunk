@@ -373,21 +373,25 @@ def __validate1 (property):
 #           validate [ feature.split $(s) ] ;
 #       }
 #   }
-#   
-#   # Returns a property sets which include all the elements in 'properties' that
-#   # do not have attributes listed in 'attributes'. 
-#   rule remove ( attributes + : properties * )
-#   {
-#       local result ;
-#       for local e in $(properties)
-#       {
-#           if ! [ set.intersection $(attributes) : [ feature.attributes $(e:G) ] ]
-#           {
-#               result += $(e) ;
-#           }
-#       }
-#       return $(result) ;
-#   }
+#
+
+def remove(attributes, properties):
+    """Returns a property sets which include all the elements
+    in 'properties' that do not have attributes listed in 'attributes'."""
+    
+    result = []
+    for e in properties:
+        attributes_new = feature.attributes(get_grist(e))
+        has_common_features = 0
+        for a in attributes_new:
+            if a in attributes:
+                has_common_features = 1
+                break
+
+        if not has_common_features:
+            result += e
+
+    return result
 #   
 #   # Returns a property set which include all properties in 'properties' that have
 #   # any of 'attributes'.
