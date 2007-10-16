@@ -10,7 +10,9 @@ from boost.build.engine.engine import Engine
 from boost.build.manager import Manager
 from boost.build.util.path import glob
 from boost.build.build import feature, property_set
+import boost.build.build.virtual_target
 from boost.build.build.targets import ProjectTarget
+from boost.build.util.sequence import unique
 import boost.build.tools.common
 import boost.build.tools.builtin
 import boost.build.build.build_request
@@ -264,12 +266,12 @@ def main(dummy):
             xexpanded.append(property_set.create(feature.split(e)))
         expanded = xexpanded
     else:
-        expanded = property_set.empty()
+        expanded = [property_set.empty()]
 
     targets = []
     
     clean = get_boolean_option("clean")
-    cleanall = get_boolean_option("clean-all")
+    clean_all = get_boolean_option("clean-all")
     
 
     bjam_targets = []
@@ -338,65 +340,50 @@ def main(dummy):
                 results_of_main_targets.extend(g.targets())
             virtual_targets.extend(g.targets())
 
-## # The cleaning is tricky. Say, if
-## # user says: 
-## #
-## #    bjam --clean foo
-## #
-## # where 'foo' is a directory, then we want to clean targets
-## # which are in 'foo' or in any children Jamfiles, but not in any
-## # unrelated Jamfiles. So, we collect the list of project under which
-## # cleaning is allowed.
-## #
+    # The cleaning is tricky. Say, if
+    # user says: 
+    #
+    #    bjam --clean foo
+    #
+    # where 'foo' is a directory, then we want to clean targets
+    # which are in 'foo' or in any children Jamfiles, but not in any
+    # unrelated Jamfiles. So, we collect the list of project under which
+    # cleaning is allowed.
+    #
+    projects_to_clean = []
+    targets_to_clean = []
+    if clean or clean_all:
+        for t in targets:
+            if isinstance(t, ProjectTarget):
+                projects_to_clean.append(t.project_module())
+                
+            for t in results_of_main_targets:
+                # Don't include roots or sources.                
+                targets_to_clean += boost.build.build.virtual_target.traverse(t)
+ 
+    targets_to_clean = unique(targets_to_clean)
 
-## local projects-to-clean ;
-## local targets-to-clean ;
-## if $(clean) || $(clean-all)
-## {    
-##     for local t in $(targets)
-##     {
-##         if [ class.is-a $(t) : project-target ]
-##         {
-##             projects-to-clean += [ $(t).project-module ] ;
-##         }       
-##     }
-    
-##     local subvariants ;
-##     for local t in $(results-of-main-targets)
-##     {
-##         # Don't include roots or sources.
-##         targets-to-clean += [ virtual-target.traverse $(t) ] ;
-##     }
-##     targets-to-clean = [ sequence.unique $(targets-to-clean) ] ;        
-## }
+    is_child_cache_ = {}
 
-## # Returns 'true' if 'project' is a child of 'current-project',
-## # possibly indirect, or is equal to 'project'.
-## # Returns 'false' otherwise.
-## rule is-child ( project )
-## {
-##     if ! $(.is-child.$(project))
-##     {
-##         local r = false ;
-##         if $(project) in $(projects-to-clean)
-##         {            
-##             r = true ;
-##         }
-##         else 
-##         {
-##             local parent = [ project.attribute $(project) parent-module ] ;
-##             if $(parent) && $(parent) != user-config
-##             {
-##                 r = [ is-child $(parent) ] ;
-##             }            
-##         }       
-        
-##         .is-child.$(project) = $(r) ;
-##     }
-    
-##     return $(.is-child.$(project)) ;    
-## }
+    # Returns 'true' if 'project' is a child of 'current-project',
+    # possibly indirect, or is equal to 'project'.
+    # Returns 'false' otherwise.
+    def is_child (project):
 
+        r = is_child_cache_.get(project, None)
+        if not r:
+            if project in projects_to_clean:
+                r = 1
+            else:
+                parent = manager.projects().attribute(project, "parent-module")
+                if parent and parent != "user-config":
+                    r = is_child(parent)
+                else:
+                    r = 0
+
+            is_child_cache_[project] = r
+
+        return r
 
     actual_targets = []
     for t in virtual_targets:
@@ -408,34 +395,23 @@ def main(dummy):
 
     if bjam_targets:
         bjam.call("UPDATE", ["<e>%s" % x for x in bjam_targets])
-    elif cleanall:
+    elif clean_all:
         bjam.call("UPDATE", "clean-all")
     elif clean:
-        pass
-## FIXME:
-## Need to revive virtual-target.all-targets
-##     local to-clean ;
-##     for local t in [ virtual-target.all-targets ]
-##     {
-##         local p = [ $(t).project ] ;
+        to_clean = []
+        for t in manager.virtual_targets().all_targets():
+            p = t.project()
 
-##         # Remove only derived targets.
-##         if [ $(t).action ]
-##         {                    
-##             if $(t) in $(targets-to-clean)
-##               || [ is-child [ $(p).project-module ] ] = true
-##               {
-##                   to-clean += $(t) ;
-##               }        
-##         }        
-##     }
-##     local to-clean-actual ;
-##     for local t in $(to-clean)
-##     {
-##         to-clean-actual += [ $(t).actualize ] ;
-##     }
-##     common.Clean clean : $(to-clean-actual) ;
-##     UPDATE clean ;        
+            # Remove only derived targets.
+            if t.action() and \
+               (t in targets_to_clean or is_child(p.project_module())):
+                to_clean.append(t)
+
+        to_clean_actual = [t.actualize() for t in to_clean]
+        manager.engine().set_update_action('common.Clean', 'clean',
+                                           to_clean_actual, None)
+
+        bjam.call("UPDATE", "clean")
 
     else:
         bjam.call("UPDATE", "all")        

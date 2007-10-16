@@ -880,11 +880,11 @@ def glob_in_parents(dir, patterns, upper_limit=None):
 
 # The relpath functionality is written by
 # Cimarron Taylor
-def pathsplit(p, rest=[]):
+def split(p, rest=[]):
     (h,t) = os.path.split(p)
     if len(h) < 1: return [t]+rest
     if len(t) < 1: return [h]+rest
-    return pathsplit(h,[t]+rest)
+    return split(h,[t]+rest)
 
 def commonpath(l1, l2, common=[]):
     if len(l1) < 1: return (common, l1, l2)
@@ -893,7 +893,7 @@ def commonpath(l1, l2, common=[]):
     return commonpath(l1[1:], l2[1:], common+[l1[0]])
 
 def relpath(p1, p2):
-    (common,l1,l2) = commonpath(pathsplit(p1), pathsplit(p2))
+    (common,l1,l2) = commonpath(split(p1), split(p2))
     p = []
     if len(l1) > 0:
         p = [ '../' * len(l1) ]

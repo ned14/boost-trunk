@@ -1067,7 +1067,9 @@ class FileReference (AbstractTarget):
         AbstractTarget.__init__ (self, file, project)
     
     def generate (self, properties):
-         return GenerateResult (None, [ self.manager_.virtual_targets ().from_file (self.name_, self.project_) ])
+         return GenerateResult (None, [
+             self.manager_.virtual_targets ().from_file (
+             self.name_, self.location(), self.project_) ])
 
     def exists (self):
         """ Returns true if the referred file really exists.

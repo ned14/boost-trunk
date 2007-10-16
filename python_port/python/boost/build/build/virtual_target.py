@@ -1,3 +1,6 @@
+# Status: being ported by Vladimir Prus
+# Essentially ported, minor fixme remain.
+# 
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in
 #  all copies. This software is provided "as is" without express or implied
@@ -62,7 +65,7 @@ import os.path
 import string
 
 from boost.build.util import path, utility, set
-from boost.build.util.utility import add_grist, get_grist, ungrist, replace_grist
+from boost.build.util.utility import add_grist, get_grist, ungrist, replace_grist, get_value
 from boost.build.util.sequence import unique
 from boost.build.tools import common
 from boost.build.exceptions import *
@@ -79,9 +82,15 @@ class VirtualTargetRegistry:
 
         # A cache for targets.
         self.cache_ = {}
-        
+
+        # FIXME: what's this?
         # A map of actual names to virtual targets.
         self.actual_ = {}
+
+        self.recent_targets_ = []
+        
+        # All targets ever registed
+        self.all_targets_ = []
         
     def register (self, target):
         """ Registers a new virtual target. Checks if there's already registered target, with the same
@@ -89,11 +98,7 @@ class VirtualTargetRegistry:
             and equal action. If such target is found it is retured and 'target' is not registered.
             Otherwise, 'target' is registered and returned.
         """
-        # TODO: the original was
-        #     local signature = [ sequence.join [ $(target).name ] : - ] ;    
-        # is the join needed?
-        # signature = '-'.join (target_name)
-        signature = target.name ()
+        signature = target.path() + "-" + target.name()
 
         result = None
         if not self.cache_.has_key (signature):
@@ -102,7 +107,8 @@ class VirtualTargetRegistry:
         for t in self.cache_ [signature]:
             a1 = t.action ()
             a2 = target.action ()
-            
+
+            # TODO: why are we checking for not result?
             if not result:
                 if not a1 and not a2:
                     result = t
@@ -118,48 +124,55 @@ class VirtualTargetRegistry:
         if not result:
             self.cache_ [signature].append (target)
             result = target
+
+        # TODO: Don't append if we found pre-existing target?
+        self.recent_targets_.append(result)
+        self.all_targets_.append(result)
     
         return result
 
-    def from_file (self, file, project):
+    def from_file (self, file, file_location, project):
         """ Creates a virtual target with appropriate name and type from 'file'.
             If a target with that name in that project was already created, returns that already
             created target.
             FIXME: more correct way would be to compute path to the file, based on name and source location
             for the project, and use that path to determine if the target was already created.
+            TODO: passing project with all virtual targets starts to be annoying.
         """
         # Check if we've created a target corresponding to this file.
-        source_location = project.get ('source-location')
-        project_path = path.root (path.root (path.make (file), source_location), path.pwd ())
+        path = os.path.join(os.getcwd(), file_location, file)
+        path = os.path.normpath(path)
 
-        if self.files_.has_key (project_path):
-            return self.files_ [project_path]
+        if self.files_.has_key (path):
+            return self.files_ [path]
 
-        name = path.make (file)
         file_type = type.type (file)
 
-        if not file_type:
-            # warning "cannot determine type for file $(file)" ;
-            result = FileTarget (file, False, None, project)
-        else:
-            v = FileTarget (name, False, file_type, project)
-            result = v
-        
-        self.files_ [project_path] = result
+        result = FileTarget (file, False, file_type, project,
+                             None, file_location)       
+        self.files_ [path] = result
         return result
 
-    def add_suffix (self, specified_name, file_type, prop_set):
-        """ Appends the suffix appropriate to 'type/property_set' combination
-            to the specified name and returns the result.
-        """
-        suffix = type.generated_target_suffix (file_type, prop_set)
+    def recent_targets(self):
+        """Each target returned by 'register' is added to a list of
+        'recent-target', returned by this function. So, this allows
+        us to find all targets created when building a given main
+        target, even if the target."""
 
-        if suffix:
-            return specified_name + '.' + suffix
+        return self.recent_targets_
 
-        else:
-            return specified_name
-    
+    def clear_recent_targets(self):
+        self.recent_targets_ = []
+
+    def all_targets(self):
+        # Returns all virtual targets ever created
+        return self.all_targets_
+
+    # Returns all targets from 'targets' with types
+    # equal to 'type' or derived from it.
+    def select_by_type(self, type, targets):
+        return [t for t in targets if type.is_sybtype(t.type(), type)]
+
     def register_actual_name (self, actual_name, virtual_target):
         if self.actual_.has_key (actual_name):
             cs1 = self.actual_ [actual_name].creating_subvariant ()
@@ -196,9 +209,20 @@ class VirtualTargetRegistry:
 
         else:
             self.actual_ [actual_name] = virtual_target
+    
 
+    def add_suffix (self, specified_name, file_type, prop_set):
+        """ Appends the suffix appropriate to 'type/property_set' combination
+            to the specified name and returns the result.
+        """
+        suffix = type.generated_target_suffix (file_type, prop_set)
 
+        if suffix:
+            return specified_name + '.' + suffix
 
+        else:
+            return specified_name
+    
 class VirtualTarget:
     """ Potential target. It can be converted into jam target and used in
         building, if needed. However, it can be also dropped, which allows
@@ -213,6 +237,12 @@ class VirtualTarget:
         
         # Caches if dapendencies for scanners have already been set.
         self.made_ = {}
+
+    def manager(self):
+        return self.project_.manager()
+
+    def virtual_targets(self):
+        return self.manager().virtual_targets()
 
     def name (self):
         """ Name of this target.
@@ -293,27 +323,7 @@ class VirtualTarget:
         """
         raise BaseException ("method should be defined in derived classes")
 
-    def actualize_no_scanner (self):
-        name = self.actual_name ()
 
-        # Do anything only on the first invocation
-        if not self.made_.has_key (name):
-            self.made_ [name] = True
-            
-            self.project_.manager_.virtual_targets ().register_actual_name (name, self)
-
-            for i in self.dependencies_:
-                self.manager_.engine ().add_dependency (name, i.actualize ())
-
-            self.actualize_location (name)
-            self.actualize_action (name)
-
-        return name
-
-
-
-
-    
 class AbstractFileTarget (VirtualTarget):
     """ Target which correspond to a file. The exact mapping for file
         is not yet specified in this class. (TODO: Actually, the class name
@@ -339,13 +349,14 @@ class AbstractFileTarget (VirtualTarget):
         self.type_ = type
 
         self.action_ = action
-        self.exact_name = exact
+        self.exact_ = exact
         
         if action:
             action.add_targets ([self])
  
             if self.type and not exact:
                 self.__adjust_name (name)
+
         
         self.actual_name_ = None
         self.path_ = None
@@ -358,17 +369,18 @@ class AbstractFileTarget (VirtualTarget):
     def type (self):
         return self.type_
 
-    def set_type (self, type):
-        self.type_ = type
+    # FIXME: this does not seem to be present in .jam
+    #def set_type (self, type):
+    #    self.type_ = type
 
-        if not self.exact_name:
-            self.__adjust_name (os.path.splitext (self.name_) [0])
+    #    if not self.exact_name:
+    #        self.__adjust_name (os.path.splitext (self.name_) [0])
 
     def set_path (self, path):
         """ Sets the path. When generating target name, it will override any path
             computation from properties.
         """
-        self.path_ = path.native (path)
+        self.path_ = path
 
     def action (self):
         """ Returns the action.
@@ -383,21 +395,14 @@ class AbstractFileTarget (VirtualTarget):
             self.root_ = True
         return self.root_
 
-    def set_intermediate (self, value):
-        self.intermediate_ = value
-    
-    def intermediate (self):
-        return self.intermediate_
-
+    def creating_subvariant (self, s = None):
         """ Gets or sets the subvariant which created this target. Subvariant
-            is set when target is brought into existance, and is never changed
-            after that. In particual, if target is shared by subvariant, only 
-            the first is stored.
-            s:  If specified, specified the value to set,
+        is set when target is brought into existance, and is never changed
+        after that. In particual, if target is shared by subvariant, only 
+        the first is stored.
+        s:  If specified, specified the value to set,
                 which should be instance of 'subvariant' class.
         """
-    def creating_subvariant (self, s = None):
-
         if s and not self.creating_subvariant ():
             if self.creating_subvariant ():
                 raise BaseException ("Attempt to change 'dg'")
@@ -410,67 +415,53 @@ class AbstractFileTarget (VirtualTarget):
     def actualize_action (self, target):
         if self.action_:
             self.action_.actualize ()
+
+    # Return a human-readable representation of this target
+    #
+    # If this target has an action, that's:
+    #
+    #    { <action-name>-<self.name>.<self.type> <action-sources>... }
+    #
+    # otherwise, it's:
+    #
+    #    { <self.name>.<self.type> }
+    #
+    def str(self):
+        a = self.action()
+
+        name_dot_type = self.name_ + "." + self.type_
+
+        if a:
+            action_name = a.action_name()
+            ss = [ s.str() for s in a.sources()]
+                       
+            return "{ %s-%s %s}" % (action_name, name_dot_type, str(ss))
+        else:
+            return "{ " + name_dot_type + " }"
+
+# FIXME: I think those two below are no longer needed.
+##     rule less ( a )
+##     {
+##         if [ str ] < [ $(a).str ]
+##         {
+##             return true ;
+##         }
+##     }
+
+##     rule equal ( a )
+##     {
+##         if [ str ] = [ $(a).str ]
+##         {
+##             return true ;
+##         }
+##     }
+            
           
-#       # Return a human-readable representation of this target
-#       #
-#       # If this target has an action, that's:
-#       #
-#       #    { <action_name>-<self.name_>.<self.type_> <action-sources>... }
-#       #
-#       # otherwise, it's:
-#       #
-#       #    { <self.name_>.<self.type_> }
-#       #
-#       rule str ( )
-#       {
-#           local action = [ action ] ;
-#           
-#           local name-dot-type = [ sequence.join $(self.name_) "."  $(self.type_) ] ;
-#           
-#           if $(action)
-#           {
-#               local sources = [ $(action).sources ] ;
-#               
-#               local action_name =  [ $(action).action_name ] ;            
-#   
-#               local ss ;            
-#               for local s in $(sources)
-#               {
-#                   ss += [ $(s).str ] ;
-#               }
-#               
-#               return "{" $(action_name)-$(name-dot-type) $(ss) "}" ;
-#           }
-#           else
-#           {
-#               return "{" $(name-dot-type) "}" ;
-#           }
-#       }
-#   
-#       rule less ( a )
-#       {
-#           if [ str ] < [ $(a).str ]
-#           {
-#               return true ;
-#           }
-#       }
-#   
-#       rule equal ( a )
-#       {
-#           if [ str ] = [ $(a).str ]
-#           {
-#               return true ;
-#           }
-#       }
-#   
-#   # private:
+# private:
 
     def actual_name (self):
         if not self.actual_name_:
-            grist = self.grist ()
-            
-            basename = path.native (self.name_)
-            self.actual_name_ = '<' + grist + '>' + basename
+            self.actual_name_ = '<' + self.grist() + '>' + self.name_
 
         return self.actual_name_
 
@@ -493,7 +484,8 @@ class AbstractFileTarget (VirtualTarget):
             # File is either source, which will be searched for, or is not a file at
             # all. Use the location of project for distinguishing.
             project_location = self.project_.get ('location')
-            location_grist = '!'.join (string.split (project_location, '/'))
+            path_components = boost.build.util.path.split(project_location)
+            location_grist = '!'.join (path_components)
             
             if self.action_:
                 ps = self.action_.properties ()
@@ -505,28 +497,101 @@ class AbstractFileTarget (VirtualTarget):
                         
             return 'l' + location_grist
 
+    def __adjust_name(self, specified_name):
+        """Given the target name specified in constructor, returns the
+        name which should be really used, by looking at the <tag> properties.
+        The tag properties come in two flavour:
+          - <tag>value, 
+          - <tag>@rule-name
+        In the first case, value is just added to name
+        In the second case, the specified rule is called with specified name,
+        target type and properties and should return the new name.
+        If not <tag> property is specified, or the rule specified by
+        <tag> returns nothing, returns the result of calling 
+        virtual-target.add-suffix"""
 
-    def __adjust_name (self, specified_name):
         if self.action_:
-            ps = self.action_.properties ()
+            ps = self.action_.properties()
         else:
-            ps = propery_set.empty ()
+            ps = property_set.empty()
 
-        tag = ps.get ('<tag>')
-
+        # FIXME: I'm not sure how this is used, need to check with
+        # Rene to figure out how to implement
+        #~ We add ourselves to the properties so that any tag rule can get
+        #~ more direct information about the target than just that available
+        #~ through the properties. This is useful in implementing
+        #~ name changes based on the sources of the target. For example to
+        #~ make unique names of object files based on the source file.
+        #~ --grafik
+        #ps = property_set.create(ps.raw() + ["<target>%s" % "XXXX"])
+        #ps = [ property-set.create [ $(ps).raw ] <target>$(__name__) ] ;
+        
+        tag = ps.get("<tag>")
+        
         if tag:
-            if len (tag) > 1:
-                raise BaseException ("<tag>@rulename is present but is not the only <tag> feature")
-            rule_name = __re_starts_with_at.match (tag [0])
-            if rule_name:
-                self.name_ = rule_name (specified_name, self.type, ps)
+
+            rule_names = [t[:1] for t in tag if t[0] == '@']
+            if rule_names:
+                if len(tag) > 1:
+                    self.manager_.errors()(
+"""<tag>@rulename is present but is not the only <tag> feature""")
+
+                self.name_ = bjam.call(rule_names[0], specified_name, self.type_, ps)
             else:
-                raise BaseException ("The value of the <tag> feature must be '@rule-name'")
+                self.manager_.errors()(
+"""The value of the <tag> feature must be '@rule-nane'""")
         
         # If there's no tag or the tag rule returned nothing.
-        if not tag or not self.name_:
-            self.name_ = self.project_.manager ().virtual_targets ().add_suffix (specified_name, self.type_, ps)    
+        if not tag and not self.name_:
+            self.name_ = add_prefix_and_suffix(specified_name, self.type_, ps)
 
+    def actualize_no_scanner(self):
+        name = self.actual_name()
+
+        # Do anything only on the first invocation
+        if not self.made_:
+            self.made_ = 1
+
+            if self.action_:  
+                # For non-derived target, we don't care if there
+                # are several virtual targets that refer to the same name.
+                # One case when this is unavoidable is when file name is
+                # main.cpp and two targets have types CPP (for compiling)
+                # and MOCCABLE_CPP (for convertion to H via Qt tools).
+                self.virtual_targets().register_actual_name(name, self)
+
+            for i in self.dependencies_:
+                self.manager_.engine().add_dependency(name, i.actualize())
+
+            self.actualize_location(name)
+            self.actualize_action(name)
+            
+        return name
+
+def add_prefix_and_suffix(specified_name, type, property_set):
+    """Appends the suffix appropriate to 'type/property-set' combination
+    to the specified name and returns the result."""
+
+    suffix = type.generated_target_suffix(type, property_set)
+    
+    # Handle suffixes for which no leading dot is desired.  Those are
+    # specified by enclosing them in <...>.  Needed by python so it
+    # can create "_d.so" extensions, for example.
+    if get_grist(suffix):
+        suffix = ungrist(suffix)
+    else:
+        suffix = "." + suffix
+    
+    prefix = type.generated-target-prefix(type, property_set)
+
+    if specified_name.startswith(prefix):
+        prefix = ""
+
+    if not prefix:
+        prefix = ""
+    if not suffix:
+        suffix = ""
+    return prefix + specified_name + suffix
 
 
 class FileTarget (AbstractFileTarget):
@@ -544,26 +609,58 @@ class FileTarget (AbstractFileTarget):
             - the value passed to the 'suffix' method, if any, or
             - the suffix which correspond to the target's type.
     """
-    def __init__ (self, name, exact, type, project, action = None):
+    def __init__ (self, name, exact, type, project, action = None, path=None):
         AbstractFileTarget.__init__ (self, name, exact, type, project, action)
+
+        self.path_ = path
+
+    def clone_with_different_type(self, new_type):
+        return FileTarget(self.name_, 1, new_type, self.project_,
+                          self.action_, self.path_)
         
     def actualize_location (self, target):
         engine = self.project_.manager_.engine ()
 
         if self.action_:
             # This is a derived file.
-            file_path = self.path ()
-            engine.set_target_variable (target, 'LOCATE', file_path)
+            path = self.path ()
+            engine.set_target_variable (target, 'LOCATE', path)
 
             # Make sure the path exists.
-            engine.set_target_variable (target, 'LOCATE', file_path)
-            engine.add_dependency (target, file_path)
-            #engine.set_update_action ('MkDir', file_path, [], None)
-            common.mkdir(engine, file_path)
+            engine.add_dependency (target, path)
+            common.mkdir(engine, path)
 
+            # It's possible that the target name includes a directory
+            # too, for example when installing headers. Create that
+            # directory.
+            d = os.path.dirname(get_value(target))
+            if d:
+                d = os.path.join(path, d)
+                engine.add_dependency(target, d)
+                common.mkdir(engine, d)
+
+            # For real file target, we create a fake target that
+            # depends on the real target. This allows to run
+            #
+            #    bjam hello.o
+            #
+            # without trying to guess the name of the real target.            
+            # Note the that target has no directory name, and a special
+            # grist <e>.
+            #
+            # First, that means that "bjam hello.o" will build all
+            # known hello.o targets.
+            # Second, the <e> grist makes sure this target won't be confused
+            # with other targets, for example, if we have subdir 'test'
+            # with target 'test' in it that includes 'test.o' file,
+            # then the target for directory will be just 'test' the target
+            # for test.o will be <ptest/bin/gcc/debug>test.o and the target
+            # we create below will be <e>test.o
+            engine.add_dependency("<e>%s" % get_value(target), target)
+            
         else:
             # This is a source file.
-            engine.set_target_variable (target, 'SEARCH', path.native (self.project_.get ('source-location')))
+            engine.set_target_variable (target, 'SEARCH', self.project_.get ('source-location'))
     
 
     def path (self):
@@ -581,31 +678,23 @@ class FileTarget (AbstractFileTarget):
                                 
                 # Store the computed path, so that it's not recomputed
                 # any more
-                self.path_ = path.native (target_path)
+                self.path_ = target_path
 
         return self.path_
 
 
-#   class notFileTarget : AbstractFileTarget
-#   {
-#       rule __init__ ( name : project )
-#       {
-#           AbstractFileTarget.__init__ $(name) : : $(project) ;
-#       }
-#       
-#       # Returns nothing, to indicate that target path is not known.
-#       rule path ( )
-#       {
-#           return ;
-#       }
-#               
-#       rule actualize-location ( target )
-#       {
-#           NOTFILE $(target) ;
-#           ALWAYS $(target) ;
-#       }    
-#   }    
+class NotFileTarget(AbstractFileTarget):
 
+    def __init__(self, name, project):
+        AbstractFileTarget.__init__(name, project)
+
+    def path(self):
+        """Returns nothing, to indicate that target path is not known."""
+        return None
+
+    def actualize_location(self, target):
+        bjam.call("NOTFILE", target)
+        bjam.call("ALWAYS", taget)
 
 
 class Action:
@@ -618,7 +707,9 @@ class Action:
     """
     def __init__ (self, manager, sources, action_name, prop_set):
         self.sources_ = sources
-        self.action_name_ = action_name        
+        self.action_name_ = action_name
+        if not prop_set:
+            prop_set = property_set.empty()
         self.properties_ = prop_set
 
         self.manager_ = manager
@@ -630,6 +721,7 @@ class Action:
         
         self.dependency_only_sources_ = []
         self.actual_sources_ = []
+        
         
     def add_targets (self, targets):
         self.targets_ += targets
@@ -667,7 +759,7 @@ class Action:
 
         raw_properties = properties.raw ()
 
-        # TODO: check the comment below. Was self.action_name_ [1]
+        # FIXME: check the comment below. Was self.action_name_ [1]
         # Action name can include additional argument to rule, which should not
         # be passed to 'set-target-variables'
         toolset.set_target_variables (self.manager_, self.action_name_, actual_targets, raw_properties)
@@ -679,7 +771,7 @@ class Action:
         
         # Since we set up creating action here, we also set up
         # action for cleaning up
-        self.manager_.engine ().set_update_action ('common.Clean', 'clean',
+        self.manager_.engine ().set_update_action ('common.Clean', 'clean-all',
                                                    actual_targets, None)
 
         return actual_targets
@@ -692,9 +784,10 @@ class Action:
         result = []
         for i in sources:
             scanner = None
-            
-            if isinstance (i, str):
-                i = self.manager_.get_object (i)
+
+# FIXME: what's this?
+#            if isinstance (i, str):
+#                i = self.manager_.get_object (i)
                 
             if i.type ():
                 scanner = type.get_scanner (i.type (), prop_set)
@@ -717,6 +810,21 @@ class Action:
                 
         self.dependency_only_sources_ += self.actualize_source_type (dependencies, prop_set)
         self.actual_sources_ += self.actualize_source_type (sources, prop_set)
+
+        # This is used to help bjam find dependencies in generated headers
+        # in other main targets.
+        # Say:
+        #
+        #   make a.h : ....... ;
+        #   exe hello : hello.cpp : <implicit-dependency>a.h ;
+        #
+        # However, for bjam to find the dependency the generated target must
+        # be actualized (i.e. have the jam target). In the above case,
+        # if we're building just hello ("bjam hello"), 'a.h' won't be
+        # actualized unless we do it here.
+        implicit = self.properties_.get("<implicit-dependency>")
+        for i in implicit:
+            i.actualize()
 
     def adjust_properties (self, prop_set):
         """ Determines real properties when trying building with 'properties'.
@@ -743,6 +851,16 @@ class NullAction (Action):
             for i in self.targets ():
                 i.actualize ()
 
+class NonScanningAction(Action):
+    """Class which acts exactly like 'action', except that the sources
+    are not scanned for dependencies."""
+
+    def __init__(self, sources, action_name, property_set):
+        Action.__init__(sources, action_name, property_set)
+
+    def actualize_source_type(self, sources, property_set):
+        
+        return [x for source in sources for x in i.actualize()]
 
 def traverse (target, include_roots = False, include_sources = False):
     """ Traverses the dependency graph of 'target' and return all targets that will
@@ -759,10 +877,11 @@ def traverse (target, include_roots = False, include_sources = False):
         result += action.targets ()
 
         for t in action.sources ():
-            
+
+            # FIXME:
             # TODO: see comment in Manager.register_object ()
-            if not isinstance (t, VirtualTarget):
-                t = target.project_.manager_.get_object (t)
+            #if not isinstance (t, VirtualTarget):
+            #    t = target.project_.manager_.get_object (t)
                 
             if not t.root ():
                 result += traverse (t, include_roots, include_sources)
@@ -775,44 +894,38 @@ def traverse (target, include_roots = False, include_sources = False):
 
     return result
 
-#   # Takes an 'action' instances and creates new instance of it
-#   # and all produced target. The rule-name and properties are set
-#   # to 'new-rule-name' and 'new-properties', if those are specified.
-#   # Returns the cloned action.
-#   rule clone-action ( action : new-project : new-action-name ? : new-properties ? )
-#   {
-#       if ! $(new-action-name)
-#       {
-#           new-action-name = [ $(action).action-name ] ;
-#       }
-#       if ! $(new-properties)
-#       {
-#           new-properties = [ $(action).properties ] ;
-#       }
-#   
-#       local action-class = [ modules.peek $(action) : __class__ ] ;
-#       local cloned-action = [ class.new $(action-class)  
-#         [ $(action).sources ] : $(new-action-name) : $(new-properties) ] ;
-#                           
-#       local cloned-targets ;
-#       for local target in [ $(action).targets ]
-#       {
-#           local n = [ $(target).name ] ;
-#           local cloned-target = [ class.new file-target $(n:D=) : [ $(target).type ] 
-#             : $(new-project) : $(cloned-action) ] ;
-#           local d = [ $(target).dependencies ] ;
-#           if $(d)
-#           {            
-#               $(cloned-target).depends $(d) ;
-#           }                    
-#           $(cloned-target).root [ $(target).root ] ;
-#           $(cloned-target).creating_subvariant [ $(target).creating_subvariant ] ;
-#           
-#           cloned-targets += $(cloned-target) ;
-#       }        
-#                       
-#       return $(cloned-action) ;        
-#   }
+def clone_action (action, new_project, new_action_name, new_properties):
+    """Takes an 'action' instances and creates new instance of it
+    and all produced target. The rule-name and properties are set
+    to 'new-rule-name' and 'new-properties', if those are specified.
+    Returns the cloned action."""
+
+    if not new_action_name:
+        new_action_name = action.action_name()
+
+    if not new_properties:
+        new_properties = action.properties()
+
+    closed_action = action.__class__(action.sources(), new_action_name,
+                                     new_properties)
+                          
+    cloned_targets = []
+    for target in action.targets():
+
+        n = target.name()
+        # Don't modify the name of the produced targets. Strip the directory f
+        cloned_target = FileTarget(n, 1, target.type(), new_project,
+                                   cloned_action)
+
+        d = target.dependencies()
+        if d:
+            cloned_target.depends(d)
+        cloned_target.root(target.root())
+        cloned_target.creating_subvariant(target.creating_subvariant())
+
+        cloned_targets.append(cloned_target)
+
+    return cloned_action
 
 class Subvariant:
     
@@ -838,14 +951,16 @@ class Subvariant:
         # depends
         deps = build_properties.get ('<implicit-dependency>')
         
-        self.other_dg = []
+        self.other_dg_ = []
         for d in deps:
-            # TODO: the property must have the actual object here, not a string.
+            # FIXME: the property must have the actual object here, not a string.
             value = replace_grist (d, '')
-            self.other_dg.append (value.creating_subvariant ())
+            self.other_dg_.append (value.creating_subvariant ())
 
-        self.other_dg = unique (self.other_dg)
-  
+        self.other_dg_ = unique (self.other_dg_)
+
+        self.implicit_includes_cache_ = {}
+        self.target_directories_ = None
                
     def main_target (self):
         return self.main_target_
@@ -867,34 +982,28 @@ class Subvariant:
     
     def usage_requirements (self):
         return self.usage_requirements_
-    
-#       # Returns all targets referenced by this subvariant,
-#       # either directly or indirectly, and 
-#       # either as sources, or as dependency properties.
-#       # Targets referred with dependency property are returned a properties,
-#       # not targets.
-#       rule all-referenced-targets ( )
-#       {
-#           # Find directly referenced targets.
-#           local deps = [ $(self.build_properties_).dependency ] ;
-#           local all-targets = $(self.sources_) $(deps) ;
-#           
-#           # Find other subvariants.
-#           local r ;
-#           for local t in $(all-targets)
-#           {            
-#               r += [ $(t:G=).creating_subvariant ] ;
-#           }
-#           r = [ sequence.unique $(r) ] ;
-#           for local s in $(r) 
-#           {
-#               if $(s) != $(__name__)
-#               {
-#                   all-targets += [ $(s).all-referenced-targets ] ;
-#               }            
-#           }
-#           return $(all-targets) ;                        
-#       }
+
+    def all_referenced_targets(self):
+        """Returns all targets referenced by this subvariant,
+        either directly or indirectly, and either as sources,
+        or as dependency properties. Targets referred with
+        dependency property are returned a properties, not targets."""
+        
+        # Find directly referenced targets.
+        deps = self.build_properties().dependency()
+        all_targets = self.sources_ + deps
+        
+        # Find other subvariants.
+        r = []
+        for t in all_targets:
+            r.append(t.creating_subvariant)
+        r = unique(r)
+
+        for s in r:
+            if s != self:
+                all_targets.extend(s.all_referenced_targets())
+
+        return all_targets
 
     def implicit_includes (self, feature, target_type):
         """ Returns the properties which specify implicit include paths to
@@ -904,59 +1013,37 @@ class Subvariant:
             if 'target_type' is not specified), the result will contain
             <$(feature)>path-to-that-target.
         """
-#    {
-#        local key = ii$(feature)-$(target_type:E="") ;
-#        if ! $($(key))-is-nonempty
-#        {
-#            local target_paths = [ all-target-directories $(target_type) ] ;    
-#            target_paths = [ sequence.unique $(target_paths) ] ;
-#            local result = $(target_paths:G=$(feature)) ;
-#            if ! $(result)
-#            {
-#                result = "" ;
-#            }            
-#            $(key) = $(result) ;
-#        }
-#        if $($(key)) = ""
-#        {
-#            return ;
-#        }
-#        else
-#        {
-#            return $($(key)) ;
-#        }        
-#    }
-        # TODO: port above code
-        return []
-        
-#       rule all-target-directories ( target_type ? )
-#       {
-#           if ! $(self.target-directories)
-#           {
-#               compute-target-directories $(target_type) ;
-#           }                
-#           return $(self.target-directories) ;
-#       }
-#       
-#       rule compute-target-directories ( target_type ? )
-#       {   
-#           local result ;
-#           for local t in $(self.created_targets_)
-#           {
-#               if $(target_type) && ! [ type.is-derived [ $(t).type ] $(target_type) ] 
-#               {
-#                   # Skip target which is of wrong type.
-#               }
-#               else
-#               {                
-#                   result = [ sequence.merge $(result) : [ $(t).path ] ] ;
-#               }            
-#           }
-#           for local d in $(self.other_dg)
-#           {
-#               result += [ $(d).all-target-directories $(target_type) ] ;
-#           }
-#           self.target-directories = $(result) ;
-#       }   
-#   }
-#   
+
+        if not target_type:
+            key = feature
+        else:
+            key = feature + "-" + target_type
+
+            
+        result = self.implicit_includes_cache_.get(key)
+        if not result:
+            target_paths = self.all_target_directories(target_type)
+            target_paths = unique(target_paths)
+            result = ["<%s>%s" % (feature, p) for p in target_paths]
+            self.implicit_includes_cache_[key] = result
+
+        return result
+
+    def all_target_directories(target_type = None):
+        # TODO: does not appear to use target_type in deciding
+        # if we've computed this already.
+        if not self.target_directories_:
+            selt.target_directories_ = self.compute_target_directories(target_type)
+        return self.target_directories_
+
+    def compute_target_directories(target_type=None):
+        result = []
+        for t in self.created_targets:
+            if not target_type or type.is_derived(t.type, target_type):
+                result.append(t.path())
+
+        for d in self.other_dg_:
+            result.extend(d.all_target_directories(target_type))
+
+        result = unique(result)
+        return result

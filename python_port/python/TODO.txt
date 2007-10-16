@@ -1,4 +1,6 @@
 
+- Document that using strings for classes will not be carried over.
+
 
 2. The current way to make rules available to Jamfiles is nasty --
 only functions defined in ProjectContext class are exported.
@@ -52,5 +54,13 @@ target. Kill ProjectAttributes class.
 - Should use bit flags for feature attributes
 
 - Should add Property class, and kill string manipulation.
+
+- Merge VirtualTarget with AbstractFileTarget?
+
+- In VirtualTarget, split methods that both take and return
+value into set/get pairs.
+
+- Use metatarget/base class to automatically register virtual
+targets or just never create duplicate ones?
 
 ********************************************************************************
