@@ -117,10 +117,13 @@ class Engine:
         set_update_action method. The action_name should be callable
         in the global module of bjam.
         """
-        if self.actions.has_key(action_name):
-            raise "Bjam action %s is already defined" % action_name
 
-        self.actions[action_name] = BjamNativeAction(action_name)
+        # We allow duplicate calls to this rule for the same
+        # action name.  This way, jamfile rules that take action names
+        # can just register them without specially checking if
+        # action is already registered.
+        if not self.actions.has_key(action_name):
+            self.actions[action_name] = BjamNativeAction(action_name)
     
     # Overridables
 
