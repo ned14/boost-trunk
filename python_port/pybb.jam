@@ -65,7 +65,7 @@ module python_interface
 }
 
 
-PYTHON_IMPORT_RULE boost.build.main : main : PyBB : main ;
+PYTHON_IMPORT_RULE boost.build.build_system : main : PyBB : main ;
 
 module PyBB
 {    

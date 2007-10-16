@@ -118,10 +118,8 @@ class ProjectRegistry:
         If the jamfile at that location is loaded already, does nothing.
         Returns the project module for the Jamfile."""
 
-        print "XXXXXXX", jamfile_location
         absolute = os.path.join(os.getcwd(), jamfile_location)
         absolute = os.path.normpath(absolute)
-        print "YYYYYYYY", absolute
         jamfile_location = boost.build.util.path.relpath(os.getcwd(), absolute)
 
         if "--debug-loading" in self.manager.argv():

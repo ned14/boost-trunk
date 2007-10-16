@@ -13,6 +13,7 @@ ECHO "FOO is" $(FOO) ;
 #ECHO "GLOB RESULT:" [ glob-tree * ] ;
 
 make a : a.cpp : $(__name__).copy ;
+make b : a.cpp : $(__name__).copy ;
 
 rule copy ( targets : sources : properties * )
 {
@@ -21,6 +22,6 @@ rule copy ( targets : sources : properties * )
 
 actions copy
 {
-    cp $(FOO) $(>) $(<)
+    cp $(>) $(<)
 }
 
