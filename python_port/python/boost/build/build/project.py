@@ -38,7 +38,7 @@
 #  are not recorded, the only way to use them is by project id.
 
 import boost.build.util.path
-from boost.build.build import property_set
+from boost.build.build import property_set, property
 import boost.build.build.targets
 
 import bjam
@@ -54,7 +54,7 @@ class ProjectRegistry:
     def __init__(self, manager, global_build_dir):
         self.manager = manager
         self.global_build_dir = None
-        self.project_rules = ProjectRules(self)
+        self.project_rules_ = ProjectRules(self)
 
         # The target corresponding to the project being loaded now
         self.current_project = None
@@ -117,6 +117,12 @@ class ProjectRegistry:
         file and jamfile needed by the loaded one will be loaded recursively.
         If the jamfile at that location is loaded already, does nothing.
         Returns the project module for the Jamfile."""
+
+        print "XXXXXXX", jamfile_location
+        absolute = os.path.join(os.getcwd(), jamfile_location)
+        absolute = os.path.normpath(absolute)
+        print "YYYYYYYY", absolute
+        jamfile_location = boost.build.util.path.relpath(os.getcwd(), absolute)
 
         if "--debug-loading" in self.manager.argv():
             print "Loading Jamfile at '%s'" % jamfile_location
@@ -338,6 +344,22 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
                     print "warning: the --build-dir option will be ignored"
 
 
+    def load_standalone(self, jamfile_module, file):
+        """Loads 'file' as standalone project that has no location
+        associated with it.  This is mostly useful for user-config.jam,
+        which should be able to define targets, but although it has
+        some location in filesystem, we don't want any build to
+        happen in user's HOME, for example.
+
+        The caller is required to never call this method twice on
+        the same file.
+        """
+
+        self.initialize(jamfile_module)
+        self.used_projects[jamfile_module] = []
+        bjam.call("load", jamfile_module, file)
+        self.load_used_projects(jamfile_module)
+        
     def is_jamroot(self, basename):
         match = [ pat for pat in self.JAMROOT if re.match(pat, basename)]
         if match:
@@ -361,10 +383,10 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         # source paths are correct.
         if not location:
             location = ""
+        else:
+            location = boost.build.util.path.relpath(os.getcwd(), location)
 
-        location = boost.build.util.path.relpath(os.getcwd(), location)
-
-        attributes = ProjectAttributes(location, module_name)
+        attributes = ProjectAttributes(self.manager, location, module_name)
         self.module2attributes[module_name] = attributes
 
         if location:
@@ -377,7 +399,7 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         attributes.set("default-build", [], exact=1)
         attributes.set("projects-to-build", [], exact=1)
         
-        self.project_rules.init_project(module_name)
+        self.project_rules_.init_project(module_name)
 
         jamroot = 0
 
@@ -386,7 +408,7 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
             # No parent
             pass
         elif module_name == "user-config":
-            parent_module = "site_config"
+            parent_module = "site-config"
         elif location and not self.is_jamroot(basename):
             # We search for parent/project-root only if jamfile was specified 
             # --- i.e
@@ -429,6 +451,8 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         """Make 'project-module' inherit attributes of project
         root and parent module."""
 
+        print "inherit attributes", project_module, parent_module
+
         attributes = self.module2attributes[project_module]
         pattributes = self.module2attributes[parent_module]
         
@@ -441,10 +465,11 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         #    }
         
         attributes.set("project-root", pattributes.get("project-root"), exact=1)
-        attributes.set("default-build", pattributes.get("default-build"))
+        attributes.set("default-build", pattributes.get("default-build"), exact=1)
         attributes.set("requirements", pattributes.get("requirements"), exact=1)
+        # FIXME: Kill the kill to raw()
         attributes.set("usage-requirements",
-                       pattributes.get("usage-requirements"), exact=1)
+                       pattributes.get("usage-requirements").raw(), exact=1)
 
         parent_build_dir = pattributes.get("build-dir")
         
@@ -453,16 +478,15 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         # Convert both paths to absolute, since we cannot
         # find relative path from ".." to "."
 
-             pass
-             # FIXME:
-             #local location = [ attribute $(project-module) location ] ;
-             #local parent-location = [ attribute $(parent-module) location ] ;
-        
-             #local pwd = [ path.pwd ] ;
-             #local parent-dir = [ path.root $(parent-location) $(pwd) ] ;
-             #local our-dir = [ path.root $(location) $(pwd) ] ;
-             #$(attributes).set build-dir : [ path.join $(parent-build-dir) 
-             #                                [ path.relative $(our-dir) $(parent-dir) ] ] : exact ;
+             location = attributes.get("location")
+             parent_location = pattributes.get("location")
+
+             our_dir = os.path.join(os.getcwd(), location)
+             parent_dir = os.path.join(os.getcwd(), parent_location)
+
+             build_dir = os.path.join(parent_build_dir,
+                                      boost.build.util.path.relpath(parent_dir,
+                                                                    our_dir))
 
     def register_id(self, id, module):
         """Associate the given id with the given project module."""
@@ -511,11 +535,8 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
             # The project at 'location' either have no id or
             # that id is not equal to the 'id' parameter.
             if self.id2module[id] and self.id2module[id] != project_module:
-                print "ERROR"
-                # FIXME
-                #errors.user-error 
-                #"Attempt to redeclare already existing project id '$(id)'" ;
-                #}                  
+                self.manager.errors()(
+"""Attempt to redeclare already existing project id '%s'""" % id)
             self.id2module[id] = project_module
 
         self.current_module = saved_project
@@ -524,7 +545,10 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         """Makes rule 'name' available to all subsequently loaded Jamfiles.
 
         Calling that rule wil relay to 'callable'."""
-        self.project_rules.add_rule(name, callable)
+        self.project_rules_.add_rule(name, callable)
+
+    def project_rules(self):
+        return self.project_rules_
 
     def glob_internal(self, project, wildcards, excludes, rule_name):
         location = project.get("source-location")
@@ -647,7 +671,8 @@ class ProjectAttributes:
     "requirements", "default-build", "source-location" and "projects-to-build".
     """
         
-    def __init__(self, location, project_module):
+    def __init__(self, manager, location, project_module):
+        self.manager = manager
         self.location = location
         self.project_module = project_module
         self.attributes = {}
@@ -659,17 +684,22 @@ class ProjectAttributes:
 
         if exact:
             self.__dict__[attribute] = specification
+            if attribute == "requirements":
+                print "Setting re to", specification
             
         elif attribute == "requirements":
             try:
-                # FIXME: refine_from_user_input not ported yet.                
+                # FIXME: refine_from_user_input not ported yet.
                 result = self.requirements.refine(
                     property_set.create(specification))
                 #result = property_set.refine_from_user_input(
                 #    self.requirements, specification,
                 #    self.project_module, self.location)
             except Exception, e:
+                # FIXME: any exception caused above is stripped of
+                # backtrace.
                 print "Conflicting parent properties requirements", e.message
+                print dir(e)
                 # FIXME:
                 #errors.error
                 #    "Requirements for project at '$(self.location)'"
@@ -692,18 +722,18 @@ class ProjectAttributes:
                 # FIXME:
                 #errors.error "usage-requirements" $(specification) "have non-free properties" $(non-free) ;
 
-            t = property.translate-paths(specification, self.location)
+            t = property.translate_paths(specification, self.location)
 
             existing = self.__dict__.get("usage-requirements")
             if existing:
-                new = property_set.create(existing.raw(), t)
+                new = property_set.create(existing.raw() +  t)
             else:
                 new = property_set.create(t)
             self.__dict__["usage-requirements"] = new
 
                 
         elif attribute == "default-build":
-            self.__dict__["default-build"] = property.make(specification)
+            self.__dict__["default-build"] = property_set.create(specification)
             
         elif attribute == "source-location":
             source_location = []
@@ -717,10 +747,9 @@ class ProjectAttributes:
         elif not attribute in ["id", "default-build", "location",
                                "source-location", "parent",
                                "projects-to-build", "project-root"]:
-            pass
-            # FIXME
-            #errors.error "Invalid project attribute '$(attribute)' specified "
-            #                   "for project at '$(self.location)'" ;
+            self.manager.errors()(
+"""Invalid project attribute '%s' specified
+for project at '%s'""" % (attribute, self.location))
         else:
             self.__dict__[attribute] = specification
 
@@ -754,16 +783,20 @@ class ProjectRules:
     def __init__(self, registry):
         self.registry = registry
         self.rules = {}
-        self.add_rule("path-constant", self.path_constant)
+        self.local_names = [x for x in self.__class__.__dict__
+                            if x not in ["__init__", "init_project", "add_rule"]]
+        self.all_names_ = [x for x in self.local_names]
     
     def add_rule(self, name, callable):
         self.rules[name] = callable
+        self.all_names_.append(name)
+
+    def all_names(self):
+        return self.all_names_
 
     def init_project(self, project_module):
-        
-        names = [x for x in self.__class__.__dict__
-                 if x not in ["__init__", "init_project", "add_rule"]]
-        for n in names:            
+
+        for n in self.local_names:            
             # Using 'getattr' here gives us a bound method,
             # while using self.__dict__[r] would give unbound one.
             v = getattr(self, n)
@@ -772,7 +805,6 @@ class ProjectRules:
                     n = "import"
                 else:
                     n = string.replace(n, "_", "-")
-                print "Importing '%s' to bjam" % n
                 bjam.import_rule(project_module, n, v)
 
         for n in self.rules:
@@ -786,6 +818,7 @@ class ProjectRules:
         id = None
         if args and args[0]:
             id = args[0][0]
+            args = args[1:]
 
         if id:
             if id[0] != '/':
