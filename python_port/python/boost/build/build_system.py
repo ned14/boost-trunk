@@ -34,14 +34,6 @@ import sys
 #}
 
 # FIXME:
-command_line_free_features = []
-# Returns the property set with the
-# free features from the currently processed
-# build request.
-#rule command-line-free-features ( )
-#{
-#    return $(.command-line-free-features) ;
-#}
 
 def get_boolean_option(name):
     match = "--" + name
@@ -330,9 +322,8 @@ def main(dummy):
     # so we need to record which targets are produced.
     results_of_main_targets = []
 
-    global command_line_free_features
     for p in expanded:
-        command_line_free_features = property_set.create(p.free())
+        manager.set_command_line_free_features(property_set.create(p.free()))
         
         for t in targets:
             g = t.generate(p)

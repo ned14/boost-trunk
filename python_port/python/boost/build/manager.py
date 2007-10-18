@@ -35,6 +35,7 @@ class Manager:
         self.argv_ = bjam.variable("ARGV")
         self.boost_build_path_ = bjam.variable("BOOST_BUILD_PATH")
         self.errors_ = Errors()
+        self.command_line_free_features_ = property_set.empty()
         
         # Object Map.
         # TODO: This is a kludge: maps object names to the actual instances.
@@ -77,6 +78,12 @@ class Manager:
 
     def boost_build_path(self):
         return self.boost_build_path_
+
+    def command_line_free_features(self):
+        return self.command_line_free_features_
+
+    def set_command_line_free_features(self, v):
+        self.command_line_free_features_ = v
 
     def register_object (self, value):
         """ Stores an object in a map and returns a key that can be used to retrieve it.

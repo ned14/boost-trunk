@@ -1,6 +1,13 @@
 
 - Document that using strings for classes will not be carried over.
 
+- Review absolutely all 'raise' statements and decide what do do
+about them.
+
+- Test dependency properties. Probably need to fix them!
+
+- Review logging in target.py
+
 
 2. The current way to make rules available to Jamfiles is nasty --
 only functions defined in ProjectContext class are exported.
