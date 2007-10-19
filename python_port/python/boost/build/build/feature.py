@@ -1,7 +1,11 @@
-#  (C) Copyright David Abrahams 2001. Permission to copy, use, modify, sell and
-#  distribute this software is granted provided this copyright notice appears in
-#  all copies. This software is provided "as is" without express or implied
-#  warranty, and with no claim as to its suitability for any purpose.
+# Status: mostly ported.
+# TODO: carry over tests.
+#
+# Copyright 2001, 2002, 2003 Dave Abrahams 
+# Copyright 2002, 2006 Rene Rivera 
+# Copyright 2002, 2003, 2004, 2005, 2006 Vladimir Prus 
+# Distributed under the Boost Software License, Version 1.0. 
+# (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt) 
 
 # TODO: stop using grists to identify the name of features?
 #       create a class for Features and Properties?
@@ -73,6 +77,8 @@ def enumerate ():
     """
     return __all_features.iteritems ()
 
+# FIXME: prepare-test/finish-test?
+
 def feature (name, values, attributes = []):
     """ Declares a new feature with the given name, values, and attributes.
         name: the feature name
@@ -83,32 +89,225 @@ def feature (name, values, attributes = []):
 
     __validate_feature_attributes (name, attributes)
 
-    empty_feature = { 
+    feature = { 
         'values': [],
-        'attributes': [],
+        'attributes': attributes,
         'subfeatures': [],
         'default': None
         }
+    __all_features [name] = feature
     
-    feature = __all_features.get (name, empty_feature)
-    
-    # TODO: do we allow overriding a feature's attributes
     feature ['attributes'] = attributes
     
     for attribute in attributes:
         __features_with_attributes [attribute].append (name)
-
-    __all_features [name] = feature
-    
-    if not 'subfeature' in attributes:
-        __all_top_features.append (name)
+        
+    if 'subfeature' in attributes:
+        __all_subfeatures.append(name)
+    else:
+        __all_top_features.append(name)
 
     extend_feature (name, values)
 
+    # FIXME: why his is needed.
     if 'free' in attributes:
         __free_features.append (name)
 
-# TODO: Porting note:
+def set_default (feature, value):
+    """ Sets the default value of the given feature, overriding any previous default.
+        feature: the name of the feature
+        value: the default value to assign
+    """
+    feature = add_grist (feature)
+    f = __all_features [feature]
+    if not value in f ['values']:
+        raise BaseException ("The specified default value, '%s' is invalid.\n" + "allowed values are: %s" % (str (value), str (f ['values'])))
+
+    f ['default'] = value
+
+def defaults (features):
+    """ Returns the default property values for the given features.
+    """
+    result = []
+    for f in features:
+        attributes = __all_features [f]['attributes']
+        if not 'free' in attributes and not 'optional' in attributes:
+            defaults = __all_features [f]['default']
+            if defaults:
+                result.append (replace_grist (defaults, f))
+
+    return result
+
+def valid (names):
+    """ Returns true iff all elements of names are valid features.
+    """
+    def valid_one (name): return __all_features.has_key (name)
+        
+    if isinstance (names, str):
+        return valid_one (names)
+    else:
+        return [ valid_one (name) for name in names ]
+
+def attributes (feature):
+    """ Returns the attributes of the given feature.
+    """
+    return __all_features [feature]['attributes']
+        
+def values (feature):
+    """ Return the values of the given feature.
+    """
+    validate_feature (feature)
+    return __all_features [feature]['values']
+
+def is_implicit_value (value_string):
+    """ Returns true iff 'value_string' is a value_string
+    of an implicit feature.
+    """
+    v = value_string.split('-')
+    
+    if not __implicit_features.has_key(v[0]):
+        return False
+
+    feature = __implicit_features[v[0]]
+    
+    for subvalue in (v[1:]):
+        if not __find_implied_subfeature(feature, subvalue, v[0]):
+            return False
+            
+    return True
+
+def implied_feature (implicit_value):
+    """ Returns the implicit feature associated with the given implicit value.
+    """
+    components = implicit_value.split('-')
+    
+    if not __implicit_features.has_key(components[0]):
+        raise InvalidValue ("'%s' is not a value of an implicit feature" % implicit_value)
+        
+    return __implicit_features[components[0]]
+
+def __find_implied_subfeature (feature, subvalue, value_string):
+    feature = add_grist (feature)
+    if value_string == None: value_string = ''
+
+    if not __subfeature_value_to_name.has_key (feature) \
+        or not __subfeature_value_to_name [feature].has_key (value_string) \
+        or not __subfeature_value_to_name [feature][value_string].has_key (subvalue):
+        return None
+        
+    return __subfeature_value_to_name[feature][value_string][subvalue]
+
+# Given a feature and a value of one of its subfeatures, find the name
+# of the subfeature. If value-string is supplied, looks for implied
+# subfeatures that are specific to that value of feature
+#  feature             # The main feature name
+#  subvalue            # The value of one of its subfeatures
+#  value-string        # The value of the main feature
+
+def implied_subfeature (feature, subvalue, value_string):
+    result = __find_implied_subfeature (feature, subvalue, value_string)
+    if not result:
+        raise InvalidValue ("'%s' is not a known subfeature value of '%s%s'" % (subvalue, feature, value_string))
+
+    return result
+
+def validate_feature (name):
+    """ Checks if all name is a valid feature. Otherwise, raises an exception.
+    """
+    x = valid (name)
+    if not x:
+        raise InvalidFeature ("'%s' is not a valid feature name" % name)
+
+def valid (names):
+    """ Returns true iff all elements of names are valid features.
+    """
+    def valid_one (name): return __all_features.has_key (name)
+        
+    if isinstance (names, str):
+        return valid_one (names)
+    else:
+        return [ valid_one (name) for name in names ]
+
+def __expand_subfeatures_aux (feature, value, dont_validate = False):
+    """ Helper for expand_subfeatures.
+        Given a feature and value, or just a value corresponding to an
+        implicit feature, returns a property set consisting of all component
+        subfeatures and their values. For example:
+        
+          expand_subfeatures <toolset>gcc-2.95.2-linux-x86
+              -> <toolset>gcc <toolset-version>2.95.2 <toolset-os>linux <toolset-cpu>x86
+          equivalent to:
+              expand_subfeatures gcc-2.95.2-linux-x86
+
+        feature:        The name of the feature, or empty if value corresponds to an implicit property
+        value:          The value of the feature.
+        dont_validate:  If True, no validation of value string will be done.
+    """
+    if not feature:
+        feature = implied_feature(value)
+    else:
+        validate_feature(feature)
+
+    if not dont_validate:
+        validate_value_string(feature, value)
+    
+    components = value.split ("-")
+    
+    # get the top-level feature's value
+    value = replace_grist(components[0], '')
+
+    result = [ replace_grist(components[0], feature) ]
+    
+    subvalues = components[1:]
+
+    while len(subvalues) > 0:
+        subvalue = subvalues [0]    # pop the head off of subvalues
+        subvalues = subvalues [1:]
+        
+        subfeature = __find_implied_subfeature (feature, subvalue, value)
+        
+        # If no subfeature was found, reconstitute the value string and use that
+        if not subfeature:
+            result = '-'.join(components)
+            result = replace_grist (result, feature)
+            return [result]
+            
+        f = ungrist (feature)
+        # FIXME: why grist includes '<>'?
+        result.append (replace_grist (subvalue, '<' + f + '-' + subfeature + '>'))
+    
+    return result
+
+def expand_subfeatures (properties, dont_validate = False):
+    """
+    Make all elements of properties corresponding to implicit features
+    explicit, and express all subfeature values as separate properties
+    in their own right. For example, the property
+    
+       gcc-2.95.2-linux-x86
+    
+    might expand to
+    
+      <toolset>gcc <toolset-version>2.95.2 <toolset-os>linux <toolset-cpu>x86
+
+    properties:     A sequence with elements of the form
+                    <feature>value-string or just value-string in the
+                    case of implicit features.
+  : dont_validate:  If True, no validation of value string will be done.
+    """
+    result = []
+    for p in properties:
+        p_grist = get_grist (p)
+        # Don't expand subfeatures in subfeatures
+        if ':' in p_grist:
+            result.append (p)
+        else:
+            result.extend (__expand_subfeatures_aux (p_grist, replace_grist (p, ''), dont_validate))
+
+    return result
+
+
+
 # rule extend was defined as below:
     # Can be called three ways:
     #
@@ -139,105 +338,36 @@ def extend_feature (name, values):
             if __implicit_features.has_key (v):
                 raise BaseException ("'%s' is already associated with the feature '%s'" % (v, __implicit_features [v]))
 
-            __implicit_features [v] = name
+            __implicit_features[v] = name
 
     if len (feature ['values']) == 0 and len (values) > 0:
         # This is the first value specified for this feature,
         # take it as default value
-        feature ['default'] = values [0]
+        feature ['default'] = values[0]
 
-    feature ['values'].extend (values)
+    feature['values'].extend (values)
 
-def set_default (feature, value):
-    """ Sets the default value of the given feature, overriding any previous default.
-        feature: the name of the feature
-        value: the default value to assign
+def validate_value_string (feature, value_string):
+    """ Checks that value-string is a valid value-string for the given feature.
     """
-    feature = add_grist (feature)
     f = __all_features [feature]
-    if not value in f ['values']:
-        raise BaseException ("The specified default value, '%s' is invalid.\n" + "allowed values are: %s" % (str (value), str (f ['values'])))
+    if 'free' in f ['attributes'] or value_string in f ['values']:
+        return
 
-    f ['default'] = value
+    values = [value_string]
 
+    if f['subfeatures']:
+        values = value_string.split('-')
 
-def compose (composite_property, component_properties):
-    """ Sets the components of the given composite property.
-    """
-    component_properties = to_seq (component_properties)
+    # An empty value is allowed for optional features
+    if not values[0] in f['values'] and \
+           (values[0] or not 'optional' in f['attributes']):
+        raise InvalidValue ("'%s' is not a known value of feature '%s'\nlegal values: '%s'" % (values [0], feature, f ['values']))
 
-    feature = get_grist (composite_property)
-    if not 'composite' in attributes (feature):
-        raise BaseException ("'%s' is not a composite feature" % feature)
+    for v in values [1:]:
+        # this will validate any subfeature values in value-string
+        implied_subfeature(feature, v, values[0])
 
-    if __composite_properties.has_key (composite_property):
-        raise BaseException ('components of "%s" already set: %s' % (composite_property, str (__composite_properties [composite_property]['components'])))
-
-    if composite_property in component_properties:
-        raise BaseException ('composite property "%s" cannot have itself as a component' % composite_property)
-
-    entry = { 'components': component_properties }
-    __composite_properties [composite_property] = entry
-
-def validate_feature (name):
-    """ Checks if all name is a valid feature. Otherwise, raises an exception.
-    """
-    x = valid (name)
-    if not x:
-        raise InvalidFeature ("'%s' is not a valid feature name" % name)
-
-def valid (names):
-    """ Returns true iff all elements of names are valid features.
-    """
-    def valid_one (name): return __all_features.has_key (name)
-        
-    if isinstance (names, str):
-        return valid_one (names)
-    else:
-        return [ valid_one (name) for name in names ]
-
-def attributes (feature):
-    """ Returns the attributes of the given feature.
-    """
-    validate_feature (feature)
-    return __all_features [feature]['attributes']
-
-def defaults (features):
-    """ Returns the default property values for the given features.
-    """
-    result = []
-    for f in features:
-        validate_feature (f)
-        attributes = __all_features [f]['attributes']
-        if not 'free' in attributes and not 'optional' in attributes:
-            defaults = __all_features [f]['default']
-            if defaults:
-                result.append (replace_grist (defaults, f))
-
-    return result
-
-def values (feature):
-    """ Return the values of the given feature.
-    """
-    validate_feature (feature)
-    return __all_features [feature]['values']
-
-
-def is_implicit_value (value_string):
-    """ Returns true iff 'value_string' is a value_string of an implicit feature.
-    """
-    v = value_string.split ('-')
-    
-    if not __implicit_features.has_key (v [0]):
-        return False
-
-    feature = __implicit_features [v [0]]
-    
-    for subvalue in (v [1:]):
-        if not __find_implied_subfeature (feature, subvalue, v [0]):
-            return False
-            
-    return True
 
 """ Extends the given subfeature with the subvalues.  If the optional
     value-string is provided, the subvalues are only valid for the given
@@ -300,97 +430,24 @@ def subfeature (feature_name, value_string, subfeature, subvalues, attributes = 
     # Now make sure the subfeature values are known.
     extend_subfeature (feature_name, value_string, subfeature, subvalues)
 
-
-def implied_feature (implicit_value):
-    """ Returns the implicit feature associated with the given implicit value.
+def compose (composite_property, component_properties):
+    """ Sets the components of the given composite property.
     """
-    components = implicit_value.split ('-')
-    
-    if not __implicit_features.has_key (components [0]):
-        raise InvalidValue ("'%s' is not a value of an implicit feature" % implicit_value)
-        
-    return __implicit_features [components [0]]
+    component_properties = to_seq (component_properties)
 
-def implied_subfeature (feature, subvalue, value_string):
-    result = __find_implied_subfeature (feature, subvalue, value_string)
-    if not result:
-        raise InvalidValue ("'%s' is not a known subfeature value of '%s%s'" % (subvalue, feature, value_string))
+    feature = get_grist (composite_property)
+    if not 'composite' in attributes (feature):
+        raise BaseException ("'%s' is not a composite feature" % feature)
 
-    return result
+    if __composite_properties.has_key (composite_property):
+        raise BaseException ('components of "%s" already set: %s' % (composite_property, str (__composite_properties [composite_property]['components'])))
 
-def expand_subfeatures (properties, dont_validate = False):
-    """
-    Make all elements of properties corresponding to implicit features
-    explicit, and express all subfeature values as separate properties
-    in their own right. For example, the property
-    
-       gcc-2.95.2-linux-x86
-    
-    might expand to
-    
-      <toolset>gcc <toolset-version>2.95.2 <toolset-os>linux <toolset-cpu>x86
+    if composite_property in component_properties:
+        raise BaseException ('composite property "%s" cannot have itself as a component' % composite_property)
 
-    properties:     A sequence with elements of the form
-                    <feature>value-string or just value-string in the
-                    case of implicit features.
-  : dont_validate:  If True, no validation of value string will be done.
-    """
-    result = []
-    for p in properties:
-        p_grist = get_grist (p)
-        # Don't expand subfeatures in subfeatures
-        if ':' in p_grist:
-            result.append (p)
-        else:
-            result.extend (__expand_subfeatures_aux (p_grist, replace_grist (p, ''), dont_validate))
+    entry = { 'components': component_properties }
+    __composite_properties [composite_property] = entry
 
-    return result
-
-def free_features ():
-    """ Returns all free features.
-    """
-    return __free_features
-    
-def is_subfeature_of (parent_property, f):
-    """ Return true iff f is an ordinary subfeature of the parent_property's
-        feature, or if f is a subfeature of the parent_property's feature
-        specific to the parent_property's value.
-    """
-    if not valid (f) or not 'subfeature' in __all_features [f]['attributes']:
-        return False
-
-    specific_subfeature = __re_split_subfeatures.match (f)
-
-    if specific_subfeature:
-        # The feature has the form
-        # <topfeature-topvalue:subfeature>,
-        # e.g. <toolset-msvc:version>
-        feature_value = split_top_feature (specific_subfeature.group (1))
-        if replace_grist (feature_value [1], '<' + feature_value [0] + '>') == parent_property:
-            return True
-    else:
-        # The feature has the form <topfeature-subfeature>,
-        # e.g. <toolset-version>
-        top_sub = split_top_feature (ungrist (f))
-
-        if top_sub [1] and add_grist (top_sub [0]) == get_grist (parent_property):
-            return True
-
-    return False
-
-def expand (properties):
-    """ Given a property set which may consist of composite and implicit
-        properties and combined subfeature values, returns an expanded,
-        normalized property set with all implicit features expressed
-        explicitly, all subfeature values individually expressed, and all
-        components of composite properties expanded. Non-free features
-        directly expressed in the input properties cause any values of
-        those features due to composite feature expansion to be dropped. If
-        two values of a given non-free feature are directly expressed in the
-        input, an error is issued.
-    """
-    expanded = expand_subfeatures (properties)
-    return expand_composites (expanded)
 
 def expand_composite (property):
     result = [ property ]
@@ -398,7 +455,23 @@ def expand_composite (property):
         for p in __composite_properties [property]['components']:
             result.extend (expand_composite (p))
     return result
+
+
+def get_values (feature, properties):
+    """ Returns all values of the given feature specified by the given property set.
+    """
+    result = []
+    for p in properties:
+        if get_grist (p) == feature:
+            result.append (replace_grist (p, ''))
     
+    return result
+
+def free_features ():
+    """ Returns all free features.
+    """
+    return __free_features
+
 def expand_composites (properties):
     """ Expand all composite properties in the set so that all components
         are explicitly expressed.
@@ -433,6 +506,88 @@ def expand_composites (properties):
                     result.append (x)
 
     return result
+
+def is_subfeature_of (parent_property, f):
+    """ Return true iff f is an ordinary subfeature of the parent_property's
+        feature, or if f is a subfeature of the parent_property's feature
+        specific to the parent_property's value.
+    """
+    if not valid (f) or not 'subfeature' in __all_features [f]['attributes']:
+        return False
+
+    specific_subfeature = __re_split_subfeatures.match (f)
+
+    if specific_subfeature:
+        # The feature has the form
+        # <topfeature-topvalue:subfeature>,
+        # e.g. <toolset-msvc:version>
+        feature_value = split_top_feature(specific_subfeature.group(1))
+        if replace_grist (feature_value [1], '<' + feature_value [0] + '>') == parent_property:
+            return True
+    else:
+        # The feature has the form <topfeature-subfeature>,
+        # e.g. <toolset-version>
+        top_sub = split_top_feature (ungrist (f))
+
+        if top_sub [1] and add_grist (top_sub [0]) == get_grist (parent_property):
+            return True
+
+    return False
+
+def __is_subproperty_of (parent_property, p):
+    """ As is_subfeature_of, for subproperties.
+    """
+    return is_subfeature_of (parent_property, get_grist (p))
+
+    
+# Returns true iff the subvalue is valid for the feature.  When the
+# optional value-string is provided, returns true iff the subvalues
+# are valid for the given value of the feature.
+def is_subvalue(feature, value_string, subfeature, subvalue):
+
+    if not value_string:
+        value_string = ''
+
+    if not __subfeature_value_to_name.has_key(feature):
+        return False
+        
+    if not __subfeature_value_to_name[feature].has_key(value_string):
+        return False
+        
+    if not __subfeature_value_to_name[feature][value_string].has_key(subvalue):
+        return False
+
+    if __subfeature_value_to_name[feature][value_string][subvalue]\
+           != subfeature:
+        return False
+
+    return True
+
+
+
+
+def implied_subfeature (feature, subvalue, value_string):
+    result = __find_implied_subfeature (feature, subvalue, value_string)
+    if not result:
+        raise InvalidValue ("'%s' is not a known subfeature value of '%s%s'" % (subvalue, feature, value_string))
+
+    return result
+
+
+def expand (properties):
+    """ Given a property set which may consist of composite and implicit
+        properties and combined subfeature values, returns an expanded,
+        normalized property set with all implicit features expressed
+        explicitly, all subfeature values individually expressed, and all
+        components of composite properties expanded. Non-free features
+        directly expressed in the input properties cause any values of
+        those features due to composite feature expansion to be dropped. If
+        two values of a given non-free feature are directly expressed in the
+        input, an error is issued.
+    """
+    expanded = expand_subfeatures (properties)
+    return expand_composites (expanded)
+    
 
 def split_top_feature (feature_plus):
     """ Given an ungristed string, finds the longest prefix which is a
@@ -518,8 +673,8 @@ def minimize (properties):
         Implicit properties will be expressed without feature
         grist, and sub-property values will be expressed as elements joined
         to the corresponding main property.
-    """
-# TODO: the code below was in the original feature.jam file, however 'p' is not defined.
+    """    
+# FXIME: the code below was in the original feature.jam file, however 'p' is not defined.
 #       # Precondition checking
 #       local implicits = [ set.intersection $(p:G=) : $(p:G) ] ;
 #       if $(implicits)
@@ -570,41 +725,14 @@ def minimize (properties):
             # have been eliminated, any remaining property whose
             # feature is the same as a component of a composite in the
             # set must have a non-redundant value.
-            if [fullp] != defaults ([f]) or 'symmetric' in attributes (f) or get_grist (fullp) in get_grist (components):
+            if [fullp] != defaults ([f]) or 'symmetric' in attributes (f)\
+                   or get_grist (fullp) in get_grist (components):
                 result.append (p)
 
             x = x [1:]
 
     return result
 
-def validate_value_string (feature, value_string):
-    """ Checks that value-string is a valid value-string for the given feature.
-    """
-    f = __all_features [feature]
-    if 'free' in f ['attributes'] or value_string in f ['values']:
-        return
-
-    values = [ value_string ]
-
-    if len (f ['subfeatures']) > 0:
-        values = value_string.split ('-')
-
-    if not values [0] in f ['values']:
-        raise InvalidValue ("'%s' is not a known value of feature '%s'\nlegal values: '%s'" % (values [0], feature, f ['values']))
-
-    for v in values [1:]:
-        # this will validate any subfeature values in value-string
-        implied_subfeature (feature, v, values [0])
-
-def get_values (feature, properties):
-    """ Returns all values of the given feature specified by the given property set.
-    """
-    result = []
-    for p in properties:
-        if get_grist (p) == feature:
-            result.append (replace_grist (p, ''))
-    
-    return result
 
 def split (properties):
     """ Given a property-set of the form
@@ -724,66 +852,6 @@ def __validate_feature (feature):
     if not __all_features.has_key (feature):
         raise BaseException ('unknown feature "%s"' % feature)
 
-def __find_implied_subfeature (feature, subvalue, value_string):
-    feature = add_grist (feature)
-    if value_string == None: value_string = ''
-
-    if not __subfeature_value_to_name.has_key (feature) \
-        or not __subfeature_value_to_name [feature].has_key (value_string) \
-        or not __subfeature_value_to_name [feature][value_string].has_key (subvalue):
-        return None
-        
-    return __subfeature_value_to_name [feature][value_string][subvalue]
-
-def __expand_subfeatures_aux (feature, value, dont_validate = False):
-    """ Helper for expand_subfeatures.
-        Given a feature and value, or just a value corresponding to an
-        implicit feature, returns a property set consisting of all component
-        subfeatures and their values. For example:
-        
-          expand_subfeatures <toolset>gcc-2.95.2-linux-x86
-              -> <toolset>gcc <toolset-version>2.95.2 <toolset-os>linux <toolset-cpu>x86
-          equivalent to:
-              expand_subfeatures gcc-2.95.2-linux-x86
-
-        feature:        The name of the feature, or empty if value corresponds to an implicit property
-        value:          The value of the feature.
-        dont_validate:  If True, no validation of value string will be done.
-    """
-    if not feature:
-        feature = implied_feature (value)
-    else:
-        validate_feature (feature)
-
-    if not dont_validate:
-        validate_value_string (feature, value)
-    
-    components = value.split ("-")
-    
-    # get the top-level feature's value
-    value = replace_grist (components [0], '')
-
-    result = [ replace_grist (components [0], feature) ]
-    
-    subvalues = components [1:]
-
-    while len (subvalues) > 0:
-        subvalue = subvalues [0]    # pop the head off of subvalues
-        subvalues = subvalues [1:]
-        
-        subfeature = __find_implied_subfeature (feature, subvalue, value)
-        
-        # If no subfeature was found, reconstitute the value string and use that
-        if not subfeature:
-            result = '-'.join (components)
-            result = replace_grist (result, feature)
-            return [result]
-            
-        f = ungrist (feature)
-        result.append (replace_grist (subvalue, '<' + f + '-' + subfeature + '>'))
-    
-    return result
-
 def __add_to_subfeature_value_to_name_map (feature, value_string, subfeature_name, subvalues):
     # provide a way to get from the given feature or property and
     # subfeature value to the subfeature name.
@@ -798,10 +866,6 @@ def __add_to_subfeature_value_to_name_map (feature, value_string, subfeature_nam
     for subvalue in subvalues:
         __subfeature_value_to_name [feature][value_string][subvalue] = subfeature_name
     
-def __is_subproperty_of (parent_property, p):
-    """ As is_subfeature_of, for subproperties.
-    """
-    return is_subfeature_of (parent_property, get_grist (p))
 
 def __select_subfeatures (parent_property, features):
     """ Given a property, return the subset of features consisting of all
@@ -809,9 +873,6 @@ def __select_subfeatures (parent_property, features):
         subfeatures of the property's feature which are conditional on the
         property's value.
     """
-    result = []
-    for f in features:
-        if is_subfeature_of (parent_property, f):
-            result.append (f)
-    return result
+    return [f for f in features if is_subfeature_of (parent_property, f)]
   
+# FIXME: copy over tests.
