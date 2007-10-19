@@ -1,9 +1,11 @@
 # Status: being ported by Vladimir Prus
+
+# Copyright Vladimir Prus 2002-2007.
+# Copyright Rene Rivera 2006.
 #
-#  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
-#  distribute this software is granted provided this copyright notice appears in
-#  all copies. This software is provided "as is" without express or implied
-#  warranty, and with no claim as to its suitability for any purpose.
+# Distributed under the Boost Software License, Version 1.0.
+#    (See accompanying file LICENSE_1_0.txt or copy at
+#          http://www.boost.org/LICENSE_1_0.txt)
 
 #   Supports 'abstract' targets, which are targets explicitly defined in Jamfile.
 #
@@ -93,21 +95,25 @@ class TargetRegistry:
         target.project ().add_alternative (target)
         return target
 
-    def main_target_sources (self, sources, main_target_name):
-        """ Return the list of sources to use, if main target rule is invoked
-            with 'sources'. If there are any objects in 'sources', they are treated
-            as main target instances, and WRITEME.
-        """
+    def main_target_sources (self, sources, main_target_name, no_remaning=0):
+        """Return the list of sources to use, if main target rule is invoked
+        with 'sources'. If there are any objects in 'sources', they are treated
+        as main target instances, and the name of such targets are adjusted to
+        be '<name_of_this_target>__<name_of_source_target>'. Such renaming
+        is disabled is non-empty value is passed for 'no-renaming' parameter."""
         result = []
 
         for t in sources:
             if isinstance (t, AbstractTarget):
                 name = t.name ()
-                
-                # NOTE: on windows, this won't work if 'main_target_name'
-                # is a single letter. But other alternatives are even worse.
-                new_name = main_target_name + '..' + name
-                t.rename (new_name)
+
+                if not no_renaming:
+                    new_name = main_target_name + '__' + name
+                    t.rename (new_name)
+
+                # Inline targets are not built by default.
+                p = t.project()
+                p.mark_target_as_explicit(name)                    
                 result.append (new_name)
 
             else:
@@ -115,28 +121,29 @@ class TargetRegistry:
 
         return result
 
-    def main_target_requirements (self, specification, project):
-        """ Returns the requirements to use when declaring a main target,
-            which are obtained by:
-            - translating all specified property paths, and
-            - refining project requirements with the one specified for the target
-          
-            specification:  Properties explicitly specified for a main target
-            project:        Project where the main target is to be declared
-        """
-        manager = project.manager ()
-       
-        loc = project.get ('location')
-        requirements = property.translate_paths (specification, loc)
-        requirements = property.expand_subfeatures_in_conditions (requirements)
-        requirements = property_set.create (requirements)
-        project_requirements = project.get ('requirements')
-        requirements = project_requirements.refine (requirements)
 
-        # TODO: check this
-        if "@error" in str (requirements):
-            raise BaseException ("Conflicting requirements for target: %s" % requirements)
+    def main_target_requirements(self, specification, project):
+        """Returns the requirement to use when declaring a main target,
+         which are obtained by
+         - translating all specified property paths, and
+         - refining project requirements with the one specified for the target
+        
+         'specification' are the properties xplicitly specified for a
+          main target
+         'project' is the project where the main taret is to be declared."""
 
+        # FIXME: revive after toolset.requirements are ported.
+        #specification.append(toolset.requirements)
+        
+        requirements = property_set.refine_from_user_input(
+            project.get("requirements"), specification,
+            project.project_module, project.get("location"))
+
+        # FIXME:
+        #if $(requirements[1]) = "@error" 
+        #{
+        #    errors.error "Conflicting requirements for target:" $(requirements) ;
+        #    }
         return requirements
 
     def main_target_usage_requirements (self, specification, project):
@@ -147,11 +154,14 @@ class TargetRegistry:
             specification:  Use-properties explicitly specified for a main target
             project:        Project where the main target is to be declared
         """
-        loc = project.get ('location')
-
         project_usage_requirements = project.get ('usage-requirements')
-            
-        usage_requirements = property_set.create (property.translate_paths (specification, loc))
+
+        # We don't use 'refine-from-user-input' because I'm not sure if:
+        # - removing of parent's usage requirements makes sense
+        # - refining of usage requirements is not needed, since usage requirements
+        #   are always free.
+        usage_requirements = property_set.create_from_user_input(
+            specification, project.project_module(), project.get("location"))
         
         return project_usage_requirements.add (usage_requirements)
 
@@ -246,7 +256,7 @@ class AbstractTarget:
         self.name_ = name
         self.project_ = project
         
-        # TODO: do we need this? If yes, how?
+        # FIXME: do we need this? If yes, how?
         # self.location_ = [ errors.nearest-user-location ] ;
         self.location_ = None
     
@@ -291,6 +301,9 @@ class AbstractTarget:
     def rename (self, new_name):
         self.name_ = new_name
 
+# FIXME: port --debug-building handling and
+# indent/increase-indent/decrease-intent        
+
 
 class ProjectTarget (AbstractTarget):
     """ Project target class (derived from 'AbstractTarget')
@@ -328,14 +341,18 @@ class ProjectTarget (AbstractTarget):
         # A list of the registered alternatives for this project.
         self.alternatives_ = []
 
-        # A map of all main targets.
-        self.main_targets_ = {}
+        # A map from main target name to the target corresponding
+        # to it.
+        self.main_target_ = {}
         
         # Targets marked as explicit.
         self.explicit_targets_ = []
 
         # The constants defined for this project.
         self.constants_ = {}
+
+        # Whether targets for all main target are already created.
+        self.built_main_targets_ = 0
 
     # TODO: This is needed only by the 'make' rule. Need to find the
     # way to make 'make' work without this method.
@@ -358,6 +375,7 @@ class ProjectTarget (AbstractTarget):
     def generate (self, ps):
         """ Generates all possible targets contained in this project.
         """
+        # FIXME: Review logging, here and everywhere.
         if self.manager_.logger ().on ():
             self.manager_.logger ().log (__name__, "Building project '%s' with '%s'" % (self.name (), ps.raw ()))
             self.manager_.logger ().increase_indent ()
@@ -368,18 +386,10 @@ class ProjectTarget (AbstractTarget):
             g = t.generate (ps)
             result.extend (g)
 
+            
         self.manager_.logger ().decrease_indent ()
         return result
 
-    def add_alternative (self, target_instance):
-        """ Add new target alternative.
-        """
-        if self.built_main_targets_:
-            raise IllegalOperation ("add-alternative called when main targets are already created for project '%s'" % self.full_name ())
-
-        self.alternatives_.append (target_instance)
-    
-        
     def targets_to_build (self):
         """ Computes and returns a list of AbstractTarget instances which
             must be built when this project is built.
@@ -390,15 +400,14 @@ class ProjectTarget (AbstractTarget):
             self.build_main_targets ()
         
         # Collect all main targets here, except for "explicit" ones.
-        for n, t  in self.main_targets_.iteritems ():
+        for n, t  in self.main_target_.iteritems ():
             if not t.name () in self.explicit_targets_:
                 result.append (t)
 
         # Collect all projects referenced via "projects-to-build" attribute.
         self_location = self.get ('location')
         for pn in self.get ('projects-to-build'):
-            p = self.project_module_.registry ().module_name (Path.join (self_location, pn))
-            result.append (self.project_module_.registry ().target (p))
+            result.append (self.find(pn))
                         
         return result
 
@@ -409,7 +418,28 @@ class ProjectTarget (AbstractTarget):
         # Record the name of the target, not instance, since this
         # rule is called before main target instaces are created.
         self.explicit_.append(target_name)
+    
+    def add_alternative (self, target_instance):
+        """ Add new target alternative.
+        """
+        if self.built_main_targets_:
+            raise IllegalOperation ("add-alternative called when main targets are already created for project '%s'" % self.full_name ())
 
+        self.alternatives_.append (target_instance)
+
+    def main_target (self, name):
+        if not self.built_main_targets_:
+            self.build_main_targets()
+
+        return self.main_target_[name]
+
+    def has_main_target (self, name):
+        """Tells if a main target with the specified name exists."""
+        if not self.built_main_targets_:
+            self.build_main_targets()
+
+        return self.main_target_.has_key(name)
+            
     def create_main_target (self, name):
         """ Returns a 'MainTarget' class instance corresponding to the 'name'.
         """
@@ -418,33 +448,19 @@ class ProjectTarget (AbstractTarget):
                         
         return self.main_targets_.get (name, None)
 
-#       # Tells if a main target with the specified name exists.
-#       rule has-main-target ( name )
-#       {
-#           if ! $(self.built_main_targets_)
-#           {
-#               build_main_targets ;
-#           }
-#           
-#           if $(self.main_targets_.$(name)) 
-#           {
-#               return true ;
-#           } 
-#       }
-#   
 
-    def find_really (self, id):
+    def find_really(self, id):
         """ Find and return the target with the specified id, treated
             relative to self.
         """
-        result = None
+        result = None        
         current_location = self.get ('location')
 
         __re_split_project_target = re.compile (r'(.*)//(.*)')
         split = __re_split_project_target.match (id)
 
         project_part = None
-        target_part = id
+        target_part = None
 
         if split:
             project_part = split.group (1)
@@ -466,19 +482,33 @@ class ProjectTarget (AbstractTarget):
                 extra_error_message = "error: could not find project '$(project_part)'"
 
         else:
-            # Interpret as filename            
-            result = FileReference (self.manager_, path.make (id), self.project_)
-            if not result.exists ():
-                # File actually does not exist.            
-                # Interpret target-name as name of main target
-                result = self.create_main_target (id)
-                
+            # Interpret target-name as name of main target
+            # Need to do this before checking for file. Consider this:
+            #
+            #  exe test : test.cpp ;
+            #  install s : test : <location>. ;
+            #
+            # After first build we'll have target 'test' in Jamfile and file
+            # 'test' on the disk. We need target to override the file.
+            
+            result = None
+            if self.has_main_target(id):
+                result = self.main_target(id)
+
+            if not result:
+                result = FileReference (self.manager_, id, self.project_)
+                if not result.exists ():
+                    # File actually does not exist.
+                    # Reset 'target' so that an error is issued.
+                    result = None
+                    
+
+            if not result:
                 # Interpret id as project-id
-                if not result:
-                    project_module = project_registry.find (id, current_location)
-                    if project_module:
-                        result = project.target (project_module)
-                
+                project_module = project_registry.find (id, current_location)
+                if project_module:
+                    result = project_registry.target (project_module)
+                                    
         return result
 
     def find (self, id, no_error = False):
@@ -499,11 +529,11 @@ class ProjectTarget (AbstractTarget):
         
         for a in self.alternatives_:
             name = a.name ()
-            if not self.main_targets_.has_key (name):
+            if not self.main_target_.has_key (name):
                 t = MainTarget (name, self.project_)
-                self.main_targets_ [name] = t
+                self.main_target_ [name] = t
             
-            self.main_targets_ [name].add_alternative (a)
+            self.main_target_ [name].add_alternative (a)
 
     def add_constant(self, name, value, path=0):
         """Adds a new constant for this project.
@@ -540,7 +570,7 @@ class ProjectTarget (AbstractTarget):
         if user_rules:
             bjam.call("import-rules-from-parent", parent_module, this_module, user_rules)
         
-#       
+# FIXME: this one is no longer needed?
 #       # Intern the constants from this project into the specified module.
 #       #
 #       rule intern-constants (
@@ -556,328 +586,7 @@ class ProjectTarget (AbstractTarget):
 #   }
 
 
-
-
-
-
-class BasicTarget (AbstractTarget):
-    """ Implements the most standard way of constructing main target
-        alternative from sources. Allows sources to be either file or
-        other main target and handles generation of those dependency
-        targets.
-    """
-    def __init__ (self, name, project, sources, requirements = None, default_build = None, usage_requirements = None):
-        AbstractTarget.__init__ (self, name, project)
-    
-        for s in sources:
-            if get_grist (s):
-                raise InvalidSource ("gristed element '%s' in sources for '%s'" % (s, name))
-    
-        self.sources_ = sources
-        
-        if not requirements: requirements = property_set.empty ()
-        self.requirements_ = requirements
-
-        if not default_build: default_build = property_set.empty ()
-        self.default_build_ = default_build
-
-        if not usage_requirements: usage_requirements = property_set.empty ()
-        self.usage_requirements_ = usage_requirements
-        
-        # A cache for resolved references
-        self.source_targets_ = None
-        
-        # A cache for generated targets
-        self.generated_ = {}
-        
-        # A cache for build requests
-        self.request_cache = {}
-        
-    def sources (self):
-        """ Returns the list of AbstractTargets which are used as sources.
-            The extra properties specified for sources are not represented.
-        """
-        if self.source_targets_ == None:
-            self.source_targets_ = []
-            for s in self.sources_:
-                self.source_targets_.append (self.resolve_reference (s, self.project_))
-
-        return self.source_targets_
-
-    def requirements (self):
-        return self.requirements_
-                        
-    def default_build (self):
-        return self.default_build_
-
-    def resolve_reference (self, target_reference, project):
-        """ Given a target_reference, made in context of 'project',
-            returns the AbstractTarget instance that is referred to, as well
-            as properties explicitly specified for this reference.
-        """
-        # Separate target name from properties override
-        split = _re_separate_target_from_properties.match (target_reference)
-        if not split: raise BaseException ("Invalid reference: '%s'" % target_reference)
-        
-        id = split.group (1)
-        
-        sproperties = []
-        
-        if split.group (3):
-            sproperties = property.make (Feature.split (split.group (3)))
-            sproperties = self.manager.features ().expand_composites (sproperties)
-    
-        # Find the target
-        target = project.find (id)
-        
-        return (target, property_set.create (sproperties))
-
-    def generate (self, ps):
-        """ Determines final build properties, generates sources,
-            and calls 'construct'. This method should not be
-            overridden.
-        """
-        if self.manager ().logger ().on ():
-            self.manager ().logger ().log (__name__, "Building target '%s'" % self.name_)
-            self.manager ().logger ().log (__name__, "Build request: '%s'" % str (ps.raw ()))
-            self.manager ().logger ().increase_indent ()
-
-        if not self.generated_.has_key (str (ps)):
-            rproperties = self.common_properties (ps, self.requirements_)
-
-            if self.manager ().logger ().on ():
-                self.manager ().logger ().log (__name__, "Common properties are '%s'" % str (rproperties.raw ()))
-            
-            # TODO: check use of "@error".
-            if not "@error" in str (rproperties):
-                result = GenerateResult ()
-
-                properties = rproperties.non_dependency ()
-                
-                (p, u) = self.generate_dependencies (rproperties.dependency (), rproperties)
-                properties += p
-                usage_requirements = u
-
-                (source_targets, u) = self.generate_dependencies (self.sources_, rproperties)
-                usage_requirements += u
-
-                if self.manager_.logger ().on ():
-                      self.manager_.logger ().log (__name__, "Usage requirements for '%s' are '%s'" % (self.name_, usage_requirements))
-
-                rproperties = property_set.create (properties + usage_requirements)
-                usage_requirements = property_set.create (usage_requirements)
-                
-                extra = rproperties.get ('<source>')
-                source_targets += replace_grist (extra, '')
-                source_targets = replace_references_by_objects (self.manager (), source_targets)
-                
-                # We might get duplicate sources, for example if
-                # we link to two library which have the same <library> in
-                # usage requirements.
-                source_targets = unique (source_targets)
-
-                result = self.construct (self.name_, source_targets, rproperties)
-                assert len(result) == 2
-                gur = result [0]
-                result = result [1]
-
-                s = self.create_subvariant (result, ps, source_targets, rproperties, usage_requirements)
-                ur = self.compute_usage_requirements (s)
-                ur = ur.add (gur)
-                s.set_usage_requirements (ur)
-                self.generated_ [str (ps)] = GenerateResult (ur, result)
-            else:
-                self.generated_ [str (ps)] = GenerateResult (rproperties, [])
-        else:
-            if self.manager ().logger ().on ():
-                self.manager ().logger ().log (__name__, "Already built")
-
-        self.manager ().logger ().decrease_indent ()
-
-        return self.generated_ [str (ps)]
-
-
-    def common_properties (self, build_request, requirements):
-        """ Given build request and requirements, return properties
-            common to dependency build request and target build
-            properties.
-        """
-        # For optimization, we add free requirements directly,
-        # without using complex algorithsm.
-        # This gives the complex algorithm better chance of caching results.
-        free = requirements.free ()        
-        non_free = property_set.create (requirements.base () + requirements.incidental ())
-        
-        key = str (build_request) + '-' + str (non_free)
-        if not self.request_cache.has_key (key):
-            self.request_cache [key] = self.__common_properties2 (build_request, non_free)       
-
-        return self.request_cache [key].add_raw (free)
-    
-    def __common_properties2 (self, build_request, requirements):
-
-        # This guarantees that default properties are present
-        # in result, unless they are overrided by some requirement.
-        # FIXME: There is possibility that we've added <foo>bar, which is composite
-        # and expands to <foo2>bar2, but default value of <foo2> is not bar2,
-        # in which case it's not clear what to do.
-        # 
-        build_request = build_request.add_defaults ()
-        
-        # Featured added by 'add_defaults' can be composite and expand
-        # to features without default values -- so they are not added yet.
-        # It could be clearer/faster to expand only newly added properties
-        # but that's not critical.
-        build_request = build_request.expand ()
-        
-        # Apply non-conditional requirements. 
-        # There's a slight bug here: it's possible that conditional
-        # requirement change a value set by non-conditional requirements. This
-        # should be error, but we don't detect it yet.
-        raw = build_request.raw ()
-        raw = property.refine (raw, feature.expand (requirements.non_conditional ()))
-        
-        # We've collected properties that surely must be present in common
-        # properties. We now try to figure out what other properties
-        # should be added in order to satisfy rules (4)-(6) from the docs.
-        conditionals = requirements.conditional ()
-
-        prev = []        
-        current = raw
-
-        for i in range (0, len (conditionals) + 1):
-            # Evaluate conditionals in context of current properties
-            e = property.evaluate_conditionals_in_context (conditionals, current)
-            if e == prev:
-                # If we got the same result, we've found final properties.
-                return property_set.create (current)
-
-            else:
-                # Oops, results of evaluation of conditionals has changes
-                # Also 'current' contains leftover from previous evaluation.
-                # Recompute 'current' using initial properties and conditional
-                # requirements.
-                prev = e
-                current = property.refine (raw, feature.expand (e))
-            
-        raise BaseException ("Can't evaluate conditional properties '%s'" % str (conditionals))
-
-    def match (self, property_set):
-        """ Returns the alternative condition for this alternative, if
-            the condition is satisfied by 'property_set'.
-        """
-        # The condition is composed of all base non-conditional properties.
-        # It's not clear if we should expand 'self.requirements_' or not.
-        # For one thing, it would be nice to be able to put
-        #    <toolset>msvc-6.0 
-        # in requirements.
-        # On the other hand, if we have <variant>release in condition it 
-        # does not make sense to require <optimization>full to be in
-        # build request just to select this variant.
-        bcondition = self.requirements_.base ()
-        ccondition = self.requirements_.conditional ()
-        condition = set.difference (bcondition, ccondition)
-        if set.contains (condition, property_set.raw ()):
-            return condition
-
-        else:
-            return None
-    
-    def generate_dependencies (self, dependencies, property_set):
-        """ Takes a target reference, which might be either target id
-            or a dependency property, and generates that target using
-            'property_set' as build request.
-
-            Returns a tuple (result, usage_requirements).
-        """
-        result_var = []
-        usage_requirements = []
-        for dependency in dependencies:
-            grist = get_grist (dependency)
-            id = replace_grist (dependency, '')
-        
-            result = self.generate_from_reference (id, self.project_, property_set)
-        
-            # TODO: this is a problem: the grist must be kept and the value
-            #       is the object itself. This won't work in python.
-            targets = [ self.manager_.register_object (x) for x in result.targets () ]
-            
-            result_var += replace_grist (targets, grist)
-            usage_requirements += result.usage_requirements ().raw ()
-
-        return (result_var, usage_requirements)
-    
-    def generate_from_reference (self, target_reference, project, property_set):
-        """ Attempts to generate the target given by target reference, which
-            can refer both to a main target or to a file.
-            Returns a list consisting of
-            - usage requirements
-            - generated virtual targets, if any
-            target_reference:  Target reference
-            project:           Project where the reference is made
-            property_set:      Properties of the main target that makes the reference
-        """
-        target, sproperties = self.resolve_reference (target_reference, project)
-        
-        # Take properties which should be propagated and refine them
-        # with source-specific requirements.
-        propagated = property_set.propagated ()
-        rproperties = propagated.refine (sproperties)
-        
-        # TODO: check usage of @error
-        if "@error" in str (rproperties):
-            raise BaseException ("When building '%s' with properties '%s'\nInvalid properties specified: '%s'" % (self.full_name (), property_set.raw (), rproperties [1:]))
-    
-        return target.generate (rproperties)
-    
-    def compute_usage_requirements (self, subvariant):
-        """ Given the set of generated targets, and refined build 
-            properties, determines and sets appripriate usage requirements
-            on those targets.
-        """
-        rproperties = subvariant.build_properties ()
-        xusage_requirements = self.usage_requirements_.evaluate_conditionals (rproperties)
-        
-        # We generate all dependency properties and add them,
-        # as well as their usage requirements, to result.
-        (r1, r2) = self.generate_dependencies (xusage_requirements.dependency (), rproperties)
-        extra = r1 + r2
-                
-        result = property_set.create (xusage_requirements.non_dependency () + extra)
-        
-        result = result.add (subvariant.sources_usage_requirements ())
-        
-        return result
-
-    def create_subvariant (self, targets, build_request, sources, rproperties, usage_requirements):
-        """ Creates a new subvariant-dg instances for 'targets'.
-        """
-        for e in targets:
-            e.root (True)
-        
-        # Process all vtargets that will be created if this main target
-        # is created.
-        all_targets = []
-        for e in targets:
-            all_targets += virtual_target.traverse (e)
-
-        s = Subvariant (self, build_request, sources, rproperties, usage_requirements, all_targets)
-
-        for v in all_targets:
-            if not v.creating_subvariant ():
-                v.creating_subvariant (s)
-
-        return s
-        
-    def construct (self, name, source_targets, properties):
-        """ Constructs the virtual targets for this abstract targets and
-            the dependecy graph. Returns a tuple consisting of the properties and the list of virtual targets.
-            Should be overrided in derived classes.
-        """
-        raise BaseException ("method should be defined in derived classes")
-
-
-
+# FIXME: port start-building?
 
 class MainTarget (AbstractTarget):
     """ A named top-level target in Jamfile.
@@ -903,7 +612,7 @@ class MainTarget (AbstractTarget):
 
         self.alternatives_.append (target)
 
-    def __select_alternatives (self, property_set):
+    def __select_alternatives (self, property_set, debug):
         """ Returns the best viable alternative for this property_set
             See the documentation for selection rules.
             # TODO: shouldn't this be 'alternative' (singular)?
@@ -913,9 +622,6 @@ class MainTarget (AbstractTarget):
         #    lib l : l.cpp : <variant>debug ;
         #    lib l : l_opt.cpp : <variant>release ;
         # won't work unless we add default value <variant>debug.
-        #
-        # TODO: in BBv2 this was as shown below. Note that p is not defined.
-        # property-set = [ $(p).add-defaults ] ;        
         property_set = property_set.add_defaults ()
         
         # The algorithm: we keep the current best viable alternative.
@@ -931,7 +637,7 @@ class MainTarget (AbstractTarget):
             return self.alternatives_ [0]
 
         for v in self.alternatives_:
-            properties = v.match (property_set)
+            properties = v.match (property_set, debug)
                        
             if properties:
                 if not best:
@@ -1034,31 +740,25 @@ class MainTarget (AbstractTarget):
             generated virtual target in other elements. It's possible
             that no targets are generated.
         """
-        best_alternative = self.__select_alternatives (prop_set)
+        best_alternative = self.__select_alternatives (prop_set, debug=0)
 
         if not best_alternative:
+            self.__select_alternatives(prop_set, debug=1)
             raise NoBestMatchingAlternative (
                 "Failed to build '%s'\n"
                 "with properties '%s'\n"
                 "because no best-matching alternative could be found."
                   % (full_name, prop_set.raw ()))
-                  
+
         result = best_alternative.generate (prop_set)
                     
         # Now return virtual targets for the only alternative
         return result
     
-#       rule rename ( new_name )
-#       {
-#           AbstractTarget.rename $(new_name) ;
-#           for local a in $(self.alternatives_)
-#           {
-#               $(a).rename $(new_name) ;
-#           }
-#           
-#       }
-#       
-#   }
+    def rename(self, new_name):
+        AbstractTarget.rename(self, new_name)
+        for a in self.alternatives_:
+            a.rename(new_name)
 
 class FileReference (AbstractTarget):
     """ Abstract target which refers to a source file.
@@ -1067,6 +767,7 @@ class FileReference (AbstractTarget):
     """
     def __init__ (self, manager, file, project):
         AbstractTarget.__init__ (self, file, project)
+        self.file_location_ = None
     
     def generate (self, properties):
          return GenerateResult (None, [
@@ -1076,14 +777,491 @@ class FileReference (AbstractTarget):
     def exists (self):
         """ Returns true if the referred file really exists.
         """
-        location = path.native (self.location ())
-        location = self.location ()
-        return os.path.isfile (location) or os.path.islink (location)
+        if self.location ():
+            return True
+        else:
+            return False
 
     def location (self):
-        source_location = self.project_.get ('source-location')
-        return path.root (self.name (), source_location)
+        # Returns the location of target. Needed by 'testing.jam'
+        if not self.file_location_:
+            source_location = self.project_.get ('source-location')
+            
+            for src_dir in source_location:
+                location = os.path.join(src_dir, self.name())
+                if os.path.isfile(location):
+                    self.file_location_ = src_dir
+                    self.file_path = location
+                    break
 
+        return self.file_location_
+
+
+# FIXME: port --quiet
+
+class BasicTarget (AbstractTarget):
+    """ Implements the most standard way of constructing main target
+        alternative from sources. Allows sources to be either file or
+        other main target and handles generation of those dependency
+        targets.
+    """
+    def __init__ (self, name, project, sources, requirements = None, default_build = None, usage_requirements = None):
+        AbstractTarget.__init__ (self, name, project)
+    
+        for s in sources:
+            if get_grist (s):
+                raise InvalidSource ("property '%s' found in the 'sources' parameter for '%s'" (s, name))
+    
+        self.sources_ = sources
+        
+        if not requirements: requirements = property_set.empty ()
+        self.requirements_ = requirements
+
+        if not default_build: default_build = property_set.empty ()
+        self.default_build_ = default_build
+
+        if not usage_requirements: usage_requirements = property_set.empty ()
+        self.usage_requirements_ = usage_requirements
+        
+        # A cache for resolved references
+        self.source_targets_ = None
+        
+        # A cache for generated targets
+        self.generated_ = {}
+        
+        # A cache for build requests
+        self.request_cache = {}
+        
+    def sources (self):
+        """ Returns the list of AbstractTargets which are used as sources.
+            The extra properties specified for sources are not represented.
+            The only used of this rule at the moment is the '--dump-test'
+            feature of the test system.            
+        """
+        if self.source_targets_ == None:
+            self.source_targets_ = []
+            for s in self.sources_:
+                self.source_targets_.append (self.resolve_reference (s, self.project_))
+
+        return self.source_targets_
+
+    def requirements (self):
+        return self.requirements_
+                        
+    def default_build (self):
+        return self.default_build_
+
+    def resolve_reference (self, target_reference, project):
+        """ Given a target_reference, made in context of 'project',
+            returns the AbstractTarget instance that is referred to, as well
+            as properties explicitly specified for this reference.
+        """
+        # Separate target name from properties override
+        split = _re_separate_target_from_properties.match (target_reference)
+        if not split:
+            raise BaseException ("Invalid reference: '%s'" % target_reference)
+        
+        id = split.group (1)
+        
+        sproperties = []
+        
+        if split.group (3):
+            sproperties = property.make (feature.split (split.group (3)))
+            sproperties = self.manager.features ().expand_composites (sproperties)
+    
+        # Find the target
+        target = project.find (id)
+        
+        return (target, property_set.create (sproperties))
+
+    def common_properties (self, build_request, requirements):
+        """ Given build request and requirements, return properties
+            common to dependency build request and target build
+            properties.
+        """
+        # For optimization, we add free requirements directly,
+        # without using complex algorithsm.
+        # This gives the complex algorithm better chance of caching results.
+        free = requirements.free ()        
+        non_free = property_set.create (requirements.base () + requirements.incidental ())
+        
+        key = str (build_request) + '-' + str (non_free)
+        if not self.request_cache.has_key (key):
+            self.request_cache [key] = self.__common_properties2 (build_request, non_free)       
+
+        return self.request_cache [key].add_raw (free)
+
+    # Given 'context' -- a set of already present properties, and 'requirements',
+    # decide which extra properties should be applied to 'context'. 
+    # For conditional requirements, this means evaluating condition. For 
+    # indirect conditional requirements, this means calling a rule. Ordinary
+    # requirements are always applied.
+    #
+    # Handles situation where evaluating one conditional requirements affects
+    # condition of another conditional requirements, for example:
+    #
+    #     <toolset>gcc:<variant>release <variant>release:<define>RELEASE
+    #
+    # If 'what' is 'refined' returns context refined with new requirements. 
+    # If 'what' is 'added' returns just the requirements that must be applied.
+    def evaluate_requirements(self, requirements, context, what):
+        # Apply non-conditional requirements. 
+        # It's possible that that further conditional requirement change 
+        # a value set by non-conditional requirements. For example:
+        #
+        #    exe a : a.cpp : <threading>single <toolset>foo:<threading>multi ;
+        # 
+        # I'm not sure if this should be an error, or not, especially given that
+        #
+        #    <threading>single 
+        #
+        # might come from project's requirements.
+    
+        unconditional = feature.expand(requirements.non_conditional())
+    
+        raw = context.raw()
+        raw = property.refine(raw, unconditional)
+      
+        # We've collected properties that surely must be present in common
+        # properties. We now try to figure out what other properties
+        # should be added in order to satisfy rules (4)-(6) from the docs.
+    
+        conditionals = requirements.conditional()
+
+        # It's supposed that #conditionals iterations
+        # should be enough for properties to propagate along conditions in any
+        # direction.
+        max_iterations = len(conditionals) +\
+                         len(requirements.get("<conditional>")) + 1
+    
+        added_requirements = []
+        current = raw
+    
+        # It's assumed that ordinary conditional requirements can't add
+        # <indirect-conditional> properties, and that rules referred
+        # by <indirect-conditional> properties can't add new 
+        # <indirect-conditional> properties. So the list of indirect conditionals
+        # does not change.
+        indirect = requirements.get("<conditional>")
+        indirect = [s[1:] for s in indirect]
+    
+        ok = 0
+        for i in range(0, max_iterations):
+
+            e = property.evaluate_conditionals_in_context(conditionals, current)
+        
+            # Evaluate indirect conditionals.
+            for i in indirect:
+                e.extend(bjam.call(i, current))
+
+            if e == added_requirements:
+                # If we got the same result, we've found final properties.
+                ok = 1
+                break
+            else:
+                # Oops, results of evaluation of conditionals has changed.
+                # Also 'current' contains leftover from previous evaluation.
+                # Recompute 'current' using initial properties and conditional
+                # requirements.
+                added_requirements = e
+                current = property.refine(raw, feature.expand(e))
+
+        if not ok:
+            self.manager().errors()("Can't evaluate conditional properties "
+                                    + str(conditionals))
+
+    
+        if what == "added":
+            return property_set.create(unconditional + added_requirements)
+        elif what == "refined":
+            return property_set.create(current)
+        else:
+            self.manager().errors("Invalid value of the 'what' parameter")
+
+    def __common_properties2(self, build_request, requirements):
+        # This guarantees that default properties are present
+        # in result, unless they are overrided by some requirement.
+        # FIXME: There is possibility that we've added <foo>bar, which is composite
+        # and expands to <foo2>bar2, but default value of <foo2> is not bar2,
+        # in which case it's not clear what to do.
+        # 
+        build_request = build_request.add_defaults()
+        # Featured added by 'add-default' can be composite and expand
+        # to features without default values -- so they are not added yet.
+        # It could be clearer/faster to expand only newly added properties
+        # but that's not critical.
+        build_request = build_request.expand()
+        
+        return self.evaluate_requirements(requirements, build_request,
+                                          "refined")
+    
+    def match (self, property_set, debug):
+        """ Returns the alternative condition for this alternative, if
+            the condition is satisfied by 'property_set'.
+        """
+        # The condition is composed of all base non-conditional properties.
+        # It's not clear if we should expand 'self.requirements_' or not.
+        # For one thing, it would be nice to be able to put
+        #    <toolset>msvc-6.0 
+        # in requirements.
+        # On the other hand, if we have <variant>release in condition it 
+        # does not make sense to require <optimization>full to be in
+        # build request just to select this variant.
+        bcondition = self.requirements_.base ()
+        ccondition = self.requirements_.conditional ()
+        condition = set.difference (bcondition, ccondition)
+
+# FIXME
+#        if $(debug)
+#        {
+#            ECHO "    next alternative: required properties:" $(condition:E=(empty)) ;
+#        }                
+
+        
+        if set.contains (condition, property_set.raw ()):
+# FIXME:            
+#            if $(debug)
+#            {
+#                ECHO "        matched" ;
+#            }            
+            
+            return condition
+
+        else:
+            return None
+    
+    def generate_dependencies (self, dependencies, property_set):
+        """ Takes a target reference, which might be either target id
+            or a dependency property, and generates that target using
+            'property_set' as build request.
+
+            Returns a tuple (result, usage_requirements).
+        """
+        result_var = []
+        usage_requirements = []
+        for dependency in dependencies:
+            grist = get_grist (dependency)
+            id = replace_grist (dependency, '')
+        
+            result = self.generate_from_reference (id, self.project_, property_set)
+
+            # FIXME:
+            # TODO: this is a problem: the grist must be kept and the value
+            #       is the object itself. This won't work in python.
+            targets = [ self.manager_.register_object (x) for x in result.targets () ]
+            
+            result_var += replace_grist (targets, grist)
+            usage_requirements += result.usage_requirements ().raw ()
+
+        return (result_var, usage_requirements)
+
+    def generate (self, ps):
+        """ Determines final build properties, generates sources,
+        and calls 'construct'. This method should not be
+        overridden.
+        """
+        # FIXME: reconsider
+        if self.manager ().logger ().on ():
+            self.manager ().logger ().log (__name__, "Building target '%s'" % self.name_)
+            self.manager ().logger ().increase_indent ()            
+            self.manager ().logger ().log (__name__, "Build request: '%s'" % str (ps.raw ()))
+            cf = self.manager().command_line_free_features()
+            self.manager ().logger ().log (__name__, "Command line free features: '%s'" % str (cf.raw ()))            
+            self.manager ().logger ().log (__name__, "Target requirements: %s'" % str (self.requirements.raw ()))
+
+        if not self.generated_.has_key (str (ps)):
+
+            # Apply free features form the command line.  If user
+            # said 
+            #   define=FOO
+            # he most likely want this define to be set for all compiles.
+            ps = ps.refine(self.manager().command_line_free_features())            
+            rproperties = self.common_properties (ps, self.requirements_)
+
+            if self.manager ().logger ().on ():
+                self.manager ().logger ().log (__name__, "Common properties are '%s'" % str (rproperties.raw ()))
+            
+            # FIXME: check use of "@error".
+            if not "@error" in str (rproperties) \
+                   and rproperties.get("<build>") != "no":
+                
+                result = GenerateResult ()
+
+                properties = rproperties.non_dependency ()
+                
+                (p, u) = self.generate_dependencies (rproperties.dependency (), rproperties)
+                properties += p
+                usage_requirements = u
+
+                (source_targets, u) = self.generate_dependencies (self.sources_, rproperties)
+                usage_requirements += u
+
+                if self.manager_.logger ().on ():
+                      self.manager_.logger ().log (__name__, "Usage requirements for '%s' are '%s'" % (self.name_, usage_requirements))
+
+                rproperties = property_set.create (properties + usage_requirements)
+                usage_requirements = property_set.create (usage_requirements)
+
+                if self.manager_.logger ().on ():
+                      self.manager_.logger ().log (
+                          __name__,
+                          "Build properties: '%s'" % str(rproperties.raw()))
+                
+                extra = rproperties.get ('<source>')
+                source_targets += replace_grist (extra, '')               
+                source_targets = replace_references_by_objects (self.manager (), source_targets)
+                
+                # We might get duplicate sources, for example if
+                # we link to two library which have the same <library> in
+                # usage requirements.
+                source_targets = unique (source_targets)
+
+                result = self.construct (self.name_, source_targets, rproperties)
+                if result:
+                    assert len(result) == 2
+                    gur = result [0]
+                    result = result [1]
+
+                    s = self.create_subvariant (
+                        result,
+                        self.manager().virtual_targets().recent_targets(), ps,
+                        source_targets, rproperties, usage_requirements)
+                    self.manager().virtual_targets().clear_recent_targets()
+                    
+                    ur = self.compute_usage_requirements (s)
+                    ur = ur.add (gur)
+                    s.set_usage_requirements (ur)
+
+                    if self.manager_.logger ().on ():
+                        self.manager_.logger ().log (
+                            __name__,
+                            "Usage requirements from '%s' are '%s'" %
+                            (self.name, str(rproperties.raw())))
+                    
+                    self.generated_ [str (ps)] = GenerateResult (ur, result)
+            else:
+
+# FIXME:
+##                 if $(rproperties[1]) = "@error" 
+##                 {
+##                     ECHO [ targets.indent ] 
+##                       "Skipping build: cannot compute common properties" ;
+##                 }
+##                 else if [ $(rproperties).get <build> ] = no
+##                 {
+##                     ECHO [ targets.indent ] 
+##                       "Skipping build: <build>no in common properties" ;
+##                 }
+##                 else
+##                 {
+##                     ECHO [ targets.indent ] "Skipping build: unknown reason" ;
+##                 }                
+
+
+                # We're here either because there's error computing
+                # properties, or there's <build>no in properties.
+                # In the latter case we don't want any diagnostic.
+                # In the former case, we need diagnostics. FIXME.                                  
+                self.generated_ [str (ps)] = GenerateResult (rproperties, [])
+        else:
+            if self.manager ().logger ().on ():
+                self.manager ().logger ().log (__name__, "Already built")
+
+        self.manager ().logger ().decrease_indent ()
+
+        return self.generated_ [str (ps)]
+
+    def generate_from_reference (self, target_reference, project, property_set):
+        """ Attempts to generate the target given by target reference, which
+            can refer both to a main target or to a file.
+            Returns a list consisting of
+            - usage requirements
+            - generated virtual targets, if any
+            target_reference:  Target reference
+            project:           Project where the reference is made
+            property_set:      Properties of the main target that makes the reference
+        """
+        target, sproperties = self.resolve_reference (target_reference, project)
+        
+        # Take properties which should be propagated and refine them
+        # with source-specific requirements.
+        propagated = property_set.propagated ()
+        rproperties = propagated.refine (sproperties)
+        
+        # TODO: check usage of @error
+        if "@error" in str (rproperties):
+            raise BaseException ("When building '%s' with properties '%s'\nInvalid properties specified: '%s'" % (self.full_name (), property_set.raw (), rproperties [1:]))
+    
+        return target.generate (rproperties)
+    
+    def compute_usage_requirements (self, subvariant):
+        """ Given the set of generated targets, and refined build 
+            properties, determines and sets appripriate usage requirements
+            on those targets.
+        """
+        rproperties = subvariant.build_properties ()
+        xusage_requirements =self.evaluate_requirements(
+            self.usage_requirements_, rproperties, "added")
+        
+        # We generate all dependency properties and add them,
+        # as well as their usage requirements, to result.
+        (r1, r2) = self.generate_dependencies (xusage_requirements.dependency (), rproperties)
+        extra = r1 + r2
+                
+        result = property_set.create (xusage_requirements.non_dependency () + extra)
+
+        # Propagate usage requirements we've got from sources, except
+        # for the <pch-header> and <pch-file> features.
+        #
+        # That feature specifies which pch file to use, and should apply
+        # only to direct dependents. Consider:
+        #
+        #   pch pch1 : ...
+        #   lib lib1 : ..... pch1 ;
+        #   pch pch2 : 
+        #   lib lib2 : pch2 lib1 ;
+        #
+        # Here, lib2 should not get <pch-header> property from pch1.
+        #
+        # Essentially, when those two features are in usage requirements,
+        # they are propagated only to direct dependents. We might need
+        # a more general mechanism, but for now, only those two
+        # features are special.
+        raw = subvariant.sources_usage_requirements().raw()
+        raw = property.change(raw, "<pch-header>", None);
+        raw = property.change(raw, "<pch-file>", None);              
+        result = result.add(property_set.create(raw))
+        
+        return result
+
+    def create_subvariant (self, root_targets, all_targets,
+                           build_request, sources,
+                           rproperties, usage_requirements):
+        """Creates a new subvariant-dg instances for 'targets'
+         - 'root-targets' the virtual targets will be returned to dependents
+         - 'all-targets' all virtual 
+              targets created while building this main target
+         - 'build-request' is property-set instance with
+         requested build properties"""
+         
+        for e in root_targets:
+            e.root (True)
+
+        s = Subvariant (self, build_request, sources,
+                        rproperties, usage_requirements, all_targets)
+        
+        for v in all_targets:
+            if not v.creating_subvariant():
+                v.creating_subvariant(s)
+                
+        return s
+        
+    def construct (self, name, source_targets, properties):
+        """ Constructs the virtual targets for this abstract targets and
+            the dependecy graph. Returns a tuple consisting of the properties and the list of virtual targets.
+            Should be overrided in derived classes.
+        """
+        raise BaseException ("method should be defined in derived classes")
 
 
 class TypedTarget (BasicTarget):
@@ -1102,6 +1280,17 @@ class TypedTarget (BasicTarget):
             source_targets)
 
         if not r:
-            raise BaseException ("Unable to construct '%s'" % self.full_name ())
+            print "warning: Unable to construct '%s'" % self.full_name ()
+
+            # Are there any top-level generators for this type/property set.
+            if not generators.find_viable_generators (self.type_, prop_set):
+                print "error: no generators were found for type '$(self.type)'"
+                print "error: and the requested properties"
+                print "error: make sure you've configured the needed tools"
+                print "See http://boost.org/boost-build2/doc/html/bbv2/advanced/configuration.html"
+                
+                print "To debug this problem, try the --debug-generators option."
+                sys.exit(1)
         
         return r
+
