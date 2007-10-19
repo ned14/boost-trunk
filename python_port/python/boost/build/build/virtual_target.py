@@ -83,8 +83,9 @@ class VirtualTargetRegistry:
         # A cache for targets.
         self.cache_ = {}
 
-        # FIXME: what's this?
         # A map of actual names to virtual targets.
+        # Used to make sure we don't associate same
+        # actual target to two virtual targets.
         self.actual_ = {}
 
         self.recent_targets_ = []
@@ -135,7 +136,7 @@ class VirtualTargetRegistry:
         """ Creates a virtual target with appropriate name and type from 'file'.
             If a target with that name in that project was already created, returns that already
             created target.
-            FIXME: more correct way would be to compute path to the file, based on name and source location
+            TODO: more correct way would be to compute path to the file, based on name and source location
             for the project, and use that path to determine if the target was already created.
             TODO: passing project with all virtual targets starts to be annoying.
         """
@@ -438,25 +439,7 @@ class AbstractFileTarget (VirtualTarget):
             return "{ %s-%s %s}" % (action_name, name_dot_type, str(ss))
         else:
             return "{ " + name_dot_type + " }"
-
-# FIXME: I think those two below are no longer needed.
-##     rule less ( a )
-##     {
-##         if [ str ] < [ $(a).str ]
-##         {
-##             return true ;
-##         }
-##     }
-
-##     rule equal ( a )
-##     {
-##         if [ str ] = [ $(a).str ]
-##         {
-##             return true ;
-##         }
-##     }
-            
-          
+        
 # private:
 
     def actual_name (self):
