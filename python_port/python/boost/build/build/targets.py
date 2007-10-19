@@ -139,11 +139,6 @@ class TargetRegistry:
             project.get("requirements"), specification,
             project.project_module, project.get("location"))
 
-        # FIXME:
-        #if $(requirements[1]) = "@error" 
-        #{
-        #    errors.error "Conflicting requirements for target:" $(requirements) ;
-        #    }
         return requirements
 
     def main_target_usage_requirements (self, specification, project):
@@ -1081,9 +1076,7 @@ class BasicTarget (AbstractTarget):
             if self.manager ().logger ().on ():
                 self.manager ().logger ().log (__name__, "Common properties are '%s'" % str (rproperties.raw ()))
             
-            # FIXME: check use of "@error".
-            if not "@error" in str (rproperties) \
-                   and rproperties.get("<build>") != "no":
+            if rproperties.get("<build>") != "no":
                 
                 result = GenerateResult ()
 
@@ -1140,16 +1133,8 @@ class BasicTarget (AbstractTarget):
                     
                     self.generated_ [str (ps)] = GenerateResult (ur, result)
             else:
-
-# FIXME:
-##                 if $(rproperties[1]) = "@error" 
-##                 {
-##                     ECHO [ targets.indent ] 
-##                       "Skipping build: cannot compute common properties" ;
-##                 }
-##                 else if [ $(rproperties).get <build> ] = no
-##                 {
-##                     ECHO [ targets.indent ] 
+                # FIXME
+##                ECHO [ targets.indent ] 
 ##                       "Skipping build: <build>no in common properties" ;
 ##                 }
 ##                 else
@@ -1157,11 +1142,10 @@ class BasicTarget (AbstractTarget):
 ##                     ECHO [ targets.indent ] "Skipping build: unknown reason" ;
 ##                 }                
 
-
                 # We're here either because there's error computing
                 # properties, or there's <build>no in properties.
                 # In the latter case we don't want any diagnostic.
-                # In the former case, we need diagnostics. FIXME.                                  
+                # In the former case, we need diagnostics. TODOo
                 self.generated_ [str (ps)] = GenerateResult (rproperties, [])
         else:
             if self.manager ().logger ().on ():
@@ -1187,11 +1171,7 @@ class BasicTarget (AbstractTarget):
         # with source-specific requirements.
         propagated = property_set.propagated ()
         rproperties = propagated.refine (sproperties)
-        
-        # TODO: check usage of @error
-        if "@error" in str (rproperties):
-            raise BaseException ("When building '%s' with properties '%s'\nInvalid properties specified: '%s'" % (self.full_name (), property_set.raw (), rproperties [1:]))
-    
+            
         return target.generate (rproperties)
     
     def compute_usage_requirements (self, subvariant):

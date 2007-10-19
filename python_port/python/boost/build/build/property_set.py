@@ -249,11 +249,7 @@ class PropertySet:
         if not self.refined_.has_key (str_req):
             r = property.refine (self.raw (), requirements.raw ())
 
-            # TODO: what's the idea? Can this be done using exceptions?
-            if not "@error" in str (r):
-                self.refined_ [str_req] = create (r)
-            else:
-                self.refined_ [str_req] = r
+            self.refined_ [str_req] = create (r)
 
         return self.refined_ [str_req]
 
