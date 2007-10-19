@@ -396,6 +396,8 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         attributes.set("usage-requirements", property_set.empty(), exact=1)
         attributes.set("default-build", [], exact=1)
         attributes.set("projects-to-build", [], exact=1)
+        attributes.set("project-root", None, exact=1)
+        attributes.set("build-dir", None, exact=1)
         
         self.project_rules_.init_project(module_name)
 
@@ -418,10 +420,6 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
             if location:
                 parent_module = "user-config" ;                
                 jamroot = 1 ;
-
-        # FIXME: do this for now until we port top-level code
-        if parent_module == "user-config":
-            parent_module = None
                 
         if parent_module:
             self.inherit_attributes(module_name, parent_module)
@@ -449,8 +447,6 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         """Make 'project-module' inherit attributes of project
         root and parent module."""
 
-        print "inherit attributes", project_module, parent_module
-
         attributes = self.module2attributes[project_module]
         pattributes = self.module2attributes[parent_module]
         
@@ -465,9 +461,8 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         attributes.set("project-root", pattributes.get("project-root"), exact=1)
         attributes.set("default-build", pattributes.get("default-build"), exact=1)
         attributes.set("requirements", pattributes.get("requirements"), exact=1)
-        # FIXME: Kill the kill to raw()
         attributes.set("usage-requirements",
-                       pattributes.get("usage-requirements").raw(), exact=1)
+                       pattributes.get("usage-requirements"), exact=1)
 
         parent_build_dir = pattributes.get("build-dir")
         
@@ -682,8 +677,6 @@ class ProjectAttributes:
 
         if exact:
             self.__dict__[attribute] = specification
-            if attribute == "requirements":
-                print "Setting re to", specification
             
         elif attribute == "requirements":
             try:
@@ -749,7 +742,7 @@ for project at '%s'""" % (attribute, self.location))
             self.__dict__[attribute] = specification
 
     def get(self, attribute):
-        return self.__dict__.get(attribute, [])
+        return self.__dict__[attribute]
 
     def dump(self):
         """Prints the project attributes."""
