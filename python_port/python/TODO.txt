@@ -1,4 +1,9 @@
 
+- Kill this "@error" nonsense.
+
+- Use caching based on object identity, not str, especiall for
+property sets.
+
 - Document that using strings for classes will not be carried over.
 
 - Review absolutely all 'raise' statements and decide what do do

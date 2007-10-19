@@ -1,3 +1,6 @@
+# Status: ported.
+# One FIXME remains that depends on property.py being finished.
+
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in
 #  all copies. This software is provided "as is" without express or implied
@@ -7,6 +10,7 @@ from boost.build.util.utility import *
 import property, feature, string
 from boost.build.exceptions import *
 from boost.build.util.sequence import unique
+from boost.build.util.set import difference
 
 def reset ():
     """ Clear the module state. This is mainly for testing purposes.
@@ -47,9 +51,61 @@ def empty ():
     """ Returns PropertySet with empty set of properties.
     """
     return create ()
+
+def create_from_user_input(raw_properties, jamfile_module, location):
+    """Creates a property-set from the input given by the user, in the
+    context of 'jamfile-module' at 'location'"""
+
+    specification = property.translate_paths(raw_properties, location)
+    # FIXME: revive, after translate_indirect is ported.
+    # specification = property.translate_indirect(specification, jamfile_module)
+    specification = property.expand_subfeatures_in_conditions(specification)
+    specification = property.make(specification)
+    return create(specification)
+
+
+def refine_from_user_input(parent_requirements, specification, jamfile_module,
+                           location):
+    """Refines requirements with requirements provided by the user.
+    Specially handles "-<property>value" syntax in specification
+     to remove given requirements.
+     - parent-requirements -- property-set object with requirements
+       to refine
+     - specification -- string list of requirements provided by the use
+     - project-module -- the module to which context indirect features
+       will be bound.
+     - location -- the path to which path features are relative."""
+
+
+    if not specification:
+        return parent_requirements
+
     
+    add_requirements = []
+    remove_requirements = []
 
+    for r in specification:
+        if r[0] == '-':
+            remove_requirements.append(r[1:])
+        else:
+            add_requirements.append(r)
+        
+        if remove_requirements:
+            # Need to create property set, so that path features
+            # and indirect features are translated just like they
+            # are in project requirements.
+            ps = create_from_user_input(remove_requirements,
+                                        jamfile_module, location)
+            
+            parent_requirements = create(difference(parent_requirements.raw(),
+                                                    ps.raw()))
+            specification = add_requirements
 
+        requirements = create_from_user_input(specification,
+                                              jamfile_module, location)
+        
+        return parent_requirements.refine(requirements)
+    
 class PropertySet:
     """ Class for storing a set of properties.
         - there's 1<->1 correspondence between identity and value. No
@@ -95,6 +151,9 @@ class PropertySet:
         # Cache for the expanded properties.
         self.expanded_ = None
 
+        # Cache for the expanded composite properties
+        self.composites_ = None
+
         # Cache for the property set containing propagated properties.
         self.propagated_ps_ = None
         
@@ -107,7 +166,7 @@ class PropertySet:
         self.as_path_ = None
         
         # A cache for already evaluated sets.
-        self.evaluated = {}
+        self.evaluated_ = {}
         
         for p in raw_properties:
             if not get_grist (p):
@@ -198,99 +257,42 @@ class PropertySet:
 
         return self.refined_ [str_req]
 
-    def add (self, ps):
-        """ Creates a new property set containing the properties in this one,
-            plus the ones of the property set passed as argument.
-        """
-        if not self.added_.has_key (str (ps)):
-            self.added_ [str (ps)] = create (self.raw_ + ps.raw ())
-        return self.added_ [str (ps)]
-    
-    def add_raw (self, properties):
-        """ Creates a new property set containing the properties in this one,
-            plus the ones passed as argument.
-        """
-        return self.add (create (properties))
-
-    def add_defaults (self):
-        if self.defaults_ == None:
-            expanded = feature.add_defaults (self.raw_)
-            self.defaults_ = create (expanded)
-        return self.defaults_
-
     def expand (self):
-        if self.expanded_ == None:
+        if not self.expanded_:
             expanded = feature.expand (self.raw_)
             self.expanded_ = create (expanded)
         return self.expanded_
+
+    def expand_componsite(self):
+        if not self.componsites_:
+            self.composites_ = create(feature.expand_composires(self.raw_))
+        return self.composites_
+
+    def evaluate_conditionals(self, context=None):
+        if not context:
+            context = self
+
+        if not self.evaluated_.has_key(context):
+            self.evaluated_[context] = create(
+                property.evaluate_conditionals_in_context(self.raw_,
+                                                          context.raw()))
+
+        return self.evaluated_[context]
 
     def propagated (self):
         if not self.propagated_ps_:
             self.propagated_ps_ = create (self.propagated_)
         return self.propagated_ps_
-    
-    def get (self, feature):
-        """ Returns all values of 'feature'.
-        """
-        if not self.feature_map_:
-            self.feature_map_ = {}
 
-            # For each feature, create member var and assign all
-            # values to it. Since all regular member vars start with
-            # 'self', there will be no conflicts between names.
-            for v in self.raw_:
-                key = get_grist (v)
-                if not self.feature_map_.has_key (key):
-                    self.feature_map_ [key] = []
-                self.feature_map_ [get_grist (v)].append (replace_grist (v, ''))
-        
-        return self.feature_map_.get (feature, [])
-    
-###################################################################
-# Still to port.
-# Original lines are prefixed with "#   "
-#
-#       rule expand-composites ( )
-#       {
-#           if ! $(self.composites)
-#           {
-#               self.composites = [ PropertySet.create
-#                   [ feature.expand-composites $(self.raw_) ] ] ;
-#           }
-#           return $(self.composites) ;
-#       }
+    def add_defaults (self):
+        if not self.defaults_:
+            expanded = feature.add_defaults(self.raw_)
+            self.defaults_ = create(expanded)
+        return self.defaults_
 
-    def evaluate_conditionals (self, context = None):
-        if not context: context = self
-
-        if not self.evaluated.has_key (context):
-            self.evaluated [context] = create (property.evaluate_conditionals_in_context (self.raw_, context.raw ()))
-
-        return self.evaluated [context]
-    
-#       rule link_incompatible ( )
-#       {
-#           if ! $(self.link_incompatible-ps)
-#           {
-#               self.link_incompatible-ps = 
-#                 [ PropertySet.create $(self.link_incompatible) ] ;
-#           }
-#           return $(self.link_incompatible-ps) ;
-#       }
-#       
-#       
-#       rule run-actions ( )
-#       {
-#           if ! $(self.run)
-#           {
-#               self.run = [ PropertySet.create [ feature.run-actions $(self.raw_) ] ] ;
-#           }
-#           return $(self.run) ;
-#       }
-    
     def as_path (self):
         if not self.as_path_:
-            self.as_path_ = property.as_path (self.base_)
+            self.as_path_ = property.as_path(self.base_)
 
         return self.as_path_
 
@@ -324,41 +326,46 @@ class PropertySet:
                     if len (prefix) > 1:
                         raise AlreadyDefined ("Two <location-prefix> properties specified: '%s'" % prefix)
                         
-                    computed = os.path.join (prefix [0], p)
+                    computed = os.path.join(prefix[0], p)
 
                 else:
                     computed = p
+
+                if not computed:
+                    computed = "."
 
                 is_relative = True
 
             self.target_path_ = (computed, is_relative)
             
         return self.target_path_
+                    
+    def add (self, ps):
+        """ Creates a new property set containing the properties in this one,
+            plus the ones of the property set passed as argument.
+        """
+        if not self.added_.has_key (str (ps)):
+            self.added_ [str (ps)] = create (self.raw_ + ps.raw ())
+        return self.added_ [str (ps)]
     
+    def add_raw (self, properties):
+        """ Creates a new property set containing the properties in this one,
+            plus the ones passed as argument.
+        """
+        return self.add (create (properties))
+
     
-#       rule link_incompatible-with ( ps )
-#       {
-#           if ! $(.li.$(ps))
-#           {
-#               local li1 = [ $(__name__).link_incompatible ] ;
-#               local li2 = [ $(ps).link_incompatible ] ;            
-#               if [ set.equal $(li1) : $(li2) ] 
-#               {
-#                   .li.$(ps) = false ;
-#               }
-#               else
-#               {
-#                   .li.$(ps) = true ;
-#               }            
-#           }    
-#           if $(.li.$(ps)) = true
-#           {
-#               return true ;
-#           }
-#           else
-#           {
-#               return ;
-#           }                
-#       }
-#       
+    def get (self, feature):
+        """ Returns all values of 'feature'.
+        """
+        if not self.feature_map_:
+            self.feature_map_ = {}
+
+            for v in self.raw_:
+                key = get_grist (v)
+                if not self.feature_map_.has_key (key):
+                    self.feature_map_ [key] = []
+                self.feature_map_ [get_grist (v)].append (replace_grist (v, ''))
+        
+        return self.feature_map_.get (feature, [])
     

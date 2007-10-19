@@ -687,12 +687,9 @@ class ProjectAttributes:
             
         elif attribute == "requirements":
             try:
-                # FIXME: refine_from_user_input not ported yet.
-                result = self.requirements.refine(
-                    property_set.create(specification))
-                #result = property_set.refine_from_user_input(
-                #    self.requirements, specification,
-                #    self.project_module, self.location)
+                result = property_set.refine_from_user_input(
+                    self.requirements, specification,
+                    self.project_module, self.location)
             except Exception, e:
                 # FIXME: any exception caused above is stripped of
                 # backtrace.
