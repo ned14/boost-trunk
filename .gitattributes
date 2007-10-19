@@ -17731,6 +17731,7 @@ tools/regression/src/regression-logs.pl svneol=native#text/x-perl
 tools/regression/src/regression.py svneol=native#text/x-python
 tools/regression/src/run.py svneol=native#text/x-python
 tools/regression/src/run_tests.sh svneol=native#text/x-sh
+tools/regression/src/smoke.py svneol=native#text/x-python
 tools/regression/test/Jamfile.v2 svneol=native#text/plain
 tools/regression/test/compile-fail~fail.cpp svneol=native#text/plain
 tools/regression/test/compile-fail~pass.cpp svneol=native#text/plain
