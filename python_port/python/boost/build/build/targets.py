@@ -1,4 +1,6 @@
 # Status: being ported by Vladimir Prus
+# Still to do: call toolset.requirements when those are ported.
+# Remember the location of target.
 
 # Copyright Vladimir Prus 2002-2007.
 # Copyright Rene Rivera 2006.
@@ -87,6 +89,11 @@ class TargetRegistry:
         # All targets that are currently being built.
         # Only the key is id (target), the value is the actual object.
         self.targets_being_built_ = {}
+
+        # Current indent for debugging messages
+        self.indent_ = ""
+
+        self.debug_building_ = "--debug-building" in bjam.variable("ARGV")
 
     def main_target_alternative (self, target):
         """ Registers the specified target as a main target alternatives.
@@ -178,15 +185,15 @@ class TargetRegistry:
     def start_building (self, main_target_instance):
         """ Helper rules to detect cycles in main target references.
         """
-        if self.targets_being_built_.has_key (id (main_target_instance)):
+        if self.targets_being_built_.has_key(id(main_target_instance)):
             names = []
-            for t in self.targets_being_built_.values ():
-                names.append (t.full_name ())
+            for t in self.targets_being_built_.values():
+                names.append (t.full_name())
             
             raise Recursion ("Recursion in main target references" 
                 "the following target are being built currently: '%s'" % names)
         
-        self.targets_being_built_ [id (main_target_instance)] = main_target_instance
+        self.targets_being_built_[id(main_target_instance)] = main_target_instance
 
     def end_building (self, main_target_instance):
         assert (self.targets_being_built_.has_key (id (main_target_instance)))
@@ -203,6 +210,19 @@ class TargetRegistry:
             self.main_target_requirements (requirements, project),
             self.main_target_default_build (default_build, project),
             self.main_target_usage_requirements (usage_requirements, project)))
+
+    def increase_indent(self):
+        self.indent_ += "    "
+
+    def decrease_indent(self):
+        self.indent_ = self.indent_[0:-4]
+
+    def logging(self):
+        return self.debug_building_
+
+    def log(self, message):
+        if self.debug_building_:
+            print self.indent_ + message
 
 class GenerateResult:
     
@@ -296,10 +316,6 @@ class AbstractTarget:
     def rename (self, new_name):
         self.name_ = new_name
 
-# FIXME: port --debug-building handling and
-# indent/increase-indent/decrease-intent        
-
-
 class ProjectTarget (AbstractTarget):
     """ Project target class (derived from 'AbstractTarget')
 
@@ -370,10 +386,9 @@ class ProjectTarget (AbstractTarget):
     def generate (self, ps):
         """ Generates all possible targets contained in this project.
         """
-        # FIXME: Review logging, here and everywhere.
-        if self.manager_.logger ().on ():
-            self.manager_.logger ().log (__name__, "Building project '%s' with '%s'" % (self.name (), ps.raw ()))
-            self.manager_.logger ().increase_indent ()
+        self.manager_.targets().log(
+            "Building project '%s' with '%s'" % (self.name (), ps.raw ()))
+        self.manager_.targets().increase_indent ()
         
         result = GenerateResult ()
                 
@@ -382,7 +397,7 @@ class ProjectTarget (AbstractTarget):
             result.extend (g)
 
             
-        self.manager_.logger ().decrease_indent ()
+        self.manager_.targets().decrease_indent ()
         return result
 
     def targets_to_build (self):
@@ -565,24 +580,6 @@ class ProjectTarget (AbstractTarget):
         if user_rules:
             bjam.call("import-rules-from-parent", parent_module, this_module, user_rules)
         
-# FIXME: this one is no longer needed?
-#       # Intern the constants from this project into the specified module.
-#       #
-#       rule intern-constants (
-#           target-module # The module to intern into.
-#           )
-#       {
-#           for local c in $(self.constants)
-#           {
-#               modules.poke $(target-module) : $(c) : $(self.constant.$(c)) ;
-#           }
-#       }
-#   
-#   }
-
-
-# FIXME: port start-building?
-
 class MainTarget (AbstractTarget):
     """ A named top-level target in Jamfile.
     """
@@ -791,9 +788,6 @@ class FileReference (AbstractTarget):
 
         return self.file_location_
 
-
-# FIXME: port --quiet
-
 class BasicTarget (AbstractTarget):
     """ Implements the most standard way of constructing main target
         alternative from sources. Allows sources to be either file or
@@ -976,7 +970,7 @@ class BasicTarget (AbstractTarget):
     def __common_properties2(self, build_request, requirements):
         # This guarantees that default properties are present
         # in result, unless they are overrided by some requirement.
-        # FIXME: There is possibility that we've added <foo>bar, which is composite
+        # TODO: There is possibility that we've added <foo>bar, which is composite
         # and expands to <foo2>bar2, but default value of <foo2> is not bar2,
         # in which case it's not clear what to do.
         # 
@@ -1006,19 +1000,13 @@ class BasicTarget (AbstractTarget):
         ccondition = self.requirements_.conditional ()
         condition = set.difference (bcondition, ccondition)
 
-# FIXME
-#        if $(debug)
-#        {
-#            ECHO "    next alternative: required properties:" $(condition:E=(empty)) ;
-#        }                
-
+        if debug:
+            print "    next alternative: required properties:", str(condition)
         
         if set.contains (condition, property_set.raw ()):
-# FIXME:            
-#            if $(debug)
-#            {
-#                ECHO "        matched" ;
-#            }            
+
+            if debug:
+                print "        matched"
             
             return condition
 
@@ -1055,14 +1043,17 @@ class BasicTarget (AbstractTarget):
         and calls 'construct'. This method should not be
         overridden.
         """
-        # FIXME: reconsider
-        if self.manager ().logger ().on ():
-            self.manager ().logger ().log (__name__, "Building target '%s'" % self.name_)
-            self.manager ().logger ().increase_indent ()            
-            self.manager ().logger ().log (__name__, "Build request: '%s'" % str (ps.raw ()))
+        if self.manager().targets().logging():
+            self.manager().targets().log(
+                "Building target '%s'" % self.name_)
+            self.manager().targets().increase_indent ()
+            self.manager().targets().log(
+                "Build request: '%s'" % str (ps.raw ()))
             cf = self.manager().command_line_free_features()
-            self.manager ().logger ().log (__name__, "Command line free features: '%s'" % str (cf.raw ()))            
-            self.manager ().logger ().log (__name__, "Target requirements: %s'" % str (self.requirements.raw ()))
+            self.manager().targets().log(
+                "Command line free features: '%s'" % str (cf.raw ()))            
+            self.manager().targets().log(
+                "Target requirements: %s'" % str (self.requirements().raw ()))
 
         if not self.generated_.has_key (str (ps)):
 
@@ -1073,8 +1064,8 @@ class BasicTarget (AbstractTarget):
             ps = ps.refine(self.manager().command_line_free_features())            
             rproperties = self.common_properties (ps, self.requirements_)
 
-            if self.manager ().logger ().on ():
-                self.manager ().logger ().log (__name__, "Common properties are '%s'" % str (rproperties.raw ()))
+            self.manager().targets().log(
+                "Common properties are '%s'" % str (rproperties.raw ()))
             
             if rproperties.get("<build>") != "no":
                 
@@ -1089,16 +1080,14 @@ class BasicTarget (AbstractTarget):
                 (source_targets, u) = self.generate_dependencies (self.sources_, rproperties)
                 usage_requirements += u
 
-                if self.manager_.logger ().on ():
-                      self.manager_.logger ().log (__name__, "Usage requirements for '%s' are '%s'" % (self.name_, usage_requirements))
+                self.manager_.targets().log(
+                    "Usage requirements for '%s' are '%s'" % (self.name_, usage_requirements))
 
                 rproperties = property_set.create (properties + usage_requirements)
                 usage_requirements = property_set.create (usage_requirements)
 
-                if self.manager_.logger ().on ():
-                      self.manager_.logger ().log (
-                          __name__,
-                          "Build properties: '%s'" % str(rproperties.raw()))
+                self.manager_.targets().log(
+                    "Build properties: '%s'" % str(rproperties.raw()))
                 
                 extra = rproperties.get ('<source>')
                 source_targets += replace_grist (extra, '')               
@@ -1125,22 +1114,14 @@ class BasicTarget (AbstractTarget):
                     ur = ur.add (gur)
                     s.set_usage_requirements (ur)
 
-                    if self.manager_.logger ().on ():
-                        self.manager_.logger ().log (
-                            __name__,
-                            "Usage requirements from '%s' are '%s'" %
-                            (self.name, str(rproperties.raw())))
+                    self.manager_.targets().log (
+                        "Usage requirements from '%s' are '%s'" %
+                        (self.name, str(rproperties.raw())))
                     
                     self.generated_ [str (ps)] = GenerateResult (ur, result)
             else:
-                # FIXME
-##                ECHO [ targets.indent ] 
-##                       "Skipping build: <build>no in common properties" ;
-##                 }
-##                 else
-##                 {
-##                     ECHO [ targets.indent ] "Skipping build: unknown reason" ;
-##                 }                
+                self.manager().targets().log(
+                    "Skipping build: <build>no in common properties")
 
                 # We're here either because there's error computing
                 # properties, or there's <build>no in properties.
@@ -1148,10 +1129,9 @@ class BasicTarget (AbstractTarget):
                 # In the former case, we need diagnostics. TODOo
                 self.generated_ [str (ps)] = GenerateResult (rproperties, [])
         else:
-            if self.manager ().logger ().on ():
-                self.manager ().logger ().log (__name__, "Already built")
+            self.manager().targets().log ("Already built")
 
-        self.manager ().logger ().decrease_indent ()
+        self.manager().targets().decrease_indent()
 
         return self.generated_ [str (ps)]
 
