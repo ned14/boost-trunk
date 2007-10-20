@@ -1314,7 +1314,6 @@ boost/fusion/support/deduce_sequence.hpp svneol=native#text/plain
 boost/fusion/support/detail/access.hpp svneol=native#text/plain
 boost/fusion/support/detail/as_fusion_element.hpp svneol=native#text/plain
 boost/fusion/support/detail/category_of.hpp svneol=native#text/plain
-boost/fusion/support/detail/compiler_config.hpp svneol=native#text/plain
 boost/fusion/support/detail/is_mpl_sequence.hpp svneol=native#text/plain
 boost/fusion/support/detail/is_view.hpp svneol=native#text/plain
 boost/fusion/support/detail/mpl_iterator_category.hpp svneol=native#text/plain
