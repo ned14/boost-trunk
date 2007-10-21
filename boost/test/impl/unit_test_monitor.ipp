@@ -60,9 +60,13 @@ unit_test_monitor_t::error_level
 unit_test_monitor_t::execute_and_translate( test_case const& tc )
 {
     try {
-        execute( callback0<int>( zero_return_wrapper( tc.test_func() ) ),
-                 runtime_config::catch_sys_errors(),
-                 tc.p_timeout );
+        p_catch_system_errors.value     = runtime_config::catch_sys_errors();
+        p_timeout.value                 = tc.p_timeout.get();
+        p_auto_start_dbg.value          = runtime_config::auto_start_dbg();
+        p_use_alt_stack.value           = runtime_config::use_alt_stack();
+        p_detect_fp_exceptions.value    = runtime_config::detect_fp_exceptions();
+
+        execute( callback0<int>( zero_return_wrapper( tc.test_func() ) ) );
     }
     catch( execution_exception const& ex ) {
         framework::exception_caught( ex );

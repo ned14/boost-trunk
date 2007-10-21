@@ -1436,18 +1436,28 @@
         </mark-expected-failures>
 
         <mark-expected-failures>
-            <test name="hash_float_test"/>
-            <toolset name="gcc-3.4.3_sunos"/>
+            <test name="hash_function_pointer_test"/>
+            <toolset name="sun-5.7"/>
+            <toolset name="sun-5.8"/>
+            <toolset name="sun-5.9"/>
             <note author="Daniel James">
-                On this compiler the hash function is returning the same value
-                for <code>std::numeric_limits&lt;long double&gt;::max()</code>,
-                <code>std::numeric_limits&lt;long double&gt;::max() / 2</code> and
-                <code>std::numeric_limits&lt;long double&gt;::max() * 3 / 4</code>.
-                This suggests the hash function isn't taking into account the
-                full range of <code>long double</code> - it might be
-                converting it to a <code>double</code>. This won't cause
-                anything to break, but means that the hash function isn't
-                as good as it should be for <code>long double</code>s.
+                On these compilers the wrong overload of hash_value is called
+                when the argument is a hash function pointer. So calling
+                hash_value doesn't work but boost::hash does work (and it's
+                recommended that user never call hash_value directly so this
+                shouldn't be a problem).
+            </note>
+        </mark-expected-failures>
+
+        <mark-expected-failures>
+            <test name="hash_long_double_test"/>
+            <toolset name="gcc-3.4.3_sunos"/>
+            <toolset name="acc-pa_risc"/>
+            <note author="Daniel James">
+                This platform has poor support for <code>long double</code> so
+                the hash function perform poorly for values out of the range
+                of <code>double</code> or if they differ at a greater precision
+                that <code>double</code> is capable of representing.
             </note>
         </mark-expected-failures>
 
@@ -1627,7 +1637,6 @@
             <toolset name="gcc-3.2*"/>
             <toolset name="gcc-3.3*"/>
             <toolset name="mipspro"/>
-			<toolset name="hp_cxx*"/>
             <note author="Ion Gazta&#241;aga">
                 The compiler does not support features that are essential for the library.
             </note>
@@ -4579,6 +4588,7 @@ for more information.
             <test name="test_shared_ptr"/>
             <test name="std_test_shared_ptr"/>
             <test name="std_run_random"/>
+            <test name="run_random"/>
             <test name="test_tuple_tricky"/>
             <test name="tr1_is_convertible_test"/>
             <test name="tr1_remove_const_test"/>
@@ -5159,6 +5169,19 @@ for more information.
             <toolset name="sun-5.9"/>
             <note refid="17"/>
         </mark-unusable>
+
+        <mark-expected-failures>
+            <test name="test_actions"/>
+            <toolset name="acc"/>
+            <note author="Eric Niebler" refid="43"/>
+        </mark-expected-failures>
+        
+        <mark-expected-failures>
+            <test name="test_symbols"/>
+            <toolset name="acc"/>
+            <note author="Eric Niebler" refid="43"/>
+        </mark-expected-failures>
+        
     </library>
 
     <!-- /////////////// Standard note definitions /////////////// -->
@@ -5370,6 +5393,11 @@ for more information.
     <note id="42">
         Internal compiler error: GCC Bugzilla Bug 33580.
         This is a regression in the gcc 4.2 series.
+    </note>
+
+    <note id="43">
+        These test failures are reported to be
+        under investigation at HP's compiler lab.
     </note>
 
 </explicit-failures-markup>

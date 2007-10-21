@@ -25,10 +25,10 @@
 #include <boost/math/tools/real_cast.hpp>
 #include <boost/math/tools/precision.hpp>
 #include <boost/math/policies/policy.hpp>
-
 #include <ostream>
 #include <istream>
 #include <cmath>
+#include <math.h> // fmodl
 
 #ifndef BOOST_MATH_REAL_CONCEPT_HPP
 #define BOOST_MATH_REAL_CONCEPT_HPP
@@ -195,8 +195,10 @@ inline real_concept atan2(real_concept a, real_concept b)
 { return std::atan2(a.value(), b.value()); }
 inline real_concept ceil(real_concept a)
 { return std::ceil(a.value()); }
+#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
 inline real_concept fmod(real_concept a, real_concept b)
 { return fmodl(a.value(), b.value()); }
+#endif
 inline real_concept cosh(real_concept a)
 { return std::cosh(a.value()); }
 inline real_concept exp(real_concept a)
@@ -257,12 +259,22 @@ inline std::basic_istream<charT, traits>& operator>>(std::basic_istream<charT, t
    // see http://sourceforge.net/tracker/index.php?func=detail&aid=1811043&group_id=146814&atid=766244
    //
    double v;
-#else
-   long double v;
-#endif
    is >> v;
    a = v;
    return is;
+#elif defined(__SGI_STL_PORT)
+   std::string s;
+   long double d;
+   is >> s;
+   std::sscanf(s.c_str(), "%Lf", &d);
+   a = d;
+   return is;
+#else
+   long double v;
+   is >> v;
+   a = v;
+   return is;
+#endif
 }
 
 } // namespace concepts

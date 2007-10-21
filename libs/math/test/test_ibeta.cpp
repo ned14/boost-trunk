@@ -148,7 +148,7 @@ void expected_results()
       "Sun.*",                          // platform
       largest_type,                     // test type(s)
       "(?i).*large.*",                      // test data group
-      ".*", 80000, 10000);                 // test function
+      ".*", 110000, 10000);                 // test function
    add_expected_result(
       "[^|]*",                          // compiler
       "[^|]*",                          // stdlib
@@ -160,9 +160,16 @@ void expected_results()
       "[^|]*",                          // compiler
       "[^|]*",                          // stdlib
       "Sun.*",                          // platform
-      "real_concept",                     // test type(s)
-      "(?i).*medium.*",                      // test data group
-      ".*", 200, 40);                 // test function
+      largest_type,                     // test type(s)
+      "(?i).*medium.*",                 // test data group
+      ".*", 200, 40);                   // test function
+   add_expected_result(
+      "[^|]*",                          // compiler
+      "[^|]*",                          // stdlib
+      "Sun.*",                          // platform
+      "real_concept",                   // test type(s)
+      "(?i).*medium.*",                 // test data group
+      ".*", 200, 40);                   // test function
    add_expected_result(
       "[^|]*",                          // compiler
       "[^|]*",                          // stdlib
@@ -500,12 +507,20 @@ int test_main(int, char* [])
 #ifdef TEST_GSL
    gsl_set_error_handler_off();
 #endif
+#ifdef TEST_FLOAT
    test_spots(0.0F);
+#endif
+#ifdef TEST_DOUBLE
    test_spots(0.0);
+#endif
 #ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
+#ifdef TEST_LDOUBLE
    test_spots(0.0L);
+#endif
 #if !BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582))
+#ifdef TEST_REAL_CONCEPT
    test_spots(boost::math::concepts::real_concept(0.1));
+#endif
 #endif
 #endif
 
