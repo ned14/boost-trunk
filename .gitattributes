@@ -9079,6 +9079,7 @@ libs/interprocess/proj/vc7ide/iset_index_allocation_test.vcproj svneol=native#te
 libs/interprocess/proj/vc7ide/iunordered_set_index_allocation_test.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/list_ex.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/managed_mapped_file_test.vcproj svneol=native#text/plain
+libs/interprocess/proj/vc7ide/managed_shared_memory.vcproj svneol=CRLF#text/xml eol=crlf
 libs/interprocess/proj/vc7ide/managed_windows_shared_memory.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/map_index_allocation_test.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/mapped_file_test.vcproj svneol=native#text/plain
@@ -9137,6 +9138,7 @@ libs/interprocess/test/iunordered_set_index_allocation_test.cpp svneol=native#te
 libs/interprocess/test/list_test.cpp svneol=native#text/plain
 libs/interprocess/test/list_test.hpp svneol=native#text/plain
 libs/interprocess/test/managed_mapped_file_test.cpp svneol=native#text/plain
+libs/interprocess/test/managed_shared_memory_test.cpp svneol=native#text/plain
 libs/interprocess/test/managed_windows_shared_memory_test.cpp svneol=native#text/plain
 libs/interprocess/test/map_index_allocation_test.cpp svneol=native#text/plain
 libs/interprocess/test/map_test.hpp svneol=native#text/plain
