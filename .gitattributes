@@ -297,6 +297,7 @@
 2_1/boost/fusion/include/greater_equal.hpp svneol=native#text/plain
 2_1/boost/fusion/include/has_key.hpp svneol=native#text/plain
 2_1/boost/fusion/include/ignore.hpp svneol=native#text/plain
+2_1/boost/fusion/include/in.hpp svneol=native#text/plain
 2_1/boost/fusion/include/insert.hpp svneol=native#text/plain
 2_1/boost/fusion/include/insert_range.hpp svneol=native#text/plain
 2_1/boost/fusion/include/intrinsic.hpp svneol=native#text/plain
@@ -340,6 +341,7 @@
 2_1/boost/fusion/include/next.hpp svneol=native#text/plain
 2_1/boost/fusion/include/none.hpp svneol=native#text/plain
 2_1/boost/fusion/include/not_equal_to.hpp svneol=native#text/plain
+2_1/boost/fusion/include/out.hpp svneol=native#text/plain
 2_1/boost/fusion/include/pair.hpp svneol=native#text/plain
 2_1/boost/fusion/include/pair_tie.hpp svneol=native#text/plain
 2_1/boost/fusion/include/pop_back.hpp svneol=native#text/plain
