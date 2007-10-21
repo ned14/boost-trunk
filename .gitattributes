@@ -249,6 +249,10 @@
 2_1/boost/fusion/include/all.hpp svneol=native#text/plain
 2_1/boost/fusion/include/any.hpp svneol=native#text/plain
 2_1/boost/fusion/include/array.hpp svneol=native#text/plain
+2_1/boost/fusion/include/as_deque.hpp svneol=native#text/plain
+2_1/boost/fusion/include/as_list.hpp svneol=native#text/plain
+2_1/boost/fusion/include/as_map.hpp svneol=native#text/plain
+2_1/boost/fusion/include/as_set.hpp svneol=native#text/plain
 2_1/boost/fusion/include/as_vector.hpp svneol=native#text/plain
 2_1/boost/fusion/include/at.hpp svneol=native#text/plain
 2_1/boost/fusion/include/begin.hpp svneol=native#text/plain
