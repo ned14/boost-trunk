@@ -1,4 +1,15 @@
 * text=auto !eol
+4_0/src/build.jam svneol=native#text/plain
+4_0/src/grammar.c svneol=native#text/plain
+4_0/src/grammar.h svneol=native#text/plain
+4_0/src/grammar.y svneol=native#text/plain
+4_0/src/jam.cpp svneol=native#text/plain
+4_0/src/lempar.c svneol=native#text/plain
+4_0/src/parse.cpp svneol=native#text/plain
+4_0/src/parse.hpp svneol=native#text/plain
+4_0/src/sqlite/lemon.c svneol=native#text/plain
+4_0/src/sqlite/lemon.html svneol=native#text/html
+4_0/src/sqlite/lempar.c svneol=native#text/plain
 pipe_rule/boost/tools/jam/build_dist.bat svneol=native#text/plain
 pipe_rule/boost/tools/jam/build_dist.sh svneol=native#text/x-sh
 pipe_rule/boost/tools/jam/doc/bjam.qbk svneol=native#text/plain
