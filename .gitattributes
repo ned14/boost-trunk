@@ -15248,9 +15248,7 @@ libs/test/src/xml_report_formatter.cpp svneol=native#text/plain
 libs/test/test/.cvsignore -text
 libs/test/test/Jamfile.v2 svneol=native#text/plain
 libs/test/test/algorithms_test.cpp svneol=native#text/plain
-libs/test/test/auto-link-test/.cvsignore -text
 libs/test/test/auto-link-test/Jamfile svneol=native#text/plain
-libs/test/test/auto-link-test/run_bjam.bat svneol=native#text/plain
 libs/test/test/basic_cstring_test.cpp svneol=native#text/plain
 libs/test/test/boost_check_equal_str.cpp svneol=native#text/plain
 libs/test/test/class_properties_test.cpp svneol=native#text/plain
