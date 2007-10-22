@@ -82,10 +82,25 @@ def load_config(manager, basename, path):
 def main(dummy):
 
     global argv
+    argv = bjam.variable("ARGV")
+
+    if "--profiling" in argv:
+        import cProfile
+        import pstats
+        cProfile.runctx('main_real()', globals(), locals(), "stones.prof")
+        
+        stats = pstats.Stats("stones.prof")
+        stats.strip_dirs()
+        stats.sort_stats('time', 'calls')
+        stats.print_callers(20)
+    else:
+        main_real()
+
+def main_real():
+
     global ignore_config
     global debug_config
     
-    argv = bjam.variable("ARGV")
     boost_build_path = bjam.variable("BOOST_BUILD_PATH")
 
     engine = Engine()
