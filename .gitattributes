@@ -500,13 +500,13 @@ boost/boost/functional/detail/container_fwd.hpp svneol=native#text/plain
 boost/boost/functional/detail/float_functions.hpp svneol=native#text/plain
 boost/boost/functional/detail/hash_float.hpp svneol=native#text/plain
 boost/boost/functional/hash.hpp svneol=native#text/plain
-boost/boost/functional/hash/Attic/deque.hpp svneol=native#text/plain
-boost/boost/functional/hash/Attic/list.hpp svneol=native#text/plain
-boost/boost/functional/hash/Attic/map.hpp svneol=native#text/plain
-boost/boost/functional/hash/Attic/pair.hpp svneol=native#text/plain
-boost/boost/functional/hash/Attic/set.hpp svneol=native#text/plain
-boost/boost/functional/hash/Attic/vector.hpp svneol=native#text/plain
+boost/boost/functional/hash/deque.hpp svneol=native#text/plain
 boost/boost/functional/hash/hash.hpp svneol=native#text/plain
+boost/boost/functional/hash/list.hpp svneol=native#text/plain
+boost/boost/functional/hash/map.hpp svneol=native#text/plain
+boost/boost/functional/hash/pair.hpp svneol=native#text/plain
+boost/boost/functional/hash/set.hpp svneol=native#text/plain
+boost/boost/functional/hash/vector.hpp svneol=native#text/plain
 boost/boost/functional/hash_fwd.hpp svneol=native#text/plain
 boost/boost/generator_iterator.hpp svneol=native#text/plain
 boost/boost/get_pointer.hpp svneol=native#text/plain
@@ -3710,22 +3710,22 @@ boost/boost/xpressive/detail/static/compile.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/is_pure.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/modifier.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/placeholders.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/alt_compilers.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/charset_transforms.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/complement_compiler.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/domain_tags.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/independent_compiler.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/marker_compiler.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/marker_transform.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/modify_compiler.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/noop_compiler.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/productions.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/quant_compilers.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/quant_traits.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/quant_transforms.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/set_compilers.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/transmogrify.hpp svneol=native#text/plain
-boost/boost/xpressive/detail/static/productions/Attic/visitor.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/alt_compilers.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/charset_transforms.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/complement_compiler.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/domain_tags.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/independent_compiler.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/marker_compiler.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/marker_transform.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/modify_compiler.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/noop_compiler.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/productions.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/quant_compilers.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/quant_traits.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/quant_transforms.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/set_compilers.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/transmogrify.hpp svneol=native#text/plain
+boost/boost/xpressive/detail/static/productions/visitor.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/regex_operators.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/static.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/static/type_traits.hpp svneol=native#text/plain
@@ -3750,12 +3750,12 @@ boost/boost/xpressive/detail/utility/tracking_ptr.hpp svneol=native#text/plain
 boost/boost/xpressive/detail/utility/traits_utils.hpp svneol=native#text/plain
 boost/boost/xpressive/match_results.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/arg_traits.hpp svneol=native#text/plain
-boost/boost/xpressive/proto/compiler/Attic/branch.hpp svneol=native#text/plain
-boost/boost/xpressive/proto/compiler/Attic/conditional.hpp svneol=native#text/plain
-boost/boost/xpressive/proto/compiler/Attic/error.hpp svneol=native#text/plain
-boost/boost/xpressive/proto/compiler/Attic/fold.hpp svneol=native#text/plain
-boost/boost/xpressive/proto/compiler/Attic/switch.hpp svneol=native#text/plain
-boost/boost/xpressive/proto/compiler/Attic/transform.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/compiler/branch.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/compiler/conditional.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/compiler/error.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/compiler/fold.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/compiler/switch.hpp svneol=native#text/plain
+boost/boost/xpressive/proto/compiler/transform.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/op_base.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/op_tags.hpp svneol=native#text/plain
 boost/boost/xpressive/proto/operators.hpp svneol=native#text/plain
@@ -7579,10 +7579,10 @@ boost/libs/ptr_container/test/tree_test.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/tut1.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/tut34.cpp svneol=native#text/plain
 boost/libs/ptr_container/test/view_example.cpp svneol=native#text/plain
-boost/libs/python/build/Attic/python_v1.zip -text svneol=unset#application/zip
 boost/libs/python/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/python/build/VisualStudio/boost_python.dsp -text svneol=CRLF#unset
 boost/libs/python/build/VisualStudio/boost_python.dsw -text svneol=CRLF#unset
+boost/libs/python/build/python_v1.zip -text svneol=unset#application/zip
 boost/libs/python/doc/Jamfile svneol=native#text/plain
 boost/libs/python/doc/PyConDC_2003/bpl.html svneol=native#text/html
 boost/libs/python/doc/PyConDC_2003/bpl.pdf -text svneol=unset#application/pdf
@@ -8114,62 +8114,62 @@ boost/libs/regex/build/vc71-stlport.mak svneol=native#text/plain
 boost/libs/regex/build/vc71.mak svneol=native#text/plain
 boost/libs/regex/build/vc8.mak svneol=native#text/plain
 boost/libs/regex/build/vc_gen.sh svneol=native#text/x-sh
-boost/libs/regex/doc/Attic/bad_expression.html svneol=native#text/html
-boost/libs/regex/doc/Attic/basic_regex.html svneol=native#text/html
-boost/libs/regex/doc/Attic/captures.html svneol=native#text/html
-boost/libs/regex/doc/Attic/character_class_names.html svneol=native#text/html
-boost/libs/regex/doc/Attic/collating_names.html svneol=native#text/html
-boost/libs/regex/doc/Attic/concepts.html svneol=native#text/html
-boost/libs/regex/doc/Attic/configuration.html svneol=native#text/html
-boost/libs/regex/doc/Attic/contacts.html svneol=native#text/html
-boost/libs/regex/doc/Attic/error_type.html svneol=native#text/html
-boost/libs/regex/doc/Attic/examples.html svneol=native#text/html
-boost/libs/regex/doc/Attic/faq.html svneol=native#text/html
-boost/libs/regex/doc/Attic/format_boost_syntax.html svneol=native#text/html
-boost/libs/regex/doc/Attic/format_perl_syntax.html svneol=native#text/html
-boost/libs/regex/doc/Attic/format_sed_syntax.html svneol=native#text/html
-boost/libs/regex/doc/Attic/format_syntax.html svneol=native#text/html
-boost/libs/regex/doc/Attic/headers.html svneol=native#text/html
-boost/libs/regex/doc/Attic/history.html svneol=native#text/html
-boost/libs/regex/doc/Attic/icu_strings.html svneol=native#text/html
-boost/libs/regex/doc/Attic/implementation.html svneol=native#text/html
-boost/libs/regex/doc/Attic/install.html svneol=native#text/html
-boost/libs/regex/doc/Attic/introduction.html svneol=native#text/html
-boost/libs/regex/doc/Attic/localisation.html svneol=native#text/html
-boost/libs/regex/doc/Attic/match_flag_type.html svneol=native#text/html
-boost/libs/regex/doc/Attic/match_results.html svneol=native#text/html
-boost/libs/regex/doc/Attic/mfc_strings.html svneol=native#text/html
-boost/libs/regex/doc/Attic/non_standard_strings.html svneol=native#text/html
-boost/libs/regex/doc/Attic/partial_matches.html svneol=native#text/html
-boost/libs/regex/doc/Attic/performance.html svneol=native#text/html
-boost/libs/regex/doc/Attic/posix_api.html svneol=native#text/html
-boost/libs/regex/doc/Attic/redistributables.html svneol=native#text/html
-boost/libs/regex/doc/Attic/reg_expression.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regbase.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_format.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_grep.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_iterator.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_match.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_merge.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_replace.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_search.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_split.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_token_iterator.html svneol=native#text/html
-boost/libs/regex/doc/Attic/regex_traits.html svneol=native#text/html
-boost/libs/regex/doc/Attic/standards.html svneol=native#text/html
-boost/libs/regex/doc/Attic/sub_match.html svneol=native#text/html
-boost/libs/regex/doc/Attic/syntax.html svneol=native#text/html
-boost/libs/regex/doc/Attic/syntax_basic.html svneol=native#text/html
-boost/libs/regex/doc/Attic/syntax_extended.html svneol=native#text/html
-boost/libs/regex/doc/Attic/syntax_leftmost_longest.html svneol=native#text/html
-boost/libs/regex/doc/Attic/syntax_option_type.html svneol=native#text/html
-boost/libs/regex/doc/Attic/syntax_perl.html svneol=native#text/html
-boost/libs/regex/doc/Attic/thread_safety.html svneol=native#text/html
-boost/libs/regex/doc/Attic/uarrow.gif -text svneol=unset#image/gif
-boost/libs/regex/doc/Attic/unicode.html svneol=native#text/html
+boost/libs/regex/doc/bad_expression.html svneol=native#text/html
+boost/libs/regex/doc/basic_regex.html svneol=native#text/html
+boost/libs/regex/doc/captures.html svneol=native#text/html
+boost/libs/regex/doc/character_class_names.html svneol=native#text/html
+boost/libs/regex/doc/collating_names.html svneol=native#text/html
+boost/libs/regex/doc/concepts.html svneol=native#text/html
+boost/libs/regex/doc/configuration.html svneol=native#text/html
+boost/libs/regex/doc/contacts.html svneol=native#text/html
+boost/libs/regex/doc/error_type.html svneol=native#text/html
+boost/libs/regex/doc/examples.html svneol=native#text/html
+boost/libs/regex/doc/faq.html svneol=native#text/html
+boost/libs/regex/doc/format_boost_syntax.html svneol=native#text/html
+boost/libs/regex/doc/format_perl_syntax.html svneol=native#text/html
+boost/libs/regex/doc/format_sed_syntax.html svneol=native#text/html
+boost/libs/regex/doc/format_syntax.html svneol=native#text/html
 boost/libs/regex/doc/gcc-performance.html svneol=native#text/html
+boost/libs/regex/doc/headers.html svneol=native#text/html
+boost/libs/regex/doc/history.html svneol=native#text/html
+boost/libs/regex/doc/icu_strings.html svneol=native#text/html
+boost/libs/regex/doc/implementation.html svneol=native#text/html
 boost/libs/regex/doc/index.html svneol=native#text/html
+boost/libs/regex/doc/install.html svneol=native#text/html
+boost/libs/regex/doc/introduction.html svneol=native#text/html
+boost/libs/regex/doc/localisation.html svneol=native#text/html
+boost/libs/regex/doc/match_flag_type.html svneol=native#text/html
+boost/libs/regex/doc/match_results.html svneol=native#text/html
+boost/libs/regex/doc/mfc_strings.html svneol=native#text/html
+boost/libs/regex/doc/non_standard_strings.html svneol=native#text/html
+boost/libs/regex/doc/partial_matches.html svneol=native#text/html
+boost/libs/regex/doc/performance.html svneol=native#text/html
+boost/libs/regex/doc/posix_api.html svneol=native#text/html
+boost/libs/regex/doc/redistributables.html svneol=native#text/html
+boost/libs/regex/doc/reg_expression.html svneol=native#text/html
+boost/libs/regex/doc/regbase.html svneol=native#text/html
+boost/libs/regex/doc/regex.html svneol=native#text/html
+boost/libs/regex/doc/regex_format.html svneol=native#text/html
+boost/libs/regex/doc/regex_grep.html svneol=native#text/html
+boost/libs/regex/doc/regex_iterator.html svneol=native#text/html
+boost/libs/regex/doc/regex_match.html svneol=native#text/html
+boost/libs/regex/doc/regex_merge.html svneol=native#text/html
+boost/libs/regex/doc/regex_replace.html svneol=native#text/html
+boost/libs/regex/doc/regex_search.html svneol=native#text/html
+boost/libs/regex/doc/regex_split.html svneol=native#text/html
+boost/libs/regex/doc/regex_token_iterator.html svneol=native#text/html
+boost/libs/regex/doc/regex_traits.html svneol=native#text/html
+boost/libs/regex/doc/standards.html svneol=native#text/html
+boost/libs/regex/doc/sub_match.html svneol=native#text/html
+boost/libs/regex/doc/syntax.html svneol=native#text/html
+boost/libs/regex/doc/syntax_basic.html svneol=native#text/html
+boost/libs/regex/doc/syntax_extended.html svneol=native#text/html
+boost/libs/regex/doc/syntax_leftmost_longest.html svneol=native#text/html
+boost/libs/regex/doc/syntax_option_type.html svneol=native#text/html
+boost/libs/regex/doc/syntax_perl.html svneol=native#text/html
+boost/libs/regex/doc/thread_safety.html svneol=native#text/html
+boost/libs/regex/doc/uarrow.gif -text svneol=unset#image/gif
+boost/libs/regex/doc/unicode.html svneol=native#text/html
 boost/libs/regex/doc/vc71-performance.html svneol=native#text/html
 boost/libs/regex/example/Jamfile.v2 svneol=native#text/plain
 boost/libs/regex/example/grep/grep.cpp svneol=native#text/plain
@@ -8289,9 +8289,9 @@ boost/libs/regex/test/regress/vc8.mak svneol=native#text/plain
 boost/libs/regex/test/static_mutex/static_mutex_test.cpp svneol=native#text/plain
 boost/libs/regex/test/unicode/unicode_iterator_test.cpp svneol=native#text/plain
 boost/libs/regex/tools/generate/tables.cpp svneol=native#text/plain
-boost/libs/serialization/borland6ide/Attic/test_simple_class.bpf -text
-boost/libs/serialization/borland6ide/Attic/test_simple_class.bpr -text
-boost/libs/serialization/borland6ide/Attic/test_simple_class.res -text
+boost/libs/serialization/borland6ide/test_simple_class.bpf -text svneol=unset#application/octet-stream
+boost/libs/serialization/borland6ide/test_simple_class.bpr svneol=native#text/plain
+boost/libs/serialization/borland6ide/test_simple_class.res svneol=native#text/plain
 boost/libs/serialization/build/Jamfile.v2 svneol=native#text/plain
 boost/libs/serialization/build/serialization.jam svneol=native#text/plain
 boost/libs/serialization/doc/acknowledgments.html svneol=native#text/html
@@ -8501,75 +8501,75 @@ boost/libs/serialization/test/text_archive.hpp svneol=native#text/plain
 boost/libs/serialization/test/text_warchive.hpp svneol=native#text/plain
 boost/libs/serialization/test/xml_archive.hpp svneol=native#text/plain
 boost/libs/serialization/test/xml_warchive.hpp svneol=native#text/plain
-boost/libs/serialization/vc6ide/Attic/Library.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_auto_ptr.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_exception.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_fast_binary_archive.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_mi.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_pimpl.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_plugin.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_portable_archive.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_shared_ptr.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_xml.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_xml_load.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/demo_xml_save.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/serialization.dsw -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/serialization.ncb -text
-boost/libs/serialization/vc6ide/Attic/serialization.opt -text
-boost/libs/serialization/vc6ide/Attic/test_array.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_binary.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_binary.plg -text
-boost/libs/serialization/vc6ide/Attic/test_codecvt_null.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_constructor.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_contained_class.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_cyclic_ptrs.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_delete_pointer.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_deque.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_derived.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_derived_class_ptr.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_diamond.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_exported.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_iterattors.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_iterattors_base64.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_level_class_info_load.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_level_class_info_save.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_level_not_serializable.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_level_object.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_level_primitive.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_list.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_list_ptrs.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_map.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_mi.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_mult_archive_types.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_multiple_ptrs.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_no_rtti.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_non_default_ctor.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_non_intrusive.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_null_ptr.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_nvp.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_optional.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_polymorphic_archive.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_private_ctor.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_recursion.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_registered.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_set.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_shared_ptr.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_simple_class.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_simple_class_ptr.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_simple_derived_class.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_smart_cast.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_split.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_static_warning.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_tracking.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_traits_fail.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_traits_pass.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_unregistered.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_utf8_codecvt.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_vector.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc6ide/Attic/test_void_cast.dsp -text svneol=CRLF#unset
-boost/libs/serialization/vc7ide/Attic/BoostSerializationLibrary.suo -text
+boost/libs/serialization/vc6ide/Library.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_auto_ptr.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_exception.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_fast_binary_archive.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_mi.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_pimpl.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_plugin.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_portable_archive.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_shared_ptr.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_xml.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_xml_load.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/demo_xml_save.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/serialization.dsw svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/serialization.ncb svneol=native#text/plain
+boost/libs/serialization/vc6ide/serialization.opt -text svneol=unset#application/octet-stream
+boost/libs/serialization/vc6ide/test_array.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_binary.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_binary.plg svneol=native#text/plain
+boost/libs/serialization/vc6ide/test_codecvt_null.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_constructor.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_contained_class.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_cyclic_ptrs.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_delete_pointer.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_deque.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_derived.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_derived_class_ptr.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_diamond.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_exported.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_iterattors.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_iterattors_base64.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_level_class_info_load.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_level_class_info_save.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_level_not_serializable.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_level_object.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_level_primitive.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_list.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_list_ptrs.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_map.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_mi.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_mult_archive_types.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_multiple_ptrs.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_no_rtti.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_non_default_ctor.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_non_intrusive.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_null_ptr.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_nvp.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_optional.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_polymorphic_archive.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_private_ctor.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_recursion.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_registered.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_set.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_shared_ptr.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_simple_class.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_simple_class_ptr.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_simple_derived_class.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_smart_cast.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_split.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_static_warning.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_tracking.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_traits_fail.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_traits_pass.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_unregistered.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_utf8_codecvt.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_vector.dsp svneol=CRLF#text/plain eol=crlf
+boost/libs/serialization/vc6ide/test_void_cast.dsp svneol=CRLF#text/plain eol=crlf
 boost/libs/serialization/vc7ide/BoostSerializationLibrary.sln -text
+boost/libs/serialization/vc7ide/BoostSerializationLibrary.suo -text svneol=unset#application/octet-stream
 boost/libs/serialization/vc7ide/Library.vcproj -text
 boost/libs/serialization/vc7ide/LibraryW.vcproj -text
 boost/libs/serialization/vc7ide/Manual.vcproj -text
