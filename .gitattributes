@@ -5271,6 +5271,7 @@ libs/asio/doc/design/strands.qbk svneol=native#text/plain
 libs/asio/doc/design/threads.qbk svneol=native#text/plain
 libs/asio/doc/doxy2qbk.pl svneol=native#text/x-perl
 libs/asio/doc/examples.qbk svneol=native#text/plain
+libs/asio/doc/noncopyable_dox.txt svneol=native#text/plain
 libs/asio/doc/quickref.xml svneol=native#text/xml
 libs/asio/doc/reference.dox -text
 libs/asio/doc/reference.qbk svneol=native#text/plain
@@ -5308,6 +5309,7 @@ libs/asio/doc/requirements/TimerService.qbk svneol=native#text/plain
 libs/asio/doc/requirements/WaitHandler.qbk svneol=native#text/plain
 libs/asio/doc/requirements/WriteHandler.qbk svneol=native#text/plain
 libs/asio/doc/requirements/asynchronous_operations.qbk svneol=native#text/plain
+libs/asio/doc/std_exception_dox.txt svneol=native#text/plain
 libs/asio/doc/tutorial.dox -text
 libs/asio/doc/tutorial.qbk svneol=native#text/plain
 libs/asio/doc/tutorial.xsl svneol=native#text/xml
