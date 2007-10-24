@@ -16645,6 +16645,7 @@ libs/xpressive/test/test_static.cpp svneol=native#text/plain
 libs/xpressive/test/test_sub_match.cpp svneol=native#text/plain
 libs/xpressive/test/test_symbols.cpp svneol=native#text/plain
 libs/xpressive/test/test_typeof.cpp svneol=native#text/plain
+libs/xpressive/test/test_typeof2.cpp svneol=native#text/plain
 libs/xpressive/tools/Jamfile.v2 svneol=native#text/plain
 libs/xpressive/tools/perl2xpr.cpp svneol=native#text/plain
 more/BoostCon07.html svneol=native#text/html
