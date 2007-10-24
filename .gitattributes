@@ -13349,6 +13349,7 @@ libs/ptr_container/doc/reversible_ptr_container.rst svneol=native#text/plain
 libs/ptr_container/doc/todo.txt svneol=native#text/plain
 libs/ptr_container/doc/tutorial.html svneol=native#text/html
 libs/ptr_container/doc/tutorial.rst svneol=native#text/plain
+libs/ptr_container/doc/tutorial_example.html svneol=native#text/plain
 libs/ptr_container/index.html svneol=native#text/html
 libs/ptr_container/test/Jamfile.v2 svneol=native#text/plain
 libs/ptr_container/test/associative_test_data.hpp svneol=native#text/plain
