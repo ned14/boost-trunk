@@ -9357,6 +9357,8 @@ libs/intrusive/example/doc_rbtree_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_set.cpp svneol=native#text/plain
 libs/intrusive/example/doc_slist.cpp svneol=native#text/plain
 libs/intrusive/example/doc_slist_algorithms.cpp svneol=native#text/plain
+libs/intrusive/example/doc_splay_algorithms.cpp svneol=native#text/plain
+libs/intrusive/example/doc_splay_set.cpp svneol=native#text/plain
 libs/intrusive/example/doc_stateful_value_traits.cpp svneol=native#text/plain
 libs/intrusive/example/doc_unordered_set.cpp svneol=native#text/plain
 libs/intrusive/example/doc_value_traits.cpp svneol=native#text/plain
@@ -9376,6 +9378,8 @@ libs/intrusive/proj/vc7ide/multiset/multiset.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/perf_test/perf_test.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/set/set.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/slist/slist.vcproj svneol=native#text/plain
+libs/intrusive/proj/vc7ide/splay_multiset/splay_multiset.vcproj svneol=CRLF#text/xml eol=crlf
+libs/intrusive/proj/vc7ide/splay_set/splay_set.vcproj svneol=CRLF#text/xml eol=crlf
 libs/intrusive/proj/vc7ide/stateful_value_traits/stateful_value_traits.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/to-do.txt svneol=native#text/plain
 libs/intrusive/proj/vc7ide/unordered_multiset/unordered_multiset.vcproj svneol=native#text/plain
@@ -9393,6 +9397,8 @@ libs/intrusive/test/multiset_test.cpp svneol=native#text/plain
 libs/intrusive/test/set_test.cpp svneol=native#text/plain
 libs/intrusive/test/slist_test.cpp svneol=native#text/plain
 libs/intrusive/test/smart_ptr.hpp svneol=native#text/plain
+libs/intrusive/test/splay_multiset_test.cpp svneol=native#text/plain
+libs/intrusive/test/splay_set_test.cpp svneol=native#text/plain
 libs/intrusive/test/stateful_value_traits_test.cpp svneol=native#text/plain
 libs/intrusive/test/test_container.hpp svneol=native#text/plain
 libs/intrusive/test/test_macros.hpp svneol=native#text/plain
