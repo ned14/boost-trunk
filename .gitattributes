@@ -1561,5 +1561,6 @@
 2_1/libs/xpressive/test/test_static.cpp svneol=native#text/plain
 2_1/libs/xpressive/test/test_sub_match.cpp svneol=native#text/plain
 2_1/libs/xpressive/test/test_symbols.cpp svneol=native#text/plain
+2_1/libs/xpressive/test/test_typeof.cpp svneol=native#text/plain
 2_1/libs/xpressive/tools/Jamfile.v2 svneol=native#text/plain
 2_1/libs/xpressive/tools/perl2xpr.cpp svneol=native#text/plain
