@@ -13199,6 +13199,7 @@ libs/program_options/src/variables_map.cpp svneol=native#text/plain
 libs/program_options/src/winmain.cpp svneol=native#text/plain
 libs/program_options/test/Jamfile.v2 svneol=native#text/plain
 libs/program_options/test/cmdline_test.cpp svneol=native#text/plain
+libs/program_options/test/minitest.hpp svneol=native#text/plain
 libs/program_options/test/options_description_test.cpp svneol=native#text/plain
 libs/program_options/test/parsers_test.cpp svneol=native#text/plain
 libs/program_options/test/positional_options_test.cpp svneol=native#text/plain
