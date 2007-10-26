@@ -910,7 +910,6 @@ python_port/python/boost/build/build/build_request.py svneol=native#text/x-pytho
 python_port/python/boost/build/build/errors.py svneol=native#text/plain
 python_port/python/boost/build/build/feature.py svneol=native#text/x-python
 python_port/python/boost/build/build/generators.py svneol=native#text/x-python
-python_port/python/boost/build/build/loader.py svneol=native#text/x-python
 python_port/python/boost/build/build/project.py svneol=native#text/x-python
 python_port/python/boost/build/build/property.py svneol=native#text/x-python
 python_port/python/boost/build/build/property_set.py svneol=native#text/x-python
