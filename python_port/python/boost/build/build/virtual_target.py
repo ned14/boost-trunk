@@ -1,5 +1,6 @@
 # Status: being ported by Vladimir Prus
 # Essentially ported, minor fixme remain.
+# Base revision: 40480
 # 
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in
@@ -92,6 +93,8 @@ class VirtualTargetRegistry:
         
         # All targets ever registed
         self.all_targets_ = []
+
+        self.next_id_ = 0
         
     def register (self, target):
         """ Registers a new virtual target. Checks if there's already registered target, with the same
@@ -129,6 +132,9 @@ class VirtualTargetRegistry:
         # TODO: Don't append if we found pre-existing target?
         self.recent_targets_.append(result)
         self.all_targets_.append(result)
+
+        result.set_id(self.next_id_)
+        self.next_id_ = self.next_id_+1
     
         return result
 
@@ -152,6 +158,10 @@ class VirtualTargetRegistry:
         result = FileTarget (file, False, file_type, project,
                              None, file_location)       
         self.files_ [path] = result
+        
+        result.set_id(self.next_id_)
+        self.next_id_ = self.next_id_+1
+        
         return result
 
     def recent_targets(self):
@@ -255,6 +265,14 @@ class VirtualTarget:
         """
         return self.project_
 
+    def set_id(self, id):
+        self.id_ = id
+
+    def __hash__(self):
+        return self.id_
+
+    def __cmp__(self, other):
+        return self.id_ - other.id_
 
     def depends (self, d):
         """ Adds additional instances of 'VirtualTarget' that this

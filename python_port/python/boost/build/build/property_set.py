@@ -1,5 +1,6 @@
 # Status: ported.
 # One FIXME remains that depends on property.py being finished.
+# Base revision: 40480
 
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in

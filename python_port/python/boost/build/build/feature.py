@@ -1,5 +1,6 @@
 # Status: mostly ported.
 # TODO: carry over tests.
+# Base revision: 40480
 #
 # Copyright 2001, 2002, 2003 Dave Abrahams 
 # Copyright 2002, 2006 Rene Rivera 

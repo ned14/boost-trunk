@@ -2,6 +2,9 @@
 # Distributed under the Boost Software License, Version 1.0. 
 # (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt) 
 
+# Status: ported (danielw)
+# Base revision: 40480
+
 #  This module defines the 'alias' rule and associated class.
 #
 #  Alias is just a main target which returns its source targets without any 
@@ -21,8 +24,6 @@
 #
 #    alias big_lib : : @/external_project/big_lib/<link>static ;
 #
-
-# Status: ported (danielw)
 
 import targets
 import property_set

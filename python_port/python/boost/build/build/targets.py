@@ -1,6 +1,7 @@
 # Status: being ported by Vladimir Prus
 # Still to do: call toolset.requirements when those are ported.
 # Remember the location of target.
+# Base revision: 40480
 
 # Copyright Vladimir Prus 2002-2007.
 # Copyright Rene Rivera 2006.
@@ -226,7 +227,10 @@ class TargetRegistry:
 
 class GenerateResult:
     
-    def __init__ (self, ur = None, targets = []):
+    def __init__ (self, ur=None, targets=None):
+        if not targets:
+            targets = []
+        
         self.__usage_requirements = ur
         self.__targets = targets
 
@@ -244,7 +248,6 @@ class GenerateResult:
         
         self.__usage_requirements = self.__usage_requirements.add (other.usage_requirements ())
         self.__targets.extend (other.targets ())
-        self.__targets = unique (self.__targets)
 
 class AbstractTarget:
     """ Base class for all abstract targets.
@@ -395,7 +398,6 @@ class ProjectTarget (AbstractTarget):
         for t in self.targets_to_build ():
             g = t.generate (ps)
             result.extend (g)
-
             
         self.manager_.targets().decrease_indent ()
         return result

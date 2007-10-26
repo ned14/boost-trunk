@@ -1,5 +1,6 @@
 # Status: being ported by Vladimir Prus
 # TODO: need to re-compare with mainline of .jam
+# Base revision: 40480
 #
 #  (C) Copyright David Abrahams 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in
