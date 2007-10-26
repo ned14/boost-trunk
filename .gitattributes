@@ -17782,7 +17782,6 @@ tools/quickbook/doc/html/quickbook/syntax/block.html svneol=native#text/html
 tools/quickbook/doc/html/quickbook/syntax/comments.html svneol=native#text/html
 tools/quickbook/doc/html/quickbook/syntax/phrase.html svneol=native#text/html
 tools/quickbook/doc/quickbook.qbk svneol=native#text/plain
-tools/quickbook/doc/quickbook.xml svneol=native#text/xml
 tools/quickbook/doc_info.hpp svneol=native#text/plain
 tools/quickbook/extra/katepart/install.sh svneol=native#text/x-sh
 tools/quickbook/extra/katepart/katepart.qbk svneol=native#text/plain
