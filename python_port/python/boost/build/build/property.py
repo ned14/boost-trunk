@@ -1,7 +1,11 @@
-#  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
-#  distribute this software is granted provided this copyright notice appears in
-#  all copies. This software is provided "as is" without express or implied
-#  warranty, and with no claim as to its suitability for any purpose.
+# Status: ported, except for tests and --abbreviate-paths.
+# Base revision: 40480
+#
+# Copyright 2001, 2002, 2003 Dave Abrahams 
+# Copyright 2006 Rene Rivera 
+# Copyright 2002, 2003, 2004, 2005, 2006 Vladimir Prus 
+# Distributed under the Boost Software License, Version 1.0. 
+# (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt) 
 
 import re
 from boost.build.util.utility import *
@@ -47,9 +51,9 @@ def path_order (x, y):
         return 1
 
     else:
-        if not xg:
-            x = feature.expand_subfeatures ([x])
-            y = feature.expand_subfeatures ([y])
+        if not xg:            
+            x = feature.expand_subfeatures([x])
+            y = feature.expand_subfeatures([y])
         
         if x < y:
             return -1
@@ -57,6 +61,15 @@ def path_order (x, y):
             return 1
         else:
             return 0
+
+def abbreviate_dashed(string):
+    # FIXME: string.abbreviate?
+    return [string.abbreviate(part) for part in string.split('-')].join('-')
+
+def identify(string):
+    return string 
+
+# FIXME: --abbreviate-paths        
     
 def as_path (properties):
     """ Returns a path which represents the given expanded property set.
@@ -73,6 +86,7 @@ def as_path (properties):
         components = []
         for p in properties:
             pg = get_grist (p)
+            # FIXME: abbrev?
             if pg:
                 f = ungrist (pg)
                 components.append (f + '-' + replace_grist (p, ''))
@@ -106,8 +120,10 @@ def refine (properties, requirements):
             required [get_grist (r)] = replace_grist (r, '')
 
     for p in properties:
+        # Skip conditional properties
         if is_conditional (p):
             result [p] = None
+        # No processing for free properties
         elif 'free' in feature.attributes (get_grist (p)):
             result [p] = None
         else:
@@ -140,21 +156,42 @@ def translate_paths (properties, path):
         if split:
             condition = split [0]
             p = split [1]
-
-        # need to do this here to get reasonable error messages for
-        # unrecognized implicit features.
-        validate (p)
         
         if get_grist (p) and 'path' in feature.attributes (get_grist (p)):
             values = __re_two_ampersands.split (forward_slashes (get_grist (p)))
 
-            t = [ t.append (Path.root (Path.make (v), path)) for v in values ]
+            t = [os.path.join(path, v) for v in values]
             t = '&&'.join (t)
             tp = backslashes_to_slashes (replace_grist (t, get_grist (p)))
             result.append (condition + tp)
             
         else:
             result.append (condition + p)
+
+    return result
+
+def translate_indirect(specification, context_module):
+    """Assumes that all feature values that start with '@' are
+    names of rules, used in 'context-module'. Such rules can be
+    either local to the module or global. Qualified local rules
+    with the name of the module."""
+    result = []
+    for p in specification:
+        if p[0] == '@':
+            m = p[1:]
+            if not '.' in p:
+                # This is unqualified rule name. The user might want
+                # to set flags on this rule name, and toolset.flag
+                # auto-qualifies the rule name. Need to do the same
+                # here so set flag setting work.
+                # We can arrange for toolset.flag to *not* auto-qualify
+                # the argument, but then two rules defined in two Jamfiles
+                # will conflict.
+                m = context_module + "." + m
+
+            result.append(get_grist(p) + "@" + m)
+        else:
+            result.append(p)
 
     return result
 
@@ -256,16 +293,13 @@ def select (features, properties):
     
     # add any missing angle brackets
     features = add_grist (features)
-    
-    for p in properties:
-        if get_grist (p) in features:
-            result.append (p)
 
-    return result
+    return [p for p in proeprties if get_grist(p) in features]
 
 def validate_property_sets (sets):
-    # TODO: implement this
-    pass
+    for s in sets:
+        validate(feature.split(s))
+
 
 def evaluate_conditionals_in_context (properties, context):
     """ Removes all conditional properties which conditions are not met
@@ -290,11 +324,41 @@ def evaluate_conditionals_in_context (properties, context):
         # Split condition into individual properties
         conditions = s.group (1).split (',')
 
-        # Evaluate condition
-        
-        if Set.contains (c, context):
+        # Evaluate condition        
+        if set.contains (c, context):
             result.append (s.group (2))
 
+    return result
+
+def expand_subfeatures_in_conditions(properties):
+
+    result = []
+    for p in properties:
+
+        s = __re_separate_condition_and_property.match(p)
+        if not s:
+            result.append(p)
+        else:
+            condition = s.group(1)
+            # Condition might include several elements
+            condition = condition.split(",")
+            value = s.group(2)
+            
+            e = []
+            for c in condition:
+                # It common that condition includes a toolset which
+                # was never defined, or mentiones subfeatures which
+                # were never defined. In that case, validation will
+                # only produce an spirious error, so prevent
+                # validation by passing 'true' as second parameter.
+                e.extend(feature.expand_subfeatures(c, dont_validate=True))
+
+            if e == condition:
+                result.append(p)
+            else:
+                individual_subfeatures = set.difference(e, condition)
+                result.append(",".join(individual_subfeatures) + ":" + value)
+                
     return result
 
 def change (properties, feature, value = None):
@@ -392,61 +456,49 @@ def remove(attributes, properties):
             result += e
 
     return result
-#   
-#   # Returns a property set which include all properties in 'properties' that have
-#   # any of 'attributes'.
-#   rule take ( attributes + : properties * )
-#   {
-#       local result ;
-#       for local e in $(properties)
-#       {
-#           if [ set.intersection $(attributes) : [ feature.attributes $(e:G) ] ]
-#           {
-#               result += $(e) ;
-#           }
-#       }
-#       return $(result) ;
-#   }
+
+
+def take(attributes, properties):
+    """Returns a property set which include all
+    properties in 'properties' that have any of 'attributes'."""
+    result = []
+    for e in properties:
+        if set.intersection(attributes, feature.attributes(get_grist(e))):
+            result.append(e)
+    return result
 
 
 class PropertyMap:
     """ Class which maintains a property set -> string mapping.
     """
     def __init__ (self):
-        self.__next_flag = 0
-        self.__all_flags = []
-        self.__properties = {}
-        self.__values = {}
+        self.__properties = []
+        self.__values = []
     
     def insert (self, properties, value):
-        """ Associate 'value' with 'properties'.
+        """ Associate value with properties.
         """
-        self.__all_flags.append (self.__next_flag)
-        self.__properties [self.__next_flag] = properties
-        self.__values [self.__next_flag] = value
-
-        self.__next_flag = self.__next_flag + 1
+        self.__properties.append(properties)
+        self.__values.append(value)
 
     def find (self, properties):
-        """ Return the value associated with 'properties'
-            or any subset of it. If more than one
-            subset has value assigned to it, return the
-            value for the longest subset, if it's unique.
+        """ Return the value associated with properties
+        or any subset of it. If more than one
+        subset has value assigned to it, return the
+        value for the longest subset, if it's unique.
         """
         return self.find_replace (properties)
-    
-    def find_replace (self, properties, value = None):
-        """ Find the value associated with 'properties'.
-            If 'value' parameter is given, replaces the found value
-            Returns the value that were stored originally.
-        """
-        # First find all matches
+
+    def find_replace(self, properties, value=None):
         matches = []
         match_ranks = []
-        for i in self.__all_flags:
-            if set.contains (self.__properties [i], properties):
+        
+        for i in range(0, len(self.__properties)):
+            p = self.__properties[i]
+                        
+            if set.contains (p, properties):
                 matches.append (i)
-                match_ranks.append (len (self.__properties [i]))
+                match_ranks.append(len(p))
 
         best = sequence.select_highest_ranked (matches, match_ranks)
 
@@ -458,10 +510,10 @@ class PropertyMap:
 
         best = best [0]
             
-        original = self.__values.get (best, None)
+        original = self.__values[best]
 
         if value:
-            self.__values [best] = value
+            self.__values[best] = value
 
         return original
 
