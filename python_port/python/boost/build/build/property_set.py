@@ -1,5 +1,4 @@
 # Status: ported.
-# One FIXME remains that depends on property.py being finished.
 # Base revision: 40480
 
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
@@ -58,8 +57,7 @@ def create_from_user_input(raw_properties, jamfile_module, location):
     context of 'jamfile-module' at 'location'"""
 
     specification = property.translate_paths(raw_properties, location)
-    # FIXME: revive, after translate_indirect is ported.
-    # specification = property.translate_indirect(specification, jamfile_module)
+    specification = property.translate_indirect(specification, jamfile_module)
     specification = property.expand_subfeatures_in_conditions(specification)
     specification = property.make(specification)
     return create(specification)
