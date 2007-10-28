@@ -11308,6 +11308,7 @@ libs/math/test/test_normal.cpp svneol=native#text/plain
 libs/math/test/test_pareto.cpp svneol=native#text/plain
 libs/math/test/test_poisson.cpp svneol=native#text/plain
 libs/math/test/test_policy.cpp svneol=native#text/plain
+libs/math/test/test_policy_2.cpp svneol=native#text/plain
 libs/math/test/test_policy_sf.cpp svneol=native#text/plain
 libs/math/test/test_rational_instances/test_rational.hpp svneol=native#text/plain
 libs/math/test/test_rational_instances/test_rational_double1.cpp svneol=native#text/plain
