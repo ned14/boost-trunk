@@ -81,6 +81,7 @@ from virtual_target import Subvariant
 from boost.build.exceptions import *
 from boost.build.util.sequence import unique
 from boost.build.util import set, path
+from boost.build.build.errors import user_error_checkpoint
 
 _re_separate_target_from_properties = re.compile (r'^([^<]*)(/(<.*))?$')
 
@@ -142,7 +143,7 @@ class TargetRegistry:
 
         # FIXME: revive after toolset.requirements are ported.
         #specification.append(toolset.requirements)
-        
+
         requirements = property_set.refine_from_user_input(
             project.get("requirements"), specification,
             project.project_module, project.get("location"))
@@ -272,11 +273,7 @@ class AbstractTarget:
             self.manager_ = project.manager ()
 
         self.name_ = name
-        self.project_ = project
-        
-        # FIXME: do we need this? If yes, how?
-        # self.location_ = [ errors.nearest-user-location ] ;
-        self.location_ = None
+        self.project_ = project        
     
     def manager (self):
         return self.manager_
@@ -822,6 +819,8 @@ class BasicTarget (AbstractTarget):
         
         # A cache for build requests
         self.request_cache = {}
+
+        self.user_context_ = self.manager_.errors().capture_user_context()
         
     def sources (self):
         """ Returns the list of AbstractTargets which are used as sources.
@@ -1040,11 +1039,15 @@ class BasicTarget (AbstractTarget):
 
         return (result_var, usage_requirements)
 
+    @user_error_checkpoint
     def generate (self, ps):
         """ Determines final build properties, generates sources,
         and calls 'construct'. This method should not be
         overridden.
         """
+        self.manager_.errors().push_user_context(
+            "Generating target " + self.full_name(), self.user_context_)
+        
         if self.manager().targets().logging():
             self.manager().targets().log(
                 "Building target '%s'" % self.name_)

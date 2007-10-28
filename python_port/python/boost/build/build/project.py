@@ -40,6 +40,7 @@
 
 import boost.build.util.path
 from boost.build.build import property_set, property
+from boost.build.build.errors import ExceptionWithUserContext
 import boost.build.build.targets
 
 import bjam
@@ -49,6 +50,7 @@ import sys
 import os
 import string
 import imp
+import traceback
 
 class ProjectRegistry:
 
@@ -680,21 +682,9 @@ class ProjectAttributes:
             self.__dict__[attribute] = specification
             
         elif attribute == "requirements":
-            try:
-                result = property_set.refine_from_user_input(
-                    self.requirements, specification,
-                    self.project_module, self.location)
-            except Exception, e:
-                # FIXME: any exception caused above is stripped of
-                # backtrace.
-                print "Conflicting parent properties requirements", e.message
-                print dir(e)
-                # FIXME:
-                #errors.error
-                #    "Requirements for project at '$(self.location)'"
-                #    "conflict with parent's." :
-                #    "Explanation: " $(result[2-]) ;
-            self.requirements = result
+            self.requirements = property_set.refine_from_user_input(
+                self.requirements, specification,
+                self.project_module, self.location)
             
         elif attribute == "usage-requirements":
             unconditional = []
@@ -706,7 +696,7 @@ class ProjectAttributes:
                     unconditional.append(p)
 
             non_free = property.remove("free", unconditional)
-            if non_free:
+            if non_free:                
                 pass
                 # FIXME:
                 #errors.error "usage-requirements" $(specification) "have non-free properties" $(non-free) ;
@@ -771,9 +761,11 @@ class ProjectRules:
 
     def __init__(self, registry):
         self.registry = registry
+        self.manager_ = registry.manager
         self.rules = {}
         self.local_names = [x for x in self.__class__.__dict__
-                            if x not in ["__init__", "init_project", "add_rule"]]
+                            if x not in ["__init__", "init_project", "add_rule",
+                                         "error_reporting_wrapper"]]
         self.all_names_ = [x for x in self.local_names]
     
     def add_rule(self, name, callable):
@@ -782,6 +774,29 @@ class ProjectRules:
 
     def all_names(self):
         return self.all_names_
+
+    def call_and_report_errors(self, callable, *args):
+        result = None
+        try:
+            self.manager_.errors().push_jamfile_context()
+            result = callable(*args)
+        except ExceptionWithUserContext, e:
+            e.report()
+        except Exception, e:
+            print "internal error:", e
+            traceback.print_exc()
+        finally:                
+            self.manager_.errors().pop_jamfile_context()
+                                        
+        return result
+
+    def make_wrapper(self, callable):
+        """Given a free-standing function 'callable', return a new
+        callable that will call 'callable' and report all exceptins,
+        using 'call_and_report_errors'."""
+        def wrapper(*args):
+            self.call_and_report_errors(callable, *args)
+        return wrapper
 
     def init_project(self, project_module):
 
@@ -794,10 +809,13 @@ class ProjectRules:
                     n = "import"
                 else:
                     n = string.replace(n, "_", "-")
-                bjam.import_rule(project_module, n, v)
+                    
+                bjam.import_rule(project_module, n,
+                                 self.make_wrapper(v))
 
         for n in self.rules:
-            bjam.import_rule(project_module, n, self.rules[n])
+            bjam.import_rule(project_module, n,
+                             self.make_wrapper(self.rules[n]))
 
     def project(self, *args):
 

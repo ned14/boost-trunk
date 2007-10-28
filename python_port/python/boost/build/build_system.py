@@ -16,6 +16,7 @@ from boost.build.util.sequence import unique
 import boost.build.tools.common
 import boost.build.tools.builtin
 import boost.build.build.build_request
+from boost.build.build.errors import ExceptionWithUserContext
 
 import bjam
 
@@ -84,6 +85,7 @@ def main(dummy):
     global argv
     argv = bjam.variable("ARGV")
 
+    # FIXME: document this option.
     if "--profiling" in argv:
         import cProfile
         import pstats
@@ -341,10 +343,15 @@ def main_real():
         manager.set_command_line_free_features(property_set.create(p.free()))
         
         for t in targets:
-            g = t.generate(p)
-            if not isinstance(t, ProjectTarget):
-                results_of_main_targets.extend(g.targets())
-            virtual_targets.extend(g.targets())
+            try:
+                g = t.generate(p)
+                if not isinstance(t, ProjectTarget):
+                    results_of_main_targets.extend(g.targets())
+                    virtual_targets.extend(g.targets())
+            except ExceptionWithUserContext, e:
+                e.report()
+            except Exception:                
+                raise
 
     # The cleaning is tricky. Say, if
     # user says: 

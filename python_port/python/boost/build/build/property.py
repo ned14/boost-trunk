@@ -409,7 +409,10 @@ def __validate1 (property):
         feature.validate_value_string (f, property)
 
     if msg:
-        raise InvalidFeature ("Invalid property '%s': %s" % (property, msg))
+        # FIXME: don't use globals like this. Import here to
+        # break circular dependency.
+        from boost.build.manager import get_manager
+        get_manager().errors()("Invalid property '%s': %s" % (property, msg))
 
 
 ###################################################################

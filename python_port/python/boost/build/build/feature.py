@@ -494,13 +494,13 @@ def expand_composites (properties):
                 elif not x in properties:  # x is the result of expansion
                     if not f in explicit_features:  # not explicitly-specified
                         if f in get_grist (result):
-                            raise FeatureConflict ("error expansions of composite features result in "
+                            raise FeatureConflict ("expansions of composite features result in "
                             "conflicting values for '%s'\nvalues: '%s'\none contributing composite property was '%s'" % (f, 
                             get_values (f, result) + [replace_grist (x, '')], p))
                         else:
                             result.append (x)
                 elif f in get_grist (result):
-                    raise FeatureConflict ("error explicitly-specified values of non-free feature '%s' conflict\n"
+                    raise FeatureConflict ("explicitly-specified values of non-free feature '%s' conflict\n"
                     "existing values: '%s'\nvalue from expanding '%s': '%s'" % (f, 
                     get_values (f, properties), p, replace_grist (x, '')))
                 else:

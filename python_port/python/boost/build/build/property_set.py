@@ -56,6 +56,8 @@ def create_from_user_input(raw_properties, jamfile_module, location):
     """Creates a property-set from the input given by the user, in the
     context of 'jamfile-module' at 'location'"""
 
+    property.validate(raw_properties)
+
     specification = property.translate_paths(raw_properties, location)
     specification = property.translate_indirect(specification, jamfile_module)
     specification = property.expand_subfeatures_in_conditions(specification)

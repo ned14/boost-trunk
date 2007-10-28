@@ -15,8 +15,102 @@
 # messages will show those contexts. For programming errors,
 # Python assertions are to be used.
 
+import bjam
+import traceback
+import sys
+
+def format(message, prefix=""):
+    parts = message.split("\n")
+    return "\n".join(prefix+p for p in parts)
+    
+
+class Context:
+
+    def __init__(self, message, nested=None):
+        self.message_ = message
+        self.nested_ = nested
+
+    def report(self, indent=""):
+        print indent + "    -", self.message_
+        if self.nested_:
+            print indent + "        declared at:"
+            for n in self.nested_:
+                n.report(indent + "    ")
+
+class JamfileContext:
+
+    def __init__(self):
+        raw = bjam.backtrace()
+        self.raw_ = raw
+
+    def report(self, indent=""):
+        for r in self.raw_:
+            print indent + "    - %s:%s" % (r[0], r[1])
+
+class ExceptionWithUserContext(Exception):
+
+    def __init__(self, message, context,
+                 original_exception=None, original_tb=None):
+        Exception.__init__(self, message)
+        self.context_ = context
+        self.original_exception_ = original_exception
+        self.original_tb_ = original_tb
+
+    def report(self):
+        print "error:", self.message
+        if self.original_exception_:
+            print format(self.original_exception_.message, "    ")
+        print
+        print "    error context (most recent first):"
+        for c in self.context_[::-1]:
+            c.report()
+        print
+
+        if "--stacktrace" in bjam.variable("ARGV"):
+            traceback.print_tb(self.original_tb_)
+            #traceback.print_exc()
+            print "Stacktrace requested"
+
+def user_error_checkpoint(callable):
+    def wrapper(self, *args):
+        errors = self.manager().errors()
+        try:
+            return callable(self, *args)
+        except ExceptionWithUserContext, e:
+            raise
+        except Exception, e:
+            errors.handle_stray_exception(e)
+        finally:
+            errors.pop_user_context()
+            
+    return wrapper
+                            
 class Errors:
 
+    def __init__(self):
+        self.contexts_ = []
+
+    def push_user_context(self, message, nested=None):
+        self.contexts_.append(Context(message, nested))
+
+    def pop_user_context(self):
+        del self.contexts_[-1]
+
+    def push_jamfile_context(self):
+        self.contexts_.append(JamfileContext())
+
+    def pop_jamfile_context(self):
+        del self.contexts_[-1]
+
+    def capture_user_context(self):
+        return self.contexts_[:]
+
+    def handle_stray_exception(self, e):
+        raise ExceptionWithUserContext("unexpected exception", self.contexts_[:],
+                                       e, sys.exc_info()[2])    
     def __call__(self, message):
-        # FIXME: add 'error' to each line.
-        raise Exception(message)
+        raise ExceptionWithUserContext(message, self.contexts_[:])
+
+        
+
+    
