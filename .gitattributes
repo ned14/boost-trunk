@@ -14893,6 +14893,7 @@ libs/spirit/test/char_strings_test_fail.cpp svneol=native#text/plain
 libs/spirit/test/chset_tests.cpp svneol=native#text/plain
 libs/spirit/test/closure_tests.cpp svneol=native#text/plain
 libs/spirit/test/confix_tests.cpp svneol=native#text/plain
+libs/spirit/test/custom_real_parser.cpp svneol=native#text/plain
 libs/spirit/test/directives_tests.cpp svneol=native#text/plain
 libs/spirit/test/distinct_tests.cpp svneol=native#text/plain
 libs/spirit/test/epsilon_tests.cpp svneol=native#text/plain
