@@ -9359,6 +9359,8 @@ libs/intrusive/example/doc_advanced_value_traits.cpp svneol=native#text/plain
 libs/intrusive/example/doc_advanced_value_traits2.cpp svneol=native#text/plain
 libs/intrusive/example/doc_assoc_optimized_code.cpp svneol=native#text/plain
 libs/intrusive/example/doc_auto_unlink.cpp svneol=native#text/plain
+libs/intrusive/example/doc_avl_set.cpp svneol=native#text/plain
+libs/intrusive/example/doc_avltree_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_bucket_traits.cpp svneol=native#text/plain
 libs/intrusive/example/doc_clone_from.cpp svneol=native#text/plain
 libs/intrusive/example/doc_entity.cpp svneol=native#text/plain
@@ -9375,6 +9377,7 @@ libs/intrusive/example/doc_slist.cpp svneol=native#text/plain
 libs/intrusive/example/doc_slist_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_splay_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_splay_set.cpp svneol=native#text/plain
+libs/intrusive/example/doc_splaytree_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_stateful_value_traits.cpp svneol=native#text/plain
 libs/intrusive/example/doc_unordered_set.cpp svneol=native#text/plain
 libs/intrusive/example/doc_value_traits.cpp svneol=native#text/plain
@@ -9385,6 +9388,8 @@ libs/intrusive/perf/perf_list.cpp svneol=native#text/plain
 libs/intrusive/proj/vc7ide/Intrusive.sln -text
 libs/intrusive/proj/vc7ide/Intrusive.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/_intrusivelib/_intrusivelib.vcproj svneol=native#text/plain
+libs/intrusive/proj/vc7ide/avl_multiset/avl_multiset.vcproj svneol=CRLF#text/xml eol=crlf
+libs/intrusive/proj/vc7ide/avl_set/avl_set.vcproj svneol=CRLF#text/xml eol=crlf
 libs/intrusive/proj/vc7ide/custom_bucket_traits/custom_bucket_traits.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/default_hook/default_hook.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/external_value_traits/external_value_traits.vcproj svneol=native#text/plain
@@ -9402,6 +9407,8 @@ libs/intrusive/proj/vc7ide/unordered_multiset/unordered_multiset.vcproj svneol=n
 libs/intrusive/proj/vc7ide/unordered_set/unordered_set.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/virtual_base/virtual_base.vcproj svneol=native#text/plain
 libs/intrusive/test/Jamfile.v2 svneol=native#text/plain
+libs/intrusive/test/avl_multiset_test.cpp svneol=native#text/plain
+libs/intrusive/test/avl_set_test.cpp svneol=native#text/plain
 libs/intrusive/test/common_functors.hpp svneol=native#text/plain
 libs/intrusive/test/custom_bucket_traits_test.cpp svneol=native#text/plain
 libs/intrusive/test/default_hook_test.cpp svneol=native#text/plain
