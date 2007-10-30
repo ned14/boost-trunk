@@ -16829,7 +16829,6 @@ people/thorsten_ottosen.html svneol=native#text/html
 people/vesa_karvonen.htm svneol=native#text/html
 people/vladimir_prus.htm svneol=native#text/html
 people/william_kempf.htm svneol=native#text/html
-regression/.htaccess svneol=native#text/plain
 /rst.css svneol=native#text/css
 status/Jamfile.v2 svneol=native#text/plain
 status/expected_results.xml svneol=native#text/xml
