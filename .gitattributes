@@ -703,6 +703,7 @@ boost/detail/shared_array_nmt.hpp svneol=native#text/plain
 boost/detail/shared_count.hpp svneol=native#text/plain
 boost/detail/shared_ptr_nmt.hpp svneol=native#text/plain
 boost/detail/sp_counted_base.hpp svneol=native#text/plain
+boost/detail/sp_counted_base_acc_ia64.hpp svneol=native#text/plain
 boost/detail/sp_counted_base_cw_ppc.hpp svneol=native#text/plain
 boost/detail/sp_counted_base_cw_x86.hpp svneol=native#text/plain
 boost/detail/sp_counted_base_gcc_ia64.hpp svneol=native#text/plain
