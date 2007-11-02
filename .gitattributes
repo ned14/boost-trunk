@@ -15552,7 +15552,6 @@ libs/thread/src/pthread/exceptions.cpp svneol=native#text/plain
 libs/thread/src/pthread/thread.cpp svneol=native#text/plain
 libs/thread/src/pthread/timeconv.inl svneol=native#text/plain
 libs/thread/src/pthread/tss.cpp svneol=native#text/plain
-libs/thread/src/pthread/xtime.cpp svneol=native#text/plain
 libs/thread/src/tss_null.cpp svneol=native#text/plain
 libs/thread/src/win32/exceptions.cpp svneol=native#text/plain
 libs/thread/src/win32/thread.cpp svneol=native#text/plain
@@ -15561,7 +15560,6 @@ libs/thread/src/win32/tss.cpp svneol=native#text/plain
 libs/thread/src/win32/tss_dll.cpp svneol=native#text/plain
 libs/thread/src/win32/tss_hooks.cpp svneol=native#text/plain
 libs/thread/src/win32/tss_pe.cpp svneol=native#text/plain
-libs/thread/src/win32/xtime.cpp svneol=native#text/plain
 libs/thread/test/.cvsignore -text
 libs/thread/test/Carbon.r -text
 libs/thread/test/Jamfile.v2 svneol=native#text/plain
