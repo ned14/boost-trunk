@@ -16125,6 +16125,7 @@ libs/utility/value_init_test.cpp svneol=native#text/plain
 libs/utility/value_init_test_fail1.cpp svneol=native#text/plain
 libs/utility/value_init_test_fail2.cpp svneol=native#text/plain
 libs/utility/value_init_test_fail3.cpp svneol=native#text/plain
+libs/utility/verify_test.cpp svneol=native#text/plain
 libs/variant/doc/Jamfile.v2 svneol=native#text/plain
 libs/variant/doc/biblio.xml svneol=native#text/xml
 libs/variant/doc/design.xml svneol=native#text/xml
