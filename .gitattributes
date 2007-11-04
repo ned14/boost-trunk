@@ -13557,6 +13557,7 @@ libs/python/example/test_getting_started2.py svneol=native#text/x-python
 libs/python/example/test_std_pair.py svneol=native#text/x-python
 libs/python/example/tutorial/Jamroot -text
 libs/python/example/tutorial/hello.cpp svneol=native#text/plain
+libs/python/example/tutorial/hello.py svneol=native#text/x-python
 libs/python/index.html svneol=native#text/html
 libs/python/pyste/NEWS -text
 libs/python/pyste/README svneol=native#text/plain
