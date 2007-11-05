@@ -7554,7 +7554,6 @@ libs/graph/doc/write-graphviz.html svneol=native#text/html
 libs/graph/doc/write_dimacs.html svneol=native#text/html
 libs/graph/doc/write_graphml.html svneol=native#text/html
 libs/graph/doc/write_graphml.rst svneol=native#text/plain
-libs/graph/example/Jamfile svneol=native#text/plain
 libs/graph/example/accum-compile-times.cpp svneol=native#text/plain
 libs/graph/example/actor_clustering.cpp svneol=native#text/plain
 libs/graph/example/adj_list_ra_edgelist.cpp svneol=native#text/plain
@@ -7742,7 +7741,6 @@ libs/graph/example/reachable-loop-tail.cpp svneol=native#text/plain
 libs/graph/example/read_graphviz.cpp svneol=native#text/plain
 libs/graph/example/read_write_dimacs-eg.cpp svneol=native#text/plain
 libs/graph/example/regression.cfg -text
-libs/graph/example/regrtest.py svneol=native#text/x-python
 libs/graph/example/remove_edge_if_bidir.cpp svneol=native#text/plain
 libs/graph/example/remove_edge_if_bidir.expected -text
 libs/graph/example/remove_edge_if_dir.cpp svneol=native#text/plain
