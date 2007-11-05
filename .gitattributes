@@ -6702,6 +6702,7 @@ libs/function_types/example/macro_type_args.hpp svneol=native#text/plain
 libs/function_types/example/macro_type_args_example.cpp svneol=native#text/plain
 libs/function_types/example/result_of.hpp svneol=native#text/plain
 libs/function_types/example/result_of_example.cpp svneol=native#text/plain
+libs/function_types/index.html svneol=native#text/html
 libs/function_types/test/Jamfile svneol=native#text/plain
 libs/function_types/test/classification/is_callable_builtin.cpp svneol=native#text/plain
 libs/function_types/test/classification/is_cv_function.cpp svneol=native#text/plain
