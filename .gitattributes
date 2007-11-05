@@ -5669,7 +5669,6 @@ libs/assign/doc/my_vector_example.html svneol=native#text/html
 libs/assign/doc/style.css svneol=native#text/css
 libs/assign/index.html svneol=native#text/html
 libs/assign/test/Jamfile.v2 svneol=native#text/plain
-libs/assign/test/TODO svneol=native#text/plain
 libs/assign/test/array.cpp svneol=native#text/plain
 libs/assign/test/basic.cpp svneol=native#text/plain
 libs/assign/test/email_example.cpp svneol=native#text/plain
