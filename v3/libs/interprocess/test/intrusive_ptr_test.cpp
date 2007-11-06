@@ -19,22 +19,6 @@
 #include <algorithm>
 #include <functional>
 
-#if defined(BOOST_MSVC)
-
-#pragma warning(disable: 4786)  // identifier truncated in debug info
-#pragma warning(disable: 4710)  // function not inlined
-#pragma warning(disable: 4711)  // function selected for automatic inline expansion
-#pragma warning(disable: 4514)  // unreferenced inline removed
-#pragma warning(disable: 4355)  // 'this' : used in base member initializer list
-#pragma warning(disable: 4511)  // copy constructor could not be generated
-#pragma warning(disable: 4512)  // assignment operator could not be generated
-
-#if (BOOST_MSVC >= 1310)
-#pragma warning(disable: 4675)  // resolved overload found with Koenig lookup
-#endif
-
-#endif
-
 typedef boost::interprocess::offset_ptr<void> VP;
 
 namespace N
@@ -77,19 +61,13 @@ class base
    }
 };
 
+inline void intrusive_ptr_add_ref(N::base *p)
+{  p->add_ref();  }
+
+inline void intrusive_ptr_release(N::base *p)
+{  p->release();  }
+
 } // namespace N
-
-inline void intrusive_ptr_add_ref
-   (const boost::interprocess::offset_ptr<N::base> &p)
-{
-   p->add_ref();
-}
-
-inline void intrusive_ptr_release
-   (const boost::interprocess::offset_ptr<N::base> &p)
-{
-   p->release();
-}
 
 struct X: public virtual N::base
 {

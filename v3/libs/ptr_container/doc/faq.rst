@@ -4,16 +4,11 @@
  
 .. |Boost| image:: boost.png
 
-===
+
 FAQ
 ===
 
 .. contents:: :local:
-
-Since a pointer container is not Copy Constructible and Assignable, I cannot put them into standard containers; what do I do?
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Since they are `Clonable <ptr_container.html#the-clonable-concept>`_, you simply put them in a pointer container.  
  
 Calling ``assign()`` is very costly and I do not really need to store cloned objects; I merely need to overwrite the existing ones; what do I do?
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -75,11 +70,11 @@ What is the _`polymorphic class problem`?
 The problem refers to the relatively troublesome way C++ supports Object 
 Oriented programming in connection with containers of pointers to 
 polymorphic objects.  In a language without garbage collection, you end up 
-using either a container of pointer pointers or a container that takes 
+using either a container of smart pointers or a container that takes 
 ownership of the pointers.  The hard part is to find a safe, fast and 
 elegant solution.  
 
-Are the pointer containers faster and do they have a better memory  footprint than a container of pointer pointers?  
+Are the pointer containers faster and do they have a better memory  footprint than a container of smart pointers?  
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 The short answer is yes: they are faster and they do use less memory; in 
@@ -98,6 +93,12 @@ Storing a null-pointer among a list of pointers does not fit well into the Objec
 The most elegant design is to use the Null-Object Pattern where one basically makes a concrete
 class with dummy implementations of the virtual functions. See `[13] <ptr_container.html#references>`_ for details.
 
+.. raw:: html 
 
-:copyright:     Thorsten Ottosen 2004-2005. 
+        <hr>
+
+:Copyright:     Thorsten Ottosen 2004-2006. Use, modification and distribution is subject to the Boost Software License, Version 1.0 (see LICENSE_1_0.txt__).
+
+__ http://www.boost.org/LICENSE_1_0.txt
+
 

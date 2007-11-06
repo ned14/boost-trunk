@@ -14,10 +14,17 @@
 #define BOOST_INTRUSIVE_TEST_CONTAINER_HPP
 
 #include <boost/detail/lightweight_test.hpp>
+#include <boost/intrusive/detail/mpl.hpp>
 
 namespace boost {
 namespace intrusive {
 namespace test {
+
+template<class T>
+struct has_const_overloads
+{
+   static const bool value = true;
+};
 
 template< class Container >
 void test_container( Container & c )
@@ -71,8 +78,11 @@ void test_sequence_container(Container & c, Data & d)
    BOOST_TEST( c.size() == 0 );
    BOOST_TEST( c.empty() );
 
-   c.insert( c.begin(), *d.begin() );
-   c.insert( c.end(), *(++d.begin()) );
+   {
+   typename Data::iterator i = d.begin();
+   c.insert( c.begin(), *i );
+   c.insert( c.end(), *(++i) );
+   }
 
    BOOST_TEST( c.size() == 2 );
    BOOST_TEST( !c.empty() );
@@ -81,7 +91,11 @@ void test_sequence_container(Container & c, Data & d)
 
    BOOST_TEST( c.size() == 1 );
 
-   c.insert( c.begin(), *(++++d.begin()) );
+   {
+   typename Data::iterator i = d.begin();
+   ++++i;
+   c.insert( c.begin(), *(i) );
+   }
 
    c.erase( c.begin(), c.end() );
 
@@ -121,8 +135,8 @@ void test_common_unordered_and_associative_container(Container & c, Data & d)
       BOOST_TEST( c.find(*di) != c.end() );
    }
 
-   typename Data::const_iterator da =   d.begin();
-   typename Data::const_iterator db = ++d.begin();
+   typename Data::const_iterator db = d.begin();
+   typename Data::const_iterator da = db++;
 
    size_type old_size = c.size();
 
@@ -144,7 +158,7 @@ void test_common_unordered_and_associative_container(Container & c, Data & d)
 }
 
 template< class Container, class Data >
-void test_associative_container_invariants(Container & c, Data & d)
+void test_associative_container_invariants(Container & c, Data & d, boost::intrusive::detail::true_type)
 {
    typedef typename Container::const_iterator const_iterator;
    for( typename Data::const_iterator di = d.begin(), de = d.end();
@@ -171,6 +185,19 @@ void test_associative_container_invariants(Container & c, Data & d)
 }
 
 template< class Container, class Data >
+void test_associative_container_invariants(Container & c, Data & d, boost::intrusive::detail::false_type)
+{}
+
+template< class Container, class Data >
+void test_associative_container_invariants(Container & c, Data & d)
+{
+   using namespace boost::intrusive;
+   typedef typename detail::remove_const<Container>::type Type;
+   typedef detail::bool_<has_const_overloads<Type>::value> enabler;
+   test_associative_container_invariants(c, d, enabler());
+}
+
+template< class Container, class Data >
 void test_associative_container(Container & c, Data & d)
 {
    typedef typename Container::const_iterator const_iterator;
@@ -187,7 +214,7 @@ void test_associative_container(Container & c, Data & d)
 }
 
 template< class Container, class Data >
-void test_unordered_associative_container_invariants(Container & c, Data & d)
+void test_unordered_associative_container_invariants(Container & c, Data & d, boost::intrusive::detail::true_type)
 {
    typedef typename Container::size_type size_type;
    typedef typename Container::const_iterator const_iterator;
@@ -215,6 +242,19 @@ void test_unordered_associative_container_invariants(Container & c, Data & d)
       total_objects += c.bucket_size(i);
    }
    BOOST_TEST( total_objects ==  c.size() );
+}
+
+template< class Container, class Data >
+void test_unordered_associative_container_invariants(Container & c, Data & d, boost::intrusive::detail::false_type)
+{}
+
+template< class Container, class Data >
+void test_unordered_associative_container_invariants(Container & c, Data & d)
+{
+   using namespace boost::intrusive;
+   typedef typename detail::remove_const<Container>::type Type;
+   typedef detail::bool_<has_const_overloads<Type>::value> enabler;
+   test_unordered_associative_container_invariants(c, d, enabler());
 }
 
 template< class Container, class Data >

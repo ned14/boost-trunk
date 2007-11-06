@@ -23,43 +23,11 @@
 #include <boost/interprocess/detail/managed_memory_impl.hpp>
 #include <boost/detail/no_exceptions_support.hpp>
 
-/*!\file
-   Describes a named heap memory allocation user class. 
-*/
+//!\file
+//!Describes a named heap memory allocation user class. 
 
 namespace boost {
 namespace interprocess {
-
-/// @cond
-namespace detail {
-
-   //!This class defines an operator() that creates a heap memory
-   //!of the requested size. The rest of the parameters are
-   //!passed in the constructor. The class a template parameter
-   //!to be used with create_from_file/create_from_istream functions
-   //!of basic_named_object classes
-   class heap_mem_creator_t
-   {
-      public:
-      heap_mem_creator_t(std::vector<char> &heapmem)
-      : m_heapmem(heapmem){}
-
-      void *operator()(std::size_t size)
-      {
-         BOOST_TRY{
-            m_heapmem.resize(size, char(0));
-         }
-         BOOST_CATCH(...){
-            return 0;
-         }
-         BOOST_CATCH_END
-         return &m_heapmem[0];
-      }      
-      private:
-      std::vector<char> &m_heapmem;
-   };
-}  //namespace detail {
-/// @endcond
 
 //!A basic heap memory named object creation class. Initializes the 
 //!heap memory segment. Inherits all basic functionality from 
@@ -85,7 +53,8 @@ class basic_managed_heap_memory
    //!Constructor. Never throws.
    basic_managed_heap_memory(){}
 
-   //!Destructor. Calls priv_close. Never throws.
+   //!Destructor. Liberates the heap memory holding the managed data.
+   //!Never throws.
    ~basic_managed_heap_memory()
    {  this->priv_close();  }
 

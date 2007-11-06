@@ -8,10 +8,10 @@
 
 
 :Authors:       Thorsten Ottosen
-:Contact:       nesotto@cs.aau.dk
-:organizations: `Department of Computer Science`_, Aalborg University, and `Dezide Aps`_
-:date:          3rd of May 2005
-:copyright:     Thorsten Ottosen 2004-2005. Use, modification and distribution is subject to the Boost Software License, Version 1.0 (see LICENSE_1_0.txt__).
+:Contact:       nesotto@cs.aau.dk or tottosen@dezide.com
+:Organizations: `Department of Computer Science`_, Aalborg University, and `Dezide Aps`_
+:date:          27th of October 2007
+:Copyright:     Thorsten Ottosen 2004-2007. Use, modification and distribution is subject to the Boost Software License, Version 1.0 (see LICENSE_1_0.txt__).
 
 __ http://www.boost.org/LICENSE_1_0.txt
 
@@ -31,32 +31,37 @@ and designs for dealing with OO specific problems
 * Motivation_
 * Tutorial_
 * Reference_
-
-  - `Conventions <conventions.html>`_
-  - `The Clonable Concept <reference.html#the-clonable-concept>`_
-  - `The Clone Allocator Concept <reference.html#the-clone-allocator-concept>`_
-  - `Pointer container adapters <reference.html#pointer-container-adapters>`_
-  - `Sequence container classes <reference.html#sequence-containers>`_
-
-    - `ptr_vector <ptr_vector.html>`_
-    - `ptr_deque <ptr_deque.html>`_
-    - `ptr_list <ptr_list.html>`_
-    - `ptr_array <ptr_array.html>`_
-  - `Associative container classes  <reference.html#associative-containers>`_
-
-    - `ptr_set <ptr_set.html>`_
-    - `ptr_multiset <ptr_multiset.html>`_
-    - `ptr_map <ptr_map.html>`_
-    - `ptr_multimap <ptr_multimap.html>`_
-  - `Indirected functions <indirect_fun.html>`_
-  - `Class nullable <reference.html#class-nullable>`_
-  - `Exception classes <reference.html#exception-classes>`_
 * `Usage guidelines`_
 * Examples_
 * `Library headers`_
 * FAQ_
+* `Upgrading from Boost v. 1.33.*`_
+* `Upgrading from Boost v. 1.34.*`_
+* `Future Developments`_
 * Acknowledgements_
 * References_
+
+..
+          - `Conventions <conventions.html>`_
+          - `The Clonable Concept <reference.html#the-clonable-concept>`_
+          - `The Clone Allocator Concept <reference.html#the-clone-allocator-concept>`_
+          - `Pointer container adapters <reference.html#pointer-container-adapters>`_
+          - `Sequence container classes <reference.html#sequence-containers>`_
+        
+            - `ptr_vector <ptr_vector.html>`_
+            - `ptr_deque <ptr_deque.html>`_
+            - `ptr_list <ptr_list.html>`_
+            - `ptr_array <ptr_array.html>`_
+          - `Associative container classes  <reference.html#associative-containers>`_
+        
+            - `ptr_set <ptr_set.html>`_
+            - `ptr_multiset <ptr_multiset.html>`_
+            - `ptr_map <ptr_map.html>`_
+            - `ptr_multimap <ptr_multimap.html>`_
+          - `Indirected functions <indirect_fun.html>`_
+          - `Class nullable <reference.html#class-nullable>`_
+          - `Exception classes <reference.html#exception-classes>`_
+          
 
 
 .. _Tutorial: tutorial.html
@@ -79,11 +84,14 @@ Motivation
 
 Whenever a programmer wants to have a container of pointers to
 heap-allocated objects, there is usually only one exception-safe way:
-to make a container of pointer pointers like ``boost::shared_ptr``.
+to make a container of smart pointers like `boost::shared_ptr <../../smart_ptr/shared_ptr.htm>`_
 This approach is suboptimal if
 
 1. the stored objects are not shared, but owned exclusively, or
-2. the overhead implied by pointer pointers is inappropriate
+
+..
+
+2. the overhead implied by smart pointers is inappropriate
 
 This library therefore provides standard-like containers that are for storing
 heap-allocated or `cloned <reference.html#the-clonable-concept>`_ objects (or in case of a map, the mapped object must be
@@ -97,18 +105,136 @@ to solve the so-called
 The advantages of pointer containers are
 
 1. Exception-safe pointer storage and manipulation.
+
+..
+
 2. Notational convenience compared to the use of containers of pointers.
+
+..
+
 3. Can be used for types that are neither Assignable nor Copy Constructible.
-4. No memory-overhead as containers of pointer pointers can have (see [11]_ and [12]_).
-5. Usually faster than using containers of pointer pointers (see [11]_ and [12]_).
+
+..
+
+4. No memory-overhead as containers of smart pointers can have (see [11]_ and [12]_).
+
+..
+
+5. Usually faster than using containers of smart pointers (see [11]_ and [12]_).
+
+..
+
 6. The interface is slightly changed towards the domain of pointers
    instead of relying on the normal value-based interface. For example,
    now it is possible for ``pop_back()`` to return the removed element.
-7. Propagates constness s.t. one cannot modify the objects via a ``const_iterator``
+   
+.. 
+ 
+7. Propagates constness such that one cannot modify the objects via a ``const_iterator``.
+
+..
+
+8. Built-in support for deep-copy semantics via the `the Cloneable concept`__
+
+.. __: reference.html#the-cloneable-concept
 
 The disadvantages are
 
 1. Less flexible than containers of smart pointers like `boost::shared_ptr <../../smart_ptr/shared_ptr.htm>`_
+
+When you do need shared semantics, this library is not what you need.
+
+====================================
+ Upgrading from Boost v. ``1.33.*``
+====================================
+
+If you upgrade from one of these versions of Boost, then there has been one
+major interface change: map iterators now mimic iterators from ``std::map``.
+Previously you may have written ::
+
+  for( boost::ptr_map<std::string,T>::iterator i = m.begin(), e = m.end();
+       i != e; ++i )
+  {
+    std::cout << "key:" << i.key();
+    std::cout << "value:" << *i;
+    i->foo(); // call T::foo()
+  }
+  
+and this now needs to be converted into ::
+       
+  for( boost::ptr_map<std::string,T>::iterator i = m.begin(), e = m.end();
+       i != e; ++i )
+  {
+    std::cout << "key:" << i->first;
+    std::cout << "value:" << *i->second;
+    i->second->foo(); // call T::foo()
+  }
+
+Apart from the above change, the library now also introduces
+
+- ``std::auto_ptr<T>`` overloads::
+
+        std::auto_ptr<T> p( new T );
+        container.push_back( p );
+
+- Derived-to-Base conversion in ``transfer()``::
+
+        boost::ptr_vector<Base>  vec;
+        boost::ptr_list<Derived> list;
+        ...
+        vec.transfer( vec.begin(), list ); // now ok
+
+Also note that `Boost.Assign <../../assign/index.html>`_ introduces better support
+for pointer containers. 
+
+====================================
+ Upgrading from Boost v. ``1.34.*``
+====================================
+
+Serialization have now been made optional thanks to Sebastian Ramacher.
+You simply include ``<boost/ptr_container/serialize.hpp>`` or perhaps
+just one of the more specialized headers.
+
+All containers are now copy-constructible and assignable. So you can e.g. now
+do:: 
+
+    boost::ptr_vector<Derived> derived = ...;
+    boost::ptr_vector<Base>    base( derived );
+    base = derived;
+    
+As the example shows, derived-to-base class conversions are also allowed.
+ 
+A few general functions have been added::
+
+    VoidPtrContainer&       base();
+    const VoidPtrContainer& base() const;
+
+These allow direct access to the wrapped container which is
+somtimes needed when you want to provide extra functionality.
+    
+A few new functions have been added to sequences::
+
+    void resize( size_type size );
+    void resize( size_type size, T* to_clone );
+
+``ptr_vector<T>`` has a few new helper functions to integrate better with C-arrays::
+
+    void transfer( iterator before, T** from, size_type size, bool delete_from = true );
+    T**  c_array();
+
+Finally you can now also "copy" and "assign" an ``auto_type`` ptr by calling ``move()``::
+
+    boost::ptr_vector<T>::auto_type move_ptr = ...;
+    return boost::ptr_container::move( move_ptr );
+
+=====================
+ Future Developments
+=====================
+
+There are indications that the ``void*`` implementation has a slight
+performance overhead compared to a ``T*`` based implementation. Furthermore, a 
+``T*`` based implementation is so much easier to use type-safely 
+with algorithms. Therefore I anticipate to move to a ``T*`` based implementation.
 
 ================
 Acknowledgements
@@ -129,6 +255,9 @@ The following people have been very helpful:
 - Russell Hind for help with Borland compatibility
 - Jonathan Wakely for his great help with GCC compatibility and bug fixes
 - Pavel Chikulaev for comments and bug-fixes
+- Andreas Hommel for fixing the nasty Metrowerks bug
+- Charles Brockman for his many comments on the documentation
+- Sebastian Ramacher for implementing the optinal serialization support
 
 ==========
 References
@@ -177,5 +306,9 @@ __ http://www.two-sdg.demon.co.uk/curbralan/papers/europlop/NullObject.pdf
 .. _pointainer: http://ootips.org/yonat/4dev/pointainer.h 
 
 
-:copyright:     Thorsten Ottosen 2004-2005. 
+.. raw:: html 
+
+        <hr>
+
+:Copyright: Thorsten Ottosen 2004-2006. 
 

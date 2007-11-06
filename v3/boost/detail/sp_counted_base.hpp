@@ -39,11 +39,15 @@
 
 # include <boost/detail/sp_counted_base_gcc_ia64.hpp>
 
+#elif defined(__HP_aCC) && defined(__ia64)
+
+# include <boost/detail/sp_counted_base_acc_ia64.hpp>
+
 #elif defined( __MWERKS__ ) && defined( __POWERPC__ )
 
 # include <boost/detail/sp_counted_base_cw_ppc.hpp>
 
-#elif defined( __GNUC__ ) && ( defined( __powerpc__ ) || defined( __ppc__ ) )
+#elif defined( __GNUC__ ) && ( defined( __powerpc__ ) || defined( __ppc__ ) || defined( __ppc ) )
 
 # include <boost/detail/sp_counted_base_gcc_ppc.hpp>
 

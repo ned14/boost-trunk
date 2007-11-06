@@ -36,7 +36,8 @@ class LoggedShellCommand(ShellCommand):
             ,sendStderr = kwargs.get('sendStderr',True)
             ,sendRC = kwargs.get('sendRC',True)
             ,timeout = kwargs.get('timeout',None)
-            ,stdin = kwargs.get('stdin',None)
+            ,initialStdin = kwargs.get('stdin',kwargs.get('initialStdin',None))
+            ,keepStdinOpen = kwargs.get('keepStdinOpen',False)
             ,keepStdout = kwargs.get('keepStdout',False)
             )
         self.logfile = None
@@ -253,10 +254,10 @@ registerSlaveCommand("boost.jam.build", Command_Boost_Jam_Build, _ver)
 class Command_Boost_Jam(NoOpCommand):
 
     def start(self):
+        _builddir = os.path.normpath(os.path.join(
+            self.builder.basedir,self.args.get('locate','results')))
         _env = self.args.get('env',{})
         _env.update({
-            'ALL_LOCATE_TARGET': os.path.normpath(os.path.join(
-                self.builder.basedir,self.args.get('locate','build'))),
             'BOOST_BUILD_PATH': "%s:%s:%s" % (
                 os.path.normpath(self.builder.basedir),
                 os.path.normpath(os.path.join(self.builder.basedir,'..')),
@@ -265,7 +266,7 @@ class Command_Boost_Jam(NoOpCommand):
         _logfile = False
         if self.args.get('logfile'):
             _logfile = os.path.normpath(os.path.join(
-                _env['ALL_LOCATE_TARGET'],self.args['logfile']))
+                _builddir,self.args['logfile']))
         return self._start( "boost.bjam",
             c( self.doBJam
                 ,bjam = os.path.normpath(os.path.join(self.builder.basedir,
@@ -273,6 +274,7 @@ class Command_Boost_Jam(NoOpCommand):
                 ,project = os.path.normpath(os.path.join(self.builder.basedir, 
                     self.args['workdir'], self.args.get('project','.')))
                 ,options = self.args.get('options',[])
+                ,builddir = _builddir
                 ,target = self.args.get('target','all')
                 ,env = _env
                 ,logfile = _logfile
@@ -289,7 +291,12 @@ class Command_Boost_Jam(NoOpCommand):
         for item in env.items():
             self.stdout("    %s = '%s'" % item)
         
-        command = [ kwargs['bjam'] ] + kwargs['options'] + [ kwargs['target'] ]
+        command = []
+        command += [ kwargs['bjam'] ]
+        command += [ '--build-dir=%s' % (kwargs['builddir']) ]
+        command += kwargs['options']
+        if kwargs.get('target'):
+            command += [ kwargs['target'] ]
         self.command = LoggedShellCommand(self.builder
             ,command
             ,kwargs['project']
@@ -310,7 +317,7 @@ class Command_Boost_ProcessJamLog(NoOpCommand):
             ,c( self.doProcessJamLog
                 ,process_jam_log = os.path.normpath(os.path.join(
                     self.builder.basedir,self.args.get('locate','build'),
-                    self.args.get('process_jam_log','tools/regression/build/run/process_jam_log')))
+                    self.args.get('process_jam_log','dist/bin/process_jam_log')))
                 ,boostroot = os.path.normpath(os.path.join(
                     self.builder.basedir,self.args.get('boostroot',self.args.get('workdir','.'))))
                 ,logfile = os.path.normpath(os.path.join(

@@ -28,8 +28,9 @@
 #include <boost/interprocess/detail/move_iterator.hpp>
 #include <boost/interprocess/detail/move.hpp>
 #include <boost/interprocess/detail/mpl.hpp>
+#include <boost/interprocess/detail/type_traits.hpp>
 #include <string>
-#include "get_compiler_name.hpp"
+#include "get_process_id_name.hpp"
 
 //***************************************************************//
 //                                                               //
@@ -96,7 +97,7 @@ bool do_test()
    typedef deque<IntType, shmem_allocator_t>   MyShmDeque;
    typedef std::deque<int>                     MyStdDeque;
    const int Memsize = 65536;
-   const char *const shMemName = test::get_compiler_name();
+   const char *const shMemName = test::get_process_id_name();
    const int max = 100;
 
    try{
@@ -177,7 +178,6 @@ bool do_test()
          }
 
          if(!copyable_only(shmdeque, stddeque
-//                        ,boost::integral_constant
                         ,detail::bool_<!is_movable<IntType>::value>())){
             return false;
          }

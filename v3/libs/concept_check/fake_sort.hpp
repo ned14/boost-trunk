@@ -5,7 +5,7 @@
 # define BOOST_LIBS_CONCEPT_CHECK_FAKE_SORT_DWA2006430_HPP
 
 # include <boost/detail/iterator.hpp>
-# include <boost/concept/where.hpp>
+# include <boost/concept/requires.hpp>
 # include <boost/concept_check.hpp>
 
 namespace fake
@@ -13,7 +13,7 @@ namespace fake
   using namespace boost;
   
   template<typename RanIter>
-  BOOST_CONCEPT_WHERE(
+  BOOST_CONCEPT_REQUIRES(
       ((Mutable_RandomAccessIterator<RanIter>))
       ((LessThanComparable<typename Mutable_RandomAccessIterator<RanIter>::value_type>))
     

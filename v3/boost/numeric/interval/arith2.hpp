@@ -22,6 +22,7 @@
 #include <boost/numeric/interval/arith.hpp>
 #include <boost/numeric/interval/policies.hpp>
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 
 namespace boost {
@@ -274,7 +275,7 @@ interval<T, Policies> nth_root(interval<T, Policies> const &x, int k)
   if (k == 1) return x;
   typename Policies::rounding rnd;
   typedef typename interval_lib::unprotect<I>::type R;
-  if (!interval_lib::user::is_pos(x.upper()))
+  if (!interval_lib::user::is_pos(x.upper())) {
     if (interval_lib::user::is_zero(x.upper())) {
       T zero(0);
       if (!(k & 1) || interval_lib::user::is_zero(x.lower())) // [-1,0]^/2 or [0,0]
@@ -287,6 +288,7 @@ interval<T, Policies> nth_root(interval<T, Policies> const &x, int k)
       return I(-interval_lib::detail::root_aux_up<R>(-x.lower(), k),
                -interval_lib::detail::root_aux_dn<R>(-x.upper(), k), true);
     }
+  }
   T u = interval_lib::detail::root_aux_up<R>(x.upper(), k);
   if (!interval_lib::user::is_pos(x.lower()))
     if (!(k & 1) || interval_lib::user::is_zero(x.lower())) // [-1,1]^/2 or [0,1]

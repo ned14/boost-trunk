@@ -71,15 +71,11 @@ namespace detail {
 /// @cond
 template <class T, class VoidPointer>
 struct slist_node
-   :  public boost::intrusive::slist_base_hook
-         < boost::intrusive::tag
-         , boost::intrusive::safe_link
-         , VoidPointer>
+   :  public bi::make_slist_base_hook
+         <bi::void_pointer<VoidPointer>, bi::link_mode<bi::normal_link> >::type
 {
-   typedef boost::intrusive::slist_base_hook
-         < boost::intrusive::tag
-         , boost::intrusive::safe_link
-         , VoidPointer>                hook_type;
+   typedef typename bi::make_slist_base_hook
+      <bi::void_pointer<VoidPointer>, bi::link_mode<bi::normal_link> >::type hook_type;
 
    slist_node()
       : m_data()
@@ -106,11 +102,12 @@ struct intrusive_slist_type
    typedef typename detail::slist_node
          <value_type, void_pointer>             node_type;
 
-   typedef typename boost::intrusive::slist
-      <typename node_type::hook_type::
-            template value_traits<node_type>
-      ,true
-      ,typename A::size_type>                   container_type;
+   typedef typename bi::make_slist
+      <node_type
+      ,bi::base_hook<typename node_type::hook_type>
+      ,bi::constant_time_size<true>
+      ,bi::size_type<typename A::size_type>
+      >::type                                   container_type;
    typedef container_type                       type ;
 };
 
@@ -229,11 +226,12 @@ class slist
    public:
    //! Const iterator used to iterate through a list. 
    class const_iterator
+      /// @cond
       : public std::iterator<std::forward_iterator_tag, 
                                  value_type,         list_difference_type, 
                                  list_const_pointer, list_const_reference>
    {
-      /// @cond
+
       protected:
       typename Icont::iterator m_it;
       explicit const_iterator(typename Icont::iterator it)  : m_it(it){}
@@ -242,7 +240,6 @@ class slist
       private:
       typename Icont::iterator get()
       {  return this->m_it;   }
-      /// @endcond
 
       public:
       friend class slist<T, A>;
@@ -273,12 +270,16 @@ class slist
 
       bool operator!=   (const const_iterator& r)  const
       {  return m_it != r.m_it;  }
-   };
+   }
+      /// @endcond
+   ;
 
    //! Iterator used to iterate through a list
-   class iterator : public const_iterator
-   {
+   class iterator
       /// @cond
+   : public const_iterator
+   {
+
       private:
       explicit iterator(typename Icont::iterator it)
          :  const_iterator(it)
@@ -286,7 +287,6 @@ class slist
    
       typename Icont::iterator get()
       {  return this->m_it;   }
-      /// @endcond
 
       public:
       friend class slist<T, A>;
@@ -306,7 +306,9 @@ class slist
 
       iterator operator++(int)
          { typename Icont::iterator tmp = this->m_it; ++*this; return iterator(tmp); }
-   };
+   }
+      /// @endcond
+   ;
 
    public:
    //! <b>Effects</b>: Constructs a list taking the allocator as parameter.
@@ -355,7 +357,7 @@ class slist
    //! 
    //! <b>Complexity</b>: Linear to the elements x contains.
    slist(const slist& x) 
-      : AllocHolder(static_cast<const NodeAlloc&>(x))
+      : AllocHolder(x)
    { this->insert_after(this->before_begin(), x.begin(), x.end()); }
 
    //! <b>Effects</b>: Move constructor. Moves mx's resources to *this.
@@ -432,13 +434,13 @@ class slist
    //! 
    //! <b>Complexity</b>: Constant.
    allocator_type get_allocator() const
-   {  return allocator_type(*this); }
+   {  return allocator_type(this->node_alloc()); }
 
    const stored_allocator_type &get_stored_allocator() const 
-   {  return *this; }
+   {  return this->node_alloc(); }
 
    stored_allocator_type &get_stored_allocator()
-   {  return *this; }
+   {  return this->node_alloc(); }
 
    public:
 
@@ -470,7 +472,7 @@ class slist
    //! 
    //! <b>Complexity</b>: Constant.
    iterator begin() 
-   { return iterator(this->m_icont.begin()); }
+   { return iterator(this->icont().begin()); }
 
    //! <b>Effects</b>: Returns a const_iterator to the first element contained in the list.
    //! 
@@ -486,7 +488,7 @@ class slist
    //! 
    //! <b>Complexity</b>: Constant.
    iterator end()
-   { return iterator(this->m_icont.end()); }
+   { return iterator(this->icont().end()); }
 
    //! <b>Effects</b>: Returns a const_iterator to the end of the list.
    //! 
@@ -522,7 +524,7 @@ class slist
    //! 
    //! <b>Complexity</b>: Constant.
    size_type size() const 
-   {  return this->m_icont.size(); }
+   {  return this->icont().size(); }
 
    //! <b>Effects</b>: Returns the largest possible size of the list.
    //! 
@@ -579,7 +581,7 @@ class slist
    //!
    //! <b>Complexity</b>: Amortized constant time.
    void push_front(const value_type& x)
-   {  this->m_icont.push_front(*this->create_node(x));  }
+   {  this->icont().push_front(*this->create_node(x));  }
 
    //! <b>Effects</b>: Constructs a new element in the beginning of the list
    //!   and moves the resources of t to this new element.
@@ -589,10 +591,10 @@ class slist
    //! <b>Complexity</b>: Amortized constant time.
    #ifndef BOOST_INTERPROCESS_RVALUE_REFERENCE
    void push_front(const detail::moved_object<T>& x)
-   {  this->m_icont.push_front(*this->create_node(x));  }
+   {  this->icont().push_front(*this->create_node(x));  }
    #else
    void push_front(T && x)
-   {  this->m_icont.push_front(*this->create_node(move(x)));  }
+   {  this->icont().push_front(*this->create_node(move(x)));  }
    #endif
 
    //! <b>Effects</b>: Removes the first element from the list.
@@ -601,7 +603,7 @@ class slist
    //!
    //! <b>Complexity</b>: Amortized constant time.
    void pop_front()
-   {  this->m_icont.pop_front_and_dispose(Destroyer(*this));      }
+   {  this->icont().pop_front_and_dispose(Destroyer(this->node_alloc()));      }
 
    //! <b>Returns</b>: The iterator to the element before i in the sequence. 
    //!   Returns the end-iterator, if either i is the begin-iterator or the 
@@ -611,7 +613,7 @@ class slist
    //! 
    //! <b>Complexity</b>: Linear to the number of elements before i. 
    iterator previous(iterator p) 
-   {  return iterator(this->m_icont.previous(p.get())); }
+   {  return iterator(this->icont().previous(p.get())); }
 
    //! <b>Returns</b>: The const_iterator to the element before i in the sequence. 
    //!   Returns the end-const_iterator, if either i is the begin-const_iterator or 
@@ -621,7 +623,7 @@ class slist
    //! 
    //! <b>Complexity</b>: Linear to the number of elements before i. 
    const_iterator previous(const_iterator p) 
-   {  return const_iterator(this->m_icont.previous(p.get())); }
+   {  return const_iterator(this->icont().previous(p.get())); }
 
    //! <b>Requires</b>: p must be a valid iterator of *this.
    //!
@@ -637,7 +639,7 @@ class slist
    //! <b>Note</b>: Does not affect the validity of iterators and references of
    //!   previous values.
    iterator insert_after(iterator prev_pos, const value_type& x) 
-   {  return iterator(this->m_icont.insert_after(prev_pos.get(), *this->create_node(x))); }
+   {  return iterator(this->icont().insert_after(prev_pos.get(), *this->create_node(x))); }
 
    //! <b>Requires</b>: prev_pos must be a valid iterator of *this.
    //!
@@ -654,10 +656,10 @@ class slist
    //!   previous values.
    #ifndef BOOST_INTERPROCESS_RVALUE_REFERENCE
    iterator insert_after(iterator prev_pos, const detail::moved_object<value_type>& x) 
-   {  return iterator(this->m_icont.insert_after(prev_pos.get(), *this->create_node(x))); }
+   {  return iterator(this->icont().insert_after(prev_pos.get(), *this->create_node(x))); }
    #else
    iterator insert_after(iterator prev_pos, value_type && x) 
-   {  return iterator(this->m_icont.insert_after(prev_pos.get(), *this->create_node(move(x)))); }
+   {  return iterator(this->icont().insert_after(prev_pos.get(), *this->create_node(move(x)))); }
    #endif
 
    //! <b>Requires</b>: prev_pos must be a valid iterator of *this.
@@ -754,7 +756,7 @@ class slist
    //! <b>Note</b>: Does not invalidate iterators or references to non erased elements.
    iterator erase_after(iterator prev_pos)
    {
-      return iterator(this->m_icont.erase_after_and_dispose(prev_pos.get(), Destroyer(*this)));
+      return iterator(this->icont().erase_after_and_dispose(prev_pos.get(), Destroyer(this->node_alloc())));
    }
 
    //! <b>Effects</b>: Erases the range (before_first, last) from
@@ -770,7 +772,7 @@ class slist
    //! <b>Note</b>: Does not invalidate iterators or references to non erased elements.
    iterator erase_after(iterator before_first, iterator last) 
    {
-      return iterator(this->m_icont.erase_after_and_dispose(before_first.get(), last.get(), Destroyer(*this)));
+      return iterator(this->icont().erase_after_and_dispose(before_first.get(), last.get(), Destroyer(this->node_alloc())));
    }
 
    //! <b>Requires</b>: p must be a valid iterator of *this.
@@ -802,7 +804,7 @@ class slist
    //! <b>Complexity</b>: Linear to the difference between size() and new_size.
    void resize(size_type new_size, const T& x)
    {
-      typename Icont::iterator end_n(this->m_icont.end()), cur(end_n), cur_next;
+      typename Icont::iterator end_n(this->icont().end()), cur(end_n), cur_next;
       while (++(cur_next = cur) != end_n && new_size > 0){
          --new_size;
          cur = cur_next;
@@ -821,7 +823,7 @@ class slist
    //! <b>Complexity</b>: Linear to the difference between size() and new_size.
    void resize(size_type new_size)
    {
-      typename Icont::iterator end_n(this->m_icont.end()), cur(end_n), cur_next;
+      typename Icont::iterator end_n(this->icont().end()), cur(end_n), cur_next;
       size_type len = this->size();
       size_type left = new_size;
       
@@ -843,7 +845,7 @@ class slist
    //!
    //! <b>Complexity</b>: Linear to the number of elements in the list.
    void clear() 
-   {  this->m_icont.clear_and_dispose(Destroyer(*this));  }
+   {  this->icont().clear_and_dispose(Destroyer(this->node_alloc()));  }
 
    //! <b>Requires</b>: p must point to an element contained
    //!   by the list. x != *this
@@ -861,7 +863,7 @@ class slist
    void splice_after(iterator prev_pos, slist& x)
    {
       if((NodeAlloc&)*this == (NodeAlloc&)x){
-         this->m_icont.splice_after(prev_pos.get(), x.m_icont);
+         this->icont().splice_after(prev_pos.get(), x.icont());
       }
       else{
          throw std::runtime_error("slist::splice called with unequal allocators");
@@ -891,7 +893,7 @@ class slist
    void splice_after(iterator prev_pos, slist& x, iterator prev)
    {
       if((NodeAlloc&)*this == (NodeAlloc&)x){
-         this->m_icont.splice_after(prev_pos.get(), x.m_icont, prev.get());
+         this->icont().splice_after(prev_pos.get(), x.icont(), prev.get());
       }
       else{
          throw std::runtime_error("slist::splice called with unequal allocators");
@@ -923,8 +925,8 @@ class slist
                      iterator before_first,  iterator before_last)
    {
       if((NodeAlloc&)*this == (NodeAlloc&)x){
-         this->m_icont.splice_after
-            (prev_pos.get(), x.m_icont, before_first.get(), before_last.get());
+         this->icont().splice_after
+            (prev_pos.get(), x.icont(), before_first.get(), before_last.get());
       }
       else{
          throw std::runtime_error("slist::splice called with unequal allocators");
@@ -955,8 +957,8 @@ class slist
                      size_type n)
    {
       if((NodeAlloc&)*this == (NodeAlloc&)x){
-         this->m_icont.splice_after
-            (prev_pos.get(), x.m_icont, before_first.get(), before_last.get(), n);
+         this->icont().splice_after
+            (prev_pos.get(), x.icont(), before_first.get(), before_last.get(), n);
       }
       else{
          throw std::runtime_error("slist::splice called with unequal allocators");
@@ -1034,7 +1036,7 @@ class slist
    //! 
    //! <b>Note</b>: Iterators and references are not invalidated
    void reverse() 
-   {  this->m_icont.reverse();  }
+   {  this->icont().reverse();  }
 
    //! <b>Effects</b>: Removes all the elements that compare equal to value.
    //! 
@@ -1060,7 +1062,7 @@ class slist
    void remove_if(Pred pred)
    {
       typedef ValueCompareToNodeCompare<Pred> Predicate;
-      this->m_icont.remove_and_dispose_if(Predicate(pred), Destroyer(*this));
+      this->icont().remove_and_dispose_if(Predicate(pred), Destroyer(this->node_alloc()));
    }
 
    //! <b>Effects</b>: Removes adjacent duplicate elements or adjacent 
@@ -1088,7 +1090,7 @@ class slist
    void unique(Pred pred)
    {
       typedef ValueCompareToNodeCompare<Pred> Predicate;
-      this->m_icont.unique_and_dispose(Predicate(pred), Destroyer(*this));
+      this->icont().unique_and_dispose(Predicate(pred), Destroyer(this->node_alloc()));
    }
 
    //! <b>Requires</b>: The lists x and *this must be distinct. 
@@ -1126,7 +1128,7 @@ class slist
    void merge(slist& x, StrictWeakOrdering comp)
    {
       if((NodeAlloc&)*this == (NodeAlloc&)x){
-         this->m_icont.merge(x.m_icont,
+         this->icont().merge(x.icont(),
             ValueCompareToNodeCompare<StrictWeakOrdering>(comp));
       }
       else{
@@ -1165,11 +1167,12 @@ class slist
       // nothing if the slist has length 0 or 1.
       if (this->size() < 2)
          return;
-      this->m_icont.sort(ValueCompareToNodeCompare<StrictWeakOrdering>(comp));
+      this->icont().sort(ValueCompareToNodeCompare<StrictWeakOrdering>(comp));
    }
 
    /// @cond
    private:
+
    //Iterator range version
    template<class InpIterator>
    void priv_create_and_insert_nodes
@@ -1184,7 +1187,7 @@ class slist
       (const_iterator prev, InpIterator beg, InpIterator end, allocator_v1, std::input_iterator_tag)
    {
       for (; beg != end; ++beg){
-         this->m_icont.insert_after(prev.get(), *this->create_node_from_it(beg));
+         this->icont().insert_after(prev.get(), *this->create_node_from_it(beg));
          ++prev;
       }
    }
@@ -1196,39 +1199,30 @@ class slist
       priv_create_and_insert_nodes(prev, beg, end, allocator_v1(), std::input_iterator_tag());
    }
 
+   class insertion_functor;
+   friend class insertion_functor;
+
+   class insertion_functor
+   {
+      Icont &icont_;
+      typename Icont::iterator prev_;
+
+      public:
+      insertion_functor(Icont &icont, typename Icont::iterator prev)
+         :  icont_(icont), prev_(prev)
+      {}
+
+      void operator()(Node &n)
+      {  prev_ = this->icont_.insert_after(prev_, n); }
+   };
+
    template<class FwdIterator>
    void priv_create_and_insert_nodes
       (const_iterator prev, FwdIterator beg, FwdIterator end, allocator_v2, std::forward_iterator_tag)
    {
-      //Optimize memory allocation obtaining the distance between iterators
-      size_type n = std::distance(beg, end);
-
-      //Allocate and construct as many nodes as possible with
-      //the one-shot allocation
-      typedef typename NodeAlloc::multiallocation_iterator multiallocation_iterator;
-      multiallocation_iterator many_beg, itend, it;
-      size_type received_array;
-      FwdIterator next = this->allocate_many_and_construct
-         (beg, n, many_beg, received_array);
-
-      //Insert constructed nodes (this does not throw)
-      for (it = many_beg; it != itend; ++it){
-         this->m_icont.insert_after(prev.get(), *it);
-         ++prev;
-      }
-
-      //Insert remaining nodes using individual allocation
-      //(this can throw, but there is no leak)
-      for (size_type i = received_array; i < n; ++i, ++next){
-         this->m_icont.insert_after(prev.get(), *this->create_node_from_it(next));
-         ++prev;
-      }
-
-      //good old version
-      //for (; beg != end; ++beg){
-      //   this->m_icont.insert_after(prev.get(), *this->create_node(*beg));
-      //   ++prev;
-      //}
+      //Optimized allocation and construction
+      this->allocate_many_and_construct
+         (beg, std::distance(beg, end), insertion_functor(this->icont(), prev.get()));
    }
 
    //Default constructed version

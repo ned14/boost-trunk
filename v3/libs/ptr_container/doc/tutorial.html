@@ -301,8 +301,9 @@ that you read it all from top to bottom.</p>
 <li><a class="reference" href="#sequence-containers">Sequence containers</a></li>
 <li><a class="reference" href="#associative-containers">Associative containers</a></li>
 <li><a class="reference" href="#null-values">Null values</a></li>
-<li><a class="reference" href="#clonability">Clonability</a></li>
+<li><a class="reference" href="#cloneability">Cloneability</a></li>
 <li><a class="reference" href="#new-functions">New functions</a></li>
+<li><a class="reference" href="#std-auto-ptr-u-overloads">std::auto_ptr&lt;U&gt; overloads</a></li>
 <li><a class="reference" href="#algorithms">Algorithms</a></li>
 </ul>
 <div class="section">
@@ -315,8 +316,9 @@ about deleting memory.</p>
 class animal : <a class="reference" href="http://www.boost.org/libs/utility/utility.htm#Class_noncopyable">boost::noncopyable</a>
 {
 public:
-    virtual      ~animal() {}
-    virtual void eat() = 0;
+    virtual      ~animal()   {}
+    virtual void eat()       = 0;
+    virtual int  age() const = 0;
     // ...
 };
 
@@ -344,7 +346,7 @@ public:
     }
 };
 </pre>
-<p>Notice how just pass the class name to the container; there
+<p>Notice how we just pass the class name to the container; there
 is no <tt class="docutils literal"><span class="pre">*</span></tt> to indicate it is a pointer.
 With this declaration we can now say:</p>
 <pre class="literal-block">
@@ -357,7 +359,7 @@ and never rely on copy-semantics.</p>
 </div>
 <div class="section">
 <h1><a id="indirected-interface" name="indirected-interface">Indirected interface</a></h1>
-<p>As particular feature of the pointer containers is that
+<p>A particular feature of the pointer containers is that
 the query interface is indirected. For example,</p>
 <pre class="literal-block">
 boost::ptr_vector&lt;animal&gt; vec;
@@ -382,7 +384,7 @@ i-&gt;eat(); // no indirection needed
 </div>
 <div class="section">
 <h1><a id="sequence-containers" name="sequence-containers">Sequence containers</a></h1>
-<p>The sequence containers used when you do not need to
+<p>The sequence containers are used when you do not need to
 keep an ordering on your elements. You can basically
 expect all operations of the normal standard containers
 to be available. So, for example, with a  <tt class="docutils literal"><span class="pre">ptr_deque</span></tt>
@@ -392,9 +394,9 @@ boost::ptr_deque&lt;animal&gt; deq;
 deq.push_front( new animal );    
 deq.pop_front();
 </pre>
-<p>because <tt class="docutils literal"><span class="pre">std::deque</span></tt> and <tt class="docutils literal"><span class="pre">std::list</span></tt> has <tt class="docutils literal"><span class="pre">push_front()</span></tt>
-and <tt class="docutils literal"><span class="pre">pop_front</span></tt> members.</p>
-<p>If the standard sequence support
+<p>because <tt class="docutils literal"><span class="pre">std::deque</span></tt> and <tt class="docutils literal"><span class="pre">std::list</span></tt> have <tt class="docutils literal"><span class="pre">push_front()</span></tt>
+and <tt class="docutils literal"><span class="pre">pop_front()</span></tt> members.</p>
+<p>If the standard sequence supports
 random access, so does the pointer container; for example:</p>
 <pre class="literal-block">
 for( boost::ptr_deque&lt;animal&gt;::size_type i = 0u;
@@ -453,7 +455,23 @@ boost::ptr_map&lt;std::string,animal&gt; animals;
 animals[&quot;bobo&quot;].set_name(&quot;bobo&quot;);
 </pre>
 <p>This requires a default constructor for animals and
-a function to do the initialization, in this case <tt class="docutils literal"><span class="pre">set_name()</span></tt>;</p>
+a function to do the initialization, in this case <tt class="docutils literal"><span class="pre">set_name()</span></tt>.</p>
+<p>A better alternative is to use <a class="reference" href="../../assign/index.html">Boost.Assign</a>
+to help you out. In particular, consider</p>
+<ul class="simple">
+<li><a class="reference" href="../../assign/doc/index.html#ptr_push_back">ptr_push_back(), ptr_push_front(), ptr_insert() and ptr_map_insert()</a></li>
+<li><a class="reference" href="../../assign/doc/index.html#ptr_list_of">ptr_list_of()</a></li>
+</ul>
+<p>For example, the above insertion may now be written</p>
+<pre class="literal-block">
+boost::ptr_multimap&lt;std::string,animal&gt; animals;
+
+using namespace boost::assign;
+ptr_map_insert&lt;monkey&gt;( animals )( &quot;bobo&quot;, &quot;bobo&quot; );
+ptr_map_insert&lt;elephant&gt;( animals )( &quot;bobo&quot;, &quot;bobo&quot; );
+ptr_map_insert&lt;whale&gt;( animals )( &quot;anna&quot;, &quot;anna&quot; );
+ptr_map_insert&lt;emu&gt;( animals )( &quot;anna&quot;, &quot;anna&quot; );
+</pre>
 </div>
 <div class="section">
 <h1><a id="null-values" name="null-values">Null values</a></h1>
@@ -490,9 +508,9 @@ for( animals_type::size_type i = 0u;
 null into <tt class="docutils literal"><span class="pre">ptr_set</span></tt> and <tt class="docutils literal"><span class="pre">ptr_multiset</span></tt>.</p>
 </div>
 <div class="section">
-<h1><a id="clonability" name="clonability">Clonability</a></h1>
+<h1><a id="cloneability" name="cloneability">Cloneability</a></h1>
 <p>In OO programming it is typical to prohibit copying of objects; the 
-objects may sometimes be allowed to be clonable; for example,:</p>
+objects may sometimes be allowed to be Cloneable; for example,:</p>
 <pre class="literal-block">
 animal* animal::clone() const
 {
@@ -511,7 +529,7 @@ inline animal* new_clone( const animal&amp; a )
 }
 </pre>
 <p>That is all, now a lot of functions in a pointer container
-can exploit the clonability of the animal objects. For example</p>
+can exploit the cloneability of the animal objects. For example</p>
 <pre class="literal-block">
 typedef boost::ptr_list&lt;animal&gt; zoo_type;
 zoo_type zoo, another_zoo;
@@ -519,13 +537,27 @@ zoo_type zoo, another_zoo;
 another_zoo.assign( zoo.begin(), zoo.end() );
 </pre>
 <p>will fill another zoo with clones of the first zoo. Similarly,
-insert() can now insert clones into your pointer container</p>
+<tt class="docutils literal"><span class="pre">insert()</span></tt> can now insert clones into your pointer container</p>
 <pre class="literal-block">
 another_zoo.insert( another_zoo.begin(), zoo.begin(), zoo.end() );
 </pre>
 <p>The whole container can now also be cloned</p>
 <pre class="literal-block">
 zoo_type yet_another_zoo = zoo.clone();
+</pre>
+<p>Copying or assigning the container has the same effect as cloning (though it is slightly cheaper):</p>
+<pre class="literal-block">
+zoo_type yet_another_zoo = zoo;
+</pre>
+<p>Copying also support derived-to-base class conversions:</p>
+<pre class="literal-block">
+boost::ptr_vector&lt;monkey&gt; monkeys = boost::assign::ptr_list_of&lt;monkey&gt;( &quot;bobo&quot; )( &quot;bebe&quot;)( &quot;uhuh&quot; );
+boost::ptr_vector&lt;animal&gt; animals = monkeys;
+</pre>
+<p>This also works for maps:</p>
+<pre class="literal-block">
+boost::ptr_map&lt;std::string,monkey&gt; monkeys = ...;
+boost::ptr_map&lt;std::string,animal&gt; animals = monkeys;
 </pre>
 </div>
 <div class="section">
@@ -542,7 +574,15 @@ zoo.release(2); // for random access containers
 <p>You can think of <tt class="docutils literal"><span class="pre">auto_type</span></tt> as a non-copyable form of 
 <tt class="docutils literal"><span class="pre">std::auto_ptr</span></tt>. Notice that when you release an object, the
 pointer is removed from the container and the containers size
-shrinks. You can also release the entire container if you
+shrinks. For containers that store nulls, we can exploit that
+<tt class="docutils literal"><span class="pre">auto_type</span></tt> is convertible to <tt class="docutils literal"><span class="pre">bool</span></tt>:</p>
+<pre class="literal-block">
+if( ptr_vector&lt; nullable&lt;T&gt; &gt;::auto_type r = vec.pop_back() )
+{
+  ...
+}  
+</pre>
+<p>You can also release the entire container if you
 want to return it from a function</p>
 <pre class="literal-block">
 std::auto_ptr&lt; boost::ptr_deque&lt;animal&gt; &gt; get_zoo()
@@ -570,24 +610,26 @@ as the same as <tt class="docutils literal"><span class="pre">splice()</span></t
 zoo_type::auto_type old_animal = zoo.replace( zoo.begin(), new monkey(&quot;bibi&quot;) ); 
 zoo.replace( 2, old_animal.release() ); // for random access containers
 </pre>
-<p>A map is a little different to iterator over than standard maps.
+<p>A map is slightly different to iterate over than standard maps.
 Now we say</p>
 <pre class="literal-block">
 typedef boost::ptr_map&lt;std::string, boost::nullable&lt;animal&gt; &gt; animal_map;
 animal_map map;
 ...
-for( animal_map::iterator i = map.begin();
-     i != map.end(); ++i )
+for( animal_map::const_iterator i = map.begin(), e = map.end(); i != e; ++i )
 {
-    std::cout &lt;&lt; &quot;\n key: &quot; &lt;&lt; i.key();
+    std::cout &lt;&lt; &quot;\n key: &quot; &lt;&lt; i-&gt;first;
     std::cout &lt;&lt; &quot;\n age: &quot;;
     
     if( boost::is_null(i) )
         std::cout &lt;&lt; &quot;unknown&quot;;
     else
-        std::cout &lt;&lt; i-&gt;age(); 
+        std::cout &lt;&lt; i-&gt;second-&gt;age(); 
  }
 </pre>
+<p>Except for the check for null, this looks like it would with a normal map. But if <tt class="docutils literal"><span class="pre">age()</span></tt> had 
+not been a <tt class="docutils literal"><span class="pre">const</span></tt> member function,
+it would not have compiled.</p>
 <p>Maps can also be indexed with bounds-checking</p>
 <pre class="literal-block">
 try
@@ -599,6 +641,24 @@ catch( boost::bad_ptr_container_operation&amp; e )
     // &quot;bobo&quot; not found
 }        
 </pre>
+</div>
+<div class="section">
+<h1><a id="std-auto-ptr-u-overloads" name="std-auto-ptr-u-overloads"><tt class="docutils literal"><span class="pre">std::auto_ptr&lt;U&gt;</span></tt> overloads</a></h1>
+<p>Every time there is a function that takes a <tt class="docutils literal"><span class="pre">T*</span></tt> parameter, there is
+also a function taking an <tt class="docutils literal"><span class="pre">std::auto_ptr&lt;U&gt;</span></tt> parameter. This is of course done
+to make the library intregrate seamlessly with <tt class="docutils literal"><span class="pre">std::auto_ptr</span></tt>. For example</p>
+<pre class="literal-block">
+std::ptr_vector&lt;Base&gt; vec;
+vec.push_back( new Base );
+</pre>
+<p>is complemented by</p>
+<pre class="literal-block">
+std::auto_ptr&lt;Derived&gt; p( new Derived );
+vec.push_back( p );   
+</pre>
+<p>Notice that the template argument for <tt class="docutils literal"><span class="pre">std::auto_ptr</span></tt> does not need to
+follow the template argument for <tt class="docutils literal"><span class="pre">ptr_vector</span></tt> as long as <tt class="docutils literal"><span class="pre">Derived*</span></tt>
+can be implicitly converted to <tt class="docutils literal"><span class="pre">Base*</span></tt>.</p>
 </div>
 <div class="section">
 <h1><a id="algorithms" name="algorithms">Algorithms</a></h1>
@@ -623,7 +683,7 @@ zoo.unique( zoo.begin(), zoo.begin() + 5, my_comparison_predicate() );
 <pre class="literal-block">
 zoo.erase_if( my_predicate() );
 </pre>
-<p>Finally you may want to merge together two sorted containers:</p>
+<p>Finally you may want to merge two sorted containers:</p>
 <pre class="literal-block">
 boost::ptr_vector&lt;animal&gt; another_zoo = ...;
 another_zoo.sort();                      // sorted wrt. to same order as 'zoo'
@@ -631,18 +691,21 @@ zoo.merge( another_zoo );
 BOOST_ASSERT( another_zoo.empty() );    
 </pre>
 <p>That is all; now you have learned all the basics!</p>
+<hr><p><strong>See also</strong></p>
+<ul class="simple">
+<li><a class="reference" href="guidelines.html">Usage guidelines</a></li>
+<li><a class="reference" href="../../conversion/cast.htm#Polymorphic_castl">Cast utilities</a></li>
+</ul>
 <p><strong>Navigate</strong></p>
-<blockquote>
 <ul class="simple">
 <li><a class="reference" href="ptr_container.html">home</a></li>
 <li><a class="reference" href="examples.html">examples</a></li>
 </ul>
-</blockquote>
-<table class="docutils field-list" frame="void" rules="none">
+<hr><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">copyright:</th><td class="field-body">Thorsten Ottosen 2004-2005.</td>
+<tr class="field"><th class="field-name">Copyright:</th><td class="field-body">Thorsten Ottosen 2004-2006. Use, modification and distribution is subject to the Boost Software License, Version 1.0 (see <a class="reference" href="http://www.boost.org/LICENSE_1_0.txt">LICENSE_1_0.txt</a>).</td>
 </tr>
 </tbody>
 </table>

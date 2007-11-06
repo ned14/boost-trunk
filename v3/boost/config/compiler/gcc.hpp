@@ -43,6 +43,10 @@
 #   define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #   define BOOST_NO_IS_ABSTRACT
 #elif __GNUC__ == 3
+#  if defined (__PATHSCALE__)
+#     define BOOST_NO_TWO_PHASE_NAME_LOOKUP
+#     define BOOST_NO_IS_ABSTRACT
+#  endif
    //
    // gcc-3.x problems:
    //
@@ -54,6 +58,12 @@
 #  if __GNUC_MINOR__ < 4
 #     define BOOST_NO_IS_ABSTRACT
 #  endif
+#endif
+#if __GNUC__ < 4
+//
+// All problems to gcc-3.x and earlier here:
+//
+#define BOOST_NO_TWO_PHASE_NAME_LOOKUP
 #endif
 
 #ifndef __EXCEPTIONS

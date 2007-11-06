@@ -17,7 +17,7 @@
 #include "condition_test_template.hpp"
 #include "named_creation_template.hpp"
 #include <string>
-#include "get_compiler_name.hpp"
+#include "get_process_id_name.hpp"
 
 using namespace boost::interprocess;
 
@@ -28,7 +28,7 @@ struct condition_deleter
    ~condition_deleter()
    {  
       if(name.empty())
-         named_condition::remove(test::add_to_compiler_name("named_condition"));
+         named_condition::remove(test::add_to_process_id_name("named_condition"));
       else
          named_condition::remove(name.c_str()); 
    }
@@ -43,9 +43,9 @@ class named_condition_test_wrapper
 
    named_condition_test_wrapper()
       :  named_condition(open_or_create, 
-             (test::add_to_compiler_name("test_cond") + boost::lexical_cast<std::string>(count)).c_str())
+             (test::add_to_process_id_name("test_cond") + boost::lexical_cast<std::string>(count)).c_str())
    {
-      condition_deleter::name += test::add_to_compiler_name("test_cond");
+      condition_deleter::name += test::add_to_process_id_name("test_cond");
       condition_deleter::name += boost::lexical_cast<std::string>(count);
       ++count;
    }
@@ -65,17 +65,27 @@ class named_condition_creation_test_wrapper
 {
    public:
    named_condition_creation_test_wrapper(create_only_t)
-      :  named_condition(create_only, test::add_to_compiler_name("named_condition"))
-   {}
+      :  named_condition(create_only, test::add_to_process_id_name("named_condition"))
+   {  ++count_;   }
 
    named_condition_creation_test_wrapper(open_only_t)
-      :  named_condition(open_only, test::add_to_compiler_name("named_condition"))
-   {}
+      :  named_condition(open_only, test::add_to_process_id_name("named_condition"))
+   {  ++count_;   }
 
    named_condition_creation_test_wrapper(open_or_create_t)
-      :  named_condition(open_or_create, test::add_to_compiler_name("named_condition"))
-   {}
+      :  named_condition(open_or_create, test::add_to_process_id_name("named_condition"))
+   {  ++count_;   }
+
+   ~named_condition_creation_test_wrapper()   {
+      if(--count_){
+         detail::interprocess_tester::
+            dont_close_on_destruction(static_cast<named_condition&>(*this));
+      }
+   }
+   static int count_;
 };
+
+int named_condition_creation_test_wrapper::count_ = 0;
 
 struct mutex_deleter
 {
@@ -84,7 +94,7 @@ struct mutex_deleter
    ~mutex_deleter()
    {  
       if(name.empty())
-         named_mutex::remove(test::add_to_compiler_name("named_mutex"));
+         named_mutex::remove(test::add_to_process_id_name("named_mutex"));
       else
          named_mutex::remove(name.c_str()); 
    }
@@ -98,9 +108,9 @@ class named_mutex_test_wrapper
    public:
    named_mutex_test_wrapper()
       :  named_mutex(open_or_create, 
-             (test::add_to_compiler_name("test_mutex") + boost::lexical_cast<std::string>(count)).c_str())
+             (test::add_to_process_id_name("test_mutex") + boost::lexical_cast<std::string>(count)).c_str())
    {
-      mutex_deleter::name += test::add_to_compiler_name("test_mutex");
+      mutex_deleter::name += test::add_to_process_id_name("test_mutex");
       mutex_deleter::name += boost::lexical_cast<std::string>(count);
       ++count;
    }
@@ -117,11 +127,11 @@ int main ()
 {
    try{
       //Remove previous mutexes and conditions
-      named_mutex::remove(test::add_to_compiler_name("test_mutex0"));
-      named_condition::remove(test::add_to_compiler_name("test_cond0"));
-      named_condition::remove(test::add_to_compiler_name("test_cond1"));
-      named_condition::remove(test::add_to_compiler_name("named_condition"));
-      named_mutex::remove(test::add_to_compiler_name("named_mutex"));
+      named_mutex::remove(test::add_to_process_id_name("test_mutex0"));
+      named_condition::remove(test::add_to_process_id_name("test_cond0"));
+      named_condition::remove(test::add_to_process_id_name("test_cond1"));
+      named_condition::remove(test::add_to_process_id_name("named_condition"));
+      named_mutex::remove(test::add_to_process_id_name("named_mutex"));
 
       test::test_named_creation<named_condition_creation_test_wrapper>();
       test::do_test_condition<named_condition_test_wrapper
@@ -131,11 +141,11 @@ int main ()
       std::cout << ex.what() << std::endl;
       return 1;
    }
-   named_mutex::remove(test::add_to_compiler_name("test_mutex0"));
-   named_condition::remove(test::add_to_compiler_name("test_cond0"));
-   named_condition::remove(test::add_to_compiler_name("test_cond1"));
-   named_condition::remove(test::add_to_compiler_name("named_condition"));
-   named_mutex::remove(test::add_to_compiler_name("named_mutex"));
+   named_mutex::remove(test::add_to_process_id_name("test_mutex0"));
+   named_condition::remove(test::add_to_process_id_name("test_cond0"));
+   named_condition::remove(test::add_to_process_id_name("test_cond1"));
+   named_condition::remove(test::add_to_process_id_name("named_condition"));
+   named_mutex::remove(test::add_to_process_id_name("named_mutex"));
    return 0;
 }
 

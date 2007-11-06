@@ -11,12 +11,14 @@
 #ifndef BOOST_INTERPROCESS_WIN32_SYNC_PRIMITIVES_HPP
 #define BOOST_INTERPROCESS_WIN32_SYNC_PRIMITIVES_HPP
 
-#if (defined _MSC_VER) && (_MSC_VER >= 1200)
-#  pragma once
-#endif
-
 #include <boost/interprocess/detail/config_begin.hpp>
 #include <boost/interprocess/detail/workaround.hpp>
+#include <stddef.h>
+
+#if (defined _MSC_VER) && (_MSC_VER >= 1200)
+#  pragma once
+#  pragma comment( lib, "advapi32.lib" )
+#endif
 
 #if (defined BOOST_WINDOWS) && !(defined BOOST_DISABLE_WIN32)
 #  include <stddef.h>
@@ -109,6 +111,7 @@ static const unsigned long file_end       = 2;
 static const unsigned long lockfile_fail_immediately  = 1;
 static const unsigned long lockfile_exclusive_lock    = 2;
 static const unsigned long error_lock_violation       = 33;
+static const unsigned long security_descriptor_revision = 1;
 
 }  //namespace winapi {
 }  //namespace interprocess  {
@@ -178,7 +181,28 @@ struct interprocess_memory_basic_information
    unsigned long  Type;
 };
 
+typedef struct _interprocess_acl
+{
+   unsigned char  AclRevision;
+   unsigned char  Sbz1;
+   unsigned short AclSize;
+   unsigned short AceCount;
+   unsigned short Sbz2;
+} interprocess_acl;
+
+typedef struct _interprocess_security_descriptor
+{
+   unsigned char Revision;
+   unsigned char Sbz1;
+   unsigned short Control;
+   void *Owner;
+   void *Group;
+   interprocess_acl *Sacl;
+   interprocess_acl *Dacl;
+} interprocess_security_descriptor;
+
 //Some windows API declarations
+extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentProcessId();
 extern "C" __declspec(dllimport) unsigned long __stdcall GetCurrentThreadId();
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long);
 extern "C" __declspec(dllimport) unsigned long __stdcall GetLastError();
@@ -223,6 +247,8 @@ extern "C" __declspec(dllimport) int __stdcall UnlockFile(void *hnd, unsigned lo
 extern "C" __declspec(dllimport) int __stdcall LockFileEx(void *hnd, unsigned long flags, unsigned long reserved, unsigned long size_low, unsigned long size_high, interprocess_overlapped* overlapped);
 extern "C" __declspec(dllimport) int __stdcall UnlockFileEx(void *hnd, unsigned long reserved, unsigned long size_low, unsigned long size_high, interprocess_overlapped* overlapped);
 extern "C" __declspec(dllimport) int __stdcall WriteFile(void *hnd, const void *buffer, unsigned long bytes_to_write, unsigned long *bytes_written, interprocess_overlapped* overlapped);
+extern "C" __declspec(dllimport) int __stdcall InitializeSecurityDescriptor(interprocess_security_descriptor *pSecurityDescriptor, unsigned long dwRevision);
+extern "C" __declspec(dllimport) int __stdcall SetSecurityDescriptorDacl(interprocess_security_descriptor *pSecurityDescriptor, int bDaclPresent, interprocess_acl *pDacl, int bDaclDefaulted);
 
 /*
 extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement( long volatile * );
@@ -265,6 +291,9 @@ static inline void sched_yield()
 
 static inline unsigned long get_current_thread_id()
 {  return GetCurrentThreadId();  }
+
+static inline unsigned long get_current_process_id()
+{  return GetCurrentProcessId();  }
 
 static inline unsigned int close_handle(void* handle)
 {  return CloseHandle(handle);   }
@@ -313,12 +342,25 @@ static inline void *open_semaphore(const char *name)
 {  return OpenSemaphoreA(semaphore_all_access, 1, name); }
 
 static inline void * create_file_mapping (void * handle, unsigned long access, unsigned long high_size, unsigned long low_size, const char * name)
-{  return CreateFileMappingA (handle, 0, access, high_size, low_size, name);  }
+{
+   interprocess_security_attributes sa;
+   interprocess_security_descriptor sd; 
+
+   if(!InitializeSecurityDescriptor(&sd, security_descriptor_revision))
+      return 0;
+   if(!SetSecurityDescriptorDacl(&sd, true, 0, false))
+      return 0;
+   sa.lpSecurityDescriptor = &sd;
+   sa.nLength = sizeof(interprocess_security_attributes);
+   sa.bInheritHandle = false;
+   return CreateFileMappingA (handle, &sa, access, high_size, low_size, name); 
+  //return CreateFileMappingA (handle, 0, access, high_size, low_size, name);  
+}
 
 static inline void * open_file_mapping (unsigned long access, const char *name)
 {  return OpenFileMappingA (access, 0, name);   }
 
-static inline void *map_view_of_file_ex(void *handle, unsigned long file_access, unsigned long highoffset, unsigned long lowoffset, std::size_t numbytes, void *base_addr)
+static inline void *map_view_of_file_ex(void *handle, unsigned long file_access, unsigned long highoffset, unsigned long lowoffset, size_t numbytes, void *base_addr)
 {  return MapViewOfFileEx(handle, file_access, highoffset, lowoffset, numbytes, base_addr);  }
 
 static inline void *create_file(const char *name, unsigned long access, unsigned long creation_flags, unsigned long attributes = 0)
@@ -330,7 +372,7 @@ static inline bool delete_file(const char *name)
 static inline void get_system_info(system_info *info)
 {  GetSystemInfo(info); }
 
-static inline int flush_view_of_file(void *base_addr, std::size_t numbytes)
+static inline int flush_view_of_file(void *base_addr, size_t numbytes)
 {  return FlushViewOfFile(base_addr, numbytes); }
 
 static inline bool get_file_size(void *handle, __int64 &size)

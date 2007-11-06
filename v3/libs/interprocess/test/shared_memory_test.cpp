@@ -16,12 +16,12 @@
 #include <cstring>   //for strcmp, memset
 #include <iostream>  //for cout
 #include <string>
-#include "get_compiler_name.hpp"
+#include "get_process_id_name.hpp"
 
 using namespace boost::interprocess;
 
 static const std::size_t ShmSize = 1000;
-static const char *      ShmName = test::get_compiler_name();
+static const char *      ShmName = test::get_process_id_name();
 
 struct eraser
 {
@@ -73,7 +73,7 @@ int main ()
          }
 
          //Overwrite all memory
-         std::memset(shm1.get_address(), 0, shm1.get_size());
+         std::memset(shm1.get_user_address(), 0, shm1.get_user_size());
       }
    }
    catch(std::exception &ex){

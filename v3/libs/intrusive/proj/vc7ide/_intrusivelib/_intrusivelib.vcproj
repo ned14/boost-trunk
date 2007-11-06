@@ -106,6 +106,18 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\avl_set.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\avl_set_hook.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\avltree.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\avltree_algorithms.hpp">
+			</File>
+			<File
 				RelativePath="..\..\..\..\..\boost\intrusive\circular_list_algorithms.hpp">
 			</File>
 			<File
@@ -121,7 +133,7 @@
 				RelativePath="..\..\..\..\..\boost\intrusive\intrusive_fwd.hpp">
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\boost\intrusive\linking_policy.hpp">
+				RelativePath="..\..\..\..\..\boost\intrusive\link_mode.hpp">
 			</File>
 			<File
 				RelativePath="..\..\..\..\..\boost\intrusive\list.hpp">
@@ -131,6 +143,12 @@
 			</File>
 			<File
 				RelativePath="..\..\..\..\..\boost\intrusive\member_value_traits.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\options.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\pointer_plus_2_bits.hpp">
 			</File>
 			<File
 				RelativePath="..\..\..\..\..\boost\intrusive\pointer_plus_bit.hpp">
@@ -154,7 +172,16 @@
 				RelativePath="..\..\..\..\..\boost\intrusive\slist_hook.hpp">
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\boost\intrusive\tag.hpp">
+				RelativePath="..\..\..\..\..\boost\intrusive\splay_set.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\splay_set_hook.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\splaytree.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\boost\intrusive\splaytree_algorithms.hpp">
 			</File>
 			<File
 				RelativePath="..\..\..\..\..\boost\intrusive\trivial_value_traits.hpp">
@@ -172,6 +199,9 @@
 					RelativePath="..\..\..\..\..\boost\intrusive\detail\assert.hpp">
 				</File>
 				<File
+					RelativePath="..\..\..\..\..\boost\intrusive\detail\avltree_node.hpp">
+				</File>
+				<File
 					RelativePath="..\..\..\..\..\boost\intrusive\detail\config_begin.hpp">
 				</File>
 				<File
@@ -181,6 +211,9 @@
 					RelativePath="..\..\..\..\..\boost\intrusive\detail\ebo_functor_holder.hpp">
 				</File>
 				<File
+					RelativePath="..\..\..\..\..\boost\intrusive\detail\generic_hook.hpp">
+				</File>
+				<File
 					RelativePath="..\..\..\..\..\boost\intrusive\detail\hashtable_node.hpp">
 				</File>
 				<File
@@ -188,6 +221,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\..\..\boost\intrusive\detail\mpl.hpp">
+				</File>
+				<File
+					RelativePath="..\..\..\..\..\boost\intrusive\detail\no_exceptions_support.hpp">
 				</File>
 				<File
 					RelativePath="..\..\..\..\..\boost\intrusive\detail\parent_from_member.hpp">
@@ -200,6 +236,15 @@
 				</File>
 				<File
 					RelativePath="..\..\..\..\..\boost\intrusive\detail\slist_node.hpp">
+				</File>
+				<File
+					RelativePath="..\..\..\..\..\boost\intrusive\detail\transform_iterator.hpp">
+				</File>
+				<File
+					RelativePath="..\..\..\..\..\boost\intrusive\detail\tree_algorithms.hpp">
+				</File>
+				<File
+					RelativePath="..\..\..\..\..\boost\intrusive\detail\tree_node.hpp">
 				</File>
 				<File
 					RelativePath="..\..\..\..\..\boost\intrusive\detail\utilities.hpp">
@@ -229,10 +274,16 @@
 				RelativePath="..\..\..\test\smart_ptr.hpp">
 			</File>
 			<File
+				RelativePath="..\..\..\test\stateful_value_traits.hpp">
+			</File>
+			<File
 				RelativePath="..\..\..\test\test_container.hpp">
 			</File>
 			<File
-				RelativePath="..\..\..\test\testvalue.hpp">
+				RelativePath="..\..\..\test\test_macros.hpp">
+			</File>
+			<File
+				RelativePath="..\..\..\test\test_templates.hpp">
 			</File>
 		</Filter>
 		<Filter
@@ -242,10 +293,22 @@
 				RelativePath="..\..\..\example\doc_advanced_value_traits.cpp">
 			</File>
 			<File
+				RelativePath="..\..\..\example\doc_advanced_value_traits2.cpp">
+			</File>
+			<File
 				RelativePath="..\..\..\example\doc_assoc_optimized_code.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\example\doc_auto_unlink.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\example\doc_avl_set.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\example\doc_avltree_algorithms.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\example\doc_bucket_traits.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\example\doc_clone_from.cpp">
@@ -254,7 +317,10 @@
 				RelativePath="..\..\..\example\doc_entity.cpp">
 			</File>
 			<File
-				RelativePath="..\..\..\example\doc_erasing_and_destroying.cpp">
+				RelativePath="..\..\..\example\doc_erasing_and_disposing.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\example\doc_external_value_traits.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\example\doc_how_to_use.cpp">
@@ -282,6 +348,18 @@
 			</File>
 			<File
 				RelativePath="..\..\..\example\doc_slist_algorithms.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\example\doc_splay_algorithms.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\example\doc_splay_set.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\example\doc_splaytree_algorithms.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\example\doc_stateful_value_traits.cpp">
 			</File>
 			<File
 				RelativePath="..\..\..\example\doc_unordered_set.cpp">

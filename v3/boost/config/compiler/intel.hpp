@@ -1,4 +1,4 @@
-//  (C) Copyright John Maddock 2001.
+//  (C) Copyright John Maddock 2001-7.
 //  (C) Copyright Peter Dimov 2001.
 //  (C) Copyright Jens Maurer 2001.
 //  (C) Copyright David Abrahams 2002 - 2003.
@@ -99,7 +99,10 @@
 #     define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #  endif
 #endif
-
+#if (defined(__GNUC__) && (__GNUC__ < 4)) || defined(_WIN32)
+// GCC or VC emulation:
+#define BOOST_NO_TWO_PHASE_NAME_LOOKUP
+#endif
 //
 // Verify that we have actually got BOOST_NO_INTRINSIC_WCHAR_T
 // set correctly, if we don't do this now, we will get errors later

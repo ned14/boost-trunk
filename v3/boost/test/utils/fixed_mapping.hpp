@@ -38,7 +38,7 @@ namespace unit_test {
 // configurable maximum fixed sized mapping size supported by this header.
 // You could redefine it before inclusion of this file.
 #ifndef MAX_MAP_SIZE
-#define MAX_MAP_SIZE 15
+#define MAX_MAP_SIZE 20
 #endif
 
 #define CONSTR_DECL_MID( z, i, dummy1 ) key_param_type key##i, value_param_type v##i,
@@ -91,11 +91,8 @@ public:
     // key -> value access
     value_ref_type  operator[]( key_param_type key ) const
     {
-#if BOOST_WORKAROUND(__SUNPRO_CC,BOOST_TESTED_AT(0x530))
-        iterator it = std::lower_bound( m_map.begin(), m_map.end(), key, p1() );
-#else
         iterator it = boost::detail::lower_bound( m_map.begin(), m_map.end(), key, p1() );
-#endif
+
         return (it == m_map.end() || Compare()( key, it->first ) ) ? m_invalid_value : it->second;
     }
 

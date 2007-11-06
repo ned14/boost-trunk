@@ -206,6 +206,15 @@ static void run_unit_tests()
  
     extern PyObject*
     bjam_import_rule(PyObject* self, PyObject* args);
+
+    extern PyObject*
+    bjam_define_action(PyObject* self, PyObject* args);
+
+    extern PyObject*
+    bjam_variable(PyObject* self, PyObject* args);
+
+    extern PyObject*
+    bjam_backtrace(PyObject* self, PyObject *args);
 #endif
 
 int  main( int argc, char **argv, char **arg_environ )
@@ -339,6 +348,12 @@ int  main( int argc, char **argv, char **arg_environ )
                  "Call the specified bjam rule."},
                 {"import_rule", bjam_import_rule, METH_VARARGS,
                  "Imports Python callable to bjam."},
+                {"define_action", bjam_define_action, METH_VARARGS,
+                 "Defines a command line action."},
+                {"variable", bjam_variable, METH_VARARGS,
+                 "Obtains a variable from bjam's global module."},
+                {"backtrace", bjam_backtrace, METH_VARARGS,
+                 "Returns bjam backtrace from the last call into Python."},
                 {NULL, NULL, 0, NULL}
             };
     
@@ -429,6 +444,9 @@ int  main( int argc, char **argv, char **arg_environ )
         symv[0] = s;
         symv[1] = 0;
         var_defines( symv, 1 );
+        enter_module( bindmodule(".ENVIRON") );
+        var_defines( symv, 0 );
+        exit_module( bindmodule(".ENVIRON") );
     }
 
     /* Set the ARGV to reflect the complete list of arguments of invocation. */

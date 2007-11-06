@@ -99,6 +99,7 @@ import sequence ;
 
 path-constant BOOST_ROOT : . ;
 constant BOOST_VERSION : 1.35.0 ;
+constant BOOST_JAMROOT_MODULE : $(__name__) ;
 
 local version-tag = [ MATCH "^([^.]+)[.]([^.]+)[.]([^.]+)" : $(BOOST_VERSION) ] ;
 if $(version-tag[3]) = 0
@@ -402,7 +403,8 @@ if $(layout-versioned)
             {
                 noversion-file = 
                   [ MATCH "(.*)-[0-9_]+([.]so)[.0-9]*" : $(name) ] 
-                  [ MATCH "(.*)-[0-9_]+([.]a)" : $(name) ] ;
+                  [ MATCH "(.*)-[0-9_]+([.]a)" : $(name) ] 
+                  [ MATCH "(.*)-[0-9_]+([.]dll[.]a)" : $(name) ] ;
             }
                         
             local new-name = 
@@ -441,7 +443,7 @@ alias build_all : libs/$(libraries)/build ;
 
 # This rule should be called from libraries' Jamfiles and will
 # create two targets, "install" and "stage", that will install
-# or stage that library. The --prefix option is respected, by
+# or stage that library. The --prefix option is respected, but
 # --with and --without options, naturally, are ignored.
 #
 # - libraries -- list of library targets to install.
@@ -461,6 +463,7 @@ rule boost-install ( libraries * )
     module $(project-module)
     {
         explicit stage ;
+        explicit install ;
     }
 }
 

@@ -73,10 +73,10 @@ int main()
    assert(n == &three);      
 
    //Erase a node just using a pointer to it
-   algo::unlink_and_rebalance(n);
+   algo::unlink(&two);
 
    //Erase a node using also the header (faster)
-   algo::erase(&header, n);
+   algo::erase(&header, &three);
    return 0;
 }
 

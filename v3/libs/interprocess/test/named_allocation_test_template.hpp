@@ -24,9 +24,17 @@
 #include <iterator>
 #include <set>
 #include <string>
-#include "get_compiler_name.hpp"
+#include "get_process_id_name.hpp"
 
 namespace boost { namespace interprocess { namespace test {
+
+namespace {
+   const wchar_t *get_prefix(wchar_t)
+   {  return L"prefix_name_"; }
+
+   const char *get_prefix(char)
+   {  return "prefix_name_"; }
+}
 
 //This test allocates until there is no more memory
 //and after that deallocates all in the same order
@@ -43,7 +51,7 @@ bool test_names_and_types(ManagedMemory &m)
 
    for(int i = 0; true; ++i){
       formatter.seekp(0);
-      formatter << "prefix_name_" << i << std::ends;
+      formatter << get_prefix(char_type()) << i << std::ends;
 
       char *ptr = m.template construct<char>(name, std::nothrow)(i);
 
@@ -105,7 +113,7 @@ bool test_named_iterators(ManagedMemory &m)
 
    for(int i = 0; true; ++i){
       formatter.seekp(0);
-      formatter << "prefix_name_" << i << std::ends;
+      formatter << get_prefix(char_type()) << i << std::ends;
       char *ptr = m.template construct<char>(name, std::nothrow)(i);
       if(!ptr)
          break;
@@ -175,7 +183,7 @@ bool test_shrink_to_fit(ManagedMemory &m)
 
    for(int i = 0; true; ++i){
       formatter.seekp(0);
-      formatter << "prefix_name_" << i << std::ends;
+      formatter << get_prefix(char_type()) << i << std::ends;
 
       char *ptr = m.template construct<char>(name, std::nothrow)(i);
 
@@ -215,7 +223,7 @@ bool test_direct_named_allocation_destruction(ManagedMemory &m)
 
    for(int i = 0; true; ++i){
       formatter.seekp(0);
-      formatter << "prefix_name_" << i << std::ends;
+      formatter << get_prefix(char_type()) << i << std::ends;
       char *ptr = m.template construct<char>(name, std::nothrow)(i);
       if(!ptr)
          break;
@@ -257,7 +265,7 @@ bool test_named_allocation_inverse_destruction(ManagedMemory &m)
 
    for(int i = 0; true; ++i){
       formatter.seekp(0);
-      formatter << "prefix_name_" << i << std::ends;
+      formatter << get_prefix(char_type()) << i << std::ends;
       char *ptr = m.template construct<char>(name, std::nothrow)(i);
       if(!ptr)
          break;
@@ -297,7 +305,7 @@ bool test_named_allocation_mixed_destruction(ManagedMemory &m)
 
    for(int i = 0; true; ++i){
       formatter.seekp(0);
-      formatter << "prefix_name_" << i << std::ends;
+      formatter << get_prefix(char_type()) << i << std::ends;
       char *ptr = m.template construct<char>(name, std::nothrow)(i);
       if(!ptr)
          break;
@@ -339,7 +347,7 @@ bool test_inverse_named_allocation_destruction(ManagedMemory &m)
 
    for(unsigned int i = 0; true; ++i){
       formatter.seekp(0);
-      formatter << "prefix_name_" << i << std::ends;
+      formatter << get_prefix(char_type()) << i << std::ends;
       char *ptr = m.template construct<char>(name, std::nothrow)(i);
       if(!ptr)
          break;
@@ -426,8 +434,9 @@ template<template <class IndexConfig> class Index>
 bool test_named_allocation()
 {
    using namespace boost::interprocess;
+
    const int memsize = 163840;
-   const char *const shMemName = test::get_compiler_name();
+   const char *const shMemName = test::get_process_id_name();
    try
    {
       //A shared memory with rbtree best fit algorithm

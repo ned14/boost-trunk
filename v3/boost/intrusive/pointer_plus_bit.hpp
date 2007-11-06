@@ -23,7 +23,7 @@ namespace intrusive {
 template<class VoidPointer, std::size_t Alignment>
 struct has_pointer_plus_bit
 {
-   enum  {  value = false  };
+   static const bool value = false;
 };
 
 //!This is an specialization for raw pointers.
@@ -32,7 +32,7 @@ struct has_pointer_plus_bit
 template<std::size_t N>
 struct has_pointer_plus_bit<void*, N>
 {
-   enum  {  value = N % 2u == 0  };
+   static const bool value = (N % 2u == 0);
 };
 
 //!This is class that is supposed to have static methods
@@ -44,7 +44,10 @@ struct has_pointer_plus_bit<void*, N>
 //!has_pointer_plus_bit<>::value is non-zero can make use of these
 //!operations to embed the bit in the pointer.
 template<class Pointer>
-struct pointer_plus_bit;
+struct pointer_plus_bit
+{
+   static const bool value = false;
+};
 
 //!This is the specialization to embed an extra bit of information
 //!in a raw pointer. The extra bit is stored in the lower bit of the pointer.
@@ -54,7 +57,7 @@ struct pointer_plus_bit<T*>
    typedef T*        pointer;
 
    static pointer get_pointer(pointer n)
-   {  return pointer(std::size_t(n) & std::size_t(~1u));  }
+   {  return pointer(std::size_t(n) & ~std::size_t(1u));  }
 
    static void set_pointer(pointer &n, pointer p)
    {

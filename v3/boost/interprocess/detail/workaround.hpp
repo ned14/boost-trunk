@@ -26,6 +26,9 @@
 
    #if defined(_POSIX_SEMAPHORES) && (_POSIX_SEMAPHORES - 0 > 0)
       #define BOOST_INTERPROCESS_POSIX_SEMAPHORES
+      #if defined(__CYGWIN__)
+         #define BOOST_INTERPROCESS_POSIX_SEMAPHORES_NO_UNLINK
+      #endif
    #endif
 
    #if ((defined _V6_ILP32_OFFBIG)  &&(_V6_ILP32_OFFBIG   - 0 > 0)) ||\

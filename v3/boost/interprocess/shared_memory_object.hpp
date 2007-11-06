@@ -20,9 +20,8 @@
 #include <boost/interprocess/exceptions.hpp>
 #include <boost/interprocess/detail/os_file_functions.hpp>
 #include <cstddef>
-
-
 #include <string>
+#include <algorithm>
 
 #ifdef BOOST_INTERPROCESS_POSIX_SHARED_MEMORY_OBJECTS
 #  include <fcntl.h>        //O_CREAT, O_*... 
@@ -63,7 +62,7 @@ class shared_memory_object
    //!access mode "mode". If the file previously exists, it tries to open it with mode "mode".
    //!Otherwise throws an error.
    shared_memory_object(open_or_create_t, const char *name, mode_t mode)
-   {  this->priv_open_or_create(detail::DoCreateOrOpen, name, mode);  }
+   {  this->priv_open_or_create(detail::DoOpenOrCreate, name, mode);  }
 
    //!Tries to open a shared memory object with name "name", with the access mode "mode". 
    //!If the file does not previously exist, it throws an error.
@@ -105,19 +104,28 @@ class shared_memory_object
    //!Swaps the shared_memory_objects. Does not throw
    void swap(shared_memory_object &other);
 
-   //!Erases a shared memory object from the system. Never throws
+   //!Erases a shared memory object from the system.
+   //!Returns false on error. Never throws
    static bool remove(const char *name);
    
    //!Sets the size of the shared memory mapping
    void truncate(offset_t length);
 
-   //!Closes the shared memory mapping. All mapped regions are still
-   //!valid after destruction. The shared memory object still exists and
-   //!can be newly opened.
+   //!Destroys *this and indicates that the calling process is finished using
+   //!the resource. All mapped regions are still
+   //!valid after destruction. The destructor function will deallocate
+   //!any system resources allocated by the system for use by this process for
+   //!this resource. The resource can still be opened again calling
+   //!the open constructor overload. To erase the resource from the system
+   //!use remove().
    ~shared_memory_object();
 
    //!Returns the name of the file.
    const char *get_name() const;
+
+   //!Returns the name of the file
+   //!used in the constructor
+   bool get_size(offset_t &size) const;
 
    //!Returns access mode
    mode_t get_mode() const;
@@ -150,6 +158,9 @@ inline shared_memory_object::~shared_memory_object()
 
 inline const char *shared_memory_object::get_name() const
 {  return m_filename.c_str(); }
+
+inline bool shared_memory_object::get_size(offset_t &size) const
+{  return detail::get_file_size((file_handle_t)m_handle, size);  }
 
 inline void shared_memory_object::swap(shared_memory_object &other)
 {  
@@ -207,7 +218,7 @@ inline bool shared_memory_object::priv_open_or_create
       case detail::DoCreate:
          m_handle = detail::create_new_file(shmfile.c_str(), mode, true);
       break;
-      case detail::DoCreateOrOpen:
+      case detail::DoOpenOrCreate:
          m_handle = detail::create_or_open_file(shmfile.c_str(), mode, true);
       break;
       default:
@@ -275,7 +286,7 @@ inline bool shared_memory_object::priv_open_or_create
     mode_t mode)
 {
    bool slash_added = filename[0] != '/';
-   //First add precedding "/"
+   //First add preceding "/"
    m_filename.clear();
    if(slash_added){
       m_filename = '/';
@@ -302,7 +313,7 @@ inline bool shared_memory_object::priv_open_or_create
       case detail::DoCreate:
          oflag |= (O_CREAT | O_EXCL);
       break;
-      case detail::DoCreateOrOpen:
+      case detail::DoOpenOrCreate:
          oflag |= O_CREAT;
       break;
       default:
@@ -334,7 +345,7 @@ inline bool shared_memory_object::remove(const char *filename)
 {
    try{
       std::string file_str;
-      //First add precedding "/"
+      //First add preceding "/"
       if(filename[0] != '/'){
          file_str = '/';
       }

@@ -61,6 +61,7 @@
 # include "command.h"
 # include "execcmd.h"
 # include "compile.h"
+# include "output.h"
 
 # include <stdlib.h>
 
@@ -510,6 +511,10 @@ make1c( state *pState )
 	    {
             rule_name = cmd->rule->name;
             target = lol_get(&cmd->args, 0)->string;
+            if ( globs.noexec )
+            {
+                out_action(rule_name,target,cmd->buf,"","",EXIT_OK);
+            }
 	    }
 
 	    if( globs.noexec )

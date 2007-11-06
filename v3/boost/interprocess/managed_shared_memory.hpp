@@ -23,17 +23,16 @@
 #include <boost/interprocess/shared_memory_object.hpp>
 #include <boost/interprocess/creation_tags.hpp>
 
-/*!\file
-   Describes a named shared memory object allocation user class. 
-*/
+//!\file
+//!Describes a named shared memory object allocation user class. 
 
 namespace boost {
 
 namespace interprocess {
 
-/*!A basic shared memory named object creation class. Initializes the 
-   shared memory segment. Inherits all basic functionality from 
-   basic_managed_memory_impl<CharType, AllocationAlgorithm, IndexType>*/
+//!A basic shared memory named object creation class. Initializes the 
+//!shared memory segment. Inherits all basic functionality from 
+//!basic_managed_memory_impl<CharType, AllocationAlgorithm, IndexType>*/
 template
       <
          class CharType, 
@@ -41,12 +40,19 @@ template
          template<class IndexConfig> class IndexType
       >
 class basic_managed_shared_memory 
-   : public detail::basic_managed_memory_impl <CharType, AllocationAlgorithm, IndexType>
+   : public detail::basic_managed_memory_impl
+      <CharType, AllocationAlgorithm, IndexType
+      ,detail::managed_open_or_create_impl<shared_memory_object>::ManagedOpenOrCreateUserOffset>
    , private detail::managed_open_or_create_impl<shared_memory_object>
 {
    /// @cond
+   public:
+   typedef shared_memory_object                       device_type;
+
+   private:
    typedef detail::basic_managed_memory_impl 
-      <CharType, AllocationAlgorithm, IndexType>   base_t;
+      <CharType, AllocationAlgorithm, IndexType,
+      detail::managed_open_or_create_impl<shared_memory_object>::ManagedOpenOrCreateUserOffset>   base_t;
    typedef detail::managed_open_or_create_impl
       <shared_memory_object>                       base2_t;
 
@@ -59,7 +65,13 @@ class basic_managed_shared_memory
    /// @endcond
 
    public: //functions
-   //!Destructor. Calls close. Never throws.
+
+   //!Destroys *this and indicates that the calling process is finished using
+   //!the resource. The destructor function will deallocate
+   //!any system resources allocated by the system for use by this process for
+   //!this resource. The resource can still be opened again calling
+   //!the open constructor overload. To erase the resource from the system
+   //!use remove().
    ~basic_managed_shared_memory()
    {}
 
@@ -82,7 +94,7 @@ class basic_managed_shared_memory
       : base_t()
       , base2_t(open_or_create, name, size, read_write, addr, 
                 create_open_func_t(get_this_pointer(), 
-                detail::DoCreateOrOpen))
+                detail::DoOpenOrCreate))
    {}
 
    //!Connects to a created shared memory and it's the segment manager.
@@ -95,7 +107,8 @@ class basic_managed_shared_memory
                 detail::DoOpen))
    {}
 
-   //!Moves the ownership of "moved"'s managed memory to *this. Does not throw
+   //!Moves the ownership of "moved"'s managed memory to *this.
+   //!Does not throw
    #ifndef BOOST_INTERPROCESS_RVALUE_REFERENCE
    basic_managed_shared_memory
       (detail::moved_object<basic_managed_shared_memory> &moved)
@@ -105,7 +118,8 @@ class basic_managed_shared_memory
    {  this->swap(moved);   }
    #endif
 
-   //!Moves the ownership of "moved"'s managed memory to *this. Does not throw
+   //!Moves the ownership of "moved"'s managed memory to *this.
+   //!Does not throw
    #ifndef BOOST_INTERPROCESS_RVALUE_REFERENCE
    basic_managed_shared_memory &operator=
       (detail::moved_object<basic_managed_shared_memory> &moved)
@@ -121,6 +135,27 @@ class basic_managed_shared_memory
    {
       base_t::swap(other);
       base2_t::swap(other);
+   }
+
+   //!Tries to resize the managed shared memory object so that we have
+   //!room for more objects. 
+   //!
+   //!This function is not synchronized so no other thread or process should
+   //!be reading or writing the file
+   static bool grow(const char *filename, std::size_t extra_bytes)
+   {
+      return base_t::template grow
+         <basic_managed_shared_memory>(filename, extra_bytes);
+   }
+
+   //!Tries to resize the managed shared memory to minimized the size of the file.
+   //!
+   //!This function is not synchronized so no other thread or process should
+   //!be reading or writing the file
+   static bool shrink_to_fit(const char *filename)
+   {
+      return base_t::template shrink_to_fit
+         <basic_managed_shared_memory>(filename);
    }
 };
 

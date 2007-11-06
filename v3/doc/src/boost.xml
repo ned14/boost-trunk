@@ -373,8 +373,6 @@
      </libraryinfo>
    </library>
 
-   <xi:include href="math.xml"/>
-   
    <library name="Math/Common Factor" dirname="math/common_factor" html-only="1"
             url="../../libs/math/doc/common_factor.html">
      <libraryinfo>
@@ -681,7 +679,16 @@
      </libraryinfo>
    </library>
 
-   <xi:include href="type_traits.xml"/>
+   <library name="Type Traits" dirname="type_traits" html-only="1">
+     <libraryinfo>
+       <author>
+         <firstname>John</firstname>
+         <surname>Maddock</surname>
+       </author>
+       <librarypurpose>Meta-programming support library.</librarypurpose>
+       <librarycategory name="category:generic"/>
+     </libraryinfo>
+   </library>
  
    <xi:include href="typeof.xml"/>
 
@@ -724,17 +731,18 @@
 
   <part id="tools">
     <title>Boost Tools</title>
-    <para>
-      Boost developers, testers, and maintainers have developed various programs to 
-      help with the administration of the Boost Libraries. Like everything else about 
-      Boost, these tools are available in source form, and are part of the regular 
-      Boost distribution.
-    </para>
-    <para>
-      Users may find these tools useful when porting Boost libraries to a new platform, 
-      or for use with their own applications.
-    </para>
-
+    <partintro>
+      <para>
+        Boost developers, testers, and maintainers have developed various programs to 
+        help with the administration of the Boost Libraries. Like everything else about 
+        Boost, these tools are available in source form, and are part of the regular 
+        Boost distribution.
+      </para>
+      <para>
+        Users may find these tools useful when porting Boost libraries to a new platform, 
+        or for use with their own applications.
+      </para>
+    </partintro>
     <xi:include href="../../tools/boostbook/doc/boostbook.xml"/>
     <xi:include href="quickbook.xml"/>
     <xi:include href="bjam.xml"/>
@@ -743,3 +751,5 @@
   
   <xi:include href="using.xml"/>
 </boostbook>
+
+

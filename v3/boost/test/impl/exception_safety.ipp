@@ -35,6 +35,7 @@
 #include <boost/test/unit_test_log.hpp>
 #include <boost/test/framework.hpp>
 #include <boost/test/test_observer.hpp>
+#include <boost/test/debug.hpp>
 
 #include <boost/test/detail/suppress_warnings.hpp>
 
@@ -126,7 +127,7 @@ struct exception_safety_tester : itest::manager, test_observer {
 
     // test observer interface
     virtual void        assertion_result( bool passed );
-    virtual int         priority() { return std::numeric_limits<int>::max(); } // we want this observer to run the last
+    virtual int         priority() { return (std::numeric_limits<int>::max)(); } // we want this observer to run the last
 
 private:
     void                failure_point();
@@ -390,7 +391,7 @@ void
 exception_safety_tester::failure_point()
 {
     if( m_exec_path_counter == m_break_exec_path )
-        BOOST_ASSERT( false );
+        debug::debugger_break();
     
     throw unique_exception();
 }
@@ -450,7 +451,7 @@ format_execution_path( wrap_stringstream& formatter, ExecPathIt it, ExecPathIt e
                 unsigned i;
                 for( i = 0; i < std::min<std::size_t>( it->m_alloc.size, 8 ); i++ ) {
                     unsigned char c = ((unsigned char*)it->m_alloc.ptr)[i];
-                    if( std::isprint( c ) )
+                    if( (std::isprint)( c ) )
                         formatter << c;
                     else
                         formatter << '.';
@@ -493,7 +494,7 @@ exception_safety_tester::report_error()
         if( m_invairant_failed )
             formatter << " and ";
 
-        formatter << m_memory_in_use.size() << " memory leak";
+        formatter << (unsigned int)m_memory_in_use.size() << " memory leak";
         if( m_memory_in_use.size() > 1 )
             formatter << 's';
     }
