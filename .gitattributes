@@ -7123,6 +7123,7 @@ libs/fusion/example/extension/example_struct_iterator.hpp svneol=native#text/pla
 libs/fusion/example/extension/example_struct_type.hpp svneol=native#text/plain
 libs/fusion/example/extension/tag_of.hpp svneol=native#text/plain
 libs/fusion/example/extension/test_example.cpp svneol=native#text/plain
+libs/fusion/example/extension/triple.cpp svneol=native#text/plain
 libs/fusion/example/performance/Jamfile svneol=native#text/plain
 libs/fusion/example/performance/accumulate.cpp svneol=native#text/plain
 libs/fusion/example/performance/functional.cpp svneol=native#text/plain
