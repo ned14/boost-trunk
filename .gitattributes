@@ -17656,7 +17656,6 @@ tools/quickbook/detail/template_stack.hpp svneol=native#text/plain
 tools/quickbook/detail/utils.cpp svneol=native#text/plain
 tools/quickbook/detail/utils.hpp svneol=native#text/plain
 tools/quickbook/doc/Jamfile.v2 svneol=native#text/plain
-tools/quickbook/doc/html/boostbook.css svneol=native#text/css
 tools/quickbook/doc/html/images/alert.png -text svneol=unset#image/png
 tools/quickbook/doc/html/images/callouts/1.png -text svneol=unset#image/png
 tools/quickbook/doc/html/images/callouts/10.png -text svneol=unset#image/png
