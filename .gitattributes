@@ -6814,7 +6814,6 @@ libs/fusion/doc/container.qbk svneol=native#text/plain
 libs/fusion/doc/extension.qbk svneol=native#text/plain
 libs/fusion/doc/functional.qbk svneol=native#text/plain
 libs/fusion/doc/fusion.qbk svneol=native#text/plain
-libs/fusion/doc/html/boostbook.css svneol=native#text/css
 libs/fusion/doc/html/fusion/acknowledgements.html svneol=native#text/html
 libs/fusion/doc/html/fusion/adapted.html svneol=native#text/html
 libs/fusion/doc/html/fusion/adapted/boost__array.html svneol=native#text/html
