@@ -10851,7 +10851,6 @@ libs/math/doc/sf_and_dist/math.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/minima.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/minimax.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/overview.qbk svneol=native#text/plain
-libs/math/doc/sf_and_dist/pdf/math.pdf -text svneol=unset#application/pdf
 libs/math/doc/sf_and_dist/performance.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/poisson_optimisation.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/policy.qbk svneol=native#text/plain
