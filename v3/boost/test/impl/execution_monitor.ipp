@@ -1089,8 +1089,8 @@ execution_monitor::execute( unit_test::callback0<int> const& F )
       { detail::report_error( execution_exception::cpp_exception_error, "std::bad_exception: %s", ex.what() ); }
     catch( std::domain_error const& ex )
       { detail::report_error( execution_exception::cpp_exception_error, "std::domain_error: %s", ex.what() ); }
-    catch( std::invalid_argument const& ex )
-      { detail::report_error( execution_exception::cpp_exception_error, "std::invalid_argument: %s", ex.what() ); }
+    //catch( std::invalid_argument const& ex )
+    //  { detail::report_error( execution_exception::cpp_exception_error, "std::invalid_argument: %s", ex.what() ); }
     catch( std::length_error const& ex )
       { detail::report_error( execution_exception::cpp_exception_error, "std::length_error: %s", ex.what() ); }
     catch( std::out_of_range const& ex )

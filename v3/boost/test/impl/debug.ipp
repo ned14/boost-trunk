@@ -58,6 +58,7 @@ namespace std { using ::memset; using ::sprintf; }
 // STL
 #include <map>
 #include <stdarg.h> // !! ?? cstdarg
+#include <memory.h>
 
 // SYSTEM API
 #  include <unistd.h>
@@ -276,7 +277,7 @@ process_info::process_info( int pid )
     while( *name_end && *name_end != ')' )
         ++name_end;
 
-    std::sscanf( name_end+1, "%*s%d", &m_parent_pid );
+    /*std::*/sscanf( name_end+1, "%*s%d", &m_parent_pid );
 
     m_binary_name.assign( name_beg+1, name_end );
 
@@ -335,7 +336,7 @@ copy_arg( mbuffer& dest, const_string arg )
 
     char* res = dest.begin();
 
-    std::memcpy( res, arg.begin(), arg.size()+1 );
+    /*std::*/memcpy( res, arg.begin(), arg.size()+1 );
 
     dest.trim_left( arg.size()+1 );
 
