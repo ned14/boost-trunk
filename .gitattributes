@@ -5272,6 +5272,7 @@ v3/boost/xpressive/proto3/transform.hpp svneol=native#text/plain
 v3/boost/xpressive/proto3/transform/apply.hpp svneol=native#text/plain
 v3/boost/xpressive/proto3/transform/arg.hpp svneol=native#text/plain
 v3/boost/xpressive/proto3/transform/bind.hpp svneol=native#text/plain
+v3/boost/xpressive/proto3/transform/case.hpp svneol=native#text/plain
 v3/boost/xpressive/proto3/transform/fold.hpp svneol=native#text/plain
 v3/boost/xpressive/proto3/transform/fold_tree.hpp svneol=native#text/plain
 v3/boost/xpressive/regex_actions.hpp svneol=native#text/plain
