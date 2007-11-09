@@ -1274,6 +1274,14 @@
     <!-- filesystem -->
     <library name="filesystem">
         <mark-unusable>
+          <toolset name="borland-5.6*"/>
+          <toolset name="borland-5.8*"/>
+          <note author="Beman Dawes">
+              This compiler does not support enable_if, which is needed by the
+              Boost.System library on which Boost.Filesystem depends.
+          </note>
+        </mark-unusable>
+        <mark-unusable>
             <toolset name="intel-7.1-linux"/>
             <toolset name="intel-7.1-stdlib-default-linux"/>
             <note author="Aleksey Gurtovoy">
@@ -2197,13 +2205,6 @@ for more information.
               This error shows when using the dynamic version of the STLport
               library. The problem is reportedly fixed in STLport 5.0 (in beta
               stage as of this writing.)
-            </note>
-        </mark-expected-failures>
-        <mark-expected-failures>
-            <test name="test_serialization"/>
-            <toolset name="vacpp"/>
-            <note author="J. L&#195;&#179;pez" date="07 Jul 2005">
-              Boost.Serialization is not supported on this platform.
             </note>
         </mark-expected-failures>
         <mark-expected-failures>
@@ -4321,6 +4322,18 @@ for more information.
                 </note>
             </mark-failure>
         </test>
+    </library>
+
+    <!-- system -->
+    <library name="system">
+      <mark-unusable>
+        <toolset name="borland-5.6*"/>
+        <toolset name="borland-5.8*"/>
+        <note author="Beman Dawes">
+            This compiler does not support enable_if, which is required
+            by Boost.System.
+        </note>
+      </mark-unusable>
     </library>
 
     <!-- test -->
