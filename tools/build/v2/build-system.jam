@@ -24,6 +24,7 @@ import virtual-target ;
 import "class" : new ;
 import toolset ;
 import regex ;
+import path ;
 
 import builtin ;
 import make ;
@@ -521,10 +522,71 @@ else if $(clean)
         to-clean-actual += [ $(t).actualize ] ;
     }
     common.Clean clean : $(to-clean-actual) ;
-    UPDATE clean ;
+    UPDATE clean ;       
+}
+
+# All Boost projects for which we've recorded dependency
+# info
+.all-dependents = ;
+
+pwd = [ path.pwd ] ;
+rule record-dependency ( p1 : p2 )
+{    
+    local l1 = [ path.root [ $(p1).get location ] $(pwd) ] ;
+    local m1 = [ MATCH .*/libs/([^/]+)/* : $(l1) ] ;
     
+    local l2 = [ path.root [ $(p2).get location ] $(pwd) ] ;
+    local m2 = [ MATCH .*/libs/([^/]+)/* : $(l2) ] ;
+    
+    if $(m1) && $(m2)
+    {            
+        if ! $(m1) in $(.all-dependents)
+        {
+            .all-dependents += $(m1) ;
+        }
+        if $(m1) != $(m2) && ! $(m2) in $(.dependencies-$(m1))
+        {
+            .dependencies-$(m1) += $(m2) ;
+        }
+    }    
+}
+
+rule print-dependencies ( )
+{
+    for d in $(.all-dependents)
+    {
+        ECHO "$(d):" $(.dependencies-$(d)) ;
+    }    
+}
+
+
+
+if --boost-dependency-info in $(argv)
+{
+    local all-dependent-projects ;
+    for local t in [ virtual-target.all-targets ]
+    {
+        if [ $(t).action ]
+        {
+            # If a target has no action, it has
+            # no dependencies.
+        
+            local p1 = [ $(t).project ] ;
+            
+            local action = [ $(t).action ] ;
+            local used-targets  = [ $(action).sources ] ;
+            
+            for t2 in $(used-targets)
+            {
+                local p2 = [ $(t2).project ] ;
+                record-dependency $(p1) : $(p2) ;
+            }            
+        }                
+    }
+    print-dependencies ;
     
 }
+
 
 else
 {

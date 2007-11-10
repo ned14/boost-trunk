@@ -61,6 +61,8 @@ class runner:
         opt.add_option( '--timeout',
             help="specifies the timeout, in minutes, for a single test run/compilation",
             type='int' )
+        opt.add_option( '--library',
+            help="the library subdirectory in which to run tests")
         opt.add_option( '--bjam-options',
             help="options to pass to the regression test" )
         opt.add_option( '--bjam-toolset',
@@ -88,6 +90,8 @@ class runner:
             help="FTP proxy server (e.g. 'ftpproxy')" )
         opt.add_option( '--dart-server',
             help="the dart server to send results to" )
+        opt.add_option( '--bitten-report',
+            help="Name of bitten XML report file to generate")
 
         #~ Debug Options:
         opt.add_option( '--debug-level',
@@ -121,8 +125,10 @@ class runner:
         self.proxy=None
         self.ftp_proxy=None
         self.dart_server=None
+        self.bitten_report=None
         self.debug_level=0
         self.send_bjam_log=False
+        self.library=None
         self.mail=None
         self.smtp_login=None
         self.skip_tests=False
@@ -199,11 +205,14 @@ class runner:
 
             self.log( 'Cleaning up "%s" directory ...' % self.regression_results )
             self.rmtree( self.regression_results )
-    
-    def command_get_tools(self):
-        #~ Get Boost.Build v2...
-        self.log( 'Getting Boost.Build v2...' )
-        if self.user and self.user != '':
+
+    def _get_tool(self, tool_name, dest_dir):
+        local_path = os.path.join( self.regression_root, 'tools', tool_name )
+        if os.path.exists( local_path ):
+            import shutil
+            shutil.rmtree( dest_dir, ignore_errors=True )
+            shutil.copytree( local_path, dest_dir )
+        elif self.user and self.user != '':
             os.chdir( os.path.dirname(self.tools_bb_root) )
             self.svn_command( 'co %s %s' % (
                 self.svn_repository_url(repo_path['build']),
@@ -215,34 +224,16 @@ class runner:
             self.unpack_tarball(
                 self.tools_bb_root+".tar.bz2",
                 os.path.basename(self.tools_bb_root) )
-        #~ Get Boost.Jam...
+            
+    def command_get_tools(self):
+        self.log( 'Getting Boost.Build v2...' )
+        self._get_tool('build', self.tools_bb_root)
+
         self.log( 'Getting Boost.Jam...' )
-        if self.user and self.user != '':
-            os.chdir( os.path.dirname(self.tools_bjam_root) )
-            self.svn_command( 'co %s %s' % (
-                self.svn_repository_url(repo_path['jam']),
-                os.path.basename(self.tools_bjam_root) ) )
-        else:
-            self.retry( lambda: self.download_tarball(
-                os.path.basename(self.tools_bjam_root)+".tar.bz2",
-                self.tarball_url(repo_path['jam']) ) )
-            self.unpack_tarball(
-                self.tools_bjam_root+".tar.bz2",
-                os.path.basename(self.tools_bjam_root) )
-        #~ Get the regression tools and utilities...
-        self.log( 'Getting regression tools an utilities...' )
-        if self.user and self.user != '':
-            os.chdir( os.path.dirname(self.tools_regression_root) )
-            self.svn_command( 'co %s %s' % (
-                self.svn_repository_url(repo_path['regression']),
-                os.path.basename(self.tools_regression_root) ) )
-        else:
-            self.retry( lambda: self.download_tarball(
-                os.path.basename(self.tools_regression_root)+".tar.bz2",
-                self.tarball_url(repo_path['regression']) ) )
-            self.unpack_tarball(
-                self.tools_regression_root+".tar.bz2",
-                os.path.basename(self.tools_regression_root) )
+        self._get_tool('jam/src', self.tools_bjam_root)
+        
+        self.log( 'Getting regression tools and utilities...' )
+        self._get_tool('regression', self.tools_regression_root)
     
     def command_get_source(self):
         self.refresh_timestamp()
@@ -312,7 +303,11 @@ class runner:
             self.regression_log )
         self.log( 'Starting tests (%s)...' % test_cmd )
         cd = os.getcwd()
-        os.chdir( os.path.join( self.boost_root, 'status' ) )
+        if self.library:
+            os.chdir( os.path.join( self.boost_root, 'libs', self.library, 'test' ) )
+        else:
+            os.chdir( os.path.join( self.boost_root, 'status' ) )
+        self.log( '...in (%s).' % os.getcwd() )
         utils.system( [ test_cmd ] )
         os.chdir( cd )
 
@@ -371,8 +366,25 @@ class runner:
             self.user,
             source, run_type,
             self.dart_server, self.proxy,
-            revision )
+            revision)
         
+    def command_create_bitten_report(self):
+        self.import_utils()
+        from collect_and_upload_logs import create_bitten_report
+        
+        if self.library:
+            xml_root = os.path.join( self.regression_results, 'boost',
+                                         'bin.v2', 'libs', self.library, 'test'
+                                         )
+        else:
+            xml_root = os.path.join( self.regression_results, 'boost',
+                                         'bin.v2' )
+
+        open(self.bitten_report, 'w').write(
+            create_bitten_report(
+            xml_root ).toxml('utf-8')
+            )
+    
     def command_upload_logs(self):
         self.import_utils()
         from collect_and_upload_logs import upload_logs
