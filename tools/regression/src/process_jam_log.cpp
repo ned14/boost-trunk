@@ -540,11 +540,14 @@ int main( int argc, char ** argv )
 
   boost_root = fs::initial_path();
 
+  std::cout << "looking for boost_root in: " << boost_root << std::endl;
+  
   while ( !boost_root.empty()
     && !fs::exists( boost_root / "libs" ) )
   {
     boost_root /=  "..";
     boost_root.normalize();
+    std::cout << "searching upward to: " << boost_root << std::endl;
   }
 
   if ( boost_root.empty() )
