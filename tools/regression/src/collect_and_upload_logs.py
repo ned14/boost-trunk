@@ -109,7 +109,7 @@ def create_bitten_report(
                 if log_xml == "": continue
                 log_dom = xml.dom.minidom.parseString(log_xml)
                 
-                log_attrs = dict(log_dom.documentElement.attributes.items())
+                toolset = log_dom.documentElement.getAttribute('toolset')
                 for node in log_dom.documentElement.childNodes:
                     
                     if node.nodeType != xml.dom.Node.ELEMENT_NODE: continue
@@ -134,19 +134,11 @@ def create_bitten_report(
                         report.createElement('fixture')
                             ).appendChild(
                                 report.createTextNode(
-                                    'boost.%s.%s.%s' % (
+                                    'boost.%s.%s.%s (%s)' % (
                                       log_attrs['library'],
                                       log_attrs['test-name'],
-                                      node.localName
-                                    )))
-
-                    test.appendChild(
-                        report.createElement('fixture')
-                            ).appendChild(
-                                report.createTextNode(
-                                    'boost.%s.%s' % (
-                                      log_attrs['library'],
-                                      log_attrs['test-name']
+                                      node.localName,
+                                      toolset
                                     )))
 
                     test.appendChild(

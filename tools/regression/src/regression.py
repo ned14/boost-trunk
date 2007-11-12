@@ -74,6 +74,8 @@ class runner:
         #~ Source Options:
         opt.add_option( '--user',
             help="Boost SVN user ID" )
+        opt.add_option( '--revision',
+            help="Boost SVN revision ID", type='int' )
         opt.add_option( '--local',
             help="the name of the boost tarball" )
         opt.add_option( '--force-update',
@@ -207,23 +209,24 @@ class runner:
             self.rmtree( self.regression_results )
 
     def _get_tool(self, tool_name, dest_dir):
+        repo_key = tool_name.split('/')[0]
         local_path = os.path.join( self.regression_root, 'tools', tool_name )
         if os.path.exists( local_path ):
             import shutil
             shutil.rmtree( dest_dir, ignore_errors=True )
             shutil.copytree( local_path, dest_dir )
         elif self.user and self.user != '':
-            os.chdir( os.path.dirname(self.tools_bb_root) )
+            os.chdir( os.path.dirname(dest_dir) )
             self.svn_command( 'co %s %s' % (
-                self.svn_repository_url(repo_path['build']),
-                os.path.basename(self.tools_bb_root) ) )
+                self.svn_repository_url(repo_path[repo_key]),
+                os.path.basename(dest_dir) ) )
         else:
             self.retry( lambda: self.download_tarball(
-                os.path.basename(self.tools_bb_root)+".tar.bz2",
-                self.tarball_url(repo_path['build']) ) )
+                os.path.basename(dest_dir)+".tar.bz2",
+                self.tarball_url(repo_path[repo_key]) ) )
             self.unpack_tarball(
-                self.tools_bb_root+".tar.bz2",
-                os.path.basename(self.tools_bb_root) )
+                dest_dir+".tar.bz2",
+                os.path.basename(dest_dir) )
             
     def command_get_tools(self):
         self.log( 'Getting Boost.Build v2...' )
@@ -426,9 +429,9 @@ class runner:
                 if not self.incremental: self.command_cleanup( [ 'bin' ] )
                 
             else:
-                if self.incremental or self.force_update:
-                    if not self.incremental: self.command_cleanup( [ 'bin' ] )
-                else:
+                if self.force_update:
+                    self.command_cleanup( [ 'bin' ] )
+                elif not self.incremental:
                     self.command_cleanup()
                 self.command_get_source()
 
@@ -607,6 +610,10 @@ class runner:
             cmd = 'build.bat %s' % self.bjam_toolset
         else:
             cmd = './build.sh %s' % self.bjam_toolset
+            
+        if self.incremental: # Don't force a rebuild of bjam
+            cmd += ' --update'
+            
         env_setup_key = 'BJAM_ENVIRONMENT_SETUP'
         if os.environ.has_key( env_setup_key ):
             return '%s & %s' % ( os.environ[env_setup_key], cmd )
@@ -669,6 +676,9 @@ class runner:
         else:
             cmd = svn_command_line % { 'user': self.user, 'command': command }
 
+        if self.revision:
+            cmd += ' -r%s' % self.revision
+            
         self.log( 'Executing SVN command "%s"' % cmd )
         rc = os.system( cmd )
         if rc != 0:
