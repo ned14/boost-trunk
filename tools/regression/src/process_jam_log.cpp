@@ -544,6 +544,7 @@ int main( int argc, char ** argv )
     && !fs::exists( boost_root / "libs" ) )
   {
     boost_root /=  "..";
+    boost_root.normalize();
   }
 
   if ( boost_root.empty() )
