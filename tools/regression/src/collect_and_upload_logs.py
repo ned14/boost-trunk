@@ -109,6 +109,7 @@ def create_bitten_report(
                 if log_xml == "": continue
                 log_dom = xml.dom.minidom.parseString(log_xml)
                 
+                log_attrs = dict(log_dom.documentElement.attributes.items())
                 toolset = log_dom.documentElement.getAttribute('toolset')
                 for node in log_dom.documentElement.childNodes:
                     
