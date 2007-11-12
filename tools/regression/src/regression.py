@@ -264,7 +264,7 @@ class runner:
         if os.path.exists( patch_boost_path ):
             self.log( 'Found patch file "%s". Executing it.' % patch_boost_path )
             os.chdir( self.regression_root )
-            utils.system( [ patch_boost_path ] )
+            self._system( [ patch_boost_path ] )
         pass
     
     def command_setup(self):
@@ -311,7 +311,7 @@ class runner:
         else:
             os.chdir( os.path.join( self.boost_root, 'status' ) )
         self.log( '...in (%s).' % os.getcwd() )
-        utils.system( [ test_cmd ] )
+        self._system( [ test_cmd ] )
         os.chdir( cd )
 
     def command_test_process(self):
@@ -319,7 +319,7 @@ class runner:
         self.log( 'Getting test case results out of "%s"...' % self.regression_log )
         cd = os.getcwd()
         os.chdir( os.path.join( self.boost_root, 'status' ) )
-        utils.checked_system( [
+        self._checked_system( [
             '"%s" "%s" <"%s"' % (
                 self.tool_path(self.process_jam_log),
                 self.regression_results,
@@ -572,7 +572,7 @@ class runner:
             self.log( 'Found "%s" source directory "%s"' % ( tool[ 'name' ], tool[ 'source_dir' ] ) )
             build_cmd = tool[ 'build_cmd' ]( toolset, tool['build_args'] )
             self.log( 'Building "%s" (%s)...' % ( tool[ 'name'], build_cmd ) )
-            utils.system( [ 'cd "%s"' % tool[ 'source_dir' ], build_cmd ] )
+            self._system( [ 'cd "%s"' % tool[ 'source_dir' ], build_cmd ] )
         else:
             raise 'Could not find "%s" source directory "%s"' % ( tool[ 'name' ], tool[ 'source_dir' ] )
 
@@ -604,7 +604,15 @@ class runner:
               name_or_spec[ 'name' ]
             , '\n'.join( [ name_or_spec[ 'path' ], build_dir ] )
             ) )
-    
+
+    def _system( self, cmds ):
+        self.log('running system commands: %s'  % cmds)
+        utils.system( cmds )
+        
+    def _checked_system( self, cmds ):
+        self.log('running checked system commands: %s'  % cmds)
+        utils.checked_system( cmds )
+        
     def bjam_build_cmd( self, *rest ):
         if sys.platform == 'win32':
             cmd = 'build.bat %s' % self.bjam_toolset
@@ -648,7 +656,7 @@ class runner:
             server_name = self.smtp_login.split( '@' )[-1]
             ( user_name, password ) = string.split( self.smtp_login.split( '@' )[0], ':' )
 
-        log( '    Sending mail through "%s"...' % server_name )
+        self.log( '    Sending mail through "%s"...' % server_name )
         smtp_server = smtplib.SMTP( server_name )
         smtp_server.set_debuglevel( self.debug_level )
         if user_name:

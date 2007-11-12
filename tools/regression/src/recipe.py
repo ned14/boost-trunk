@@ -116,12 +116,14 @@ import xml.dom.minidom
 
 def dump():
     repo = 'https://svn.boost.org/svn/boost/branches/bitten'
-    repo = 'file:///usr/local/share/svnroot/boost'
+    # repo = 'file:///usr/local/share/svnroot/boost'
     
     print head % {
         'repo': repo
         } + ''.join([lib % {'libname':l} for l in libraries]) + tail
-    
+
+    #     <python:exec module="shutil" args="-c 'shutil.copy(&quot;tools_regression/src/run.py&quot;, &quot;.&quot;')" />
+
 head = '''<?xml version="1.0" encoding="UTF-8"?>
 <build xmlns:sh="http://bitten.cmlenz.net/tools/sh" 
        xmlns:x="http://bitten.cmlenz.net/tools/xml" 
@@ -129,28 +131,29 @@ head = '''<?xml version="1.0" encoding="UTF-8"?>
        xmlns:python="http://bitten.cmlenz.net/tools/python"
 >
   <step id="get-tool-source" description="Update tools source code to version being tested">
+    <sh:exec executable="rm" args="-f results/bjam.log" />
     <svn:checkout 
        dir_="tools_regression"
-       url="%(repo)s/tools_regression"
-    revision="${revision}" />
-    <python:exec args="-c 'import shutil;shutil.copy(&quot;tools_regression/src/run.py&quot;, &quot;.&quot;')" />
+       url="%(repo)s/tools/regression"
+    revision="HEAD" />
+    <sh:exec executable="cp" args="tools_regression/src/run.py ." />
     <svn:checkout 
        dir_="tools_bb"
        url="%(repo)s/tools/build/v2"
-    revision="${revision}" />
+    revision="HEAD" />
     <svn:checkout 
-       dir_="tools_jam"
-       url="%(repo)s/tools/build/v2"
-    revision="${revision}" />
+       dir_="tools_bjam"
+       url="%(repo)s/tools/jam/src"
+    revision="HEAD" />
   </step>
 
   <step id="build tools" description="Build regression testing tools">
-    <python:exec file="run.py" args="--incremental --bjam-options=-j${boost.parallelism} ${boost.tool-build-options} setup" />
+    <python:exec file="run.py" args="--incremental --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.tool-build-options} setup" />
   </step>
   '''
 lib ='''                                                     
   <step id="%(libname)s" description="Tests for %(libname)s">
-    <python:exec file="run.py" args="--incremental --library=%(libname)s --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --bitten-report=results/%(libname)s.xml setup test-run test-process create-bitten-report" />
+    <python:exec file="run.py" args="--incremental --library=%(libname)s --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --bitten-report=results/%(libname)s.xml setup test-run test-process create-bitten-report" />
     <report category="test" file="results/%(libname)s.xml" />
   </step>
 '''

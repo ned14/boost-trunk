@@ -20,6 +20,9 @@
 #include <ctime>
 #include <cctype>   // for tolower
 
+#undef NDEBUG
+#include <cassert>
+
 using std::string;
 namespace xml = boost::tiny_xml;
 namespace fs = boost::filesystem;
@@ -372,6 +375,7 @@ namespace
       {
         std::cout << "*****Warning - can't open output file: "
           << pth.string() << "\n";
+        assert( file );
       }
       else xml::write( *m_root, file );
     }
