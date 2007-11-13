@@ -12,8 +12,13 @@ def system( commands ):
         return rc
     else:
         rc = os.system( '&&'.join( commands ) )
-        return rc
-
+        if os.WIFEXITED(rc):
+            return os.WEXITSTATUS(rc)
+        elif os.WIFSIGNALED(rc):
+            return -os.WTERMSIG(rc)
+        elif os.WIFSTOPPED(rc):
+            return -os.WSTOPSIG(rc)
+        return 0
     
 def checked_system( commands, valid_return_codes = [ 0 ] ):
     rc = system( commands ) 

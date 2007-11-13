@@ -138,7 +138,7 @@ class runner:
         self.mail=None
         self.smtp_login=None
         self.skip_tests=False
-        self.exit_code=0
+        self.exit_status=0
         self.reflect_test_status=False
         ( _opt_, self.actions ) = opt.parse_args(None,self)
         if not self.actions or self.actions == []:
@@ -320,8 +320,10 @@ class runner:
         try:
             self.log( '...in (%s).' % os.getcwd() )
         
-            exit_code = self._system( [ test_cmd ] )
-            self.exit_code = self.exit_code or exit_code
+            exit_status = self._system( [ test_cmd ] )
+            self.exit_status = self.exit_status or exit_status
+            if exit_status:
+                self.log('test run exited with status %s.' % exit_status)
         finally:
             os.chdir( cd )
 
@@ -493,8 +495,13 @@ class runner:
             if hasattr(self,action_m):
                 getattr(self,action_m)()
                 
-        if self.exit_code != 0 and self.reflect_test_status:
-            sys.exit(self.exit_code)
+        if self.exit_status != 0:
+            if self.reflect_test_status:
+                self.log('exiting with status: %s' % self.exit_status)
+                sys.exit(self.exit_status)
+            else:
+                self.log(
+                    '*** warning: tests failed with exit status: %s, but exiting cleanly' % self.exit_status)
 
     def platform_name(self):
         # See http://article.gmane.org/gmane.comp.lib.boost.testing/933
@@ -623,11 +630,11 @@ class runner:
 
     def _system( self, cmds ):
         self.log('running system commands in %s: %s'  % (os.getcwd(), cmds))
-        utils.system( cmds )
+        return utils.system( cmds )
         
     def _checked_system( self, cmds ):
         self.log('running checked system commands in %s: %s'  % (os.getcwd(), cmds))
-        utils.checked_system( cmds )
+        return utils.checked_system( cmds )
         
     def bjam_build_cmd( self, *rest ):
         if sys.platform == 'win32':
