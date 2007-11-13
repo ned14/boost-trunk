@@ -3,9 +3,14 @@
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 # This was output by "bjam -n --boost-dependency-info"
+#
+# algorithm library doesn't meet the test directory protocol, so entered
+# algorithm/minmax and algorithm/string by hand.
+
 dependencies = '''test:
 config:
-algorithm: regex
+algorithm/minmax: regex
+algorithm/string: regex
 regex: thread program_options
 date_time: serialization
 system:
@@ -131,7 +136,10 @@ head = '''<?xml version="1.0" encoding="UTF-8"?>
        xmlns:python="http://bitten.cmlenz.net/tools/python"
 >
   <step id="get-tool-source" description="Update tools source code to version being tested">
-    <sh:exec executable="rm" args="-f results/bjam.log" />
+    <svn:checkout 
+       dir_="tools"
+       url="%(repo)s/tools"
+    revision="HEAD" />
     <svn:checkout 
        dir_="tools_regression"
        url="%(repo)s/tools/regression"
@@ -153,7 +161,8 @@ head = '''<?xml version="1.0" encoding="UTF-8"?>
   '''
 lib ='''                                                     
   <step id="%(libname)s" description="Tests for %(libname)s">
-    <python:exec file="run.py" args="--incremental --library=%(libname)s --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --bitten-report=results/%(libname)s.xml setup test-run test-process create-bitten-report" />
+    <sh:exec executable="rm" args="-f results/bjam.log" />
+    <python:exec file="run.py" args="--incremental --library=%(libname)s --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(libname)s.xml test-run test-process create-bitten-report" />
     <report category="test" file="results/%(libname)s.xml" />
   </step>
 '''

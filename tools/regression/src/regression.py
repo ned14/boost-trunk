@@ -71,6 +71,10 @@ class runner:
             help="bootstrap toolset for 'process_jam_log' executable" )
         opt.add_option( '--platform' )
 
+        opt.add_option( '--reflect-test-status',
+            help="if a test fails, exit with a nonzero status",
+            action='store_true' )
+        
         #~ Source Options:
         opt.add_option( '--user',
             help="Boost SVN user ID" )
@@ -134,6 +138,8 @@ class runner:
         self.mail=None
         self.smtp_login=None
         self.skip_tests=False
+        self.exit_code=0
+        self.reflect_test_status=False
         ( _opt_, self.actions ) = opt.parse_args(None,self)
         if not self.actions or self.actions == []:
             self.actions = [ 'regression' ]
@@ -310,22 +316,29 @@ class runner:
             os.chdir( os.path.join( self.boost_root, 'libs', self.library, 'test' ) )
         else:
             os.chdir( os.path.join( self.boost_root, 'status' ) )
-        self.log( '...in (%s).' % os.getcwd() )
-        self._system( [ test_cmd ] )
-        os.chdir( cd )
+
+        try:
+            self.log( '...in (%s).' % os.getcwd() )
+        
+            exit_code = self._system( [ test_cmd ] )
+            self.exit_code = self.exit_code or exit_code
+        finally:
+            os.chdir( cd )
 
     def command_test_process(self):
         self.import_utils()
         self.log( 'Getting test case results out of "%s"...' % self.regression_log )
         cd = os.getcwd()
         os.chdir( os.path.join( self.boost_root, 'status' ) )
-        self._checked_system( [
-            '"%s" "%s" <"%s"' % (
+        try:
+            self._checked_system( [
+                '"%s" "%s" <"%s"' % (
                 self.tool_path(self.process_jam_log),
                 self.regression_results,
                 self.regression_log )
-            ] )
-        os.chdir( cd )
+                ] )
+        finally:
+            os.chdir( cd )
     
     def command_collect_logs(self):
         self.import_utils()
@@ -479,6 +492,9 @@ class runner:
             action_m = "command_"+action.replace('-','_')
             if hasattr(self,action_m):
                 getattr(self,action_m)()
+                
+        if self.exit_code != 0 and self.reflect_test_status:
+            sys.exit(self.exit_code)
 
     def platform_name(self):
         # See http://article.gmane.org/gmane.comp.lib.boost.testing/933
@@ -606,11 +622,11 @@ class runner:
             ) )
 
     def _system( self, cmds ):
-        self.log('running system commands: %s'  % cmds)
+        self.log('running system commands in %s: %s'  % (os.getcwd(), cmds))
         utils.system( cmds )
         
     def _checked_system( self, cmds ):
-        self.log('running checked system commands: %s'  % cmds)
+        self.log('running checked system commands in %s: %s'  % (os.getcwd(), cmds))
         utils.checked_system( cmds )
         
     def bjam_build_cmd( self, *rest ):

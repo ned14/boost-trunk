@@ -374,7 +374,7 @@ namespace
       if ( !file )
       {
         std::cout << "*****Warning - can't open output file: "
-          << pth.string() << "\n";
+                  << pth.string() << "\n" << std::flush;
         assert( file );
       }
       else xml::write( *m_root, file );
