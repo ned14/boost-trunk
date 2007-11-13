@@ -4730,6 +4730,7 @@ boost/thread/win32/shared_mutex.hpp svneol=native#text/plain
 boost/thread/win32/thread.hpp svneol=native#text/plain
 boost/thread/win32/thread_heap_alloc.hpp svneol=native#text/plain
 boost/thread/win32/thread_primitives.hpp svneol=native#text/plain
+boost/thread/win32/tss.hpp svneol=native#text/plain
 boost/thread/xtime.hpp svneol=native#text/plain
 boost/throw_exception.hpp svneol=native#text/plain
 boost/timer.hpp svneol=native#text/plain
@@ -15523,9 +15524,7 @@ libs/thread/src/tss_null.cpp svneol=native#text/plain
 libs/thread/src/win32/exceptions.cpp svneol=native#text/plain
 libs/thread/src/win32/thread.cpp svneol=native#text/plain
 libs/thread/src/win32/timeconv.inl svneol=native#text/plain
-libs/thread/src/win32/tss.cpp svneol=native#text/plain
 libs/thread/src/win32/tss_dll.cpp svneol=native#text/plain
-libs/thread/src/win32/tss_hooks.cpp svneol=native#text/plain
 libs/thread/src/win32/tss_pe.cpp svneol=native#text/plain
 libs/thread/test/.cvsignore -text
 libs/thread/test/Carbon.r -text
