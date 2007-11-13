@@ -16,9 +16,10 @@
 #include <string>
 #include <cstring>
 #include <map>
-#include <utility> // for make_pair
+#include <utility>  // for make_pair
 #include <ctime>
 #include <cctype>   // for tolower
+#include <cstdlib>  // for exit
 
 using std::string;
 namespace xml = boost::tiny_xml;
@@ -28,7 +29,7 @@ namespace fs = boost::filesystem;
 
 static bool echo = false;
 static bool create_dirs = false;
-static bool boost_build_v2 = false;
+static bool boost_build_v2 = true;
 
 namespace
 {
@@ -44,7 +45,33 @@ namespace
   fs::path boost_root;
   fs::path locate_root; // ALL_LOCATE_TARGET (or boost_root if none)
 
-//  append_html  -------------------------------------------------------------//
+  //  set_boost_root  --------------------------------------------------------//
+
+  void set_boost_root()
+  {
+    
+    boost_root = fs::initial_path();
+
+    for(;;)
+    {
+      if ( fs::exists( boost_root / "libs" ) )
+      {
+        fs::current_path( fs::initial_path() ); // restore initial path
+        return;
+      }
+      fs::current_path( ".." );
+      if ( boost_root == fs::current_path() )
+      {
+        fs::current_path( fs::initial_path() ); // restore initial path
+        std::cout <<
+          "Abort: process_jam_log must be run from within a boost directory tree\n";
+        std::exit(1);
+      }
+      boost_root = fs::current_path();
+    }
+  }
+ 
+ //  append_html  -------------------------------------------------------------//
 
   void append_html( const string & src, string & target )
   {
@@ -527,26 +554,19 @@ int main( int argc, char ** argv )
   // streams are implemented using standard C files.
   std::ios::sync_with_stdio(false);
 
+  fs::initial_path();
+
   if ( argc <= 1 )
-    std::cout << "Usage: bjam [bjam-args] | process_jam_log [--echo] [--create-directories] [--v2] [locate-root]\n"
+    std::cout << "Usage: bjam [bjam-args] | process_jam_log [--echo] [--create-directories] [--v1|v2] [locate-root]\n"
                  "locate-root         - the same as the bjam ALL_LOCATE_TARGET\n"
                  "                      parameter, if any. Default is boost-root.\n"
                  "create-directories  - if the directory for xml file doesn't exists - creates it.\n"
-                 "                      usually used for processing logfile on different machine\n";
+                 "                      usually used for processing logfile on different machine\n"
+                 "v2                  - bjam version 2 used (default).\n"
+                 "v1                  - bjam version 1 used.\n"
+                 ;
 
-  boost_root = fs::initial_path();
-
-  while ( !boost_root.empty()
-    && !fs::exists( boost_root / "libs" ) )
-  {
-    boost_root /=  "..";
-  }
-
-  if ( boost_root.empty() )
-  {
-    std::cout << "must be run from within the boost-root directory tree\n";
-    return 1;
-  }
+  set_boost_root();
 
   boost_root.normalize();
   
@@ -569,6 +589,11 @@ int main( int argc, char ** argv )
     --argc; ++argv;
   }
 
+  if ( argc > 1 && std::strcmp( argv[1], "--v1" ) == 0 )
+  {
+    boost_build_v2 = false;
+    --argc; ++argv;
+  }
 
   if (argc > 1)
   {
