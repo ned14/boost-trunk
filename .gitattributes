@@ -9939,7 +9939,6 @@ libs/math/doc/sf_and_dist/bessel_spherical.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/beta.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/beta_derivative.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/common_overviews.qbk svneol=native#text/plain
-libs/math/doc/sf_and_dist/compilers.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/concepts.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/contact_info.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/credits.qbk svneol=native#text/plain
