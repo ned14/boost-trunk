@@ -4716,6 +4716,7 @@ boost/thread/pthread/shared_mutex.hpp svneol=native#text/plain
 boost/thread/pthread/thread.hpp svneol=native#text/plain
 boost/thread/pthread/thread_data.hpp svneol=native#text/plain
 boost/thread/pthread/timespec.hpp svneol=native#text/plain
+boost/thread/pthread/tss.hpp svneol=native#text/plain
 boost/thread/recursive_mutex.hpp svneol=native#text/plain
 boost/thread/shared_mutex.hpp svneol=native#text/plain
 boost/thread/thread.hpp svneol=native#text/plain
