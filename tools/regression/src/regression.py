@@ -313,7 +313,7 @@ class runner:
         self.log( 'Starting tests (%s)...' % test_cmd )
         cd = os.getcwd()
         if self.library:
-            os.chdir( os.path.join( self.boost_root, 'libs', self.library, 'test' ) )
+            os.chdir( os.path.join( self.boost_root, 'libs', self.library ) )
         else:
             os.chdir( os.path.join( self.boost_root, 'status' ) )
 
@@ -392,16 +392,19 @@ class runner:
         
         if self.library:
             xml_root = os.path.join( self.regression_results, 'boost',
-                                         'bin.v2', 'libs', self.library, 'test'
+                                         'bin.v2', 'libs', self.library
                                          )
         else:
             xml_root = os.path.join( self.regression_results, 'boost',
                                          'bin.v2' )
 
-        open(self.bitten_report, 'w').write(
-            create_bitten_report(
-            xml_root ).toxml('utf-8')
-            )
+        report = create_bitten_report( xml_root ).toxml('utf-8')
+
+        dir = os.path.split(self.bitten_report)[0]
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+            
+        open(self.bitten_report, 'w').write(report)
     
     def command_upload_logs(self):
         self.import_utils()

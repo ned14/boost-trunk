@@ -533,10 +533,10 @@ pwd = [ path.pwd ] ;
 rule record-dependency ( p1 : p2 )
 {    
     local l1 = [ path.root [ $(p1).get location ] $(pwd) ] ;
-    local m1 = [ MATCH .*/libs/([^/]+)/* : $(l1) ] ;
+    local m1 = [ MATCH .*/libs/(.*) : $(l1) ] ;
     
     local l2 = [ path.root [ $(p2).get location ] $(pwd) ] ;
-    local m2 = [ MATCH .*/libs/([^/]+)/* : $(l2) ] ;
+    local m2 = [ MATCH .*/libs/(.*) : $(l2) ] ;
     
     if $(m1) && $(m2)
     {            

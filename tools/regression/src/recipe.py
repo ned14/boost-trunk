@@ -3,70 +3,89 @@
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 # This was output by "bjam -n --boost-dependency-info"
-#
-# algorithm library doesn't meet the test directory protocol, so entered
-# algorithm/minmax and algorithm/string by hand.
 
-dependencies = '''test:
-config:
-algorithm/minmax: regex
-algorithm/string: regex
-regex: thread program_options
-date_time: serialization
-system:
-thread: test
-asio: thread system date_time
-assign: test
-any:
-bimap: serialization
-serialization:
-bind:
-circular_buffer:
+dependencies = '''test/build:
+config/test/link:
+algorithm/minmax/test:
+algorithm/string/test: regex/build
+regex/build:
+date_time/build:
+system/build:
+thread/build:
+asio/test: thread/build system/build date_time/build
+assign/test: test/build
+any/test:
+bimap/test: serialization/build
+serialization/build:
+bind/test:
+circular_buffer/test:
 concept_check:
-conversion: test
+conversion/test: test/build
+date_time/test: date_time/build serialization/build
 disjoint_sets:
 dynamic_bitset:
-filesystem: system
-foreach:
-format: test
-function: test
-functional:
-fusion:
-gil:
-graph: test serialization system filesystem
-io: test
-interprocess: thread
-intrusive: thread
-iostreams: test regex
-iterator:
-lambda: test
-logic:
-math: regex test
-mpl:
-numeric: test
-multi_array: test
-multi_index: serialization
-optional:
-parameter: python
-python:
-program_options:
-property_map:
-ptr_container: test serialization
-random:
-range: test
-signals: test
-smart_ptr:
-spirit: thread
-statechart: test
+filesystem/build: system/build
+filesystem/test: filesystem/build system/build
+foreach/test:
+format/test: test/build
+function/test: test/build
+functional/hash/test:
+functional/hash/examples:
+function_types/test:
+fusion/test:
+gil/test:
+graph/test: test/build graph/build serialization/build system/build filesystem/build
+graph/build:
+io/test: test/build
+interprocess/example: thread/build
+interprocess/test: thread/build
+intrusive/example: thread/build
+intrusive/test:
+iostreams/test: test/build iostreams/build regex/build
+iostreams/build:
+iterator/test:
+lambda/test: test/build
+logic/test:
+math/test: regex/build test/build
+mpl/test:
+numeric/conversion/test:
+numeric/interval/test: test/build
+numeric/ublas/test:
+multi_array/test: test/build
+multi_index/test: serialization/build
+optional/test:
+parameter/test: python/build
+python/build:
+program_options/build:
+program_options/test: program_options/build
+property_map/test:
+ptr_container/test: test/build serialization/build
+python/test: python/build
+random/test:
+range/test: test/build
+regex/test: regex/build thread/build regex/test/captures
+regex/test/captures: regex/build
+regex/example: regex/build program_options/build regex/test/captures
+serialization/test: serialization/build
+signals/build:
+signals/test: test/build signals/build
+smart_ptr/test:
+spirit/test: thread/build
+statechart/test: test/build
 static_assert:
-tr1:
-tuple: test
-type_traits:
-typeof:
-utility: test
-variant:
-wave: date_time filesystem system thread program_options
-xpressive: test'''
+system/test: system/build
+test/test: test/build
+thread/test: test/build thread/build
+tr1/test:
+tuple/test: test/build
+type_traits/test:
+typeof/test:
+utility/enable_if/test: test/build
+utility/test: test/build
+variant/test:
+wave/test/build: date_time/build filesystem/build system/build thread/build wave/build program_options/build
+wave/build: filesystem/build system/build thread/build date_time/build
+xpressive/test: test/build'''
 
     
 lines = dependencies.split('\n')
@@ -88,7 +107,7 @@ black = 'black'
 
 class loop(Exception): pass
 
-libraries = []
+projects = []
 
 # Depth first search for topological sort
 def dfs(start):
@@ -106,7 +125,7 @@ def dfs(start):
         dfs(child)
 
     # okay, all children visited
-    libraries.append(start)
+    projects.append(start)
     
     # ending a visit
     color[start]=black
@@ -122,14 +141,26 @@ import xml.dom.minidom
 def dump():
     repo = 'https://svn.boost.org/svn/boost/branches/bitten'
     # repo = 'file:///usr/local/share/svnroot/boost'
+
+    def is_test_project(path):
+        e = path.split('/')
+        # build/ subdirectories are always Jamfiles for library binaries, not
+        # tests... except for wave which keeps tests in libs/wave/test/build :(
+        return e[-1] != 'build' or 'test' in e[1:]
+
+    import re
     
-    print head % {
+    print head_xml % {
         'repo': repo
-        } + ''.join([lib % {'libname':l} for l in libraries]) + tail
+        } + ''.join([
+            project_xml % {'project_path':p, 'id':
+                           re.sub('(.+)/test(/build)?(.*)', r'\1\3', p, 1)}
+            for p in projects if is_test_project(p)]
+        ) + tail_xml
 
     #     <python:exec module="shutil" args="-c 'shutil.copy(&quot;tools_regression/src/run.py&quot;, &quot;.&quot;')" />
 
-head = '''<?xml version="1.0" encoding="UTF-8"?>
+head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <build xmlns:sh="http://bitten.cmlenz.net/tools/sh" 
        xmlns:x="http://bitten.cmlenz.net/tools/xml" 
        xmlns:svn="http://bitten.cmlenz.net/tools/svn"
@@ -159,14 +190,14 @@ head = '''<?xml version="1.0" encoding="UTF-8"?>
     <python:exec file="run.py" args="--incremental --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.tool-build-options} setup" />
   </step>
   '''
-lib ='''                                                     
-  <step id="%(libname)s" description="Tests for %(libname)s">
+project_xml ='''                                                     
+  <step id="%(id)s" description="Tests run in %(project_path)s" onerror="ignore">
     <sh:exec executable="rm" args="-f results/bjam.log" />
-    <python:exec file="run.py" args="--incremental --library=%(libname)s --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(libname)s.xml test-run test-process create-bitten-report" />
-    <report category="test" file="results/%(libname)s.xml" />
+    <python:exec file="run.py" args="--incremental --library=%(project_path)s --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run test-process create-bitten-report" />
+    <report category="test" file="results/%(project_path)s.xml" />
   </step>
 '''
-tail ='''                                                     
+tail_xml ='''                                                     
 </build>
 '''
 
