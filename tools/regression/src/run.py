@@ -48,4 +48,10 @@ sys.path.insert(0,os.path.join(root,'tools_regression_src'))
 
 #~ Launch runner.
 from regression import runner
-runner(root)
+try:
+    runner(root)
+except Exception, e:
+    print '@@@ exiting with exception:', e
+    import traceback
+    traceback.print_exc()
+    raise
