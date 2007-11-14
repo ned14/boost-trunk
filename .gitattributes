@@ -6582,7 +6582,6 @@ libs/filesystem/doc/i18n.html svneol=native#text/html
 libs/filesystem/doc/index.htm svneol=native#text/html
 libs/filesystem/doc/portability_guide.htm svneol=native#text/html
 libs/filesystem/doc/reference.html svneol=native#text/html
-libs/filesystem/doc/tr2_proposal.html svneol=native#text/html
 libs/filesystem/example/Jamfile.v2 svneol=native#text/plain
 libs/filesystem/example/file_size.cpp svneol=native#text/plain
 libs/filesystem/example/mbcopy.cpp svneol=native#text/plain
