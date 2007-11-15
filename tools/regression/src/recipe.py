@@ -166,24 +166,30 @@ head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
        xmlns:svn="http://bitten.cmlenz.net/tools/svn"
        xmlns:python="http://bitten.cmlenz.net/tools/python"
 >
+  <step id="get-boost" description="Update Boost source code to version being tested">
+    <svn:checkout 
+       dir_="boost"
+       url="https://svn.boost.org/svn/boost/trunk"
+    revision="${revision}" />
+  </step>
   <step id="get-tool-source" description="Update tools source code to version being tested">
     <svn:checkout 
        dir_="tools"
        url="%(repo)s/tools"
-    revision="HEAD" />
+    revision="${revision}" />
     <svn:checkout 
        dir_="tools_regression"
        url="%(repo)s/tools/regression"
-    revision="HEAD" />
+    revision="${revision}" />
     <sh:exec executable="cp" args="tools_regression/src/run.py ." />
     <svn:checkout 
        dir_="tools_bb"
        url="%(repo)s/tools/build/v2"
-    revision="HEAD" />
+    revision="${revision}" />
     <svn:checkout 
        dir_="tools_bjam"
        url="%(repo)s/tools/jam/src"
-    revision="HEAD" />
+    revision="${revision}" />
   </step>
 
   <step id="build tools" description="Build regression testing tools">
@@ -191,7 +197,7 @@ head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
   </step>
   '''
 project_xml ='''                                                     
-  <step id="%(id)s" description="Tests run in %(project_path)s" onerror="ignore">
+  <step id="%(id)s" description="Tests run in %(project_path)s" onerror="continue">
     <sh:exec executable="rm" args="-f results/bjam.log" />
     <python:exec file="run.py" args="--incremental --library=%(project_path)s --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run test-process create-bitten-report" />
     <report category="test" file="results/%(project_path)s.xml" />
