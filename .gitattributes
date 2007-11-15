@@ -5406,7 +5406,6 @@ libs/array/array5.cpp svneol=native#text/plain
 libs/array/doc/array.xml svneol=native#text/xml
 libs/array/index.html svneol=native#text/html
 libs/array/print.hpp svneol=native#text/plain
-libs/asio/doc/.cvsignore -text
 libs/asio/doc/Jamfile.v2 svneol=native#text/plain
 libs/asio/doc/asio.qbk svneol=native#text/plain
 libs/asio/doc/design.qbk svneol=native#text/plain
@@ -10342,7 +10341,6 @@ libs/iostreams/test/write_output_test.hpp svneol=native#text/plain
 libs/iostreams/test/write_seekable_seq_test.hpp svneol=native#text/plain
 libs/iostreams/test/write_seekable_test.hpp svneol=native#text/plain
 libs/iostreams/test/zlib_test.cpp svneol=native#text/plain
-libs/iterator/doc/.cvsignore -text
 libs/iterator/doc/BidirectionalTraversal.html svneol=native#text/html
 libs/iterator/doc/BidirectionalTraversal.rst svneol=native#text/plain
 libs/iterator/doc/ForwardTraversal.html svneol=native#text/html
@@ -13307,7 +13305,6 @@ libs/optional/doc/optional.qbk svneol=native#text/plain
 libs/optional/doc/reference.qbk svneol=native#text/plain
 libs/optional/doc/special_cases.qbk svneol=native#text/plain
 libs/optional/index.html svneol=native#text/html
-libs/optional/test/.cvsignore -text
 libs/optional/test/Jamfile.v2 svneol=native#text/plain
 libs/optional/test/optional_test.cpp svneol=native#text/plain
 libs/optional/test/optional_test_common.cpp svneol=native#text/plain
@@ -14243,7 +14240,6 @@ libs/python/index.html svneol=native#text/html
 libs/python/pyste/NEWS -text
 libs/python/pyste/README svneol=native#text/plain
 libs/python/pyste/TODO svneol=native#text/plain
-libs/python/pyste/dist/.cvsignore -text
 libs/python/pyste/dist/create_build.py svneol=native#text/x-python
 libs/python/pyste/dist/setup.py svneol=native#text/x-python
 libs/python/pyste/doc/adding_new_methods.html svneol=native#text/html
@@ -14276,7 +14272,6 @@ libs/python/pyste/doc/wrappers.html svneol=native#text/html
 libs/python/pyste/index.html svneol=native#text/html
 libs/python/pyste/install/pyste.py svneol=native#text/x-python
 libs/python/pyste/install/setup.py svneol=native#text/x-python
-libs/python/pyste/src/Pyste/.cvsignore -text
 libs/python/pyste/src/Pyste/ClassExporter.py svneol=native#text/x-python
 libs/python/pyste/src/Pyste/CodeExporter.py svneol=native#text/x-python
 libs/python/pyste/src/Pyste/CppParser.py svneol=native#text/x-python
@@ -14298,7 +14293,6 @@ libs/python/pyste/src/Pyste/policies.py svneol=native#text/x-python
 libs/python/pyste/src/Pyste/pyste.py svneol=native#text/x-python
 libs/python/pyste/src/Pyste/settings.py svneol=native#text/x-python
 libs/python/pyste/src/Pyste/utils.py svneol=native#text/x-python
-libs/python/pyste/tests/.cvsignore -text
 libs/python/pyste/tests/GCCXMLParserUT.py svneol=native#text/x-python
 libs/python/pyste/tests/SmartFileUT.py svneol=native#text/x-python
 libs/python/pyste/tests/abstract_test.h svneol=native#text/plain
@@ -16190,7 +16184,6 @@ libs/test/test/test_tree_management_test.cpp svneol=native#text/plain
 libs/test/test/token_iterator_test.cpp svneol=native#text/plain
 libs/test/tools/console_test_runner/src/console_test_runner.cpp svneol=native#text/plain
 libs/test/tools/console_test_runner/test/test_runner_test.cpp svneol=native#text/plain
-libs/thread/build/.cvsignore -text
 libs/thread/build/Jamfile.v2 svneol=native#text/plain
 libs/thread/doc/Jamfile.v2 svneol=native#text/plain
 libs/thread/doc/acknowledgements.xml svneol=native#text/xml
@@ -16219,7 +16212,6 @@ libs/thread/doc/thread-ref.xml svneol=native#text/xml
 libs/thread/doc/thread.xml svneol=native#text/xml
 libs/thread/doc/tss-ref.xml svneol=native#text/xml
 libs/thread/doc/xtime-ref.xml svneol=native#text/xml
-libs/thread/example/.cvsignore -text
 libs/thread/example/Jamfile.v2 svneol=native#text/plain
 libs/thread/example/condition.cpp svneol=native#text/plain
 libs/thread/example/monitor.cpp svneol=native#text/plain
@@ -16243,7 +16235,6 @@ libs/thread/src/win32/thread.cpp svneol=native#text/plain
 libs/thread/src/win32/timeconv.inl svneol=native#text/plain
 libs/thread/src/win32/tss_dll.cpp svneol=native#text/plain
 libs/thread/src/win32/tss_pe.cpp svneol=native#text/plain
-libs/thread/test/.cvsignore -text
 libs/thread/test/Carbon.r -text
 libs/thread/test/Jamfile.v2 svneol=native#text/plain
 libs/thread/test/test.mcp -text svneol=unset#unset
@@ -17655,7 +17646,6 @@ tools/build/v2/options/help.jam svneol=native#text/plain
 tools/build/v2/release_procedure.txt svneol=native#text/plain
 tools/build/v2/roll.sh svneol=native#text/x-sh
 tools/build/v2/site-config.jam svneol=native#text/plain
-tools/build/v2/test/.cvsignore -text
 tools/build/v2/test/BoostBuild.py svneol=native#text/x-python
 tools/build/v2/test/Jamfile svneol=native#text/plain
 tools/build/v2/test/Jamrules svneol=native#text/plain
@@ -18513,10 +18503,8 @@ tools/regression/test/test-boost-build/missing_dependencies/Jamfile.v2 svneol=na
 tools/regression/test/test-boost-build/missing_dependencies/lib/Jamfile.v2 svneol=native#text/plain
 tools/regression/test/test-boost-build/missing_dependencies/lib/lib.cpp svneol=native#text/plain
 tools/regression/test/test-boost-build/missing_dependencies/test.cpp svneol=native#text/plain
-tools/regression/test/test-cases/Huber2629/.cvsignore -text
 tools/regression/test/test-cases/Huber2629/bjam.log -text
 tools/regression/test/test-cases/Huber2629/expected/results.xml svneol=native#text/xml
-tools/regression/test/test-cases/general/.cvsignore -text
 tools/regression/test/test-cases/general/bjam.log -text
 tools/regression/test/test-cases/general/expected/results.xml svneol=native#text/xml
 tools/regression/test/test-cases/incremental/bjam.log -text
