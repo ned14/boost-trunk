@@ -45,4 +45,5 @@ tools/build/v2/test/*.pyc
 tools/build/v2/test/failed_test
 tools/build/v2/test/test-config.jam
 tools/build/v2/test/test_results.txt
+tools/regression/test/test-cases/Huber2629/actual
 tools/regression/test/test-cases/general/actual
