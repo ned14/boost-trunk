@@ -16226,6 +16226,7 @@ libs/thread/example/tss.cpp svneol=native#text/plain
 libs/thread/example/xtime.cpp svneol=native#text/plain
 libs/thread/index.html svneol=native#text/html
 libs/thread/src/pthread/exceptions.cpp svneol=native#text/plain
+libs/thread/src/pthread/once.cpp svneol=native#text/plain
 libs/thread/src/pthread/thread.cpp svneol=native#text/plain
 libs/thread/src/pthread/timeconv.inl svneol=native#text/plain
 libs/thread/src/pthread/tss.cpp svneol=native#text/plain
