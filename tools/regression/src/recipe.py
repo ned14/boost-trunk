@@ -176,30 +176,28 @@ head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
     <svn:checkout 
        dir_="tools"
        url="%(repo)s/tools"
-    revision="${revision}" />
+    revision="HEAD" />
     <svn:checkout 
        dir_="tools_regression"
        url="%(repo)s/tools/regression"
-    revision="${revision}" />
-    <sh:exec executable="cp" args="tools_regression/src/run.py ." />
+    revision="HEAD" />
     <svn:checkout 
        dir_="tools_bb"
        url="%(repo)s/tools/build/v2"
-    revision="${revision}" />
+    revision="HEAD" />
     <svn:checkout 
        dir_="tools_bjam"
        url="%(repo)s/tools/jam/src"
-    revision="${revision}" />
+    revision="HEAD" />
   </step>
 
   <step id="build tools" description="Build regression testing tools">
-    <python:exec file="run.py" args="--incremental --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.tool-build-options} setup" />
+    <python:exec file="tools_regression/src/run.py" args="--incremental --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.tool-build-options} setup" />
   </step>
   '''
 project_xml ='''                                                     
   <step id="%(id)s" description="Tests run in %(project_path)s" onerror="continue">
-    <sh:exec executable="rm" args="-f results/bjam.log" />
-    <python:exec file="run.py" args="--incremental --library=%(project_path)s --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run test-process create-bitten-report" />
+    <python:exec file="tools_regression/src/run.py" args="--incremental --clean-log --library=%(project_path)s --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run test-process create-bitten-report" />
     <report category="test" file="results/%(project_path)s.xml" />
   </step>
 '''
