@@ -75,6 +75,10 @@ class runner:
             help="if a test fails, exit with a nonzero status",
             action='store_true' )
         
+        opt.add_option( '--clean-log',
+            help="start with a fresh regression log",
+            action='store_true' )
+        
         #~ Source Options:
         opt.add_option( '--user',
             help="Boost SVN user ID" )
@@ -114,6 +118,7 @@ class runner:
             help="do not run bjam; used for testing script changes" )
         
         #~ Defaults
+        self.clean_log = False
         self.runner = None
         self.comment='comment.html'
         self.tag='trunk'
@@ -305,10 +310,14 @@ class runner:
     
     def command_test_run(self):
         self.import_utils()
-        test_cmd = '%s -d2 --dump-tests %s "--build-dir=%s" >>"%s" 2>&1' % (
+
+        utils.makedirs( self.regression_results )
+        redirect = '>' * (2 - self.clean_log);
+        test_cmd = '%s -d2 --dump-tests %s "--build-dir=%s" %s"%s" 2>&1' % (
             self.bjam_cmd( self.toolsets ),
             self.bjam_options,
             self.regression_results,
+            redirect,
             self.regression_log )
         self.log( 'Starting tests (%s)...' % test_cmd )
         cd = os.getcwd()
