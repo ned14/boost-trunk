@@ -12,8 +12,8 @@ import shutil
 import sys
 import urllib
 
-#~ The directory this file is in.
-root = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
+#~ The current working directory.
+root = os.getcwd()
 print '# Running regressions in %s...' % root
 
 script_sources = [ 'collect_and_upload_logs.py', 'regression.py' ]
