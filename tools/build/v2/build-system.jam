@@ -492,48 +492,70 @@ for t in $(virtual-targets)
 # Was an XML dump requested?
 .out-xml = [ MATCH --out-xml=(.*) : [ modules.peek : ARGV ] ] ;
 if $(.out-xml)
-{
-    modules.poke : .out-xml : $(.out-xml) ;
-    module 
+{    
+    # Generate an XML file containing build statistics for each
+    # constituent
+    rule xml-target-stats ( xml-file : constituents * )
     {
-        rule catenate-xml ( target : sources * )
-        {
-            local nl = "
+        # Prepare valid XML header and footer
+        local nl = "
 " ;
-            .header on $(target) = 
-              <?xml version=\"1.0\" encoding=\"utf-8\"?>
-              $(nl)<build version=\"1.0\"> 
-                ;
-            .footer on $(target) = $(nl)</build> ;
-            INCLUDES $(target) : $(sources) ;
-        }
-
-        actions catenate-xml 
-        {
-            echo "XML output dumped to:" @($(<):E=$(.header) $(.contents) $(.footer))
-        }
-
-        rule __ACTION_RULE__ ( target sources * : status : user : system : command : output ? )
-        {
-            local nl = "
-" ;
-            local locate = [ on $(target) return $(LOCATE) ] ;
-            .contents on $(.out-xml) +=
-              $(nl)"  <action status=\""$(status)"\" user=\""$(user)"\" system=\""$(system)"\">"
-              $(nl)"   "<target>$(target:G=:R=$(locate))</target>
-              $(nl)"   "<source>$(sources)</source>
-              $(nl)"   "<status>$(status)</status>
-              $(nl)"   "<command>$(nl)<![CDATA[$(command)]]></command>
-              $(nl)"   "<output><![CDATA[$(output)]]></output>
-              $(nl)"  "</action>$(nl) ;
-        }
-
-        __ACTION_RULE__ = __ACTION_RULE__ ;
+        .header on $(xml-file) = 
+          <?xml version=\"1.0\" encoding=\"utf-8\"?>
+          $(nl)<build version=\"1.0\"> 
+            ;
+        .footer on $(xml-file) = $(nl)</build> ;
+        
+        # Build $(xml-file) after $(constituents) and do so even if a
+        # constituent action fails.
+        INCLUDES $(xml-file) : $(constituents) ;
+        
+        __ACTION_RULE__ on $(xml-file) = build-system.xml-target-stats-action ;
     }
     
-    __ACTION_RULE__ on $(.out-xml) = ; # don't include the XML file in its own dumpfile
+    # The actual build actions are here; if we did this work in the
+    # actions clause we would have to form a valid command line
+    # containing the result of @(...) below (the name of the XML file).
+    rule xml-target-stats-action ( target sources * : status : user : system : command : output ? )
+    {
+        local contents = [ 
+          on $(target) return $(.header) $(.contents) $(.footer) 
+        ] ;
+        local f = @($(target):E=$(contents)) ;
+    }
     
-    catenate-xml $(.out-xml) : $(actual-targets) ;
+    # Nothing to do here; the *real* actions happen in
+    # xml-target-stats-action
+    actions quietly xml-target-stats 
+    {
+    }
+    
+    xml-target-stats $(.out-xml) : $(actual-targets) ;
+    
+    # Set up a global __ACTION_RULE__ that records all the available
+    # statistics about each actual target in a variable "on" the
+    # --out-xml target.
+    rule collect-xml-target-stats ( target sources * : status : user : system : command : output ? )
+    {
+        local nl = "
+" ;
+        # Compute the path of the actual file being built
+        local locate = [ on $(target) return $(LOCATE) ] ;
+        .contents on $(.out-xml) +=
+          $(nl)"  <action status=\""$(status)"\" user=\""$(user)"\" system=\""$(system)"\">"
+          $(nl)"   "<target>$(target:G=:R=$(locate))</target>
+          $(nl)"   "<source>$(sources)</source>
+          $(nl)"   "<command>$(nl)<![CDATA[$(command)]]></command>
+          $(nl)"   "<output><![CDATA[$(output)]]></output>
+          $(nl)"  "</action>$(nl) ;
+    }
+    
+    # When no __ACTION_RULE__ is set "on" a target, the search falls
+    # back to the global module
+    module
+    {
+        __ACTION_RULE__ = build-system.collect-xml-target-stats ;
+    }
 }
 
 NOTFILE all ;
