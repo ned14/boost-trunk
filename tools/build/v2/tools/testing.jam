@@ -241,13 +241,13 @@ rule dump-test ( target )
     # test info to that XML file rather than dumping them to stdout.
     if $(.out-xml)
     {
-            local nl = "
+        local nl = "
 " ;
         .contents on $(.out-xml) += 
-          $(nl)"  <test type=\""$(type)"\" name=\""$(name)"\">"
-          $(nl)"   "<info><![CDATA[$(test-info)]]></info>
-          $(nl)"   "<source>$(source-files)</source>
-          $(nl)"  </test>"
+            "$(nl)  <test type=\"$(type)\" name=\"$(name)\">"
+            "$(nl)    <info><![CDATA[$(test-info)]]></info>"
+            "$(nl)    <source><![CDATA[$(source-files)]]></source>"
+            "$(nl)  </test>"
             ;
     }
     else
