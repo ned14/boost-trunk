@@ -9824,6 +9824,7 @@ libs/interprocess/example/doc_managed_aligned_allocation.cpp svneol=native#text/
 libs/interprocess/example/doc_managed_allocation_command.cpp svneol=native#text/plain
 libs/interprocess/example/doc_managed_construction_info.cpp svneol=native#text/plain
 libs/interprocess/example/doc_managed_external_buffer.cpp svneol=native#text/plain
+libs/interprocess/example/doc_managed_grow.cpp svneol=native#text/plain
 libs/interprocess/example/doc_managed_heap_memory.cpp svneol=native#text/plain
 libs/interprocess/example/doc_managed_mapped_file.cpp svneol=native#text/plain
 libs/interprocess/example/doc_managed_multiple_allocation.cpp svneol=native#text/plain
@@ -9893,6 +9894,7 @@ libs/interprocess/proj/vc7ide/doc_ipc_messageB.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/doc_managed_aligned_allocation.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/doc_managed_allocation_command.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/doc_managed_construction_info.vcproj svneol=native#text/plain
+libs/interprocess/proj/vc7ide/doc_managed_grow.vcproj svneol=CRLF#text/xml eol=crlf
 libs/interprocess/proj/vc7ide/doc_managed_heap_memory.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/doc_managed_mapped_file.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/doc_managed_multiple_allocation.vcproj svneol=native#text/plain
