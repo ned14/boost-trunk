@@ -10068,6 +10068,7 @@ libs/intrusive/example/doc_list_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_offset_ptr.cpp svneol=native#text/plain
 libs/intrusive/example/doc_rbtree_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_set.cpp svneol=native#text/plain
+libs/intrusive/example/doc_sg_set.cpp svneol=native#text/plain
 libs/intrusive/example/doc_slist.cpp svneol=native#text/plain
 libs/intrusive/example/doc_slist_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_splay_algorithms.cpp svneol=native#text/plain
@@ -10093,6 +10094,8 @@ libs/intrusive/proj/vc7ide/make_functions/make_functions.vcproj svneol=native#te
 libs/intrusive/proj/vc7ide/multiset/multiset.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/perf_test/perf_test.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/set/set.vcproj svneol=native#text/plain
+libs/intrusive/proj/vc7ide/sg_multiset/sg_multiset.vcproj svneol=CRLF#text/xml eol=crlf
+libs/intrusive/proj/vc7ide/sg_set/sg_set.vcproj svneol=CRLF#text/xml eol=crlf
 libs/intrusive/proj/vc7ide/slist/slist.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/splay_multiset/splay_multiset.vcproj svneol=CRLF#text/xml eol=crlf
 libs/intrusive/proj/vc7ide/splay_set/splay_set.vcproj svneol=CRLF#text/xml eol=crlf
@@ -10108,11 +10111,16 @@ libs/intrusive/test/common_functors.hpp svneol=native#text/plain
 libs/intrusive/test/custom_bucket_traits_test.cpp svneol=native#text/plain
 libs/intrusive/test/default_hook_test.cpp svneol=native#text/plain
 libs/intrusive/test/external_value_traits_test.cpp svneol=native#text/plain
+libs/intrusive/test/generic_assoc_test.hpp svneol=native#text/plain
+libs/intrusive/test/generic_multiset_test.hpp svneol=native#text/plain
+libs/intrusive/test/generic_set_test.hpp svneol=native#text/plain
 libs/intrusive/test/itestvalue.hpp svneol=native#text/plain
 libs/intrusive/test/list_test.cpp svneol=native#text/plain
 libs/intrusive/test/make_functions_test.cpp svneol=native#text/plain
 libs/intrusive/test/multiset_test.cpp svneol=native#text/plain
 libs/intrusive/test/set_test.cpp svneol=native#text/plain
+libs/intrusive/test/sg_multiset_test.cpp svneol=native#text/plain
+libs/intrusive/test/sg_set_test.cpp svneol=native#text/plain
 libs/intrusive/test/slist_test.cpp svneol=native#text/plain
 libs/intrusive/test/smart_ptr.hpp svneol=native#text/plain
 libs/intrusive/test/splay_multiset_test.cpp svneol=native#text/plain

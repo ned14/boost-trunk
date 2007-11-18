@@ -2,9 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="list"
-	ProjectGUID="{977B61B4-9968-497C-9F0B-24A8145473B8}"
-	RootNamespace="list"
+	Name="sg_multiset"
+	ProjectGUID="{07022E76-6CB5-92C1-B47F-A10772A79B43}"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -21,13 +20,12 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="../../../../../"
-				PreprocessorDefinitions="BOOST_DATE_TIME_NO_LIB"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				GeneratePreprocessedFile="0"
-				KeepComments="FALSE"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="5"
-				DisableLanguageExtensions="FALSE"
+				DisableLanguageExtensions="TRUE"
 				TreatWChar_tAsBuiltInType="TRUE"
 				ForceConformanceInForLoopScope="TRUE"
 				UsePrecompiledHeader="0"
@@ -38,11 +36,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)/list.exe"
+				OutputFile="$(OutDir)/sg_multiset.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/list.pdb"
-				GenerateMapFile="FALSE"
+				ProgramDatabaseFile="$(OutDir)/sg_multiset.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -75,10 +72,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="../../../../../"
-				PreprocessorDefinitions="BOOST_DATE_TIME_NO_LIB"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="4"
-				DisableLanguageExtensions="FALSE"
-				ForceConformanceInForLoopScope="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
@@ -87,7 +82,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)/list.exe"
+				OutputFile="$(OutDir)/sg_multiset.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
 				SubSystem="1"
@@ -122,20 +117,10 @@
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			UniqueIdentifier="{7F97AC3C-5426-8CA7-5D74-2B385DAA232F}">
 			<File
-				RelativePath="..\..\..\test\list_test.cpp">
+				RelativePath="..\..\..\test\sg_multiset_test.cpp">
 			</File>
-		</Filter>
-		<Filter
-			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
-		</Filter>
-		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
 		</Filter>
 	</Files>
 	<Globals>
