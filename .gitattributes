@@ -10008,6 +10008,7 @@ libs/interprocess/test/named_semaphore_test.cpp svneol=native#text/plain
 libs/interprocess/test/named_upgradable_mutex_test.cpp svneol=native#text/plain
 libs/interprocess/test/node_allocator_test.cpp svneol=native#text/plain
 libs/interprocess/test/node_pool_test.cpp svneol=native#text/plain
+libs/interprocess/test/node_pool_test.hpp svneol=native#text/plain
 libs/interprocess/test/null_index_test.cpp svneol=native#text/plain
 libs/interprocess/test/print_container.hpp svneol=native#text/plain
 libs/interprocess/test/private_adaptive_pool_test.cpp svneol=native#text/plain
