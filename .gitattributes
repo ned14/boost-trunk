@@ -18537,7 +18537,6 @@ tools/regression/xsl_reports/report.py svneol=native#text/x-python
 tools/regression/xsl_reports/runner/__init__.py svneol=native#text/x-python
 tools/regression/xsl_reports/runner/collect_and_upload_logs.py svneol=native#text/x-python
 tools/regression/xsl_reports/runner/default.css svneol=native#text/css
-tools/regression/xsl_reports/runner/instructions.html svneol=native#text/html
 tools/regression/xsl_reports/runner/regression.py svneol=native#text/x-python
 tools/regression/xsl_reports/test/common.py svneol=native#text/x-python
 tools/regression/xsl_reports/test/expected_results.xml svneol=native#text/xml
