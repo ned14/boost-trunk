@@ -18472,9 +18472,9 @@ tools/regression/build/vcide/library_status.vcproj svneol=native#text/xml
 tools/regression/build/vcide/process_jam_log.sln -text
 tools/regression/build/vcide/process_jam_log.vcproj -text
 tools/regression/build/vcide/regression.sln svneol=native#text/xml
-tools/regression/index.htm svneol=native#text/html
-tools/regression/index.shtml -text
-tools/regression/library_status.html svneol=native#text/html
+tools/regression/doc/index.html svneol=native#text/html
+tools/regression/doc/library_status.html svneol=native#text/html
+tools/regression/index.html svneol=native#text/html
 tools/regression/src/boost_svn_export_archive.sh svneol=native#text/x-sh
 tools/regression/src/collect_and_upload_logs.py svneol=native#text/x-python
 tools/regression/src/compiler_status.cpp svneol=native#text/plain
@@ -18533,10 +18533,6 @@ tools/regression/xsl_reports/email_maintainers.py svneol=native#text/x-python
 tools/regression/xsl_reports/empty_expected_results.xml svneol=native#text/xml
 tools/regression/xsl_reports/make_snapshot.py svneol=native#text/x-python
 tools/regression/xsl_reports/report.py svneol=native#text/x-python
-tools/regression/xsl_reports/runner/__init__.py svneol=native#text/x-python
-tools/regression/xsl_reports/runner/collect_and_upload_logs.py svneol=native#text/x-python
-tools/regression/xsl_reports/runner/default.css svneol=native#text/css
-tools/regression/xsl_reports/runner/regression.py svneol=native#text/x-python
 tools/regression/xsl_reports/test/common.py svneol=native#text/x-python
 tools/regression/xsl_reports/test/expected_results.xml svneol=native#text/xml
 tools/regression/xsl_reports/test/generate_test_results.py svneol=native#text/x-python
