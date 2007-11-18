@@ -17428,7 +17428,6 @@ more/getting_started/unix-variants.rst svneol=native#text/plain
 more/getting_started/windows.html svneol=native#text/html
 more/getting_started/windows.rst svneol=native#text/plain
 more/google_logo_25wht.gif -text svneol=unset#image/gif
-more/imp_vars.htm svneol=native#text/html
 more/index.htm svneol=native#text/html
 more/links.htm svneol=native#text/html
 more/microsoft_vcpp.html svneol=native#text/html
