@@ -183,7 +183,10 @@ class runner:
             'build_dir' : os.path.join(self.tools_regression_root,'build'),
             'build_args' : 'process_jam_log -d2'
             }
-        
+
+        self.boost_build_use_xml = ('create-bitten-report' in self.actions and
+                                    'test-process' not in self.actions)
+
         if self.debug_level > 0:
             self.log('Regression root =     %s'%self.regression_root)
             self.log('Boost root =          %s'%self.boost_root)
@@ -313,9 +316,17 @@ class runner:
 
         utils.makedirs( self.regression_results )
         redirect = '>' * (2 - self.clean_log);
-        test_cmd = '%s -d2 --dump-tests %s "--build-dir=%s" %s"%s" 2>&1' % (
+
+        if self.boost_build_use_xml:
+            xml_out = '--out-xml=%s' % os.path.join(self.regression_results, 
+                                                    'test_results.xml')
+        else:
+            xml_out = ''
+
+        test_cmd = '%s -d2 --dump-tests %s %s "--build-dir=%s" %s"%s" 2>&1' % (
             self.bjam_cmd( self.toolsets ),
             self.bjam_options,
+            xml_out,
             self.regression_results,
             redirect,
             self.regression_log )
@@ -397,8 +408,8 @@ class runner:
         
     def command_create_bitten_report(self):
         self.import_utils()
-        from collect_and_upload_logs import create_bitten_report
-        
+        from collect_and_upload_logs import create_bitten_reports
+
         if self.library:
             xml_root = os.path.join( self.regression_results, 'boost',
                                          'bin.v2', 'libs', self.library
@@ -407,13 +418,15 @@ class runner:
             xml_root = os.path.join( self.regression_results, 'boost',
                                          'bin.v2' )
 
-        report = create_bitten_report( xml_root ).toxml('utf-8')
+        report = create_bitten_reports(os.path.join(self.regression_results, 
+                                                    'test_results.xml'))
 
         dir = os.path.split(self.bitten_report)[0]
         if not os.path.exists(dir):
             os.makedirs(dir)
             
-        open(self.bitten_report, 'w').write(report)
+        open(self.bitten_report, 'w').write(
+            '\n'.join(('<?xml version="1.0" encoding="UTF-8"?>', report)))
     
     def command_upload_logs(self):
         self.import_utils()
