@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 # Copyright MetaCommunications, Inc. 2003-2007
 # Copyright Redshift Software, Inc. 2007
