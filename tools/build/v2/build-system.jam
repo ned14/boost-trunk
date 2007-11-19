@@ -543,7 +543,7 @@ if $(.out-xml)
                 local dependencies ;
                 for local s in $(sources)
                 {
-                    dependencies += [ full-target-name $(s) ] ;
+                    dependencies += [ $(s).actual-name ] ;
                 }
 
                 local path = [ $(t).path ] ;
