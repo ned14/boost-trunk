@@ -195,8 +195,10 @@ def create_bitten_reports(input_filename):
     for r in results:
         if r[1] == 'skipped':
             continue
+
+        fixture = os.path.split(r[0])[1]
         test = ET.SubElement(report, 'test', duration="0", 
-                             fixture=r[0], name=r[0], file=r[0], status=r[1])
+                             fixture=fixture, name=r[0], file=r[0], status=r[1])
         if r[1] == 'failed':
             stdout = ET.SubElement(test, 'stdout')
             output = str(r[2][0][2])
