@@ -18,6 +18,12 @@ import os.path
 import string
 import sys
 
+import test_results
+
+try:
+    import xml.etree.cElementTree as ET
+except ImportError:
+    import elementtree.cElementTree as ET
 
 def process_xml_file( input_file, output_file ):
     utils.log( 'Processing test log "%s"' % input_file )
@@ -166,7 +172,51 @@ def create_bitten_report(
     os.path.walk( input_dir, _collect_bitten_report_files_, None )
         
     return report
-    
+
+def indent(elem, level=0):
+    i = "\n" + level*"  "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + "  "
+        for elem in elem:
+            indent(elem, level+1)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
+
+def create_bitten_reports(input_filename):
+    results = test_results.TestResults(open(input_filename))
+
+    report = ET.Element('report', category='test', 
+                        generator="http://svn.boost.org/svn/boost/trunk/tools/"
+                                  "regression/src/collect_and_upload_logs.py")
+    for r in results:
+        if r[1] == 'skipped':
+            continue
+        test = ET.SubElement(report, 'test', duration="0", 
+                             fixture=r[0], name=r[0], file=r[0], status=r[1])
+        if r[1] == 'failed':
+            stdout = ET.SubElement(test, 'stdout')
+            output = str(r[2][0][2])
+            stdout.text = output
+    indent(report)
+
+    platform_report = ET.Element('report', category='platform')
+    platform = ET.SubElement(platform_report, 'platform')
+
+    platform.set('os', results.os[0])
+    platform.set('platform', results.os[1])
+    if results.os[2]:
+        platform.set('os-extra', results.os[2])
+    platform.set('jam-version', results.jam_version)
+    platform.set('command', results.command)
+    platform.set('timestamp', results.timestamp)
+
+    indent(platform_report)
+    return ET.tostring(report, 'utf-8')
+
 def publish_test_logs(
     input_dirs,
     runner_id, tag, platform, comment_file, timestamp, user, source, run_type,
