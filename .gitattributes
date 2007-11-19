@@ -8026,6 +8026,7 @@ libs/gil/example/x_gradient.cpp svneol=native#text/plain
 libs/gil/test/Jamfile.v2 svneol=native#text/plain
 libs/gil/test/Makefile svneol=native#text/plain
 libs/gil/test/channel.cpp svneol=native#text/plain
+libs/gil/test/error_if.cpp svneol=native#text/plain
 libs/gil/test/gil_reference_checksums.txt svneol=native#text/plain
 libs/gil/test/image.cpp svneol=native#text/plain
 libs/gil/test/image_io.cpp svneol=native#text/plain
