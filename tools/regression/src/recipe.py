@@ -197,7 +197,7 @@ head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
   '''
 project_xml ='''                                                     
   <step id="%(id)s" description="Tests run in %(project_path)s" onerror="continue">
-    <python:exec file="tools_regression/src/run.py" args="--incremental --clean-log --library=%(project_path)s --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run test-process create-bitten-report" />
+    <python:exec file="tools_regression/src/run.py" args="--incremental --clean-log --library=%(project_path)s --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run create-bitten-report" />
     <report category="test" file="results/%(project_path)s.xml" />
   </step>
 '''
