@@ -286,7 +286,28 @@ class runner:
         self.command_patch()
         self.build_if_needed(self.bjam,self.bjam_toolset)
         self.build_if_needed(self.process_jam_log,self.pjl_toolset)
-    
+        self._overwrite_boost_build_jam()
+
+    def _overwrite_boost_build_jam(self):
+        build_path = self.regression_root
+        if build_path[-1] == '\\': 
+            build_path += '\\'
+
+        jam = """#~ Copyright (C) 2002-2003, David Abrahams.
+#~ Copyright (C) 2002-2003, Vladimir Prus.
+#~ Copyright (C) 2003, Rene Rivera.
+#~ Use, modification and distribution are subject to the
+#~ Boost Software License, Version 1.0. (See accompanying file
+#~ LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+
+BOOST_ROOT = $(.boost-build-file:D) ;
+boost-build %s ;
+"""
+
+        bb = os.path.join('..', self.tools_bb_root).replace('\\', '/')
+        open(os.path.join(self.boost_root, 'boost-build.jam'), 'w').write(
+            jam % bb)
+
     def command_test(self, *args):
         if not args or args == None or args == []: args = [ "test", "process" ]
         self.import_utils()
