@@ -186,7 +186,31 @@ def indent(elem, level=0):
         if level and (not elem.tail or not elem.tail.strip()):
             elem.tail = i
 
-def create_bitten_reports(input_filename):
+def relpath(path, reldir):
+    """Returns 'path' relative to 'reldir'."""
+
+    # use normpath to ensure path separators are uniform
+    path = os.path.normpath(path)    
+
+    # find length of reldir as prefix of path (or zero if it isn't)
+    prelen = len(os.path.commonprefix((
+        os.path.normcase(path),
+        # add a separator to get correct prefix length
+        # (normpath removes trailing separators)
+        os.path.normcase(os.path.normpath(reldir)) + os.sep
+        )))
+    return path[prelen:]
+
+def filename_from_test(root, test):
+    """Returns the source file for a test file, relative
+    to `root`."""
+
+    if test.endswith('.test'):
+        test = ''.join((test[:-4], 'cpp'))
+
+    return relpath(test, root)
+
+def create_bitten_reports(root, input_filename):
     results = test_results.TestResults(open(input_filename))
 
     report = ET.Element('report', category='test', 
@@ -196,10 +220,12 @@ def create_bitten_reports(input_filename):
         if r[1] == 'skipped':
             continue
 
-        fixture = os.path.split(r[0])[1]
         status = {'success': 'success', 'failed': 'failure'}.get(r[1])
+        filename = filename_from_test(root, r[0])
+        fixture = os.path.split(filename)[1]
+
         test = ET.SubElement(report, 'test', duration="0", 
-                             fixture=fixture, name=r[0], file=r[0], status=status)
+                             fixture=fixture, name=fixture, file=filename, status=status)
         if r[1] == 'failed':
             stdout = ET.SubElement(test, 'stdout')
             output = str(r[2][0][2])

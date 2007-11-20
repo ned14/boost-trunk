@@ -419,7 +419,8 @@ class runner:
             xml_root = os.path.join( self.regression_results, 'boost',
                                          'bin.v2' )
 
-        report = create_bitten_reports(os.path.join(self.regression_results, 
+        report = create_bitten_reports(self.boost_root,
+                                       os.path.join(self.regression_results, 
                                                     'test_results.xml'))
 
         dir = os.path.split(self.bitten_report)[0]
