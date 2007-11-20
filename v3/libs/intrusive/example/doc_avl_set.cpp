@@ -61,13 +61,11 @@ int main()
    //Check that size optimization is deactivated in the member hook 
    assert(sizeof(avl_set_member_hook<>) > 3*sizeof(void*));
 
-   //Now insert them in the reverse order in the base hook avl_set
-   for(VectIt it(values.begin()), itend(values.end()); it != itend; ++it)
+   //Now insert them in the sets
+   for(VectIt it(values.begin()), itend(values.end()); it != itend; ++it){
       baseset.insert(*it);
-
-   //Now insert them in the same order as in vector in the member hook avl_set
-   for(VectIt it(values.begin()), itend(values.end()); it != itend; ++it)
       membermultiset.insert(*it);
+   }
 
    //Now test avl_sets
    {

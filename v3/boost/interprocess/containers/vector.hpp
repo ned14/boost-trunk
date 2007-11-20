@@ -52,8 +52,6 @@
 #include <stdexcept>
 #include <iterator>
 #include <utility>
-#include <string.h>  //for memcopy, memmove
-
 #include <boost/detail/no_exceptions_support.hpp>
 #include <boost/type_traits/has_trivial_destructor.hpp>
 #include <boost/type_traits/has_trivial_copy.hpp>
@@ -329,7 +327,7 @@ struct vector_alloc_holder
    protected:
    void prot_deallocate()
    {
-      if(!this->members_.m_start)   return;
+      if(!this->members_.m_capacity)   return;
       this->alloc().deallocate(this->members_.m_start, this->members_.m_capacity);
       this->members_.m_start     = 0;
       this->members_.m_size      = 0;
@@ -410,8 +408,8 @@ class vector : private detail::vector_alloc_holder<A>
    typedef typename base_t::alloc_version          alloc_version;
 
    typedef constant_iterator<T, difference_type>   cvalue_iterator;
-   typedef repeat_iterator<T, difference_type>     repeat_iterator;
-   typedef detail::move_iterator<repeat_iterator>  repeat_move_it;
+   typedef repeat_iterator<T, difference_type>     rp_iterator;
+   typedef detail::move_iterator<rp_iterator>      repeat_move_it;
    //This is the anti-exception array destructor
    //to deallocate values already constructed
    typedef typename detail::if_c
@@ -803,7 +801,6 @@ class vector : private detail::vector_alloc_holder<A>
       if (&x != this){
          this->swap(x);
          x.clear();
-//?         base_t::prot_deallocate();
       }
       return *this;
    }
@@ -815,7 +812,6 @@ class vector : private detail::vector_alloc_holder<A>
       if (&x != this){
          this->swap(x);
          x.clear();
-//?         base_t::prot_deallocate();
       }
       return *this;
    }
@@ -965,8 +961,8 @@ class vector : private detail::vector_alloc_holder<A>
       //Just call more general insert(pos, size, value) and return iterator
       size_type n = position - begin();
       this->insert(position
-                  ,repeat_move_it(repeat_iterator(mx.get(), 1))
-                  ,repeat_move_it(repeat_iterator()));
+                  ,repeat_move_it(rp_iterator(mx.get(), 1))
+                  ,repeat_move_it(rp_iterator()));
       return iterator(this->members_.m_start + n);
    }
    #else
@@ -975,8 +971,8 @@ class vector : private detail::vector_alloc_holder<A>
       //Just call more general insert(pos, size, value) and return iterator
       size_type n = position - begin();
       this->insert(position
-                  ,repeat_move_it(repeat_iterator(mx, 1))
-                  ,repeat_move_it(repeat_iterator()));
+                  ,repeat_move_it(rp_iterator(mx, 1))
+                  ,repeat_move_it(rp_iterator()));
       return iterator(this->members_.m_start + n);
    }
    #endif
@@ -1124,7 +1120,7 @@ class vector : private detail::vector_alloc_holder<A>
    private:
    void priv_shrink_to_fit(allocator_v1)
    {
-      if(this->members_.m_start){
+      if(this->members_.m_capacity){
          if(!size()){
             this->prot_deallocate();
          }
@@ -1137,7 +1133,7 @@ class vector : private detail::vector_alloc_holder<A>
 
    void priv_shrink_to_fit(allocator_v2)
    {
-      if(this->members_.m_start){
+      if(this->members_.m_capacity){
          if(!size()){
             this->prot_deallocate();
          }

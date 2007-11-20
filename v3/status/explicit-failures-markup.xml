@@ -1303,6 +1303,7 @@
             </note>
         </mark-unusable>
         <mark-expected-failures>
+          <test name="*"/>
           <toolset name="sun-5.7"/>
           <toolset name="sun-5.8"/>
           <note author="Beman Dawes">
@@ -1588,6 +1589,26 @@
                 essential for the library.
             </note>
         </mark-unusable>
+        <mark-expected-failures>
+            <test name="fused"/>
+            <test name="fused_function_object"/>
+            <test name="fused_procedure"/>
+            <test name="make_fused"/>
+            <test name="make_fused_function_object"/>
+            <test name="make_fused_procedure"/>
+            <toolset name="acc"/>
+            <note author="Boris Gubenko">
+                With aCC6, this test needs to be compiled in strict ansi mode.
+                Since on HP-UX boost testing is done in the default compilation
+                mode, the test fails on this platform.
+            </note>
+            <note author="Tobias Schwinger">
+                Those failures are due to not quite const-correct overload
+                resolution. The complaints from the test suite should rarely 
+                matter in practice - the corresponding components are basically
+                usable.
+            </note>
+        </mark-expected-failures>
     </library>
 
 
@@ -4254,6 +4275,15 @@ for more information.
             </note>
         </mark-unusable>
         <mark-expected-failures>
+            <test name="DllTestNative"/>
+            <toolset name="gcc-mingw-4.2*"/>
+            <note author="Andreas Huber">
+                A runtime failure of this test indicates that the RTTI
+                implementation of this platform is broken in conjunction
+                with dynamic linking.
+            </note>
+        </mark-expected-failures>
+        <mark-expected-failures>
             <test name="DllTestNormal"/>
             <toolset name="*cygwin*"/>
             <toolset name="*mingw*"/>
@@ -4266,15 +4296,6 @@ for more information.
                 header-defined static class member can exist at runtime. See
                 <a href="http://www.boost.org/libs/statechart/doc/faq.html#Dll">here</a>
                 for more information.
-            </note>
-        </mark-expected-failures>
-        <mark-expected-failures>
-            <test name="DllTestNative"/>
-            <toolset name="gcc-mingw-4.2*"/>
-            <note author="Andreas Huber">
-                A runtime failure of this test indicates that the RTTI
-                implementation of this platform is broken in conjunction
-                with dynamic linking.
             </note>
         </mark-expected-failures>
         <mark-expected-failures>
@@ -4313,6 +4334,23 @@ for more information.
             <test name="PerformanceExample"/>
             <toolset name="vacpp"/>
             <note author="Andreas Huber" refid="29"/>
+        </mark-expected-failures>
+        <mark-expected-failures>
+            <test name="StopWatch*"/>
+            <toolset name="msvc-8.0~wm5~stlport5.1"/>
+            <note author="Andreas Huber">
+                This looks like a std library or configuration bug. Since
+                difftime is only used in the example, this failure can be
+                ignored.
+            </note>
+        </mark-expected-failures>
+        <mark-expected-failures>
+            <test name="DllTest*"/>
+            <toolset name="msvc-8.0~wm5~stlport5.1"/>
+            <note author="Andreas Huber">
+                This test fails due to unresolved externals that are
+                not library-related.
+            </note>
         </mark-expected-failures>
     </library>
 

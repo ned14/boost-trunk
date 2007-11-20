@@ -114,8 +114,8 @@ class set_impl
    //! <b>Effects</b>: Detaches all elements from this. The objects in the set 
    //!   are not deleted (i.e. no destructors are called).
    //! 
-   //! <b>Complexity</b>: O(log(size()) + size()) if it's a safe-mode or auto-unlink
-   //!   value. Otherwise constant.
+   //! <b>Complexity</b>: Linear to the number of elements on the container.
+   //!   if it's a safe-mode or auto-unlink value_type. Constant time otherwise.
    //! 
    //! <b>Throws</b>: Nothing.
    ~set_impl() 
@@ -1179,8 +1179,8 @@ class multiset_impl
    //! <b>Effects</b>: Detaches all elements from this. The objects in the set 
    //!   are not deleted (i.e. no destructors are called).
    //! 
-   //! <b>Complexity</b>: O(log(size()) + size()) if it's a safe-mode or
-   //!   auto-unlink value. Otherwise constant.
+   //! <b>Complexity</b>: Linear to the number of elements on the container.
+   //!   if it's a safe-mode or auto-unlink value_type. Constant time otherwise.
    //! 
    //! <b>Throws</b>: Nothing.
    ~multiset_impl() 

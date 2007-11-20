@@ -18,13 +18,13 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <map>
 #include <boost/lambda/lambda.hpp>
 #include <boost/lambda/bind.hpp>
 #include <boost/mpl/vector.hpp>
 #include <boost/gil/extension/dynamic_image/dynamic_image_all.hpp>
 #include <boost/crc.hpp>
-#include <fstream>
 
 using namespace boost::gil;
 using namespace std;
@@ -291,14 +291,22 @@ void image_test::virtual_view_test() {
     histogram_test(mandel,"virtual_");
 }
 
+// Test alignment and packed images
 void image_test::packed_image_test() {
-    typedef packed_image3_type<boost::uint16_t, 5,6,5, rgb_layout_t>::type rgb565_image_t;
+	typedef bit_aligned_image3_type<1,3,1, bgr_layout_t>::type bgr131_image_t;
+	typedef bgr131_image_t::value_type bgr131_pixel_t;
+	bgr131_pixel_t fill_val(1,3,1);
 
-    rgb565_image_t img565(sample_view.dimensions());
-    copy_and_convert_pixels(sample_view, view(img565));
+	bgr131_image_t bgr131_img(3,10);
+	fill_pixels(view(bgr131_img), fill_val);
 
-// TODO: Commented out because there is an error with packed images under GCC 4.1.2, but not under VC8
-//    check_view(color_converted_view<rgb8_pixel_t>(const_view(img565)),"packed565");
+	bgr131_image_t bgr131a_img(3,10,1);
+	copy_pixels(const_view(bgr131_img), view(bgr131a_img));
+
+	bgr131_image_t bgr131b_img(3,10,4);
+	copy_pixels(const_view(bgr131_img), view(bgr131b_img));
+
+	error_if(bgr131_img!=bgr131a_img || bgr131a_img!=bgr131b_img);
 }
 
 void image_test::dynamic_image_test() {
@@ -339,7 +347,7 @@ void image_test::run() {
     image_all_test<rgb8_planar_image_t>("planarrgb8_");
     image_all_test<gray8_image_t>("gray8_");
 
-    typedef const bit_aligned_pixel_reference<boost::uint8_t, mpl::vector3_c<int,1,2,1>, bgr_layout_t, true>  bgr121_ref_t;
+	typedef const bit_aligned_pixel_reference<boost::uint8_t, mpl::vector3_c<int,1,2,1>, bgr_layout_t, true>  bgr121_ref_t;
     typedef image<bgr121_ref_t,false> bgr121_image_t;
     image_all_test<bgr121_image_t>("bgr121_");
 
@@ -558,15 +566,24 @@ void test_image(const char* ref_checksum) {
     static_checks();
 }
 
+int main(int argc, char* argv[]) {
 
+    const char* local_name = "gil_reference_checksums.txt";
+    const char* name_from_status = "../libs/gil/test/gil_reference_checksums.txt";
 
+    std::ifstream file_is_there(local_name);
+    if (file_is_there) {
+        test_image(local_name);
+    } else {
+        std::ifstream file_is_there(name_from_status);
+        if (file_is_there)
+            test_image(name_from_status);
+        else {
+            std::cerr << "Unable to open gil_reference_checksums.txt"<<std::endl;
+            return 1;
+        }
+    }
 
-
-
-
-
-
-
-
-
+    return 0;
+}
 

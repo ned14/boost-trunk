@@ -22,6 +22,7 @@
 #include <boost/gil/step_iterator.hpp>
 #include <boost/gil/typedefs.hpp>
 #include <boost/gil/color_convert.hpp>
+#include <boost/gil/image_view_factory.hpp>
 #include <boost/mpl/vector.hpp>
 
 using namespace boost::gil;
@@ -289,3 +290,9 @@ ignore_unused_variable_warning(rgb8_const_ptr_err);
     memunit_advance(rgb8_pptr,-3);
 }
 */
+
+int main(int argc, char* argv[]) {
+    test_pixel_iterator();
+    return 0;
+}
+
