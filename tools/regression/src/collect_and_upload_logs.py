@@ -228,7 +228,7 @@ def create_bitten_reports(root, input_filename):
                              fixture=fixture, name=fixture, file=filename, status=status)
         if r[1] == 'failed':
             stdout = ET.SubElement(test, 'stdout')
-            output = str(r[2][0][2])
+            output = r[2][0][2]
             stdout.text = output
     indent(report)
 
