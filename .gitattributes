@@ -4568,7 +4568,6 @@ boost/test/detail/log_level.hpp svneol=native#text/plain
 boost/test/detail/suppress_warnings.hpp svneol=native#text/plain
 boost/test/detail/unit_test_parameters.hpp svneol=native#text/plain
 boost/test/detail/workaround.hpp svneol=native#text/plain
-boost/test/detail/wrap_io_saver.hpp svneol=native#text/plain
 boost/test/exception_safety.hpp svneol=native#text/plain
 boost/test/execution_monitor.hpp svneol=native#text/plain
 boost/test/floating_point_comparison.hpp svneol=native#text/plain
