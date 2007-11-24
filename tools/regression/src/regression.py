@@ -164,7 +164,7 @@ class runner:
             }
 
         if self.library:
-            out_xml = os.path.join( *self.library.split('/') + '.xml' )
+            out_xml = os.path.join( *(self.library + '.xml').split('/') )
         else:
             out_xml = 'test_results.xml'
             
