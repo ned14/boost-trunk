@@ -1695,6 +1695,7 @@ boost/interprocess/detail/pointer_type.hpp svneol=native#text/plain
 boost/interprocess/detail/posix_time_types_wrk.hpp svneol=native#text/plain
 boost/interprocess/detail/ptime_wrk.hpp svneol=native#text/plain
 boost/interprocess/detail/segment_manager_helper.hpp svneol=native#text/plain
+boost/interprocess/detail/tmp_dir_helpers.hpp svneol=native#text/plain
 boost/interprocess/detail/type_traits.hpp svneol=native#text/plain
 boost/interprocess/detail/utilities.hpp svneol=native#text/plain
 boost/interprocess/detail/version_type.hpp svneol=native#text/plain
