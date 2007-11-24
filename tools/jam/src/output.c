@@ -63,7 +63,11 @@ void out_action(
         case EXIT_TIMEOUT:
         {
             /* process expired, make user aware with explicit message */
+            if ( action )
+            {
+                /* but only output for non-quietly actions */
             fprintf(bjam_out, "%d second time limit exceeded\n", globs.timeout);
+            }
             break;
         }
         default:
@@ -71,6 +75,9 @@ void out_action(
     }
     
     /* print out the command output, if requested */
+    if ( action )
+    {
+        /* but only output for non-quietly actions */
     if (0 != out_data &&
        ( globs.pipe_action & 1 /* STDOUT_FILENO */ ||
          globs.pipe_action == 0))
@@ -81,6 +88,7 @@ void out_action(
         globs.pipe_action & 2 /* STDERR_FILENO */)
     {
         out_(err_data,bjam_err);
+    }
     }
     
     fflush(bjam_out);

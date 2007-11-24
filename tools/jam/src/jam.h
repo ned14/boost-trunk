@@ -455,7 +455,7 @@
 # define OSPLAT "OSPLAT=X86"
 # endif 
 
-# if defined( __ia64__ ) || defined( __IA64__ )
+# if defined( __ia64__ ) || defined( __IA64__ ) || defined( __ia64 )
 # define OSPLAT "OSPLAT=IA64"
 # endif
 
@@ -481,6 +481,10 @@
 
 # ifdef __s390__
 # define OSPLAT "OSPLAT=390"
+# endif
+
+# ifdef __hppa
+# define OSPLAT "OSPLAT=PARISC"
 # endif
 
 # ifndef OSPLAT
