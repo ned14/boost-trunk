@@ -80,6 +80,7 @@ class TestResults(object):
                 target = elem.find('jam-target')
                 command = elem.find('command')
                 output = elem.find('output')
+                    
                 if target is None:
                     continue
 
@@ -89,7 +90,7 @@ class TestResults(object):
 
                 name = self._as_absolute_path(target.text)
                 self.results[name] = (status == '0', command.text,
-                                      output and output.text or '', properties)
+                                      output is not None and output.text or '', properties)
                 elem.clear()
 
     def _follow_dependencies(self, target):

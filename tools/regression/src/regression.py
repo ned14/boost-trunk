@@ -164,7 +164,7 @@ class runner:
             }
 
         if self.library:
-            out_xml = os.path.join( *(self.library + '.xml').split('/') )
+            out_xml = os.path.join( *(self.library + '-x.xml').split('/') )
         else:
             out_xml = 'test_results.xml'
             
@@ -323,14 +323,6 @@ class runner:
     def command_create_bitten_report(self):
         self.import_utils()
         from collect_and_upload_logs import create_bitten_reports
-
-        if self.library:
-            xml_root = os.path.join( self.regression_results, 'boost',
-                                         'bin.v2', 'libs', self.library
-                                         )
-        else:
-            xml_root = os.path.join( self.regression_results, 'boost',
-                                         'bin.v2' )
 
         report = create_bitten_reports(self.boost_root, self.out_xml)
 
