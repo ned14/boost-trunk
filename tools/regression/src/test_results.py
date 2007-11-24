@@ -88,7 +88,8 @@ class TestResults(object):
                     properties[p.get('name')] = p.text
 
                 name = self._as_absolute_path(target.text)
-                self.results[name] = (status == '0', command.text, output.text, properties)
+                self.results[name] = (status == '0', command.text,
+                                      output and output.text or '', properties)
                 elem.clear()
 
     def _follow_dependencies(self, target):
