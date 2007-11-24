@@ -68,16 +68,10 @@ class runner:
             help="options to pass to the regression test" )
         opt.add_option( '--bjam-toolset',
             help="bootstrap toolset for 'bjam' executable" )
-        opt.add_option( '--pjl-toolset',
-            help="bootstrap toolset for 'process_jam_log' executable" )
         opt.add_option( '--platform' )
 
         opt.add_option( '--reflect-test-status',
             help="if a test fails, exit with a nonzero status",
-            action='store_true' )
-        
-        opt.add_option( '--clean-log',
-            help="start with a fresh regression log",
             action='store_true' )
         
         #~ Source Options:
@@ -108,9 +102,6 @@ class runner:
         opt.add_option( '--debug-level',
             help="debugging level; controls the amount of debugging output printed",
             type='int' )
-        opt.add_option( '--send-bjam-log',
-            help="send full bjam log of the regression run",
-            action='store_true' )
         opt.add_option( '--mail',
             help="email address to send run notification to" )
         opt.add_option( '--smtp-login',
@@ -119,7 +110,6 @@ class runner:
             help="do not run bjam; used for testing script changes" )
         
         #~ Defaults
-        self.clean_log = False
         self.runner = None
         self.comment='comment.html'
         self.tag='trunk'
@@ -128,7 +118,6 @@ class runner:
         self.timeout=5
         self.bjam_options=''
         self.bjam_toolset=''
-        self.pjl_toolset=''
         self.platform=self.platform_name()
         self.user='anonymous'
         self.local=None
@@ -139,7 +128,6 @@ class runner:
         self.dart_server=None
         self.bitten_report=None
         self.debug_level=0
-        self.send_bjam_log=False
         self.library=None
         self.mail=None
         self.smtp_login=None
@@ -153,21 +141,19 @@ class runner:
         #~ Initialize option dependent values.
         self.regression_root = root
         self.boost_root = os.path.join( self.regression_root, 'boost' )
-        self.regression_results = os.path.join( self.regression_root, 'results' )
-        self.regression_log = os.path.join( self.regression_results, 'bjam.log' )
-        self.tools_bb_root = os.path.join( self.regression_root,'tools_bb' )
-        self.tools_bjam_root = os.path.join( self.regression_root,'tools_bjam' )
-        self.tools_regression_root = os.path.join( self.regression_root,'tools_regression' )
+        self.regression_results = os.path.join( self.regression_root, 'results')
+        self.tools_root = os.path.join( self.regression_root,'tools' )
+        self.tools_bb_root = os.path.join( self.tools_root,'build', 'v2' )
+        self.tools_bjam_root = os.path.join( self.tools_root,'jam', 'src' )
+        self.tools_regression_root = os.path.join( self.tools_root,'regression' )
         self.xsl_reports_dir = os.path.join( self.tools_regression_root, 'xsl_reports' )
         self.timestamp_path = os.path.join( self.regression_root, 'timestamp' )
         if sys.platform == 'win32':
             self.patch_boost = 'patch_boost.bat'
             self.bjam = { 'name' : 'bjam.exe' }
-            self.process_jam_log = { 'name' : 'process_jam_log.exe' }
         else:
             self.patch_boost = 'patch_boost'
             self.bjam = { 'name' : 'bjam' }
-            self.process_jam_log = { 'name' : 'process_jam_log' }
         self.bjam = {
             'name' : self.bjam['name'],
             'build_cmd' : self.bjam_build_cmd,
@@ -176,15 +162,14 @@ class runner:
             'build_dir' : self.tools_bjam_root,
             'build_args' : ''
             }
-        self.process_jam_log = {
-            'name' : self.process_jam_log['name'],
-            'build_cmd' : self.bjam_cmd,
-            'path' : os.path.join(self.regression_root,self.process_jam_log['name']),
-            'source_dir' : os.path.join(self.tools_regression_root,'build'),
-            'build_dir' : os.path.join(self.tools_regression_root,'build'),
-            'build_args' : 'process_jam_log -d2'
-            }
 
+        if self.library:
+            out_xml = self.library + '.xml'
+        else:
+            out_xml = 'test_results.xml'
+            
+        self.out_xml = os.path.join(self.regression_results,out_xml)
+            
         self.boost_build_use_xml = ('create-bitten-report' in self.actions and
                                     'test-process' not in self.actions)
 
@@ -192,7 +177,6 @@ class runner:
             self.log('Regression root =     %s'%self.regression_root)
             self.log('Boost root =          %s'%self.boost_root)
             self.log('Regression results =  %s'%self.regression_results)
-            self.log('Regression log =      %s'%self.regression_log)
             self.log('BB root =             %s'%self.tools_bb_root)
             self.log('Bjam root =           %s'%self.tools_bjam_root)
             self.log('Tools root =          %s'%self.tools_regression_root)
@@ -285,10 +269,9 @@ class runner:
     def command_setup(self):
         self.command_patch()
         self.build_if_needed(self.bjam,self.bjam_toolset)
-        self.build_if_needed(self.process_jam_log,self.pjl_toolset)
     
     def command_test(self, *args):
-        if not args or args == None or args == []: args = [ "test", "process" ]
+        if not args: args = [ "test" ]
         self.import_utils()
 
         self.log( 'Making "%s" directory...' % self.regression_results )
@@ -303,9 +286,6 @@ class runner:
         if "test" in args:
             self.command_test_run()
 
-        if "process" in args:
-            self.command_test_process()
-    
     def command_test_clean(self):
         results_libs = os.path.join( self.regression_results, 'libs' )
         results_status = os.path.join( self.regression_results, 'status' )
@@ -314,23 +294,15 @@ class runner:
     
     def command_test_run(self):
         self.import_utils()
+        
+        utils.makedirs( os.path.split(self.out_xml)[0] )
 
-        utils.makedirs( self.regression_results )
-        redirect = '>' * (2 - self.clean_log);
-
-        if self.boost_build_use_xml:
-            xml_out = '--out-xml=%s' % os.path.join(self.regression_results, 
-                                                    'test_results.xml')
-        else:
-            xml_out = ''
-
-        test_cmd = '%s -d2 --dump-tests %s %s "--build-dir=%s" %s"%s" 2>&1' % (
+        test_cmd = '%s --dump-tests %s --out-xml=%s "--build-dir=%s"' % (
             self.bjam_cmd( self.toolsets ),
             self.bjam_options,
-            xml_out,
-            self.regression_results,
-            redirect,
-            self.regression_log )
+            self.out_xml,
+            self.regression_results)
+        
         self.log( 'Starting tests (%s)...' % test_cmd )
         cd = os.getcwd()
         if self.library:
@@ -348,65 +320,6 @@ class runner:
         finally:
             os.chdir( cd )
 
-    def command_test_process(self):
-        self.import_utils()
-        self.log( 'Getting test case results out of "%s"...' % self.regression_log )
-        cd = os.getcwd()
-        os.chdir( os.path.join( self.boost_root, 'status' ) )
-        try:
-            self._checked_system( [
-                '"%s" "%s" <"%s"' % (
-                self.tool_path(self.process_jam_log),
-                self.regression_results,
-                self.regression_log )
-                ] )
-        finally:
-            os.chdir( cd )
-    
-    def command_collect_logs(self):
-        self.import_utils()
-        comment_path = os.path.join( self.regression_root, self.comment )
-        if not os.path.exists( comment_path ):
-            self.log( 'Comment file "%s" not found; creating default comment.' % comment_path )
-            f = open( comment_path, 'w' )
-            f.write( '<p>Tests are run on %s platform.</p>' % self.platform_name() )
-            f.close()
-
-        if self.incremental:
-            run_type = 'incremental'
-        else:
-            run_type = 'full'
-
-        source = 'tarball'
-        revision = ''
-        svn_root_file = os.path.join( self.boost_root, '.svn' )
-        svn_info_file = os.path.join( self.boost_root, 'svn_info.txt' )
-        if os.path.exists( svn_root_file ):
-            source = 'SVN'
-            self.svn_command( 'info --xml "%s" >%s' % (self.boost_root,svn_info_file) )
-
-        if os.path.exists( svn_info_file ):
-            f = open( svn_info_file, 'r' )
-            svn_info = f.read()
-            f.close()
-            i = svn_info.find( 'Revision:' )
-            if i < 0: i = svn_info.find( 'revision=' )  # --xml format
-            if i >= 0:
-                i += 10
-                while svn_info[i] >= '0' and svn_info[i] <= '9':
-                  revision += svn_info[i]
-                  i += 1
-
-        from collect_and_upload_logs import collect_logs
-        collect_logs(
-            self.regression_results,
-            self.runner, self.tag, self.platform, comment_path,
-            self.timestamp_path,
-            self.user,
-            source, run_type,
-            self.dart_server, self.proxy,
-            revision)
-        
     def command_create_bitten_report(self):
         self.import_utils()
         from collect_and_upload_logs import create_bitten_reports
@@ -419,9 +332,7 @@ class runner:
             xml_root = os.path.join( self.regression_results, 'boost',
                                          'bin.v2' )
 
-        report = create_bitten_reports(self.boost_root,
-                                       os.path.join(self.regression_results, 
-                                                    'test_results.xml'))
+        report = create_bitten_reports(self.boost_root, self.out_xml)
 
         dir = os.path.split(self.bitten_report)[0]
         if not os.path.exists(dir):
@@ -684,9 +595,9 @@ class runner:
         if self.timeout > 0:
             args += ' -l%s' % (self.timeout*60)
 
-        cmd = '"%(bjam)s" "-sBOOST_BUILD_PATH=%(bb)s" "-sBOOST_ROOT=%(boost)s" "--boost=%(boost)s" %(arg)s' % {
+        cmd = '"%(bjam)s" "--boost-build=%(bb)s" "-sBOOST_ROOT=%(boost)s" "--boost=%(boost)s" %(arg)s' % {
             'bjam' : self.tool_path( self.bjam ),
-            'bb' : os.pathsep.join([build_path,self.tools_bb_root]),
+            'bb' : self.tools_bb_root,
             'boost' : self.boost_root,
             'arg' : args }
 

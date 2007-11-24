@@ -192,12 +192,12 @@ head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
   </step>
 
   <step id="build tools" description="Build regression testing tools">
-    <python:exec file="tools_regression/src/run.py" args="--incremental --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.tool-build-options} setup" />
+    <python:exec file="tools/regression/src/run.py" args="--incremental --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.tool-build-options} setup" />
   </step>
   '''
 project_xml ='''                                                     
   <step id="%(id)s" description="Tests run in %(project_path)s" onerror="continue">
-    <python:exec file="tools_regression/src/run.py" args="--incremental --clean-log --library=%(project_path)s --bjam-options=-j${boost.parallelism} ${boost.lib-build-options} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run create-bitten-report" />
+    <python:exec file="tools/regression/src/run.py" args="--incremental --library=%(project_path)s --bjam-options=-j${boost.parallelism} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run create-bitten-report" />
     <report category="test" file="results/%(project_path)s.xml" />
   </step>
 '''

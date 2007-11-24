@@ -51,7 +51,7 @@ from regression import runner
 try:
     runner(root)
 except Exception, e:
+    sys.stderr.flush()
     print '@@@ exiting with exception:', e
-    import traceback
-    traceback.print_exc()
+    sys.stdout.flush()
     raise
