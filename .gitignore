@@ -1,3 +1,4 @@
+libs/asio/doc/html
 libs/iterator/doc/GNUmakefile
 libs/optional/test/bin
 libs/python/pyste/dist/*.pyc
