@@ -179,13 +179,13 @@ head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
     revision="HEAD" />
   </step>
 
-  <step id="build tools" description="Build regression testing tools">
-    <python:exec file="tools/regression/src/run.py" args="--incremental --debug-level=10 --bjam-options=-j${boost.parallelism} ${boost.tool-build-options} setup" />
+  <step id="build tools" description="Build bjam">
+    <python:exec file="tools/regression/src/run.py" args="--incremental --debug-level=10 &quot;${boost.bjam_build_options}&quot; setup" />
   </step>
   '''
 project_xml ='''                                                     
   <step id="%(id)s" description="Tests run in %(project_path)s" onerror="continue">
-    <python:exec file="tools/regression/src/run.py" args="--incremental --library=%(project_path)s --bjam-options=-j${boost.parallelism} --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run create-bitten-report" />
+    <python:exec file="tools/regression/src/run.py" args="--incremental --library=%(project_path)s &quot;--bjam-options=${boost.bjam_options}&quot; --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run create-bitten-report" />
     <report category="test" file="results/%(project_path)s.xml" />
   </step>
 '''

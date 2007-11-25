@@ -173,6 +173,8 @@ class runner:
         self.boost_build_use_xml = ('create-bitten-report' in self.actions and
                                     'test-process' not in self.actions)
 
+        self.dev_null = {'nt':'nul','posix':'/dev/null'}[os.name]
+        
         if self.debug_level > 0:
             self.log('Regression root =     %s'%self.regression_root)
             self.log('Boost root =          %s'%self.boost_root)
@@ -297,11 +299,13 @@ class runner:
         
         utils.makedirs( os.path.split(self.out_xml)[0] )
 
-        test_cmd = '%s --dump-tests %s --out-xml=%s "--build-dir=%s"' % (
+        test_cmd = '%s --dump-tests %s --out-xml=%s "--build-dir=%s">%s 2>&1' % (
             self.bjam_cmd( self.toolsets ),
             self.bjam_options,
             self.out_xml,
-            self.regression_results)
+            self.regression_results,
+            self.dev_null
+            )
         
         self.log( 'Starting tests (%s)...' % test_cmd )
         cd = os.getcwd()
