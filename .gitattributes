@@ -8422,7 +8422,6 @@ libs/serialization/example/portable_binary_iarchive.hpp svneol=native#text/plain
 libs/serialization/example/portable_binary_oarchive.hpp svneol=native#text/plain
 libs/serialization/index.html svneol=native#text/html
 libs/serialization/src/basic_archive.cpp svneol=native#text/plain
-libs/serialization/src/basic_archive_impl.cpp svneol=native#text/plain
 libs/serialization/src/basic_iarchive.cpp svneol=native#text/plain
 libs/serialization/src/basic_iserializer.cpp svneol=native#text/plain
 libs/serialization/src/basic_oarchive.cpp svneol=native#text/plain
@@ -8467,6 +8466,7 @@ libs/serialization/test/J.hpp svneol=native#text/plain
 libs/serialization/test/Jamfile.v2 svneol=native#text/plain
 libs/serialization/test/binary_archive.hpp svneol=native#text/plain
 libs/serialization/test/binary_warchive.hpp svneol=native#text/plain
+libs/serialization/test/polymorphic_array_binary_archive.hpp svneol=native#text/plain
 libs/serialization/test/polymorphic_binary_archive.hpp svneol=native#text/plain
 libs/serialization/test/polymorphic_text_archive.hpp svneol=native#text/plain
 libs/serialization/test/polymorphic_text_warchive.hpp svneol=native#text/plain
@@ -8483,6 +8483,7 @@ libs/serialization/test/test_binary.cpp svneol=native#text/plain
 libs/serialization/test/test_class_info_load.cpp svneol=native#text/plain
 libs/serialization/test/test_class_info_save.cpp svneol=native#text/plain
 libs/serialization/test/test_codecvt_null.cpp svneol=native#text/plain
+libs/serialization/test/test_complex.cpp svneol=native#text/plain
 libs/serialization/test/test_const_load_fail1.cpp svneol=native#text/plain
 libs/serialization/test/test_const_load_fail1_nvp.cpp svneol=native#text/plain
 libs/serialization/test/test_const_load_fail2.cpp svneol=native#text/plain
@@ -8559,6 +8560,7 @@ libs/serialization/test/test_traits_fail.cpp svneol=native#text/plain
 libs/serialization/test/test_traits_pass.cpp svneol=native#text/plain
 libs/serialization/test/test_unregistered.cpp svneol=native#text/plain
 libs/serialization/test/test_utf8_codecvt.cpp svneol=native#text/plain
+libs/serialization/test/test_valarray.cpp svneol=native#text/plain
 libs/serialization/test/test_variant.cpp svneol=native#text/plain
 libs/serialization/test/test_vector.cpp svneol=native#text/plain
 libs/serialization/test/test_void_cast.cpp svneol=native#text/plain
@@ -8566,75 +8568,75 @@ libs/serialization/test/text_archive.hpp svneol=native#text/plain
 libs/serialization/test/text_warchive.hpp svneol=native#text/plain
 libs/serialization/test/xml_archive.hpp svneol=native#text/plain
 libs/serialization/test/xml_warchive.hpp svneol=native#text/plain
-libs/serialization/vc6ide/Library.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_auto_ptr.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_exception.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_fast_binary_archive.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_mi.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_pimpl.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_plugin.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_portable_archive.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_shared_ptr.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_xml.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_xml_load.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/demo_xml_save.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/serialization.dsw svneol=CRLF#text/plain eol=crlf
+libs/serialization/vc6ide/Library.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_auto_ptr.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_exception.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_fast_binary_archive.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_mi.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_pimpl.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_plugin.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_portable_archive.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_shared_ptr.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_xml.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_xml_load.dsp svneol=native#text/plain
+libs/serialization/vc6ide/demo_xml_save.dsp svneol=native#text/plain
+libs/serialization/vc6ide/serialization.dsw svneol=native#text/plain
 libs/serialization/vc6ide/serialization.ncb svneol=native#text/plain
-libs/serialization/vc6ide/serialization.opt -text svneol=unset#application/octet-stream
-libs/serialization/vc6ide/test_array.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_binary.dsp svneol=CRLF#text/plain eol=crlf
+libs/serialization/vc6ide/serialization.opt svneol=native#text/plain
+libs/serialization/vc6ide/test_array.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_binary.dsp svneol=native#text/plain
 libs/serialization/vc6ide/test_binary.plg svneol=native#text/plain
-libs/serialization/vc6ide/test_codecvt_null.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_constructor.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_contained_class.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_cyclic_ptrs.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_delete_pointer.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_deque.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_derived.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_derived_class_ptr.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_diamond.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_exported.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_iterattors.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_iterattors_base64.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_level_class_info_load.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_level_class_info_save.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_level_not_serializable.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_level_object.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_level_primitive.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_list.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_list_ptrs.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_map.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_mi.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_mult_archive_types.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_multiple_ptrs.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_no_rtti.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_non_default_ctor.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_non_intrusive.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_null_ptr.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_nvp.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_optional.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_polymorphic_archive.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_private_ctor.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_recursion.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_registered.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_set.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_shared_ptr.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_simple_class.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_simple_class_ptr.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_simple_derived_class.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_smart_cast.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_split.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_static_warning.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_tracking.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_traits_fail.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_traits_pass.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_unregistered.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_utf8_codecvt.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_vector.dsp svneol=CRLF#text/plain eol=crlf
-libs/serialization/vc6ide/test_void_cast.dsp svneol=CRLF#text/plain eol=crlf
+libs/serialization/vc6ide/test_codecvt_null.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_constructor.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_contained_class.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_cyclic_ptrs.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_delete_pointer.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_deque.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_derived.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_derived_class_ptr.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_diamond.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_exported.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_iterattors.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_iterattors_base64.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_level_class_info_load.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_level_class_info_save.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_level_not_serializable.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_level_object.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_level_primitive.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_list.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_list_ptrs.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_map.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_mi.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_mult_archive_types.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_multiple_ptrs.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_no_rtti.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_non_default_ctor.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_non_intrusive.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_null_ptr.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_nvp.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_optional.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_polymorphic_archive.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_private_ctor.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_recursion.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_registered.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_set.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_shared_ptr.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_simple_class.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_simple_class_ptr.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_simple_derived_class.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_smart_cast.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_split.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_static_warning.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_tracking.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_traits_fail.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_traits_pass.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_unregistered.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_utf8_codecvt.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_vector.dsp svneol=native#text/plain
+libs/serialization/vc6ide/test_void_cast.dsp svneol=native#text/plain
 libs/serialization/vc7ide/BoostSerializationLibrary.sln -text
-libs/serialization/vc7ide/BoostSerializationLibrary.suo -text svneol=unset#application/octet-stream
+libs/serialization/vc7ide/BoostSerializationLibrary.suo svneol=native#text/plain
 libs/serialization/vc7ide/Library.vcproj -text
 libs/serialization/vc7ide/LibraryW.vcproj -text
 libs/serialization/vc7ide/Manual.vcproj -text
