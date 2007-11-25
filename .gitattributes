@@ -8355,7 +8355,7 @@ libs/regex/test/unicode/unicode_iterator_test.cpp svneol=native#text/plain
 libs/regex/tools/generate/tables.cpp svneol=native#text/plain
 libs/serialization/borland6ide/test_simple_class.bpf -text svneol=unset#application/octet-stream
 libs/serialization/borland6ide/test_simple_class.bpr svneol=native#text/plain
-libs/serialization/borland6ide/test_simple_class.res svneol=native#text/plain
+libs/serialization/borland6ide/test_simple_class.res -text
 libs/serialization/build/Jamfile.v2 svneol=native#text/plain
 libs/serialization/build/serialization.jam svneol=native#text/plain
 libs/serialization/doc/acknowledgments.html svneol=native#text/html
