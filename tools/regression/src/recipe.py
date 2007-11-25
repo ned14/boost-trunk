@@ -177,18 +177,6 @@ head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
        dir_="tools"
        url="%(repo)s/tools"
     revision="HEAD" />
-    <svn:checkout 
-       dir_="tools_regression"
-       url="%(repo)s/tools/regression"
-    revision="HEAD" />
-    <svn:checkout 
-       dir_="tools_bb"
-       url="%(repo)s/tools/build/v2"
-    revision="HEAD" />
-    <svn:checkout 
-       dir_="tools_bjam"
-       url="%(repo)s/tools/jam/src"
-    revision="HEAD" />
   </step>
 
   <step id="build tools" description="Build regression testing tools">

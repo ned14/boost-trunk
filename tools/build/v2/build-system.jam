@@ -589,7 +589,10 @@ if $(.out-xml)
 
     # Nothing to do here; the *real* actions happen in
     # out-xml.generate-action
-    actions quietly out-xml.generate { }
+    actions quietly out-xml.generate 
+    {
+        rem
+    }
     
     # Define the out-xml file target, which depends on all the targets
     # so that it runs the collection after the targets have run.
