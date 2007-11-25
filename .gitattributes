@@ -1,6 +1,5 @@
 * text=auto !eol
-/Jamfile.v2 svneol=native#text/plain
-/Jamrules svneol=native#text/plain
+/Jamroot svneol=native#text/plain
 /LICENSE_1_0.txt svneol=native#text/plain
 /README svneol=native#text/plain
 /boost-build.jam svneol=native#text/plain
@@ -17353,7 +17352,6 @@ more/writingdoc/template/header.html svneol=native#text/html
 more/writingdoc/template/index.html svneol=native#text/html
 more/writingdoc/template/overview.html svneol=native#text/html
 more/writingdoc/template/rationale.html svneol=native#text/html
-/project-root.jam svneol=native#text/plain
 /rst.css svneol=native#text/css
 status/Jamfile.v2 svneol=native#text/plain
 status/explicit-failures-markup.xml svneol=native#text/xml
