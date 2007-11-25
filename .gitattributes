@@ -18416,6 +18416,7 @@ tools/regression/build/vcide/process_jam_log.sln -text
 tools/regression/build/vcide/process_jam_log.vcproj -text
 tools/regression/build/vcide/regression.sln svneol=native#text/xml
 tools/regression/doc/index.html svneol=native#text/html
+tools/regression/doc/instructions.html svneol=native#text/html
 tools/regression/doc/library_status.html svneol=native#text/html
 tools/regression/index.html svneol=native#text/html
 tools/regression/src/boost_svn_export_archive.sh svneol=native#text/x-sh
