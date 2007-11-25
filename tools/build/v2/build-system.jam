@@ -589,11 +589,19 @@ if $(.out-xml)
 
     # Nothing to do here; the *real* actions happen in
     # out-xml.generate-action
-    actions quietly out-xml.generate 
+    if [ os.name ] = NT
     {
-        rem
+        # This fails on NT if it's empty
+        actions quietly out-xml.generate 
+        {
+            rem
+        }
     }
-    
+    else
+    {
+        actions quietly out-xml.generate { }
+    }
+
     # Define the out-xml file target, which depends on all the targets
     # so that it runs the collection after the targets have run.
     out-xml $(.out-xml) : $(actual-targets) ;
