@@ -4390,6 +4390,7 @@ boost/spirit/core/non_terminal/grammar.hpp svneol=native#text/plain
 boost/spirit/core/non_terminal/impl/grammar.ipp svneol=native#text/plain
 boost/spirit/core/non_terminal/impl/object_with_id.ipp svneol=native#text/plain
 boost/spirit/core/non_terminal/impl/rule.ipp svneol=native#text/plain
+boost/spirit/core/non_terminal/impl/static.hpp svneol=native#text/plain
 boost/spirit/core/non_terminal/impl/subrule.ipp svneol=native#text/plain
 boost/spirit/core/non_terminal/parser_context.hpp svneol=native#text/plain
 boost/spirit/core/non_terminal/parser_id.hpp svneol=native#text/plain
