@@ -18,7 +18,7 @@
 // Boost.Test
 #include <boost/test/detail/config.hpp>
 #include <boost/test/utils/callback.hpp>
-#include <boost/test/utils/basic_cstring/basic_cstring_fwd.hpp>
+#include <boost/test/utils/basic_cstring/basic_cstring.hpp>
 
 // STL
 #include <string>
@@ -97,11 +97,5 @@ void BOOST_TEST_DECL break_memory_alloc( long mem_alloc_order_num );
 } // namespace boost
 
 #include <boost/test/detail/enable_warnings.hpp>
-
-// ***************************************************************************
-//  Revision History :
-//  
-//  $Log$
-// ***************************************************************************
 
 #endif

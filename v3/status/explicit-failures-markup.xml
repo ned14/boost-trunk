@@ -25,21 +25,15 @@
     <!-- /////////////// Toolsets /////////////// -->
     <mark-toolset name="acc" status="required"/>
     <mark-toolset name="darwin-4.0.1" status="required"/>
-    <mark-toolset name="gcc-3.4.3_sunos" status="required"/>
-    <mark-toolset name="gcc-3_4_4_tru64" status="required"/>
     <mark-toolset name="gcc-4.1.2_sunos_i86pc" status="required"/>
     <mark-toolset name="gcc-4.1.3_linux" status="required"/>
     <mark-toolset name="gcc-4.2.1" status="required"/>
     <mark-toolset name="gcc-4.2.1_linux_x86_64" status="required"/>
-    <mark-toolset name="gcc-4_0_3_tru64" status="required"/>
-    <mark-toolset name="gcc-cygwin-3.4.4" status="required"/>
-    <mark-toolset name="gcc-mingw-3.4.5" status="required"/>
-    <mark-toolset name="hp_cxx-71_006_tru64" status="required"/>
     <mark-toolset name="intel-linux-9.0" status="required"/>
-    <mark-toolset name="intel-vc71-win-9.1" status="required"/>
+    <mark-toolset name="intel-vc8-win-10.0" status="required"/>
     <mark-toolset name="msvc-7.1" status="required"/>
     <mark-toolset name="msvc-8.0" status="required"/>
-    <mark-toolset name="sun-5.9" status="required"/>
+    <mark-toolset name="msvc-8.0_64" status="required"/>
 
     <!-- /////////////// Libraries /////////////// -->
 
@@ -340,6 +334,11 @@
             <toolset name="intel-win-9.1"/>
             <toolset name="hp_cxx*"/>
             <note refid="39" author="Boris Gubenko"/>
+        </mark-expected-failures>
+        <mark-expected-failures>
+                <test name="test_bimap_serialization"/>
+                <toolset name="gcc-mingw-3.4.5"/>
+                <note author="Matias Capeletto">Compiler bug.</note>
         </mark-expected-failures>
     </library>
 
@@ -1488,11 +1487,12 @@
     <!-- function_types -->
     <library name="function_types">
         <mark-expected-failures>
-            <test name="nonmember_ccs.cpp"/>
-            <test name="nonmember_ccs_exact.cpp"/>
-            <test name="member_ccs.cpp"/>
-            <test name="member_ccs_exact.cpp"/>
+            <test name="nonmember_ccs"/>
+            <test name="nonmember_ccs_exact"/>
+            <test name="member_ccs"/>
+            <test name="member_ccs_exact"/>
             <toolset name="acc*"/>
+            <toolset name="hp_cxx*"/>
             <note author="Boris Gubenko" refid="44"/>
         </mark-expected-failures>
     </library>
@@ -1720,7 +1720,13 @@
             system bug.
           </note>
         </mark-expected-failures>
-
+        <mark-expected-failures>
+          <test name="kolmogorov_max_flow_test"/>
+          <test name="max_flow_test"/>
+          <toolset name="hp_cxx-*"/>
+          <toolset name="acc*"/>
+          <note author="Markus Schoepflin" refid="45"/>
+        </mark-expected-failures>
     </library>
 
     <!-- interprocess-->
@@ -1737,6 +1743,10 @@
             <toolset name="gcc-3.3*"/>
             <toolset name="mipspro"/>
             <toolset name="acc*"/>
+            <toolset name="msvc-8.0~wm5*"/>
+            <toolset name="vacpp*"/>
+            <toolset name="pathscale*"/>
+            <toolset name="intel-linux-8.*"/>
             <note author="Ion Gazta&#241;aga">
                 The compiler does not support features that are essential for the library.
             </note>
@@ -1756,6 +1766,9 @@
             <toolset name="gcc-3.2*"/>
             <toolset name="gcc-3.3*"/>
             <toolset name="mipspro"/>
+            <toolset name="vacpp*"/>
+            <toolset name="pathscale*"/>
+            <toolset name="intel-linux-8.*"/>
             <note author="Ion Gazta&#241;aga">
                 The compiler does not support features that are essential for the library.
             </note>
@@ -5797,5 +5810,11 @@ for more information.
         This compiler does not support gcc stdcall function attribute.
     </note>
 
-</explicit-failures-markup>
+    <note id="45">
+        The Rogue Wave standard library version used by this compiler provides
+        a faulty vector&lt;bool&gt; iterator, which is not symmetric. There is an
+        associated bug report in the Rogue Wave bug tracking system for this
+        problem.
+    </note>
 
+</explicit-failures-markup>

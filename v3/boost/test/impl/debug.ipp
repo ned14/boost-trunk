@@ -1,4 +1,4 @@
-//  (C) Copyright Gennadiy Rozental 2006.
+//  (C) Copyright Gennadiy Rozental 2006-2007.
 //  Use, modification, and distribution are subject to the
 //  Boost Software License, Version 1.0. (See accompanying file
 //  http://www.boost.org/LICENSE_1_0.txt)
@@ -316,7 +316,7 @@ prepare_window_title( dbg_startup_info const& dsi )
     else
         ++it;
 
-    ::snprintf( title_str, sizeof(title_str), "%*s %ld", dsi.binary_path.end()-it, it, dsi.pid );
+    ::snprintf( title_str, sizeof(title_str), "%*s %ld", (int)(dsi.binary_path.end()-it), it, dsi.pid );
 
     return title_str;
 }
@@ -963,12 +963,5 @@ break_memory_alloc( long mem_alloc_order_num )
 //____________________________________________________________________________//
 
 #include <boost/test/detail/enable_warnings.hpp>
-
-
-// ***************************************************************************
-//  Revision History :
-//
-//  $Log$
-// ***************************************************************************
 
 #endif // BOOST_TEST_DEBUG_API_IPP_112006GER
