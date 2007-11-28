@@ -19415,6 +19415,7 @@ v3/tools/jam/src/variable.c svneol=native#text/plain
 v3/tools/jam/src/variable.h svneol=native#text/plain
 v3/tools/jam/src/w32_getreg.c svneol=native#text/plain
 v3/tools/jam/src/yyacc.c svneol=native#text/plain
+v3/tools/jam/test/action_status.jam svneol=native#text/plain
 v3/tools/jam/test/actions_quietly.jam svneol=native#text/plain
 v3/tools/jam/test/builtin_shell.jam svneol=native#text/plain
 v3/tools/jam/test/builtin_w32_getregnames.jam svneol=native#text/plain

@@ -2629,6 +2629,7 @@ for more information.
             <test name="test_demo_portable_archive"/>
             <test name="test_demo_portable_archive_dll"/>
             <toolset name="acc*"/>
+            <toolset name="gcc*hpux*"/>
             <note author="Boris Gubenko">
               This failure is caused by serialization library bug in the
               code visible only on big endian platforms.
@@ -3925,11 +3926,18 @@ for more information.
             </note>
         </mark-unusable>
         <mark-unusable>
-            <toolset name="sun-5.8*"/>
+            <toolset name="sun-5.6*"/>
             <note author="David Abrahams">
-            This compiler seems to be having trouble digesting
+              The old reasoning given for this markup, which applied
+              to sun-5.8*, was as follows.  However, tuple's tests
+              seem to use the test library, which is apparently
+              completely broken on Sun.  Therefore, I've backed off
+              the version number to sun-5.6 so I can see the actual
+              state of the failures.
+
+            <blockquote>This compiler seems to be having trouble digesting
             Boost.Tuple.  Until it can handle Boost.Tuple there's
-            little chance it will handle Boost.Python
+            little chance it will handle Boost.Python</blockquote>
             </note>
         </mark-unusable>
         <mark-expected-failures>
@@ -5406,6 +5414,22 @@ for more information.
                 This failure is caused by a compiler bug (default-constructed scalar
                 types are not zero-initialized) that has been fixed in the latest
                 versions of the compiler (VC 7.1 and greater).
+            </note>
+        </mark-expected-failures>
+        <mark-expected-failures>
+            <test name="value_init_test"/>
+            <toolset name="borland-5.6*"/>
+            <toolset name="borland-5.8*"/>
+            <toolset name="borland-5.9*"/>
+            <note author="Niels Dekker">
+                This test typically fails on Borland C++, because of an issue described by
+                <a href="http://svn.boost.org/trac/boost/ticket/1459">
+                ticket #1459, "value_initialized leaves data uninitialized,
+                when using Borland"</a>. The issue is caused by a 
+                compiler bug, reported at the website of Codegear/Borland:
+                <a href="http://qc.codegear.com/wc/qcmain.aspx?d=51854">
+                Report #51854, "Value-initialization: POD struct
+                should be zero-initialized"</a>.
             </note>
         </mark-expected-failures>
         <mark-expected-failures>
