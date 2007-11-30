@@ -17426,7 +17426,6 @@ more/google_logo_25wht.gif -text svneol=unset#image/gif
 more/index.htm svneol=native#text/html
 more/links.htm svneol=native#text/html
 more/microsoft_vcpp.html svneol=native#text/html
-more/proposal.pdf -text svneol=unset#application/pdf
 more/regression.html svneol=native#text/html
 more/release_mgr_checklist.html svneol=native#text/html
 more/release_procedures.htm svneol=native#text/html
