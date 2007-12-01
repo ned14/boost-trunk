@@ -9859,7 +9859,6 @@ libs/interprocess/proj/cygwin/MakeAll -text
 libs/interprocess/proj/linux/MakeAll -text
 libs/interprocess/proj/mingw/MakeAll -text
 libs/interprocess/proj/qnx/MakeAll -text
-libs/interprocess/proj/to-do.txt svneol=native#text/plain
 libs/interprocess/proj/vc7ide/Interprocess.sln -text
 libs/interprocess/proj/vc7ide/adaptive_node_pool_test.vcproj svneol=native#text/plain
 libs/interprocess/proj/vc7ide/adaptive_pool_test.vcproj svneol=native#text/plain
@@ -10106,7 +10105,6 @@ libs/intrusive/proj/vc7ide/slist/slist.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/splay_multiset/splay_multiset.vcproj svneol=CRLF#text/xml eol=crlf
 libs/intrusive/proj/vc7ide/splay_set/splay_set.vcproj svneol=CRLF#text/xml eol=crlf
 libs/intrusive/proj/vc7ide/stateful_value_traits/stateful_value_traits.vcproj svneol=native#text/plain
-libs/intrusive/proj/vc7ide/to-do.txt svneol=native#text/plain
 libs/intrusive/proj/vc7ide/unordered_multiset/unordered_multiset.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/unordered_set/unordered_set.vcproj svneol=native#text/plain
 libs/intrusive/proj/vc7ide/virtual_base/virtual_base.vcproj svneol=native#text/plain
@@ -10134,7 +10132,6 @@ libs/intrusive/test/splay_set_test.cpp svneol=native#text/plain
 libs/intrusive/test/stateful_value_traits_test.cpp svneol=native#text/plain
 libs/intrusive/test/test_container.hpp svneol=native#text/plain
 libs/intrusive/test/test_macros.hpp svneol=native#text/plain
-libs/intrusive/test/test_templates.hpp svneol=native#text/plain
 libs/intrusive/test/unordered_multiset_test.cpp svneol=native#text/plain
 libs/intrusive/test/unordered_set_test.cpp svneol=native#text/plain
 libs/intrusive/test/virtual_base_test.cpp svneol=native#text/plain
