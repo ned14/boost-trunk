@@ -6698,7 +6698,6 @@ libs/function_types/doc/html/boost_functiontypes/reference/macros.html svneol=na
 libs/function_types/doc/html/boost_functiontypes/reference/synthesis.html svneol=native#text/html
 libs/function_types/doc/html/boost_functiontypes/reference/tag_types.html svneol=native#text/html
 libs/function_types/doc/html/boost_functiontypes/use_cases.html svneol=native#text/html
-libs/function_types/doc/html/boostbook.css svneol=native#text/css
 libs/function_types/doc/html/index.html svneol=native#text/html
 libs/function_types/example/Jamfile svneol=native#text/plain
 libs/function_types/example/detail/param_type.hpp svneol=native#text/plain
