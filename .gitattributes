@@ -17371,7 +17371,6 @@ libs/xpressive/tools/perl2xpr.cpp svneol=native#text/plain
 more/BoostSponsorshipAgreement.pdf -text svneol=unset#application/pdf
 more/Jamfile.v2 svneol=native#text/plain
 more/blanket-permission.txt svneol=native#text/plain
-more/boost_soc_06_overview.html svneol=native#text/html
 more/css_0/boost_bullet.gif -text svneol=unset#image/gif
 more/css_0/common.css svneol=native#text/css
 more/css_0/csshover.htc -text
