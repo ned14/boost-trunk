@@ -21,7 +21,7 @@
 namespace boost { namespace interprocess { namespace test {
 
 template <class NamedResource>
-static inline void create_then_open_then_open_or_create()
+inline void create_then_open_then_open_or_create()
 {  
    try{
       //Create it and open it twice
@@ -36,7 +36,7 @@ static inline void create_then_open_then_open_or_create()
 }
 
 template <class NamedResource>
-static inline void open_or_create_then_create()
+inline void open_or_create_then_create()
 {  
    //Create it with open_or_create and try to create it twice
    NamedResource nresource1(open_or_create);
@@ -49,7 +49,7 @@ static inline void open_or_create_then_create()
 }
 
 template <class NamedResource>
-static inline void dont_create_and_open()
+inline void dont_create_and_open()
 {  
    //Try to open it without creating
    try{
@@ -64,7 +64,7 @@ static inline void dont_create_and_open()
 }
 
 template <class NamedResource>
-static inline void test_named_creation()
+inline void test_named_creation()
 {
    std::cout   << "create_then_open_then_open_or_create<"
                << typeid(NamedResource).name() << ">" << std::endl;
