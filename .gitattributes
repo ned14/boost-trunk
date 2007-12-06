@@ -18325,6 +18325,7 @@ v3/libs/xpressive/test/test_regex_traits.cpp svneol=native#text/plain
 v3/libs/xpressive/test/test_static.cpp svneol=native#text/plain
 v3/libs/xpressive/test/test_sub_match.cpp svneol=native#text/plain
 v3/libs/xpressive/test/test_symbols.cpp svneol=native#text/plain
+v3/libs/xpressive/test/test_symbols2.cpp svneol=native#text/plain
 v3/libs/xpressive/test/test_typeof.cpp svneol=native#text/plain
 v3/libs/xpressive/test/test_typeof2.cpp svneol=native#text/plain
 v3/libs/xpressive/tools/Jamfile.v2 svneol=native#text/plain
