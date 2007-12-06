@@ -17205,6 +17205,7 @@ v3/libs/thread/src/win32/tss_pe.cpp svneol=native#text/plain
 v3/libs/thread/test/Carbon.r -text
 v3/libs/thread/test/Jamfile.v2 svneol=native#text/plain
 v3/libs/thread/test/condition_test_common.hpp svneol=native#text/plain
+v3/libs/thread/test/shared_mutex_locking_thread.hpp svneol=native#text/plain
 v3/libs/thread/test/test.mcp -text svneol=unset#unset
 v3/libs/thread/test/test_barrier.cpp svneol=native#text/plain
 v3/libs/thread/test/test_condition.cpp svneol=native#text/plain
@@ -17215,7 +17216,9 @@ v3/libs/thread/test/test_lock_concept.cpp svneol=native#text/plain
 v3/libs/thread/test/test_mutex.cpp svneol=native#text/plain
 v3/libs/thread/test/test_once.cpp svneol=native#text/plain
 v3/libs/thread/test/test_shared_mutex.cpp svneol=native#text/plain
+v3/libs/thread/test/test_shared_mutex_part_2.cpp svneol=native#text/plain
 v3/libs/thread/test/test_thread.cpp svneol=native#text/plain
+v3/libs/thread/test/test_thread_move.cpp svneol=native#text/plain
 v3/libs/thread/test/test_tss.cpp svneol=native#text/plain
 v3/libs/thread/test/test_xtime.cpp svneol=native#text/plain
 v3/libs/thread/test/util.inl -text
