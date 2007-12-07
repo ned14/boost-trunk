@@ -16,7 +16,7 @@ import urllib
 root = os.getcwd()
 print '# Running regressions in %s...' % root
 
-script_sources = [ 'collect_and_upload_logs.py', 'regression.py' ]
+script_sources = [ 'bitten_reports.py', 'regression.py', 'test_results.py', 'failure_markup.py' ]
 script_local = os.path.join(root,'tools','regression','src')
 script_remote = 'http://svn.boost.org/svn/boost/branches/bitten/tools/regression/src'
 script_dir = os.path.join(root,'tools_regression_src')

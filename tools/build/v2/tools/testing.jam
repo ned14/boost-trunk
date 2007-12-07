@@ -166,10 +166,20 @@ IMPORT : alias : : test-suite ;
 # produce some interesting information.
 rule dump-tests # ( project-module )
 {
+        local nl = "
+" ;
+    if $(.out-xml)
+    {
+        .contents on $(.out-xml) += "$(nl)  <tests>" ;
+    }
     for local t in $(.all-tests)
     {
         dump-test $(t) ;
     }    
+    if $(.out-xml)
+    {
+        .contents on $(.out-xml) += "$(nl)  </tests>" ;
+    }
 }
 
 # Given a project location, compute the name of Boost library
@@ -205,6 +215,7 @@ rule dump-test ( target )
 {
     local type = [ $(target).type ] ;
     local name = [ $(target).name ] ;
+    local pretty_name = $(name) ;
     local project = [ $(target).project ] ;
     
     local project-root = [ $(project).get project-root ] ;
@@ -212,7 +223,7 @@ rule dump-test ( target )
         [ path.root [ $(project).get location ] [ path.pwd ] ] ] ;
     if $(library)
     {
-        name = $(library)/$(name) ;
+        pretty_name = $(library)/$(name) ;
     }
         
     local sources = [ $(target).sources ] ;
@@ -230,7 +241,7 @@ rule dump-test ( target )
               [ path.relative 
                   $(location)
                   [ path.root $(project-root) [ path.pwd ] ] ] ;
-        }                
+        }              
     }
           
     local r = [ $(target).requirements ] ;
@@ -241,13 +252,16 @@ rule dump-test ( target )
     # test info to that XML file rather than dumping them to stdout.
     if $(.out-xml)
     {
+        local project-location = [ $(project).get location ] ;
         local nl = "
 " ;
         .contents on $(.out-xml) += 
-            "$(nl)  <test type=\"$(type)\" name=\"$(name)\">"
-            "$(nl)    <info><![CDATA[$(test-info)]]></info>"
-            "$(nl)    <source><![CDATA[$(source-files)]]></source>"
-            "$(nl)  </test>"
+            "$(nl)    <test type=\"$(type)\" name=\"$(pretty_name)\">"
+            "$(nl)      <rawname><![CDATA[$(name)]]></rawname>"
+            "$(nl)      <project_root><![CDATA[$(project-root)]]></project_root>"
+            "$(nl)      <info><![CDATA[$(test-info)]]></info>"
+            "$(nl)      <source><![CDATA[$(source-files)]]></source>"
+            "$(nl)    </test>"
             ;
     }
     else

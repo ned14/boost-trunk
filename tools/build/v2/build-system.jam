@@ -25,6 +25,7 @@ import "class" : new ;
 import toolset ;
 import regex ;
 import path ;
+import project ;
 
 import builtin ;
 import make ;
@@ -497,8 +498,47 @@ if $(.out-xml)
     {
         local name = [ $(t).name ] ;
         local project = [ $(t).project ] ;
-        local project-path = [ $(project).get location ] ;
+        local project-path = [ project.attribute [ $(project).project-module ] id ] ;
+        project-path ?= [ $(project).get location ] ;
         return $(project-path)//$(name) ;
+    }
+    
+    rule add-target-xml ( xml-file : t )
+    {
+        local name = [ full-target-name $(t) ] ;
+        local action = [ $(t).action ] ;
+        local dependency-xml ;
+        local leaves ;
+        if $(action)
+        {
+            local sources = [ $(action).sources ] ;
+            local dependencies ;
+            for local s in $(sources)
+            {
+                dependencies += [ $(s).actual-name ] ;
+                if ! [ $(s).action ] && ! $(s) in $(.all-sources)
+                {
+                    .all-sources += $(s) ;
+                }
+            }
+            dependency-xml = 
+              "$(nl)      <dependencies>"
+              "$(nl)        <dependency><![CDATA[$(dependencies)]]></dependency>"
+              "$(nl)      </dependencies>"
+                ;
+        }
+        
+        local directory = [ $(t).path ] ;
+        local jam-target = [ $(t).actual-name ] ;
+
+        .contents on $(xml-file) += 
+              "$(nl)    <target>"
+              "$(nl)      <name><![CDATA[$(name)]]></name>"
+               $(dependency-xml)
+              "$(nl)      <directory><![CDATA[$(directory)]]></directory>"
+              "$(nl)      <jam-target><![CDATA[$(jam-target)]]></jam-target>"
+              "$(nl)    </target>"
+                ;
     }
     # Generate an XML file containing build statistics for each
     # constituent
@@ -532,40 +572,18 @@ if $(.out-xml)
 
         for local t in [ virtual-target.all-targets ]
         {
-            local action = [ $(t).action ] ;
-            if $(action)
-            {
-                # If a target has no action, it has
-                # no dependencies.
-
-                local name = [ full-target-name $(t) ] ;
-                local sources = [ $(action).sources ] ;
-                local dependencies ;
-                for local s in $(sources)
-                {
-                    dependencies += [ $(s).actual-name ] ;
-                }
-
-                local path = [ $(t).path ] ;
-                local jam-target = [ $(t).actual-name ] ;
-
-                .contents on $(xml-file) +=
-                  "$(nl)    <target>"
-                  "$(nl)      <name><![CDATA[$(name)]]></name>"
-                  "$(nl)      <dependencies>"
-                  "$(nl)        <dependency><![CDATA[$(dependencies)]]></dependency>"
-                  "$(nl)      </dependencies>"
-                  "$(nl)      <path><![CDATA[$(path)]]></path>"
-                  "$(nl)      <jam-target><![CDATA[$(jam-target)]]></jam-target>"
-                  "$(nl)    </target>"
-                    ;
-
-            }                
+            add-target-xml $(xml-file) : $(t) ;
         }
+        
+        for local t in $(.all-sources)
+        {
+             add-target-xml $(xml-file) : $(t) ;
+        }
+        
         .contents on $(xml-file) +=
           "$(nl)  </targets>"
             ;
-
+        
         # Build $(xml-file) after $(constituents), regenerating it on
         # every bjam run even if a constituent action fails.
         INCLUDES $(xml-file) : $(constituents) ;
@@ -579,8 +597,8 @@ if $(.out-xml)
     # actions clause we would have to form a valid command line
     # containing the result of @(...) below (the name of the XML file).
     rule out-xml.generate-action (
-        xml-file args * :
-        status : user : system : command : output ? )
+        args * : xml-file :
+        command status start end user system : output ? )
     {
         local contents =
             [ on $(xml-file) return $(.header) $(.contents) $(.footer) ] ;
@@ -610,8 +628,8 @@ if $(.out-xml)
     # statistics about each actual target in a variable "on" the
     # --out-xml target.
     rule out-xml.collect (
-        xml-file target :
-        status : user : system : command : output ? )
+        xml-file : target :
+        command status start end user system : output ? )
     {
         local nl = "
 " ;

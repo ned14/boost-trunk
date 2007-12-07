@@ -17807,6 +17807,7 @@ tools/regression/build/vcide/regression.sln svneol=native#text/xml
 tools/regression/index.htm svneol=native#text/html
 tools/regression/index.shtml -text
 tools/regression/library_status.html svneol=native#text/html
+tools/regression/src/bitten_reports.py svneol=native#text/x-python
 tools/regression/src/boost_svn_export_archive.sh svneol=native#text/x-sh
 tools/regression/src/collect_and_upload_logs.py svneol=native#text/x-python
 tools/regression/src/compiler_status.cpp svneol=native#text/plain
@@ -17814,6 +17815,7 @@ tools/regression/src/detail/tiny_xml.cpp svneol=native#text/plain
 tools/regression/src/detail/tiny_xml.hpp svneol=native#text/plain
 tools/regression/src/detail/tiny_xml_test.cpp svneol=native#text/plain
 tools/regression/src/detail/tiny_xml_test.txt svneol=native#text/plain
+tools/regression/src/failure_markup.py svneol=native#text/x-python
 tools/regression/src/library_status.cpp svneol=native#text/plain
 tools/regression/src/library_test.bat svneol=native#text/plain
 tools/regression/src/library_test.sh svneol=native#text/x-sh

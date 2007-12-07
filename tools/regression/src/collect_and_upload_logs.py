@@ -18,13 +18,6 @@ import os.path
 import string
 import sys
 
-import test_results
-
-try:
-    import xml.etree.cElementTree as ET
-except ImportError:
-    import elementtree.cElementTree as ET
-
 def process_xml_file( input_file, output_file ):
     utils.log( 'Processing test log "%s"' % input_file )
     
@@ -88,79 +81,6 @@ class xmlrpcProxyTransport(xmlrpclib.Transport):
         connection.putrequest('POST','http://%s%s' % (self.realhost,handler))
     def send_host(self, connection, host):
         connection.putheader('Host',self.realhost)
-    
-def indent(elem, level=0):
-    i = "\n" + level*"  "
-    if len(elem):
-        if not elem.text or not elem.text.strip():
-            elem.text = i + "  "
-        for elem in elem:
-            indent(elem, level+1)
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-    else:
-        if level and (not elem.tail or not elem.tail.strip()):
-            elem.tail = i
-
-def relpath(path, reldir):
-    """Returns 'path' relative to 'reldir'."""
-
-    # use normpath to ensure path separators are uniform
-    path = os.path.normpath(path)    
-
-    # find length of reldir as prefix of path (or zero if it isn't)
-    prelen = len(os.path.commonprefix((
-        os.path.normcase(path),
-        # add a separator to get correct prefix length
-        # (normpath removes trailing separators)
-        os.path.normcase(os.path.normpath(reldir)) + os.sep
-        )))
-    return path[prelen:]
-
-def filename_from_test(root, test):
-    """Returns the source file for a test file, relative
-    to `root`."""
-
-    if test.endswith('.test'):
-        test = ''.join((test[:-4], 'cpp'))
-
-    return relpath(test, root)
-
-def create_bitten_reports(root, input_filename):
-    results = test_results.TestResults(open(input_filename))
-
-    report = ET.Element('report', category='test', 
-                        generator="http://svn.boost.org/svn/boost/trunk/tools/"
-                                  "regression/src/collect_and_upload_logs.py")
-    for r in results:
-        if r[1] == 'skipped':
-            continue
-
-        status = {'success': 'success', 'failed': 'failure'}.get(r[1])
-        filename = filename_from_test(root, r[0])
-        fixture = os.path.split(filename)[1]
-
-        test = ET.SubElement(report, 'test', duration="0", 
-                             fixture=fixture, name=fixture, file=filename, status=status)
-        if r[1] == 'failed':
-            stdout = ET.SubElement(test, 'stdout')
-            output = r[2][0][2]
-            stdout.text = output
-    indent(report)
-
-    platform_report = ET.Element('report', category='platform')
-    platform = ET.SubElement(platform_report, 'platform')
-
-    platform.set('os', results.os[0])
-    platform.set('platform', results.os[1])
-    if results.os[2]:
-        platform.set('os-extra', results.os[2])
-    platform.set('jam-version', results.jam_version)
-    platform.set('command', results.command)
-    platform.set('timestamp', results.timestamp)
-
-    indent(platform_report)
-    return ET.tostring(report, 'utf-8')
 
 def publish_test_logs(
     input_dirs,

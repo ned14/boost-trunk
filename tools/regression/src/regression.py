@@ -15,6 +15,7 @@ import os.path
 import platform
 import sys
 import time
+from failure_markup import FailureMarkup
 
 #~ Place holder for xsl_reports/util module
 utils = None
@@ -127,7 +128,7 @@ class runner:
         self.ftp_proxy=None
         self.dart_server=None
         self.bitten_report=None
-        self.debug_level=0
+        self.debug_level=-1
         self.library=None
         self.mail=None
         self.smtp_login=None
@@ -142,6 +143,10 @@ class runner:
         self.regression_root = root
         self.boost_root = os.path.join( self.regression_root, 'boost' )
         self.regression_results = os.path.join( self.regression_root, 'results')
+        markup_path = os.path.join(
+            self.boost_root, 'status', 'explicit-failures-markup.xml')
+        self.failure_markup = FailureMarkup(open(markup_path))
+        
         self.tools_root = os.path.join( self.regression_root,'tools' )
         self.tools_bb_root = os.path.join( self.tools_root,'build', 'v2' )
         self.tools_bjam_root = os.path.join( self.tools_root,'jam', 'src' )
@@ -165,8 +170,18 @@ class runner:
 
         if self.library:
             out_xml = os.path.join( *(self.library + '-x.xml').split('/') )
+            self.library_markup = self.failure_markup.libraries.get(self.library)
+            
+            # The assumption is that most libraries' markup is not separated
+            # specifically by subdirectory (e.g. "libs/foo/test",
+            # "libs/foo/example",...).  So if markup wasn't found we might try
+            # again.
+            libdir,subdir = os.path.split(self.library)
+            if subdir == 'test' and not self.library_markup:
+                self.library_markup = self.failure_markup.libraries.get(libdir)
         else:
             out_xml = 'test_results.xml'
+            self.library_markup = None
             
         self.out_xml = os.path.join(self.regression_results,out_xml)
             
@@ -293,15 +308,48 @@ class runner:
         results_status = os.path.join( self.regression_results, 'status' )
         self.rmtree( results_libs )
         self.rmtree( results_status )
-    
+
+    def toolsets_to_test(self):
+        """filter out any toolsets marked unusable"""
+        toolsets = set(self.toolsets.split(','))
+        if self.library_markup is not None:
+            unusable_toolsets = set()
+            unusability_reasons = set()
+            
+            # Check for usability
+            for t in toolsets:
+                markup = self.library_markup.unusable(t)
+                if markup:
+                    unusable_toolsets.add(t)
+                    unusability_reasons |= set(markup)
+
+            if unusable_toolsets:
+                try:
+                    import xml.etree.cElementTree as ET
+                except ImportError:
+                    import elementtree.cElementTree as ET
+                print 'skipping build with toolsets:', ', '.join(unusable_toolsets)
+                print '\n'.join( [ ET.tostring(x) for x in unusability_reasons ] )
+                toolsets -= unusable_toolsets
+        return toolsets
+        
     def command_test_run(self):
+        toolsets = self.toolsets_to_test()
+        build_target = '' # build all the tests
+        
+        if not toolsets:
+            # Nothing left to test for this library; just build the output XML
+            # file.
+            build_target = self.out_xml
+            
         self.import_utils()
         
         utils.makedirs( os.path.split(self.out_xml)[0] )
 
-        test_cmd = '%s --dump-tests %s --out-xml=%s "--build-dir=%s">%s 2>&1' % (
-            self.bjam_cmd( self.toolsets ),
+        test_cmd = '%s %s %s --out-xml=%s "--build-dir=%s" > "%s" 2>&1' % (
+            self.bjam_cmd( toolsets ),
             self.bjam_options,
+            build_target,
             self.out_xml,
             self.regression_results,
             self.dev_null
@@ -326,10 +374,17 @@ class runner:
 
     def command_create_bitten_report(self):
         self.import_utils()
-        from collect_and_upload_logs import create_bitten_reports
+        from bitten_reports import create_bitten_reports
+        
+        markup_path = os.path.join(
+            self.boost_root, 'status', 'explicit-failures-markup.xml')
+        
+        markup = FailureMarkup(open(markup_path))
+        failed, report = create_bitten_reports(
+            self.out_xml, markup)
 
-        report = create_bitten_reports(self.boost_root, self.out_xml)
-
+        self.exit_status = failed and 1 or 0
+        
         dir = os.path.split(self.bitten_report)[0]
         if not os.path.exists(dir):
             os.makedirs(dir)
@@ -446,10 +501,11 @@ class runner:
         return platform.system()
 
     def log(self,message):
-        sys.stdout.flush()
-        sys.stderr.flush()
-        sys.stderr.write( '# %s\n' % message )
-        sys.stderr.flush()
+        if self.debug_level >= 0:
+            sys.stdout.flush()
+            sys.stderr.flush()
+            sys.stderr.write( '# %s\n' % message )
+            sys.stderr.flush()
 
     def rmtree(self,path):
         if os.path.exists( path ):
@@ -519,7 +575,7 @@ class runner:
 
         if toolset is None:
             if self.toolsets is not None:
-                toolset = string.split( self.toolsets, ',' )[0]
+                toolset = self.toolsets.split(',')[0]
             else:
                 toolset = tool[ 'default_toolset' ]
                 self.log( 'Warning: No bootstrap toolset for "%s" was specified.' % tool[ 'name' ] )
@@ -599,7 +655,7 @@ class runner:
 
         if toolsets:
             import string
-            cmd += ' ' + string.join(string.split( toolsets, ',' ), ' ' )
+            cmd += ' ' + string.join(toolsets, ' ' )
 
         return cmd
 

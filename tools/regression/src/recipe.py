@@ -185,7 +185,7 @@ head_xml = '''<?xml version="1.0" encoding="UTF-8"?>
   '''
 project_xml ='''                                                     
   <step id="%(id)s" description="Tests run in %(project_path)s" onerror="continue">
-    <python:exec file="tools/regression/src/run.py" args="--incremental --library=%(project_path)s &quot;--bjam-options=${boost.bjam_options}&quot; --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run create-bitten-report" />
+    <python:exec file="tools/regression/src/run.py" args="--incremental --library=%(project_path)s &quot;--bjam-options=${boost.bjam_options}&quot; &quot;--toolsets=${boost.toolsets}&quot; --reflect-test-status --bitten-report=results/%(project_path)s.xml test-run create-bitten-report" />
     <report category="test" file="results/%(project_path)s.xml" />
   </step>
 '''
