@@ -88,7 +88,7 @@ def create_bitten_reports(input_filename, failure_markup):
                 '\n====== COMMAND ======\n',
                 a.command.strip(),
                 '\n====== BEGIN OUTPUT ======\n',
-                a.output, a.output[-1] != '\n' and '\n' or ''
+                a.output, a.output[-1:] != '\n' and '\n' or ''
                 '====== END OUTPUT ======\n'))
                             for a in actions ])
             
