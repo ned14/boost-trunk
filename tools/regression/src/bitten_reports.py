@@ -24,7 +24,12 @@ def indent(elem, level=0):
             elem.tail = i
 
 def lib_subdir_and_test_name_from_target(target_name):
+    """Returns a tuple containing the subdirectory of $BOOST_ROOT/libs in which
+the test is defined and the name of the test.  This whole function is something
+of a hack: this information should be derived in a more principled manner, and
+not from the target name."""
     l = []
+    target_name.replace('\\','/')
     p = target_name.split('/')
     for x in p[p.index('libs')+1:]:
         if x.endswith('.test'):
@@ -32,7 +37,7 @@ def lib_subdir_and_test_name_from_target(target_name):
         l.append(x)
     return None
     
-    
+
 def create_bitten_reports(input_filename, failure_markup):
     failed = False
     results = test_results.TestResults(open(input_filename))
@@ -67,7 +72,6 @@ def create_bitten_reports(input_filename, failure_markup):
                     print 'Marked', target, 'because of markup:', '\n'.join(
                         [ET.tostring(x) for x in i])
                     status = 'marked'
-                    print 'report status:', (status == 'failed') and 'failure' or 'success'
 
         if status == 'failed':
             bitten_status = 'failure'
