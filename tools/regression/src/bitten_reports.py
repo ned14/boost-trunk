@@ -29,8 +29,9 @@ the test is defined and the name of the test.  This whole function is something
 of a hack: this information should be derived in a more principled manner, and
 not from the target name."""
     l = []
-    target_name.replace('\\','/')
-    p = target_name.split('/')
+    p = target_name.replace('\\','/').split('/')
+    if not 'libs' in p:
+        print '??? target name has no libs:', p
     for x in p[p.index('libs')+1:]:
         if x.endswith('.test'):
             return '/'.join(l), x[:-5]
