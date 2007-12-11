@@ -443,6 +443,16 @@
                 <note author="Jeremy Siek" refid="1"/>
             </mark-failure>
         </test>
+        <test name="stl_concept_check">
+          <mark-failure>
+            <toolset name="hp_cxx*"/>
+            <note author="Markus Schoepflin" date="09 Dec 2007">
+              This version of the Rogue Wave library fails to provide all
+              needed addition operators for the iterator type and the
+              difference type of std::deque.
+            </note>
+          </mark-failure>
+        </test>
     </library>
 
     <!-- config -->
@@ -1521,7 +1531,7 @@
         </mark-expected-failures>
         <mark-expected-failures>
             <test name="interfaces_example"/>
-            <toolset name="msvc-7.1"/>
+            <toolset name="msvc-7.1*"/>
             <note author="Tobias Schwinger">
               Overload selection does not work in some assignment contexts with this compiler.
             </note>
