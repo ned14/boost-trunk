@@ -6593,6 +6593,7 @@ libs/filesystem/example/mbpath.cpp svneol=native#text/plain
 libs/filesystem/example/mbpath.hpp svneol=native#text/plain
 libs/filesystem/example/path_table.cpp svneol=native#text/plain
 libs/filesystem/example/simple_ls.cpp svneol=native#text/plain
+libs/filesystem/example/vc++.bat svneol=native#text/plain
 libs/filesystem/index.html svneol=native#text/html
 libs/filesystem/src/exception.cpp svneol=native#text/plain
 libs/filesystem/src/operations.cpp svneol=native#text/plain
