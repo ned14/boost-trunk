@@ -16270,6 +16270,7 @@ libs/thread/test/test_condition_notify_all.cpp svneol=native#text/plain
 libs/thread/test/test_condition_notify_one.cpp svneol=native#text/plain
 libs/thread/test/test_condition_timed_wait_times_out.cpp svneol=native#text/plain
 libs/thread/test/test_lock_concept.cpp svneol=native#text/plain
+libs/thread/test/test_move_function.cpp svneol=native#text/plain
 libs/thread/test/test_mutex.cpp svneol=native#text/plain
 libs/thread/test/test_once.cpp svneol=native#text/plain
 libs/thread/test/test_shared_mutex.cpp svneol=native#text/plain
