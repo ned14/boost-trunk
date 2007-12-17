@@ -5211,6 +5211,7 @@ v3/boost/xpressive/proto/context/default.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/context/null.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/debug.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/deep_copy.hpp svneol=native#text/plain
+v3/boost/xpressive/proto/detail/apply_args.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/detail/define.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/detail/dont_care.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/detail/indices.hpp svneol=native#text/plain
