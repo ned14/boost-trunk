@@ -5216,6 +5216,7 @@ v3/boost/xpressive/proto/detail/define.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/detail/dont_care.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/detail/indices.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/detail/is_callable.hpp svneol=native#text/plain
+v3/boost/xpressive/proto/detail/nary_expr.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/detail/undef.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/domain.hpp svneol=native#text/plain
 v3/boost/xpressive/proto/eval.hpp svneol=native#text/plain
