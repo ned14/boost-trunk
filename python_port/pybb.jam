@@ -4,6 +4,7 @@ ECHO "Boost.Build V2 Python port (experimental)" ;
 # Arrange for PyBB modules to be found.
 module
 {
+    BOOST_BUILD_PATH = $(BOOST_BUILD_PATH) $(BOOST_BUILD_PATH)/python/boost/build/tools ;
     EXTRA_PYTHONPATH = $(BOOST_BUILD_PATH)/python ;
 }
 
