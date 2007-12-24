@@ -10326,7 +10326,6 @@ libs/iostreams/test/line_filter_test.cpp svneol=native#text/plain
 libs/iostreams/test/mapped_file_test.cpp svneol=native#text/plain
 libs/iostreams/test/newline_test.cpp svneol=native#text/plain
 libs/iostreams/test/null_test.cpp svneol=native#text/plain
-libs/iostreams/test/offset_test.cpp svneol=native#text/plain
 libs/iostreams/test/operation_sequence_test.cpp svneol=native#text/plain
 libs/iostreams/test/pipeline_test.cpp svneol=native#text/plain
 libs/iostreams/test/positioning_test.cpp svneol=native#text/plain
