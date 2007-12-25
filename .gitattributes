@@ -11308,6 +11308,7 @@ v3/libs/iostreams/test/seekable_file_test.cpp svneol=native#text/plain
 v3/libs/iostreams/test/seekable_filter_test.cpp svneol=native#text/plain
 v3/libs/iostreams/test/sequence_test.cpp svneol=native#text/plain
 v3/libs/iostreams/test/stdio_filter_test.cpp svneol=native#text/plain
+v3/libs/iostreams/test/stream_state_test.cpp svneol=native#text/plain
 v3/libs/iostreams/test/symmetric_filter_test.cpp svneol=native#text/plain
 v3/libs/iostreams/test/tee_test.cpp svneol=native#text/plain
 v3/libs/iostreams/test/wide_stream_test.cpp svneol=native#text/plain
