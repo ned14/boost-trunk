@@ -17931,6 +17931,7 @@ tools/build/v2/tools/gfortran.jam svneol=native#text/plain
 tools/build/v2/tools/hp_cxx.jam svneol=native#text/plain
 tools/build/v2/tools/hpfortran.jam svneol=native#text/plain
 tools/build/v2/tools/ifort.jam svneol=native#text/plain
+tools/build/v2/tools/intel-darwin.jam svneol=native#text/plain
 tools/build/v2/tools/intel-linux.jam svneol=native#text/plain
 tools/build/v2/tools/intel-win.jam svneol=native#text/plain
 tools/build/v2/tools/intel.jam svneol=native#text/plain
