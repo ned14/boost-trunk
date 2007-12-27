@@ -298,7 +298,7 @@ class Tester(TestCmd.TestCmd):
     def copy(self, src, dst):
         self.wait_for_time_change()
         try:
-            self.write(dst, self.read(src))
+            self.write(dst, self.read(src, 1))
         except:
             self.fail_test(1)
 
@@ -306,13 +306,13 @@ class Tester(TestCmd.TestCmd):
         src_name = self.native_file_name(src)
         dst_name = self.native_file_name(dst)
         stats = os.stat(src_name)        
-        self.write(dst, self.read(src))
+        self.write(dst, self.read(src, 1))
         os.utime(dst_name, (stats.st_atime, stats.st_mtime))
         
     def touch(self, names):
         self.wait_for_time_change()
         for name in self.adjust_names(names):
-                os.utime(self.native_file_name(name), None)
+            os.utime(self.native_file_name(name), None)
 
     def rm(self, names):
         self.wait_for_time_change()
@@ -437,12 +437,17 @@ class Tester(TestCmd.TestCmd):
                 result = result[0]
         return result
 
-    def read(self, name):
+    def read(self, name, binary = 0):
         try:
             if self.toolset:
                 name = string.replace(name, "$toolset", self.toolset+"*")
             name = self.glob_file(name)
-            return open(name, "rU").read()
+            openMode = "r"
+            if ( binary ):
+                openMode += "b"
+            else:
+                openMode += "U"
+            return open(name, openMode).read()
         except:
             annotation("reason", "Could not open '%s'" % name)
             self.fail_test(1)
@@ -461,7 +466,7 @@ class Tester(TestCmd.TestCmd):
         if condition and hasattr(self, 'difference'):            
             f = StringIO()
             self.difference.pprint(f)
-            annotation("changes causes by the last build command", f.getvalue())
+            annotation("changes caused by the last build command", f.getvalue())
             
         if condition and dump_stdio:
             self.dump_stdio()
@@ -522,7 +527,6 @@ class Tester(TestCmd.TestCmd):
         self.ignore_elements(self.unexpected_difference.modified_files, wildcard)
 
     def expect_touch(self, names):
-        
         d = self.unexpected_difference
         for name in self.adjust_names(names):
 
@@ -662,7 +666,6 @@ class Tester(TestCmd.TestCmd):
 
     def maybe_do_diff(self, actual, expected):
         if os.environ.has_key("DO_DIFF") and os.environ["DO_DIFF"] != '':
-            
             e = tempfile.mktemp("expected")
             a = tempfile.mktemp("actual")
             open(e, "w").write(expected)
