@@ -10291,7 +10291,6 @@ libs/iostreams/src/bzip2.cpp svneol=native#text/plain
 libs/iostreams/src/file_descriptor.cpp svneol=native#text/plain
 libs/iostreams/src/mapped_file.cpp svneol=native#text/plain
 libs/iostreams/src/zlib.cpp svneol=native#text/plain
-libs/iostreams/test/525_test.cpp svneol=native#text/plain
 libs/iostreams/test/Jamfile.v2 svneol=native#text/plain
 libs/iostreams/test/array_test.cpp svneol=native#text/plain
 libs/iostreams/test/auto_close_test.cpp svneol=native#text/plain
