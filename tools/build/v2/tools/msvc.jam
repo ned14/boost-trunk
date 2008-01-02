@@ -232,11 +232,10 @@ local rule configure-really (
         {
             # Even if version is not explicitly specified, try to detect the version
             # from the path.
-            if [ MATCH "(Microsoft Visual Studio 9)" : $(command) ]
+            if [ MATCH "(Microsoft Visual Studio 9.0)" : $(command) ]
             {
                 version = 9.0 ;
-            }
-            if [ MATCH "(Microsoft Visual Studio 8)" : $(command) ]
+            } else if [ MATCH "(Microsoft Visual Studio 8)" : $(command) ]
             {
                 version = 8.0 ;
             }                 

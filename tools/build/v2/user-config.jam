@@ -37,25 +37,33 @@
 #    http://boost.org/boost-build2/doc/html/bbv2/advanced.html#bbv2.advanced.jam_language
 #
 
-
-
 #  GCC configuration
 
 #  Configure gcc (default version)
-#  using gcc ;
+
+using gcc ;
 
 #  Configure specific gcc version, giving alternative name to use
 #  using gcc : 3.2 : g++-3.2 ;
 
 #  MSVC configuration
 
+using msvc : 8.0 ;
+
 #  Configure msvc (default version, searched in standard location
 #  and PATH).
 #  using msvc ;
 
 #  Borland configuration
-#  using borland ;
 
+#using borland : 5.8.2 : "C:\Program Files\Borland\BDS\4.0"
+
+#using borland : 5.6.4 : "C:\Program Files\Borland\CBuilder6\bin"
+
+
+# CodeWarrior configuration
+
+#using cw : 9.2 : "C:\Program Files\Metrowerks\CodeWarrior" ;
 
 #  STLPort configuration
 
