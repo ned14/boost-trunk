@@ -4599,6 +4599,7 @@ boost/statechart/detail/counted_base.hpp svneol=native#text/plain
 boost/statechart/detail/leaf_state.hpp svneol=native#text/plain
 boost/statechart/detail/memory.hpp svneol=native#text/plain
 boost/statechart/detail/node_state.hpp svneol=native#text/plain
+boost/statechart/detail/reaction_dispatcher.hpp svneol=native#text/plain
 boost/statechart/detail/rtti_policy.hpp svneol=native#text/plain
 boost/statechart/detail/state_base.hpp svneol=native#text/plain
 boost/statechart/event.hpp svneol=native#text/plain
