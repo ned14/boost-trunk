@@ -50,6 +50,10 @@ using gcc ;
 
 using msvc : 8.0 ;
 
+# Intel Configuration
+
+using intel : 10.1 : C:/PROGRA~1/Intel/Compiler/C++/10.1.011/IA32 ;
+
 #  Configure msvc (default version, searched in standard location
 #  and PATH).
 #  using msvc ;
