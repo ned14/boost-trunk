@@ -10419,6 +10419,7 @@ libs/iostreams/test/buffer_size_test.cpp svneol=native#text/plain
 libs/iostreams/test/bzip2_test.cpp svneol=native#text/plain
 libs/iostreams/test/close_test.cpp svneol=native#text/plain
 libs/iostreams/test/code_converter_test.cpp svneol=native#text/plain
+libs/iostreams/test/combine_test.cpp svneol=native#text/plain
 libs/iostreams/test/component_access_test.cpp svneol=native#text/plain
 libs/iostreams/test/compose_test.cpp svneol=native#text/plain
 libs/iostreams/test/copy_test.cpp svneol=native#text/plain
