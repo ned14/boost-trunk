@@ -17882,6 +17882,7 @@ tools/build/v2/test/core_varnames.py svneol=native#text/x-python
 tools/build/v2/test/custom_generator.py svneol=native#text/x-python
 tools/build/v2/test/default_build.py svneol=native#text/x-python
 tools/build/v2/test/default_features.py svneol=native#text/x-python
+tools/build/v2/test/default_toolset.py svneol=native#text/x-python
 tools/build/v2/test/dependency-test/Jamfile svneol=native#text/plain
 tools/build/v2/test/dependency-test/a.cpp svneol=native#text/plain
 tools/build/v2/test/dependency-test/a.h svneol=native#text/plain
