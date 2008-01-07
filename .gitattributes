@@ -17875,6 +17875,7 @@ tools/build/v2/test/composite.py svneol=native#text/x-python
 tools/build/v2/test/conditionals.py svneol=native#text/x-python
 tools/build/v2/test/conditionals2.py svneol=native#text/x-python
 tools/build/v2/test/conditionals3.py svneol=native#text/x-python
+tools/build/v2/test/configuration.py svneol=native#text/x-python
 tools/build/v2/test/core_d12.py svneol=native#text/x-python
 tools/build/v2/test/core_delete_module.py svneol=native#text/x-python
 tools/build/v2/test/core_dependencies.py svneol=native#text/x-python
