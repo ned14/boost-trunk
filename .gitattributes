@@ -16946,6 +16946,7 @@ libs/unordered/test/helpers/strong.hpp svneol=native#text/plain
 libs/unordered/test/helpers/tracker.hpp svneol=native#text/plain
 libs/unordered/test/objects/exception.hpp svneol=native#text/plain
 libs/unordered/test/objects/fwd.hpp svneol=native#text/plain
+libs/unordered/test/objects/memory.hpp svneol=native#text/plain
 libs/unordered/test/objects/minimal.hpp svneol=native#text/plain
 libs/unordered/test/objects/test.hpp svneol=native#text/plain
 libs/unordered/test/unordered/Jamfile.v2 svneol=native#text/plain
