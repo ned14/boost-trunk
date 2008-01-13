@@ -16935,6 +16935,7 @@ libs/unordered/test/exception/swap_exception_tests.cpp svneol=native#text/plain
 libs/unordered/test/helpers/allocator.hpp svneol=native#text/plain
 libs/unordered/test/helpers/check_return_type.hpp svneol=native#text/plain
 libs/unordered/test/helpers/equivalent.hpp svneol=native#text/plain
+libs/unordered/test/helpers/exception_test.hpp svneol=native#text/plain
 libs/unordered/test/helpers/fwd.hpp svneol=native#text/plain
 libs/unordered/test/helpers/generators.hpp svneol=native#text/plain
 libs/unordered/test/helpers/helpers.hpp svneol=native#text/plain
