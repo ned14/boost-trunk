@@ -17582,6 +17582,7 @@ libs/xpressive/test/test_regex_iterator.cpp svneol=native#text/plain
 libs/xpressive/test/test_regex_primitives.cpp svneol=native#text/plain
 libs/xpressive/test/test_regex_token_iterator.cpp svneol=native#text/plain
 libs/xpressive/test/test_regex_traits.cpp svneol=native#text/plain
+libs/xpressive/test/test_skip.cpp svneol=native#text/plain
 libs/xpressive/test/test_static.cpp svneol=native#text/plain
 libs/xpressive/test/test_sub_match.cpp svneol=native#text/plain
 libs/xpressive/test/test_symbols.cpp svneol=native#text/plain
