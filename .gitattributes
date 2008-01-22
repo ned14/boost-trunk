@@ -5689,7 +5689,7 @@ libs/assign/test/static_list_of.cpp svneol=native#text/plain
 libs/assign/test/std.cpp svneol=native#text/plain
 libs/assign/test/tuple_list_of.cpp svneol=native#text/plain
 libs/bimap/doc/acknowledgements.qbk svneol=native#text/plain
-libs/bimap/doc/bimap.hdf svneol=native#text/plain
+libs/bimap/doc/bimap.hdf -text
 libs/bimap/doc/bimap.qbk svneol=native#text/plain
 libs/bimap/doc/bimap_and_boost.qbk svneol=native#text/plain
 libs/bimap/doc/compiler_specifics.qbk svneol=native#text/plain
