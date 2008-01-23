@@ -15672,6 +15672,7 @@ libs/spirit/test/symbols_find_null.cpp svneol=native#text/plain
 libs/spirit/test/symbols_tests.cpp svneol=native#text/plain
 libs/spirit/test/traverse_tests.cpp svneol=native#text/plain
 libs/spirit/test/tree_tests.cpp svneol=native#text/plain
+libs/spirit/test/tree_to_xml.cpp svneol=native#text/plain
 libs/spirit/test/typeof_support/typeof_actor.cpp svneol=native#text/plain
 libs/spirit/test/typeof_support/typeof_attribute.cpp svneol=native#text/plain
 libs/spirit/test/typeof_support/typeof_core.cpp svneol=native#text/plain
