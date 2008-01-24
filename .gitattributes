@@ -3921,6 +3921,7 @@ boost/property_tree/ptree_fwd.hpp svneol=native#text/plain
 boost/property_tree/ptree_serialization.hpp svneol=native#text/plain
 boost/property_tree/xml_parser.hpp svneol=native#text/plain
 boost/ptr_container/clone_allocator.hpp svneol=native#text/plain
+boost/ptr_container/clone_inserter.hpp -text svneol=native#test/plain
 boost/ptr_container/detail/associative_ptr_container.hpp svneol=native#text/plain
 boost/ptr_container/detail/default_deleter.hpp svneol=native#text/plain
 boost/ptr_container/detail/is_convertible.hpp svneol=native#text/plain
