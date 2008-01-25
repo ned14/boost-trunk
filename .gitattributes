@@ -14225,7 +14225,6 @@ libs/ptr_container/doc/tutorial_example.html svneol=native#text/plain
 libs/ptr_container/index.html svneol=native#text/html
 libs/ptr_container/test/Jamfile.v2 svneol=native#text/plain
 libs/ptr_container/test/associative_test_data.hpp svneol=native#text/plain
-libs/ptr_container/test/clone_inserter.cpp -text svneol=unset#test/plain
 libs/ptr_container/test/incomplete_type_test.cpp svneol=native#text/plain
 libs/ptr_container/test/indirect_fun.cpp svneol=native#text/plain
 libs/ptr_container/test/iterator_test.cpp svneol=native#text/plain
