@@ -3941,6 +3941,7 @@ boost/ptr_container/nullable.hpp svneol=native#text/plain
 boost/ptr_container/ptr_array.hpp svneol=native#text/plain
 boost/ptr_container/ptr_container.hpp svneol=native#text/plain
 boost/ptr_container/ptr_deque.hpp svneol=native#text/plain
+boost/ptr_container/ptr_inserter.hpp -text svneol=native#test/plain
 boost/ptr_container/ptr_list.hpp svneol=native#text/plain
 boost/ptr_container/ptr_map.hpp svneol=native#text/plain
 boost/ptr_container/ptr_map_adapter.hpp svneol=native#text/plain
