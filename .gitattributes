@@ -14234,6 +14234,7 @@ libs/ptr_container/test/pointainer_speed.cpp svneol=native#text/plain
 libs/ptr_container/test/ptr_array.cpp svneol=native#text/plain
 libs/ptr_container/test/ptr_container_adapter.cpp svneol=native#text/plain
 libs/ptr_container/test/ptr_deque.cpp svneol=native#text/plain
+libs/ptr_container/test/ptr_inserter.cpp -text svneol=unset#test/plain
 libs/ptr_container/test/ptr_list.cpp svneol=native#text/plain
 libs/ptr_container/test/ptr_map.cpp svneol=native#text/plain
 libs/ptr_container/test/ptr_map_adapter.cpp svneol=native#text/plain
