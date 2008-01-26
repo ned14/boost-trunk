@@ -1630,7 +1630,7 @@ boost/graph/dijkstra_shortest_paths.hpp svneol=native#text/plain
 boost/graph/dominator_tree.hpp svneol=native#text/plain
 boost/graph/edge_connectivity.hpp svneol=native#text/plain
 boost/graph/edge_list.hpp svneol=native#text/plain
-boost/graph/edmunds_karp_max_flow.hpp svneol=native#text/plain
+boost/graph/edmonds_karp_max_flow.hpp svneol=native#text/plain
 boost/graph/erdos_renyi_generator.hpp svneol=native#text/plain
 boost/graph/exception.hpp svneol=native#text/plain
 boost/graph/filtered_graph.hpp svneol=native#text/plain
@@ -8244,7 +8244,7 @@ libs/graph/doc/dijkstra_shortest_paths.html svneol=native#text/html
 libs/graph/doc/dijkstra_visitor.html svneol=native#text/html
 libs/graph/doc/distance_recorder.html svneol=native#text/html
 libs/graph/doc/edge_list.html svneol=native#text/html
-libs/graph/doc/edmunds_karp_max_flow.html svneol=native#text/html
+libs/graph/doc/edmonds_karp_max_flow.html svneol=native#text/plain
 libs/graph/doc/eg1-iso.cpp svneol=native#text/plain
 libs/graph/doc/erdos_renyi_generator.html svneol=native#text/html
 libs/graph/doc/exception.html svneol=native#text/html
@@ -8515,7 +8515,7 @@ libs/graph/example/edge_iterator_constructor.cpp svneol=native#text/plain
 libs/graph/example/edge_iterator_constructor.dat -text
 libs/graph/example/edge_property.cpp svneol=native#text/plain
 libs/graph/example/edge_property.expected -text
-libs/graph/example/edmunds-karp-eg.cpp svneol=native#text/plain
+libs/graph/example/edmonds-karp-eg.cpp svneol=native#text/plain
 libs/graph/example/exterior_properties.cpp svneol=native#text/plain
 libs/graph/example/exterior_properties.expected -text
 libs/graph/example/exterior_property_map.cpp svneol=native#text/plain
