@@ -16521,7 +16521,6 @@ libs/type_traits/doc/has_virtual_destructor.qbk svneol=native#text/plain
 libs/type_traits/doc/html/boost_typetraits/background.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/category.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/category/alignment.html svneol=native#text/html
-libs/type_traits/doc/html/boost_typetraits/category/background.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/category/function.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/category/transform.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/category/value_traits.html svneol=native#text/html
