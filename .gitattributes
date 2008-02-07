@@ -14102,7 +14102,6 @@ libs/ptr_container/test/ptr_map_adapter.cpp svneol=native#text/plain
 libs/ptr_container/test/ptr_set.cpp svneol=native#text/plain
 libs/ptr_container/test/ptr_vector.cpp svneol=native#text/plain
 libs/ptr_container/test/ptr_vector_size.cpp svneol=native#text/plain
-libs/ptr_container/test/sequence_point.cpp svneol=native#text/plain
 libs/ptr_container/test/sequence_test_data.hpp svneol=native#text/plain
 libs/ptr_container/test/serialization.cpp svneol=native#text/plain
 libs/ptr_container/test/simple_test.cpp svneol=native#text/plain
