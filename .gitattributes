@@ -5995,6 +5995,7 @@ libs/bind/index.html svneol=native#text/html
 libs/bind/mem_fn.html svneol=native#text/html
 libs/bind/ref.html svneol=native#text/html
 libs/bind/test/Jamfile.v2 svneol=native#text/plain
+libs/bind/test/bind_and_or_test.cpp svneol=native#text/plain
 libs/bind/test/bind_cdecl_mf_test.cpp svneol=native#text/plain
 libs/bind/test/bind_const_test.cpp svneol=native#text/plain
 libs/bind/test/bind_cv_test.cpp svneol=native#text/plain
