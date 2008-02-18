@@ -10400,6 +10400,7 @@ libs/iostreams/src/zlib.cpp svneol=native#text/plain
 libs/iostreams/test/Jamfile.v2 svneol=native#text/plain
 libs/iostreams/test/array_test.cpp svneol=native#text/plain
 libs/iostreams/test/auto_close_test.cpp svneol=native#text/plain
+libs/iostreams/test/bool_trait_test.cpp svneol=native#text/plain
 libs/iostreams/test/buffer_size_test.cpp svneol=native#text/plain
 libs/iostreams/test/bzip2_test.cpp svneol=native#text/plain
 libs/iostreams/test/close_test.cpp svneol=native#text/plain
