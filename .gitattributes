@@ -5274,6 +5274,7 @@ doc/html/any.html svneol=native#text/html
 doc/html/array.html svneol=native#text/html
 doc/html/bbv2.html svneol=native#text/html
 doc/html/bbv2/installation.html svneol=native#text/html
+doc/html/boost_asio.html svneol=native#text/html
 doc/html/boost_staticassert.html svneol=native#text/html
 doc/html/boost_tr1.html svneol=native#text/html
 doc/html/boostbook.css svneol=native#text/css
