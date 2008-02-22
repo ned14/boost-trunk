@@ -10215,6 +10215,7 @@ libs/iostreams/doc/functions/putback.html svneol=native#text/html
 libs/iostreams/doc/functions/read.html svneol=native#text/html
 libs/iostreams/doc/functions/restrict.html svneol=native#text/html
 libs/iostreams/doc/functions/seek.html svneol=native#text/html
+libs/iostreams/doc/functions/slice.html svneol=native#text/html
 libs/iostreams/doc/functions/tee.html svneol=native#text/html
 libs/iostreams/doc/functions/write.html svneol=native#text/html
 libs/iostreams/doc/graphics/bidirectional_chain.gif -text svneol=unset#image/gif
