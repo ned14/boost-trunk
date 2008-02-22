@@ -10255,6 +10255,7 @@ libs/iostreams/doc/portability.html svneol=native#text/html
 libs/iostreams/doc/quick_reference.html svneol=native#text/html
 libs/iostreams/doc/rationale.html svneol=native#text/html
 libs/iostreams/doc/reference.html svneol=native#text/html
+libs/iostreams/doc/release_notes.html svneol=native#text/html
 libs/iostreams/doc/theme/boost.png -text svneol=unset#image/png
 libs/iostreams/doc/theme/boost_small.png -text svneol=unset#image/png
 libs/iostreams/doc/theme/iostreams.css svneol=native#text/css
