@@ -1,5 +1,0 @@
-project(CompileTest)
-string(REPLACE ":" ";" INCLUDE_PATHS ${INCLUDES})
-separate_arguments(INCLUDE_PATHS)
-include_directories (${INCLUDE_PATHS})
-add_library(compile STATIC "${SOURCE}")
