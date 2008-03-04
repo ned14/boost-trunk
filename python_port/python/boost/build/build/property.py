@@ -294,7 +294,7 @@ def select (features, properties):
     # add any missing angle brackets
     features = add_grist (features)
 
-    return [p for p in proeprties if get_grist(p) in features]
+    return [p for p in properties if get_grist(p) in features]
 
 def validate_property_sets (sets):
     for s in sets:
