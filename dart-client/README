@@ -1,0 +1,15 @@
+
+This directory contains a utility for running continuous and nightly
+regression tests via ctest.  To use, checkout this directory,
+customize conf.py, and either run
+
+  ./client.py bootstrap
+
+which is the equivalent of
+
+  ./client.py clean
+  ./client.py checkout
+  ./client.py initialize_builds
+  ./client.py run
+
+

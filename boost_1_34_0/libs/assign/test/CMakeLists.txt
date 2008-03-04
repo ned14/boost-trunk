@@ -1,0 +1,19 @@
+SET(TESTS 
+ basic
+ std
+ list_of
+ ptr_list_of
+ static_list_of
+ tuple_list_of
+ list_inserter
+ ptr_list_inserter
+ ptr_map_inserter
+ list_of_workaround 
+ email_example
+ my_vector_example
+ multi_index_container)
+
+FOREACH(test ${TESTS})
+  boost_test_run(${test} DEPENDS boost_unit_test_framework)
+ENDFOREACH(test ${TESTS})
+
