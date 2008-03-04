@@ -1124,6 +1124,8 @@ class BasicTarget (AbstractTarget):
                         (self.name, str(rproperties.raw())))
                     
                     self.generated_ [str (ps)] = GenerateResult (ur, result)
+                else:
+                    self.generated_ [str (ps)] = GenerateResult (property_set.empty(), [])
             else:
                 self.manager().targets().log(
                     "Skipping build: <build>no in common properties")
@@ -1240,7 +1242,7 @@ class TypedTarget (BasicTarget):
         return self.type_
             
     def construct (self, name, source_targets, prop_set):
-        r = generators.construct (self.project_, name, self.type_, False, 
+        r = generators.construct (self.project_, name, self.type_, 
             property_set.create (prop_set.raw () + ['<main-target-type>' + self.type_]),
             source_targets)
 
