@@ -1,0 +1,2 @@
+add_subdirectory(quickbook)
+add_subdirectory(wave)

@@ -1,0 +1,8 @@
+boost_test_run(test_thread MULTI_THREADED DEPENDS boost_thread boost_unit_test_framework) 
+boost_test_run(test_mutex MULTI_THREADED DEPENDS boost_thread boost_unit_test_framework)
+boost_test_run(test_condition MULTI_THREADED DEPENDS boost_thread boost_unit_test_framework)
+boost_test_run(test_tss MULTI_THREADED DEPENDS boost_thread boost_unit_test_framework)
+boost_test_run(test_once MULTI_THREADED DEPENDS boost_thread boost_unit_test_framework)
+boost_test_run(test_xtime MULTI_THREADED DEPENDS boost_thread boost_unit_test_framework)
+boost_test_run(test_barrier MULTI_THREADED DEPENDS boost_thread boost_unit_test_framework)		   
+#boost_test_run(test_read_write_mutex DEPENDS boost_thread-static boost_unit_test_framework)

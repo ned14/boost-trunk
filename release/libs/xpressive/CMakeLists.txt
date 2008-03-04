@@ -1,0 +1,4 @@
+boost_library_project(
+  Xpressive
+  TESTDIRS test
+)
