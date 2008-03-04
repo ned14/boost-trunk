@@ -51,6 +51,8 @@ boost_add_library(boost_python
   wrapper.cpp
   import.cpp
   exec.cpp
+  object/function_doc_signature.cpp
+
   STATIC_COMPILE_FLAGS "-DBOOST_PYTHON_SOURCE -DBOOST_PYTHON_STATIC_LIB"
   SHARED_COMPILE_FLAGS "-DBOOST_PYTHON_SOURCE"
   PYTHON_NODEBUG_LINK_LIBS "${PYTHON_LIBRARIES}"
