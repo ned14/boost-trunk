@@ -14568,6 +14568,7 @@ release/libs/python/test/polymorphism2_auto_ptr.py svneol=native#text/x-python
 release/libs/python/test/printer.py svneol=native#text/x-python
 release/libs/python/test/properties.cpp svneol=native#text/plain
 release/libs/python/test/properties.py svneol=native#text/x-python
+release/libs/python/test/pyrun.py svneol=native#text/x-python
 release/libs/python/test/pytype_function.cpp svneol=native#text/plain
 release/libs/python/test/pytype_function.py svneol=native#text/x-python
 release/libs/python/test/raw_ctor.cpp svneol=native#text/plain

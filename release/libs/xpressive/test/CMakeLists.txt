@@ -47,7 +47,7 @@ SET(runtests
   test_dynamic)
 
 foreach(runtest ${runtests})
-  boost_test_run(${runtest})
+  boost_test_run(${runtest} DEPENDS boost_unit_test_framework)
 endforeach(runtest ${runtests})
 
 set(compiletests

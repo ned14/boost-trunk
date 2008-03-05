@@ -249,10 +249,10 @@ macro(boost_test_link testname)
     add_test("${PROJECT_NAME}::${testname}"
   	     ${CMAKE_CTEST_COMMAND}
              --build-and-test
-             "${Boost_SOURCE_DIR}/tools/build/CMake/LinkTest"
-             "${Boost_BINARY_DIR}/tools/build/CMake/LinkTest"
-             --build-generator "${CMAKE_GENERATOR}"
-             --build-makeprogram "${MAKEPROGRAM}"
+             ${Boost_SOURCE_DIR}/tools/build/CMake/LinkTest
+             ${Boost_BINARY_DIR}/tools/build/CMake/LinkTest
+             --build-generator {CMAKE_GENERATOR}
+             --build-makeprogram ${MAKEPROGRAM}
 	     --build-project LinkTest
 	     --build-options -DSOURCE=${CMAKE_CURRENT_SOURCE_DIR}/${BOOST_TEST_SOURCES} -DINCLUDES=${Boost_SOURCE_DIR} -DCOMPILE_FLAGS="${BOOST_TEST_COMPILE_FLAGS}")
   endif(BOOST_TEST_OKAY)
@@ -290,10 +290,10 @@ macro(boost_test_compile testname)
     add_test("${PROJECT_NAME}::${testname}"
   	     ${CMAKE_CTEST_COMMAND}
              --build-and-test
-             "${Boost_SOURCE_DIR}/tools/build/CMake/CompileTest"
-             "${Boost_BINARY_DIR}/tools/build/CMake/CompileTest"
-             --build-generator "${CMAKE_GENERATOR}"
-             --build-makeprogram "${MAKEPROGRAM}"
+             ${Boost_SOURCE_DIR}/tools/build/CMake/CompileTest
+             ${Boost_BINARY_DIR}/tools/build/CMake/CompileTest
+             --build-generator ${CMAKE_GENERATOR}
+             --build-makeprogram ${MAKEPROGRAM}
 	     --build-project CompileTest
 	     --build-options -DSOURCE=${CMAKE_CURRENT_SOURCE_DIR}/${BOOST_TEST_SOURCES} -DINCLUDES=${BOOST_TEST_INCLUDES} -DCOMPILE_FLAGS=${BOOST_TEST_COMPILE_FLAGS})
   endif(BOOST_TEST_OKAY)
@@ -331,10 +331,10 @@ macro(boost_test_compile_fail testname)
     add_test("${PROJECT_NAME}::${testname}"
 	     ${CMAKE_CTEST_COMMAND}
              --build-and-test
-             "${Boost_SOURCE_DIR}/tools/build/CMake/CompileTest"
-             "${Boost_BINARY_DIR}/tools/build/CMake/CompileTest"
-             --build-generator "${CMAKE_GENERATOR}"
-             --build-makeprogram "${MAKEPROGRAM}"
+             ${Boost_SOURCE_DIR}/tools/build/CMake/CompileTest
+             ${Boost_BINARY_DIR}/tools/build/CMake/CompileTest
+             --build-generator ${CMAKE_GENERATOR}
+             --build-makeprogram ${MAKEPROGRAM}
 	     --build-project CompileTest
 	     --build-options -DSOURCE=${CMAKE_CURRENT_SOURCE_DIR}/${BOOST_TEST_SOURCES} -DINCLUDES=${BOOST_TEST_INCLUDES} -DCOMPILE_FLAGS=${BOOST_TEST_COMPILE_FLAGS})
     set_tests_properties("${PROJECT_NAME}::${testname}" PROPERTIES WILL_FAIL ON)
