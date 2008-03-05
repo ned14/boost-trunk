@@ -7,7 +7,7 @@ if(BORLAND)
 endif(BORLAND)
 
 # Basic tests
-boost_test_run(class_properties_test DEPENDS boost_unit_test_framework)
+boost_test_run(class_properties_test DEPENDS boost_unit_test_framework SHARED)
 boost_test_run(basic_cstring_test DEPENDS boost_unit_test_framework)
 
 # Program execution monitor tests
