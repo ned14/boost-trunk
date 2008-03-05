@@ -6811,6 +6811,7 @@ libs/foreach/test/cstr_byref_r.cpp svneol=native#text/plain
 libs/foreach/test/cstr_byval.cpp svneol=native#text/plain
 libs/foreach/test/cstr_byval_r.cpp svneol=native#text/plain
 libs/foreach/test/dependent_type.cpp svneol=native#text/plain
+libs/foreach/test/misc.cpp svneol=native#text/plain
 libs/foreach/test/noncopyable.cpp svneol=native#text/plain
 libs/foreach/test/pair_byref.cpp svneol=native#text/plain
 libs/foreach/test/pair_byref_r.cpp svneol=native#text/plain
