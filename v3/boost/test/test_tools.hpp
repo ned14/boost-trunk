@@ -44,6 +44,7 @@
 // STL
 #include <cstddef>          // for std::size_t
 #include <iosfwd>
+#include <ios>              // for std::boolalpha
 #include <climits>          // for CHAR_BIT
 
 #include <boost/test/detail/suppress_warnings.hpp>
@@ -373,6 +374,16 @@ struct print_log_value< T[N] > {
     }
 };
 #endif
+
+//____________________________________________________________________________//
+
+template<>
+struct BOOST_TEST_DECL print_log_value<bool> {
+    void    operator()( std::ostream& ostr, bool t )
+    {
+         ostr << std::boolalpha << t;
+    }
+};
 
 //____________________________________________________________________________//
 
