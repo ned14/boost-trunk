@@ -5,7 +5,10 @@ endif (MSVC)
 boost_add_executable(quickbook
   detail/quickbook.cpp
   detail/actions.cpp
+  detail/actions_class.cpp
   detail/utils.cpp
   detail/post_process.cpp
+  detail/collector.cpp
+  detail/template_stack.cpp
   DEPENDS boost_program_options boost_filesystem
   )  

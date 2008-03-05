@@ -2,8 +2,8 @@
 set(SOURCES
     basic_archive.cpp
     basic_iarchive.cpp
-    basic_oarchive.cpp
     basic_iserializer.cpp
+    basic_oarchive.cpp
     basic_oserializer.cpp
     basic_pointer_iserializer.cpp
     basic_pointer_oserializer.cpp
@@ -13,6 +13,7 @@ set(SOURCES
     basic_xml_archive.cpp
     binary_iarchive.cpp
     binary_oarchive.cpp
+    codecvt_null.cpp
     extended_type_info.cpp
     extended_type_info_no_rtti.cpp
     extended_type_info_typeid.cpp
@@ -28,7 +29,6 @@ set(SOURCES
     )
     
 set(WSOURCES
-    codecvt_null.cpp
     utf8_codecvt_facet.cpp
     basic_text_wiprimitive.cpp
     basic_text_woprimitive.cpp

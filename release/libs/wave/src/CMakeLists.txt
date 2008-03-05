@@ -11,6 +11,7 @@ boost_add_library(
   wave_config_constant.cpp
   cpplexer/re2clex/aq.cpp
   cpplexer/re2clex/cpp_re.cpp
-  DEPENDS boost_filesystem
+  DEPENDS boost_filesystem boost_thread boost_date_time
   SHARED_COMPILE_FLAGS "-DBOOST_ALL_DYN_LINK=1"
+  NO_SINGLE_THREADED
 )

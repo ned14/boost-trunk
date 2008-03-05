@@ -10,9 +10,44 @@ set(BOOST_ARCHIVE_LIST
 
 # The serialization_test macro declares a set of tests of the
 # serialization library. For each invocation of serialization_test,
-# this macro will build separate static and dynamic tests for each
-# archive type listed in BOOST_ARCHIVE_LIST.
+# this macro will build separate static and dynamic tests.
 macro(serialization_test testname)
+  parse_arguments(BSL_TEST "" "NO_LIBS;POLYMORPHIC" ${ARGN})
+
+  if(NOT BSL_TEST_DEFAULT_ARGS)
+    set(BSL_TEST_SOURCES "${testname}.cpp")
+  else(NOT BSL_TEST_DEFAULT_ARGS)
+    set(BSL_TEST_SOURCES "${BSL_TEST_DEFAULT_ARGS}")
+  endif(NOT BSL_TEST_DEFAULT_ARGS)
+
+  if (BSL_TEST_POLYMORPHIC)
+    set(BSL_TEST_POLY "polymorphic_")
+  elseif(BSL_TEST_POLYMORPHIC)
+    set(BSL_TEST_POLY "")
+  endif(BSL_TEST_POLYMORPHIC)
+  
+  set(BSL_TEST_LIBRARIES) 
+  if(NOT BSL_NO_LIBS)
+    set(BSL_TEST_LIBRARIES "boost_serialization")
+  endif(NOT BSL_NO_LIBS)
+
+  # Tests linking against the static serialization library
+  boost_test_run("${testname}"
+    ${BSL_TEST_SOURCES}
+    STATIC
+    DEPENDS boost_test_exec_monitor-static ${BSL_TEST_LIBRARIES}
+    COMPILE_FLAGS "-DBOOST_LIB_DIAGNOSTIC=1")
+    
+  # Tests linking against the shared serialization library
+  boost_test_run("${testname}_dll"
+    ${BSL_TEST_SOURCES}
+    SHARED
+    DEPENDS boost_test_exec_monitor-static ${BSL_TEST_LIBRARIES}
+    COMPILE_FLAGS "-DBOOST_LIB_DIAGNOSTIC=1 -DBOOST_ALL_DYN_LINK=1")
+endmacro(serialization_test)
+
+# Like serialization_test, but runs the same test for all archive types.
+macro(serialization_test_allarchives testname)
   parse_arguments(BSL_TEST "" "NO_LIBS;POLYMORPHIC" ${ARGN})
 
   if(NOT BSL_TEST_DEFAULT_ARGS)
@@ -50,48 +85,48 @@ macro(serialization_test testname)
       DEPENDS boost_test_exec_monitor-static ${BSL_TEST_LIBRARIES}
       COMPILE_FLAGS "-DBOOST_ARCHIVE_TEST=${BSL_TEST_POLY}${ARCHIVE}.hpp -DBOOST_LIB_DIAGNOSTIC=1 -DBOOST_ALL_DYN_LINK=1")
   endforeach(ARCHIVE ${BOOST_ARCHIVE_LIST})
-endmacro(serialization_test)
+endmacro(serialization_test_allarchives)
 
-serialization_test(test_array)
-serialization_test(test_binary)
-serialization_test(test_contained_class)
-serialization_test(test_cyclic_ptrs)
-serialization_test(test_delete_pointer)
-serialization_test(test_deque)
-serialization_test(test_derived)
-serialization_test(test_derived_class)
-serialization_test(test_derived_class_ptr)
-serialization_test(test_diamond)
-serialization_test(test_exported)
-serialization_test(test_class_info_save)
-serialization_test(test_class_info_load)
-serialization_test(test_object)
-serialization_test(test_primitive)
-serialization_test(test_list)
-serialization_test(test_list_ptrs)
-serialization_test(test_map)
-serialization_test(test_mi)
-serialization_test(test_multiple_ptrs)
-serialization_test(test_no_rtti)
-serialization_test(test_non_intrusive)
-serialization_test(test_non_default_ctor)
-serialization_test(test_non_default_ctor2)
-serialization_test(test_null_ptr)
-serialization_test(test_nvp)
-serialization_test(test_recursion)
-serialization_test(test_registered)
-serialization_test(test_set)
-serialization_test(test_simple_class)
-serialization_test(test_simple_class_ptr)
-serialization_test(test_split)
-serialization_test(test_tracking)
-serialization_test(test_unregistered)
-serialization_test(test_variant)
-serialization_test(test_vector)
-serialization_test(test_optional)
-serialization_test(test_shared_ptr)
-serialization_test(test_shared_ptr_132)
-serialization_test(test_polymorphic POLYMORPHIC 
+serialization_test_allarchives(test_array)
+serialization_test_allarchives(test_binary)
+serialization_test_allarchives(test_contained_class)
+serialization_test_allarchives(test_cyclic_ptrs)
+serialization_test_allarchives(test_delete_pointer)
+serialization_test_allarchives(test_deque)
+serialization_test_allarchives(test_derived)
+serialization_test_allarchives(test_derived_class)
+serialization_test_allarchives(test_derived_class_ptr)
+serialization_test_allarchives(test_diamond)
+serialization_test_allarchives(test_exported)
+serialization_test_allarchives(test_class_info_save)
+serialization_test_allarchives(test_class_info_load)
+serialization_test_allarchives(test_object)
+serialization_test_allarchives(test_primitive)
+serialization_test_allarchives(test_list)
+serialization_test_allarchives(test_list_ptrs)
+serialization_test_allarchives(test_map)
+serialization_test_allarchives(test_mi)
+serialization_test_allarchives(test_multiple_ptrs)
+serialization_test_allarchives(test_no_rtti)
+serialization_test_allarchives(test_non_intrusive)
+serialization_test_allarchives(test_non_default_ctor)
+serialization_test_allarchives(test_non_default_ctor2)
+serialization_test_allarchives(test_null_ptr)
+serialization_test_allarchives(test_nvp)
+serialization_test_allarchives(test_recursion)
+serialization_test_allarchives(test_registered)
+serialization_test_allarchives(test_set)
+serialization_test_allarchives(test_simple_class)
+serialization_test_allarchives(test_simple_class_ptr)
+serialization_test_allarchives(test_split)
+serialization_test_allarchives(test_tracking)
+serialization_test_allarchives(test_unregistered)
+serialization_test_allarchives(test_variant)
+serialization_test_allarchives(test_vector)
+serialization_test_allarchives(test_optional)
+serialization_test_allarchives(test_shared_ptr)
+serialization_test_allarchives(test_shared_ptr_132)
+serialization_test_allarchives(test_polymorphic POLYMORPHIC 
   test_polymorphic.cpp test_polymorphic_A.cpp)
 serialization_test(test_iterators NO_LIBS)
 serialization_test(test_iterators_base64 NO_LIBS)

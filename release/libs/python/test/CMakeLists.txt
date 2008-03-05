@@ -156,7 +156,7 @@ bpl_test(pointer_vector)
 #    <toolset>hp_cxx:<build>no
       
 boost_python_extension(map_indexing_suite_ext 
-  map_indexing_suite.cpp int_map_indexing_suite.cpp)
+  map_indexing_suite.cpp int_map_indexing_suite.cpp a_map_indexing_suite.cpp)
 
 bpl_test(map_indexing_suite 
   map_indexing_suite.py map_indexing_suite_ext)

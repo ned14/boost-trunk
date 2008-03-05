@@ -15,4 +15,4 @@ boost_test_run(quaternion_multi_incl_test
   DEPENDS boost_unit_test_framework)
 boost_test_run(complex_test)
 boost_test_run(hypot_test)
-boost_test_run(log1p_expm1_test)
+boost_test_run(log1p_expm1_test DEPENDS boost_regex)
