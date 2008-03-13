@@ -17564,6 +17564,7 @@ libs/xpressive/proto/example/calc2.cpp svneol=native#text/plain
 libs/xpressive/proto/example/calc3.cpp svneol=native#text/plain
 libs/xpressive/proto/example/futures.cpp svneol=native#text/plain
 libs/xpressive/proto/example/hello.cpp svneol=native#text/plain
+libs/xpressive/proto/example/lambda.cpp svneol=native#text/plain
 libs/xpressive/proto/example/lazy_vector.cpp svneol=native#text/plain
 libs/xpressive/proto/example/map_assign.cpp svneol=native#text/plain
 libs/xpressive/proto/example/mixed.cpp svneol=native#text/plain
