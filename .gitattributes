@@ -17311,6 +17311,7 @@ tools/bcp/copy_path.cpp svneol=native#text/plain
 tools/bcp/file_types.cpp svneol=native#text/plain
 tools/bcp/fileview.cpp svneol=native#text/plain
 tools/bcp/fileview.hpp svneol=native#text/plain
+tools/bcp/index.html svneol=native#text/html
 tools/bcp/licence_info.cpp svneol=native#text/plain
 tools/bcp/licence_info.hpp svneol=native#text/plain
 tools/bcp/main.cpp svneol=native#text/plain
