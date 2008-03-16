@@ -17635,6 +17635,7 @@ libs/xpressive/test/test_basic_regex.cpp svneol=native#text/plain
 libs/xpressive/test/test_cycles.cpp svneol=native#text/plain
 libs/xpressive/test/test_dynamic.cpp svneol=native#text/plain
 libs/xpressive/test/test_dynamic_grammar.cpp svneol=native#text/plain
+libs/xpressive/test/test_format.cpp svneol=native#text/plain
 libs/xpressive/test/test_match_results.cpp svneol=native#text/plain
 libs/xpressive/test/test_non_char.cpp svneol=native#text/plain
 libs/xpressive/test/test_partial_match.cpp svneol=native#text/plain
