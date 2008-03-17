@@ -100,9 +100,14 @@ elseif (MPI_COMPILE_CMDLINE)
   endforeach(FLAG)
 
   # Extract include paths from compile command line
-  string(REGEX MATCH "-I([^\" ]+|\"[^\"]+\")" MPI_INCLUDE_PATH ${MPI_COMPILE_CMDLINE})
-  string(REGEX REPLACE "^-I" "" MPI_INCLUDE_PATH ${MPI_INCLUDE_PATH})
-  string(REGEX REPLACE "//" "/" MPI_INCLUDE_PATH ${MPI_INCLUDE_PATH})
+  string(REGEX MATCHALL "-I([^\" ]+|\"[^\"]+\")" MPI_ALL_INCLUDE_PATHS ${MPI_COMPILE_CMDLINE})
+  set(MPI_INCLUDE_PATH)
+  foreach(IPATH ${MPI_ALL_INCLUDE_PATHS})
+    string(REGEX REPLACE "^-I" "" IPATH ${IPATH})
+    string(REGEX REPLACE "//" "/" IPATH ${IPATH})
+    list(APPEND MPI_INCLUDE_PATH ${IPATH})
+  endforeach(IPATH)
+
 
   # Extract linker paths from the link command line
   string(REGEX MATCH "-L([^\" ]+|\"[^\"]+\")" MPI_LINK_PATH ${MPI_LINK_CMDLINE})
