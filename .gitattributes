@@ -15138,6 +15138,7 @@ libs/serialization/doc/tutorial.html svneol=native#text/html
 libs/serialization/doc/void_cast.html svneol=native#text/html
 libs/serialization/doc/wrappers.html svneol=native#text/html
 libs/serialization/example/Jamfile svneol=native#text/plain
+libs/serialization/example/Jamfile.v2 svneol=native#text/plain
 libs/serialization/example/demo.cpp svneol=native#text/plain
 libs/serialization/example/demo_auto_ptr.cpp svneol=native#text/plain
 libs/serialization/example/demo_dll.cpp svneol=native#text/plain
