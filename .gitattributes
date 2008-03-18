@@ -15232,11 +15232,6 @@ libs/serialization/test/polymorphic_text_warchive.hpp svneol=native#text/plain
 libs/serialization/test/polymorphic_xml_archive.hpp svneol=native#text/plain
 libs/serialization/test/polymorphic_xml_warchive.hpp svneol=native#text/plain
 libs/serialization/test/portable_binary_archive.hpp svneol=native#text/plain
-libs/serialization/test/run_archive_test.bat svneol=native#text/plain
-libs/serialization/test/run_archive_test.ksh -text
-libs/serialization/test/runtest.bat svneol=native#text/plain
-libs/serialization/test/runtest.ksh -text
-libs/serialization/test/runtest.sh svneol=native#text/x-sh
 libs/serialization/test/test_array.cpp svneol=native#text/plain
 libs/serialization/test/test_binary.cpp svneol=native#text/plain
 libs/serialization/test/test_class_info_load.cpp svneol=native#text/plain
