@@ -179,6 +179,7 @@ boost/archive/detail/interface_oarchive.hpp svneol=native#text/plain
 boost/archive/detail/iserializer.hpp svneol=native#text/plain
 boost/archive/detail/oserializer.hpp svneol=native#text/plain
 boost/archive/detail/polymorphic_iarchive_route.hpp svneol=native#text/plain
+boost/archive/detail/polymorphic_oarchive_route.hpp svneol=native#text/plain
 boost/archive/detail/register_archive.hpp svneol=native#text/plain
 boost/archive/detail/utf8_codecvt_facet.hpp svneol=native#text/plain
 boost/archive/dinkumware.hpp svneol=native#text/plain
