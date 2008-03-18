@@ -173,7 +173,6 @@ boost/archive/detail/basic_serializer_map.hpp svneol=native#text/plain
 boost/archive/detail/common_iarchive.hpp svneol=native#text/plain
 boost/archive/detail/common_oarchive.hpp svneol=native#text/plain
 boost/archive/detail/decl.hpp svneol=native#text/plain
-boost/archive/detail/dynamically_initialized.hpp svneol=native#text/plain
 boost/archive/detail/interface_iarchive.hpp svneol=native#text/plain
 boost/archive/detail/interface_oarchive.hpp svneol=native#text/plain
 boost/archive/detail/iserializer.hpp svneol=native#text/plain
