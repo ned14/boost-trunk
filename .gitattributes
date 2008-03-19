@@ -15316,6 +15316,7 @@ libs/serialization/test/text_archive.hpp svneol=native#text/plain
 libs/serialization/test/text_warchive.hpp svneol=native#text/plain
 libs/serialization/test/xml_archive.hpp svneol=native#text/plain
 libs/serialization/test/xml_warchive.hpp svneol=native#text/plain
+libs/serialization/util/test.jam svneol=native#text/plain
 libs/serialization/vc7ide/BoostSerializationLibrary.sln -text
 libs/serialization/vc7ide/Library.vcproj -text
 libs/serialization/vc7ide/LibraryW.vcproj -text
