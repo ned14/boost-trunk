@@ -15095,7 +15095,6 @@ libs/regex/test/static_mutex/static_mutex_test.cpp svneol=native#text/plain
 libs/regex/test/unicode/unicode_iterator_test.cpp svneol=native#text/plain
 libs/regex/tools/generate/tables.cpp svneol=native#text/plain
 libs/serialization/build/Jamfile.v2 svneol=native#text/plain
-libs/serialization/build/serialization.jam svneol=native#text/plain
 libs/serialization/doc/acknowledgments.html svneol=native#text/html
 libs/serialization/doc/archive_reference.html svneol=native#text/html
 libs/serialization/doc/archives.html svneol=native#text/html
