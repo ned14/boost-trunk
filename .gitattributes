@@ -18757,6 +18757,7 @@ tools/regression/xsl_reports/xsl/v2/runners.xsl svneol=native#text/xml
 tools/regression/xsl_reports/xsl/v2/summary_page.xsl svneol=native#text/xml
 tools/release/index.html svneol=native#text/html
 tools/release/inspect.sh svneol=native#text/x-sh
+tools/release/make_packages.sh svneol=native#text/x-sh
 tools/release/snapshot_posix.sh svneol=native#text/x-sh
 tools/release/snapshot_windows.sh svneol=native#text/x-sh
 tools/wave/build/Jamfile.v2 svneol=native#text/plain
