@@ -16891,6 +16891,7 @@ libs/typeof/test/test.hpp svneol=native#text/plain
 libs/typeof/test/type.cpp svneol=native#text/plain
 libs/typeof/tools/preprocess.pl svneol=native#text/x-perl
 libs/unordered/doc/Jamfile.v2 svneol=native#text/plain
+libs/unordered/doc/bibliography.xml svneol=native#text/xml
 libs/unordered/doc/buckets.qbk svneol=native#text/plain
 libs/unordered/doc/comparison.qbk svneol=native#text/plain
 libs/unordered/doc/diagrams/buckets.dia -text
