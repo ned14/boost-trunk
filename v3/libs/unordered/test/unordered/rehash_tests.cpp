@@ -1,13 +1,16 @@
 
-// Copyright 2006-2007 Daniel James.
+// Copyright 2006-2008 Daniel James.
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/unordered_set.hpp>
 #include <boost/unordered_map.hpp>
-#include <boost/detail/lightweight_test.hpp>
+#include "../helpers/test.hpp"
 #include "../helpers/random_values.hpp"
 #include "../helpers/tracker.hpp"
+
+namespace rehash_tests
+{
 
 test::seed_t seed(2974);
 
@@ -59,11 +62,15 @@ void rehash_tests(X* ptr = 0)
     rehash_test1(ptr);
 }
 
-int main() {
-    rehash_tests((boost::unordered_set<int>*) 0);
-    rehash_tests((boost::unordered_multiset<int>*) 0);
-    rehash_tests((boost::unordered_map<int, int>*) 0);
-    rehash_tests((boost::unordered_multimap<int, int>*) 0);
+boost::unordered_set<int>* int_set_ptr;
+boost::unordered_multiset<int>* int_multiset_ptr;
+boost::unordered_map<int, int>* int_map_ptr;
+boost::unordered_multimap<int, int>* int_multimap_ptr;
 
-    return boost::report_errors();
+UNORDERED_TEST(rehash_tests,
+    ((int_set_ptr)(int_multiset_ptr)(int_map_ptr)(int_multimap_ptr))
+)
+
 }
+
+RUN_TESTS()

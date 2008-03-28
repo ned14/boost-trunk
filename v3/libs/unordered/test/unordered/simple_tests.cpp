@@ -1,5 +1,5 @@
 
-// Copyright 2006-2007 Daniel James.
+// Copyright 2006-2008 Daniel James.
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
@@ -7,7 +7,7 @@
 
 #include <boost/unordered_set.hpp>
 #include <boost/unordered_map.hpp>
-#include <boost/detail/lightweight_test.hpp>
+#include "../helpers/test.hpp"
 #include <cstdlib>
 #include <algorithm>
 #include "../helpers/equivalent.hpp"
@@ -83,7 +83,7 @@ void simple_test(X const& a)
     }
 }
 
-int main()
+UNORDERED_AUTO_TEST(simple_tests)
 {
     using namespace std;
     srand(14878);
@@ -123,6 +123,6 @@ int main()
             multimap.insert(std::pair<const int, int>(index, rand()));
     }
     simple_test(multimap);
-
-    return boost::report_errors();
 }
+
+RUN_TESTS()

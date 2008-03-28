@@ -1,11 +1,11 @@
 
-// Copyright 2006-2007 Daniel James.
+// Copyright 2006-2008 Daniel James.
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/unordered_set.hpp>
 #include <boost/unordered_map.hpp>
-#include <boost/detail/lightweight_test.hpp>
+#include "../helpers/test.hpp"
 #include <boost/next_prior.hpp>
 #include "../objects/test.hpp"
 #include "../helpers/random_values.hpp"

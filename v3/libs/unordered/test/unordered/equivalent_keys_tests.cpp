@@ -1,11 +1,11 @@
 
-// Copyright 2006-2007 Daniel James.
+// Copyright 2006-2008 Daniel James.
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/unordered_set.hpp>
 #include <boost/unordered_map.hpp>
-#include <boost/detail/lightweight_test.hpp>
+#include "../helpers/test.hpp"
 #include <algorithm>
 #include <map>
 #include <list>
@@ -32,7 +32,7 @@ void test_equal_insertion(Iterator begin, Iterator end)
     test::check_equivalent_keys(x1);
 }
 
-void set_tests()
+UNORDERED_AUTO_TEST(set_tests)
 {
     int values[][5] = {
         {1},
@@ -55,7 +55,7 @@ void set_tests()
     test_equal_insertion<boost::unordered_multiset<int> >(values[4], values[4] + 3);
 }
 
-void map_tests()
+UNORDERED_AUTO_TEST(map_tests)
 {
     typedef std::list<std::pair<int const, int> > values_type;
     values_type v[5];
@@ -76,10 +76,4 @@ void map_tests()
             v[i2].begin(), v[i2].end());
 }
 
-int main()
-{
-    set_tests();
-    map_tests();
-
-    return boost::report_errors();
-}
+RUN_TESTS()
