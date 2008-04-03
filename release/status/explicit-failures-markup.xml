@@ -547,6 +547,7 @@
                 <toolset name="sun-5.8*"/>
                 <toolset name="sun-5.9*"/>
                 <toolset name="msvc-8.0*"/>
+                <toolset name="msvc-9.0*"/>
                 <toolset name="msvc-7.1*"/>
                 <toolset name="acc"/>
                 <note author="Alexander Nasonov">
@@ -1499,14 +1500,7 @@
         <mark-expected-failures>
             <test name="member_ccs"/>
             <test name="member_ccs_exact"/>
-            <toolset name="acc*"/>
-            <toolset name="darwin-4.0.1"/>
-            <toolset name="gcc-*"/>
-            <toolset name="hp_cxx*"/>
-            <toolset name="intel*"/>
-            <toolset name="msvc-*_64"/>
-            <toolset name="msvc-*wm*"/>
-            <toolset name="pathscale-*"/>
+            <toolset name="*"/>
             <note author="Tobias Schwinger">
               Not all compilers/platforms implement nonstandard calling conventions.
               <hr/>
@@ -1517,14 +1511,7 @@
         <mark-expected-failures>
             <test name="nonmember_ccs"/>
             <test name="nonmember_ccs_exact"/>
-            <toolset name="acc*"/>
-            <toolset name="darwin-4.0.1"/>
-            <toolset name="gcc-*"/>
-            <toolset name="hp_cxx*"/>
-            <toolset name="intel*"/>
-            <toolset name="msvc-*_64"/>
-            <toolset name="msvc-*wm*"/>
-            <toolset name="pathscale-*"/>
+            <toolset name="*"/>
             <note author="Tobias Schwinger">
               Not all compilers/platforms implement nonstandard calling conventions.
             </note>
@@ -1737,6 +1724,9 @@
         <mark-expected-failures>
             <test name="csr_graph_test"/>
             <toolset name="msvc-8.0"/>
+            <toolset name="msvc-8.0_64"/>
+            <toolset name="msvc-8.0_x86_64"/>
+            <toolset name="msvc-9.0"/>
             <note author="Doug Gregor">
               This failure is due to a problem with partial ordering
               of class template partial specializations.
@@ -3997,6 +3987,21 @@ for more information.
             little chance it will handle Boost.Python</blockquote>
             </note>
         </mark-unusable>
+        <mark-expected-failures>
+          <test name="object"/>
+          <toolset name="intel-10.*"/>
+            <note author="David Abrahams">
+
+              This compiler has a bug that causes silent misbehavior at runtime
+              when each of an assignment expression follows one of the following patterns:
+              <em>expr</em><code>.attr(</code><em>name</em><code>)</code>
+              or <em>expr</em><code>[</code><em>item</em><code>]</code>,
+              where <em>expr</em>
+              is-a <code>boost::python::object</code>.  We've been
+              unable to find a workaround.
+
+            </note>
+        </mark-expected-failures>
         <mark-expected-failures>
             <test name="args"/>
             <test name="auto_ptr"/>
