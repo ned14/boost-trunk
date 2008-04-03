@@ -62,5 +62,6 @@ if (PYTHON_LIBRARIES)
     Python
     SRCDIRS src
     TESTDIRS test
+    DEPENDS graph
     )
 endif (PYTHON_LIBRARIES)

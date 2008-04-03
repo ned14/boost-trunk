@@ -3,6 +3,7 @@ boost_library_project(
   SRCDIRS src 
   TESTDIRS test
   DEPENDS system
+  MODULAR
   )
 
 

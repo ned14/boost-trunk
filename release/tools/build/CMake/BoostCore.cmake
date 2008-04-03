@@ -24,7 +24,8 @@
 #   boost_library_project(libname
 #                         [SRCDIRS srcdir1 srcdir2 ...] 
 #                         [TESTDIRS testdir1 testdir2 ...]
-#                         [DEPENDS lib1 lib2 ...])
+#                         [DEPENDS lib1 lib2 ...]
+#                         [MODULAR])
 #
 # where libname is the name of the library (e.g., Python, or
 # Filesystem), srcdir1, srcdir2, etc, are subdirectories containing
@@ -35,6 +36,11 @@
 # are not satisfied (e.g., because the library isn't present or its
 # build is turned off), this library won't be built.
 #
+# A library marked MODULAR has all of its header files in its own
+# subdirectory include/boost rather than the "global" boost
+# subdirectory. These libraries can be added or removed from the tree
+# freely; they do not need to be a part of the main repository.
+# 
 # For libraries that build actual library binaries, this macro adds a
 # option BUILD_BOOST_LIBNAME (which defaults to ON). When the option
 # is ON, this macro will include the source subdirectories, and
@@ -98,6 +104,33 @@ macro(boost_library_project LIBNAME)
   if(${BOOST_BUILD_LIB_OPTION})
     string(TOLOWER "${LIBNAME}" libname)
     project(${libname})
+
+    if(THIS_PROJECT_MODULAR)
+      # If this is a modular project, set a variable
+      # BOOST_${LIBNAME}_IS_MODULAR in the *parent* scope, so that
+      # other libraries know that this is a modular library. Thus,
+      # they will add the appropriate include paths.
+      string(TOUPPER "BOOST_${LIBNAME}_IS_MODULAR" THIS_PROJECT_IS_MODULAR)
+      set(${THIS_PROJECT_IS_MODULAR} TRUE CACHE INTERNAL "" FORCE)
+
+      # Add this module's include directory
+      include_directories("${Boost_SOURCE_DIR}/libs/${libname}/include")
+
+      # Install this module's headers
+      install(DIRECTORY include/boost 
+        DESTINATION ${BOOST_HEADER_DIR}
+        PATTERN "CVS" EXCLUDE
+        REGEX ".svn" EXCLUDE)
+    endif (THIS_PROJECT_MODULAR)
+
+    # For each of the modular libraries on which this project depends,
+    # add the include path for that library.
+    foreach(DEP ${THIS_PROJECT_DEPENDS})
+      string(TOUPPER "BOOST_${DEP}_IS_MODULAR" BOOST_LIB_DEP_MODULAR)
+      if(${BOOST_LIB_DEP_MODULAR})
+        include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
+      endif(${BOOST_LIB_DEP_MODULAR})
+    endforeach(DEP)
 
     if(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/tests)
       file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/bin/tests)

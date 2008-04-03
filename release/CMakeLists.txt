@@ -24,8 +24,7 @@
 #                                                                        #
 # For more information about CMake, see http://www.cmake.org             #
 ##########################################################################
-cmake_minimum_required(VERSION 2.4.5 FATAL_ERROR)
-set(CMAKE_BACKWARDS_COMPATIBILITY 2.4)
+cmake_minimum_required(VERSION 2.6.0 FATAL_ERROR)
 project(Boost)
 
 ##########################################################################
@@ -168,5 +167,6 @@ add_definitions(-DBOOST_ALL_NO_LIB=1)
 add_subdirectory(libs)
 
 # Add build rules for all of the Boost tools
-add_subdirectory(tools)
+# TODO: On hold while I work on the modularity code
+# add_subdirectory(tools)
 ##########################################################################
