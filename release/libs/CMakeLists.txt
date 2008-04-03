@@ -21,5 +21,9 @@ macro(ADD_SUBDIRECTORIES prefix)
 endmacro(ADD_SUBDIRECTORIES prefix)
 
 boost_collect_subproject_directory_names(BOOST_SUBPROJECT_DIRS)
+list(SORT BOOST_SUBPROJECT_DIRS)
 add_subdirectories(" + " ${BOOST_SUBPROJECT_DIRS})
 
+# Compute the topological ordering of Boost projects
+topological_sort(BOOST_SUBPROJECT_DIRS BOOST_ _DEPENDS)
+message(STATUS "${BOOST_SUBPROJECT_DIRS}")

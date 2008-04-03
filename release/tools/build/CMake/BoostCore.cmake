@@ -75,6 +75,10 @@ macro(boost_library_project LIBNAME)
     endif (NOT ${BOOST_LIB_DEP})
   endforeach(DEP)
 
+  # Export BOOST_${LIBNAME}_DEPENDS
+  string(TOUPPER "BOOST_${LIBNAME}_DEPENDS" THIS_PROJECT_LIBNAME_DEPENDS)
+  set(${THIS_PROJECT_LIBNAME_DEPENDS} ${THIS_PROJECT_DEPENDS} PARENT_SCOPE)
+
   string(TOUPPER "BUILD_BOOST_${LIBNAME}" BOOST_BUILD_LIB_OPTION)
   if (THIS_PROJECT_SRCDIRS)
     # This Boost library has source directories, so provide an option
