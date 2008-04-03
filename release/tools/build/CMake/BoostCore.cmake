@@ -1,7 +1,7 @@
 ##########################################################################
 # Core Functionality for Boost                                           #
 ##########################################################################
-# Copyright (C) 2007 Douglas Gregor <doug.gregor@gmail.com>              #
+# Copyright (C) 2007-2008 Douglas Gregor <doug.gregor@gmail.com>         #
 # Copyright (C) 2007 Troy Straszheim                                     #
 #                                                                        #
 # Distributed under the Boost Software License, Version 1.0.             #
@@ -23,13 +23,17 @@
 #
 #   boost_library_project(libname
 #                         [SRCDIRS srcdir1 srcdir2 ...] 
-#                         [TESTDIRS testdir1 testdir2 ...])
+#                         [TESTDIRS testdir1 testdir2 ...]
+#                         [DEPENDS lib1 lib2 ...])
 #
 # where libname is the name of the library (e.g., Python, or
 # Filesystem), srcdir1, srcdir2, etc, are subdirectories containing
 # library sources (for Boost libraries that build actual library
 # binaries), and testdir1, testdir2, etc, are subdirectories
-# containing regression tests.
+# containing regression tests. DEPENDS lists the names of the other
+# Boost libraries that this library depends on. If the dependencies
+# are not satisfied (e.g., because the library isn't present or its
+# build is turned off), this library won't be built.
 #
 # For libraries that build actual library binaries, this macro adds a
 # option BUILD_BOOST_LIBNAME (which defaults to ON). When the option
@@ -50,10 +54,20 @@
 #     )
 macro(boost_library_project LIBNAME)
   parse_arguments(THIS_PROJECT
-    "SRCDIRS;TESTDIRS"
-    ""
+    "SRCDIRS;TESTDIRS;DEPENDS"
+    "MODULAR"
     ${ARGN}
     )
+
+  set(THIS_PROJECT_OKAY ON)
+  set(THIS_PROJECT_FAILED_DEPS "")
+  foreach(DEP ${THIS_PROJECT_DEPENDS})
+    string(TOUPPER "BUILD_BOOST_${DEP}" BOOST_LIB_DEP)
+    if (NOT ${BOOST_LIB_DEP})
+      set(THIS_PROJECT_OKAY OFF)
+      set(THIS_PROJECT_FAILED_DEPS "${THIS_PROJECT_FAILED_DEPS}  ${DEP}\n")
+    endif (NOT ${BOOST_LIB_DEP})
+  endforeach(DEP)
 
   string(TOUPPER "BUILD_BOOST_${LIBNAME}" BOOST_BUILD_LIB_OPTION)
   if (THIS_PROJECT_SRCDIRS)
@@ -62,12 +76,23 @@ macro(boost_library_project LIBNAME)
     # the library.
     option(${BOOST_BUILD_LIB_OPTION} 
       "Build Boost.${LIBNAME} (prefer make targets, not this, to build individual libs)" 
-      ON)
+      ${THIS_PROJECT_OKAY})
+
+    if (NOT THIS_PROJECT_OKAY)
+      if (${BOOST_BUILD_LIB_OPTION})
+        # The user explicitly turned on this library in a prior
+        # iteration, but it can no longer be built because one of the
+        # dependencies was turned off. Force this option off and
+        # complain about it.
+        set(${BOOST_BUILD_LIB_OPTION} OFF
+          CACHE BOOL "Build Boost.${LIBNAME} (prefer make targets, not this, to build individual libs)" FORCE)
+        message(SEND_ERROR "Cannot build Boost.${LIBNAME} due to missing library dependencies:\n${THIS_PROJECT_FAILED_DEPS}")
+      endif (${BOOST_BUILD_LIB_OPTION})
+    endif (NOT THIS_PROJECT_OKAY)
   else (THIS_PROJECT_SRCDIRS)
     # This Boost library has no source directories, and therefore does
-    # not require building. Always enable it (but don't make it an
-    # option in the cache).
-    set(${BOOST_BUILD_LIB_OPTION} ON)
+    # not require building. Enable it when its dependencies are satisfied. 
+    set(${BOOST_BUILD_LIB_OPTION} ${THIS_PROJECT_OKAY})
   endif (THIS_PROJECT_SRCDIRS)
 
   if(${BOOST_BUILD_LIB_OPTION})
