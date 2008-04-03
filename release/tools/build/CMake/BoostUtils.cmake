@@ -105,7 +105,7 @@ ENDMACRO(PARSE_ARGUMENTS)
 
 # Perform a reverse topological sort on the given LIST. 
 #   
-#   topological_sort(MY_LIST MY_ _EDGES)
+#   topological_sort(my_list "MY_" "_EDGES")
 #
 # LIST is the name of a variable containing a list of elements to be
 # sorted in reverse topological order. Each element in the list has a
@@ -122,7 +122,7 @@ ENDMACRO(PARSE_ARGUMENTS)
 # the variable named ${PREFIX}${E}${SUFFIX}, where E is the
 # upper-cased version of the element in the list. If no such variable
 # exists, then it is assumed that there are no edges. For example, if
-# MY_LIST contains a, b, and c, one could provide a dependency graph
+# my_list contains a, b, and c, one could provide a dependency graph
 # using the following variables:
 #
 #     MY_A_EDGES     b
@@ -132,83 +132,79 @@ ENDMACRO(PARSE_ARGUMENTS)
 #  With the involcation of topological_sort shown above and these
 #  variables, the resulting reverse topological ordering will be b, a,
 #  c.
-macro(topological_sort LIST PREFIX SUFFIX)
+function(topological_sort LIST PREFIX SUFFIX)
   # Clear the stack and output variable
-  set(TOPO_SORT_VERTICES ${${LIST}})
-  set(TOPO_SORT_STACK)
+  set(VERTICES "${${LIST}}")
+  set(STACK)
   set(${LIST})
 
   # Loop over all of the vertices, starting the topological sort from
   # each one.
-  foreach(TOPO_SORT_VERTEX ${TOPO_SORT_VERTICES})
-    string(TOUPPER ${TOPO_SORT_VERTEX} TOPO_SORT_UPPER_VERTEX)
+  foreach(VERTEX ${VERTICES})
+    string(TOUPPER ${VERTEX} UPPER_VERTEX)
 
     # If we haven't already processed this vertex, start a depth-first
     # search from where.
-    if (NOT TOPO_SORT_FOUND_${TOPO_SORT_UPPER_VERTEX})
+    if (NOT FOUND_${UPPER_VERTEX})
       # Push this vertex onto the stack with all of its outgoing edges
-      string(REPLACE ";" " " TOPO_SORT_NEW_ELEMENT 
-        "${TOPO_SORT_VERTEX};${${PREFIX}${TOPO_SORT_UPPER_VERTEX}${SUFFIX}}")
-      list(APPEND TOPO_SORT_STACK ${TOPO_SORT_NEW_ELEMENT})
+      string(REPLACE ";" " " NEW_ELEMENT 
+        "${VERTEX};${${PREFIX}${UPPER_VERTEX}${SUFFIX}}")
+      list(APPEND STACK ${NEW_ELEMENT})
 
       # While the depth-first search stack is not empty
-      list(LENGTH TOPO_SORT_STACK TOPO_SORT_STACK_LENGTH)
-      while(TOPO_SORT_STACK_LENGTH GREATER 0)
+      list(LENGTH STACK STACK_LENGTH)
+      while(STACK_LENGTH GREATER 0)
         # Remove the vertex and its remaining out-edges from the top
         # of the stack
-        list(GET TOPO_SORT_STACK -1 TOPO_SORT_OUT_EDGES)
-        list(REMOVE_AT TOPO_SORT_STACK -1)
+        list(GET STACK -1 OUT_EDGES)
+        list(REMOVE_AT STACK -1)
 
         # Get the source vertex and the list of out-edges
-        separate_arguments(TOPO_SORT_OUT_EDGES)
-        list(GET TOPO_SORT_OUT_EDGES 0 TOPO_SORT_SOURCE)
-        list(REMOVE_AT TOPO_SORT_OUT_EDGES 0)
+        separate_arguments(OUT_EDGES)
+        list(GET OUT_EDGES 0 SOURCE)
+        list(REMOVE_AT OUT_EDGES 0)
 
         # While there are still out-edges remaining
-        list(LENGTH TOPO_SORT_OUT_EDGES TOPO_SORT_OUT_DEGREE)
-        while (TOPO_SORT_OUT_DEGREE GREATER 0)
+        list(LENGTH OUT_EDGES OUT_DEGREE)
+        while (OUT_DEGREE GREATER 0)
           # Pull off the first outgoing edge
-          list(GET TOPO_SORT_OUT_EDGES 0 TOPO_SORT_TARGET)
-          list(REMOVE_AT TOPO_SORT_OUT_EDGES 0)
+          list(GET OUT_EDGES 0 TARGET)
+          list(REMOVE_AT OUT_EDGES 0)
 
-          string(TOUPPER ${TOPO_SORT_TARGET} TOPO_SORT_UPPER_TARGET)
-          if (NOT TOPO_SORT_FOUND_${TOPO_SORT_UPPER_TARGET})
+          string(TOUPPER ${TARGET} UPPER_TARGET)
+          if (NOT FOUND_${UPPER_TARGET})
             # We have not seen the target before, so we will traverse
             # its outgoing edges before coming back to our
             # source. This is the key to the depth-first traversal.
 
             # We've now seen this vertex
-            set(TOPO_SORT_FOUND_${TOPO_SORT_UPPER_TARGET} TRUE)
+            set(FOUND_${UPPER_TARGET} TRUE)
 
             # Push the remaining edges for the current vertex onto the
             # stack
-            string(REPLACE ";" " " TOPO_SORT_NEW_ELEMENT 
-              "${TOPO_SORT_SOURCE};${TOPO_SORT_OUT_EDGES}")
-            list(APPEND TOPO_SORT_STACK ${TOPO_SORT_NEW_ELEMENT})
+            string(REPLACE ";" " " NEW_ELEMENT 
+              "${SOURCE};${OUT_EDGES}")
+            list(APPEND STACK ${NEW_ELEMENT})
 
             # Setup the new source and outgoing edges
-            set(TOPO_SORT_SOURCE ${TOPO_SORT_TARGET})
-            string(TOUPPER ${TOPO_SORT_SOURCE} TOPO_SORT_UPPER_SOURCE)
-            set(TOPO_SORT_OUT_EDGES 
-              ${${PREFIX}${TOPO_SORT_UPPER_SOURCE}${SUFFIX}})
-          endif(NOT TOPO_SORT_FOUND_${TOPO_SORT_UPPER_TARGET})
+            set(SOURCE ${TARGET})
+            string(TOUPPER ${SOURCE} UPPER_SOURCE)
+            set(OUT_EDGES 
+              ${${PREFIX}${UPPER_SOURCE}${SUFFIX}})
+          endif(NOT FOUND_${UPPER_TARGET})
 
-          list(LENGTH TOPO_SORT_OUT_EDGES TOPO_SORT_OUT_DEGREE)
-        endwhile (TOPO_SORT_OUT_DEGREE GREATER 0)
+          list(LENGTH OUT_EDGES OUT_DEGREE)
+        endwhile (OUT_DEGREE GREATER 0)
 
         # We have finished all of the outgoing edges for
-        # TOPO_SORT_SOURCE; add it to the resulting list.
-        list(APPEND ${LIST} ${TOPO_SORT_SOURCE})
+        # SOURCE; add it to the resulting list.
+        list(APPEND ${LIST} ${SOURCE})
 
         # Check the length of the stack
-        list(LENGTH TOPO_SORT_STACK TOPO_SORT_STACK_LENGTH)
-      endwhile(TOPO_SORT_STACK_LENGTH GREATER 0)
-    endif (NOT TOPO_SORT_FOUND_${TOPO_SORT_UPPER_VERTEX})
-  endforeach(TOPO_SORT_VERTEX)
+        list(LENGTH STACK STACK_LENGTH)
+      endwhile(STACK_LENGTH GREATER 0)
+    endif (NOT FOUND_${UPPER_VERTEX})
+  endforeach(VERTEX)
 
-  # Clear out the results of this topological sort
-  foreach(TOPO_SORT_VERTEX ${TOPO_SORT_DEFAULT_ARGS})
-    string(TOUPPER ${TOPO_SORT_VERTEX} TOPO_SORT_VERTEX)
-    set(TOPO_SORT_FOUND_${TOPO_SORT_VERTEX})
-  endforeach(TOPO_SORT_VERTEX)
-endmacro(topological_sort)
+  set(${LIST} ${${LIST}} PARENT_SCOPE)
+endfunction(topological_sort)
