@@ -100,7 +100,7 @@ install(DIRECTORY boost
         REGEX ".svn" EXCLUDE)
 if (NOT TEST_INSTALLED_TREE)
   # If I don't have if around this, I get a seg fault
-  # install(EXPORT boost-targets DESTINATION "lib/Boost${BOOST_VERSION}")
+  install(EXPORT boost-targets DESTINATION "lib/Boost${BOOST_VERSION}")
 endif (NOT TEST_INSTALLED_TREE)
 
 ##########################################################################
@@ -141,6 +141,8 @@ if(WIN32 AND NOT UNIX)
     set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc71")
   elseif (MSVC80)
     set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc8")
+  elseif (MSVC90)
+    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc9")
   elseif (BORLAND)
     set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-borland")  
   endif (MSVC60)

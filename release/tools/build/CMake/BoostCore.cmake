@@ -451,8 +451,8 @@ macro(boost_library_variant LIBNAME)
     endforeach(dependency "${THIS_LIB_DEPENDS}")
 
     # Installation of this library variant
-    install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib)
-#      EXPORT boost-targets)
+    install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib
+      EXPORT boost-targets)
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)
 
