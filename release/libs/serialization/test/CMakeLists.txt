@@ -128,7 +128,7 @@ serialization_test_allarchives(test_shared_ptr)
 serialization_test_allarchives(test_shared_ptr_132)
 serialization_test_allarchives(test_polymorphic POLYMORPHIC 
   test_polymorphic.cpp test_polymorphic_A.cpp)
-serialization_test(test_iterators NO_LIBS)
+serialization_test(test_serialization_iterators test_iterators.cpp NO_LIBS)
 serialization_test(test_iterators_base64 NO_LIBS)
 serialization_test(test_inclusion NO_LIBS)
 serialization_test(test_private_ctor)

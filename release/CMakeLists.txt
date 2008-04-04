@@ -98,6 +98,11 @@ install(DIRECTORY boost
         DESTINATION ${BOOST_HEADER_DIR}
         PATTERN "CVS" EXCLUDE
         REGEX ".svn" EXCLUDE)
+if (NOT TEST_INSTALLED_TREE)
+  # If I don't have if around this, I get a seg fault
+  # install(EXPORT boost-targets DESTINATION "lib/Boost${BOOST_VERSION}")
+endif (NOT TEST_INSTALLED_TREE)
+
 ##########################################################################
 
 ##########################################################################
@@ -147,9 +152,14 @@ include(CPack)
 ##########################################################################
 # Building Boost libraries                                               #
 ##########################################################################
-# Always include the Boost source directory, so that we can find
-# include files in boost/
-include_directories(${Boost_SOURCE_DIR})
+# Always include the directory where Boost's include files will be.
+if (TEST_INSTALLED_TREE)
+  # Use the headers from the installation directory
+  include_directories("${CMAKE_INSTALL_PREFIX}/${BOOST_HEADER_DIR}")
+else (TEST_INSTALLED_TREE)
+  # Use the headers directly from the Boost source tree (in boost/)
+  include_directories(${Boost_SOURCE_DIR})
+endif (TEST_INSTALLED_TREE)
 
 # Put the libaries and binaries that get built into directories at the
 # top of the build tree rather than in hard-to-find leaf

@@ -20,27 +20,27 @@ set(UBLAS_TESTSET_SPARSE_DEFINES
 add_definitions(-DBOOST_UBLAS_NO_EXCEPTIONS)
 # TODO: <toolset>vacpp:<define>"BOOST_UBLAS_NO_ELEMENT_PROXIES"
 
-boost_test_run(test1
+boost_test_run(ublas_test1
   test1.cpp test11.cpp test12.cpp test13.cpp
   COMPILE_FLAGS "${UBLAS_TESTSET_DEFINES}")
 
-boost_test_run(test2
+boost_test_run(ublas_test2
   test2.cpp test21.cpp test22.cpp test23.cpp
   COMPILE_FLAGS "${UBLAS_TESTSET_DEFINES}")
 
-boost_test_run(test3
+boost_test_run(ublas_test3
   test3.cpp test31.cpp test32.cpp test33.cpp
   COMPILE_FLAGS "${UBLAS_TESTSET_SPARSE_DEFINES}")
 
-boost_test_run(test4
+boost_test_run(ublas_test4
   test4.cpp test42.cpp test43.cpp
   COMPILE_FLAGS "${UBLAS_TESTSET_DEFINES}")
 
-boost_test_run(test5
+boost_test_run(ublas_test5
   test5.cpp test52.cpp test53.cpp
   COMPILE_FLAGS "${UBLAS_TESTSET_DEFINES}")
 
-boost_test_run(test6
+boost_test_run(ublas_test6
   test6.cpp test62.cpp test63.cpp
   COMPILE_FLAGS "${UBLAS_TESTSET_DEFINES}")
 

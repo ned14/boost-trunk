@@ -37,6 +37,14 @@
 option(BUILD_TESTING "Enable testing" OFF)
 include(CTest)
 
+if (BUILD_TESTING)
+  option(TEST_INSTALLED_TREE "Enable testing of an already-installed tree" OFF)
+
+  if (TEST_INSTALLED_TREE)
+    include("${CMAKE_INSTALL_PREFIX}/lib/Boost${BOOST_VERSION}/boost-targets.cmake")
+  endif (TEST_INSTALLED_TREE)
+endif (BUILD_TESTING)
+
 # This macro is an internal utility macro that helps parse the
 # arguments passed to the Boost testing commands. It will generally
 # not be used by Boost developers.

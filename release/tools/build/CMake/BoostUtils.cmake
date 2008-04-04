@@ -151,6 +151,9 @@ function(topological_sort LIST PREFIX SUFFIX)
         "${VERTEX};${${PREFIX}${UPPER_VERTEX}${SUFFIX}}")
       list(APPEND STACK ${NEW_ELEMENT})
 
+      # We've now seen this vertex
+      set(FOUND_${UPPER_VERTEX} TRUE)
+
       # While the depth-first search stack is not empty
       list(LENGTH STACK STACK_LENGTH)
       while(STACK_LENGTH GREATER 0)

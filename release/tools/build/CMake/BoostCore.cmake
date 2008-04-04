@@ -60,24 +60,21 @@
 #     )
 macro(boost_library_project LIBNAME)
   parse_arguments(THIS_PROJECT
-    "SRCDIRS;TESTDIRS;DEPENDS"
+    "SRCDIRS;TESTDIRS"
     "MODULAR"
     ${ARGN}
     )
 
   set(THIS_PROJECT_OKAY ON)
+  string(TOUPPER "BOOST_${LIBNAME}_DEPENDS" THIS_PROJECT_DEPENDS)
   set(THIS_PROJECT_FAILED_DEPS "")
-  foreach(DEP ${THIS_PROJECT_DEPENDS})
+  foreach(DEP ${${THIS_PROJECT_DEPENDS}})
     string(TOUPPER "BUILD_BOOST_${DEP}" BOOST_LIB_DEP)
     if (NOT ${BOOST_LIB_DEP})
       set(THIS_PROJECT_OKAY OFF)
       set(THIS_PROJECT_FAILED_DEPS "${THIS_PROJECT_FAILED_DEPS}  ${DEP}\n")
     endif (NOT ${BOOST_LIB_DEP})
   endforeach(DEP)
-
-  # Export BOOST_${LIBNAME}_DEPENDS
-  string(TOUPPER "BOOST_${LIBNAME}_DEPENDS" THIS_PROJECT_LIBNAME_DEPENDS)
-  set(${THIS_PROJECT_LIBNAME_DEPENDS} ${THIS_PROJECT_DEPENDS} PARENT_SCOPE)
 
   string(TOUPPER "BUILD_BOOST_${LIBNAME}" BOOST_BUILD_LIB_OPTION)
   if (THIS_PROJECT_SRCDIRS)
@@ -105,7 +102,7 @@ macro(boost_library_project LIBNAME)
     set(${BOOST_BUILD_LIB_OPTION} ${THIS_PROJECT_OKAY})
   endif (THIS_PROJECT_SRCDIRS)
 
-  if(${BOOST_BUILD_LIB_OPTION})
+  if(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
     string(TOLOWER "${LIBNAME}" libname)
     project(${libname})
 
@@ -164,8 +161,20 @@ macro(boost_library_project LIBNAME)
         endforeach(SUBDIR ${THIS_PROJECT_TESTDIRS})
       endif(${BOOST_TEST_LIB_OPTION})
     endif(BUILD_TESTING AND THIS_PROJECT_TESTDIRS)
-  endif(${BOOST_BUILD_LIB_OPTION})
+  endif(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
 endmacro(boost_library_project)
+
+macro(boost_module LIBNAME)
+  parse_arguments(THIS_MODULE
+    "DEPENDS"
+    ""
+    ${ARGN}
+    )
+
+  # Export BOOST_${LIBNAME}_DEPENDS
+  string(TOUPPER "BOOST_${LIBNAME}_DEPENDS" THIS_MODULE_LIBNAME_DEPENDS)
+  set(${THIS_MODULE_LIBNAME_DEPENDS} "${THIS_MODULE_DEPENDS}")
+endmacro(boost_module)
 
 # This macro is an internal utility macro that builds the name of a
 # particular variant of a library
@@ -443,6 +452,7 @@ macro(boost_library_variant LIBNAME)
 
     # Installation of this library variant
     install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib)
+#      EXPORT boost-targets)
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)
 
@@ -719,32 +729,34 @@ macro(boost_add_library LIBNAME)
     )
   set(THIS_LIB_SOURCES ${THIS_LIB_DEFAULT_ARGS})
 
-  # A top-level target that refers to all of the variants of the
-  # library, collectively.
-  add_custom_target(${LIBNAME})
-
-  if (THIS_LIB_EXTRA_VARIANTS)
-    # Build the set of variants that we will generate for this library
-    set(THIS_LIB_VARIANTS)
-    foreach(VARIANT ${BOOST_DEFAULT_VARIANTS})
-      foreach(EXTRA_VARIANT ${THIS_LIB_EXTRA_VARIANTS})
-        string(REPLACE ":" ";" FEATURES "${EXTRA_VARIANT}")
-        separate_arguments(FEATURES)
-        foreach(FEATURE ${FEATURES})
-          list(APPEND THIS_LIB_VARIANTS "${VARIANT}:${FEATURE}")
-        endforeach(FEATURE ${FEATURES})
-      endforeach(EXTRA_VARIANT ${THIS_LIB_EXTRA_VARIANTS})
-    endforeach(VARIANT ${BOOST_DEFAULT_VARIANTS})
-  else (THIS_LIB_EXTRA_VARIANTS)
-    set(THIS_LIB_VARIANTS ${BOOST_DEFAULT_VARIANTS})
-  endif (THIS_LIB_EXTRA_VARIANTS)
-
-  # Build each of the library variants
-  foreach(VARIANT_STR ${THIS_LIB_VARIANTS})
-    string(REPLACE ":" ";" VARIANT ${VARIANT_STR})
-    separate_arguments(VARIANT)
-    boost_library_variant(${LIBNAME} ${VARIANT})
-  endforeach(VARIANT_STR ${THIS_LIB_VARIANTS})
+  if (NOT TEST_INSTALLED_TREE)
+    # A top-level target that refers to all of the variants of the
+    # library, collectively.
+    add_custom_target(${LIBNAME})
+    
+    if (THIS_LIB_EXTRA_VARIANTS)
+      # Build the set of variants that we will generate for this library
+      set(THIS_LIB_VARIANTS)
+      foreach(VARIANT ${BOOST_DEFAULT_VARIANTS})
+        foreach(EXTRA_VARIANT ${THIS_LIB_EXTRA_VARIANTS})
+          string(REPLACE ":" ";" FEATURES "${EXTRA_VARIANT}")
+          separate_arguments(FEATURES)
+          foreach(FEATURE ${FEATURES})
+            list(APPEND THIS_LIB_VARIANTS "${VARIANT}:${FEATURE}")
+          endforeach(FEATURE ${FEATURES})
+        endforeach(EXTRA_VARIANT ${THIS_LIB_EXTRA_VARIANTS})
+      endforeach(VARIANT ${BOOST_DEFAULT_VARIANTS})
+    else (THIS_LIB_EXTRA_VARIANTS)
+      set(THIS_LIB_VARIANTS ${BOOST_DEFAULT_VARIANTS})
+    endif (THIS_LIB_EXTRA_VARIANTS)
+    
+    # Build each of the library variants
+    foreach(VARIANT_STR ${THIS_LIB_VARIANTS})
+      string(REPLACE ":" ";" VARIANT ${VARIANT_STR})
+      separate_arguments(VARIANT)
+      boost_library_variant(${LIBNAME} ${VARIANT})
+    endforeach(VARIANT_STR ${THIS_LIB_VARIANTS})
+  endif (NOT TEST_INSTALLED_TREE)
 endmacro(boost_add_library)
 
 # Creates a new executable from source files.
