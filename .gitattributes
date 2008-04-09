@@ -796,6 +796,7 @@ boost/detail/sp_counted_base_w32.hpp svneol=native#text/plain
 boost/detail/sp_counted_impl.hpp svneol=native#text/plain
 boost/detail/sp_typeinfo.hpp svneol=native#text/plain
 boost/detail/spinlock.hpp svneol=native#text/plain
+boost/detail/spinlock_gcc_arm.hpp svneol=native#text/plain
 boost/detail/spinlock_nt.hpp svneol=native#text/plain
 boost/detail/spinlock_pool.hpp svneol=native#text/plain
 boost/detail/spinlock_pt.hpp svneol=native#text/plain
