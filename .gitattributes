@@ -16938,6 +16938,7 @@ libs/thread/test/test_mutex.cpp svneol=native#text/plain
 libs/thread/test/test_once.cpp svneol=native#text/plain
 libs/thread/test/test_shared_mutex.cpp svneol=native#text/plain
 libs/thread/test/test_shared_mutex_part_2.cpp svneol=native#text/plain
+libs/thread/test/test_shared_mutex_timed_locks.cpp svneol=native#text/plain
 libs/thread/test/test_thread.cpp svneol=native#text/plain
 libs/thread/test/test_thread_id.cpp svneol=native#text/plain
 libs/thread/test/test_thread_launching.cpp svneol=native#text/plain
