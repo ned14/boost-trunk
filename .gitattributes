@@ -7072,6 +7072,7 @@ libs/exception/test/errno_test.cpp svneol=native#text/plain
 libs/exception/test/error_info_test.cpp svneol=native#text/plain
 libs/exception/test/exception_fail.cpp svneol=native#text/plain
 libs/exception/test/exception_test.cpp svneol=native#text/plain
+libs/exception/test/has_to_string_test.cpp svneol=native#text/plain
 libs/exception/test/helper1.cpp svneol=native#text/plain
 libs/exception/test/helper1.hpp svneol=native#text/plain
 libs/exception/test/helper2.cpp svneol=native#text/plain
