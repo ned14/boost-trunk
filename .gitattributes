@@ -7323,6 +7323,7 @@ libs/conversion/test/lexical_cast_noncopyable_test.cpp svneol=native#text/plain
 libs/crc/crc.html svneol=native#text/html
 libs/crc/crc_example.cpp svneol=native#text/plain
 libs/crc/index.html svneol=native#text/html
+libs/crc/test/Jamfile.v2 svneol=native#text/plain
 libs/crc/test/crc_test.cpp svneol=native#text/plain
 libs/date_time/build/Jamfile.v2 svneol=native#text/plain
 libs/date_time/data/README.zone_spec_csv_file -text
