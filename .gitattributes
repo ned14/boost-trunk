@@ -7771,7 +7771,6 @@ libs/function_types/test/synthesis/member_object_pointer.cpp svneol=native#text/
 libs/function_types/test/synthesis/transformation.cpp svneol=native#text/plain
 libs/function_types/test/synthesis/variadic_function_synthesis.cpp svneol=native#text/plain
 libs/functional/binders.html svneol=native#text/html
-libs/functional/function_test.cpp svneol=native#text/plain
 libs/functional/function_traits.html svneol=native#text/html
 libs/functional/hash/doc/Jamfile.v2 svneol=native#text/plain
 libs/functional/hash/doc/changes.qbk svneol=native#text/plain
@@ -7831,6 +7830,8 @@ libs/functional/mem_fun.html svneol=native#text/html
 libs/functional/negators.html svneol=native#text/html
 libs/functional/ptr_fun.html svneol=native#text/html
 libs/functional/sublibs -text
+libs/functional/test/Jamfile.v2 svneol=native#text/plain
+libs/functional/test/function_test.cpp svneol=native#text/plain
 libs/fusion/doc/Jamfile svneol=native#text/plain
 libs/fusion/doc/acknowledgements.qbk svneol=native#text/plain
 libs/fusion/doc/adapted.qbk svneol=native#text/plain
