@@ -14640,6 +14640,7 @@ libs/pool/doc/interfaces/singleton_pool.html svneol=native#text/html
 libs/pool/doc/interfaces/user_allocator.html svneol=native#text/html
 libs/pool/doc/pool.css svneol=native#text/css
 libs/pool/index.html svneol=native#text/html
+libs/pool/test/Jamfile.v2 svneol=native#text/plain
 libs/pool/test/sys_allocator.hpp svneol=native#text/plain
 libs/pool/test/test_pool_alloc.cpp svneol=native#text/plain
 libs/pool/test/time_pool_alloc.cpp svneol=native#text/plain
