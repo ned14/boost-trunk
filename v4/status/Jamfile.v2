@@ -19,14 +19,12 @@ project status
 
 import testing ;
 
-alias test_exec_monitor : ../libs/test/build//boost_test_exec_monitor/<link>static ;
-alias unit_test_framework : ../libs/test/build//boost_unit_test_framework/<link>static ;
-
 # Tests from Jamfiles in individual library test subdirectories
 # Please keep these in alphabetic order by test-suite name
 build-project ../libs/accumulators/test ;      # test-suite accumulators
 build-project ../libs/algorithm/minmax/test ;  # test-suite algorith/minmax
 build-project ../libs/algorithm/string/test ;  # test-suite algorithm/string
+build-project ../libs/array/test ;             # test-suite array
 build-project ../libs/asio/test ;              # test-suite asio
 build-project ../libs/assign/test ;            # test-suite assign
 build-project ../libs/any/test ;               # test-suite any
@@ -35,6 +33,7 @@ build-project ../libs/bind/test ;              # test-suite bind
 build-project ../libs/circular_buffer/test ;   # test-suite circular_buffer
 build-project ../libs/concept_check ;          # test-suite concept_check
 build-project ../libs/conversion/test ;        # test-suite conversion
+build-project ../libs/crc/test ;               # test-suite crc
 build-project ../libs/date_time/test  ;        # test-suite date_time
 build-project ../libs/disjoint_sets ;          # test-suite disjoint_sets
 build-project ../libs/dynamic_bitset ;         # test-suite dynamic_bitset
@@ -78,7 +77,7 @@ build-project ../libs/regex/example ;          # test-suite regex-examples
 build-project ../libs/serialization/test ;     # test-suite serialization
 build-project ../libs/signals/test ;           # test-suite signals
 build-project ../libs/smart_ptr/test ;         # test-suite smart_ptr
-build-project ../libs/spirit/test ;            # test-suite spirit
+build-project ../libs/spirit/classic/test ;    # test-suite classic spirit
 build-project ../libs/statechart/test ;        # test-suite statechart
 build-project ../libs/static_assert ;          # test-suite static_assert
 build-project ../libs/system/test ;            # test-suite system
@@ -98,6 +97,11 @@ build-project ../libs/xpressive/test ;         # test-suite xpressive
 
 # Tests specified in this Jamfile
 
+alias test_exec_monitor : ../libs/test/build//boost_test_exec_monitor/<link>static ;
+explicit test_exec_monitor ;
+alias unit_test_framework : ../libs/test/build//boost_unit_test_framework/<link>static ;
+explicit unit_test_framework ;
+
     test-suite config
         :
           # FIXME: Ideally, this should be just an alias to 'main' test suite
@@ -107,13 +111,21 @@ build-project ../libs/xpressive/test ;         # test-suite xpressive
           # interpreted by humans.
           # But such change will require tweaking libs/config/tools/generate.cpp
           # so postponing to later.
-          [ run libs/config/test/config_test.cpp test_exec_monitor
+          [ run libs/config/test/config_test.cpp 
                 : #args
                 : #input-files
                 : #requirements
-                <threading>multi #!!!<no-warn>config_test.cpp
+                <threading>multi
+                : config_test_threaded
           ]
-           [ run libs/config/test/config_info.cpp : : : <test-info>always_show_run_output ]
+          [ run libs/config/test/config_test.cpp 
+                : #args
+                : #input-files
+                : #requirements
+                <threading>single <toolset>msvc:<runtime-link>static <toolset>msvc:<link>static 
+          ]
+           [ run libs/config/test/config_info.cpp : : : <test-info>always_show_run_output <threading>single <toolset>msvc:<runtime-link>static <toolset>msvc:<link>static ]
+           [ run libs/config/test/config_info.cpp : : : <test-info>always_show_run_output <threading>multi : config_info_threaded ]
            [ run libs/config/test/math_info.cpp : : : <test-info>always_show_run_output <toolset>borland:<runtime-link>static <toolset>borland:<link>static ]
            [ run libs/config/test/abi/abi_test.cpp libs/config/test/abi/main.cpp ]
            [ run libs/config/test/limits_test.cpp test_exec_monitor ]
@@ -130,17 +142,6 @@ build-project ../libs/xpressive/test ;         # test-suite xpressive
           [ compile-fail libs/config/test/threads/test_thread_fail1.cpp ]
           [ compile-fail libs/config/test/threads/test_thread_fail2.cpp ]
         ;
-
-    test-suite array_suite # !!!
-        : [ run libs/array/array0.cpp ]
-          [ run libs/array/array1.cpp ]
-          [ run libs/array/array2.cpp ]
-          [ run libs/array/array3.cpp ]
-          [ run libs/array/array4.cpp ]
-          [ run libs/array/array5.cpp ]
-        ;
-
-    run libs/crc/crc_test.cpp test_exec_monitor ;
 
     run libs/functional/function_test.cpp ;
 
@@ -185,8 +186,3 @@ build-project ../libs/xpressive/test ;         # test-suite xpressive
           [ run libs/tokenizer/simple_example_4.cpp ]
           [ run libs/tokenizer/simple_example_5.cpp ]
         ;
-
-
-
-
-

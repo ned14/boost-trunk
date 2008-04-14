@@ -6,22 +6,52 @@
 #ifndef UUID_7E48761AD92811DC9011477D56D89593
 #define UUID_7E48761AD92811DC9011477D56D89593
 
+#include <boost/utility/enable_if.hpp>
+#include <boost/exception/detail/is_output_streamable.hpp>
 #include <sstream>
 
 namespace
 boost
-	{
-	namespace
-		{
-		template <class T>
-		std::string
-		to_string( T const & x )
-			{
-			std::ostringstream out;
-			out << x;
-			return out.str();
-			}
-		}
-	}
+    {
+    namespace
+    to_string_detail
+        {
+        template <class T>
+        typename disable_if<is_output_streamable<T>,char>::type to_string( T const & );
+
+        template <class,bool IsOutputStreamable>
+        struct has_to_string_impl;
+
+        template <class T>
+        struct
+        has_to_string_impl<T,true>
+            {
+            enum e { value=1 };
+            };
+
+        template <class T>
+        struct
+        has_to_string_impl<T,false>
+            {
+            enum e { value=1!=sizeof(to_string(*(T*)0)) };
+            };
+        }
+
+    template <class T>
+    typename enable_if<is_output_streamable<T>,std::string>::type
+    to_string( T const & x )
+        {
+        std::ostringstream out;
+        out << x;
+        return out.str();
+        }
+
+    template <class T>
+    struct
+    has_to_string
+        {
+        enum e { value=to_string_detail::has_to_string_impl<T,is_output_streamable<T>::value>::value };
+        };
+    }
 
 #endif
