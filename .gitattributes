@@ -26737,6 +26737,8 @@ v4/libs/config/test/Jamfile.v2 svneol=native#text/plain
 v4/libs/config/test/abi/abi_test.cpp svneol=native#text/plain
 v4/libs/config/test/abi/abi_test.hpp svneol=native#text/plain
 v4/libs/config/test/abi/main.cpp svneol=native#text/plain
+v4/libs/config/test/all/Jamfile.v2 svneol=native#text/plain
+v4/libs/config/test/all/options_v2.jam svneol=native#text/plain
 v4/libs/config/test/boost_has_2arg_use_facet.ipp svneol=native#text/plain
 v4/libs/config/test/boost_has_bethreads.ipp svneol=native#text/plain
 v4/libs/config/test/boost_has_clock_gettime.ipp svneol=native#text/plain
@@ -27095,8 +27097,6 @@ v4/libs/config/test/no_void_returns_fail.cpp svneol=native#text/plain
 v4/libs/config/test/no_void_returns_pass.cpp svneol=native#text/plain
 v4/libs/config/test/no_wchar_t_fail.cpp svneol=native#text/plain
 v4/libs/config/test/no_wchar_t_pass.cpp svneol=native#text/plain
-v4/libs/config/test/options.jam svneol=native#text/plain
-v4/libs/config/test/options_v2.jam svneol=native#text/plain
 v4/libs/config/test/test.hpp svneol=native#text/plain
 v4/libs/config/test/threads/test_thread_fail1.cpp svneol=native#text/plain
 v4/libs/config/test/threads/test_thread_fail2.cpp svneol=native#text/plain
@@ -38962,6 +38962,7 @@ v4/tools/build/v2/build/type.jam svneol=native#text/plain
 v4/tools/build/v2/build/version.jam svneol=native#text/plain
 v4/tools/build/v2/build/virtual-target.jam svneol=native#text/plain
 v4/tools/build/v2/changes.txt svneol=native#text/plain
+v4/tools/build/v2/contrib/boost.jam svneol=native#text/plain
 v4/tools/build/v2/debian/boost-build.docs -text
 v4/tools/build/v2/debian/boost-build.examples -text
 v4/tools/build/v2/debian/changelog -text
