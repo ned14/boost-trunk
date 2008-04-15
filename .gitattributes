@@ -7521,6 +7521,7 @@ libs/dynamic_bitset/example/timing_tests.cpp svneol=native#text/plain
 libs/dynamic_bitset/index.html svneol=native#text/html
 libs/exception/doc/BOOST_ERROR_INFO.html svneol=native#text/html
 libs/exception/doc/boost-exception.html svneol=native#text/html
+libs/exception/doc/boost-exception.reno svneol=native#text/plain
 libs/exception/doc/clone_exception.html svneol=native#text/html
 libs/exception/doc/cloning.html svneol=native#text/html
 libs/exception/doc/enable_error_info.html svneol=native#text/html
