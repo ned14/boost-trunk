@@ -126,7 +126,7 @@ macro(boost_library_project LIBNAME)
 
     # For each of the modular libraries on which this project depends,
     # add the include path for that library.
-    foreach(DEP ${THIS_PROJECT_DEPENDS})
+    foreach(DEP ${${THIS_PROJECT_DEPENDS}})
       string(TOUPPER "BOOST_${DEP}_IS_MODULAR" BOOST_LIB_DEP_MODULAR)
       if(${BOOST_LIB_DEP_MODULAR})
         include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
