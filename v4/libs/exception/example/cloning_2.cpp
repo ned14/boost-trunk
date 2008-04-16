@@ -5,7 +5,7 @@
 
 //This example shows how to transport cloning-enabled boost::exceptions between threads.
 
-#include <boost/exception/cloning.hpp>
+#include <boost/exception_ptr.hpp>
 #include <boost/thread.hpp>
 #include <boost/bind.hpp>
 
@@ -20,13 +20,13 @@ worker_thread( boost::exception_ptr & error )
         error = boost::exception_ptr();
         }
     catch(
-    boost::exception & e )
+    ... )
         {
-        error = boost::clone_exception(e);
+        error = boost::current_exception();
         }
     }
 
-//
+// ...continued
 
 void
 work()
