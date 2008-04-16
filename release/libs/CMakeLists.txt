@@ -21,9 +21,9 @@ endmacro(ADD_SUBDIRECTORIES prefix)
 
 # Find all of the subdirectories with .cmake files in them. These are
 # the libraries with dependencies.
-boost_collect_subproject_directory_names(BOOST_MODULE_DIRS "*.cmake")
+boost_collect_subproject_directory_names(BOOST_MODULE_DIRS "module.cmake")
 foreach(subdir ${BOOST_MODULE_DIRS})
-  include("${CMAKE_SOURCE_DIR}/libs/${subdir}/${subdir}.cmake")
+  include("${CMAKE_SOURCE_DIR}/libs/${subdir}/module.cmake")
 endforeach(subdir)
 
 # Find all of the subdirectories with CMakeLists.txt files in
