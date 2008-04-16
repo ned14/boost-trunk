@@ -120,6 +120,7 @@ macro(boost_library_project LIBNAME)
       # Install this module's headers
       install(DIRECTORY include/boost 
         DESTINATION ${BOOST_HEADER_DIR}
+        COMPONENT ${LIBNAME}
         PATTERN "CVS" EXCLUDE
         REGEX ".svn" EXCLUDE)
     endif (THIS_PROJECT_MODULAR)
@@ -452,7 +453,8 @@ macro(boost_library_variant LIBNAME)
 
     # Installation of this library variant
     install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib
-      EXPORT boost-targets)
+      EXPORT boost-targets
+      COMPONENT ${PROJECT_NAME})
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)
 
