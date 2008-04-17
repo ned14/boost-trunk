@@ -4969,6 +4969,7 @@ boost/spirit/home/qi/char.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/char.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/char_class.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/char_parser.hpp svneol=native#text/plain
+boost/spirit/home/qi/char/detail/basic_chset.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/detail/range.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/detail/range_functions.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/detail/range_run.hpp svneol=native#text/plain
