@@ -323,6 +323,53 @@ namespace boost {
                 buckets_(), bucket_count_(next_prime(n)),
                 cached_begin_bucket_(), size_(0)
             {
+                BOOST_UNORDERED_MSVC_RESET_PTR(buckets_);
+                create_buckets();
+            }
+
+            BOOST_UNORDERED_TABLE_DATA(BOOST_UNORDERED_TABLE_DATA const& x, size_type n)
+              : allocators_(x.allocators_),
+                buckets_(), bucket_count_(next_prime(n)),
+                cached_begin_bucket_(), size_(0)
+            {
+                BOOST_UNORDERED_MSVC_RESET_PTR(buckets_);
+                create_buckets();
+            }
+
+            BOOST_UNORDERED_TABLE_DATA(BOOST_UNORDERED_TABLE_DATA& x, move_tag)
+                : allocators_(x.allocators_),
+                buckets_(x.buckets_), bucket_count_(x.bucket_count_),
+                cached_begin_bucket_(x.cached_begin_bucket_), size_(x.size_)
+            {
+                unordered_detail::reset(x.buckets_);
+            }
+
+            BOOST_UNORDERED_TABLE_DATA(BOOST_UNORDERED_TABLE_DATA& x,
+                    value_allocator const& a, size_type n, move_tag)
+                : allocators_(a), buckets_(), bucket_count_(),
+                cached_begin_bucket_(), size_(0)
+            {
+                if(allocators_ == x.allocators_) {
+                    buckets_ = x.buckets_;
+                    bucket_count_ = x.bucket_count_;
+                    cached_begin_bucket_ = x.cached_begin_bucket_;
+                    size_ = x.size_;
+                    unordered_detail::reset(x.buckets_);
+                }
+                else {
+                    BOOST_UNORDERED_MSVC_RESET_PTR(buckets_);
+                    bucket_count_ = next_prime(n);
+                    create_buckets();
+                }
+            }
+
+            // no throw
+            ~BOOST_UNORDERED_TABLE_DATA()
+            {
+                delete_buckets();
+            }
+
+            void create_buckets() {
                 // The array constructor will clean up in the event of an
                 // exception.
                 allocator_array_constructor<bucket_allocator>
@@ -341,31 +388,8 @@ namespace boost {
                 buckets_ = constructor.release();
             }
 
-            BOOST_UNORDERED_TABLE_DATA(BOOST_UNORDERED_TABLE_DATA const& x, size_type n)
-              : allocators_(x.allocators_),
-                buckets_(), bucket_count_(next_prime(n)),
-                cached_begin_bucket_(), size_(0)
-            {
-                // The array constructor will clean up in the event of an
-                // exception.
-                allocator_array_constructor<bucket_allocator>
-                    constructor(allocators_.bucket_alloc_);
-
-                // Creates an extra bucket to act as a sentinel.
-                constructor.construct(bucket(), bucket_count_ + 1);
-
-                cached_begin_bucket_ = constructor.get() + static_cast<difference_type>(bucket_count_);
-
-                // Set up the sentinel
-                cached_begin_bucket_->next_ = link_ptr(cached_begin_bucket_);
-
-                // Only release the buckets once everything is successfully
-                // done.
-                buckets_ = constructor.release();
-            }
-
             // no throw
-            ~BOOST_UNORDERED_TABLE_DATA()
+            void delete_buckets()
             {
                 if(buckets_) {
                     bucket_ptr begin = cached_begin_bucket_;
@@ -398,6 +422,17 @@ namespace boost {
                 std::swap(bucket_count_, other.bucket_count_);
                 std::swap(cached_begin_bucket_, other.cached_begin_bucket_);
                 std::swap(size_, other.size_);
+            }
+
+            // no throw
+            void move(BOOST_UNORDERED_TABLE_DATA& other)
+            {
+                delete_buckets();
+                buckets_ = other.buckets_;
+                unordered_detail::reset(other.buckets_);
+                bucket_count_ = other.bucket_count_;
+                cached_begin_bucket_ = other.cached_begin_bucket_;
+                size_ = other.size_;
             }
 
             // Return the bucket for a hashed value.
@@ -525,8 +560,11 @@ namespace boost {
             // no throw
 
 #if BOOST_UNORDERED_EQUIVALENT_KEYS
-            void link_node(link_ptr n, link_ptr pos)
+            // If n points to the first node in a group, this adds it to the
+            // end of that group.
+            link_ptr link_node(node_constructor& a, link_ptr pos)
             {
+                link_ptr n = a.release();
                 node& node_ref = get_node(n);
                 node& pos_ref = get_node(pos);
                 node_ref.next_ = pos_ref.group_prev_->next_;
@@ -534,16 +572,19 @@ namespace boost {
                 pos_ref.group_prev_->next_ = n;
                 pos_ref.group_prev_ = n;
                 ++size_;
+                return n;
             }
 
-            void link_node_in_bucket(link_ptr n, bucket_ptr base)
+            link_ptr link_node_in_bucket(node_constructor& a, bucket_ptr base)
             {
+                link_ptr n = a.release();
                 node& node_ref = get_node(n);
                 node_ref.next_ = base->next_;
                 node_ref.group_prev_ = n;
                 base->next_ = n;
                 ++size_;
                 if(base < cached_begin_bucket_) cached_begin_bucket_ = base;
+                return n;
             }
 
             void link_group(link_ptr n, bucket_ptr base, size_type count)
@@ -556,7 +597,7 @@ namespace boost {
                 if(base < cached_begin_bucket_) cached_begin_bucket_ = base;
             }
 #else
-            void link_node_in_bucket(link_ptr n, bucket_ptr base)
+            void link_node(link_ptr n, bucket_ptr base)
             {
                 n->next_ = base->next_;
                 base->next_ = n;
@@ -564,9 +605,16 @@ namespace boost {
                 if(base < cached_begin_bucket_) cached_begin_bucket_ = base;
             }
 
+            link_ptr link_node_in_bucket(node_constructor& a, bucket_ptr base)
+            {
+                link_ptr n = a.release();
+                link_node(n, base);
+                return n;
+            }
+
             void link_group(link_ptr n, bucket_ptr base, size_type)
             {
-                link_node_in_bucket(n, base);
+                link_node(n, base);
             }
 #endif
 
@@ -698,69 +746,33 @@ namespace boost {
             }
 #endif
 
-            // throws, strong exception-safety:
-            link_ptr construct_node(value_type const& v)
-            {
-                node_constructor a(allocators_);
-                a.construct(v);
-                return a.release();
-            }
-
-            // Create Node
+            // copy_group
             //
-            // Create a node and add it to the buckets in the given position.
-            //
-            // strong exception safety.
-
-            iterator_base create_node(value_type const& v, bucket_ptr base)
-            {
-                // throws, strong exception-safety:
-                link_ptr n = construct_node(v);
-
-                // Rest is no throw
-                link_node_in_bucket(n, base);
-                return iterator_base(base, n);
-            }
-
-#if BOOST_UNORDERED_EQUIVALENT_KEYS
-            iterator_base create_node(value_type const& v, iterator_base position)
-            {
-                // throws, strong exception-safety:
-                link_ptr n = construct_node(v);
-
-                // Rest is no throw
-                link_node(n, position.node_);
-                return iterator_base(position.bucket_, n);
-            }
-
-            iterator_base create_node(value_type const& v,
-                    bucket_ptr base, link_ptr position)
-            {
-                // throws, strong exception-safety:
-                link_ptr n = construct_node(v);
-
-                // Rest is no throw
-                if(BOOST_UNORDERED_BORLAND_BOOL(position))
-                    link_node(n, position);
-                else
-                    link_node_in_bucket(n, base);
-
-                return iterator_base(base, n);
-            }
-#endif
+            // Basic exception safety.
+            // If it throws, it only copies some of the nodes in the group.
 
 #if BOOST_UNORDERED_EQUIVALENT_KEYS
             void copy_group(link_ptr it, bucket_ptr dst)
             {
+                node_constructor a(allocators_);
+
                 link_ptr end = next_group(it);
-                iterator_base pos = create_node(get_value(it), dst);
-                for(it = it->next_; it != end; it = it->next_)
-                    create_node(get_value(it), pos);
+
+                a.construct(get_value(it));                     // throws
+                link_ptr n = link_node_in_bucket(a, dst);
+
+                for(it = it->next_; it != end; it = it->next_) {
+                    a.construct(get_value(it));                 // throws
+                    link_node(a, n);
+                }
             }
 #else
             void copy_group(link_ptr it, bucket_ptr dst)
             {
-                create_node(get_value(it), dst);
+                node_constructor a(allocators_);
+
+                a.construct(get_value(it));                     // throws
+                link_node_in_bucket(a, dst);
             }
 #endif
 
@@ -844,7 +856,7 @@ namespace boost {
                 return next;
             }
 
-            iterator_base erase(iterator_base r1, iterator_base r2)
+            iterator_base erase_range(iterator_base r1, iterator_base r2)
             {
                 if(r1 != r2)
                 {
@@ -978,36 +990,12 @@ namespace boost {
 
         private:
 
-            class functions
-            {
-                std::pair<hasher, key_equal> functions_;
 
-            public:
+            typedef boost::unordered_detail::buffered_functions<Hash, Pred> buffered_functions;
+            typedef BOOST_DEDUCED_TYPENAME buffered_functions::functions functions;
+            typedef BOOST_DEDUCED_TYPENAME buffered_functions::functions_ptr functions_ptr;
 
-                functions(hasher const& h, key_equal const& k)
-                    : functions_(h, k) {}
-
-                hasher const& hash_function() const
-                {
-                    return functions_.first;
-                }
-
-                key_equal const& key_eq() const
-                {
-                    return functions_.second;
-                }
-            };
-
-            // Both hasher and key_equal's copy/assign can throw so double
-            // buffering is used to copy them. func_ points to the currently
-            // active function objects.
-
-            typedef functions BOOST_UNORDERED_TABLE::*functions_ptr;
-
-            functions func1_;
-            functions func2_;
-            functions_ptr func_;
-
+            buffered_functions functions_;
             float mlf_;
             size_type max_load_;
 
@@ -1023,9 +1011,7 @@ namespace boost {
             BOOST_UNORDERED_TABLE(size_type n,
                     hasher const& hf, key_equal const& eq,
                     value_allocator const& a)
-                : func1_(hf, eq),     // throws, cleans itself up
-                func2_(hf, eq),       // throws, cleans itself up
-                func_(&BOOST_UNORDERED_TABLE::func1_), // no throw
+                : functions_(hf, eq), // throws, cleans itself up
                 mlf_(1.0f),           // no throw
                 data_(n, a)           // throws, cleans itself up
             {
@@ -1069,54 +1055,74 @@ namespace boost {
             BOOST_UNORDERED_TABLE(I i, I j, size_type n,
                     hasher const& hf, key_equal const& eq,
                     value_allocator const& a)
-                : func1_(hf, eq),                  // throws, cleans itself up
-                    func2_(hf, eq),                // throws, cleans itself up
-                    func_(&BOOST_UNORDERED_TABLE::func1_),    // no throw
-                    mlf_(1.0f),                    // no throw
-                    data_(initial_size(i, j, n), a)   // throws, cleans itself up
+                : functions_(hf, eq),              // throws, cleans itself up
+                  mlf_(1.0f),                      // no throw
+                  data_(initial_size(i, j, n), a)  // throws, cleans itself up
             {
                 calculate_max_load(); // no throw
 
                 // This can throw, but BOOST_UNORDERED_TABLE_DATA's destructor will clean up.
-                insert(i, j);
+                insert_range(i, j);
             }
 
             // Copy Construct
 
             BOOST_UNORDERED_TABLE(BOOST_UNORDERED_TABLE const& x)
-                : func1_(x.current_functions()), // throws
-                func2_(x.current_functions()), // throws
-                func_(&BOOST_UNORDERED_TABLE::func1_), // no throw
-                mlf_(x.mlf_), // no throw
-                data_(x.data_, x.min_buckets_for_size(x.size()))  // throws
+                : functions_(x.functions_), // throws
+                  mlf_(x.mlf_),             // no throw
+                  data_(x.data_, x.min_buckets_for_size(x.size()))  // throws
             {
                 calculate_max_load(); // no throw
 
                 // This can throw, but BOOST_UNORDERED_TABLE_DATA's destructor will clean
                 // up.
-                copy_buckets(x.data_, data_, current_functions());
+                copy_buckets(x.data_, data_, functions_.current());
             }
 
             // Copy Construct with allocator
 
             BOOST_UNORDERED_TABLE(BOOST_UNORDERED_TABLE const& x,
                     value_allocator const& a)
-                : func1_(x.current_functions()), // throws
-                func2_(x.current_functions()),   // throws
-                func_(&BOOST_UNORDERED_TABLE::func1_), // no throw
-                mlf_(x.mlf_),                    // no throw
+                : functions_(x.functions_), // throws
+                mlf_(x.mlf_),               // no throw
                 data_(x.min_buckets_for_size(x.size()), a)
             {
                 calculate_max_load(); // no throw
 
                 // This can throw, but BOOST_UNORDERED_TABLE_DATA's destructor will clean
                 // up.
-                copy_buckets(x.data_, data_, current_functions());
+                copy_buckets(x.data_, data_, functions_.current());
+            }
+
+            // Move Construct
+
+            BOOST_UNORDERED_TABLE(BOOST_UNORDERED_TABLE& x, move_tag m)
+                : functions_(x.functions_), // throws
+                  mlf_(x.mlf_),             // no throw
+                  data_(x.data_, m)         // throws
+            {
+                calculate_max_load(); // no throw
+            }
+
+            BOOST_UNORDERED_TABLE(BOOST_UNORDERED_TABLE& x,
+                    value_allocator const& a, move_tag m)
+                : functions_(x.functions_), // throws
+                  mlf_(x.mlf_),             // no throw
+                  data_(x.data_, a,
+                        x.min_buckets_for_size(x.size()), m)  // throws
+            {
+                calculate_max_load(); // no throw
+
+                if(x.data_.buckets_) {
+                    // This can throw, but BOOST_UNORDERED_TABLE_DATA's destructor will clean
+                    // up.
+                    copy_buckets(x.data_, data_, functions_.current());
+                }
             }
 
             // Assign
             //
-            // basic exception safety, if copy_functions of reserver throws
+            // basic exception safety, if buffered_functions::buffer or reserver throws
             // the container is left in a sane, empty state. If copy_buckets
             // throws the container is left with whatever was successfully
             // copied.
@@ -1126,11 +1132,12 @@ namespace boost {
                 if(this != &x)
                 {
                     data_.clear();                        // no throw
-                    func_ = copy_functions(x);            // throws, strong
+                    functions_.set(functions_.buffer(x.functions_));
+                                                          // throws, strong
                     mlf_ = x.mlf_;                        // no throw
                     calculate_max_load();                 // no throw
                     reserve(x.size());                    // throws
-                    copy_buckets(x.data_, data_, current_functions()); // throws
+                    copy_buckets(x.data_, data_, functions_.current()); // throws
                 }
 
                 return *this;
@@ -1152,10 +1159,11 @@ namespace boost {
 
             void swap(BOOST_UNORDERED_TABLE& x)
             {
-                // This only effects the function objects that aren't in use
-                // so it is strongly exception safe, via. double buffering.
-                functions_ptr new_func_this = copy_functions(x);       // throws
-                functions_ptr new_func_that = x.copy_functions(*this); // throws
+                // These can throw, but they only affect the function objects
+                // that aren't in use so it is strongly exception safe, via.
+                // double buffering.
+                functions_ptr new_func_this = functions_.buffer(x.functions_);
+                functions_ptr new_func_that = x.functions_.buffer(functions_);
 
                 if(data_.allocators_ == x.data_.allocators_) {
                     data_.swap(x.data_); // no throw
@@ -1165,10 +1173,10 @@ namespace boost {
                     // which will clean up if anything throws an exception.
                     // (all can throw, but with no effect as these are new objects).
                     data new_this(data_, x.min_buckets_for_size(x.data_.size_));
-                    copy_buckets(x.data_, new_this, this->*new_func_this);
+                    copy_buckets(x.data_, new_this, functions_.*new_func_this);
 
                     data new_that(x.data_, min_buckets_for_size(data_.size_));
-                    x.copy_buckets(data_, new_that, x.*new_func_that);
+                    x.copy_buckets(data_, new_that, x.functions_.*new_func_that);
 
                     // Start updating the data here, no throw from now on.
                     data_.swap(new_this);
@@ -1178,37 +1186,48 @@ namespace boost {
                 // We've made it, the rest is no throw.
                 std::swap(mlf_, x.mlf_);
 
-                func_ = new_func_this;
-                x.func_ = new_func_that;
+                functions_.set(new_func_this);
+                x.functions_.set(new_func_that);
 
                 calculate_max_load();
                 x.calculate_max_load();
             }
 
-        private:
-
-            functions const& current_functions() const
-            {
-                return this->*func_;
-            }
-
-            // This copies the given function objects into the currently unused
-            // function objects and returns a pointer, that func_ can later be
-            // set to, to commit the change.
+            // Move
             //
-            // Strong exception safety (since only usued function objects are
-            // changed).
-            functions_ptr copy_functions(BOOST_UNORDERED_TABLE const& x)
-            {
-                // no throw:
-                functions_ptr ptr = func_ == &BOOST_UNORDERED_TABLE::func1_
-                    ? &BOOST_UNORDERED_TABLE::func2_ : &BOOST_UNORDERED_TABLE::func1_;
-                // throws, functions not in use, so strong
-                this->*ptr = x.current_functions();
-                return ptr;
-            }
+            // ----------------------------------------------------------------
+            //
+            // Strong exception safety (might change unused function objects)
+            //
+            // Can throw if hash or predicate object's copy constructor throws
+            // or if allocators are unequal.
 
-        public:
+            void move(BOOST_UNORDERED_TABLE& x)
+            {
+                // This can throw, but it only affects the function objects
+                // that aren't in use so it is strongly exception safe, via.
+                // double buffering.
+                functions_ptr new_func_this = functions_.buffer(x.functions_);
+
+                if(data_.allocators_ == x.data_.allocators_) {
+                    data_.move(x.data_); // no throw
+                }
+                else {
+                    // Create new buckets in separate HASH_TABLE_DATA objects
+                    // which will clean up if anything throws an exception.
+                    // (all can throw, but with no effect as these are new objects).
+                    data new_this(data_, x.min_buckets_for_size(x.data_.size_));
+                    copy_buckets(x.data_, new_this, functions_.*new_func_this);
+
+                    // Start updating the data here, no throw from now on.
+                    data_.move(new_this);
+                }
+
+                // We've made it, the rest is no throw.
+                mlf_ = x.mlf_;
+                functions_.set(new_func_this);
+                calculate_max_load();
+            }
 
             // accessors
 
@@ -1221,13 +1240,13 @@ namespace boost {
             // no throw
             hasher const& hash_function() const
             {
-                return current_functions().hash_function();
+                return functions_.current().hash_function();
             }
 
             // no throw
             key_equal const& key_eq() const
             {
-                return current_functions().key_eq();
+                return functions_.current().key_eq();
             }
 
             // no throw
@@ -1503,25 +1522,20 @@ namespace boost {
                 if(reserve(size() + 1))
                     bucket = data_.bucket_from_hash(hash_value);
 
-                // Nothing after the point can throw.
-
-                link_ptr n = a.release();
-
                 // I'm relying on link_ptr not being invalidated by
                 // the rehash here.
-                if(BOOST_UNORDERED_BORLAND_BOOL(position))
-                    data_.link_node(n, position);
-                else
-                    data_.link_node_in_bucket(n, bucket);
-
-                return iterator_base(bucket, n);
+                return iterator_base(bucket,
+                    (BOOST_UNORDERED_BORLAND_BOOL(position)) ?
+                    data_.link_node(a, position) :
+                    data_.link_node_in_bucket(a, bucket)
+                );
             }
 
             // Insert (equivalent key containers)
 
             // if hash function throws, basic exception safety
             // strong otherwise
-            iterator_base insert(iterator_base const& it, value_type const& v)
+            iterator_base insert_hint(iterator_base const& it, value_type const& v)
             {
                 // equal can throw, but with no effects
                 if (it == data_.end() || !equal(extract_key(v), *it)) {
@@ -1549,10 +1563,8 @@ namespace boost {
 
                     // Nothing after this point can throw
 
-                    link_ptr n = a.release();
-                    data_.link_node(n, start);
-
-                    return iterator_base(base, n);
+                    return iterator_base(base,
+                            data_.link_node(a, start));
                 }
             }
 
@@ -1582,9 +1594,9 @@ namespace boost {
                         link_ptr position = find_iterator(bucket, k);
 
                         if(BOOST_UNORDERED_BORLAND_BOOL(position))
-                            data_.link_node(a.release(), position);
+                            data_.link_node(a, position);
                         else
-                            data_.link_node_in_bucket(a.release(), bucket);
+                            data_.link_node_in_bucket(a, bucket);
                     }
                 }
             }
@@ -1605,7 +1617,7 @@ namespace boost {
             // if hash function throws, or inserting > 1 element, basic exception safety
             // strong otherwise
             template <typename I>
-            void insert(I i, I j)
+            void insert_range(I i, I j)
             {
                 BOOST_DEDUCED_TYPENAME boost::iterator_traversal<I>::type
                     iterator_traversal_tag;
@@ -1642,10 +1654,7 @@ namespace boost {
 
                     // Nothing after this point can throw.
 
-                    link_ptr n = a.release();
-                    data_.link_node_in_bucket(n, bucket);
-
-                    return data::get_value(n);
+                    return data::get_value(data_.link_node_in_bucket(a, bucket));
                 }
             }
 
@@ -1682,8 +1691,7 @@ namespace boost {
 
                     // Nothing after this point can throw.
 
-                    link_ptr n = a.release();
-                    data_.link_node_in_bucket(n, bucket);
+                    link_ptr n = data_.link_node_in_bucket(a, bucket);
 
                     return std::pair<iterator_base, bool>(
                         iterator_base(bucket, n), true);
@@ -1694,7 +1702,7 @@ namespace boost {
 
             // if hash function throws, basic exception safety
             // strong otherwise
-            iterator_base insert(iterator_base const& it, value_type const& v)
+            iterator_base insert_hint(iterator_base const& it, value_type const& v)
             {
                 if(it != data_.end() && equal(extract_key(v), *it))
                     return it;
@@ -1727,7 +1735,7 @@ namespace boost {
             // if hash function throws, or inserting > 1 element, basic exception safety
             // strong otherwise
             template <typename InputIterator>
-            void insert(InputIterator i, InputIterator j)
+            void insert_range(InputIterator i, InputIterator j)
             {
                 node_constructor a(data_.allocators_);
 
@@ -1753,23 +1761,17 @@ namespace boost {
                         }
 
                         // Nothing after this point can throw.
-                        data_.link_node_in_bucket(a.release(), bucket);
+                        data_.link_node_in_bucket(a, bucket);
                     }
                 }
             }
 #endif
         public:
 
-            // erase
-
-            // no throw
-            iterator_base erase(iterator_base const& r)
-            {
-                return data_.data::erase(r);
-            }
+            // erase_key
 
             // strong exception safety
-            size_type erase(key_type const& k)
+            size_type erase_key(key_type const& k)
             {
                 // No side effects in initial section
                 bucket_ptr bucket = get_bucket(k);
@@ -1777,12 +1779,6 @@ namespace boost {
 
                 // No throw.
                 return *it ? data_.erase_group(it, bucket) : 0;
-            }
-
-            // no throw
-            iterator_base erase(iterator_base const& r1, iterator_base const& r2)
-            {
-                return data_.data::erase(r1, r2);
             }
 
             // count

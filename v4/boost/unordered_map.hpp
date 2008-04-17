@@ -21,6 +21,10 @@
 #include <boost/unordered/detail/hash_table.hpp>
 #include <boost/functional/hash.hpp>
 
+#if !defined(BOOST_HAS_RVALUE_REFS)
+#include <boost/unordered/detail/move.hpp>
+#endif
+
 namespace boost
 {
     template <class Key,
@@ -100,6 +104,35 @@ namespace boost
         {
         }
 
+#if defined(BOOST_HAS_RVALUE_REFS)
+        unordered_map(unordered_map&& other)
+            : base(other.base, boost::unordered_detail::move_tag())
+        {
+        }
+
+        unordered_map(unordered_map&& other, allocator_type const& a)
+            : base(other.base, a, boost::unordered_detail::move_tag())
+        {
+        }
+
+        unordered_map& operator=(unordered_map&& x)
+        {
+            base.move(x.base);
+            return *this;
+        }
+#else
+        unordered_map(boost::unordered_detail::move_from<unordered_map> other)
+            : base(other.base, boost::unordered_detail::move_tag())
+        {
+        }
+
+        unordered_map& operator=(unordered_map x)
+        {
+            base.move(x.base);
+            return *this;
+        }
+#endif
+
     private:
 
         BOOST_DEDUCED_TYPENAME implementation::iterator_base const&
@@ -174,28 +207,28 @@ namespace boost
 
         iterator insert(const_iterator hint, const value_type& obj)
         {
-            return iterator(base.insert(get(hint), obj));
+            return iterator(base.insert_hint(get(hint), obj));
         }
 
         template <class InputIterator>
             void insert(InputIterator first, InputIterator last)
         {
-            base.insert(first, last);
+            base.insert_range(first, last);
         }
 
         iterator erase(const_iterator position)
         {
-            return iterator(base.erase(get(position)));
+            return iterator(base.data_.erase(get(position)));
         }
 
         size_type erase(const key_type& k)
         {
-            return base.erase(k);
+            return base.erase_key(k);
         }
 
         iterator erase(const_iterator first, const_iterator last)
         {
-            return iterator(base.erase(get(first), get(last)));
+            return iterator(base.data_.erase_range(get(first), get(last)));
         }
 
         void clear()
@@ -424,6 +457,36 @@ namespace boost
         {
         }
 
+#if defined(BOOST_HAS_RVALUE_REFS)
+        unordered_multimap(unordered_multimap&& other)
+            : base(other.base, boost::unordered_detail::move_tag())
+        {
+        }
+
+        unordered_multimap(unordered_multimap&& other, allocator_type const& a)
+            : base(other.base, a, boost::unordered_detail::move_tag())
+        {
+        }
+
+        unordered_multimap& operator=(unordered_multimap&& x)
+        {
+            base.move(x.base);
+            return *this;
+        }
+#else
+        unordered_multimap(boost::unordered_detail::move_from<unordered_multimap> other)
+            : base(other.base, boost::unordered_detail::move_tag())
+        {
+        }
+
+        unordered_multimap& operator=(unordered_multimap x)
+        {
+            base.move(x.base);
+            return *this;
+        }
+#endif
+
+
     private:
 
         BOOST_DEDUCED_TYPENAME implementation::iterator_base const&
@@ -497,28 +560,28 @@ namespace boost
 
         iterator insert(const_iterator hint, const value_type& obj)
         {
-            return iterator(base.insert(get(hint), obj));
+            return iterator(base.insert_hint(get(hint), obj));
         }
 
         template <class InputIterator>
             void insert(InputIterator first, InputIterator last)
         {
-            base.insert(first, last);
+            base.insert_range(first, last);
         }
 
         iterator erase(const_iterator position)
         {
-            return iterator(base.erase(get(position)));
+            return iterator(base.data_.erase(get(position)));
         }
 
         size_type erase(const key_type& k)
         {
-            return base.erase(k);
+            return base.erase_key(k);
         }
 
         iterator erase(const_iterator first, const_iterator last)
         {
-            return iterator(base.erase(get(first), get(last)));
+            return iterator(base.data_.erase_range(get(first), get(last)));
         }
 
         void clear()
