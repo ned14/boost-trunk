@@ -16959,6 +16959,7 @@ libs/spirit/doc/references.qbk svneol=native#text/plain
 libs/spirit/doc/spirit2.qbk svneol=native#text/plain
 libs/spirit/doc/what_s_new.qbk svneol=native#text/plain
 libs/spirit/example/karma/Jamfile svneol=native#text/plain
+libs/spirit/example/karma/actions.cpp svneol=native#text/plain
 libs/spirit/example/karma/basic_facilities.cpp svneol=native#text/plain
 libs/spirit/example/karma/functor_facilities.cpp svneol=native#text/plain
 libs/spirit/example/karma/quick_start1.cpp svneol=native#text/plain
