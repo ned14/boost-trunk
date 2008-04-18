@@ -17172,6 +17172,7 @@ libs/spirit/test/lex/lexertl5.cpp svneol=native#text/plain
 libs/spirit/test/lex/state_switcher_test.cpp svneol=native#text/plain
 libs/spirit/test/lex/test.hpp svneol=native#text/plain
 libs/spirit/test/lex/test_parser.hpp svneol=native#text/plain
+libs/spirit/test/qi/actions.cpp svneol=native#text/plain
 libs/spirit/test/qi/alternative.cpp svneol=native#text/plain
 libs/spirit/test/qi/and_predicate.cpp svneol=native#text/plain
 libs/spirit/test/qi/binary.cpp svneol=native#text/plain
