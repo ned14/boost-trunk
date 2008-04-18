@@ -5006,6 +5006,7 @@ boost/spirit/home/qi/nonterminal/meta_grammar.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/nonterminal.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/nonterminal_director.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/rule.hpp svneol=native#text/plain
+boost/spirit/home/qi/nonterminal/virtual_component_base.hpp svneol=native#text/plain
 boost/spirit/home/qi/numeric.hpp svneol=native#text/plain
 boost/spirit/home/qi/numeric/detail/numeric_utils.hpp svneol=native#text/plain
 boost/spirit/home/qi/numeric/detail/real_impl.hpp svneol=native#text/plain
