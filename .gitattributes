@@ -16993,6 +16993,7 @@ libs/spirit/example/lex/word_count_functor.flex svneol=native#text/plain
 libs/spirit/example/lex/word_count_functor_flex.cpp svneol=native#text/plain
 libs/spirit/example/lex/word_count_lexer.cpp svneol=native#text/plain
 libs/spirit/example/qi/Jamfile svneol=native#text/plain
+libs/spirit/example/qi/actions.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc1.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc2.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc3.cpp svneol=native#text/plain
