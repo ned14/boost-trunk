@@ -4975,6 +4975,7 @@ boost/spirit/home/qi/char/detail/range_functions.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/detail/range_run.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/detail/range_run_impl.hpp svneol=native#text/plain
 boost/spirit/home/qi/char/meta_grammar.hpp svneol=native#text/plain
+boost/spirit/home/qi/char/primitives.hpp svneol=native#text/plain
 boost/spirit/home/qi/debug.hpp svneol=native#text/plain
 boost/spirit/home/qi/debug/detail/debug_handler.hpp svneol=native#text/plain
 boost/spirit/home/qi/debug/detail/print_node_info.hpp svneol=native#text/plain
