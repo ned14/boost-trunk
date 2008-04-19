@@ -83,6 +83,9 @@ namespace boost { namespace spirit { namespace lex
         typedef std::basic_string<char_type> string_type;
 
     public:
+        typedef Token token_type;
+        typedef typename Token::id_type id_type;
+
         // interface for token definition management
         void add_token (char_type const* state, string_type const& tokendef, 
             std::size_t token_id)
@@ -192,9 +195,19 @@ namespace boost { namespace spirit { namespace lex
         //  Every lexer type to be used as a lexer for Spirit has to conform to 
         //  a public interface .
         typedef Token token_type;
+        typedef typename Token::id_type id_type;
         typedef TokenSet token_set;
         typedef lexertl_iterator<Functor> iterator_type;
-        
+
+    private:
+        // this type is purely used for the iterator_type construction below
+        struct iterator_data_type {
+            boost::lexer::state_machine const& state_machine_;
+            boost::lexer::basic_rules<char_type> const& rules_;
+            typename Functor::semantic_actions_type const& actions_;
+        };
+
+    public:
         //  Return the start iterator usable for iterating over the generated
         //  tokens.
         iterator_type begin(Iterator& first, Iterator const& last) const
@@ -202,12 +215,6 @@ namespace boost { namespace spirit { namespace lex
             if (!init_dfa())
                 return iterator_type();
                 
-            struct iterator_data_type {
-                boost::lexer::state_machine const& state_machine_;
-                boost::lexer::basic_rules<char_type> const& rules_;
-                typename Functor::semantic_actions_type const& actions_;
-            };
-
             iterator_data_type iterator_data = { state_machine, rules, actions };
             return iterator_type(iterator_data, first, last);
         }

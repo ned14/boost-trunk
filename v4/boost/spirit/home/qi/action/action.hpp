@@ -10,7 +10,7 @@
 #include <boost/spirit/home/qi/domain.hpp>
 #include <boost/spirit/home/support/component.hpp>
 #include <boost/spirit/home/support/attribute_of.hpp>
-#include <boost/spirit/home/support/detail/values.hpp>
+#include <boost/spirit/home/support/detail/action_dispatch.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <boost/type_traits/remove_const.hpp>
@@ -31,6 +31,17 @@ namespace boost { namespace spirit { namespace qi
             >
         {
         };
+
+        template <typename F, typename Attribute, typename Context>
+        static bool const_action_dispatch(
+            F const& f, Attribute const& attr, Context& context)
+        {
+            // This function makes Attribute a const reference
+            // before calling detail::action_dispatch whereby
+            // disallowing mutability of the attribute in semantic
+            // actions.
+            return spirit::detail::action_dispatch(f, attr, context);
+        }
 
         template <
             typename Component
@@ -60,13 +71,10 @@ namespace boost { namespace spirit { namespace qi
             if (director::parse(
                 spirit::left(component), first, last, context, skipper, attr))
             {
-                // call the function, passing the attribute, the context
-                // and a bool flag that the client can set to false to
-                // fail parsing.
-                bool pass = true;
-                spirit::right(component)(
-                    spirit::detail::pass_value<attr_type>::call(attr), context, pass);
-                return pass;
+                // call the function, passing the attribute, the context.
+                // The client can return false to fail parsing.
+                return const_action_dispatch(
+                    spirit::right(component), attr, context);
             }
             return false;
         }
