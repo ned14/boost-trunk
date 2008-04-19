@@ -23719,7 +23719,6 @@ v4/boost/proto/core.hpp svneol=native#text/plain
 v4/boost/proto/debug.hpp svneol=native#text/plain
 v4/boost/proto/deep_copy.hpp svneol=native#text/plain
 v4/boost/proto/detail/as_lvalue.hpp svneol=native#text/plain
-v4/boost/proto/detail/child_traits.hpp svneol=native#text/plain
 v4/boost/proto/detail/decltype.hpp svneol=native#text/plain
 v4/boost/proto/detail/dont_care.hpp svneol=native#text/plain
 v4/boost/proto/detail/funop.hpp svneol=native#text/plain
