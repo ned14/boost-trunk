@@ -2189,6 +2189,7 @@ boost/math/special_functions/detail/ibeta_inverse.hpp svneol=native#text/plain
 boost/math/special_functions/detail/igamma_inverse.hpp svneol=native#text/plain
 boost/math/special_functions/detail/igamma_large.hpp svneol=native#text/plain
 boost/math/special_functions/detail/lgamma_small.hpp svneol=native#text/plain
+boost/math/special_functions/detail/round_fwd.hpp svneol=native#text/plain
 boost/math/special_functions/detail/simple_complex.hpp svneol=native#text/plain
 boost/math/special_functions/detail/t_distribution_inv.hpp svneol=native#text/plain
 boost/math/special_functions/detail/unchecked_factorial.hpp svneol=native#text/plain
