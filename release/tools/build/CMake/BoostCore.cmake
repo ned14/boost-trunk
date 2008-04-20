@@ -65,6 +65,9 @@ macro(boost_library_project LIBNAME)
     ${ARGN}
     )
 
+  # The names of all of the macros that need to be exported to the outer scope.
+  set(THIS_PROJECT_EXPORT_MACROS)
+  
   set(THIS_PROJECT_OKAY ON)
   string(TOUPPER "BOOST_${LIBNAME}_DEPENDS" THIS_PROJECT_DEPENDS)
   set(THIS_PROJECT_FAILED_DEPS "")
@@ -104,15 +107,22 @@ macro(boost_library_project LIBNAME)
 
   if(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
     string(TOLOWER "${LIBNAME}" libname)
-    project(${libname})
+    string(TOUPPER "${LIBNAME}" ULIBNAME)
+    project(${LIBNAME})
 
+    if(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
+      # Add this library to the list of library components to install
+      set(CPACK_COMPONENT_GROUPS_BOOST_ALL ${CPACK_COMPONENT_GROUPS_BOOST_ALL} ${ULIBNAME} PARENT_SCOPE)
+      set(CPACK_COMPONENT_GROUP_BOOST_${ULIBNAME}_DISPLAY_NAME ${LIBNAME})
+      list(APPEND THIS_PROJECT_EXPORT_MACROS CPACK_COMPONENT_GROUP_BOOST_${ULIBNAME}_DISPLAY_NAME)
+    endif(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
+    
     if(THIS_PROJECT_MODULAR)
       # If this is a modular project, set a variable
       # BOOST_${LIBNAME}_IS_MODULAR in the *parent* scope, so that
       # other libraries know that this is a modular library. Thus,
       # they will add the appropriate include paths.
-      string(TOUPPER "BOOST_${LIBNAME}_IS_MODULAR" THIS_PROJECT_IS_MODULAR)
-      set(${THIS_PROJECT_IS_MODULAR} TRUE CACHE INTERNAL "" FORCE)
+      set(BOOST_${ULIBNAME}_IS_MODULAR TRUE PARENT_SCOPE)
 
       # Add this module's include directory
       include_directories("${Boost_SOURCE_DIR}/libs/${libname}/include")
@@ -120,19 +130,35 @@ macro(boost_library_project LIBNAME)
       # Install this module's headers
       install(DIRECTORY include/boost 
         DESTINATION ${BOOST_HEADER_DIR}
-        COMPONENT ${LIBNAME}
+        COMPONENT ${ULIBNAME}_headers
         PATTERN "CVS" EXCLUDE
         REGEX ".svn" EXCLUDE)
+              
+      # Add the appropriate variables to make this library's headers a separate component.
+      set(THIS_PROJECT_COMPONENTS ${THIS_PROJECT_COMPONENTS} ${ULIBNAME}_headers)
+      set(CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME "Header files")
+      set(CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP ${ULIBNAME})
+      list(APPEND THIS_PROJECT_EXPORT_MACROS 
+		CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME
+		CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP)
     endif (THIS_PROJECT_MODULAR)
 
     # For each of the modular libraries on which this project depends,
     # add the include path for that library.
     foreach(DEP ${${THIS_PROJECT_DEPENDS}})
+      string(TOUPPER ${DEP} UDEP)
       string(TOUPPER "BOOST_${DEP}_IS_MODULAR" BOOST_LIB_DEP_MODULAR)
-      if(${BOOST_LIB_DEP_MODULAR})
+      if(BOOST_${UDEP}_IS_MODULAR)
         include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
-      endif(${BOOST_LIB_DEP_MODULAR})
+        if (THIS_PROJECT_MODULAR)
+          # Make this project's headers depend on DEP's headers
+          list(APPEND CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS ${UDEP}_headers)
+        endif ()
+      endif()
     endforeach(DEP)
+    if (CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS)
+      list(APPEND THIS_PROJECT_EXPORT_MACROS CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS)
+    endif ()
 
     if(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/tests)
       file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/bin/tests)
@@ -163,6 +189,15 @@ macro(boost_library_project LIBNAME)
       endif(${BOOST_TEST_LIB_OPTION})
     endif(BUILD_TESTING AND THIS_PROJECT_TESTDIRS)
   endif(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
+  
+  # Export certain macros to the parent scope.
+  foreach(MACRO ${THIS_PROJECT_EXPORT_MACROS})
+    set(${MACRO} ${${MACRO}} PARENT_SCOPE)
+  endforeach()
+  set(BOOST_EXPORT_MACROS 
+	${BOOST_EXPORT_MACROS} ${THIS_PROJECT_EXPORT_MACROS} PARENT_SCOPE)
+  set(CPACK_COMPONENTS_BOOST_ALL 
+	${CPACK_COMPONENTS_BOOST_ALL} ${THIS_PROJECT_COMPONENTS} PARENT_SCOPE)
 endmacro(boost_library_project)
 
 macro(boost_module LIBNAME)
@@ -452,9 +487,44 @@ macro(boost_library_variant LIBNAME)
     endforeach(dependency "${THIS_LIB_DEPENDS}")
 
     # Installation of this library variant
+    string(TOUPPER ${PROJECT_NAME} ULIBNAME)
     install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib
       EXPORT boost-targets
-      COMPONENT ${PROJECT_NAME})
+      COMPONENT ${ULIBNAME}_libraries)
+      
+    # Add the appropriate variables to make this library's binaries a separate component.
+    if (NOT THIS_PROJECT_ADDED_LIBRARIES_COMPONENT)
+      set(THIS_PROJECT_ADDED_LIBRARIES_COMPONENT ON)
+      set(THIS_PROJECT_COMPONENTS ${THIS_PROJECT_COMPONENTS} ${ULIBNAME}_libraries PARENT_SCOPE)
+      set(CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DISPLAY_NAME "Library binaries" PARENT_SCOPE)
+      set(CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_GROUP ${ULIBNAME} PARENT_SCOPE)
+	  
+	  # Make the library installation component dependent on the library installation
+	  # components of dependent libraries.  
+	  foreach(DEP ${${THIS_PROJECT_DEPENDS}})
+        string(TOUPPER ${DEP} UDEP)
+        if(BOOST_${UDEP}_IS_MODULAR)
+          if (THIS_PROJECT_MODULAR AND CPACK_COMPONENT_BOOST_${UDEP}_LIBRARIES_GROUP)
+            # Make this project's libraries depend on DEP's headers
+            list(APPEND CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS ${UDEP}_libraries)
+          endif ()
+        endif()
+      endforeach()
+      if (CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS)
+        set(CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS 
+          ${CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS} PARENT_SCOPE)
+        set(THIS_PROJECT_EXPORT_MACROS ${THIS_PROJECT_EXPORT_MACROS} 
+	      CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS
+          CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DISPLAY_NAME
+	      CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_GROUP
+	      PARENT_SCOPE)
+      else()
+        set(THIS_PROJECT_EXPORT_MACROS ${THIS_PROJECT_EXPORT_MACROS} 
+          CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DISPLAY_NAME
+	      CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_GROUP
+	      PARENT_SCOPE)
+      endif()
+	endif()
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)
 

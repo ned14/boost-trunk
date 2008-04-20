@@ -32,6 +32,16 @@ boost_collect_subproject_directory_names(BOOST_SUBPROJECT_DIRS "CMakeLists.txt")
 
 # Add all of the Boost projects in reverse topological order, so that
 # a library's dependencies show up before the library itself.
+set(CPACK_INSTALL_CMAKE_COMPONENTS_ALL)
 list(SORT BOOST_SUBPROJECT_DIRS)
 topological_sort(BOOST_SUBPROJECT_DIRS BOOST_ _DEPENDS)
 add_subdirectories(" + " ${BOOST_SUBPROJECT_DIRS})
+
+# Export the list of components to be installed
+set(CPACK_COMPONENTS_BOOST_ALL ${CPACK_COMPONENTS_BOOST_ALL} PARENT_SCOPE)
+set(CPACK_COMPONENT_GROUPS_BOOST_ALL ${CPACK_COMPONENT_GROUPS_BOOST_ALL} PARENT_SCOPE)
+
+# Export all of the variables that have been marked as "to be exported"
+foreach(MACRO ${BOOST_EXPORT_MACROS})
+  set(${MACRO} ${${MACRO}} PARENT_SCOPE)
+endforeach()
