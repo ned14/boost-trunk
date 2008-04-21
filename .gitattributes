@@ -17147,6 +17147,7 @@ libs/spirit/phoenix/test/statement/if_tests.cpp svneol=native#text/plain
 libs/spirit/phoenix/test/statement/loops_tests.cpp svneol=native#text/plain
 libs/spirit/phoenix/test/statement/switch_tests.cpp svneol=native#text/plain
 libs/spirit/test/Jamfile svneol=native#text/plain
+libs/spirit/test/karma/actions.cpp svneol=native#text/plain
 libs/spirit/test/karma/alternative.cpp svneol=native#text/plain
 libs/spirit/test/karma/binary.cpp svneol=native#text/plain
 libs/spirit/test/karma/case_handling.cpp svneol=native#text/plain
