@@ -6,8 +6,9 @@
 #ifndef BOOST_LEXER_CONSTS_H
 #define BOOST_LEXER_CONSTS_H
 
-#include "size_t.hpp"
-#include <wchar.h>
+#include <boost/config.hpp>
+#include <boost/integer_traits.hpp>
+#include <boost/spirit/home/support/detail/lexer/size_t.hpp>
 
 namespace boost
 {
@@ -20,7 +21,9 @@ namespace lexer
 
     const std::size_t max_macro_len = 20;
     const std::size_t num_chars = 256;
-    const std::size_t num_wchar_ts = WCHAR_MAX < 0x110000 ? WCHAR_MAX : 0x110000;
+    const std::size_t num_wchar_ts = 
+        (boost::integer_traits<wchar_t>::const_max < 0x110000) ? 
+            boost::integer_traits<wchar_t>::const_max : 0x110000;
     const std::size_t null_token = static_cast<std::size_t> (~0);
     const std::size_t bol_token = static_cast<std::size_t> (~1);
     const std::size_t eol_token = static_cast<std::size_t> (~2);

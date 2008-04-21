@@ -33,6 +33,7 @@
 // #define BOOST_SPIRIT_LEXERTL_DEBUG
 
 //[wcl_includes
+#include <boost/spirit/include/support_argument.hpp>
 #include <boost/spirit/include/lex_lexer_lexertl.hpp>
 #include <boost/spirit/include/phoenix_operator.hpp>
 #include <boost/spirit/include/phoenix_statement.hpp>
@@ -71,13 +72,7 @@ struct word_count_tokens : lexer_def<Lexer>
     {
         using boost::phoenix::ref;
         using boost::phoenix::distance;
-        
-        // Note that all placeholders used in lexer semantic actions in 
-        // conjunction with functors created based on Phoenix2 need to be from 
-        // the namespace boost::phoenix::arg_names (not spirit::arg_names). 
-        // Using the wrong placeholders leads to subtle compilation errors 
-        // which are difficult to backtrack to their cause.
-        using boost::phoenix::arg_names::_1;
+        using boost::spirit::arg_names::_1;
 
         // associate tokens with the lexer
         self =  word  [++ref(w), ref(c) += distance(_1)]

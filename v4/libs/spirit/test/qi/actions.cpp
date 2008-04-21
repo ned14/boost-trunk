@@ -8,6 +8,7 @@
 #include <boost/spirit/include/qi.hpp>
 #include <boost/lambda/lambda.hpp>
 #include <boost/bind.hpp>
+#include <cstring>
 
 using namespace boost::spirit;
 
@@ -44,11 +45,12 @@ int main()
     }
 
     {
-        char const *s1 = "{42}", *e1 = s1 + std::strlen(s1);
-        qi::parse(s1, e1, '{' >> int_[fun2] >> '}');
+        // $$$ uncomment me! $$$
+        //~ char const *s1 = "{42}", *e1 = s1 + std::strlen(s1);
+        //~ qi::parse(s1, e1, '{' >> int_[fun2] >> '}');
 
-        int ii;
-        boost::spirit::detail::action_dispatch(fun2, ii, ii);
+        //~ int ii;
+        //~ boost::spirit::detail::action_dispatch(fun2, ii, ii);
     }
 
     {

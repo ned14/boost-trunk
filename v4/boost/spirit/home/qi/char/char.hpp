@@ -17,6 +17,8 @@
 #include <boost/spirit/home/support/detail/to_narrow.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/remove_reference.hpp>
+#include <boost/foreach.hpp>
+#include <boost/mpl/print.hpp>
 
 namespace boost { namespace spirit { namespace qi
 {
@@ -51,24 +53,22 @@ namespace boost { namespace spirit { namespace qi
             typedef unused_type type;   // literal parsers have no attribute
         };
 
-        template <typename Char_, typename CharParam>
-        static bool test_impl(Char_ ch, CharParam param)
+        template <typename CharParam>
+        static CharParam get_char(CharParam ch)
         {
-            // tests plain chars
-            return ch == param;
+            return ch;
         }
 
-        template <typename Char_, typename CharParam>
-        static bool test_impl(Char_ const* ch, CharParam param)
+        template <typename CharParam>
+        static CharParam get_char(CharParam const* str)
         {
-            // tests single char null terminated strings
-            return *ch == param;
+            return *str;
         }
 
         template <typename Component, typename CharParam, typename Context>
         static bool test(Component const& component, CharParam ch, Context&)
         {
-            return test_impl(fusion::at_c<0>(component.elements), ch);
+            return get_char(fusion::at_c<0>(component.elements)) == ch;
         }
 
         template <typename Component>
@@ -76,7 +76,7 @@ namespace boost { namespace spirit { namespace qi
         {
             return std::string("'")
                 + spirit::detail::to_narrow_char(
-                    fusion::at_c<0>(component.elements))
+                    get_char(fusion::at_c<0>(component.elements)))
                 + '\'';
         }
     };
@@ -203,11 +203,21 @@ namespace boost { namespace spirit { namespace qi
             typedef unused_type type;   // literal parsers have no attribute
         };
 
+        static Char get_char(Char ch)
+        {
+            return ch;
+        }
+
+        static Char get_char(Char const* str)
+        {
+            return *str;
+        }
+
         template <typename Component, typename CharParam, typename Context>
         static bool test(Component const& component, CharParam ch, Context&)
         {
-            return fusion::at_c<0>(component.elements) == ch
-                || fusion::at_c<1>(component.elements) == ch
+            return get_char(fusion::at_c<0>(component.elements)) == ch
+                || get_char(fusion::at_c<1>(component.elements)) == ch
             ;
         }
 
@@ -215,9 +225,13 @@ namespace boost { namespace spirit { namespace qi
         static std::string what(Component const& component)
         {
             std::string result;
-            result += std::string("'") + fusion::at_c<0>(component.elements) + '\'';
+            result += std::string("'")
+                + spirit::detail::to_narrow_char(
+                    get_char(fusion::at_c<0>(component.elements))) + '\'';
             result += " or ";
-            result += std::string("'") + fusion::at_c<1>(component.elements) + '\'';
+            result += std::string("'") +
+                spirit::detail::to_narrow_char(
+                    get_char(fusion::at_c<1>(component.elements))) + '\'';
             return result;
         }
     };
@@ -253,10 +267,55 @@ namespace boost { namespace spirit { namespace qi
             return result;
         }
     };
+
+    template <typename Char, typename Elements>
+    struct char_set_component;
 }}}
 
 namespace boost { namespace spirit { namespace traits
 {
+    ///////////////////////////////////////////////////////////////////////////
+    // char_set_component generator
+    ///////////////////////////////////////////////////////////////////////////
+    template <typename Char, typename Elements, typename Modifier>
+    struct make_component<qi::domain, qi::char_set<Char>, Elements, Modifier
+      , typename disable_if<
+            is_member_of_modifier<Modifier, spirit::char_class::no_case_base_tag>
+        >::type
+    > : mpl::identity<qi::char_set_component<Char, Elements> >
+    {
+        static qi::char_set_component<Char, Elements>
+        call(Elements const& elements)
+        {
+            return qi::char_set_component<Char, Elements>(
+                fusion::at_c<0>(elements));
+        }
+    };
+
+    ///////////////////////////////////////////////////////////////////////////
+    // no_case char_set_component generator
+    ///////////////////////////////////////////////////////////////////////////
+    template <
+        typename Domain, typename Elements, typename Modifier, typename Char
+    >
+    struct make_modified_component<
+        Domain, qi::char_set<Char>, Elements, Modifier
+      , typename enable_if<
+            is_member_of_modifier<Modifier, spirit::char_class::no_case_base_tag>
+        >::type
+    >
+    {
+        typedef qi::char_set_component<Char, Elements> type;
+        typedef typename Modifier::char_set char_set;
+
+        static type
+        call(Elements const& elements)
+        {
+            return qi::char_set_component<Char, Elements>(
+                fusion::at_c<0>(elements), char_set());
+        }
+    };
+
     ///////////////////////////////////////////////////////////////////////////
     // no_case_literal_char generator
     ///////////////////////////////////////////////////////////////////////////
@@ -275,12 +334,22 @@ namespace boost { namespace spirit { namespace traits
             component<qi::domain, qi::no_case_literal_char<Char>, vector_type>
         type;
 
+        static Char get_char(Char ch)
+        {
+            return ch;
+        }
+
+        static Char get_char(Char const* str)
+        {
+            return *str;
+        }
+
         static type
         call(Elements const& elements)
         {
             typedef typename Modifier::char_set char_set;
 
-            Char ch = fusion::at_c<0>(elements);
+            Char ch = get_char(fusion::at_c<0>(elements));
             vector_type v(
                 char_set::tolower(ch)
               , char_set::toupper(ch)

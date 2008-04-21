@@ -48,11 +48,13 @@ import testing ;
     [ run qi/match_manip.cpp                : : : : ]
     [ run qi/binary.cpp                     : : : : ]
     [ run qi/debug.cpp                      : : : : ]
+    [ run qi/end.cpp                        : : : : ]
 
     [ compile-fail qi/grammar_fail.cpp      : : ]
     [ compile-fail qi/rule_fail.cpp         : : ]
 
     # run Karma tests
+    [ run karma/actions.cpp                 : : : : karma_actions ]
     [ run karma/alternative.cpp             : : : : karma_alternative ]
     [ run karma/binary.cpp                  : : : : karma_binary ]
     [ run karma/case_handling.cpp           : : : : ]
@@ -81,8 +83,9 @@ import testing ;
 
     # run support tests
     [ run support/hold_any.cpp              : : : : ]
-    [ run support/multi_pass_compile.cpp    : : : : ]
-    [ run support/multi_pass.cpp            : : : : ]
+# the multi_pass tests are not completed yet
+#    [ run support/multi_pass_compile.cpp    : : : : ]
+#    [ run support/multi_pass.cpp            : : : : ]
 
     # run lexer tests
     [ run lex/lexertl1.cpp                  : : : : ]
