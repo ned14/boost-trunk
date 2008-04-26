@@ -20144,6 +20144,7 @@ tools/regression/src/library_test.bat svneol=native#text/plain
 tools/regression/src/library_test.sh svneol=native#text/x-sh
 tools/regression/src/library_test_all.sh svneol=native#text/x-sh
 tools/regression/src/process_jam_log.cpp svneol=native#text/plain
+tools/regression/src/process_jam_log.py svneol=native#text/x-python
 tools/regression/src/regression-logs.pl svneol=native#text/x-perl
 tools/regression/src/regression.py svneol=native#text/x-python
 tools/regression/src/run.py svneol=native#text/x-python
