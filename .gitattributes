@@ -1766,6 +1766,7 @@ boost/interprocess/allocators/detail/node_tools.hpp svneol=native#text/plain
 boost/interprocess/allocators/node_allocator.hpp svneol=native#text/plain
 boost/interprocess/allocators/private_adaptive_pool.hpp svneol=native#text/plain
 boost/interprocess/allocators/private_node_allocator.hpp svneol=native#text/plain
+boost/interprocess/anonymous_shared_memory.hpp svneol=native#text/plain
 boost/interprocess/containers/deque.hpp svneol=native#text/plain
 boost/interprocess/containers/detail/flat_tree.hpp svneol=native#text/plain
 boost/interprocess/containers/detail/node_alloc_holder.hpp svneol=native#text/plain
