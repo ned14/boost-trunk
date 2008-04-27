@@ -65,7 +65,10 @@ namespace boost { namespace spirit { namespace lex
         { 
             std::basic_string<Char> result(1, ch);
             if (detail::must_escape(ch)) 
-                result.insert(0, 1, '\\');
+            {
+                typedef typename std::basic_string<Char>::size_type size_type;
+                result.insert((size_type)0, 1, '\\');
+            }
             return result;
         }
     }
@@ -293,7 +296,9 @@ namespace boost { namespace spirit { namespace lex
                 typename Functor::semantic_actions_type::value_type
             value_type;
             
-            actions.insert(value_type(id, act));
+            typedef typename Functor::wrap_action_type wrapper_type;
+
+            actions.insert(value_type(id, wrapper_type::call(act)));
         }
                 
         bool init_dfa() const

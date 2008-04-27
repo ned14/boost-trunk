@@ -20,8 +20,10 @@
 #include <boost/spirit/home/support/detail/lexer/rules.hpp>
 #include <boost/spirit/home/support/detail/lexer/state_machine.hpp>
 #include <boost/spirit/home/lex/lexer/lexertl/iterator_tokenizer.hpp>
+#include <boost/spirit/home/lex/lexer/lexertl/wrap_action.hpp>
 
 #if 0 != __COMO_VERSION__ || !BOOST_WORKAROUND(BOOST_MSVC, <= 1310)
+#define BOOST_SPIRIT_STATIC_EOF 1
 #define BOOST_SPIRIT_EOF_PREFIX static
 #else
 #define BOOST_SPIRIT_EOF_PREFIX 
@@ -46,6 +48,10 @@ namespace boost { namespace spirit { namespace lex
             char_type;
 
             typedef unused_type semantic_actions_type;
+
+            typedef 
+                detail::wrap_action<unused_type, iterpair_type, Data>
+            wrap_action_type;
 
             // initialize the shared data 
             template <typename IterData>
@@ -83,6 +89,7 @@ namespace boost { namespace spirit { namespace lex
           : Data<Iterator, mpl::false_, mpl::false_>
         {
             typedef Data<Iterator, mpl::false_, mpl::false_> base_type;
+            typedef std::size_t state_type;
             
             // initialize the shared data 
             template <typename IterData>
@@ -127,10 +134,14 @@ namespace boost { namespace spirit { namespace lex
                 boost::detail::iterator_traits<Iterator>::value_type 
             char_type;
 
-            typedef void functor_type(iterpair_type, std::size_t, Data&, bool&);
+            typedef void functor_type(iterpair_type, std::size_t, bool&, Data&);
             typedef boost::function<functor_type> functor_wrapper_type;
             typedef std::multimap<std::size_t, functor_wrapper_type> 
                 semantic_actions_type;
+
+            typedef 
+                detail::wrap_action<functor_wrapper_type, iterpair_type, Data>
+            wrap_action_type;
 
             template <typename IterData>
             Data (IterData const& data_, Iterator& first_, Iterator const& last_)
@@ -154,7 +165,7 @@ namespace boost { namespace spirit { namespace lex
                 std::pair<iterator_type, iterator_type> p = actions.equal_range(id);
                 while (p.first != p.second)
                 {
-                    ((*p.first).second)(itp, id, *this, match);
+                    ((*p.first).second)(itp, id, match, *this);
                     if (!match)
                         return false;   // return a 'no-match'
                     ++p.first;
@@ -230,9 +241,9 @@ namespace boost { namespace spirit { namespace lex
         
     public:
         lexertl_functor()
-#if 0 != __DECCXX_VER || BOOST_INTEL_CXX_VERSION > 900 || defined(__PGI)
+#if defined(__PGI)
           : eof()
-#endif // 0 != __DECCXX_VER
+#endif 
         {}
         
         ///////////////////////////////////////////////////////////////////////
@@ -247,12 +258,20 @@ namespace boost { namespace spirit { namespace lex
         typedef Iterator iterator_type;
         typedef typename shared::semantic_actions_type semantic_actions_type;
 
+        // this is needed to wrap the semantic actions in a proper way
+        typedef typename shared::wrap_action_type wrap_action_type;
+
+        ///////////////////////////////////////////////////////////////////////
         template <typename MultiPass>
         static result_type& get_next(MultiPass& mp, result_type& result)
         {
             shared& data = mp.shared->ftor;
             if (data.first == data.last) 
+#if defined(BOOST_SPIRIT_STATIC_EOF)
                 return result = eof;
+#else
+                return result = mp.ftor.eof;
+#endif
 
             Iterator end = data.first;
             std::size_t id = data.next(end);
@@ -270,7 +289,11 @@ namespace boost { namespace spirit { namespace lex
                 result = result_type(0);
             }
             else if (0 == id) {         // EOF reached
+#if defined(BOOST_SPIRIT_STATIC_EOF)
                 result = eof;
+#else
+                result = mp.ftor.eof;
+#endif
             }
             else {
 #if defined(BOOST_SPIRIT_LEXERTL_DEBUG)
@@ -330,13 +353,13 @@ namespace boost { namespace spirit { namespace lex
             return mp.shared->ftor.rules.state(statename);
         }
         
-        // we don't need this
+        // we don't need this, but it must be there
         template <typename MultiPass>
-        static void destroy(MultiPass const& mp)
+        static void destroy(MultiPass const&)
         {}  
     };
 
-#if 0 != __COMO_VERSION__ || !BOOST_WORKAROUND(BOOST_MSVC, <= 1310)
+#if defined(BOOST_SPIRIT_STATIC_EOF)
     ///////////////////////////////////////////////////////////////////////////
     //  eof token
     ///////////////////////////////////////////////////////////////////////////
@@ -348,10 +371,11 @@ namespace boost { namespace spirit { namespace lex
                 Token, Iterator, SupportsActors, SupportsState>::eof = 
             typename lexertl_functor<
                 Token, Iterator, SupportsActors, SupportsState>::result_type();
-#endif // 0 != __COMO_VERSION__
+#endif
 
 }}}
 
 #undef BOOST_SPIRIT_EOF_PREFIX
+#undef BOOST_SPIRIT_STATIC_EOF
 
 #endif

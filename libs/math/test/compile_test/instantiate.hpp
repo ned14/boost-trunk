@@ -16,6 +16,8 @@
 #include <boost/math/special_functions.hpp>
 #include <boost/math/concepts/distributions.hpp>
 
+#ifndef BOOST_MATH_INSTANTIATE_MINIMUM
+
 typedef boost::math::policies::policy<> test_policy;
 
 namespace test{
@@ -29,6 +31,7 @@ namespace dist_test{
 BOOST_MATH_DECLARE_DISTRIBUTIONS(double, test_policy)
 
 }
+#endif
 
 namespace boost{ namespace math{
 //
@@ -79,7 +82,7 @@ void instantiate(RealType)
    function_requires<DistributionConcept<non_central_beta_distribution<RealType> > >();
    function_requires<DistributionConcept<non_central_f_distribution<RealType> > >();
    function_requires<DistributionConcept<non_central_t_distribution<RealType> > >();
-
+#ifndef BOOST_MATH_INSTANTIATE_MINIMUM
    function_requires<DistributionConcept<bernoulli_distribution<RealType, test_policy> > >();
    function_requires<DistributionConcept<beta_distribution<RealType, test_policy> > >();
    function_requires<DistributionConcept<binomial_distribution<RealType, test_policy> > >();
@@ -128,7 +131,7 @@ void instantiate(RealType)
    function_requires<DistributionConcept<dist_test::non_central_beta > >();
    function_requires<DistributionConcept<dist_test::non_central_f > >();
    function_requires<DistributionConcept<dist_test::non_central_t > >();
-
+#endif
    int i;
    RealType v1(0.5), v2(0.5), v3(0.5);
    boost::math::tgamma(v1);
@@ -246,6 +249,7 @@ void instantiate(RealType)
    boost::math::modf(v1, &ll);
 #endif
    boost::math::pow<2>(v1);
+#ifndef BOOST_MATH_INSTANTIATE_MINIMUM
    //
    // All over again, with a policy this time:
    //
@@ -347,19 +351,25 @@ void instantiate(RealType)
    boost::math::expint(i, i, pol);
    boost::math::zeta(v1, pol);
    boost::math::zeta(i, pol);
-   boost::math::trunc(v1, pol);
-   boost::math::itrunc(v1, pol);
-   boost::math::ltrunc(v1, pol);
-   boost::math::round(v1, pol);
-   boost::math::iround(v1, pol);
-   boost::math::lround(v1, pol);
-   boost::math::modf(v1, &v1, pol);
-   boost::math::modf(v1, &i, pol);
-   boost::math::modf(v1, &l, pol);
+   //
+   // These next functions are intended to be found via ADL:
+   //
+   BOOST_MATH_STD_USING
+   trunc(v1, pol);
+   itrunc(v1, pol);
+   ltrunc(v1, pol);
+   round(v1, pol);
+   iround(v1, pol);
+   lround(v1, pol);
+   modf(v1, &v1, pol);
+   modf(v1, &i, pol);
+   modf(v1, &l, pol);
 #ifdef BOOST_HAS_LONG_LONG
-   boost::math::lltrunc(v1, pol);
-   boost::math::llround(v1, pol);
-   boost::math::modf(v1, &ll, pol);
+   using boost::math::lltrunc;
+   using boost::math::llround;
+   lltrunc(v1, pol);
+   llround(v1, pol);
+   modf(v1, &ll, pol);
 #endif
    boost::math::pow<2>(v1, pol);
    //
@@ -477,6 +487,7 @@ void instantiate(RealType)
    test::modf(v1, &ll);
 #endif
    test::pow<2>(v1);
+#endif
 }
 
 template <class RealType>
@@ -484,7 +495,7 @@ void instantiate_mixed(RealType)
 {
    using namespace boost;
    using namespace boost::math;
-
+#ifndef BOOST_MATH_INSTANTIATE_MINIMUM
    int i = 1;
    long l = 1;
    short s = 1;
@@ -833,6 +844,7 @@ void instantiate_mixed(RealType)
    test::sph_bessel(i, 1);
    test::sph_neumann(i, lr);
    test::sph_neumann(i, i);
+#endif
 }
 
 

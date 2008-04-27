@@ -24,13 +24,20 @@
 #include <boost/limits.hpp>
 #include <boost/assert.hpp>
 #include <boost/static_assert.hpp>
-#include <boost/unordered/detail/allocator.hpp>
+#include <boost/unordered/detail/allocator_helpers.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/detail/workaround.hpp>
 
 #include <boost/mpl/aux_/config/eti.hpp>
+
+#if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
+#include <boost/type_traits/remove_reference.hpp>
+#include <boost/type_traits/remove_const.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <boost/mpl/not.hpp>
+#endif
 
 #if BOOST_WORKAROUND(__BORLANDC__, <= 0x0582)
 #define BOOST_UNORDERED_BORLAND_BOOL(x) (bool)(x)
@@ -50,7 +57,6 @@ namespace boost {
 
         static const std::size_t default_initial_bucket_count = 50;
         static const float minimum_max_load_factor = 1e-3f;
-        inline std::size_t next_prime(std::size_t n);
 
         template <class T>
         inline void hash_swap(T& x, T& y)
@@ -101,6 +107,32 @@ namespace boost {
                 bound--;
             return *bound;
         }
+        
+        // Controls how many buckets are allocated and which buckets hash
+        // values map to. Does not contain the buckets themselves, or ever
+        // deal with them directly.
+
+        struct bucket_manager {
+            std::size_t bucket_count_;
+            
+            bucket_manager()
+                : bucket_count_(0) {}
+            
+            explicit bucket_manager(std::size_t n)
+                : bucket_count_(next_prime(n)) {}
+            
+            std::size_t bucket_count() const {
+                return bucket_count_;
+            }
+            
+            std::size_t bucket_from_hash(std::size_t hashed) const {
+                return hashed % bucket_count_;
+            }
+            
+            std::size_t max_bucket_count(std::size_t max_size) const {
+                return prev_prime(max_size);
+            }
+        };
 
         // pair_cast - used to convert between pair types.
 
