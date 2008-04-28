@@ -35165,6 +35165,7 @@ v4/libs/proto/example/calc2.cpp svneol=native#text/plain
 v4/libs/proto/example/calc3.cpp svneol=native#text/plain
 v4/libs/proto/example/futures.cpp svneol=native#text/plain
 v4/libs/proto/example/hello.cpp svneol=native#text/plain
+v4/libs/proto/example/lambda.hpp svneol=native#text/plain
 v4/libs/proto/example/lazy_vector.cpp svneol=native#text/plain
 v4/libs/proto/example/map_assign.cpp svneol=native#text/plain
 v4/libs/proto/example/mini_lambda.cpp svneol=native#text/plain
