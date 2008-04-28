@@ -17088,6 +17088,7 @@ libs/spirit/example/qi/Jamfile svneol=native#text/plain
 libs/spirit/example/qi/actions.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc1.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc2.cpp svneol=native#text/plain
+libs/spirit/example/qi/calc2_ast.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc3.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc3_lexer.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc4.cpp svneol=native#text/plain
