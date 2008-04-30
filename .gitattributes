@@ -18451,6 +18451,7 @@ libs/unordered/test/unordered/compile_set.cpp svneol=native#text/plain
 libs/unordered/test/unordered/compile_tests.hpp svneol=native#text/plain
 libs/unordered/test/unordered/constructor_tests.cpp svneol=native#text/plain
 libs/unordered/test/unordered/copy_tests.cpp svneol=native#text/plain
+libs/unordered/test/unordered/equality_tests.cpp svneol=native#text/plain
 libs/unordered/test/unordered/equivalent_keys_tests.cpp svneol=native#text/plain
 libs/unordered/test/unordered/erase_equiv_tests.cpp svneol=native#text/plain
 libs/unordered/test/unordered/erase_tests.cpp svneol=native#text/plain
