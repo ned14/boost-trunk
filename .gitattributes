@@ -18916,7 +18916,7 @@ libs/wave/test/testwave/testfiles/t_9_017.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_018.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_019.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_019.hpp svneol=native#text/plain
-libs/wave/test/testwave/testfiles/test.cfg -text
+libs/wave/test/testwave/testfiles/test.cfg svneol=native#text/plain
 libs/wave/test/testwave/testwave.cpp svneol=native#text/plain
 libs/wave/test/testwave/testwave_app.cpp svneol=native#text/plain
 libs/wave/test/testwave/testwave_app.hpp svneol=native#text/plain
