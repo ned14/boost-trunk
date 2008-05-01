@@ -45,7 +45,7 @@ namespace boost
     //  implementation  ------------------------------------------------------//
 
     inline const char * system_error::what() const throw()
-    // see http://www.boost.org/more/error_handling.html for lazy build rationale
+    // see http://www.boost.org/community/error_handling.html for lazy build rationale
     {
       if ( m_what.empty() )
       {

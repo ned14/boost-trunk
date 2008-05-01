@@ -18,7 +18,7 @@
 #
 #  In all cases, presence of .test file is an indication that the test passed.
 #  For more convenient reporting, you might want to use C++ Boost regression
-#  testing utilities, see http://www.boost.org/more/regression.html
+#  testing utilities, see http://www.boost.org/development/testing.html
 #
 #  For historical reason, a 'unit-test' rule is available which has the same
 #  syntax as 'exe' and behaves just like 'run'.
