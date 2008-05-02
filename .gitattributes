@@ -7649,6 +7649,7 @@ libs/exception/test/helper2.hpp svneol=native#text/plain
 libs/exception/test/info_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/info_tuple_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/is_output_streamable_test.cpp svneol=native#text/plain
+libs/exception/test/throw_exception_fail.cpp svneol=native#text/plain
 libs/exception/test/throw_exception_test.cpp svneol=native#text/plain
 libs/exception/test/to_string_fail.cpp svneol=native#text/plain
 libs/exception/test/to_string_hpp_test.cpp svneol=native#text/plain
