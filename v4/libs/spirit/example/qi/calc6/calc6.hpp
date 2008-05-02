@@ -7,6 +7,7 @@
 #if !defined(BOOST_SPIRIT_CALC6)
 #define BOOST_SPIRIT_CALC6
 
+#include <boost/config/warning_disable.hpp>
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/phoenix_core.hpp>
 #include <boost/spirit/include/phoenix_container.hpp>
@@ -52,7 +53,7 @@ public:
     }
 
     std::vector<int> const& get_stack() const { return stack; };
-    void execute(std::vector<int>& code, int nvars);
+    void execute(std::vector<int> const& code, int nvars);
 
 private:
 

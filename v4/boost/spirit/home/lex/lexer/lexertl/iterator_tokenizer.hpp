@@ -6,9 +6,11 @@
 #if !defined(BOOST_SPIRIT_LEXERTL_ITERATOR_TOKENISER_MARCH_22_2007_0859AM)
 #define BOOST_SPIRIT_LEXERTL_ITERATOR_TOKENISER_MARCH_22_2007_0859AM
 
+#include <boost/detail/iterator.hpp>
 #include <boost/spirit/home/support/detail/lexer/state_machine.hpp>
 #include <boost/spirit/home/support/detail/lexer/consts.hpp>
 #include <boost/spirit/home/support/detail/lexer/size_t.hpp>
+#include <boost/spirit/home/support/detail/lexer/char_traits.hpp>
 #include <vector>
 
 namespace boost { namespace spirit { namespace lex 
@@ -124,7 +126,17 @@ namespace boost { namespace spirit { namespace lex
                 }
                 else
                 {
-                    std::size_t const state_ = ptr_[lookup_[*curr_++]];
+                    typedef typename 
+                        boost::detail::iterator_traits<Iterator>::value_type 
+                    value_type;
+                    typedef typename 
+                        boost::lexer::char_traits<value_type>::index_type 
+                    index_type;
+                    
+                    index_type index = 
+                        boost::lexer::char_traits<value_type>::call(*curr_++);
+                    std::size_t const state_ = ptr_[
+                        lookup_[static_cast<std::size_t>(index)]];
 
                     if (state_ == 0)
                     {
@@ -204,7 +216,17 @@ namespace boost { namespace spirit { namespace lex
                 }
                 else
                 {
-                    std::size_t const state_ = ptr_[lookup_[*curr_++]];
+                    typedef typename 
+                        boost::detail::iterator_traits<Iterator>::value_type 
+                    value_type;
+                    typedef typename 
+                        boost::lexer::char_traits<value_type>::index_type 
+                    index_type;
+                    
+                    index_type index = 
+                        boost::lexer::char_traits<value_type>::call(*curr_++);
+                    std::size_t const state_ = ptr_[
+                        lookup_[static_cast<std::size_t>(index)]];
 
                     if (state_ == 0)
                     {

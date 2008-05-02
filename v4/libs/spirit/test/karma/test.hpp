@@ -10,6 +10,7 @@
 #include <string>
 #include <iterator>
 #include <iostream>
+#include <typeinfo>
 
 #include <boost/function_output_iterator.hpp>
 #include <boost/spirit/include/karma_generate.hpp>
@@ -51,6 +52,9 @@ namespace spirit_test
         }
 
         String& str;
+
+        // suppress warning about assignment operator not being generated
+        string_appender& operator=(string_appender const&);
     };
 
     template <typename String>

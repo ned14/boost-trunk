@@ -48,6 +48,7 @@ v3/tools/build/v2/test/test-config.jam
 v3/tools/build/v2/test/test_results.txt
 v3/tools/regression/test/test-cases/Huber2629/actual
 v3/tools/regression/test/test-cases/general/actual
+v4/bin.v2
 v4/libs/asio/doc/html
 v4/libs/iterator/doc/GNUmakefile
 v4/libs/optional/test/bin
@@ -96,5 +97,10 @@ v4/tools/build/v2/test/*.pyc
 v4/tools/build/v2/test/failed_test
 v4/tools/build/v2/test/test-config.jam
 v4/tools/build/v2/test/test_results.txt
+v4/tools/jam/src/bin.cygwinx86
+v4/tools/jam/src/bin.cygwinx86.debug
+v4/tools/jam/src/bin.ntx86
+v4/tools/jam/src/bin.ntx86.debug
+v4/tools/jam/src/bootstrap
 v4/tools/regression/test/test-cases/Huber2629/actual
 v4/tools/regression/test/test-cases/general/actual

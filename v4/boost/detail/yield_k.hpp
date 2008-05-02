@@ -36,7 +36,7 @@ extern "C" void _mm_pause();
 
 #elif defined(__GNUC__) && ( defined(__i386__) || defined(__x86_64__) )
 
-#define BOOST_SMT_PAUSE __asm__ __volatile__( "rep; nop" ::: "memory" );
+#define BOOST_SMT_PAUSE __asm__ __volatile__( "rep; nop" : : : "memory" );
 
 #endif
 
@@ -111,7 +111,11 @@ inline void yield( unsigned k )
     }
     else
     {
-        struct timespec rqtp = { 0 };
+        // g++ -Wextra warns on {} or {0}
+        struct timespec rqtp = { 0, 0 };
+
+        // POSIX says that timespec has tv_sec and tv_nsec
+        // But it doesn't guarantee order or placement
 
         rqtp.tv_sec = 0;
         rqtp.tv_nsec = 1000;

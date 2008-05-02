@@ -18,8 +18,8 @@
 #include <functional>
 #include <memory>
 
-#include <boost/unordered/detail/hash_table.hpp>
 #include <boost/functional/hash.hpp>
+#include <boost/unordered/detail/hash_table.hpp>
 
 #if !defined(BOOST_HAS_RVALUE_REFS)
 #include <boost/unordered/detail/move.hpp>
@@ -199,6 +199,21 @@ namespace boost
 
         // modifiers
 
+#if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
+        template <class... Args>
+        std::pair<iterator, bool> emplace(Args&&... args)
+        {
+            return boost::unordered_detail::pair_cast<iterator, bool>(
+                base.insert(std::forward<Args>(args)...));
+        }
+
+        template <class... Args>
+        iterator emplace(const_iterator hint, Args&&... args)
+        {
+            return iterator(base.insert_hint(get(hint), std::forward<Args>(args)...));
+        }
+#endif
+
         std::pair<iterator, bool> insert(const value_type& obj)
         {
             return boost::unordered_detail::pair_cast<iterator, bool>(
@@ -371,6 +386,21 @@ namespace boost
         void rehash(size_type n)
         {
             base.rehash(n);
+        }
+        
+        friend bool operator==(unordered_map const& m1, unordered_map const& m2)
+        {
+            return m1.base.equals(m2.base);
+        }
+
+        friend bool operator!=(unordered_map const& m1, unordered_map const& m2)
+        {
+            return !m1.base.equals(m2.base);
+        }
+
+        friend std::size_t hash_value(unordered_map const& m)
+        {
+            return m.base.hash_value();
         }
     }; // class template unordered_map
 
@@ -553,6 +583,20 @@ namespace boost
 
         // modifiers
 
+#if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
+        template <class... Args>
+        iterator emplace(Args&&... args)
+        {
+            return iterator(base.insert(std::forward<Args>(args)...));
+        }
+
+        template <class... Args>
+        iterator emplace(const_iterator hint, Args&&... args)
+        {
+            return iterator(base.insert_hint(get(hint), std::forward<Args>(args)...));
+        }
+#endif
+
         iterator insert(const value_type& obj)
         {
             return iterator(base.insert(obj));
@@ -709,6 +753,21 @@ namespace boost
         void rehash(size_type n)
         {
             base.rehash(n);
+        }
+
+        friend bool operator==(unordered_multimap const& m1, unordered_multimap const& m2)
+        {
+            return m1.base.equals(m2.base);
+        }
+
+        friend bool operator!=(unordered_multimap const& m1, unordered_multimap const& m2)
+        {
+            return !m1.base.equals(m2.base);
+        }
+
+        friend std::size_t hash_value(unordered_multimap const& m)
+        {
+            return m.base.hash_value();
         }
     }; // class template unordered_multimap
 

@@ -48,14 +48,16 @@ namespace interprocess {
 template<class T, class SegmentManager>
 class allocator 
 {
+   public:
+   //Segment manager
+   typedef SegmentManager                                segment_manager;
+   typedef typename SegmentManager::void_pointer         void_pointer;
+
    /// @cond
    private:
 
    //Self type
    typedef allocator<T, SegmentManager>   self_t;
-
-   //Segment manager
-   typedef SegmentManager                 segment_manager;
 
    //Pointer to void
    typedef typename segment_manager::void_pointer  aux_pointer_t;
@@ -106,8 +108,6 @@ class allocator
       <typename SegmentManager::
          multiallocation_chain
       , T>                                      multiallocation_chain;
-//   typedef typename SegmentManager::
-//      multiallocation_chain                     multiallocation_chain;
 
    /// @endcond
 
@@ -153,7 +153,7 @@ class allocator
    //!Deallocates memory previously allocated.
    //!Never throws
    void deallocate(const pointer &ptr, size_type)
-   {  mp_mngr->deallocate(detail::get_pointer(ptr));  }
+   {  mp_mngr->deallocate((void*)detail::get_pointer(ptr));  }
 
    //!Returns the number of elements that could be allocated.
    //!Never throws
@@ -253,10 +253,15 @@ class allocator
    const_pointer address(const_reference value) const
    {  return const_pointer(boost::addressof(value));  }
 
+   //!Copy construct an object
+   //!Throws if T's copy constructor throws
+   void construct(const pointer &ptr, const_reference v)
+   {  new((void*)detail::get_pointer(ptr)) value_type(v);  }
+
    //!Default construct an object. 
    //!Throws if T's default constructor throws
    void construct(const pointer &ptr)
-   {  new(detail::get_pointer(ptr)) value_type;  }
+   {  new((void*)detail::get_pointer(ptr)) value_type;  }
 
    //!Destroys object. Throws if object's
    //!destructor throws

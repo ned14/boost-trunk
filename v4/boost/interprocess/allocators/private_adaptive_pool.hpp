@@ -55,10 +55,13 @@ class private_adaptive_pool_base
    , SegmentManager
    >
 {
+   public:
+   //Segment manager
+   typedef SegmentManager                                segment_manager;
+   typedef typename SegmentManager::void_pointer         void_pointer;
+
    /// @cond
    private:
-   typedef typename SegmentManager::void_pointer         void_pointer;
-   typedef SegmentManager                                segment_manager;
    typedef private_adaptive_pool_base
       < Version, T, SegmentManager, NodesPerChunk
       , MaxFreeChunks, OverheadPercent>                  self_t;
@@ -104,6 +107,22 @@ class private_adaptive_pool_base
    };
 
    /// @cond
+
+   template <int dummy>
+   struct node_pool
+   {
+      typedef detail::private_adaptive_node_pool
+      <SegmentManager
+      , sizeof(T)
+      , NodesPerChunk
+      , MaxFreeChunks
+      , OverheadPercent
+      > type;
+
+      static type *get(void *p)
+      {  return static_cast<type*>(p);  }
+   };
+
    private:
    //!Not assignable from related private_adaptive_pool_base
    template<unsigned int Version2, class T2, class MemoryAlgorithm2, std::size_t N2, std::size_t F2, unsigned char OP2>
@@ -355,9 +374,9 @@ class private_adaptive_pool
    //!Never throws
    const_pointer address(const_reference value) const;
 
-   //!Default construct an object. 
-   //!Throws if T's default constructor throws
-   void construct(const pointer &ptr);
+   //!Copy construct an object. 
+   //!Throws if T's copy constructor throws
+   void construct(const pointer &ptr, const_reference v);
 
    //!Destroys object. Throws if object's
    //!destructor throws

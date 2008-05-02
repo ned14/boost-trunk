@@ -28,6 +28,7 @@ using namespace spirit_test;
 int
 main()
 {
+    using namespace boost::spirit;
     using namespace boost::spirit::qi;
     using namespace boost::spirit::ascii;
 
@@ -215,7 +216,7 @@ main()
         using boost::spirit::qi::fail;
 
         rule<char const*> r;
-        r = '(' > int_ > ',' > int_ > ')';
+        r = char_('(') > int_ > ',' > int_ > ')';
 
         on_error<fail>
         (

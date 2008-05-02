@@ -24,9 +24,9 @@ using namespace boost::spirit::qi;
 using namespace boost::spirit::ascii;
 using namespace boost::spirit::arg_names;
 
-struct num_list : grammar_def<char const*, space_type>
+struct num_list : grammar_<char const*, space_type>
 {
-    num_list()
+    num_list() : base_type(start)
     {
         using boost::spirit::int_;
         num = int_;
@@ -68,13 +68,26 @@ struct num_list2 : grammar_def<char const*, grammar<my_skipper> >
     rule<char const*, grammar<my_skipper> > start, num;
 };
 
+template <typename Iterator, typename Skipper>
+struct num_list3 : grammar_def<Iterator, Skipper>
+{
+    template <typename Class>
+    num_list3(Class& self)
+    {
+        using boost::spirit::int_;
+        num = int_;
+        start = num >> *(',' >> num);
+    }
+
+    rule<Iterator, Skipper> start, num;
+};
+
 int
 main()
 {
     { // simple grammar test
 
-        num_list def;
-        grammar<num_list> nlist(def);
+        num_list nlist;
         BOOST_TEST(test("123, 456, 789", nlist, space));
     }
 
@@ -103,6 +116,29 @@ main()
         BOOST_TEST(n == 123);
         BOOST_TEST(test_attr("inherited", g(123), n, space)); // using the grammar
         BOOST_TEST(n == 123);
+    }
+
+    { // grammar_class test (no skipper)
+
+        grammar_class<num_list3> nlist;
+
+        char const* first = "123,456,789";
+        char const* last = first;
+        while (*last)
+            last++;
+        BOOST_TEST(parse(first, last, nlist) && (first == last));
+    }
+
+    { // grammar_class test (w/skipper)
+
+        grammar_class<num_list3> nlist;
+
+        char const* first = "123, 456, 789";
+        char const* last = first;
+        while (*last)
+            last++;
+        BOOST_TEST(phrase_parse(first, last, nlist, space)
+            && (first == last));
     }
     return boost::report_errors();
 }

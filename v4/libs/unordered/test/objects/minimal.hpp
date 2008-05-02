@@ -22,8 +22,10 @@ namespace test
 namespace minimal
 {
     class copy_constructible;
+    class copy_constructible_equality_comparable;
     class default_copy_constructible;
     class assignable;
+
     template <class T> class hash;
     template <class T> class equal_to;
     template <class T> class ptr;
@@ -40,6 +42,25 @@ namespace minimal
         copy_constructible& operator=(copy_constructible const&);
         copy_constructible() {}
     };
+
+    class copy_constructible_equality_comparable
+    {
+    public:
+        static copy_constructible_equality_comparable create() { return copy_constructible_equality_comparable(); }
+        copy_constructible_equality_comparable(copy_constructible_equality_comparable const&) {}
+        ~copy_constructible_equality_comparable() {}
+    private:
+        copy_constructible_equality_comparable& operator=(copy_constructible_equality_comparable const&);
+        copy_constructible_equality_comparable() {}
+    };
+
+    bool operator==(copy_constructible_equality_comparable, copy_constructible_equality_comparable) {
+        return true;
+    }
+
+    bool operator!=(copy_constructible_equality_comparable, copy_constructible_equality_comparable) {
+        return false;
+    }
 
     class default_copy_constructible
     {
@@ -207,6 +228,13 @@ namespace minimal
         }
 
         void construct(pointer p, T const& t) { new((void*)p.ptr_) T(t); }
+
+#if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
+        template<class... Args> void construct(pointer p, Args&&... args) {
+            new((void*)p.ptr_) T(std::forward<Args>(args)...);
+        }
+#endif
+
         void destroy(pointer p) { ((T*)p.ptr_)->~T(); }
 
         size_type max_size() const { return 1000; }
@@ -237,6 +265,22 @@ namespace minimal
     }
 }
 }
+
+#if defined(BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP)
+namespace boost {
+#else
+namespace test {
+namespace minimal {
+#endif
+    std::size_t hash_value(test::minimal::copy_constructible_equality_comparable) {
+        return 1;
+    }
+#if !defined(BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP)
+}}
+#else
+}
+#endif
+
 
 #if defined(BOOST_MSVC)
 #pragma warning(pop)
