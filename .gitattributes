@@ -19561,6 +19561,7 @@ tools/build/v2/test/remove_requirement.py svneol=native#text/x-python
 tools/build/v2/test/resolution.py svneol=native#text/x-python
 tools/build/v2/test/searched_lib.py svneol=native#text/x-python
 tools/build/v2/test/skipping.py svneol=native#text/x-python
+tools/build/v2/test/sort_rule.py svneol=native#text/x-python
 tools/build/v2/test/source_locations.py svneol=native#text/x-python
 tools/build/v2/test/stage.py svneol=native#text/x-python
 tools/build/v2/test/standalone.py svneol=native#text/x-python
