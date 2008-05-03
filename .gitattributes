@@ -23749,6 +23749,7 @@ v4/boost/proto/detail/decltype.hpp svneol=native#text/plain
 v4/boost/proto/detail/dont_care.hpp svneol=native#text/plain
 v4/boost/proto/detail/funop.hpp svneol=native#text/plain
 v4/boost/proto/detail/ignore_unused.hpp svneol=native#text/plain
+v4/boost/proto/detail/poly_function.hpp svneol=native#text/plain
 v4/boost/proto/detail/pop_front.hpp svneol=native#text/plain
 v4/boost/proto/detail/prefix.hpp svneol=native#text/plain
 v4/boost/proto/detail/reverse.hpp svneol=native#text/plain
