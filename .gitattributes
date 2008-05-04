@@ -17890,6 +17890,8 @@ libs/thread/src/win32/tss_pe.cpp svneol=native#text/plain
 libs/thread/test/Carbon.r -text
 libs/thread/test/Jamfile.v2 svneol=native#text/plain
 libs/thread/test/condition_test_common.hpp svneol=native#text/plain
+libs/thread/test/no_implicit_assign_from_lvalue_thread.cpp svneol=native#text/plain
+libs/thread/test/no_implicit_move_from_lvalue_thread.cpp svneol=native#text/plain
 libs/thread/test/shared_mutex_locking_thread.hpp svneol=native#text/plain
 libs/thread/test/test.mcp -text svneol=unset#unset
 libs/thread/test/test_barrier.cpp svneol=native#text/plain
