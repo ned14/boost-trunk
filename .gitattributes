@@ -20048,6 +20048,7 @@ tools/jam/src/w32_getreg.c svneol=native#text/plain
 tools/jam/src/yyacc.c svneol=native#text/plain
 tools/jam/test/action_status.jam svneol=native#text/plain
 tools/jam/test/actions_quietly.jam svneol=native#text/plain
+tools/jam/test/builtin_normalize_path.jam svneol=native#text/plain
 tools/jam/test/builtin_shell.jam svneol=native#text/plain
 tools/jam/test/builtin_w32_getregnames.jam svneol=native#text/plain
 tools/jam/test/option_d2.jam svneol=native#text/plain
