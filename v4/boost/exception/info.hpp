@@ -37,11 +37,14 @@ boost
             virtual std::type_info const & tag_typeid() const = 0;
             virtual std::string value_as_string() const = 0;
 
-			protected:
+            protected:
 
-			~error_info_base()
-				{
-				}
+#if BOOST_WORKAROUND( __GNUC__, BOOST_TESTED_AT(4) )
+virtual //Disable bogus GCC warning.
+#endif
+            ~error_info_base()
+                {
+                }
             };
         }
 

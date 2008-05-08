@@ -40,6 +40,10 @@ class BJamLog2Results:
         self.revision=None
         self.input = []
         ( _opt_, self.input ) = opt.parse_args(args,self)
+        if self.incremental:
+            run_type = 'incremental'
+        else:
+            run_type = 'full'
         self.results = xml.dom.minidom.parseString('''<?xml version="1.0" encoding="UTF-8"?>
 <test-run
   source="%(source)s"
@@ -55,11 +59,12 @@ class BJamLog2Results:
             'runner' : self.runner,
             'platform' : self.platform,
             'tag' : self.tag,
-            'run-type' : 'incremental' if self.incremental else 'full',
+            'run-type' : run_type,
             'revision' : self.revision,
             } )
         
         self.test = {}
+        self.target_to_test = {}
         self.target = {}
         self.parent = {}
         self.log = {}
@@ -146,15 +151,16 @@ class BJamLog2Results:
         while test_node:
             test_name = test_node.getAttribute('name')
             self.test[test_name] = {
-                'library' : test_name.split('/',1)[0],
-                'test-name' : test_name.split('/',1)[1],
+                'library' : '/'.join(test_name.split('/')[0:-1]),
+                'test-name' : test_name.split('/')[-1],
                 'test-type' : test_node.getAttribute('type').lower(),
                 'test-program' : self.get_child_data(test_node,tag='source').strip(),
                 'target' : self.get_child_data(test_node,tag='target').strip(),
                 'info' : self.get_child_data(test_node,tag='info',strip=True)
                 }
             #~ Add a lookup for the test given the test target.
-            self.target[self.test[test_name]['target']] = test_name
+            self.target_to_test[self.test[test_name]['target']] = test_name
+            #~ print "--- %s\n => %s" %(self.test[test_name]['target'],test_name)
             test_node = self.get_sibling(test_node.nextSibling,tag='test')
         return None
     
@@ -231,11 +237,15 @@ class BJamLog2Results:
                             action_tag = 'run'
                     #~ The result sub-part we will add this result to.
                     result_node = self.get_child(log,tag=action_tag)
+                    if action_node.getAttribute('status') == '0':
+                        action_result = 'succeed'
+                    else:
+                        action_result = 'fail'
                     if not result_node:
                         #~ If we don't have one already, create it and add the result.
                         result_node = self.new_text(action_tag,result_data,
-                            result='succeed' if action_node.getAttribute('status') == '0' else 'fail',
-                            timestamp=action_node.getAttribute('start'))
+                            result = action_result,
+                            timestamp = action_node.getAttribute('start'))
                         log.appendChild(self.results.createTextNode("\n"))
                         log.appendChild(result_node)
                     else:
@@ -247,7 +257,7 @@ class BJamLog2Results:
                             if action_node.getAttribute('status') != '0':
                                 result = 'fail'
                         else:
-                            result = 'succeed' if action_node.getAttribute('status') == '0' else 'fail'
+                            result = action_result
                         result_node.setAttribute('result',result)
                         result_node.appendChild(self.results.createTextNode("\n"))
                         result_node.appendChild(self.results.createTextNode(result_data))
@@ -288,10 +298,12 @@ class BJamLog2Results:
     #~ are the ones pre-declared in the --dump-test option. For libraries
     #~ we create a dummy test as needed.
     def get_test( self, node, type = None ):
-        target = self.get_child_data(node,tag='jam-target')
-        base = self.target[target]['name']
+        jam_target = self.get_child_data(node,tag='jam-target')
+        base = self.target[jam_target]['name']
+        target = jam_target
         while target in self.parent:
             target = self.parent[target]
+        #~ print "--- TEST: %s ==> %s" %(jam_target,target)
         #~ main-target-type is a precise indicator of what the build target is
         #~ proginally meant to be.
         main_type = self.get_child_data(self.get_child(node,tag='properties'),
@@ -308,7 +320,7 @@ class BJamLog2Results:
                     }
             test = self.test[lib]
         else:
-            test = self.test[self.target[self.target[target]['name']]]
+            test = self.test[self.target_to_test[self.target[target]['name']]]
         return (base,test)
     
     #~ Find, or create, the test-log node to add results to.
@@ -318,6 +330,10 @@ class BJamLog2Results:
         target_directory = re.sub(r'.*[/\\]bin[.]v2[/\\]','',target_directory)
         target_directory = re.sub(r'[\\]','/',target_directory)
         if not target_directory in self.log:
+            if 'info' in test and test['info'] == 'always_show_run_output':
+                show_run_output = 'true'
+            else:
+                show_run_output = 'false'
             self.log[target_directory] = self.new_node('test-log',
                 library=test['library'],
                 test_name=test['test-name'],
@@ -325,7 +341,7 @@ class BJamLog2Results:
                 test_program=test['test-program'],
                 toolset=self.get_toolset(node),
                 target_directory=target_directory,
-                show_run_output='true' if 'info' in test and test['info'] == 'always_show_run_output' else 'false')
+                show_run_output=show_run_output)
         return self.log[target_directory]
     
     #~ The precise toolset from the build properties.
@@ -369,7 +385,10 @@ class BJamLog2Results:
             if not data:
                 data = self.get_child(node,tag='#cdata-section')
             if data:
-                data = data.data if not strip else data.data.strip()
+                if not strip:
+                    data = data.data
+                else:
+                    data = data.data.strip()
         if not data:
             data = default
         return data

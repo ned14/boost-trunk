@@ -6,6 +6,8 @@
 #ifndef UUID_F7D5662CCB0F11DCA353CAC656D89593
 #define UUID_F7D5662CCB0F11DCA353CAC656D89593
 
+#include <boost/detail/workaround.hpp>
+
 namespace
 boost
     {
@@ -20,6 +22,15 @@ boost
             public:
 
             virtual clone_base const * clone() const = 0;
+
+            protected:
+
+#if BOOST_WORKAROUND( __GNUC__, BOOST_TESTED_AT(4) )
+virtual //Disable bogus GCC warning.
+#endif
+            ~cloning_base() throw()
+                {
+                }
             };
         }
     }

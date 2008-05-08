@@ -6,6 +6,8 @@
 #ifndef UUID_DBA0D90C930911DCBA7B675A56D89593
 #define UUID_DBA0D90C930911DCBA7B675A56D89593
 
+#include <boost/detail/workaround.hpp>
+
 namespace
 boost
     {
@@ -31,6 +33,15 @@ boost
 
             virtual void add_ref() const=0;
             virtual void release() const=0;
+
+            protected:
+
+#if BOOST_WORKAROUND( __GNUC__, BOOST_TESTED_AT(4) )
+virtual //Disable bogus GCC warning.
+#endif
+            ~counted_base() throw()
+                {
+                }
             };
         }
     }
