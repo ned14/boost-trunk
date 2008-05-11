@@ -15,8 +15,8 @@
 namespace boost { namespace spirit { namespace detail
 {
     // general handler for everything not explicitly specialized below
-    template <typename Pass, typename F, typename Attribute, typename Context>
-    bool action_dispatch(F const& f, Attribute& attr, Context& context)
+    template <typename F, typename Attribute, typename Context, typename Pass>
+    bool action_dispatch(F const& f, Attribute& attr, Context& context, Pass)
     {
         bool pass = true;
         f(attr, context, pass);
@@ -50,47 +50,39 @@ namespace boost { namespace spirit { namespace detail
         return pass;
     }
 
-    template <typename IsSequence
-        , typename Eval, typename Attribute, typename Context>
-    bool action_dispatch(phoenix::actor<Eval> const& f
-      , Attribute& attr, Context& context)
-    {
-        return action_dispatch(f, attr, context, IsSequence());
-    }
-
     // specializations for plain function pointers taking a different number of
     // arguments
-    template <typename Pass, typename RT, typename A0, typename A1, typename A2
-      , typename Attribute, typename Context>
+    template <typename RT, typename A0, typename A1, typename A2
+      , typename Attribute, typename Context, typename Pass>
     bool action_dispatch(RT(*f)(A0, A1, A2)
-      , Attribute& attr, Context& context)
+      , Attribute& attr, Context& context, Pass)
     {
         bool pass = true;
         f(attr, context, pass);
         return pass;
     }
 
-    template <typename Pass, typename RT, typename A0, typename A1
-      , typename Attribute, typename Context>
+    template <typename RT, typename A0, typename A1
+      , typename Attribute, typename Context, typename Pass>
     bool action_dispatch(RT(*f)(A0, A1)
-      , Attribute& attr, Context& context)
+      , Attribute& attr, Context& context, Pass)
     {
         f(attr, context);
         return true;
     }
 
-    template <typename Pass, typename RT, typename A0
-      , typename Attribute, typename Context>
+    template <typename RT, typename A0
+      , typename Attribute, typename Context, typename Pass>
     bool action_dispatch(RT(*f)(A0)
-      , Attribute& attr, Context&)
+      , Attribute& attr, Context&, Pass)
     {
         f(attr);
         return true;
     }
 
-    template <typename Pass, typename RT, typename Attribute, typename Context>
+    template <typename RT, typename Attribute, typename Context, typename Pass>
     bool action_dispatch(RT(*f)()
-      , Attribute&, Context&)
+      , Attribute&, Context&, Pass)
     {
         f();
         return true;

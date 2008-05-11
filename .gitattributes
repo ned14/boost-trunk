@@ -38261,6 +38261,7 @@ v4/libs/typeof/tools/preprocess.pl svneol=native#text/x-perl
 v4/libs/unordered/doc/Jamfile.v2 svneol=native#text/plain
 v4/libs/unordered/doc/bibliography.xml svneol=native#text/xml
 v4/libs/unordered/doc/buckets.qbk svneol=native#text/plain
+v4/libs/unordered/doc/changes.qbk svneol=native#text/plain
 v4/libs/unordered/doc/comparison.qbk svneol=native#text/plain
 v4/libs/unordered/doc/diagrams/buckets.dia -text
 v4/libs/unordered/doc/diagrams/buckets.png -text svneol=unset#image/png
