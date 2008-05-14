@@ -31,7 +31,7 @@ components succeed matching their input whenever the corresponding token type
 has been matched by the lexer. This quick start example will demonstrate this
 (and more) by counting words again, simply by adding up the numbers inside
 of semantic actions of a parser (for the full example code see here: 
-[@../../example/lex/word_count.cpp word_count.cpp]).
+[@/libs/spirit/example/lex/word_count.cpp word_count.cpp]).
 
 
 [import ../example/lex/word_count.cpp]

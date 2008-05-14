@@ -182,7 +182,7 @@ function, you can invoke it. Example:
 
     cout << val(3)() << endl;
 
-(See [@../../example/users_manual/values.cpp values.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/values.cpp values.cpp])
 
 [blurb __tip__ Learn more about values [link phoenix.primitives.values here.]]
 
@@ -215,7 +215,7 @@ it clear. Example:
         return 0;
     }
 
-(See [@../../example/users_manual/callback.cpp callback.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/callback.cpp callback.cpp])
 
 [endsect]
 [section References]
@@ -234,7 +234,7 @@ we create `references` to `i` and `s` this way:
 Like `val`, the expressions above evaluates to a nullary function; the first one 
 returning an `int&`, and the second one returning a `char const*&`.
 
-(See [@../../example/users_manual/references.cpp references.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/references.cpp references.cpp])
 
 [blurb __tip__ Learn more about references [link phoenix.primitives.references here.]]
 
@@ -260,7 +260,7 @@ on). Examples:
     cout << arg1(i) << endl;        // prints 3
     cout << arg2(i, s) << endl;     // prints "Hello World"
 
-(See [@../../example/users_manual/arguments.cpp arguments.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/arguments.cpp arguments.cpp])
 
 [blurb __tip__ Learn more about arguments [link phoenix.primitives.arguments here.]]
 
@@ -340,7 +340,7 @@ fixed type int argument), the Phoenix version is fully polymorphic and works
 with any container (of ints, of longs, of bignum, etc.) as long as its elements 
 can handle the `arg1 % 2 == 1` expression.
 
-(See [@../../example/users_manual/find_if.cpp find_if.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/find_if.cpp find_if.cpp])
 
 [blurb __tip__ ...[*That's it, we're done]. Well if you wish to know a little bit 
 more, read on...]
@@ -364,7 +364,7 @@ Say, for example, we wish to print all the elements that are greater than 5
         ]
     );
 
-(See [@../../example/users_manual/if.cpp if.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/if.cpp if.cpp])
 
 [blurb __tip__ Learn more about statements [link phoenix.composite.statement here.]]
 
@@ -428,7 +428,7 @@ rest of phoenix. Example:
 
     find_if(c.begin(), c.end(), is_odd(arg1));
 
-(See [@../../example/users_manual/function.cpp function.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/function.cpp function.cpp])
 
 [h2 Predefined Lazy Functions]
 
@@ -980,7 +980,7 @@ lazy factorial function:
         }
     };
 
-(See [@../../example/users_manual/factorial.cpp factorial.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/factorial.cpp factorial.cpp])
 
 Having implemented the `factorial_impl` type, we can declare and instantiate a lazy 
 `factorial` function this way:
@@ -1174,7 +1174,7 @@ powerful to construct quite elaborate structures. We have presented lazy-
 functions and lazy-operators. How about lazy-statements? First, an appetizer:
 
 Print all odd-numbered contents of an STL container using `std::for_each` 
-([@../../example/users_manual/all_odds.cpp all_odds.cpp]):
+([@/libs/spirit/phoenix/example/users_manual/all_odds.cpp all_odds.cpp]):
 
     for_each(c.begin(), c.end(),
         if_(arg1 % 2 == 1)
@@ -1872,7 +1872,7 @@ lambda-body, we introduce a local variable `_a` that captures the second outer
 argument: `arg2`. Hence: _a = arg2. This local variable is visible inside the 
 lambda scope.
 
-(See [@../../example/users_manual/lambda.cpp lambda.cpp])
+(See [@/libs/spirit/phoenix/example/users_manual/lambda.cpp lambda.cpp])
 
 [endsect]
 

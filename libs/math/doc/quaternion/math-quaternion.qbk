@@ -70,8 +70,8 @@ quaternions ['[^x]] and ['[^y]] such that __not_equal). A good mnemotechnical wa
 things is by using the formula ['[^i*i = j*j = k*k = -1]].
 
 Quaternions (and their kin) are described in far more details in this 
-other [@../../../quaternion/TQE.pdf document] 
-(with [@../../../quaternion/TQE_EA.pdf errata and addenda]).
+other [@/libs/math/quaternion/TQE.pdf document] 
+(with [@/libs/math/quaternion/TQE_EA.pdf errata and addenda]).
 
 Some traditional constructs, such as the exponential, carry over without 
 too much change into the realms of quaternions, but other, such as taking 
@@ -82,7 +82,7 @@ a square root, do not.
 [section Header File]
 
 The interface and implementation are both supplied by the header file 
-[@../../../../../boost/math/quaternion.hpp quaternion.hpp].
+[@/boost/math/quaternion.hpp quaternion.hpp].
 
 [endsect]
 
@@ -782,9 +782,9 @@ but there is currently a lack of standard (de facto or de jure) matrix
 library with which the conversions could work. This should be remedied in 
 a further revision. In the mean time, an example of how this could be 
 done is presented here for 
-[@../../../quaternion/HSO3.hpp __R3], and here for 
-[@../../../quaternion/HSO4.hpp __R4] 
-([@../../../quaternion/HSO3SO4.cpp example test file]).
+[@/libs/math/quaternion/HSO3.hpp __R3], and here for 
+[@/libs/math/quaternion/HSO4.hpp __R4] 
+([@/libs/math/quaternion/HSO3SO4.cpp example test file]).
 
 [endsect]
 
@@ -812,8 +812,8 @@ Basically, any converging power series with real coefficients which allows for a
 closed formula in __C can be transposed to __H. More transcendentals of this 
 type could be added in a further revision upon request. It should be 
 noted that it is these functions which force the dependency upon the 
-[@../../../../../boost/math/special_functions/sinc.hpp boost/math/special_functions/sinc.hpp] and the 
-[@../../../../../boost/math/special_functions/sinhc.hpp boost/math/special_functions/sinhc.hpp] headers.
+[@/boost/math/special_functions/sinc.hpp boost/math/special_functions/sinc.hpp] and the 
+[@/boost/math/special_functions/sinhc.hpp boost/math/special_functions/sinhc.hpp] headers.
 
 [h4 exp]
 
@@ -867,13 +867,13 @@ Computes the n-th power of the quaternion q.
 
 [section Test Program]
 
-The [@../../../quaternion/quaternion_test.cpp quaternion_test.cpp] 
+The [@/libs/math/quaternion/quaternion_test.cpp quaternion_test.cpp] 
 test program tests quaternions specializations for float, double and long double 
-([@../../../quaternion/output.txt sample output], with message output 
+([@/libs/math/quaternion/output.txt sample output], with message output 
 enabled).
 
 If you define the symbol boost_quaternions_TEST_VERBOSE, you will get 
-additional output ([@../../../quaternion/output_more.txt verbose output]); 
+additional output ([@/libs/math/quaternion/output_more.txt verbose output]); 
 this will only be helpfull if you enable message output at the same time, 
 of course (by uncommenting the relevant line in the test or by adding 
 [^--log_level=messages] to your command line,...). In that case, and if you 
@@ -888,8 +888,8 @@ operator with input of your choice from the standard input
 
 Please refer to the following PDF's:
 
-*[@../../../quaternion/TQE.pdf The Quaternionic Exponential (and beyond)]
-*[@../../../quaternion/TQE_EA.pdf The Quaternionic Exponential (and beyond) ERRATA & ADDENDA]
+*[@/libs/math/quaternion/TQE.pdf The Quaternionic Exponential (and beyond)]
+*[@/libs/math/quaternion/TQE_EA.pdf The Quaternionic Exponential (and beyond) ERRATA & ADDENDA]
 
 [endsect]
 
@@ -928,7 +928,7 @@ Thank you to all who contributed to the discution about this library.
 * Rewrite input operatore using Spirit (creates a dependency).
 * Put in place an Expression Template mechanism (perhaps borrowing from uBlas).
 * Use uBlas for the link with rotations (and move from the 
-[@../../../quaternion/HSO3SO4.cpp example] 
+[@/libs/math/quaternion/HSO3SO4.cpp example] 
 implementation to an efficient one). 
     
 [endsect]

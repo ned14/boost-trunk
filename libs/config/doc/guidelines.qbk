@@ -180,16 +180,16 @@ __BOOST_CONFIG_HEADER__ should never change, don't alter this file.
 
 __BOOST_CONFIG_USER_HEADER__ is included by default, don't add extra code to
 this file unless you have to. If you do, please remember to update
-[@../../tools/configure.in libs/config/tools/configure.in] as well.
+[@/libs/config/tools/configure.in libs/config/tools/configure.in] as well.
 
 __BOOST_CONFIG_SUFFIX_HEADER__ is always included so be careful about
 modifying this file as it breaks dependencies for everyone. This file should
 include only "boilerplate" configuration code, and generally should change
 only when new macros are added.
 
-[@../../../../boost/config/select_compiler_config.hpp <boost/config/select_compiler_config.hpp>],
-[@../../../../boost/config/select_platform_config.hpp <boost/config/select_platform_config.hpp>] and
-[@../../../../boost/config/select_stdlib_config.hpp <boost/config/select_stdlib_config.hpp>]
+[@/boost/config/select_compiler_config.hpp <boost/config/select_compiler_config.hpp>],
+[@/boost/config/select_platform_config.hpp <boost/config/select_platform_config.hpp>] and
+[@/boost/config/select_stdlib_config.hpp <boost/config/select_stdlib_config.hpp>]
 are included by default and should change only if support for a new
 compiler/standard library/platform is added.
 

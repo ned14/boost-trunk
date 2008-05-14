@@ -174,7 +174,7 @@ the `__int64` datatype.
 [[`BOOST_NO_OPERATORS_IN_NAMESPACE`][Compiler][
 Compiler requires inherited operator friend functions to be defined at
 namespace scope, then using'ed to boost. Probably GCC specific. See
-[@../../../../boost/operators.hpp `<boost/operators.hpp>`] for example.
+[@/boost/operators.hpp `<boost/operators.hpp>`] for example.
 ]]
 [[`BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS`][Compiler][
 The compiler does not correctly handle partial specializations
@@ -183,7 +183,7 @@ which depend upon default arguments in the primary template.
 [[`BOOST_NO_POINTER_TO_MEMBER_CONST`][Compiler][
 The compiler does not correctly handle pointers to const member functions,
 preventing use of these in overloaded function templates. See
-[@../../../../boost/functional.hpp `<boost/functional.hpp>`] for example.
+[@/boost/functional.hpp `<boost/functional.hpp>`] for example.
 ]]
 [[`BOOST_NO_POINTER_TO_MEMBER_TEMPLATE_PARAMETERS`][Compiler][
 Pointers to members don't work when used as template parameters.
@@ -356,7 +356,7 @@ The platform has an `<nl_types.h>`.
 [[`BOOST_HAS_NRVO`][Compiler][
 Indicated that the compiler supports the named return value optimization
 (NRVO). Used to select the most efficient implementation for some function.
-See [@../../../../boost/operators.hpp `<boost/operators.hpp>`] for example.
+See [@/boost/operators.hpp `<boost/operators.hpp>`] for example.
 ]]
 [[`BOOST_HAS_PARTIAL_STD_ALLOCATOR`][Standard Library][
 The standard library has a partially conforming `std::allocator` class, but

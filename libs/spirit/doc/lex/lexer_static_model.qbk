@@ -32,10 +32,10 @@ steps needed to create a static lexical analyzer using __lex__:
 
 Both steps are described in more detail in the two sections below (for the full
 source code used in this example see the code here:
-[@../../example/lex/static_lexer/word_count_tokens.hpp the common token definition],
-[@../../example/lex/static_lexer/word_count_generate.cpp the code generator], 
-[@../../example/lex/static_lexer/word_count_static.hpp the generated code], and 
-[@../../example/lex/static_lexer/word_count_static.cpp the static lexical analyzer]).
+[@/libs/spirit/example/lex/static_lexer/word_count_tokens.hpp the common token definition],
+[@/libs/spirit/example/lex/static_lexer/word_count_generate.cpp the code generator], 
+[@/libs/spirit/example/lex/static_lexer/word_count_static.hpp the generated code], and 
+[@/libs/spirit/example/lex/static_lexer/word_count_static.cpp the static lexical analyzer]).
 
 [import ../example/lex/static_lexer/word_count_tokens.hpp]
 [import ../example/lex/static_lexer/word_count_static.cpp]
@@ -90,7 +90,7 @@ lines of code.
 The shown code generator will generate output, which should be stored in a file
 for later inclusion into the static lexical analzyer as shown in the next 
 topic (the full generated code can be viewed 
-[@../../example/lex/static_lexer/word_count_static.hpp here]).
+[@/libs/spirit/example/lex/static_lexer/word_count_static.hpp here]).
 
 
 [heading Modifying the Dynamic Analyzer]

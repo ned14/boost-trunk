@@ -144,7 +144,7 @@ However, because Boost.TR1 will inject Boost components into namespace std::tr1
 it is more than usually sensitive to an incorrect configuration.
 
 The intention is that 
-[@../../libs/config/index.html Boost.Config] 
+[@/libs/config/index.html Boost.Config] 
 will automatically define the configuration
 macros used by this library, so that if your standard library is set up to
 support TR1 (note that few are at present) then this will be detected and Boost.TR1
@@ -164,7 +164,7 @@ compiler or standard library.
 
 The configuration macros used by each TR1 component are documented in each
 library section (and all together in the 
-[@../../libs/config/index.html Boost.Config] 
+[@/libs/config/index.html Boost.Config] 
 documentation), but defining BOOST_HAS_TR1 will turn on native TR1 support
 for everything (if your standard library has it), which can act as a 
 convenient shortcut.
@@ -193,7 +193,7 @@ take copies of their arguments. It defines the class template
 and the two functions
 `ref` and `cref` that return
 instances of `reference_wrapper<T>`.
-[@../../doc/html/ref.html Refer to Boost.Bind for more information.]
+[@/doc/html/ref.html Refer to Boost.Bind for more information.]
 
    namespace std {
    namespace tr1 {
@@ -209,7 +209,7 @@ instances of `reference_wrapper<T>`.
    } // namespace std
 
 [*Configuration:] 
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_REFERENCE_WRAPPER if your
 standard library implements this part of TR1.
 
@@ -234,8 +234,8 @@ The `shared_ptr` class template stores a pointer to a dynamically allocated
 object, typically with a C++ new-expression. The object pointed to is 
 guaranteed to be deleted when the last `shared_ptr` pointing to it is 
 destroyed or reset. For more information refer to the 
-[@../../libs/smart_ptr/shared_ptr.htm shared_ptr]
-and [@../../libs/smart_ptr/weak_ptr.htm weak_ptr] documentation.
+[@/libs/smart_ptr/shared_ptr.htm shared_ptr]
+and [@/libs/smart_ptr/weak_ptr.htm weak_ptr] documentation.
    
    namespace std {
    namespace tr1 {
@@ -281,7 +281,7 @@ and [@../../libs/smart_ptr/weak_ptr.htm weak_ptr] documentation.
    } // namespace std
 
 [*Configuration:] 
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_SHARED_PTR if your
 standard library implements this part of TR1.
 
@@ -309,7 +309,7 @@ of the expression `f(t1, t2, ...,tN)`. The implementation permits
 the type `F` to be a function pointer,
 function reference, member function pointer, or class
 type.  For more information 
-[@../../libs/utility/utility.htm#result_of refer to the Boost.Utility documentation.]
+[@/libs/utility/utility.htm#result_of refer to the Boost.Utility documentation.]
 
    namespace std {
    namespace tr1 {
@@ -324,7 +324,7 @@ type.  For more information
    } // namespace std
 
 [*Configuration:] 
-[@../../libs/config/index.html Boost.Config] should (automatically) define 
+[@/libs/config/index.html Boost.Config] should (automatically) define 
 the macro BOOST_HAS_TR1_RESULT_OF if your
 standard library implements this part of TR1.
    
@@ -346,7 +346,7 @@ than one argument, and the returned function object can take a pointer, a
 reference, or a smart pointer to an object instance as its first argument. `mem_fn`
 also supports pointers to data members by treating them as functions taking no 
 arguments and returning a (const) reference to the member.
-For more information refer to the [@../../libs/bind/mem_fn.html
+For more information refer to the [@/libs/bind/mem_fn.html
 Boost.Mem_fn documentation].
 
    namespace std {
@@ -358,7 +358,7 @@ Boost.Mem_fn documentation].
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define 
+[@/libs/config/index.html Boost.Config] should (automatically) define 
 the macro BOOST_HAS_TR1_MEM_FN if your
 standard library implements this part of TR1.
 
@@ -385,7 +385,7 @@ argument to a specific value or route input arguments into arbitrary positions. 
 does not place any requirements on the function object; in particular, it does 
 not need the `result_type`, `first_argument_type` and `second_argument_type`
 standard typedefs.
-For more information refer to the [@../../libs/bind/bind.html 
+For more information refer to the [@/libs/bind/bind.html 
 Boost.Bind documentation].
 
    namespace std {
@@ -411,7 +411,7 @@ Boost.Bind documentation].
    } // namespace std
 
 [*Configuration:] 
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_BIND if your
 standard library implements this part of TR1.
 
@@ -448,7 +448,7 @@ arguments and returning a floating-point value) through which some
 arbitrary code may be called. However a polymorphic function wrapper can call
 any callable object with a compatible call signature, this could be a function 
 pointer, or it could be a function object produced by std::tr1::bind, or some
-other mechanism.  For more information see the [@../../doc/html/function.html
+other mechanism.  For more information see the [@/doc/html/function.html
 Boost.Function documentation].
 
    
@@ -481,7 +481,7 @@ Boost.Function documentation].
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_FUNCTION if your
 standard library implements this part of TR1.
 
@@ -505,7 +505,7 @@ or
 Type traits enable generic code to access the fundamental properties
 of a type, to determine the relationship between two types, or to
 transform one type into another related type.  For more information
-refer to the [@../../libs/type_traits/index.html Boost.Type_traits documentation].
+refer to the [@/libs/type_traits/index.html Boost.Type_traits documentation].
    
    namespace std {
    namespace tr1 {
@@ -590,7 +590,7 @@ refer to the [@../../libs/type_traits/index.html Boost.Type_traits documentation
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_TYPE_TRAITS if your
 standard library implements this part of TR1.
 
@@ -608,14 +608,14 @@ or
    #include <random>
 
 The random number library is divided into three parts: 
-[@../../libs/random/random-generators.html generators], which
+[@/libs/random/random-generators.html generators], which
 are nullary functors producing uniform random number distributions.  
-[@../../libs/random/random-distributions.html Distributions], which are unary 
+[@/libs/random/random-distributions.html Distributions], which are unary 
 functors that adapt a generator to some
 specific kind of distribution.  And the class template 
-[@../../libs/random/random-variate.html variate_generator]
+[@/libs/random/random-variate.html variate_generator]
 which combines a generator with a distribution, to create a new generator.
-For more information see the [@../../libs/random/index.html Boost.Random documentation].
+For more information see the [@/libs/random/index.html Boost.Random documentation].
 
    
    namespace std {
@@ -761,7 +761,7 @@ For more information see the [@../../libs/random/index.html Boost.Random documen
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_RANDOM if your
 standard library implements this part of TR1.
 
@@ -801,7 +801,7 @@ For instance, tuples make it easy to define functions that return more than one 
 Some programming languages, such as ML, Python and Haskell, have built-in tuple constructs. 
 Unfortunately C++ does not.
 To compensate for this "deficiency", the TR1 Tuple Library implements a tuple construct using templates.
-For more information see the [@../../libs/tuple/index.html Boost Tuple Library Documentation].
+For more information see the [@/libs/tuple/index.html Boost Tuple Library Documentation].
 
    namespace std {
    namespace tr1 {
@@ -850,7 +850,7 @@ For more information see the [@../../libs/tuple/index.html Boost Tuple Library D
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_TUPLE if your
 standard library implements this part of TR1.
 
@@ -886,7 +886,7 @@ The existing class template std::pair, can also be accessed using the
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_UTILITY if your
 standard library implements this part of TR1.
 
@@ -907,7 +907,7 @@ Class template array is a fixed size array that is safer than and no
 less efficient than a C style array.  Class array fulfils almost all of the
 requirements of a reversible-container (see Section 23.1, 
 [lib.container.requirements] of the C++ Standard).  For more information refer
-to the [@../../libs/array/index.html Boost.Array documentation].
+to the [@/libs/array/index.html Boost.Array documentation].
 
    namespace std {
    namespace tr1 {
@@ -938,7 +938,7 @@ to the [@../../libs/array/index.html Boost.Array documentation].
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_ARRAY if your
 standard library implements this part of TR1.
 
@@ -959,7 +959,7 @@ Class template std::hash is a unary-functor that converts some type T
 into a hash-value,
 specializations of std::hash are provided for integer, character, floating point, 
 and pointer types, plus the two string types std::string and std::wstring.
-See the [@../../libs/functional/hash/index.html Boost.Hash] 
+See the [@/libs/functional/hash/index.html Boost.Hash] 
 documentation for more information.
    
    namespace std {
@@ -994,7 +994,7 @@ documentation for more information.
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_HASH if your
 standard library implements this part of TR1.
 
@@ -1017,7 +1017,7 @@ or
 This library provides comprehensive support for regular expressions,
 including either iterator or string based matching, searching, search-and-replace,
 iteration, and tokenization.  Both POSIX and ECMAScript (JavaScript) regular
-expressions are supported.  For more information see the [@../../libs/regex/index.html
+expressions are supported.  For more information see the [@/libs/regex/index.html
 Boost.Regex documentation].
    
    namespace std {
@@ -1205,7 +1205,7 @@ Boost.Regex documentation].
 
    
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_REGEX if your
 standard library implements this part of TR1.
 
@@ -1287,7 +1287,7 @@ the type `double`.
       pow (const Arithmetic& x, const complex<Real>& y);
    
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_COMPLEX_OVERLOADS if your
 standard library implements the additional overloads for the existing
 complex arithmetic functions.
@@ -1311,7 +1311,7 @@ are overloaded
 for arguments of type `std::complex<T>`.  
 These algorithms are entirely
 classical, and behave as specified in the C99 standard section 7.3.5.
-See the [@../../libs/math/doc/complex/html/complex_number_tr1_algorithms/inverse_complex.html 
+See the [@/libs/math/doc/complex/html/complex_number_tr1_algorithms/inverse_complex.html 
 Boost.Math documentation for more information].
    
    namespace std {
@@ -1329,7 +1329,7 @@ Boost.Math documentation for more information].
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_COMPLEX_INVERSE_TRIG
 if your standard library implements the additional inverse trig functions.
 
@@ -1517,7 +1517,7 @@ hoped to change soon.
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_UNORDERED_SET if your
 standard library implements this part of TR1.
 
@@ -1568,7 +1568,7 @@ hoped to change soon.
    } // namespace std
 
 [*Configuration:]
-[@../../libs/config/index.html Boost.Config] should (automatically) define
+[@/libs/config/index.html Boost.Config] should (automatically) define
 the macro BOOST_HAS_TR1_UNORDERED_MAP if your
 standard library implements this part of TR1.
 
@@ -1697,7 +1697,7 @@ standard library header
 forward on to your existing standard library header in one of two ways: for
 gcc it uses `#include_next`, and for other compilers it uses the
 macro `BOOST_TR1_STD_HEADER(header)` (defined in 
-[@../../boost/tr1/detail/config.hpp boost/tr1/detail/config.hpp])
+[@/boost/tr1/detail/config.hpp boost/tr1/detail/config.hpp])
 which evaluates to `#include <../include/header>`.  This
 should work "straight out the box" for most compilers, but does mean that
 these headers should [*never] be placed inside a 

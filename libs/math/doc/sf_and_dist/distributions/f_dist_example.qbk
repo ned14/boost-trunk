@@ -13,7 +13,7 @@ The data for this case study were collected by Said Jahanmir of the
 NIST Ceramics Division in 1996 in connection with a NIST/industry 
 ceramics consortium for strength optimization of ceramic strength.
 
-The example program is [@../../../example/f_test.cpp f_test.cpp], 
+The example program is [@/libs/math/example/f_test.cpp f_test.cpp], 
 program output has been deliberately made as similar as possible
 to the DATAPLOT output in the corresponding 
 [@http://www.itl.nist.gov/div898/handbook/eda/section3/eda359.htm

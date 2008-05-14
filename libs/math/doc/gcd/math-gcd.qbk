@@ -57,7 +57,7 @@ programming problems.
 
 [section GCD Function Object]
 
-[*Header: ] [@../../../../../boost/math/common_factor_rt.hpp <boost/math/common_factor_rt.hpp>]
+[*Header: ] [@/boost/math/common_factor_rt.hpp <boost/math/common_factor_rt.hpp>]
 
    template < typename IntegerType >
    class boost::math::gcd_evaluator
@@ -89,7 +89,7 @@ gcd_evaluator class template.
 
 [section LCM Function Object]
 
-[*Header: ] [@../../../../../boost/math/common_factor_rt.hpp <boost/math/common_factor_rt.hpp>]
+[*Header: ] [@/boost/math/common_factor_rt.hpp <boost/math/common_factor_rt.hpp>]
 
    template < typename IntegerType >
    class boost::math::lcm_evaluator
@@ -122,7 +122,7 @@ specialize on the lcm_evaluator class template.
 
 [section:run_time Run-time GCD & LCM Determination]
 
-[*Header: ] [@../../../../../boost/math/common_factor_rt.hpp <boost/math/common_factor_rt.hpp>]
+[*Header: ] [@/boost/math/common_factor_rt.hpp <boost/math/common_factor_rt.hpp>]
 
    template < typename IntegerType >
    IntegerType  boost::math::gcd( IntegerType const &a, IntegerType const &b );
@@ -143,7 +143,7 @@ gcd_evaluator and lcm_evaluator class templates, respectively.
 
 [section:compile_time Compile time GCD and LCM determination]
 
-[*Header: ] [@../../../../../boost/math/common_factor_ct.hpp <boost/math/common_factor_ct.hpp>]
+[*Header: ] [@/boost/math/common_factor_ct.hpp <boost/math/common_factor_ct.hpp>]
 
    template < unsigned long Value1, unsigned long Value2 >
    struct boost::math::static_gcd
@@ -198,8 +198,8 @@ is beyond the range of an unsigned long.
 [section:header Header <boost/math/common_factor.hpp>]
 
 This header simply includes the headers 
-[@../../../../../boost/math/common_factor_ct.hpp <boost/math/common_factor_ct.hpp>] 
-and [@../../../../../boost/math/common_factor_rt.hpp <boost/math/common_factor_rt.hpp>].
+[@/boost/math/common_factor_ct.hpp <boost/math/common_factor_ct.hpp>] 
+and [@/boost/math/common_factor_rt.hpp <boost/math/common_factor_rt.hpp>].
  
 Note this is a legacy header: it used to contain the actual implementation, 
 but the compile-time and run-time facilities 
@@ -209,7 +209,7 @@ were moved to separate headers (since they were independent of each other).
 
 [section:demo Demonstration Program]
 
-The program [@../../../../../libs/math/test/common_factor_test.cpp common_factor_test.cpp] is a demonstration of the results from 
+The program [@/libs/math/test/common_factor_test.cpp common_factor_test.cpp] is a demonstration of the results from 
 instantiating various examples of the run-time GCD and LCM function 
 templates and the compile-time GCD and LCM class templates. 
 (The run-time GCD and LCM class templates are tested indirectly through 

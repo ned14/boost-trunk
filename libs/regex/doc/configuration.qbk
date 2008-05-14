@@ -11,15 +11,15 @@
 [section:compiler Compiler Setup]
 
 You shouldn't need to do anything special to configure Boost.Regex for use 
-with your compiler - the [@../../../config/index.html Boost.Config subsystem] should already take care of it, 
+with your compiler - the [@/libs/config/index.html Boost.Config subsystem] should already take care of it, 
 if you do have problems (or you are using a particularly obscure compiler 
-or platform) then [@../../../config/index.html Boost.Config] has a configure script that you can run.
+or platform) then [@/libs/config/index.html Boost.Config] has a configure script that you can run.
 
 [endsect]
 
 [section:locale Locale and traits class selection]
 
-The following macros (see [@../../../../boost/regex/user.hpp user.hpp]) control how Boost.Regex interacts with 
+The following macros (see [@/boost/regex/user.hpp user.hpp]) control how Boost.Regex interacts with 
 the user's locale:
 
 [table

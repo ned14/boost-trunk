@@ -20,7 +20,7 @@ and how many successes were observed.  The static member functions
 `negative_binomial_distribution<>::find_upper_bound_on_p`
 allow you to calculate the confidence intervals for your estimate of the success fraction.
 
-The sample program [@../../../example/neg_binom_confidence_limits.cpp 
+The sample program [@/libs/math/example/neg_binom_confidence_limits.cpp 
 neg_binom_confidence_limits.cpp] illustrates their use.
 
 [import ../../../example/neg_binom_confidence_limits.cpp]
@@ -95,7 +95,7 @@ can be used to estimate the minimum number of trials required to be P% sure
 of observing the desired number of failures.
 
 The example program 
-[@../../../example/neg_binomial_sample_sizes.cpp neg_binomial_sample_sizes.cpp]
+[@/libs/math/example/neg_binomial_sample_sizes.cpp neg_binomial_sample_sizes.cpp]
 demonstrates its usage. 
 
 [import ../../../example/neg_binomial_sample_sizes.cpp]
@@ -165,7 +165,7 @@ So now 103 trials are required to observe at least 5 failures with
 [section:negative_binomial_example1 Negative Binomial Sales Quota Example.]
 
 This example program 
-[@../../../example/negative_binomial_example1.cpp negative_binomial_example1.cpp (full source code)]
+[@/libs/math/example/negative_binomial_example1.cpp negative_binomial_example1.cpp (full source code)]
 demonstrates a simple use to find the probability of meeting a sales quota.
 
 [import ../../../example/negative_binomial_example1.cpp]

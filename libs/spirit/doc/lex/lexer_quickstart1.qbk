@@ -15,7 +15,7 @@ separately to build standalone lexical analyzers.
 The first quick start example describes a standalone application: 
 counting characters, words and lines in a file, very similar to what the well 
 known Unix command `wc` is doing (for the full example code see here:
-[@../../example/lex/word_count_functor.cpp word_count_functor.cpp]).
+[@/libs/spirit/example/lex/word_count_functor.cpp word_count_functor.cpp]).
 
 [import ../example/lex/word_count_functor.cpp]
 

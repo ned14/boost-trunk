@@ -146,14 +146,14 @@ header. You can define these on the command line, or by editing
 [[`BOOST_USER_CONFIG`][
 When defined, it should point to the name of the user configuration file
 to include prior to any boost configuration files. When not defined,
-defaults to [@../../../../boost/config/user.hpp `<boost/config/user.hpp>`].
+defaults to [@/boost/config/user.hpp `<boost/config/user.hpp>`].
 ]]
 [[`BOOST_COMPILER_CONFIG`][
 When defined, it should point to the name of the compiler configuration
 file to use. Defining this cuts out the compiler selection logic, and
 eliminates the dependency on the header containing that logic. For
 example if you are using gcc, then you could define BOOST_COMPILER_CONFIG
-to [@../../../../boost/config/compiler/gcc.hpp `<boost/config/compiler/gcc.hpp>`].
+to [@/boost/config/compiler/gcc.hpp `<boost/config/compiler/gcc.hpp>`].
 ]]
 [[`BOOST_STDLIB_CONFIG`][
 When defined, it should point to the name of the standard library
@@ -161,14 +161,14 @@ configuration file to use. Defining this cuts out the standard library
 selection logic, and eliminates the dependency on the header containing
 that logic. For example if you are using STLport, then you could define
 `BOOST_STDLIB_CONFIG` to
-[@../../../../boost/config/stdlib/stlport.hpp `<boost/config/stdlib/stlport.hpp>`].
+[@/boost/config/stdlib/stlport.hpp `<boost/config/stdlib/stlport.hpp>`].
 ]]
 [[`BOOST_PLATFORM_CONFIG`][
 When defined, it should point to the name of the platform configuration
 file to use. Defining this cuts out the platform selection logic, and
 eliminates the dependency on the header containing that logic. For example
 if you are compiling on linux, then you could define `BOOST_PLATFORM_CONFIG`
-to [@../../../../boost/config/platform/linux.hpp `<boost/config/platform/linux.hpp>`].
+to [@/boost/config/platform/linux.hpp `<boost/config/platform/linux.hpp>`].
 ]]
 [[`BOOST_NO_COMPILER_CONFIG`][
 When defined, no compiler configuration file is selected or included,
@@ -316,11 +316,11 @@ we may want to "freeze" our configuration headers, so that we only have to
 rebuild our project if the boost code itself has changed, and not because the
 boost config has been updated for more recent versions of Visual C++ or STLport.
 We'll start by realising that the configuration files in use are:
-[@../../../../boost/config/compiler/visualc.hpp `<boost/config/compiler/visualc.hpp>`]
+[@/boost/config/compiler/visualc.hpp `<boost/config/compiler/visualc.hpp>`]
 for the compiler,
-[@../../../../boost/config/stdlib/stlport.hpp `<boost/config/stdlib/stlport.hpp>`]
+[@/boost/config/stdlib/stlport.hpp `<boost/config/stdlib/stlport.hpp>`]
 for the standard library, and
-[@../../../../boost/config/platform/win32.hpp `<boost/config/platform/win32.hpp>`]
+[@/boost/config/platform/win32.hpp `<boost/config/platform/win32.hpp>`]
 for the platform. Next we'll create our own private configuration directory:
 `boost/config/mysetup/`, and copy the configuration files into there. Finally,
 open up __BOOST_CONFIG_USER_HEADER__ and edit the following defines:

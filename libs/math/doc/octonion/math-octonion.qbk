@@ -42,7 +42,7 @@ printer friendly PDF format].
 
 [section Overview]
 
-Octonions, like [@../../quaternion/html/index.html quaternions], are a relative of complex numbers.
+Octonions, like [@/libs/math/doc/quaternion/html/index.html quaternions], are a relative of complex numbers.
 
 Octonions see some use in theoretical physics.
 
@@ -60,8 +60,8 @@ A way of remembering things is by using the following multiplication table:
 [$../../../octonion/graphics/octonion_blurb17.jpeg]
 
 Octonions (and their kin) are described in far more details in this other 
-[@../../../quaternion/TQE.pdf document] 
-(with [@../../../quaternion/TQE_EA.pdf errata and addenda]).
+[@/libs/math/quaternion/TQE.pdf document] 
+(with [@/libs/math/quaternion/TQE_EA.pdf errata and addenda]).
 
 Some traditional constructs, such as the exponential, carry over without too 
 much change into the realms of octonions, but other, such as taking a square root, 
@@ -74,7 +74,7 @@ since quite a long time ago).
 [section Header File]
 
 The interface and implementation are both supplied by the header file 
-[@../../../../../boost/math/octonion.hpp octonion.hpp].
+[@/boost/math/octonion.hpp octonion.hpp].
 
 [endsect]
 
@@ -888,9 +888,9 @@ allows for a closed formula in __C can be transposed to __O. More
 transcendentals of this type could be added in a further revision upon 
 request. It should be noted that it is these functions which force the 
 dependency upon the 
-[@../../../../../boost/math/special_functions/sinc.hpp boost/math/special_functions/sinc.hpp]
+[@/boost/math/special_functions/sinc.hpp boost/math/special_functions/sinc.hpp]
 and the 
-[@../../../../../boost/math/special_functions/sinhc.hpp boost/math/special_functions/sinhc.hpp] 
+[@/boost/math/special_functions/sinhc.hpp boost/math/special_functions/sinhc.hpp] 
 headers.
 
 [h4 exp]
@@ -953,12 +953,12 @@ Computes the n-th power of the octonion q.
 
 [section Test Program]
 
-The [@../../../octonion/octonion_test.cpp octonion_test.cpp] 
+The [@/libs/math/octonion/octonion_test.cpp octonion_test.cpp] 
 test program tests octonions specialisations for float, double and long double 
-([@../../../octonion/output.txt sample output]).
+([@/libs/math/octonion/output.txt sample output]).
 
 If you define the symbol BOOST_OCTONION_TEST_VERBOSE, you will get additional 
-output ([@../../../octonion/output_more.txt verbose output]); this will 
+output ([@/libs/math/octonion/output_more.txt verbose output]); this will 
 only be helpfull if you enable message output at the same time, of course 
 (by uncommenting the relevant line in the test or by adding --log_level=messages 
 to your command line,...). In that case, and if you are running interactively, 

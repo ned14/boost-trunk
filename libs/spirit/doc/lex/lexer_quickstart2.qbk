@@ -16,7 +16,7 @@ words and characters. So the example provided in this step of the tutorial will
 show how to use semantic actions in __lex__. Even if it still  
 will allow to count text elements only it introduces other new concepts and 
 configuration options along the lines (for the full example code 
-see here: [@../../example/lex/word_count_lexer.cpp word_count_lexer.cpp]).
+see here: [@/libs/spirit/example/lex/word_count_lexer.cpp word_count_lexer.cpp]).
 
 [import ../example/lex/word_count_lexer.cpp]
 

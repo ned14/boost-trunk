@@ -148,7 +148,7 @@ difficult to achieve this on all systems.
    shouldn't have this problem.  If you need long 
    double support with this compiler, then comment out the define of
    BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS at line 55 of 
-   [@../../../../../boost/math/tools/config.hpp boost/math/tools/config.hpp].
+   [@/boost/math/tools/config.hpp boost/math/tools/config.hpp].
    
    We aim to keep our headers warning free with -Wall with this compiler.
    However, The tests cases tend to generate a lot of
@@ -203,7 +203,7 @@ regression tests: cd into boost-root/libs/math/test and do a:
    bjam mytoolset
 
 where "mytoolset" is the name of the 
-[@../../../../../tools/build/index.html Boost.Build] toolset used for your
+[@/tools/build/index.html Boost.Build] toolset used for your
 compiler.  The chances are that [*many of the accuracy tests will fail
 at this stage] - don't panic - the default acceptable error tolerances
 are quite tight, especially for long double types with an extended

@@ -38,7 +38,7 @@ Which you can then use in a case insensitive dictionary:
 [case_insensitive_dictionary]
 
 This is a simplified version of the example at
-[@../../libs/unordered/examples/case_insensitive.hpp /libs/unordered/examples/case_insensitive.hpp]
+[@/libs/unordered/examples/case_insensitive.hpp /libs/unordered/examples/case_insensitive.hpp]
 which supports other locales and string types.
 
 [h2 Custom Types]

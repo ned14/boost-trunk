@@ -38,7 +38,7 @@ class, which may be one of:
 
 The default behavior can be altered by defining one of the following 
 configuration macros in 
-[@../../../../boost/regex/user.hpp boost/regex/user.hpp]
+[@/boost/regex/user.hpp boost/regex/user.hpp]
 
 * BOOST_REGEX_USE_C_LOCALE: makes `c_regex_traits` the default.
 * BOOST_REGEX_USE_CPP_LOCALE: makes `cpp_regex_traits` the default.
