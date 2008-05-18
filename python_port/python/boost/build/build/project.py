@@ -765,8 +765,18 @@ class ProjectRules:
         self.rules = {}
         self.local_names = [x for x in self.__class__.__dict__
                             if x not in ["__init__", "init_project", "add_rule",
-                                         "error_reporting_wrapper"]]
+                                         "error_reporting_wrapper", "add_rule_for_type"]]
         self.all_names_ = [x for x in self.local_names]
+
+    def add_rule_for_type(self, type):
+        rule_name = type.lower();
+
+        def xpto (name, sources, requirements = [], default_build = None, usage_requirements = []):
+            return self.manager_.targets().create_typed_target(
+                type, self.registry.current(), name[0], sources,
+                requirements, default_build, usage_requirements) 
+
+        self.add_rule(type.lower(), xpto)
     
     def add_rule(self, name, callable):
         self.rules[name] = callable
@@ -783,8 +793,10 @@ class ProjectRules:
         except ExceptionWithUserContext, e:
             e.report()
         except Exception, e:
-            print "internal error:", e
-            traceback.print_exc()
+            try:
+                self.manager_.errors().handle_stray_exception (e)
+            except ExceptionWithUserContext, e:
+                e.report()
         finally:                
             self.manager_.errors().pop_jamfile_context()
                                         
@@ -931,6 +943,9 @@ attribute is allowed only for top-level 'project' invocations""")
         location = attributes.get("location")
 
         m = self.registry.load_module(toolset[0], [location])
+        if not m.__dict__.has_key("init"):
+            self.registry.manager.errors()(
+                "Tool module '%s' does not define the 'init' method" % toolset[0])
         m.init(*args)
 
 
