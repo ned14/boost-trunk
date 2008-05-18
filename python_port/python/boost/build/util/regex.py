@@ -3,6 +3,8 @@
 #  all copies. This software is provided "as is" without express or implied
 #  warranty, and with no claim as to its suitability for any purpose.
 
+import re
+
 def transform (list, pattern, indices = [1]):
     """ Matches all elements of 'list' agains the 'pattern' 
         and returns a list of the elements indicated by indices of 

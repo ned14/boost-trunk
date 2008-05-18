@@ -4,6 +4,7 @@
 #  warranty, and with no claim as to its suitability for any purpose.
 
 import property
+import bjam
 from boost.build.exceptions import *
 
 def reset ():
@@ -133,42 +134,36 @@ class ScannerRegistry:
     
     def __init__ (self, manager):
         self.manager_ = manager
+        self.count_ = 0
+        self.exported_scanners_ = {}
 
     def install (self, scanner, target, vtarget):
         """ Installs the specified scanner on actual target 'target'. 
             vtarget: virtual target from which 'target' was actualized.
         """
-        # TODO: actaully implement this
-#        HDRSCAN on $(target) = [ $(scanner).pattern ] ;
-#        SCANNER on $(target) = $(scanner) ;
-#        HDRRULE on $(target) = scanner.hdrrule ;
+        engine = self.manager_.engine()
+        engine.set_target_variable(target, "HDRSCAN", scanner.pattern())
+        if not self.exported_scanners_.has_key(scanner):
+            exported_name = "scanner_" + str(self.count_)
+            self.count_ = self.count_ + 1
+            self.exported_scanners_[scanner] = exported_name
+            bjam.import_rule("", exported_name, scanner.process)
+        else:
+            exported_name = self.exported_scanners_[scanner]
+
+        engine.set_target_variable(target, "HDRRULE", exported_name)
         
         # scanner reflects difference in properties affecting    
         # binding of 'target', which will be known when processing
         # includes for it, will give information on how to
         # interpret quoted includes.
-#        HDRGRIST on $(target) = $(scanner) ;
+        engine.set_target_variable(target, "HDRGRIST", str(id(scanner)))
         pass
 
-#   # Propagate scanner setting from 'including-target' to 'targets'.
-#   rule propagate ( scanner : targets * : including-target )
-#   {
-#       HDRSCAN on $(targets) = [ on $(including-target) return $(HDRSCAN) ] ;
-#       SCANNER on $(targets) = $(scanner) ;
-#       HDRRULE on $(targets) = scanner.hdrrule ;
-#       HDRGRIST on $(targets) = [ on $(including-target) return $(HDRGRIST) ] ;
-#   }
-#   
-#   
-#   rule hdrrule ( target : matches * : binding )
-#   {
-#       local scanner = [ on $(target) return $(SCANNER) ] ;
-#       $(scanner).process $(target) : $(matches) : $(binding) ;
-#   }
-#   # hdrrule must be available at global scope so that it can be invoked
-#   # by header scanning
-#   IMPORT scanner : hdrrule : : scanner.hdrrule ;
-#   
-#   
-#   
-#   
+    def propagate(self, scanner, targets):
+        engine = self.manager_.engine()
+        engine.set_target_variable(targets, "HDRSCAN", scanner.pattern())
+        engine.set_target_variable(targets, "HDRRULE",
+                                   self.exported_scanners_[scanner])
+        engine.set_target_variable(targets, "HDRGRIST", str(id(scanner)))
+

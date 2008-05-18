@@ -306,7 +306,7 @@ class VirtualTarget:
 
         else:
             # Add the scanner instance to the grist for name.
-            g = '-'.join ([ungrist (get_grist (actual_name)), str (scanner)])
+            g = '-'.join ([ungrist(get_grist(actual_name)), str(id(scanner))])
 
             name = replace_grist (actual_name, '<' + g + '>')
 
@@ -548,7 +548,7 @@ class AbstractFileTarget (VirtualTarget):
 
         # Do anything only on the first invocation
         if not self.made_:
-            self.made_ = 1
+            self.made_[name] = True
 
             if self.action_:  
                 # For non-derived target, we don't care if there

@@ -10,7 +10,8 @@ import sys
 from boost.build.build import feature, property, virtual_target, generators, type, property_set, scanner
 from boost.build.util.utility import *
 from boost.build.util import path, regex
-import boost.build.tools.types 
+import boost.build.tools.types
+from boost.build.manager import get_manager
 
 # Records explicit properties for a variant.
 # The key is the variant name.
@@ -223,40 +224,41 @@ class CScanner (scanner.Scanner):
         return r'#[ \t]*include[ ]*(<(.*)>|"(.*)")'
 
     def process (self, target, matches, binding):
+       
         angle = regex.transform (matches, "<(.*)>")
         quoted = regex.transform (matches, '"(.*)"')
 
-###         # CONSIDER: the new scoping rule seem to defeat "on target" variables.
-###         local g = [ on $(target) return $(HDRGRIST) ] ;  
-###         local b = [ NORMALIZE_PATH $(binding:D) ] ;
-### 
-###         # Attach binding of including file to included targets.
-###         # When target is directly created from virtual target
-###         # this extra information is unnecessary. But in other
-###         # cases, it allows to distinguish between two headers of the 
-###         # same name included from different places.      
-###         # We don't need this extra information for angle includes,
-###         # since they should not depend on including file (we can't
-###         # get literal "." in include path).
-###         local g2 = $(g)"#"$(b) ;
-###        
-###         angle = $(angle:G=$(g)) ;
-###         quoted = $(quoted:G=$(g2)) ;
-###         
-###         local all = $(angle) $(quoted) ;
-### 
-###         INCLUDES $(target) : $(all) ;
-###         NOCARE $(all) ;
-###         SEARCH on $(angle) = $(self.includes:G=) ;
-###         SEARCH on $(quoted) = $(b) $(self.includes:G=) ;
-### 
-###         # Just propagate current scanner to includes, in a hope
-###         # that includes do not change scanners. 
-###         scanner.propagate $(__name__) : $(angle) $(quoted) : $(target) ;
-### 
-### scanner.register (CScanner, 'include')
-### 
-### type.set_scanner ('CPP', CScanner)
+        g = str(id(self))
+        b = os.path.normpath(os.path.dirname(binding[0]))
+        
+        # Attach binding of including file to included targets.
+        # When target is directly created from virtual target
+        # this extra information is unnecessary. But in other
+        # cases, it allows to distinguish between two headers of the 
+        # same name included from different places.      
+        # We don't need this extra information for angle includes,
+        # since they should not depend on including file (we can't
+        # get literal "." in include path).
+        g2 = g + "#" + b
+
+        g = "<" + g + ">"
+        g2 = "<" + g2 + ">"
+        angle = [g + x for x in angle]
+        quoted = [g2 + x for x in quoted]
+
+        all = angle + quoted
+        bjam.call("mark-included", target, all)
+
+        engine = get_manager().engine()
+        engine.set_target_variable(angle, "SEARCH", self.includes_)
+        engine.set_target_variable(quoted, "SEARCH", self.includes_)
+        
+        # Just propagate current scanner to includes, in a hope
+        # that includes do not change scanners. 
+        get_manager().scanners().propagate(self, angle + quoted)
+        
+scanner.register (CScanner, 'include')
+type.set_scanner ('CPP', CScanner)
 
 class LibGenerator (generators.Generator):
     """ The generator class for libraries (target type LIB). Depending on properties it will
