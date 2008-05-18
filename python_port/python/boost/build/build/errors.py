@@ -65,11 +65,11 @@ class ExceptionWithUserContext(Exception):
         for c in self.context_[::-1]:
             c.report()
         print
-
         if "--stacktrace" in bjam.variable("ARGV"):
             traceback.print_tb(self.original_tb_)
-            #traceback.print_exc()
-            print "Stacktrace requested"
+        else:
+            print "    use the '--stacktrace' option to get Python stacktrace"
+        print
 
 def user_error_checkpoint(callable):
     def wrapper(self, *args):
