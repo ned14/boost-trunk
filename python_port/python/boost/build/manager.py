@@ -21,7 +21,7 @@ class Manager:
     """ This class is a facade to the Boost.Build system.
         It serves as the root to access all data structures in use.
     """
-	
+        
     def __init__ (self, engine, global_build_dir):
         """ Constructor.
             engine: the build engine that will actually construct the targets.
