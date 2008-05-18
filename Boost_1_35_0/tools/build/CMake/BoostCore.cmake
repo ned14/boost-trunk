@@ -127,13 +127,15 @@ macro(boost_library_project LIBNAME)
       # Add this module's include directory
       include_directories("${Boost_SOURCE_DIR}/libs/${libname}/include")
 
-      # Install this module's headers
-      install(DIRECTORY include/boost 
-        DESTINATION ${BOOST_HEADER_DIR}
-        COMPONENT ${ULIBNAME}_headers
-        PATTERN "CVS" EXCLUDE
-        REGEX ".svn" EXCLUDE)
-              
+      if (IS_DIRECTORY include/boost)
+	# Install this module's headers
+	install(DIRECTORY include/boost 
+          DESTINATION ${BOOST_HEADER_DIR}
+          COMPONENT ${ULIBNAME}_headers
+          PATTERN "CVS" EXCLUDE
+          REGEX ".svn" EXCLUDE)
+      endif (IS_DIRECTORY include/boost)
+
       # Add the appropriate variables to make this library's headers a separate component.
       set(THIS_PROJECT_COMPONENTS ${THIS_PROJECT_COMPONENTS} ${ULIBNAME}_headers)
       set(CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME "Header files")
