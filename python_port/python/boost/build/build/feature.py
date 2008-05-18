@@ -108,7 +108,7 @@ def feature (name, values, attributes = []):
     else:
         __all_top_features.append(name)
 
-    extend_feature (name, values)
+    extend (name, values)
 
     # FIXME: why his is needed.
     if 'free' in attributes:
@@ -327,7 +327,7 @@ def expand_subfeatures (properties, dont_validate = False):
 #   extend_feature
 #   extend_subfeature
 
-def extend_feature (name, values):
+def extend (name, values):
     """ Adds the given values to the given feature.
     """
     name = add_grist (name)
@@ -397,7 +397,7 @@ def extend_subfeature (feature, value_string, subfeature, subvalues):
     subfeature_name = __get_subfeature_name (subfeature, value_string)
     
     f = ungrist (feature)
-    extend_feature (f + '-' + subfeature_name, subvalues) ;
+    extend (f + '-' + subfeature_name, subvalues) ;
     
     __add_to_subfeature_value_to_name_map (feature, value_string, subfeature_name, subvalues)
 
