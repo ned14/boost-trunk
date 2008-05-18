@@ -74,6 +74,7 @@
 
 import re
 import os.path
+import sys
 
 from boost.build.util.utility import *
 import property, project, virtual_target, property_set, feature, generators

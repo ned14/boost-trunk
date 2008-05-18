@@ -577,7 +577,7 @@ def add_prefix_and_suffix(specified_name, type, property_set):
     # can create "_d.so" extensions, for example.
     if get_grist(suffix):
         suffix = ungrist(suffix)
-    else:
+    elif suffix:
         suffix = "." + suffix
 
     prefix = boost.build.build.type.generated_target_prefix(type, property_set)

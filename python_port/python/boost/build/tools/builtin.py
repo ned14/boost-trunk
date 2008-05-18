@@ -75,7 +75,7 @@ def variant (name, parents_or_properties, explicit_properties = []):
     # they affect other variants, derived from this one.
     __variant_explicit_properties [name] = explicit_properties
            
-    feature.extend_feature ('variant', [name])
+    feature.extend('variant', [name])
     feature.compose (replace_grist (name, '<variant>'), explicit_properties)
 
 def register_globals ():
@@ -267,7 +267,7 @@ class LibGenerator (generators.Generator):
     def __init__ (self, id = 'LibGenerator', composing = True, source_types = [], target_types_and_names = ['LIB'], requirements = []):
         generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
     
-    def run (self, project, name, prop_set, sources, multiple):
+    def run (self, project, name, prop_set, sources):
         # The lib generator is composing, and can be only invoked with
         # explicit name. This check is present in generator.run (and so in
         # builtin.LinkingGenerator), but duplicate it here to avoid doing
@@ -356,9 +356,9 @@ class SearchedLibGenerator (generators.Generator):
         # search.
         generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
     
-    def run (self, project, name, prop_set, sources, multiple):
+    def run (self, project, name, prop_set, sources):
         if not name:
-            return ([], [])
+            return None
 
         # If name is empty, it means we're called not from top-level.
         # In this case, we just fail immediately, because SearchedLibGenerator
@@ -437,7 +437,7 @@ class LinkingGenerator (generators.Generator):
     def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
         generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
         
-    def run (self, project, name, prop_set, sources, multiple):
+    def run (self, project, name, prop_set, sources):
         lib_sources = prop_set.get ('<library>')
         [ sources.append (project.manager ().get_object (x)) for x in lib_sources ]
         
@@ -467,7 +467,7 @@ class LinkingGenerator (generators.Generator):
         if extra:
             prop_set = prop_set.add_raw (extra)
                         
-        result = generators.Generator.run (self, project, name, prop_set, sources, multiple)
+        result = generators.Generator.run (self, project, name, prop_set, sources)
         
         return (self.extra_usage_requirements (result, prop_set), result)
     
@@ -541,13 +541,10 @@ class LinkingGenerator (generators.Generator):
         
         return spawn
 
-### rule register-linker ( id composing ? : source_types + : target_types + :
-###                             requirements * )
-### {
-###     local g = [ new LinkingGenerator $(id) $(composing) : $(source_types) 
-###                 : $(target_types) : $(requirements) ] ;
-###     generators.register $(g) ;
-### }
+
+def register_linker (id, source_types, target_types, requirements):
+    g = LinkingGenerator(id, 1, source_types, target_types, requirements)
+    generators.register(g)
 
 class ArchiveGenerator (generators.Generator):
     """ The generator class for handling STATIC_LIB creation.

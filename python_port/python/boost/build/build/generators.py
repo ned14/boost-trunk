@@ -51,12 +51,14 @@ import re
 import cStringIO
 import os.path
 
-import type, virtual_target, property_set, property
+from virtual_target import Subvariant
+import virtual_target, type, property_set, property
 from boost.build.util.logger import *
 from boost.build.util.utility import *
 from boost.build.util import set
 from boost.build.util.sequence import unique
 import boost.build.util.sequence as sequence
+from boost.build.manager import get_manager
 
 def reset ():
     """ Clear the module state. This is mainly for testing purposes.
@@ -83,11 +85,12 @@ _re_match_type = re.compile('([^\\(]*)(\\(.*\\))?')
 
 
 __debug = None
+__indent = ""
 
 def debug():
     global __debug
     if __debug is None:
-        __debug = "--debug-building" in bjam.variable("ARGV")
+        __debug = "--debug-generators" in bjam.variable("ARGV")        
     return __debug
 
 def increase_indent(self):
@@ -96,9 +99,9 @@ def increase_indent(self):
 def decrease_indent(self):
     __indent = __indent[0:-4]
 
-def dout(self, message):
-    if __debug:
-        print ___indent + message
+def dout(message):
+    if debug():
+        print __indent + message
 
 def normalize_target_list (targets):
     """ Takes a vector of 'virtual-target' instances and makes a normalized
@@ -193,13 +196,16 @@ class Generator:
         for t in self.target_types_and_names_:
             m = _re_match_type.match(t)
             assert m
-
-            if m == base:
-                target_types.append(t + m.group(2))
+            
+            if m.group(1) == base:
+                if m.group(2):
+                    target_types.append(type + m.group(2))
+                else:
+                    target_types.append(type)
             else:
                 target_types.append(t)
 
-        return self.__class__(self.id_, self.compositing_,
+        return self.__class__(self.id_, self.composing_,
                               self.source_types_,
                               target_types,
                               self.requirements_)
@@ -268,14 +274,10 @@ class Generator:
         
         if project.manager ().logger ().on ():
             project.manager ().logger ().log (__name__, "  generator '%s'" % self.id_)
-            project.manager ().logger ().log (__name__, "  multiple: '%s'" % multiple)
             project.manager ().logger ().log (__name__, "  composing: '%s'" % self.composing_)
         
         if not self.composing_ and len (sources) > 1 and len (self.source_types_) > 1:
             raise BaseException ("Unsupported source/source_type combination")
-
-        if len (self.source_types_) > 1:
-            multiple = False
                 
         # We don't run composing generators if no name is specified. The reason
         # is that composing generator combines several targets, which can have
@@ -288,20 +290,19 @@ class Generator:
         # transofrmation CPP -> OBJ -> STATIC_LIB -> RSP -> EXE won't be allowed 
         # (the OBJ -> STATIC_LIB generator is composing)
         if not self.composing_ or name:
-            return self.run_really (project, name, prop_set, sources, multiple)
+            return self.run_really (project, name, prop_set, sources)
         else:
             return []
 
-    def run_really (self, project, name, prop_set, sources, multiple):
+    def run_really (self, project, name, prop_set, sources):
 
         # consumed: Targets that this generator will consume directly.
         # bypassed: Targets that can't be consumed and will be returned as-is.
         
         if self.composing_:
-            (consumed, bypassed) = self.convert_multiple_sources_to_consumable_types (project, prop_set, sources, multiple)
-
+            (consumed, bypassed) = self.convert_multiple_sources_to_consumable_types (project, prop_set, sources)
         else:
-            (consumed, bypassed) = self.convert_to_consumable_types (project, name, prop_set, sources, multiple, False)
+            (consumed, bypassed) = self.convert_to_consumable_types (project, name, prop_set, sources)
                 
         result = []
         if consumed:
@@ -356,7 +357,7 @@ class Generator:
         # In the first case, we want to take the part till the last
         # dot. In the second case -- no sure, but for now take
         # the part till the last dot too.
-        name = os.path.splitext(sources[0].name())
+        name = os.path.splitext(sources[0].name())[0]
                         
         for s in sources[1:]:
             n2 = os.path.splitext(s.name())
@@ -365,7 +366,7 @@ class Generator:
                     "%s: source targets have different names: cannot determine target name"
                     % (self.id_))
                         
-        # Names of sources might include directory. We should strip it.
+        # Names of sources might include directory. We should strip it.        
         return os.path.basename(name)
         
         
@@ -392,7 +393,7 @@ class Generator:
             source.
         """
         if not name:
-            name = self.determine_output_name(self, sources)
+            name = self.determine_output_name(sources)
         
         # Assign an action for each target
         action = self.action_class()        
@@ -411,7 +412,7 @@ class Generator:
         
         return [ project.manager().virtual_targets().register(t) for t in targets ]
 
-    def convert_to_consumable_types (self, project, name, prop_set, sources, only_one):
+    def convert_to_consumable_types (self, project, name, prop_set, sources, only_one=False):
         """ Attempts to convert 'source' to the types that this generator can
             handle. The intention is to produce the set of targets can should be
             used when generator is run.
@@ -449,7 +450,7 @@ class Generator:
         # be done by 'construct_types'.
                     
         if missing_types:
-            transformed = construct_types (project, name, missing_types, multiple, prop_set, sources)
+            transformed = construct_types (project, name, missing_types, prop_set, sources)
                                 
             # Add targets of right type to 'consumed'. Add others to
             # 'bypassed'. The 'generators.construct' rule has done
@@ -487,12 +488,9 @@ class Generator:
         return (consumed, bypassed)
     
 
-    def convert_multiple_sources_to_consumable_types (self, project, prop_set, sources, multiple):
+    def convert_multiple_sources_to_consumable_types (self, project, prop_set, sources):
         """ Converts several files to consumable types.
-        """
-        if not multiple:
-            multiple = '*'
-        
+        """        
         consumed = []
         bypassed = []
 
@@ -500,7 +498,7 @@ class Generator:
         # a usable type.
         for s in sources:
             # TODO: need to check for failure on each source.
-            (c, b) = self.convert_to_consumable_types (project, None, prop_set, [s], multiple, True)
+            (c, b) = self.convert_to_consumable_types (project, None, prop_set, [s], True)
             if not c:
                 project.manager ().logger ().log (__name__, " failed to convert ", s)
 
@@ -553,7 +551,7 @@ def register (g):
     # in .generators.$(t) in that case, otherwise, it will
     # be tried twice and we'll get false ambiguity.
     for t in sequence.unique(g.target_types()):
-        __type_to_generators.get(t, []).append(g)
+        __type_to_generators.setdefault(t, []).append(g)
 
     # Update the set of generators for toolset
 
@@ -691,15 +689,15 @@ def viable_source_types_for_generator (generator):
     
     return __viable_source_types_cache [key]
 
-def try_one_generator_really (project, name, generator, multiple, target_type, properties, sources):
+def try_one_generator_really (project, name, generator, target_type, properties, sources):
     """ Returns usage requirements + list of created targets.
     """
-    targets = generator.run (project, name, properties, sources, multiple)
+    targets = generator.run (project, name, properties, sources)
 
     usage_requirements = []
     success = False
 
-    dout("returned " + targets)
+    dout("returned " + str(targets))
 
     if targets:
         success = True;
@@ -719,11 +717,11 @@ def try_one_generator_really (project, name, generator, multiple, target_type, p
 #    }
 
     if success:
-        return (usage_requirements, target)
+        return (usage_requirements, targets)
     else:
         return None
 
-def try_one_generator (project, name, generator, multiple, target_type, properties, sources):
+def try_one_generator (project, name, generator, target_type, properties, sources):
     """ Checks if generator invocation can be pruned, because it's guaranteed
         to fail. If so, quickly returns empty list. Otherwise, calls
         try_one_generator_really.
@@ -746,10 +744,10 @@ def try_one_generator (project, name, generator, multiple, target_type, properti
         return []
 
     else:
-        return try_one_generator_really (project, name, generator, multiple, target_type, properties, sources)
+        return try_one_generator_really (project, name, generator, target_type, properties, sources)
 
 
-def construct_types (project, name, target_types, multiple, prop_set, sources):
+def construct_types (project, name, target_types, prop_set, sources):
     
     result = []
     usage_requirements = property_set.empty()
@@ -784,7 +782,7 @@ def __ensure_type (targets):
         if not t.type ():
             raise BaseException ("target '%s' has no type" % str (t))
 
-def find_viable_generators_aux (logger, target_type, prop_set):
+def find_viable_generators_aux (target_type, prop_set):
     """ Returns generators which can be used to construct target of specified type
         with specified properties. Uses the following algorithm:
         - iterates over requested target_type and all it's bases (in the order returned bt
@@ -798,21 +796,19 @@ def find_viable_generators_aux (logger, target_type, prop_set):
     """
     # Select generators that can create the required target type.
     viable_generators = []
+    initial_generators = []
 
     import type
 
     # Try all-type generators first. Assume they have
     # quite specific requirements.
     all_bases = type.all_bases(target_type)
-    
-    logger.log (__name__, "find_viable_generators target_type = '%s'  property_set = '%s'" % (target_type, prop_set.as_path ()))
-    
-    for t in all_bases:
-        logger.log (__name__, "trying type ", t [0])
         
-        generators_for_this_type = __type_to_generators.get(t, [])
-
-        if generators_for_this_type:
+    for t in all_bases:
+        
+        initial_generators = __type_to_generators.get(t, [])
+        
+        if initial_generators:
             dout("there are generators for this type")
             if t != target_type:
                 # We're here, when no generators for target-type are found,
@@ -821,34 +817,36 @@ def find_viable_generators_aux (logger, target_type, prop_set):
                 # base type, not of 'target-type'. So, we clone the generators
                 # and modify the list of target types.
                 generators2 = []
-                for g in generators:
+                for g in initial_generators[:]:
                     # generators.register adds generator to the list of generators
                     # for toolsets, which is a bit strange, but should work.
                     # That list is only used when inheriting toolset, which
                     # should have being done before generators are run.
-                    generators2.append(g.clone_and_change_target_type(
-                        t, target_type))
-                    generators.register(generators2[-1])
+                    ng = g.clone_and_change_target_type(t, target_type)
+                    generators2.append(ng)
+                    register(ng)
                     
-                generators = generators2   
+                initial_generators = generators2
+            break
     
-    for g in generators:
-        dout("trying generator" + g.id() + "(" + g.source_types() + "->" + g.target_types() + ")")
+    for g in initial_generators:
+        dout("trying generator " + g.id()
+             + "(" + str(g.source_types()) + "->" + str(g.target_types()) + ")")
         
         m = g.match_rank(prop_set)
         if m:
             dout("  is viable")
-            viable-generators.append(g)
+            viable_generators.append(g)
                             
     return viable_generators
 
-def find_viable_generators (logger, target_type, prop_set):
+def find_viable_generators (target_type, prop_set):
     key = target_type + '.' + str (prop_set)
 
     l = __viable_generators_cache.get (key, None)
 
     if not l:
-        l = find_viable_generators_aux (logger, target_type, prop_set)
+        l = find_viable_generators_aux (target_type, prop_set)
 
         __viable_generators_cache [key] = l
 
@@ -885,19 +883,21 @@ def find_viable_generators (logger, target_type, prop_set):
         
     return result
     
-def __construct_really (project, name, target_type, multiple, prop_set, sources):
+def __construct_really (project, name, target_type, prop_set, sources):
     """ Attempts to construct target by finding viable generators, running them
         and selecting the dependency graph.
     """
-    viable_generators = find_viable_generators (project.manager ().logger (), target_type, prop_set)
+    viable_generators = find_viable_generators (target_type, prop_set)
                     
     result = []
     
     project.manager ().logger ().log (__name__, "*** %d viable generators" % len (viable_generators))
+
+    generators_that_succeeded = []
     
     for g in viable_generators:
         __active_generators.append(g)        
-        r = try_one_generator (project, name, g, multiple, target_type, prop_set, sources)
+        r = try_one_generator (project, name, g, target_type, prop_set, sources)
         del __active_generators[-1]
         
         if r:
@@ -913,10 +913,10 @@ def __construct_really (project, name, target_type, multiple, prop_set, sources)
                     print >>output, " - " + g.id()
                 print >>output, "First generator produced: "
                 for t in result[1:]:
-                    print >>output, " - " + t.str()
+                    print >>output, " - " + str(t)
                 print >>output, "Second generator produced:"
                 for t in r[1:]:
-                    print >>output, " - " + t.str()
+                    print >>output, " - " + str(t)
                 get_manager().errors()(output.getvalue())
             else:
                 result = r;
@@ -953,9 +953,11 @@ def construct (project, name, target_type, prop_set, sources):
 
         project.manager ().logger ().log (__name__, "    properties: ", prop_set.raw ())
              
-    result = __construct_really (project, name, target_type, multiple, prop_set, sources)
+    result = __construct_really (project, name, target_type, prop_set, sources)
 
     project.manager ().logger ().decrease_indent ()
         
     __construct_stack = __construct_stack [1:]
+
+    return result
     

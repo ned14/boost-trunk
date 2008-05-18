@@ -251,21 +251,23 @@ def inherit_flags(toolset, base, prohibited_properties = []):
             __add_flag (new_rule_or_module, f.variable_name, f.condition, f.values)
 
 def inherit_rules (toolset, base):
-    base_generators = generators.generators_for_toolset (base)
+    pass
+    # FIXME: do something about this.
+#    base_generators = generators.generators_for_toolset (base)
 
-    import action
+#    import action
 
-    ids = []
-    for g in base_generators:
-        (old_toolset, id) = split_action_id (g.id ())
-        ids.append (id) ;
+#    ids = []
+#    for g in base_generators:
+#        (old_toolset, id) = split_action_id (g.id ())
+#        ids.append (id) ;
 
-    new_actions = []
+#    new_actions = []
 
-    engine = get_manager().engine()
+#    engine = get_manager().engine()
     # FIXME: do this!
-    for action in engine.action.values():
-        pass
+#    for action in engine.action.values():
+#        pass
 #        (old_toolset, id) = split_action_id(action.action_name)
 #    
 #        if old_toolset == base:

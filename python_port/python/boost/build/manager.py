@@ -2,13 +2,6 @@
 # Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-from build.virtual_target import VirtualTargetRegistry
-from build.targets import TargetRegistry
-from build.project import ProjectRegistry
-from build.scanner import ScannerRegistry
-from build.errors import Errors
-from boost.build.util.logger import NullLogger
-from build import build_request, property_set, feature
 import bjam
 
 # To simplify implementation of tools level, we'll
@@ -26,6 +19,14 @@ class Manager:
         """ Constructor.
             engine: the build engine that will actually construct the targets.
         """
+        from build.virtual_target import VirtualTargetRegistry
+        from build.targets import TargetRegistry
+        from build.project import ProjectRegistry
+        from build.scanner import ScannerRegistry
+        from build.errors import Errors
+        from boost.build.util.logger import NullLogger
+        from build import build_request, property_set, feature
+        
         self.engine_ = engine
         self.virtual_targets_ = VirtualTargetRegistry (self)
         self.projects_ = ProjectRegistry (self, global_build_dir)

@@ -50,11 +50,12 @@ class JamfileContext:
 class ExceptionWithUserContext(Exception):
 
     def __init__(self, message, context,
-                 original_exception=None, original_tb=None):
+                 original_exception=None, original_tb=None, stack=None):
         Exception.__init__(self, message)
         self.context_ = context
         self.original_exception_ = original_exception
         self.original_tb_ = original_tb
+        self.stack_ = stack
 
     def report(self):
         print "error:", self.message
@@ -66,7 +67,11 @@ class ExceptionWithUserContext(Exception):
             c.report()
         print
         if "--stacktrace" in bjam.variable("ARGV"):
-            traceback.print_tb(self.original_tb_)
+            if self.original_tb_:
+                traceback.print_tb(self.original_tb_)
+            elif self.stack_:
+                for l in traceback.format_list(self.stack_):
+                    print l,                
         else:
             print "    use the '--stacktrace' option to get Python stacktrace"
         print
@@ -109,7 +114,8 @@ class Errors:
         raise ExceptionWithUserContext("unexpected exception", self.contexts_[:],
                                        e, sys.exc_info()[2])    
     def __call__(self, message):
-        raise ExceptionWithUserContext(message, self.contexts_[:])
+        raise ExceptionWithUserContext(message, self.contexts_[:], 
+                                       stack=traceback.extract_stack())
 
         
 

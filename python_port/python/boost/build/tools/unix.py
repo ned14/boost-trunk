@@ -10,7 +10,7 @@
 """
 
 import builtin
-from boost.build.build import action, generators, type
+from boost.build.build import generators, type
 from boost.build.util.utility import *
 from boost.build.util import set, sequence
 
@@ -19,8 +19,8 @@ class UnixLinkingGenerator (builtin.LinkingGenerator):
     def __init__ (self, id, composing, source_types, target_types, requirements):
         builtin.LinkingGenerator.__init__ (self, id, composing, source_types, target_types, requirements)
     
-    def run (self, project, name, prop_set, sources, multiple):
-        result = builtin.LinkingGenerator.run (self, project, name, prop_set, sources, multiple)
+    def run (self, project, name, prop_set, sources):
+        result = builtin.LinkingGenerator.run (self, project, name, prop_set, sources)
         set_library_order (project.manager (), sources, prop_set, result [1])
                                 
         return result
@@ -74,7 +74,9 @@ class UnixPrebuiltLibGenerator (generators.Generator):
         return (f, sources)
 
 ### # The derived toolset must specify their own rules and actions.
-action.register ('unix.prebuilt', None, None)
+# FIXME: restore?
+# action.register ('unix.prebuilt', None, None)
+
 
 generators.register (UnixPrebuiltLibGenerator ('unix.prebuilt', False, [], ['LIB'], ['<file>', '<toolset>unix']))
 
@@ -104,7 +106,8 @@ generators.register (UnixArchiveGenerator ('unix.archive', True, ['OBJ'], ['STAT
 def unix_archive (manager, targets, sources, properties):
     pass
 
-action.register ('unix.archive', unix_archive, [''])
+# FIXME: restore?
+#action.register ('unix.archive', unix_archive, [''])
 
 ### actions searched-lib-generator {    
 ### }

@@ -90,7 +90,7 @@ def get_grist (value):
         return [ get_grist_one (v) for v in value ]
 
 def ungrist (value):
-    """ Returns the grist of the value. 
+    """ Returns the value without grist. 
         If value is a sequence, does it for every value and returns the result as a sequence.
     """
     def ungrist_one (value):

@@ -111,8 +111,9 @@ def check_init_parameters (toolset, *args):
         raise BaseException (message)
 
     __all_signatures [sig] = True
-    
-    return condition
+
+    # FIXME: we actually don't add any subfeatures to the condition
+    return [condition]
 
 
 def get_invocation_command (toolset, tool, user_provided_command = None, additional_paths = None, path_last = None):
@@ -138,6 +139,7 @@ def get_invocation_command (toolset, tool, user_provided_command = None, additio
         command = check_tool (user_provided_command)
 
         if not command:
+            print "User-provided command not found"
             # It's possible, in theory, that user-provided command is OK, but we're
             # not smart enough to understand that. 
 
@@ -178,7 +180,7 @@ def get_invocation_command (toolset, tool, user_provided_command = None, additio
 
 
 
-def find_tool (name, additional_paths = [], path_last = False):
+def find_tool (name, additional_paths = None, path_last = False):
     """ Attempts to find tool (binary) named 'name' in PATH and in 'additiona-paths'.
         If found in path, returns 'name'.
         If found in additional paths, returns full name. If there are several possibilities,
@@ -186,6 +188,8 @@ def find_tool (name, additional_paths = [], path_last = False):
         Otherwise, returns empty string.
         If 'path_last' is specified, path is checked after 'additional_paths'.
     """
+    if not additional_paths:
+        additional_paths = []
     programs = path.programs_path ()
     match = path.glob (programs, [name, name + '.exe'])
     additional_match = path.glob (additional_paths, [name, name + '.exe'])
@@ -206,39 +210,24 @@ def find_tool (name, additional_paths = [], path_last = False):
     if result:
         return path.native (result [0])
 
-### # Checks if 'command' can be found either in path
-### # or is a full name to an existing file.
-### rule check_tool-aux ( command )
-### {
-###     if $(command:D)
-###     {
-###         if [ path.exists $(command) ]
-###         {
-###             return $(command) ;
-###         }        
-###     }
-###     else
-###     {
-###         if [ GLOB [ modules.peek : PATH Path path ] : $(command) ]
-###         {
-###             return $(command) ;
-###         }        
-###     }        
-### }
-### 
-### 
-### # Checks that a tool can be invoked by 'command'. 
-### # If command is not an absolute path, checks if it can be found in 'path'.
-### # If comand is absolute path, check that it exists. Returns 'command'
-### # if ok and empty string otherwise.
-### rule check_tool ( xcommand + )
-### {
-###     if   [ check_tool-aux $(xcommand[1]) ] 
-###       || [ check_tool-aux $(xcommand[-1]) ]
-###     {
-###         return $(xcommand) ;
-###     }
-### }
+# Checks if 'command' can be found either in path
+# or is a full name to an existing file.
+def check_tool_aux(command):
+    dirname = os.path.dirname(command)
+    if dirname:
+        return os.path.exists(command)
+    else:
+        paths = bjam.variable("PATH") + bjam.variable("Path") + bjam.variable("path")
+        if path.glob(paths, [command]):
+            return command
+
+def check_tool(command):
+    # Checks that a tool can be invoked by 'command'. 
+    # If command is not an absolute path, checks if it can be found in 'path'.
+    # If comand is absolute path, check that it exists. Returns 'command'
+    # if ok and empty string otherwise.
+    if check_tool_aux(command[0]) or check_tool_aux(command[-1]):
+        return command
 
 def handle_options (tool, condition, command, options):
     """ Handle common options for toolset, specifically sets the following
