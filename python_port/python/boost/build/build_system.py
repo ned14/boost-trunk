@@ -13,10 +13,9 @@ from boost.build.build import feature, property_set
 import boost.build.build.virtual_target
 from boost.build.build.targets import ProjectTarget
 from boost.build.util.sequence import unique
-import boost.build.tools.common
-import boost.build.tools.builtin
 import boost.build.build.build_request
 from boost.build.build.errors import ExceptionWithUserContext
+import boost.build.tools.common
 
 import bjam
 
@@ -111,6 +110,11 @@ def main_real():
     debug_config = get_boolean_option("debug-configuration")
     
     manager = Manager(engine, global_build_dir)
+
+    # This module defines types and generator and what not,
+    # and depends on manager's existence
+    import boost.build.tools.builtin
+
 
     # Check if we can load 'test-config.jam'. If we can, load it and
     # ignore user configs.
@@ -347,7 +351,7 @@ def main_real():
                 g = t.generate(p)
                 if not isinstance(t, ProjectTarget):
                     results_of_main_targets.extend(g.targets())
-                    virtual_targets.extend(g.targets())
+                virtual_targets.extend(g.targets())
             except ExceptionWithUserContext, e:
                 e.report()
             except Exception:                
