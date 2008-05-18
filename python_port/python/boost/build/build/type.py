@@ -1,7 +1,12 @@
+# Status: being ported by Vladimir Prus
+# Base revision: 45462.
+
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in
 #  all copies. This software is provided "as is" without express or implied
 #  warranty, and with no claim as to its suitability for any purpose.
+
+
 
 import re
 import os
@@ -26,12 +31,12 @@ def reset ():
     """ Clear the module state. This is mainly for testing purposes.
         Note that this must be called _after_ resetting the module 'feature'.
     """    
-    global __suffixes, __suffixes_to_types, __types, __rule_names_to_types, __target_suffixes_cache
+    global __prefixes_suffixes, __suffixes_to_types, __types, __rule_names_to_types, __target_suffixes_cache
     
     __register_features ()
 
     # Stores suffixes for generated targets.
-    __suffixes = property.PropertyMap ()
+    __prefixes_suffixes = [property.PropertyMap(), property.PropertyMap()]
     
     # Maps suffixes to types
     __suffixes_to_types = {}
@@ -43,9 +48,6 @@ def reset ():
     # 'scanner': the scanner class registered for this type, if any
     __types = {}
 
-    # Maps main rule names to the corresponding type.
-    __rule_names_to_types = {}
-    
     # Caches suffixes for targets with certain properties.
     __target_suffixes_cache = {}
     
@@ -87,15 +89,17 @@ def register (type, suffixes = [], base_type = None):
         # Specify mapping from suffixes to type
         register_suffixes (suffixes, type)
     
-    feature.extend_feature ('target-type', [type])
-    feature.extend_feature ('main-target-type', [type])
-    feature.extend_feature ('base-target-type', [type])
+    feature.extend('target-type', [type])
+    feature.extend('main-target-type', [type])
+    feature.extend('base-target-type', [type])
 
     if base_type:
         feature.compose ('<target-type>' + type, replace_grist (base_type, '<base-target-type>'))
         feature.compose ('<base-target-type>' + type, '<base-target-type>' + base_type)
 
-    __register_main_rule (type)
+    # FIXME: resolving recursive dependency.
+    from boost.build.manager import get_manager
+    get_manager().projects().project_rules().add_rule_for_type(type)
 
 def register_suffixes (suffixes, type):
     """ Specifies that targets with suffix from 'suffixes' have the type 'type'. 
@@ -184,55 +188,85 @@ def set_generated_target_suffix (type, properties, suffix):
         The 'suffix' parameter can be empty string ("") to indicate that
         no suffix should be used.
     """
-    properties.append ('<target-type>' + type)
-    __suffixes.insert (properties, suffix)
+    set_generated_target_ps(1, type, properties, suffix)
 
+
+    
 def change_generated_target_suffix (type, properties, suffix):
     """ Change the suffix previously registered for this type/properties 
         combination. If suffix is not yet specified, sets it.
     """
+    change_generated_target_ps(1, type, properties, suffix)
+
+def generated_target_suffix(type, properties):
+    return generated_target_ps(1, type, properties)
+
+# Sets a target prefix that should be used when generating targets of 'type'
+# with the specified properties. Can be called with empty properties if no
+# prefix for 'type' has been specified yet.
+#
+# The 'prefix' parameter can be empty string ("") to indicate that no prefix
+# should be used.
+#
+# Usage example: library names use the "lib" prefix on unix.
+def set_generated_target_prefix(type, properties, prefix):
+    set_generated_target_ps(0, type, properties, prefix)
+
+# Change the prefix previously registered for this type/properties combination.
+# If prefix is not yet specified, sets it.
+def change_generated_target_prefix(type, properties, prefix):
+    change_generated_target_ps(0, type, properties, prefix)
+
+def generated_target_prefix(type, properties):
+    return generated_target_ps(0, type, properties)
+
+def set_generated_target_ps(is_suffix, type, properties, val):
     properties.append ('<target-type>' + type)
-    prev = __suffixes.find_replace (properties, suffix)
+    __prefixes_suffixes[is_suffix].insert (properties, val)
 
+def change_generated_target_ps(is_suffix, type, properties, val):
+    properties.append ('<target-type>' + type)
+    prev = __prefixes_suffixes[is_suffix].find_replace(properties, val)
     if not prev:
-        set_generated_target_suffix (type, properties, suffix)
+        set_generated_target_ps(is_suffix, type, properties, val)
 
-def generated_target_suffix_real (type, properties):
-    """Actual implementation of generated_target_suffix.
-    """ 
+# Returns either prefix or suffix (as indicated by 'is_suffix') that should be used
+# when generating a target of 'type' with the specified properties.
+# If no prefix/suffix is specified for 'type', returns prefix/suffix for
+# base type, if any.
+def generated_target_ps_real(is_suffix, type, properties):
+
     result = ''
     found = False
     while type and not found:
-        result = __suffixes.find (['<target-type>' + type] + properties)
+        result = __prefixes_suffixes[is_suffix].find (['<target-type>' + type] + properties)
 
-        # If the suffix is explicitly set to empty string, we consider suffix
-        # to be found. If we did not compare with "", there would be no
-        # way for user to set empty suffix.
+        # Note that if the string is empty (""), but not null, we consider
+        # suffix found.  Setting prefix or suffix to empty string is fine.
         if result:
             found = True
 
         type = __types [type]['base']
 
-    if result == '':
-        result = None
-
+    if not result:
+        result = ''
     return result
 
-def generated_target_suffix (type, prop_set):
+def generated_target_ps(is_suffix, type, prop_set):
     """ Returns suffix that should be used when generating target of 'type',
         with the specified properties. If not suffix were specified for
         'type', returns suffix for base type, if any.
     """
-    key = type + str (prop_set)
+    key = str(is_suffix) + type + str(prop_set)
     v = __target_suffixes_cache.get (key, None)
 
     if not v:
-        v = generated_target_suffix_real (type, prop_set.raw ())
+        v = generated_target_ps_real(is_suffix, type, prop_set.raw())
         __target_suffixes_cache [key] = v
-    
+
     return v
 
-def type (filename):
+def type(filename):
     """ Returns file type given it's name. If there are several dots in filename,
         tries each suffix. E.g. for name of "file.so.1.2" suffixes "2", "1", and 
         "so"  will be tried.
@@ -240,10 +274,10 @@ def type (filename):
     while 1:
         filename, suffix = os.path.splitext (filename)
         if not suffix: return None
-        suffix = suffix [1:]
+        suffix = suffix[1:]
         
-        if __suffixes_to_types.has_key (suffix):
-            return __suffixes_to_types [suffix]
+        if __suffixes_to_types.has_key(suffix):
+            return __suffixes_to_types[suffix]
 
 # NOTE: moved from tools/types/register
 def register_type (type, suffixes, base_type = None, os = []):
@@ -256,37 +290,3 @@ def register_type (type, suffixes, base_type = None, os = []):
 
     if not os or os_name () in os:
         register (type, suffixes, base_type)
-
-
-
-######################################################################################
-# Private functions
-
-def main_target_rule (type, project, name, sources, requirements = [], default_build = None, usage_requirements = []):
-    targets = project.manager ().targets ()
-    return targets.create_typed_target (type, project.target (), name, sources, requirements, default_build, usage_requirements)
-
-    
-def __register_main_rule (type):
-    # We used to declare a main target rule only when 'main' parameter is specified. 
-    # However, it's hard to decide that a type *never* will need a main target rule 
-    # and so from time to time we needed to make yet another type 'main'. So, now 
-    # main target rule is defined for each type.
-     
-    main_rule_name = type_to_rule_name (type)
-    __rule_names_to_types [main_rule_name] = type
-
-    import boost.build.build.project
-    def xpto (project, name, sources, requirements = [], default_build = None, usage_requirements = []):
-        return main_target_rule (type, project, name, sources, requirements, default_build, usage_requirements)
-
-    # FIXME
-    #boost.build.build.project.ProjectModule.__dict__ [main_rule_name] = xpto
-
-
-def type_to_rule_name (type):
-    """ Given type, returns name of main target rule which creates
-        targets of that type.
-    """
-    # Lowercase everything.
-    return type.lower ()
