@@ -1,4 +1,4 @@
-# Status: being ported by Vladimir Prus
+# Status: ported.
 # Base revision: 45462.
 
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
