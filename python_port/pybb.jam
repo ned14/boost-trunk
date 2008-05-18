@@ -52,9 +52,16 @@ module python_interface
         $(action) $(targets) : $(sources) : $(properties) ;
     }
     
-    rule set-target-variable ( targets + : variable : value * )
+    rule set-target-variable ( targets + : variable : value * : append ? )
     {
-	$(variable) on $(targets) = $(value) ;
+        if $(append)
+        {            
+	    $(variable) on $(targets) += $(value) ;
+        }
+        else
+        {
+	    $(variable) on $(targets) = $(value) ;            
+        }        
     }        
 
     rule import-rules-from-parent ( parent-module : this-module : user-rules )

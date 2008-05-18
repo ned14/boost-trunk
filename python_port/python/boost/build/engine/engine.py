@@ -62,7 +62,7 @@ class Engine:
             for source in sources:
                 self.do_add_dependency (target, source)
     
-    def set_target_variable (self, targets, variable, value):
+    def set_target_variable (self, targets, variable, value, append=0):
         """ Sets a target variable.
 
         The 'variable' will be available to bjam when it decides
@@ -73,7 +73,7 @@ class Engine:
             targets = [targets]
 
         for target in targets:
-            self.do_set_target_variable (target, variable, value)
+            self.do_set_target_variable (target, variable, value, append)
 
     def set_update_action (self, action_name, targets, sources, properties):
         """ Binds a target to the corresponding update action.
@@ -134,9 +134,12 @@ class Engine:
             raise "No action %s was registered" % action_name
         action(targets, sources, property_set)
 
-    def do_set_target_variable (self, target, variable, value):
-        bjam_interface.call("set-target-variable", target, variable, value)
-    
+    def do_set_target_variable (self, target, variable, value, append):
+        if append:
+            bjam_interface.call("set-target-variable", target, variable, value, "true")
+        else:
+            bjam_interface.call("set-target-variable", target, variable, value)
+        
     def do_add_dependency (self, target, source):
         bjam_interface.call("DEPENDS", target, source)
          
