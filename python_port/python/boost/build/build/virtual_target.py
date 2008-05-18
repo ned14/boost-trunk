@@ -70,7 +70,8 @@ from boost.build.util.utility import add_grist, get_grist, ungrist, replace_gris
 from boost.build.util.sequence import unique
 from boost.build.tools import common
 from boost.build.exceptions import *
-import toolset, type
+import boost.build.build.type
+import type
 
 __re_starts_with_at = re.compile ('^@(.*)')
 
@@ -208,6 +209,7 @@ class VirtualTargetRegistry:
                 properties_added = set.difference (p2, p1)
                 if not properties_added: properties_added = "none"
 
+            # FIXME: Revive printing of real location.
             raise BaseException ("Duplicate name of actual target: '%s'\n" 
               "previous virtual target '%s'\n"
               "created from '%s'\n"
@@ -215,8 +217,10 @@ class VirtualTargetRegistry:
               "created from '%s'\n"
               "added properties: '%s'\n"
               "removed properties: '%s'\n" % (actual_name,
-                  self.actual_ [actual_name], cmt1.location (), virtual_target, 
-                  cmt2.location (), properties_added, properties_removed))
+                  self.actual_ [actual_name], "loc", #cmt1.location (),
+                                              virtual_target, 
+                                              "loc", #cmt2.location (),
+                                              properties_added, properties_removed))
 
         else:
             self.actual_ [actual_name] = virtual_target
@@ -388,13 +392,6 @@ class AbstractFileTarget (VirtualTarget):
     def type (self):
         return self.type_
 
-    # FIXME: this does not seem to be present in .jam
-    #def set_type (self, type):
-    #    self.type_ = type
-
-    #    if not self.exact_name:
-    #        self.__adjust_name (os.path.splitext (self.name_) [0])
-
     def set_path (self, path):
         """ Sets the path. When generating target name, it will override any path
             computation from properties.
@@ -543,7 +540,7 @@ class AbstractFileTarget (VirtualTarget):
 """The value of the <tag> feature must be '@rule-nane'""")
         
         # If there's no tag or the tag rule returned nothing.
-        if not tag and not self.name_:
+        if not tag or not self.name_:
             self.name_ = add_prefix_and_suffix(specified_name, self.type_, ps)
 
     def actualize_no_scanner(self):
@@ -573,7 +570,7 @@ def add_prefix_and_suffix(specified_name, type, property_set):
     """Appends the suffix appropriate to 'type/property-set' combination
     to the specified name and returns the result."""
 
-    suffix = type.generated_target_suffix(type, property_set)
+    suffix = boost.build.build.type.generated_target_suffix(type, property_set)
     
     # Handle suffixes for which no leading dot is desired.  Those are
     # specified by enclosing them in <...>.  Needed by python so it
@@ -582,8 +579,8 @@ def add_prefix_and_suffix(specified_name, type, property_set):
         suffix = ungrist(suffix)
     else:
         suffix = "." + suffix
-    
-    prefix = type.generated-target-prefix(type, property_set)
+
+    prefix = boost.build.build.type.generated_target_prefix(type, property_set)
 
     if specified_name.startswith(prefix):
         prefix = ""
@@ -763,6 +760,8 @@ class Action:
         # FIXME: check the comment below. Was self.action_name_ [1]
         # Action name can include additional argument to rule, which should not
         # be passed to 'set-target-variables'
+        # FIXME: breaking circular dependency
+        import toolset
         toolset.set_target_variables (self.manager_, self.action_name_, actual_targets, raw_properties)
              
         engine = self.manager_.engine ()
@@ -1030,17 +1029,17 @@ class Subvariant:
 
         return result
 
-    def all_target_directories(target_type = None):
+    def all_target_directories(self, target_type = None):
         # TODO: does not appear to use target_type in deciding
         # if we've computed this already.
         if not self.target_directories_:
-            selt.target_directories_ = self.compute_target_directories(target_type)
+            self.target_directories_ = self.compute_target_directories(target_type)
         return self.target_directories_
 
-    def compute_target_directories(target_type=None):
+    def compute_target_directories(self, target_type=None):
         result = []
-        for t in self.created_targets:
-            if not target_type or type.is_derived(t.type, target_type):
+        for t in self.created_targets():
+            if not target_type or type.is_derived(t.type(), target_type):
                 result.append(t.path())
 
         for d in self.other_dg_:
