@@ -1077,10 +1077,11 @@ macro(boost_add_executable EXENAME)
     endforeach(LIB ${THIS_EXE_DEPENDS})
 
     # Build the executable
-    add_executable(${EXENAME} ${THIS_EXE_SOURCES})
+    set(THIS_EXE_NAME ${PROJECT_NAME}/${EXENAME})
+    add_executable(${THIS_EXE_NAME} ${THIS_EXE_SOURCES})
     
     # Set the various compilation and linking flags
-    set_target_properties(${EXENAME}
+    set_target_properties(${THIS_EXE_NAME}
       PROPERTIES
       COMPILE_FLAGS "${THIS_EXE_COMPILE_FLAGS}"
       LINK_FLAGS "${THIS_EXE_LINK_FLAGS}"
@@ -1089,7 +1090,7 @@ macro(boost_add_executable EXENAME)
     # For IDE generators where we can build both debug and release
     # configurations, pass the configurations along separately.
     if (THIS_EXE_DEBUG_AND_RELEASE)
-      set_target_properties(${EXENAME}
+      set_target_properties(${THIS_EXE_NAME}
         PROPERTIES
         COMPILE_FLAGS_DEBUG "${DEBUG_COMPILE_FLAGS} ${THIS_EXE_COMPILE_FLAGS}"
         COMPILE_FLAGS_RELEASE "${RELEASE_COMPILE_FLAGS} ${THIS_EXE_COMPILE_FLAGS}"
@@ -1100,7 +1101,7 @@ macro(boost_add_executable EXENAME)
 
     # If the user gave an output name, use it.
     if (THIS_EXE_OUTPUT_NAME)
-      set_target_properties(${EXENAME}
+      set_target_properties(${THIS_EXE_NAME}
         PROPERTIES
         OUTPUT_NAME "${THIS_EXE_OUTPUT_NAME}"
         )
@@ -1109,26 +1110,26 @@ macro(boost_add_executable EXENAME)
     # Link against the various libraries 
     if (THIS_EXE_DEBUG_AND_RELEASE)
       # Configuration-agnostic libraries
-      target_link_libraries(${EXENAME} ${THIS_EXE_LINK_LIBS})
+      target_link_libraries(${THIS_EXE_NAME} ${THIS_EXE_LINK_LIBS})
       
       # Link against libraries for "release" configuration
       foreach(LIB ${THIS_EXE_RELEASE_ACTUAL_DEPENDS} ${THIS_EXE_RELEASE_LINK_LIBS})     
-        target_link_libraries(${EXENAME} optimized ${LIB})
+        target_link_libraries(${THIS_EXE_NAME} optimized ${LIB})
       endforeach(LIB ${THIS_EXE_RELEASE_ACTUAL_DEPENDS} ${THIS_EXE_RELEASE_LINK_LIBS})     
         
       # Link against libraries for "debug" configuration
       foreach(LIB ${THIS_EXE_DEBUG_ACTUAL_DEPENDS} ${THIS_EXE_DEBUG_LINK_LIBS})     
-        target_link_libraries(${EXENAME} debug ${LIB})
+        target_link_libraries(${THIS_EXE_NAME} debug ${LIB})
       endforeach(LIB ${THIS_EXE_DEBUG_ACTUAL_DEPENDS} ${THIS_EXE_DEBUG_LINK_LIBS})     
     else (THIS_EXE_DEBUG_AND_RELEASE)
-      target_link_libraries(${EXENAME} 
+      target_link_libraries(${THIS_EXE_NAME} 
         ${THIS_EXE_ACTUAL_DEPENDS} 
         ${THIS_EXE_LINK_LIBS})
     endif (THIS_EXE_DEBUG_AND_RELEASE)
 
     # Install the executable, if not suppressed
     if (NOT THIS_EXE_NO_INSTALL)
-      install(TARGETS ${EXENAME} DESTINATION bin)
+      install(TARGETS ${THIS_EXE_NAME} DESTINATION bin)
     endif (NOT THIS_EXE_NO_INSTALL)
   endif (THIS_EXE_OKAY)
 endmacro(boost_add_executable)
