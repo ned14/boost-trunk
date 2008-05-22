@@ -65,9 +65,6 @@ macro(boost_library_project LIBNAME)
     ${ARGN}
     )
 
-  # The names of all of the macros that need to be exported to the outer scope.
-  set(THIS_PROJECT_EXPORT_MACROS)
-  
   set(THIS_PROJECT_OKAY ON)
   string(TOUPPER "BOOST_${LIBNAME}_DEPENDS" THIS_PROJECT_DEPENDS)
   set(THIS_PROJECT_FAILED_DEPS "")
@@ -112,9 +109,15 @@ macro(boost_library_project LIBNAME)
 
     if(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
       # Add this library to the list of library components to install
-      set(CPACK_COMPONENT_GROUPS_BOOST_ALL ${CPACK_COMPONENT_GROUPS_BOOST_ALL} ${ULIBNAME} PARENT_SCOPE)
-      set(CPACK_COMPONENT_GROUP_BOOST_${ULIBNAME}_DISPLAY_NAME ${LIBNAME})
-      list(APPEND THIS_PROJECT_EXPORT_MACROS CPACK_COMPONENT_GROUP_BOOST_${ULIBNAME}_DISPLAY_NAME)
+      set_property(GLOBAL APPEND 
+        PROPERTY CPACK_COMPONENT_GROUPS_BOOST_ALL 
+        ${ULIBNAME})
+      set_property(GLOBAL
+        PROPERTY CPACK_COMPONENT_GROUP_BOOST_${ULIBNAME}_DISPLAY_NAME 
+        ${LIBNAME})
+      set_property(GLOBAL APPEND
+        PROPERTY BOOST_CPACK_EXPORTS 
+        CPACK_COMPONENT_GROUP_BOOST_${ULIBNAME}_DISPLAY_NAME)
     endif(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
     
     if(THIS_PROJECT_MODULAR)
@@ -130,17 +133,25 @@ macro(boost_library_project LIBNAME)
       # Install this module's headers
       install(DIRECTORY include/boost 
         DESTINATION ${BOOST_HEADER_DIR}
-        COMPONENT ${ULIBNAME}_headers
+        COMPONENT ${ULIBNAME}_HEADERS
         PATTERN "CVS" EXCLUDE
         REGEX ".svn" EXCLUDE)
 
-      # Add the appropriate variables to make this library's headers a separate component.
-      set(THIS_PROJECT_COMPONENTS ${THIS_PROJECT_COMPONENTS} ${ULIBNAME}_headers)
-      set(CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME "Header files")
-      set(CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP ${ULIBNAME})
-      list(APPEND THIS_PROJECT_EXPORT_MACROS 
-		CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME
-		CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP)
+      # Add the appropriate variables to make this library's headers a
+      # separate component.
+      set_property(GLOBAL APPEND 
+        PROPERTY CPACK_COMPONENTS_BOOST_ALL 
+        ${ULIBNAME}_HEADERS)
+      set_property(GLOBAL 
+        PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME 
+        "Header files")
+      set_property(GLOBAL
+        PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP 
+        ${ULIBNAME})
+      set_property(GLOBAL APPEND
+        PROPERTY BOOST_CPACK_EXPORTS
+	CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME
+	CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP)
     endif (THIS_PROJECT_MODULAR)
 
     # For each of the modular libraries on which this project depends,
@@ -152,12 +163,17 @@ macro(boost_library_project LIBNAME)
         include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
         if (THIS_PROJECT_MODULAR)
           # Make this project's headers depend on DEP's headers
-          list(APPEND CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS ${UDEP}_headers)
+          set_property(GLOBAL APPEND
+            PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS 
+            ${UDEP}_HEADERS)
+          set(THIS_PROJECT_HAS_HEADER_DEPENDS TRUE)
         endif ()
       endif()
     endforeach(DEP)
-    if (CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS)
-      list(APPEND THIS_PROJECT_EXPORT_MACROS CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS)
+    if (${THIS_PROJECT_HAS_HEADER_DEPENDS})
+      set_property(GLOBAL APPEND
+        PROPERTY BOOST_CPACK_EXPORTS
+        CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS)
     endif ()
 
     if(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/tests)
@@ -189,15 +205,6 @@ macro(boost_library_project LIBNAME)
       endif(${BOOST_TEST_LIB_OPTION})
     endif(BUILD_TESTING AND THIS_PROJECT_TESTDIRS)
   endif(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
-  
-  # Export certain macros to the parent scope.
-  foreach(MACRO ${THIS_PROJECT_EXPORT_MACROS})
-    set(${MACRO} ${${MACRO}} PARENT_SCOPE)
-  endforeach()
-  set(BOOST_EXPORT_MACROS 
-	${BOOST_EXPORT_MACROS} ${THIS_PROJECT_EXPORT_MACROS} PARENT_SCOPE)
-  set(CPACK_COMPONENTS_BOOST_ALL 
-	${CPACK_COMPONENTS_BOOST_ALL} ${THIS_PROJECT_COMPONENTS} PARENT_SCOPE)
 endmacro(boost_library_project)
 
 macro(boost_module LIBNAME)
@@ -220,7 +227,7 @@ endmacro(boost_module)
 # where feature1, feature2, etc. are the names of features to be
 # included in this variant, e.g., MULTI_THREADED, DEBUG. 
 #
-# This macro sets two macros:
+# This macro sets three macros:
 #   
 #   VARIANT_TARGET_NAME: The suffix that should be appended to the
 #   name of the library target to name this variant of the
@@ -234,6 +241,9 @@ endmacro(boost_module)
 #   this library. For example, this might be "-gcc41-mt-1_34" for the
 #   multi-threaded, release variant of the library in Boost 1.34.0 as
 #   compiled with GCC 4.1.
+#
+#   VARIANT_DISPLAY_NAME: The display name that describes this
+#   variant, e.g., "Debug, static, multi-threaded".
 macro(boost_library_variant_target_name)
   set(VARIANT_TARGET_NAME "")
 
@@ -253,9 +263,16 @@ macro(boost_library_variant_target_name)
   list_contains(VARIANT_IS_STATIC STATIC ${ARGN})
   if (VARIANT_IS_STATIC)
     set(VARIANT_TARGET_NAME "${VARIANT_TARGET_NAME}-static")
+    set(VARIANT_DISPLAY_NAME "Static")
   else (VARIANT_IS_STATIC)
     set(VARIANT_TARGET_NAME "${VARIANT_TARGET_NAME}-shared")
+    set(VARIANT_DISPLAY_NAME "Shared")
   endif (VARIANT_IS_STATIC)
+
+  # Add "multi-threaded" to the display name for multithreaded libraries.
+  if (VARIANT_IS_MT)
+    set(VARIANT_DISPLAY_NAME "${VARIANT_DISPLAY_NAME}, multi-threaded")
+  endif ()
 
   # Compute the ABI tag, which depends on various kinds of options
   set(VARIANT_ABI_TAG "")
@@ -265,6 +282,7 @@ macro(boost_library_variant_target_name)
   if (VARIANT_IS_STATIC_RUNTIME)  
     set(VARIANT_TARGET_NAME "${VARIANT_TARGET_NAME}-staticrt")
     set(VARIANT_ABI_TAG "${VARIANT_ABI_TAG}s")
+    set(VARIANT_DISPLAY_NAME "${VARIANT_DISPLAY_NAME}, static runtime")
   endif (VARIANT_IS_STATIC_RUNTIME)
   
   # Using the debug version of the runtime library.
@@ -281,6 +299,7 @@ macro(boost_library_variant_target_name)
   if (VARIANT_IS_PYDEBUG)
     set(VARIANT_TARGET_NAME "${VARIANT_TARGET_NAME}-pydebug")
     set(VARIANT_ABI_TAG "${VARIANT_ABI_TAG}y")
+    set(VARIANT_DISPLAY_NAME "${VARIANT_DISPLAY_NAME}, Python debugging")
   endif (VARIANT_IS_PYDEBUG)
 
   # TODO: STLport rather than default library
@@ -294,7 +313,11 @@ macro(boost_library_variant_target_name)
       set(VARIANT_TARGET_NAME "${VARIANT_TARGET_NAME}-debug")
     endif (BUILD_RELEASE)
     set(VARIANT_ABI_TAG "${VARIANT_ABI_TAG}d")
-  endif (VARIANT_IS_DEBUG)
+
+    set(VARIANT_DISPLAY_NAME "${VARIANT_DISPLAY_NAME}, debug")
+  else()
+    set(VARIANT_DISPLAY_NAME "${VARIANT_DISPLAY_NAME}, release")
+  endif()
 
   # If there is an ABI tag, append it to the versioned name
   if (VARIANT_ABI_TAG)
@@ -417,6 +440,8 @@ macro(boost_library_variant LIBNAME)
     boost_library_variant_target_name(${ARGN})
     set(VARIANT_LIBNAME "${LIBNAME}${VARIANT_TARGET_NAME}")
 
+    message(STATUS "${LIBNAME} library description: ${VARIANT_DISPLAY_NAME}")
+
     # We handle static vs. dynamic libraries differently
     list_contains(THIS_LIB_IS_STATIC "STATIC" ${ARGN})
     if (THIS_LIB_IS_STATIC)
@@ -484,47 +509,43 @@ macro(boost_library_variant LIBNAME)
     target_link_libraries(${VARIANT_LIBNAME} ${THIS_VARIANT_LINK_LIBS})
     foreach(dependency ${THIS_LIB_DEPENDS})
       target_link_libraries(${VARIANT_LIBNAME} "${dependency}${VARIANT_TARGET_NAME}")
-    endforeach(dependency "${THIS_LIB_DEPENDS}")
+    endforeach(dependency)
+
+    # Setup installation properties
+    string(TOUPPER ${VARIANT_LIBNAME} UVARIANT_LIBNAME)
+    string(REPLACE "-" "_" UVARIANT_LIBNAME ${UVARIANT_LIBNAME})
+    set_property(GLOBAL APPEND 
+      PROPERTY CPACK_COMPONENTS_BOOST_ALL 
+      ${UVARIANT_LIBNAME})
+    set_property(GLOBAL 
+      PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_DISPLAY_NAME
+      "${VARIANT_DISPLAY_NAME} library")
+    set_property(GLOBAL
+      PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_GROUP 
+      ${ULIBNAME})
+    set_property(GLOBAL APPEND PROPERTY BOOST_CPACK_EXPORTS 
+      CPACK_COMPONENT_${UVARIANT_LIBNAME}_DISPLAY_NAME
+      CPACK_COMPONENT_${UVARIANT_LIBNAME}_GROUP)
 
     # Installation of this library variant
     string(TOUPPER ${PROJECT_NAME} ULIBNAME)
     install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib
       EXPORT boost-targets
-      COMPONENT ${ULIBNAME}_libraries)
+      COMPONENT ${UVARIANT_LIBNAME})
       
-    # Add the appropriate variables to make this library's binaries a separate component.
-    if (NOT THIS_PROJECT_ADDED_LIBRARIES_COMPONENT)
-      set(THIS_PROJECT_ADDED_LIBRARIES_COMPONENT ON)
-      set(THIS_PROJECT_COMPONENTS ${THIS_PROJECT_COMPONENTS} ${ULIBNAME}_libraries PARENT_SCOPE)
-      set(CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DISPLAY_NAME "Library binaries" PARENT_SCOPE)
-      set(CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_GROUP ${ULIBNAME} PARENT_SCOPE)
-	  
-	  # Make the library installation component dependent on the library installation
-	  # components of dependent libraries.  
-	  foreach(DEP ${${THIS_PROJECT_DEPENDS}})
-        string(TOUPPER ${DEP} UDEP)
-        if(BOOST_${UDEP}_IS_MODULAR)
-          if (THIS_PROJECT_MODULAR AND CPACK_COMPONENT_BOOST_${UDEP}_LIBRARIES_GROUP)
-            # Make this project's libraries depend on DEP's headers
-            list(APPEND CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS ${UDEP}_libraries)
-          endif ()
-        endif()
-      endforeach()
-      if (CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS)
-        set(CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS 
-          ${CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS} PARENT_SCOPE)
-        set(THIS_PROJECT_EXPORT_MACROS ${THIS_PROJECT_EXPORT_MACROS} 
-	      CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DEPENDS
-          CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DISPLAY_NAME
-	      CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_GROUP
-	      PARENT_SCOPE)
-      else()
-        set(THIS_PROJECT_EXPORT_MACROS ${THIS_PROJECT_EXPORT_MACROS} 
-          CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_DISPLAY_NAME
-	      CPACK_COMPONENT_BOOST_${ULIBNAME}_LIBRARIES_GROUP
-	      PARENT_SCOPE)
-      endif()
-	endif()
+    # Make the library installation component dependent on the library
+    # installation components of dependent libraries.
+    foreach(DEP ${THIS_LIB_DEPENDS})
+      string(TOUPPER "${DEP}${VARIANT_TARGET_NAME}" UDEP)
+      string(REPLACE "-" "_" UDEP ${UDEP})
+      set_property(GLOBAL APPEND
+        PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_DEPENDS ${UDEP})
+    endforeach(DEP)
+    if (THIS_LIB_DEPENDS)
+      set_property(GLOBAL APPEND
+        PROPERTY BOOST_CPACK_EXPORTS
+        CPACK_COMPONENT_${UVARIANT_LIBNAME}_DEPENDS)
+    endif ()
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)
 

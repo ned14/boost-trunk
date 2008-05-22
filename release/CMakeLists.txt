@@ -158,11 +158,24 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY "Boost")
 if (CPACK_COMPONENTS_BOOST_ALL)
   list(SORT CPACK_COMPONENTS_BOOST_ALL)
 endif ()
-set(CPACK_COMPONENTS_BOOST_ALL "Core" ${CPACK_COMPONENTS_BOOST_ALL})
 set(CPACK_COMPONENT_BOOST_CORE_REQUIRED ON)
-set(CPACK_COMPONENT_BOOST_CORE_DISPLAY_NAME "Core libraries")
+set(CPACK_COMPONENT_BOOST_CORE_DISPLAY_NAME "Core library headers")
 set(CPACK_COMPONENT_BOOST_CORE_DESCRIPTION 
-  "The headers and core library binaries required to use Boost")
+  "The core headers required to use Boost")
+
+# Set the variable containing the list of all components.
+get_property(CPACK_COMPONENTS_BOOST_ALL 
+  GLOBAL PROPERTY CPACK_COMPONENTS_BOOST_ALL)
+set(CPACK_COMPONENTS_BOOST_ALL "Core" ${CPACK_COMPONENTS_BOOST_ALL})
+
+# Set the variable containing the list of all components.
+get_property(CPACK_COMPONENT_GROUPS_BOOST_ALL 
+  GLOBAL PROPERTY CPACK_COMPONENT_GROUPS_BOOST_ALL)
+
+get_property(BOOST_CPACK_EXPORTS GLOBAL PROPERTY BOOST_CPACK_EXPORTS)
+foreach(MACRO ${BOOST_CPACK_EXPORTS})
+  get_property(${MACRO} GLOBAL PROPERTY ${MACRO})
+endforeach()
 
 if(WIN32 AND NOT UNIX)
   # There is a bug in NSI that does not handle full unix paths properly. Make

@@ -36,12 +36,3 @@ set(CPACK_INSTALL_CMAKE_COMPONENTS_ALL)
 list(SORT BOOST_SUBPROJECT_DIRS)
 topological_sort(BOOST_SUBPROJECT_DIRS BOOST_ _DEPENDS)
 add_subdirectories(" + " ${BOOST_SUBPROJECT_DIRS})
-
-# Export the list of components to be installed
-set(CPACK_COMPONENTS_BOOST_ALL ${CPACK_COMPONENTS_BOOST_ALL} PARENT_SCOPE)
-set(CPACK_COMPONENT_GROUPS_BOOST_ALL ${CPACK_COMPONENT_GROUPS_BOOST_ALL} PARENT_SCOPE)
-
-# Export all of the variables that have been marked as "to be exported"
-foreach(MACRO ${BOOST_EXPORT_MACROS})
-  set(${MACRO} ${${MACRO}} PARENT_SCOPE)
-endforeach()
