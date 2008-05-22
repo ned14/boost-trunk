@@ -154,8 +154,45 @@ macro(boost_library_project LIBNAME)
 	CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP)
     endif (THIS_PROJECT_MODULAR)
 
+	if(THIS_PROJECT_SRCDIRS)
+	  # Add an installation target for the sources of this library.
+	  set_property(GLOBAL APPEND
+		PROPERTY CPACK_COMPONENTS_BOOST_ALL 
+		${ULIBNAME}_SOURCES)
+	  set_property(GLOBAL
+	    PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_DISPLAY_NAME
+	    "Source files")
+	  set_property(GLOBAL 
+	    PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_GROUP 
+	    ${ULIBNAME})
+      set_property(GLOBAL APPEND
+        PROPERTY BOOST_CPACK_EXPORTS 
+		CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_DISPLAY_NAME
+		CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_GROUP)	 
+
+      # If this is a modular library, the sources depend on the headers
+      if (THIS_PROJECT_MODULAR)
+        set_property(GLOBAL
+		  PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_DEPENDS 
+		  ${ULIBNAME}_HEADERS)
+        set_property(GLOBAL APPEND
+          PROPERTY BOOST_CPACK_EXPORTS
+          CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_DEPENDS) 
+      endif ()
+		
+	  # Add all of the source files as an installation target  
+      foreach(SUBDIR ${THIS_PROJECT_SRCDIRS})
+        install(DIRECTORY ${SUBDIR} 
+          DESTINATION src/${LIBNAME}
+          COMPONENT ${ULIBNAME}_SOURCES
+          PATTERN "CVS" EXCLUDE
+          REGEX ".svn" EXCLUDE)  
+      endforeach()
+	endif()
+	
     # For each of the modular libraries on which this project depends,
     # add the include path for that library.
+    set(THIS_PROJECT_HAS_HEADER_DEPENDS FALSE)
     foreach(DEP ${${THIS_PROJECT_DEPENDS}})
       string(TOUPPER ${DEP} UDEP)
       string(TOUPPER "BOOST_${DEP}_IS_MODULAR" BOOST_LIB_DEP_MODULAR)
@@ -170,7 +207,7 @@ macro(boost_library_project LIBNAME)
         endif ()
       endif()
     endforeach(DEP)
-    if (${THIS_PROJECT_HAS_HEADER_DEPENDS})
+    if (THIS_PROJECT_HAS_HEADER_DEPENDS)
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS
         CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS)
@@ -440,8 +477,6 @@ macro(boost_library_variant LIBNAME)
     boost_library_variant_target_name(${ARGN})
     set(VARIANT_LIBNAME "${LIBNAME}${VARIANT_TARGET_NAME}")
 
-    message(STATUS "${LIBNAME} library description: ${VARIANT_DISPLAY_NAME}")
-
     # We handle static vs. dynamic libraries differently
     list_contains(THIS_LIB_IS_STATIC "STATIC" ${ARGN})
     if (THIS_LIB_IS_STATIC)
@@ -518,14 +553,14 @@ macro(boost_library_variant LIBNAME)
       PROPERTY CPACK_COMPONENTS_BOOST_ALL 
       ${UVARIANT_LIBNAME})
     set_property(GLOBAL 
-      PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_DISPLAY_NAME
+      PROPERTY CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_DISPLAY_NAME
       "${VARIANT_DISPLAY_NAME} library")
     set_property(GLOBAL
-      PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_GROUP 
+      PROPERTY CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_GROUP 
       ${ULIBNAME})
     set_property(GLOBAL APPEND PROPERTY BOOST_CPACK_EXPORTS 
-      CPACK_COMPONENT_${UVARIANT_LIBNAME}_DISPLAY_NAME
-      CPACK_COMPONENT_${UVARIANT_LIBNAME}_GROUP)
+      CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_DISPLAY_NAME
+      CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_GROUP)
 
     # Installation of this library variant
     string(TOUPPER ${PROJECT_NAME} ULIBNAME)
@@ -539,12 +574,12 @@ macro(boost_library_variant LIBNAME)
       string(TOUPPER "${DEP}${VARIANT_TARGET_NAME}" UDEP)
       string(REPLACE "-" "_" UDEP ${UDEP})
       set_property(GLOBAL APPEND
-        PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_DEPENDS ${UDEP})
+        PROPERTY CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_DEPENDS ${UDEP})
     endforeach(DEP)
     if (THIS_LIB_DEPENDS)
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS
-        CPACK_COMPONENT_${UVARIANT_LIBNAME}_DEPENDS)
+        CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_DEPENDS)
     endif ()
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)

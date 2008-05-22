@@ -155,13 +155,8 @@ set(CPACK_PACKAGE_VERSION_PATCH "${BOOST_VERSION_SUBMINOR}")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "Boost")
 
 # Setup "core" component
-if (CPACK_COMPONENTS_BOOST_ALL)
-  list(SORT CPACK_COMPONENTS_BOOST_ALL)
-endif ()
 set(CPACK_COMPONENT_BOOST_CORE_REQUIRED ON)
 set(CPACK_COMPONENT_BOOST_CORE_DISPLAY_NAME "Core library headers")
-set(CPACK_COMPONENT_BOOST_CORE_DESCRIPTION 
-  "The core headers required to use Boost")
 
 # Set the variable containing the list of all components.
 get_property(CPACK_COMPONENTS_BOOST_ALL 
