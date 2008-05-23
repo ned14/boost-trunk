@@ -11715,6 +11715,7 @@ libs/logic/test/tribool_rename_test.cpp svneol=native#text/plain
 libs/logic/test/tribool_test.cpp svneol=native#text/plain
 libs/maintainers.txt svneol=native#text/plain
 libs/math/build/Jamfile.v2 svneol=native#text/plain
+libs/math/build/has_long_double_support.cpp svneol=native#text/plain
 libs/math/doc/Jamfile.v2 svneol=native#text/plain
 libs/math/doc/common_factor.html svneol=native#text/html
 libs/math/doc/complex/Jamfile.v2 svneol=native#text/plain
