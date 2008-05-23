@@ -32,7 +32,7 @@ project(Boost)
 ##########################################################################
 set(BOOST_VERSION_MAJOR 1)
 set(BOOST_VERSION_MINOR 35)
-set(BOOST_VERSION_SUBMINOR 0)
+set(BOOST_VERSION_SUBMINOR 1)
 set(BOOST_VERSION "${BOOST_VERSION_MAJOR}.${BOOST_VERSION_MINOR}.${BOOST_VERSION_SUBMINOR}")
 ##########################################################################
 
@@ -50,12 +50,20 @@ include(BoostTesting)
 # Build Features and Variants                                            #
 ##########################################################################
 
+# Determine default settings for the variable BUILD_feature options
+if (MSVC)
+  set(BUILD_SINGLE_THREADED_DEFAULT OFF)
+else ()
+  set(BUILD_SINGLE_THREADED_DEFAULT ON)
+endif ()
+
 # User-level options deciding which variants we will build. 
 option(BUILD_STATIC "Whether to build static libraries" ON)
 option(BUILD_SHARED "Whether to build shared libraries" ON)
 option(BUILD_DEBUG "Whether to build debugging libraries" ON)
 option(BUILD_RELEASE "Whether to build release libraries" ON)
-option(BUILD_SINGLE_THREADED "Whether to build single-threaded libraries" ON)
+option(BUILD_SINGLE_THREADED "Whether to build single-threaded libraries" 
+       ${BUILD_SINGLE_THREADED_DEFAULT})
 option(BUILD_MULTI_THREADED "Whether to build multi-threaded libraries" ON)
 
 # For now, we only actually support static/dynamic run-time variants for 
@@ -72,11 +80,7 @@ endif(MSVC)
 # The default set of library variants that we will be building
 boost_add_default_variant(RELEASE DEBUG)
 boost_add_default_variant(STATIC SHARED)
-if(MSVC)
-  boost_add_default_variant(MULTI_THREADED)
-else(MSVC)
-  boost_add_default_variant(SINGLE_THREADED MULTI_THREADED)
-endif(MSVC)
+boost_add_default_variant(SINGLE_THREADED MULTI_THREADED)
 boost_add_default_variant(DYNAMIC_RUNTIME STATIC_RUNTIME)
 
 # Extra features used by some libraries
