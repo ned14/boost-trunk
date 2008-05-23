@@ -1796,6 +1796,7 @@ boost/interprocess/detail/config_end.hpp svneol=native#text/plain
 boost/interprocess/detail/file_wrapper.hpp svneol=native#text/plain
 boost/interprocess/detail/in_place_interface.hpp svneol=native#text/plain
 boost/interprocess/detail/interprocess_tester.hpp svneol=native#text/plain
+boost/interprocess/detail/intersegment_ptr.hpp svneol=native#text/plain
 boost/interprocess/detail/iterators.hpp svneol=native#text/plain
 boost/interprocess/detail/managed_memory_impl.hpp svneol=native#text/plain
 boost/interprocess/detail/managed_open_or_create_impl.hpp svneol=native#text/plain
