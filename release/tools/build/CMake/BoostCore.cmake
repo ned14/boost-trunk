@@ -124,18 +124,15 @@ macro(boost_library_project LIBNAME)
       set_property(GLOBAL APPEND 
         PROPERTY CPACK_COMPONENT_GROUPS_ALL 
         ${ULIBNAME})
-      set_property(GLOBAL
-        PROPERTY CPACK_COMPONENT_GROUP_${ULIBNAME}_DISPLAY_NAME 
+      boost_set_cpack_variable(
+        CPACK_COMPONENT_GROUP_${ULIBNAME}_DISPLAY_NAME 
         ${LIBNAME})
-      set_property(GLOBAL APPEND
-        PROPERTY BOOST_CPACK_EXPORTS 
-        CPACK_COMPONENT_GROUP_${ULIBNAME}_DISPLAY_NAME)
         
       if (THIS_PROJECT_DESCRIPTION)
         set(THIS_PROJECT_DESCRIPTION "Boost.${LIBNAME}\n\n${THIS_PROJECT_DESCRIPTION}")
         
         if (THIS_PROJECT_AUTHORS)
-          list(LENGTH ${THIS_PROJECT_AUTHORS} THIS_PROJECT_NUM_AUTHORS)
+          list(LENGTH THIS_PROJECT_AUTHORS THIS_PROJECT_NUM_AUTHORS)
           if (THIS_PROJECT_NUM_AUTHORS EQUAL 1)
             set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthor: ")
           else()
@@ -154,7 +151,7 @@ macro(boost_library_project LIBNAME)
         endif (THIS_PROJECT_AUTHORS)
 
         if (THIS_PROJECT_MAINTAINERS)
-          list(LENGTH ${THIS_PROJECT_MAINTAINERS} THIS_PROJECT_NUM_MAINTAINERS)
+          list(LENGTH THIS_PROJECT_MAINTAINERS THIS_PROJECT_NUM_MAINTAINERS)
           if (THIS_PROJECT_NUM_MAINTAINERS EQUAL 1)
             set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainer: ")
           else()
@@ -200,16 +197,12 @@ macro(boost_library_project LIBNAME)
       set_property(GLOBAL APPEND 
         PROPERTY CPACK_COMPONENTS_ALL 
         ${ULIBNAME}_HEADERS)
-      set_property(GLOBAL 
-        PROPERTY CPACK_COMPONENT_${ULIBNAME}_HEADERS_DISPLAY_NAME 
+      boost_set_cpack_variable(
+        CPACK_COMPONENT_${ULIBNAME}_HEADERS_DISPLAY_NAME 
         "Header files")
-      set_property(GLOBAL
-        PROPERTY CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP 
+      boost_set_cpack_variable(
+        CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP 
         ${ULIBNAME})
-      set_property(GLOBAL APPEND
-        PROPERTY BOOST_CPACK_EXPORTS
-	CPACK_COMPONENT_${ULIBNAME}_HEADERS_DISPLAY_NAME
-	CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP)
     endif (THIS_PROJECT_MODULAR)
 
 	if(THIS_PROJECT_SRCDIRS)
@@ -217,25 +210,18 @@ macro(boost_library_project LIBNAME)
 	  set_property(GLOBAL APPEND
 		PROPERTY CPACK_COMPONENTS_ALL 
 		${ULIBNAME}_SOURCES)
-	  set_property(GLOBAL
-	    PROPERTY CPACK_COMPONENT_${ULIBNAME}_SOURCES_DISPLAY_NAME
+	  boost_set_cpack_variable(
+	    CPACK_COMPONENT_${ULIBNAME}_SOURCES_DISPLAY_NAME
 	    "Source files")
-	  set_property(GLOBAL 
-	    PROPERTY CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP 
+	  boost_set_cpack_variable(
+	    CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP 
 	    ${ULIBNAME})
-      set_property(GLOBAL APPEND
-        PROPERTY BOOST_CPACK_EXPORTS 
-		CPACK_COMPONENT_${ULIBNAME}_SOURCES_DISPLAY_NAME
-		CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP)	 
 
       # If this is a modular library, the sources depend on the headers
       if (THIS_PROJECT_MODULAR)
-        set_property(GLOBAL
-		  PROPERTY CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS 
-		  ${ULIBNAME}_HEADERS)
-        set_property(GLOBAL APPEND
-          PROPERTY BOOST_CPACK_EXPORTS
-          CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS) 
+        boost_set_cpack_variable(
+		  CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS 
+		  ${ULIBNAME}_HEADERS) 
       endif ()
 		
 	  # Add all of the source files as an installation target  
@@ -605,39 +591,65 @@ macro(boost_library_variant LIBNAME)
     endforeach(dependency)
 
     # Setup installation properties
-    string(TOUPPER ${VARIANT_LIBNAME} UVARIANT_LIBNAME)
-    string(REPLACE "-" "_" UVARIANT_LIBNAME ${UVARIANT_LIBNAME})
-    set_property(GLOBAL APPEND 
-      PROPERTY CPACK_COMPONENTS_ALL 
-      ${UVARIANT_LIBNAME})
-    set_property(GLOBAL 
-      PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_DISPLAY_NAME
-      "${VARIANT_DISPLAY_NAME} library")
-    set_property(GLOBAL
-      PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_GROUP 
-      ${ULIBNAME})
-    set_property(GLOBAL APPEND PROPERTY BOOST_CPACK_EXPORTS 
-      CPACK_COMPONENT_${UVARIANT_LIBNAME}_DISPLAY_NAME
-      CPACK_COMPONENT_${UVARIANT_LIBNAME}_GROUP)
-
+    string(TOUPPER "${PROJECT_NAME}${VARIANT_TARGET_NAME}" LIB_COMPONENT)
+    string(REPLACE "-" "_" LIB_COMPONENT ${LIB_COMPONENT})
+    get_property(LIB_COMPONENT_EXISTS
+      GLOBAL PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME SET)
+    if (LIB_COMPONENT_EXISTS)
+      # There is more than one library binary associated with this
+      # installation component (e.g., both boost_serialization and 
+      # boost_wserialization library binaries), so update the
+      # display name of the installation component to the plural
+      # "libraries".
+      set_property(GLOBAL
+        PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME
+        "${VARIANT_DISPLAY_NAME} libraries")
+    else()
+      set_property(GLOBAL APPEND 
+        PROPERTY CPACK_COMPONENTS_ALL 
+        ${LIB_COMPONENT})
+      boost_set_cpack_variable(
+        CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME
+        "${VARIANT_DISPLAY_NAME} library")
+      boost_set_cpack_variable(
+        CPACK_COMPONENT_${LIB_COMPONENT}_GROUP 
+        ${ULIBNAME})
+    endif()
+    
     # Installation of this library variant
     string(TOUPPER ${PROJECT_NAME} ULIBNAME)
     install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib
       EXPORT boost-targets
-      COMPONENT ${UVARIANT_LIBNAME})
+      COMPONENT ${LIB_COMPONENT})
+    set_property( 
+      TARGET ${VARIANT_LIBNAME}
+      PROPERTY BOOST_CPACK_COMPONENT
+      ${LIB_COMPONENT})
       
     # Make the library installation component dependent on the library
     # installation components of dependent libraries.
     foreach(DEP ${THIS_LIB_DEPENDS})
-      string(TOUPPER "${DEP}${VARIANT_TARGET_NAME}" UDEP)
-      string(REPLACE "-" "_" UDEP ${UDEP})
-      set_property(GLOBAL APPEND
-        PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_DEPENDS ${UDEP})
+      # We ask the library variant that this library depends on to tell us
+      # what it's associated installation component is. We depend on that 
+      # installation component.
+      get_property(DEP_COMPONENT 
+        TARGET "${DEP}${VARIANT_TARGET_NAME}"
+        PROPERTY BOOST_CPACK_COMPONENT)
+        
+      if (DEP_COMPONENT)
+        if (DEP_COMPONENT STREQUAL LIB_COMPONENT)
+          # Do nothing: we have library dependencies within one 
+          # Boost library
+        else()
+          set_property(GLOBAL APPEND
+          PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DEPENDS ${DEP_COMPONENT})
+        endif()
+      endif()
     endforeach(DEP)
     if (THIS_LIB_DEPENDS)
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS
-        CPACK_COMPONENT_${UVARIANT_LIBNAME}_DEPENDS)
+        CPACK_COMPONENT_${LIB_COMPONENT}_DEPENDS)
     endif ()
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)
@@ -1246,7 +1258,7 @@ macro(boost_add_executable EXENAME)
   endif (THIS_EXE_OKAY)
 endmacro(boost_add_executable)
 
-# Sets the CPack variant named PROP to the given values, and ensures
+# Sets the CPack variable named PROP to the given values, and ensures
 # that CPack will see the variable.
 #
 #   boost_set_cpack_variable(PROP
@@ -1258,16 +1270,21 @@ endmacro(boost_add_executable)
 #   boost_set_cpack_variable(CPACK_COMPONENT_GRAPH_HEADERS_DISPLAY_NAME 
 #     "Graph headers")
 macro(boost_set_cpack_variable PROP)
+  get_property(BOOST_CPACK_VAR_HAS_VALUE
+    GLOBAL PROPERTY ${PROP} SET)
+
+  if (NOT BOOST_CPACK_VAR_HAS_VALUE)
   set(BOOST_CPACK_VAR_HAS_ARGS FALSE)
-  foreach (ARG ${ARGN})
-    set_property(GLOBAL APPEND
-      PROPERTY ${PROP}
-      ${ARG})
-    set(BOOST_CPACK_VAR_HAS_ARGS TRUE)
-  endforeach(ARG)
-  if (BOOST_CPACK_VAR_HAS_ARGS)
-    set_property(GLOBAL APPEND
-      PROPERTY BOOST_CPACK_EXPORTS
-      ${PROP})
+    foreach (ARG ${ARGN})
+      set_property(GLOBAL APPEND
+        PROPERTY ${PROP}
+        ${ARG})
+      set(BOOST_CPACK_VAR_HAS_ARGS TRUE)
+    endforeach(ARG)
+    if (BOOST_CPACK_VAR_HAS_ARGS)
+      set_property(GLOBAL APPEND
+        PROPERTY BOOST_CPACK_EXPORTS
+        ${PROP})
+    endif ()
   endif ()
 endmacro(boost_set_cpack_variable)
