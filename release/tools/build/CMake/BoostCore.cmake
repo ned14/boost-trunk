@@ -25,6 +25,9 @@
 #                         [SRCDIRS srcdir1 srcdir2 ...] 
 #                         [TESTDIRS testdir1 testdir2 ...]
 #                         [DEPENDS lib1 lib2 ...]
+#                         [DESCRIPTION description]
+#                         [AUTHORS author1 author2 ...]
+#                         [MAINTAINERS maint1 maint2 ...]
 #                         [MODULAR])
 #
 # where libname is the name of the library (e.g., Python, or
@@ -34,13 +37,22 @@
 # containing regression tests. DEPENDS lists the names of the other
 # Boost libraries that this library depends on. If the dependencies
 # are not satisfied (e.g., because the library isn't present or its
-# build is turned off), this library won't be built.
+# build is turned off), this library won't be built. 
 #
 # A library marked MODULAR has all of its header files in its own
 # subdirectory include/boost rather than the "global" boost
 # subdirectory. These libraries can be added or removed from the tree
 # freely; they do not need to be a part of the main repository.
 # 
+# DESCRIPTION provides a brief description of the library, which can
+# be used to summarize the behavior of the library for a user. AUTHORS
+# lists the authors of the library, while MAINTAINERS lists the active
+# maintainers. If MAINTAINERS is left empty, it is assumed that the 
+# authors are still maintaining the library. Both authors and maintainers
+# should have their name followed by their current e-mail address in
+# angle brackets, with -at- instead of the at sign, e.g.,
+#   Douglas Gregor <doug.gregor -at- gmail.com>
+#
 # For libraries that build actual library binaries, this macro adds a
 # option BUILD_BOOST_LIBNAME (which defaults to ON). When the option
 # is ON, this macro will include the source subdirectories, and
@@ -60,7 +72,7 @@
 #     )
 macro(boost_library_project LIBNAME)
   parse_arguments(THIS_PROJECT
-    "SRCDIRS;TESTDIRS"
+    "SRCDIRS;TESTDIRS;DESCRIPTION;AUTHORS;MAINTAINERS"
     "MODULAR"
     ${ARGN}
     )
@@ -110,14 +122,60 @@ macro(boost_library_project LIBNAME)
     if(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
       # Add this library to the list of library components to install
       set_property(GLOBAL APPEND 
-        PROPERTY CPACK_COMPONENT_GROUPS_BOOST_ALL 
+        PROPERTY CPACK_COMPONENT_GROUPS_ALL 
         ${ULIBNAME})
       set_property(GLOBAL
-        PROPERTY CPACK_COMPONENT_GROUP_BOOST_${ULIBNAME}_DISPLAY_NAME 
+        PROPERTY CPACK_COMPONENT_GROUP_${ULIBNAME}_DISPLAY_NAME 
         ${LIBNAME})
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS 
-        CPACK_COMPONENT_GROUP_BOOST_${ULIBNAME}_DISPLAY_NAME)
+        CPACK_COMPONENT_GROUP_${ULIBNAME}_DISPLAY_NAME)
+        
+      if (THIS_PROJECT_DESCRIPTION)
+        set(THIS_PROJECT_DESCRIPTION "Boost.${LIBNAME}\n\n${THIS_PROJECT_DESCRIPTION}")
+        
+        if (THIS_PROJECT_AUTHORS)
+          list(LENGTH ${THIS_PROJECT_AUTHORS} THIS_PROJECT_NUM_AUTHORS)
+          if (THIS_PROJECT_NUM_AUTHORS EQUAL 1)
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthor: ")
+          else()
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthors: ")
+          endif()
+          set(THIS_PROJECT_FIRST_AUTHOR TRUE)
+          foreach(AUTHOR ${THIS_PROJECT_AUTHORS})
+            string(REGEX REPLACE " *-at- *" "@" AUTHOR ${AUTHOR})
+            if (THIS_PROJECT_FIRST_AUTHOR)
+              set(THIS_PROJECT_FIRST_AUTHOR FALSE)
+            else()
+              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n         ")
+            endif()
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${AUTHOR}")
+          endforeach(AUTHOR)
+        endif (THIS_PROJECT_AUTHORS)
+
+        if (THIS_PROJECT_MAINTAINERS)
+          list(LENGTH ${THIS_PROJECT_MAINTAINERS} THIS_PROJECT_NUM_MAINTAINERS)
+          if (THIS_PROJECT_NUM_MAINTAINERS EQUAL 1)
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainer: ")
+          else()
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainers: ")
+          endif()
+          set(THIS_PROJECT_FIRST_MAINTAINER TRUE)
+          foreach(MAINTAINER ${THIS_PROJECT_MAINTAINERS})
+            string(REGEX REPLACE " *-at- *" "@" MAINTAINER ${MAINTAINER})
+            if (THIS_PROJECT_FIRST_MAINTAINER)
+              set(THIS_PROJECT_FIRST_MAINTAINER FALSE)
+            else()
+              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n             ")
+            endif()
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${MAINTAINER}")
+          endforeach(MAINTAINER)
+        endif (THIS_PROJECT_MAINTAINERS)
+        
+        boost_set_cpack_variable(
+          CPACK_COMPONENT_GROUP_${ULIBNAME}_DESCRIPTION
+          "${THIS_PROJECT_DESCRIPTION}")
+      endif (THIS_PROJECT_DESCRIPTION)
     endif(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
     
     if(THIS_PROJECT_MODULAR)
@@ -140,44 +198,44 @@ macro(boost_library_project LIBNAME)
       # Add the appropriate variables to make this library's headers a
       # separate component.
       set_property(GLOBAL APPEND 
-        PROPERTY CPACK_COMPONENTS_BOOST_ALL 
+        PROPERTY CPACK_COMPONENTS_ALL 
         ${ULIBNAME}_HEADERS)
       set_property(GLOBAL 
-        PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME 
+        PROPERTY CPACK_COMPONENT_${ULIBNAME}_HEADERS_DISPLAY_NAME 
         "Header files")
       set_property(GLOBAL
-        PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP 
+        PROPERTY CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP 
         ${ULIBNAME})
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS
-	CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DISPLAY_NAME
-	CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_GROUP)
+	CPACK_COMPONENT_${ULIBNAME}_HEADERS_DISPLAY_NAME
+	CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP)
     endif (THIS_PROJECT_MODULAR)
 
 	if(THIS_PROJECT_SRCDIRS)
 	  # Add an installation target for the sources of this library.
 	  set_property(GLOBAL APPEND
-		PROPERTY CPACK_COMPONENTS_BOOST_ALL 
+		PROPERTY CPACK_COMPONENTS_ALL 
 		${ULIBNAME}_SOURCES)
 	  set_property(GLOBAL
-	    PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_DISPLAY_NAME
+	    PROPERTY CPACK_COMPONENT_${ULIBNAME}_SOURCES_DISPLAY_NAME
 	    "Source files")
 	  set_property(GLOBAL 
-	    PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_GROUP 
+	    PROPERTY CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP 
 	    ${ULIBNAME})
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS 
-		CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_DISPLAY_NAME
-		CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_GROUP)	 
+		CPACK_COMPONENT_${ULIBNAME}_SOURCES_DISPLAY_NAME
+		CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP)	 
 
       # If this is a modular library, the sources depend on the headers
       if (THIS_PROJECT_MODULAR)
         set_property(GLOBAL
-		  PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_DEPENDS 
+		  PROPERTY CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS 
 		  ${ULIBNAME}_HEADERS)
         set_property(GLOBAL APPEND
           PROPERTY BOOST_CPACK_EXPORTS
-          CPACK_COMPONENT_BOOST_${ULIBNAME}_SOURCES_DEPENDS) 
+          CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS) 
       endif ()
 		
 	  # Add all of the source files as an installation target  
@@ -201,7 +259,7 @@ macro(boost_library_project LIBNAME)
         if (THIS_PROJECT_MODULAR)
           # Make this project's headers depend on DEP's headers
           set_property(GLOBAL APPEND
-            PROPERTY CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS 
+            PROPERTY CPACK_COMPONENT_${ULIBNAME}_HEADERS_DEPENDS 
             ${UDEP}_HEADERS)
           set(THIS_PROJECT_HAS_HEADER_DEPENDS TRUE)
         endif ()
@@ -210,7 +268,7 @@ macro(boost_library_project LIBNAME)
     if (THIS_PROJECT_HAS_HEADER_DEPENDS)
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS
-        CPACK_COMPONENT_BOOST_${ULIBNAME}_HEADERS_DEPENDS)
+        CPACK_COMPONENT_${ULIBNAME}_HEADERS_DEPENDS)
     endif ()
 
     if(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/tests)
@@ -550,17 +608,17 @@ macro(boost_library_variant LIBNAME)
     string(TOUPPER ${VARIANT_LIBNAME} UVARIANT_LIBNAME)
     string(REPLACE "-" "_" UVARIANT_LIBNAME ${UVARIANT_LIBNAME})
     set_property(GLOBAL APPEND 
-      PROPERTY CPACK_COMPONENTS_BOOST_ALL 
+      PROPERTY CPACK_COMPONENTS_ALL 
       ${UVARIANT_LIBNAME})
     set_property(GLOBAL 
-      PROPERTY CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_DISPLAY_NAME
+      PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_DISPLAY_NAME
       "${VARIANT_DISPLAY_NAME} library")
     set_property(GLOBAL
-      PROPERTY CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_GROUP 
+      PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_GROUP 
       ${ULIBNAME})
     set_property(GLOBAL APPEND PROPERTY BOOST_CPACK_EXPORTS 
-      CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_DISPLAY_NAME
-      CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_GROUP)
+      CPACK_COMPONENT_${UVARIANT_LIBNAME}_DISPLAY_NAME
+      CPACK_COMPONENT_${UVARIANT_LIBNAME}_GROUP)
 
     # Installation of this library variant
     string(TOUPPER ${PROJECT_NAME} ULIBNAME)
@@ -574,12 +632,12 @@ macro(boost_library_variant LIBNAME)
       string(TOUPPER "${DEP}${VARIANT_TARGET_NAME}" UDEP)
       string(REPLACE "-" "_" UDEP ${UDEP})
       set_property(GLOBAL APPEND
-        PROPERTY CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_DEPENDS ${UDEP})
+        PROPERTY CPACK_COMPONENT_${UVARIANT_LIBNAME}_DEPENDS ${UDEP})
     endforeach(DEP)
     if (THIS_LIB_DEPENDS)
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS
-        CPACK_COMPONENT_BOOST_${UVARIANT_LIBNAME}_DEPENDS)
+        CPACK_COMPONENT_${UVARIANT_LIBNAME}_DEPENDS)
     endif ()
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)
@@ -1187,3 +1245,29 @@ macro(boost_add_executable EXENAME)
     endif (NOT THIS_EXE_NO_INSTALL)
   endif (THIS_EXE_OKAY)
 endmacro(boost_add_executable)
+
+# Sets the CPack variant named PROP to the given values, and ensures
+# that CPack will see the variable.
+#
+#   boost_set_cpack_variable(PROP
+#     value1 value2 ...)
+#
+# If no values are provided the variable will not be set.
+#
+# Example: 
+#   boost_set_cpack_variable(CPACK_COMPONENT_GRAPH_HEADERS_DISPLAY_NAME 
+#     "Graph headers")
+macro(boost_set_cpack_variable PROP)
+  set(BOOST_CPACK_VAR_HAS_ARGS FALSE)
+  foreach (ARG ${ARGN})
+    set_property(GLOBAL APPEND
+      PROPERTY ${PROP}
+      ${ARG})
+    set(BOOST_CPACK_VAR_HAS_ARGS TRUE)
+  endforeach(ARG)
+  if (BOOST_CPACK_VAR_HAS_ARGS)
+    set_property(GLOBAL APPEND
+      PROPERTY BOOST_CPACK_EXPORTS
+      ${PROP})
+  endif ()
+endmacro(boost_set_cpack_variable)
