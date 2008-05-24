@@ -72,7 +72,7 @@
 #     )
 macro(boost_library_project LIBNAME)
   parse_arguments(THIS_PROJECT
-    "SRCDIRS;TESTDIRS;DESCRIPTION;AUTHORS;MAINTAINERS"
+    "SRCDIRS;TESTDIRS;DOCDIRS;DESCRIPTION;AUTHORS;MAINTAINERS"
     "MODULAR"
     ${ARGN}
     )
@@ -285,6 +285,12 @@ macro(boost_library_project LIBNAME)
         endforeach(SUBDIR ${THIS_PROJECT_TESTDIRS})
       endif(${BOOST_TEST_LIB_OPTION})
     endif(BUILD_TESTING AND THIS_PROJECT_TESTDIRS)
+
+    if (BUILD_DOCUMENTATION AND THIS_PROJECT_DOCDIRS)
+      foreach(SUBDIR ${THIS_PROJECT_DOCDIRS})
+        add_subdirectory(${SUBDIR})
+      endforeach(SUBDIR)
+    endif ()
   endif(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
 endmacro(boost_library_project)
 

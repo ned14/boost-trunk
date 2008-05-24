@@ -43,6 +43,7 @@ list(APPEND CMAKE_MODULE_PATH ${Boost_SOURCE_DIR}/tools/build/CMake)
 include(BoostUtils)
 include(BoostConfig)
 include(BoostCore)
+include(BoostDocs)
 include(BoostTesting)
 ##########################################################################
 
