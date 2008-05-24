@@ -83,8 +83,6 @@ macro(xsl_transform OUTPUT INPUT STYLESHEET)
         DEPENDS ${OUTPUT})
     endif()
   endif()
-
-  # set_source_files_properties(${OUTPUT} PROPERTIES GENERATED TRUE)
 endmacro(xsl_transform)
 
 macro(boost_add_documentation SOURCE)
@@ -269,3 +267,22 @@ if (XSLTPROC)
 endif()
 
 
+if (BUILD_DOCUMENTATION)
+  set(BUILD_DOCUMENTATION_OKAY TRUE)
+  if (NOT XSLTPROC)
+    set(BUILD_DOCUMENTATION_OKAY FALSE)
+  elseif (NOT DOCBOOK_DTD_DIR)
+    set(BUILD_DOCUMENTATION_OKAY FALSE)
+  elseif (NOT DOCBOOK_XSL_DIR)
+    set(BUILD_DOCUMENTATION_OKAY FALSE)
+  else()
+    set(BUILD_DOCUMENTATION_OKAY TRUE)
+  endif()
+
+  if (NOT BUILD_DOCUMENTATION_OKAY)
+    if (BUILD_DOCUMENTATION)
+      set(BUILD_DOCUMENTATION OFF CACHE BOOL 
+        "Whether to build library documentation" FORCE)
+    endif()
+  endif()
+endif()
