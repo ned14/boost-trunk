@@ -24652,6 +24652,7 @@ release/libs/format/test/format_test2.cpp svneol=native#text/plain
 release/libs/format/test/format_test3.cpp svneol=native#text/plain
 release/libs/format/test/format_test_wstring.cpp svneol=native#text/plain
 release/libs/function/CMakeLists.txt svneol=native#text/plain
+release/libs/function/doc/CMakeLists.txt svneol=native#text/plain
 release/libs/function/doc/Jamfile.v2 svneol=native#text/plain
 release/libs/function/doc/faq.xml svneol=native#text/xml
 release/libs/function/doc/function.xml svneol=native#text/xml

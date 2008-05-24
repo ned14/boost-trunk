@@ -1,0 +1,1 @@
+boost_add_documentation(function.xml)
