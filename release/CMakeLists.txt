@@ -135,6 +135,9 @@ SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 # TODO: See if we can actually use auto-linking in our regression tests.
 add_definitions(-DBOOST_ALL_NO_LIB=1)
 
+# Add build rules for documentation
+add_subdirectory(doc)
+
 # Add build rules for all of the Boost libraries
 add_subdirectory(libs)
 

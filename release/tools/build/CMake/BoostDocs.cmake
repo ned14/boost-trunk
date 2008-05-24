@@ -17,6 +17,7 @@
 #                 [DEPENDS depend1 depend2 ...]
 #                 [CATALOG catalog]
 #                 [DIRECTORY]
+#                 [PARAMETERS param1=value1 param2=value2 ...]
 #                 [[MAKE_ALL_TARGET | MAKE_TARGET] target])
 #
 # This macro builds a custom command that transforms an XML file
@@ -31,6 +32,9 @@
 # catalog file, specify the name of the XML catalog file via the
 # CATALOG argument. It will be provided to the XSL transform.
 #
+# The PARAMETERS argument is followed by param=value pairs that set
+# additional parameters to the XSL stylesheet.
+#
 # To associate a target name with the result of the XSL
 # transformation, use the MAKE_TARGET or MAKE_ALL_TARGET option and
 # provide the name of the target. The MAKE_ALL_TARGET option only
@@ -39,7 +43,7 @@
 # name is required the DIRECTORY option is specified.
 macro(xsl_transform OUTPUT INPUT STYLESHEET)
   parse_arguments(THIS_XSL
-    "DEPENDS;CATALOG;MAKE_ALL_TARGET;MAKE_TARGET"
+    "DEPENDS;CATALOG;MAKE_ALL_TARGET;MAKE_TARGET;PARAMETERS"
     "DIRECTORY"
     ${ARGN}
     )
@@ -48,18 +52,28 @@ macro(xsl_transform OUTPUT INPUT STYLESHEET)
     set(THIS_XSL_CATALOG "XML_CATALOG_FILES=${THIS_XSL_CATALOG}")
   endif ()
 
+  set(THIS_XSL_EXTRA_FLAGS)
+  foreach(PARAM ${THIS_XSL_PARAMETERS})
+    string(REGEX REPLACE "([^=]*)=([^;]*)" "\\1;\\2"
+      XSL_PARAM_LIST ${PARAM})
+    list(GET XSL_PARAM_LIST 0 XSL_PARAM_NAME)
+    list(GET XSL_PARAM_LIST 1 XSL_PARAM_VALUE)
+    list(APPEND THIS_XSL_EXTRA_FLAGS 
+      --stringparam ${XSL_PARAM_NAME} ${XSL_PARAM_VALUE})
+  endforeach(PARAM)
+
   if (THIS_XSL_DIRECTORY)
     # Run the XSLT processor to do an XML transformation with a
     # directory as output.
     if (THIS_XSL_MAKE_ALL_TARGET)
       add_custom_target(${THIS_XSL_MAKE_ALL_TARGET} ALL
-        COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} -o ${OUTPUT}/ 
-                ${STYLESHEET} ${INPUT}
+        COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} 
+                ${THIS_XSL_EXTRA_FLAGS} -o ${OUTPUT}/ ${STYLESHEET} ${INPUT}
         DEPENDS ${INPUT})
     elseif (THIS_XSL_MAKE_TARGET)
       add_custom_target(${THIS_XSL_MAKE_TARGET}
-        COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} -o ${OUTPUT}/ 
-                ${STYLESHEET} ${INPUT}
+        COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} 
+                ${THIS_XSL_EXTRA_FLAGS} -o ${OUTPUT}/ ${STYLESHEET} ${INPUT}
         DEPENDS ${INPUT})
     else()
       message(SEND_ERROR 
@@ -69,8 +83,8 @@ macro(xsl_transform OUTPUT INPUT STYLESHEET)
     # Run the XSLT processor to do an XML transformation with a single
     # file as output.
     add_custom_command(OUTPUT ${OUTPUT}
-      COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} -o ${OUTPUT} 
-              ${STYLESHEET} ${INPUT}
+      COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} 
+              ${THIS_XSL_EXTRA_FLAGS} -o ${OUTPUT} ${STYLESHEET} ${INPUT}
       DEPENDS ${INPUT})
 
     # Create a custom target to refer to the result of this
@@ -117,10 +131,42 @@ macro(boost_add_documentation SOURCE)
     # Transform DocBook into other formats
     boost_add_documentation(${CMAKE_CURRENT_BINARY_DIR}/${DOCBOOK_FILE})
   elseif(THIS_DOC_EXT STREQUAL ".DOCBOOK")
-    xsl_transform(html ${THIS_DOC_SOURCE_PATH} ${BOOSTBOOK_XSL_DIR}/html.xsl
-      CATALOG ${CMAKE_BINARY_DIR}/catalog.xml
-      DIRECTORY
-      MAKE_ALL_TARGET html)
+    # If requested, build HTML documentation
+    if (BUILD_DOCUMENTATION_HTML)
+      xsl_transform(
+        ${CMAKE_CURRENT_BINARY_DIR}/html 
+        ${THIS_DOC_SOURCE_PATH} 
+        ${BOOSTBOOK_XSL_DIR}/html.xsl
+        CATALOG ${CMAKE_BINARY_DIR}/catalog.xml
+        DIRECTORY
+        PARAMETERS admon.graphics.path=images
+                   navig.graphics.path=images
+                   boost.image.src=boost.png
+        MAKE_ALL_TARGET html)
+
+      # Install generated documentation
+      install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html 
+        DESTINATION share/boost-${BOOST_VERSION}
+        COMPONENT ${ULIBNAME}_DOCS
+        PATTERN "*.manifest" EXCLUDE)
+    endif ()
+
+    # If requested, build Unix man pages
+    if (BUILD_DOCUMENTATION_MAN_PAGES)
+      xsl_transform(
+        ${CMAKE_CURRENT_BINARY_DIR}/man 
+        ${THIS_DOC_SOURCE_PATH} 
+        ${BOOSTBOOK_XSL_DIR}/manpages.xsl
+        CATALOG ${CMAKE_BINARY_DIR}/catalog.xml
+        DIRECTORY
+        MAKE_ALL_TARGET man)
+
+      # Install man pages
+      install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/man
+        DESTINATION .
+        COMPONENT ${ULIBNAME}_DOCS
+        PATTERN "*.manifest" EXCLUDE)
+    endif ()
   else()
     message(SEND_ERROR "Unknown documentation source kind ${SOURCE}.")
   endif()
@@ -237,10 +283,15 @@ find_path(BOOSTBOOK_XSL_DIR docbook.xsl
   DOC "Path to the BoostBook XSL stylesheets")
 mark_as_advanced(BOOSTBOOK_XSL_DIR)
 
+# Try to find Doxygen
+find_package(Doxygen)
+
 if (XSLTPROC)
   if (DOCBOOK_DTD_DIR AND DOCBOOK_XSL_DIR)
-    # We have all we need for documentation generation.
+    # Documentation build options
     option(BUILD_DOCUMENTATION "Whether to build library documentation" ON)
+    option(BUILD_DOCUMENTATION_HTML "Whether to build HTML documentation" ON)
+    option(BUILD_DOCUMENTATION_MAN_PAGES "Whether to build Unix man pages" ON)
 
     # Generate an XML catalog file.
     configure_file(${CMAKE_SOURCE_DIR}/tools/build/CMake/catalog.xml.in
@@ -266,7 +317,7 @@ if (XSLTPROC)
   endif()
 endif()
 
-
+# Turn off BUILD_DOCUMENTATION if it isn't going to succeed.
 if (BUILD_DOCUMENTATION)
   set(BUILD_DOCUMENTATION_OKAY TRUE)
   if (NOT XSLTPROC)
