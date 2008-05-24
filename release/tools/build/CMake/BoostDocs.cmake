@@ -11,18 +11,36 @@
 #                                                                        #
 ##########################################################################
 
-# Transforms the source XML file into the target XML file by applying
-# the given XSL stylesheet.
+# Transforms the source XML file by applying the given XSL stylesheet.
 #
-#   transform_xml(target source stylesheet
+#   xsl_transform(output input stylesheet
 #                 [DEPENDS depend1 depend2 ...]
 #                 [CATALOG catalog]
+#                 [DIRECTORY]
+#                 [[MAKE_ALL_TARGET | MAKE_TARGET] target])
 #
-# 
-macro(transform_xml TARGET SOURCE STYLESHEET)
+# This macro builds a custom command that transforms an XML file
+# (input) via the given XSL stylesheet. The output is assumed to be an
+# XML file, unless the DIRECTORY option is specified, in which case
+# the output is a directory that will be populated with the results of
+# the XSL transformation. The stylesheet must be a valid XSL
+# stylesheet.
+#
+# XML catalogs can be used to remap parts of URIs within the
+# stylesheet to other (typically local) entities. To provide an XML
+# catalog file, specify the name of the XML catalog file via the
+# CATALOG argument. It will be provided to the XSL transform.
+#
+# To associate a target name with the result of the XSL
+# transformation, use the MAKE_TARGET or MAKE_ALL_TARGET option and
+# provide the name of the target. The MAKE_ALL_TARGET option only
+# differs from MAKE_TARGET in that MAKE_ALL_TARGET will make the
+# resulting target a part of the default build. Note that a target
+# name is required the DIRECTORY option is specified.
+macro(xsl_transform OUTPUT INPUT STYLESHEET)
   parse_arguments(THIS_XSL
-    "DEPENDS;CATALOG"
-    ""
+    "DEPENDS;CATALOG;MAKE_ALL_TARGET;MAKE_TARGET"
+    "DIRECTORY"
     ${ARGN}
     )
   
@@ -30,13 +48,44 @@ macro(transform_xml TARGET SOURCE STYLESHEET)
     set(THIS_XSL_CATALOG "XML_CATALOG_FILES=${THIS_XSL_CATALOG}")
   endif ()
 
-  # Run the XSLT processor.
-  add_custom_command(OUTPUT ${TARGET}
-    COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} --xinclude -o ${TARGET} ${STYLESHEET} ${SOURCE}
-    DEPENDS ${SOURCE})
+  if (THIS_XSL_DIRECTORY)
+    # Run the XSLT processor to do an XML transformation with a
+    # directory as output.
+    if (THIS_XSL_MAKE_ALL_TARGET)
+      add_custom_target(${THIS_XSL_MAKE_ALL_TARGET} ALL
+        COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} -o ${OUTPUT}/ 
+                ${STYLESHEET} ${INPUT}
+        DEPENDS ${INPUT})
+    elseif (THIS_XSL_MAKE_TARGET)
+      add_custom_target(${THIS_XSL_MAKE_TARGET}
+        COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} -o ${OUTPUT}/ 
+                ${STYLESHEET} ${INPUT}
+        DEPENDS ${INPUT})
+    else()
+      message(SEND_ERROR 
+        "xsl_transform macro invoked with a directory but no target name")
+    endif()
+  else()
+    # Run the XSLT processor to do an XML transformation with a single
+    # file as output.
+    add_custom_command(OUTPUT ${OUTPUT}
+      COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} -o ${OUTPUT} 
+              ${STYLESHEET} ${INPUT}
+      DEPENDS ${INPUT})
 
-  # set_source_files_properties(${TARGET} PROPERTIES GENERATED TRUE)
-endmacro(transform_xml)
+    # Create a custom target to refer to the result of this
+    # transformation.
+    if (THIS_XSL_MAKE_ALL_TARGET)
+      add_custom_target(${THIS_XSL_MAKE_ALL_TARGET} ALL
+        DEPENDS ${OUTPUT})
+    elseif(THIS_XSL_MAKE_TARGET)
+      add_custom_target(${THIS_XSL_MAKE_TARGET}
+        DEPENDS ${OUTPUT})
+    endif()
+  endif()
+
+  # set_source_files_properties(${OUTPUT} PROPERTIES GENERATED TRUE)
+endmacro(xsl_transform)
 
 macro(boost_add_documentation SOURCE)
   parse_arguments(THIS_DOC
@@ -60,22 +109,20 @@ macro(boost_add_documentation SOURCE)
     # Transform BoostBook XML into DocBook XML
     get_filename_component(SOURCE_FILENAME ${SOURCE} NAME_WE)
     set(DOCBOOK_FILE ${SOURCE_FILENAME}.docbook)
-    transform_xml(${DOCBOOK_FILE}
+    xsl_transform(${DOCBOOK_FILE}
       ${THIS_DOC_SOURCE_PATH} 
       ${BOOSTBOOK_XSL_DIR}/docbook.xsl
       CATALOG ${CMAKE_BINARY_DIR}/catalog.xml
-      DEPENDS ${THIS_DOC_DEPENDS})
-    add_custom_target(docbook 
-      DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${DOCBOOK_FILE})
+      DEPENDS ${THIS_DOC_DEPENDS}
+      MAKE_TARGET docbook)
 
     # Transform DocBook into other formats
     boost_add_documentation(${CMAKE_CURRENT_BINARY_DIR}/${DOCBOOK_FILE})
   elseif(THIS_DOC_EXT STREQUAL ".DOCBOOK")
-    add_custom_target(html
-      COMMAND "XML_CATALOG_FILES=${CMAKE_BINARY_DIR}/catalog.xml"
-        ${XSLTPROC} --xinclude -o html/ ${BOOSTBOOK_XSL_DIR}/html.xsl
-        ${THIS_DOC_SOURCE_PATH}
-      DEPENDS ${THIS_DOC_SOURCE_PATH} ${THIS_DOC_DEPENDS})
+    xsl_transform(html ${THIS_DOC_SOURCE_PATH} ${BOOSTBOOK_XSL_DIR}/html.xsl
+      CATALOG ${CMAKE_BINARY_DIR}/catalog.xml
+      DIRECTORY
+      MAKE_ALL_TARGET html)
   else()
     message(SEND_ERROR "Unknown documentation source kind ${SOURCE}.")
   endif()
@@ -167,6 +214,8 @@ set(WANT_DOCBOOK_XSL_VERSION 1.73.2)
 
 # Find xsltproc to transform XML documents via XSLT
 find_program(XSLTPROC xsltproc DOC "xsltproc transforms XML via XSLT")
+set(XSLTPROC_FLAGS "--xinclude" CACHE STRING 
+  "Flags to pass to xsltproc to transform XML documents")
 
 # Find the DocBook DTD (version 4.2)
 find_path(DOCBOOK_DTD_DIR docbookx.dtd
