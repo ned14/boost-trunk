@@ -62,14 +62,18 @@ boostbook doc
     <implicit-dependency>../libs/thread/doc//thread
 
     <xsl:param>boost.libraries=../../libs/libraries.htm
+    <xsl:param>header.javascript=javascript/callouts.js
 
     <dependency>css
     <dependency>images
+    <dependency>callouts
     ;
 
 install css : [ glob src/*.css ] : <location>html ;
 explicit css ;
 install images : [ glob src/images/*.png ] : <location>html/images ;
 explicit images ;
+install callouts : src/javascript/callouts.js : <location>html/javascript ;
+explicit callouts ;
 
 

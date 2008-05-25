@@ -6280,6 +6280,7 @@ doc/src/images/toc-plus.png -text svneol=unset#image/png
 doc/src/images/up.png -text svneol=unset#image/png
 doc/src/images/up_disabled.png -text svneol=unset#image/png
 doc/src/images/warning.png -text svneol=unset#image/png
+doc/src/javascript/callouts.js svneol=native#text/javascript
 doc/src/reference.css svneol=native#text/css
 /index.htm svneol=native#text/html
 /index.html svneol=native#text/html
