@@ -1,0 +1,1 @@
+boost_module(Quickbook DEPENDS program_options filesystem system)

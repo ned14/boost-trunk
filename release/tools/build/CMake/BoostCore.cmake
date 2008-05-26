@@ -205,26 +205,26 @@ macro(boost_library_project LIBNAME)
         ${ULIBNAME})
     endif (THIS_PROJECT_MODULAR)
 
-	if(THIS_PROJECT_SRCDIRS)
-	  # Add an installation target for the sources of this library.
-	  set_property(GLOBAL APPEND
-		PROPERTY CPACK_COMPONENTS_ALL 
-		${ULIBNAME}_SOURCES)
-	  boost_set_cpack_variable(
-	    CPACK_COMPONENT_${ULIBNAME}_SOURCES_DISPLAY_NAME
-	    "Source files")
-	  boost_set_cpack_variable(
-	    CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP 
-	    ${ULIBNAME})
-
+    if(THIS_PROJECT_SRCDIRS)
+      # Add an installation target for the sources of this library.
+      set_property(GLOBAL APPEND
+	PROPERTY CPACK_COMPONENTS_ALL 
+	${ULIBNAME}_SOURCES)
+      boost_set_cpack_variable(
+	CPACK_COMPONENT_${ULIBNAME}_SOURCES_DISPLAY_NAME
+	"Source files")
+      boost_set_cpack_variable(
+	CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP 
+	${ULIBNAME})
+      
       # If this is a modular library, the sources depend on the headers
       if (THIS_PROJECT_MODULAR)
         boost_set_cpack_variable(
-		  CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS 
-		  ${ULIBNAME}_HEADERS) 
+	  CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS 
+	  ${ULIBNAME}_HEADERS) 
       endif ()
-		
-	  # Add all of the source files as an installation target  
+      
+      # Add all of the source files as an installation target  
       foreach(SUBDIR ${THIS_PROJECT_SRCDIRS})
         install(DIRECTORY ${SUBDIR} 
           DESTINATION src/${LIBNAME}
@@ -232,7 +232,7 @@ macro(boost_library_project LIBNAME)
           PATTERN "CVS" EXCLUDE
           REGEX ".svn" EXCLUDE)  
       endforeach()
-	endif()
+    endif()
 	
     # For each of the modular libraries on which this project depends,
     # add the include path for that library.
@@ -294,6 +294,111 @@ macro(boost_library_project LIBNAME)
   endif(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
 endmacro(boost_library_project)
 
+macro(boost_tool_project TOOLNAME)
+  parse_arguments(THIS_PROJECT
+    "DESCRIPTION;AUTHORS;MAINTAINERS"
+    ""
+    ${ARGN}
+    )
+
+  set(THIS_PROJECT_IS_TOOL TRUE)
+
+  string(TOUPPER ${TOOLNAME} UTOOLNAME)
+  set(THIS_PROJECT_OKAY ON)
+  set(THIS_PROJECT_FAILED_DEPS "")
+  foreach(DEP ${BOOST_${UTOOLNAME}_DEPENDS})
+    string(TOUPPER "BUILD_BOOST_${DEP}" BOOST_LIB_DEP)
+    if (NOT ${BOOST_LIB_DEP})
+      set(THIS_PROJECT_OKAY OFF)
+      set(THIS_PROJECT_FAILED_DEPS "${THIS_PROJECT_FAILED_DEPS}  ${DEP}\n")
+    endif (NOT ${BOOST_LIB_DEP})
+  endforeach(DEP)
+
+  option(BUILD_${UTOOLNAME} "Build ${TOOLNAME}" ON)
+
+  if (NOT THIS_PROJECT_OKAY)
+    if (BUILD_${UTOOLNAME})
+      # The user explicitly turned on this tool in a prior
+      # iteration, but it can no longer be built because one of the
+      # dependencies was turned off. Force this option off and
+      # complain about it.
+      set(BUILD_${UTOOLNAME} OFF CACHE BOOL "Build ${TOOLNAME}" FORCE)
+      message(SEND_ERROR "Cannot build ${TOOLNAME} due to missing library dependencies:\n${THIS_PROJECT_FAILED_DEPS}")
+    endif ()
+  endif (NOT THIS_PROJECT_OKAY)
+
+  if(BUILD_${UTOOLNAME} AND THIS_PROJECT_OKAY)
+    string(TOLOWER "${TOOLNAME}" toolname)
+    project(${TOOLNAME})
+
+    # Add this tool to the list of library components to install
+    set_property(GLOBAL APPEND PROPERTY CPACK_COMPONENT_GROUPS_ALL 
+      ${UTOOLNAME})
+    boost_set_cpack_variable(CPACK_COMPONENT_GROUP_${UTOOLNAME}_DISPLAY_NAME 
+      ${TOOLNAME})
+        
+    if (THIS_PROJECT_DESCRIPTION)
+      set(THIS_PROJECT_DESCRIPTION "${TOOLNAME}\n\n${THIS_PROJECT_DESCRIPTION}")
+      
+      if (THIS_PROJECT_AUTHORS)
+        list(LENGTH THIS_PROJECT_AUTHORS THIS_PROJECT_NUM_AUTHORS)
+        if (THIS_PROJECT_NUM_AUTHORS EQUAL 1)
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthor: ")
+        else()
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthors: ")
+        endif()
+        set(THIS_PROJECT_FIRST_AUTHOR TRUE)
+        foreach(AUTHOR ${THIS_PROJECT_AUTHORS})
+          string(REGEX REPLACE " *-at- *" "@" AUTHOR ${AUTHOR})
+          if (THIS_PROJECT_FIRST_AUTHOR)
+            set(THIS_PROJECT_FIRST_AUTHOR FALSE)
+          else()
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n         ")
+          endif()
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${AUTHOR}")
+        endforeach(AUTHOR)
+      endif (THIS_PROJECT_AUTHORS)
+      
+      if (THIS_PROJECT_MAINTAINERS)
+        list(LENGTH THIS_PROJECT_MAINTAINERS THIS_PROJECT_NUM_MAINTAINERS)
+        if (THIS_PROJECT_NUM_MAINTAINERS EQUAL 1)
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainer: ")
+        else()
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainers: ")
+        endif()
+        set(THIS_PROJECT_FIRST_MAINTAINER TRUE)
+        foreach(MAINTAINER ${THIS_PROJECT_MAINTAINERS})
+          string(REGEX REPLACE " *-at- *" "@" MAINTAINER ${MAINTAINER})
+          if (THIS_PROJECT_FIRST_MAINTAINER)
+            set(THIS_PROJECT_FIRST_MAINTAINER FALSE)
+          else()
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n             ")
+          endif()
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${MAINTAINER}")
+        endforeach(MAINTAINER)
+      endif (THIS_PROJECT_MAINTAINERS)
+      
+      boost_set_cpack_variable(
+        CPACK_COMPONENT_GROUP_${UTOOLNAME}_DESCRIPTION
+        "${THIS_PROJECT_DESCRIPTION}")
+    endif (THIS_PROJECT_DESCRIPTION)
+    
+    # Add this module's include directory
+    include_directories("${Boost_SOURCE_DIR}/libs/${toolname}/include")
+
+    # For each of the modular libraries on which this project depends,
+    # add the include path for that library.
+    foreach(DEP ${BOOST_${UTOOLNAME}_DEPENDS})
+      string(TOUPPER ${DEP} UDEP)
+      string(TOUPPER "BOOST_${DEP}_IS_MODULAR" BOOST_LIB_DEP_MODULAR)
+      if(BOOST_${UDEP}_IS_MODULAR)
+        include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
+      endif()
+    endforeach(DEP)
+  endif()
+endmacro(boost_tool_project)
+
+# TODO: Document me! (Here and on the Trac)
 macro(boost_module LIBNAME)
   parse_arguments(THIS_MODULE
     "DEPENDS"
@@ -1217,7 +1322,16 @@ macro(boost_add_executable EXENAME)
     endforeach(LIB ${THIS_EXE_DEPENDS})
 
     # Build the executable
-    set(THIS_EXE_NAME ${PROJECT_NAME}/${EXENAME})
+    # TODO: the use of ${PROJECT_NAME}/${EXENAME} is a bit strange.
+    # It's designed to keep the names of regression tests from one library
+    # separate from the regression tests of another library, but this can
+    # be handled better with OUTPUT_NAME. This would also allow us to eliminate
+    # the directory-creation logic in boost_library_project.
+    if (THIS_PROJECT_IS_TOOL)
+      set(THIS_EXE_NAME ${EXENAME})
+    else()
+      set(THIS_EXE_NAME ${PROJECT_NAME}/${EXENAME})
+    endif()
     add_executable(${THIS_EXE_NAME} ${THIS_EXE_SOURCES})
     
     # Set the various compilation and linking flags
@@ -1240,12 +1354,12 @@ macro(boost_add_executable EXENAME)
     endif (THIS_EXE_DEBUG_AND_RELEASE)
 
     # If the user gave an output name, use it.
-    if (THIS_EXE_OUTPUT_NAME)
+    if(THIS_EXE_OUTPUT_NAME)
       set_target_properties(${THIS_EXE_NAME}
         PROPERTIES
-        OUTPUT_NAME "${THIS_EXE_OUTPUT_NAME}"
+        OUTPUT_NAME ${THIS_EXE_OUTPUT_NAME}
         )
-    endif (THIS_EXE_OUTPUT_NAME)
+    endif()
 
     # Link against the various libraries 
     if (THIS_EXE_DEBUG_AND_RELEASE)

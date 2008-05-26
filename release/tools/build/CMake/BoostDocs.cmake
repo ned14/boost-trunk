@@ -137,7 +137,20 @@ macro(boost_add_documentation SOURCE)
   # build the documentation.
   get_filename_component(THIS_DOC_EXT ${SOURCE} EXT)
   string(TOUPPER ${THIS_DOC_EXT} THIS_DOC_EXT)
-  if (THIS_DOC_EXT STREQUAL ".XML")
+  if (THIS_DOC_EXT STREQUAL ".QBK")
+    # Transform Quickbook into BoostBook XML
+    # TODO: Check for BOOST_QUICKBOOK
+    get_filename_component(SOURCE_FILENAME ${SOURCE} NAME_WE)
+    set(BOOSTBOOK_FILE ${SOURCE_FILENAME}.xml)
+    add_custom_command(OUTPUT ${BOOSTBOOK_FILE}
+      COMMAND quickbook "--output-file=${BOOSTBOOK_FILE}"
+      ${THIS_DOC_SOURCE_PATH} 
+      DEPENDS ${THIS_DOC_SOURCE_PATH} ${THIS_DOPC_DEFAULT_ARGS}
+      COMMENT "Generating BoostBook documentation for Boost.${PROJECT_NAME}...")
+
+    # Transform BoostBook into other formats
+    boost_add_documentation(${CMAKE_CURRENT_BINARY_DIR}/${BOOSTBOOK_FILE})
+  elseif (THIS_DOC_EXT STREQUAL ".XML")
     # Transform BoostBook XML into DocBook XML
     get_filename_component(SOURCE_FILENAME ${SOURCE} NAME_WE)
     set(DOCBOOK_FILE ${SOURCE_FILENAME}.docbook)
@@ -146,7 +159,7 @@ macro(boost_add_documentation SOURCE)
       STYLESHEET ${BOOSTBOOK_XSL_DIR}/docbook.xsl
       CATALOG ${CMAKE_BINARY_DIR}/catalog.xml
       COMMENT "Generating DocBook documentation for Boost.${PROJECT_NAME}..."
-      MAKE_TARGET docbook)
+      MAKE_TARGET ${PROJECT_NAME}-docbook)
 
     # Transform DocBook into other formats
     boost_add_documentation(${CMAKE_CURRENT_BINARY_DIR}/${DOCBOOK_FILE})
@@ -163,7 +176,7 @@ macro(boost_add_documentation SOURCE)
                    navig.graphics.path=images
                    boost.image.src=boost.png
         COMMENT "Generating HTML documentation for Boost.${PROJECT_NAME}..."
-        MAKE_ALL_TARGET html)
+        MAKE_ALL_TARGET ${PROJECT_NAME}-html)
 
       # Install generated documentation
       install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html 
@@ -181,7 +194,7 @@ macro(boost_add_documentation SOURCE)
         CATALOG ${CMAKE_BINARY_DIR}/catalog.xml
         DIRECTORY man.manifest
         COMMENT "Generating man pages for Boost.${PROJECT_NAME}..."
-        MAKE_ALL_TARGET man)
+        MAKE_ALL_TARGET ${PROJECT_NAME}-man)
 
       # Install man pages
       install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/man
