@@ -104,10 +104,21 @@ install(DIRECTORY boost
         COMPONENT Core
         PATTERN "CVS" EXCLUDE
         REGEX ".svn" EXCLUDE)
-if (NOT TEST_INSTALLED_TREE)
+#
+# TDS 20080526:  Getting a segfault here even with the ifs.   At r45780, with these lines 
+# uncommented:
+# 1. cmake the workspace
+# 2. run ccmake and turn OFF BUILD_MULTI_THREADED and BUILD_SHARED
+# 3. 'c' to configure
+# 4. 'g' to generate.... segfault.
+# 5. run rebuild_cache at the command line:  no segfault this time.
+#
+# With these lines commented out, step 4 above does not segfault.
+#
+#if (NOT TEST_INSTALLED_TREE)
   # If I don't have if around this, I get a seg fault
-  install(EXPORT boost-targets DESTINATION "lib/Boost${BOOST_VERSION}")
-endif (NOT TEST_INSTALLED_TREE)
+#  install(EXPORT boost-targets DESTINATION "lib/Boost${BOOST_VERSION}")
+#endif (NOT TEST_INSTALLED_TREE)
 ##########################################################################
 
 
