@@ -235,12 +235,20 @@ endmacro(boost_module)
 #   particular version of the library and the toolset used to build
 #   this library. For example, this might be "-gcc41-mt-1_34" for the
 #   multi-threaded, release variant of the library in Boost 1.34.0 as
-#   compiled with GCC 4.1.
+#   compiled with GCC 4.1.  If global option BUILD_VERSIONED is off,
+#   this variable is set to the empty string.
+#
+option(BUILD_VERSIONED "Add versioning information to names of built files" ON)
+
 macro(boost_library_variant_target_name)
   set(VARIANT_TARGET_NAME "")
 
   # The versioned name starts with the full Boost toolset
-  set(VARIANT_VERSIONED_NAME "-${BOOST_TOOLSET}")
+  if(BUILD_VERSIONED)
+    set(VARIANT_VERSIONED_NAME "-${BOOST_TOOLSET}")
+  else(BUILD_VERSIONED)
+    set(VARIANT_VERSIONED_NAME "")
+  endif(BUILD_VERSIONED)
 
   # Add -mt for multi-threaded libraries
   list_contains(VARIANT_IS_MT MULTI_THREADED ${ARGN})
@@ -304,13 +312,15 @@ macro(boost_library_variant_target_name)
   endif (VARIANT_ABI_TAG)
 
   # Append the Boost version number to the versioned name
-  if(BOOST_VERSION_SUBMINOR GREATER 0)
-    set(VARIANT_VERSIONED_NAME
-      "${VARIANT_VERSIONED_NAME}-${BOOST_VERSION_MAJOR}_${BOOST_VERSION_MINOR}_${BOOST_VERSION_SUBMINOR}")
-  else(BOOST_VERSION_SUBMINOR GREATER 0)
-    set(VARIANT_VERSIONED_NAME 
-      "${VARIANT_VERSIONED_NAME}-${BOOST_VERSION_MAJOR}_${BOOST_VERSION_MINOR}")
-  endif(BOOST_VERSION_SUBMINOR GREATER 0)
+  if(BUILD_VERSIONED)
+    if(BOOST_VERSION_SUBMINOR GREATER 0)
+      set(VARIANT_VERSIONED_NAME
+	"${VARIANT_VERSIONED_NAME}-${BOOST_VERSION_MAJOR}_${BOOST_VERSION_MINOR}_${BOOST_VERSION_SUBMINOR}")
+    else(BOOST_VERSION_SUBMINOR GREATER 0)
+      set(VARIANT_VERSIONED_NAME 
+	"${VARIANT_VERSIONED_NAME}-${BOOST_VERSION_MAJOR}_${BOOST_VERSION_MINOR}")
+    endif(BOOST_VERSION_SUBMINOR GREATER 0)
+  endif(BUILD_VERSIONED)
 endmacro(boost_library_variant_target_name)
 
 # This macro is an internal utility macro that updates compilation and
