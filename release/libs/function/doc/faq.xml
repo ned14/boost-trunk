@@ -144,7 +144,7 @@ function objects with parameters that don't exactly match.</para>
     <question><para>How much overhead does a call through <code><classname>boost::function</classname></code> incur?</para></question>
     <answer>
       <para>The cost of <code>boost::function</code> can be reasonably
-      consistently measured at around 20ns +/- 10 ns on a modern >2GHz
+      consistently measured at around 20ns +/- 10 ns on a modern &gt;2GHz
       platform versus directly inlining the code.</para>
 
       <para>However, the performance of your application may benefit
