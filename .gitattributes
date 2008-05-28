@@ -18038,6 +18038,7 @@ libs/thread/doc/overview.qbk svneol=native#text/plain
 libs/thread/doc/shared_mutex_ref.qbk svneol=native#text/plain
 libs/thread/doc/thread.qbk svneol=native#text/plain
 libs/thread/doc/thread_ref.qbk svneol=native#text/plain
+libs/thread/doc/time.qbk svneol=native#text/plain
 libs/thread/doc/tss.qbk svneol=native#text/plain
 libs/thread/example/Jamfile.v2 svneol=native#text/plain
 libs/thread/example/condition.cpp svneol=native#text/plain
