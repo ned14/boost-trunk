@@ -69,7 +69,7 @@ namespace boost
         }
             
         template<typename T>
-        T* heap_new()
+        inline T* heap_new()
         {
             void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
             try
@@ -86,7 +86,7 @@ namespace boost
 
 #ifdef BOOST_HAS_RVALUE_REFS
         template<typename T,typename A1>
-        T* heap_new(A1&& a1)
+        inline T* heap_new(A1&& a1)
         {
             void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
             try
@@ -100,9 +100,56 @@ namespace boost
                 throw;
             }
         }
+        template<typename T,typename A1,typename A2>
+        inline T* heap_new(A1&& a1,A2&& a2)
+        {
+            void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
+            try
+            {
+                T* const data=new (heap_memory) T(static_cast<A1&&>(a1),static_cast<A2&&>(a2));
+                return data;
+            }
+            catch(...)
+            {
+                free_raw_heap_memory(heap_memory);
+                throw;
+            }
+        }
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1&& a1,A2&& a2,A3&& a3)
+        {
+            void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
+            try
+            {
+                T* const data=new (heap_memory) T(static_cast<A1&&>(a1),static_cast<A2&&>(a2),
+                                                  static_cast<A3&&>(a3));
+                return data;
+            }
+            catch(...)
+            {
+                free_raw_heap_memory(heap_memory);
+                throw;
+            }
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1&& a1,A2&& a2,A3&& a3,A4&& a4)
+        {
+            void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
+            try
+            {
+                T* const data=new (heap_memory) T(static_cast<A1&&>(a1),static_cast<A2&&>(a2),
+                                                  static_cast<A3&&>(a3),static_cast<A4&&>(a4));
+                return data;
+            }
+            catch(...)
+            {
+                free_raw_heap_memory(heap_memory);
+                throw;
+            }
+        }
 #else
         template<typename T,typename A1>
-        T* heap_new(A1 a1)
+        inline T* heap_new_impl(A1 a1)
         {
             void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
             try
@@ -116,9 +163,9 @@ namespace boost
                 throw;
             }
         }
-#endif        
+
         template<typename T,typename A1,typename A2>
-        T* heap_new(A1 a1,A2 a2)
+        inline T* heap_new_impl(A1 a1,A2 a2)
         {
             void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
             try
@@ -134,7 +181,7 @@ namespace boost
         }
 
         template<typename T,typename A1,typename A2,typename A3>
-        T* heap_new(A1 a1,A2 a2,A3 a3)
+        inline T* heap_new_impl(A1 a1,A2 a2,A3 a3)
         {
             void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
             try
@@ -148,9 +195,9 @@ namespace boost
                 throw;
             }
         }
-        
+
         template<typename T,typename A1,typename A2,typename A3,typename A4>
-        T* heap_new(A1 a1,A2 a2,A3 a3,A4 a4)
+        inline T* heap_new_impl(A1 a1,A2 a2,A3 a3,A4 a4)
         {
             void* const heap_memory=allocate_raw_heap_memory(sizeof(T));
             try
@@ -164,9 +211,168 @@ namespace boost
                 throw;
             }
         }
+
+
+        template<typename T,typename A1>
+        inline T* heap_new(A1 const& a1)
+        {
+            return heap_new_impl<T,A1 const&>(a1);
+        }
+        template<typename T,typename A1>
+        inline T* heap_new(A1& a1)
+        {
+            return heap_new_impl<T,A1&>(a1);
+        }
         
+        template<typename T,typename A1,typename A2>
+        inline T* heap_new(A1 const& a1,A2 const& a2)
+        {
+            return heap_new_impl<T,A1 const&,A2 const&>(a1,a2);
+        }
+        template<typename T,typename A1,typename A2>
+        inline T* heap_new(A1& a1,A2 const& a2)
+        {
+            return heap_new_impl<T,A1&,A2 const&>(a1,a2);
+        }
+        template<typename T,typename A1,typename A2>
+        inline T* heap_new(A1 const& a1,A2& a2)
+        {
+            return heap_new_impl<T,A1 const&,A2&>(a1,a2);
+        }
+        template<typename T,typename A1,typename A2>
+        inline T* heap_new(A1& a1,A2& a2)
+        {
+            return heap_new_impl<T,A1&,A2&>(a1,a2);
+        }
+
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1 const& a1,A2 const& a2,A3 const& a3)
+        {
+            return heap_new_impl<T,A1 const&,A2 const&,A3 const&>(a1,a2,a3);
+        }
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1& a1,A2 const& a2,A3 const& a3)
+        {
+            return heap_new_impl<T,A1&,A2 const&,A3 const&>(a1,a2,a3);
+        }
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1 const& a1,A2& a2,A3 const& a3)
+        {
+            return heap_new_impl<T,A1 const&,A2&,A3 const&>(a1,a2,a3);
+        }
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1& a1,A2& a2,A3 const& a3)
+        {
+            return heap_new_impl<T,A1&,A2&,A3 const&>(a1,a2,a3);
+        }
+
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1 const& a1,A2 const& a2,A3& a3)
+        {
+            return heap_new_impl<T,A1 const&,A2 const&,A3&>(a1,a2,a3);
+        }
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1& a1,A2 const& a2,A3& a3)
+        {
+            return heap_new_impl<T,A1&,A2 const&,A3&>(a1,a2,a3);
+        }
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1 const& a1,A2& a2,A3& a3)
+        {
+            return heap_new_impl<T,A1 const&,A2&,A3&>(a1,a2,a3);
+        }
+        template<typename T,typename A1,typename A2,typename A3>
+        inline T* heap_new(A1& a1,A2& a2,A3& a3)
+        {
+            return heap_new_impl<T,A1&,A2&,A3&>(a1,a2,a3);
+        }
+
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1 const& a1,A2 const& a2,A3 const& a3,A4 const& a4)
+        {
+            return heap_new_impl<T,A1 const&,A2 const&,A3 const&,A4 const&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1& a1,A2 const& a2,A3 const& a3,A4 const& a4)
+        {
+            return heap_new_impl<T,A1&,A2 const&,A3 const&,A4 const&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1 const& a1,A2& a2,A3 const& a3,A4 const& a4)
+        {
+            return heap_new_impl<T,A1 const&,A2&,A3 const&,A4 const&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1& a1,A2& a2,A3 const& a3,A4 const& a4)
+        {
+            return heap_new_impl<T,A1&,A2&,A3 const&,A4 const&>(a1,a2,a3,a4);
+        }
+
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1 const& a1,A2 const& a2,A3& a3,A4 const& a4)
+        {
+            return heap_new_impl<T,A1 const&,A2 const&,A3&,A4 const&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1& a1,A2 const& a2,A3& a3,A4 const& a4)
+        {
+            return heap_new_impl<T,A1&,A2 const&,A3&,A4 const&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1 const& a1,A2& a2,A3& a3,A4 const& a4)
+        {
+            return heap_new_impl<T,A1 const&,A2&,A3&,A4 const&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1& a1,A2& a2,A3& a3,A4 const& a4)
+        {
+            return heap_new_impl<T,A1&,A2&,A3&,A4 const&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1 const& a1,A2 const& a2,A3 const& a3,A4& a4)
+        {
+            return heap_new_impl<T,A1 const&,A2 const&,A3 const&,A4&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1& a1,A2 const& a2,A3 const& a3,A4& a4)
+        {
+            return heap_new_impl<T,A1&,A2 const&,A3 const&,A4&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1 const& a1,A2& a2,A3 const& a3,A4& a4)
+        {
+            return heap_new_impl<T,A1 const&,A2&,A3 const&,A4&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1& a1,A2& a2,A3 const& a3,A4& a4)
+        {
+            return heap_new_impl<T,A1&,A2&,A3 const&,A4&>(a1,a2,a3,a4);
+        }
+
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1 const& a1,A2 const& a2,A3& a3,A4& a4)
+        {
+            return heap_new_impl<T,A1 const&,A2 const&,A3&,A4&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1& a1,A2 const& a2,A3& a3,A4& a4)
+        {
+            return heap_new_impl<T,A1&,A2 const&,A3&,A4&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1 const& a1,A2& a2,A3& a3,A4& a4)
+        {
+            return heap_new_impl<T,A1 const&,A2&,A3&,A4&>(a1,a2,a3,a4);
+        }
+        template<typename T,typename A1,typename A2,typename A3,typename A4>
+        inline T* heap_new(A1& a1,A2& a2,A3& a3,A4& a4)
+        {
+            return heap_new_impl<T,A1&,A2&,A3&,A4&>(a1,a2,a3,a4);
+        }
+        
+#endif        
         template<typename T>
-        void heap_delete(T* data)
+        inline void heap_delete(T* data)
         {
             data->~T();
             free_raw_heap_memory(data);

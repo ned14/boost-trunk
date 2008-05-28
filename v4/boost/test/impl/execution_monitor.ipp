@@ -69,9 +69,13 @@ using std::va_list;
 #    include <eh.h>
 #  endif
 
-#  if defined(__BORLANDC__) || defined(__MWERKS__)
+#  if defined(__BORLANDC__) && __BORLANDC__ >= 0x560 || defined(__MWERKS__)
 #    include <stdint.h>
-#endif
+#  endif
+
+#  if defined(__BORLANDC__) && __BORLANDC__ < 0x560
+    typedef unsigned uintptr_t;
+#  endif
 
 #  if BOOST_WORKAROUND(_MSC_VER,  < 1300 ) || defined(UNDER_CE)
 typedef void* uintptr_t;
@@ -139,7 +143,7 @@ namespace { void _set_se_translator( void* ) {} }
 #   define BOOST_TEST_USE_ALT_STACK
 #  endif
 
-#  if !defined(__CYGWIN__) && \
+#  if defined(SIGPOLL) && !defined(__CYGWIN__) && \
       !(defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__)) && \
       !defined(__NetBSD__)
 #    define BOOST_TEST_CATCH_SIGPOLL
