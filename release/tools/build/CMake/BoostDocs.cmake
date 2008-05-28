@@ -103,9 +103,12 @@ macro(xsl_transform OUTPUT INPUT)
     add_custom_command(OUTPUT ${THIS_XSL_OUTPUT_FILE}
       COMMAND ${THIS_XSL_CATALOG} ${XSLTPROC} ${XSLTPROC_FLAGS} 
               ${THIS_XSL_EXTRA_FLAGS} -o ${THIS_XSL_OUTPUT} 
+              --path ${CMAKE_CURRENT_BINARY_DIR}
               ${THIS_XSL_STYLESHEET} ${INPUT}
       COMMENT ${THIS_XSL_COMMENT}
       DEPENDS ${INPUT} ${THIS_XSL_DEFAULT_ARGS})
+    set_source_files_properties(${THIS_XSL_OUTPUT_FILE}
+      PROPERTIES GENERATED TRUE)
 
     # Create a custom target to refer to the result of this
     # transformation.
@@ -119,13 +122,76 @@ macro(xsl_transform OUTPUT INPUT)
   endif()
 endmacro(xsl_transform)
 
-macro(boost_add_documentation SOURCE)
-  parse_arguments(THIS_DOC
-    ""
+# Use Doxygen to parse header files and produce BoostBook output.
+macro(doxygen_to_boostbook OUTPUT)
+  parse_arguments(THIS_DOXY
+    "PARAMETERS"
     ""
     ${ARGN})
 
-  # If SOURCE does not have a 
+  # Create a Doxygen configuration file template
+  get_filename_component(DOXYFILE_PATH ${OUTPUT} PATH)
+  get_filename_component(DOXYFILE_NAME ${OUTPUT} NAME_WE)
+  set(DOXYFILE ${DOXYFILE_PATH}/${DOXYFILE_NAME}.doxyfile)
+  execute_process(
+    COMMAND ${DOXYGEN} -s -g ${DOXYFILE}
+    OUTPUT_QUIET ERROR_QUIET)
+
+  # Update the Doxygen configuration file for XML generation
+  file(APPEND ${DOXYFILE} "OUTPUT_DIRECTORY = ${CMAKE_CURRENT_BINARY_DIR}\n")
+  file(APPEND ${DOXYFILE} "GENERATE_LATEX = NO\n")
+  file(APPEND ${DOXYFILE} "GENERATE_HTML = NO\n")
+  file(APPEND ${DOXYFILE} "GENERATE_XML = YES\n")
+  foreach(PARAM ${THIS_DOXY_PARAMETERS})
+    file(APPEND ${DOXYFILE} "${PARAM}\n")
+  endforeach(PARAM)
+
+  # Update the list of headers passed to Doxygen
+  if (THIS_PROJECT_MODULAR)
+    set(THIS_DOXY_HEADER_PATH ${CMAKE_SOURCE_DIR}/libs/${libname}/include)
+  else()
+    set(THIS_DOXY_HEADER_PATH ${CMAKE_SOURCE_DIR})
+  endif()
+  set(THIS_DOXY_HEADER_LIST "")
+  set(THIS_DOXY_HEADERS)
+  foreach(HDR ${THIS_DOXY_DEFAULT_ARGS})
+    list(APPEND THIS_DOXY_HEADERS ${THIS_DOXY_HEADER_PATH}/${HDR})
+    set(THIS_DOXY_HEADER_LIST 
+      "${THIS_DOXY_HEADER_LIST} ${THIS_DOXY_HEADER_PATH}/${HDR}")
+  endforeach(HDR)
+  file(APPEND ${DOXYFILE} "INPUT = ${THIS_DOXY_HEADER_LIST}\n")
+
+  # Generate Doxygen XML
+  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/xml/index.xml
+    COMMAND ${DOXYGEN} ${DOXYFILE}
+    COMMENT "Generating Doxygen XML output for Boost.${PROJECT_NAME}..."
+    DEPENDS ${THIS_DOXY_HEADERS})
+
+  # Collect Doxygen XML into a single XML file
+  set_source_files_properties(
+    ${CMAKE_CURRENT_BINARY_DIR}/xml/combine.xslt
+    PROPERTIES GENERATED TRUE)
+  xsl_transform(
+    ${CMAKE_CURRENT_BINARY_DIR}/xml/all.xml
+    ${CMAKE_CURRENT_BINARY_DIR}/xml/index.xml
+    STYLESHEET ${CMAKE_CURRENT_BINARY_DIR}/xml/combine.xslt
+    COMMENT "Collecting Doxygen XML output for Boost.${PROJECT_NAME}...")
+
+  # Transform single Doxygen XML file into BoostBook XML
+  xsl_transform(${OUTPUT}
+    ${CMAKE_CURRENT_BINARY_DIR}/xml/all.xml
+    STYLESHEET ${BOOSTBOOK_XSL_DIR}/doxygen/doxygen2boostbook.xsl
+    COMMENT "Transforming Doxygen XML into BoostBook XML for Boost.${PROJECT_NAME}...")
+endmacro(doxygen_to_boostbook)
+
+macro(boost_add_documentation SOURCE)
+  parse_arguments(THIS_DOC
+    "HEADERS;DOXYGEN_PARAMETERS"
+    ""
+    ${ARGN})
+
+  # If SOURCE is not a full path, it's in the current source
+  # directory.
   get_filename_component(THIS_DOC_SOURCE_PATH ${SOURCE} PATH)
   if(THIS_DOC_SOURCE_PATH STREQUAL "")
     set(THIS_DOC_SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE}")
@@ -133,23 +199,69 @@ macro(boost_add_documentation SOURCE)
     set(THIS_DOC_SOURCE_PATH ${SOURCE})
   endif()
 
+  # If we are parsing C++ headers (with Doxygen) for reference
+  # documentation, do so now and produce the requested BoostBook XML
+  # file.
+  if (THIS_DOC_HEADERS)
+    set(DOC_HEADER_FILES)
+    set(DOC_BOOSTBOOK_FILE)
+    foreach(HEADER ${THIS_DOC_HEADERS})
+      get_filename_component(HEADER_EXT ${HEADER} EXT)
+      string(TOUPPER ${HEADER_EXT} HEADER_EXT)
+      if (HEADER_EXT STREQUAL ".XML")
+        if (DOC_BOOSTBOOK_FILE)
+          # Generate this BoostBook file from the headers
+          doxygen_to_boostbook(
+            ${CMAKE_CURRENT_BINARY_DIR}/${DOC_BOOSTBOOK_FILE}
+            ${DOC_HEADER_FILES}
+            PARAMETERS ${THIS_DOC_DOXYGEN_PARAMETERS})
+          list(APPEND THIS_DOC_DEFAULT_ARGS 
+            ${CMAKE_CURRENT_BINARY_DIR}/${DOC_BOOSTBOOK_FILE})
+        endif()
+        set(DOC_BOOSTBOOK_FILE ${HEADER})
+        set(DOC_HEADER_FILES)
+      else()
+        if (NOT DOC_BOOSTBOOK_FILE)
+          message(SEND_ERROR 
+            "HEADERS argument to boost_add_documentation must start with a BoostBook XML file name for output")
+        endif()
+        list(APPEND DOC_HEADER_FILES ${HEADER})
+      endif()
+    endforeach()
+
+    if (DOC_HEADER_FILES)
+      # Generate this BoostBook file from the headers
+      doxygen_to_boostbook(
+        ${CMAKE_CURRENT_BINARY_DIR}/${DOC_BOOSTBOOK_FILE}
+        ${DOC_HEADER_FILES}
+        PARAMETERS ${THIS_DOC_DOXYGEN_PARAMETERS})
+      list(APPEND THIS_DOC_DEFAULT_ARGS 
+        ${CMAKE_CURRENT_BINARY_DIR}/${DOC_BOOSTBOOK_FILE})
+
+    endif()
+  endif (THIS_DOC_HEADERS)
+
   # Figure out the source file extension, which will tell us how to
   # build the documentation.
   get_filename_component(THIS_DOC_EXT ${SOURCE} EXT)
   string(TOUPPER ${THIS_DOC_EXT} THIS_DOC_EXT)
   if (THIS_DOC_EXT STREQUAL ".QBK")
-    # Transform Quickbook into BoostBook XML
-    # TODO: Check for BOOST_QUICKBOOK
-    get_filename_component(SOURCE_FILENAME ${SOURCE} NAME_WE)
-    set(BOOSTBOOK_FILE ${SOURCE_FILENAME}.xml)
-    add_custom_command(OUTPUT ${BOOSTBOOK_FILE}
-      COMMAND quickbook "--output-file=${BOOSTBOOK_FILE}"
-      ${THIS_DOC_SOURCE_PATH} 
-      DEPENDS ${THIS_DOC_SOURCE_PATH} ${THIS_DOPC_DEFAULT_ARGS}
-      COMMENT "Generating BoostBook documentation for Boost.${PROJECT_NAME}...")
+    if (BUILD_QUICKBOOK)
+      # Transform Quickbook into BoostBook XML
+      get_filename_component(SOURCE_FILENAME ${SOURCE} NAME_WE)
+      set(BOOSTBOOK_FILE ${SOURCE_FILENAME}.xml)
+      add_custom_command(OUTPUT ${BOOSTBOOK_FILE}
+        COMMAND quickbook "--output-file=${BOOSTBOOK_FILE}"
+        ${THIS_DOC_SOURCE_PATH} 
+        DEPENDS ${THIS_DOC_SOURCE_PATH} ${THIS_DOC_DEFAULT_ARGS}
+        COMMENT "Generating BoostBook documentation for Boost.${PROJECT_NAME}...")
 
-    # Transform BoostBook into other formats
-    boost_add_documentation(${CMAKE_CURRENT_BINARY_DIR}/${BOOSTBOOK_FILE})
+      # Transform BoostBook into other formats
+      boost_add_documentation(${CMAKE_CURRENT_BINARY_DIR}/${BOOSTBOOK_FILE})
+    else()
+      message(SEND_ERROR 
+        "Quickbook is required to build Boost documentation.\nQuickbook can be built by enabling the BUILD_QUICKBOOK.")
+    endif()
   elseif (THIS_DOC_EXT STREQUAL ".XML")
     # Transform BoostBook XML into DocBook XML
     get_filename_component(SOURCE_FILENAME ${SOURCE} NAME_WE)
@@ -333,8 +445,8 @@ if (XSLTPROC)
       ${CMAKE_BINARY_DIR}/catalog.xml 
       @ONLY)
   else()
-    # Look for "unzip", because we'll need to to permit downloading
-    # the DocBook DTD and XSL stylesheets.
+    # Look for "unzip", because we'll need it to download the DocBook
+    # DTD and XSL stylesheets as part of autoconfiguration.
     find_program(UNZIP unzip DOC "Used to extract ZIP archives")
 
     if (UNZIP)

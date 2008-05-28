@@ -5,6 +5,7 @@ if (MPI_FOUND)
     MPI
     SRCDIRS src
     TESTDIRS test
+    DOCDIRS doc
     )
 endif(MPI_FOUND)
 

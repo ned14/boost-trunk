@@ -30144,6 +30144,7 @@ release/libs/mem_fn/index.html svneol=native#text/html
 release/libs/mpi/CMakeLists.txt svneol=native#text/plain
 release/libs/mpi/build/Jamfile.v2 svneol=native#text/plain
 release/libs/mpi/build/__init__.py svneol=native#text/x-python
+release/libs/mpi/doc/CMakeLists.txt svneol=native#text/plain
 release/libs/mpi/doc/Jamfile.v2 svneol=native#text/plain
 release/libs/mpi/doc/mpi.qbk svneol=native#text/plain
 release/libs/mpi/doc/netpipe.png -text svneol=unset#image/png
