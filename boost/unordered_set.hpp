@@ -16,10 +16,10 @@
 #include <boost/config.hpp>
 
 #include <functional>
-#include <memory>
 
-#include <boost/unordered/detail/hash_table.hpp>
 #include <boost/functional/hash.hpp>
+#include <boost/unordered/detail/hash_table.hpp>
+#include <boost/unordered/detail/allocator.hpp>
 
 #if !defined(BOOST_HAS_RVALUE_REFS)
 #include <boost/unordered/detail/move.hpp>
@@ -30,7 +30,7 @@ namespace boost
     template <class Value,
         class Hash = hash<Value>,
         class Pred = std::equal_to<Value>,
-        class Alloc = std::allocator<Value> >
+        class Alloc = boost::unordered_detail::allocator<Value> >
     class unordered_set
     {
         typedef boost::unordered_detail::hash_types_unique_keys<
@@ -118,16 +118,18 @@ namespace boost
             return *this;
         }
 #else
-        unordered_set(boost::unordered_detail::move_from<unordered_set> other)
+        unordered_set(boost::unordered_detail::move_from<unordered_set<Value, Hash, Pred, Alloc> > other)
             : base(other.base, boost::unordered_detail::move_tag())
         {
         }
 
+#if !BOOST_WORKAROUND(__BORLANDC__, < 0x0593)
         unordered_set& operator=(unordered_set x)
         {
             base.move(x.base);
             return *this;
         }
+#endif
 #endif
 
     private:
@@ -358,6 +360,21 @@ namespace boost
         {
             base.rehash(n);
         }
+
+        friend bool operator==(unordered_set const& m1, unordered_set const& m2)
+        {
+            return m1.base.equals(m2.base);
+        }
+
+        friend bool operator!=(unordered_set const& m1, unordered_set const& m2)
+        {
+            return !m1.base.equals(m2.base);
+        }
+
+        friend std::size_t hash_value(unordered_set const& m)
+        {
+            return m.base.hash_value();
+        }
     }; // class template unordered_set
 
     template <class T, class H, class P, class A>
@@ -370,7 +387,7 @@ namespace boost
     template <class Value,
         class Hash = hash<Value>,
         class Pred = std::equal_to<Value>,
-        class Alloc = std::allocator<Value> >
+        class Alloc = boost::unordered_detail::allocator<Value> >
     class unordered_multiset
     {
         typedef boost::unordered_detail::hash_types_equivalent_keys<
@@ -458,16 +475,18 @@ namespace boost
             return *this;
         }
 #else
-        unordered_multiset(boost::unordered_detail::move_from<unordered_multiset> other)
+        unordered_multiset(boost::unordered_detail::move_from<unordered_multiset<Value, Hash, Pred, Alloc> > other)
             : base(other.base, boost::unordered_detail::move_tag())
         {
         }
 
+#if !BOOST_WORKAROUND(__BORLANDC__, < 0x0593)
         unordered_multiset& operator=(unordered_multiset x)
         {
             base.move(x.base);
             return *this;
         }
+#endif
 #endif
 
     private:
@@ -694,6 +713,21 @@ namespace boost
         void rehash(size_type n)
         {
             base.rehash(n);
+        }
+
+        friend bool operator==(unordered_multiset const& m1, unordered_multiset const& m2)
+        {
+            return m1.base.equals(m2.base);
+        }
+
+        friend bool operator!=(unordered_multiset const& m1, unordered_multiset const& m2)
+        {
+            return !m1.base.equals(m2.base);
+        }
+
+        friend std::size_t hash_value(unordered_multiset const& m)
+        {
+            return m.base.hash_value();
         }
     }; // class template unordered_multiset
 

@@ -28,7 +28,7 @@ template <class T> void sink(T const&) {}
 template <class T> T rvalue(T const& v) { return v; }
 
 template <class X, class T>
-void container_test(X& r, T&)
+void container_test(X& r, T const&)
 {
     typedef BOOST_DEDUCED_TYPENAME X::iterator iterator;
     typedef BOOST_DEDUCED_TYPENAME X::const_iterator const_iterator;
@@ -121,8 +121,6 @@ void container_test(X& r, T&)
     test::check_return_type<const_iterator>::equals(a.cend());
     test::check_return_type<const_iterator>::equals(a_const.cend());
 
-    // No tests for ==, != since they're not required for unordered containers.
-
     a.swap(b);
     test::check_return_type<X>::equals_ref(r = a);
     test::check_return_type<size_type>::equals(a.size());
@@ -151,6 +149,8 @@ void unordered_map_test(X& r, Key const& k, T const& v)
     typedef BOOST_DEDUCED_TYPENAME X::key_type key_type;
     BOOST_MPL_ASSERT((boost::is_same<value_type, std::pair<key_type const, T> >));
 
+    r.insert(std::pair<Key const, T>(k, v));
+
 #if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
     Key k_lvalue(k);
     T v_lvalue(v);
@@ -158,6 +158,20 @@ void unordered_map_test(X& r, Key const& k, T const& v)
     r.emplace(k, v);
     r.emplace(k_lvalue, v_lvalue);
     r.emplace(rvalue(k), rvalue(v));
+#endif
+}
+
+template <class X>
+void equality_test(X& r)
+{
+    X const a = r, b = r;
+
+    test::check_return_type<bool>::equals(a == b);
+    test::check_return_type<bool>::equals(a != b);
+#if defined(BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP)
+    test::check_return_type<std::size_t>::equals(boost::hash_value(a));
+#else
+    test::check_return_type<std::size_t>::equals(hash_value(a));
 #endif
 }
 

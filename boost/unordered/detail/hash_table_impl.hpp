@@ -304,27 +304,6 @@ namespace boost {
                     value_constructed_ = true;
                 }
 
-#if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
-                template <typename... Args>
-                void construct(Args&&... args)
-                {
-                    BOOST_ASSERT(!node_);
-                    value_constructed_ = false;
-                    node_base_constructed_ = false;
-
-                    node_ = allocators_.node_alloc_.allocate(1);
-
-                    allocators_.node_base_alloc_.construct(
-                            allocators_.node_base_alloc_.address(*node_),
-                            node_base());
-                    node_base_constructed_ = true;
-
-                    allocators_.value_alloc_.construct(
-                            allocators_.value_alloc_.address(node_->value_), std::forward<Args>(args)...);
-                    value_constructed_ = true;
-                }
-#endif
-
                 node_ptr get() const
                 {
                     BOOST_ASSERT(node_);
@@ -1128,11 +1107,13 @@ namespace boost {
         private:
 
 
-            typedef boost::unordered_detail::buffered_functions<Hash, Pred> buffered_functions;
-            typedef BOOST_DEDUCED_TYPENAME buffered_functions::functions functions;
-            typedef BOOST_DEDUCED_TYPENAME buffered_functions::functions_ptr functions_ptr;
+            typedef boost::unordered_detail::buffered_functions<Hash, Pred>
+                function_store;
+            typedef BOOST_DEDUCED_TYPENAME function_store::functions functions;
+            typedef BOOST_DEDUCED_TYPENAME function_store::functions_ptr
+                functions_ptr;
 
-            buffered_functions functions_;
+            function_store functions_;
             float mlf_;
             size_type max_load_;
 
@@ -1376,10 +1357,17 @@ namespace boost {
             // accessors
 
             // no throw
+#if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
             node_allocator get_allocator() const
             {
                 return data_.allocators_.node_alloc_;
             }
+#else
+            value_allocator get_allocator() const
+            {
+                return data_.allocators_.value_alloc_;
+            }
+#endif
 
             // no throw
             hasher const& hash_function() const
@@ -1660,6 +1648,7 @@ namespace boost {
 
 #if BOOST_UNORDERED_EQUIVALENT_KEYS
 
+#if !(defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL))
             // Insert (equivalent key containers)
 
             // if hash function throws, basic exception safety
@@ -1688,7 +1677,8 @@ namespace boost {
                 return insert_hint_impl(it, a);
             }
 
-#if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
+#else
+
             // Insert (equivalent key containers)
             // (I'm using an overloaded insert for both 'insert' and 'emplace')
 
@@ -1862,6 +1852,8 @@ namespace boost {
                 }
             }
 
+#if !(defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL))
+
             // Insert (unique keys)
 
             // if hash function throws, basic exception safety
@@ -1914,7 +1906,8 @@ namespace boost {
                     return insert(v).first;
             }
 
-#if defined(BOOST_HAS_RVALUE_REFS) && defined(BOOST_HAS_VARIADIC_TMPL)
+#else
+
             // Insert (unique keys)
             // (I'm using an overloaded insert for both 'insert' and 'emplace')
             //
@@ -1961,10 +1954,8 @@ namespace boost {
 
                     // Nothing after this point can throw.
 
-                    link_ptr n = data_.link_node_in_bucket(a, bucket);
-
-                    return std::pair<iterator_base, bool>(
-                        iterator_base(bucket, n), true);
+                    return std::pair<iterator_base, bool>(iterator_base(bucket,
+                        data_.link_node_in_bucket(a, bucket)), true);
                 }
             }
 
@@ -2005,7 +1996,7 @@ namespace boost {
             // if hash function throws, basic exception safety
             // strong otherwise
             template<typename... Args>
-            iterator_base insert_hint(iterator_base const& it, Args&&... args)
+            iterator_base insert_hint(iterator_base const&, Args&&... args)
             {
                 // Life is complicated - just call the normal implementation.
                 return insert(std::forward<Args>(args)...).first;
@@ -2134,6 +2125,98 @@ namespace boost {
                     return std::pair<iterator_base, iterator_base>(
                             data_.end(), data_.end());
                 }
+            }
+
+            //
+            // equals
+            //
+
+private:
+#if BOOST_UNORDERED_EQUIVALENT_KEYS
+            static inline bool group_equals(link_ptr it1, link_ptr it2,
+                    type_wrapper<key_type>*)
+            {
+                return data::group_count(it1) == data::group_count(it2);
+            }
+
+            static inline bool group_equals(link_ptr it1, link_ptr it2, void*)
+            {
+                link_ptr end1 = data::next_group(it1);
+                link_ptr end2 = data::next_group(it2);
+                do {
+                    if(data::get_value(it1).second != data::get_value(it2).second) return false;
+                    it1 = it1->next_;
+                    it2 = it2->next_;
+                } while(it1 != end1 && it2 != end2);
+                return it1 == end1 && it2 == end2;
+            }
+#else
+            static inline bool group_equals(link_ptr, link_ptr,
+                    type_wrapper<key_type>*)
+            {
+                return true;
+            }
+
+            static inline bool group_equals(link_ptr it1, link_ptr it2, void*)
+            {
+                return data::get_value(it1).second == data::get_value(it2).second;
+            }
+#endif
+
+public:
+            bool equals(BOOST_UNORDERED_TABLE const& other) const
+            {
+                if(size() != other.size()) return false;
+
+                for(bucket_ptr i = data_.cached_begin_bucket_,
+                        j = data_.buckets_end(); i != j; ++i)
+                {
+                    for(link_ptr it(i->next_); BOOST_UNORDERED_BORLAND_BOOL(it); it = data::next_group(it))
+                    {
+                        link_ptr other_pos = other.find_iterator(other.extract_key(data::get_value(it)));
+                        if(!BOOST_UNORDERED_BORLAND_BOOL(other_pos) ||
+                            !group_equals(it, other_pos, (type_wrapper<value_type>*)0))
+                            return false;
+                    }
+                }
+
+                return true;
+            }
+
+            inline std::size_t group_hash(link_ptr it, type_wrapper<key_type>*) const
+            {
+                std::size_t seed = data::group_count(it);
+                std::size_t hashed_key = hash_function()(data::get_value(it)); 
+                boost::hash_combine(seed, hashed_key);
+                return seed;
+            }
+
+            inline std::size_t group_hash(link_ptr it, void*) const
+            {
+                std::size_t seed = hash_function()(data::get_value(it).first);
+
+                link_ptr end = data::next_group(it);
+
+                do {
+                    boost::hash_combine(seed, data::get_value(it).second);
+                    it = it->next_;
+                } while(it != end);
+
+                return seed;
+            }
+
+            std::size_t hash_value() const
+            {
+                std::size_t seed = 0;
+
+                for(bucket_ptr i = data_.cached_begin_bucket_,
+                        j = data_.buckets_end(); i != j; ++i)
+                {
+                    for(link_ptr it(i->next_); BOOST_UNORDERED_BORLAND_BOOL(it); it = data::next_group(it))
+                        seed ^= group_hash(it, (type_wrapper<value_type>*)0);
+                }
+
+                return seed;
             }
 
         private:

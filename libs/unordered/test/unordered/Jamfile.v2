@@ -8,7 +8,7 @@ import testing ;
 project unordered-test/unordered
     : requirements
         <toolset>intel-linux:"<cxxflags>-strict_ansi -cxxlib-icc"
-        <toolset>gcc:<cxxflags>-Wsign-promo
+        <toolset>gcc:<cxxflags>"-Wsign-promo -Wunused-parameter"
         #<toolset>msvc:<cxxflags>/W4
     ;
 
@@ -21,7 +21,7 @@ test-suite unordered
         [ run equivalent_keys_tests.cpp ]
         [ run constructor_tests.cpp ]
         [ run copy_tests.cpp ]
-        [ run move_tests.cpp ]
+        [ run move_tests.cpp : : : <test-info>always_show_run_output ]
         [ run assign_tests.cpp ]
         [ run insert_tests.cpp ]
         [ run insert_stable_tests.cpp ]
@@ -33,5 +33,6 @@ test-suite unordered
         [ run bucket_tests.cpp ]
         [ run load_factor_tests.cpp ]
         [ run rehash_tests.cpp ]
+        [ run equality_tests.cpp ]
         [ run swap_tests.cpp : : : <define>BOOST_UNORDERED_SWAP_METHOD=2 ]
     ;

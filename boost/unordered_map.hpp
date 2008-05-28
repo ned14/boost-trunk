@@ -16,10 +16,10 @@
 #include <boost/config.hpp>
 
 #include <functional>
-#include <memory>
 
-#include <boost/unordered/detail/hash_table.hpp>
 #include <boost/functional/hash.hpp>
+#include <boost/unordered/detail/hash_table.hpp>
+#include <boost/unordered/detail/allocator.hpp>
 
 #if !defined(BOOST_HAS_RVALUE_REFS)
 #include <boost/unordered/detail/move.hpp>
@@ -31,7 +31,7 @@ namespace boost
         class T,
         class Hash = hash<Key>,
         class Pred = std::equal_to<Key>,
-        class Alloc = std::allocator<std::pair<const Key, T> > >
+        class Alloc = boost::unordered_detail::allocator<std::pair<const Key, T> > >
     class unordered_map
     {
         typedef boost::unordered_detail::hash_types_unique_keys<
@@ -121,16 +121,18 @@ namespace boost
             return *this;
         }
 #else
-        unordered_map(boost::unordered_detail::move_from<unordered_map> other)
+        unordered_map(boost::unordered_detail::move_from<unordered_map<Key, T, Hash, Pred, Alloc> > other)
             : base(other.base, boost::unordered_detail::move_tag())
         {
         }
 
+#if !BOOST_WORKAROUND(__BORLANDC__, < 0x0593)
         unordered_map& operator=(unordered_map x)
         {
             base.move(x.base);
             return *this;
         }
+#endif
 #endif
 
     private:
@@ -387,6 +389,21 @@ namespace boost
         {
             base.rehash(n);
         }
+        
+        friend bool operator==(unordered_map const& m1, unordered_map const& m2)
+        {
+            return m1.base.equals(m2.base);
+        }
+
+        friend bool operator!=(unordered_map const& m1, unordered_map const& m2)
+        {
+            return !m1.base.equals(m2.base);
+        }
+
+        friend std::size_t hash_value(unordered_map const& m)
+        {
+            return m.base.hash_value();
+        }
     }; // class template unordered_map
 
     template <class K, class T, class H, class P, class A>
@@ -400,7 +417,7 @@ namespace boost
         class T,
         class Hash = hash<Key>,
         class Pred = std::equal_to<Key>,
-        class Alloc = std::allocator<std::pair<const Key, T> > >
+        class Alloc = boost::unordered_detail::allocator<std::pair<const Key, T> > >
     class unordered_multimap
     {
         typedef boost::unordered_detail::hash_types_equivalent_keys<
@@ -489,16 +506,18 @@ namespace boost
             return *this;
         }
 #else
-        unordered_multimap(boost::unordered_detail::move_from<unordered_multimap> other)
+        unordered_multimap(boost::unordered_detail::move_from<unordered_multimap<Key, T, Hash, Pred, Alloc> > other)
             : base(other.base, boost::unordered_detail::move_tag())
         {
         }
 
+#if !BOOST_WORKAROUND(__BORLANDC__, < 0x0593)
         unordered_multimap& operator=(unordered_multimap x)
         {
             base.move(x.base);
             return *this;
         }
+#endif
 #endif
 
 
@@ -738,6 +757,21 @@ namespace boost
         void rehash(size_type n)
         {
             base.rehash(n);
+        }
+
+        friend bool operator==(unordered_multimap const& m1, unordered_multimap const& m2)
+        {
+            return m1.base.equals(m2.base);
+        }
+
+        friend bool operator!=(unordered_multimap const& m1, unordered_multimap const& m2)
+        {
+            return !m1.base.equals(m2.base);
+        }
+
+        friend std::size_t hash_value(unordered_multimap const& m)
+        {
+            return m.base.hash_value();
         }
     }; // class template unordered_multimap
 
