@@ -23457,6 +23457,7 @@ v4/boost/phoenix/object/static_cast.hpp svneol=native#text/plain
 v4/boost/phoenix/operator.hpp svneol=native#text/plain
 v4/boost/phoenix/operator/if_else.hpp svneol=native#text/plain
 v4/boost/phoenix/operator/io.hpp svneol=native#text/plain
+v4/boost/phoenix/operator/member.hpp svneol=native#text/plain
 v4/boost/phoenix/scope.hpp svneol=native#text/plain
 v4/boost/phoenix/scope/let.hpp svneol=native#text/plain
 v4/boost/phoenix/scope/local_variable.hpp svneol=native#text/plain
