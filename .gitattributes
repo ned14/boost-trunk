@@ -11290,6 +11290,7 @@ libs/iostreams/doc/classes/file_descriptor.html svneol=native#text/html
 libs/iostreams/doc/classes/filter.html svneol=native#text/html
 libs/iostreams/doc/classes/filtering_stream.html svneol=native#text/html
 libs/iostreams/doc/classes/filtering_streambuf.html svneol=native#text/html
+libs/iostreams/doc/classes/grep_filter.html svneol=native#text/plain
 libs/iostreams/doc/classes/gzip.html svneol=native#text/html
 libs/iostreams/doc/classes/line_filter.html svneol=native#text/html
 libs/iostreams/doc/classes/mapped_file.html svneol=native#text/html
