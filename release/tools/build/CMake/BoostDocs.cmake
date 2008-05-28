@@ -123,6 +123,24 @@ macro(xsl_transform OUTPUT INPUT)
 endmacro(xsl_transform)
 
 # Use Doxygen to parse header files and produce BoostBook output.
+#
+#   doxygen_to_boostbook(output header1 header2 ...
+#     [PARAMETERS param1=value1 param2=value2 ... ])
+#
+# This macro sets up rules to transform a set of C/C++ header files
+# into BoostBook reference documentation. The resulting BoostBook XML
+# file will be named by the "output" parameter, and the set of headers
+# is provided following the output file. The actual parsing of header
+# files is provided by Doxygen, and is transformed into XML through
+# various XSLT transformations.
+#
+# Doxygen has a variety of configuration parameters. One can supply
+# extra Doxygen configuration parameters by providing NAME=VALUE pairs
+# following the PARAMETERS argument. These parameters will be added to
+# the Doxygen configuration file.
+#
+# This macro is intended to be used internally by
+# boost_add_documentation.
 macro(doxygen_to_boostbook OUTPUT)
   parse_arguments(THIS_DOXY
     "PARAMETERS"
@@ -433,7 +451,7 @@ mark_as_advanced(BOOSTBOOK_XSL_DIR)
 # Try to find Doxygen
 find_package(Doxygen)
 
-if (XSLTPROC)
+if (XSLTPROC AND DOXYGEN)
   if (DOCBOOK_DTD_DIR AND DOCBOOK_XSL_DIR)
     # Documentation build options
     option(BUILD_DOCUMENTATION "Whether to build library documentation" ON)
@@ -468,6 +486,8 @@ endif()
 if (BUILD_DOCUMENTATION)
   set(BUILD_DOCUMENTATION_OKAY TRUE)
   if (NOT XSLTPROC)
+    set(BUILD_DOCUMENTATION_OKAY FALSE)
+  elseif (NOT DOXYGEN)
     set(BUILD_DOCUMENTATION_OKAY FALSE)
   elseif (NOT DOCBOOK_DTD_DIR)
     set(BUILD_DOCUMENTATION_OKAY FALSE)
