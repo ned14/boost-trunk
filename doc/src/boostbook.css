@@ -586,3 +586,22 @@ sub {
 	top: .5ex;
 }
 
+@media print {
+	body { margin: 0; font-family: serif; }
+    html { margin: 0 }
+	h1,h2,h3,h4,h5,h6 { font-family: sans-serif; }
+	p { line-height: inherit; orphans: 3; widows: 3; }
+
+	img, pre, .table { page-break-inside: avoid; }
+	pre { page-break-before: avoid; }
+	.title, .titlepage { page-break-inside: avoid; page-break-after: avoid; }
+	.title + *, .titlepage + * { page-break-inside: auto !important; }
+	.section, .chapter { page-break-after: always; }
+	.section .section, .toc .section { page-break-after: auto; }
+	.refentry { page-break-inside: avoid; }
+	.refentry pre.synopsis { page-break-before: auto; page-break-inside: auto; }
+    .refsect2 > div.orderedlist > ol > li { page-break-inside: avoid; }
+    br.table-break { display: none; }
+
+    @page { margin: 0.5in }
+}
