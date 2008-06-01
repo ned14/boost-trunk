@@ -19,6 +19,10 @@ boostbook standalone : unordered :
     <xsl:param>toc.section.depth=1
     <xsl:param>toc.max.depth=1
 
+    <xsl:param>boost.compact.typedef=0
+    <xsl:param>boost.compact.function=0
+    <xsl:param>boost.compact.enum=0
+
     <dependency>css
     <dependency>images
 
