@@ -18592,8 +18592,8 @@ libs/unordered/doc/bibliography.xml svneol=native#text/xml
 libs/unordered/doc/buckets.qbk svneol=native#text/plain
 libs/unordered/doc/changes.qbk svneol=native#text/plain
 libs/unordered/doc/comparison.qbk svneol=native#text/plain
-libs/unordered/doc/diagrams/buckets.dia -text
 libs/unordered/doc/diagrams/buckets.png -text svneol=unset#image/png
+libs/unordered/doc/diagrams/buckets.svg -text svneol=unset#image/svg%2Bxml
 libs/unordered/doc/hash_equality.qbk svneol=native#text/plain
 libs/unordered/doc/intro.qbk svneol=native#text/plain
 libs/unordered/doc/rationale.qbk svneol=native#text/plain
