@@ -277,12 +277,26 @@ macro(boost_library_project LIBNAME)
         "Enable testing of Boost.${LIBNAME}" 
         ON)
 
-      # Only include the test directories when testing is enabled for
-      # this project.
+      # Only create test target and include the test directories
+      # when testing is enabled for this project.
       if(${BOOST_TEST_LIB_OPTION})
+	add_custom_target(${PROJECT_NAME}-test)
+
+	add_dependencies(test
+	  ${PROJECT_NAME}-test
+	  )
+
+	# the last argument here, the binary directory that the 
+	# logs are in, has to match the binary directory
+	# passed to 'add_subdirectory', in the foreach() just below
+	boost_post_results(${PROJECT_NAME} ${PROJECT_NAME}-test
+	  test
+	  ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-test)
+
         foreach(SUBDIR ${THIS_PROJECT_TESTDIRS})
-          add_subdirectory(${SUBDIR})
-        endforeach(SUBDIR ${THIS_PROJECT_TESTDIRS})
+          add_subdirectory(${SUBDIR} ${PROJECT_NAME}-test)
+        endforeach()
+
       endif(${BOOST_TEST_LIB_OPTION})
     endif(BUILD_TESTING AND THIS_PROJECT_TESTDIRS)
 
@@ -705,73 +719,77 @@ macro(boost_library_variant LIBNAME)
     # The basic LIBNAME target depends on each of the variants
     add_dependencies(${LIBNAME} ${VARIANT_LIBNAME})
     
+    boost_post_results(${PROJECT_NAME} ${VARIANT_LIBNAME} build ${CMAKE_CURRENT_BINARY_DIR})
+
     # Link against whatever libraries this library depends on
     target_link_libraries(${VARIANT_LIBNAME} ${THIS_VARIANT_LINK_LIBS})
     foreach(dependency ${THIS_LIB_DEPENDS})
       target_link_libraries(${VARIANT_LIBNAME} "${dependency}${VARIANT_TARGET_NAME}")
     endforeach(dependency)
 
-    # Setup installation properties
-    string(TOUPPER "${PROJECT_NAME}${VARIANT_TARGET_NAME}" LIB_COMPONENT)
-    string(REPLACE "-" "_" LIB_COMPONENT ${LIB_COMPONENT})
-    get_property(LIB_COMPONENT_EXISTS
-      GLOBAL PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME SET)
-    if (LIB_COMPONENT_EXISTS)
-      # There is more than one library binary associated with this
-      # installation component (e.g., both boost_serialization and 
-      # boost_wserialization library binaries), so update the
-      # display name of the installation component to the plural
-      # "libraries".
-      set_property(GLOBAL
-        PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME
-        "${VARIANT_DISPLAY_NAME} libraries")
-    else()
-      set_property(GLOBAL APPEND 
-        PROPERTY CPACK_COMPONENTS_ALL 
-        ${LIB_COMPONENT})
-      boost_set_cpack_variable(
-        CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME
-        "${VARIANT_DISPLAY_NAME} library")
-      boost_set_cpack_variable(
-        CPACK_COMPONENT_${LIB_COMPONENT}_GROUP 
-        ${ULIBNAME})
-    endif()
-    
-    # Installation of this library variant
-    string(TOUPPER ${PROJECT_NAME} ULIBNAME)
-    install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib
-      EXPORT boost-targets
-      COMPONENT ${LIB_COMPONENT})
-    set_property( 
-      TARGET ${VARIANT_LIBNAME}
-      PROPERTY BOOST_CPACK_COMPONENT
-      ${LIB_COMPONENT})
-      
-    # Make the library installation component dependent on the library
-    # installation components of dependent libraries.
-    foreach(DEP ${THIS_LIB_DEPENDS})
-      # We ask the library variant that this library depends on to tell us
-      # what it's associated installation component is. We depend on that 
-      # installation component.
-      get_property(DEP_COMPONENT 
-        TARGET "${DEP}${VARIANT_TARGET_NAME}"
-        PROPERTY BOOST_CPACK_COMPONENT)
-        
-      if (DEP_COMPONENT)
-        if (DEP_COMPONENT STREQUAL LIB_COMPONENT)
-          # Do nothing: we have library dependencies within one 
-          # Boost library
-        else()
-          set_property(GLOBAL APPEND
-          PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DEPENDS ${DEP_COMPONENT})
-        endif()
+    if(NOT THIS_LIB_NO_INSTALL)
+      # Setup installation properties
+      string(TOUPPER "${PROJECT_NAME}${VARIANT_TARGET_NAME}" LIB_COMPONENT)
+      string(REPLACE "-" "_" LIB_COMPONENT ${LIB_COMPONENT})
+      get_property(LIB_COMPONENT_EXISTS
+	GLOBAL PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME SET)
+      if (LIB_COMPONENT_EXISTS)
+	# There is more than one library binary associated with this
+	# installation component (e.g., both boost_serialization and 
+	# boost_wserialization library binaries), so update the
+	# display name of the installation component to the plural
+	# "libraries".
+	set_property(GLOBAL
+          PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME
+          "${VARIANT_DISPLAY_NAME} libraries")
+      else()
+	set_property(GLOBAL APPEND 
+          PROPERTY CPACK_COMPONENTS_ALL 
+          ${LIB_COMPONENT})
+	boost_set_cpack_variable(
+          CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME
+          "${VARIANT_DISPLAY_NAME} library")
+	boost_set_cpack_variable(
+          CPACK_COMPONENT_${LIB_COMPONENT}_GROUP 
+          ${ULIBNAME})
       endif()
-    endforeach(DEP)
-    if (THIS_LIB_DEPENDS)
-      set_property(GLOBAL APPEND
-        PROPERTY BOOST_CPACK_EXPORTS
-        CPACK_COMPONENT_${LIB_COMPONENT}_DEPENDS)
-    endif ()
+      
+      # Installation of this library variant
+      string(TOUPPER ${PROJECT_NAME} ULIBNAME)
+      install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib
+	EXPORT boost-targets
+	COMPONENT ${LIB_COMPONENT})
+      set_property( 
+	TARGET ${VARIANT_LIBNAME}
+	PROPERTY BOOST_CPACK_COMPONENT
+	${LIB_COMPONENT})
+      
+      # Make the library installation component dependent on the library
+      # installation components of dependent libraries.
+      foreach(DEP ${THIS_LIB_DEPENDS})
+	# We ask the library variant that this library depends on to tell us
+	# what it's associated installation component is. We depend on that 
+	# installation component.
+	get_property(DEP_COMPONENT 
+          TARGET "${DEP}${VARIANT_TARGET_NAME}"
+          PROPERTY BOOST_CPACK_COMPONENT)
+        
+	if (DEP_COMPONENT)
+          if (DEP_COMPONENT STREQUAL LIB_COMPONENT)
+            # Do nothing: we have library dependencies within one 
+            # Boost library
+          else()
+            set_property(GLOBAL APPEND
+              PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DEPENDS ${DEP_COMPONENT})
+          endif()
+	endif()
+      endforeach(DEP)
+      if (THIS_LIB_DEPENDS)
+	set_property(GLOBAL APPEND
+          PROPERTY BOOST_CPACK_EXPORTS
+          CPACK_COMPONENT_${LIB_COMPONENT}_DEPENDS)
+      endif ()
+    endif(NOT THIS_LIB_NO_INSTALL)
   endif (THIS_VARIANT_OKAY)
 endmacro(boost_library_variant)
 
@@ -1043,7 +1061,7 @@ endmacro(boost_add_extra_variant)
 macro(boost_add_library LIBNAME)
   parse_arguments(THIS_LIB
     "DEPENDS;COMPILE_FLAGS;LINK_FLAGS;LINK_LIBS;EXTRA_VARIANTS;${BOOST_ADD_ARG_NAMES}"
-    "STATIC_TAG;MODULE;${BOOST_ADDLIB_OPTION_NAMES}"
+    "STATIC_TAG;MODULE;NO_INSTALL;${BOOST_ADDLIB_OPTION_NAMES}"
     ${ARGN}
     )
   set(THIS_LIB_SOURCES ${THIS_LIB_DEFAULT_ARGS})
@@ -1052,7 +1070,7 @@ macro(boost_add_library LIBNAME)
     # A top-level target that refers to all of the variants of the
     # library, collectively.
     add_custom_target(${LIBNAME})
-    
+
     if (THIS_LIB_EXTRA_VARIANTS)
       # Build the set of variants that we will generate for this library
       set(THIS_LIB_VARIANTS)
@@ -1330,7 +1348,7 @@ macro(boost_add_executable EXENAME)
     if (THIS_PROJECT_IS_TOOL)
       set(THIS_EXE_NAME ${EXENAME})
     else()
-      set(THIS_EXE_NAME ${PROJECT_NAME}/${EXENAME})
+      set(THIS_EXE_NAME ${PROJECT_NAME}-${EXENAME})
     endif()
     add_executable(${THIS_EXE_NAME} ${THIS_EXE_SOURCES})
     

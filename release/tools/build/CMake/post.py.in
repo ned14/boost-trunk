@@ -1,0 +1,36 @@
+#!/usr/bin/python
+#
+#  copyright (C) 2008  troy d. straszheim  <troy@resophonic.com>
+#  
+#  Distributed under the Boost Software License, Version 1.0.
+#  See accompanying file LICENSE_1_0.txt or copy at
+#  http://www.boost.org/LICENSE_1_0.txt
+#
+
+#
+#  HTTP POST the build log
+#
+
+import sys, os, os.path
+from subprocess import Popen, PIPE
+import xml.etree.ElementTree as ET
+
+project_name = sys.argv[1]
+library_target = sys.argv[2]
+logdir = sys.argv[3]
+
+print "\n>>>\n>>> Project " + project_name \
+      + "\n>>> POST build log for " + library_target \
+      + "\n>>> from log dir" + logdir \
+      + "\n>>>\n"
+
+#
+# Here you would actually do an http post.  Just print for now.
+#
+p = os.path.join(logdir, "Log.xml")
+
+f = open(p)
+print f.read() + "\n"
+f.close()
+os.remove(p)
+

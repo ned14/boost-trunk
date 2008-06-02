@@ -1,0 +1,89 @@
+#!/usr/bin/python
+#
+#  copyright (C) 2008  troy d. straszheim  <troy@resophonic.com>
+#  
+#  Distributed under the Boost Software License, Version 1.0.
+#  See accompanying file LICENSE_1_0.txt or copy at
+#  http://www.boost.org/LICENSE_1_0.txt
+#
+
+#
+#  Compiler driver.  Takes a few arguments describing what is to be done
+#  (used to mark up the output) and executes compiler in a subshell, checking
+#  for errors and xmlizing any output.
+#
+import sys, os.path
+from subprocess import Popen, PIPE
+import xml.etree.ElementTree as ET
+
+log = os.path.join(sys.argv[1], "Log.xml")
+op = sys.argv[2]
+target = sys.argv[3]
+argv = sys.argv[4:]
+expect_fail = op.endswith("fail")
+passthru = op.startswith("passthru")
+
+if not passthru:
+    print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
+
+#
+#  execute subprocess
+#
+subproc = None
+returncode = None
+ex = None
+try:
+    subproc = Popen(argv, stdout=PIPE, stderr=PIPE)
+    returncode = subproc.wait()
+except EnvironmentError, e:
+    ex = e
+
+#
+#  Collect, possibly xmlize, and print subprocess return info
+#
+
+if not passthru:
+    root = ET.Element(op)
+    ET.SubElement(root, "target").text = target
+
+    ET.SubElement(root, "commandline").text = " ".join(argv)
+
+    if not ex:
+        ET.SubElement(root, "returncode").text = str(returncode)
+        stdout = subproc.stdout.read()
+        stderr = subproc.stderr.read()
+        if returncode != 0 and not expect_fail:
+            print "*** stdout:" + stdout
+            print "*** stderr:" + stderr
+        else:
+            print "*** OK"
+            ET.SubElement(root, "stdout").text = stdout
+            ET.SubElement(root, "stderr").text = stderr
+    
+    else:
+        ET.SubElement(root, "errno").text = str(ex.errno)
+        ET.SubElement(root, "filename").text = ex.filename
+        ET.SubElement(root, "message").text = ex.message
+        ET.SubElement(root, "strerror").text = ex.strerror
+        print "Errno:" + str(ex.errno) + ": " + ex.strerror
+
+    f = open(log, "a")
+    f.write(ET.tostring(root) + "\n")
+else:
+    print subproc.stdout.read(),
+    print subproc.stderr.read(),
+
+if ex:
+    sys.exit(ex.errno)
+else:
+    if expect_fail:
+        if returncode != 0:
+            sys.exit(0)
+        else: 
+            print "UNEXPECTED SUCCESS"
+            sys.exit(1)  # we need an exit status for 'unexpected success'
+    else:
+        sys.exit(returncode)
+
+    
+

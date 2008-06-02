@@ -40,6 +40,7 @@ set(BOOST_VERSION "${BOOST_VERSION_MAJOR}.${BOOST_VERSION_MINOR}.${BOOST_VERSION
 # Boost CMake modules                                                    #
 ##########################################################################
 list(APPEND CMAKE_MODULE_PATH ${Boost_SOURCE_DIR}/tools/build/CMake)
+include(BoostBuildSlave)
 include(BoostUtils)
 include(BoostConfig)
 include(BoostCore)
