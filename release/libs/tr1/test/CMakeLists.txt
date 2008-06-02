@@ -6,6 +6,7 @@ if (BORLAND)
 endif (BORLAND)
 
 macro(boost_glob_test_compile path glob_par compile_flags)
+  #message("boost_glob_test_compile ${path} ${glob_par} ${compile_flags}")
   list_contains(WITH_STD "WITH_STD" ${ARGN})
   file(GLOB file_list ${path}/${glob_par})
   foreach (current_file ${file_list})
@@ -20,6 +21,7 @@ macro(boost_glob_test_compile path glob_par compile_flags)
 endmacro(boost_glob_test_compile)
 
 macro(boost_glob_test_compile_fail patch glob_par compile_flags)
+  #message("boost_glob_test_compile_fail ${path} ${glob_par} ${compile_flags}")
   file(GLOB file_list ${glob_par})
   foreach (current_file ${file_list})
     get_filename_component(file_name ${current_file} NAME_WE)
@@ -49,6 +51,10 @@ boost_glob_test_compile_fail(config tr1_has_tr1*fail.cpp "")
 
 boost_glob_test_compile(config tr1_has_tr1*pass.cpp "")
 
-boost_glob_test_run(type_traits *.cpp "-DTEST_STD=1")
 
-boost_glob_test_compile(std_headers *.cpp "-DTEST_STD=1")
+message("libs/tr1/test/CMakeLists.txt: was this just cruft?  Seems to duplicate first glob_test_compile line above")
+
+boost_glob_test_run(type_traits *.cpp "")
+# previous:
+#boost_glob_test_run(type_traits *.cpp "-DTEST_STD=1")
+#boost_glob_test_compile(std_headers *.cpp "-DTEST_STD=1")
