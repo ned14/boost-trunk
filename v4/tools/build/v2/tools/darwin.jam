@@ -49,11 +49,17 @@ rule init ( version ? : command * : options * : requirement * )
     
     common.handle-options darwin : $(condition) : $(command) : $(options) ;
     
-    # GCC 4.0 and higher in Darwin does not have -fcoalesce-templates.
     local gccversion = [ SHELL "$(command:J= ) -dumpversion" ] ;
+    
+    # GCC 4.0 and higher in Darwin does not have -fcoalesce-templates.
     if $(gccversion) < "4.0.0"
     {
         flags darwin.compile.c++ OPTIONS $(condition) : -fcoalesce-templates ;
+    }
+    # GCC 4.2 and higher in Darwin does not have -Wno-long-double.
+    if $(gccversion) < "4.2.0"
+    {
+        flags darwin.compile OPTIONS $(condition) : -Wno-long-double ;
     }
 
     gcc.init-link-flags darwin darwin $(condition) ;
@@ -106,9 +112,6 @@ flags darwin.compile OPTIONS <flags> ;
 
 # The following adds objective-c support to darwin.
 # Thanks to http://thread.gmane.org/gmane.comp.lib.boost.build/13759
-
-type.register OBJECTIVE_C : m ;
-type.register OBJECTIVE_CPP : mm ;
 
 generators.register-c-compiler darwin.compile.m : OBJECTIVE_C : OBJ : <toolset>darwin ;
 generators.register-c-compiler darwin.compile.mm : OBJECTIVE_CPP : OBJ : <toolset>darwin ;
@@ -208,7 +211,7 @@ flags darwin.link OPTIONS <runtime-link>static
 flags darwin.link OPTIONS <variant>release : -Wl,-dead_strip -no_dead_strip_inits_and_terms ;
 
 flags darwin.compile OPTIONS <link>shared : -dynamic ;
-flags darwin.compile OPTIONS : -Wno-long-double -no-cpp-precomp  -gdwarf-2  ;
+flags darwin.compile OPTIONS : -no-cpp-precomp -gdwarf-2 ;
 
 flags darwin.link FRAMEWORK <framework> ;
 

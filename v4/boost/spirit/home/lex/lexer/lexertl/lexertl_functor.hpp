@@ -42,6 +42,7 @@ namespace boost { namespace spirit { namespace lex
         template <typename Iterator>
         struct Data<Iterator, mpl::false_, mpl::false_>
         {
+            typedef std::size_t state_type;
             typedef iterator_range<Iterator> iterpair_type;
             typedef typename 
                 boost::detail::iterator_traits<Iterator>::value_type 
@@ -89,7 +90,12 @@ namespace boost { namespace spirit { namespace lex
           : Data<Iterator, mpl::false_, mpl::false_>
         {
             typedef Data<Iterator, mpl::false_, mpl::false_> base_type;
-            typedef std::size_t state_type;
+
+            typedef typename base_type::state_type state_type;
+            typedef typename base_type::char_type char_type;
+            typedef 
+                typename base_type::semantic_actions_type 
+            semantic_actions_type;
             
             // initialize the shared data 
             template <typename IterData>
@@ -130,9 +136,8 @@ namespace boost { namespace spirit { namespace lex
             typedef Data<Iterator, mpl::false_, HasState> base_type;
             
             typedef iterator_range<Iterator> iterpair_type;
-            typedef typename 
-                boost::detail::iterator_traits<Iterator>::value_type 
-            char_type;
+            typedef typename base_type::state_type state_type;
+            typedef typename base_type::char_type char_type;
 
             typedef void functor_type(iterpair_type, std::size_t, bool&, Data&);
             typedef boost::function<functor_type> functor_wrapper_type;
