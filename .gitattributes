@@ -23441,6 +23441,7 @@ v4/boost/phoenix/bind/bind.hpp svneol=native#text/plain
 v4/boost/phoenix/core.hpp svneol=native#text/plain
 v4/boost/phoenix/core/actor.hpp svneol=native#text/plain
 v4/boost/phoenix/core/argument.hpp svneol=native#text/plain
+v4/boost/phoenix/core/as_actor.hpp svneol=native#text/plain
 v4/boost/phoenix/core/limits.hpp svneol=native#text/plain
 v4/boost/phoenix/core/reference.hpp svneol=native#text/plain
 v4/boost/phoenix/core/value.hpp svneol=native#text/plain
