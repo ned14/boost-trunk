@@ -282,9 +282,7 @@ macro(boost_library_project LIBNAME)
       if(${BOOST_TEST_LIB_OPTION})
 	add_custom_target(${PROJECT_NAME}-test)
 
-	add_dependencies(test
-	  ${PROJECT_NAME}-test
-	  )
+	add_dependencies(test ${PROJECT_NAME}-test)
 
 	# the last argument here, the binary directory that the 
 	# logs are in, has to match the binary directory

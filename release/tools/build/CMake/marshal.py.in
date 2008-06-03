@@ -1,0 +1,83 @@
+#!/usr/bin/python
+#
+#  copyright (C) 2008  troy d. straszheim  <troy@resophonic.com>
+#  
+#  Distributed under the Boost Software License, Version 1.0.
+#  See accompanying file LICENSE_1_0.txt or copy at
+#  http://www.boost.org/LICENSE_1_0.txt
+#
+#
+#  Compiler driver.  Takes a few arguments describing what is to be done
+#  (used to mark up the output) and executes compiler in a subshell, checking
+#  for errors and marshalling output to disk.
+#
+import sys, os.path, marshal
+from subprocess import Popen, PIPE
+import xml.etree.ElementTree as ET
+
+log = os.path.join(sys.argv[1], "Log.marshal")
+op = sys.argv[2]
+target = sys.argv[3]
+argv = sys.argv[4:]
+expect_fail = op.endswith("fail")
+
+print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
+
+#
+#  execute subprocess
+#
+subproc = None
+returncode = None
+ex = None
+try:
+    subproc = Popen(argv, stdout=PIPE, stderr=PIPE)
+    returncode = subproc.wait()
+except EnvironmentError, e:
+    ex = e
+
+#
+#  Collect, possibly xmlize, and print subprocess return info
+#
+
+result = { 'expect_fail' : expect_fail }
+
+if not ex:
+    
+    result['returncode'] = returncode
+    result['stdout'] = subproc.stdout.read()
+    result['stderr'] = subproc.stderr.read()
+
+    if returncode != 0 and not expect_fail:
+        print "*** stdout:" + result['stdout']
+        print "*** stderr:" + result['stderr']
+    else:
+        print "*** OK"
+    
+else:
+    result['errno'] = ex.errno
+    result['filename'] = ex.filename
+    result['message'] = ex.message
+    result['strerror'] = ex.strerror
+    print "Errno:" + str(ex.errno) + ": " + ex.strerror
+
+result.update({'op' : op,
+               'target' : target,
+               'cmdline' : argv })
+
+f = open(log, "a")
+marshal.dump(result, f)
+
+if ex:
+    sys.exit(ex.errno)
+else:
+    if expect_fail:
+        if returncode != 0:
+            sys.exit(0)
+        else: 
+            print "UNEXPECTED SUCCESS"
+            sys.exit(1)  # we need an exit status for 'unexpected success'
+    else:
+        sys.exit(returncode)
+
+    
+
