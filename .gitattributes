@@ -4001,6 +4001,7 @@ boost/ptr_container/detail/associative_ptr_container.hpp svneol=native#text/plai
 boost/ptr_container/detail/default_deleter.hpp svneol=native#text/plain
 boost/ptr_container/detail/is_convertible.hpp svneol=native#text/plain
 boost/ptr_container/detail/map_iterator.hpp svneol=native#text/plain
+boost/ptr_container/detail/meta_functions.hpp svneol=native#text/plain
 boost/ptr_container/detail/move.hpp svneol=native#text/plain
 boost/ptr_container/detail/reversible_ptr_container.hpp svneol=native#text/plain
 boost/ptr_container/detail/scoped_deleter.hpp svneol=native#text/plain
