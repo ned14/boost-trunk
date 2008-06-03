@@ -92,14 +92,14 @@ endif(BOOST_BUILD_SLAVE)
 
 
 
-macro(boost_post_results PROJECT_NAME_ LIBRARY_TARGET WHAT LOGDIR)
+macro(boost_post_results PROJECT_NAME_ PARENT_TARGET BUILD_OR_TEST LOGDIR)
   if(BOOST_BUILD_SLAVE)
-    add_custom_command(TARGET ${LIBRARY_TARGET}
+    add_custom_command(TARGET ${PARENT_TARGET}
       POST_BUILD
-      COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py ${PROJECT_NAME_} ${WHAT} ${LOGDIR}
-      COMMENT "Submitting results for '${WHAT}' in  ${PROJECT_NAME_}"
+      COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py ${PROJECT_NAME_} ${PARENT_TARGET} ${BUILD_OR_TEST} ${LOGDIR}
+      COMMENT "Submitting results for '${BUILD_OR_TEST}' of ${PARENT_TARGET} in ${PROJECT_NAME_}"
       )
     set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${LOGDIR}/Log.marshal)
 
   endif(BOOST_BUILD_SLAVE)
-endmacro(boost_post_results LIBRARY_TARGET)
+endmacro(boost_post_results PARENT_TARGET)
