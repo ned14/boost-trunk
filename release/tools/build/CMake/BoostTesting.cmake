@@ -278,19 +278,21 @@ macro(boost_test_compile testname)
       ${BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} ${BOOST_TEST_TAG} ${testname} 
       )
   
-    add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${testname}-${BOOST_TEST_TAG}.o
+    add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${BOOST_TEST_TESTNAME}.${CMAKE_CXX_OUTPUT_EXTENSION}
       COMMAND 
       ${THIS_TEST_PREFIX_ARGS}
       ${CMAKE_CXX_COMPILER} 
       ${BOOST_TEST_COMPILE_FLAGS} 
       ${BOOST_TEST_INCLUDES}
       -c ${BOOST_TEST_SOURCES}
-      -o ${testname}-compile-test.o
+      -o ${CMAKE_CURRENT_BINARY_DIR}/${BOOST_TEST_TESTNAME}${CMAKE_CXX_OUTPUT_EXTENSION}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+      DEPENDS ${BOOST_TEST_SOURCES}
       COMMENT "Running ${testname} in project ${PROJECT_NAME}"
       )
 
     add_custom_target(${BOOST_TEST_TESTNAME}
-      DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${testname}-${BOOST_TEST_TAG}.o
+      DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${BOOST_TEST_TESTNAME}.${CMAKE_CXX_OUTPUT_EXTENSION}
       )
 
     add_dependencies(${PROJECT_NAME}-test
