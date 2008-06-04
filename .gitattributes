@@ -4024,6 +4024,7 @@ boost/ptr_container/ptr_map_adapter.hpp svneol=native#text/plain
 boost/ptr_container/ptr_sequence_adapter.hpp svneol=native#text/plain
 boost/ptr_container/ptr_set.hpp svneol=native#text/plain
 boost/ptr_container/ptr_set_adapter.hpp svneol=native#text/plain
+boost/ptr_container/ptr_unordered_map.hpp svneol=native#text/plain
 boost/ptr_container/ptr_unordered_set.hpp svneol=native#text/plain
 boost/ptr_container/ptr_unoredered_map.hpp svneol=native#text/plain
 boost/ptr_container/ptr_vector.hpp svneol=native#text/plain
