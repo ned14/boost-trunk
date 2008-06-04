@@ -11,9 +11,12 @@
 #  (used to mark up the output) and executes compiler in a subshell, checking
 #  for errors and marshalling output to disk.
 #
-import sys, os.path, marshal
+import sys
+sys.path.append("@BOOST_BUILD_SLAVE_PYTHONPATH@")
+from boost_build_slave import *
+
+import datetime, time, signal
 from subprocess import Popen, PIPE
-import xml.etree.ElementTree as ET
 
 log = os.path.join(sys.argv[1], "Log.marshal")
 op = sys.argv[2]
@@ -24,14 +27,28 @@ expect_fail = op.endswith("fail")
 print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
 
 #
-#  execute subprocess
+#  execute subprocess, watch for timeout
 #
 subproc = None
 returncode = None
 ex = None
 try:
+    start = datetime.datetime.now()
     subproc = Popen(argv, stdout=PIPE, stderr=PIPE)
-    returncode = subproc.wait()
+    returncode = subproc.poll()
+    while returncode is None:
+        time.sleep(1)
+        now = datetime.datetime.now()
+        if (now - start).seconds > timeout_seconds:
+            os.kill(subproc.pid, signal.SIGKILL)
+            os.waitpid(-1, os.WNOHANG)
+            e = OSError()
+            e.errno = 666
+            e.message = e.strerror = "TIMEOUT AFTER %d SECONDS" % timeout_seconds
+            e.filename = argv[0]
+            raise e
+        returncode = subproc.poll()
+
 except EnvironmentError, e:
     ex = e
 

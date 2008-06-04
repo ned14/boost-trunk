@@ -21,6 +21,8 @@ hostname = socket.gethostname()
 uname = os.uname()
 toolset = "@BOOST_TOOLSET@"
 
+timeout_seconds = 30
+
 xmlrpc_url = "@BOOST_BUILD_SLAVE_SUBMIT_URL@"
 
 build_id_file = os.path.join("@BOOST_BUILD_SLAVE_PYTHONPATH@", "build_id.txt")

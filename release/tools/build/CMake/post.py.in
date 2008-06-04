@@ -15,7 +15,7 @@ import sys
 sys.path.append("@BOOST_BUILD_SLAVE_PYTHONPATH@")
 from boost_build_slave import *
 
-s = xmlrpclib.Server(xmlrpc_url)
+s = xmlrpclib.Server(xmlrpc_url, allow_none=True)
 
 project_name = sys.argv[1]
 parent_target = sys.argv[2]
