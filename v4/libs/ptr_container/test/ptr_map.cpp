@@ -381,6 +381,36 @@ void test_map()
 
 }
 
+#include <boost/tuple/tuple.hpp>
+#include <boost/iterator/zip_iterator.hpp>
+#include <map>
+#include <boost/ptr_container/ptr_map.hpp>
+
+void test_map_iterators()
+{
+    using boost::zip_iterator;
+    using boost::tuple;
+    using boost::make_tuple;
+    using boost::ptr_map;
+    using std::map;
+
+    //typedef map<int, int> theMapType;
+    /*
+    @remark: the following will not compile
+             because of the proxy (non-reference) returned by operator*()
+             of the ptr_map's iterator type.
+             
+    typedef boost::ptr_map<int, int> theMapType;
+    typedef zip_iterator
+        <tuple<theMapType::iterator, theMapType::iterator> > zipIter;
+    theMapType map1;
+    theMapType map2;
+    zipIter zip(make_tuple(map1.begin(), map2.begin()));
+    */
+}
+
+
+
 using boost::unit_test::test_suite;
 
 test_suite* init_unit_test_suite( int argc, char* argv[] )
@@ -388,6 +418,7 @@ test_suite* init_unit_test_suite( int argc, char* argv[] )
     test_suite* test = BOOST_TEST_SUITE( "Pointer Container Test Suite" );
 
     test->add( BOOST_TEST_CASE( &test_map ) );
+    test->add( BOOST_TEST_CASE( &test_map_iterators ) );
 
     return test;
 }

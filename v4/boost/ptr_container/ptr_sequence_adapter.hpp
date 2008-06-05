@@ -209,9 +209,8 @@ namespace ptr_container_detail
 
         auto_type pop_back()
         {
-            BOOST_PTR_CONTAINER_THROW_EXCEPTION( this->empty(), 
-                                                 bad_ptr_container_operation,
-                                          "'pop_back()' on empty container" );
+            BOOST_ASSERT( !this->empty() && 
+                          "'pop_back()' on empty container" );
             auto_type ptr( static_cast<value_type>( this->base().back() ) );      
                                                        // nothrow
             this->base().pop_back();                   // nothrow
@@ -220,9 +219,8 @@ namespace ptr_container_detail
 
         auto_type pop_front()
         {
-            BOOST_PTR_CONTAINER_THROW_EXCEPTION( this->empty(),
-                                                 bad_ptr_container_operation,
-                                         "'pop_front()' on empty container" ); 
+            BOOST_ASSERT( !this->empty() &&
+                          "'pop_front()' on empty container" ); 
             auto_type ptr( static_cast<value_type>( this->base().front() ) ); 
                                          // nothrow 
             this->base().pop_front();    // nothrow
@@ -231,38 +229,29 @@ namespace ptr_container_detail
         
         reference front()        
         { 
-            BOOST_PTR_CONTAINER_THROW_EXCEPTION( this->empty(), 
-                                                 bad_ptr_container_operation,
-                                    "accessing 'front()' on empty container" );
+            BOOST_ASSERT( !this->empty() &&
+                          "accessing 'front()' on empty container" );
+
             BOOST_ASSERT( !::boost::is_null( this->begin() ) );
             return *this->begin(); 
         }
 
         const_reference front() const  
         {
-            BOOST_PTR_CONTAINER_THROW_EXCEPTION( this->empty(), 
-                                                 bad_ptr_container_operation, 
-                                   "accessing 'front()' on empty container" );
-            BOOST_ASSERT( !::boost::is_null( this->begin() ) );
-            return *this->begin(); 
+            return const_cast<ptr_sequence_adapter*>(this)->front();
         }
 
         reference back()
         {
-            BOOST_PTR_CONTAINER_THROW_EXCEPTION( this->empty(),
-                                                 bad_ptr_container_operation,
-                                    "accessing 'back()' on empty container" );
+            BOOST_ASSERT( !this->empty() &&
+                          "accessing 'back()' on empty container" );
             BOOST_ASSERT( !::boost::is_null( --this->end() ) );
             return *--this->end(); 
         }
 
         const_reference back() const
         {
-            BOOST_PTR_CONTAINER_THROW_EXCEPTION( this->empty(),
-                                                 bad_ptr_container_operation,
-                                    "accessing 'back()' on empty container" );
-            BOOST_ASSERT( !::boost::is_null( --this->end() ) );
-            return *--this->end(); 
+            return const_cast<ptr_sequence_adapter*>(this)->back();
         }
 
     public: // deque/vector inerface
@@ -325,7 +314,7 @@ namespace ptr_container_detail
         }
 
         template< class Range >
-        void assign( const Range& r )
+        void assign( const Range& r ) // strong
         {
             assign( boost::begin(r), boost::end(r ) );
         }
@@ -369,7 +358,7 @@ namespace ptr_container_detail
         }
 
 #endif
-
+        
         template< class PtrSeqAdapter >
         void transfer( iterator before, 
                        BOOST_DEDUCED_TYPENAME PtrSeqAdapter::iterator first, 
@@ -457,7 +446,7 @@ namespace ptr_container_detail
 
     public: // resize
 
-        void resize( size_type size )
+        void resize( size_type size ) // basic
         {
             size_type old_size = this->size();
             if( old_size > size )
@@ -474,7 +463,7 @@ namespace ptr_container_detail
             BOOST_ASSERT( this->size() == size );
         }
 
-        void resize( size_type size, value_type to_clone )
+        void resize( size_type size, value_type to_clone ) // basic
         {
             size_type old_size = this->size();
             if( old_size > size )
@@ -489,7 +478,42 @@ namespace ptr_container_detail
 
             BOOST_ASSERT( this->size() == size );        
         }
-          
+
+        void rresize( size_type size ) // basic
+        {
+            size_type old_size = this->size();
+            if( old_size > size )
+            {
+                this->erase( this->begin(), 
+                             boost::next( this->begin(), old_size - size ) );  
+            }
+            else if( size > old_size )
+            {
+                for( ; old_size != size; ++old_size )
+                    this->push_front( new BOOST_DEDUCED_TYPENAME 
+                                      boost::remove_pointer<value_type>::type ); 
+            }
+
+            BOOST_ASSERT( this->size() == size );
+        }
+
+        void rresize( size_type size, value_type to_clone ) // basic
+        {
+            size_type old_size = this->size();
+            if( old_size > size )
+            {
+                this->erase( this->begin(), 
+                             boost::next( this->begin(), old_size - size ) );  
+            }
+            else if( size > old_size )
+            {
+                for( ; old_size != size; ++old_size )
+                    this->push_front( this->null_policy_allocate_clone( to_clone ) ); 
+            }
+
+            BOOST_ASSERT( this->size() == size );
+        }           
+                
     public: // algorithms
 
         void sort( iterator first, iterator last )
