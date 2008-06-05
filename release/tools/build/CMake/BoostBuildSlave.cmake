@@ -14,6 +14,9 @@ set(BOOST_BUILD_SLAVE_SUBMIT_URL "http://localhost:8000/initenv/xmlrpc" CACHE ST
 
 set(BOOST_BUILD_SLAVE_PYTHONPATH "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}")
 
+set(BOOST_BUILD_SLAVE_TIMEOUT 120 
+  CACHE STRING "Seconds until build slave times out any individual build step")    
+
 message(STATUS "Configuring test/compile drivers")
   
 if(CMAKE_VERBOSE_MAKEFILE)

@@ -21,7 +21,7 @@ hostname = socket.gethostname()
 uname = os.uname()
 toolset = "@BOOST_TOOLSET@"
 
-timeout_seconds = 180
+timeout_seconds = @BOOST_BUILD_SLAVE_TIMEOUT@
 
 xmlrpc_url = "@BOOST_BUILD_SLAVE_SUBMIT_URL@"
 
