@@ -18913,7 +18913,6 @@ libs/typeof/tools/preprocess.pl svneol=native#text/x-perl
 libs/units/boost.css svneol=native#text/css
 libs/units/doc/Jamfile.v2 svneol=native#text/plain
 libs/units/doc/generate_base_units.jam svneol=native#text/plain
-libs/units/doc/units.pdf -text svneol=unset#application/pdf
 libs/units/doc/units.qbk svneol=native#text/plain
 libs/units/example/Jamfile.v2 svneol=native#text/plain
 libs/units/example/complex.cpp svneol=native#text/plain
