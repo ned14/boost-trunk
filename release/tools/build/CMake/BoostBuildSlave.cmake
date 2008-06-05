@@ -9,7 +9,7 @@
 ##########################################################################
 option(BOOST_BUILD_SLAVE "Be a build slave, report build/testing" OFF)
 
-set(BOOST_BUILD_SLAVE_SUBMIT_URL "http://localhost:8000" CACHE STRING
+set(BOOST_BUILD_SLAVE_SUBMIT_URL "http://localhost:8000/initenv/xmlrpc" CACHE STRING
   "URL to post regression testing results to.")
 
 set(BOOST_BUILD_SLAVE_PYTHONPATH "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}")
