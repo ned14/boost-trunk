@@ -107,6 +107,6 @@ macro(boost_post_results PROJECT_NAME_ PARENT_TARGET BUILD_OR_TEST LOGDIR)
       COMMENT "Submitting results for '${BUILD_OR_TEST}' of ${PARENT_TARGET} in ${PROJECT_NAME_}"
       )
     set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${LOGDIR}/Log.marshal)
-
+    add_dependencies(test ${PARENT_TARGET})
   endif(BOOST_BUILD_SLAVE)
 endmacro(boost_post_results PARENT_TARGET)
