@@ -40,9 +40,9 @@ set(BOOST_VERSION "${BOOST_VERSION_MAJOR}.${BOOST_VERSION_MINOR}.${BOOST_VERSION
 # Boost CMake modules                                                    #
 ##########################################################################
 list(APPEND CMAKE_MODULE_PATH ${Boost_SOURCE_DIR}/tools/build/CMake)
-include(BoostBuildSlave)
 include(BoostUtils)
 include(BoostConfig)
+include(BoostBuildSlave)
 include(BoostCore)
 include(BoostDocs)
 include(BoostTesting)
@@ -151,7 +151,7 @@ add_definitions(-DBOOST_ALL_NO_LIB=1)
 add_subdirectory(doc)
 
 # Add build rules for all of the Boost libraries
-add_subdirectory(libs)
+add_subdirectory(${BOOST_LIBS_DIR})
 
 # Add build rules for all of the Boost tools
 # TODO: On hold while I work on the modularity code

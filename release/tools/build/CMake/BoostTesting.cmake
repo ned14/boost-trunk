@@ -46,6 +46,16 @@ if (BUILD_TESTING)
   endif (TEST_INSTALLED_TREE)
 endif (BUILD_TESTING)
 
+option(BOOST_BUILD_SANITY_TEST
+  "Don't build regular boost libraries, build libraries that test the boost cmake build system itself" OFF)
+
+if(BOOST_BUILD_SANITY_TEST)
+  set(BOOST_LIBS_DIR ${CMAKE_SOURCE_DIR}/tools/build/CMake/sanity)
+  configure_file(${CMAKE_SOURCE_DIR}/libs/CMakeLists.txt ${BOOST_LIBS_DIR}/CMakeLists.txt COPYONLY)
+else(BOOST_BUILD_SANITY_TEST)
+  set(BOOST_LIBS_DIR ${CMAKE_SOURCE_DIR}/libs)
+endif(BOOST_BUILD_SANITY_TEST)
+
 # This macro is an internal utility macro that helps parse the
 # arguments passed to the Boost testing commands. It will generally
 # not be used by Boost developers.
@@ -90,7 +100,7 @@ macro(boost_test_parse_args testname)
   set(BOOST_TEST_COMPILE_FLAGS "")
   parse_arguments(BOOST_TEST 
     "LINK_LIBS;LINK_FLAGS;DEPENDS;COMPILE_FLAGS;ARGS"
-    "COMPILE;RUN;LINK;FAIL"
+    "COMPILE;RUN;LINK;FAIL;RELEASE;DEBUG"
     ${ARGN}
     )
     
@@ -217,7 +227,7 @@ macro(boost_test_run testname)
 	COMMAND 
 	${THIS_TEST_PREFIX_ARGS} 
 	${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/tests/${PROJECT_NAME}/${testname}
-	${THIS_EXE_ARGS}
+	${BOOST_TEST_ARGS}
 	COMMENT "Running ${testname} in project ${PROJECT_NAME}"
 	)
 
