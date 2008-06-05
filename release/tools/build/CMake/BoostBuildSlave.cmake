@@ -25,8 +25,9 @@ else(CMAKE_VERBOSE_MAKEFILE)
   set(BOOST_DRIVER_VERBOSE False)
 endif(CMAKE_VERBOSE_MAKEFILE)
 
-# the program that does the posting when BOOST_BUILD_SLAVE is on
-
+#
+# the programs that do the dirty work.
+#
 foreach(PYFILE boost_build_slave passthru marshal start finish info post)
   configure_file(tools/build/CMake/${PYFILE}.py.in 
     ${BOOST_BUILD_SLAVE_PYTHONPATH}/${PYFILE}.py 
@@ -34,19 +35,12 @@ foreach(PYFILE boost_build_slave passthru marshal start finish info post)
     )
 endforeach()
 
-#configure_file(tools/build/CMake/boost_build_slave.py.in ${CMAKE_BINARY_DIR}/post.py @ONLY)
-
-
-#configure_file(tools/build/CMake/post.py.in ${CMAKE_BINARY_DIR}/post.py @ONLY)
-
-# the programs that sit between 'make' and the test binaries, one does xmlization
-# the other doesn't.  T
-#configure_file(tools/build/CMake/passthru.py.in ${CMAKE_BINARY_DIR}/passthru.py @ONLY)
-#configure_file(tools/build/CMake/xmlize.py.in ${CMAKE_BINARY_DIR}/xmlize.py @ONLY)
-#configure_file(tools/build/CMake/start.py.in ${CMAKE_BINARY_DIR}/start.py @ONLY)
-
 #
-# the test driver is either 
+# the test driver is either marshal or passthru depending on whether
+# you're in build slave mode or not.  The compilation/link rules
+# aren't modified if you're not in slave mode, BUUUT the tests still 
+# need a driver script that knows whether to expect failure or not
+# and 'flips' the return status accordingly: thus passthru.py.
 #
 if(BOOST_BUILD_SLAVE)
   set(BOOST_TEST_DRIVER ${BOOST_BUILD_SLAVE_PYTHONPATH}/marshal.py)
@@ -55,7 +49,6 @@ else(BOOST_BUILD_SLAVE)
 endif(BOOST_BUILD_SLAVE)
 
 if(BOOST_BUILD_SLAVE)
-
   #
   #  Redirect various build steps
   # 
@@ -71,30 +64,41 @@ if(BOOST_BUILD_SLAVE)
   set(CMAKE_CXX_LINK_EXECUTABLE  
     "${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> link_executable <TARGET> ${CMAKE_CXX_LINK_EXECUTABLE}") 
 
-
   #
   #  Custom targets for talking to the server via xmlrpc
+  #
+
+  #
+  #  Get us a new build id from the server
   #
   add_custom_target(slave-start
     COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/start.py
     COMMENT "Slave starting build"
     )
 
+  #
+  #  Tell server we're done... it'll update finish time in the db.
+  #
   add_custom_target(slave-finish
     COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/finish.py
     COMMENT "Slave finishing build"
     )
 
+  #
+  #  Local only:  show what we report to server (our platform description, toolset, etc)
+  #
   add_custom_target(slave-info
     COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/info.py
     COMMENT "Print slave info"
     )
 
-
 endif(BOOST_BUILD_SLAVE)
 
 
-
+#
+#  Used over in BoostTesting and BoostCore to attach xmlrpc submission rules
+#  to various intermediate build targets (libraries, test suites) 
+#
 macro(boost_post_results PROJECT_NAME_ PARENT_TARGET BUILD_OR_TEST LOGDIR)
   if(BOOST_BUILD_SLAVE)
     add_custom_command(TARGET ${PARENT_TARGET}
