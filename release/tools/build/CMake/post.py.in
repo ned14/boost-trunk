@@ -39,7 +39,6 @@ while True:
                    'project' : project_name,
                    'parent_target' : parent_target,
                    'build_or_test' : build_or_test })
-        pprint(r)
         s.traash.step(r)
     except EOFError, e:
         break
