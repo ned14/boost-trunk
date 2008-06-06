@@ -24,7 +24,7 @@ target = sys.argv[3]
 argv = sys.argv[4:]
 expect_fail = op.endswith("fail")
 
-print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
+# print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
 
 #
 #  execute subprocess, watch for timeout
@@ -67,9 +67,7 @@ if not ex:
     if returncode != 0 and not expect_fail:
         print "*** stdout:" + result['stdout']
         print "*** stderr:" + result['stderr']
-    else:
-        print "*** OK"
-    
+        
 else:
     result['errno'] = ex.errno
     result['filename'] = ex.filename

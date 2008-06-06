@@ -22,12 +22,12 @@ parent_target = sys.argv[2]
 build_or_test = sys.argv[3]
 logdir = sys.argv[4]
 
-print "\n>>>\n>>> Project " + project_name \
-      + "\n>>> POST build log for " + parent_target \
-      + "\n>>> from log dir" + logdir \
-      + "\n>>> to " + xmlrpc_url \
-      + "\n>>> Server build ID: %d" % build_id \
-      + "\n>>>"
+# print "\n>>>\n>>> Project " + project_name \
+#       + "\n>>> POST build log for " + parent_target \
+#       + "\n>>> from log dir" + logdir \
+#       + "\n>>> to " + xmlrpc_url \
+#       + "\n>>> Server build ID: %d" % build_id \
+#       + "\n>>>"
 
 p = os.path.join(logdir, "Log.marshal")
 f = open(p)
