@@ -1,9 +1,3 @@
-include(FindPythonInterp)
-message(STATUS "   found python executable  ${PYTHON_EXECUTABLE}")
-include(FindPythonLibs)
-message(STATUS "   found python includes    ${PYTHON_INCLUDE_PATH}")
-message(STATUS "   found python libs        ${PYTHON_LIBRARIES}")
-
 if (PYTHON_LIBRARIES)
   include_directories(${PYTHON_INCLUDE_PATH})
 

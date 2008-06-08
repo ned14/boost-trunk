@@ -27,6 +27,15 @@
 ##########################################################################
 include(CheckCXXSourceCompiles)
 
+#
+#  Python interpreter
+#
+include(FindPythonInterp)
+message(STATUS "found python executable  ${PYTHON_EXECUTABLE}")
+include(FindPythonLibs)
+message(STATUS "found python includes    ${PYTHON_INCLUDE_PATH}")
+message(STATUS "found python libs        ${PYTHON_LIBRARIES}")
+
 # Toolset detection.
 if (NOT BOOST_TOOLSET)
   set(BOOST_TOOLSET "unknown")
