@@ -33,13 +33,13 @@ subproc = None
 returncode = None
 ex = None
 try:
-    start = datetime.datetime.now()
+    starttime = datetime.datetime.now()
     subproc = Popen(argv, stdout=PIPE, stderr=PIPE)
     returncode = subproc.poll()
     while returncode is None:
         time.sleep(1)
         now = datetime.datetime.now()
-        if (now - start).seconds > timeout_seconds:
+        if (now - starttime).seconds > timeout_seconds:
             os.kill(subproc.pid, signal.SIGKILL)
             os.waitpid(-1, os.WNOHANG)
             e = OSError()
@@ -52,11 +52,13 @@ try:
 except EnvironmentError, e:
     ex = e
 
-#
-#  Collect, possibly xmlize, and print subprocess return info
-#
+duration = datetime.datetime.now() - starttime
 
-result = { 'expect_fail' : expect_fail }
+#
+#  Collect and store subprocess info
+#
+result = { 'expect_fail' : expect_fail,
+           'wallclock_duration' : duration.seconds + duration.microseconds * 10**-6 }
 
 if not ex:
     
@@ -69,6 +71,7 @@ if not ex:
         print "*** stderr:" + result['stderr']
         
 else:
+
     result['errno'] = ex.errno
     result['filename'] = ex.filename
     result['message'] = ex.message

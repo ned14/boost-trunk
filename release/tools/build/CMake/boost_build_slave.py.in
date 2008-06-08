@@ -17,11 +17,13 @@ from pprint import pprint
 repo_path = "@CMAKE_SOURCE_DIR@"
 client = pysvn.Client()
 svn_entry = client.info(repo_path)
-hostname = socket.gethostname()
+fqdn = socket.getfqdn()
 uname = os.uname()
 toolset = "@BOOST_TOOLSET@"
 
 timeout_seconds = @BOOST_BUILD_SLAVE_TIMEOUT@
+slave_details_file = "@BOOST_BUILD_SLAVE_DETAILS_FILE@"
+contact_info = "@BOOST_BUILD_SLAVE_CONTACT_INFO@"
 
 xmlrpc_url = "@BOOST_BUILD_SLAVE_SUBMIT_URL@"
 
@@ -39,4 +41,16 @@ def set_build_id(build_id):
     f.write(str(build_id))
     f.close()
 
+def details():
+    if os.path.isabs(slave_details_file):
+        thefile = slave_details_file
+    else:
+        thefile = os.path.join("@CMAKE_BINARY_DIR@", slave_details_file)
 
+    if os.path.exists(thefile):
+        f = open(thefile)
+        txt = f.read()
+    else:
+        txt = "Build slave details file @BOOST_BUILD_SLAVE_DETAILS_FILE@ not found."
+
+    return txt

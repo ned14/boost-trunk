@@ -15,10 +15,12 @@ import sys
 sys.path.append("@BOOST_BUILD_SLAVE_PYTHONPATH@")
 from boost_build_slave import *
 
-print 'Url:', svn_entry.url, "at rev", svn_entry.revision.number
-print 'Hostname:', hostname
-print 'Uname:', uname
-print 'Toolset:', toolset
-print 'Build ID:', build_id
-
+print '      Url:', svn_entry.url, "at rev", svn_entry.revision.number
+print '     FQDN:', fqdn
+print '    Uname:', uname
+print '  Toolset:', toolset
+print ' Build ID:', build_id
+print '  Contact:', contact_info
+pref = '\n           '
+print '  Details: ' + pref.join(details().splitlines()), '\n\n'
 

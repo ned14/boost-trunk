@@ -17,6 +17,12 @@ set(BOOST_BUILD_SLAVE_PYTHONPATH "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}")
 set(BOOST_BUILD_SLAVE_TIMEOUT 120 
   CACHE STRING "Seconds until build slave times out any individual build step")    
 
+set(BOOST_BUILD_SLAVE_DETAILS_FILE "slave-description.txt"
+  CACHE FILEPATH "Path to file, absolute or relative to build directory, containing descriptive text about the build (configuration peculiarities, etc) to be reported to the server")
+
+set(BOOST_BUILD_SLAVE_CONTACT_INFO "buildmeister@example.com"
+  CACHE STRING "Contact information regarding this build")
+
 message(STATUS "Configuring test/compile drivers")
   
 if(CMAKE_VERBOSE_MAKEFILE)
@@ -53,16 +59,16 @@ if(BOOST_BUILD_SLAVE)
   #  Redirect various build steps
   # 
   set(CMAKE_CXX_COMPILE_OBJECT 
-    "${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> cxx_compile_object <OBJECT> ${CMAKE_CXX_COMPILE_OBJECT}")
+    "${PYTHON_EXECUTABLE} ${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> cxx_compile_object <OBJECT> ${CMAKE_CXX_COMPILE_OBJECT}")
 
   set(CMAKE_CXX_CREATE_SHARED_LIBRARY  
-    "${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> create_shared_library <TARGET> ${CMAKE_CXX_CREATE_SHARED_LIBRARY}") 
+    "${PYTHON_EXECUTABLE} ${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> create_shared_library <TARGET> ${CMAKE_CXX_CREATE_SHARED_LIBRARY}") 
     
   set(CMAKE_CXX_CREATE_STATIC_LIBRARY  
-    "${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> create_static_library <TARGET> ${CMAKE_CXX_CREATE_STATIC_LIBRARY}") 
+    "${PYTHON_EXECUTABLE} ${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> create_static_library <TARGET> ${CMAKE_CXX_CREATE_STATIC_LIBRARY}") 
 
   set(CMAKE_CXX_LINK_EXECUTABLE  
-    "${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> link_executable <TARGET> ${CMAKE_CXX_LINK_EXECUTABLE}") 
+    "${PYTHON_EXECUTABLE} ${BOOST_TEST_DRIVER} <CMAKE_CURRENT_BINARY_DIR> link_executable <TARGET> ${CMAKE_CXX_LINK_EXECUTABLE}") 
 
   #
   #  Custom targets for talking to the server via xmlrpc
@@ -72,7 +78,7 @@ if(BOOST_BUILD_SLAVE)
   #  Get us a new build id from the server
   #
   add_custom_target(slave-start
-    COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/start.py
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/start.py
     COMMENT "Slave starting build"
     )
 
@@ -80,7 +86,7 @@ if(BOOST_BUILD_SLAVE)
   #  Tell server we're done... it'll update finish time in the db.
   #
   add_custom_target(slave-finish
-    COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/finish.py
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/finish.py
     COMMENT "Slave finishing build"
     )
 
@@ -88,7 +94,7 @@ if(BOOST_BUILD_SLAVE)
   #  Local only:  show what we report to server (our platform description, toolset, etc)
   #
   add_custom_target(slave-info
-    COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/info.py
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/info.py
     COMMENT "Print slave info"
     )
 
@@ -103,7 +109,7 @@ macro(boost_post_results PROJECT_NAME_ PARENT_TARGET BUILD_OR_TEST LOGDIR)
   if(BOOST_BUILD_SLAVE)
     add_custom_command(TARGET ${PARENT_TARGET}
       POST_BUILD
-      COMMAND ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py ${PROJECT_NAME_} ${PARENT_TARGET} ${BUILD_OR_TEST} ${LOGDIR}
+      COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py ${PROJECT_NAME_} ${PARENT_TARGET} ${BUILD_OR_TEST} ${LOGDIR}
       COMMENT "Submitting results for '${BUILD_OR_TEST}' of ${PARENT_TARGET} in ${PROJECT_NAME_}"
       )
     set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${LOGDIR}/Log.marshal)

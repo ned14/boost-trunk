@@ -16,7 +16,7 @@ sys.path.append("@BOOST_BUILD_SLAVE_PYTHONPATH@")
 from boost_build_slave import *
 
 print 'Url:', svn_entry.url, "at rev", svn_entry.revision.number
-print 'Hostname:', hostname
+print 'FQDN:', fqdn
 print 'Uname:', uname
 print 'Toolset:', toolset
 
@@ -30,7 +30,9 @@ build_id  = s.traash.start_build({ 'svn_url' : svn_entry.url,
                                    'sys_release' : uname[2],
                                    'sys_version' : uname[3],
                                    'sys_machine' : uname[4],
-                                   'hostname' : hostname,
-                                   'toolset' : toolset})
+                                   'fqdn' : fqdn,
+                                   'toolset' : toolset,
+                                   'contact' : contact_info,
+                                   'details' : details() })
 
 set_build_id(build_id)
