@@ -393,9 +393,9 @@ local rule configure-really ( version ? : options * )
 
                 setup-$(c) = [ feature.get-values <setup-$(c)> : $(options) ] ;
 
-                if ! $(setup-$(c))-is-defined
+                if ! $(setup-$(c))-is-not-empty
                 {
-                    if $(global-setup)-is-defined
+                    if $(global-setup)-is-not-empty
                     {
                         setup-$(c) = $(global-setup) ;
                         
@@ -404,7 +404,7 @@ local rule configure-really ( version ? : options * )
                         # global setup command for which target platform:
                         # setup-options = [ feature.get-values <setup-options-$(c)> : $(options) ] ;
 
-                        setup-options ?= default-global-setup-options-$(c) ;
+                        setup-options ?= $(default-global-setup-options-$(c)) ;
                     }
                     else
                     {
