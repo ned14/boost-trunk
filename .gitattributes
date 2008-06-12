@@ -856,6 +856,7 @@ boost/functional/detail/float_functions.hpp svneol=native#text/plain
 boost/functional/detail/hash_float.hpp svneol=native#text/plain
 boost/functional/hash.hpp svneol=native#text/plain
 boost/functional/hash/deque.hpp svneol=native#text/plain
+boost/functional/hash/extensions.hpp svneol=native#text/plain
 boost/functional/hash/hash.hpp svneol=native#text/plain
 boost/functional/hash/list.hpp svneol=native#text/plain
 boost/functional/hash/map.hpp svneol=native#text/plain
