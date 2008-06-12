@@ -19603,6 +19603,7 @@ libs/xpressive/doc/substitutions.qbk svneol=native#text/plain
 libs/xpressive/doc/symbols.qbk svneol=native#text/plain
 libs/xpressive/doc/tips_n_tricks.qbk svneol=native#text/plain
 libs/xpressive/doc/tokenization.qbk svneol=native#text/plain
+libs/xpressive/doc/tracking_ptr.qbk svneol=native#text/plain
 libs/xpressive/doc/traits.qbk svneol=native#text/plain
 libs/xpressive/doc/xpressive.qbk svneol=native#text/plain
 libs/xpressive/example/Jamfile.v2 svneol=native#text/plain
