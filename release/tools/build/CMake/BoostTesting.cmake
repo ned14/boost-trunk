@@ -219,7 +219,7 @@ macro(boost_test_run testname)
       add_custom_target(${BOOST_TEST_TESTNAME})
 
       set(THIS_TEST_PREFIX_ARGS
-	${PYTHON_INTERPRETER} ${BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} ${BOOST_TEST_TAG} ${testname} 
+	${PYTHON_EXECUTABLE} ${BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} ${BOOST_TEST_TAG} ${testname} 
 	)
 
       add_custom_command(TARGET ${BOOST_TEST_TESTNAME}
@@ -285,7 +285,7 @@ macro(boost_test_compile testname)
     endforeach(DIR ${BOOST_TEST_INCLUDE_DIRS})
 
     set(THIS_TEST_PREFIX_ARGS
-      ${PYTHON_INTERPRETER} ${BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} ${BOOST_TEST_TAG} ${testname} 
+      ${PYTHON_EXECUTABLE} ${BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} ${BOOST_TEST_TAG} ${testname} 
       )
   
     add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${BOOST_TEST_TESTNAME}.${CMAKE_CXX_OUTPUT_EXTENSION}
@@ -333,7 +333,7 @@ macro(boost_test_link testname)
   if(BOOST_TEST_OKAY)
 
     set(THIS_TEST_PREFIX_ARGS
-      ${PYTHON_INTERPERTER} ${BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} test_link ${testname} 
+      ${PYTHON_EXECUTABLE} ${BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} test_link ${testname} 
       )
     
     #
