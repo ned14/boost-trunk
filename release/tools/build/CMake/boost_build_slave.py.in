@@ -27,7 +27,7 @@ contact_info = "@BOOST_BUILD_SLAVE_CONTACT_INFO@"
 
 xmlrpc_url = "@BOOST_BUILD_SLAVE_SUBMIT_URL@"
 
-build_id_file = os.path.join("@BOOST_BUILD_SLAVE_PYTHONPATH@", "build_id.txt")
+build_id_file = os.path.join(r'@BOOST_BUILD_SLAVE_PYTHONPATH@', 'build_id.txt')
 
 try:
     f = open(build_id_file)
