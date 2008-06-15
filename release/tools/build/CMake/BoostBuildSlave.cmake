@@ -41,6 +41,19 @@ foreach(PYFILE boost_build_slave passthru marshal start finish info post)
     )
 endforeach()
 
+if(WIN32)
+  configure_file(tools/build/CMake/windows_kill.py.in
+    ${BOOST_BUILD_SLAVE_PYTHONPATH}/kill_subprocess.py
+    COPYONLY
+    )
+else(WIN32)
+  configure_file(tools/build/CMake/unix_kill.py.in
+    ${BOOST_BUILD_SLAVE_PYTHONPATH}/kill_subprocess.py
+    COPYONLY
+    )
+endif(WIN32)
+
+
 #
 # the test driver is either marshal or passthru depending on whether
 # you're in build slave mode or not.  The compilation/link rules

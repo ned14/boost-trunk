@@ -11,14 +11,14 @@
 #  Utilities, variables, imports for build slave python
 #
 
-import os, os.path, marshal, xmlrpclib, pysvn, socket
+import os, os.path, marshal, xmlrpclib, pysvn, socket, platform
 from pprint import pprint
 
 repo_path = "@CMAKE_SOURCE_DIR@"
 client = pysvn.Client()
 svn_entry = client.info(repo_path)
 fqdn = socket.getfqdn()
-uname = os.uname()
+uname = platform.uname()
 toolset = "@BOOST_TOOLSET@"
 
 timeout_seconds = @BOOST_BUILD_SLAVE_TIMEOUT@

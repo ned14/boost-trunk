@@ -1,0 +1,5 @@
+import os
+def kill_subprocess(pid):
+    cmd = 'TASKKILL /PID ' + str(pid) + ' /T /F'
+    print "Timeout, killing subprocess:\n" + cmd
+    os.popen(cmd)
