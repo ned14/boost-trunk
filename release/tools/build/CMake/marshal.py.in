@@ -25,7 +25,7 @@ target = sys.argv[3]
 argv = sys.argv[4:]
 expect_fail = op.endswith("fail")
 
-# print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
+print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
 
 #
 #  execute subprocess, watch for timeout
