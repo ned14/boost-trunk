@@ -218,8 +218,10 @@ macro(boost_test_run testname)
       # This target builds and runs the test
       add_custom_target(${BOOST_TEST_TESTNAME})
 
+	file( TO_NATIVE_PATH "${BOOST_TEST_DRIVER}" NATIVE_BOOST_TEST_DRIVER )
+
       set(THIS_TEST_PREFIX_ARGS
-	${PYTHON_EXECUTABLE} ${BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} ${BOOST_TEST_TAG} ${testname} 
+	${PYTHON_EXECUTABLE} ${NATIVE_BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} ${BOOST_TEST_TAG} ${testname} 
 	)
 
       add_custom_command(TARGET ${BOOST_TEST_TESTNAME}
