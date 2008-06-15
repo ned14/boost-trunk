@@ -100,7 +100,7 @@ file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py NATIVE_SLAVE_POST)
   #  Get us a new build id from the server
   #
   add_custom_target(slave-start
-    COMMAND \"${NATIVE_PYTHON_EXECUTABLE}\" \"${NATIVE_SLAVE_START}\"
+    COMMAND ${NATIVE_PYTHON_EXECUTABLE} \"${NATIVE_SLAVE_START}\"
     COMMENT "Slave starting build"
     )
 
@@ -108,7 +108,7 @@ file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py NATIVE_SLAVE_POST)
   #  Tell server we're done... it'll update finish time in the db.
   #
   add_custom_target(slave-finish
-    COMMAND \"${NATIVE_PYTHON_EXECUTABLE}\" \"${NATIVE_SLAVE_FINISH}\"
+    COMMAND ${NATIVE_PYTHON_EXECUTABLE} \"${NATIVE_SLAVE_FINISH}\"
     COMMENT "Slave finishing build"
     )
   #
@@ -116,7 +116,7 @@ file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py NATIVE_SLAVE_POST)
   #  Local only:  show what we report to server (our platform description, toolset, etc)
   #
   add_custom_target(slave-info
-    COMMAND \"${NATIVE_PYTHON_EXECUTABLE}\" \"${NATIVE_SLAVE_INFO}\"
+    COMMAND ${NATIVE_PYTHON_EXECUTABLE} \"${NATIVE_SLAVE_INFO}\"
     COMMENT "Print slave info"
     )
 
