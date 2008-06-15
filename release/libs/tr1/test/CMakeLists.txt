@@ -52,7 +52,7 @@ boost_glob_test_compile_fail(config tr1_has_tr1*fail.cpp "")
 boost_glob_test_compile(config tr1_has_tr1*pass.cpp "")
 
 
-message("libs/tr1/test/CMakeLists.txt: was this just cruft?  Seems to duplicate first glob_test_compile line above")
+message(STATUS "libs/tr1/test/CMakeLists.txt: was this just cruft?  Seems to duplicate first glob_test_compile line above")
 
 boost_glob_test_run(type_traits *.cpp "")
 # previous:
