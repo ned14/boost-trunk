@@ -43,5 +43,6 @@ while True:
     except EOFError, e:
         break
 
+f.close()
 os.remove(p)
 
