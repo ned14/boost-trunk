@@ -72,35 +72,27 @@ if(BOOST_BUILD_SLAVE)
   #  Redirect various build steps
   # 
   
-  file(TO_NATIVE_PATH "${PYTHON_EXECUTABLE}" NATIVE_PYTHON_EXECUTABLE)
-  file(TO_NATIVE_PATH "${BOOST_TEST_DRIVER}" NATIVE_BOOST_TEST_DRIVER)
-  
   set(CMAKE_CXX_COMPILE_OBJECT 
-    "\"${NATIVE_PYTHON_EXECUTABLE}\" \"${NATIVE_BOOST_TEST_DRIVER}\" <CMAKE_CURRENT_BINARY_DIR> cxx_compile_object <OBJECT> ${CMAKE_CXX_COMPILE_OBJECT}" )
+    "\"${PYTHON_EXECUTABLE}\" \"${BOOST_TEST_DRIVER}\" <CMAKE_CURRENT_BINARY_DIR> cxx_compile_object <OBJECT> ${CMAKE_CXX_COMPILE_OBJECT}" )
 
   set(CMAKE_CXX_CREATE_SHARED_LIBRARY  
-    "\"${NATIVE_PYTHON_EXECUTABLE}\" \"${NATIVE_BOOST_TEST_DRIVER}\" <CMAKE_CURRENT_BINARY_DIR> create_shared_library <TARGET> ${CMAKE_CXX_CREATE_SHARED_LIBRARY}") 
+    "\"${PYTHON_EXECUTABLE}\" \"${BOOST_TEST_DRIVER}\" <CMAKE_CURRENT_BINARY_DIR> create_shared_library <TARGET> ${CMAKE_CXX_CREATE_SHARED_LIBRARY}") 
     
   set(CMAKE_CXX_CREATE_STATIC_LIBRARY  
-    "\"${NATIVE_PYTHON_EXECUTABLE}\" \"${NATIVE_BOOST_TEST_DRIVER}\" <CMAKE_CURRENT_BINARY_DIR> create_static_library <TARGET> ${CMAKE_CXX_CREATE_STATIC_LIBRARY}") 
+    "\"${PYTHON_EXECUTABLE}\" \"${BOOST_TEST_DRIVER}\" <CMAKE_CURRENT_BINARY_DIR> create_static_library <TARGET> ${CMAKE_CXX_CREATE_STATIC_LIBRARY}") 
 
   set(CMAKE_CXX_LINK_EXECUTABLE  
-    "\"${NATIVE_PYTHON_EXECUTABLE}\" \"${NATIVE_BOOST_TEST_DRIVER}\" <CMAKE_CURRENT_BINARY_DIR> link_executable <TARGET> ${CMAKE_CXX_LINK_EXECUTABLE}") 
+    "\"${PYTHON_EXECUTABLE}\" \"${BOOST_TEST_DRIVER}\" <CMAKE_CURRENT_BINARY_DIR> link_executable <TARGET> ${CMAKE_CXX_LINK_EXECUTABLE}") 
 
   #
   #  Custom targets for talking to the server via xmlrpc
   #
 
-file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/start.py NATIVE_SLAVE_START)
-file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/finish.py NATIVE_SLAVE_FINISH)
-file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/info.py NATIVE_SLAVE_INFO)
-file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py NATIVE_SLAVE_POST)
-
   #
   #  Get us a new build id from the server
   #
   add_custom_target(slave-start
-    COMMAND ${NATIVE_PYTHON_EXECUTABLE} \"${NATIVE_SLAVE_START}\"
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/start.py
     COMMENT "Slave starting build"
     )
 
@@ -108,7 +100,7 @@ file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py NATIVE_SLAVE_POST)
   #  Tell server we're done... it'll update finish time in the db.
   #
   add_custom_target(slave-finish
-    COMMAND ${NATIVE_PYTHON_EXECUTABLE} \"${NATIVE_SLAVE_FINISH}\"
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/finish.py
     COMMENT "Slave finishing build"
     )
   #
@@ -116,13 +108,11 @@ file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py NATIVE_SLAVE_POST)
   #  Local only:  show what we report to server (our platform description, toolset, etc)
   #
   add_custom_target(slave-info
-    COMMAND ${NATIVE_PYTHON_EXECUTABLE} \"${NATIVE_SLAVE_INFO}\"
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/info.py
     COMMENT "Print slave info"
     )
 
 endif(BOOST_BUILD_SLAVE)
-
-
 
 #
 #  Used over in BoostTesting and BoostCore to attach xmlrpc submission rules
@@ -132,7 +122,7 @@ macro(boost_post_results PROJECT_NAME_ PARENT_TARGET BUILD_OR_TEST LOGDIR)
   if(BOOST_BUILD_SLAVE)
     add_custom_command(TARGET ${PARENT_TARGET}
       POST_BUILD
-      COMMAND \"${NATIVE_PYTHON_EXECUTABLE}\" \"${NATIVE_SLAVE_POST}\" ${PROJECT_NAME_} \"${PARENT_TARGET}\" ${BUILD_OR_TEST} \"${LOGDIR}\"
+      COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py ${PROJECT_NAME_} ${PARENT_TARGET} ${BUILD_OR_TEST} ${LOGDIR}
       COMMENT "Submitting results for '${BUILD_OR_TEST}' of ${PARENT_TARGET} in ${PROJECT_NAME_}"
       )
     set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${LOGDIR}/Log.marshal)
