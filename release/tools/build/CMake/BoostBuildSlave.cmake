@@ -14,7 +14,7 @@ set(BOOST_BUILD_SLAVE_SUBMIT_URL "http://boost:boost@boost.resophonic.com/trac/l
 
 file(TO_NATIVE_PATH "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}" BOOST_BUILD_SLAVE_PYTHONPATH)
 
-set(BOOST_BUILD_SLAVE_TIMEOUT 120 
+set(BOOST_BUILD_SLAVE_TIMEOUT 300
   CACHE STRING "Seconds until build slave times out any individual build step")    
 
 set(BOOST_BUILD_SLAVE_DETAILS_FILE "slave-description.txt"
@@ -22,6 +22,9 @@ set(BOOST_BUILD_SLAVE_DETAILS_FILE "slave-description.txt"
 
 set(BOOST_BUILD_SLAVE_CONTACT_INFO "buildmeister@example.com"
   CACHE STRING "Contact information regarding this build")
+
+set(BOOST_BUILD_SLAVE_HOSTNAME "" 
+  CACHE STRING "If set, don't report what python determines to be the FQDN of this host, report this string instead.")
 
 message(STATUS "Configuring test/compile drivers")
   
