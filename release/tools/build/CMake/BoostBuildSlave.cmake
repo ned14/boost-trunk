@@ -91,30 +91,36 @@ if(BOOST_BUILD_SLAVE)
   #  Custom targets for talking to the server via xmlrpc
   #
 
+
   #
   #  Get us a new build id from the server
   #
+  file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/start.py 
+    BOOST_BUILD_SLAVE_START_PY)
   add_custom_target(slave-start
-    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/start.py
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_START_PY}
     COMMENT "Slave starting build"
     )
 
   #
   #  Tell server we're done... it'll update finish time in the db.
   #
+  file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/finish.py 
+    BOOST_BUILD_SLAVE_FINISH_PY)
   add_custom_target(slave-finish
-    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/finish.py
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_FINISH_PY}
     COMMENT "Slave finishing build"
     )
   #
 
   #  Local only:  show what we report to server (our platform description, toolset, etc)
   #
+  file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/info.py 
+    BOOST_BUILD_SLAVE_INFO_PY)
   add_custom_target(slave-info
-    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/info.py
+    COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_INFO_PY}
     COMMENT "Print slave info"
     )
-
 endif(BOOST_BUILD_SLAVE)
 
 #
