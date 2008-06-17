@@ -18585,6 +18585,7 @@ dart-client/README svneol=native#text/plain
 dart-client/client.py svneol=native#text/x-python
 dart-client/conf.py svneol=native#text/x-python
 dart-client/subprocess.py svneol=native#text/x-python
+release/BuildSlave.cmake svneol=native#text/plain
 release/CMakeLists.txt svneol=native#text/plain
 release/INSTALL svneol=native#text/plain
 release/Jamroot svneol=native#text/plain
