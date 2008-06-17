@@ -65,9 +65,9 @@ endif(WIN32)
 # and 'flips' the return status accordingly: thus passthru.py.
 #
 if(BOOST_BUILD_SLAVE)
-  set(BOOST_TEST_DRIVER ${BOOST_BUILD_SLAVE_PYTHONPATH}/marshal.py)
+  file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/marshal.py BOOST_TEST_DRIVER)
 else(BOOST_BUILD_SLAVE)
-  set(BOOST_TEST_DRIVER ${BOOST_BUILD_SLAVE_PYTHONPATH}/passthru.py)
+  file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/passthru.py BOOST_TEST_DRIVER)
 endif(BOOST_BUILD_SLAVE)
 
 if(BOOST_BUILD_SLAVE)
@@ -127,11 +127,14 @@ endif(BOOST_BUILD_SLAVE)
 #  Used over in BoostTesting and BoostCore to attach xmlrpc submission rules
 #  to various intermediate build targets (libraries, test suites) 
 #
+
+file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py 
+  BOOST_BUILD_SLAVE_POST_PY)
 macro(boost_post_results PROJECT_NAME_ PARENT_TARGET BUILD_OR_TEST LOGDIR)
   if(BOOST_BUILD_SLAVE)
     add_custom_command(TARGET ${PARENT_TARGET}
       POST_BUILD
-      COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_PYTHONPATH}/post.py ${PROJECT_NAME_} ${PARENT_TARGET} ${BUILD_OR_TEST} ${LOGDIR}
+      COMMAND ${PYTHON_EXECUTABLE} ${BOOST_BUILD_SLAVE_POST_PY} ${PROJECT_NAME_} ${PARENT_TARGET} ${BUILD_OR_TEST} ${LOGDIR}
       COMMENT "Submitting results for '${BUILD_OR_TEST}' of ${PARENT_TARGET} in ${PROJECT_NAME_}"
       )
     set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${LOGDIR}/Log.marshal)
