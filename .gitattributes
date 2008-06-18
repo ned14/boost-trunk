@@ -18983,6 +18983,7 @@ libs/units/example/conversion_factor.cpp svneol=native#text/plain
 libs/units/example/dimension.cpp svneol=native#text/plain
 libs/units/example/heterogeneous_unit.cpp svneol=native#text/plain
 libs/units/example/kitchen_sink.cpp svneol=native#text/plain
+libs/units/example/lambda.cpp svneol=native#text/plain
 libs/units/example/measurement.hpp svneol=native#text/plain
 libs/units/example/non_base_dimension.cpp svneol=native#text/plain
 libs/units/example/performance.cpp svneol=native#text/plain
