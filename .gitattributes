@@ -11453,6 +11453,7 @@ libs/interprocess/test/condition_test_template.hpp svneol=native#text/plain
 libs/interprocess/test/data_test.cpp svneol=native#text/plain
 libs/interprocess/test/deque_test.cpp svneol=native#text/plain
 libs/interprocess/test/dummy_test_allocator.hpp svneol=native#text/plain
+libs/interprocess/test/enable_shared_from_this_test.cpp svneol=native#text/plain
 libs/interprocess/test/expand_bwd_test_allocator.hpp svneol=native#text/plain
 libs/interprocess/test/expand_bwd_test_template.hpp svneol=native#text/plain
 libs/interprocess/test/file_lock_test.cpp svneol=native#text/plain
