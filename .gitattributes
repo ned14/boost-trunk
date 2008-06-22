@@ -18553,7 +18553,7 @@ libs/variant/test/test8.cpp svneol=native#text/plain
 libs/variant/test/variant_comparison_test.cpp svneol=native#text/plain
 libs/variant/test/variant_reference_test.cpp svneol=native#text/plain
 libs/variant/test/variant_visit_test.cpp svneol=native#text/plain
-libs/wave/ChangeLog -text
+libs/wave/ChangeLog svneol=native#text/plain
 libs/wave/build/Jamfile.v2 svneol=native#text/plain
 libs/wave/doc/acknowledgements.html svneol=native#text/html
 libs/wave/doc/class_ref_ctxpolicy_depr.html svneol=native#text/html
@@ -18626,6 +18626,10 @@ libs/wave/samples/list_includes/list_includes.cpp svneol=native#text/plain
 libs/wave/samples/list_includes/list_includes.hpp svneol=native#text/plain
 libs/wave/samples/list_includes/list_includes_config.hpp svneol=native#text/plain
 libs/wave/samples/list_includes/list_includes_version.hpp svneol=native#text/plain
+libs/wave/samples/preprocess_pragma_output/build/Jamfile.v2 svneol=native#text/plain
+libs/wave/samples/preprocess_pragma_output/example.cpp svneol=native#text/plain
+libs/wave/samples/preprocess_pragma_output/preprocess_pragma_output.cpp svneol=native#text/plain
+libs/wave/samples/preprocess_pragma_output/preprocess_pragma_output.hpp svneol=native#text/plain
 libs/wave/samples/quick_start/build/Jamfile.v2 svneol=native#text/plain
 libs/wave/samples/quick_start/quick_start.cpp svneol=native#text/plain
 libs/wave/samples/real_positions/build/Jamfile.v2 svneol=native#text/plain
@@ -18655,7 +18659,7 @@ libs/wave/samples/waveidl/idl.cpp svneol=native#text/plain
 libs/wave/samples/waveidl/idl.hpp svneol=native#text/plain
 libs/wave/samples/waveidl/idl_config.hpp svneol=native#text/plain
 libs/wave/samples/waveidl/idl_version.hpp svneol=native#text/plain
-libs/wave/samples/waveidl/idllexer/idl.re -text
+libs/wave/samples/waveidl/idllexer/idl.re svneol=native#text/plain
 libs/wave/samples/waveidl/idllexer/idl_lex_interface.hpp svneol=native#text/plain
 libs/wave/samples/waveidl/idllexer/idl_lex_iterator.hpp svneol=native#text/plain
 libs/wave/samples/waveidl/idllexer/idl_re.cpp svneol=native#text/plain
@@ -18667,11 +18671,11 @@ libs/wave/samples/waveidl/instantiate_predef_macros.cpp svneol=native#text/plain
 libs/wave/samples/waveidl/instantiate_re2c_lexer.cpp svneol=native#text/plain
 libs/wave/samples/waveidl/instantiate_re2c_lexer_str.cpp svneol=native#text/plain
 libs/wave/src/cpplexer/re2clex/aq.cpp svneol=native#text/plain
-libs/wave/src/cpplexer/re2clex/cpp.re -text
+libs/wave/src/cpplexer/re2clex/cpp.re -text svneol=unset#text/plain
 libs/wave/src/cpplexer/re2clex/cpp_re.cpp svneol=native#text/plain
-libs/wave/src/cpplexer/re2clex/cpp_re.inc -text
-libs/wave/src/cpplexer/re2clex/strict_cpp.re -text
-libs/wave/src/cpplexer/re2clex/strict_cpp_re.inc -text
+libs/wave/src/cpplexer/re2clex/cpp_re.inc svneol=native#text/plain
+libs/wave/src/cpplexer/re2clex/strict_cpp.re -text svneol=unset#text/plain
+libs/wave/src/cpplexer/re2clex/strict_cpp_re.inc svneol=native#text/plain
 libs/wave/src/instantiate_cpp_exprgrammar.cpp svneol=native#text/plain
 libs/wave/src/instantiate_cpp_grammar.cpp svneol=native#text/plain
 libs/wave/src/instantiate_cpp_literalgrs.cpp svneol=native#text/plain
@@ -18688,6 +18692,7 @@ libs/wave/test/testlexers/test_re2c_lexer.cpp svneol=native#text/plain
 libs/wave/test/testlexers/test_slex_lexer.cpp svneol=native#text/plain
 libs/wave/test/testlexers/test_xlex_lexer.cpp svneol=native#text/plain
 libs/wave/test/testwave/cmd_line_utils.hpp svneol=native#text/plain
+libs/wave/test/testwave/collect_hooks_information.hpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_1_001.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_1_002.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_1_003.cpp svneol=native#text/plain
@@ -18725,6 +18730,7 @@ libs/wave/test/testwave/testfiles/t_1_034.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_1_035.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_1_036.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_1_037.cpp svneol=native#text/plain
+libs/wave/test/testwave/testfiles/t_1_038.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_2_001.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_2_002.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_2_003.cpp svneol=native#text/plain
@@ -18742,6 +18748,7 @@ libs/wave/test/testwave/testfiles/t_2_014.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_2_015.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_2_016.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_2_017.cpp svneol=native#text/plain
+libs/wave/test/testwave/testfiles/t_2_018.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_3_001.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_3_002.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_3_003.cpp svneol=native#text/plain
@@ -18898,7 +18905,7 @@ libs/wave/test/testwave/testfiles/t_9_017.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_018.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_019.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_019.hpp svneol=native#text/plain
-libs/wave/test/testwave/testfiles/test.cfg -text
+libs/wave/test/testwave/testfiles/test.cfg svneol=native#text/plain
 libs/wave/test/testwave/testwave.cpp svneol=native#text/plain
 libs/wave/test/testwave/testwave_app.cpp svneol=native#text/plain
 libs/wave/test/testwave/testwave_app.hpp svneol=native#text/plain
