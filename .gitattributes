@@ -664,6 +664,7 @@ boost/config/stdlib/stlport.hpp svneol=native#text/plain
 boost/config/stdlib/vacpp.hpp svneol=native#text/plain
 boost/config/suffix.hpp svneol=native#text/plain
 boost/config/user.hpp svneol=native#text/plain
+boost/config/warning_disable.hpp svneol=native#text/plain
 boost/crc.hpp svneol=native#text/plain
 boost/cregex.hpp svneol=native#text/plain
 boost/cstdint.hpp svneol=native#text/plain
