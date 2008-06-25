@@ -10,10 +10,11 @@ SET(TESTS
  ptr_map_inserter
  list_of_workaround 
  email_example
- my_vector_example
- multi_index_container)
+ my_vector_example)
 
 FOREACH(test ${TESTS})
   boost_test_run(${test} DEPENDS boost_unit_test_framework)
 ENDFOREACH(test ${TESTS})
 
+boost_test_run(multi_index_container 
+  DEPENDS boost_unit_test_framework boost_serialization)
