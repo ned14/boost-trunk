@@ -35,8 +35,8 @@ class SubprocThread(threading.Thread):
         self.ex = None
 
     def run(self):
-        self.proc = Popen(argv, stdout=PIPE, stderr=PIPE)
         try:
+            self.proc = Popen(argv, stdout=PIPE, stderr=PIPE)
             (self.stderr, self.stdout) = self.proc.communicate()
         except EnvironmentError, e:
             self.ex = e
