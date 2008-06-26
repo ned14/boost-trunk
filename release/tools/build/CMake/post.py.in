@@ -8,7 +8,7 @@
 #
 
 #
-#  HTTP POST the build log
+#  Send the build log via XML-RPC
 #
 
 import sys
