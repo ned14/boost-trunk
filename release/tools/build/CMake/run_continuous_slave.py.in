@@ -3,7 +3,7 @@
 #  Build slave script.
 #
 
-import pysvn
+import pysvn, os, time
 
 client = pysvn.Client()
 
@@ -28,6 +28,7 @@ while True:
         else:
             os.system('make -i slave-start test slave-finish')
     else:
+        print "No updates."
         time.sleep(5)
 
         
