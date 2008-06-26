@@ -9,22 +9,25 @@
 ##########################################################################
 option(BOOST_BUILD_SLAVE "Be a build slave, report build/testing" OFF)
 
-set(BOOST_BUILD_SLAVE_SUBMIT_URL "http://boost:boost@boost.resophonic.com/trac/login/xmlrpc" 
-  CACHE STRING "URL to post regression testing results to.")
+if(BOOST_BUILD_SLAVE)
+  set(BOOST_BUILD_SLAVE_SUBMIT_URL "http://boost:boost@boost.resophonic.com/trac/login/xmlrpc" 
+    CACHE STRING "URL to post regression testing results to.")
 
-file(TO_NATIVE_PATH "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}" BOOST_BUILD_SLAVE_PYTHONPATH)
+  file(TO_NATIVE_PATH "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}" BOOST_BUILD_SLAVE_PYTHONPATH)
 
-set(BOOST_BUILD_SLAVE_TIMEOUT 300
-  CACHE STRING "Seconds until build slave times out any individual build step")    
+  set(BOOST_BUILD_SLAVE_TIMEOUT 300
+    CACHE STRING "Seconds until build slave times out any individual build step")    
 
-set(BOOST_BUILD_SLAVE_DETAILS_FILE "slave-description.txt"
-  CACHE FILEPATH "Path to file, absolute or relative to build directory, containing descriptive text about the build (configuration peculiarities, etc) to be reported to the server")
+  set(BOOST_BUILD_SLAVE_DETAILS_FILE "slave-description.txt"
+    CACHE FILEPATH "Path to file, absolute or relative to build directory, containing descriptive text about the build (configuration peculiarities, etc) to be reported to the server")
 
-set(BOOST_BUILD_SLAVE_CONTACT_INFO "buildmeister@example.com"
-  CACHE STRING "Contact information regarding this build")
+  set(BOOST_BUILD_SLAVE_CONTACT_INFO "buildmeister@example.com"
+    CACHE STRING "Contact information regarding this build")
 
-set(BOOST_BUILD_SLAVE_HOSTNAME "" 
-  CACHE STRING "If set, don't report what python determines to be the FQDN of this host, report this string instead.")
+  set(BOOST_BUILD_SLAVE_HOSTNAME "" 
+    CACHE STRING "If set, don't report what python determines to be the FQDN of this host, report this string instead.")
+  
+endif(BOOST_BUILD_SLAVE)
 
 message(STATUS "Configuring test/compile drivers")
   
@@ -66,6 +69,12 @@ endif(WIN32)
 #
 if(BOOST_BUILD_SLAVE)
   file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/marshal.py BOOST_TEST_DRIVER)
+
+  configure_file(tools/build/CMake/run_continuous_slave.py.in
+    ${CMAKE_BINARY_DIR}/run_continuous_slave.py
+    @ONLY
+    )
+
 else(BOOST_BUILD_SLAVE)
   file(TO_NATIVE_PATH ${BOOST_BUILD_SLAVE_PYTHONPATH}/passthru.py BOOST_TEST_DRIVER)
 endif(BOOST_BUILD_SLAVE)
