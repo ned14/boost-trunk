@@ -228,7 +228,7 @@ macro(boost_test_run testname)
 	POST_BUILD
 	COMMAND 
 	${THIS_TEST_PREFIX_ARGS} 
-	${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/tests/${PROJECT_NAME}/${testname}
+	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/tests/${PROJECT_NAME}/${testname}
 	${BOOST_TEST_ARGS}
 	COMMENT "Running ${testname} in project ${PROJECT_NAME}"
 	)
