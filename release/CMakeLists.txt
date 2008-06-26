@@ -139,8 +139,18 @@ endif (TEST_INSTALLED_TREE)
 # top of the build tree rather than in hard-to-find leaf
 # directories. This simplifies manual testing and the use of the build
 # tree rather than installed Boost libraries.
-SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
-SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# 
+# If we're on windows, we're going to need the lib output dir 
+# in our path so's we can find those dlls
+#
+if (WIN32)
+  set(ENV{PATH} "$ENV{PATH};${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+endif (WIN32)
+
+
 
 # Boost.Build version 2 does this due to trouble with autolinking
 # during building and testing.  
