@@ -16362,6 +16362,7 @@ libs/serialization/test/text_archive.hpp svneol=native#text/plain
 libs/serialization/test/text_warchive.hpp svneol=native#text/plain
 libs/serialization/test/xml_archive.hpp svneol=native#text/plain
 libs/serialization/test/xml_warchive.hpp svneol=native#text/plain
+libs/serialization/util/test.jam svneol=native#text/plain
 libs/serialization/vc6ide/Library.dsp svneol=native#text/plain
 libs/serialization/vc6ide/demo.dsp svneol=native#text/plain
 libs/serialization/vc6ide/demo_auto_ptr.dsp svneol=native#text/plain
