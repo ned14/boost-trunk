@@ -11,7 +11,7 @@
 #  (used to mark up the output) and executes compiler in a subshell, checking
 #  for errors and marshalling output to disk.
 #
-import sys
+import sys, signal, threading, subprocess
 sys.path.append("@BOOST_BUILD_SLAVE_PYTHONPATH@")
 from boost_build_slave import *
 
@@ -26,31 +26,34 @@ argv = sys.argv[4:]
 expect_fail = op.endswith("fail")
 
 print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
-
 #
 #  execute subprocess, watch for timeout
 #
-subproc = None
-returncode = None
-ex = None
-try:
-    starttime = datetime.datetime.now()
-    subproc = Popen(argv, stdout=PIPE, stderr=PIPE)
-    returncode = subproc.poll()
-    while returncode is None:
-        time.sleep(1)
-        now = datetime.datetime.now()
-        if (now - starttime).seconds > timeout_seconds:
-            kill_subprocess(subproc.pid)
-            e = OSError()
-            e.errno = 666
-            e.message = e.strerror = "TIMEOUT AFTER %d SECONDS" % timeout_seconds
-            e.filename = argv[0]
-            raise e
-        returncode = subproc.poll()
+class SubprocThread(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+        self.ex = None
 
-except EnvironmentError, e:
-    ex = e
+    def run(self):
+        self.proc = Popen(argv, stdout=PIPE, stderr=PIPE)
+        try:
+            (self.stderr, self.stdout) = self.proc.communicate()
+        except EnvironmentError, e:
+            self.ex = e
+
+t = SubprocThread()
+starttime = datetime.datetime.now()
+t.start()
+t.join(timeout_seconds)
+
+if t.isAlive():
+    print "*** Killing subprocess after timeout"
+    kill_subprocess(t.proc.pid)
+    e = OSError()
+    e.errno = 666
+    e.message = e.strerror = "TIMEOUT AFTER %d SECONDS" % timeout_seconds
+    e.filename = argv[0]
+    t.ex = e
 
 duration = datetime.datetime.now() - starttime
 
@@ -60,23 +63,21 @@ duration = datetime.datetime.now() - starttime
 result = { 'expect_fail' : expect_fail,
            'wallclock_duration' : duration.seconds + duration.microseconds * 10**-6 }
 
-if not ex:
-    
-    result['returncode'] = returncode
-    result['stdout'] = subproc.stdout.read()
-    result['stderr'] = subproc.stderr.read()
+if not t.ex:
+    result['returncode'] = t.proc.returncode
+    result['stdout'] = t.stdout
+    result['stderr'] = t.stderr
 
-    if returncode != 0 and not expect_fail:
+    if t.proc.returncode != 0 and not expect_fail:
+        print "*** returncode: %d" % t.proc.returncode
         print "*** stdout:" + result['stdout']
         print "*** stderr:" + result['stderr']
-        
 else:
-
-    result['errno'] = ex.errno
-    result['filename'] = ex.filename
-    result['message'] = ex.message
-    result['strerror'] = ex.strerror
-    print "Errno:" + str(ex.errno) + ": " + ex.strerror
+    result['errno'] = t.ex.errno
+    result['filename'] = t.ex.filename
+    result['message'] = t.ex.message
+    result['strerror'] = t.ex.strerror
+    print "Errno:" + str(t.ex.errno) + ": " + t.ex.strerror
 
 result.update({'op' : op,
                'target' : target,
@@ -85,17 +86,17 @@ result.update({'op' : op,
 f = open(log, "a")
 marshal.dump(result, f)
 
-if ex:
-    sys.exit(ex.errno)
+if t.ex:
+    sys.exit(t.ex.errno)
 else:
     if expect_fail:
-        if returncode != 0:
+        if t.proc.returncode != 0:
             sys.exit(0)
         else: 
             print "UNEXPECTED SUCCESS"
             sys.exit(1)  # we need an exit status for 'unexpected success'
     else:
-        sys.exit(returncode)
+        sys.exit(t.proc.returncode)
 
     
 
