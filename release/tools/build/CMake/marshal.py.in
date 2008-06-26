@@ -25,6 +25,9 @@ target = sys.argv[3]
 argv = sys.argv[4:]
 expect_fail = op.endswith("fail")
 
+if os.name == 'nt':
+    os.environ['PATH'] = r'@CMAKE_LIBRARY_OUTPUT_DIRECTORY@;' + os.environ['PATH']
+
 print "***\n*** Executing op:" + op + "\n*** " + str(argv) + "\n*** log=" + log + "\n***"
 #
 #  execute subprocess, watch for timeout
