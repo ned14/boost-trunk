@@ -24,9 +24,9 @@ while True:
         print "There are %d changesets.  Updating." % len(ds)
         client.update(wc_path)
         if os.name == 'nt':
-            os.system('nmake /I slave-start test slave-finish')
+            os.system('nmake /I clean slave-start test slave-finish')
         else:
-            os.system('make -i slave-start test slave-finish')
+            os.system('make -i clean slave-start test slave-finish')
     else:
         print "No updates."
         time.sleep(@BOOST_BUILD_SLAVE_SLEEP_DURATION@)
