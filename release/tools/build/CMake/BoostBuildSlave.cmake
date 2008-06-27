@@ -9,6 +9,8 @@
 ##########################################################################
 option(BOOST_BUILD_SLAVE "Be a build slave, report build/testing" OFF)
 
+file(TO_NATIVE_PATH "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}" BOOST_BUILD_SLAVE_PYTHONPATH)
+
 if(BOOST_BUILD_SLAVE)
   set(BOOST_BUILD_SLAVE_SUBMIT_URL "http://boost:boost@boost.resophonic.com/trac/login/xmlrpc" 
     CACHE STRING "URL to post regression testing results to.")
