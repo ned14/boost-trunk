@@ -26,6 +26,9 @@ if(BOOST_BUILD_SLAVE)
 
   set(BOOST_BUILD_SLAVE_HOSTNAME "" 
     CACHE STRING "If set, don't report what python determines to be the FQDN of this host, report this string instead.")
+
+  set(BOOST_BUILD_SLAVE_SLEEP_DURATION "60" 
+    CACHE STRING "Number of seconds to sleep between checks for updates from the repository.")
   
 endif(BOOST_BUILD_SLAVE)
 

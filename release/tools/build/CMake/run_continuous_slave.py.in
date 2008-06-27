@@ -29,7 +29,7 @@ while True:
             os.system('make -i slave-start test slave-finish')
     else:
         print "No updates."
-        time.sleep(5)
+        time.sleep(@BOOST_BUILD_SLAVE_SLEEP_DURATION@)
 
         
 
