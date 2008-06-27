@@ -88,6 +88,7 @@ result.update({'op' : op,
 
 f = open(log, "a")
 marshal.dump(result, f)
+f.close()
 
 if t.ex:
     sys.exit(t.ex.errno)
