@@ -86,7 +86,7 @@ result.update({'op' : op,
                'target' : target,
                'cmdline' : argv })
 
-f = open(log, "a")
+f = open(log, "ab", 0)
 marshal.dump(result, f)
 f.close()
 

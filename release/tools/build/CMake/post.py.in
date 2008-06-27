@@ -30,7 +30,7 @@ logdir = sys.argv[4]
 #       + "\n>>>"
 
 p = os.path.join(logdir, "Log.marshal")
-f = open(p)
+f = open(p, "rb")
 
 while True:
     try:
