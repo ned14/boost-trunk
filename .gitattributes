@@ -8053,6 +8053,7 @@ libs/filesystem/src/portability.cpp svneol=native#text/plain
 libs/filesystem/src/utf8_codecvt_facet.cpp svneol=native#text/plain
 libs/filesystem/src/utf8_codecvt_facet.hpp svneol=native#text/plain
 libs/filesystem/test/Jamfile.v2 svneol=native#text/plain
+libs/filesystem/test/boost_filesystem_msvc/boost_filesystem.sln svneol=native#text/plain
 libs/filesystem/test/boost_filesystem_msvc/common.vsprops svneol=native#text/xml
 libs/filesystem/test/boost_filesystem_msvc/convenience_test/convenience_test.vcproj svneol=native#text/xml
 libs/filesystem/test/boost_filesystem_msvc/filesystem_dll/filesystem_dll.vcproj svneol=native#text/xml
@@ -8064,7 +8065,6 @@ libs/filesystem/test/boost_filesystem_msvc/operations_test/operations_test.vcpro
 libs/filesystem/test/boost_filesystem_msvc/path_test/path_test.vcproj svneol=native#text/xml
 libs/filesystem/test/boost_filesystem_msvc/simple_ls/simple_ls.vcproj svneol=native#text/xml
 libs/filesystem/test/boost_filesystem_msvc/system_dll/system_dll.vcproj svneol=native#text/xml
-libs/filesystem/test/boost_filesystem_msvc/vc++.boost.filesystem.sln svneol=native#text/plain
 libs/filesystem/test/boost_filesystem_msvc/wide_test/wide_test.vcproj svneol=native#text/xml
 libs/filesystem/test/convenience_test.cpp svneol=native#text/plain
 libs/filesystem/test/equivalent.cpp svneol=native#text/plain
