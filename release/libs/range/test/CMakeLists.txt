@@ -1,3 +1,4 @@
+message(STATUS "libs/range/test: need -Wall -Wunused here when under gcc")
 boost_test_run(array DEPENDS boost_unit_test_framework)
 boost_test_run(iterator_pair DEPENDS boost_unit_test_framework)
 boost_test_run(std_container DEPENDS boost_unit_test_framework)
