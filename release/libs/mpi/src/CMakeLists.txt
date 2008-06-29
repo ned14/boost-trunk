@@ -27,3 +27,6 @@ boost_add_library(
   LINK_LIBS ${MPI_LIBRARIES}
   SHARED_COMPILE_FLAGS "-DBOOST_MPI_DYN_LINK=1"
   )
+
+message(STATUS "boost::mpi::python needs love")
+
