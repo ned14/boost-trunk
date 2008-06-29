@@ -10,26 +10,38 @@ client = pysvn.Client()
 wc_path = r'@CMAKE_SOURCE_DIR@'
 
 while True:
-    svn_entry = client.info(wc_path)
+    try:
+        svn_entry = client.info(wc_path)
 
-    print "Wc has url %s rev %d.\nChecking for updates." % (svn_entry.url, svn_entry.revision.number)
+        print "Wc has url %s rev %d.\nChecking for updates." \
+            % (svn_entry.url, svn_entry.revision.number)
 
-    ds = client.diff_summarize(url_or_path1=svn_entry.url,
-                               revision1=pysvn.Revision(pysvn.opt_revision_kind.number, svn_entry.revision.number),
-                               url_or_path2=svn_entry.url,
-                               revision2=pysvn.Revision(pysvn.opt_revision_kind.head)
-                               )
+        ds = client.diff_summarize(url_or_path1=svn_entry.url,
+                                   revision1=pysvn.Revision(pysvn.opt_revision_kind.number, 
+                                                            svn_entry.revision.number),
+                                   url_or_path2=svn_entry.url,
+                                   revision2=pysvn.Revision(pysvn.opt_revision_kind.head)
+                                   )
 
-    if len(ds):
-        print "There are %d changesets.  Updating." % len(ds)
-        client.update(wc_path)
-        if os.name == 'nt':
-            os.system('nmake /I clean slave-start test slave-finish')
+        if len(ds):
+            print "There are %d changesets:" % len(ds)
+            for j in ds:
+                print ">>>", j.path
+            print "Updating."
+            client.update(wc_path)
+            if os.name == 'nt':
+                cmd = 'nmake /I clean slave-start test slave-finish'
+            else:
+                cmd = 'make -i clean slave-start test slave-finish'
+            print "Starting build:\n>>> ", cmd
+            os.system(cmd)
         else:
-            os.system('make -i clean slave-start test slave-finish')
-    else:
-        print "No updates."
-        time.sleep(@BOOST_BUILD_SLAVE_SLEEP_DURATION@)
+            print "No updates."
+    except:
+        print "Error.  Will retry"
+    
+    print "Sleeping %d seconds" % @BOOST_BUILD_SLAVE_SLEEP_DURATION@
+    time.sleep(@BOOST_BUILD_SLAVE_SLEEP_DURATION@)
 
         
 
