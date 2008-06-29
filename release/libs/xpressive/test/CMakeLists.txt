@@ -13,7 +13,6 @@ if (NOT ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
   execute_process(COMMAND cmake -E copy "${CMAKE_SOURCE_DIR}/libs/xpressive/test/regress.txt" "${CMAKE_CURRENT_BINARY_DIR}")
 endif (NOT ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 
-
 SET(runtests 
   regress
   c_traits
@@ -41,10 +40,14 @@ SET(runtests
   test11u
   misc1
   misc2
+  test_format
   test_cycles
   test_non_char
   test_static
-  test_dynamic)
+  test_dynamic
+  test_dynamic_grammar
+  test_skip
+  )
 
 foreach(runtest ${runtests})
   boost_test_run(${runtest} DEPENDS boost_unit_test_framework)
