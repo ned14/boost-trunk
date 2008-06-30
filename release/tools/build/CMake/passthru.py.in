@@ -33,14 +33,18 @@ expect_fail = op.endswith("fail")
 subproc = None
 returncode = None
 ex = None
+stdout = None
+stderr = None
 try:
     subproc = Popen(argv, stdout=PIPE, stderr=PIPE)
-    returncode = subproc.wait()
+    (stdout, stderr) = subproc.communicate()
 except EnvironmentError, e:
     ex = e
 
-print subproc.stdout.read()
-print subproc.stderr.read()
+if stdout:
+    print stdout
+if stderr:
+    print stderr
 
 if not ex: 
     # possibly flip the return code
