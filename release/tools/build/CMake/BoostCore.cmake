@@ -89,14 +89,15 @@ macro(boost_library_project LIBNAME)
   endforeach(DEP)
 
   string(TOUPPER "BUILD_BOOST_${LIBNAME}" BOOST_BUILD_LIB_OPTION)
+
+  option(${BOOST_BUILD_LIB_OPTION} 
+    "Build Boost.${LIBNAME} (prefer make targets, not this, to build individual libs)" 
+    ${THIS_PROJECT_OKAY})
+
   if (THIS_PROJECT_SRCDIRS)
     # This Boost library has source directories, so provide an option
     # BUILD_BOOST_LIBNAME that allows one to turn on/off building of
     # the library.
-    option(${BOOST_BUILD_LIB_OPTION} 
-      "Build Boost.${LIBNAME} (prefer make targets, not this, to build individual libs)" 
-      ${THIS_PROJECT_OKAY})
-
     if (NOT THIS_PROJECT_OKAY)
       if (${BOOST_BUILD_LIB_OPTION})
         # The user explicitly turned on this library in a prior
@@ -105,13 +106,10 @@ macro(boost_library_project LIBNAME)
         # complain about it.
         set(${BOOST_BUILD_LIB_OPTION} OFF
           CACHE BOOL "Build Boost.${LIBNAME} (prefer make targets, not this, to build individual libs)" FORCE)
-        message(SEND_ERROR "Cannot build Boost.${LIBNAME} due to missing library dependencies:\n${THIS_PROJECT_FAILED_DEPS}")
+        message(SEND_ERROR 
+	  "Cannot build Boost.${LIBNAME} due to missing library dependencies:\n${THIS_PROJECT_FAILED_DEPS}")
       endif (${BOOST_BUILD_LIB_OPTION})
     endif (NOT THIS_PROJECT_OKAY)
-  else (THIS_PROJECT_SRCDIRS)
-    # This Boost library has no source directories, and therefore does
-    # not require building. Enable it when its dependencies are satisfied. 
-    set(${BOOST_BUILD_LIB_OPTION} ${THIS_PROJECT_OKAY})
   endif (THIS_PROJECT_SRCDIRS)
 
   if(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
@@ -175,12 +173,14 @@ macro(boost_library_project LIBNAME)
       endif (THIS_PROJECT_DESCRIPTION)
     endif(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
     
+
     if(THIS_PROJECT_MODULAR)
       # If this is a modular project, set a variable
       # BOOST_${LIBNAME}_IS_MODULAR in the *parent* scope, so that
       # other libraries know that this is a modular library. Thus,
       # they will add the appropriate include paths.
       set(BOOST_${ULIBNAME}_IS_MODULAR TRUE PARENT_SCOPE)
+      message(STATUS "   (modular)")
 
       # Add this module's include directory
       include_directories("${Boost_SOURCE_DIR}/libs/${libname}/include")
@@ -204,6 +204,7 @@ macro(boost_library_project LIBNAME)
         CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP 
         ${ULIBNAME})
     endif (THIS_PROJECT_MODULAR)
+
 
     if(THIS_PROJECT_SRCDIRS)
       # Add an installation target for the sources of this library.
