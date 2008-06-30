@@ -8,11 +8,12 @@
 
 // should pass compilation and execution
 
-#include <fstream>
+#include <cstdlib> // for rand(), NULL
 
-#include <cstdlib> // for rand()
-#include <cstdio> // remove
+#include <fstream>
 #include <boost/config.hpp>
+
+#include <cstdio> // remove
 #if defined(BOOST_NO_STDC_NAMESPACE)
 namespace std{ 
     using ::rand; 
@@ -21,8 +22,6 @@ namespace std{
 #endif
 
 #include "test_tools.hpp"
-#include <boost/preprocessor/stringize.hpp>
-#include BOOST_PP_STRINGIZE(BOOST_ARCHIVE_TEST)
 
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/binary_object.hpp>
@@ -71,7 +70,7 @@ int test_main( int /* argc */, char* /* argv */[] )
     int i1 = 34790;
     {   
         test_ostream os(testfile, TEST_STREAM_FLAGS);
-        test_oarchive oa(os);
+        test_oarchive oa(os, TEST_ARCHIVE_FLAGS);
         oa << BOOST_SERIALIZATION_NVP(a);
         // note: add a little bit on the end of the archive to detect
         // failure of text mode binary.
@@ -79,7 +78,7 @@ int test_main( int /* argc */, char* /* argv */[] )
     }
     {
         test_istream is(testfile, TEST_STREAM_FLAGS);
-        test_iarchive ia(is);
+        test_iarchive ia(is, TEST_ARCHIVE_FLAGS);
         ia >> BOOST_SERIALIZATION_NVP(a1);
         ia >> BOOST_SERIALIZATION_NVP(i1);
     }

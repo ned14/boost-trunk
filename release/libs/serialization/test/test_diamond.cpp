@@ -8,11 +8,12 @@
 
 // test of serialization library for diamond intheritence situations
 
+#include <cstddef> // NULL
 #include <fstream>
 #include <iostream>
 
-#include <cstdio> // remove
 #include <boost/config.hpp>
+#include <cstdio> // remove
 #if defined(BOOST_NO_STDC_NAMESPACE)
 namespace std{ 
     using ::remove;
@@ -20,8 +21,6 @@ namespace std{
 #endif
 
 #include "test_tools.hpp"
-#include <boost/preprocessor/stringize.hpp>
-#include BOOST_PP_STRINGIZE(BOOST_ARCHIVE_TEST)
 
 #include <boost/serialization/map.hpp>
 #include <boost/serialization/utility.hpp>

@@ -13,10 +13,9 @@ set(SOURCES
     basic_xml_archive.cpp
     binary_iarchive.cpp
     binary_oarchive.cpp
-    codecvt_null.cpp
     extended_type_info.cpp
-    extended_type_info_no_rtti.cpp
     extended_type_info_typeid.cpp
+    extended_type_info_no_rtti.cpp
     polymorphic_iarchive.cpp
     polymorphic_oarchive.cpp
     stl_port.cpp
@@ -29,16 +28,15 @@ set(SOURCES
     )
     
 set(WSOURCES
-    utf8_codecvt_facet.cpp
     basic_text_wiprimitive.cpp
     basic_text_woprimitive.cpp
-    binary_wiarchive.cpp
-    binary_woarchive.cpp
     text_wiarchive.cpp
     text_woarchive.cpp
+    utf8_codecvt_facet.cpp
     xml_wgrammar.cpp
     xml_wiarchive.cpp
     xml_woarchive.cpp
+    codecvt_null.cpp
     )
 
 boost_add_library(boost_serialization

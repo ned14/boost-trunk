@@ -10,11 +10,16 @@
 
 #include <fstream>
 
-#include <cstdio> // remove
+#include <cstddef> // NULL
+#include <cstdlib> // rand
+#include <limits> 
 #include <boost/config.hpp>
+
+#include <cstdio> // remove
 #if defined(BOOST_NO_STDC_NAMESPACE)
 namespace std{ 
     using ::remove;
+    using ::numeric_limits;
 }
 #endif
 
@@ -30,8 +35,14 @@ int test_main( int /* argc */, char* /* argv */[] )
     BOOST_REQUIRE(NULL != testfile);
 
     // test array of objects
-    std::complex<float> a(std::rand(),std::rand());
-    std::complex<double> b(std::rand(),std::rand());
+    std::complex<float> a(
+        static_cast<float>(std::rand()),
+        static_cast<float>(std::rand())
+    );
+    std::complex<double> b(
+        static_cast<double>(std::rand()),
+        static_cast<double>(std::rand())
+    );
     {   
         test_ostream os(testfile, TEST_STREAM_FLAGS);
         test_oarchive oa(os);
@@ -46,10 +57,10 @@ int test_main( int /* argc */, char* /* argv */[] )
         ia >> boost::serialization::make_nvp("afloatcomplex", a1);
         ia >> boost::serialization::make_nvp("adoublecomplex", b1);
     }
-    bool equal = (std::abs(a-a1) <= 2.*std::numeric_limits<float>::round_error()  
-          && std::abs(b-b1) <= 2.*std::numeric_limits<double>::round_error() );
-                  
-    BOOST_CHECK(equal);
+
+    BOOST_CHECK(std::abs(a-a1) <= 2.*std::numeric_limits<float>::round_error());
+    BOOST_CHECK(std::abs(b-b1) <= 2.*std::numeric_limits<double>::round_error());
+
     std::remove(testfile);
     return EXIT_SUCCESS;
 }
