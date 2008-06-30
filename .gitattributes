@@ -7953,7 +7953,6 @@ libs/exception/test/to_string_stub_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/to_string_stub_test.cpp svneol=native#text/plain
 libs/exception/test/to_string_test.cpp svneol=native#text/plain
 libs/exception/test/unknown_exception_test.cpp svneol=native#text/plain
-libs/exception/test/what_test.cpp svneol=native#text/plain
 libs/filesystem/build/Jamfile.v2 svneol=native#text/plain
 libs/filesystem/doc/design.htm svneol=native#text/html
 libs/filesystem/doc/do-list.htm svneol=native#text/html
