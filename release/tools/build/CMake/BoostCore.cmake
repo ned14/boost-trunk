@@ -190,7 +190,7 @@ macro(boost_library_project LIBNAME)
         DESTINATION ${BOOST_HEADER_DIR}
         COMPONENT ${ULIBNAME}_HEADERS
         PATTERN "CVS" EXCLUDE
-        REGEX ".svn" EXCLUDE)
+        PATTERN ".svn" EXCLUDE)
 
       # Add the appropriate variables to make this library's headers a
       # separate component.
@@ -231,7 +231,7 @@ macro(boost_library_project LIBNAME)
           DESTINATION src/${LIBNAME}
           COMPONENT ${ULIBNAME}_SOURCES
           PATTERN "CVS" EXCLUDE
-          REGEX ".svn" EXCLUDE)  
+          PATTERN ".svn" EXCLUDE)  
       endforeach()
     endif()
 	
