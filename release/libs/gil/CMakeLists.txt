@@ -1,1 +1,5 @@
-boost_library_project(GIL TESTDIRS test)
+boost_library_project(
+  GIL 
+  TESTDIRS test
+  HEADERS gil
+  )

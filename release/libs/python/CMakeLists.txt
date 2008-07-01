@@ -56,5 +56,6 @@ if (PYTHON_LIBRARIES)
     Python
     SRCDIRS src
     TESTDIRS test
+    HEADERS python.hpp python
     )
 endif (PYTHON_LIBRARIES)

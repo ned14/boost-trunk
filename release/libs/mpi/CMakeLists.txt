@@ -6,6 +6,7 @@ if (MPI_FOUND)
     SRCDIRS src
     TESTDIRS test
     DOCDIRS doc
+    HEADERS mpi.hpp mpi
     )
 endif(MPI_FOUND)
 
