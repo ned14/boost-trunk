@@ -19,6 +19,8 @@
 #   boost_add_executable: Builds executables.                            #
 ##########################################################################
 
+add_custom_target(modularize)
+
 # Defines a Boost library project (e.g., for Boost.Python). Use as:
 #
 #   boost_library_project(libname
@@ -72,7 +74,7 @@
 #     )
 macro(boost_library_project LIBNAME)
   parse_arguments(THIS_PROJECT
-    "SRCDIRS;TESTDIRS;DOCDIRS;DESCRIPTION;AUTHORS;MAINTAINERS;DEPENDS"
+    "SRCDIRS;TESTDIRS;HEADERS;DOCDIRS;DESCRIPTION;AUTHORS;MAINTAINERS;DEPENDS"
     "MODULAR"
     ${ARGN}
     )
@@ -205,6 +207,17 @@ macro(boost_library_project LIBNAME)
         ${ULIBNAME})
     endif (THIS_PROJECT_MODULAR)
 
+    if(THIS_PROJECT_HEADERS)
+      add_custom_target(${LIBNAME}-modularize
+	COMMAND mkdir -p ${Boost_SOURCE_DIR}/libs/${libname}/include/boost
+	COMMAND rsync -va --exclude=".svn" --delete ${THIS_PROJECT_HEADERS} ${Boost_SOURCE_DIR}/libs/${libname}/include/boost/
+	# Uncomment this to see how clean your toplevel boost/ dir is afterwards
+	# COMMAND rm -rf ${THIS_PROJECT_HEADERS}
+	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/boost
+	COMMENT "Rsyncing ${THIS_PROJECT_HEADERS} to project include dir"
+	)
+      add_dependencies(modularize ${LIBNAME}-modularize)
+    endif(THIS_PROJECT_HEADERS)
 
     if(THIS_PROJECT_SRCDIRS)
       # Add an installation target for the sources of this library.
