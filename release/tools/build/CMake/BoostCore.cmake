@@ -207,17 +207,23 @@ macro(boost_library_project LIBNAME)
         ${ULIBNAME})
     endif (THIS_PROJECT_MODULAR)
 
-    if(THIS_PROJECT_HEADERS)
+    if(THIS_PROJECT_HEADERS AND THIS_PROJECT_MODULAR)
       add_custom_target(${LIBNAME}-modularize
 	COMMAND mkdir -p ${Boost_SOURCE_DIR}/libs/${libname}/include/boost
 	COMMAND rsync -va --exclude=".svn" --delete ${THIS_PROJECT_HEADERS} ${Boost_SOURCE_DIR}/libs/${libname}/include/boost/
 	# Uncomment this to see how clean your toplevel boost/ dir is afterwards
 	# COMMAND rm -rf ${THIS_PROJECT_HEADERS}
+	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/monolithic
+	COMMENT "Rsyncing ${THIS_PROJECT_HEADERS} to project include dir from monolithic dir"
+	)
+      add_custom_command(TARGET ${LIBNAME}-modularize
+	POST_BUILD
+	COMMAND rm -rf ${THIS_PROJECT_HEADERS}
 	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/boost
-	COMMENT "Rsyncing ${THIS_PROJECT_HEADERS} to project include dir"
+	COMMENT "Cleaning headers from ${LIBNAME} from toplevel boost dir"
 	)
       add_dependencies(modularize ${LIBNAME}-modularize)
-    endif(THIS_PROJECT_HEADERS)
+    endif(THIS_PROJECT_HEADERS AND THIS_PROJECT_MODULAR)
 
     if(THIS_PROJECT_SRCDIRS)
       # Add an installation target for the sources of this library.
