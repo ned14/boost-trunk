@@ -7920,6 +7920,7 @@ libs/exception/example/error_info_2.cpp svneol=native#text/plain
 libs/exception/example/example_io.cpp svneol=native#text/plain
 libs/exception/example/info_tuple.cpp svneol=native#text/plain
 libs/exception/example/logging.cpp svneol=native#text/plain
+libs/exception/index.html svneol=native#text/html
 libs/exception/test/Jamfile.v2 svneol=native#text/plain
 libs/exception/test/boost_error_info_test.cpp svneol=native#text/plain
 libs/exception/test/cloning_test.cpp svneol=native#text/plain
