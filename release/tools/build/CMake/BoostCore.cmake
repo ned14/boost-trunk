@@ -213,8 +213,8 @@ macro(boost_library_project LIBNAME)
 	COMMAND rsync -va --exclude=".svn" --delete ${THIS_PROJECT_HEADERS} ${Boost_SOURCE_DIR}/libs/${libname}/include/boost/
 	# Uncomment this to see how clean your toplevel boost/ dir is afterwards
 	# COMMAND rm -rf ${THIS_PROJECT_HEADERS}
-	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/monolithic
-	COMMENT "Rsyncing ${THIS_PROJECT_HEADERS} to project include dir from monolithic dir"
+	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/boost
+	COMMENT "Rsyncing ${THIS_PROJECT_HEADERS} to project include dir from toplevel boost dir"
 	)
       add_custom_command(TARGET ${LIBNAME}-modularize
 	POST_BUILD
