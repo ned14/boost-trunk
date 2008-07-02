@@ -41,11 +41,6 @@ add_custom_target(modularize)
 # are not satisfied (e.g., because the library isn't present or its
 # build is turned off), this library won't be built. 
 #
-# A library marked MODULAR has all of its header files in its own
-# subdirectory include/boost rather than the "global" boost
-# subdirectory. These libraries can be added or removed from the tree
-# freely; they do not need to be a part of the main repository.
-# 
 # DESCRIPTION provides a brief description of the library, which can
 # be used to summarize the behavior of the library for a user. AUTHORS
 # lists the authors of the library, while MAINTAINERS lists the active
@@ -75,7 +70,7 @@ add_custom_target(modularize)
 macro(boost_library_project LIBNAME)
   parse_arguments(THIS_PROJECT
     "SRCDIRS;TESTDIRS;HEADERS;DOCDIRS;DESCRIPTION;AUTHORS;MAINTAINERS;DEPENDS"
-    "MODULAR"
+    ""
     ${ARGN}
     )
 
@@ -119,98 +114,86 @@ macro(boost_library_project LIBNAME)
     string(TOUPPER "${LIBNAME}" ULIBNAME)
     project(${LIBNAME})
 
-    if(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
-      # Add this library to the list of library components to install
-      set_property(GLOBAL APPEND 
-        PROPERTY CPACK_COMPONENT_GROUPS_ALL 
-        ${ULIBNAME})
-      boost_set_cpack_variable(
-        CPACK_COMPONENT_GROUP_${ULIBNAME}_DISPLAY_NAME 
-        ${LIBNAME})
-        
-      if (THIS_PROJECT_DESCRIPTION)
-        set(THIS_PROJECT_DESCRIPTION "Boost.${LIBNAME}\n\n${THIS_PROJECT_DESCRIPTION}")
-        
-        if (THIS_PROJECT_AUTHORS)
-          list(LENGTH THIS_PROJECT_AUTHORS THIS_PROJECT_NUM_AUTHORS)
-          if (THIS_PROJECT_NUM_AUTHORS EQUAL 1)
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthor: ")
-          else()
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthors: ")
-          endif()
-          set(THIS_PROJECT_FIRST_AUTHOR TRUE)
-          foreach(AUTHOR ${THIS_PROJECT_AUTHORS})
-            string(REGEX REPLACE " *-at- *" "@" AUTHOR ${AUTHOR})
-            if (THIS_PROJECT_FIRST_AUTHOR)
-              set(THIS_PROJECT_FIRST_AUTHOR FALSE)
-            else()
-              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n         ")
-            endif()
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${AUTHOR}")
-          endforeach(AUTHOR)
-        endif (THIS_PROJECT_AUTHORS)
-
-        if (THIS_PROJECT_MAINTAINERS)
-          list(LENGTH THIS_PROJECT_MAINTAINERS THIS_PROJECT_NUM_MAINTAINERS)
-          if (THIS_PROJECT_NUM_MAINTAINERS EQUAL 1)
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainer: ")
-          else()
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainers: ")
-          endif()
-          set(THIS_PROJECT_FIRST_MAINTAINER TRUE)
-          foreach(MAINTAINER ${THIS_PROJECT_MAINTAINERS})
-            string(REGEX REPLACE " *-at- *" "@" MAINTAINER ${MAINTAINER})
-            if (THIS_PROJECT_FIRST_MAINTAINER)
-              set(THIS_PROJECT_FIRST_MAINTAINER FALSE)
-            else()
-              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n             ")
-            endif()
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${MAINTAINER}")
-          endforeach(MAINTAINER)
-        endif (THIS_PROJECT_MAINTAINERS)
-        
-        boost_set_cpack_variable(
-          CPACK_COMPONENT_GROUP_${ULIBNAME}_DESCRIPTION
-          "${THIS_PROJECT_DESCRIPTION}")
-      endif (THIS_PROJECT_DESCRIPTION)
-    endif(THIS_PROJECT_MODULAR OR THIS_PROJECT_SRCDIRS)
+    # Add this library to the list of library components to install
+    set_property(GLOBAL APPEND 
+      PROPERTY CPACK_COMPONENT_GROUPS_ALL 
+      ${ULIBNAME})
+    boost_set_cpack_variable(
+      CPACK_COMPONENT_GROUP_${ULIBNAME}_DISPLAY_NAME 
+      ${LIBNAME})
     
+    if (THIS_PROJECT_DESCRIPTION)
+      set(THIS_PROJECT_DESCRIPTION "Boost.${LIBNAME}\n\n${THIS_PROJECT_DESCRIPTION}")
+      
+      if (THIS_PROJECT_AUTHORS)
+        list(LENGTH THIS_PROJECT_AUTHORS THIS_PROJECT_NUM_AUTHORS)
+        if (THIS_PROJECT_NUM_AUTHORS EQUAL 1)
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthor: ")
+        else()
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthors: ")
+        endif()
+        set(THIS_PROJECT_FIRST_AUTHOR TRUE)
+        foreach(AUTHOR ${THIS_PROJECT_AUTHORS})
+          string(REGEX REPLACE " *-at- *" "@" AUTHOR ${AUTHOR})
+          if (THIS_PROJECT_FIRST_AUTHOR)
+            set(THIS_PROJECT_FIRST_AUTHOR FALSE)
+          else()
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n         ")
+          endif()
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${AUTHOR}")
+        endforeach(AUTHOR)
+      endif (THIS_PROJECT_AUTHORS)
 
-    if(THIS_PROJECT_MODULAR)
-      # If this is a modular project, set a variable
-      # BOOST_${LIBNAME}_IS_MODULAR in the *parent* scope, so that
-      # other libraries know that this is a modular library. Thus,
-      # they will add the appropriate include paths.
-      set(BOOST_${ULIBNAME}_IS_MODULAR TRUE PARENT_SCOPE)
-      message(STATUS "   (modular)")
-
-      # Add this module's include directory
-      include_directories("${Boost_SOURCE_DIR}/libs/${libname}/include")
-
-      # Install this module's headers
-      install(DIRECTORY include/boost 
-        DESTINATION ${BOOST_HEADER_DIR}
-        COMPONENT ${ULIBNAME}_HEADERS
-        PATTERN "CVS" EXCLUDE
-        PATTERN ".svn" EXCLUDE)
-
-      # Add the appropriate variables to make this library's headers a
-      # separate component.
-      set_property(GLOBAL APPEND 
-        PROPERTY CPACK_COMPONENTS_ALL 
-        ${ULIBNAME}_HEADERS)
+      if (THIS_PROJECT_MAINTAINERS)
+        list(LENGTH THIS_PROJECT_MAINTAINERS THIS_PROJECT_NUM_MAINTAINERS)
+        if (THIS_PROJECT_NUM_MAINTAINERS EQUAL 1)
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainer: ")
+        else()
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainers: ")
+        endif()
+        set(THIS_PROJECT_FIRST_MAINTAINER TRUE)
+        foreach(MAINTAINER ${THIS_PROJECT_MAINTAINERS})
+          string(REGEX REPLACE " *-at- *" "@" MAINTAINER ${MAINTAINER})
+          if (THIS_PROJECT_FIRST_MAINTAINER)
+            set(THIS_PROJECT_FIRST_MAINTAINER FALSE)
+          else()
+            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n             ")
+          endif()
+          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${MAINTAINER}")
+        endforeach(MAINTAINER)
+      endif (THIS_PROJECT_MAINTAINERS)
+      
       boost_set_cpack_variable(
-        CPACK_COMPONENT_${ULIBNAME}_HEADERS_DISPLAY_NAME 
-        "Header files")
-      boost_set_cpack_variable(
-        CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP 
-        ${ULIBNAME})
-    endif (THIS_PROJECT_MODULAR)
+        CPACK_COMPONENT_GROUP_${ULIBNAME}_DESCRIPTION
+        "${THIS_PROJECT_DESCRIPTION}")
+    endif (THIS_PROJECT_DESCRIPTION)
+    
+    # Add this module's include directory
+    include_directories("${Boost_SOURCE_DIR}/libs/${libname}/include")
 
-    if(THIS_PROJECT_HEADERS AND THIS_PROJECT_MODULAR)
+    # Install this module's headers
+    install(DIRECTORY include/boost 
+      DESTINATION ${BOOST_HEADER_DIR}
+      COMPONENT ${ULIBNAME}_HEADERS
+      PATTERN "CVS" EXCLUDE
+      PATTERN ".svn" EXCLUDE)
+
+    # Add the appropriate variables to make this library's headers a
+    # separate component.
+    set_property(GLOBAL APPEND 
+      PROPERTY CPACK_COMPONENTS_ALL 
+      ${ULIBNAME}_HEADERS)
+    boost_set_cpack_variable(
+      CPACK_COMPONENT_${ULIBNAME}_HEADERS_DISPLAY_NAME 
+      "Header files")
+    boost_set_cpack_variable(
+      CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP 
+      ${ULIBNAME})
+
+    if(THIS_PROJECT_HEADERS)
       add_custom_target(${LIBNAME}-modularize
 	COMMAND mkdir -p ${Boost_SOURCE_DIR}/libs/${libname}/include/boost
-	COMMAND rsync -va --exclude=".svn" --delete ${THIS_PROJECT_HEADERS} ${Boost_SOURCE_DIR}/libs/${libname}/include/boost/
+	COMMAND rsync -a --exclude=".svn" --delete ${THIS_PROJECT_HEADERS} ${Boost_SOURCE_DIR}/libs/${libname}/include/boost/
 	# Uncomment this to see how clean your toplevel boost/ dir is afterwards
 	# COMMAND rm -rf ${THIS_PROJECT_HEADERS}
 	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/boost
@@ -223,7 +206,7 @@ macro(boost_library_project LIBNAME)
 	COMMENT "Cleaning headers from ${LIBNAME} from toplevel boost dir"
 	)
       add_dependencies(modularize ${LIBNAME}-modularize)
-    endif(THIS_PROJECT_HEADERS AND THIS_PROJECT_MODULAR)
+    endif(THIS_PROJECT_HEADERS)
 
     if(THIS_PROJECT_SRCDIRS)
       # Add an installation target for the sources of this library.
@@ -237,12 +220,9 @@ macro(boost_library_project LIBNAME)
 	CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP 
 	${ULIBNAME})
       
-      # If this is a modular library, the sources depend on the headers
-      if (THIS_PROJECT_MODULAR)
-        boost_set_cpack_variable(
-	  CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS 
-	  ${ULIBNAME}_HEADERS) 
-      endif ()
+      boost_set_cpack_variable(
+	CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS 
+	${ULIBNAME}_HEADERS) 
       
       # Add all of the source files as an installation target  
       foreach(SUBDIR ${THIS_PROJECT_SRCDIRS})
@@ -259,18 +239,14 @@ macro(boost_library_project LIBNAME)
     set(THIS_PROJECT_HAS_HEADER_DEPENDS FALSE)
     foreach(DEP ${${THIS_PROJECT_DEPENDS}})
       string(TOUPPER ${DEP} UDEP)
-      string(TOUPPER "BOOST_${DEP}_IS_MODULAR" BOOST_LIB_DEP_MODULAR)
-      if(BOOST_${UDEP}_IS_MODULAR)
-        include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
-        if (THIS_PROJECT_MODULAR)
-          # Make this project's headers depend on DEP's headers
-          set_property(GLOBAL APPEND
-            PROPERTY CPACK_COMPONENT_${ULIBNAME}_HEADERS_DEPENDS 
-            ${UDEP}_HEADERS)
-          set(THIS_PROJECT_HAS_HEADER_DEPENDS TRUE)
-        endif ()
-      endif()
+      include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
+      # Make this project's headers depend on DEP's headers
+      set_property(GLOBAL APPEND
+        PROPERTY CPACK_COMPONENT_${ULIBNAME}_HEADERS_DEPENDS 
+        ${UDEP}_HEADERS)
+      set(THIS_PROJECT_HAS_HEADER_DEPENDS TRUE)
     endforeach(DEP)
+
     if (THIS_PROJECT_HAS_HEADER_DEPENDS)
       set_property(GLOBAL APPEND
         PROPERTY BOOST_CPACK_EXPORTS
@@ -285,9 +261,11 @@ macro(boost_library_project LIBNAME)
     endif(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/tests/${PROJECT_NAME})
 
     # Include each of the source directories
-    foreach(SUBDIR ${THIS_PROJECT_SRCDIRS})
-      add_subdirectory(${SUBDIR})
-    endforeach(SUBDIR ${THIS_PROJECT_SRCDIRS})
+    if(THIS_PROJECT_SRCDIRS)
+      foreach(SUBDIR ${THIS_PROJECT_SRCDIRS})
+	add_subdirectory(${SUBDIR})
+      endforeach(SUBDIR ${THIS_PROJECT_SRCDIRS})
+    endif()
 
     if(BUILD_TESTING AND THIS_PROJECT_TESTDIRS)
       # Testing is enabled globally and this project has some
@@ -422,10 +400,7 @@ macro(boost_tool_project TOOLNAME)
     # add the include path for that library.
     foreach(DEP ${BOOST_${UTOOLNAME}_DEPENDS})
       string(TOUPPER ${DEP} UDEP)
-      string(TOUPPER "BOOST_${DEP}_IS_MODULAR" BOOST_LIB_DEP_MODULAR)
-      if(BOOST_${UDEP}_IS_MODULAR)
-        include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
-      endif()
+      include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
     endforeach(DEP)
   endif()
 endmacro(boost_tool_project)

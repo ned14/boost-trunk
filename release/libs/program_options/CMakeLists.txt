@@ -3,5 +3,4 @@ boost_library_project(
   SRCDIRS src
   TESTDIRS test
   HEADERS program_options.hpp program_options
-  MODULAR
   )

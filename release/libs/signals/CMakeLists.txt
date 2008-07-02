@@ -3,5 +3,4 @@ boost_library_project(
   SRCDIRS src 
   TESTDIRS test
   HEADERS signals.hpp signal.hpp signals
-  MODULAR
   )

@@ -164,12 +164,8 @@ macro(doxygen_to_boostbook OUTPUT)
     file(APPEND ${DOXYFILE} "${PARAM}\n")
   endforeach(PARAM)
 
-  # Update the list of headers passed to Doxygen
-  if (THIS_PROJECT_MODULAR)
-    set(THIS_DOXY_HEADER_PATH ${CMAKE_SOURCE_DIR}/libs/${libname}/include)
-  else()
-    set(THIS_DOXY_HEADER_PATH ${CMAKE_SOURCE_DIR})
-  endif()
+  set(THIS_DOXY_HEADER_PATH ${CMAKE_SOURCE_DIR}/libs/${libname}/include)
+
   set(THIS_DOXY_HEADER_LIST "")
   set(THIS_DOXY_HEADERS)
   foreach(HDR ${THIS_DOXY_DEFAULT_ARGS})
