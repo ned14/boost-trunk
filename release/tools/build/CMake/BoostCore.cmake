@@ -192,18 +192,10 @@ macro(boost_library_project LIBNAME)
 
     if(THIS_PROJECT_HEADERS)
       add_custom_target(${LIBNAME}-modularize
-	COMMAND mkdir -p ${Boost_SOURCE_DIR}/libs/${libname}/include/boost
-	COMMAND rsync -a --exclude=".svn" --delete ${THIS_PROJECT_HEADERS} ${Boost_SOURCE_DIR}/libs/${libname}/include/boost/
-	# Uncomment this to see how clean your toplevel boost/ dir is afterwards
-	# COMMAND rm -rf ${THIS_PROJECT_HEADERS}
+	COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/build/CMake/modularize.py 
+	${Boost_SOURCE_DIR}/boost ${THIS_PROJECT_HEADERS} ${Boost_SOURCE_DIR}/libs/${libname}/include/boost
 	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/boost
-	COMMENT "Rsyncing ${THIS_PROJECT_HEADERS} to project include dir from toplevel boost dir"
-	)
-      add_custom_command(TARGET ${LIBNAME}-modularize
-	POST_BUILD
-	COMMAND rm -rf ${THIS_PROJECT_HEADERS}
-	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/boost
-	COMMENT "Cleaning headers from ${LIBNAME} from toplevel boost dir"
+	COMMENT "Modularizing ${LIBNAME} headers to project-local dir from monolithic boost dir"
 	)
       add_dependencies(modularize ${LIBNAME}-modularize)
     endif(THIS_PROJECT_HEADERS)

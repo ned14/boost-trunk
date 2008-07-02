@@ -31658,6 +31658,7 @@ release/tools/build/CMake/catalog.xml.in svneol=native#text/plain
 release/tools/build/CMake/finish.py.in svneol=native#text/plain
 release/tools/build/CMake/info.py.in svneol=native#text/plain
 release/tools/build/CMake/marshal.py.in svneol=native#text/plain
+release/tools/build/CMake/modularize.py svneol=native#text/plain
 release/tools/build/CMake/passthru.py.in svneol=native#text/plain
 release/tools/build/CMake/post.py.in svneol=native#text/plain
 release/tools/build/CMake/run_continuous_slave.py.in svneol=native#text/plain
