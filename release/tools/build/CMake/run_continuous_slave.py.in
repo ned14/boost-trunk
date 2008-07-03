@@ -21,7 +21,7 @@ parser.add_option("-C", "--clean-every-time",
                   help="Clean before every build")
 
 parser.add_option("-k", "--keep-rebuilding",
-                  action="store_true", dest="keep-rebuilding", default=False,
+                  action="store_true", dest="keep_rebuilding", default=False,
                   help="Rebuild even if there are no updates to svn")
 
 (options, args) = parser.parse_args()
@@ -71,8 +71,9 @@ while True:
             do_build(options.clean_every_time)
         else:
             print "No updates."
-    except:
-        print "Error.  Will retry"
+    except Exception, e:
+        print e
+        print "Error.  Will retry."
     
     print "Sleeping %d seconds" % @BOOST_BUILD_SLAVE_SLEEP_DURATION@
     time.sleep(@BOOST_BUILD_SLAVE_SLEEP_DURATION@)
