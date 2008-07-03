@@ -4,10 +4,44 @@
 #
 
 import pysvn, os, time
+from optparse import OptionParser
+
+parser = OptionParser()
+
+parser.add_option("-b", "--build-first",
+                  action="store_true", dest="build_first", default=False,
+                  help="Build on startup")
+
+parser.add_option("-c", "--clean-first",
+                  action="store_true", dest="clean_first", default=False,
+                  help="Clean on startup")
+
+parser.add_option("-C", "--clean-every-time",
+                  action="store_true", dest="clean_every_time", default=False,
+                  help="Clean before every build")
+
+(options, args) = parser.parse_args()
+
 
 client = pysvn.Client()
 
 wc_path = r'@CMAKE_SOURCE_DIR@'
+
+def do_build(clean_):
+    if clean_:
+        clean = 'clean'
+    else:
+        clean = ''
+    if os.name == 'nt':
+        cmd = 'nmake /I ' + clean + ' slave-start test slave-finish'
+    else:
+        cmd = 'make -i ' + clean + ' slave-start test slave-finish'
+    print "Starting build:\n>>> ", cmd
+    os.system(cmd)
+    
+
+if options.build_first:
+    do_build(options.clean_first)
 
 while True:
     try:
@@ -29,12 +63,7 @@ while True:
                 print ">>>", j.path
             print "Updating."
             client.update(wc_path)
-            if os.name == 'nt':
-                cmd = 'nmake /I clean slave-start test slave-finish'
-            else:
-                cmd = 'make -i clean slave-start test slave-finish'
-            print "Starting build:\n>>> ", cmd
-            os.system(cmd)
+            do_build(options.clean_every_time)
         else:
             print "No updates."
     except:
