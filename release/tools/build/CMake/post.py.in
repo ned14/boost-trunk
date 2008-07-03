@@ -30,8 +30,14 @@ logdir = sys.argv[4]
 #       + "\n>>>"
 
 p = os.path.join(logdir, "Log.marshal")
+
+if not os.path.exists(p):
+    print "No results to submit"
+    sys.exit(0)
+
 f = open(p, "rb")
 
+i = 0
 while True:
     try:
         r = marshal.load(f)
@@ -40,9 +46,11 @@ while True:
                    'parent_target' : parent_target,
                    'build_or_test' : build_or_test })
         s.traash.step(r)
+        i += 1
     except EOFError, e:
         break
 
+print "Submitted ", i, " steps."
 f.close()
 os.remove(p)
 
