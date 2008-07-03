@@ -111,7 +111,7 @@ install(DIRECTORY boost
         DESTINATION ${BOOST_HEADER_DIR}
         COMPONENT Core
         PATTERN "CVS" EXCLUDE
-        REGEX ".svn" EXCLUDE)
+        PATTERN ".svn" EXCLUDE)
 #
 # TDS 20080526:  Getting a segfault here even with the ifs.   At r45780, with these lines 
 # uncommented:

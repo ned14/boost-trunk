@@ -8,6 +8,6 @@ if (BUILD_DOCUMENTATION_HTML)
     DESTINATION share/boost-${BOOST_VERSION}/html
     COMPONENT Core
     PATTERN "CVS" EXCLUDE
-    REGEX ".svn" EXCLUDE)
+    PATTERN ".svn" EXCLUDE)
 endif ()
 
