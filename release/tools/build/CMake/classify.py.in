@@ -24,7 +24,7 @@ def classify(step):
         step['status'] = 'fail'
         return
 
-    if step['returncode'] == '0' and step['expect_fail']:
+    if step['returncode'] == 0 and step['expect_fail']:
         step['status'] = 'unexpected_pass'
         return
 
