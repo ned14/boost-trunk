@@ -28,7 +28,7 @@ def classify(step):
         step['status'] = 'unexpected_pass'
         return
 
-    if len(step['stderr']) != 0 and not step['stderr'].isspace():
+    if step['op'] != 'run' and len(step['stderr']) != 0 and not step['stderr'].isspace():
         step['status'] = 'warn'
         return
 
