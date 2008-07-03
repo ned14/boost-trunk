@@ -17,7 +17,6 @@ boost_test_run(throw_exception_test)
 boost_test_run(errno_test)
 boost_test_run(error_info_test)
 boost_test_run(diagnostic_information_test)
-boost_test_run(what_test)
 boost_test_compile_fail(exception_fail)
 boost_test_compile_fail(throw_exception_fail)
 
