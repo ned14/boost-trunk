@@ -19089,6 +19089,7 @@ libs/units/test/test_mixed_value_types.cpp svneol=native#text/plain
 libs/units/test/test_negative_denominator.cpp svneol=native#text/plain
 libs/units/test/test_predicates.cpp svneol=native#text/plain
 libs/units/test/test_quantity.cpp svneol=native#text/plain
+libs/units/test/test_reduce_unit.cpp svneol=native#text/plain
 libs/units/test/test_scaled_conversion.cpp svneol=native#text/plain
 libs/units/test/test_scaled_unit.cpp svneol=native#text/plain
 libs/units/test/test_unit.cpp svneol=native#text/plain
