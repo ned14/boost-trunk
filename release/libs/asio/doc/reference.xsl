@@ -259,7 +259,9 @@
   <xsl:text>``</xsl:text>
   <xsl:value-of select="$newline"/>
   <xsl:apply-templates mode="codeline"/>
-  <xsl:value-of select="$newline"/>
+  <xsl:if test="substring(., string-length(.)) = $newline">
+    <xsl:value-of select="$newline"/>
+  </xsl:if>
   <xsl:text>``</xsl:text>
   <xsl:value-of select="$newline"/>
 </xsl:template>
@@ -300,6 +302,16 @@
 <xsl:text>
 
 </xsl:text>
+</xsl:template>
+
+
+<xsl:template match="computeroutput" mode="markup">
+<xsl:text>`</xsl:text><xsl:value-of select="."/><xsl:text>`</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="computeroutput" mode="markup-nested">
+<xsl:text>`</xsl:text><xsl:value-of select="."/><xsl:text>`</xsl:text>
 </xsl:template>
 
 
@@ -710,6 +722,12 @@
 [section:<xsl:value-of select="$id"/><xsl:text> </xsl:text>
 <xsl:value-of select="$class-name"/>::<xsl:value-of select="$name"/>]
 
+<xsl:text>[indexterm2 </xsl:text>
+<xsl:value-of select="$name"/>
+<xsl:text>..</xsl:text>
+<xsl:value-of select="$class-name"/>
+<xsl:text>] </xsl:text>
+
 <xsl:value-of select="briefdescription"/><xsl:text>
 </xsl:text>
 
@@ -739,6 +757,14 @@
 </xsl:call-template>.]<xsl:text>
 
 </xsl:text></xsl:if></xsl:if>
+
+<xsl:if test="$overload-count = 1">
+  <xsl:text>[indexterm2 </xsl:text>
+  <xsl:value-of select="$name"/>
+  <xsl:text>..</xsl:text>
+  <xsl:value-of select="$class-name"/>
+  <xsl:text>] </xsl:text>
+</xsl:if>
 
 <xsl:value-of select="briefdescription"/><xsl:text>
 </xsl:text>
@@ -857,16 +883,31 @@
         <xsl:when test="declname = 'Arg'">
           <xsl:value-of select="declname"/>
         </xsl:when>
+        <xsl:when test="declname = 'BufferSequence'">
+          <xsl:value-of select="declname"/>
+        </xsl:when>
+        <xsl:when test="declname = 'ByteType'">
+          <xsl:value-of select="declname"/>
+        </xsl:when>
         <xsl:when test="declname = 'CompletionCondition'">
           <xsl:value-of select="declname"/>
         </xsl:when>
         <xsl:when test="declname = 'Context_Service'">
           <xsl:value-of select="declname"/>
         </xsl:when>
+        <xsl:when test="declname = 'Elem'">
+          <xsl:value-of select="declname"/>
+        </xsl:when>
+        <xsl:when test="declname = 'ErrorEnum'">
+          <xsl:value-of select="declname"/>
+        </xsl:when>
         <xsl:when test="declname = 'Function'">
           <xsl:value-of select="declname"/>
         </xsl:when>
         <xsl:when test="declname = 'HandshakeHandler'">
+          <xsl:value-of select="declname"/>
+        </xsl:when>
+        <xsl:when test="declname = 'MatchCondition'">
           <xsl:value-of select="declname"/>
         </xsl:when>
         <xsl:when test="declname = 'N'">
@@ -878,8 +919,14 @@
         <xsl:when test="declname = 'PodType'">
           <xsl:value-of select="declname"/>
         </xsl:when>
+        <xsl:when test="declname = 'PointerToPodType'">
+          <xsl:value-of select="declname"/>
+        </xsl:when>
         <xsl:when test="declname = 'ShutdownHandler'">
           <xsl:value-of select="declname"/>
+        </xsl:when>
+        <xsl:when test="declname = 'SocketService1' or declname = 'SocketService2'">
+          <xsl:value-of select="concat('``[link boost_asio.reference.SocketService ', declname, ']``')"/>
         </xsl:when>
         <xsl:when test="declname = 'Stream'">
           <xsl:value-of select="declname"/>
@@ -894,6 +941,12 @@
           <xsl:value-of select="declname"/>
         </xsl:when>
         <xsl:when test="declname = 'Time'">
+          <xsl:value-of select="declname"/>
+        </xsl:when>
+        <xsl:when test="declname = 'TimeType'">
+          <xsl:value-of select="declname"/>
+        </xsl:when>
+        <xsl:when test="declname = 'Traits'">
           <xsl:value-of select="declname"/>
         </xsl:when>
         <xsl:when test="count(declname) = 0">
@@ -953,8 +1006,22 @@
 <xsl:if test="$overload-count &gt; 1 and $overload-position = 1">
 [section:<xsl:value-of select="$id"/><xsl:text> </xsl:text><xsl:value-of select="$name"/>]
 
-<xsl:value-of select="briefdescription"/><xsl:text>
-</xsl:text>
+<xsl:text>[indexterm1 </xsl:text>
+<xsl:value-of select="$name"/>
+<xsl:text>] </xsl:text>
+
+<xsl:choose>
+  <xsl:when test="count(/doxygen/compounddef[@kind='group' and compoundname=$name]) &gt; 0">
+    <xsl:for-each select="/doxygen/compounddef[@kind='group' and compoundname=$name]">
+      <xsl:value-of select="briefdescription"/><xsl:text>
+      </xsl:text>
+    </xsl:for-each>
+  </xsl:when>
+  <xsl:otherwise>
+    <xsl:value-of select="briefdescription"/><xsl:text>
+    </xsl:text>
+  </xsl:otherwise>
+</xsl:choose>
 
 <xsl:for-each select="../memberdef[name = $unqualified-name]">
 <xsl:text>
@@ -976,6 +1043,12 @@
 </xsl:if><xsl:text> </xsl:text><xsl:value-of select="$name"/>
 <xsl:if test="$overload-count &gt; 1"> (<xsl:value-of
  select="$overload-position"/> of <xsl:value-of select="$overload-count"/> overloads)</xsl:if>]
+
+<xsl:if test="$overload-count = 1">
+  <xsl:text>[indexterm1 </xsl:text>
+  <xsl:value-of select="$name"/>
+  <xsl:text>] </xsl:text>
+</xsl:if>
 
 <xsl:value-of select="briefdescription"/><xsl:text>
 </xsl:text>
