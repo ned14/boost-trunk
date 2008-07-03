@@ -1,0 +1,35 @@
+#
+#  Classifies pass/fail/warn for the sake of traash
+#
+
+toolset = '@BOOST_TOOLSET@'
+
+#  'cxx_compile_object'
+#  'run'
+#  'link_executable'
+#  'create_shared_library'
+#  'create_static_library'
+#  'compile-fail'
+
+def classify(step):
+    print "step=", step
+    if 'errno' in step:
+        if step['errno'] == 666:
+            step['status'] = 'timeout'
+        else:
+            step['status'] = 'not_executed'
+        return
+    
+    if step['returncode'] != 0 and not step['expect_fail']:
+        step['status'] = 'fail'
+        return
+
+    if step['returncode'] == '0' and step['expect_fail']:
+        step['status'] = 'unexpected_pass'
+        return
+
+    if len(step['stderr']) != 0 and not step['stderr'].isspace():
+        step['status'] = 'warn'
+        return
+
+    step['status'] = 'pass'

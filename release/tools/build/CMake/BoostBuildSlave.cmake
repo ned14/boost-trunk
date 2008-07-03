@@ -45,7 +45,7 @@ endif(CMAKE_VERBOSE_MAKEFILE)
 #
 # the programs that do the dirty work.
 #
-foreach(PYFILE boost_build_slave passthru marshal start finish info post)
+foreach(PYFILE boost_build_slave passthru marshal start finish info post classify)
   configure_file(tools/build/CMake/${PYFILE}.py.in 
     ${BOOST_BUILD_SLAVE_PYTHONPATH}/${PYFILE}.py 
     @ONLY
