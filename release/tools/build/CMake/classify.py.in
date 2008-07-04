@@ -29,6 +29,14 @@ def classify(step):
         step['status'] = 'unexpected_pass'
         return
 
+    #
+    #  if it is an expected failure, don't warn just cause of warnings.
+    #
+    if step['returncode'] != 0 and step['expect_fail']:
+        step['status'] = 'pass'
+        return
+
+
     if step['op'] != 'run' and len(step['stderr']) != 0 and not step['stderr'].isspace():
         step['status'] = 'warn'
         return
