@@ -3,6 +3,7 @@
 #
 
 toolset = '@BOOST_TOOLSET@'
+import os
 
 #  'cxx_compile_object'
 #  'run'
@@ -29,6 +30,13 @@ def classify(step):
         return
 
     if step['op'] != 'run' and len(step['stderr']) != 0 and not step['stderr'].isspace():
+        step['status'] = 'warn'
+        return
+
+    # on windoze, warnings are to be found in stdout... but the compiler always
+    # prints the name of the file first.  So warn if there is more than one line 
+    # in stdout.  For now.
+    if os.name == 'nt' and step['op'] == 'cxx_compile_object' and step['stdout'].count('\n') > 1:
         step['status'] = 'warn'
         return
 
