@@ -52,9 +52,14 @@ def get_string_option(name):
 
 def home_directories():
     if os.name == "nt":
-        return [os.environ['HOMEDRIVE'] + os.envrion['HOMEPATH'],
-                os.environ['HOME'],
-                os.environ['USERPROFILE']]
+        result = set()
+        try:
+            result.add(os.environ['HOMEDRIVE'] + os.environ['HOMEPATH'])
+            result.add(os.environ['HOME'])
+            result.add(os.environ['USERPROFILE'])
+        except KeyError:
+            pass
+        return list(result)
     else:
         return [os.environ['HOME']]
 
