@@ -68,7 +68,11 @@ module python_interface
     {
         IMPORT $(parent-module) : $(user-rules) : $(this-module) : $(user-rules) ;
         EXPORT $(this-module) : $(user-rules) ;
-    }   
+    }
+
+    rule mark-included ( targets * : includes * ) {
+        INCLUDES $(targets) : $(INCLUDES) ;
+    }
 
 }
 
