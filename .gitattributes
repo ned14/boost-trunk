@@ -18274,7 +18274,6 @@ libs/test/doc/usage/imgs/post_build_out.jpg -text svneol=unset#image/jpeg
 libs/test/doc/usage/imgs/run_args.jpg -text svneol=unset#image/jpeg
 libs/test/doc/usage/msvc_net.html svneol=native#text/html
 libs/test/doc/usage/recomendations.html svneol=native#text/html
-libs/test/example/.cvsignore svneol=native#text/plain
 libs/test/example/Jamfile.v2 svneol=native#text/plain
 libs/test/example/cla/Jamfile svneol=native#text/plain
 libs/test/example/cla/assign_to.cpp svneol=native#text/plain
