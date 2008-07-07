@@ -54,7 +54,10 @@ def configure (command = None, condition = None, options = None):
         before calling this. And still get the functionality of build failures when
         the resource compiler can't be found.
     """
-    rc_type = feature.get_values('<rc-type>', options)[0]
+    rc_type = feature.get_values('<rc-type>', options)
+    if rc_type:
+        assert(len(rc_type) == 1)
+        rc_type = rc_type[0]
 
     if command and condition and rc_type:
         flags('rc.compile.resource', '.RC', condition, command)

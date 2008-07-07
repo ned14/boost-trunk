@@ -130,7 +130,9 @@ def split_action_id (id):
     return (toolset, name)
 
 def os_name ():
-    return bjam.variable("OS")
+    result = bjam.variable("OS")
+    assert(len(result) == 1)
+    return result[0]
 
 def platform ():
     return bjam.variable("OSPLAT")

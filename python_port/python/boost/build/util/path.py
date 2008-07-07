@@ -430,12 +430,13 @@ def programs_path ():
     names = ['PATH', 'Path', 'path']
     
     for name in names:
-        raw.append (os.environ.get (name, ''))
-        
+        raw.append(os.environ.get (name, ''))
+    
     result = []
-    for p in raw:
-        if p:
-            result.append (make (p))
+    for elem in raw:
+        if elem:
+            for p in elem.split(os.path.pathsep):
+                result.append(make(p))
 
     return result
 

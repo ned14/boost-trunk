@@ -1,3 +1,5 @@
+# Status: minor updates by Steven Watanabe to make gcc work
+#
 #  Copyright (C) Vladimir Prus 2002. Permission to copy, use, modify, sell and
 #  distribute this software is granted provided this copyright notice appears in
 #  all copies. This software is provided "as is" without express or implied
@@ -79,6 +81,31 @@ def variant (name, parents_or_properties, explicit_properties = []):
     feature.extend('variant', [name])
     feature.compose (replace_grist (name, '<variant>'), explicit_properties)
 
+__os_names = """
+    amiga aix bsd cygwin darwin dos emx freebsd hpux iphone linux netbsd
+    openbsd osf qnx qnxnto sgi solaris sun sunos svr4 sysv ultrix unix unixware
+    vms windows
+""".split()
+
+# Translates from bjam current OS to the os tags used in host-os and target-os,
+# i.e. returns the running host-os.
+#
+def default_host_os():
+    host_os = os_name()
+    if host_os not in (x.upper() for x in __os_names):
+        if host_os == 'NT': host_os = 'windows'
+        elif host_os == 'AS400': host_os = 'unix'
+        elif host_os == 'MINGW': host_os = 'windows'
+        elif host_os == 'BSDI': host_os = 'bsd'
+        elif host_os == 'COHERENT': host_os = 'unix'
+        elif host_os == 'DRAGONFLYBSD': host_os = 'bsd'
+        elif host_os == 'IRIX': host_os = 'sgi'
+        elif host_os == 'MACOSX': host_os = 'darwin'
+        elif host_os == 'KFREEBSD': host_os = freebsd
+        elif host_os == 'LINUX': host_os = 'linux'
+        else: host_os = 'unix'
+    return host_os.lower()
+
 def register_globals ():
     """ Registers all features and variants declared by this module.
     """
@@ -88,13 +115,25 @@ def register_globals ():
     # TODO: check this. Compatibility with bjam names? Subfeature for version?
     os = sys.platform
     feature.feature ('os', [os], ['propagated', 'link-incompatible'])
+
+
+    # The two OS features define a known set of abstract OS names. The host-os is
+    # the OS under which bjam is running. Even though this should really be a fixed
+    # property we need to list all the values to prevent unknown value errors. Both
+    # set the default value to the current OS to account for the default use case of
+    # building on the target OS.
+    feature.feature('host-os', __os_names)
+    feature.set_default('host-os', default_host_os())
+
+    feature.feature('target-os', __os_names, ['propagated', 'link-incompatible'])
+    feature.set_default('target-os', default_host_os())
     
     feature.feature ('toolset', [], ['implicit', 'propagated' ,'symmetric'])
     
     feature.feature ('stdlib', ['native'], ['propagated', 'composite'])
     
     feature.feature ('link', ['shared', 'static'], ['propagated'])
-    feature.feature ('link-runtime', ['shared', 'static'], ['propagated'])
+    feature.feature ('runtime-link', ['shared', 'static'], ['propagated'])
     feature.feature ('runtime-debugging', ['on', 'off'], ['propagated'])
     
     
@@ -136,6 +175,17 @@ def register_globals ():
     feature.feature ('use', [], ['free', 'dependency', 'incidental'])
     feature.feature ('dependency', [], ['free', 'dependency', 'incidental'])
     feature.feature ('implicit-dependency', [], ['free', 'dependency', 'incidental'])
+
+    feature.feature('warnings', [
+        'on',         # Enable default/"reasonable" warning level for the tool.
+        'all',        # Enable all possible warnings issued by the tool.
+        'off'],       # Disable all warnings issued by the tool.
+        ['incidental', 'propagated'])
+
+    feature.feature('warnings-as-errors', [
+        'off',        # Do not fail the compilation if there are warnings.
+        'on'],        # Fail the compilation if there are warnings.
+        ['incidental', 'propagated'])
     
     feature.feature ('source', [], ['free', 'dependency', 'incidental'])
     feature.feature ('library', [], ['free', 'dependency', 'incidental'])
@@ -170,6 +220,81 @@ def register_globals ():
     # of the library.
     feature.feature ('allow', [], ['free'])
     
+    # The addressing model to generate code for. Currently a limited set only
+    # specifying the bit size of pointers.
+    feature.feature('address-model', ['16', '32', '64'], ['propagated', 'optional'])
+
+    # Type of CPU architecture to compile for.
+    feature.feature('architecture', [
+        # x86 and x86-64
+        'x86',
+
+        # ia64
+        'ia64',
+
+        # Sparc
+        'sparc',
+
+        # RS/6000 & PowerPC
+        'power',
+
+        # MIPS/SGI
+        'mips1', 'mips2', 'mips3', 'mips4', 'mips32', 'mips32r2', 'mips64',
+
+        # HP/PA-RISC
+        'parisc',
+        
+        # Advanced RISC Machines
+        'arm',
+
+        # Combined architectures for platforms/toolsets that support building for
+        # multiple architectures at once. "combined" would be the default multi-arch
+        # for the toolset.
+        'combined',
+        'combined-x86-power'],
+
+        ['propagated', 'optional'])
+
+    # The specific instruction set in an architecture to compile.
+    feature.feature('instruction-set', [
+        # x86 and x86-64
+        'i386', 'i486', 'i586', 'i686', 'pentium', 'pentium-mmx', 'pentiumpro', 'pentium2', 'pentium3',
+        'pentium3m', 'pentium-m', 'pentium4', 'pentium4m', 'prescott', 'nocona', 'conroe', 'conroe-xe',
+        'conroe-l', 'allendale', 'mermon', 'mermon-xe', 'kentsfield', 'kentsfield-xe', 'penryn', 'wolfdale',
+        'yorksfield', 'nehalem', 'k6', 'k6-2', 'k6-3', 'athlon', 'athlon-tbird', 'athlon-4', 'athlon-xp',
+        'athlon-mp', 'k8', 'opteron', 'athlon64', 'athlon-fx', 'winchip-c6', 'winchip2', 'c3', 'c3-2',
+
+        # ia64
+        'itanium', 'itanium1', 'merced', 'itanium2', 'mckinley',
+
+        # Sparc
+        'v7', 'cypress', 'v8', 'supersparc', 'sparclite', 'hypersparc', 'sparclite86x', 'f930', 'f934',
+        'sparclet', 'tsc701', 'v9', 'ultrasparc', 'ultrasparc3',
+
+        # RS/6000 & PowerPC
+        '401', '403', '405', '405fp', '440', '440fp', '505', '601', '602',
+        '603', '603e', '604', '604e', '620', '630', '740', '7400',
+        '7450', '750', '801', '821', '823', '860', '970', '8540',
+        'power-common', 'ec603e', 'g3', 'g4', 'g5', 'power', 'power2',
+        'power3', 'power4', 'power5', 'powerpc', 'powerpc64', 'rios',
+        'rios1', 'rsc', 'rios2', 'rs64a',
+
+        # MIPS
+        '4kc', '4kp', '5kc', '20kc', 'm4k', 'r2000', 'r3000', 'r3900', 'r4000',
+        'r4100', 'r4300', 'r4400', 'r4600', 'r4650',
+        'r6000', 'r8000', 'rm7000', 'rm9000', 'orion', 'sb1', 'vr4100',
+        'vr4111', 'vr4120', 'vr4130', 'vr4300',
+        'vr5000', 'vr5400', 'vr5500',
+
+        # HP/PA-RISC
+        '700', '7100', '7100lc', '7200', '7300', '8000',
+        
+        # Advanced RISC Machines
+        'armv2', 'armv2a', 'armv3', 'armv3m', 'armv4', 'armv4t', 'armv5',
+        'armv5t', 'armv5te', 'armv6', 'armv6j', 'iwmmxt', 'ep9312'],
+
+        ['propagated', 'optional'])
+    
     # Windows-specific features
     feature.feature ('user-interface', ['console', 'gui', 'wince', 'native', 'auto'], [])
     feature.feature ('variant', [], ['implicit', 'composite', 'propagated', 'symmetric'])
@@ -190,7 +315,7 @@ register_globals ()
 
 class SearchedLibTarget (virtual_target.AbstractFileTarget):
     def __init__ (self, name, project, shared, real_name, search, action):
-        AbstractFileTarget.__init__ (self, name, False, 'SEARCHED_LIB', project, action)
+        virtual_target.AbstractFileTarget.__init__ (self, name, False, 'SEARCHED_LIB', project, action)
         
         self.shared_ = shared
         self.real_name_ = real_name
@@ -211,7 +336,8 @@ class SearchedLibTarget (virtual_target.AbstractFileTarget):
         project.manager ().engine ().add_not_file_target (target)
     
     def path (self):
-        pass
+        #FIXME: several functions rely on this not being None
+        return ""
 
 
 class CScanner (scanner.Scanner):
@@ -349,6 +475,7 @@ generators.register (LibGenerator ())
 ### }
 ### IMPORT $(__name__) : lib : : lib ;
 
+# Updated to trunk@47077
 class SearchedLibGenerator (generators.Generator):
     def __init__ (self, id = 'SearchedLibGenerator', composing = False, source_types = [], target_types_and_names = ['SEARCHED_LIB'], requirements = []):
         # TODO: the comment below looks strange. There are no requirements!
@@ -358,7 +485,7 @@ class SearchedLibGenerator (generators.Generator):
         # search.
         generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
     
-    def run (self, project, name, prop_set, sources):
+    def run(self, project, name, prop_set, sources):
         if not name:
             return None
 
@@ -369,17 +496,22 @@ class SearchedLibGenerator (generators.Generator):
         properties = prop_set.raw ()
         shared = '<link>shared' in properties
 
-        a = NullAction (project.manager (), prop_set)
+        a = virtual_target.NullAction (project.manager(), prop_set)
         
-        real_name = feature.get_values ('<name>', properties) [0]
-        search = feature.get_values ('<search>', properties) [0]
-        t = SearchedLibTarget (name, project, shared, real_name, search, a)
+        real_name = feature.get_values ('<name>', properties)
+        if real_name:
+            real_name = real_name[0]
+        else:
+            real_nake = name
+        search = feature.get_values('<search>', properties)
+        usage_requirements = property_set.create(['<xdll-path>' + p for p in search])
+        t = SearchedLibTarget(name, project, shared, real_name, search, a)
 
         # We return sources for a simple reason. If there's
         #    lib png : z : <name>png ; 
         # the 'z' target should be returned, so that apps linking to
         # 'png' will link to 'z', too.
-        return (virtual_target.register (t), sources)
+        return(usage_requirements, [boost.build.manager.get_manager().virtual_targets().register(t)] + sources)
 
 generators.register (SearchedLibGenerator ())
 
@@ -440,18 +572,21 @@ class LinkingGenerator (generators.Generator):
         generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
         
     def run (self, project, name, prop_set, sources):
-        lib_sources = prop_set.get ('<library>')
-        [ sources.append (project.manager ().get_object (x)) for x in lib_sources ]
+        lib_sources = prop_set.get('<library>')
+        [ sources.append (project.manager().get_object(x)) for x in lib_sources ]
         
         # Add <library-path> properties for all searched libraries
         extra = []
         for s in sources:
             if s.type () == 'SEARCHED_LIB':
-                search = s.search ()
-                extra.append (replace_grist (search, '<library-path>'))
+                search = s.search()
+                extra.append(replace_grist(search, '<library-path>'))
+
+        orig_xdll_path = []
                    
-        if prop_set.get ('<hardcode-dll-paths>') == ['true'] and type.is_derived (self.target_types_ [0], 'EXE'):
-            xdll_path = prop_set.get ('<xdll-path>')
+        if prop_set.get('<hardcode-dll-paths>') == ['true'] and type.is_derived(self.target_types_ [0], 'EXE'):
+            xdll_path = prop_set.get('<xdll-path>')
+            orig_xdll_path = [ replace_grist(x, '<dll-path>') for x in xdll_path ]
             # It's possible that we have libraries in sources which did not came
             # from 'lib' target. For example, libraries which are specified
             # just as filenames as sources. We don't have xdll-path properties
@@ -460,18 +595,24 @@ class LinkingGenerator (generators.Generator):
                 if type.is_derived (s.type (), 'SHARED_LIB') and not s.action ():
                     # Unfortunately, we don't have a good way to find the path
                     # to a file, so use this nasty approach.
-                    p = s.project ()
-                    location = path.root (s.name (), p.get ('source-location'))
-                    xdll_path.append (path.parent (location))
+                    p = s.project()
+                    location = path.root(s.name(), p.get('source-location'))
+                    xdll_path.append(path.parent(location))
                           
-            extra += [ replace_grist (x, '<dll-path>') for x in xdll_path ]
+            extra += [ replace_grist(x, '<dll-path>') for x in xdll_path ]
         
         if extra:
             prop_set = prop_set.add_raw (extra)
                         
-        result = generators.Generator.run (self, project, name, prop_set, sources)
+        result = generators.Generator.run(self, project, name, prop_set, sources)
+
+        if result:
+            ur = self.extra_usage_requirements(result, prop_set)
+            ur = ur.add(property_set.create(orig_xdll_path))
+        else:
+            return None
         
-        return (self.extra_usage_requirements (result, prop_set), result)
+        return(ur, result)
     
     def extra_usage_requirements (self, created_targets, prop_set):
         
@@ -485,13 +626,13 @@ class LinkingGenerator (generators.Generator):
             
             # TODO: is it safe to use the current directory? I think we should use 
             # another mechanism to allow this to be run from anywhere.
-            pwd = os.getcwd ()
+            pwd = os.getcwd()
             
             for t in created_targets:
-                if type.is_derived (t.type (), 'SHARED_LIB'):
-                    paths.append (path.root (path.make (t.path ()), pwd))
+                if type.is_derived(t.type(), 'SHARED_LIB'):
+                    paths.append(path.root(path.make(t.path()), pwd))
 
-            extra += replace_grist (paths, '<xdll-path>')
+            extra += replace_grist(paths, '<xdll-path>')
         
         # We need to pass <xdll-path> features that we've got from sources,
         # because if shared library is built, exe which uses it must know paths
@@ -501,11 +642,11 @@ class LinkingGenerator (generators.Generator):
         # Just pass all features in property_set, it's theorically possible
         # that we'll propagate <xdll-path> features explicitly specified by
         # the user, but then the user's to blaim for using internal feature.                
-        values = prop_set.get ('<xdll-path>')
-        extra += replace_grist (values, '<xdll-path>')
+        values = prop_set.get('<xdll-path>')
+        extra += replace_grist(values, '<xdll-path>')
         
         if extra:
-            result = property_set.create (extra)
+            result = property_set.create(extra)
 
         return result
 
@@ -521,31 +662,33 @@ class LinkingGenerator (generators.Generator):
         # Searched libraries are not passed as argument to linker
         # but via some option. So, we pass them to the action
         # via property. 
-        properties2 = prop_set.raw ()
+        properties2 = prop_set.raw()
         fsa = []
         fst = []
         for s in sources:
-            if type.is_derived (s.type (), 'SEARCHED_LIB'):
-                name = s.real_name ()
-                if s.shared ():
-                    fsa.append (name)
+            if type.is_derived(s.type(), 'SEARCHED_LIB'):
+                name = s.real_name()
+                if s.shared():
+                    fsa.append(name)
 
                 else:
-                    fst.append (name)
+                    fst.append(name)
 
             else:
-                sources2.append (s)
+                sources2.append(s)
 
-        properties2 += '&&'.join (replace_grist (fsa, '<find-shared-library>'))
-        properties2 += '&&'.join (replace_grist (fst, '<find-static-library>'))
+        if fsa:
+            properties2 += [replace_grist('&&'.join(fsa), '<find-shared-library>')]
+        if fst:
+            properties2 += [replace_grist('&&'.join(fst), '<find-static-library>')]
                 
-        spawn = generators.Generator.generated_targets (self, sources2, property_set.create (properties2), project, name)
+        spawn = generators.Generator.generated_targets(self, sources2, property_set.create(properties2), project, name)
         
         return spawn
 
 
-def register_linker (id, source_types, target_types, requirements):
-    g = LinkingGenerator(id, 1, source_types, target_types, requirements)
+def register_linker(id, source_types, target_types, requirements):
+    g = LinkingGenerator(id, True, source_types, target_types, requirements)
     generators.register(g)
 
 class ArchiveGenerator (generators.Generator):

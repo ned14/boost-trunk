@@ -21,7 +21,8 @@ class UnixLinkingGenerator (builtin.LinkingGenerator):
     
     def run (self, project, name, prop_set, sources):
         result = builtin.LinkingGenerator.run (self, project, name, prop_set, sources)
-        set_library_order (project.manager (), sources, prop_set, result [1])
+        if result:
+            set_library_order (project.manager (), sources, prop_set, result [1])
                                 
         return result
     

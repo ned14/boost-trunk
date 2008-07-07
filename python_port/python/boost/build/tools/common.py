@@ -3,12 +3,13 @@
 #  all copies. This software is provided "as is" without express or implied
 #  warranty, and with no claim as to its suitability for any purpose.
 
-""" Provides actions common to all toolsets, for as making directoies and
+""" Provides actions common to all toolsets, for as making directories and
     removing files.
 """
 
 import re
 import bjam
+import os
 
 from boost.build.build import feature
 from boost.build.util.utility import *
@@ -20,7 +21,7 @@ def reset ():
     """ Clear the module state. This is mainly for testing purposes.
         Note that this must be called _after_ resetting the module 'feature'.
     """    
-    global __had_unspecified_value, __had_value, __declared_subfeature, __all_signatures
+    global __had_unspecified_value, __had_value, __declared_subfeature, __all_signatures, __debug_configuration
     
     # Stores toolsets without specified initialization values.
     __had_unspecified_value = {}
@@ -33,6 +34,8 @@ def reset ():
     
     # Stores all signatures of the toolsets.
     __all_signatures = {}
+
+    __debug_configuration = '--debug-configuration' in bjam.variable('ARGV')
     
 reset ()
 
@@ -115,6 +118,34 @@ def check_init_parameters (toolset, *args):
     # FIXME: we actually don't add any subfeatures to the condition
     return [condition]
 
+# Ported from trunk@47077
+def get_invocation_command_nodefault(
+    toolset, tool, user_provided_command, additional_paths=[], path_last=None):
+    """
+        A helper rule to get the command to invoke some tool. If
+        'user-provided-command' is not given, tries to find binary named 'tool' in
+        PATH and in the passed 'additional-path'. Otherwise, verifies that the first
+        element of 'user-provided-command' is an existing program.
+        
+        This rule returns the command to be used when invoking the tool. If we can't
+        find the tool, a warning is issued. If 'path-last' is specified, PATH is
+        checked after 'additional-paths' when searching for 'tool'.
+    """
+    if not user_provided_command:
+        command = find_tool(tool, additional_paths, path_last) 
+        if not command and __debug_configuration:
+            print "warning: toolset", toolset, "initialization: can't find tool, tool"
+            #FIXME
+            #print "warning: initialized from" [ errors.nearest-user-location ] ;
+    else:
+        command = check_tool(user_provided_command)
+        if not command and __debug_configuration:
+            print "warning: toolset", toolset, "initialization:"
+            print "warning: can't find user-provided command", user_provided_command
+            #FIXME
+            #ECHO "warning: initialized from" [ errors.nearest-user-location ]
+            
+    return command
 
 def get_invocation_command (toolset, tool, user_provided_command = None, additional_paths = None, path_last = None):
     """ A helper rule to get the command to invoke some tool. The rule is either passed
@@ -157,28 +188,20 @@ def get_invocation_command (toolset, tool, user_provided_command = None, additio
 
     return command
 
-
-###################################################################
-# Still to port.
-# Original lines are prefixed with "### "
-#
-### # Given an invocation command,
-### # return the absolute path to the command. This works even if commnad
-### # has not path element and is present in PATH.
-### rule get-absolute-tool-path ( command )
-### {
-###     if $(command:D)
-###     {
-###         return $(command:D) ;
-###     }
-###     else
-###     {
-###         local m = [ GLOB [ modules.peek : PATH Path path ] : $(command) $(command).exe ] ;
-###         return $(m[1]:D) ;
-###     }    
-### }
-
-
+def get_absolute_tool_path(command):
+    """
+        Given an invocation command,
+        return the absolute path to the command. This works even if commnad
+        has not path element and is present in PATH.
+    """
+    if os.path.dirname(command):
+        return os.path.dirname(command)
+    else:
+        programs = path.programs_path()
+        m = path.glob(programs, [command, command + '.exe' ])
+        if not len(m):
+            print "Could not find:", command, "in", programs
+        return os.path.dirname(m[0])
 
 def find_tool (name, additional_paths = None, path_last = False):
     """ Attempts to find tool (binary) named 'name' in PATH and in 'additiona-paths'.
@@ -242,10 +265,10 @@ def handle_options (tool, condition, command, options):
 
     assert (command)
     toolset.flags (tool, 'CONFIG_COMMAND', condition, [command])
-    toolset.flags (tool + '_compile', 'OPTIONS', condition, feature.get_values ('<compileflags>', options))
-    toolset.flags (tool + '_compile_c', 'OPTIONS', condition, feature.get_values ('<cflags>', options))
-    toolset.flags (tool + '_compile_c++', 'OPTIONS', condition, feature.get_values ('<cxxflags>', options))
-    toolset.flags (tool + '_link', 'OPTIONS', condition, feature.get_values ('<linkflags>', options))
+    toolset.flags (tool + '.compile', 'OPTIONS', condition, feature.get_values ('<compileflags>', options))
+    toolset.flags (tool + '.compile.c', 'OPTIONS', condition, feature.get_values ('<cflags>', options))
+    toolset.flags (tool + '.compile.c++', 'OPTIONS', condition, feature.get_values ('<cxxflags>', options))
+    toolset.flags (tool + '.link', 'OPTIONS', condition, feature.get_values ('<linkflags>', options))
 
 
 ### # returns the location of the "program files" directory on a windows

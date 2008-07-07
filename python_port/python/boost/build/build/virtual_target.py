@@ -842,7 +842,7 @@ class NullAction (Action):
         actions which create them.
     """
     def __init__ (self, manager, prop_set):
-        Action.__init__ (self, manager, None, prop_set)
+        Action.__init__ (self, manager, None, None, prop_set)
         
     def actualize (self):
         if not self.actualized_:
@@ -856,7 +856,9 @@ class NonScanningAction(Action):
     are not scanned for dependencies."""
 
     def __init__(self, sources, action_name, property_set):
-        Action.__init__(sources, action_name, property_set)
+        #FIXME: should the manager parameter of Action.__init__
+        #be removed? -- Steven Watanabe
+        Action.__init__(boost.build.manager.get_manager(), sources, action_name, property_set)
 
     def actualize_source_type(self, sources, property_set):
         

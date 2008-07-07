@@ -93,10 +93,12 @@ def debug():
         __debug = "--debug-generators" in bjam.variable("ARGV")        
     return __debug
 
-def increase_indent(self):
+def increase_indent():
+    global __indent
     __indent += "    "
 
-def decrease_indent(self):
+def decrease_indent():
+    global __indent
     __indent = __indent[0:-4]
 
 def dout(message):
@@ -137,6 +139,8 @@ class Generator:
             NOTE: all subclasses must have a similar signature for clone to work!
     """
     def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
+        assert(not isinstance(source_types, str))
+        assert(not isinstance(target_types_and_names, str))
         self.id_ = id
         self.composing_ = composing
         self.source_types_ = source_types
@@ -943,19 +947,19 @@ def construct (project, name, target_type, prop_set, sources):
         
     __construct_stack.append (1)
 
-    if project.manager ().logger ().on ():
+    if project.manager().logger().on():
         increase_indent ()
         
-        dout( "*** construct ", target_type, m)
+        dout( "*** construct " + target_type)
         
         for s in sources:
-            dout("    from ", s)
+            dout("    from " + str(s))
 
-        project.manager ().logger ().log (__name__, "    properties: ", prop_set.raw ())
+        project.manager().logger().log (__name__, "    properties: ", prop_set.raw ())
              
-    result = __construct_really (project, name, target_type, prop_set, sources)
+    result = __construct_really(project, name, target_type, prop_set, sources)
 
-    project.manager ().logger ().decrease_indent ()
+    project.manager().logger().decrease_indent()
         
     __construct_stack = __construct_stack [1:]
 
