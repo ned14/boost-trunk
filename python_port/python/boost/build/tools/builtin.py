@@ -699,10 +699,10 @@ class ArchiveGenerator (generators.Generator):
     def __init__ (self, id, composing, source_types, target_types_and_names, requirements):
         generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
         
-    def run (self, project, name, prop_set, sources, multiple):
+    def run (self, project, name, prop_set, sources):
         sources += prop_set.get ('<library>')
         
-        result = generators.Generator.run (self, project, name, prop_set, sources, multiple)
+        result = generators.Generator.run (self, project, name, prop_set, sources)
              
         return result
 

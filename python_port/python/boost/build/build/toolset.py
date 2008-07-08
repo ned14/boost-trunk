@@ -397,6 +397,6 @@ def add_requirements(requirements):
 def inherit(toolset, base):
     get_manager().projects().load_module(base, []);
 
-    inherit_generators(toolset, base)
+    inherit_generators(toolset, [], base)
     inherit_flags(toolset, base)
     inherit_rules(toolset, base)

@@ -574,7 +574,7 @@ def register (g):
     # See also inherit-generators in module toolset
     base = id.split ('.', 100) [0]
 
-    __generators_for_toolset.get(base, []).append(g)
+    __generators_for_toolset.setdefault(base, []).append(g)
 
 def register_standard (id, source_types, target_types, requirements = []):
     """ Creates new instance of the 'generator' class and registers it.
