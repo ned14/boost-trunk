@@ -386,26 +386,28 @@ class CScanner (scanner.Scanner):
 scanner.register (CScanner, 'include')
 type.set_scanner ('CPP', CScanner)
 
+# Ported to trunk@47077
 class LibGenerator (generators.Generator):
     """ The generator class for libraries (target type LIB). Depending on properties it will
         request building of the approapriate specific type -- SHARED_LIB, STATIC_LIB or 
         SHARED_LIB.
     """
 
-    def __init__ (self, id = 'LibGenerator', composing = True, source_types = [], target_types_and_names = ['LIB'], requirements = []):
-        generators.Generator.__init__ (self, id, composing, source_types, target_types_and_names, requirements)
+    def __init__(self, id = 'LibGenerator', composing = True, source_types = [], target_types_and_names = ['LIB'], requirements = []):
+        generators.Generator.__init__(self, id, composing, source_types, target_types_and_names, requirements)
     
-    def run (self, project, name, prop_set, sources):
+    def run(self, project, name, prop_set, sources):
         # The lib generator is composing, and can be only invoked with
         # explicit name. This check is present in generator.run (and so in
         # builtin.LinkingGenerator), but duplicate it here to avoid doing
         # extra work.
         if name:
-            properties = prop_set.raw ()
+            properties = prop_set.raw()
             # Determine the needed target type
             actual_type = None
-            properties_grist = get_grist (properties)
-            if '<search>' in properties_grist or '<name>' in properties_grist:
+            properties_grist = get_grist(properties)
+            if '<source>' not in properties_grist  and \
+               ('<search>' in properties_grist or '<name>' in properties_grist):
                 actual_type = 'SEARCHED_LIB'
             elif '<file>' in properties_grist:
                 # The generator for 
@@ -415,15 +417,15 @@ class LibGenerator (generators.Generator):
             else:
                 actual_type = 'STATIC_LIB'
 
-            prop_set = prop_set.add_raw (['<main-target-type>LIB'])
+            prop_set = prop_set.add_raw(['<main-target-type>LIB'])
 
             # Construct the target.
-            return generators.construct (project, name, actual_type, True, prop_set, sources, 'LIB')
+            return generators.construct(project, name, actual_type, prop_set, sources)
 
-    def viable_source_types (self):
+    def viable_source_types(self):
         return ['*']
 
-generators.register (LibGenerator ())
+generators.register(LibGenerator())
 
 ### # The implementation of the 'lib' rule. Beyond standard syntax that rule allows
 ### # simplified:

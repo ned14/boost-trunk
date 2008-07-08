@@ -742,7 +742,7 @@ class Action:
         if self.actualized_:
             return
             
-        self.actualized = True
+        self.actualized_ = True
 
         ps = self.properties ()
         properties = self.adjust_properties (ps)

@@ -36,6 +36,10 @@ class Flag:
         self.condition = condition        
         self.rule = rule
 
+    def __str__(self):
+        return("Flag(" + str(self.variable_name) + ", " + str(self.values) +\
+               ", " + str(self.condition) + ", " + str(self.rule) + ")")
+
 def reset ():
     """ Clear the module state. This is mainly for testing purposes.
     """
