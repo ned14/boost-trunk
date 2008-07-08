@@ -9892,6 +9892,7 @@ libs/graph/example/gerdemann.expected svneol=native#text/plain
 libs/graph/example/girth.cpp svneol=native#text/plain
 libs/graph/example/graph-assoc-types.cpp svneol=native#text/plain
 libs/graph/example/graph-property-iter-eg.cpp svneol=native#text/plain
+libs/graph/example/graph-thingie.cpp svneol=native#text/plain
 libs/graph/example/graph.cpp svneol=native#text/plain
 libs/graph/example/graph_as_tree.cpp svneol=native#text/plain
 libs/graph/example/graph_property.cpp svneol=native#text/plain
