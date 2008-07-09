@@ -7892,7 +7892,6 @@ libs/exception/doc/exception_error_info_value_hpp.html svneol=native#text/html
 libs/exception/doc/exception_exception_hpp.html svneol=native#text/html
 libs/exception/doc/exception_hpp.html svneol=native#text/html
 libs/exception/doc/exception_ptr.html svneol=native#text/html
-libs/exception/doc/exception_what.html svneol=native#text/html
 libs/exception/doc/get_error_info.html svneol=native#text/html
 libs/exception/doc/name_idx.html svneol=native#text/html
 libs/exception/doc/operator_shl_exception.html svneol=native#text/html
