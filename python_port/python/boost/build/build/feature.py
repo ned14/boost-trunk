@@ -27,6 +27,7 @@ def reset ():
     """
     global __all_attributes, __all_features, __implicit_features, __composite_properties
     global __features_with_attributes, __subfeature_value_to_name, __all_top_features, __free_features
+    global __all_subfeatures
         
     # The list with all attribute names.
     __all_attributes = [ 'implicit',
@@ -70,6 +71,8 @@ def reset ():
     
     # All free features
     __free_features = []
+
+    __all_subfeatures = []
 
 reset ()
 

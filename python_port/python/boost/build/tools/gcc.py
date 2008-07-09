@@ -136,11 +136,11 @@ def init(version = None, command = None, options = None):
 
     condition = None
     if flavor:
-        condition = common.check_init_parameters('gcc',
+        condition = common.check_init_parameters('gcc', None,
             ('version', version),
             ('flavor', flavor))
     else:
-        condition = common.check_init_parameters('gcc',
+        condition = common.check_init_parameters('gcc', None,
             ('version', version))
 
     if command:

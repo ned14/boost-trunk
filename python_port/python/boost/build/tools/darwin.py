@@ -20,7 +20,7 @@ toolset.inherit_rules ('darwin', 'gcc')
 def init (version = None, command = None, options = None):
     options = to_seq (options)
 
-    condition = common.check_init_parameters ('darwin', ('version', version))
+    condition = common.check_init_parameters ('darwin', None, ('version', version))
     
     command = common.get_invocation_command ('darwin', 'g++', command)
 
