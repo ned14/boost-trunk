@@ -183,9 +183,9 @@ def init(version = None, command = None, options = None):
     ##TODO: what is search-path?
     archiver = common.get_invocation_command('gcc',
             'ar', feature.get_values('<archiver>', options), bin, ['search-path'])
-    toolset.flags('gcc.archive', '.AR', condition, archiver[0])
+    toolset.flags('gcc.archive', '.AR', condition, [archiver])
     if debug():
-        print 'notice: using gcc archiver ::', condition, '::', archiver[0]
+        print 'notice: using gcc archiver ::', condition, '::', archiver
 
     # - The resource compiler.
     rc_command = common.get_invocation_command_nodefault('gcc',
