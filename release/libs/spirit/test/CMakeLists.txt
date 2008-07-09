@@ -45,6 +45,7 @@ boost_test_run(karma_case_handling karma/case_handling.cpp)
 boost_test_run(karma_center_alignment karma/center_alignment.cpp)
 boost_test_run(karma_char karma/char.cpp) #                     : : : : karma_char ]
 boost_test_run(karma_delimieter karma/delimiter.cpp)
+boost_test_run(karma_eol karma/eol.cpp) #                      : : : : karma_eol ]
 boost_test_run(karma_eps karma/eps.cpp) #                      : : : : karma_eps ]
 boost_test_run(karma_format_manip karma/format_manip.cpp)
 boost_test_run(karma_functor karma/functor.cpp) #                  : : : : karma_functor ]
