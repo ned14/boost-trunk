@@ -7986,7 +7986,6 @@ libs/exception/doc/exception_error_info_value_hpp.html svneol=native#text/html
 libs/exception/doc/exception_exception_hpp.html svneol=native#text/html
 libs/exception/doc/exception_hpp.html svneol=native#text/html
 libs/exception/doc/exception_ptr.html svneol=native#text/html
-libs/exception/doc/exception_what.html svneol=native#text/html
 libs/exception/doc/get_error_info.html svneol=native#text/html
 libs/exception/doc/name_idx.html svneol=native#text/html
 libs/exception/doc/operator_shl_exception.html svneol=native#text/html
@@ -7995,9 +7994,9 @@ libs/exception/doc/reno.css svneol=native#text/css
 libs/exception/doc/rethrow_exception.html svneol=native#text/html
 libs/exception/doc/shade-l.png -text svneol=unset#image/png
 libs/exception/doc/shade-r.png -text svneol=unset#image/png
-libs/exception/doc/source/boost-exception.reno svneol=native#text/plain
-libs/exception/doc/source/html_prefix.txt svneol=native#text/plain
-libs/exception/doc/source/html_suffix.txt svneol=native#text/plain
+libs/exception/doc/source/boost-exception.reno svneol=LF#text/plain eol=lf
+libs/exception/doc/source/html_prefix.txt svneol=LF#text/plain eol=lf
+libs/exception/doc/source/html_suffix.txt svneol=LF#text/plain eol=lf
 libs/exception/doc/throw_exception.html svneol=native#text/html
 libs/exception/doc/throw_exception_hpp.html svneol=native#text/html
 libs/exception/doc/tutorial_diagnostic_information.html svneol=native#text/html
