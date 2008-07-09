@@ -430,9 +430,8 @@ class GccLinkingGenerator(unix.UnixLinkingGenerator):
                 name, prop_set, sources)
             return generated_targets
 
-__IMPLIB_COMMAND = None
 if on_windows():
-    __IMPLIB_COMMAND = '-Wl,--out-implib,'
+    flags('gcc.link.dll', '.IMPLIB-COMMAND', [], ['-Wl,--out-implib,'])
     generators.register(
         GccLinkingGenerator('gcc.link', True,
             ['OBJ', 'SEARCHED_LIB', 'STATIC_LIB', 'IMPORT_LIB'],
