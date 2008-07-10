@@ -133,7 +133,7 @@ class Configurations(object):
         self.params_.setdefault(param, {})[id] = value
 
 # Ported from trunk@47174
-def check_init_parameters (toolset, requirement, *args):
+def check_init_parameters(toolset, requirement, *args):
     """ The rule for checking toolset parameters. Trailing parameters should all be
         parameter name/value pairs. The rule will check that each parameter either has
         a value in each invocation or has no value in each invocation. Also, the rule
@@ -146,13 +146,21 @@ def check_init_parameters (toolset, requirement, *args):
 
         The return value from this rule is a condition to be used for flags settings.
     """
+    # The type checking here is my best guess about
+    # what the types should be.
+    assert(isinstance(toolset, str))
+    assert(isinstance(requirement, str) or requirement is None)
     sig = toolset
     condition = replace_grist(toolset, '<toolset>')
     subcondition = []
     
     for arg in args:
+        assert(isinstance(arg, tuple))
+        assert(len(arg) == 2)
         name = arg[0]
         value = arg[1]
+        assert(isinstance(name, str))
+        assert(isinstance(value, str) or value is None)
         
         str_toolset_name = str((toolset, name))
 
@@ -234,7 +242,7 @@ def check_init_parameters (toolset, requirement, *args):
 
 # Ported from trunk@47077
 def get_invocation_command_nodefault(
-    toolset, tool, user_provided_command, additional_paths=[], path_last=None):
+    toolset, tool, user_provided_command=[], additional_paths=[], path_last=False):
     """
         A helper rule to get the command to invoke some tool. If
         'user-provided-command' is not given, tries to find binary named 'tool' in
@@ -245,6 +253,15 @@ def get_invocation_command_nodefault(
         find the tool, a warning is issued. If 'path-last' is specified, PATH is
         checked after 'additional-paths' when searching for 'tool'.
     """
+    assert(isinstance(toolset, str))
+    assert(isinstance(tool, str))
+    assert(isinstance(user_provided_command, list))
+    if additional_paths is not None:
+        assert(isinstance(additional_paths, list))
+        assert(all([isinstance(path, str) for path in additional_paths]))
+    assert(all(isinstance(path, str) for path in additional_paths))
+    assert(isinstance(path_last, bool))
+    
     if not user_provided_command:
         command = find_tool(tool, additional_paths, path_last) 
         if not command and __debug_configuration:
@@ -258,50 +275,42 @@ def get_invocation_command_nodefault(
             print "warning: can't find user-provided command", user_provided_command
             #FIXME
             #ECHO "warning: initialized from" [ errors.nearest-user-location ]
-            
-    return command
 
-def get_invocation_command (toolset, tool, user_provided_command = None, additional_paths = None, path_last = None):
-    """ A helper rule to get the command to invoke some tool. The rule is either passed
-        a user provided command, it which case it checks it for correctness, or it tries
-        to find the tool using it's name, the PATH, and additional path.
-        This rule returns the command to be used when invoking the tool. If we can't
-        find the tool, a warning is issued.
-        If 'path_last' is specified, path is checked after 'additional_paths'.
-    """
-    command = None
+    assert(isinstance(command, str))
     
-    if not user_provided_command:
-        command = find_tool (tool, additional_paths, path_last)
-
-        if not command:
-            # TODO: what to do here? Use some global logger?
-            # ECHO "warning: toolset $(toolset) initialization: can't find tool $(tool)" ;
-            # ECHO "warning: initialized from" [ errors.nearest-user-location ] ;
-            pass
-
-    else:
-        command = check_tool (user_provided_command)
-
-        if not command:
-            print "User-provided command not found"
-            # It's possible, in theory, that user-provided command is OK, but we're
-            # not smart enough to understand that. 
-
-            # TODO: what to do here? Use some global logger?
-            # ECHO "warning: toolset $(toolset) initialization: " ;
-            # ECHO "warning: can't find user-provided command '$(user_provided_command:J= )'" ;
-            # ECHO "warning: initialized from" [ errors.nearest-user-location ] ;
-            pass
-
-    if not command:
-        command = user_provided_command
-
-    if not command:
-        command = tool
-
     return command
 
+# ported from trunk@47174
+def get_invocation_command(toolset, tool, user_provided_command = [],
+                           additional_paths = [], path_last = False):
+    """ Same as get_invocation_command_nodefault, except that if no tool is found,
+        returns either the user-provided-command, if present, or the 'tool' parameter.
+    """
+
+    assert(isinstance(toolset, str))
+    assert(isinstance(tool, str))
+    assert(isinstance(user_provided_command, list))
+    if additional_paths is not None:
+        assert(isinstance(additional_paths, list))
+        assert(all([isinstance(path, str) for path in additional_paths]))
+    assert(isinstance(path_last, bool))
+
+    result = get_invocation_command_nodefault(toolset, tool,
+                                              user_provided_command,
+                                              additional_paths,
+                                              path_last)
+
+    if not result:
+        if user_provided_command:
+            result = user_provided_command[0]
+        else:
+            result = tool
+
+    assert(isinstance(result, str))
+    
+    return result
+
+# ported from trunk@47281
 def get_absolute_tool_path(command):
     """
         Given an invocation command,
@@ -317,19 +326,22 @@ def get_absolute_tool_path(command):
             print "Could not find:", command, "in", programs
         return os.path.dirname(m[0])
 
-def find_tool (name, additional_paths = None, path_last = False):
-    """ Attempts to find tool (binary) named 'name' in PATH and in 'additiona-paths'.
-        If found in path, returns 'name'.
-        If found in additional paths, returns full name. If there are several possibilities,
-        returns them all.
-        Otherwise, returns empty string.
-        If 'path_last' is specified, path is checked after 'additional_paths'.
+# ported from trunk@47174
+def find_tool(name, additional_paths = [], path_last = False):
+    """ Attempts to find tool (binary) named 'name' in PATH and in
+        'additional-paths'.  If found in path, returns 'name'.  If
+        found in additional paths, returns full name.  If the tool
+        is found in several directories, returns the first path found.
+        Otherwise, returns the empty string.  If 'path_last' is specified,
+        path is checked after 'additional_paths'.
     """
-    if not additional_paths:
-        additional_paths = []
-    programs = path.programs_path ()
-    match = path.glob (programs, [name, name + '.exe'])
-    additional_match = path.glob (additional_paths, [name, name + '.exe'])
+    assert(isinstance(name, str))
+    assert(isinstance(additional_paths, list))
+    assert(isinstance(path_last, bool))
+
+    programs = path.programs_path()
+    match = path.glob(programs, [name, name + '.exe'])
+    additional_match = path.glob(additional_paths, [name, name + '.exe'])
 
     result = []
     if path_last:
@@ -345,62 +357,79 @@ def find_tool (name, additional_paths = None, path_last = False):
             result = additional_match
 
     if result:
-        return path.native (result [0])
+        return path.native(result[0])
+    else:
+        return ''
 
-# Checks if 'command' can be found either in path
-# or is a full name to an existing file.
+#ported from trunk@47281
 def check_tool_aux(command):
+    """ Checks if 'command' can be found either in path
+        or is a full name to an existing file.
+    """
+    assert(isinstance(command, str))
     dirname = os.path.dirname(command)
     if dirname:
-        return os.path.exists(command)
+        if os.path.exists(command):
+            return command
+        # Both NT and Cygwin will run .exe files by their unqualified names.
+        elif on_windows() and os.path.exists(command + '.exe'):
+            return command
+        # Only NT will run .bat files by their unqualified names.
+        elif os_name() == 'NT' and os.path.exists(command + '.bat'):
+            return command
     else:
-        paths = bjam.variable("PATH") + bjam.variable("Path") + bjam.variable("path")
+        paths = path.programs_path()
         if path.glob(paths, [command]):
             return command
 
+# ported from trunk@47281
 def check_tool(command):
-    # Checks that a tool can be invoked by 'command'. 
-    # If command is not an absolute path, checks if it can be found in 'path'.
-    # If comand is absolute path, check that it exists. Returns 'command'
-    # if ok and empty string otherwise.
+    """ Checks that a tool can be invoked by 'command'. 
+        If command is not an absolute path, checks if it can be found in 'path'.
+        If comand is absolute path, check that it exists. Returns 'command'
+        if ok and empty string otherwise.
+    """
+    assert(isinstance(command, list))
+    assert(all(isinstance(c, str) for c in command))
+    #FIXME: why do we check the first and last elements????
     if check_tool_aux(command[0]) or check_tool_aux(command[-1]):
         return command
 
-def handle_options (tool, condition, command, options):
+def handle_options(tool, condition, command, options):
     """ Handle common options for toolset, specifically sets the following
         flag variables:
         - CONFIG_COMMAND to 'command'
+        - OPTIOns for compile to the value of <compileflags> in options
         - OPTIONS for compile.c to the value of <cflags> in options
         - OPTIONS for compile.c++ to the value of <cxxflags> in options
-        - OPTIOns for compile to the value of <compileflags> in options
+        - OPTIONS for compile.fortran to the value of <fflags> in options
         - OPTIONs for link to the value of <linkflags> in options
     """
     from boost.build.build import toolset
 
-    assert (command)
-    toolset.flags (tool, 'CONFIG_COMMAND', condition, [command])
-    toolset.flags (tool + '.compile', 'OPTIONS', condition, feature.get_values ('<compileflags>', options))
-    toolset.flags (tool + '.compile.c', 'OPTIONS', condition, feature.get_values ('<cflags>', options))
-    toolset.flags (tool + '.compile.c++', 'OPTIONS', condition, feature.get_values ('<cxxflags>', options))
-    toolset.flags (tool + '.link', 'OPTIONS', condition, feature.get_values ('<linkflags>', options))
+    assert(isinstance(tool, str))
+    assert(isinstance(condition, list))
+    assert(isinstance(command, str))
+    assert(isinstance(options, list))
+    assert(command)
+    toolset.flags(tool, 'CONFIG_COMMAND', condition, [command])
+    toolset.flags(tool + '.compile', 'OPTIONS', condition, feature.get_values('<compileflags>', options))
+    toolset.flags(tool + '.compile.c', 'OPTIONS', condition, feature.get_values('<cflags>', options))
+    toolset.flags(tool + '.compile.c++', 'OPTIONS', condition, feature.get_values('<cxxflags>', options))
+    toolset.flags(tool + '.compile.fortran', 'OPTIONS', condition, feature.get_values('<fflags>', options))
+    toolset.flags(tool + '.link', 'OPTIONS', condition, feature.get_values('<linkflags>', options))
 
+def get_program_files_dir():
+    """ returns the location of the "program files" directory on a windows
+        platform
+    """
+    ProgramFiles = bjam.variable("ProgramFiles")
+    if ProgramFiles:
+        ProgramFiles = ' '.join(ProgramFiles)
+    else:
+        ProgramFiles = "c:\\Program Files"
+    return ProgramFiles
 
-### # returns the location of the "program files" directory on a windows
-### # platform
-### rule get-program-files-dir ( )
-### {
-###     local ProgramFiles = [ modules.peek : ProgramFiles ] ;
-###     if $(ProgramFiles)
-###     {
-###         ProgramFiles = "$(ProgramFiles:J= )" ;
-###     }
-###     else
-###     {
-###         ProgramFiles = "c:\\Program Files" ;
-###     }
-###     return $(ProgramFiles) ;
-### }
-### 
 ### if [ os.name ] = NT
 ### {
 ###     RM = del /f ;

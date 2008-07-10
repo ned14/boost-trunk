@@ -108,6 +108,7 @@ def init(version = None, command = None, options = None):
     """
 
     options = to_seq(options)
+    command = to_seq(command)
 
     # Information about the gcc command...
     #   The command.
@@ -182,14 +183,14 @@ def init(version = None, command = None, options = None):
     # - The archive builder.
     ##TODO: what is search-path?
     archiver = common.get_invocation_command('gcc',
-            'ar', feature.get_values('<archiver>', options), bin, ['search-path'])
+            'ar', feature.get_values('<archiver>', options), [bin], path_last=True)
     toolset.flags('gcc.archive', '.AR', condition, [archiver])
     if debug():
         print 'notice: using gcc archiver ::', condition, '::', archiver
 
     # - The resource compiler.
     rc_command = common.get_invocation_command_nodefault('gcc',
-            'windres', feature.get_values('<rc>', options), bin, ['search-path'])
+            'windres', feature.get_values('<rc>', options), [bin], path_last=True)
     rc_type = feature.get_values('<rc-type>', options)
 
     if not rc_type:
