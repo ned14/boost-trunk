@@ -5072,6 +5072,7 @@ boost/spirit/home/qi/nonterminal/detail/error_handler.hpp svneol=native#text/pla
 boost/spirit/home/qi/nonterminal/detail/rule.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/error_handler_result.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/grammar.hpp svneol=native#text/plain
+boost/spirit/home/qi/nonterminal/grammar_fwd.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/meta_grammar.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/nonterminal.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/nonterminal_director.hpp svneol=native#text/plain
