@@ -13,6 +13,7 @@
 import re
 import bjam
 import os
+import os.path
 
 from boost.build.build import feature
 from boost.build.util.utility import *
@@ -395,6 +396,7 @@ def check_tool(command):
     if check_tool_aux(command[0]) or check_tool_aux(command[-1]):
         return command
 
+# ported from trunk@47281
 def handle_options(tool, condition, command, options):
     """ Handle common options for toolset, specifically sets the following
         flag variables:
@@ -419,6 +421,7 @@ def handle_options(tool, condition, command, options):
     toolset.flags(tool + '.compile.fortran', 'OPTIONS', condition, feature.get_values('<fflags>', options))
     toolset.flags(tool + '.link', 'OPTIONS', condition, feature.get_values('<linkflags>', options))
 
+# ported from trunk@47281
 def get_program_files_dir():
     """ returns the location of the "program files" directory on a windows
         platform
@@ -430,303 +433,402 @@ def get_program_files_dir():
         ProgramFiles = "c:\\Program Files"
     return ProgramFiles
 
-### if [ os.name ] = NT
-### {
-###     RM = del /f ;
-###     CP = copy ;
-### }
-### else
-### {
-###     RM = rm -f ;
-###     CP = cp ;
-### }
-### 
-### nl = "
-### " ;
-### 
-### # Returns the command needed to set shell variable on the
-### # current platform.
-### rule variable-setting-command ( variable value )
-### {
-###     if [ os.name ] = NT
-###     {
-###         return "set $(variable)=$(value)$(nl)" ;
-###     }
-###     else
-###     {
-###         return "$(variable)=$(value)" ;
-###     }
-### }
-### 
-### # Returns the command needed to set shell variable on the
-### # current platform. Each element of values is expected to be a path,
-### # elements are joined with os-specific characer which delimits paths in
-### # environment variables.
-### #
-### # Each element of value can have the form '$VARIABLE'. This means that
-### # the value of environment variable 'VARIABLE' should be used. For example:
-### # 
-### #   common.path-variable-setting-command PATH : $PATH foo : exported ;
-### #
-### # would add 'foo' to the end of 'PATH' variable.
-### rule path-variable-setting-command ( variable : values * : exported ? )
-### {   
-###     local result ;
-###     
-###     # Handle references to variables.
-###     local values2 ;
-###     # Create regex. Dollar is in separate variable to avoid
-###     # interpreting it as variable access in bjam.
-###     d = $ ;
-###     # Backslash protects special meaning of '$' in regexps.
-###     r = \\$(d)(.*) ;
-###     for local v in $(values)
-###     {
-###         local m = [ MATCH $(r) : $(v) ] ;
-###         if $(m) && [ os.name ] = NT 
-###         {
-###             values2 += %$(m)% ;
-###         }          
-###         else
-###         {            
-###             # If there's no match, just add the value
-###             # If there's match but we're not on NT, the $VAR syntax
-###             # is already OK.
-###             values2 += $(v) ;
-###         }
-###     }
-###     values = $(values2) ;
-###         
-###     if [ os.name ] = NT
-###     {
-###         result = set $(variable)=$(values:J=";")$(nl) ;                
-###     }
-###     else
-###     {
-###         # We can't put ":" directly in :J modifier.
-###         local sep = ":" ;
-###         if $(exported)
-###         {                       
-###             result = $(variable)=$(values:J=$(sep));export $(variable) ;
-###         }
-###         else
-###         {
-###             result = $(variable)=$(values:J=$(sep)) ;    
-###         }                
-###     }
-###     return $(result:J=" ") ;
-### }
-### 
-### 
-### # Return a command which can create a file. If 'r' is result of invocation,
-### # then 
-### #   r foobar
-### # will create foobar with unspecified content. What happens if file already 
-### # exists is unspecified.
-### rule file-creation-command ( )
-### {
-###     if [ modules.peek : NT ]
-###     {
-###         return "echo. > " ;
-###     }
-###     else
-###     {
-###         return "touch " ;
-###     }
-### }
-### 
-###         
-### rule MkDir
-### {
-###     # If dir exists, don't update it
-###     # Do this even for $(DOT).
-### 
-###     NOUPDATE $(<) ;
-### 
-###     if $(<) != $(DOT) && ! $($(<)-mkdir)
-###     {
-###         local s ;
-### 
-###         # Cheesy gate to prevent multiple invocations on same dir
-###         # MkDir1 has the actions
-###         # Arrange for jam dirs
-### 
-###         $(<)-mkdir = true ;
-###         MkDir1 $(<) ;
-###         Depends dirs : $(<) ;
-### 
-###         # Recursively make parent directories.
-###         # $(<:P) = $(<)'s parent, & we recurse until root
-### 
-###         s = $(<:P) ;
-### 
-###         if $(NT)
-###         {
-###             switch $(s)
-###             {
-###                 case *:   : s = ;
-###                 case *:\\ : s = ;
-###             }
-###         }
-###         
-###         if $(s) && $(s) != $(<)
-###         {
-###             Depends $(<) : $(s) ;
-###             MkDir $(s) ;
-###         }
-###         else if $(s)
-###         {
-###             NOTFILE $(s) ;
-###         }
-###     }
-### }
-### 
-### actions MkDir1
-### {
-###     mkdir "$(<)"
-### }
-### 
-### actions piecemeal together existing Clean
-### {
-###     $(RM) "$(>)"
-### }
-### 
-### rule copy 
-### {    
-### }
-### 
-### 
-### actions copy
-### {
-###     $(CP) "$(>)" "$(<)"
-### }
-### 
-### # Cause creation of response file, containing the sources in 'sources'
-### # All the targets in 'targets' will depend on response file, and response
-### # file will be created before the targets are built.
-### rule response-file ( targets + : sources * : the-response-file : properties * )
-### {
-###     # Manufacture a fake target for response file.
-###     # If response file is in targets, we're in trouble.
-###     # The actions for response file are already generated, and bjam thinks it's 
-###     # created. So setting dependency on response file will not help to create
-###     # it before other targets. So, we need another target.
-###     
-###     local g = [ utility.ungrist $(the-response-file:G) ] ;
-###     local rsp = $(the-response-file:G=$(g)-rsp) ;
-###     LOCATE on $(rsp) = [ on $(the-response-file) return $(LOCATE) ] ;    
-###     DEPENDS $(targets) : $(rsp) ;
-###     # Cause RSP to be recreated if sources are out-of-date.
-###     DEPENDS $(rsp) : $(sources) ;
-###         
-###     # Add libraries from <library> property to the list of sources.
-###     local libraries ;
-###     for local p in $(properties)
-###     {
-###         if $(p:G) = <library-file> && 
-###           ! [ type.is-derived [ $(p:G=).type ] SHARED_LIB ] 
-###         {
-###             libraries += $(p:G=) ;
-###         }          
-###     }
-###     # Get real jam targets
-###     local xlibraries ;
-###     for local l in $(libraries)
-###     {
-###         xlibraries += [ $(l).actualize ] ;
-###     }
-###     
-###     sources += $(xlibraries) ; 
-###        
-###     response-file-1 $(rsp) : $(sources[1]) ;
-###     if $(sources[2-])
-###     {
-###         response-file-2 $(rsp) : $(sources[2-]) ;
-###     }
-###     
-###     print.output $(rsp) ;
-###     print.text [ utility.apply-default-suffix .lib :
-###         [ on $(targets[1])
-###           return "$(LIBRARY_OPTION)$(FINDLIBS_ST)"
-###             "$(LIBRARY_OPTION)$(FINDLIBS_SA)"
-###         ] ] ;
-### 
-###     print.text
-###         [ on $(targets[1])
-###           return -D$(DEFINES) -I\"$(INCLUDES)\"
-###         ] ;
-### }
-### 
-### # response-file generation is broken up into two phases, the first of
-### # which overwrites any existing file and the second of which appends
-### # to the file, piecemeal, so that no command-line is too long.
-### actions quietly response-file-1
-### {
-###     echo "$(>)" > "$(<)"
-### }
-### 
-### actions quietly piecemeal response-file-2
-### {
-###     echo "$(>)" >> "$(<)"
-### }
-### 
-### rule __test__ ( ) {
-### 
-###     import assert ;
-###     
-###     local save-os = [ modules.peek os : name ] ;
-###     
-###     modules.poke os : name : LINUX ;
-###     
-###     assert.result "PATH=foo:$PATH:bar" :
-###       path-variable-setting-command PATH : foo $PATH bar ;
-###     
-###     modules.poke os : name : NT ;
-###     
-### nl = "
-### " ;
-###     
-###     assert.result "set PATH=foo;%PATH%;bar$(nl)" :
-###       path-variable-setting-command PATH : foo $PATH bar ;
-### 
-### 
-###     modules.poke os : name : $(save-os) ;      
-###       
-### }
+# ported from trunk@47281
+def rm_command():
+    return __RM
 
-# FIXME: global variable
-made_dirs = {}
+# ported from trunk@47281
+def copy_command():
+    return __CP
 
-def mkdir(engine, path_target):
-    """Creates dependencies that cause directory 'path_target' to be created"""
+# ported from trunk@47281
+def variable_setting_command(variable, value):
+    """
+        Returns the command needed to set an environment variable on the current
+        platform. The variable setting persists through all following commands and is
+        visible in the environment seen by subsequently executed commands. In other
+        words, on Unix systems, the variable is exported, which is consistent with the
+        only possible behavior on Windows systems.
+    """
+    assert(isinstance(variable, str))
+    assert(isinstance(value, str))
 
-    # If dir exists, don't update it
-    # Do this even for $(DOT).
-    bjam.call("NOUPDATE", path_target)
+    if os_name() == 'NT':
+        return "set " + variable + "=" + value + os.linesep
+    else:
+        # (todo)
+        #   The following does not work on CYGWIN and needs to be fixed. On
+        # CYGWIN the $(nl) variable holds a Windows new-line \r\n sequence that
+        # messes up the executed export command which then reports that the
+        # passed variable name is incorrect. This is most likely due to the
+        # extra \r character getting interpreted as a part of the variable name.
+        #
+        #   Several ideas pop to mind on how to fix this:
+        #     * One way would be to separate the commands using the ; shell
+        #       command separator. This seems like the quickest possible
+        #       solution but I do not know whether this would break code on any
+        #       platforms I I have no access to.
+        #     * Another would be to not use the terminating $(nl) but that would
+        #       require updating all the using code so it does not simply
+        #       prepend this variable to its own commands.
+        #     * I guess the cleanest solution would be to update Boost Jam to
+        #       allow explicitly specifying \n & \r characters in its scripts
+        #       instead of always relying only on the 'current OS native newline
+        #       sequence'.
+        #
+        #   Some code found to depend on this behaviour:
+        #     * This Boost Build module.
+        #         * __test__ rule.
+        #         * path-variable-setting-command rule.
+        #     * python.jam toolset.
+        #     * xsltproc.jam toolset.
+        #     * fop.jam toolset.
+        #                                     (todo) (07.07.2008.) (Jurko)
+        #
+        # I think that this works correctly in python -- Steven Watanabe
+        return variable + "=" + value + os.linesep + "export " + variable + os.linesep
 
-    if path_target != "." and not made_dirs.has_key(path_target):
-        made_dirs[path_target] = 1
-        engine.set_update_action("common.MkDir1", path_target, [], None)
+def path_variable_setting_command(variable, paths):
+    """
+        Returns a command to sets a named shell path variable to the given NATIVE
+        paths on the current platform.
+    """
+    assert(isinstance(variable, str))
+    assert(isinstance(paths, list))
+    sep = os.path.pathsep
+    return variable_setting_command(variable, sep.join(paths))
 
-        parent = os.path.dirname(path_target)
-        # Part of original Jam code, supposed to prevent
-        # calling mkdir on drive letters.
-        if len(parent) == 2 and parent[1] == ':':
-            parent = None
-        if len(parent) == 3 and parent[1] == ':' and parent[2] == '\\':
-            parent = None
+def prepend_path_variable_command(variable, paths):
+    """
+        Returns a command that prepends the given paths to the named path variable on
+        the current platform.
+    """
+    return path_variable_setting_command(variable,
+        paths + os.environ(variable).split(os.pathsep))
 
-        if parent and parent != path_target:
-            engine.add_dependency(path_target, parent)
-            mkdir(engine, parent)
-        elif parent:
-            bjam.call("NOTFILE", parent)
+def file_creation_command():
+    """
+        Return a command which can create a file. If 'r' is result of invocation, then
+        'r foobar' will create foobar with unspecified content. What happens if file
+        already exists is unspecified.
+    """
+    if os_name() == 'NT':
+        return "echo. > "
+    else:
+        return "touch "
+
+#FIXME: global variable
+__mkdir_set = set()
+__re_windows_drive = re.compile(r'^.*:\$')
+
+def mkdir(engine, target):
+    # If dir exists, do not update it. Do this even for $(DOT).
+    bjam.call('NOUPDATE', target)
+
+    global __mkdir_set
+
+    # FIXME: Where is DOT defined?
+    #if $(<) != $(DOT) && ! $($(<)-mkdir):
+    if target != '.' and target not in __mkdir_set:
+        # Cheesy gate to prevent multiple invocations on same dir.
+        __mkdir_set.add(target)
+
+        # Schedule the mkdir build action.
+        if os_name() == 'NT':
+            engine.set_update_action("common.MkDir1-quick-fix-for-windows", target, [], None)
+        else:
+            engine.set_update_action("common.MkDir1-quick-fix-for-unix", target, [], None)
+
+        # Prepare a Jam 'dirs' target that can be used to make the build only
+        # construct all the target directories.
+        engine.add_dependency('dirs', target)
+
+        # Recursively create parent directories. $(<:P) = $(<)'s parent & we
+        # recurse until root.
+
+        s = os.path.dirname(target)
+        if os_name() == 'NT':
+            if(__re_windows_drive.match(s)):
+                s = ''
+                
+        if s:
+            if s != target:
+                engine.add_dependency(target, s)
+                mkdir(engine, s)
+            else:
+                bjam.call('NOTFILE', s)
+
+__re_version = re.compile(r'^([^.]+)[.]([^.]+)[.]?([^.]*)')
+
+def format_name(format, name, target_type, prop_set):
+    """ Given a target, as given to a custom tag rule, returns a string formatted
+        according to the passed format. Format is a list of properties that is
+        represented in the result. For each element of format the corresponding target
+        information is obtained and added to the result string. For all, but the
+        literal, the format value is taken as the as string to prepend to the output
+        to join the item to the rest of the result. If not given "-" is used as a
+        joiner.
+
+        The format options can be:
+
+          <base>[joiner]
+              ::  The basename of the target name.
+          <toolset>[joiner]
+              ::  The abbreviated toolset tag being used to build the target.
+          <threading>[joiner]
+              ::  Indication of a multi-threaded build.
+          <runtime>[joiner]
+              ::  Collective tag of the build runtime.
+          <version:/version-feature | X.Y[.Z]/>[joiner]
+              ::  Short version tag taken from the given "version-feature"
+                  in the build properties. Or if not present, the literal
+                  value as the version number.
+          <property:/property-name/>[joiner]
+              ::  Direct lookup of the given property-name value in the
+                  build properties. /property-name/ is a regular expression.
+                  e.g. <property:toolset-.*:flavor> will match every toolset.
+          /otherwise/
+              ::  The literal value of the format argument.
+
+        For example this format:
+
+          boost_ <base> <toolset> <threading> <runtime> <version:boost-version>
+
+        Might return:
+
+          boost_thread-vc80-mt-gd-1_33.dll, or
+          boost_regex-vc80-gd-1_33.dll
+
+        The returned name also has the target type specific prefix and suffix which
+        puts it in a ready form to use as the value from a custom tag rule.
+    """
+    assert(isinstance(format, list))
+    assert(isinstance(name, str))
+    assert(isinstance(target_type, str) or not type)
+    # assert(isinstance(prop_set, property_set.PropertySet))
+    if type.is_derived(target_type, 'LIB'):
+        result = "" ;
+        for f in format:
+            grist = get_grist(f)
+            if grist == '<base>':
+                result += os.path.basename(name)
+            elif grist == '<toolset>':
+                result += join_tag(ungrist(f), 
+                    toolset_tag(name, target_type, prop_set))
+            elif grist == '<threading>':
+                result += join_tag(ungrist(f),
+                    threading_tag(name, target_type, prop_set))
+            elif grist == '<runtime>':
+                result += join_tag(ungrist(f),
+                    runtime_tag(name, target_type, prop_set))
+            elif grist.startswith('<version:'):
+                key = grist[len('<version:'):-1]
+                version = prop_set.get('<' + key + '>')
+                if not version:
+                    version = key
+                version = __re_version.match(version)
+                result += join_tag(ungrist(f), version[1] + '_' + version[2])
+            elif grist.startswith('<property:'):
+                key = grist[len('<property:'):-1]
+                property_re = re.compile('<(' + key + ')>')
+                p0 = None
+                for prop in prop_set.raw():
+                    match = property_re.match(prop)
+                    if match:
+                        p0 = match[1]
+                        break
+                if p0:
+                    p = prop_set.get('<' + p0 + '>')
+                    if p:
+                        assert(len(p) == 1)
+                        result += join_tag(ungrist(f), p)
+            else:
+                result += ungrist(f)
+
+        result = virtual_target.add_prefix_and_suffix(
+            ''.join(result), target_type, prop_set)
+        return result
+
+def join_tag(joiner, tag):
+    if not joiner: joiner = '-'
+    return joiner + tag
+
+__re_toolset_version = re.compile(r"<toolset.*version>(\d+)[.](\d*)")
+
+def toolset_tag(name, target_type, prop_set):
+    tag = ''
+
+    properties = prop_set.raw()
+    tools = prop_set.get('<toolset>')
+    assert(len(tools) == 0)
+    tools = tools[0]
+    if tools.startswith('borland'): tag += 'bcb'
+    elif tools.startswith('como'): tag += 'como'
+    elif tools.startswith('cw'): tag += 'cw'
+    elif tools.startswith('darwin'): tag += 'xgcc'
+    elif tools.startswith('edg'): tag += edg
+    elif tools.startswith('gcc'):
+        flavor = prop_set.get('<toolset-gcc:flavor>')
+        ''.find
+        if flavor.find('mingw') != -1:
+            tag += 'mgw'
+        else:
+            tag += 'gcc'
+    elif tools == 'intel':
+        if prop_set.get('<toolset-intel:platform>') == ['win']:
+            tag += 'iw'
+        else:
+            tag += 'il'
+    elif tools.startswith('kcc'): tag += 'kcc'
+    elif tools.startswith('kylix'): tag += 'bck'
+    #case metrowerks* : tag += cw ;
+    #case mingw* : tag += mgw ;
+    elif tools.startswith('mipspro'): tag += 'mp'
+    elif tools.startswith('msvc'): tag += 'vc'
+    elif tools.startswith('sun'): tag += 'sw'
+    elif tools.startswith('tru64cxx'): tag += 'tru'
+    elif tools.startswith('vacpp'): tag += 'xlc'
+
+    for prop in properties:
+        match = __re_toolset_version.match(prop)
+        if(match):
+            version = match
+            break
+    version_string = None
+    # For historical reasons, vc6.0 and vc7.0 use different naming.
+    if tag == 'vc':
+        if version.group(1) == '6':
+            # Cancel minor version.
+            version_string = '6'
+        elif version.group(1) == '7' and version.group(2) == '0':
+            version_string = '7'
+
+    # On intel, version is not added, because it does not matter and it's the
+    # version of vc used as backend that matters. Ideally, we'd encode the
+    # backend version but that would break compatibility with V1.
+    elif tag == 'iw':
+        version_string = ''
+
+    # On borland, version is not added for compatibility with V1.
+    elif tag == 'bcb':
+        version_string = ''
+
+    if version_string is None:
+        version = version.group(1) + version.group(2)
+
+    tag += version
+
+    return tag
+
+
+def threading_tag(name, target_type, prop_set):
+    tag = ''
+    properties = prop_set.raw()
+    if '<threading>multi' in properties: tag = 'mt'
+
+    return tag
+
+
+def runtime_tag(name, target_type, prop_set ):
+    tag = ''
+
+    properties = prop_set.raw()
+    if '<runtime-link>static' in properties: tag += 's'
+
+    # This is an ugly thing. In V1, there's a code to automatically detect which
+    # properties affect a target. So, if <runtime-debugging> does not affect gcc
+    # toolset, the tag rules won't even see <runtime-debugging>. Similar
+    # functionality in V2 is not implemented yet, so we just check for toolsets
+    # which are known to care about runtime debug.
+    if '<toolset>msvc' in properties \
+       or '<stdlib>stlport' in properties \
+       or '<toolset-intel:platform>win' in properties:
+        if '<runtime-debugging>on' in properties: tag += 'g'
+
+    if '<python-debugging>on' in properties: tag += 'y'
+    if '<variant>debug' in properties: tag += 'd'
+    if '<stdlib>stlport' in properties: tag += 'p'
+    if '<stdlib-stlport:iostream>hostios' in properties: tag += 'n'
+
+    return tag
+
+
+## TODO:
+##rule __test__ ( )
+##{
+##    import assert ;
+##
+##    local nl = "
+##" ;
+##
+##    local save-os = [ modules.peek os : .name ] ;
+##
+##    modules.poke os : .name : LINUX ;
+##
+##    assert.result "PATH=foo:bar:baz$(nl)export PATH$(nl)"
+##        : path-variable-setting-command PATH : foo bar baz ;
+##
+##    assert.result "PATH=foo:bar:$PATH$(nl)export PATH$(nl)"
+##        : prepend-path-variable-command PATH : foo bar ;
+##
+##    modules.poke os : .name : NT ;
+##
+##    assert.result "set PATH=foo;bar;baz$(nl)"
+##        : path-variable-setting-command PATH : foo bar baz ;
+##
+##    assert.result "set PATH=foo;bar;%PATH%$(nl)"
+##        : prepend-path-variable-command PATH : foo bar ;
+##
+##    modules.poke os : .name : $(save-os) ;
+##}
 
 def init(manager):
     engine = manager.engine()
 
-    engine.register_action ("common.MkDir1", 'mkdir "$(<)"')
-    engine.register_action ("common.Clean", 'rm -rf "$(>)"')
+    engine.register_action("common.MkDir1-quick-fix-for-unix", 'mkdir -p "$(<)"')
+    engine.register_action("common.MkDir1-quick-fix-for-windows", 'if not exist "$(<)\\" mkdir "$(<)"')
 
     import boost.build.tools.make
     import boost.build.build.alias
+
+    global __RM, __CP, __IGNORE, __LN
+    # ported from trunk@47281
+    if os_name() == 'NT':
+        __RM = 'del /f /q'
+        __CP = 'copy'
+        __IGNORE = '2>nul >nul & setlocal'
+        __LN = __CP
+        #if not __LN:
+        #    __LN = CP
+    else:
+        __RM = 'rm -f'
+        __CP = 'cp'
+        __IGNORE = ''
+        __LN = 'ln'
+        
+    # FIXME: piecemeal together existing
+    engine.register_action("common.Clean", __RM + ' "$(>)"')
+    engine.register_action("common.copy", __CP + ' "$(>)" "$(<)"')
+    # FIXME: quietly updated piecemeal together
+    engine.register_action("common.RmTemps", __RM + ' "$(>)" ' + __IGNORE)
+
+    engine.register_action("common.hard-link", 
+        __RM + ' "$(<)" 2$(NULL_OUT) $(NULL_OUT)' + os.linesep +
+        __LN + ' "$(>)" "$(<)" $(NULL_OUT)')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
