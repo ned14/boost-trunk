@@ -101,7 +101,7 @@ def default_host_os():
         elif host_os == 'DRAGONFLYBSD': host_os = 'bsd'
         elif host_os == 'IRIX': host_os = 'sgi'
         elif host_os == 'MACOSX': host_os = 'darwin'
-        elif host_os == 'KFREEBSD': host_os = freebsd
+        elif host_os == 'KFREEBSD': host_os = 'freebsd'
         elif host_os == 'LINUX': host_os = 'linux'
         else: host_os = 'unix'
     return host_os.lower()
