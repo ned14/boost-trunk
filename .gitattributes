@@ -17721,6 +17721,7 @@ libs/spirit/doc/qi_and_karma/employee.qbk svneol=native#text/plain
 libs/spirit/doc/qi_and_karma/error_handling.qbk svneol=native#text/plain
 libs/spirit/doc/qi_and_karma/generating.qbk svneol=native#text/plain
 libs/spirit/doc/qi_and_karma/grammars.qbk svneol=native#text/plain
+libs/spirit/doc/qi_and_karma/mini_xml.qbk svneol=native#text/plain
 libs/spirit/doc/qi_and_karma/num_list2.qbk svneol=native#text/plain
 libs/spirit/doc/qi_and_karma/num_list3.qbk svneol=native#text/plain
 libs/spirit/doc/qi_and_karma/num_list4.qbk svneol=native#text/plain
