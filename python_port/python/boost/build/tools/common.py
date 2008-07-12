@@ -815,20 +815,3 @@ def init(manager):
     engine.register_action("common.hard-link", 
         __RM + ' "$(<)" 2$(NULL_OUT) $(NULL_OUT)' + os.linesep +
         __LN + ' "$(>)" "$(<)" $(NULL_OUT)')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
