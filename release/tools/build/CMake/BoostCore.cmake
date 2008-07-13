@@ -191,13 +191,49 @@ macro(boost_library_project LIBNAME)
       ${ULIBNAME})
 
     if(THIS_PROJECT_HEADERS)
-      add_custom_target(${LIBNAME}-modularize
-	COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/build/CMake/modularize.py 
-	${Boost_SOURCE_DIR}/boost ${THIS_PROJECT_HEADERS} ${Boost_SOURCE_DIR}/libs/${libname}/include/boost
-	WORKING_DIRECTORY ${Boost_SOURCE_DIR}/boost
-	COMMENT "Modularizing ${LIBNAME} headers to project-local dir from monolithic boost dir"
-	)
-      add_dependencies(modularize ${LIBNAME}-modularize)
+      set(${LIBNAME}-modularize-commands)
+      foreach(item ${THIS_PROJECT_HEADERS})
+        if(EXISTS "${Boost_SOURCE_DIR}/boost/${item}")
+          if(IS_DIRECTORY "${Boost_SOURCE_DIR}/boost/${item}")
+            list(APPEND ${LIBNAME}-modularize-commands
+              COMMAND "${CMAKE_COMMAND}" -E copy_directory
+              "${Boost_SOURCE_DIR}/boost/${item}"
+              "${Boost_SOURCE_DIR}/libs/${libname}/include/boost/${item}"
+              COMMAND "${CMAKE_COMMAND}" -E remove_directory
+              "${Boost_SOURCE_DIR}/boost/${item}"
+              )
+          else(IS_DIRECTORY "${Boost_SOURCE_DIR}/boost/${item}")
+            list(APPEND ${LIBNAME}-modularize-commands
+              COMMAND "${CMAKE_COMMAND}" -E copy
+              "${Boost_SOURCE_DIR}/boost/${item}"
+              "${Boost_SOURCE_DIR}/libs/${libname}/include/boost/${item}"
+              COMMAND "${CMAKE_COMMAND}" -E remove
+              "${Boost_SOURCE_DIR}/boost/${item}"
+              )
+          endif(IS_DIRECTORY "${Boost_SOURCE_DIR}/boost/${item}")
+        elseif(EXISTS "${Boost_SOURCE_DIR}/libs/${libname}/include/boost/${item}")
+          # Okay; already modularized
+        else()
+          message(SEND_ERROR 
+            "Header or directory boost/${item} does not exist. The HEADERS argument in ${Boost_SOURCE_DIR}/libs/${libname}/CMakeLists.txt should be updated.")
+        endif()
+      endforeach(item)
+
+      if (${LIBNAME}-modularize-commands)
+        set(${LIBNAME}-modularize-commands
+          COMMAND "${CMAKE_COMMAND}" -E remove_directory
+          "${Boost_SOURCE_DIR}/libs/${libname}/include"
+          COMMAND "${CMAKE_COMMAND}" -E make_directory
+          "${Boost_SOURCE_DIR}/libs/${libname}/include/boost"
+          ${LIBNAME}-modularize-commands
+          )
+
+        add_custom_target(${LIBNAME}-modularize
+          ${${LIBNAME}-modularize-commands}
+	  COMMENT "Modularizing ${LIBNAME} headers to project-local dir from monolithic boost dir"
+	  )
+        add_dependencies(modularize ${LIBNAME}-modularize)
+      endif()
     endif(THIS_PROJECT_HEADERS)
 
     if(THIS_PROJECT_SRCDIRS)
