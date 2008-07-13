@@ -225,7 +225,7 @@ macro(boost_library_project LIBNAME)
           "${Boost_SOURCE_DIR}/libs/${libname}/include"
           COMMAND "${CMAKE_COMMAND}" -E make_directory
           "${Boost_SOURCE_DIR}/libs/${libname}/include/boost"
-          ${LIBNAME}-modularize-commands
+          ${${LIBNAME}-modularize-commands}
           )
 
         add_custom_target(${LIBNAME}-modularize
