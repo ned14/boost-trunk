@@ -4828,6 +4828,7 @@ boost/spirit/home/karma/meta_grammar.hpp svneol=native#text/plain
 boost/spirit/home/karma/nonterminal.hpp svneol=native#text/plain
 boost/spirit/home/karma/nonterminal/detail/rule.hpp svneol=native#text/plain
 boost/spirit/home/karma/nonterminal/grammar.hpp svneol=native#text/plain
+boost/spirit/home/karma/nonterminal/grammar_fwd.hpp svneol=native#text/plain
 boost/spirit/home/karma/nonterminal/meta_grammar.hpp svneol=native#text/plain
 boost/spirit/home/karma/nonterminal/nonterminal.hpp svneol=native#text/plain
 boost/spirit/home/karma/nonterminal/nonterminal_director.hpp svneol=native#text/plain
