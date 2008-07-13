@@ -16,20 +16,6 @@
 #    (See accompanying file LICENSE_1_0.txt or copy at
 #          http://www.boost.org/LICENSE_1_0.txt)
 
-###import toolset : flags ;
-###import property ;
-###import generators ;
-###import os ;
-###import type ;
-###import feature ;
-###import "class" : new ;
-###import set ;
-###import common ;
-###import errors ;
-###import property-set ;
-###import pch ;
-###import regex ;
-
 import os
 import subprocess
 import re
@@ -49,7 +35,7 @@ __debug = None
 def debug():
     global __debug
     if __debug is None:
-        __debug = "--debug-generators" in bjam.variable("ARGV")        
+        __debug = "--debug-configuration" in bjam.variable("ARGV")        
     return __debug
 
 feature.extend('toolset', ['gcc'])
@@ -157,7 +143,7 @@ def init(version = None, command = None, options = None):
             linker = 'hpux' ;
         else:
             linker = 'gnu'
-    ## NOTE: this comes from later in this module
+
     init_link_flags('gcc', linker, condition)
 
     # If gcc is installed in non-standard location, we'd need to add
@@ -181,7 +167,6 @@ def init(version = None, command = None, options = None):
     # for correct use of MinGW and for cross-compiling.
 
     # - The archive builder.
-    ##TODO: what is search-path?
     archiver = common.get_invocation_command('gcc',
             'ar', feature.get_values('<archiver>', options), [bin], path_last=True)
     toolset.flags('gcc.archive', '.AR', condition, [archiver])
@@ -201,7 +186,7 @@ def init(version = None, command = None, options = None):
         # creates empty object files. This allows the same Jamfiles to work
         # across the board. The null RC uses the assembler to create the empty
         # objects, so configure that.
-        rc_command = common.get_invocation_command('gcc', 'as', [], bin, ['search-path'])
+        rc_command = common.get_invocation_command('gcc', 'as', [], bin, path_last=True)
         rc_type = 'null'
     rc.configure(rc_command, condition, '<rc-type>' + rc_type)
 
@@ -351,20 +336,19 @@ def gcc_compile_cpp(targets, sources, properties):
     if not extension in ['.cc', '.cp', '.cxx', '.cpp', '.c++', '.C']:
         lang = '-x c++'
     get_manager().engine().set_target_variable (targets, 'LANG', lang)
-    # FIXME: don't know how to translate this
-    ##DEPENDS $(<) : [ on $(<) return $(PCH_FILE) ]
+    engine.add_dependency(targets, bjam.call('get-target-variable', targets, 'PCH_FILE'))
 
 def gcc_compile_c(targets, sources, properties):
+    engine = get_manager().engine()
     # If we use the name g++ then default file suffix -> language mapping does
     # not work. So have to pass -x option. Maybe, we can work around this by
     # allowing the user to specify both C and C++ compiler names.
     #if $(>:S) != .c
     #{
-        get_manager().engine().set_target_variable (targets, 'LANG', '-x c')
+    engine.set_target_variable (targets, 'LANG', '-x c')
     #}
-    #FIXME: don't know how to translate this
-    ##DEPENDS $(<) : [ on $(<) return $(PCH_FILE) ] ;
-
+    engine.add_dependency(targets, bjam.call('get-target-variable', targets, 'PCH_FILE'))
+    
 engine.register_action(
     'gcc.compile.c++',
     '"$(CONFIG_COMMAND)" $(LANG) -ftemplate-depth-128 $(OPTIONS) ' +
@@ -637,14 +621,14 @@ def gcc_archive(targets, sources, properties):
     # just before building the archive.
     #
     # FIXME:
-    pass
-    ##local clean.a = $(targets[1])(clean) ;
-    ##TEMPORARY $(clean.a) ;
-    ##NOCARE $(clean.a) ;
-    ##LOCATE on $(clean.a) = [ on $(targets[1]) return $(LOCATE) ] ;
-    ##DEPENDS $(clean.a) : $(sources) ;
-    ##DEPENDS $(targets) : $(clean.a) ;
-    ##common.RmTemps $(clean.a) : $(targets) ;
+    clean = targets[0] + '(clean)'
+    bjam.call('TEMPORARY', clean)
+    bjam.call('NOCARE', clean)
+    engine = get_manager().engine()
+    engine.set_target_variable('LOCATE', clean, bjam.call('get-target-variable', targets, 'LOCATE'))
+    engine.add_dependency(clean, sources)
+    engine.add_dependency(targets, clean)
+    engine.set_update_action('common.RmTemps', clean, targets, None)
 
 # Declare action for creating static libraries.
 # The letter 'r' means to add files to the archive with replacement. Since we
