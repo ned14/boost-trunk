@@ -1,0 +1,1 @@
+boost_module(Serialization DEPENDS config mpl preprocessor type_traits utility)

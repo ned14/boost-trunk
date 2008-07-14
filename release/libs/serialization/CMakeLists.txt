@@ -3,4 +3,6 @@ boost_library_project(
   SRCDIRS src
   TESTDIRS test
   HEADERS serialization archive
+  DESCRIPTION "Serialization for persistence and marshalling."
+  AUTHORS "<ramey -at- rrsd.com>"
 )

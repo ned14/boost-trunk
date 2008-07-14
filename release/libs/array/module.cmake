@@ -1,0 +1,1 @@
+boost_module(array DEPENDS config utility)
