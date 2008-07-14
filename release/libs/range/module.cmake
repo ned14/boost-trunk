@@ -1,0 +1,1 @@
+boost_module(range DEPENDS config iterator mpl type_traits)

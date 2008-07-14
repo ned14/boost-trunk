@@ -1,1 +1,1 @@
-boost_module(array DEPENDS config utility)
+boost_module(array DEPENDS config exception utility)
