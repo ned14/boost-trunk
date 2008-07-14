@@ -69,15 +69,33 @@ add_custom_target(modularize)
 #     )
 macro(boost_library_project LIBNAME)
   parse_arguments(THIS_PROJECT
-    "SRCDIRS;TESTDIRS;HEADERS;DOCDIRS;DESCRIPTION;AUTHORS;MAINTAINERS;DEPENDS"
+    "SRCDIRS;TESTDIRS;HEADERS;DOCDIRS;DESCRIPTION;AUTHORS;MAINTAINERS"
     ""
     ${ARGN}
     )
 
-  set(THIS_PROJECT_OKAY ON)
+  # Set THIS_PROJECT_DEPENDS_ALL to the set of all of its
+  # dependencies, its dependencies' dependencies, etc., transitively.
   string(TOUPPER "BOOST_${LIBNAME}_DEPENDS" THIS_PROJECT_DEPENDS)
+  set(THIS_PROJECT_DEPENDS_ALL ${${THIS_PROJECT_DEPENDS}})
+  set(ADDED_DEPS TRUE)
+  while (ADDED_DEPS)
+    set(ADDED_DEPS FALSE)
+    foreach(DEP ${THIS_PROJECT_DEPENDS_ALL})
+      string(TOUPPER "BOOST_${DEP}_DEPENDS" DEP_DEPENDS)
+      foreach(DEPDEP ${${DEP_DEPENDS}})
+        list(FIND THIS_PROJECT_DEPENDS_ALL ${DEPDEP} DEPDEP_INDEX)
+        if (DEPDEP_INDEX EQUAL -1)
+          list(APPEND THIS_PROJECT_DEPENDS_ALL ${DEPDEP})
+          set(ADDED_DEPS TRUE)
+        endif()
+      endforeach()
+    endforeach()
+  endwhile()
+
+  set(THIS_PROJECT_OKAY ON)
   set(THIS_PROJECT_FAILED_DEPS "")
-  foreach(DEP ${${THIS_PROJECT_DEPENDS}})
+  foreach(DEP ${THIS_PROJECT_DEPENDS_ALL})
     string(TOUPPER "BUILD_BOOST_${DEP}" BOOST_LIB_DEP)
     if (NOT ${BOOST_LIB_DEP})
       set(THIS_PROJECT_OKAY OFF)
@@ -265,7 +283,7 @@ macro(boost_library_project LIBNAME)
     # For each of the modular libraries on which this project depends,
     # add the include path for that library.
     set(THIS_PROJECT_HAS_HEADER_DEPENDS FALSE)
-    foreach(DEP ${${THIS_PROJECT_DEPENDS}})
+    foreach(DEP ${THIS_PROJECT_DEPENDS_ALL})
       string(TOUPPER ${DEP} UDEP)
       include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
       # Make this project's headers depend on DEP's headers
