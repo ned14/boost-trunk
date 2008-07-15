@@ -1,0 +1,1 @@
+boost_module(random DEPENDS integer iterator)

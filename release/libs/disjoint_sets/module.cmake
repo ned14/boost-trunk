@@ -1,0 +1,1 @@
+boost_module(disjoint_sets DEPENDS graph)
