@@ -5467,6 +5467,7 @@ boost/statechart/detail/counted_base.hpp svneol=native#text/plain
 boost/statechart/detail/leaf_state.hpp svneol=native#text/plain
 boost/statechart/detail/memory.hpp svneol=native#text/plain
 boost/statechart/detail/node_state.hpp svneol=native#text/plain
+boost/statechart/detail/reaction_dispatcher.hpp svneol=native#text/plain
 boost/statechart/detail/rtti_policy.hpp svneol=native#text/plain
 boost/statechart/detail/state_base.hpp svneol=native#text/plain
 boost/statechart/event.hpp svneol=native#text/plain
@@ -17908,7 +17909,10 @@ libs/statechart/example/Performance/Performance.cpp svneol=native#text/plain
 libs/statechart/example/Performance/Performance.vcproj -text
 libs/statechart/example/Performance/Performance.xls -text svneol=unset#application/vnd.ms-excel
 libs/statechart/example/PingPong/PingPong.cpp svneol=native#text/plain
-libs/statechart/example/PingPong/PingPong.vcproj -text
+libs/statechart/example/PingPong/PingPong.vcproj svneol=native#text/html
+libs/statechart/example/PingPong/Player.cpp svneol=native#text/html
+libs/statechart/example/PingPong/Player.hpp svneol=native#text/html
+libs/statechart/example/PingPong/Waiting.hpp svneol=native#text/html
 libs/statechart/example/StopWatch/StopWatch.cpp svneol=native#text/plain
 libs/statechart/example/StopWatch/StopWatch.vcproj -text
 libs/statechart/example/StopWatch/StopWatch2.cpp svneol=native#text/plain
