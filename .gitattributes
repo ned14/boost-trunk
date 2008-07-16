@@ -16439,6 +16439,7 @@ libs/range/doc/portability.html svneol=native#text/html
 libs/range/doc/range.html svneol=native#text/html
 libs/range/doc/style.css svneol=native#text/css
 libs/range/doc/style.html svneol=native#text/html
+libs/range/doc/upgrading.html svneol=native#text/html
 libs/range/doc/utility_class.html svneol=native#text/html
 libs/range/index.html svneol=native#text/html
 libs/range/test/Jamfile.v2 svneol=native#text/plain
