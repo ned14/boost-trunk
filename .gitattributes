@@ -15954,6 +15954,7 @@ libs/ptr_container/doc/comp_indirect_fun.sh svneol=native#text/x-sh
 libs/ptr_container/doc/comp_ptr_array.sh svneol=native#text/x-sh
 libs/ptr_container/doc/comp_ptr_container.sh svneol=native#text/x-sh
 libs/ptr_container/doc/comp_ptr_deque.sh svneol=native#text/x-sh
+libs/ptr_container/doc/comp_ptr_inserter.sh svneol=native#text/x-sh
 libs/ptr_container/doc/comp_ptr_list.sh svneol=native#text/x-sh
 libs/ptr_container/doc/comp_ptr_map.sh svneol=native#text/x-sh
 libs/ptr_container/doc/comp_ptr_map_adapter.sh svneol=native#text/x-sh
