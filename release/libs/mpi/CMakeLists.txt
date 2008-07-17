@@ -7,6 +7,7 @@ if (MPI_FOUND)
     TESTDIRS test
     DOCDIRS doc
     HEADERS mpi.hpp mpi
+    MODULARIZED
     )
 endif(MPI_FOUND)
 
