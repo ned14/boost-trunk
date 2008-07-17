@@ -67,6 +67,9 @@ release/libs/python/pyste/tests/*.pch
 release/libs/python/pyste/tests/*.pyc
 release/libs/python/pyste/tests/.sconsign
 release/libs/python/pyste/tests/cache
+release/libs/spirit/doc/html/images/Thumbs.db
+release/libs/spirit/doc/html/spirit2_HTML.manifest
+release/libs/spirit/phoenix/doc/html/quickbook_HTML.manifest
 release/libs/test/build/bin
 release/libs/test/build/msvc71_proj/*.ncb
 release/libs/test/build/msvc71_proj/*.rsp
@@ -97,6 +100,11 @@ release/tools/build/v2/test/*.pyc
 release/tools/build/v2/test/failed_test
 release/tools/build/v2/test/test-config.jam
 release/tools/build/v2/test/test_results.txt
+release/tools/jam/src/bin.cygwinx86
+release/tools/jam/src/bin.cygwinx86.debug
+release/tools/jam/src/bin.ntx86
+release/tools/jam/src/bin.ntx86.debug
+release/tools/jam/src/bootstrap
 release/tools/regression/test/test-cases/Huber2629/actual
 release/tools/regression/test/test-cases/general/actual
 trunk/bin.v2
