@@ -1,1 +1,1 @@
-boost_module(xpressive)
+boost_module(xpressive DEPENDS fusion)

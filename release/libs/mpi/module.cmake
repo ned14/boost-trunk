@@ -1,1 +1,1 @@
-boost_module(mpi DEPENDS serialization)
+boost_module(mpi DEPENDS graph serialization)

@@ -57,5 +57,8 @@ if (PYTHON_LIBRARIES)
     SRCDIRS src
     TESTDIRS test
     HEADERS python.hpp python
+    MODULARIZED
+    DESCRIPTION "A framework for interfacing Python and C++. It allows you to quickly and seamlessly expose C++ classes functions and objects to Python, and vice-versa, using no special tools -- just your C++ compiler."
+    AUTHORS "David Abrahams <dave -at- boostpro.com>"
     )
 endif (PYTHON_LIBRARIES)
