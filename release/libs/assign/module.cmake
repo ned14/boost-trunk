@@ -1,1 +1,0 @@
-boost_module(assign DEPENDS config range type_traits)

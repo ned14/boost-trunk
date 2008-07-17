@@ -1,1 +1,0 @@
-boost_module(smart_ptr DEPENDS config exception intrusive utility)

@@ -1,1 +1,0 @@
-boost_module(pointer_containers DEPENDS serialization)

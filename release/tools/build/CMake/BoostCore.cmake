@@ -30,7 +30,7 @@ add_custom_target(modularize)
 #                         [DESCRIPTION description]
 #                         [AUTHORS author1 author2 ...]
 #                         [MAINTAINERS maint1 maint2 ...]
-#                         [MODULAR])
+#                         [MODULARIZED])
 #
 # where libname is the name of the library (e.g., Python, or
 # Filesystem), srcdir1, srcdir2, etc, are subdirectories containing
@@ -70,7 +70,7 @@ add_custom_target(modularize)
 macro(boost_library_project LIBNAME)
   parse_arguments(THIS_PROJECT
     "SRCDIRS;TESTDIRS;HEADERS;DOCDIRS;DESCRIPTION;AUTHORS;MAINTAINERS"
-    ""
+    "MODULARIZED"
     ${ARGN}
     )
 
@@ -94,20 +94,21 @@ macro(boost_library_project LIBNAME)
   endwhile()
 
   set(THIS_PROJECT_OKAY ON)
-  set(THIS_PROJECT_FAILED_DEPS "")
-  foreach(DEP ${THIS_PROJECT_DEPENDS_ALL})
-    string(TOUPPER "BUILD_BOOST_${DEP}" BOOST_LIB_DEP)
-    if (NOT ${BOOST_LIB_DEP})
-      set(THIS_PROJECT_OKAY OFF)
-      set(THIS_PROJECT_FAILED_DEPS "${THIS_PROJECT_FAILED_DEPS}  ${DEP}\n")
-    endif (NOT ${BOOST_LIB_DEP})
-  endforeach(DEP)
 
-  string(TOUPPER "BUILD_BOOST_${LIBNAME}" BOOST_BUILD_LIB_OPTION)
-
-  option(${BOOST_BUILD_LIB_OPTION} 
-    "Build Boost.${LIBNAME} (prefer make targets, not this, to build individual libs)" 
-    ${THIS_PROJECT_OKAY})
+  if(FALSE)
+    # This really isn't the check we want to do, especially when we
+    # hit circular dependencies. For now, just enable all libraries to
+    # be built all the time, until we can implement proper subsetting
+    # behavior at the CMake level.
+    set(THIS_PROJECT_FAILED_DEPS "")
+    foreach(DEP ${THIS_PROJECT_DEPENDS_ALL})
+      string(TOUPPER "BUILD_BOOST_${DEP}" BOOST_LIB_DEP)
+      if (NOT ${BOOST_LIB_DEP})
+        set(THIS_PROJECT_OKAY OFF)
+        set(THIS_PROJECT_FAILED_DEPS "${THIS_PROJECT_FAILED_DEPS}  ${DEP}\n")
+      endif (NOT ${BOOST_LIB_DEP})
+    endforeach(DEP)
+  endif(FALSE)
 
   if (THIS_PROJECT_SRCDIRS)
     # This Boost library has source directories, so provide an option
@@ -127,7 +128,7 @@ macro(boost_library_project LIBNAME)
     endif (NOT THIS_PROJECT_OKAY)
   endif (THIS_PROJECT_SRCDIRS)
 
-  if(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
+  if(THIS_PROJECT_OKAY)
     string(TOLOWER "${LIBNAME}" libname)
     string(TOUPPER "${LIBNAME}" ULIBNAME)
     project(${LIBNAME})
@@ -250,7 +251,10 @@ macro(boost_library_project LIBNAME)
           ${${LIBNAME}-modularize-commands}
 	  COMMENT "Modularizing ${LIBNAME} headers to project-local dir from monolithic boost dir"
 	  )
-        add_dependencies(modularize ${LIBNAME}-modularize)
+
+        if(THIS_PROJECT_MODULARIZED)
+          add_dependencies(modularize ${LIBNAME}-modularize)
+        endif(THIS_PROJECT_MODULARIZED)
       endif()
     endif(THIS_PROJECT_HEADERS)
 
@@ -315,31 +319,21 @@ macro(boost_library_project LIBNAME)
 
     if(BUILD_TESTING AND THIS_PROJECT_TESTDIRS)
       # Testing is enabled globally and this project has some
-      # tests. So, add a testing option.
-      string(TOUPPER "TEST_BOOST_${LIBNAME}" BOOST_TEST_LIB_OPTION)
-      option(${BOOST_TEST_LIB_OPTION} 
-        "Enable testing of Boost.${LIBNAME}" 
-        ON)
+      # tests. So, include the tests
+      add_custom_target(${PROJECT_NAME}-test)
 
-      # Only create test target and include the test directories
-      # when testing is enabled for this project.
-      if(${BOOST_TEST_LIB_OPTION})
-	add_custom_target(${PROJECT_NAME}-test)
+      add_dependencies(test ${PROJECT_NAME}-test)
 
-	add_dependencies(test ${PROJECT_NAME}-test)
+      # the last argument here, the binary directory that the 
+      # logs are in, has to match the binary directory
+      # passed to 'add_subdirectory', in the foreach() just below
+      boost_post_results(${PROJECT_NAME} ${PROJECT_NAME}-test
+	test
+	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-test)
 
-	# the last argument here, the binary directory that the 
-	# logs are in, has to match the binary directory
-	# passed to 'add_subdirectory', in the foreach() just below
-	boost_post_results(${PROJECT_NAME} ${PROJECT_NAME}-test
-	  test
-	  ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-test)
-
-        foreach(SUBDIR ${THIS_PROJECT_TESTDIRS})
-          add_subdirectory(${SUBDIR} ${PROJECT_NAME}-test)
-        endforeach()
-
-      endif(${BOOST_TEST_LIB_OPTION})
+      foreach(SUBDIR ${THIS_PROJECT_TESTDIRS})
+        add_subdirectory(${SUBDIR} ${PROJECT_NAME}-test)
+      endforeach()
     endif(BUILD_TESTING AND THIS_PROJECT_TESTDIRS)
 
     if (BUILD_DOCUMENTATION AND THIS_PROJECT_DOCDIRS)
@@ -347,7 +341,7 @@ macro(boost_library_project LIBNAME)
         add_subdirectory(${SUBDIR})
       endforeach(SUBDIR)
     endif ()
-  endif(${BOOST_BUILD_LIB_OPTION} AND THIS_PROJECT_OKAY)
+  endif()
 endmacro(boost_library_project)
 
 macro(boost_tool_project TOOLNAME)
