@@ -10,7 +10,8 @@ macro(regex_test TESTNAME)
 
   boost_test_run(${TESTNAME} ${REGEX_TEST_SOURCES} 
     COMPILE_FLAGS "-DBOOST_REGEX_DYN_LINK=1"
-    DEPENDS boost_regex SHARED)
+    DEPENDS boost_regex 
+    EXTRA_OPTIONS SHARED)
 endmacro(regex_test)
 
 set(R_SOURCES
@@ -57,16 +58,18 @@ regex_test(unicode_iterator_test unicode/unicode_iterator_test.cpp)
 
 boost_test_run(static_mutex_test static_mutex/static_mutex_test.cpp
   COMPILE_FLAGS "-DBOOST_REGEX_DYN_LINK=1"
-  MULTI_THREADED SHARED
-  DEPENDS boost_regex boost_thread)
+  DEPENDS boost_regex boost_thread
+  EXTRA_OPTIONS MULTI_THREADED SHARED)
 
 regex_test(object_cache_test object_cache/object_cache_test.cpp)
 boost_test_run(regex_config_info config_info/regex_config_info.cpp
-  DEPENDS boost_regex STATIC)
+  DEPENDS boost_regex 
+  EXTRA_OPTIONS STATIC)
 
 boost_test_run(regex_dll_config_info config_info/regex_config_info.cpp
   COMPILE_FLAGS "-DBOOST_REGEX_DYN_LINK=1"
-  DEPENDS boost_regex SHARED)
+  DEPENDS boost_regex 
+  EXTRA_OPTIONS SHARED)
 
 regex_test(test_collate_info collate_info/collate_info.cpp)
 
