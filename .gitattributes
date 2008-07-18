@@ -17447,6 +17447,7 @@ libs/spirit/classic/example/intermediate/regex_convert.cpp svneol=native#text/pl
 libs/spirit/classic/example/intermediate/simple_xml/actions.hpp svneol=native#text/plain
 libs/spirit/classic/example/intermediate/simple_xml/driver.cpp svneol=native#text/plain
 libs/spirit/classic/example/intermediate/simple_xml/tag.cpp svneol=native#text/plain
+libs/spirit/classic/example/intermediate/simple_xml/tag.hpp svneol=native#text/plain
 libs/spirit/classic/example/intermediate/simple_xml/xml_g.hpp svneol=native#text/plain
 libs/spirit/classic/example/techniques/dynamic_rule.cpp svneol=native#text/plain
 libs/spirit/classic/example/techniques/epsilon.cpp svneol=native#text/plain
