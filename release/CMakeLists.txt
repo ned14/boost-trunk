@@ -31,8 +31,8 @@ project(Boost)
 # Version information                                                    #
 ##########################################################################
 set(BOOST_VERSION_MAJOR 1)
-set(BOOST_VERSION_MINOR 35)
-set(BOOST_VERSION_SUBMINOR 1)
+set(BOOST_VERSION_MINOR 36)
+set(BOOST_VERSION_SUBMINOR 0)
 set(BOOST_VERSION "${BOOST_VERSION_MAJOR}.${BOOST_VERSION_MINOR}.${BOOST_VERSION_SUBMINOR}")
 ##########################################################################
 
