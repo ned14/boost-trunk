@@ -41,11 +41,12 @@ set(R_SOURCES
 boost_test_run(regex_regress ${R_SOURCES} DEPENDS boost_regex STATIC)
 boost_test_run(regex_regress_dll ${R_SOURCES} 
   COMPILE_FLAGS "-DBOOST_REGEX_DYN_LINK=1"
-  DEPENDS boost_regex SHARED)
+  DEPENDS boost_regex 
+  EXTRA_OPTIONS SHARED)
 boost_test_run(regex_regress_threaded ${R_SOURCES} 
   COMPILE_FLAGS "-DTEST_THREADS -DBOOST_REGEX_DYN_LINK=1"
-  MULTI_THREADED SHARED
-  DEPENDS boost_regex boost_thread)
+  DEPENDS boost_regex boost_thread
+  EXTRA_OPTIONS SHARED MULTI_THREADED)
 
 regex_test(posix_api_check c_compiler_checks/posix_api_check.c)
 boost_test_compile(wide_posix_api_check_c c_compiler_checks/wide_posix_api_check.c)

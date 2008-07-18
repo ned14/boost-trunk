@@ -148,6 +148,8 @@ macro(doxygen_to_boostbook OUTPUT)
     ${ARGN})
 
   # Create a Doxygen configuration file template
+  # TODO: We would like to create this file at build time rather
+  # than at configuration time
   get_filename_component(DOXYFILE_PATH ${OUTPUT} PATH)
   get_filename_component(DOXYFILE_NAME ${OUTPUT} NAME_WE)
   set(DOXYFILE ${DOXYFILE_PATH}/${DOXYFILE_NAME}.doxyfile)
@@ -198,6 +200,22 @@ macro(doxygen_to_boostbook OUTPUT)
     COMMENT "Transforming Doxygen XML into BoostBook XML for Boost.${PROJECT_NAME}...")
 endmacro(doxygen_to_boostbook)
 
+# Adds documentation for the current library or tool project
+#
+#   boost_add_documentation(source1 source2 source3 ...
+#     [HEADERS header1 header2 ...]
+#     [DOXYGEN_PARAMETERS param1=value1 param2=value2 ...])
+#
+
+# This macro describes the documentation for a library or tool, which
+# will be built and installed as part of the normal build
+# process. Documentation can be in a variety of formats, and the input
+# format will determine how that documentation is transformed. The
+# documentation's format is determined by its extension, and the
+# following input formats are supported:
+# 
+#   QuickBook
+#   BoostBook (.XML extension):
 macro(boost_add_documentation SOURCE)
   parse_arguments(THIS_DOC
     "HEADERS;DOXYGEN_PARAMETERS"

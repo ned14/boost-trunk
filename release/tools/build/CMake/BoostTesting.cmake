@@ -99,7 +99,7 @@ macro(boost_test_parse_args testname)
   set(BOOST_TEST_OKAY TRUE)
   set(BOOST_TEST_COMPILE_FLAGS "")
   parse_arguments(BOOST_TEST 
-    "LINK_LIBS;LINK_FLAGS;DEPENDS;COMPILE_FLAGS;ARGS"
+    "LINK_LIBS;LINK_FLAGS;DEPENDS;COMPILE_FLAGS;ARGS;EXTRA_OPTIONS"
     "COMPILE;RUN;LINK;FAIL;RELEASE;DEBUG"
     ${ARGN}
     )
@@ -162,7 +162,8 @@ endmacro(boost_test_parse_args)
 #                  [COMPILE_FLAGS compileflags]
 #                  [LINK_FLAGS linkflags]
 #                  [LINK_LIBS linklibs]
-#                  [DEPENDS libdepend1 libdepend2 ...])
+#                  [DEPENDS libdepend1 libdepend2 ...]
+#                  [EXTRA_OPTIONS option1 option2 ...])
 #
 # testname is the name of the test. source1, source2, etc. are the
 # source files that will be built and linked into the test
@@ -195,23 +196,19 @@ endmacro(boost_test_parse_args)
 #   the name of a particular variant of a Boost library, e.g.,
 #   boost_signals-static.
 #
-# Example:
-#   boost_test_run(signal_test DEPENDS boost_signals-static)
+#   EXTRA_OPTIONS: Provide extra options that will be passed on to 
+#   boost_add_executable.
 #
-# TODO: 
-#   - Improve handling of DEPENDS, so that we can specify just the
-#     library's abstract target (e.g., "boost_signals"), and possibly
-#     some features required for building the test (e.g.,
-#     MULTI_THREADED, STATIC). The test macros should then pick the
-#     best library variant available to meet those features and the
-#     current build variant (Debug or Release).
+# Example:
+#   boost_test_run(signal_test DEPENDS boost_signals)
 macro(boost_test_run testname)
   boost_test_parse_args(${testname} ${ARGN} RUN)
   if (BOOST_TEST_OKAY)
     boost_add_executable(${testname} ${BOOST_TEST_SOURCES}
       OUTPUT_NAME tests/${PROJECT_NAME}/${testname}
       DEPENDS "${BOOST_TEST_DEPENDS}"
-      NO_INSTALL)
+      NO_INSTALL 
+      ${BOOST_TEST_EXTRA_OPTIONS})
 
     if (THIS_EXE_OKAY)
 
