@@ -109,7 +109,6 @@ else(BOOST_VERSION_SUBMINOR GREATER 0)
 endif(BOOST_VERSION_SUBMINOR GREATER 0)
 install(DIRECTORY boost 
         DESTINATION ${BOOST_HEADER_DIR}
-        COMPONENT Core
         PATTERN "CVS" EXCLUDE
         PATTERN ".svn" EXCLUDE)
 #
@@ -129,6 +128,64 @@ install(DIRECTORY boost
 #endif (NOT TEST_INSTALLED_TREE)
 ##########################################################################
 
+##########################################################################
+# Binary packages                                                        #
+##########################################################################
+set(CPACK_PACKAGE_NAME "Boost")
+set(CPACK_PACKAGE_VENDOR "Boost.org")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Boost ${BOOST_VERSION}")
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${Boost_SOURCE_DIR}/README.txt")
+set(CPACK_RESOURCE_FILE_README "${Boost_SOURCE_DIR}/README.txt")
+set(CPACK_RESOURCE_FILE_LICENSE "${Boost_SOURCE_DIR}/LICENSE_1_0.txt")
+set(CPACK_RESOURCE_FILE_WELCOME "${Boost_SOURCE_DIR}/Welcome.txt")
+set(CPACK_PACKAGE_VERSION "${BOOST_VERSION}")
+set(CPACK_PACKAGE_VERSION_MAJOR "${BOOST_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${BOOST_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${BOOST_VERSION_SUBMINOR}")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "Boost")
+
+if(WIN32 AND NOT UNIX)
+  # There is a bug in NSI that does not handle full unix paths properly. Make
+  # sure there is at least one set of four (4) backlasshes.
+  # NOTE: No Boost icon yet
+#  set(CPACK_PACKAGE_ICON "${Boost_SOURCE_DIR}/tools/build/CMake\\\\InstallIcon.bmp")
+#  set(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\MyExecutable.exe")
+  set(CPACK_NSIS_DISPLAY_NAME "Boost ${BOOST_VERSION_MAJOR}.${BOOST_VERSION_MINOR}.${BOOST_VERSION_SUBMINOR}")
+  set(CPACK_NSIS_HELP_LINK "http:\\\\\\\\www.boost.org")
+  set(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\www.boost.org")
+  set(CPACK_NSIS_CONTACT "boost-users@lists.boost.org")
+  set(CPACK_NSIS_MODIFY_PATH ON)
+  
+  # Encode the compiler name in the package 
+  if (MSVC60)
+    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc6")
+    set(CPACK_NSIS_DISPLAY_NAME "${CPACK_NSIS_DISPLAY_NAME} for Microsoft Visual C++ 6")
+  elseif (MSVC70)
+    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc7")
+    set(CPACK_NSIS_DISPLAY_NAME "${CPACK_NSIS_DISPLAY_NAME} for Microsoft Visual Studio 2002")
+  elseif (MSVC71)
+    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc71")
+    set(CPACK_NSIS_DISPLAY_NAME "${CPACK_NSIS_DISPLAY_NAME} for Microsoft Visual Studio 2003")
+  elseif (MSVC80)
+    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc8")
+    set(CPACK_NSIS_DISPLAY_NAME "${CPACK_NSIS_DISPLAY_NAME} for Microsoft Visual Studio 2005")    
+  elseif (MSVC90)
+    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc9")
+    set(CPACK_NSIS_DISPLAY_NAME "${CPACK_NSIS_DISPLAY_NAME} for Microsoft Visual Studio 2008")
+  elseif (BORLAND)
+    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-borland")  
+    set(CPACK_NSIS_DISPLAY_NAME "${CPACK_NSIS_DISPLAY_NAME} for Borland C++ Builder")    
+  endif (MSVC60)
+  set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "${CPACK_NSIS_DISPLAY_NAME}")
+endif(WIN32 AND NOT UNIX)
+include(CPack)
+
+if(COMMAND cpack_configure_downloads)
+  cpack_configure_downloads(
+  "http://www.osl.iu.edu/~dgregor/Boost-CMake/1.36.0/"
+    ALL ADD_REMOVE)
+endif()
+##########################################################################
 
 ##########################################################################
 # Building Boost libraries                                               #
@@ -158,66 +215,3 @@ add_subdirectory(${BOOST_LIBS_DIR})
 # add_subdirectory(tools)
 ##########################################################################
 
-##########################################################################
-# Binary packages                                                        #
-##########################################################################
-set(CPACK_PACKAGE_NAME "Boost")
-set(CPACK_PACKAGE_VENDOR "Boost.org")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Boost ${BOOST_VERSION}")
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${Boost_SOURCE_DIR}/README.txt")
-set(CPACK_RESOURCE_FILE_README "${Boost_SOURCE_DIR}/README.txt")
-set(CPACK_RESOURCE_FILE_LICENSE "${Boost_SOURCE_DIR}/LICENSE_1_0.txt")
-set(CPACK_RESOURCE_FILE_WELCOME "${Boost_SOURCE_DIR}/Welcome.txt")
-set(CPACK_PACKAGE_VERSION "${BOOST_VERSION}")
-set(CPACK_PACKAGE_VERSION_MAJOR "${BOOST_VERSION_MAJOR}")
-set(CPACK_PACKAGE_VERSION_MINOR "${BOOST_VERSION_MINOR}")
-set(CPACK_PACKAGE_VERSION_PATCH "${BOOST_VERSION_SUBMINOR}")
-set(CPACK_PACKAGE_INSTALL_DIRECTORY "Boost-${BOOST_VERSION}")
-
-# Setup "core" component
-set(CPACK_COMPONENT_CORE_REQUIRED ON)
-set(CPACK_COMPONENT_CORE_DISPLAY_NAME "Core library headers")
-
-# Set the variable containing the list of all components.
-get_property(CPACK_COMPONENTS_ALL 
-  GLOBAL PROPERTY CPACK_COMPONENTS_ALL)
-set(CPACK_COMPONENTS_ALL "Core" ${CPACK_COMPONENTS_ALL})
-
-# Set the variable containing the list of all components.
-get_property(CPACK_COMPONENT_GROUPS_ALL 
-  GLOBAL PROPERTY CPACK_COMPONENT_GROUPS_ALL)
-
-get_property(BOOST_CPACK_EXPORTS GLOBAL PROPERTY BOOST_CPACK_EXPORTS)
-foreach(MACRO ${BOOST_CPACK_EXPORTS})
-  get_property(${MACRO} GLOBAL PROPERTY ${MACRO})
-endforeach()
-
-if(WIN32 AND NOT UNIX)
-  # There is a bug in NSI that does not handle full unix paths properly. Make
-  # sure there is at least one set of four (4) backlasshes.
-  # NOTE: No Boost icon yet
-#  set(CPACK_PACKAGE_ICON "${Boost_SOURCE_DIR}/tools/build/CMake\\\\InstallIcon.bmp")
-#  set(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\MyExecutable.exe")
-  set(CPACK_NSIS_DISPLAY_NAME "Boost ${BOOST_VERSION_MAJOR}.${BOOST_VERSION_MINOR}.${BOOST_VERSION_SUBMINOR}")
-  set(CPACK_NSIS_HELP_LINK "http:\\\\\\\\www.boost.org")
-  set(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\www.boost.org")
-  set(CPACK_NSIS_CONTACT "boost-users@lists.boost.org")
-  set(CPACK_NSIS_MODIFY_PATH ON)
-  
-  # Encode the compiler name in the package 
-  if (MSVC60)
-    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc6")
-  elseif (MSVC70)
-    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc7")
-  elseif (MSVC71)
-    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc71")
-  elseif (MSVC80)
-    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc8")
-  elseif (MSVC90)
-    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-vc9")
-  elseif (BORLAND)
-    set(CPACK_PACKAGE_FILE_NAME "Boost-${BOOST_VERSION}-borland")  
-  endif (MSVC60)
-endif(WIN32 AND NOT UNIX)
-include(CPack)
-##########################################################################

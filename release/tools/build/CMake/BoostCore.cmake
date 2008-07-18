@@ -132,83 +132,94 @@ macro(boost_library_project LIBNAME)
     string(TOLOWER "${LIBNAME}" libname)
     string(TOUPPER "${LIBNAME}" ULIBNAME)
     project(${LIBNAME})
-
-    # Add this library to the list of library components to install
-    set_property(GLOBAL APPEND 
-      PROPERTY CPACK_COMPONENT_GROUPS_ALL 
-      ${ULIBNAME})
-    boost_set_cpack_variable(
-      CPACK_COMPONENT_GROUP_${ULIBNAME}_DISPLAY_NAME 
-      ${LIBNAME})
     
-    if (THIS_PROJECT_DESCRIPTION)
-      set(THIS_PROJECT_DESCRIPTION "Boost.${LIBNAME}\n\n${THIS_PROJECT_DESCRIPTION}")
+    if (THIS_PROJECT_MODULARIZED OR THIS_PROJECT_SRCDIRS)
+      # We only build a component group for modularized libraries or libraries
+      # that have compiled parts.
+      if (COMMAND cpack_add_component_group)
+        # Compute a reasonable description for this library.
+        if (THIS_PROJECT_DESCRIPTION)
+          set(THIS_PROJECT_DESCRIPTION "Boost.${LIBNAME}\n\n${THIS_PROJECT_DESCRIPTION}")
+         
+          if (THIS_PROJECT_AUTHORS)
+            list(LENGTH THIS_PROJECT_AUTHORS THIS_PROJECT_NUM_AUTHORS)
+            if (THIS_PROJECT_NUM_AUTHORS EQUAL 1)
+              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthor: ")
+            else()
+              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthors: ")
+            endif()
+            set(THIS_PROJECT_FIRST_AUTHOR TRUE)
+            foreach(AUTHOR ${THIS_PROJECT_AUTHORS})
+              string(REGEX REPLACE " *-at- *" "@" AUTHOR ${AUTHOR})
+              if (THIS_PROJECT_FIRST_AUTHOR)
+                set(THIS_PROJECT_FIRST_AUTHOR FALSE)
+              else()
+                set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n         ")
+              endif()
+              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${AUTHOR}")
+            endforeach(AUTHOR)
+          endif (THIS_PROJECT_AUTHORS)
+
+          if (THIS_PROJECT_MAINTAINERS)
+            list(LENGTH THIS_PROJECT_MAINTAINERS THIS_PROJECT_NUM_MAINTAINERS)
+            if (THIS_PROJECT_NUM_MAINTAINERS EQUAL 1)
+              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainer: ")
+            else()
+              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainers: ")
+            endif()
+            set(THIS_PROJECT_FIRST_MAINTAINER TRUE)
+            foreach(MAINTAINER ${THIS_PROJECT_MAINTAINERS})
+              string(REGEX REPLACE " *-at- *" "@" MAINTAINER ${MAINTAINER})
+              if (THIS_PROJECT_FIRST_MAINTAINER)
+                set(THIS_PROJECT_FIRST_MAINTAINER FALSE)
+              else()
+                set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n             ")
+              endif()
+              set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${MAINTAINER}")
+            endforeach(MAINTAINER)
+          endif (THIS_PROJECT_MAINTAINERS)
+        endif (THIS_PROJECT_DESCRIPTION)
       
-      if (THIS_PROJECT_AUTHORS)
-        list(LENGTH THIS_PROJECT_AUTHORS THIS_PROJECT_NUM_AUTHORS)
-        if (THIS_PROJECT_NUM_AUTHORS EQUAL 1)
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthor: ")
-        else()
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthors: ")
-        endif()
-        set(THIS_PROJECT_FIRST_AUTHOR TRUE)
-        foreach(AUTHOR ${THIS_PROJECT_AUTHORS})
-          string(REGEX REPLACE " *-at- *" "@" AUTHOR ${AUTHOR})
-          if (THIS_PROJECT_FIRST_AUTHOR)
-            set(THIS_PROJECT_FIRST_AUTHOR FALSE)
+        # Create a component group for this library
+        cpack_add_component_group(${libname}
+          DISPLAY_NAME "${LIBNAME}"
+          DESCRIPTION ${THIS_PROJECT_DESCRIPTION})
+      endif ()
+    endif ()
+        
+    if (THIS_PROJECT_MODULARIZED)
+      # Add this module's include directory
+      include_directories("${Boost_SOURCE_DIR}/libs/${libname}/include")
+     
+      # Install this module's headers
+      install(DIRECTORY include/boost 
+        DESTINATION ${BOOST_HEADER_DIR}
+        COMPONENT ${libname}_headers
+        PATTERN "CVS" EXCLUDE
+        PATTERN ".svn" EXCLUDE)
+        
+      if (COMMAND cpack_add_component)        
+        # Determine the header dependencies
+        set(THIS_PROJECT_HEADER_DEPENDS)
+        foreach(DEP ${${THIS_PROJECT_DEPENDS}})
+          string(TOLOWER ${DEP} dep)
+          if (${dep} STREQUAL "serialization")
+            # TODO: Ugly, ugly hack until the serialization library is modularized
+          elseif (${dep} STREQUAL "thread")
           else()
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n         ")
+            list(APPEND THIS_PROJECT_HEADER_DEPENDS ${dep}_headers)
           endif()
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${AUTHOR}")
-        endforeach(AUTHOR)
-      endif (THIS_PROJECT_AUTHORS)
+        endforeach(DEP)
 
-      if (THIS_PROJECT_MAINTAINERS)
-        list(LENGTH THIS_PROJECT_MAINTAINERS THIS_PROJECT_NUM_MAINTAINERS)
-        if (THIS_PROJECT_NUM_MAINTAINERS EQUAL 1)
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainer: ")
-        else()
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainers: ")
-        endif()
-        set(THIS_PROJECT_FIRST_MAINTAINER TRUE)
-        foreach(MAINTAINER ${THIS_PROJECT_MAINTAINERS})
-          string(REGEX REPLACE " *-at- *" "@" MAINTAINER ${MAINTAINER})
-          if (THIS_PROJECT_FIRST_MAINTAINER)
-            set(THIS_PROJECT_FIRST_MAINTAINER FALSE)
-          else()
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n             ")
-          endif()
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${MAINTAINER}")
-        endforeach(MAINTAINER)
-      endif (THIS_PROJECT_MAINTAINERS)
-      
-      boost_set_cpack_variable(
-        CPACK_COMPONENT_GROUP_${ULIBNAME}_DESCRIPTION
-        "${THIS_PROJECT_DESCRIPTION}")
-    endif (THIS_PROJECT_DESCRIPTION)
-    
-    # Add this module's include directory
-    include_directories("${Boost_SOURCE_DIR}/libs/${libname}/include")
+        # Tell CPack about the headers component
+        cpack_add_component(${libname}_headers
+          DISPLAY_NAME "Header files"
+          GROUP      ${libname}
+          DEPENDS    ${THIS_PROJECT_HEADER_DEPENDS})
+      endif ()
+    endif ()
 
-    # Install this module's headers
-    install(DIRECTORY include/boost 
-      DESTINATION ${BOOST_HEADER_DIR}
-      COMPONENT ${ULIBNAME}_HEADERS
-      PATTERN "CVS" EXCLUDE
-      PATTERN ".svn" EXCLUDE)
-
-    # Add the appropriate variables to make this library's headers a
-    # separate component.
-    set_property(GLOBAL APPEND 
-      PROPERTY CPACK_COMPONENTS_ALL 
-      ${ULIBNAME}_HEADERS)
-    boost_set_cpack_variable(
-      CPACK_COMPONENT_${ULIBNAME}_HEADERS_DISPLAY_NAME 
-      "Header files")
-    boost_set_cpack_variable(
-      CPACK_COMPONENT_${ULIBNAME}_HEADERS_GROUP 
-      ${ULIBNAME})
-
+    # Modularization code
     if(THIS_PROJECT_HEADERS)
       set(${LIBNAME}-modularize-commands)
       foreach(item ${THIS_PROJECT_HEADERS})
@@ -257,52 +268,15 @@ macro(boost_library_project LIBNAME)
         endif(THIS_PROJECT_MODULARIZED)
       endif()
     endif(THIS_PROJECT_HEADERS)
-
-    if(THIS_PROJECT_SRCDIRS)
-      # Add an installation target for the sources of this library.
-      set_property(GLOBAL APPEND
-	PROPERTY CPACK_COMPONENTS_ALL 
-	${ULIBNAME}_SOURCES)
-      boost_set_cpack_variable(
-	CPACK_COMPONENT_${ULIBNAME}_SOURCES_DISPLAY_NAME
-	"Source files")
-      boost_set_cpack_variable(
-	CPACK_COMPONENT_${ULIBNAME}_SOURCES_GROUP 
-	${ULIBNAME})
-      
-      boost_set_cpack_variable(
-	CPACK_COMPONENT_${ULIBNAME}_SOURCES_DEPENDS 
-	${ULIBNAME}_HEADERS) 
-      
-      # Add all of the source files as an installation target  
-      foreach(SUBDIR ${THIS_PROJECT_SRCDIRS})
-        install(DIRECTORY ${SUBDIR} 
-          DESTINATION src/${LIBNAME}
-          COMPONENT ${ULIBNAME}_SOURCES
-          PATTERN "CVS" EXCLUDE
-          PATTERN ".svn" EXCLUDE)  
-      endforeach()
-    endif()
 	
     # For each of the modular libraries on which this project depends,
     # add the include path for that library.
     set(THIS_PROJECT_HAS_HEADER_DEPENDS FALSE)
     foreach(DEP ${THIS_PROJECT_DEPENDS_ALL})
-      string(TOUPPER ${DEP} UDEP)
       include_directories("${Boost_SOURCE_DIR}/libs/${DEP}/include")
-      # Make this project's headers depend on DEP's headers
-      set_property(GLOBAL APPEND
-        PROPERTY CPACK_COMPONENT_${ULIBNAME}_HEADERS_DEPENDS 
-        ${UDEP}_HEADERS)
-      set(THIS_PROJECT_HAS_HEADER_DEPENDS TRUE)
     endforeach(DEP)
 
-    if (THIS_PROJECT_HAS_HEADER_DEPENDS)
-      set_property(GLOBAL APPEND
-        PROPERTY BOOST_CPACK_EXPORTS
-        CPACK_COMPONENT_${ULIBNAME}_HEADERS_DEPENDS)
-    endif ()
-
+    # TODO: is this still necessary?
     if(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/tests)
       file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/bin/tests)
     endif(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/tests)
@@ -380,58 +354,6 @@ macro(boost_tool_project TOOLNAME)
   if(BUILD_${UTOOLNAME} AND THIS_PROJECT_OKAY)
     string(TOLOWER "${TOOLNAME}" toolname)
     project(${TOOLNAME})
-
-    # Add this tool to the list of library components to install
-    set_property(GLOBAL APPEND PROPERTY CPACK_COMPONENT_GROUPS_ALL 
-      ${UTOOLNAME})
-    boost_set_cpack_variable(CPACK_COMPONENT_GROUP_${UTOOLNAME}_DISPLAY_NAME 
-      ${TOOLNAME})
-        
-    if (THIS_PROJECT_DESCRIPTION)
-      set(THIS_PROJECT_DESCRIPTION "${TOOLNAME}\n\n${THIS_PROJECT_DESCRIPTION}")
-      
-      if (THIS_PROJECT_AUTHORS)
-        list(LENGTH THIS_PROJECT_AUTHORS THIS_PROJECT_NUM_AUTHORS)
-        if (THIS_PROJECT_NUM_AUTHORS EQUAL 1)
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthor: ")
-        else()
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n\nAuthors: ")
-        endif()
-        set(THIS_PROJECT_FIRST_AUTHOR TRUE)
-        foreach(AUTHOR ${THIS_PROJECT_AUTHORS})
-          string(REGEX REPLACE " *-at- *" "@" AUTHOR ${AUTHOR})
-          if (THIS_PROJECT_FIRST_AUTHOR)
-            set(THIS_PROJECT_FIRST_AUTHOR FALSE)
-          else()
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n         ")
-          endif()
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${AUTHOR}")
-        endforeach(AUTHOR)
-      endif (THIS_PROJECT_AUTHORS)
-      
-      if (THIS_PROJECT_MAINTAINERS)
-        list(LENGTH THIS_PROJECT_MAINTAINERS THIS_PROJECT_NUM_MAINTAINERS)
-        if (THIS_PROJECT_NUM_MAINTAINERS EQUAL 1)
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainer: ")
-        else()
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\nMaintainers: ")
-        endif()
-        set(THIS_PROJECT_FIRST_MAINTAINER TRUE)
-        foreach(MAINTAINER ${THIS_PROJECT_MAINTAINERS})
-          string(REGEX REPLACE " *-at- *" "@" MAINTAINER ${MAINTAINER})
-          if (THIS_PROJECT_FIRST_MAINTAINER)
-            set(THIS_PROJECT_FIRST_MAINTAINER FALSE)
-          else()
-            set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}\n             ")
-          endif()
-          set(THIS_PROJECT_DESCRIPTION "${THIS_PROJECT_DESCRIPTION}${MAINTAINER}")
-        endforeach(MAINTAINER)
-      endif (THIS_PROJECT_MAINTAINERS)
-      
-      boost_set_cpack_variable(
-        CPACK_COMPONENT_GROUP_${UTOOLNAME}_DESCRIPTION
-        "${THIS_PROJECT_DESCRIPTION}")
-    endif (THIS_PROJECT_DESCRIPTION)
     
     # Add this module's include directory
     include_directories("${Boost_SOURCE_DIR}/libs/${toolname}/include")
@@ -762,36 +684,12 @@ macro(boost_library_variant LIBNAME)
 
     if(NOT THIS_LIB_NO_INSTALL)
       # Setup installation properties
-      string(TOUPPER "${PROJECT_NAME}${VARIANT_TARGET_NAME}" LIB_COMPONENT)
+      string(TOLOWER "${PROJECT_NAME}${VARIANT_TARGET_NAME}" LIB_COMPONENT)
       string(REPLACE "-" "_" LIB_COMPONENT ${LIB_COMPONENT})
-      get_property(LIB_COMPONENT_EXISTS
-	GLOBAL PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME SET)
-      if (LIB_COMPONENT_EXISTS)
-	# There is more than one library binary associated with this
-	# installation component (e.g., both boost_serialization and 
-	# boost_wserialization library binaries), so update the
-	# display name of the installation component to the plural
-	# "libraries".
-	set_property(GLOBAL
-          PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME
-          "${VARIANT_DISPLAY_NAME} libraries")
-      else()
-	set_property(GLOBAL APPEND 
-          PROPERTY CPACK_COMPONENTS_ALL 
-          ${LIB_COMPONENT})
-	boost_set_cpack_variable(
-          CPACK_COMPONENT_${LIB_COMPONENT}_DISPLAY_NAME
-          "${VARIANT_DISPLAY_NAME} library")
-	boost_set_cpack_variable(
-          CPACK_COMPONENT_${LIB_COMPONENT}_GROUP 
-          ${ULIBNAME})
-      endif()
       
       # Installation of this library variant
-      string(TOUPPER ${PROJECT_NAME} ULIBNAME)
-      install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib
-	EXPORT boost-targets
-	COMPONENT ${LIB_COMPONENT})
+      string(TOLOWER ${PROJECT_NAME} libname)
+      install(TARGETS ${VARIANT_LIBNAME} DESTINATION lib COMPONENT ${LIB_COMPONENT})
       set_property( 
 	TARGET ${VARIANT_LIBNAME}
 	PROPERTY BOOST_CPACK_COMPONENT
@@ -799,6 +697,7 @@ macro(boost_library_variant LIBNAME)
       
       # Make the library installation component dependent on the library
       # installation components of dependent libraries.
+      set(THIS_LIB_COMPONENT_DEPENDS)
       foreach(DEP ${THIS_LIB_DEPENDS})
 	# We ask the library variant that this library depends on to tell us
 	# what it's associated installation component is. We depend on that 
@@ -812,15 +711,16 @@ macro(boost_library_variant LIBNAME)
             # Do nothing: we have library dependencies within one 
             # Boost library
           else()
-            set_property(GLOBAL APPEND
-              PROPERTY CPACK_COMPONENT_${LIB_COMPONENT}_DEPENDS ${DEP_COMPONENT})
+            list(APPEND THIS_LIB_COMPONENT_DEPENDS ${DEP_COMPONENT})
           endif()
 	endif()
       endforeach(DEP)
-      if (THIS_LIB_DEPENDS)
-	set_property(GLOBAL APPEND
-          PROPERTY BOOST_CPACK_EXPORTS
-          CPACK_COMPONENT_${LIB_COMPONENT}_DEPENDS)
+      
+      if (COMMAND cpack_add_component)
+        cpack_add_component(${LIB_COMPONENT}
+          DISPLAY_NAME "${VARIANT_DISPLAY_NAME}"
+          GROUP ${libname}
+          DEPENDS ${THIS_LIB_COMPONENT_DEPENDS})
       endif ()
     endif(NOT THIS_LIB_NO_INSTALL)
   endif (THIS_VARIANT_OKAY)
@@ -1438,34 +1338,3 @@ macro(boost_add_executable EXENAME)
     endif (NOT THIS_EXE_NO_INSTALL)
   endif (THIS_EXE_OKAY)
 endmacro(boost_add_executable)
-
-# Sets the CPack variable named PROP to the given values, and ensures
-# that CPack will see the variable.
-#
-#   boost_set_cpack_variable(PROP
-#     value1 value2 ...)
-#
-# If no values are provided the variable will not be set.
-#
-# Example: 
-#   boost_set_cpack_variable(CPACK_COMPONENT_GRAPH_HEADERS_DISPLAY_NAME 
-#     "Graph headers")
-macro(boost_set_cpack_variable PROP)
-  get_property(BOOST_CPACK_VAR_HAS_VALUE
-    GLOBAL PROPERTY ${PROP} SET)
-
-  if (NOT BOOST_CPACK_VAR_HAS_VALUE)
-  set(BOOST_CPACK_VAR_HAS_ARGS FALSE)
-    foreach (ARG ${ARGN})
-      set_property(GLOBAL APPEND
-        PROPERTY ${PROP}
-        ${ARG})
-      set(BOOST_CPACK_VAR_HAS_ARGS TRUE)
-    endforeach(ARG)
-    if (BOOST_CPACK_VAR_HAS_ARGS)
-      set_property(GLOBAL APPEND
-        PROPERTY BOOST_CPACK_EXPORTS
-        ${PROP})
-    endif ()
-  endif ()
-endmacro(boost_set_cpack_variable)
