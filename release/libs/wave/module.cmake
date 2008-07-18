@@ -1,1 +1,1 @@
-boost_module(wave DEPENDS filesystem spirit)
+boost_module(wave DEPENDS filesystem program_options spirit)

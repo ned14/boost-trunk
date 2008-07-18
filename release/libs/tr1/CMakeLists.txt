@@ -1,5 +1,5 @@
 boost_library_project(
-  tr1
+  TR1
   TESTDIRS test
   HEADERS tr1
   MODULARIZED
