@@ -207,15 +207,17 @@ macro(boost_test_run testname)
     boost_add_executable(${testname} ${BOOST_TEST_SOURCES}
       OUTPUT_NAME tests/${PROJECT_NAME}/${testname}
       DEPENDS "${BOOST_TEST_DEPENDS}"
+      LINK_LIBS ${BOOST_TEST_LINK_LIBS}
+      LINK_FLAGS ${BOOST_TEST_LINK_FLAGS}
+      COMPILE_FLAGS ${BOOST_TEST_COMPILE_FLAGS}
       NO_INSTALL 
       ${BOOST_TEST_EXTRA_OPTIONS})
 
     if (THIS_EXE_OKAY)
-
       # This target builds and runs the test
       add_custom_target(${BOOST_TEST_TESTNAME})
 
-	file( TO_NATIVE_PATH "${BOOST_TEST_DRIVER}" NATIVE_BOOST_TEST_DRIVER )
+      file( TO_NATIVE_PATH "${BOOST_TEST_DRIVER}" NATIVE_BOOST_TEST_DRIVER )
 
       set(THIS_TEST_PREFIX_ARGS
 	${PYTHON_EXECUTABLE} ${NATIVE_BOOST_TEST_DRIVER} ${CMAKE_CURRENT_BINARY_DIR} ${BOOST_TEST_TAG} ${testname} 
