@@ -22,7 +22,6 @@ endmacro(ADD_SUBDIRECTORIES prefix)
 # Find all of the subdirectories with .cmake files in them. These are
 # the libraries with dependencies.
 boost_collect_subproject_directory_names(BOOST_MODULE_DIRS "module.cmake")
-
 foreach(subdir ${BOOST_MODULE_DIRS})
   include("${CMAKE_CURRENT_SOURCE_DIR}/${subdir}/module.cmake")
 endforeach(subdir)
@@ -37,3 +36,17 @@ set(CPACK_INSTALL_CMAKE_COMPONENTS_ALL)
 list(SORT BOOST_SUBPROJECT_DIRS)
 topological_sort(BOOST_SUBPROJECT_DIRS BOOST_ _DEPENDS)
 add_subdirectories(" + " ${BOOST_SUBPROJECT_DIRS})
+
+# Write out a GraphViz file containing inter-library dependencies. 
+set(BOOST_DEPENDENCY_GRAPHVIZ_FILE "${Boost_BINARY_DIR}/dependencies.dot")
+file(WRITE ${BOOST_DEPENDENCY_GRAPHVIZ_FILE} "digraph boost {\n")
+foreach(SUBDIR ${BOOST_SUBPROJECT_DIRS})
+  string(TOUPPER "BOOST_${SUBDIR}_DEPENDS" DEPENDS_VAR)
+  if(DEFINED ${DEPENDS_VAR})
+    foreach(DEP ${${DEPENDS_VAR}})
+      file(APPEND ${BOOST_DEPENDENCY_GRAPHVIZ_FILE} 
+        "  \"${SUBDIR}\" -> \"${DEP}\";\n")
+    endforeach()
+  endif()
+endforeach()
+file(APPEND ${BOOST_DEPENDENCY_GRAPHVIZ_FILE} "}\n")

@@ -11,7 +11,6 @@ endif(BORLAND)
 
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
   set(BOOST_CONFIG_STATIC_THREAD_LIBS LINK_LIBS pthread rt)
-  message(STATUS "Extra libraries on Linux = ${BOOST_CONFIG_STATIC_THREAD_LIBS}")
 endif(CMAKE_SYSTEM_NAME MATCHES "Linux")
 
 boost_test_run(config_test_threaded config_test.cpp 
