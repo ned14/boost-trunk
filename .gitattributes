@@ -35779,6 +35779,7 @@ v4/libs/proto/doc/Jamfile.v2 svneol=native#text/plain
 v4/libs/proto/doc/acknowledgements.qbk svneol=native#text/plain
 v4/libs/proto/doc/calculator.qbk svneol=native#text/plain
 v4/libs/proto/doc/concepts/CallableTransform.xml svneol=native#text/xml
+v4/libs/proto/doc/concepts/ObjectTransform.xml svneol=native#text/xml
 v4/libs/proto/doc/concepts/PolymorphicFunctionObject.xml svneol=native#text/xml
 v4/libs/proto/doc/concepts/PrimitiveTransform.xml svneol=native#text/xml
 v4/libs/proto/doc/concepts/Transform.xml svneol=native#text/xml
