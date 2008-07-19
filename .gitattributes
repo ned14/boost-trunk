@@ -17886,6 +17886,7 @@ libs/spirit/test/karma/lit.cpp svneol=native#text/plain
 libs/spirit/test/karma/none.cpp svneol=native#text/plain
 libs/spirit/test/karma/optional.cpp svneol=native#text/plain
 libs/spirit/test/karma/pattern.cpp svneol=native#text/plain
+libs/spirit/test/karma/pattern2.cpp svneol=native#text/plain
 libs/spirit/test/karma/real_numerics.cpp svneol=native#text/plain
 libs/spirit/test/karma/right_alignment.cpp svneol=native#text/plain
 libs/spirit/test/karma/rule_fail.cpp svneol=native#text/plain
