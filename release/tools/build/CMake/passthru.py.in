@@ -41,6 +41,8 @@ try:
 except EnvironmentError, e:
     ex = e
 
+returncode = subproc.returncode
+
 if stdout:
     print stdout
 if stderr:
