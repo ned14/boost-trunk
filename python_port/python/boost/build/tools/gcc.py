@@ -186,7 +186,7 @@ def init(version = None, command = None, options = None):
         # creates empty object files. This allows the same Jamfiles to work
         # across the board. The null RC uses the assembler to create the empty
         # objects, so configure that.
-        rc_command = common.get_invocation_command('gcc', 'as', [], bin, path_last=True)
+        rc_command = common.get_invocation_command('gcc', 'as', [], ['bin'], path_last=True)
         rc_type = 'null'
     rc.configure(rc_command, condition, '<rc-type>' + rc_type)
 
@@ -666,23 +666,24 @@ if on_windows():
     flags('gcc', 'OPTIONS', ['<threading>multi'], ['-mthreads'])
 elif bjam.variable('UNIX'):
     jamuname = bjam.variable('JAMUNAME')
-    if jamuname.startswith('SunOS'):
+    host_os_name = jamuname[0]
+    if host_os_name.startswith('SunOS'):
         flags('gcc', 'OPTIONS', ['<threading>multi'], ['-pthreads'])
         flags('gcc', 'FINDLIBS-SA', [], ['rt'])
-    elif jamuname == 'BeOS':
+    elif host_os_name == 'BeOS':
         # BeOS has no threading options, don't set anything here.
         pass
-    elif jamuname.endswith('BSD'):
+    elif host_os_name.endswith('BSD'):
         flags('gcc', 'OPTIONS', ['<threading>multi'], ['-pthread'])
         # there is no -lrt on BSD
-    elif jamuname == 'DragonFly':
+    elif host_os_name == 'DragonFly':
         flags('gcc', 'OPTIONS', ['<threading>multi'], ['-pthread'])
         # there is no -lrt on BSD - DragonFly is a FreeBSD variant,
         # which anoyingly doesn't say it's a *BSD.
-    elif jamuname == 'IRIX':
+    elif host_os_name == 'IRIX':
         # gcc on IRIX does not support multi-threading, don't set anything here.
         pass
-    elif jamuname == 'Darwin':
+    elif host_os_name == 'Darwin':
         # Darwin has no threading options, don't set anything here.
         pass
     else:
