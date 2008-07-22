@@ -7276,6 +7276,7 @@ libs/bimap/test/test_tagged.cpp svneol=native#text/plain
 libs/bind/bind.html svneol=native#text/html
 libs/bind/bind_as_compose.cpp svneol=native#text/plain
 libs/bind/bind_visitor.cpp svneol=native#text/plain
+libs/bind/doc/Jamfile.v2 svneol=native#text/plain
 libs/bind/doc/ref.xml svneol=native#text/xml
 libs/bind/index.html svneol=native#text/html
 libs/bind/mem_fn.html svneol=native#text/html
