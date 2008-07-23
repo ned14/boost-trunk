@@ -14978,7 +14978,7 @@ libs/numeric/conversion/doc/conversion_traits.qbk svneol=native#text/plain
 libs/numeric/conversion/doc/converter.qbk svneol=native#text/plain
 libs/numeric/conversion/doc/converter_policies.qbk svneol=native#text/plain
 libs/numeric/conversion/doc/definitions.qbk svneol=native#text/plain
-libs/numeric/conversion/doc/html/HTML.manifest -text
+libs/numeric/conversion/doc/html/HTML.manifest svneol=native#text/plain
 libs/numeric/conversion/doc/html/boost_numericconversion/bounds___traits_class.html svneol=native#text/html
 libs/numeric/conversion/doc/html/boost_numericconversion/conversion_traits___traits_class.html svneol=native#text/html
 libs/numeric/conversion/doc/html/boost_numericconversion/converter___function_object.html svneol=native#text/html
@@ -15042,7 +15042,7 @@ libs/numeric/interval/test/overflow.cpp svneol=native#text/plain
 libs/numeric/interval/test/pi.cpp svneol=native#text/plain
 libs/numeric/interval/test/pow.cpp svneol=native#text/plain
 libs/numeric/interval/test/test_float.cpp svneol=native#text/plain
-libs/numeric/sublibs -text
+libs/numeric/sublibs svneol=native#text/plain
 libs/numeric/ublas/bench1/Jamfile.v2 svneol=native#text/plain
 libs/numeric/ublas/bench1/bench1.cpp svneol=native#text/plain
 libs/numeric/ublas/bench1/bench1.hpp svneol=native#text/plain
