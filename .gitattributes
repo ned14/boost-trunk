@@ -11297,6 +11297,7 @@ libs/integer/test/cstdint_test.cpp svneol=native#text/plain
 libs/integer/test/integer_mask_test.cpp svneol=native#text/plain
 libs/integer/test/integer_test.cpp svneol=native#text/plain
 libs/integer/test/integer_traits_test.cpp svneol=native#text/plain
+libs/integer/test/issue_2134.cpp svneol=native#text/plain
 libs/integer/test/static_log2_test.cpp svneol=native#text/plain
 libs/integer/test/static_min_max_test.cpp svneol=native#text/plain
 libs/interprocess/doc/Jamfile.v2 svneol=native#text/plain
