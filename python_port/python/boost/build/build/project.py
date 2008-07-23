@@ -172,7 +172,7 @@ class ProjectRegistry:
             print "error: Did not find Jamfile or project-root.jam in any parent directory."
             sys.exit(1)
     
-        return load(os.path.dirname(found[0]))
+        return self.load(os.path.dirname(found[0]))
 
     def act_as_jamfile(self, module, location):
         """Makes the specified 'module' act as if it were a regularly loaded Jamfile 
@@ -212,7 +212,7 @@ class ProjectRegistry:
         
             project_module = self.module_name(location)
             if not project_module in self.jamfile_modules and \
-               boost.build.util.path.glob(location, self.JAMROOT + self.JAMFILE):
+               boost.build.util.path.glob([location], self.JAMROOT + self.JAMFILE):
                 project_module = self.load(location)
 
         return project_module
@@ -251,7 +251,7 @@ class ProjectRegistry:
         else:
             jamfile = self.dir2jamfile.get(dir)
             if not jamfile:
-                jamfile = boost.build.util.path.glob(dir, self.JAMFILE)
+                jamfile = boost.build.util.path.glob([dir], self.JAMFILE)
                 self.dir2jamfile[dir] = jamfile
             jamfile_glob = jamfile
 
@@ -286,8 +286,7 @@ Please consult the documentation at 'http://boost.org/boost-build2'."""
         Effect of calling this rule twice with the same 'dir' is underfined."""
       
         # See if the Jamfile is where it should be.
-
-        jamfile_to_load = boost.build.util.path.glob(dir, self.JAMROOT)
+        jamfile_to_load = boost.build.util.path.glob([dir], self.JAMROOT)
         if not jamfile_to_load:
             jamfile_to_load = self.find_jamfile(dir)
         else:
@@ -311,7 +310,7 @@ Please consult the documentation at 'http://boost.org/boost-build2'."""
         # loaded the current Jamfile with use-project. Do a final check to make
         # sure it's not loaded already.
         if not jamfile_module in self.jamfile_modules:
-            self.jamfile_modules[jamfile_module] = 1
+            self.jamfile_modules[jamfile_module] = True
 
             # FIXME:
             # mark-as-user $(jamfile-module) ;
@@ -395,16 +394,16 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         else:
             attributes.set("source-location", "", exact=1)
 
-        attributes.set("requirements", property_set.empty(), exact=1)
-        attributes.set("usage-requirements", property_set.empty(), exact=1)
-        attributes.set("default-build", [], exact=1)
-        attributes.set("projects-to-build", [], exact=1)
-        attributes.set("project-root", None, exact=1)
-        attributes.set("build-dir", None, exact=1)
+        attributes.set("requirements", property_set.empty(), exact=True)
+        attributes.set("usage-requirements", property_set.empty(), exact=True)
+        attributes.set("default-build", [], exact=True)
+        attributes.set("projects-to-build", [], exact=True)
+        attributes.set("project-root", None, exact=True)
+        attributes.set("build-dir", None, exact=True)
         
         self.project_rules_.init_project(module_name)
 
-        jamroot = 0
+        jamroot = False
 
         parent_module = None;
         if module_name == "site-config":
@@ -422,7 +421,7 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
             # If it's jamroot, inherit from user-config.
             if location:
                 parent_module = "user-config" ;                
-                jamroot = 1 ;
+                jamroot = True ;
                 
         if parent_module:
             self.inherit_attributes(module_name, parent_module)
@@ -461,9 +460,9 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         #                                 [ path.make [ modules.binding $(parent-module) ] ] ] ;
         #    }
         
-        attributes.set("project-root", pattributes.get("project-root"), exact=1)
-        attributes.set("default-build", pattributes.get("default-build"), exact=1)
-        attributes.set("requirements", pattributes.get("requirements"), exact=1)
+        attributes.set("project-root", pattributes.get("project-root"), exact=True)
+        attributes.set("default-build", pattributes.get("default-build"), exact=True)
+        attributes.set("requirements", pattributes.get("requirements"), exact=True)
         attributes.set("usage-requirements",
                        pattributes.get("usage-requirements"), exact=1)
 

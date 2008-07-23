@@ -835,8 +835,14 @@ def glob(dirs, patterns, exclude_patterns=None):
         [ glob . : *.cpp ] 
         [ glob . : */build/Jamfile ]
     """
+
+    assert(isinstance(patterns, list))
+    assert(isinstance(dirs, list))
+
     if not exclude_patterns:
         exclude_patterns = []
+    else:
+       assert(isinstance(exclude_patterns, list))
 
     real_patterns = [os.path.join(d, p) for p in patterns for d in dirs]    
     real_exclude_patterns = [os.path.join(d, p) for p in exclude_patterns
@@ -867,14 +873,25 @@ def glob_tree(roots, patterns, exclude_patterns=None):
     return result
 
 def glob_in_parents(dir, patterns, upper_limit=None):
-    result = []
-    absolute_dir = os.path.join(os.getcwd(), dir)
+    """Recursive version of GLOB which globs upward.
+    FixMe: This is not an optimal solution"""    
+    
+    assert(isinstance(dir, str))
+    assert(isinstance(patterns, list))
 
+    result = []
+
+    # first, go up one directory
+    absolute_dir = os.path.join(os.path.split(os.getcwd())[0], dir)
     while absolute_dir:
-        result = glob(absolute_dir, patterns)
+        result = glob([absolute_dir], patterns)
         if result:
             break
-        absolute_dir = os.path.dirname(absolute_dir)
+        new_dir = os.path.join(os.path.split(absolute_dir)[0], dir)        
+        # If we can not get up, exit with empty result
+        if new_dir == absolute_dir:
+            break
+        absolute_dir = new_dir
 
     return result
 
