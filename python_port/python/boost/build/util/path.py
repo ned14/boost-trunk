@@ -873,23 +873,23 @@ def glob_tree(roots, patterns, exclude_patterns=None):
     return result
 
 def glob_in_parents(dir, patterns, upper_limit=None):
-    """Recursive version of GLOB which globs upward.
-    FixMe: This is not an optimal solution"""    
+    """Recursive version of GLOB which glob sall parent directories
+    of dir until the first match is found. Returns an empty result if no match
+    is found"""    
     
     assert(isinstance(dir, str))
     assert(isinstance(patterns, list))
 
     result = []
 
-    # first, go up one directory
-    absolute_dir = os.path.join(os.path.split(os.getcwd())[0], dir)
+    absolute_dir = os.path.join(os.getcwd(), dir)
+    absolute_dir = os.path.normpath(absolute_dir)
     while absolute_dir:
-        result = glob([absolute_dir], patterns)
-        if result:
-            break
-        new_dir = os.path.join(os.path.split(absolute_dir)[0], dir)        
-        # If we can not get up, exit with empty result
+        new_dir = os.path.split(absolute_dir)[0]
         if new_dir == absolute_dir:
+            break
+        result = glob([new_dir], patterns)
+        if result:
             break
         absolute_dir = new_dir
 
