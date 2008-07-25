@@ -21,12 +21,6 @@ libs/spirit/doc/html/images/Thumbs.db
 libs/spirit/doc/html/spirit2_HTML.manifest
 libs/spirit/phoenix/doc/html/quickbook_HTML.manifest
 libs/test/build/bin
-libs/test/build/msvc71_proj/*.ncb
-libs/test/build/msvc71_proj/*.rsp
-libs/test/build/msvc71_proj/*.suo
-libs/test/build/msvc71_proj/debug
-libs/test/build/msvc71_proj/pattern.*
-libs/test/build/msvc71_proj/release
 libs/test/example/bin
 libs/test/test/auto-link-test/res
 libs/test/test/bin
