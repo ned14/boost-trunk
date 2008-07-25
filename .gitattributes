@@ -19227,6 +19227,7 @@ libs/utility/swap/test/specialized_in_other.cpp svneol=native#text/plain
 libs/utility/swap/test/specialized_in_std.cpp svneol=native#text/plain
 libs/utility/swap/test/swap_arrays.cpp svneol=native#text/plain
 libs/utility/swap/test/swap_test_class.hpp svneol=native#text/plain
+libs/utility/swap/test/test_adl_barrier.cpp svneol=native#text/plain
 libs/utility/test/Jamfile.v2 svneol=native#text/plain
 libs/utility/test/next_prior_test.cpp svneol=native#text/plain
 libs/utility/test/result_of_test.cpp svneol=native#text/plain
