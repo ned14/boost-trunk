@@ -18313,6 +18313,22 @@ libs/test/doc/html/utf/user-guide/usage-variants/extern-test-runner-variant.html
 libs/test/doc/html/utf/user-guide/usage-variants/extern-test-runner.html svneol=native#text/html
 libs/test/doc/html/utf/user-guide/usage-variants/single-header-variant.html svneol=native#text/html
 libs/test/doc/html/utf/user-guide/usage-variants/static-lib-variant.html svneol=native#text/html
+libs/test/doc/img/boost.test.logo.png -text
+libs/test/doc/img/class-hier.jpg -text
+libs/test/doc/img/level.png -text
+libs/test/doc/img/post_build_event.jpg -text
+libs/test/doc/img/post_build_out.jpg -text
+libs/test/doc/img/run_args.jpg -text
+libs/test/doc/js/boost-test.js -text svneol=native#application/x-javascript
+libs/test/doc/style/boostbook.css svneol=native#text/css
+libs/test/doc/style/btl-headers.css svneol=native#text/css
+libs/test/doc/style/btl-inline.css svneol=native#text/css
+libs/test/doc/style/btl-links.css svneol=native#text/css
+libs/test/doc/style/btl-lists.css svneol=native#text/css
+libs/test/doc/style/btl-paragraphs.css svneol=native#text/css
+libs/test/doc/style/btl-structure.css svneol=native#text/css
+libs/test/doc/style/btl-tables.css svneol=native#text/css
+libs/test/doc/style/style.css svneol=native#text/css
 libs/test/example/Jamfile.v2 svneol=native#text/plain
 libs/test/example/cla/Jamfile svneol=native#text/plain
 libs/test/example/cla/assign_to.cpp svneol=native#text/plain
