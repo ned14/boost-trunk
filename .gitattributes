@@ -19298,6 +19298,7 @@ libs/utility/swap/test/primitive.cpp svneol=native#text/plain
 libs/utility/swap/test/root_header_1.cpp svneol=native#text/plain
 libs/utility/swap/test/root_header_2.cpp svneol=native#text/plain
 libs/utility/swap/test/specialized_in_boost.cpp svneol=native#text/plain
+libs/utility/swap/test/specialized_in_boost_and_other.cpp svneol=native#text/plain
 libs/utility/swap/test/specialized_in_global.cpp svneol=native#text/plain
 libs/utility/swap/test/specialized_in_other.cpp svneol=native#text/plain
 libs/utility/swap/test/specialized_in_std.cpp svneol=native#text/plain
