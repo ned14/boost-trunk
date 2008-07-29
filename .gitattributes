@@ -5319,6 +5319,7 @@ boost/spirit/include/classic_sequential_and.hpp svneol=native#text/plain
 boost/spirit/include/classic_sequential_or.hpp svneol=native#text/plain
 boost/spirit/include/classic_skipper.hpp svneol=native#text/plain
 boost/spirit/include/classic_skipper_fwd.hpp svneol=native#text/plain
+boost/spirit/include/classic_spirit.hpp svneol=native#text/plain
 boost/spirit/include/classic_static.hpp svneol=native#text/plain
 boost/spirit/include/classic_stored_rule.hpp svneol=native#text/plain
 boost/spirit/include/classic_stored_rule_fwd.hpp svneol=native#text/plain
