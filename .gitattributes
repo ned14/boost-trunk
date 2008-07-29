@@ -2019,7 +2019,6 @@ boost/iostreams/detail/enable_if_stream.hpp svneol=native#text/plain
 boost/iostreams/detail/error.hpp svneol=native#text/plain
 boost/iostreams/detail/execute.hpp svneol=native#text/plain
 boost/iostreams/detail/file_handle.hpp svneol=native#text/plain
-boost/iostreams/detail/file_times.hpp svneol=native#text/plain
 boost/iostreams/detail/forward.hpp svneol=native#text/plain
 boost/iostreams/detail/fstream.hpp svneol=native#text/plain
 boost/iostreams/detail/functional.hpp svneol=native#text/plain
