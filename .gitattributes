@@ -20610,7 +20610,7 @@ tools/jam/doc/bjam.qbk svneol=native#text/plain
 tools/jam/doc/build.jam svneol=native#text/plain
 tools/jam/doc/history.qbk svneol=native#text/plain
 tools/jam/index.html svneol=native#text/html
-tools/jam/src/Jambase svneol=native#text/plain
+tools/jam/src/Jambase -text
 tools/jam/src/boehm_gc/AmigaOS.c svneol=native#text/plain
 tools/jam/src/boehm_gc/BCC_MAKEFILE svneol=native#text/plain
 tools/jam/src/boehm_gc/ChangeLog svneol=native#text/plain
@@ -20792,11 +20792,11 @@ tools/jam/src/boehm_gc/threadlibs.c svneol=native#text/plain
 tools/jam/src/boehm_gc/typd_mlc.c svneol=native#text/plain
 tools/jam/src/boehm_gc/version.h svneol=native#text/plain
 tools/jam/src/boehm_gc/win32_threads.c svneol=native#text/plain
-tools/jam/src/boost-jam.spec svneol=native#text/plain
+tools/jam/src/boost-jam.spec -text
 tools/jam/src/build.bat svneol=native#text/plain
 tools/jam/src/build.jam svneol=native#text/plain
 tools/jam/src/build.sh svneol=native#text/x-sh
-tools/jam/src/build_vms.com -text svneol=unset#application/octet-stream
+tools/jam/src/build_vms.com -text
 tools/jam/src/builtins.c svneol=native#text/plain
 tools/jam/src/builtins.h svneol=native#text/plain
 tools/jam/src/bump_version.py svneol=native#text/x-python
@@ -20806,11 +20806,11 @@ tools/jam/src/command.c svneol=native#text/plain
 tools/jam/src/command.h svneol=native#text/plain
 tools/jam/src/compile.c svneol=native#text/plain
 tools/jam/src/compile.h svneol=native#text/plain
-tools/jam/src/debian/changelog svneol=native#text/plain
-tools/jam/src/debian/control svneol=native#text/plain
-tools/jam/src/debian/copyright svneol=native#text/plain
-tools/jam/src/debian/jam.man.sgml svneol=native#text/plain
-tools/jam/src/debian/rules svneol=native#text/plain
+tools/jam/src/debian/changelog -text
+tools/jam/src/debian/control -text
+tools/jam/src/debian/copyright -text
+tools/jam/src/debian/jam.man.sgml -text
+tools/jam/src/debian/rules -text
 tools/jam/src/debug.c svneol=native#text/plain
 tools/jam/src/debug.h svneol=native#text/plain
 tools/jam/src/execcmd.h svneol=native#text/plain
@@ -20844,8 +20844,8 @@ tools/jam/src/jambase.c svneol=native#text/plain
 tools/jam/src/jambase.h svneol=native#text/plain
 tools/jam/src/jamgram.c svneol=native#text/plain
 tools/jam/src/jamgram.h svneol=native#text/plain
-tools/jam/src/jamgram.y svneol=native#text/plain
-tools/jam/src/jamgram.yy svneol=native#text/plain
+tools/jam/src/jamgram.y -text
+tools/jam/src/jamgram.yy -text
 tools/jam/src/jamgramtab.h svneol=native#text/plain
 tools/jam/src/lists.c svneol=native#text/plain
 tools/jam/src/lists.h svneol=native#text/plain
@@ -20900,7 +20900,6 @@ tools/jam/src/w32_getreg.c svneol=native#text/plain
 tools/jam/src/yyacc.c svneol=native#text/plain
 tools/jam/test/action_status.jam svneol=native#text/plain
 tools/jam/test/actions_quietly.jam svneol=native#text/plain
-tools/jam/test/builtin_normalize_path.jam svneol=native#text/plain
 tools/jam/test/builtin_shell.jam svneol=native#text/plain
 tools/jam/test/builtin_w32_getregnames.jam svneol=native#text/plain
 tools/jam/test/option_d2.jam svneol=native#text/plain
