@@ -186,7 +186,7 @@ def init(version = None, command = None, options = None):
         # creates empty object files. This allows the same Jamfiles to work
         # across the board. The null RC uses the assembler to create the empty
         # objects, so configure that.
-        rc_command = common.get_invocation_command('gcc', 'as', [], ['bin'], path_last=True)
+        rc_command = common.get_invocation_command('gcc', 'as', [], [bin], path_last=True)
         rc_type = 'null'
     rc.configure(rc_command, condition, '<rc-type>' + rc_type)
 
