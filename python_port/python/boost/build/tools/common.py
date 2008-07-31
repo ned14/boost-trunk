@@ -806,11 +806,11 @@ def init(manager):
         __IGNORE = ''
         __LN = 'ln'
         
-    # FIXME: piecemeal together existing
-    engine.register_action("common.Clean", __RM + ' "$(>)"')
+    engine.register_action("common.Clean", __RM + ' "$(>)"',
+                           flags=['piecemeal', 'together', 'existing'])
     engine.register_action("common.copy", __CP + ' "$(>)" "$(<)"')
-    # FIXME: quietly updated piecemeal together
-    engine.register_action("common.RmTemps", __RM + ' "$(>)" ' + __IGNORE)
+    engine.register_action("common.RmTemps", __RM + ' "$(>)" ' + __IGNORE,
+                           flags=['quietly', 'updated', 'piecemeal', 'together'])
 
     engine.register_action("common.hard-link", 
         __RM + ' "$(<)" 2$(NULL_OUT) $(NULL_OUT)' + os.linesep +

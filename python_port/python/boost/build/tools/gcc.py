@@ -619,8 +619,6 @@ def gcc_archive(targets, sources, properties):
     # many files because it will no longer execute the action directly and blow
     # the line length limit. Instead we remove the file in a different action,
     # just before building the archive.
-    #
-    # FIXME:
     clean = targets[0] + '(clean)'
     bjam.call('TEMPORARY', clean)
     bjam.call('NOCARE', clean)
@@ -636,10 +634,10 @@ def gcc_archive(targets, sources, properties):
 # without replacement".
 # The letter 'c' suppresses the warning in case the archive does not exists yet.
 # That warning is produced only on some platforms, for whatever reasons.
-#FIXME: This was originally piecemeal
 engine.register_action('gcc.archive',
                        '"$(.AR)" $(AROPTIONS) rc "$(<)" "$(>)"',
-                       function=gcc_archive)
+                       function=gcc_archive,
+                       flags=['piecemeal'])
 
 def gcc_link_dll(targets, sources, properties):
     engine = get_manager().engine()

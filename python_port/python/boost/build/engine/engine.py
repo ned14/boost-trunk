@@ -6,6 +6,8 @@
 
 bjam_interface = __import__('bjam')
 
+import operator
+
 class BjamAction:
     """Class representing bjam action defined from Python."""
     
@@ -36,6 +38,12 @@ class BjamNativeAction:
             bjam_interface.call("set-update-action", self.action_name,
                                 targets, sources, [])
         
+action_modifiers = {"updated": 0x01,
+                    "together": 0x02,
+                    "ignore": 0x04,
+                    "quietly": 0x08,
+                    "piecemeal": 0x10,
+                    "existing": 0x20}
 
 class Engine:
     """ The abstract interface to a build engine.
@@ -87,7 +95,7 @@ class Engine:
             targets = [targets]
         self.do_set_update_action (action_name, targets, sources, properties)
 
-    def register_action (self, action_name, command, bound_list = [], flags = 0,
+    def register_action (self, action_name, command, bound_list = [], flags = [],
                          function = None):
         """Creates a new build engine action.
 
@@ -106,7 +114,12 @@ class Engine:
         if self.actions.has_key(action_name):
             raise "Bjam action %s is already defined" % action_name
 
-        bjam_interface.define_action(action_name, command, bound_list, flags)
+        assert(isinstance(flags, list))
+
+        bjam_flags = reduce(operator.or_,
+                            (action_modifiers[flag] for flag in flags), 0)
+
+        bjam_interface.define_action(action_name, command, bound_list, bjam_flags)
 
         self.actions[action_name] = BjamAction(action_name, function)
 
