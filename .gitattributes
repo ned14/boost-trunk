@@ -39282,7 +39282,7 @@ v4/libs/wave/samples/waveidl/idl.cpp svneol=native#text/plain
 v4/libs/wave/samples/waveidl/idl.hpp svneol=native#text/plain
 v4/libs/wave/samples/waveidl/idl_config.hpp svneol=native#text/plain
 v4/libs/wave/samples/waveidl/idl_version.hpp svneol=native#text/plain
-v4/libs/wave/samples/waveidl/idllexer/idl.re -text
+v4/libs/wave/samples/waveidl/idllexer/idl.re svneol=native#text/plain
 v4/libs/wave/samples/waveidl/idllexer/idl_lex_interface.hpp svneol=native#text/plain
 v4/libs/wave/samples/waveidl/idllexer/idl_lex_iterator.hpp svneol=native#text/plain
 v4/libs/wave/samples/waveidl/idllexer/idl_re.cpp svneol=native#text/plain
