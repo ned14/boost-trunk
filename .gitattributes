@@ -25650,11 +25650,15 @@ v4/boost/tr1/tr1/sun/vector.SUNWCCh -text
 v4/boost/tr1/tr1/tuple -text
 v4/boost/tr1/tr1/type_traits -text
 v4/boost/tr1/tr1/typeinfo -text
+v4/boost/tr1/tr1/unordered_map svneol=native#text/plain
+v4/boost/tr1/tr1/unordered_set svneol=native#text/plain
 v4/boost/tr1/tr1/utility -text
 v4/boost/tr1/tr1/valarray -text
 v4/boost/tr1/tr1/vector -text
 v4/boost/tr1/tuple.hpp svneol=native#text/plain
 v4/boost/tr1/type_traits.hpp svneol=native#text/plain
+v4/boost/tr1/unordered_map.hpp svneol=native#text/plain
+v4/boost/tr1/unordered_set.hpp svneol=native#text/plain
 v4/boost/tr1/utility.hpp svneol=native#text/plain
 v4/boost/tuple/detail/tuple_basic.hpp svneol=native#text/plain
 v4/boost/tuple/detail/tuple_basic_no_partial_spec.hpp svneol=native#text/plain
@@ -38700,6 +38704,8 @@ v4/libs/tr1/test/cyclic_depend/shared_ptr.cpp svneol=native#text/plain
 v4/libs/tr1/test/cyclic_depend/tuple.cpp svneol=native#text/plain
 v4/libs/tr1/test/cyclic_depend/tuple_fwd.cpp svneol=native#text/plain
 v4/libs/tr1/test/cyclic_depend/tuple_tie.cpp svneol=native#text/plain
+v4/libs/tr1/test/cyclic_depend/unordered_map.cpp svneol=native#text/plain
+v4/libs/tr1/test/cyclic_depend/unordered_set.cpp svneol=native#text/plain
 v4/libs/tr1/test/run_complex_overloads.cpp svneol=native#text/plain
 v4/libs/tr1/test/run_random.cpp svneol=native#text/plain
 v4/libs/tr1/test/std_headers/test_algorithm.cpp svneol=native#text/plain
@@ -38767,6 +38773,8 @@ v4/libs/tr1/test/test_tuple.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_tuple_tricky.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_type_traits.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_type_traits_header.cpp svneol=native#text/plain
+v4/libs/tr1/test/test_unordered_map.cpp svneol=native#text/plain
+v4/libs/tr1/test/test_unordered_set.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_weak_ptr_header.cpp svneol=native#text/plain
 v4/libs/tr1/test/type_traits/tr1_add_const_test.cpp svneol=native#text/plain
 v4/libs/tr1/test/type_traits/tr1_add_cv_test.cpp svneol=native#text/plain
@@ -38827,6 +38835,7 @@ v4/libs/tr1/test/type_traits/tr1_tky_incomp_type_test.cpp svneol=native#text/pla
 v4/libs/tr1/test/type_traits/tr1_tky_partial_spec_test.cpp svneol=native#text/plain
 v4/libs/tr1/test/type_traits/tr1_tricky_add_pointer_test.cpp svneol=native#text/plain
 v4/libs/tr1/test/type_traits/tr1_tricky_is_enum_test.cpp svneol=native#text/plain
+v4/libs/tr1/test/unordered_concepts.hpp svneol=native#text/plain
 v4/libs/tr1/test/verify_functor.hpp svneol=native#text/plain
 v4/libs/tr1/test/verify_return.hpp svneol=native#text/plain
 v4/libs/tuple/doc/design_decisions_rationale.html svneol=native#text/html
