@@ -1,4 +1,4 @@
-//  (C) Copyright Gennadiy Rozental 2001-2007.
+//  (C) Copyright Gennadiy Rozental 2001-2008.
 //  Distributed under the Boost Software License, Version 1.0.
 //  (See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt)
@@ -23,7 +23,7 @@
 
 #include <boost/test/detail/unit_test_parameters.hpp>
 
-#if !defined(__BORLANDC__) && BOOST_WORKAROUND( BOOST_MSVC, >= 1300 )
+#if !defined(__BORLANDC__) && !BOOST_WORKAROUND( BOOST_MSVC, < 1300 )
 #include <boost/test/utils/iterator/token_iterator.hpp>
 #endif
 
@@ -100,10 +100,12 @@ public:
         const_string    m_value;
     };
     // Constructor
+#if defined(__BORLANDC__) || BOOST_WORKAROUND( BOOST_MSVC, < 1300 )
+    explicit        test_case_filter( const_string ) : m_depth( 0 ) {}
+#else
     explicit        test_case_filter( const_string tc_to_tun ) 
     : m_depth( 0 )
     {
-#if !defined(__BORLANDC__) && BOOST_WORKAROUND( BOOST_MSVC, >= 1300 )
         string_token_iterator tit( tc_to_tun, (dropped_delimeters = "/", kept_delimeters = dt_none) );
 
         while( tit != string_token_iterator() ) {
@@ -113,8 +115,8 @@ public:
 
             ++tit;           
         }
-#endif
     }
+#endif
     
     void            filter_unit( test_unit const& tu )
     {
@@ -135,6 +137,11 @@ public:
     // test tree visitor interface
     virtual void    visit( test_case const& tc )
     {
+        if( m_depth < m_filters.size() ) {
+            tc.p_enabled.value = false;
+            return;
+        }
+
         filter_unit( tc );
 
         --m_depth;

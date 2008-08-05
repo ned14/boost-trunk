@@ -6,6 +6,11 @@
 #   License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 #   http://www.boost.org/LICENSE_1_0.txt)
 #==============================================================================
+project spirit_v2-tests
+    : requirements <toolset>gcc:<cxxflags>-ftemplate-depth-300
+    :
+    :
+    ;
 
 # bring in rules for testing
 import testing ;
@@ -61,6 +66,7 @@ import testing ;
     [ run karma/center_alignment.cpp        : : : : ]
     [ run karma/char.cpp                    : : : : karma_char ]
     [ run karma/delimiter.cpp               : : : : ]
+    [ run karma/eol.cpp                     : : : : karma_eol ]
     [ run karma/eps.cpp                     : : : : karma_eps ]
     [ run karma/format_manip.cpp            : : : : ]
     [ run karma/functor.cpp                 : : : : karma_functor ]
@@ -73,7 +79,8 @@ import testing ;
     [ run karma/lit.cpp                     : : : : karma_lit ]
     [ run karma/none.cpp                    : : : : karma_none ]
     [ run karma/optional.cpp                : : : : karma_optional ]
-    [ run karma/pattern.cpp                 : : : : ]
+    [ run karma/pattern.cpp                 : : : : karma_pattern ]
+    [ run karma/pattern2.cpp                : : : : karma_pattern2 ]
     [ run karma/real_numerics.cpp           : : : : ]
     [ run karma/right_alignment.cpp         : : : : ]
     [ run karma/sequence.cpp                : : : : karma_sequence ]

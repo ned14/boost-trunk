@@ -194,7 +194,7 @@ rule join ( elements + )
 }
 
 
-# If 'path' is relative, it is rooted at 'root'. Otherwise, it's unchanged.
+# If 'path' is relative, it is rooted at 'root'. Otherwise, it is unchanged.
 #
 rule root ( path root )
 {
@@ -292,13 +292,15 @@ local rule .glob-tree ( roots * : patterns * : exclude-patterns * )
     {
         excluded = [ GLOB $(roots) : $(exclude-patterns) ] ;
     }
-    local result = [ set.difference
-        [ GLOB $(roots) : $(patterns) ] : $(excluded) ] ;
+    local result = [ set.difference [ GLOB $(roots) : $(patterns) ] :
+        $(excluded) ] ;
     local subdirs ;
-    for local d in [ set.difference
-        [ GLOB $(roots) : * ] : $(excluded) ]
+    for local d in [ set.difference [ GLOB $(roots) : * ] : $(excluded) ]
     {
-        if ! ( $(d:D=) in . .. ) && ! [ CHECK_IF_FILE $(d) ] { subdirs += $(d) ; }
+        if ! ( $(d:D=) in . .. ) && ! [ CHECK_IF_FILE $(d) ]
+        {
+            subdirs += $(d) ;
+        }
     }
     if $(subdirs)
     {
@@ -308,7 +310,7 @@ local rule .glob-tree ( roots * : patterns * : exclude-patterns * )
 }
 
 
-#    Returns true is the specified file exists.
+# Returns true is the specified file exists.
 #
 rule exists ( file )
 {

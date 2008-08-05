@@ -1,4 +1,4 @@
-//  (C) Copyright Gennadiy Rozental 2005-2007.
+//  (C) Copyright Gennadiy Rozental 2005-2008.
 //  Distributed under the Boost Software License, Version 1.0.
 //  (See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt)
@@ -190,7 +190,7 @@ public:
     struct priority_order {
         bool operator()( test_observer* lhs, test_observer* rhs ) const
         {
-            return (lhs->priority() < rhs->priority()) || (lhs->priority() == rhs->priority()) && (lhs < rhs);
+            return (lhs->priority() < rhs->priority()) || ((lhs->priority() == rhs->priority()) && (lhs < rhs));
         }
     };
 

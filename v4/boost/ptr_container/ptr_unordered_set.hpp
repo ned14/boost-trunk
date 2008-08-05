@@ -105,11 +105,12 @@ namespace boost
 
         BOOST_PTR_CONTAINER_DEFINE_RELEASE_AND_CLONE( ptr_unordered_set,
                                                       base_type,
-                                                      this_type );
-        BOOST_PTR_CONTAINER_DEFINE_COPY_CONSTRUCTORS( ptr_unordered_set, base_type )
+                                                      this_type )
+        
+        BOOST_PTR_CONTAINER_DEFINE_COPY_CONSTRUCTORS( ptr_unordered_set, 
+                                                      base_type )
                 
     };
-        
         
         
     template
@@ -193,9 +194,10 @@ namespace boost
 
         BOOST_PTR_CONTAINER_DEFINE_RELEASE_AND_CLONE( ptr_unordered_multiset, 
                                                       base_type,
-                                                      this_type );   
+                                                      this_type )
+         
         BOOST_PTR_CONTAINER_DEFINE_COPY_CONSTRUCTORS( ptr_unordered_multiset, 
-                                                      base_type );     
+                                                      base_type )     
 
     };
 

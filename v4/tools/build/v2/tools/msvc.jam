@@ -86,13 +86,13 @@ nl = "
 # "x.y" - refers to a detected version;
 # "a.b" - refers to an undetected version.
 #
-# Note: for free VC7.1 tools, we don't correctly find vcvars32.bar when user
+# Note: for free VC7.1 tools, we do not correctly find vcvars32.bar when user
 # explicitly provides a path.
 #
 rule init (
     # The msvc version being configured. When omitted the tools invoked when no
     # explicit version is given will be configured.
-    version ? 
+    version ?
 
     # The command used to invoke the compiler. If not specified:
     #   - if version is given, default location for that version will be
@@ -105,7 +105,11 @@ rule init (
     #     searched.
     : command *
 
-    # Options can include:
+    # Options may include:
+    #
+    #     All options shared by multiple toolset types as handled by the
+    #   common.handle-options() rule, e.g. <cflags>, <compileflags>, <cxxflags>,
+    #   <fflags> & <linkflags>.
     #
     #   <assembler>
     #   <compiler>
@@ -322,7 +326,7 @@ local rule configure-really ( version ? : options * )
             # be used instead. Setup scripts may be global or arhitecture/
             # /platform/cpu specific. Setup options are used only in case of
             # global setup scripts.
-            
+
             # Default setup scripts provided with different VC distributions:
             #
             #   VC 7.1 had only the vcvars32.bat script specific to 32 bit i386
@@ -384,7 +388,7 @@ local rule configure-really ( version ? : options * )
             if ! [ os.name ] in NT
             {
                 setup-prefix = "cmd.exe /S /C call " ;
-                setup-suffix = " >nul \"&&\" " ;
+                setup-suffix = " \">nul\" \"&&\" " ;
             }
 
             for local c in $(cpu)
@@ -398,7 +402,7 @@ local rule configure-really ( version ? : options * )
                     if $(global-setup)-is-not-empty
                     {
                         setup-$(c) = $(global-setup) ;
-                        
+
                         # If needed we can easily add using configuration flags
                         # here for overriding which options get passed to the
                         # global setup command for which target platform:
@@ -790,7 +794,7 @@ flags msvc.compile INCLUDES <include> ;
 
 rule get-rspline ( target : lang-opt )
 {
-    CC_RSPLINE on $(target) = [ on $(target) return $(lang-opt) -U$(UNDEFS) $(CFLAGS) $(C++FLAGS) $(OPTIONS) -c $(nl)-D$(DEFINES) $(nl)\"-I$(INCLUDES)\" ] ;
+    CC_RSPLINE on $(target) = [ on $(target) return $(lang-opt) -U$(UNDEFS) $(CFLAGS) $(C++FLAGS) $(OPTIONS) -c $(nl)-D$(DEFINES) $(nl)\"-I$(INCLUDES:W)\" ] ;
 }
 
 
@@ -875,7 +879,7 @@ rule compile.c++.pch ( targets + : sources * : properties * )
 
 actions compile.rc
 {
-    $(.RC) -l 0x409 -U$(UNDEFS) -D$(DEFINES) -I"$(INCLUDES)" -fo "$(<:W)" "$(>:W)"
+    $(.RC) -l 0x409 -U$(UNDEFS) -D$(DEFINES) -I"$(INCLUDES:W)" -fo "$(<:W)" "$(>:W)"
 }
 
 
@@ -885,7 +889,7 @@ TOUCH_FILE = [ common.file-touch-command ] ;
 
 actions compile.idl
 {
-    $(.IDL) /nologo @"@($(<[1]:W).rsp:E=$(nl)"$(>:W)" $(nl)-D$(DEFINES) $(nl)"-I$(INCLUDES)" $(nl)-U$(UNDEFS) $(nl)$(MIDLFLAGS) $(nl)/tlb "$(<[1]:W)" $(nl)/h "$(<[2]:W)" $(nl)/iid "$(<[3]:W)" $(nl)/proxy "$(<[4]:W)" $(nl)/dlldata "$(<[5]:W)")"
+    $(.IDL) /nologo @"@($(<[1]:W).rsp:E=$(nl)"$(>:W)" $(nl)-D$(DEFINES) $(nl)"-I$(INCLUDES:W)" $(nl)-U$(UNDEFS) $(nl)$(MIDLFLAGS) $(nl)/tlb "$(<[1]:W)" $(nl)/h "$(<[2]:W)" $(nl)/iid "$(<[3]:W)" $(nl)/proxy "$(<[4]:W)" $(nl)/dlldata "$(<[5]:W)")"
     $(TOUCH_FILE) "$(<[4]:W)"
     $(TOUCH_FILE) "$(<[5]:W)"
 }
@@ -964,9 +968,9 @@ else
 
 
 # Incremental linking a DLL causes no end of problems: if the actual exports
-# don't change, the import .lib file is never updated. Therefore, the .lib is
+# do not change, the import .lib file is never updated. Therefore, the .lib is
 # always out-of-date and gets rebuilt every time. I'm not sure that incremental
-# linking is such a great idea in general, but in this case I'm sure we don't
+# linking is such a great idea in general, but in this case I am sure we do not
 # want it.
 
 # Windows manifest is a new way to specify dependencies on managed DotNet

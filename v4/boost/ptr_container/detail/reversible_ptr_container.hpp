@@ -67,6 +67,7 @@ namespace ptr_container_detail
     struct is_pointer_or_integral_tag {};
     struct is_range_tag {};
     struct sequence_tag {};
+    struct fixed_length_sequence_tag : sequence_tag {};
     struct associative_container_tag {};
     struct ordered_associative_container_tag : associative_container_tag {};
     struct unordered_associative_container_tag : associative_container_tag {};
@@ -139,6 +140,7 @@ namespace ptr_container_detail
 
     public:
         Cont&       base()               { return c_; }
+    protected: // having this public could break encapsulation
         const Cont& base() const         { return c_; }        
         
     public: // typedefs
@@ -313,10 +315,21 @@ namespace ptr_container_detail
         reversible_ptr_container( SizeType n, unordered_associative_container_tag )
           : c_( n )
         { }
+
+        template< class SizeType >
+        reversible_ptr_container( SizeType n, fixed_length_sequence_tag )
+          : c_( n )
+        { }
+
+        template< class SizeType >
+        reversible_ptr_container( SizeType n, const allocator_type& a, 
+                                  fixed_length_sequence_tag )
+          : c_( n, a )
+        { }
         
         explicit reversible_ptr_container( const allocator_type& a ) 
          : c_( a )
-        {}
+        { }
         
         template< class PtrContainer >
         explicit reversible_ptr_container( std::auto_ptr<PtrContainer> clone )                
@@ -324,17 +337,16 @@ namespace ptr_container_detail
             swap( *clone ); 
         }
 
-        explicit reversible_ptr_container( const reversible_ptr_container& r ) 
+        reversible_ptr_container( const reversible_ptr_container& r ) 
         {
             constructor_impl( r.begin(), r.end(), std::forward_iterator_tag() ); 
         }
 
         template< class C, class V >
-        explicit reversible_ptr_container( const reversible_ptr_container<C,V>& r ) 
+        reversible_ptr_container( const reversible_ptr_container<C,V>& r ) 
         {
             constructor_impl( r.begin(), r.end(), std::forward_iterator_tag() ); 
         }
-
 
         template< class PtrContainer >
         reversible_ptr_container& operator=( std::auto_ptr<PtrContainer> clone ) // nothrow
@@ -343,18 +355,9 @@ namespace ptr_container_detail
             return *this;
         }
 
-        reversible_ptr_container& operator=( const reversible_ptr_container& r ) // strong 
+        reversible_ptr_container& operator=( reversible_ptr_container r ) // strong 
         {
-            reversible_ptr_container clone( r );
-            swap( clone );
-            return *this;
-        }
-
-        template< class C, class V >
-        reversible_ptr_container& operator=( const reversible_ptr_container<C,V>& r ) // strong 
-        {
-            reversible_ptr_container clone( r );
-            swap( clone );
+            swap( r );
             return *this;
         }
         
@@ -364,7 +367,7 @@ namespace ptr_container_detail
         reversible_ptr_container( InputIterator first, 
                                   InputIterator last,
                                   const allocator_type& a = allocator_type() ) // basic, strong
-        : c_( a )
+          : c_( a )
         { 
             constructor_impl( first, last, 
 #if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))
@@ -377,8 +380,40 @@ namespace ptr_container_detail
         template< class Compare >
         reversible_ptr_container( const Compare& comp,
                                   const allocator_type& a )
-        : c_( comp, a ) {}
+          : c_( comp, a ) {}
 
+        template< class ForwardIterator >
+        reversible_ptr_container( ForwardIterator first,
+                                  ForwardIterator last,
+                                  fixed_length_sequence_tag )
+          : c_( std::distance(first,last) )
+        {
+            constructor_impl( first, last, 
+                              std::forward_iterator_tag() );
+        }
+
+        template< class SizeType, class InputIterator >
+        reversible_ptr_container( SizeType n,
+                                  InputIterator first,
+                                  InputIterator last,
+                                  fixed_length_sequence_tag )
+          : c_( n )
+        {
+            constructor_impl( first, last, 
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))
+#else
+                              BOOST_DEDUCED_TYPENAME
+#endif                              
+                              iterator_category<InputIterator>::type() );
+        }
+
+        template< class Compare >
+        reversible_ptr_container( const Compare& comp,
+                                  const allocator_type& a,
+                                  associative_container_tag )
+          : c_( comp, a )
+        { }
+                
         template< class InputIterator >
         reversible_ptr_container( InputIterator first,
                                   InputIterator last,
@@ -393,19 +428,19 @@ namespace ptr_container_detail
                                   const Compare& comp,
                                   const allocator_type& a,
                                   associative_container_tag )
-        : c_( comp, a ) 
+          : c_( comp, a ) 
         {
             associative_constructor_impl( first, last );
         }
 
         explicit reversible_ptr_container( size_type n )
-        : c_( n ) {}
+          : c_( n ) {}
 
         template< class Hash, class Pred >
         reversible_ptr_container( const Hash& hash,
                                   const Pred& pred,
                                   const allocator_type& a )
-        : c_( hash, pred, a ) {}
+          : c_( hash, pred, a ) {}
 
         template< class InputIterator, class Hash, class Pred >
         reversible_ptr_container( InputIterator first,
@@ -413,7 +448,7 @@ namespace ptr_container_detail
                                   const Hash& hash,
                                   const Pred& pred,
                                   const allocator_type& a )
-        : c_( hash, pred, a )
+          : c_( hash, pred, a )
         {
             associative_constructor_impl( first, last );
         }
@@ -662,24 +697,14 @@ namespace ptr_container_detail
 #define BOOST_PTR_CONTAINER_DEFINE_COPY_CONSTRUCTORS( PC, base_type ) \
                                                                       \
     template< class U >                                               \
-    explicit PC( const PC& r ) : base_type( r ) { }                   \
+    PC( const PC<U>& r ) : base_type( r ) { }                         \
                                                                       \
-    template< class U >                                               \
-    explicit PC( const PC<U>& r ) : base_type( r ) { }                \
-                                                                      \
-    PC& operator=( const PC& r )                                      \
+    PC& operator=( PC r )                                             \
     {                                                                 \
-        base_type::operator=( r );                                    \
+        this->swap( r );                                              \
         return *this;                                                 \
     }                                                                 \
-                                                                      \
-    template< class U >                                               \
-    PC& operator=( const PC<U>& r )                                   \
-    {                                                                 \
-        base_type::operator=( r );                                    \
-        return *this;                                                 \
-    }                                               
-     
+                                                                           
 
 #define BOOST_PTR_CONTAINER_DEFINE_CONSTRUCTORS( PC, base_type )                       \
     typedef BOOST_DEDUCED_TYPENAME base_type::iterator        iterator;                \

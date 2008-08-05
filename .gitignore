@@ -67,13 +67,10 @@ v4/libs/python/pyste/tests/*.pch
 v4/libs/python/pyste/tests/*.pyc
 v4/libs/python/pyste/tests/.sconsign
 v4/libs/python/pyste/tests/cache
+v4/libs/spirit/doc/html/images/Thumbs.db
+v4/libs/spirit/doc/html/spirit2_HTML.manifest
+v4/libs/spirit/phoenix/doc/html/quickbook_HTML.manifest
 v4/libs/test/build/bin
-v4/libs/test/build/msvc71_proj/*.ncb
-v4/libs/test/build/msvc71_proj/*.rsp
-v4/libs/test/build/msvc71_proj/*.suo
-v4/libs/test/build/msvc71_proj/debug
-v4/libs/test/build/msvc71_proj/pattern.*
-v4/libs/test/build/msvc71_proj/release
 v4/libs/test/example/bin
 v4/libs/test/test/auto-link-test/res
 v4/libs/test/test/bin

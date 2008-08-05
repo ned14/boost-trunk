@@ -1,4 +1,4 @@
-//  (C) Copyright Gennadiy Rozental 2001-2007.
+//  (C) Copyright Gennadiy Rozental 2001-2008.
 //  (C) Copyright Beman Dawes and Ullrich Koethe 1995-2001.
 //  Use, modification, and distribution are subject to the
 //  Boost Software License, Version 1.0. (See accompanying file
@@ -65,7 +65,7 @@ using std::va_list;
 
 #  include <windows.h>
 
-#  if defined(__MWERKS__) || (BOOST_WORKAROUND(_MSC_VER,  < 1410 ) && !defined(UNDER_CE))
+#  if defined(__MWERKS__) || (defined(_MSC_VER) && !defined(UNDER_CE))
 #    include <eh.h>
 #  endif
 
@@ -669,6 +669,7 @@ signal_handler::~signal_handler()
 #ifdef BOOST_TEST_USE_ALT_STACK
     stack_t sigstk = {};
 
+    sigstk.ss_size  = MINSIGSTKSZ;
     sigstk.ss_flags = SS_DISABLE;
     BOOST_TEST_SYS_ASSERT( ::sigaltstack( &sigstk, 0 ) != -1 );
 #endif
@@ -993,7 +994,7 @@ switch_fp_exceptions( bool on_off )
 int
 execution_monitor::catch_signals( unit_test::callback0<int> const& F )
 {
-    _invalid_parameter_handler old_iph;
+    _invalid_parameter_handler old_iph = _invalid_parameter_handler();
 
     if( !p_catch_system_errors )
         _set_se_translator( &detail::seh_catch_preventer );

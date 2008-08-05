@@ -26,6 +26,7 @@ template<class NodeTraits>
 class common_slist_algorithms
 {
    public:
+   typedef typename NodeTraits::node            node;
    typedef typename NodeTraits::node_ptr        node_ptr;
    typedef typename NodeTraits::const_node_ptr  const_node_ptr;
    typedef NodeTraits                           node_traits;
@@ -53,7 +54,7 @@ class common_slist_algorithms
    {
       node_ptr next = NodeTraits::get_next(this_node);
       return !next || next == this_node;
-   }  
+   }
 
    static bool inited(const_node_ptr this_node)  
    {  return !NodeTraits::get_next(this_node); }
@@ -75,7 +76,7 @@ class common_slist_algorithms
 
    static void transfer_after(node_ptr p, node_ptr b, node_ptr e)
    {
-      if (p != b && p != e) {
+      if (p != b && p != e && b != e) {
          node_ptr next_b = NodeTraits::get_next(b);
          node_ptr next_e = NodeTraits::get_next(e);
          node_ptr next_p = NodeTraits::get_next(p);

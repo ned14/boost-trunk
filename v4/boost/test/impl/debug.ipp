@@ -1,4 +1,4 @@
-//  (C) Copyright Gennadiy Rozental 2006-2007.
+//  (C) Copyright Gennadiy Rozental 2006-2008.
 //  Use, modification, and distribution are subject to the
 //  Boost Software License, Version 1.0. (See accompanying file
 //  http://www.boost.org/LICENSE_1_0.txt)
@@ -57,7 +57,7 @@ namespace std { using ::memset; using ::sprintf; }
 #include <boost/test/utils/algorithm.hpp>
 
 // STL
-#include <cstring>
+#include <cstring>  // std::memcpy
 #include <map>
 #include <cstdio>
 #include <stdarg.h> // !! ?? cstdarg
@@ -497,7 +497,7 @@ start_gdb_in_emacs( dbg_startup_info const& dsi )
 //____________________________________________________________________________//
 
 static void
-start_gdb_in_xemacs( dbg_startup_info const& dsi )
+start_gdb_in_xemacs( dbg_startup_info const& )
 {
     // !! ??
 }
@@ -552,7 +552,7 @@ start_dbx_in_xterm( dbg_startup_info const& dsi )
 //____________________________________________________________________________//
 
 static void
-start_dbx_in_emacs( dbg_startup_info const& dsi )
+start_dbx_in_emacs( dbg_startup_info const& /*dsi*/ )
 {
 //    char dbg_cmd_buff[500]; // !! ??
 //
@@ -564,7 +564,7 @@ start_dbx_in_emacs( dbg_startup_info const& dsi )
 //____________________________________________________________________________//
 
 static void
-start_dbx_in_xemacs( dbg_startup_info const& dsi )
+start_dbx_in_xemacs( dbg_startup_info const& )
 {
     // !! ??
 }
@@ -724,19 +724,11 @@ debugger_break()
 // **************            console debugger setup            ************** //
 // ************************************************************************** //
 
-#if BOOST_WORKAROUND( BOOST_MSVC, <1300)
-std::string
-set_debugger( unit_test::const_string dbg_id )
-{
-    dbg_starter s;
-#else
+#if defined(BOOST_UNIX_BASED_DEBUG) // ************************ UNIX
+
 std::string
 set_debugger( unit_test::const_string dbg_id, dbg_starter s )
 {
-#endif
-
-#if defined(BOOST_UNIX_BASED_DEBUG) // ************************ UNIX
-
     std::string old = s_info.p_dbg;
 
     assign_op( s_info.p_dbg.value, dbg_id, 0 );
@@ -745,13 +737,17 @@ set_debugger( unit_test::const_string dbg_id, dbg_starter s )
         s_info.m_dbg_starter_reg[s_info.p_dbg] = s;
 
     return old;
+}
 
 #else  // ***************************************************** default
 
+std::string
+set_debugger( unit_test::const_string, dbg_starter )
+{
     return std::string();
+}
 
 #endif
-}
 
 //____________________________________________________________________________//
 
@@ -856,6 +852,11 @@ attach_debugger( bool break_or_continue )
     if( !created )
         return false;
 
+    if( break_or_continue )
+        debugger_break();
+
+    return true;
+
 #elif defined(BOOST_UNIX_BASED_DEBUG) // ********************** UNIX
 
     char init_done_lock_fn[] = "/tmp/btl_dbg_init_done_XXXXXX";
@@ -902,16 +903,16 @@ attach_debugger( bool break_or_continue )
 //    char dummy;
 //    while( ::read( init_done_lock_fd, &dummy, sizeof(char) ) == 0 );
 
+    if( break_or_continue )
+        debugger_break();
+
+    return true;
+
 #else // ****************************************************** default
 
     return false;
 
 #endif
-
-    if( break_or_continue )
-        debugger_break();
-
-    return true;
 }
 
 //____________________________________________________________________________//

@@ -7,8 +7,8 @@
 #define UUID_E788439ED9F011DCB181F25B55D89593
 
 #include <boost/exception/to_string.hpp>
-#include <iomanip>
-#include <typeinfo>
+#include <boost/exception/detail/object_hex_dump.hpp>
+#include <boost/assert.hpp>
 
 namespace
 boost
@@ -40,12 +40,30 @@ boost
                 {
                 return s(x);
                 }
+
+            template <class T>
+            static
+            std::string
+            convert( T const & x, std::string s )
+                {
+                return s;
+                }
+
+            template <class T>
+            static
+            std::string
+            convert( T const & x, char const * s )
+                {
+                BOOST_ASSERT(s!=0);
+                return s;
+                }
             };
 
         namespace
         to_string_dispatch
             {
             template <class T,class Stub>
+            inline
             std::string
             dispatch( T const & x, Stub s )
                 {
@@ -54,22 +72,16 @@ boost
             }
 
         template <class T>
+        inline
         std::string
         string_stub_dump( T const & x )
             {
-            std::ostringstream s;
-            s << "[ type: " << typeid(x).name() << ", size: " << sizeof(T) << ", dump: ";
-            size_t n=sizeof(T)>16?16:sizeof(T);
-            s.fill('0');
-            s.width(2);
-            for( unsigned char const * b=reinterpret_cast<unsigned char const *>(&x),* e=b+n; b!=e; ++b )
-                s << std::setw(2) << std::hex << (unsigned int)*b << " ";
-            s << "]";
-            return s.str();
+            return "[ " + exception_detail::object_hex_dump(x) + " ]";
             }
         }
 
     template <class T>
+    inline
     std::string
     to_string_stub( T const & x )
         {
@@ -77,17 +89,11 @@ boost
         }
 
     template <class T,class Stub>
+    inline
     std::string
     to_string_stub( T const & x, Stub s )
         {
         return exception_detail::to_string_dispatch::dispatch(x,s);
-        }
-
-    template <class T,class U>
-    std::string
-    to_string( std::pair<T,U> const & x )
-        {
-        return std::string("(") + to_string(x.first) + ',' + to_string(x.second) + ')';
         }
     }
 

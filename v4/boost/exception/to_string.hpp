@@ -39,6 +39,7 @@ boost
         }
 
     template <class T>
+    inline
     typename enable_if<is_output_streamable<T>,std::string>::type
     to_string( T const & x )
         {
@@ -53,6 +54,21 @@ boost
         {
         enum e { value=to_string_detail::has_to_string_impl<T,is_output_streamable<T>::value>::value };
         };
+
+    template <class T,class U>
+    inline
+    std::string
+    to_string( std::pair<T,U> const & x )
+        {
+        return std::string("(") + to_string(x.first) + ',' + to_string(x.second) + ')';
+        }
+
+    inline
+    std::string
+    to_string( std::exception const & x )
+        {
+        return x.what();
+        }
     }
 
 #endif

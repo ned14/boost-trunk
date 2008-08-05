@@ -33,6 +33,7 @@ using namespace boost::spirit::arg_names;
 ///////////////////////////////////////////////////////////////////////////////
 //  Our number list compiler
 ///////////////////////////////////////////////////////////////////////////////
+//[tutorial_numlist2
 template <typename Iterator>
 bool parse_numbers(Iterator first, Iterator last, std::vector<double>& v)
 {
@@ -40,7 +41,8 @@ bool parse_numbers(Iterator first, Iterator last, std::vector<double>& v)
 
         //  Begin grammar
         (
-            double_[push_back(ref(v), _1)] % ','
+            double_[push_back(ref(v), _1)]
+                >> *(',' >> double_[push_back(ref(v), _1)])
         )
         ,
         //  End grammar
@@ -51,6 +53,7 @@ bool parse_numbers(Iterator first, Iterator last, std::vector<double>& v)
         return false;
     return r;
 }
+//]
 
 ////////////////////////////////////////////////////////////////////////////
 //  Main program

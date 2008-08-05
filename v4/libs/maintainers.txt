@@ -25,6 +25,7 @@ crc                   Daryle Walker <darylew -at- hotmail.com>
 date_time             Jeff Garland <jeff -at- crystalclearsoftware.com>
 disjoint_sets         Jeremy Siek <jeremy.siek -at- gmail.com>
 dynamic_bitset        Jeremy Siek <jeremy.siek -at- gmail.com>
+exception             Emil Dotchevski <emil -at- revergestudios.com>
 filesystem            Beman Dawes <bdawes -at- acm.org>
 foreach               Eric Niebler <eric -at- boost-consulting.com>
 format                Samuel Krempp <krempp -at- crans.ens-cachan.fr>
@@ -77,10 +78,13 @@ tr1                   John Maddock <john -at- johnmaddock.co.uk>
 tuple                 Jaakko Jarvi <jarvi -at- cs.tamu.edu>
 type_traits           John Maddock <john -at- johnmaddock.co.uk>
 typeof                Arkadiy Vertleyb <vertleyb -at- hotmail.com>, Peder Holt <peder.holt -at- gmail.com>
+units                 Matthias Schabel <boost -at- schabel-family.org>, Steven Watanabe <steven -at- providere-consulting.com>
 unordered             Daniel James <daniel_james -at- fmail.co.uk>
 utility
 utility/enable_if     Jaakko Jarvi <jarvi -at- cs.tamu.edu>, Jeremiah Willcock <jewillco -at- osl.iu.edu>
+utility/swap          Joseph Gauterin <joseph.gauterin -at- googlemail.com>
 variant               Eric Friedman <ericbrandon -at- gmail.com>
 wave                  Hartmut Kaiser <hartmut.kaiser -at- gmail.com>
 xpressive             Eric Niebler <eric -at- boost-consulting.com>
+
 

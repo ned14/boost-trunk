@@ -25,6 +25,7 @@
 #include <climits>
 #include <iterator>
 #include <boost/cstdint.hpp>
+#include <boost/static_assert.hpp>
 
 namespace boost {
 namespace intrusive {
@@ -54,6 +55,24 @@ struct internal_base_hook_bool_is_true
 {
    static const bool value = internal_base_hook_bool<T>::value > sizeof(one)*2;
 };
+
+template <class T>
+struct internal_any_hook_bool
+{
+   template<bool Add>
+   struct two_or_three {one _[2 + Add];};
+   template <class U> static one test(...);
+   template <class U> static two_or_three<U::is_any_hook>
+      test (detail::bool_<U::is_any_hook>* = 0);
+   static const std::size_t value = sizeof(test<T>(0));
+};
+
+template <class T>
+struct internal_any_hook_bool_is_true
+{
+   static const bool value = internal_any_hook_bool<T>::value > sizeof(one)*2;
+};
+
 
 template <class T>
 struct external_value_traits_bool
@@ -487,7 +506,7 @@ inline std::size_t floor_log2 (std::size_t x)
    for(std::size_t shift = Bits >> 1; shift; shift >>= 1){
       std::size_t tmp = n >> shift;
       if (tmp)
-   	   log2 += shift, n = tmp;
+         log2 += shift, n = tmp;
    }
 
    return log2;

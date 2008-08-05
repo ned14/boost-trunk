@@ -65,6 +65,7 @@ static const unsigned long file_map_all_access  = section_all_access;
 
 static const unsigned long file_share_read      = 0x00000001;
 static const unsigned long file_share_write     = 0x00000002;
+static const unsigned long file_share_delete    = 0x00000004;
 
 static const unsigned long generic_read         = 0x80000000L;
 static const unsigned long generic_write        = 0x40000000L;
@@ -225,7 +226,7 @@ extern "C" __declspec(dllimport) void * __stdcall OpenSemaphoreA(unsigned long, 
 extern "C" __declspec(dllimport) void * __stdcall CreateFileMappingA (void *, interprocess_security_attributes*, unsigned long, unsigned long, unsigned long, const char *);
 extern "C" __declspec(dllimport) void * __stdcall MapViewOfFileEx (void *, unsigned long, unsigned long, unsigned long, std::size_t, void*);
 extern "C" __declspec(dllimport) void * __stdcall OpenFileMappingA (unsigned long, int, const char *);
-extern "C" __declspec(dllimport) void * __stdcall CreateFileA (const char *, unsigned long, unsigned long, struct _SECURITY_ATTRIBUTES*, unsigned long, unsigned long, void *);
+extern "C" __declspec(dllimport) void * __stdcall CreateFileA (const char *, unsigned long, unsigned long, struct interprocess_security_attributes*, unsigned long, unsigned long, void *);
 extern "C" __declspec(dllimport) int __stdcall    DeleteFileA (const char *);
 extern "C" __declspec(dllimport) void __stdcall GetSystemInfo (struct system_info *);
 extern "C" __declspec(dllimport) int __stdcall FlushViewOfFile (void *, std::size_t);
@@ -355,7 +356,7 @@ static inline void *map_view_of_file_ex(void *handle, unsigned long file_access,
 {  return MapViewOfFileEx(handle, file_access, highoffset, lowoffset, numbytes, base_addr);  }
 
 static inline void *create_file(const char *name, unsigned long access, unsigned long creation_flags, unsigned long attributes = 0)
-{  return CreateFileA(name, access, file_share_read | file_share_write, 0, creation_flags, attributes, 0);  }
+{  return CreateFileA(name, access, file_share_read | file_share_write | file_share_delete, 0, creation_flags, attributes, 0);  }
 
 static inline bool delete_file(const char *name)
 {  return 0 != DeleteFileA(name);  }

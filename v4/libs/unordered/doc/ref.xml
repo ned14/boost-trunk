@@ -181,7 +181,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <para>The copy constructor. Copies the contained elements, hash function, predicate, maximum load factor and allocator.</para>
             </description>
           </constructor>
-          <constructor>
+          <constructor specifiers="explicit">
             <parameter name="a">
               <paramtype>Allocator const&amp;</paramtype>
             </parameter>
@@ -284,6 +284,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <notes>
                 <para>Can invalidate iterators, but only if the insert causes the load factor to be greater to or equal to the maximum load factor.</para>
                 <para>Pointers and references to elements are never invalidated.</para>
+                <para>Only available on compilers with support for variadic template arguments and rvalue references.</para>
               </notes>
             </method>
             <method name="emplace">
@@ -312,6 +313,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
                 <para>The standard is fairly vague on the meaning of the hint. But the only practical way to use it, and the only way that Boost.Unordered supports is to point to an existing element with the same value. </para>
                 <para>Can invalidate iterators, but only if the insert causes the load factor to be greater to or equal to the maximum load factor.</para>
                 <para>Pointers and references to elements are never invalidated.</para>
+                <para>Only available on compilers with support for variadic template arguments and rvalue references.</para>
               </notes>
             </method>
             <method name="insert">
@@ -636,10 +638,10 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <parameter name="z">
                 <paramtype>float</paramtype>
               </parameter>
-              <type>float</type>
-              <returns>
+              <type>void</type>
+              <effects>
                 <para>Changes the container's maximum load factor, using <code>z</code> as a hint.</para>
-              </returns>
+              </effects>
             </method>
             <method name="rehash">
               <parameter name="n">
@@ -696,25 +698,6 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
                 <paramtype>unordered_set&lt;Value, Hash, Pred, Alloc&gt; const&amp;</paramtype>
               </parameter>
               <type>bool</type>
-              <notes>
-                <para>This is a boost extension.</para>
-              </notes>
-            </function>
-            <function name="hash_value">
-              <template>
-                <template-type-parameter name="Value">
-                </template-type-parameter>
-                <template-type-parameter name="Hash">
-                </template-type-parameter>
-                <template-type-parameter name="Pred">
-                </template-type-parameter>
-                <template-type-parameter name="Alloc">
-                </template-type-parameter>
-              </template>
-              <parameter name="x">
-                <paramtype>unordered_set&lt;Value, Hash, Pred, Alloc&gt; const&amp;</paramtype>
-              </parameter>
-              <type>std::size_t</type>
               <notes>
                 <para>This is a boost extension.</para>
               </notes>
@@ -928,7 +911,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <para>The copy constructor. Copies the contained elements, hash function, predicate, maximum load factor and allocator.</para>
             </description>
           </constructor>
-          <constructor>
+          <constructor specifiers="explicit">
             <parameter name="a">
               <paramtype>Allocator const&amp;</paramtype>
             </parameter>
@@ -1030,6 +1013,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <notes>
                 <para>Can invalidate iterators, but only if the insert causes the load factor to be greater to or equal to the maximum load factor.</para>
                 <para>Pointers and references to elements are never invalidated.</para>
+                <para>Only available on compilers with support for variadic template arguments and rvalue references.</para>
               </notes>
             </method>
             <method name="emplace">
@@ -1058,6 +1042,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
                 <para>The standard is fairly vague on the meaning of the hint. But the only practical way to use it, and the only way that Boost.Unordered supports is to point to an existing element with the same value. </para>
                 <para>Can invalidate iterators, but only if the insert causes the load factor to be greater to or equal to the maximum load factor.</para>
                 <para>Pointers and references to elements are never invalidated.</para>
+                <para>Only available on compilers with support for variadic template arguments and rvalue references.</para>
               </notes>
             </method>
             <method name="insert">
@@ -1381,10 +1366,10 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <parameter name="z">
                 <paramtype>float</paramtype>
               </parameter>
-              <type>float</type>
-              <returns>
+              <type>void</type>
+              <effects>
                 <para>Changes the container's maximum load factor, using <code>z</code> as a hint.</para>
-              </returns>
+              </effects>
             </method>
             <method name="rehash">
               <parameter name="n">
@@ -1441,25 +1426,6 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
                 <paramtype>unordered_multiset&lt;Value, Hash, Pred, Alloc&gt; const&amp;</paramtype>
               </parameter>
               <type>bool</type>
-              <notes>
-                <para>This is a boost extension.</para>
-              </notes>
-            </function>
-            <function name="hash_value">
-              <template>
-                <template-type-parameter name="Value">
-                </template-type-parameter>
-                <template-type-parameter name="Hash">
-                </template-type-parameter>
-                <template-type-parameter name="Pred">
-                </template-type-parameter>
-                <template-type-parameter name="Alloc">
-                </template-type-parameter>
-              </template>
-              <parameter name="x">
-                <paramtype>unordered_multiset&lt;Value, Hash, Pred, Alloc&gt; const&amp;</paramtype>
-              </parameter>
-              <type>std::size_t</type>
               <notes>
                 <para>This is a boost extension.</para>
               </notes>
@@ -1685,7 +1651,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <para>The copy constructor. Copies the contained elements, hash function, predicate, maximum load factor and allocator.</para>
             </description>
           </constructor>
-          <constructor>
+          <constructor specifiers="explicit">
             <parameter name="a">
               <paramtype>Allocator const&amp;</paramtype>
             </parameter>
@@ -1788,6 +1754,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <notes>
                 <para>Can invalidate iterators, but only if the insert causes the load factor to be greater to or equal to the maximum load factor.</para>
                 <para>Pointers and references to elements are never invalidated.</para>
+                <para>Only available on compilers with support for variadic template arguments and rvalue references.</para>
               </notes>
             </method>
             <method name="emplace">
@@ -1816,6 +1783,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
                 <para>The standard is fairly vague on the meaning of the hint. But the only practical way to use it, and the only way that Boost.Unordered supports is to point to an existing element with the same key. </para>
                 <para>Can invalidate iterators, but only if the insert causes the load factor to be greater to or equal to the maximum load factor.</para>
                 <para>Pointers and references to elements are never invalidated.</para>
+                <para>Only available on compilers with support for variadic template arguments and rvalue references.</para>
               </notes>
             </method>
             <method name="insert">
@@ -2175,10 +2143,10 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <parameter name="z">
                 <paramtype>float</paramtype>
               </parameter>
-              <type>float</type>
-              <returns>
+              <type>void</type>
+              <effects>
                 <para>Changes the container's maximum load factor, using <code>z</code> as a hint.</para>
-              </returns>
+              </effects>
             </method>
             <method name="rehash">
               <parameter name="n">
@@ -2239,27 +2207,6 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
                 <paramtype>unordered_map&lt;Key, Mapped, Hash, Pred, Alloc&gt; const&amp;</paramtype>
               </parameter>
               <type>bool</type>
-              <notes>
-                <para>This is a boost extension.</para>
-              </notes>
-            </function>
-            <function name="hash_value">
-              <template>
-                <template-type-parameter name="Key">
-                </template-type-parameter>
-                <template-type-parameter name="Mapped">
-                </template-type-parameter>
-                <template-type-parameter name="Hash">
-                </template-type-parameter>
-                <template-type-parameter name="Pred">
-                </template-type-parameter>
-                <template-type-parameter name="Alloc">
-                </template-type-parameter>
-              </template>
-              <parameter name="x">
-                <paramtype>unordered_map&lt;Key, Mapped, Hash, Pred, Alloc&gt; const&amp;</paramtype>
-              </parameter>
-              <type>std::size_t</type>
               <notes>
                 <para>This is a boost extension.</para>
               </notes>
@@ -2483,7 +2430,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <para>The copy constructor. Copies the contained elements, hash function, predicate, maximum load factor and allocator.</para>
             </description>
           </constructor>
-          <constructor>
+          <constructor specifiers="explicit">
             <parameter name="a">
               <paramtype>Allocator const&amp;</paramtype>
             </parameter>
@@ -2585,6 +2532,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <notes>
                 <para>Can invalidate iterators, but only if the insert causes the load factor to be greater to or equal to the maximum load factor.</para>
                 <para>Pointers and references to elements are never invalidated.</para>
+                <para>Only available on compilers with support for variadic template arguments and rvalue references.</para>
               </notes>
             </method>
             <method name="emplace">
@@ -2613,6 +2561,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
                 <para>The standard is fairly vague on the meaning of the hint. But the only practical way to use it, and the only way that Boost.Unordered supports is to point to an existing element with the same key. </para>
                 <para>Can invalidate iterators, but only if the insert causes the load factor to be greater to or equal to the maximum load factor.</para>
                 <para>Pointers and references to elements are never invalidated.</para>
+                <para>Only available on compilers with support for variadic template arguments and rvalue references.</para>
               </notes>
             </method>
             <method name="insert">
@@ -2936,10 +2885,10 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
               <parameter name="z">
                 <paramtype>float</paramtype>
               </parameter>
-              <type>float</type>
-              <returns>
+              <type>void</type>
+              <effects>
                 <para>Changes the container's maximum load factor, using <code>z</code> as a hint.</para>
-              </returns>
+              </effects>
             </method>
             <method name="rehash">
               <parameter name="n">
@@ -3000,27 +2949,6 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
                 <paramtype>unordered_multimap&lt;Key, Mapped, Hash, Pred, Alloc&gt; const&amp;</paramtype>
               </parameter>
               <type>bool</type>
-              <notes>
-                <para>This is a boost extension.</para>
-              </notes>
-            </function>
-            <function name="hash_value">
-              <template>
-                <template-type-parameter name="Key">
-                </template-type-parameter>
-                <template-type-parameter name="Mapped">
-                </template-type-parameter>
-                <template-type-parameter name="Hash">
-                </template-type-parameter>
-                <template-type-parameter name="Pred">
-                </template-type-parameter>
-                <template-type-parameter name="Alloc">
-                </template-type-parameter>
-              </template>
-              <parameter name="x">
-                <paramtype>unordered_multimap&lt;Key, Mapped, Hash, Pred, Alloc&gt; const&amp;</paramtype>
-              </parameter>
-              <type>std::size_t</type>
               <notes>
                 <para>This is a boost extension.</para>
               </notes>

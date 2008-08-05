@@ -1,7 +1,12 @@
-/* Copyright Gennadiy Rozental 2001-2006. 
+/* Copyright Gennadiy Rozental 2001-2007. 
  * Distributed under the Boost Software License, Version 1.0. 
  * (See accompanying file LICENSE_1_0.txt or copy at www.boost.org/LICENSE_1_0.txt)
  */
+
+A
+{
+    color:          #336699;
+}
 
 A:link
 {
@@ -9,9 +14,17 @@ A:link
 }
 A:visited
 {
-    color:          #3F7EBE;
+/*    color:          #9c5a9c; */
+    color:          #336699;
 }
 A:active
 {
     color:          #699BCD;
 }
+
+A:hover
+{
+    background-color: #E1E1E1;
+    text-decoration: none;
+}
+

@@ -31,6 +31,33 @@ namespace boost
         class Hash = hash<Value>,
         class Pred = std::equal_to<Value>,
         class Alloc = std::allocator<Value> >
+    class unordered_set;
+    template <class T, class H, class P, class A>
+    bool operator==(unordered_set<T, H, P, A> const&,
+        unordered_set<T, H, P, A> const&);
+    template <class T, class H, class P, class A>
+    bool operator!=(unordered_set<T, H, P, A> const&,
+        unordered_set<T, H, P, A> const&);
+    template <class T, class H, class P, class A>
+    void swap(unordered_set<T, H, P, A> &m1,
+            unordered_set<T, H, P, A> &m2);
+
+    template <class Value,
+        class Hash = hash<Value>,
+        class Pred = std::equal_to<Value>,
+        class Alloc = std::allocator<Value> >
+    class unordered_multiset;
+    template <class T, class H, class P, class A>
+    bool operator==(unordered_multiset<T, H, P, A> const&,
+        unordered_multiset<T, H, P, A> const&);
+    template <class T, class H, class P, class A>
+    bool operator!=(unordered_multiset<T, H, P, A> const&,
+        unordered_multiset<T, H, P, A> const&);
+    template <class T, class H, class P, class A>
+    void swap(unordered_multiset<T, H, P, A> &m1,
+            unordered_multiset<T, H, P, A> &m2);
+
+    template <class Value, class Hash, class Pred, class Alloc>
     class unordered_set
     {
         typedef boost::unordered_detail::hash_types_unique_keys<
@@ -73,8 +100,7 @@ namespace boost
         {
         }
 
-        // TODO: Should this be explicit?
-        unordered_set(allocator_type const& a)
+        explicit unordered_set(allocator_type const& a)
             : base(boost::unordered_detail::default_initial_bucket_count,
                 hasher(), key_equal(), a)
         {
@@ -119,7 +145,7 @@ namespace boost
         }
 #else
         unordered_set(boost::unordered_detail::move_from<unordered_set<Value, Hash, Pred, Alloc> > other)
-            : base(other.base, boost::unordered_detail::move_tag())
+            : base(other.source.base, boost::unordered_detail::move_tag())
         {
         }
 
@@ -361,33 +387,37 @@ namespace boost
             base.rehash(n);
         }
 
-        friend bool operator==(unordered_set const& m1, unordered_set const& m2)
-        {
-            return m1.base.equals(m2.base);
-        }
-
-        friend bool operator!=(unordered_set const& m1, unordered_set const& m2)
-        {
-            return !m1.base.equals(m2.base);
-        }
-
-        friend std::size_t hash_value(unordered_set const& m)
-        {
-            return m.base.hash_value();
-        }
+#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
+        friend bool operator==(unordered_set const&, unordered_set const&);
+        friend bool operator!=(unordered_set const&, unordered_set const&);
+#else
+        friend bool operator==<>(unordered_set const&, unordered_set const&);
+        friend bool operator!=<>(unordered_set const&, unordered_set const&);
+#endif
     }; // class template unordered_set
 
     template <class T, class H, class P, class A>
-    void swap(unordered_set<T, H, P, A> &m1,
+    inline bool operator==(unordered_set<T, H, P, A> const& m1,
+        unordered_set<T, H, P, A> const& m2)
+    {
+        return boost::unordered_detail::equals(m1.base, m2.base);
+    }
+
+    template <class T, class H, class P, class A>
+    inline bool operator!=(unordered_set<T, H, P, A> const& m1,
+        unordered_set<T, H, P, A> const& m2)
+    {
+        return !boost::unordered_detail::equals(m1.base, m2.base);
+    }
+
+    template <class T, class H, class P, class A>
+    inline void swap(unordered_set<T, H, P, A> &m1,
             unordered_set<T, H, P, A> &m2)
     {
         m1.swap(m2);
     }
 
-    template <class Value,
-        class Hash = hash<Value>,
-        class Pred = std::equal_to<Value>,
-        class Alloc = std::allocator<Value> >
+    template <class Value, class Hash, class Pred, class Alloc>
     class unordered_multiset
     {
         typedef boost::unordered_detail::hash_types_equivalent_keys<
@@ -430,8 +460,7 @@ namespace boost
         {
         }
 
-        // TODO: Should this be explicit?
-        unordered_multiset(allocator_type const& a)
+        explicit unordered_multiset(allocator_type const& a)
             : base(boost::unordered_detail::default_initial_bucket_count,
                 hasher(), key_equal(), a)
         {
@@ -476,7 +505,7 @@ namespace boost
         }
 #else
         unordered_multiset(boost::unordered_detail::move_from<unordered_multiset<Value, Hash, Pred, Alloc> > other)
-            : base(other.base, boost::unordered_detail::move_tag())
+            : base(other.source.base, boost::unordered_detail::move_tag())
         {
         }
 
@@ -715,24 +744,31 @@ namespace boost
             base.rehash(n);
         }
 
-        friend bool operator==(unordered_multiset const& m1, unordered_multiset const& m2)
-        {
-            return m1.base.equals(m2.base);
-        }
-
-        friend bool operator!=(unordered_multiset const& m1, unordered_multiset const& m2)
-        {
-            return !m1.base.equals(m2.base);
-        }
-
-        friend std::size_t hash_value(unordered_multiset const& m)
-        {
-            return m.base.hash_value();
-        }
+#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
+        friend bool operator==(unordered_multiset const&, unordered_multiset const&);
+        friend bool operator!=(unordered_multiset const&, unordered_multiset const&);
+#else
+        friend bool operator==<>(unordered_multiset const&, unordered_multiset const&);
+        friend bool operator!=<>(unordered_multiset const&, unordered_multiset const&);
+#endif
     }; // class template unordered_multiset
 
     template <class T, class H, class P, class A>
-    void swap(unordered_multiset<T, H, P, A> &m1,
+    inline bool operator==(unordered_multiset<T, H, P, A> const& m1,
+        unordered_multiset<T, H, P, A> const& m2)
+    {
+        return boost::unordered_detail::equals(m1.base, m2.base);
+    }
+
+    template <class T, class H, class P, class A>
+    inline bool operator!=(unordered_multiset<T, H, P, A> const& m1,
+        unordered_multiset<T, H, P, A> const& m2)
+    {
+        return !boost::unordered_detail::equals(m1.base, m2.base);
+    }
+
+    template <class T, class H, class P, class A>
+    inline void swap(unordered_multiset<T, H, P, A> &m1,
             unordered_multiset<T, H, P, A> &m2)
     {
         m1.swap(m2);

@@ -104,7 +104,7 @@ class windows_shared_memory
    #else
    windows_shared_memory &operator=(windows_shared_memory &&moved)
    {  
-      windows_shared_memory tmp(move(moved));
+      windows_shared_memory tmp(detail::move_impl(moved));
       this->swap(tmp);
       return *this;  
    }
@@ -142,6 +142,8 @@ class windows_shared_memory
    std::string    m_name;
    /// @endcond
 };
+
+/// @cond
 
 inline windows_shared_memory::windows_shared_memory() 
    :  m_handle(0)
@@ -234,8 +236,6 @@ inline void windows_shared_memory::priv_close()
       m_handle = 0;
    }
 }
-
-///@cond
 
 //!Trait class to detect if a type is
 //!movable

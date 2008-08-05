@@ -288,7 +288,7 @@ struct vector_alloc_holder
       (void)limit_size;
       (void)reuse;
       if(!(command & allocate_new))
-         return std::pair<pointer, bool>(0, 0);
+         return std::pair<pointer, bool>(pointer(0), 0);
       received_size = preferred_size;
       return std::make_pair(this->alloc().allocate(received_size), false);
    }
@@ -434,7 +434,10 @@ class vector : private detail::vector_alloc_holder<A>
    //This is the optimized move iterator for copy constructors
    //so that std::copy and similar can use memcpy
    typedef typename detail::if_c
-      <base_t::trivial_copy  || !is_movable<value_type>::value
+      <base_t::trivial_copy 
+      #ifndef BOOST_INTERPROCESS_RVALUE_REFERENCE
+      || !is_movable<value_type>::value
+      #endif
       ,T*
       ,detail::move_iterator<T*>
       >::type   copy_move_it;
@@ -442,7 +445,10 @@ class vector : private detail::vector_alloc_holder<A>
    //This is the optimized move iterator for assignments
    //so that std::uninitialized_copy and similar can use memcpy
    typedef typename detail::if_c
-      <base_t::trivial_assign || !is_movable<value_type>::value
+      <base_t::trivial_assign
+      #ifndef BOOST_INTERPROCESS_RVALUE_REFERENCE
+      || !is_movable<value_type>::value
+      #endif
       ,T*
       ,detail::move_iterator<T*>
       >::type   assign_move_it;
@@ -491,7 +497,7 @@ class vector : private detail::vector_alloc_holder<A>
    {  this->swap(mx.get());   }
    #else
    vector(vector<T, A> && mx) 
-      :  base_t(mx)
+      :  base_t(detail::move_impl(mx))
    {  this->swap(mx);   }
    #endif
 
@@ -890,11 +896,11 @@ class vector : private detail::vector_alloc_holder<A>
    {
       if (this->members_.m_size < this->members_.m_capacity){
          //There is more memory, just construct a new object at the end
-         new((void*)detail::get_pointer(this->members_.m_start + this->members_.m_size))value_type(move(mx));
+         new((void*)detail::get_pointer(this->members_.m_start + this->members_.m_size))value_type(detail::move_impl(mx));
          ++this->members_.m_size;
       }
       else{
-         this->insert(this->end(), move(mx));
+         this->insert(this->end(), detail::move_impl(mx));
       }
    }
    #endif
@@ -1036,7 +1042,7 @@ class vector : private detail::vector_alloc_holder<A>
       T *pos = detail::get_pointer(position.get_ptr());
       T *beg = detail::get_pointer(this->members_.m_start);
 
-		std::copy(assign_move_it(pos + 1), assign_move_it(beg + this->members_.m_size), pos);
+      std::copy(assign_move_it(pos + 1), assign_move_it(beg + this->members_.m_size), pos);
       --this->members_.m_size;
       //Destroy last element
       base_t::destroy(detail::get_pointer(this->members_.m_start) + this->members_.m_size);
@@ -1050,12 +1056,12 @@ class vector : private detail::vector_alloc_holder<A>
    //! <b>Complexity</b>: Linear to the distance between first and last.
    iterator erase(const_iterator first, const_iterator last) 
    {
-		if (first != last){	// worth doing, copy down over hole
+      if (first != last){   // worth doing, copy down over hole
          T* end_pos = detail::get_pointer(this->members_.m_start) + this->members_.m_size;
          T* ptr = detail::get_pointer(std::copy
             (assign_move_it(detail::get_pointer(last.get_ptr()))
             ,assign_move_it(end_pos)
-				,detail::get_pointer(first.get_ptr())
+            ,detail::get_pointer(first.get_ptr())
             ));
          size_type destroyed = (end_pos - ptr);
          this->destroy_n(ptr, destroyed);
@@ -1304,8 +1310,8 @@ class vector : private detail::vector_alloc_holder<A>
       //Destroy and deallocate old elements
       //If there is allocated memory, destroy and deallocate
       if(this->members_.m_start != 0){
-		   if(!base_t::trivial_dctr_after_move)
-			   this->destroy_n(detail::get_pointer(this->members_.m_start), this->members_.m_size); 
+         if(!base_t::trivial_dctr_after_move)
+            this->destroy_n(detail::get_pointer(this->members_.m_start), this->members_.m_size); 
          this->alloc().deallocate(this->members_.m_start, this->members_.m_capacity);
       }
       this->members_.m_start     = new_start;
@@ -1696,7 +1702,7 @@ class vector : private detail::vector_alloc_holder<A>
          scoped_alloc.release();
          //Destroy and deallocate old buffer
          if(this->members_.m_start != 0){
-			   this->destroy_n(detail::get_pointer(this->members_.m_start), this->members_.m_size); 
+            this->destroy_n(detail::get_pointer(this->members_.m_start), this->members_.m_size); 
             this->alloc().deallocate(this->members_.m_start, this->members_.m_capacity);
          }
          this->members_.m_start     = ret.first;
@@ -1719,8 +1725,9 @@ class vector : private detail::vector_alloc_holder<A>
          //Backup old buffer data
          size_type old_offset    = old_start - detail::get_pointer(ret.first);
          size_type first_count   = min_value(n, old_offset);
-         FwdIt mid = boost::interprocess::n_uninitialized_copy_n
+         boost::interprocess::uninitialized_copy_n
             (first, first_count, detail::get_pointer(ret.first));
+         FwdIt mid = first + first_count;
 
          if(old_offset > n){
             //All old elements will be destroyed by "old_values_destroyer" 
@@ -1734,12 +1741,13 @@ class vector : private detail::vector_alloc_holder<A>
             this->members_.m_size   = first_count + old_size;
             //Now overwrite the old values
             size_type second_count = min_value(old_size, n - first_count);
-            mid = copy_n(mid, second_count, old_start);
+            copy_n(mid, second_count, old_start);
+            mid += second_count;
             
             //Check if we still have to append elements in the
             //uninitialized end
             if(second_count == old_size){
-               boost::interprocess::n_uninitialized_copy_n
+               boost::interprocess::uninitialized_copy_n
                   ( mid
                   , n - first_count - second_count
                   , old_start + old_size); 

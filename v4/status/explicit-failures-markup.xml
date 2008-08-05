@@ -58,6 +58,7 @@
       </mark-expected-failures>
       <mark-expected-failures>
         <test name="weighted_tail_variate_means"/>
+        <toolset name="acc"/>
         <toolset name="hp_cxx-71*"/>
         <note author="Markus Schoepflin">
           This failure is caused by a timeout when compiling the test. It
@@ -591,6 +592,7 @@
                 <toolset name="sun-5.8*"/>
                 <toolset name="sun-5.9*"/>
                 <toolset name="msvc-8.0*"/>
+                <toolset name="msvc-9.0*"/>
                 <toolset name="msvc-7.1*"/>
                 <toolset name="acc"/>
                 <note author="Alexander Nasonov">
@@ -1728,6 +1730,14 @@
         </mark-expected-failures>
     </library>
 
+    <!-- gil -->
+    <library name="gil">
+      <mark-expected-failures>
+          <test name="pixel"/>
+          <toolset name="acc"/>
+          <note author="Boris Gubenko" refid="46"/>
+      </mark-expected-failures>
+    </library>
 
     <!-- graph -->
     <library name="graph">
@@ -1805,6 +1815,9 @@
         <mark-expected-failures>
             <test name="csr_graph_test"/>
             <toolset name="msvc-8.0"/>
+            <toolset name="msvc-8.0_64"/>
+            <toolset name="msvc-8.0_x86_64"/>
+            <toolset name="msvc-9.0"/>
             <note author="Doug Gregor">
               This failure is due to a problem with partial ordering
               of class template partial specializations.
@@ -1835,6 +1848,18 @@
           <toolset name="hp_cxx-*"/>
           <toolset name="acc*"/>
           <note author="Markus Schoepflin" refid="45"/>
+        </mark-expected-failures>
+    </library>
+
+    <!-- integer -->
+    <library name="integer">
+        <mark-expected-failures>
+            <test name="integer_test"/>
+            <toolset name="gcc-4.2.1_hpux_ia64"/>
+            <note author="Boris Gubenko">
+                When compiling and linking this test, ld takes segmentation fault.
+                In the HP bug tracking system, this issue is tracked as QuIX ID: QXCR1000836120.  
+            </note>
         </mark-expected-failures>
     </library>
 
@@ -2493,9 +2518,9 @@ for more information.
             <toolset name="gcc-mingw-3.4.5"/>
             <toolset name="gcc-3.4.2_hpux_pa_risc"/>
             <toolset name="gcc-3.4.6_linux_ia64"/>
-            <toolset name="gcc-4.2.1*"/>
+            <toolset name="gcc-4.2.*"/>
             <toolset name="gcc-4.1.2_sunos_i86pc"/>
-        		<note author="Fernando Cacciola" refid="2"/>
+                <note author="Fernando Cacciola" refid="2"/>
         </mark-expected-failures>
         <mark-expected-failures>
             <test name="optional_test_ref_fail1"/>
@@ -2857,6 +2882,15 @@ for more information.
             <toolset name="iw-7_1-vc6-stlp-4_5_3"/>
             <note author="Aleksey Gurtovoy" refid="28"/>
         </mark-expected-failures>
+        <mark-expected-failures>
+            <test name="karma_pattern*"/>
+            <test name="rule"/>
+            <toolset name="acc"/>
+            <note author="Boris Gubenko">
+                This failure is caused by a timeout when compiling the test.
+                It passes when the timeout value is increased.
+            </note>
+        </mark-expected-failures>
     </library>
 
     <!-- typeof -->
@@ -3142,6 +3176,17 @@ for more information.
           <toolset name="gcc-3.3.6"/>
           <note author="John Maddock">
              This compiler is not sufficiently conforming to correctly handle these tests.
+          </note>
+       </mark-expected-failures>
+       <mark-expected-failures>
+          <test name="test_tr1_long_double"/>
+          <toolset name="darwin*"/>
+          <toolset name="intel-linux-10.0"/>
+          <toolset name="intel-linux-9*"/>
+          <toolset name="intel-linux-8*"/>
+          <note author="John Maddock">
+             Some versions of the Darwin platform have insufficient long double support
+             for us to be able to run this test.
           </note>
        </mark-expected-failures>
        <mark-expected-failures>
@@ -3920,7 +3965,7 @@ for more information.
         <mark-expected-failures>
             <test name="no_exceptions"/>
             <toolset name="cw-9.4"/>
-            <toolset name="sun-5.8"/>
+            <toolset name="sun-5.*"/>
             <note author="Thorsten Ottosen">
                 This test fails because the test ptr_vector fails. Please see the note
                 for that test.
@@ -3929,7 +3974,7 @@ for more information.
         <mark-expected-failures>
             <test name="ptr_deque"/>
             <toolset name="cw-9.4"/>
-            <toolset name="sun-5.8"/>
+            <toolset name="sun-5.*"/>
             <note author="Thorsten Ottosen">
                 For sun the problem is that <code>insert(iterator,range)</code>
                 is not available due to partial ordering errors (the core library remains usable).
@@ -3939,7 +3984,7 @@ for more information.
         <mark-expected-failures>
             <test name="ptr_list"/>
             <toolset name="cw-9.4"/>
-            <toolset name="sun-5.8"/>
+            <toolset name="sun-5.*"/>
             <note author="Thorsten Ottosen">
                 For sun the problem is that <code>insert(iterator,range)</code>
                 is not available due to partial ordering errors (the core library remains usable).
@@ -3960,7 +4005,7 @@ for more information.
             <test name="ptr_map"/>
             <toolset name="hp_cxx-71_006_tru64"/>
             <toolset name="cw-9.4"/>
-            <toolset name="sun-5.8"/>
+            <toolset name="sun-5.*"/>
             <note author="Thorsten Ottosen">
                 For hp, this compiler bug is insignificant.
                 For sun the problem is that <code>transfer(range,ptr_map)</code>
@@ -3971,7 +4016,7 @@ for more information.
         <mark-expected-failures>
             <test name="ptr_set"/>
             <toolset name="cw-9.4"/>
-            <toolset name="sun-5.8"/>
+            <toolset name="sun-5.*"/>
             <note author="Thorsten Ottosen">
                 For sun the problem is that <code>transfer(range,ptr_map)</code> and
                 <code>insert(range)</code>code>
@@ -3982,8 +4027,15 @@ for more information.
            <mark-expected-failures>
             <test name="serialization"/>
             <toolset name="cw*"/>
+            <toolset name="intel-darwin-*"/>
+            <toolset name="intel-linux-*"/>
+            <toolset name="pathscale-3.1"/>
+            <toolset name="sun-5.*"/>
             <note author="Thorsten Ottosen">
-                This cause of this problem is unknown. Please submit a patch.
+                For codewarrior, the cause of this problem is unknown. Please 
+                submit a patch. Other failures are due to problems with 
+                the serialization library, or to a minor problem with the use of
+                the library.
             </note>
         </mark-expected-failures>
            <mark-expected-failures>
@@ -4057,6 +4109,11 @@ for more information.
               unable to find a workaround.
 
             </note>
+        </mark-expected-failures>
+        <mark-expected-failures>
+            <test name="object"/>
+            <toolset name="acc"/>
+            <note author="Boris Gubenko" refid="46"/>
         </mark-expected-failures>
         <mark-expected-failures>
             <test name="args"/>
@@ -4302,7 +4359,16 @@ for more information.
             use and building of dll's mainly.
             </note>
         </mark-expected-failures>
-        <mark-expected-failures>
+       <mark-expected-failures>
+          <test name="regex_regress_threaded"/>
+          <toolset name="darwin*"/>
+          <note author="J. Maddock">
+             This tests fails because a dependency (Boost.Test)
+             fails to initialise correctly.  The issue has been 
+             reported to the library's author.
+          </note>
+       </mark-expected-failures>
+       <mark-expected-failures>
             <test name="regex_regress_threaded"/>
             <toolset name="gcc-*_tru64"/>
             <note author="J. Maddock">
@@ -4637,7 +4703,6 @@ for more information.
 
         <mark-expected-failures>
             <test name="prg_exec_fail2"/>
-            <toolset name="darwin-4.0.1"/>
             <toolset name="gcc-3.4.2_hpux_pa_risc"/>
             <toolset name="gcc-3.4.6_linux_ia64"/>
             <note author="Vladimir Prus">
@@ -4715,6 +4780,8 @@ for more information.
         <mark-expected-failures>
             <test name="test_tss_lib"/>
             <toolset name="borland-*"/>
+            <toolset name="como-win-*"/>
+            <toolset name="msvc*wm5*"/>
             <toolset name="cw-9.4"/>
             <note author="Roland Schwarz" date="2006-12-14">
                 When a thread ends, tss data needs to be cleaned up. This process
@@ -4733,18 +4800,13 @@ for more information.
         <mark-expected-failures>
             <test name="test_thread_move"/>
             <test name="test_thread_move_lib"/>
+            <test name="test_move_function"/>
+            <test name="test_move_function_lib"/>
             <toolset name="borland-*"/>
+            <toolset name="sun-*"/>
             <note author="Anthony Williams" date="2007-12-14">
 The Borland compiler fails to bind rvalues to the thread move constructor,
 choosing instead to bind them to the private (and unimplemented) copy constructor.
-            </note>
-        </mark-expected-failures>
-        <mark-expected-failures>
-            <test name="test_hardware_concurrency"/>
-            <test name="test_hardware_concurrency_lib"/>
-            <toolset name="*tru64"/>
-            <note author="Anthony Williams" date="2007-12-21">
-boost::thread::hardware_concurrency is not implemented and always returns 0 on this platform.
             </note>
         </mark-expected-failures>
     </library>
@@ -4997,7 +5059,32 @@ boost::thread::hardware_concurrency is not implemented and always returns 0 on t
             </note>
         </mark-expected-failures>
 
-        <mark-expected-failures>
+       <mark-expected-failures>
+          <test name="run_random"/>
+          <test name="std_run_random"/>
+          <test name="std_test_bind"/>
+          <test name="test_bind"/>
+          <test name="std_test_regex"/>
+          <test name="test_regex"/>
+          <test name="std_test_result_of"/>
+          <test name="test_result_of"/>
+          <test name="tr1_has_tr1_result_of_pass"/>
+          <test name="tr1_has_trivial_constr_test"/>
+          <test name="tr1_is_base_of_test"/>
+          <test name="tr1_is_convertible_test"/>
+          <test name="tr1_is_pod_test"/>
+          <test name="tr1_is_polymorphic_test"/>
+          <test name="tr1_tky_function_type_test"/>
+          <toolset name="msvc-9.0"/>
+          <note author="John Maddock">
+             MSVC 9.0 with the optional feature pack installed includes
+             a version of the TR1 libraries that is not as interface-conforming
+             as the Boost version.  Most of these failures are of the "annoying"
+             rather than "unusable" kind.
+          </note>
+       </mark-expected-failures>
+
+       <mark-expected-failures>
             <test name="test_regex"/>
             <test name="std_test_regex"/>
             <test name="test_hash"/>
@@ -5501,6 +5588,31 @@ boost::thread::hardware_concurrency is not implemented and always returns 0 on t
         </mark-expected-failures>
     </library>
 
+    <!-- unordered -->
+    <library name="unordered">
+      <mark-expected-failures>
+        <test name="move_tests"/>
+        <toolset name="msvc-*"/>
+        <toolset name="intel-win-10.1"/>
+        <toolset name="borland-*"/>
+        <toolset name="sun-*"/>
+        <toolset name="hp_css-*"/>
+        <toolset name="intel-linux-8*"/>
+        <toolset name="intel-linux-9.0*"/>
+        <toolset name="acc-pa_risc"/>
+        <note author="Daniel James">
+            This tests whether the container is successfully moved under
+            different circumstances, and fails if it is copied. Typically if
+            this one fails, it just means that return value optimization was
+            not applied. It might be possible to change the test to make it for
+            the compiler to apply ADL (by not having non-const reference
+            parameters for the function which returns the container). So this
+            is an acceptable failure.
+        </note>
+      </mark-expected-failures>
+    </library>
+
+
     <!-- utility/enable_if -->
     <library name="utility/enable_if">
         <mark-unusable>
@@ -5980,6 +6092,12 @@ boost::thread::hardware_concurrency is not implemented and always returns 0 on t
         a faulty vector&lt;bool&gt; iterator, which is not symmetric. There is an
         associated bug report in the Rogue Wave bug tracking system for this
         problem.
+    </note>
+
+    <note id="46">
+        The test does not compile, most likely because of new version of EDG Front End
+        implementing Core Issue 574. In the HP bug tracking system, it is tracked as
+        QuIX ID: QXCR1000804484.
     </note>
 
 </explicit-failures-markup>

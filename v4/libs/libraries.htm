@@ -86,9 +86,9 @@ how to download, build, and install the libraries.</p>
     <li><a href="array/index.html">array</a> - STL compliant
         container wrapper for arrays of constant size, from
         Nicolai Josuttis.</li>
-    <li><a href="asio/index.html">asio</a> - Portable networking, including
-        sockets, timers, hostname resolution and socket iostreams, from
-        Chris Kohlhoff.</li>
+    <li><a href="asio/index.html">asio</a> - Portable networking and other low-level
+        I/O, including sockets, timers, hostname resolution, socket iostreams, serial
+        ports, file descriptors and Windows HANDLEs, from Chris Kohlhoff.</li>
     <li><a href="assign/index.html">assign</a> - Filling containers
         with constant or generated data has never been
         easier, from Thorsten Ottosen.
@@ -119,6 +119,7 @@ how to download, build, and install the libraries.</p>
       Walker.</li>
     <li><a href="date_time/doc/index.html">date_time</a> - Date-Time library from Jeff Garland.</li>
     <li><a href="dynamic_bitset/dynamic_bitset.html">dynamic_bitset</a> - A runtime sized version of <tt>std::bitset</tt> from Jeremy Siek and Chuck Allison.</li>
+    <li><a href="exception/doc/boost-exception.html">exception</a> - A library for transporting of arbitrary data in exception objects, and transporting of exceptions between threads (<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2179.html">N2179</a>), from Emil Dotchevski.</li>
     <li><a href="utility/enable_if.html">enable_if</a> - Selective inclusion of function template overloads, from Jaakko J&auml;rvi, Jeremiah Willcock, and Andrew Lumsdaine.</li>
     <li><a href="filesystem/doc/index.htm">filesystem</a> - Portable paths,
     iteration over directories, and other useful filesystem operations, from
@@ -250,14 +251,16 @@ how to download, build, and install the libraries.</p>
     Guzman, Hartmut Kaiser, Dan Nuffer and team.</li>
     <li><a href="algorithm/string/index.html">string_algo</a> -
     String algorithms library, from Pavol Droba.</li>
+    <li><a href="utility/swap.html">swap</a> -
+    Enhanced generic swap function, from Joseph Gauterin.</li>
     <li><a href="system/doc/index.html">system</a> - Operating system support, 
     including the diagnostics support that will be part of the C++0x standard 
     library, from Beman Dawes.</li>
-    <li><a href="test/doc/index.html">test</a> - Support for simple program testing,
+    <li><a href="test/index.html">test</a> - Support for simple program testing,
     full unit testing, and for program
       execution monitoring, from Gennadiy Rozental.</li>
     <li><a href="thread/doc/index.html">thread</a> - Portable C++
-      multi-threading, from William Kempf.</li>
+      multi-threading, from William Kempf and Anthony Williams.</li>
     <li><a href="timer/index.html">timer</a> - Event timer,
         progress timer, and progress display classes, from Beman
         Dawes.</li>
@@ -275,6 +278,9 @@ how to download, build, and install the libraries.</p>
         Typeof operator emulation, from Arkadiy Vertleyb and Peder Holt.</li>
     <li><a href="numeric/ublas/doc/index.htm">uBLAS</a> - Basic linear algebra
     for dense, packed and sparse matrices, from Joerg Walter and Mathias Koch.</li>
+    <li><a href="units/index.html">units</a> -
+        Zero-overhead dimensional analysis and unit/quantity
+        manipulation and conversion, from Matthias Schabel and Steven Watanabe.</li>
     <li><a href="../doc/html/unordered.html">unordered</a> - unordered associative containers, from Daniel James.</li>
     <li><a href="utility/utility.htm">utility</a> - Class <b>noncopyable</b>
         plus <b>checked_delete()</b>, <b>checked_array_delete()</b>, <b>next(),</b>&nbsp;
@@ -453,7 +459,7 @@ how to download, build, and install the libraries.</p>
         for callable, built-in types, from Tobias Schwinger</li>
     <li><a href="fusion/index.html">fusion</a> -
         Library for working with tuples, including various containers, 
-    algorithms, etc. </li>
+    algorithms, etc. From Joel de Guzman, Dan Marsden and Tobias Schwinger.</li>
     <li><a href="mpl/doc/index.html">mpl</a> - Template metaprogramming
     framework of compile-time algorithms, sequences and metafunction classes,
     from Aleksey Gurtovoy.</li>
@@ -463,7 +469,6 @@ how to download, build, and install the libraries.</p>
     <li><a href="type_traits/index.html">type_traits</a> -
         Templates for fundamental properties of types, from John
         Maddock, Steve Cleary, et al.</li>
-    <li>From Joel de Guzman, Dan Marsden and Tobias Schwinger.</li>
 </ul>
 
 <h3><a name="Preprocessor">Preprocessor</a> Metaprogramming</h3>
@@ -477,9 +482,9 @@ how to download, build, and install the libraries.</p>
 <h3><a name="Concurrent">Concurrent</a> Programming</h3>
 
 <ul>
-    <li><a href="asio/index.html">asio</a> - Portable networking, including
-        sockets, timers, hostname resolution and socket iostreams, from
-        Chris Kohlhoff.</li>
+    <li><a href="asio/index.html">asio</a> - Portable networking and other low-level
+        I/O, including sockets, timers, hostname resolution, socket iostreams, serial
+        ports, file descriptors and Windows HANDLEs, from Chris Kohlhoff.</li>
     <li><a href="interprocess/index.html">interprocess </a>- Shared memory, memory mapped files,
     process-shared mutexes, condition variables, containers and allocators, from Ion Gazta&ntilde;aga</li>
     <li><a href="../doc/html/mpi.html">MPI</a> - Message Passing Interface library, for use in distributed-memory parallel application programming, from Douglas Gregor and Matthias Troyer.</li>
@@ -535,7 +540,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="static_assert/static_assert.htm">static_assert</a>
         - Static assertions (compile time assertions), from John
         Maddock.</li>
-    <li><a href="test/doc/index.html">test</a> - Support for simple program testing,
+    <li><a href="test/index.html">test</a> - Support for simple program testing,
     full unit testing, and for program
       execution monitoring, from Gennadiy Rozental.</li>
 </ul>
@@ -572,9 +577,9 @@ how to download, build, and install the libraries.</p>
 
 <h3><a name="IO">Input/Output</a></h3>
 <ul>
-    <li><a href="asio/index.html">asio</a> - Portable networking, including
-        sockets, timers, hostname resolution and socket iostreams, from
-        Chris Kohlhoff.</li>
+    <li><a href="asio/index.html">asio</a> - Portable networking and other low-level
+        I/O, including sockets, timers, hostname resolution, socket iostreams, serial
+        ports, file descriptors and Windows HANDLEs, from Chris Kohlhoff.</li>
     <li><a href="assign/index.html">assign</a> - Filling containers
     with constant or generated data has never been
     easier, from Thorsten Ottosen.
@@ -648,6 +653,7 @@ of arbitrary data for persistence and marshalling, from Robert Ramey</li>
     <li><a href="crc/index.html">crc</a> - Cyclic Redundancy Code, from Daryle
       Walker.</li>
     <li><a href="date_time/doc/index.html">date_time</a> - Date-Time library from Jeff Garland.</li>
+    <li><a href="exception/doc/boost-exception.html">exception</a> - A library for transporting of arbitrary data in exception objects, and transporting of exceptions between threads (<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2179.html">N2179</a>), from Emil Dotchevski.</li>
     <li><a href="filesystem/doc/index.htm">filesystem</a> - Portable paths,
     iteration over directories, and other useful filesystem operations, from
     Beman Dawes.</li>
@@ -660,6 +666,8 @@ of arbitrary data for persistence and marshalling, from Robert Ramey</li>
     <li><a href="statechart/doc/index.html">statechart</a> - Arbitrarily
     complex finite state machines can be implemented in easily readable and
     maintainable C++ code, from Andreas Huber.</li>
+    <li><a href="utility/swap.html">swap</a> -
+    Enhanced generic swap function, from Joseph Gauterin.</li>
     <li><a href="system/doc/index.html">system</a> - Operating 
     system support, including the diagnostics support that will be part of the 
     C++0x standard library, from Beman Dawes.</li>
@@ -671,6 +679,9 @@ of arbitrary data for persistence and marshalling, from Robert Ramey</li>
     <li><a href="../doc/html/tribool.html">tribool</a> - 3-state boolean type library, from Doug Gregor.</li>
     <li><a href="typeof/index.html">typeof</a> -
         Typeof operator emulation, from Arkadiy Vertleyb and Peder Holt.</li>
+    <li><a href="units/index.html">units</a> -
+        Zero-overhead dimensional analysis and unit/quantity
+        manipulation and conversion, from Matthias Schabel and Steven Watanabe.</li>
     <li><a href="utility/utility.htm">utility</a> - Class <b>noncopyable</b>
         plus <b>checked_delete()</b>, <b>checked_array_delete()</b>, <b>next(),</b>&nbsp;
       <b>prior()</b>
