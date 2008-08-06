@@ -96,7 +96,7 @@ efficiency advantage of power of 2 hash tables.
 
 So, this implementation uses a prime number for the hash table size.
 
-[h2 Equality operators and hash functions]
+[h2 Equality operators]
 
 `operator==` and `operator!=` are not included in the standard, but I've
 added them as I think they could be useful and can be efficiently
@@ -104,8 +104,6 @@ implemented. They are specified
 differently to the standard associative containers, comparing keys
 using the equality predicate rather than `operator==`. This is inconsistent
 with the other containers but it is probably closer to user's expectations.
-I have also added a `hash_value` free function so that the containers can be
-hashed by [classref boost::hash].
 
 [h2 Active Issues and Proposals]
 

@@ -1729,6 +1729,15 @@
         </mark-expected-failures>
     </library>
 
+    <!-- gil -->
+    <library name="gil">
+      <mark-expected-failures>
+          <test name="pixel"/>
+          <toolset name="acc"/>
+          <note author="Boris Gubenko" refid="46"/>
+      </mark-expected-failures>
+    </library>
+
 
     <!-- graph -->
     <library name="graph">
@@ -2417,7 +2426,7 @@ for more information.
             <toolset name="gcc-mingw-3.4.5"/>
             <toolset name="gcc-3.4.2_hpux_pa_risc"/>
             <toolset name="gcc-3.4.6_linux_ia64"/>
-            <toolset name="gcc-4.2.1*"/>
+            <toolset name="gcc-4.2.*"/>
             <toolset name="gcc-4.1.2_sunos_i86pc"/>
         		<note author="Fernando Cacciola" refid="2"/>
         </mark-expected-failures>
@@ -3168,6 +3177,14 @@ for more information.
           <toolset name="gcc-3.3.6"/>
           <note author="John Maddock">
              This compiler is not sufficiently conforming to correctly handle these tests.
+          </note>
+       </mark-expected-failures>
+       <mark-expected-failures>
+          <test name="test_tr1_long_double"/>
+          <toolset name="darwin*"/>
+          <note author="John Maddock">
+             Some versions of the Darwin platform have insufficient long double support
+             for us to be able to run this test.
           </note>
        </mark-expected-failures>
        <mark-expected-failures>
@@ -4085,6 +4102,11 @@ for more information.
             </note>
         </mark-expected-failures>
         <mark-expected-failures>
+            <test name="object"/>
+            <toolset name="acc"/>
+            <note author="Boris Gubenko" refid="46"/>
+        </mark-expected-failures>
+        <mark-expected-failures>
             <test name="args"/>
             <test name="auto_ptr"/>
             <test name="builtin_convertors"/>
@@ -4328,7 +4350,16 @@ for more information.
             use and building of dll's mainly.
             </note>
         </mark-expected-failures>
-        <mark-expected-failures>
+       <mark-expected-failures>
+          <test name="regex_regress_threaded"/>
+          <toolset name="darwin*"/>
+          <note author="J. Maddock">
+             This tests fails because a dependency (Boost.Test)
+             fails to initialise correctly.  The issue has been
+             reported to the library's author.
+          </note>
+       </mark-expected-failures>
+       <mark-expected-failures>
             <test name="regex_regress_threaded"/>
             <toolset name="gcc-*_tru64"/>
             <note author="J. Maddock">
@@ -4990,7 +5021,33 @@ choosing instead to bind them to the private (and unimplemented) copy constructo
                 work by someone who has this compiler.
             </note>
         </mark-unusable>
-        <mark-expected-failures>
+
+       <mark-expected-failures>
+          <test name="run_random"/>
+          <test name="std_run_random"/>
+          <test name="std_test_bind"/>
+          <test name="test_bind"/>
+          <test name="std_test_regex"/>
+          <test name="test_regex"/>
+          <test name="std_test_result_of"/>
+          <test name="test_result_of"/>
+          <test name="tr1_has_tr1_result_of_pass"/>
+          <test name="tr1_has_trivial_constr_test"/>
+          <test name="tr1_is_base_of_test"/>
+          <test name="tr1_is_convertible_test"/>
+          <test name="tr1_is_pod_test"/>
+          <test name="tr1_is_polymorphic_test"/>
+          <test name="tr1_tky_function_type_test"/>
+          <toolset name="msvc-9.0"/>
+          <note author="John Maddock">
+             MSVC 9.0 with the optional feature pack installed includes
+             a version of the TR1 libraries that is not as interface-conforming
+             as the Boost version.  Most of these failures are of the "annoying"
+             rather than "unusable" kind.
+          </note>
+       </mark-expected-failures>
+
+       <mark-expected-failures>
             <test name="test_mem_fn_tricky"/>
             <test name="test_bind_tricky"/>
             <test name="test_ref_wrapper_tricky"/>
@@ -6055,6 +6112,12 @@ choosing instead to bind them to the private (and unimplemented) copy constructo
         a faulty vector&lt;bool&gt; iterator, which is not symmetric. There is an
         associated bug report in the Rogue Wave bug tracking system for this
         problem.
+    </note>
+
+    <note id="46">
+        The test does not compile, most likely because of new version of EDG Front End
+        implementing Core Issue 574. In the HP bug tracking system, it is tracked as
+        QuIX ID: QXCR1000804484.
     </note>
 
 </explicit-failures-markup>

@@ -10,7 +10,7 @@
 Initial review version, for the review conducted from 7th December 2007 to
 16th December 2007.
 
-[h2 1.35.0 Add-on - 31st Match 2008]
+[h2 1.35.0 Add-on - 31st March 2008]
 
 Unofficial release uploaded to vault, to be used with Boost 1.35.0. Incorporated
 many of the suggestions from the review.
@@ -31,7 +31,6 @@ First official release.
 * Emplace support when rvalue references and variadic template are available.
 * More efficient node allocation when rvalue references and variadic template
   are available.
-* Added equality operators and hash functions
-  ([@http://svn.boost.org/trac/boost/ticket/1557 Ticket 1557]).
+* Added equality operators.
 
 [endsect]

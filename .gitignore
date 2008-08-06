@@ -100,11 +100,6 @@ release/tools/build/v2/test/*.pyc
 release/tools/build/v2/test/failed_test
 release/tools/build/v2/test/test-config.jam
 release/tools/build/v2/test/test_results.txt
-release/tools/jam/src/bin.cygwinx86
-release/tools/jam/src/bin.cygwinx86.debug
-release/tools/jam/src/bin.ntx86
-release/tools/jam/src/bin.ntx86.debug
-release/tools/jam/src/bootstrap
 release/tools/regression/test/test-cases/Huber2629/actual
 release/tools/regression/test/test-cases/general/actual
 trunk/bin.v2
