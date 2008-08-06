@@ -320,7 +320,7 @@ macro(boost_add_documentation SOURCE)
                    navig.graphics.path=images
                    boost.image.src=boost.png
         COMMENT "Generating HTML documentation for Boost.${PROJECT_NAME}..."
-        MAKE_ALL_TARGET ${PROJECT_NAME}-html)
+        MAKE_TARGET ${PROJECT_NAME}-html)
 
       # Install generated documentation
       install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html 

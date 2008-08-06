@@ -86,6 +86,7 @@ macro(boost_library_project LIBNAME)
       foreach(DEPDEP ${${DEP_DEPENDS}})
         list(FIND THIS_PROJECT_DEPENDS_ALL ${DEPDEP} DEPDEP_INDEX)
         if (DEPDEP_INDEX EQUAL -1)
+          message(STATUS "${LIBNAME}: added transitive dependency ${DEPDEP}")
           list(APPEND THIS_PROJECT_DEPENDS_ALL ${DEPDEP})
           set(ADDED_DEPS TRUE)
         endif()
@@ -377,7 +378,7 @@ macro(boost_module LIBNAME)
 
   # Export BOOST_${LIBNAME}_DEPENDS
   string(TOUPPER "BOOST_${LIBNAME}_DEPENDS" THIS_MODULE_LIBNAME_DEPENDS)
-  set(${THIS_MODULE_LIBNAME_DEPENDS} "${THIS_MODULE_DEPENDS}")
+  set(${THIS_MODULE_LIBNAME_DEPENDS} ${THIS_MODULE_DEPENDS})
 endmacro(boost_module)
 
 # This macro is an internal utility macro that builds the name of a
