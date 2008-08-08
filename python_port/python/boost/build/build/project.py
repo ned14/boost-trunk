@@ -168,7 +168,7 @@ class ProjectRegistry:
             location, self.JAMROOT + self.JAMFILE) 
 
         if not found:
-            print "error: Could not find parent for project at '$(location)'"
+            print "error: Could not find parent for project at '%s'" % location
             print "error: Did not find Jamfile or project-root.jam in any parent directory."
             sys.exit(1)
     
@@ -899,10 +899,11 @@ attribute is allowed only for top-level 'project' invocations""")
         self.registry.used_projects[m].append((id, where))
         
     def build_project(self, dir):
+        assert(isinstance(dir, list))
         jamfile_module = self.registry.current().project_module()
         attributes = self.registry.attributes(jamfile_module)
         now = attributes.get("projects-to-build")
-        attributes.set("projects-to-build", now.append(dir))
+        attributes.set("projects-to-build", now + dir, exact=True)
 
     def explicit(self, target_names):
         t = self.registry.current()
