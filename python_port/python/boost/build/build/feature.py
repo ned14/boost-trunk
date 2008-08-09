@@ -122,10 +122,19 @@ def set_default (feature, value):
         feature: the name of the feature
         value: the default value to assign
     """
+
+    if isinstance(feature, list):
+        feature = feature[0]
+
     feature = add_grist (feature)
     f = __all_features [feature]
-    if not value in f ['values']:
-        raise BaseException ("The specified default value, '%s' is invalid.\n" + "allowed values are: %s" % (str (value), str (f ['values'])))
+
+    if isinstance(value, list):
+        value = value[0]
+
+    values = f['values']
+    if not value in values:
+        raise InvalidValue ("The specified default value, '%s' is invalid.\n" % value + "allowed values are: %s" % values)
 
     f ['default'] = value
 
