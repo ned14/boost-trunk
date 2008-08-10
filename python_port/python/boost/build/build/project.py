@@ -573,8 +573,10 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         return result
 
     def load_module(self, name, extra_path=None):
-        """Find a Python module called 'name' in Boost.Build search
-        path and load it.  The module is not entered in sys.modules.
+        """Classic Boost.Build 'modules' are in fact global variables.
+        Therefore, try to find an already loaded Python module called 'name' in sys.modules. 
+        If the module ist not loaded, find it Boost.Build search
+        path and load it.  The new module is not entered in sys.modules.
         The motivation here is to have disjoint namespace of modules
         loaded via 'import/using' in Jamfile, and ordinary Python
         modules. We don't want 'using foo' in Jamfile to load ordinary
@@ -586,6 +588,13 @@ actual value %s""" % (jamfile_module, saved_project, self.current_project))
         existing = self.loaded_tool_modules_.get(name)
         if existing:
             return existing
+
+        modules = sys.modules
+        for class_name in modules:
+            if name in class_name:
+                module = modules[class_name]
+                self.loaded_tool_modules_[name] = module
+                return module
         
         path = extra_path
         if not path:
