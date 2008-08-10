@@ -20374,6 +20374,7 @@ v4/boost/config/compiler/sgi_mipspro.hpp svneol=native#text/plain
 v4/boost/config/compiler/sunpro_cc.hpp svneol=native#text/plain
 v4/boost/config/compiler/vacpp.hpp svneol=native#text/plain
 v4/boost/config/compiler/visualc.hpp svneol=native#text/plain
+v4/boost/config/no_tr1/cmath.hpp svneol=native#text/plain
 v4/boost/config/no_tr1/complex.hpp svneol=native#text/plain
 v4/boost/config/no_tr1/functional.hpp svneol=native#text/plain
 v4/boost/config/no_tr1/memory.hpp svneol=native#text/plain
@@ -25563,6 +25564,7 @@ v4/boost/token_functions.hpp svneol=native#text/plain
 v4/boost/token_iterator.hpp svneol=native#text/plain
 v4/boost/tokenizer.hpp svneol=native#text/plain
 v4/boost/tr1/array.hpp svneol=native#text/plain
+v4/boost/tr1/cmath.hpp svneol=native#text/plain
 v4/boost/tr1/complex.hpp svneol=native#text/plain
 v4/boost/tr1/detail/config.hpp svneol=native#text/plain
 v4/boost/tr1/detail/config_all.hpp svneol=native#text/plain
@@ -25579,7 +25581,9 @@ v4/boost/tr1/tr1/bcc32/random.h svneol=native#text/plain
 v4/boost/tr1/tr1/bcc32/regex.h svneol=native#text/plain
 v4/boost/tr1/tr1/bcc32/tuple.h svneol=native#text/plain
 v4/boost/tr1/tr1/bcc32/type_tra.h svneol=native#text/plain
+v4/boost/tr1/tr1/bcc32/unordere.h svneol=native#text/plain
 v4/boost/tr1/tr1/bitset -text
+v4/boost/tr1/tr1/cmath svneol=native#text/plain
 v4/boost/tr1/tr1/complex -text
 v4/boost/tr1/tr1/deque -text
 v4/boost/tr1/tr1/exception -text
@@ -25612,6 +25616,7 @@ v4/boost/tr1/tr1/sun/algorithm.SUNWCCh -text
 v4/boost/tr1/tr1/sun/array.SUNWCCh -text
 v4/boost/tr1/tr1/sun/bcc32.SUNWCCh -text
 v4/boost/tr1/tr1/sun/bitset.SUNWCCh -text
+v4/boost/tr1/tr1/sun/cmath.SUNWCCh svneol=native#text/plain
 v4/boost/tr1/tr1/sun/complex.SUNWCCh -text
 v4/boost/tr1/tr1/sun/deque.SUNWCCh -text
 v4/boost/tr1/tr1/sun/exception.SUNWCCh -text
@@ -25644,6 +25649,8 @@ v4/boost/tr1/tr1/sun/sun.SUNWCCh -text
 v4/boost/tr1/tr1/sun/tuple.SUNWCCh -text
 v4/boost/tr1/tr1/sun/type_traits.SUNWCCh -text
 v4/boost/tr1/tr1/sun/typeinfo.SUNWCCh -text
+v4/boost/tr1/tr1/sun/unordered_map.SUNWCCh svneol=native#text/plain
+v4/boost/tr1/tr1/sun/unordered_set.SUNWCCh svneol=native#text/plain
 v4/boost/tr1/tr1/sun/utility.SUNWCCh -text
 v4/boost/tr1/tr1/sun/valarray.SUNWCCh -text
 v4/boost/tr1/tr1/sun/vector.SUNWCCh -text
@@ -38363,6 +38370,12 @@ v4/libs/test/doc/style/btl-paragraphs.css svneol=native#text/css
 v4/libs/test/doc/style/btl-structure.css svneol=native#text/css
 v4/libs/test/doc/style/btl-tables.css svneol=native#text/css
 v4/libs/test/doc/style/style.css svneol=native#text/css
+v4/libs/test/docbook/img/boost.test.logo.png -text
+v4/libs/test/docbook/img/class-hier.jpg -text
+v4/libs/test/docbook/img/level.png -text
+v4/libs/test/docbook/img/post_build_event.jpg -text
+v4/libs/test/docbook/img/post_build_out.jpg -text
+v4/libs/test/docbook/img/run_args.jpg -text
 v4/libs/test/example/Jamfile.v2 svneol=native#text/plain
 v4/libs/test/example/cla/Jamfile svneol=native#text/plain
 v4/libs/test/example/cla/assign_to.cpp svneol=native#text/plain
@@ -38710,6 +38723,7 @@ v4/libs/tr1/test/run_complex_overloads.cpp svneol=native#text/plain
 v4/libs/tr1/test/run_random.cpp svneol=native#text/plain
 v4/libs/tr1/test/std_headers/test_algorithm.cpp svneol=native#text/plain
 v4/libs/tr1/test/std_headers/test_bitset.cpp svneol=native#text/plain
+v4/libs/tr1/test/std_headers/test_cmath.cpp svneol=native#text/plain
 v4/libs/tr1/test/std_headers/test_complex.cpp svneol=native#text/plain
 v4/libs/tr1/test/std_headers/test_deque.cpp svneol=native#text/plain
 v4/libs/tr1/test/std_headers/test_exception.cpp svneol=native#text/plain
@@ -38745,6 +38759,7 @@ v4/libs/tr1/test/test_array_tricky.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_bind.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_bind_header.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_bind_tricky.cpp svneol=native#text/plain
+v4/libs/tr1/test/test_cmath.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_complex.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_complex_header.cpp svneol=native#text/plain
 v4/libs/tr1/test/test_function.cpp svneol=native#text/plain
