@@ -35834,7 +35834,6 @@ v4/libs/proto/doc/concepts/PolymorphicFunctionObject.xml svneol=native#text/xml
 v4/libs/proto/doc/concepts/PrimitiveTransform.xml svneol=native#text/xml
 v4/libs/proto/doc/concepts/Transform.xml svneol=native#text/xml
 v4/libs/proto/doc/construction.qbk svneol=native#text/plain
-v4/libs/proto/doc/definitions.qbk svneol=native#text/plain
 v4/libs/proto/doc/evaluation.qbk svneol=native#text/plain
 v4/libs/proto/doc/examples.qbk svneol=native#text/plain
 v4/libs/proto/doc/extensibility.qbk svneol=native#text/plain
