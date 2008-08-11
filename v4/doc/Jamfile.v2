@@ -28,7 +28,7 @@ boostbook doc
     <dependency>../libs/foreach/doc//foreach
     <dependency>../libs/mpi/doc//mpi
     <dependency>../libs/mpi/doc//mpi_autodoc.xml
-    <dependency>../libs/proto/doc//protodoc.xml
+    #<dependency>../libs/proto/doc//protodoc.xml
     <dependency>../libs/proto/doc//proto
     <dependency>../libs/typeof/doc//typeof
     <dependency>../libs/xpressive/doc//autodoc.xml

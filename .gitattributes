@@ -35873,6 +35873,7 @@ v4/libs/proto/example/rgb.cpp svneol=native#text/plain
 v4/libs/proto/example/tarray.cpp svneol=native#text/plain
 v4/libs/proto/example/vec3.cpp svneol=native#text/plain
 v4/libs/proto/example/vector.cpp svneol=native#text/plain
+v4/libs/proto/index.html svneol=native#text/html
 v4/libs/proto/test/Jamfile.v2 svneol=native#text/plain
 v4/libs/proto/test/calculator.cpp svneol=native#text/plain
 v4/libs/proto/test/deep_copy.cpp svneol=native#text/plain
