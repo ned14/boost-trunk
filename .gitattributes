@@ -16039,6 +16039,7 @@ libs/proto/doc/proto.xml svneol=native#text/xml
 libs/proto/doc/protodoc.xml svneol=native#text/xml
 libs/proto/doc/quick_start.qbk svneol=native#text/plain
 libs/proto/doc/rationale.qbk svneol=native#text/plain
+libs/proto/doc/references.qbk svneol=native#text/plain
 libs/proto/doc/transforms.qbk svneol=native#text/plain
 libs/proto/doc/wave.sh svneol=native#text/x-sh
 libs/proto/example/Jamfile.v2 svneol=native#text/plain
