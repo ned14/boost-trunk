@@ -20556,6 +20556,7 @@ tools/build/v2/test/generators_test.py svneol=native#text/x-python
 tools/build/v2/test/implicit_dependency.py svneol=native#text/x-python
 tools/build/v2/test/indirect_conditional.py svneol=native#text/x-python
 tools/build/v2/test/inherit_toolset.py svneol=native#text/x-python
+tools/build/v2/test/inherited_dependency.py svneol=native#text/x-python
 tools/build/v2/test/inline.py svneol=native#text/x-python
 tools/build/v2/test/lib_source_property.py svneol=native#text/x-python
 tools/build/v2/test/library_chain.py svneol=native#text/x-python
