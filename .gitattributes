@@ -19001,6 +19001,7 @@ libs/tr1/test/test_bind.cpp svneol=native#text/plain
 libs/tr1/test/test_bind_header.cpp svneol=native#text/plain
 libs/tr1/test/test_bind_tricky.cpp svneol=native#text/plain
 libs/tr1/test/test_cmath.cpp svneol=native#text/plain
+libs/tr1/test/test_cmath_tricky.cpp svneol=native#text/plain
 libs/tr1/test/test_complex.cpp svneol=native#text/plain
 libs/tr1/test/test_complex_header.cpp svneol=native#text/plain
 libs/tr1/test/test_function.cpp svneol=native#text/plain
