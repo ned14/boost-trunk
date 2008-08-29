@@ -854,7 +854,6 @@ boost/dynamic_bitset_fwd.hpp svneol=native#text/plain
 boost/dynamic_property_map.hpp svneol=native#text/plain
 boost/enable_shared_from_this.hpp svneol=native#text/plain
 boost/exception.hpp svneol=native#text/plain
-boost/exception/detail/cloning_base.hpp svneol=native#text/plain
 boost/exception/detail/counted_base.hpp svneol=native#text/plain
 boost/exception/detail/error_info_base.hpp svneol=native#text/plain
 boost/exception/detail/get_boost_exception.hpp svneol=native#text/plain
