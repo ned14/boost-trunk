@@ -8060,6 +8060,7 @@ libs/dynamic_bitset/index.html svneol=native#text/html
 libs/exception/doc/BOOST_ERROR_INFO.html svneol=native#text/html
 libs/exception/doc/boost-exception.html svneol=native#text/html
 libs/exception/doc/boost_exception_diagnostic_information_hpp.html svneol=native#text/html
+libs/exception/doc/boost_exception_get_error_info_hpp.html svneol=native#text/html
 libs/exception/doc/copy_exception.html svneol=native#text/html
 libs/exception/doc/current_exception.html svneol=native#text/html
 libs/exception/doc/diagnostic_information.html svneol=native#text/html
