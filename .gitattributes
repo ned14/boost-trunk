@@ -18488,6 +18488,8 @@ libs/test/doc/img/post_build_event.jpg -text
 libs/test/doc/img/post_build_out.jpg -text
 libs/test/doc/img/run_args.jpg -text
 libs/test/doc/js/boost-test.js -text svneol=native#application/x-javascript
+libs/test/doc/src/UTF.log.xsd svneol=native#text/xsd
+libs/test/doc/src/UTF.report.xsd svneol=native#text/xsd
 libs/test/doc/src/examples/example.sln svneol=native#text/plain
 libs/test/doc/src/examples/example.vcproj svneol=native#text/plain
 libs/test/doc/src/examples/example01.cpp svneol=native#text/plain
