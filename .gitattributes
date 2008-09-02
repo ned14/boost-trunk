@@ -8059,6 +8059,7 @@ libs/dynamic_bitset/example/example2.cpp svneol=native#text/plain
 libs/dynamic_bitset/example/example3.cpp svneol=native#text/plain
 libs/dynamic_bitset/example/timing_tests.cpp svneol=native#text/plain
 libs/dynamic_bitset/index.html svneol=native#text/html
+libs/exception/doc/BOOST_THROW_EXCEPTION.html svneol=native#text/html
 libs/exception/doc/boost-exception.html svneol=native#text/html
 libs/exception/doc/boost_exception_diagnostic_information_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_get_error_info_hpp.html svneol=native#text/html
