@@ -115,7 +115,7 @@ class abstract-target
         return $(self.project) ;
     }
 
-    # Return the location where the target was declared
+    # Return the location where the target was declared.
     rule location ( )
     {
         return $(self.location) ;
@@ -490,7 +490,7 @@ class project-target : abstract-target
             self.constants += $(name) ;
         }
         self.constant.$(name) = $(value) ;
-        # Inject the constant in the scope of project-root module.
+        # Inject the constant in the scope of the Jamroot module.
         modules.poke $(self.project-module) : $(name) : $(value) ;
     }
 
@@ -909,7 +909,7 @@ rule common-properties ( build-request requirements )
 
 # Given a 'context' -- a set of already present properties, and 'requirements',
 # decide which extra properties should be applied to 'context'. For conditional
-# requirements, this means evaluating condition. For indirect conditional
+# requirements, this means evaluating the condition. For indirect conditional
 # requirements, this means calling a rule. Ordinary requirements are always
 # applied.
 #
@@ -945,7 +945,7 @@ rule evaluate-requirements ( requirements : context : what )
 
     local conditionals = [ $(requirements).conditional ] ;
     # The 'count' variable has one element for each conditional feature and for
-    # each occurence of '<indirect-conditional>' feature. It is used as a loop
+    # each occurrence of '<indirect-conditional>' feature. It is used as a loop
     # counter: for each iteration of the loop before we remove one element and
     # the property set should stabilize before we are done. It is assumed that
     # #conditionals iterations should be enough for properties to propagate
@@ -959,9 +959,10 @@ rule evaluate-requirements ( requirements : context : what )
     local current = $(raw) ;
 
     # It is assumed that ordinary conditional requirements can not add
-    # <indirect-conditional> properties, and that rules referred to by
-    # <indirect-conditional> properties can not add new <indirect-conditional>
-    # properties. So the list of indirect conditionals does not change.
+    # <conditional> properties (a.k.a. indirect conditional properties), and
+    # that rules referred to by <conditional> properties can not add new
+    # <conditional> properties. So the list of indirect conditionals does not
+    # change.
     local indirect = [ $(requirements).get <conditional> ] ;
     indirect = [ MATCH @(.*) : $(indirect) ] ;
 
@@ -980,7 +981,7 @@ rule evaluate-requirements ( requirements : context : what )
 
         if $(e) = $(added-requirements)
         {
-            # If we got the same result, we've found final properties.
+            # If we got the same result, we have found the final properties.
             count = ;
             ok = true ;
         }
@@ -1009,7 +1010,7 @@ rule evaluate-requirements ( requirements : context : what )
     }
     else
     {
-        errors.error "Invalid value of the 'what' parameter" ;
+        errors.error "Invalid value of the 'what' parameter." ;
     }
 }
 
@@ -1401,11 +1402,11 @@ class typed-target : basic-target
 {
     import generators ;
 
-    rule __init__ ( name : project : type : sources * : requirements *
-        : default-build * : usage-requirements * )
+    rule __init__ ( name : project : type : sources * : requirements * :
+         default-build * : usage-requirements * )
     {
-        basic-target.__init__ $(name) : $(project) : $(sources)
-            : $(requirements) : $(default-build) : $(usage-requirements) ;
+        basic-target.__init__ $(name) : $(project) : $(sources) :
+            $(requirements) : $(default-build) : $(usage-requirements) ;
 
         self.type = $(type) ;
     }
@@ -1417,7 +1418,8 @@ class typed-target : basic-target
 
     rule construct ( name : source-targets * : property-set )
     {
-        local r = [ generators.construct $(self.project) $(name:S=) : $(self.type)
+        local r = [ generators.construct $(self.project) $(name:S=)
+            : $(self.type)
             : [ property-set.create [ $(property-set).raw ]
                 <main-target-type>$(self.type) ]
             : $(source-targets) ] ;
@@ -1508,10 +1510,10 @@ rule main-target-usage-requirements (
 {
     local project-usage-requirements = [ $(project).get usage-requirements ] ;
 
-    # We don't use 'refine-from-user-input' because:
-    # - I'm not sure if removing of parent's usage requirements makes sense
-    # - refining of usage requirements is not needed, since usage requirements
-    #   are always free.
+    # We do not use 'refine-from-user-input' because:
+    # - I am not sure if removing parent's usage requirements makes sense
+    # - refining usage requirements is not needed, since usage requirements are
+    #   always free.
     local usage-requirements = [ property-set.create-from-user-input
         $(specification)
         : [ $(project).project-module ] [ $(project).get location ] ] ;

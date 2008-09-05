@@ -49,8 +49,9 @@ namespace boost { namespace spirit { namespace karma
         generate(Component const& component, OutputIterator& sink,
             Context& /*ctx*/, Delimiter const& d, Parameter const& param)
         {
-            RealPolicies const& p = detail::real_policy<RealPolicies>::get(
-                fusion::at_c<0>(component.elements));
+            RealPolicies const& p = 
+                detail::real_policy<RealPolicies>::get(spirit::subject(component));
+
             bool result = real_inserter<T, RealPolicies, Tag>::
                 call(sink, param, p);
 
@@ -66,7 +67,7 @@ namespace boost { namespace spirit { namespace karma
         generate(Component const&, OutputIterator&, Context&, Delimiter const&,
             unused_type)
         {
-            BOOST_MPL_ASSERT_MSG(false, real_not_usable_without_parameter,
+            BOOST_MPL_ASSERT_MSG(false, real_not_usable_without_attribute,
                 (Component, Context));
             return false;
         }
