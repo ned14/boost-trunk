@@ -8270,6 +8270,7 @@ libs/function/test/function_test_fail2.cpp svneol=native#text/plain
 libs/function/test/lambda_test.cpp svneol=native#text/plain
 libs/function/test/mem_fun_cxx98.cpp svneol=native#text/plain
 libs/function/test/mem_fun_portable.cpp svneol=native#text/plain
+libs/function/test/nothrow_swap.cpp svneol=native#text/plain
 libs/function/test/regression.cfg svneol=native#text/plain
 libs/function/test/stateless_test.cpp svneol=native#text/plain
 libs/function/test/std_bind_cxx98.cpp svneol=native#text/plain
