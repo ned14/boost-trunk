@@ -916,6 +916,7 @@ boost/function/function7.hpp svneol=native#text/plain
 boost/function/function8.hpp svneol=native#text/plain
 boost/function/function9.hpp svneol=native#text/plain
 boost/function/function_base.hpp svneol=native#text/plain
+boost/function/function_fwd.hpp svneol=native#text/plain
 boost/function/function_template.hpp svneol=native#text/plain
 boost/function/gen_function_N.pl svneol=native#text/x-perl
 boost/function_equal.hpp svneol=native#text/plain
