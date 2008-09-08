@@ -60,18 +60,15 @@ if "--debug-generators" in [ modules.peek : ARGV ]
 
 
 # Updated cached viable source target type information as needed after a new
-# derived target type gets added. This is needed because if a target type is a
-# viable source target type for some generator then all of the target type's
-# derived target types are automatically viable as source target types for the
-# same generator. Does nothing if a non-derived target type is passed to it.
+# target type gets defined. This is needed because if a target type is a viable
+# source target type for some generator then all of the target type's derived
+# target types should automatically be considered as viable source target types
+# for the same generator as well. Does nothing if a non-derived target type is
+# passed to it.
 #
-rule update-viable-source-target-type-cache-with-derived-type ( type )
+rule update-cached-information-with-a-new-type ( type )
 {
-    # TODO: There really ought be an interface to ask for a direct base target
-    # type without having to go through a list of all the base target types.
-    local all-base-types = [ type.all-bases $(type) ] ;
-    local base-type = $(all-base-types[2]) ;
-
+    local base-type = [ type.base $(type) ] ;
     if $(base-type)
     {
         for local g in $(.vstg-cached-generators)

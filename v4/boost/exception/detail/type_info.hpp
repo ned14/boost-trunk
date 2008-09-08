@@ -15,6 +15,18 @@ boost
     template <class T>
     inline
     char const *
+    tag_type_name()
+        {
+#ifdef BOOST_NO_TYPEID
+        return BOOST_CURRENT_FUNCTION;
+#else
+        return typeid(T*).name();
+#endif
+        }
+
+    template <class T>
+    inline
+    char const *
     type_name()
         {
 #ifdef BOOST_NO_TYPEID
@@ -109,7 +121,7 @@ boost
         }
     }
 
-#define BOOST_EXCEPTION_STATIC_TYPEID(T) ::boost::exception_detail::type_info_(BOOST_SP_TYPEID(T),::boost::type_name<T>())
+#define BOOST_EXCEPTION_STATIC_TYPEID(T) ::boost::exception_detail::type_info_(BOOST_SP_TYPEID(T),::boost::tag_type_name<T>())
 
 #ifndef BOOST_NO_RTTI
 #define BOOST_EXCEPTION_DYNAMIC_TYPEID(x) ::boost::exception_detail::type_info_(typeid(x))
