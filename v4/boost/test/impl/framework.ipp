@@ -121,7 +121,10 @@ public:
 
     ~framework_impl()
     {
-        BOOST_TEST_FOREACH( test_unit_store::value_type const&, tu, m_test_units ) {
+        while( !m_test_units.empty() ) {
+            test_unit_store::value_type const& tu = *m_test_units.begin();
+
+            // the delete will erase this element from map
             if( test_id_2_unit_type( tu.second->p_id ) == tut_suite )
                 delete  (test_suite const*)tu.second;
             else
@@ -311,6 +314,14 @@ register_test_unit( test_suite* ts )
     s_frk_impl().m_next_test_suite_id++;
 
     s_frk_impl().set_tu_id( *ts, new_id );
+}
+
+//____________________________________________________________________________//
+
+void
+deregister_test_unit( test_unit* tu )
+{
+    s_frk_impl().m_test_units.erase( tu->p_id );
 }
 
 //____________________________________________________________________________//

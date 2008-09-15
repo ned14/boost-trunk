@@ -57,6 +57,11 @@ namespace std { using ::strerror; using ::strlen; using ::strncat; }
 using std::va_list;
 #endif
 
+// to use vsnprintf 
+#if defined(__QNXNTO__) 
+#  include <stdio.h> 
+#endif
+
 #if defined(_WIN32) && !defined(BOOST_DISABLE_WIN32) &&                  \
     (!defined(__COMO__) && !defined(__MWERKS__) && !defined(__GNUC__) || \
      BOOST_WORKAROUND(__MWERKS__, >= 0x3000))
@@ -139,13 +144,14 @@ namespace { void _set_se_translator( void* ) {} }
 #  include <signal.h>
 #  include <setjmp.h>
 
-#  if !defined(__CYGWIN__)
+#  if !defined(__CYGWIN__) && !defined(__QNXNTO__)
 #   define BOOST_TEST_USE_ALT_STACK
 #  endif
 
-#  if defined(SIGPOLL) && !defined(__CYGWIN__) && \
-      !(defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__)) && \
-      !defined(__NetBSD__)
+#  if defined(SIGPOLL) && !defined(__CYGWIN__)                              && \
+      !(defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__))  && \
+      !defined(__NetBSD__)                                                  && \
+      !defined(__QNXNTO__)
 #    define BOOST_TEST_CATCH_SIGPOLL
 #  endif
 
@@ -471,11 +477,13 @@ system_signal_exception::report() const
                           "high priority input available; band event %d",
                           (int)m_sig_info->si_band );
             break;
+#if defined(POLL_ERR) && defined(POLL_HUP) && (POLL_ERR - POLL_HUP)
         case POLL_HUP:
             report_error( execution_exception::system_error,
                           "device disconnected; band event %d",
                           (int)m_sig_info->si_band );
             break;
+#endif
         }
         break;
 
@@ -685,9 +693,21 @@ signal_handler::~signal_handler()
 
 extern "C" {
 
+static bool ignore_sigchild( siginfo_t* info )
+{
+    return info->si_signo == SIGCHLD && info->si_code == CLD_EXITED 
+#ifdef BOOST_TEST_IGNORE_NON_ZERO_CHILD_CODE
+            ;
+#else
+            && (int)info->si_status == 0;
+#endif
+}
+
+//____________________________________________________________________________//
+
 static void execution_monitor_jumping_signal_handler( int sig, siginfo_t* info, void* context )
 {
-    if( info->si_signo == SIGCHLD && info->si_code == CLD_EXITED && (int)info->si_status == 0 )
+    if( ignore_sigchild( info ) )
         return;
 
     signal_handler::sys_sig()( info, context );
@@ -699,11 +719,11 @@ static void execution_monitor_jumping_signal_handler( int sig, siginfo_t* info, 
 
 static void execution_monitor_attaching_signal_handler( int sig, siginfo_t* info, void* context )
 {
-    if( info->si_signo == SIGCHLD && info->si_code == CLD_EXITED && (int)info->si_status == 0 )
+    if( ignore_sigchild( info ) )
         return;
 
     if( !debug::attach_debugger( false ) )
-    execution_monitor_jumping_signal_handler( sig, info, context );
+        execution_monitor_jumping_signal_handler( sig, info, context );
 
     // debugger attached; it will handle the signal
     BOOST_TEST_SYS_ASSERT( ::signal( sig, SIG_DFL ) != SIG_ERR );
@@ -1016,7 +1036,7 @@ execution_monitor::catch_signals( unit_test::callback0<int> const& F )
 
     __try {
         __try {
-            ret_val = detail::do_invoke( m_custom_translators , F );
+            ret_val = detail::do_invoke( m_custom_translators, F );
         }
         __except( SSE( GetExceptionCode(), GetExceptionInformation() ) ) {
             throw SSE;
