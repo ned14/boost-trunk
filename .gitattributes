@@ -16104,6 +16104,7 @@ libs/proto/doc/conventions.qbk svneol=native#text/plain
 libs/proto/doc/evaluation.qbk svneol=native#text/plain
 libs/proto/doc/examples.qbk svneol=native#text/plain
 libs/proto/doc/extensibility.qbk svneol=native#text/plain
+libs/proto/doc/getting_started.qbk svneol=native#text/plain
 libs/proto/doc/glossary.qbk svneol=native#text/plain
 libs/proto/doc/grammars.qbk svneol=native#text/plain
 libs/proto/doc/hello_world.qbk svneol=native#text/plain
