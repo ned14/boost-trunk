@@ -1,4 +1,5 @@
 /bin.v2
+/bjam.exe
 libs/asio/doc/html
 libs/iterator/doc/GNUmakefile
 libs/optional/test/bin

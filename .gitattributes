@@ -548,7 +548,6 @@ boost/bimap/views/unordered_multiset_view.hpp svneol=native#text/plain
 boost/bimap/views/unordered_set_view.hpp svneol=native#text/plain
 boost/bimap/views/vector_map_view.hpp svneol=native#text/plain
 boost/bimap/views/vector_set_view.hpp svneol=native#text/plain
-boost/binary.hpp svneol=native#text/plain
 boost/bind.hpp svneol=native#text/plain
 boost/bind/apply.hpp svneol=native#text/plain
 boost/bind/arg.hpp svneol=native#text/plain
