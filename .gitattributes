@@ -18836,6 +18836,7 @@ libs/test/test/test_fp_comparisons.cpp svneol=native#text/plain
 libs/test/test/test_tools_test.cpp svneol=native#text/plain
 libs/test/test/test_tree_management_test.cpp svneol=native#text/plain
 libs/test/test/token_iterator_test.cpp svneol=native#text/plain
+libs/test/tools/console_test_runner/Jamfile.v2 svneol=native#text/plain
 libs/test/tools/console_test_runner/src/console_test_runner.cpp svneol=native#text/plain
 libs/test/tools/console_test_runner/test/test_runner_test.cpp svneol=native#text/plain
 libs/thread/build/Jamfile.v2 svneol=native#text/plain
