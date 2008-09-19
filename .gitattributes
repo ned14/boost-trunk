@@ -7601,6 +7601,7 @@ libs/config/test/boost_no_template_streams.ipp svneol=native#text/plain
 libs/config/test/boost_no_template_template.ipp svneol=native#text/plain
 libs/config/test/boost_no_two_phase_lookup.ipp svneol=native#text/plain
 libs/config/test/boost_no_typeid.ipp svneol=native#text/plain
+libs/config/test/boost_no_typename_with_ctor.ipp svneol=native#text/plain
 libs/config/test/boost_no_using_breaks_adl.ipp svneol=native#text/plain
 libs/config/test/boost_no_using_decl_overld.ipp svneol=native#text/plain
 libs/config/test/boost_no_using_template.ipp svneol=native#text/plain
