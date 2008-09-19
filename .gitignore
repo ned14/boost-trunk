@@ -49,6 +49,7 @@ v3/tools/build/v2/test/test_results.txt
 v3/tools/regression/test/test-cases/Huber2629/actual
 v3/tools/regression/test/test-cases/general/actual
 v4/bin.v2
+v4/bjam.exe
 v4/libs/asio/doc/html
 v4/libs/iterator/doc/GNUmakefile
 v4/libs/optional/test/bin
