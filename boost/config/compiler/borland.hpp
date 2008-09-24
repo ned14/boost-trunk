@@ -156,6 +156,8 @@
 #  define BOOST_HAS_STATIC_ASSERT
 //#  define BOOST_HAS_VARIADIC_TMPL
 #  #endif //__BORLANDC__ >= 0x610
+#else
+#  define BOOST_NO_INITIALIZER_LISTS
 #endif
 
 #if __BORLANDC__ >= 0x590
