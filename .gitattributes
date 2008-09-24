@@ -7577,7 +7577,6 @@ libs/config/test/boost_no_exp_func_tem_arg.ipp svneol=native#text/plain
 libs/config/test/boost_no_func_tmp_order.ipp svneol=native#text/plain
 libs/config/test/boost_no_function_type_spec.ipp svneol=native#text/plain
 libs/config/test/boost_no_i64_limits.ipp svneol=native#text/plain
-libs/config/test/boost_no_initializer_lists.ipp svneol=native#text/plain
 libs/config/test/boost_no_inline_memb_init.ipp svneol=native#text/plain
 libs/config/test/boost_no_integral_int64_t.ipp svneol=native#text/plain
 libs/config/test/boost_no_iosfwd.ipp svneol=native#text/plain
