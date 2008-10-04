@@ -10224,6 +10224,7 @@ libs/graph/test/graphml_test.cpp svneol=native#text/plain
 libs/graph/test/graphml_test.xml svneol=native#text/xml
 libs/graph/test/graphviz_test.cpp svneol=native#text/plain
 libs/graph/test/gursoy_atun_layout_test.cpp svneol=native#text/plain
+libs/graph/test/is_straight_line_draw_test.cpp svneol=native#text/plain
 libs/graph/test/isomorphism.cpp svneol=native#text/plain
 libs/graph/test/johnson-test.cpp svneol=native#text/plain
 libs/graph/test/king_ordering.cpp svneol=native#text/plain
