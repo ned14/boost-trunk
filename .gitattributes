@@ -6992,6 +6992,7 @@ libs/asio/example/iostreams/daytime_server.cpp svneol=native#text/plain
 libs/asio/example/local/Jamfile svneol=native#text/plain
 libs/asio/example/local/Jamfile.v2 svneol=native#text/plain
 libs/asio/example/local/connect_pair.cpp svneol=native#text/plain
+libs/asio/example/local/iostream_client.cpp svneol=native#text/plain
 libs/asio/example/local/stream_client.cpp svneol=native#text/plain
 libs/asio/example/local/stream_server.cpp svneol=native#text/plain
 libs/asio/example/multicast/Jamfile svneol=native#text/plain
