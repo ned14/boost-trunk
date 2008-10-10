@@ -8830,6 +8830,7 @@ libs/fusion/test/sequence/single_view.cpp svneol=native#text/plain
 libs/fusion/test/sequence/std_pair.cpp svneol=native#text/plain
 libs/fusion/test/sequence/swap.cpp svneol=native#text/plain
 libs/fusion/test/sequence/tie.hpp svneol=native#text/plain
+libs/fusion/test/sequence/tr1_tuple_auto_conv.cpp svneol=native#text/plain
 libs/fusion/test/sequence/transform_view.cpp svneol=native#text/plain
 libs/fusion/test/sequence/tuple_comparison.cpp svneol=native#text/plain
 libs/fusion/test/sequence/tuple_construction.cpp svneol=native#text/plain

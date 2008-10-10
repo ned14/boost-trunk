@@ -1,4 +1,6 @@
 libs/asio/doc/html
+libs/fusion/doc/html/images/Thumbs.db
+libs/fusion/doc/html/quickbook_HTML.manifest
 libs/iterator/doc/GNUmakefile
 libs/optional/test/bin
 libs/python/pyste/dist/*.pyc
