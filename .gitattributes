@@ -5688,6 +5688,7 @@ boost/test/utils/iterator/ifstream_line_iterator.hpp svneol=native#text/plain
 boost/test/utils/iterator/input_iterator_facade.hpp svneol=native#text/plain
 boost/test/utils/iterator/istream_line_iterator.hpp svneol=native#text/plain
 boost/test/utils/iterator/token_iterator.hpp svneol=native#text/plain
+boost/test/utils/lazy_ostream.hpp svneol=native#text/plain
 boost/test/utils/named_params.hpp svneol=native#text/plain
 boost/test/utils/nullstream.hpp svneol=native#text/plain
 boost/test/utils/rtti.hpp svneol=native#text/plain
