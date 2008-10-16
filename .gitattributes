@@ -16894,6 +16894,7 @@ libs/regex/build/vc7.mak svneol=native#text/plain
 libs/regex/build/vc71-stlport.mak svneol=native#text/plain
 libs/regex/build/vc71.mak svneol=native#text/plain
 libs/regex/build/vc8.mak svneol=native#text/plain
+libs/regex/build/vc9.mak svneol=native#text/plain
 libs/regex/build/vc_gen.sh svneol=native#text/x-sh
 libs/regex/doc/Jamfile.v2 svneol=native#text/plain
 libs/regex/doc/acknowledgements.qbk svneol=native#text/plain
