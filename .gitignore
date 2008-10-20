@@ -1,6 +1,9 @@
 /bin.v2
 /bjam.exe
 libs/asio/doc/html
+libs/fusion/test/compile_time/vector_construction
+libs/fusion/test/compile_time/vector_intrinsic
+libs/fusion/test/compile_time/vector_iteration
 libs/iterator/doc/GNUmakefile
 libs/optional/test/bin
 libs/python/pyste/dist/*.pyc
