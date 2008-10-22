@@ -10,7 +10,7 @@
 #pragma once      // MS compatible compilers support #pragma once
 #endif
 
-#include <cmath>
+#include <boost/config/no_tr1/cmath.hpp>
 #include <limits>
 
 #include <boost/type_traits/is_integral.hpp>
@@ -331,7 +331,7 @@ namespace boost { namespace spirit { namespace karma {
             {
                 // Allow ADL to find the correct overload for fmod
                 using namespace std; 
-                return cast_to_long::call(fmod(n, Radix));
+                return cast_to_long::call(fmod(n, T(Radix)));
             }
             
             template <typename T>

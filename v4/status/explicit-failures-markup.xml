@@ -4706,8 +4706,14 @@ for more information.
         </mark-expected-failures>
 
         <mark-expected-failures>
-          <test name="errors_handling_test"/>
           <test name="test_tools_test"/>
+          <toolset name="cw-9_5-darwin"/>
+          <note refid="29" author="Doug Gregor"/>
+        </mark-expected-failures>
+
+        <mark-expected-failures>
+          <test name="errors_handling_test"/>
+          <toolset name="acc*"/>
           <toolset name="cw-9_5-darwin"/>
           <note refid="29" author="Doug Gregor"/>
         </mark-expected-failures>
@@ -4743,6 +4749,17 @@ for more information.
               in non-zero exit status.  That seems to be not the
               case, for unknown reasons.
             </note>
+        </mark-expected-failures>
+
+        <mark-expected-failures>
+          <test name="sync_access_test"/>
+          <toolset name="acc*"/>
+          <toolset name="gcc-4.2.1_hpux_ia64"/>
+          <note author="Boris Gubenko">
+             On HP-UX platform, this test must be compiled/linked in multithread mode.
+             When compiled/linked with aC++ with -mt, it succeeds. When compiled/linked
+             with GCC with -pthread, it links cleanly but fails in run-time.
+          </note>
         </mark-expected-failures>
 
     </library>
@@ -4819,11 +4836,13 @@ for more information.
             <test name="test_thread_move_lib"/>
             <test name="test_move_function"/>
             <test name="test_move_function_lib"/>
+            <toolset name="acc"/>
             <toolset name="borland-*"/>
             <toolset name="sun-*"/>
             <note author="Anthony Williams" date="2007-12-14">
-The Borland compiler fails to bind rvalues to the thread move constructor,
+The Borland compiler and HP-UX aC++ compiler in default mode fail to bind rvalues to the thread move constructor,
 choosing instead to bind them to the private (and unimplemented) copy constructor.
+With aC++, the tests compile cleanly in strict ansi mode and succeed.
             </note>
         </mark-expected-failures>
     </library>

@@ -43,20 +43,16 @@
 
 namespace boost {
 
-template
-
-#if defined(BOOST_MSVC) && BOOST_WORKAROUND(BOOST_MSVC, <= 1300)  // 1300 == VC++ 7.0
-   // VC++ (up to 7.0) wants the default arguments again
-   <typename Block = unsigned long, typename Allocator = std::allocator<Block> >
-# else
-   <typename Block, typename Allocator>
-# endif
-
+template <typename Block, typename Allocator>
 class dynamic_bitset
 {
   // Portability note: member function templates are defined inside
   // this class definition to avoid problems with VC++. Similarly,
   // with the member functions of nested classes.
+  //
+  // [October 2008: the note above is mostly historical; new versions
+  // of VC++ are likely able to digest a more drinking form of the
+  // code; but changing it now is probably not worth the risks...]
 
   BOOST_STATIC_ASSERT(detail::dynamic_bitset_impl::allowed_block_type<Block>::value);
 
@@ -480,24 +476,18 @@ BOOST_DYNAMIC_BITSET_PRIVATE:
 
 };
 
-#if defined(__IBMCPP__) && BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))
+#if !defined BOOST_NO_INCLASS_MEMBER_INITIALIZATION
 
-// Workaround for IBM's AIX platform.
-// See http://comments.gmane.org/gmane.comp.lib.boost.user/15331
-//
-// NOTE:
-//  The compiler is actually right, until core issue 454 will be settled:
-//   <http://www.open-std.org/JTC1/SC22/WG21/docs/cwg_active.html#454>
-//
-//  It's arguable whether we want to mark this with BOOST_WORKAROUND or not.
-
-
-template<typename Block, typename Allocator>
-dynamic_bitset<Block, Allocator>::block_width_type const
+template <typename Block, typename Allocator>
+const typename dynamic_bitset<Block, Allocator>::block_width_type
 dynamic_bitset<Block, Allocator>::bits_per_block;
 
-template<typename Block, typename Allocator>
-dynamic_bitset<Block, Allocator>::block_width_type const
+template <typename Block, typename Allocator>
+const typename dynamic_bitset<Block, Allocator>::size_type
+dynamic_bitset<Block, Allocator>::npos;
+
+template <typename Block, typename Allocator>
+const typename dynamic_bitset<Block, Allocator>::block_width_type
 dynamic_bitset<Block, Allocator>::ulong_width;
 
 #endif

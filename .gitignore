@@ -51,6 +51,9 @@ v3/tools/regression/test/test-cases/general/actual
 v4/bin.v2
 v4/bjam.exe
 v4/libs/asio/doc/html
+v4/libs/fusion/test/compile_time/vector_construction
+v4/libs/fusion/test/compile_time/vector_intrinsic
+v4/libs/fusion/test/compile_time/vector_iteration
 v4/libs/iterator/doc/GNUmakefile
 v4/libs/optional/test/bin
 v4/libs/python/pyste/dist/*.pyc
