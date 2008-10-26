@@ -8867,6 +8867,7 @@ libs/fusion/test/algorithm/zip2.cpp svneol=native#text/plain
 libs/fusion/test/algorithm/zip_ignore.cpp svneol=native#text/plain
 libs/fusion/test/compile_time/Makefile svneol=native#text/plain
 libs/fusion/test/compile_time/driver.hpp svneol=native#text/plain
+libs/fusion/test/compile_time/fold.cpp svneol=native#text/plain
 libs/fusion/test/compile_time/vector_construction.cpp svneol=native#text/plain
 libs/fusion/test/compile_time/vector_intrinsic.cpp svneol=native#text/plain
 libs/fusion/test/compile_time/vector_iteration.cpp svneol=native#text/plain
