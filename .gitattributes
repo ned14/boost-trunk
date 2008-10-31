@@ -6969,6 +6969,7 @@ libs/asio/example/chat/Jamfile.v2 svneol=native#text/plain
 libs/asio/example/chat/chat_client.cpp svneol=native#text/plain
 libs/asio/example/chat/chat_message.hpp svneol=native#text/plain
 libs/asio/example/chat/chat_server.cpp svneol=native#text/plain
+libs/asio/example/chat/posix_chat_client.cpp svneol=native#text/plain
 libs/asio/example/echo/Jamfile svneol=native#text/plain
 libs/asio/example/echo/Jamfile.v2 svneol=native#text/plain
 libs/asio/example/echo/async_tcp_echo_server.cpp svneol=native#text/plain
