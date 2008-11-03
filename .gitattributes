@@ -574,23 +574,23 @@ boost/circular_buffer/debug.hpp svneol=native#text/plain
 boost/circular_buffer/details.hpp svneol=native#text/plain
 boost/circular_buffer/space_optimized.hpp svneol=native#text/plain
 boost/circular_buffer_fwd.hpp svneol=native#text/plain
-boost/compatibility/cpp_c_headers/cassert -text
-boost/compatibility/cpp_c_headers/cctype -text
-boost/compatibility/cpp_c_headers/cerrno -text
-boost/compatibility/cpp_c_headers/cfloat -text
-boost/compatibility/cpp_c_headers/climits -text
-boost/compatibility/cpp_c_headers/clocale -text
-boost/compatibility/cpp_c_headers/cmath -text
-boost/compatibility/cpp_c_headers/csetjmp -text
-boost/compatibility/cpp_c_headers/csignal -text
-boost/compatibility/cpp_c_headers/cstdarg -text
-boost/compatibility/cpp_c_headers/cstddef -text
-boost/compatibility/cpp_c_headers/cstdio -text
-boost/compatibility/cpp_c_headers/cstdlib -text
-boost/compatibility/cpp_c_headers/cstring -text
-boost/compatibility/cpp_c_headers/ctime -text
-boost/compatibility/cpp_c_headers/cwchar -text
-boost/compatibility/cpp_c_headers/cwctype -text
+boost/compatibility/cpp_c_headers/cassert svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cctype svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cerrno svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cfloat svneol=native#text/plain
+boost/compatibility/cpp_c_headers/climits svneol=native#text/plain
+boost/compatibility/cpp_c_headers/clocale svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cmath svneol=native#text/plain
+boost/compatibility/cpp_c_headers/csetjmp svneol=native#text/plain
+boost/compatibility/cpp_c_headers/csignal svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cstdarg svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cstddef svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cstdio svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cstdlib svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cstring svneol=native#text/plain
+boost/compatibility/cpp_c_headers/ctime svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cwchar svneol=native#text/plain
+boost/compatibility/cpp_c_headers/cwctype svneol=native#text/plain
 boost/compressed_pair.hpp svneol=native#text/plain
 boost/concept/assert.hpp svneol=native#text/plain
 boost/concept/detail/borland.hpp svneol=native#text/plain
@@ -6853,7 +6853,7 @@ libs/algorithm/string/test/regex_test.cpp svneol=native#text/plain
 libs/algorithm/string/test/replace_test.cpp svneol=native#text/plain
 libs/algorithm/string/test/split_test.cpp svneol=native#text/plain
 libs/algorithm/string/test/trim_test.cpp svneol=native#text/plain
-libs/algorithm/sublibs -text
+libs/algorithm/sublibs svneol=native#text/plain
 libs/any/any_test.cpp svneol=native#text/plain
 libs/any/doc/any.xml svneol=native#text/xml
 libs/any/index.html svneol=native#text/html
@@ -8319,7 +8319,7 @@ libs/function/test/lambda_test.cpp svneol=native#text/plain
 libs/function/test/mem_fun_cxx98.cpp svneol=native#text/plain
 libs/function/test/mem_fun_portable.cpp svneol=native#text/plain
 libs/function/test/nothrow_swap.cpp svneol=native#text/plain
-libs/function/test/regression.cfg -text
+libs/function/test/regression.cfg svneol=native#text/plain
 libs/function/test/stateless_test.cpp svneol=native#text/plain
 libs/function/test/std_bind_cxx98.cpp svneol=native#text/plain
 libs/function/test/std_bind_portable.cpp svneol=native#text/plain
@@ -8461,7 +8461,7 @@ libs/functional/index.html svneol=native#text/html
 libs/functional/mem_fun.html svneol=native#text/html
 libs/functional/negators.html svneol=native#text/html
 libs/functional/ptr_fun.html svneol=native#text/html
-libs/functional/sublibs -text
+libs/functional/sublibs svneol=native#text/plain
 libs/fusion/doc/Jamfile svneol=native#text/plain
 libs/fusion/doc/acknowledgements.qbk svneol=native#text/plain
 libs/fusion/doc/adapted.qbk svneol=native#text/plain
@@ -9682,7 +9682,7 @@ libs/gil/test/performance.cpp svneol=native#text/plain
 libs/gil/test/pixel.cpp svneol=native#text/plain
 libs/gil/test/pixel_iterator.cpp svneol=native#text/plain
 libs/gil/test/sample_image.cpp svneol=native#text/plain
-libs/graph/LICENSE -text
+libs/graph/LICENSE svneol=native#text/plain
 libs/graph/build/Jamfile.v2 svneol=native#text/plain
 libs/graph/doc/AStarHeuristic.html svneol=native#text/html
 libs/graph/doc/AStarVisitor.html svneol=native#text/html
@@ -9723,7 +9723,7 @@ libs/graph/doc/adjacency_matrix.html svneol=native#text/html
 libs/graph/doc/astar_heuristic.html svneol=native#text/html
 libs/graph/doc/astar_search.html svneol=native#text/html
 libs/graph/doc/astar_visitor.html svneol=native#text/html
-libs/graph/doc/awpaper.sty -text
+libs/graph/doc/awpaper.sty svneol=native#text/plain
 libs/graph/doc/bandwidth.html svneol=native#text/html
 libs/graph/doc/bc_clustering.html svneol=native#text/html
 libs/graph/doc/bellman_ford_shortest.html svneol=native#text/html
@@ -9734,7 +9734,7 @@ libs/graph/doc/bgl-cover.jpg -text svneol=unset#image/jpeg
 libs/graph/doc/bgl_named_params.html svneol=native#text/html
 libs/graph/doc/bibliography.html svneol=native#text/html
 libs/graph/doc/biconnected_components.html svneol=native#text/html
-libs/graph/doc/biconnected_components.w -text
+libs/graph/doc/biconnected_components.w svneol=native#text/plain
 libs/graph/doc/boyer_myrvold.html svneol=native#text/html
 libs/graph/doc/breadth_first_search.html svneol=native#text/html
 libs/graph/doc/breadth_first_visit.html svneol=native#text/html
@@ -9769,58 +9769,58 @@ libs/graph/doc/figs/adj-matrix-graph.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/adj-matrix-graph2.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/adj-matrix-graph3.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/adj-matrix.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/adj_list.fig -text
+libs/graph/doc/figs/adj_list.fig svneol=native#text/plain
 libs/graph/doc/figs/adj_list.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/adj_matrix.fig -text
+libs/graph/doc/figs/adj_matrix.fig svneol=native#text/plain
 libs/graph/doc/figs/adj_matrix.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/analogy.fig -text
+libs/graph/doc/figs/analogy.fig svneol=native#text/plain
 libs/graph/doc/figs/analogy.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/back_edges.fig -text
+libs/graph/doc/figs/back_edges.fig svneol=native#text/plain
 libs/graph/doc/figs/back_edges.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/betweenness_centrality.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/bfs_example.fig -text
+libs/graph/doc/figs/bfs_example.fig svneol=native#text/plain
 libs/graph/doc/figs/bfs_example.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/bfs_family.fig -text
+libs/graph/doc/figs/bfs_family.fig svneol=native#text/plain
 libs/graph/doc/figs/bfs_family.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/bfs_visitor.fig -text
+libs/graph/doc/figs/bfs_visitor.fig svneol=native#text/plain
 libs/graph/doc/figs/bfs_visitor.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/biconnected.dot -text
+libs/graph/doc/figs/biconnected.dot svneol=native#text/plain
 libs/graph/doc/figs/biconnected.png -text svneol=unset#image/png
 libs/graph/doc/figs/canonical_ordering.png -text svneol=unset#image/png
 libs/graph/doc/figs/central_point_dominance.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/concepts.fig -text
+libs/graph/doc/figs/concepts.fig svneol=native#text/plain
 libs/graph/doc/figs/concepts.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/cr.jpg -text svneol=unset#image/jpeg
-libs/graph/doc/figs/dfs.fig -text
+libs/graph/doc/figs/dfs.fig svneol=native#text/plain
 libs/graph/doc/figs/dfs.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/dfs_example.fig -text
+libs/graph/doc/figs/dfs_example.fig svneol=native#text/plain
 libs/graph/doc/figs/dfs_example.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/dfs_family.fig -text
+libs/graph/doc/figs/dfs_family.fig svneol=native#text/plain
 libs/graph/doc/figs/dfs_family.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/dfs_visitor.fig -text
+libs/graph/doc/figs/dfs_visitor.fig svneol=native#text/plain
 libs/graph/doc/figs/dfs_visitor.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/digraph.fig -text
+libs/graph/doc/figs/digraph.fig svneol=native#text/plain
 libs/graph/doc/figs/digraph.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/disjoint_set_family.fig -text
+libs/graph/doc/figs/disjoint_set_family.fig svneol=native#text/plain
 libs/graph/doc/figs/disjoint_set_family.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/dominator-tree1.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/dominator-tree2.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/edge_list.fig -text
+libs/graph/doc/figs/edge_list.fig svneol=native#text/plain
 libs/graph/doc/figs/edge_list.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/embedding_illustration.png -text svneol=unset#image/png
 libs/graph/doc/figs/face_illustration.png -text svneol=unset#image/png
 libs/graph/doc/figs/face_traversal_example.png -text svneol=unset#image/png
-libs/graph/doc/figs/file_dep.fig -text
+libs/graph/doc/figs/file_dep.fig svneol=native#text/plain
 libs/graph/doc/figs/file_dep.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/forward_or_cross_edges.fig -text
+libs/graph/doc/figs/forward_or_cross_edges.fig svneol=native#text/plain
 libs/graph/doc/figs/forward_or_cross_edges.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/ga-circle.png -text svneol=unset#image/png
 libs/graph/doc/figs/ga-heart.png -text svneol=unset#image/png
 libs/graph/doc/figs/ga-square.png -text svneol=unset#image/png
-libs/graph/doc/figs/graph_search.fig -text
+libs/graph/doc/figs/graph_search.fig svneol=native#text/plain
 libs/graph/doc/figs/graph_search.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/k_5_and_k_3_3.png -text svneol=unset#image/png
-libs/graph/doc/figs/knights_tour.fig -text
+libs/graph/doc/figs/knights_tour.fig svneol=native#text/plain
 libs/graph/doc/figs/knights_tour.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/kolmogorov_max_flow.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/max-flow.gif -text svneol=unset#image/gif
@@ -9830,23 +9830,23 @@ libs/graph/doc/figs/mcr.jpg -text svneol=unset#image/jpeg
 libs/graph/doc/figs/planar_plane_straight_line.png -text svneol=unset#image/png
 libs/graph/doc/figs/python.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/python_ico.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/quick_start.fig -text
+libs/graph/doc/figs/quick_start.fig svneol=native#text/plain
 libs/graph/doc/figs/quick_start.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/rel_betweenness_centrality.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/search_states.fig -text
+libs/graph/doc/figs/search_states.fig svneol=native#text/plain
 libs/graph/doc/figs/search_states.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/seq_vertex_coloring.graffle -text
+libs/graph/doc/figs/seq_vertex_coloring.graffle svneol=native#text/xml
 libs/graph/doc/figs/sequential_vertex_coloring.png -text svneol=unset#image/png
 libs/graph/doc/figs/sigma_st.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/sigma_stv.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/stl_iter.fig -text
+libs/graph/doc/figs/stl_iter.fig svneol=native#text/plain
 libs/graph/doc/figs/stl_iter.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/straight_line_drawing.png -text svneol=unset#image/png
 libs/graph/doc/figs/subgraph-tree.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/subgraph.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/tree_edges.fig -text
+libs/graph/doc/figs/tree_edges.fig svneol=native#text/plain
 libs/graph/doc/figs/tree_edges.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/undigraph.fig -text
+libs/graph/doc/figs/undigraph.fig svneol=native#text/plain
 libs/graph/doc/figs/undigraph.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/undir-adj-list.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/undir-adj-matrix-graph.gif -text svneol=unset#image/gif
@@ -9856,7 +9856,7 @@ libs/graph/doc/figs/undir-adj-matrix.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/undir-adj-matrix2.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/v_star.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/very_complex_graph.gif -text svneol=unset#image/gif
-libs/graph/doc/figs/visitor.fig -text
+libs/graph/doc/figs/visitor.fig svneol=native#text/plain
 libs/graph/doc/figs/visitor.gif -text svneol=unset#image/gif
 libs/graph/doc/figs/wheel_graph.gif -text svneol=unset#image/gif
 libs/graph/doc/file_dependency_example.html svneol=native#text/html
@@ -9877,11 +9877,11 @@ libs/graph/doc/inv_adjacency_iterator.html svneol=native#text/html
 libs/graph/doc/is_kuratowski_subgraph.html svneol=native#text/html
 libs/graph/doc/is_straight_line_drawing.html svneol=native#text/html
 libs/graph/doc/iscope99.pdf -text svneol=unset#application/pdf
-libs/graph/doc/iso-eg.dot -text
-libs/graph/doc/isomorphism-impl-v2.w -text
-libs/graph/doc/isomorphism-impl-v3.w -text
+libs/graph/doc/iso-eg.dot svneol=native#text/plain
+libs/graph/doc/isomorphism-impl-v2.w svneol=native#text/plain
+libs/graph/doc/isomorphism-impl-v3.w svneol=native#text/plain
 libs/graph/doc/isomorphism-impl.pdf -text svneol=unset#application/pdf
-libs/graph/doc/isomorphism-impl.w -text
+libs/graph/doc/isomorphism-impl.w svneol=native#text/plain
 libs/graph/doc/isomorphism.html svneol=native#text/html
 libs/graph/doc/johnson_all_pairs_shortest.html svneol=native#text/html
 libs/graph/doc/jwebfrob.pl svneol=native#text/x-perl
@@ -9894,15 +9894,15 @@ libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
 libs/graph/doc/layout_tolerance.html svneol=native#text/html
 libs/graph/doc/leda_conversion.html svneol=native#text/html
 libs/graph/doc/lengauer_tarjan_dominator.htm svneol=native#text/html
-libs/graph/doc/lgrind.sty -text
+libs/graph/doc/lgrind.sty svneol=native#text/plain
 libs/graph/doc/make_biconnected_planar.html svneol=native#text/html
 libs/graph/doc/make_connected.html svneol=native#text/html
 libs/graph/doc/make_maximal_planar.html svneol=native#text/html
-libs/graph/doc/math.sty -text
+libs/graph/doc/math.sty svneol=native#text/plain
 libs/graph/doc/maximum_matching.html svneol=native#text/html
 libs/graph/doc/minimum_degree_ordering.html svneol=native#text/html
-libs/graph/doc/minimum_degree_ordering.w -text
-libs/graph/doc/mungeaux.csh -text
+libs/graph/doc/minimum_degree_ordering.w svneol=native#text/plain
+libs/graph/doc/mungeaux.csh svneol=native#text/plain
 libs/graph/doc/null_visitor.html svneol=native#text/html
 libs/graph/doc/opposite.html svneol=native#text/html
 libs/graph/doc/planar_canonical_ordering.html svneol=native#text/html
@@ -9936,7 +9936,7 @@ libs/graph/doc/sparse_matrix_ordering.html svneol=native#text/html
 libs/graph/doc/stanford_graph.html svneol=native#text/html
 libs/graph/doc/straight_line_drawing.html svneol=native#text/html
 libs/graph/doc/strong_components.html svneol=native#text/html
-libs/graph/doc/strong_components.w -text
+libs/graph/doc/strong_components.w svneol=native#text/plain
 libs/graph/doc/subgraph.html svneol=native#text/html
 libs/graph/doc/table_of_contents.html svneol=native#text/html
 libs/graph/doc/tc-out.gif -text svneol=unset#image/gif
@@ -9944,7 +9944,7 @@ libs/graph/doc/tc.gif -text svneol=unset#image/gif
 libs/graph/doc/time_stamper.html svneol=native#text/html
 libs/graph/doc/topological_sort.html svneol=native#text/html
 libs/graph/doc/transitive_closure.html svneol=native#text/html
-libs/graph/doc/transitive_closure.w -text
+libs/graph/doc/transitive_closure.w svneol=native#text/plain
 libs/graph/doc/transpose_graph.html svneol=native#text/html
 libs/graph/doc/trouble_shooting.html svneol=native#text/html
 libs/graph/doc/undirected_dfs.html svneol=native#text/html
@@ -9961,42 +9961,42 @@ libs/graph/example/accum-compile-times.cpp svneol=native#text/plain
 libs/graph/example/actor_clustering.cpp svneol=native#text/plain
 libs/graph/example/adj_list_ra_edgelist.cpp svneol=native#text/plain
 libs/graph/example/adjacency_list.cpp svneol=native#text/plain
-libs/graph/example/adjacency_list.expected -text
+libs/graph/example/adjacency_list.expected svneol=native#text/plain
 libs/graph/example/adjacency_list_io.cpp svneol=native#text/plain
 libs/graph/example/adjacency_matrix.cpp svneol=native#text/plain
 libs/graph/example/astar-cities.cpp svneol=native#text/plain
-libs/graph/example/bcsstk01 -text
-libs/graph/example/bcsstk01.rsa -text
+libs/graph/example/bcsstk01 svneol=native#text/plain
+libs/graph/example/bcsstk01.rsa svneol=native#text/plain
 libs/graph/example/bellman-example.cpp svneol=native#text/plain
 libs/graph/example/bellman-ford-internet.cpp svneol=native#text/plain
-libs/graph/example/bellman_ford.expected -text
+libs/graph/example/bellman_ford.expected svneol=native#text/plain
 libs/graph/example/bfs-example.cpp svneol=native#text/plain
 libs/graph/example/bfs-example2.cpp svneol=native#text/plain
 libs/graph/example/bfs-name-printer.cpp svneol=native#text/plain
 libs/graph/example/bfs.cpp svneol=native#text/plain
-libs/graph/example/bfs.expected -text
-libs/graph/example/bfs_basics.expected -text
+libs/graph/example/bfs.expected svneol=native#text/plain
+libs/graph/example/bfs_basics.expected svneol=native#text/plain
 libs/graph/example/bfs_neighbor.cpp svneol=native#text/plain
 libs/graph/example/biconnected_components.cpp svneol=native#text/plain
-libs/graph/example/boost_web.dat -text
+libs/graph/example/boost_web.dat svneol=native#text/plain
 libs/graph/example/boost_web_graph.cpp svneol=native#text/plain
-libs/graph/example/boost_web_graph.expected -text
+libs/graph/example/boost_web_graph.expected svneol=native#text/plain
 libs/graph/example/bucket_sorter.cpp svneol=native#text/plain
 libs/graph/example/canonical_ordering.cpp svneol=native#text/plain
 libs/graph/example/cc-internet.cpp svneol=native#text/plain
 libs/graph/example/city_visitor.cpp svneol=native#text/plain
 libs/graph/example/components_on_edgelist.cpp svneol=native#text/plain
-libs/graph/example/components_on_edgelist.expected -text
-libs/graph/example/concept_checks.expected -text
+libs/graph/example/components_on_edgelist.expected svneol=native#text/plain
+libs/graph/example/concept_checks.expected svneol=native#text/plain
 libs/graph/example/connected-components.cpp svneol=native#text/plain
 libs/graph/example/connected_components.cpp svneol=native#text/plain
-libs/graph/example/connected_components.expected -text
+libs/graph/example/connected_components.expected svneol=native#text/plain
 libs/graph/example/container_gen.cpp svneol=native#text/plain
-libs/graph/example/container_gen.expected -text
+libs/graph/example/container_gen.expected svneol=native#text/plain
 libs/graph/example/copy-example.cpp svneol=native#text/plain
 libs/graph/example/csr-example.cpp svneol=native#text/plain
 libs/graph/example/cuthill_mckee_ordering.cpp svneol=native#text/plain
-libs/graph/example/cuthill_mckee_ordering.expected -text
+libs/graph/example/cuthill_mckee_ordering.expected svneol=native#text/plain
 libs/graph/example/cycle-file-dep.cpp svneol=native#text/plain
 libs/graph/example/cycle-file-dep2.cpp svneol=native#text/plain
 libs/graph/example/cycle_ratio_example.cpp svneol=native#text/plain
@@ -10005,54 +10005,54 @@ libs/graph/example/data1.txt svneol=native#text/plain
 libs/graph/example/data2.txt svneol=native#text/plain
 libs/graph/example/data3.txt svneol=native#text/plain
 libs/graph/example/dave.cpp svneol=native#text/plain
-libs/graph/example/dave.expected -text
+libs/graph/example/dave.expected svneol=native#text/plain
 libs/graph/example/default-constructor.cpp svneol=native#text/plain
 libs/graph/example/default-constructor2.cpp svneol=native#text/plain
 libs/graph/example/dfs-example.cpp svneol=native#text/plain
 libs/graph/example/dfs-parenthesis.cpp svneol=native#text/plain
 libs/graph/example/dfs.cpp svneol=native#text/plain
-libs/graph/example/dfs.expected -text
-libs/graph/example/dfs_basics.expected -text
+libs/graph/example/dfs.expected svneol=native#text/plain
+libs/graph/example/dfs_basics.expected svneol=native#text/plain
 libs/graph/example/dfs_parenthesis.cpp svneol=native#text/plain
-libs/graph/example/dfs_parenthesis.expected -text
+libs/graph/example/dfs_parenthesis.expected svneol=native#text/plain
 libs/graph/example/dijkstra-example-listS.cpp svneol=native#text/plain
 libs/graph/example/dijkstra-example.cpp svneol=native#text/plain
-libs/graph/example/dijkstra.expected -text
+libs/graph/example/dijkstra.expected svneol=native#text/plain
 libs/graph/example/edge-connectivity.cpp svneol=native#text/plain
 libs/graph/example/edge-function.cpp svneol=native#text/plain
 libs/graph/example/edge-iter-constructor.cpp svneol=native#text/plain
 libs/graph/example/edge_basics.cpp svneol=native#text/plain
-libs/graph/example/edge_basics.expected -text
+libs/graph/example/edge_basics.expected svneol=native#text/plain
 libs/graph/example/edge_connectivity.cpp svneol=native#text/plain
 libs/graph/example/edge_iterator_constructor.cpp svneol=native#text/plain
-libs/graph/example/edge_iterator_constructor.dat -text
+libs/graph/example/edge_iterator_constructor.dat svneol=native#text/plain
 libs/graph/example/edge_property.cpp svneol=native#text/plain
-libs/graph/example/edge_property.expected -text
+libs/graph/example/edge_property.expected svneol=native#text/plain
 libs/graph/example/edmunds-karp-eg.cpp svneol=native#text/plain
 libs/graph/example/exterior_properties.cpp svneol=native#text/plain
-libs/graph/example/exterior_properties.expected -text
+libs/graph/example/exterior_properties.expected svneol=native#text/plain
 libs/graph/example/exterior_property_map.cpp svneol=native#text/plain
-libs/graph/example/exterior_property_map.expected -text
+libs/graph/example/exterior_property_map.expected svneol=native#text/plain
 libs/graph/example/family-tree-eg.cpp svneol=native#text/plain
-libs/graph/example/family_tree.expected -text
+libs/graph/example/family_tree.expected svneol=native#text/plain
 libs/graph/example/fibonacci_heap.cpp svneol=native#text/plain
-libs/graph/example/fibonacci_heap.expected -text
-libs/graph/example/figs/cc-internet.dot -text
-libs/graph/example/figs/dfs-example.dot -text
-libs/graph/example/figs/edge-connectivity.dot -text
-libs/graph/example/figs/ospf-graph.dot -text
-libs/graph/example/figs/scc.dot -text
-libs/graph/example/figs/telephone-network.dot -text
+libs/graph/example/fibonacci_heap.expected svneol=native#text/plain
+libs/graph/example/figs/cc-internet.dot svneol=native#text/plain
+libs/graph/example/figs/dfs-example.dot svneol=native#text/plain
+libs/graph/example/figs/edge-connectivity.dot svneol=native#text/plain
+libs/graph/example/figs/ospf-graph.dot svneol=native#text/plain
+libs/graph/example/figs/scc.dot svneol=native#text/plain
+libs/graph/example/figs/telephone-network.dot svneol=native#text/plain
 libs/graph/example/file_dependencies.cpp svneol=native#text/plain
-libs/graph/example/file_dependencies.expected -text
+libs/graph/example/file_dependencies.expected svneol=native#text/plain
 libs/graph/example/filtered-copy-example.cpp svneol=native#text/plain
 libs/graph/example/filtered_graph.cpp svneol=native#text/plain
-libs/graph/example/filtered_graph.expected -text
+libs/graph/example/filtered_graph.expected svneol=native#text/plain
 libs/graph/example/filtered_graph_edge_range.cpp svneol=native#text/plain
 libs/graph/example/filtered_vec_as_graph.cpp svneol=native#text/plain
 libs/graph/example/fr_layout.cpp svneol=native#text/plain
 libs/graph/example/gerdemann.cpp svneol=native#text/plain
-libs/graph/example/gerdemann.expected -text
+libs/graph/example/gerdemann.expected svneol=native#text/plain
 libs/graph/example/girth.cpp svneol=native#text/plain
 libs/graph/example/graph-assoc-types.cpp svneol=native#text/plain
 libs/graph/example/graph-property-iter-eg.cpp svneol=native#text/plain
@@ -10060,41 +10060,41 @@ libs/graph/example/graph.cpp svneol=native#text/plain
 libs/graph/example/graph_as_tree.cpp svneol=native#text/plain
 libs/graph/example/graph_property.cpp svneol=native#text/plain
 libs/graph/example/graphviz.cpp svneol=native#text/plain
-libs/graph/example/graphviz_example.dot -text
-libs/graph/example/graphviz_test.dot -text
+libs/graph/example/graphviz_example.dot svneol=native#text/plain
+libs/graph/example/graphviz_test.dot svneol=native#text/plain
 libs/graph/example/in_edges.cpp svneol=native#text/plain
-libs/graph/example/in_edges.expected -text
+libs/graph/example/in_edges.expected svneol=native#text/plain
 libs/graph/example/incremental-components-eg.cpp svneol=native#text/plain
 libs/graph/example/incremental_components.cpp svneol=native#text/plain
-libs/graph/example/incremental_components.expected -text
+libs/graph/example/incremental_components.expected svneol=native#text/plain
 libs/graph/example/interior_pmap_bundled.cpp svneol=native#text/plain
 libs/graph/example/interior_property_map.cpp svneol=native#text/plain
-libs/graph/example/interior_property_map.expected -text
+libs/graph/example/interior_property_map.expected svneol=native#text/plain
 libs/graph/example/iohb.c svneol=native#text/plain
 libs/graph/example/iohb.h svneol=native#text/plain
 libs/graph/example/isomorphism.cpp svneol=native#text/plain
 libs/graph/example/iteration_macros.cpp svneol=native#text/plain
 libs/graph/example/iterator-property-map-eg.cpp svneol=native#text/plain
 libs/graph/example/johnson-eg.cpp svneol=native#text/plain
-libs/graph/example/johnson.expected -text
+libs/graph/example/johnson.expected svneol=native#text/plain
 libs/graph/example/kevin-bacon.cpp svneol=native#text/plain
-libs/graph/example/kevin-bacon.dat -text
+libs/graph/example/kevin-bacon.dat svneol=native#text/plain
 libs/graph/example/kevin-bacon2.cpp svneol=native#text/plain
-libs/graph/example/kevin-bacon2.dat -text
-libs/graph/example/kevin-bacon2.expected -text
-libs/graph/example/kevin_bacon.expected -text
+libs/graph/example/kevin-bacon2.dat svneol=native#text/plain
+libs/graph/example/kevin-bacon2.expected svneol=native#text/plain
+libs/graph/example/kevin_bacon.expected svneol=native#text/plain
 libs/graph/example/king_ordering.cpp svneol=native#text/plain
 libs/graph/example/knights-tour.cpp svneol=native#text/plain
-libs/graph/example/knights_tour.expected -text
+libs/graph/example/knights_tour.expected svneol=native#text/plain
 libs/graph/example/kolmogorov-eg.cpp svneol=native#text/plain
 libs/graph/example/kruskal-example.cpp svneol=native#text/plain
 libs/graph/example/kruskal-telephone.cpp svneol=native#text/plain
-libs/graph/example/kruskal.expected -text
+libs/graph/example/kruskal.expected svneol=native#text/plain
 libs/graph/example/kuratowski_subgraph.cpp svneol=native#text/plain
 libs/graph/example/last-mod-time.cpp svneol=native#text/plain
 libs/graph/example/leda-concept-check.cpp svneol=native#text/plain
 libs/graph/example/leda-graph-eg.cpp svneol=native#text/plain
-libs/graph/example/leda-regression.cfg -text
+libs/graph/example/leda-regression.cfg svneol=native#text/plain
 libs/graph/example/loops_dfs.cpp svneol=native#text/plain
 libs/graph/example/make_biconnected_planar.cpp svneol=native#text/plain
 libs/graph/example/make_connected.cpp svneol=native#text/plain
@@ -10103,10 +10103,10 @@ libs/graph/example/makefile-dependencies.dat svneol=native#text/plain
 libs/graph/example/makefile-target-names.dat svneol=native#text/plain
 libs/graph/example/matching_example.cpp svneol=native#text/plain
 libs/graph/example/max_flow.cpp svneol=native#text/plain
-libs/graph/example/max_flow.dat -text
-libs/graph/example/max_flow.expected -text
-libs/graph/example/max_flow2.dat -text
-libs/graph/example/max_flow3.dat -text
+libs/graph/example/max_flow.dat svneol=native#text/plain
+libs/graph/example/max_flow.expected svneol=native#text/plain
+libs/graph/example/max_flow2.dat svneol=native#text/plain
+libs/graph/example/max_flow3.dat svneol=native#text/plain
 libs/graph/example/max_flow4.dat svneol=native#text/plain
 libs/graph/example/max_flow5.dat svneol=native#text/plain
 libs/graph/example/max_flow6.dat svneol=native#text/plain
@@ -10114,20 +10114,20 @@ libs/graph/example/max_flow7.dat svneol=native#text/plain
 libs/graph/example/max_flow8.dat svneol=native#text/plain
 libs/graph/example/max_flow9.dat svneol=native#text/plain
 libs/graph/example/miles_span.cpp svneol=native#text/plain
-libs/graph/example/miles_span.expected -text
+libs/graph/example/miles_span.expected svneol=native#text/plain
 libs/graph/example/min_max_paths.cpp svneol=native#text/plain
 libs/graph/example/minimum_degree_ordering.cpp svneol=native#text/plain
 libs/graph/example/modify_graph.cpp svneol=native#text/plain
-libs/graph/example/modify_graph.expected -text
+libs/graph/example/modify_graph.expected svneol=native#text/plain
 libs/graph/example/neighbor_bfs.cpp svneol=native#text/plain
 libs/graph/example/ordered_out_edges.cpp svneol=native#text/plain
-libs/graph/example/ordered_out_edges.expected -text
+libs/graph/example/ordered_out_edges.expected svneol=native#text/plain
 libs/graph/example/ospf-example.cpp svneol=native#text/plain
 libs/graph/example/parallel-compile-time.cpp svneol=native#text/plain
 libs/graph/example/planar_face_traversal.cpp svneol=native#text/plain
 libs/graph/example/prim-example.cpp svneol=native#text/plain
 libs/graph/example/prim-telephone.cpp svneol=native#text/plain
-libs/graph/example/prim.expected -text
+libs/graph/example/prim.expected svneol=native#text/plain
 libs/graph/example/print-adjacent-vertices.cpp svneol=native#text/plain
 libs/graph/example/print-edges.cpp svneol=native#text/plain
 libs/graph/example/print-in-edges.cpp svneol=native#text/plain
@@ -10138,36 +10138,36 @@ libs/graph/example/push-relabel-eg.cpp svneol=native#text/plain
 libs/graph/example/put-get-helper-eg.cpp svneol=native#text/plain
 libs/graph/example/quick-tour.cpp svneol=native#text/plain
 libs/graph/example/quick_tour.cpp svneol=native#text/plain
-libs/graph/example/quick_tour.expected -text
+libs/graph/example/quick_tour.expected svneol=native#text/plain
 libs/graph/example/reachable-loop-head.cpp svneol=native#text/plain
 libs/graph/example/reachable-loop-tail.cpp svneol=native#text/plain
 libs/graph/example/read_graphviz.cpp svneol=native#text/plain
 libs/graph/example/read_write_dimacs-eg.cpp svneol=native#text/plain
-libs/graph/example/regression.cfg -text
+libs/graph/example/regression.cfg svneol=native#text/plain
 libs/graph/example/remove_edge_if_bidir.cpp svneol=native#text/plain
-libs/graph/example/remove_edge_if_bidir.expected -text
+libs/graph/example/remove_edge_if_bidir.expected svneol=native#text/plain
 libs/graph/example/remove_edge_if_dir.cpp svneol=native#text/plain
-libs/graph/example/remove_edge_if_dir.expected -text
+libs/graph/example/remove_edge_if_dir.expected svneol=native#text/plain
 libs/graph/example/remove_edge_if_undir.cpp svneol=native#text/plain
-libs/graph/example/remove_edge_if_undir.expected -text
+libs/graph/example/remove_edge_if_undir.expected svneol=native#text/plain
 libs/graph/example/reverse-graph-eg.cpp svneol=native#text/plain
-libs/graph/example/reverse_graph.expected -text
+libs/graph/example/reverse_graph.expected svneol=native#text/plain
 libs/graph/example/roget_components.cpp svneol=native#text/plain
 libs/graph/example/scc.cpp svneol=native#text/plain
-libs/graph/example/scc.dot -text
-libs/graph/example/sgb-regression.cfg -text
+libs/graph/example/scc.dot svneol=native#text/plain
+libs/graph/example/sgb-regression.cfg svneol=native#text/plain
 libs/graph/example/simple_planarity_test.cpp svneol=native#text/plain
 libs/graph/example/sloan_ordering.cpp svneol=native#text/plain
 libs/graph/example/straight_line_drawing.cpp svneol=native#text/plain
 libs/graph/example/strong-components.cpp svneol=native#text/plain
 libs/graph/example/strong_components.cpp svneol=native#text/plain
-libs/graph/example/strong_components.expected -text
+libs/graph/example/strong_components.expected svneol=native#text/plain
 libs/graph/example/subgraph.cpp svneol=native#text/plain
-libs/graph/example/subgraph.expected -text
+libs/graph/example/subgraph.expected svneol=native#text/plain
 libs/graph/example/subgraph_properties.cpp svneol=native#text/plain
-libs/graph/example/target-compile-costs.dat -text
-libs/graph/example/tc.dot -text
-libs/graph/example/test-astar-cities.dot -text
+libs/graph/example/target-compile-costs.dat svneol=native#text/plain
+libs/graph/example/tc.dot svneol=native#text/plain
+libs/graph/example/test-astar-cities.dot svneol=native#text/plain
 libs/graph/example/topo-sort-file-dep.cpp svneol=native#text/plain
 libs/graph/example/topo-sort-file-dep2.cpp svneol=native#text/plain
 libs/graph/example/topo-sort-with-leda.cpp svneol=native#text/plain
@@ -10175,19 +10175,19 @@ libs/graph/example/topo-sort-with-sgb.cpp svneol=native#text/plain
 libs/graph/example/topo-sort1.cpp svneol=native#text/plain
 libs/graph/example/topo-sort2.cpp svneol=native#text/plain
 libs/graph/example/topo_sort.cpp svneol=native#text/plain
-libs/graph/example/topo_sort.expected -text
+libs/graph/example/topo_sort.expected svneol=native#text/plain
 libs/graph/example/transitive_closure.cpp svneol=native#text/plain
 libs/graph/example/transpose-example.cpp svneol=native#text/plain
 libs/graph/example/undirected.cpp svneol=native#text/plain
-libs/graph/example/undirected.expected -text
+libs/graph/example/undirected.expected svneol=native#text/plain
 libs/graph/example/undirected_dfs.cpp svneol=native#text/plain
 libs/graph/example/vector-as-graph.cpp svneol=native#text/plain
-libs/graph/example/vector_as_graph.expected -text
+libs/graph/example/vector_as_graph.expected svneol=native#text/plain
 libs/graph/example/vertex-name-property.cpp svneol=native#text/plain
 libs/graph/example/vertex_basics.cpp svneol=native#text/plain
-libs/graph/example/vertex_basics.expected -text
+libs/graph/example/vertex_basics.expected svneol=native#text/plain
 libs/graph/example/visitor.cpp svneol=native#text/plain
-libs/graph/example/visitor.expected -text
+libs/graph/example/visitor.expected svneol=native#text/plain
 libs/graph/example/write_graphviz.cpp svneol=native#text/plain
 libs/graph/index.html svneol=native#text/html
 libs/graph/src/graphml.cpp svneol=native#text/plain
@@ -11401,7 +11401,7 @@ libs/graph/test/planar_input_graphs/planar_tree_1_p8.dimacs svneol=native#text/p
 libs/graph/test/planar_input_graphs/planar_tree_1_p9.dimacs svneol=native#text/plain
 libs/graph/test/property_iter.cpp svneol=native#text/plain
 libs/graph/test/random_matching_test.cpp svneol=native#text/plain
-libs/graph/test/regression.cfg -text
+libs/graph/test/regression.cfg svneol=native#text/plain
 libs/graph/test/relaxed_heap_test.cpp svneol=native#text/plain
 libs/graph/test/reverse_graph_cc.cpp svneol=native#text/plain
 libs/graph/test/sequential_vertex_coloring.cpp svneol=native#text/plain
@@ -12243,7 +12243,7 @@ libs/lambda/doc/lambda.xml svneol=native#text/xml
 libs/lambda/index.html svneol=native#text/html
 libs/lambda/test/Jamfile svneol=native#text/plain
 libs/lambda/test/Makefile svneol=native#text/plain
-libs/lambda/test/README_gcc2.9x_users -text
+libs/lambda/test/README_gcc2.9x_users svneol=native#text/plain
 libs/lambda/test/algorithm_test.cpp svneol=native#text/plain
 libs/lambda/test/bind_tests_advanced.cpp svneol=native#text/plain
 libs/lambda/test/bind_tests_simple.cpp svneol=native#text/plain
@@ -14704,7 +14704,7 @@ libs/mpl/doc/src/refmanual/quote.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/range_c.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/refmanual.py svneol=native#text/x-python
 libs/mpl/doc/src/refmanual/refmanual.rst svneol=native#text/plain
-libs/mpl/doc/src/refmanual/refmanual.toc -text
+libs/mpl/doc/src/refmanual/refmanual.toc svneol=native#text/plain
 libs/mpl/doc/src/refmanual/remove.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/remove_if.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/replace.rst svneol=native#text/plain
@@ -14830,6 +14830,7 @@ libs/mpl/preprocessed/map/map30.cpp svneol=native#text/plain
 libs/mpl/preprocessed/map/map40.cpp svneol=native#text/plain
 libs/mpl/preprocessed/map/map50.cpp svneol=native#text/plain
 libs/mpl/preprocessed/pp.py svneol=native#text/x-python
+libs/mpl/preprocessed/preprocess.cmd svneol=native#text/plain
 libs/mpl/preprocessed/preprocess.py svneol=native#text/x-python
 libs/mpl/preprocessed/preprocess_list.py svneol=native#text/x-python
 libs/mpl/preprocessed/preprocess_map.py svneol=native#text/x-python
@@ -15413,7 +15414,7 @@ libs/optional/doc/acknowledgments.qbk svneol=native#text/plain
 libs/optional/doc/dependencies.qbk svneol=native#text/plain
 libs/optional/doc/development.qbk svneol=native#text/plain
 libs/optional/doc/examples.qbk svneol=native#text/plain
-libs/optional/doc/html/HTML.manifest -text
+libs/optional/doc/html/HTML.manifest svneol=native#text/plain
 libs/optional/doc/html/boost_optional/a_note_about_optional_bool_.html svneol=native#text/html
 libs/optional/doc/html/boost_optional/acknowledgments.html svneol=native#text/html
 libs/optional/doc/html/boost_optional/dependencies_and_portability.html svneol=native#text/html
@@ -18879,13 +18880,13 @@ libs/thread/src/win32/thread.cpp svneol=native#text/plain
 libs/thread/src/win32/timeconv.inl svneol=native#text/plain
 libs/thread/src/win32/tss_dll.cpp svneol=native#text/plain
 libs/thread/src/win32/tss_pe.cpp svneol=native#text/plain
-libs/thread/test/Carbon.r -text
+libs/thread/test/Carbon.r svneol=native#text/plain
 libs/thread/test/Jamfile.v2 svneol=native#text/plain
 libs/thread/test/condition_test_common.hpp svneol=native#text/plain
 libs/thread/test/no_implicit_assign_from_lvalue_thread.cpp svneol=native#text/plain
 libs/thread/test/no_implicit_move_from_lvalue_thread.cpp svneol=native#text/plain
 libs/thread/test/shared_mutex_locking_thread.hpp svneol=native#text/plain
-libs/thread/test/test.mcp -text svneol=unset#unset
+libs/thread/test/test.mcp -text
 libs/thread/test/test_barrier.cpp svneol=native#text/plain
 libs/thread/test/test_condition.cpp svneol=native#text/plain
 libs/thread/test/test_condition_notify_all.cpp svneol=native#text/plain
@@ -18907,7 +18908,7 @@ libs/thread/test/test_thread_mf.cpp svneol=native#text/plain
 libs/thread/test/test_thread_move.cpp svneol=native#text/plain
 libs/thread/test/test_tss.cpp svneol=native#text/plain
 libs/thread/test/test_xtime.cpp svneol=native#text/plain
-libs/thread/test/util.inl -text
+libs/thread/test/util.inl svneol=native#text/plain
 libs/thread/tutorial/bounded_buffer.cpp svneol=native#text/plain
 libs/thread/tutorial/counter.cpp svneol=native#text/plain
 libs/thread/tutorial/factorial.cpp svneol=native#text/plain
@@ -19646,7 +19647,7 @@ libs/utility/shared_iterator_example1.cpp svneol=native#text/plain
 libs/utility/shared_iterator_example2.cpp svneol=native#text/plain
 libs/utility/shared_iterator_example3.cpp svneol=native#text/plain
 libs/utility/shared_iterator_test.cpp svneol=native#text/plain
-libs/utility/sublibs -text
+libs/utility/sublibs svneol=native#text/plain
 libs/utility/test/Jamfile.v2 svneol=native#text/plain
 libs/utility/test/next_prior_test.cpp svneol=native#text/plain
 libs/utility/test/result_of_test.cpp svneol=native#text/plain
@@ -20078,7 +20079,7 @@ libs/xpressive/doc/tracking_ptr.qbk svneol=native#text/plain
 libs/xpressive/doc/traits.qbk svneol=native#text/plain
 libs/xpressive/doc/xpressive.qbk svneol=native#text/plain
 libs/xpressive/example/Jamfile.v2 svneol=native#text/plain
-libs/xpressive/example/example.vcproj -text
+libs/xpressive/example/example.vcproj svneol=native#text/xml
 libs/xpressive/example/main.cpp svneol=native#text/plain
 libs/xpressive/example/numbers.cpp svneol=native#text/plain
 libs/xpressive/index.html svneol=native#text/html
