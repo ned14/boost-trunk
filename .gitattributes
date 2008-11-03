@@ -3773,11 +3773,11 @@ boost/pool/detail/mutex.hpp svneol=native#text/plain
 boost/pool/detail/pool_construct.bat svneol=native#text/plain
 boost/pool/detail/pool_construct.inc svneol=native#text/plain
 boost/pool/detail/pool_construct.m4 svneol=native#text/plain
-boost/pool/detail/pool_construct.sh svneol=native#text/x-sh
+boost/pool/detail/pool_construct.sh svneol=LF#text/x-sh eol=lf
 boost/pool/detail/pool_construct_simple.bat svneol=native#text/plain
 boost/pool/detail/pool_construct_simple.inc svneol=native#text/plain
 boost/pool/detail/pool_construct_simple.m4 svneol=native#text/plain
-boost/pool/detail/pool_construct_simple.sh svneol=native#text/x-sh
+boost/pool/detail/pool_construct_simple.sh svneol=LF#text/x-sh eol=lf
 boost/pool/detail/singleton.hpp svneol=native#text/plain
 boost/pool/object_pool.hpp svneol=native#text/plain
 boost/pool/pool.hpp svneol=native#text/plain
@@ -6667,7 +6667,7 @@ boost/xpressive/xpressive_dynamic.hpp svneol=native#text/plain
 boost/xpressive/xpressive_fwd.hpp svneol=native#text/plain
 boost/xpressive/xpressive_static.hpp svneol=native#text/plain
 boost/xpressive/xpressive_typeof.hpp svneol=native#text/plain
-/configure svneol=native#text/plain
+/configure svneol=LF#text/plain eol=lf
 doc/Jamfile.v2 svneol=native#text/plain
 doc/html/CopyConstructible.html svneol=native#text/html
 doc/html/any.html svneol=native#text/html
@@ -7444,7 +7444,7 @@ libs/circular_buffer/doc/html2xhtml.xslt svneol=native#text/xml
 libs/circular_buffer/doc/space_optimized.html svneol=native#text/html
 libs/circular_buffer/doc/space_optimized.png -text svneol=unset#image/png
 libs/circular_buffer/doc/space_optimized.xslt svneol=native#text/xml
-libs/circular_buffer/doc/update_srcdoc.sh svneol=native#text/x-sh
+libs/circular_buffer/doc/update_srcdoc.sh svneol=LF#text/x-sh eol=lf
 libs/circular_buffer/doc/update_srcdoc.xslt svneol=native#text/xml
 libs/circular_buffer/index.html svneol=native#text/html
 libs/circular_buffer/test/Jamfile.v2 svneol=native#text/plain
@@ -7497,7 +7497,7 @@ libs/concept_check/using_concept_check.htm svneol=native#text/html
 libs/concept_check/where.cpp svneol=native#text/plain
 libs/concept_check/where_fail.cpp svneol=native#text/plain
 libs/config/config.htm svneol=native#text/html
-libs/config/configure svneol=native#text/plain
+libs/config/configure svneol=LF#text/plain eol=lf
 libs/config/doc/Jamfile.v2 svneol=native#text/plain
 libs/config/doc/acknowledgements.qbk svneol=native#text/plain
 libs/config/doc/config.qbk svneol=native#text/plain
@@ -7743,9 +7743,9 @@ libs/config/test/has_winthreads_fail.cpp svneol=native#text/plain
 libs/config/test/has_winthreads_pass.cpp svneol=native#text/plain
 libs/config/test/limits_test.cpp svneol=native#text/plain
 libs/config/test/link/Jamfile.v2 svneol=native#text/plain
-libs/config/test/link/bc_gen.sh svneol=native#text/x-sh
+libs/config/test/link/bc_gen.sh svneol=LF#text/x-sh eol=lf
 libs/config/test/link/borland.mak svneol=native#text/plain
-libs/config/test/link/common.sh svneol=native#text/x-sh
+libs/config/test/link/common.sh svneol=LF#text/x-sh eol=lf
 libs/config/test/link/link_test.cpp svneol=native#text/plain
 libs/config/test/link/link_test.hpp svneol=native#text/plain
 libs/config/test/link/main.cpp svneol=native#text/plain
@@ -7756,7 +7756,7 @@ libs/config/test/link/vc7-stlport.mak svneol=native#text/plain
 libs/config/test/link/vc7.mak svneol=native#text/plain
 libs/config/test/link/vc71-stlport.mak svneol=native#text/plain
 libs/config/test/link/vc71.mak svneol=native#text/plain
-libs/config/test/link/vc_gen.sh svneol=native#text/x-sh
+libs/config/test/link/vc_gen.sh svneol=LF#text/x-sh eol=lf
 libs/config/test/math_info.cpp svneol=native#text/plain
 libs/config/test/no_adl_barrier_fail.cpp svneol=native#text/plain
 libs/config/test/no_adl_barrier_pass.cpp svneol=native#text/plain
@@ -9654,8 +9654,8 @@ libs/gil/doc/html/typedefs_8hpp.html svneol=native#text/html
 libs/gil/doc/html/utilities_8hpp.html svneol=native#text/html
 libs/gil/doc/html/variant_8hpp.html svneol=native#text/html
 libs/gil/doc/index.html svneol=native#text/html
-libs/gil/doc/insert_boost_licence.sh svneol=native#text/x-sh
-libs/gil/doc/shorten_file_name.sh svneol=native#text/x-sh
+libs/gil/doc/insert_boost_licence.sh svneol=LF#text/x-sh eol=lf
+libs/gil/doc/shorten_file_name.sh svneol=LF#text/x-sh eol=lf
 libs/gil/example/Makefile svneol=native#text/plain
 libs/gil/example/README.txt svneol=native#text/plain
 libs/gil/example/affine.cpp svneol=native#text/plain
@@ -12727,7 +12727,7 @@ libs/math/doc/sf_and_dist/equations/gamma_ratio0.svg -text svneol=unset#image/sv
 libs/math/doc/sf_and_dist/equations/gamma_ratio1.mml svneol=native#text/xml
 libs/math/doc/sf_and_dist/equations/gamma_ratio1.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/equations/gamma_ratio1.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/sf_and_dist/equations/generate.sh svneol=native#text/x-sh
+libs/math/doc/sf_and_dist/equations/generate.sh svneol=LF#text/x-sh eol=lf
 libs/math/doc/sf_and_dist/equations/hazard.mml svneol=native#text/xml
 libs/math/doc/sf_and_dist/equations/hazard.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/equations/hazard.svg -text svneol=unset#image/svg%2Bxml
@@ -13239,7 +13239,7 @@ libs/math/doc/sf_and_dist/graphs/gamma_p.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/graphs/gamma_p.svg -text svneol=unset#image/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/gamma_q.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/graphs/gamma_q.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/sf_and_dist/graphs/generate.sh svneol=native#text/x-sh
+libs/math/doc/sf_and_dist/graphs/generate.sh svneol=LF#text/x-sh eol=lf
 libs/math/doc/sf_and_dist/graphs/hermite.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/graphs/hermite.svg -text svneol=unset#image/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/hyperbolic.png -text svneol=unset#image/png
@@ -13959,7 +13959,7 @@ libs/math/test/compile_test/dist_triangular_incl_test.cpp svneol=native#text/pla
 libs/math/test/compile_test/dist_uniform_incl_test.cpp svneol=native#text/plain
 libs/math/test/compile_test/dist_weibull_incl_test.cpp svneol=native#text/plain
 libs/math/test/compile_test/distribution_concept_check.cpp svneol=native#text/plain
-libs/math/test/compile_test/generate.sh svneol=native#text/x-sh
+libs/math/test/compile_test/generate.sh svneol=LF#text/x-sh eol=lf
 libs/math/test/compile_test/instantiate.hpp svneol=native#text/plain
 libs/math/test/compile_test/sf_bessel_incl_test.cpp svneol=native#text/plain
 libs/math/test/compile_test/sf_beta_incl_test.cpp svneol=native#text/plain
@@ -16083,7 +16083,7 @@ libs/proto/doc/implementation.qbk svneol=native#text/plain
 libs/proto/doc/installation.qbk svneol=native#text/plain
 libs/proto/doc/intermediate_form.qbk svneol=native#text/plain
 libs/proto/doc/preface.qbk svneol=native#text/plain
-libs/proto/doc/propdocs.sh svneol=native#text/x-sh
+libs/proto/doc/propdocs.sh svneol=LF#text/x-sh eol=lf
 libs/proto/doc/proto.qbk svneol=native#text/plain
 libs/proto/doc/rationale.qbk svneol=native#text/plain
 libs/proto/doc/reference.xml svneol=native#text/xml
@@ -16155,33 +16155,33 @@ libs/ptr_container/doc/Jamfile.v2 svneol=native#text/plain
 libs/ptr_container/doc/associative_ptr_container.html svneol=native#text/html
 libs/ptr_container/doc/associative_ptr_container.rst svneol=native#text/plain
 libs/ptr_container/doc/boost.png -text svneol=unset#image/png
-libs/ptr_container/doc/comp.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_all.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_assoc_ptr_container.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_conventions.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_examples.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_faq.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_guidelines.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_headers.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_indirect_fun.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_array.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_container.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_deque.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_inserter.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_list.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_map.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_map_adapter.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_multimap.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_multimap_adapter.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_multiset.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_multiset_adapter.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_sequence_adapter.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_set.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_set_adapter.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_ptr_vector.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_reference.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_rever_ptr_container.sh svneol=native#text/x-sh
-libs/ptr_container/doc/comp_tutorial.sh svneol=native#text/x-sh
+libs/ptr_container/doc/comp.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_all.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_assoc_ptr_container.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_conventions.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_examples.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_faq.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_guidelines.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_headers.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_indirect_fun.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_array.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_container.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_deque.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_inserter.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_list.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_map.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_map_adapter.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_multimap.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_multimap_adapter.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_multiset.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_multiset_adapter.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_sequence_adapter.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_set.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_set_adapter.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_ptr_vector.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_reference.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_rever_ptr_container.sh svneol=LF#text/x-sh eol=lf
+libs/ptr_container/doc/comp_tutorial.sh svneol=LF#text/x-sh eol=lf
 libs/ptr_container/doc/conventions.html svneol=native#text/html
 libs/ptr_container/doc/conventions.rst svneol=native#text/plain
 libs/ptr_container/doc/default.css svneol=native#text/css
@@ -16789,15 +16789,15 @@ libs/rational/rational.html svneol=native#text/html
 libs/rational/rational_example.cpp svneol=native#text/plain
 libs/rational/rational_test.cpp svneol=native#text/plain
 libs/regex/build/Jamfile.v2 svneol=native#text/plain
-libs/regex/build/bc_gen.sh svneol=native#text/x-sh
+libs/regex/build/bc_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/bcb6.mak svneol=native#text/plain
-libs/regex/build/common.sh svneol=native#text/x-sh
+libs/regex/build/common.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/gcc-shared.mak svneol=native#text/plain
 libs/regex/build/gcc.mak svneol=native#text/plain
-libs/regex/build/gcc_gen.sh svneol=native#text/x-sh
+libs/regex/build/gcc_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/generic.mak svneol=native#text/plain
-libs/regex/build/generic_gen.sh svneol=native#text/x-sh
-libs/regex/build/sun_gen.sh svneol=native#text/x-sh
+libs/regex/build/generic_gen.sh svneol=LF#text/x-sh eol=lf
+libs/regex/build/sun_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/sunpro.mak svneol=native#text/plain
 libs/regex/build/vc6-stlport.mak svneol=native#text/plain
 libs/regex/build/vc6.mak svneol=native#text/plain
@@ -16807,7 +16807,7 @@ libs/regex/build/vc71-stlport.mak svneol=native#text/plain
 libs/regex/build/vc71.mak svneol=native#text/plain
 libs/regex/build/vc8.mak svneol=native#text/plain
 libs/regex/build/vc9.mak svneol=native#text/plain
-libs/regex/build/vc_gen.sh svneol=native#text/x-sh
+libs/regex/build/vc_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/doc/Jamfile.v2 svneol=native#text/plain
 libs/regex/doc/acknowledgements.qbk svneol=native#text/plain
 libs/regex/doc/bad_expression.qbk svneol=native#text/plain
@@ -17169,7 +17169,7 @@ libs/serialization/performance/polymorphic_text_warchive.hpp svneol=native#text/
 libs/serialization/performance/polymorphic_xml_archive.hpp svneol=native#text/plain
 libs/serialization/performance/polymorphic_xml_warchive.hpp svneol=native#text/plain
 libs/serialization/performance/portable_binary_archive.hpp svneol=native#text/plain
-libs/serialization/performance/profile.sh svneol=native#text/x-sh
+libs/serialization/performance/profile.sh svneol=LF#text/x-sh eol=lf
 libs/serialization/performance/text_archive.hpp svneol=native#text/plain
 libs/serialization/performance/text_warchive.hpp svneol=native#text/plain
 libs/serialization/performance/xml_archive.hpp svneol=native#text/plain
@@ -17735,7 +17735,7 @@ libs/spirit/classic/phoenix/test/mixed_binary_tests.cpp svneol=native#text/plain
 libs/spirit/classic/phoenix/test/more_expressions_tests.cpp svneol=native#text/plain
 libs/spirit/classic/phoenix/test/new_test.cpp svneol=native#text/plain
 libs/spirit/classic/phoenix/test/primitives_tests.cpp svneol=native#text/plain
-libs/spirit/classic/phoenix/test/runtest.sh svneol=native#text/x-sh
+libs/spirit/classic/phoenix/test/runtest.sh svneol=LF#text/x-sh eol=lf
 libs/spirit/classic/phoenix/test/statements_tests.cpp svneol=native#text/plain
 libs/spirit/classic/phoenix/test/stl_tests.cpp svneol=native#text/plain
 libs/spirit/classic/phoenix/test/tuples_tests.cpp svneol=native#text/plain
@@ -20481,13 +20481,13 @@ tools/build/v2/kernel/bootstrap.jam svneol=native#text/plain
 tools/build/v2/kernel/class.jam svneol=native#text/plain
 tools/build/v2/kernel/errors.jam svneol=native#text/plain
 tools/build/v2/kernel/modules.jam svneol=native#text/plain
-tools/build/v2/nightly.sh svneol=native#text/x-sh
+tools/build/v2/nightly.sh svneol=LF#text/x-sh eol=lf
 tools/build/v2/notes/README.txt svneol=native#text/plain
 tools/build/v2/notes/build_dir_option.txt svneol=native#text/plain
 tools/build/v2/notes/relative_source_paths.txt svneol=native#text/plain
 tools/build/v2/options/help.jam svneol=native#text/plain
 tools/build/v2/release_procedure.txt svneol=native#text/plain
-tools/build/v2/roll.sh svneol=native#text/x-sh
+tools/build/v2/roll.sh svneol=LF#text/x-sh eol=lf
 tools/build/v2/site-config.jam svneol=native#text/plain
 tools/build/v2/test/BoostBuild.py svneol=native#text/x-python
 tools/build/v2/test/Jamrules svneol=native#text/plain
@@ -20897,7 +20897,7 @@ tools/inspect/minmax_check.cpp svneol=native#text/plain
 tools/inspect/minmax_check.hpp svneol=native#text/plain
 tools/inspect/path_name_check.cpp svneol=native#text/plain
 tools/inspect/path_name_check.hpp svneol=native#text/plain
-tools/inspect/run_inspect.sh svneol=native#text/x-sh
+tools/inspect/run_inspect.sh svneol=LF#text/x-sh eol=lf
 tools/inspect/tab_check.cpp svneol=native#text/plain
 tools/inspect/tab_check.hpp svneol=native#text/plain
 tools/inspect/time_string.hpp svneol=native#text/plain
@@ -20905,7 +20905,7 @@ tools/inspect/unnamed_namespace_check.cpp svneol=native#text/plain
 tools/inspect/unnamed_namespace_check.hpp svneol=native#text/plain
 tools/inspect/wrong_line_ends_test.cpp svneol=native#text/plain
 tools/jam/build_dist.bat svneol=native#text/plain
-tools/jam/build_dist.sh svneol=native#text/x-sh
+tools/jam/build_dist.sh svneol=LF#text/x-sh eol=lf
 tools/jam/doc/bjam.qbk svneol=native#text/plain
 tools/jam/doc/build.jam svneol=native#text/plain
 tools/jam/doc/history.qbk svneol=native#text/plain
@@ -20950,10 +20950,10 @@ tools/jam/src/boehm_gc/checksums.c svneol=native#text/plain
 tools/jam/src/boehm_gc/compile svneol=native#text/plain
 tools/jam/src/boehm_gc/config.guess svneol=native#text/plain
 tools/jam/src/boehm_gc/config.sub svneol=native#text/plain
-tools/jam/src/boehm_gc/configure svneol=native#text/plain
+tools/jam/src/boehm_gc/configure svneol=LF#text/plain eol=lf
 tools/jam/src/boehm_gc/configure.ac svneol=native#text/plain
 tools/jam/src/boehm_gc/configure.host svneol=native#text/plain
-tools/jam/src/boehm_gc/configure_atomic_ops.sh svneol=native#text/plain
+tools/jam/src/boehm_gc/configure_atomic_ops.sh svneol=LF#text/plain eol=lf
 tools/jam/src/boehm_gc/cord/cord.am svneol=native#text/plain
 tools/jam/src/boehm_gc/cord/cordbscs.c svneol=native#text/plain
 tools/jam/src/boehm_gc/cord/cordprnt.c svneol=native#text/plain
@@ -21053,7 +21053,7 @@ tools/jam/src/boehm_gc/include/private/thread_local_alloc.h svneol=native#text/p
 tools/jam/src/boehm_gc/include/weakpointer.h svneol=native#text/plain
 tools/jam/src/boehm_gc/install-sh svneol=native#text/plain
 tools/jam/src/boehm_gc/libtool.m4 svneol=native#text/plain
-tools/jam/src/boehm_gc/ltmain.sh svneol=native#text/plain
+tools/jam/src/boehm_gc/ltmain.sh svneol=LF#text/plain eol=lf
 tools/jam/src/boehm_gc/mach_dep.c svneol=native#text/plain
 tools/jam/src/boehm_gc/malloc.c svneol=native#text/plain
 tools/jam/src/boehm_gc/mallocx.c svneol=native#text/plain
@@ -21095,7 +21095,7 @@ tools/jam/src/boehm_gc/win32_threads.c svneol=native#text/plain
 tools/jam/src/boost-jam.spec -text
 tools/jam/src/build.bat svneol=native#text/plain
 tools/jam/src/build.jam svneol=native#text/plain
-tools/jam/src/build.sh svneol=native#text/x-sh
+tools/jam/src/build.sh svneol=LF#text/x-sh eol=lf
 tools/jam/src/build_vms.com -text
 tools/jam/src/builtins.c svneol=native#text/plain
 tools/jam/src/builtins.h svneol=native#text/plain
@@ -21211,7 +21211,7 @@ tools/jam/test/stress_var_expand.jam svneol=native#text/plain
 tools/jam/test/target_var.jam svneol=native#text/plain
 tools/jam/test/test.bat svneol=native#text/plain
 tools/jam/test/test.jam svneol=native#text/plain
-tools/jam/test/test.sh svneol=native#text/x-sh
+tools/jam/test/test.sh svneol=LF#text/x-sh eol=lf
 tools/jam/test/var_expand.jam svneol=native#text/plain
 tools/litre/cplusplus.py svneol=native#text/x-python
 tools/litre/litre.py svneol=native#text/x-python
@@ -21255,7 +21255,7 @@ tools/quickbook/doc/html/images/extra/katepart/table.boost.hs.png -text svneol=u
 tools/quickbook/doc/html/images/extra/katepart/table.text.editor.png -text svneol=unset#image/png
 tools/quickbook/doc/quickbook.qbk svneol=native#text/plain
 tools/quickbook/doc_info.hpp svneol=native#text/plain
-tools/quickbook/extra/katepart/install.sh svneol=native#text/x-sh
+tools/quickbook/extra/katepart/install.sh svneol=LF#text/x-sh eol=lf
 tools/quickbook/extra/katepart/katepart.qbk svneol=native#text/plain
 tools/quickbook/extra/katepart/syntax/boost_hs_boost.xml svneol=native#text/xml
 tools/quickbook/extra/katepart/syntax/boost_hs_cpp.xml svneol=native#text/xml
@@ -21299,7 +21299,7 @@ tools/regression/doc/index.html svneol=native#text/html
 tools/regression/doc/instructions.html svneol=native#text/html
 tools/regression/doc/library_status.html svneol=native#text/html
 tools/regression/index.html svneol=native#text/html
-tools/regression/src/boost_svn_export_archive.sh svneol=native#text/x-sh
+tools/regression/src/boost_svn_export_archive.sh svneol=LF#text/x-sh eol=lf
 tools/regression/src/collect_and_upload_logs.py svneol=native#text/x-python
 tools/regression/src/compiler_status.cpp svneol=native#text/plain
 tools/regression/src/detail/tiny_xml.cpp svneol=native#text/plain
@@ -21308,13 +21308,13 @@ tools/regression/src/detail/tiny_xml_test.cpp svneol=native#text/plain
 tools/regression/src/detail/tiny_xml_test.txt svneol=native#text/plain
 tools/regression/src/library_status.cpp svneol=native#text/plain
 tools/regression/src/library_test.bat svneol=native#text/plain
-tools/regression/src/library_test.sh svneol=native#text/x-sh
-tools/regression/src/library_test_all.sh svneol=native#text/x-sh
+tools/regression/src/library_test.sh svneol=LF#text/x-sh eol=lf
+tools/regression/src/library_test_all.sh svneol=LF#text/x-sh eol=lf
 tools/regression/src/process_jam_log.cpp svneol=native#text/plain
 tools/regression/src/regression-logs.pl svneol=native#text/x-perl
 tools/regression/src/regression.py svneol=native#text/x-python
 tools/regression/src/run.py svneol=native#text/x-python
-tools/regression/src/run_tests.sh svneol=native#text/x-sh
+tools/regression/src/run_tests.sh svneol=LF#text/x-sh eol=lf
 tools/regression/src/smoke.py svneol=native#text/x-python
 tools/regression/test/Jamfile.v2 svneol=native#text/plain
 tools/regression/test/compile-fail~fail.cpp svneol=native#text/plain
@@ -21352,7 +21352,7 @@ tools/regression/test/test.bat svneol=native#text/plain
 tools/regression/test/test.py svneol=native#text/x-python
 tools/regression/xsl_reports/boost_wide_report.py svneol=native#text/x-python
 tools/regression/xsl_reports/boostbook_report.py svneol=native#text/x-python
-tools/regression/xsl_reports/build_results.sh svneol=native#text/x-sh
+tools/regression/xsl_reports/build_results.sh svneol=LF#text/x-sh eol=lf
 tools/regression/xsl_reports/email_maintainers.py svneol=native#text/x-python
 tools/regression/xsl_reports/empty_expected_results.xml svneol=native#text/xml
 tools/regression/xsl_reports/make_snapshot.py svneol=native#text/x-python
@@ -21414,20 +21414,20 @@ tools/regression/xsl_reports/xsl/v2/produce_expected_results.xsl svneol=native#t
 tools/regression/xsl_reports/xsl/v2/result_page.xsl svneol=native#text/xml
 tools/regression/xsl_reports/xsl/v2/runners.xsl svneol=native#text/xml
 tools/regression/xsl_reports/xsl/v2/summary_page.xsl svneol=native#text/xml
-tools/release/build_docs.sh svneol=native#text/x-sh
-tools/release/build_release.sh svneol=native#text/x-sh
-tools/release/build_release_packages.sh svneol=native#text/x-sh
+tools/release/build_docs.sh svneol=LF#text/x-sh eol=lf
+tools/release/build_release.sh svneol=LF#text/x-sh eol=lf
+tools/release/build_release_packages.sh svneol=LF#text/x-sh eol=lf
 tools/release/diff_trunk_release.bat svneol=native#text/plain
 tools/release/index.html svneol=native#text/html
-tools/release/inspect.sh svneol=native#text/x-sh
-tools/release/load_posix.sh svneol=native#text/x-sh
-tools/release/load_windows.sh svneol=native#text/x-sh
-tools/release/make_packages.sh svneol=native#text/x-sh
+tools/release/inspect.sh svneol=LF#text/x-sh eol=lf
+tools/release/load_posix.sh svneol=LF#text/x-sh eol=lf
+tools/release/load_windows.sh svneol=LF#text/x-sh eol=lf
+tools/release/make_packages.sh svneol=LF#text/x-sh eol=lf
 tools/release/msvc/compare_trees/compare_trees.vcproj svneol=native#text/xml
 tools/release/msvc/msvc.sln svneol=native#text/plain
-tools/release/snapshot.sh svneol=native#text/x-sh
-tools/release/snapshot_posix.sh svneol=native#text/x-sh
-tools/release/snapshot_windows.sh svneol=native#text/x-sh
+tools/release/snapshot.sh svneol=LF#text/x-sh eol=lf
+tools/release/snapshot_posix.sh svneol=LF#text/x-sh eol=lf
+tools/release/snapshot_windows.sh svneol=LF#text/x-sh eol=lf
 tools/wave/build/Jamfile.v2 svneol=native#text/plain
 tools/wave/cpp.cpp svneol=native#text/plain
 tools/wave/cpp.hpp svneol=native#text/plain
