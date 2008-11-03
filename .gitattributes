@@ -10361,6 +10361,7 @@ libs/graph/test/dfs.cpp svneol=native#text/plain
 libs/graph/test/dfs_cc.cpp svneol=native#text/plain
 libs/graph/test/dijkstra_cc.cpp svneol=native#text/plain
 libs/graph/test/dijkstra_heap_performance.cpp svneol=native#text/plain
+libs/graph/test/dimacs.cpp svneol=native#text/plain
 libs/graph/test/dominator_tree_test.cpp svneol=native#text/plain
 libs/graph/test/edge_list_cc.cpp svneol=native#text/plain
 libs/graph/test/filter_graph_vp_test.cpp svneol=native#text/plain
