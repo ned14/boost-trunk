@@ -1004,6 +1004,7 @@ boost/function_types/parameter_types.hpp svneol=native#text/plain
 boost/function_types/property_tags.hpp svneol=native#text/plain
 boost/function_types/result_type.hpp svneol=native#text/plain
 boost/functional.hpp svneol=native#text/plain
+boost/functional/detail/container_fwd.hpp svneol=native#text/plain
 boost/functional/hash.hpp svneol=native#text/plain
 boost/functional/hash/deque.hpp svneol=native#text/plain
 boost/functional/hash/detail/float_functions.hpp svneol=native#text/plain
