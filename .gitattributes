@@ -7298,7 +7298,7 @@ libs/assign/test/std.cpp svneol=native#text/plain
 libs/assign/test/tuple_list_of.cpp svneol=native#text/plain
 libs/bimap/CMakeLists.txt svneol=native#text/plain
 libs/bimap/doc/acknowledgements.qbk svneol=native#text/plain
-libs/bimap/doc/bimap.hdf -text
+libs/bimap/doc/bimap.hdf svneol=native#text/plain
 libs/bimap/doc/bimap.qbk svneol=native#text/plain
 libs/bimap/doc/bimap_and_boost.qbk svneol=native#text/plain
 libs/bimap/doc/compiler_specifics.qbk svneol=native#text/plain
@@ -8015,8 +8015,8 @@ libs/crc/test/Jamfile.v2 svneol=native#text/plain
 libs/crc/test/crc_test.cpp svneol=native#text/plain
 libs/date_time/CMakeLists.txt svneol=native#text/plain
 libs/date_time/build/Jamfile.v2 svneol=native#text/plain
-libs/date_time/data/README.zone_spec_csv_file -text svneol=unset#text/plain
-libs/date_time/data/date_time_zonespec.csv -text
+libs/date_time/data/README.zone_spec_csv_file svneol=native#text/plain
+libs/date_time/data/date_time_zonespec.csv svneol=native#text/plain
 libs/date_time/doc/index.html svneol=native#text/html
 libs/date_time/doc/time_duration_inherit.png -text svneol=unset#image/png
 libs/date_time/example/Jamfile svneol=native#text/plain
@@ -8076,8 +8076,8 @@ libs/date_time/test/gregorian/testgreg_wstream.cpp svneol=native#text/plain
 libs/date_time/test/gregorian/testgreg_year.cpp svneol=native#text/plain
 libs/date_time/test/gregorian/testparse_date.cpp svneol=native#text/plain
 libs/date_time/test/gregorian/testperiod.cpp svneol=native#text/plain
-libs/date_time/test/local_time/README.poorly_formed_zonespec -text svneol=unset#text/plain
-libs/date_time/test/local_time/poorly_formed_zonespec.csv -text
+libs/date_time/test/local_time/README.poorly_formed_zonespec svneol=native#text/plain
+libs/date_time/test/local_time/poorly_formed_zonespec.csv svneol=native#text/plain
 libs/date_time/test/local_time/testclocks.cpp svneol=native#text/plain
 libs/date_time/test/local_time/testcustom_time_zone.cpp svneol=native#text/plain
 libs/date_time/test/local_time/testdst_transition_day_rule.cpp svneol=native#text/plain
@@ -12235,7 +12235,7 @@ libs/iterator/doc/BidirectionalTraversal.html svneol=native#text/html
 libs/iterator/doc/BidirectionalTraversal.rst svneol=native#text/plain
 libs/iterator/doc/ForwardTraversal.html svneol=native#text/html
 libs/iterator/doc/ForwardTraversal.rst svneol=native#text/plain
-libs/iterator/doc/GNUmakefile -text
+libs/iterator/doc/GNUmakefile svneol=native#text/plain
 libs/iterator/doc/IncrementableIterator.html svneol=native#text/html
 libs/iterator/doc/IncrementableIterator.rst svneol=native#text/plain
 libs/iterator/doc/InteroperableIterator.rst svneol=native#text/plain
@@ -12261,7 +12261,7 @@ libs/iterator/doc/counting_iterator_abstract.rst svneol=native#text/plain
 libs/iterator/doc/counting_iterator_eg.rst svneol=native#text/plain
 libs/iterator/doc/counting_iterator_ref.rst svneol=native#text/plain
 libs/iterator/doc/default.css svneol=native#text/css
-libs/iterator/doc/docutils.sty -text
+libs/iterator/doc/docutils.sty svneol=native#text/plain
 libs/iterator/doc/facade-and-adaptor.html svneol=native#text/html
 libs/iterator/doc/facade-and-adaptor.pdf -text svneol=unset#application/pdf
 libs/iterator/doc/facade-and-adaptor.rst svneol=native#text/plain
@@ -12359,8 +12359,8 @@ libs/iterator/doc/reverse_iterator.rst svneol=native#text/plain
 libs/iterator/doc/reverse_iterator_abstract.rst svneol=native#text/plain
 libs/iterator/doc/reverse_iterator_eg.rst svneol=native#text/plain
 libs/iterator/doc/reverse_iterator_ref.rst svneol=native#text/plain
-libs/iterator/doc/rst2html -text
-libs/iterator/doc/rst2latex -text
+libs/iterator/doc/rst2html svneol=LF#text/x-sh eol=lf
+libs/iterator/doc/rst2latex svneol=LF#text/x-sh eol=lf
 libs/iterator/doc/scanrst.py svneol=native#text/x-python
 libs/iterator/doc/sources.py svneol=native#text/x-python
 libs/iterator/doc/syscmd.py svneol=native#text/x-python
@@ -12456,7 +12456,7 @@ libs/lambda/test/switch_construct.cpp svneol=native#text/plain
 libs/libraries.htm svneol=native#text/html
 libs/logic/CMakeLists.txt svneol=native#text/plain
 libs/logic/doc/Jamfile.v2 svneol=native#text/plain
-libs/logic/doc/tribool.boostbook -text
+libs/logic/doc/tribool.boostbook svneol=native#text/xml
 libs/logic/module.cmake svneol=native#text/plain
 libs/logic/test/CMakeLists.txt svneol=native#text/plain
 libs/logic/test/Jamfile.v2 svneol=native#text/plain
@@ -15271,7 +15271,7 @@ libs/multi_array/test/idxgen1.cpp svneol=native#text/plain
 libs/multi_array/test/index_bases.cpp svneol=native#text/plain
 libs/multi_array/test/iterators.cpp svneol=native#text/plain
 libs/multi_array/test/range1.cpp svneol=native#text/plain
-libs/multi_array/test/regression.cfg -text
+libs/multi_array/test/regression.cfg svneol=native#text/plain
 libs/multi_array/test/reshape.cpp svneol=native#text/plain
 libs/multi_array/test/resize.cpp svneol=native#text/plain
 libs/multi_array/test/slice.cpp svneol=native#text/plain
@@ -20228,10 +20228,10 @@ libs/wave/samples/waveidl/instantiate_re2c_lexer.cpp svneol=native#text/plain
 libs/wave/samples/waveidl/instantiate_re2c_lexer_str.cpp svneol=native#text/plain
 libs/wave/src/CMakeLists.txt svneol=native#text/plain
 libs/wave/src/cpplexer/re2clex/aq.cpp svneol=native#text/plain
-libs/wave/src/cpplexer/re2clex/cpp.re -text svneol=unset#text/plain
+libs/wave/src/cpplexer/re2clex/cpp.re svneol=native#text/plain
 libs/wave/src/cpplexer/re2clex/cpp_re.cpp svneol=native#text/plain
 libs/wave/src/cpplexer/re2clex/cpp_re.inc svneol=native#text/plain
-libs/wave/src/cpplexer/re2clex/strict_cpp.re -text svneol=unset#text/plain
+libs/wave/src/cpplexer/re2clex/strict_cpp.re svneol=native#text/plain
 libs/wave/src/cpplexer/re2clex/strict_cpp_re.inc svneol=native#text/plain
 libs/wave/src/instantiate_cpp_exprgrammar.cpp svneol=native#text/plain
 libs/wave/src/instantiate_cpp_grammar.cpp svneol=native#text/plain
@@ -21550,7 +21550,7 @@ tools/jam/src/boost-jam.spec svneol=native#text/plain
 tools/jam/src/build.bat svneol=native#text/plain
 tools/jam/src/build.jam svneol=native#text/plain
 tools/jam/src/build.sh svneol=LF#text/x-sh eol=lf
-tools/jam/src/build_vms.com -text svneol=unset#application/octet-stream
+tools/jam/src/build_vms.com svneol=native#text/plain
 tools/jam/src/builtins.c svneol=native#text/plain
 tools/jam/src/builtins.h svneol=native#text/plain
 tools/jam/src/bump_version.py svneol=native#text/x-python
