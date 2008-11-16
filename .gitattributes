@@ -16409,6 +16409,7 @@ libs/proto/doc/reference/matches.xml svneol=native#text/xml
 libs/proto/doc/reference/operators.xml svneol=native#text/xml
 libs/proto/doc/reference/proto.xml svneol=native#text/xml
 libs/proto/doc/reference/proto_fwd.xml svneol=native#text/xml
+libs/proto/doc/reference/proto_typeof.xml svneol=native#text/xml
 libs/proto/doc/reference/tags.xml svneol=native#text/xml
 libs/proto/doc/reference/traits.xml svneol=native#text/xml
 libs/proto/doc/reference/transform/arg.xml svneol=native#text/xml
