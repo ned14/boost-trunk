@@ -16402,6 +16402,7 @@ libs/proto/index.html svneol=native#text/html
 libs/proto/module.cmake svneol=native#text/plain
 libs/proto/test/CMakeLists.txt svneol=native#text/plain
 libs/proto/test/Jamfile.v2 svneol=native#text/plain
+libs/proto/test/bug2407.cpp svneol=native#text/plain
 libs/proto/test/calculator.cpp svneol=native#text/plain
 libs/proto/test/deep_copy.cpp svneol=native#text/plain
 libs/proto/test/examples.cpp svneol=native#text/plain
