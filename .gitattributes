@@ -19996,6 +19996,7 @@ libs/utility/shared_iterator_test.cpp svneol=native#text/plain
 libs/utility/sublibs svneol=native#text/plain
 libs/utility/swap.html svneol=native#text/html
 libs/utility/swap/test/Jamfile.v2 svneol=native#text/plain
+libs/utility/swap/test/array_of_template.cpp svneol=native#text/plain
 libs/utility/swap/test/lib_header_1.cpp svneol=native#text/plain
 libs/utility/swap/test/lib_header_2.cpp svneol=native#text/plain
 libs/utility/swap/test/mixed_headers_1.cpp svneol=native#text/plain
