@@ -16398,6 +16398,7 @@ libs/proto/example/rgb.cpp svneol=native#text/plain
 libs/proto/example/tarray.cpp svneol=native#text/plain
 libs/proto/example/vec3.cpp svneol=native#text/plain
 libs/proto/example/vector.cpp svneol=native#text/plain
+libs/proto/example/virtual_member.cpp svneol=native#text/plain
 libs/proto/index.html svneol=native#text/html
 libs/proto/module.cmake svneol=native#text/plain
 libs/proto/test/CMakeLists.txt svneol=native#text/plain
