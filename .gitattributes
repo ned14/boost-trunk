@@ -19884,6 +19884,7 @@ libs/units/test/test_reduce_unit.cpp svneol=native#text/plain
 libs/units/test/test_scaled_conversion.cpp svneol=native#text/plain
 libs/units/test/test_scaled_unit.cpp svneol=native#text/plain
 libs/units/test/test_unit.cpp svneol=native#text/plain
+libs/units/test/test_unscale.cpp svneol=native#text/plain
 libs/units/test_headers/Jamfile.v2 svneol=native#text/plain
 libs/units/test_headers/main.cpp svneol=native#text/plain
 libs/units/test_headers/test.cpp svneol=native#text/plain
