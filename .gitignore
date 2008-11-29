@@ -11,3 +11,8 @@ build/Milestone_4/boost/tools/build/test/*.pyc
 build/Milestone_6/boost/tools/build/test/*.pyc
 build/Milestone_7/boost/tools/build/test/*.pyc
 build/Milestone_8/boost/tools/build/test/*.pyc
+jam/Boost_Jam_3_1_17/src/bin.cygwinx86
+jam/Boost_Jam_3_1_17/src/bin.cygwinx86.debug
+jam/Boost_Jam_3_1_17/src/bin.ntx86
+jam/Boost_Jam_3_1_17/src/bin.ntx86.debug
+jam/Boost_Jam_3_1_17/src/bootstrap
