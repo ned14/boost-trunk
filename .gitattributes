@@ -1752,6 +1752,7 @@ boost/graph/dominator_tree.hpp svneol=native#text/plain
 boost/graph/edge_connectivity.hpp svneol=native#text/plain
 boost/graph/edge_list.hpp svneol=native#text/plain
 boost/graph/edmonds_karp_max_flow.hpp svneol=native#text/plain
+boost/graph/edmunds_karp_max_flow.hpp svneol=native#text/x-c%2B%2Bhdr
 boost/graph/erdos_renyi_generator.hpp svneol=native#text/plain
 boost/graph/exception.hpp svneol=native#text/plain
 boost/graph/filtered_graph.hpp svneol=native#text/plain
