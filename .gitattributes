@@ -2298,6 +2298,7 @@ boost/math/special_functions/detail/bessel_y0.hpp svneol=native#text/plain
 boost/math/special_functions/detail/bessel_y1.hpp svneol=native#text/plain
 boost/math/special_functions/detail/bessel_yn.hpp svneol=native#text/plain
 boost/math/special_functions/detail/erf_inv.hpp svneol=native#text/plain
+boost/math/special_functions/detail/fp_traits.hpp svneol=native#text/plain
 boost/math/special_functions/detail/gamma_inva.hpp svneol=native#text/plain
 boost/math/special_functions/detail/ibeta_inv_ab.hpp svneol=native#text/plain
 boost/math/special_functions/detail/ibeta_inverse.hpp svneol=native#text/plain
