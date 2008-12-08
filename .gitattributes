@@ -21779,6 +21779,7 @@ tools/quickbook/detail/actions_class.cpp svneol=native#text/plain
 tools/quickbook/detail/actions_class.hpp svneol=native#text/plain
 tools/quickbook/detail/collector.cpp svneol=native#text/plain
 tools/quickbook/detail/collector.hpp svneol=native#text/plain
+tools/quickbook/detail/markups.cpp svneol=native#text/plain
 tools/quickbook/detail/markups.hpp svneol=native#text/plain
 tools/quickbook/detail/post_process.cpp svneol=native#text/plain
 tools/quickbook/detail/post_process.hpp svneol=native#text/plain
