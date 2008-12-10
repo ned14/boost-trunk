@@ -10546,6 +10546,7 @@ libs/graph/test/CMakeLists.txt svneol=native#text/plain
 libs/graph/test/Jamfile.v2 svneol=native#text/plain
 libs/graph/test/adj_list_cc.cpp svneol=native#text/plain
 libs/graph/test/adj_list_edge_list_set.cpp svneol=native#text/plain
+libs/graph/test/adj_list_invalidation.cpp svneol=native#text/plain
 libs/graph/test/adj_list_loops.cpp svneol=native#text/plain
 libs/graph/test/adj_list_test.cpp svneol=native#text/plain
 libs/graph/test/adj_matrix_cc.cpp svneol=native#text/plain
