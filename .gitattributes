@@ -22013,10 +22013,14 @@ tools/release/inspect.sh svneol=LF#text/x-sh eol=lf
 tools/release/load_posix.sh svneol=LF#text/x-sh eol=lf
 tools/release/load_windows.sh svneol=LF#text/x-sh eol=lf
 tools/release/make_packages.sh svneol=LF#text/x-sh eol=lf
+tools/release/release-mgt-msvc/compare_trees/compare_trees.vcproj svneol=native#text/xml
+tools/release/release-mgt-msvc/msvc.sln svneol=native#text/plain
+tools/release/release-mgt-msvc/strftime/strftime.vcproj svneol=native#text/xml
 tools/release/snapshot.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_inspect.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_posix.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_windows.sh svneol=LF#text/x-sh eol=lf
+tools/release/strftime.cpp svneol=native#text/plain
 tools/wave/CMakeLists.txt svneol=native#text/plain
 tools/wave/build/Jamfile.v2 svneol=native#text/plain
 tools/wave/cpp.cpp svneol=native#text/plain
