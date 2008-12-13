@@ -1983,6 +1983,7 @@ boost/intrusive/derivation_value_traits.hpp svneol=native#text/plain
 boost/intrusive/detail/any_node_and_algorithms.hpp svneol=native#text/plain
 boost/intrusive/detail/assert.hpp svneol=native#text/plain
 boost/intrusive/detail/avltree_node.hpp svneol=native#text/plain
+boost/intrusive/detail/clear_on_destructor_base.hpp svneol=native#text/plain
 boost/intrusive/detail/common_slist_algorithms.hpp svneol=native#text/plain
 boost/intrusive/detail/config_begin.hpp svneol=native#text/plain
 boost/intrusive/detail/config_end.hpp svneol=native#text/plain
