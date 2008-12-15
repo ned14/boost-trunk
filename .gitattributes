@@ -21219,11 +21219,10 @@ tools/quickbook/test/xinclude.quickbook -text
 tools/regression/build/Jamroot.jam svneol=native#text/plain
 tools/regression/build/vcide/compiler_status.vcproj svneol=native#text/xml
 tools/regression/build/vcide/library_status.vcproj svneol=native#text/xml
-tools/regression/build/vcide/process_jam_log.sln -text
-tools/regression/build/vcide/process_jam_log.vcproj -text
+tools/regression/build/vcide/process_jam_log.sln svneol=native#text/plain
+tools/regression/build/vcide/process_jam_log.vcproj svneol=native#text/xml
 tools/regression/build/vcide/regression.sln svneol=native#text/xml
 tools/regression/doc/index.html svneol=native#text/html
-tools/regression/doc/instructions.html svneol=native#text/html
 tools/regression/doc/library_status.html svneol=native#text/html
 tools/regression/index.html svneol=native#text/html
 tools/regression/src/boost_svn_export_archive.sh svneol=LF#text/x-sh eol=lf
@@ -21238,6 +21237,7 @@ tools/regression/src/library_test.bat svneol=native#text/plain
 tools/regression/src/library_test.sh svneol=LF#text/x-sh eol=lf
 tools/regression/src/library_test_all.sh svneol=LF#text/x-sh eol=lf
 tools/regression/src/process_jam_log.cpp svneol=native#text/plain
+tools/regression/src/process_jam_log.py svneol=native#text/x-python
 tools/regression/src/regression-logs.pl svneol=native#text/x-perl
 tools/regression/src/regression.py svneol=native#text/x-python
 tools/regression/src/run.py svneol=native#text/x-python
@@ -21268,12 +21268,12 @@ tools/regression/test/test-boost-build/missing_dependencies/Jamfile.v2 svneol=na
 tools/regression/test/test-boost-build/missing_dependencies/lib/Jamfile.v2 svneol=native#text/plain
 tools/regression/test/test-boost-build/missing_dependencies/lib/lib.cpp svneol=native#text/plain
 tools/regression/test/test-boost-build/missing_dependencies/test.cpp svneol=native#text/plain
-tools/regression/test/test-cases/Huber2629/bjam.log -text
+tools/regression/test/test-cases/Huber2629/bjam.log svneol=native#text/plain
 tools/regression/test/test-cases/Huber2629/expected/results.xml svneol=native#text/xml
-tools/regression/test/test-cases/general/bjam.log -text
+tools/regression/test/test-cases/general/bjam.log -text svneol=unset#text/plain
 tools/regression/test/test-cases/general/expected/results.xml svneol=native#text/xml
-tools/regression/test/test-cases/incremental/bjam.log -text
-tools/regression/test/test-cases/incremental/bjam.log.1 -text
+tools/regression/test/test-cases/incremental/bjam.log svneol=native#text/plain
+tools/regression/test/test-cases/incremental/bjam.log.1 svneol=native#text/plain
 tools/regression/test/test-cases/incremental/expected/results.xml svneol=native#text/xml
 tools/regression/test/test.bat svneol=native#text/plain
 tools/regression/test/test.py svneol=native#text/x-python
