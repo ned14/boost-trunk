@@ -67,6 +67,24 @@ struct has_rebalance<boost::intrusive::splay_set<T,
 
 }}}
 
+using namespace boost::intrusive;
+
+struct my_tag;
+
+template<class VoidPointer>
+struct hooks
+{
+   typedef splay_set_base_hook<void_pointer<VoidPointer> >     base_hook_type;
+   typedef splay_set_base_hook
+      < link_mode<auto_unlink>
+      , void_pointer<VoidPointer>
+      , tag<my_tag> >                                          auto_base_hook_type;
+   typedef splay_set_member_hook<void_pointer<VoidPointer> >   member_hook_type;
+   typedef splay_set_member_hook
+      < link_mode<auto_unlink>
+      , void_pointer<VoidPointer> >                            auto_member_hook_type;
+};
+
 template< class ValueType
         , class Option1 = boost::intrusive::none
         , class Option2 = boost::intrusive::none
@@ -89,19 +107,19 @@ class test_main_template
    int operator()()
    {
       using namespace boost::intrusive;
-      typedef testvalue<VoidPointer, constant_time_size> value_type;
+      typedef testvalue<hooks<VoidPointer> , constant_time_size> value_type;
 
       test::test_generic_set < typename detail::get_base_value_traits
                   < value_type
-                  , typename value_type::splay_set_base_hook_t
+                  , typename hooks<VoidPointer>::base_hook_type
                   >::type
                 , GetContainer
                 >::test_all();
       test::test_generic_set < typename detail::get_member_value_traits
                   < value_type
                   , member_hook< value_type
-                               , typename value_type::splay_set_member_hook_t
-                               , &value_type::splay_set_node_
+                               , typename hooks<VoidPointer>::member_hook_type
+                               , &value_type::node_
                                >
                   >::type
                 , GetContainer
@@ -117,11 +135,11 @@ class test_main_template<VoidPointer, false>
    int operator()()
    {
       using namespace boost::intrusive;
-      typedef testvalue<VoidPointer, false> value_type;
+      typedef testvalue<hooks<VoidPointer> , false> value_type;
 
       test::test_generic_set < typename detail::get_base_value_traits
                   < value_type
-                  , typename value_type::splay_set_base_hook_t
+                  , typename hooks<VoidPointer>::base_hook_type
                   >::type
                 , GetContainer
                 >::test_all();
@@ -129,8 +147,8 @@ class test_main_template<VoidPointer, false>
       test::test_generic_set < typename detail::get_member_value_traits
                   < value_type
                   , member_hook< value_type
-                               , typename value_type::splay_set_member_hook_t
-                               , &value_type::splay_set_node_
+                               , typename hooks<VoidPointer>::member_hook_type
+                               , &value_type::node_
                                >
                   >::type
                 , GetContainer
@@ -138,7 +156,7 @@ class test_main_template<VoidPointer, false>
 
       test::test_generic_set < typename detail::get_base_value_traits
                   < value_type
-                  , typename value_type::splay_set_auto_base_hook_t
+                  , typename hooks<VoidPointer>::auto_base_hook_type
                   >::type
                 , GetContainer
                 >::test_all();
@@ -146,8 +164,8 @@ class test_main_template<VoidPointer, false>
       test::test_generic_set < typename detail::get_member_value_traits
                   < value_type
                   , member_hook< value_type
-                               , typename value_type::splay_set_auto_member_hook_t
-                               , &value_type::splay_set_auto_node_
+                               , typename hooks<VoidPointer>::auto_member_hook_type
+                               , &value_type::auto_node_
                                >
                   >::type
                 , GetContainer
