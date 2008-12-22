@@ -14386,7 +14386,6 @@ libs/mpi/src/python/skeleton_and_content.cpp svneol=native#text/plain
 libs/mpi/src/python/status.cpp svneol=native#text/plain
 libs/mpi/src/python/utility.hpp svneol=native#text/plain
 libs/mpi/src/request.cpp svneol=native#text/plain
-libs/mpi/src/text_skeleton_iarchive.cpp svneol=native#text/plain
 libs/mpi/src/text_skeleton_oarchive.cpp svneol=native#text/plain
 libs/mpi/src/timer.cpp svneol=native#text/plain
 libs/mpi/test/Jamfile.v2 svneol=native#text/plain
