@@ -19371,7 +19371,6 @@ libs/test/test/test_files/test_broken_line.cfg svneol=native#text/plain
 libs/test/test/test_files/test_comments_and_blanks.cfg svneol=native#text/plain
 libs/test/test/test_files/test_constructor.cfg svneol=native#text/plain
 libs/test/test/test_files/test_define.cfg svneol=native#text/plain
-libs/test/test/test_files/test_fp_comparisons.pattern svneol=native#text/plain
 libs/test/test/test_files/test_ifdef.cfg svneol=native#text/plain
 libs/test/test/test_files/test_ifdef1.cfg svneol=native#text/plain
 libs/test/test/test_files/test_ifdef2.cfg svneol=native#text/plain
