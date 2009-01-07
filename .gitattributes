@@ -16914,6 +16914,7 @@ libs/rational/rational.html svneol=native#text/html
 libs/rational/test/Jamfile.v2 svneol=native#text/plain
 libs/rational/test/rational_example.cpp svneol=native#text/plain
 libs/rational/test/rational_test.cpp svneol=native#text/plain
+libs/regex/CMakeLists.txt svneol=native#text/plain
 libs/regex/build/Jamfile.v2 svneol=native#text/plain
 libs/regex/build/bc_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/bcb6.mak svneol=native#text/plain
