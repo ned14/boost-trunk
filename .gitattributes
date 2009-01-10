@@ -22051,6 +22051,7 @@ tools/release/release-mgt-msvc/strftime/strftime.vcproj svneol=native#text/xml
 tools/release/release_reports.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot.bat svneol=native#text/plain
 tools/release/snapshot.sh svneol=LF#text/x-sh eol=lf
+tools/release/snapshot_download_docs.bat svneol=native#text/plain
 tools/release/snapshot_inspect.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_inspection.bat svneol=native#text/plain
 tools/release/snapshot_posix.bat svneol=native#text/plain
