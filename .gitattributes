@@ -11778,6 +11778,7 @@ libs/graph/test/sequential_vertex_coloring.cpp svneol=native#text/plain
 libs/graph/test/serialize.cpp svneol=native#text/plain
 libs/graph/test/stanford_graph_cc.cpp svneol=native#text/plain
 libs/graph/test/subgraph.cpp svneol=native#text/plain
+libs/graph/test/subgraph_bundled.cpp svneol=native#text/plain
 libs/graph/test/transitive_closure_test.cpp svneol=native#text/plain
 libs/graph/test/transitive_closure_test2.cpp svneol=native#text/plain
 libs/graph/test/vector_graph_cc.cpp svneol=native#text/plain
