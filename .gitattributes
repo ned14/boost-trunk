@@ -19871,6 +19871,7 @@ libs/variant/test/variant_visit_test.cpp svneol=native#text/plain
 libs/wave/ChangeLog svneol=native#text/plain
 libs/wave/build/Jamfile.v2 svneol=native#text/plain
 libs/wave/doc/acknowledgements.html svneol=native#text/html
+libs/wave/doc/class_ref_ctxpolicy_depr.html svneol=native#text/html
 libs/wave/doc/class_reference_context.html svneol=native#text/html
 libs/wave/doc/class_reference_ctxpolicy.html svneol=native#text/html
 libs/wave/doc/class_reference_filepos.html svneol=native#text/html
