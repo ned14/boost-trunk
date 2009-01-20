@@ -1739,6 +1739,7 @@ boost/graph/detail/adj_list_edge_iterator.hpp svneol=native#text/plain
 boost/graph/detail/adjacency_list.hpp svneol=native#text/plain
 boost/graph/detail/array_binary_tree.hpp svneol=native#text/plain
 boost/graph/detail/connected_components.hpp svneol=native#text/plain
+boost/graph/detail/d_ary_heap.hpp svneol=native#text/plain
 boost/graph/detail/edge.hpp svneol=native#text/plain
 boost/graph/detail/incidence_iterator.hpp svneol=native#text/plain
 boost/graph/detail/incremental_components.hpp svneol=native#text/plain
