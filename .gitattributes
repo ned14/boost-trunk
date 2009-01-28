@@ -17610,6 +17610,7 @@ libs/regex/tools/generate/tables.cpp svneol=native#text/plain
 libs/scope_exit/doc/Jamfile.v2 svneol=native#text/plain
 libs/scope_exit/doc/scope_exit.qbk svneol=native#text/plain
 libs/scope_exit/example/world.cpp svneol=native#text/plain
+libs/scope_exit/index.html svneol=native#text/html
 libs/scope_exit/test/Jamfile.v2 svneol=native#text/plain
 libs/scope_exit/test/emulation.cpp svneol=native#text/plain
 libs/scope_exit/test/emulation_const_error.cpp svneol=native#text/plain
