@@ -15752,6 +15752,7 @@ libs/numeric/ublas/doc/samples/compressed_matrix.cpp svneol=native#text/plain
 libs/numeric/ublas/doc/samples/compressed_vector.cpp svneol=native#text/plain
 libs/numeric/ublas/doc/samples/coordinate_matrix.cpp svneol=native#text/plain
 libs/numeric/ublas/doc/samples/coordinate_vector.cpp svneol=native#text/plain
+libs/numeric/ublas/doc/samples/ex_triangular.cpp svneol=native#text/plain
 libs/numeric/ublas/doc/samples/hermitian_adaptor.cpp svneol=native#text/plain
 libs/numeric/ublas/doc/samples/hermitian_matrix.cpp svneol=native#text/plain
 libs/numeric/ublas/doc/samples/identity_matrix.cpp svneol=native#text/plain
