@@ -15949,6 +15949,7 @@ libs/parameter/test/literate/parameter-enabled-member-functions0.cpp svneol=nati
 libs/parameter/test/literate/parameter-enabled-member-functions1.cpp svneol=native#text/plain
 libs/parameter/test/literate/predicate-requirements0.cpp svneol=native#text/plain
 libs/parameter/test/literate/required-parameters0.cpp svneol=native#text/plain
+libs/parameter/test/literate/static-member-functions0.cpp svneol=native#text/plain
 libs/parameter/test/literate/template-keywords0.cpp svneol=native#text/plain
 libs/parameter/test/literate/template-keywords1.cpp svneol=native#text/plain
 libs/parameter/test/literate/top-level0.cpp svneol=native#text/plain
