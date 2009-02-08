@@ -6796,6 +6796,7 @@ doc/html/typeof.html svneol=native#text/html
 doc/html/unordered.html svneol=native#text/html
 doc/html/variant.html svneol=native#text/html
 doc/html/xpressive.html svneol=native#text/html
+doc/pdf/Jamfile.v2 svneol=native#text/plain
 doc/src/CMakeLists.txt svneol=native#text/plain
 doc/src/boost.xml svneol=native#text/xml
 doc/src/boostbook.css svneol=native#text/css
