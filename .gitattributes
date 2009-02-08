@@ -1832,6 +1832,7 @@ boost/graph/transpose_graph.hpp svneol=native#text/plain
 boost/graph/tree_traits.hpp svneol=native#text/plain
 boost/graph/two_bit_color_map.hpp svneol=native#text/plain
 boost/graph/undirected_dfs.hpp svneol=native#text/plain
+boost/graph/undirected_graph.hpp svneol=native#text/plain
 boost/graph/vector_as_graph.hpp svneol=native#text/plain
 boost/graph/visitors.hpp svneol=native#text/plain
 boost/graph/wavefront.hpp svneol=native#text/plain
