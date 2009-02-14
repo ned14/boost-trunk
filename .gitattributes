@@ -10595,6 +10595,7 @@ libs/graph/test/bundled_properties.cpp svneol=native#text/plain
 libs/graph/test/closeness_centrality.cpp svneol=native#text/plain
 libs/graph/test/clustering_coefficient.cpp svneol=native#text/plain
 libs/graph/test/copy.cpp svneol=native#text/plain
+libs/graph/test/core_numbers_test.cpp svneol=native#text/plain
 libs/graph/test/csr_graph_test.cpp svneol=native#text/plain
 libs/graph/test/cuthill_mckee_ordering.cpp svneol=native#text/plain
 libs/graph/test/cycle_ratio_s382.90.dot svneol=native#text/plain
