@@ -20688,6 +20688,7 @@ tools/boostbook/doc/documenting.xml svneol=native#text/xml
 tools/boostbook/doc/reference.dtdxml svneol=native#text/xml
 tools/boostbook/doc/reference.xml svneol=native#text/xml
 tools/boostbook/doc/together.xml svneol=native#text/xml
+tools/boostbook/dtd/1.1/boostbook.dtd svneol=native#text/xml
 tools/boostbook/dtd/boostbook.dtd svneol=native#text/xml
 tools/boostbook/index.html svneol=native#text/html
 tools/boostbook/setup_boostbook.py svneol=native#text/x-python
@@ -21639,6 +21640,9 @@ tools/quickbook/detail/actions_class.cpp svneol=native#text/plain
 tools/quickbook/detail/actions_class.hpp svneol=native#text/plain
 tools/quickbook/detail/collector.cpp svneol=native#text/plain
 tools/quickbook/detail/collector.hpp svneol=native#text/plain
+tools/quickbook/detail/input_path.cpp svneol=native#text/plain
+tools/quickbook/detail/input_path.hpp svneol=native#text/plain
+tools/quickbook/detail/markups.cpp svneol=native#text/plain
 tools/quickbook/detail/markups.hpp svneol=native#text/plain
 tools/quickbook/detail/post_process.cpp svneol=native#text/plain
 tools/quickbook/detail/post_process.hpp svneol=native#text/plain
@@ -21686,6 +21690,15 @@ tools/quickbook/test/code-snippet.gold -text
 tools/quickbook/test/code-snippet.quickbook -text
 tools/quickbook/test/escape.gold -text
 tools/quickbook/test/escape.quickbook -text
+tools/quickbook/test/fail-cpp-mismatched-escape.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-import.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-include.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-parse-error1.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-parse-error2.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-post-process.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-python-mismatched-escape.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-template-arguments1.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-template-arguments2.quickbook svneol=native#text/plain
 tools/quickbook/test/import.gold -text
 tools/quickbook/test/import.quickbook -text
 tools/quickbook/test/link-side-by-side.gold -text
