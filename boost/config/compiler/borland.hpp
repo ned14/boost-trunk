@@ -16,13 +16,16 @@
 #  error "Compiler not supported or configured - please reconfigure"
 #endif
 
-// last known compiler version:
-#if (__BORLANDC__ > 0x610)
-#  if defined(BOOST_ASSERT_CONFIG)
+// last known and checked version is 0x600 (Builder X preview)
+// or 0x593 (CodeGear C++ Builder 2007 December 2007 update):
+#if (__BORLANDC__ > 0x593) && (__BORLANDC__ != 0x600)
+//#  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
-#  else
-#     pragma message( "Unknown compiler version - please run the configure tests and report the results")
-#  endif
+//#  else
+//#     pragma message( "Unknown compiler version - please run the configure tests and report the results")
+//#  endif
+#elif (__BORLANDC__ == 0x600)
+#  error "CBuilderX preview compiler is no longer supported"
 #endif
 
 //
@@ -106,24 +109,56 @@
 #endif
 
 // Borland C++ Builder 2007 December 2007 Update and below:
-//#if (__BORLANDC__ <= 0x593)
-#if (__BORLANDC__ <= 0x610)  // Beman has asked Alisdair for more info
-#  define BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
-#  define BOOST_NO_USING_TEMPLATE
-#  define BOOST_NO_USING_DECLARATION_OVERLOADS_FROM_TYPENAME_BASE
-#  define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#if (__BORLANDC__ <= 0x593)
    // we shouldn't really need this - but too many things choke
    // without it, this needs more investigation:
 #  define BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-#  define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #  define BOOST_NO_IS_ABSTRACT
 #  define BOOST_NO_FUNCTION_TYPE_SPECIALIZATIONS
-#  define BOOST_NO_TWO_PHASE_NAME_LOOKUP
 
 // Temporary workaround
 #define BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-
 #endif
+
+// Borland C++ Builder 2008 and below:
+#if (__BORLANDC__ <= 0x601)
+#  define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
+#  define BOOST_ILLEGAL_CV_REFERENCES
+#  define BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
+#  define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#  define BOOST_NO_TWO_PHASE_NAME_LOOKUP
+#  define BOOST_NO_USING_TEMPLATE
+#  define BOOST_NO_USING_DECLARATION_OVERLOADS_FROM_TYPENAME_BASE
+#endif
+
+//
+//  Positive Feature detection
+//
+// Borland C++ Builder 2008 and below:
+#if (__BORLANDC__ >= 0x599)
+#  pragma defineonoption BOOST_CODEGEAR_0X_SUPPORT -Ax
+#endif
+
+#if defined( BOOST_CODEGEAR_0X_SUPPORT )
+#  #if __BORLANDC__ >= 0x610
+#  define BOOST_HAS_ALIGNOF
+#  define BOOST_HAS_CHAR16_T
+#  define BOOST_HAS_CHAR32_T
+#  define BOOST_HAS_DECLTYPE
+//#  define BOOST_HAS_DEFAULTED_FN
+//#  define BOOST_HAS_DELETED_FN
+#  define BOOST_HAS_EXPLICIT_CONVERSION_OPS
+//#  define BOOST_HAS_NULLPTR
+//#  define BOOST_HAS_RAW_STRING
+#  define BOOST_HAS_REF_QUALIFIER
+#  define BOOST_HAS_RVALUE_REFS
+//#  define BOOST_HAS_SCOPED_ENUM
+#  define BOOST_HAS_STATIC_ASSERT
+//#  define BOOST_HAS_VARIADIC_TMPL
+#  #endif //__BORLANDC__ >= 0x610
+#endif
+
+#define BOOST_NO_INITIALIZER_LISTS
 
 #if __BORLANDC__ >= 0x590
 #  define BOOST_HAS_TR1_HASH
@@ -136,8 +171,6 @@
 #if __BORLANDC__ >= 0x561
 #  ifndef __NO_LONG_LONG
 #     define BOOST_HAS_LONG_LONG
-#  else
-#     define BOOST_NO_LONG_LONG
 #  endif
    // On non-Win32 platforms let the platform config figure this out:
 #  ifdef _WIN32
@@ -178,29 +211,6 @@
 #ifndef __STRICT_ANSI__
 #  define BOOST_HAS_DECLSPEC
 #endif
-
-//
-// C++0x features
-//
-//   See above for BOOST_NO_LONG_LONG
-
-#if __BORLANDC__ < 0x0610
-#  define BOOST_NO_CHAR16_T                       
-#  define BOOST_NO_CHAR32_T                       
-#  define BOOST_NO_DECLTYPE                       
-#  define BOOST_NO_EXPLICIT_CONVERSION_OPERATORS 
-#  define BOOST_NO_EXTERN_TEMPLATE                
-#  define BOOST_NO_SCOPED_ENUMS                   
-#  define BOOST_NO_STATIC_ASSERT                  
-#  define BOOST_NO_RVALUE_REFERENCES              
-#  define BOOST_NO_VARIADIC_TEMPLATES
-#endif
-
-#define BOOST_NO_CONSTEXPR                      
-#define BOOST_NO_DEFAULTED_FUNCTIONS              
-#define BOOST_NO_DELETED_FUNCTIONS              
-#define BOOST_NO_RAW_LITERALS                   
-#  define BOOST_NO_UNICODE_LITERALS       // UTF-8 still not supported        
 //
 // ABI fixing headers:
 //
@@ -230,5 +240,6 @@
 #endif
 
 #define BOOST_COMPILER "Borland C++ version " BOOST_STRINGIZE(__BORLANDC__)
+
 
 
