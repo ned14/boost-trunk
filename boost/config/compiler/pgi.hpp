@@ -16,11 +16,12 @@
 // if no threading API is detected.
 //
 
-#if (__PGIC__ == 7) && (__PGIC_MINOR__ == 1)
+#if (__PGIC__ >= 7)
 
 #define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL 
 #define BOOST_NO_TWO_PHASE_NAME_LOOKUP
 #define BOOST_NO_SWPRINTF
+#define BOOST_NO_INITIALIZER_LISTS
 
 #else
 

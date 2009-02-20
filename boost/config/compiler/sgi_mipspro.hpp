@@ -21,6 +21,8 @@
 
 #undef BOOST_NO_SWPRINTF
 #undef BOOST_DEDUCED_TYPENAME
+
+#define BOOST_NO_INITIALIZER_LISTS
 //
 // C++0x features
 //
