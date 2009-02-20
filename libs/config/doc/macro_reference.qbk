@@ -171,10 +171,6 @@ There is no specialization for `numeric_limits<__int64>` and
 specializations as a standard library "fix", only if the compiler supports
 the `__int64` datatype.
 ]]
-[[`BOOST_NO_NESTED_FRIENDSHIP`][Compiler][
-Compiler doesn't allow a nested class to access private members of its
-containing class. Probably Borland/CodeGear specific.
-]]
 [[`BOOST_NO_OPERATORS_IN_NAMESPACE`][Compiler][
 Compiler requires inherited operator friend functions to be defined at
 namespace scope, then using'ed to boost. Probably GCC specific. See
@@ -195,10 +191,6 @@ Pointers to members don't work when used as template parameters.
 [[`BOOST_NO_PRIVATE_IN_AGGREGATE`][Compiler][
 The compiler misreads 8.5.1, treating classes as non-aggregate if they
 contain private or protected member functions.
-]]
-[[`BOOST_NO_RTTI`][Compiler][
-The compiler may (or may not) have the typeid operator, but RTTI on the dynamic type
-of an object is not supported.
 ]]
 [[`BOOST_NO_SFINAE`][Compiler][
 The compiler does not support the "Substitution Failure Is Not An Error"
@@ -274,10 +266,6 @@ The compiler does not support template template parameters.
 ]]
 [[`BOOST_NO_TYPEID`][Compiler][
 The compiler does not support the typeid operator at all.
-]]
-[[`BOOST_NO_TYPENAME_WITH_CTOR`][Compiler][
-The typename keyword cannot be used when creating a temporary of a
-Dependent type.
 ]]
 [[`BOOST_NO_UNREACHABLE_RETURN_DETECTION`][Compiler][
 If a return is unreachable, then no return statement should be required,
@@ -537,19 +525,16 @@ type `char32_t`.
 `decltype`. 
 ]]                       
 [[`BOOST_NO_DEFAULTED_FUNCTIONS`][The compiler does not support 
-defaulted (`= default`) functions.  
-]]            
+defaulted (`= default`) functions.              
+]]                       
 [[`BOOST_NO_DELETED_FUNCTIONS`][The compiler does not support 
 deleted (`= delete`) functions.              
 ]]              
-[[`BOOST_NO_EXPLICIT_CONVERSION_OPERATIONS`][The compiler does not support 
+[[`BOOST_NO_EXPLICIT_CONVERSION_OPERATORS`][The compiler does not support 
 explicit conversion operators (`explicit operator T()`).              
 ]] 
 [[`BOOST_NO_EXTERN_TEMPLATE`][The compiler does not support 
 explicit instantiation declarations for templates (`explicit template`).
-]]
-[[`BOOST_NO_INITIALIZER_LISTS`][
-The C++ compiler does not support C++0x initializer lists.
 ]]
 [[`BOOST_NO_LONG_LONG`][The compiler does not support `long long`.
 ]]                
@@ -564,9 +549,6 @@ scoped enumerations (`enum class`).
 ]]                   
 [[`BOOST_NO_STATIC_ASSERT`][The compiler does not support
 `static_assert`. 
-]]                  
-[[`BOOST_NO_STD_UNORDERD`][The standard library does not support
-<unordered_map> and <unordered_set>. 
 ]]                  
 [[`BOOST_NO_UNICODE_LITERALS`][The compiler does not support
 Unicode (`u8`, `u`, `U`) literals. 

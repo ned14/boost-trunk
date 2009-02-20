@@ -61,9 +61,6 @@
 #  endif
 #endif
 
-#if defined(_STLPORT_VERSION) && (_STLPORT_VERSION < 0x500)
-#  define BOOST_NO_STD_UNORDERED
-#endif
 //
 // Without member template support enabled, their are no template
 // iterate constructors, and no std::allocator:

@@ -1,4 +1,4 @@
-//  This file was automatically generated on Wed Feb 18 14:17:26 2009
+//  This file was automatically generated on Fri Jun 20 11:51:15 2008
 //  by libs/config/tools/generate.cpp
 //  Copyright John Maddock 2002-4.
 //  Use, modification and distribution are subject to the 
@@ -157,11 +157,6 @@ namespace boost_no_function_template_ordering = empty_boost;
 #else
 namespace boost_no_ms_int64_numeric_limits = empty_boost;
 #endif
-#ifndef BOOST_NO_INITIALIZER_LISTS
-#include "boost_no_initializer_lists.ipp"
-#else
-namespace boost_no_initializer_lists = empty_boost;
-#endif
 #ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
 #include "boost_no_inline_memb_init.ipp"
 #else
@@ -237,11 +232,6 @@ namespace boost_no_member_template_keyword = empty_boost;
 #else
 namespace boost_no_pointer_to_member_template_parameters = empty_boost;
 #endif
-#ifndef BOOST_NO_NESTED_FRIENDSHIP
-#include "boost_no_nested_friendship.ipp"
-#else
-namespace boost_no_nested_friendship = empty_boost;
-#endif
 #ifndef BOOST_NO_OPERATORS_IN_NAMESPACE
 #include "boost_no_ops_in_namespace.ipp"
 #else
@@ -276,11 +266,6 @@ namespace boost_no_raw_literals = empty_boost;
 #include "boost_no_ret_det.ipp"
 #else
 namespace boost_no_unreachable_return_detection = empty_boost;
-#endif
-#ifndef BOOST_NO_RTTI
-#include "boost_no_rtti.ipp"
-#else
-namespace boost_no_rtti = empty_boost;
 #endif
 #ifndef BOOST_NO_RVALUE_REFERENCES
 #include "boost_no_rvalue_references.ipp"
@@ -357,11 +342,6 @@ namespace boost_no_std_output_iterator_assign = empty_boost;
 #else
 namespace boost_no_std_typeinfo = empty_boost;
 #endif
-#ifndef BOOST_NO_STD_UNORDERED
-#include "boost_no_std_unordered.ipp"
-#else
-namespace boost_no_std_unordered = empty_boost;
-#endif
 #ifndef BOOST_NO_STD_USE_FACET
 #include "boost_no_std_use_facet.ipp"
 #else
@@ -401,11 +381,6 @@ namespace boost_no_two_phase_name_lookup = empty_boost;
 #include "boost_no_typeid.ipp"
 #else
 namespace boost_no_typeid = empty_boost;
-#endif
-#ifndef BOOST_NO_TYPENAME_WITH_CTOR
-#include "boost_no_typename_with_ctor.ipp"
-#else
-namespace boost_no_typename_with_ctor = empty_boost;
 #endif
 #ifndef BOOST_NO_UNICODE_LITERALS
 #include "boost_no_unicode_literals.ipp"
@@ -1091,11 +1066,6 @@ int main( int, char *[] )
       std::cerr << "Failed test for BOOST_NO_MS_INT64_NUMERIC_LIMITS at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
-   if(0 != boost_no_initializer_lists::test())
-   {
-      std::cerr << "Failed test for BOOST_NO_INITIALIZER_LISTS at: " << __FILE__ << ":" << __LINE__ << std::endl;
-      ++error_count;
-   }
    if(0 != boost_no_inclass_member_initialization::test())
    {
       std::cerr << "Failed test for BOOST_NO_INCLASS_MEMBER_INITIALIZATION at: " << __FILE__ << ":" << __LINE__ << std::endl;
@@ -1171,11 +1141,6 @@ int main( int, char *[] )
       std::cerr << "Failed test for BOOST_NO_POINTER_TO_MEMBER_TEMPLATE_PARAMETERS at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
-   if(0 != boost_no_nested_friendship::test())
-   {
-      std::cerr << "Failed test for BOOST_NO_NESTED_FRIENDSHIP at: " << __FILE__ << ":" << __LINE__ << std::endl;
-      ++error_count;
-   }
    if(0 != boost_no_operators_in_namespace::test())
    {
       std::cerr << "Failed test for BOOST_NO_OPERATORS_IN_NAMESPACE at: " << __FILE__ << ":" << __LINE__ << std::endl;
@@ -1209,11 +1174,6 @@ int main( int, char *[] )
    if(0 != boost_no_unreachable_return_detection::test())
    {
       std::cerr << "Failed test for BOOST_NO_UNREACHABLE_RETURN_DETECTION at: " << __FILE__ << ":" << __LINE__ << std::endl;
-      ++error_count;
-   }
-   if(0 != boost_no_rtti::test())
-   {
-      std::cerr << "Failed test for BOOST_NO_RTTI at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
    if(0 != boost_no_rvalue_references::test())
@@ -1291,11 +1251,6 @@ int main( int, char *[] )
       std::cerr << "Failed test for BOOST_NO_STD_TYPEINFO at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
-   if(0 != boost_no_std_unordered::test())
-   {
-      std::cerr << "Failed test for BOOST_NO_STD_UNORDERED at: " << __FILE__ << ":" << __LINE__ << std::endl;
-      ++error_count;
-   }
    if(0 != boost_no_std_use_facet::test())
    {
       std::cerr << "Failed test for BOOST_NO_STD_USE_FACET at: " << __FILE__ << ":" << __LINE__ << std::endl;
@@ -1334,11 +1289,6 @@ int main( int, char *[] )
    if(0 != boost_no_typeid::test())
    {
       std::cerr << "Failed test for BOOST_NO_TYPEID at: " << __FILE__ << ":" << __LINE__ << std::endl;
-      ++error_count;
-   }
-   if(0 != boost_no_typename_with_ctor::test())
-   {
-      std::cerr << "Failed test for BOOST_NO_TYPENAME_WITH_CTOR at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
    if(0 != boost_no_unicode_literals::test())

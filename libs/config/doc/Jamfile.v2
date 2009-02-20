@@ -55,10 +55,12 @@ boostbook standalone
         <format>pdf:<xsl:param>use.role.for.mediaobject=1 
         <format>pdf:<xsl:param>preferred.mediaobject.role=print
         <format>pdf:<xsl:param>admon.graphics.path=$(boost-images)/
-        <format>pdf:<xsl:param>boost.url.prefix=http://www.boost.org/doc/libs/release/libs/config/doc/html
     ;
 
 
-install pdf-install : standalone : <location>. <install-type>PDF ;
+
+
+
+
 
 

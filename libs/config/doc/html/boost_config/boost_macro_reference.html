@@ -3,8 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Boost Macro Reference</title>
 <link rel="stylesheet" href="../../../../../doc/html/boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot_8125">
-<link rel="home" href="../index.html" title="Boost.Config">
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="../index.html" title="Boost.Config">
 <link rel="up" href="../index.html" title="Boost.Config">
 <link rel="prev" href="../index.html" title="Boost.Config">
 <link rel="next" href="guidelines_for_boost_authors.html" title="Guidelines for Boost Authors">
@@ -652,24 +652,6 @@
 <tr>
 <td>
               <p>
-                <code class="computeroutput"><span class="identifier">BOOST_NO_NESTED_FRIENDSHIP</span></code>
-              </p>
-              </td>
-<td>
-              <p>
-                Compiler
-              </p>
-              </td>
-<td>
-              <p>
-                Compiler doesn't allow a nested class to access private members of
-                its containing class. Probably Borland/CodeGear specific.
-              </p>
-              </td>
-</tr>
-<tr>
-<td>
-              <p>
                 <code class="computeroutput"><span class="identifier">BOOST_NO_OPERATORS_IN_NAMESPACE</span></code>
               </p>
               </td>
@@ -756,24 +738,6 @@
               <p>
                 The compiler misreads 8.5.1, treating classes as non-aggregate if
                 they contain private or protected member functions.
-              </p>
-              </td>
-</tr>
-<tr>
-<td>
-              <p>
-                <code class="computeroutput"><span class="identifier">BOOST_NO_RTTI</span></code>
-              </p>
-              </td>
-<td>
-              <p>
-                Compiler
-              </p>
-              </td>
-<td>
-              <p>
-                The compiler may (or may not) have the typeid operator, but RTTI
-                on the dynamic type of an object is not supported.
               </p>
               </td>
 </tr>
@@ -1148,24 +1112,6 @@
 <td>
               <p>
                 The compiler does not support the typeid operator at all.
-              </p>
-              </td>
-</tr>
-<tr>
-<td>
-              <p>
-                <code class="computeroutput"><span class="identifier">BOOST_NO_TYPENAME_WITH_CTOR</span></code>
-              </p>
-              </td>
-<td>
-              <p>
-                Compiler
-              </p>
-              </td>
-<td>
-              <p>
-                The typename keyword cannot be used when creating a temporary of
-                a Dependent type.
               </p>
               </td>
 </tr>
@@ -2309,7 +2255,7 @@
 <tr>
 <td>
               <p>
-                <code class="computeroutput"><span class="identifier">BOOST_NO_EXPLICIT_CONVERSION_OPERATIONS</span></code>
+                <code class="computeroutput"><span class="identifier">BOOST_NO_EXPLICIT_CONVERSION_OPERATORS</span></code>
               </p>
               </td>
 <td>
@@ -2329,18 +2275,6 @@
               <p>
                 The compiler does not support explicit instantiation declarations
                 for templates (<code class="computeroutput"><span class="keyword">explicit</span> <span class="keyword">template</span></code>).
-              </p>
-              </td>
-</tr>
-<tr>
-<td>
-              <p>
-                <code class="computeroutput"><span class="identifier">BOOST_NO_INITIALIZER_LISTS</span></code>
-              </p>
-              </td>
-<td>
-              <p>
-                The C++ compiler does not support C++0x initializer lists.
               </p>
               </td>
 </tr>
@@ -2402,18 +2336,6 @@
 <td>
               <p>
                 The compiler does not support <code class="computeroutput"><span class="identifier">static_assert</span></code>.
-              </p>
-              </td>
-</tr>
-<tr>
-<td>
-              <p>
-                <code class="computeroutput"><span class="identifier">BOOST_NO_STD_UNORDERD</span></code>
-              </p>
-              </td>
-<td>
-              <p>
-                The standard library does not support &lt;unordered_map&gt; and &lt;unordered_set&gt;.
               </p>
               </td>
 </tr>

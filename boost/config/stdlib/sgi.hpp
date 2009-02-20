@@ -76,7 +76,6 @@
 //
 #define BOOST_HAS_HASH
 #define BOOST_HAS_SLIST
-#define BOOST_NO_STD_UNORDERED
 
 //
 // If this is GNU libstdc++2, then no <limits> and no std::wstring:

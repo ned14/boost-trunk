@@ -151,9 +151,3 @@
 #    define _HP_INSTANTIATE_STD2_VL
 #  endif
 #endif
-
-//
-// We never have the new C++0x unordered containers:
-//
-#define BOOST_NO_STD_UNORDERED
-
