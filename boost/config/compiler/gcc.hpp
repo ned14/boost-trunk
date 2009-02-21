@@ -116,11 +116,10 @@
 #define BOOST_NO_SCOPED_ENUMS                   
 #define BOOST_NO_UNICODE_LITERALS               
 
-#if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 2))
+#if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 2)) && defined(__GXX_EXPERIMENTAL_CXX0X__)
 // C++0x features are only enabled when -std=c++0x or -std=gnu++0x are
 // passed on the command line, which in turn defines
 // __GXX_EXPERIMENTAL_CXX0X__.
-#if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #  define BOOST_HAS_DECLTYPE
 #  define BOOST_HAS_RVALUE_REFS
 #  define BOOST_HAS_STATIC_ASSERT

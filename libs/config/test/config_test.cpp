@@ -1,4 +1,4 @@
-//  This file was automatically generated on Tue Dec 16 16:41:41 2008
+//  This file was automatically generated on Fri Feb 20 21:15:18 2009
 //  by libs/config/tools/generate.cpp
 //  Copyright John Maddock 2002-4.
 //  Use, modification and distribution are subject to the 
@@ -277,7 +277,11 @@ namespace boost_no_raw_literals = empty_boost;
 #else
 namespace boost_no_unreachable_return_detection = empty_boost;
 #endif
-<<<<<<< .working
+#ifndef BOOST_NO_RTTI
+#include "boost_no_rtti.ipp"
+#else
+namespace boost_no_rtti = empty_boost;
+#endif
 #ifndef BOOST_NO_RVALUE_REFERENCES
 #include "boost_no_rvalue_references.ipp"
 #else
@@ -287,12 +291,6 @@ namespace boost_no_rvalue_references = empty_boost;
 #include "boost_no_scoped_enums.ipp"
 #else
 namespace boost_no_scoped_enums = empty_boost;
-#endif
-=======
-#ifndef BOOST_NO_RTTI
-#include "boost_no_rtti.ipp"
-#else
-namespace boost_no_rtti = empty_boost;
 #endif
 #ifndef BOOST_NO_SFINAE
 #include "boost_no_sfinae.ipp"
@@ -404,15 +402,15 @@ namespace boost_no_two_phase_name_lookup = empty_boost;
 #else
 namespace boost_no_typeid = empty_boost;
 #endif
-#ifndef BOOST_NO_UNICODE_LITERALS
-#include "boost_no_unicode_literals.ipp"
-#else
-namespace boost_no_unicode_literals = empty_boost;
-#endif
 #ifndef BOOST_NO_TYPENAME_WITH_CTOR
 #include "boost_no_typename_with_ctor.ipp"
 #else
 namespace boost_no_typename_with_ctor = empty_boost;
+#endif
+#ifndef BOOST_NO_UNICODE_LITERALS
+#include "boost_no_unicode_literals.ipp"
+#else
+namespace boost_no_unicode_literals = empty_boost;
 #endif
 #ifndef BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #include "boost_no_using_breaks_adl.ipp"
@@ -1213,6 +1211,11 @@ int main( int, char *[] )
       std::cerr << "Failed test for BOOST_NO_UNREACHABLE_RETURN_DETECTION at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
+   if(0 != boost_no_rtti::test())
+   {
+      std::cerr << "Failed test for BOOST_NO_RTTI at: " << __FILE__ << ":" << __LINE__ << std::endl;
+      ++error_count;
+   }
    if(0 != boost_no_rvalue_references::test())
    {
       std::cerr << "Failed test for BOOST_NO_RVALUE_REFERENCES at: " << __FILE__ << ":" << __LINE__ << std::endl;
@@ -1221,11 +1224,6 @@ int main( int, char *[] )
    if(0 != boost_no_scoped_enums::test())
    {
       std::cerr << "Failed test for BOOST_NO_SCOPED_ENUMS at: " << __FILE__ << ":" << __LINE__ << std::endl;
-      ++error_count;
-   }
-   if(0 != boost_no_rtti::test())
-   {
-      std::cerr << "Failed test for BOOST_NO_RTTI at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
    if(0 != boost_no_sfinae::test())
@@ -1338,14 +1336,14 @@ int main( int, char *[] )
       std::cerr << "Failed test for BOOST_NO_TYPEID at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
-   if(0 != boost_no_unicode_literals::test())
-   {
-      std::cerr << "Failed test for BOOST_NO_UNICODE_LITERALS at: " << __FILE__ << ":" << __LINE__ << std::endl;
-      ++error_count;
-   }
    if(0 != boost_no_typename_with_ctor::test())
    {
       std::cerr << "Failed test for BOOST_NO_TYPENAME_WITH_CTOR at: " << __FILE__ << ":" << __LINE__ << std::endl;
+      ++error_count;
+   }
+   if(0 != boost_no_unicode_literals::test())
+   {
+      std::cerr << "Failed test for BOOST_NO_UNICODE_LITERALS at: " << __FILE__ << ":" << __LINE__ << std::endl;
       ++error_count;
    }
    if(0 != boost_function_scope_using_declaration_breaks_adl::test())
