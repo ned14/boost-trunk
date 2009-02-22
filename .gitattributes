@@ -7654,6 +7654,7 @@ libs/compatibility/generate_cpp_c_headers.py svneol=native#text/x-python
 libs/compatibility/index.html svneol=native#text/html
 libs/compatibility/module.cmake svneol=native#text/plain
 libs/compose/index.htm svneol=native#text/html
+libs/compose/index.html svneol=native#text/html
 libs/concept/CMakeLists.txt svneol=native#text/plain
 libs/concept/module.cmake svneol=native#text/plain
 libs/concept_check/CMakeLists.txt svneol=native#text/plain
