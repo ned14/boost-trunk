@@ -4453,6 +4453,7 @@ boost/random/additive_combine.hpp svneol=native#text/plain
 boost/random/bernoulli_distribution.hpp svneol=native#text/plain
 boost/random/binomial_distribution.hpp svneol=native#text/plain
 boost/random/cauchy_distribution.hpp svneol=native#text/plain
+boost/random/detail/config.hpp svneol=native#text/plain
 boost/random/detail/const_mod.hpp svneol=native#text/plain
 boost/random/detail/iterator_mixin.hpp svneol=native#text/plain
 boost/random/detail/pass_through_engine.hpp svneol=native#text/plain
