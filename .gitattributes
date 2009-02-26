@@ -14209,15 +14209,6 @@ libs/math/doc/sf_and_dist/tr1.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/tr1_ref.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/win32_nmake.mak svneol=native#text/plain
 libs/math/doc/sf_and_dist/zeta.qbk svneol=native#text/plain
-libs/math/doc/svg-admon/caution.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/svg-admon/home.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/svg-admon/important.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/svg-admon/next.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/svg-admon/note.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/svg-admon/prev.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/svg-admon/tip.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/svg-admon/up.svg -text svneol=unset#image/svg%2Bxml
-libs/math/doc/svg-admon/warning.svg -text svneol=unset#image/svg%2Bxml
 libs/math/dot_net_example/Setupdistex/Release/Setupdistex.msi -text
 libs/math/dot_net_example/Setupdistex/Release/setup.exe -text
 libs/math/dot_net_example/boost_math/AssemblyInfo.cpp svneol=native#text/plain
