@@ -2229,6 +2229,7 @@ boost/lambda/detail/operators.hpp svneol=native#text/plain
 boost/lambda/detail/ret.hpp svneol=native#text/plain
 boost/lambda/detail/return_type_traits.hpp svneol=native#text/plain
 boost/lambda/detail/select_functions.hpp svneol=native#text/plain
+boost/lambda/detail/suppress_unused.hpp svneol=native#text/plain
 boost/lambda/exceptions.hpp svneol=native#text/plain
 boost/lambda/if.hpp svneol=native#text/plain
 boost/lambda/lambda.hpp svneol=native#text/plain
