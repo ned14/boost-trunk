@@ -8100,6 +8100,7 @@ libs/config/test/no_std_oi_assign_fail.cpp svneol=native#text/plain
 libs/config/test/no_std_oi_assign_pass.cpp svneol=native#text/plain
 libs/config/test/no_std_typeinfo_fail.cpp svneol=native#text/plain
 libs/config/test/no_std_typeinfo_pass.cpp svneol=native#text/plain
+libs/config/test/no_std_unordered_fail.cpp svneol=native#text/plain
 libs/config/test/no_std_unordered_pass.cpp svneol=native#text/plain
 libs/config/test/no_std_use_facet_fail.cpp svneol=native#text/plain
 libs/config/test/no_std_use_facet_pass.cpp svneol=native#text/plain
