@@ -559,6 +559,7 @@ boost/bimap/views/vector_set_view.hpp svneol=native#text/plain
 boost/bind.hpp svneol=native#text/plain
 boost/bind/apply.hpp svneol=native#text/plain
 boost/bind/arg.hpp svneol=native#text/plain
+boost/bind/bind.hpp svneol=native#text/plain
 boost/bind/bind_cc.hpp svneol=native#text/plain
 boost/bind/bind_mf2_cc.hpp svneol=native#text/plain
 boost/bind/bind_mf_cc.hpp svneol=native#text/plain
