@@ -4681,6 +4681,7 @@ boost/smart_ptr/detail/lightweight_mutex.hpp svneol=native#text/plain
 boost/smart_ptr/detail/lwm_nop.hpp svneol=native#text/plain
 boost/smart_ptr/detail/lwm_pthreads.hpp svneol=native#text/plain
 boost/smart_ptr/detail/lwm_win32_cs.hpp svneol=native#text/plain
+boost/smart_ptr/detail/operator_bool.hpp svneol=native#text/plain
 boost/smart_ptr/detail/quick_allocator.hpp svneol=native#text/plain
 boost/smart_ptr/detail/shared_array_nmt.hpp svneol=native#text/plain
 boost/smart_ptr/detail/shared_count.hpp svneol=native#text/plain
