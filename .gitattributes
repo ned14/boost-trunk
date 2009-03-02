@@ -7558,6 +7558,7 @@ libs/bind/test/bind_cv_test.cpp svneol=native#text/plain
 libs/bind/test/bind_dm2_test.cpp svneol=native#text/plain
 libs/bind/test/bind_dm3_test.cpp svneol=native#text/plain
 libs/bind/test/bind_dm_test.cpp svneol=native#text/plain
+libs/bind/test/bind_eq2_test.cpp svneol=native#text/plain
 libs/bind/test/bind_eq_test.cpp svneol=native#text/plain
 libs/bind/test/bind_fastcall_mf_test.cpp svneol=native#text/plain
 libs/bind/test/bind_fastcall_test.cpp svneol=native#text/plain
