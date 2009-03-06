@@ -18377,7 +18377,6 @@ libs/signals/test/signal_n_test.cpp svneol=native#text/plain
 libs/signals/test/signal_test.cpp svneol=native#text/plain
 libs/signals/test/trackable_test.cpp svneol=native#text/plain
 libs/signals2/doc/Jamfile.v2 svneol=native#text/plain
-libs/signals2/doc/Makefile svneol=native#text/plain
 libs/signals2/doc/examples.xml svneol=native#text/plain
 libs/signals2/doc/faq.xml svneol=native#text/xml
 libs/signals2/doc/introduction.xml svneol=native#text/xml
