@@ -6648,6 +6648,7 @@ boost/wave/util/cpp_macromap.hpp svneol=native#text/plain
 boost/wave/util/cpp_macromap_predef.hpp svneol=native#text/plain
 boost/wave/util/cpp_macromap_utils.hpp svneol=native#text/plain
 boost/wave/util/file_position.hpp svneol=native#text/plain
+boost/wave/util/filesystem_compatibility.hpp svneol=native#text/plain
 boost/wave/util/flex_string.hpp svneol=native#text/plain
 boost/wave/util/functor_input.hpp svneol=native#text/plain
 boost/wave/util/insert_whitespace_detection.hpp svneol=native#text/plain
