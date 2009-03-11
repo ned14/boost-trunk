@@ -819,6 +819,7 @@ boost/detail/ob_call_traits.hpp svneol=native#text/plain
 boost/detail/ob_compressed_pair.hpp svneol=native#text/plain
 boost/detail/quick_allocator.hpp svneol=native#text/plain
 boost/detail/reference_content.hpp svneol=native#text/plain
+boost/detail/scoped_enum_emulation.hpp svneol=native#text/plain
 boost/detail/select_type.hpp svneol=native#text/plain
 boost/detail/sp_typeinfo.hpp svneol=native#text/plain
 boost/detail/templated_streams.hpp svneol=native#text/plain
