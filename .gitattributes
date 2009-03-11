@@ -18447,6 +18447,7 @@ libs/smart_ptr/example/shared_ptr_example2_test.cpp svneol=native#text/plain
 libs/smart_ptr/gccspeed.gif -text svneol=unset#image/gif
 libs/smart_ptr/index.html svneol=native#text/html
 libs/smart_ptr/intrusive_ptr.html svneol=native#text/html
+libs/smart_ptr/make_shared.html svneol=native#text/plain
 libs/smart_ptr/module.cmake svneol=native#text/plain
 libs/smart_ptr/msvcspeed.gif -text svneol=unset#image/gif
 libs/smart_ptr/pointer_cast.html svneol=native#text/html
