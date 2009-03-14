@@ -20947,6 +20947,8 @@ tools/boostbook/dtd/boostbook.dtd svneol=native#text/xml
 tools/boostbook/index.html svneol=native#text/html
 tools/boostbook/setup_boostbook.py svneol=native#text/x-python
 tools/boostbook/setup_boostbook.sh svneol=LF#text/x-sh eol=lf
+tools/boostbook/test/Jamfile.v2 svneol=native#text/plain
+tools/boostbook/test/alt.xml svneol=native#text/xml
 tools/boostbook/xsl/admon.xsl svneol=native#text/xml
 tools/boostbook/xsl/annotation.xsl svneol=native#text/xml
 tools/boostbook/xsl/callout.xsl svneol=native#text/xml
@@ -20964,6 +20966,7 @@ tools/boostbook/xsl/error.xsl svneol=native#text/xml
 tools/boostbook/xsl/fo.xsl svneol=native#text/xml
 tools/boostbook/xsl/function.xsl svneol=native#text/xml
 tools/boostbook/xsl/global.xsl svneol=native#text/xml
+tools/boostbook/xsl/html-help.xsl svneol=native#text/xml
 tools/boostbook/xsl/html-single.xsl svneol=native#text/xml
 tools/boostbook/xsl/html.xsl svneol=native#text/xml
 tools/boostbook/xsl/index.xsl svneol=native#text/xml
@@ -21965,7 +21968,6 @@ tools/quickbook/test/quickbook-manual.quickbook svneol=native#text/plain
 tools/quickbook/test/quickbook-testing.jam svneol=native#text/plain
 tools/quickbook/test/src/text_diff.cpp svneol=native#text/plain
 tools/quickbook/test/stub.cpp svneol=native#text/plain
-tools/quickbook/test/stub.xml svneol=native#text/xml
 tools/quickbook/test/templates.gold -text
 tools/quickbook/test/templates.quickbook -text
 tools/quickbook/test/xinclude.gold -text
