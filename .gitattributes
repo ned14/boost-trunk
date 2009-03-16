@@ -14905,6 +14905,7 @@ libs/math/test/test_rayleigh.cpp svneol=native#text/plain
 libs/math/test/test_remez.cpp svneol=native#text/plain
 libs/math/test/test_roots.cpp svneol=native#text/plain
 libs/math/test/test_round.cpp svneol=native#text/plain
+libs/math/test/test_sign.cpp svneol=native#text/plain
 libs/math/test/test_spherical_harmonic.cpp svneol=native#text/plain
 libs/math/test/test_students_t.cpp svneol=native#text/plain
 libs/math/test/test_tgamma_ratio.cpp svneol=native#text/plain
