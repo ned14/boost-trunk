@@ -4742,6 +4742,7 @@ boost/smart_ptr/detail/spinlock_sync.hpp svneol=native#text/plain
 boost/smart_ptr/detail/spinlock_w32.hpp svneol=native#text/plain
 boost/smart_ptr/detail/yield_k.hpp svneol=native#text/plain
 boost/smart_ptr/enable_shared_from_this.hpp svneol=native#text/plain
+boost/smart_ptr/enable_shared_from_this2.hpp svneol=native#text/plain
 boost/smart_ptr/intrusive_ptr.hpp svneol=native#text/plain
 boost/smart_ptr/make_shared.hpp svneol=native#text/plain
 boost/smart_ptr/scoped_array.hpp svneol=native#text/plain
