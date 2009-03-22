@@ -831,6 +831,7 @@ boost/dynamic_bitset/dynamic_bitset.hpp svneol=native#text/plain
 boost/dynamic_bitset_fwd.hpp svneol=native#text/plain
 boost/dynamic_property_map.hpp svneol=native#text/plain
 boost/enable_shared_from_this.hpp svneol=native#text/plain
+boost/enable_shared_from_this2.hpp svneol=native#text/plain
 boost/exception.hpp svneol=native#text/plain
 boost/exception/detail/error_info_impl.hpp svneol=native#text/plain
 boost/exception/detail/is_output_streamable.hpp svneol=native#text/plain
