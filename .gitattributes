@@ -20580,6 +20580,7 @@ libs/units/test/test_absolute.cpp svneol=native#text/plain
 libs/units/test/test_base_dimension.cpp svneol=native#text/plain
 libs/units/test/test_cmath.cpp svneol=native#text/plain
 libs/units/test/test_complicated_system.cpp svneol=native#text/plain
+libs/units/test/test_constants.cpp svneol=native#text/plain
 libs/units/test/test_conversion.cpp svneol=native#text/plain
 libs/units/test/test_custom_unit.cpp svneol=native#text/plain
 libs/units/test/test_default_conversion.cpp svneol=native#text/plain
