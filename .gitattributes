@@ -4656,6 +4656,7 @@ boost/smart_ptr/detail/sp_counted_base_acc_ia64.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_cw_ppc.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_cw_x86.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_gcc_ia64.hpp svneol=native#text/plain
+boost/smart_ptr/detail/sp_counted_base_gcc_mips.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_gcc_ppc.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_gcc_sparc.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_gcc_x86.hpp svneol=native#text/plain
