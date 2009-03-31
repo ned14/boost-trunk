@@ -8486,50 +8486,53 @@ libs/dynamic_bitset/index.html svneol=native#text/html
 libs/dynamic_bitset/module.cmake svneol=native#text/plain
 libs/dynamic_bitset/test/CMakeLists.txt svneol=native#text/plain
 libs/exception/CMakeLists.txt svneol=native#text/plain
-libs/exception/doc/BOOST_THROW_EXCEPTION.html svneol=native#text/html
-libs/exception/doc/boost-exception.html svneol=native#text/html
-libs/exception/doc/configuration_macros.html svneol=native#text/html
-libs/exception/doc/copy_exception.html svneol=native#text/html
-libs/exception/doc/current_exception.html svneol=native#text/html
-libs/exception/doc/diagnostic_information.html svneol=native#text/html
-libs/exception/doc/enable_current_exception.html svneol=native#text/html
-libs/exception/doc/enable_error_info.html svneol=native#text/html
-libs/exception/doc/error_info.html svneol=native#text/html
-libs/exception/doc/error_info_error_info.html svneol=native#text/html
-libs/exception/doc/error_info_value.html svneol=native#text/html
-libs/exception/doc/error_info_value_type.html svneol=native#text/html
-libs/exception/doc/exception.html svneol=native#text/html
-libs/exception/doc/exception_cloning_hpp.html svneol=native#text/html
-libs/exception/doc/exception_constructors.html svneol=native#text/html
-libs/exception/doc/exception_destructor.html svneol=native#text/html
-libs/exception/doc/exception_diagnostic_information_hpp.html svneol=native#text/html
-libs/exception/doc/exception_enable_current_exception_hpp.html svneol=native#text/html
-libs/exception/doc/exception_enable_error_info_hpp.html svneol=native#text/html
-libs/exception/doc/exception_error_info_group_hpp.html svneol=native#text/html
-libs/exception/doc/exception_error_info_hpp.html svneol=native#text/html
-libs/exception/doc/exception_error_info_value_hpp.html svneol=native#text/html
-libs/exception/doc/exception_exception_hpp.html svneol=native#text/html
-libs/exception/doc/exception_get_error_info_hpp.html svneol=native#text/html
-libs/exception/doc/exception_hpp.html svneol=native#text/html
-libs/exception/doc/exception_operator_shl.html svneol=native#text/html
-libs/exception/doc/exception_ptr.html svneol=native#text/html
-libs/exception/doc/get_error_info.html svneol=native#text/html
-libs/exception/doc/name_idx.html svneol=native#text/html
-libs/exception/doc/reno.css svneol=native#text/css
-libs/exception/doc/rethrow_exception.html svneol=native#text/html
+libs/exception/doc/BOOST_THROW_EXCEPTION.html svneol=LF#text/html eol=lf
+libs/exception/doc/boost-exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/configuration_macros.html svneol=LF#text/html eol=lf
+libs/exception/doc/copy_exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/current_exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/diagnostic_information.html svneol=LF#text/html eol=lf
+libs/exception/doc/enable_current_exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/enable_error_info.html svneol=LF#text/html eol=lf
+libs/exception/doc/error_info.html svneol=LF#text/html eol=lf
+libs/exception/doc/error_info_error_info.html svneol=LF#text/html eol=lf
+libs/exception/doc/error_info_value.html svneol=LF#text/html eol=lf
+libs/exception/doc/error_info_value_type.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_cloning_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_constructors.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_destructor.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_diagnostic_information_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_enable_current_exception_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_enable_error_info_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_error_info_group_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_error_info_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_error_info_value_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_exception_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_get_error_info_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_operator_shl.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_ptr.html svneol=LF#text/html eol=lf
+libs/exception/doc/exception_types_as_simple_semantic_tags.html svneol=native#text/html
+libs/exception/doc/get_error_info.html svneol=LF#text/html eol=lf
+libs/exception/doc/motivation.html svneol=native#text/html
+libs/exception/doc/name_idx.html svneol=LF#text/html eol=lf
+libs/exception/doc/reno.css svneol=LF#text/css eol=lf
+libs/exception/doc/rethrow_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/shade-l.png -text svneol=unset#image/png
 libs/exception/doc/shade-r.png -text svneol=unset#image/png
 libs/exception/doc/source/boost-exception.reno svneol=LF#text/plain eol=lf
-libs/exception/doc/source/html_prefix.txt svneol=native#text/plain
-libs/exception/doc/source/html_suffix.txt svneol=native#text/plain
-libs/exception/doc/throw_exception.html svneol=native#text/html
-libs/exception/doc/throw_exception_hpp.html svneol=native#text/html
-libs/exception/doc/tuple_operator_shl.html svneol=native#text/html
-libs/exception/doc/tutorial_diagnostic_information.html svneol=native#text/html
-libs/exception/doc/tutorial_enable_error_info.html svneol=native#text/html
-libs/exception/doc/tutorial_exception_ptr.html svneol=native#text/html
-libs/exception/doc/tutorial_transporting_data.html svneol=native#text/html
-libs/exception/doc/unknown_exception.html svneol=native#text/html
+libs/exception/doc/source/html_prefix.txt svneol=LF#text/plain eol=lf
+libs/exception/doc/source/html_suffix.txt svneol=LF#text/plain eol=lf
+libs/exception/doc/throw_exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/throw_exception_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/tuple_operator_shl.html svneol=LF#text/html eol=lf
+libs/exception/doc/tutorial_diagnostic_information.html svneol=LF#text/html eol=lf
+libs/exception/doc/tutorial_enable_error_info.html svneol=LF#text/html eol=lf
+libs/exception/doc/tutorial_exception_ptr.html svneol=LF#text/html eol=lf
+libs/exception/doc/tutorial_transporting_data.html svneol=LF#text/html eol=lf
+libs/exception/doc/unknown_exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/using_virtual_inheritance_in_exception_types.html svneol=native#text/html
 libs/exception/doc/valid-css.png -text svneol=unset#image/png
 libs/exception/doc/valid-xhtml.png -text svneol=unset#image/png
 libs/exception/example/Jamfile svneol=native#text/plain
