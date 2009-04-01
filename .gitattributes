@@ -8448,6 +8448,7 @@ libs/exception/doc/exception_hpp.html svneol=LF#text/html eol=lf
 libs/exception/doc/exception_operator_shl.html svneol=LF#text/html eol=lf
 libs/exception/doc/exception_ptr.html svneol=LF#text/html eol=lf
 libs/exception/doc/exception_types_as_simple_semantic_tags.html svneol=LF#text/html eol=lf
+libs/exception/doc/frequently_asked_questions.html svneol=LF#text/html eol=lf
 libs/exception/doc/get_error_info.html svneol=LF#text/html eol=lf
 libs/exception/doc/motivation.html svneol=LF#text/html eol=lf
 libs/exception/doc/name_idx.html svneol=LF#text/html eol=lf
