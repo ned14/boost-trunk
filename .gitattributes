@@ -1793,6 +1793,7 @@ boost/graph/random_layout.hpp svneol=native#text/plain
 boost/graph/read_dimacs.hpp svneol=native#text/plain
 boost/graph/relax.hpp svneol=native#text/plain
 boost/graph/reverse_graph.hpp svneol=native#text/plain
+boost/graph/rmat_graph_generator.hpp svneol=native#text/plain
 boost/graph/sequential_vertex_coloring.hpp svneol=native#text/plain
 boost/graph/simple_point.hpp svneol=native#text/plain
 boost/graph/sloan_ordering.hpp svneol=native#text/plain
