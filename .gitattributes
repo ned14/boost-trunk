@@ -5437,6 +5437,7 @@ boost/spirit/home/support/detail/lexer/file_input.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/generate_cpp.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/generator.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/input.hpp svneol=native#text/plain
+boost/spirit/home/support/detail/lexer/internals.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/parser/parser.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/parser/tokeniser/num_token.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/parser/tokeniser/re_tokeniser.hpp svneol=native#text/plain
