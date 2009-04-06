@@ -832,6 +832,7 @@ boost/dynamic_bitset_fwd.hpp svneol=native#text/plain
 boost/dynamic_property_map.hpp svneol=native#text/plain
 boost/enable_shared_from_this.hpp svneol=native#text/plain
 boost/exception.hpp svneol=native#text/plain
+boost/exception/current_exception_cast.hpp svneol=native#text/plain
 boost/exception/detail/error_info_impl.hpp svneol=native#text/plain
 boost/exception/detail/is_output_streamable.hpp svneol=native#text/plain
 boost/exception/detail/object_hex_dump.hpp svneol=native#text/plain
@@ -8504,9 +8505,12 @@ libs/dynamic_bitset/test/CMakeLists.txt svneol=native#text/plain
 libs/exception/CMakeLists.txt svneol=native#text/plain
 libs/exception/doc/BOOST_THROW_EXCEPTION.html svneol=LF#text/html eol=lf
 libs/exception/doc/boost-exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/boost_exception_current_exception_cast_hpp.html svneol=native#text/html
 libs/exception/doc/configuration_macros.html svneol=LF#text/html eol=lf
 libs/exception/doc/copy_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/current_exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/current_exception_cast.html svneol=native#text/html
+libs/exception/doc/current_exception_diagnostic_information.html svneol=native#text/html
 libs/exception/doc/diagnostic_information.html svneol=LF#text/html eol=lf
 libs/exception/doc/enable_current_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/enable_error_info.html svneol=LF#text/html eol=lf
@@ -8531,9 +8535,12 @@ libs/exception/doc/exception_operator_shl.html svneol=LF#text/html eol=lf
 libs/exception/doc/exception_ptr.html svneol=LF#text/html eol=lf
 libs/exception/doc/exception_types_as_simple_semantic_tags.html svneol=native#text/html
 libs/exception/doc/frequently_asked_questions.html svneol=LF#text/html eol=lf
+libs/exception/doc/functions.html svneol=native#text/html
 libs/exception/doc/get_error_info.html svneol=LF#text/html eol=lf
+libs/exception/doc/headers.html svneol=native#text/html
+libs/exception/doc/macros.html svneol=native#text/html
 libs/exception/doc/motivation.html svneol=native#text/html
-libs/exception/doc/name_idx.html svneol=LF#text/html eol=lf
+libs/exception/doc/page_idx.html svneol=native#text/html
 libs/exception/doc/reno.css svneol=LF#text/css eol=lf
 libs/exception/doc/rethrow_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/shade-l.png -text svneol=unset#image/png
@@ -8541,6 +8548,7 @@ libs/exception/doc/shade-r.png -text svneol=unset#image/png
 libs/exception/doc/source/boost-exception.reno svneol=LF#text/plain eol=lf
 libs/exception/doc/source/html_prefix.txt svneol=LF#text/plain eol=lf
 libs/exception/doc/source/html_suffix.txt svneol=LF#text/plain eol=lf
+libs/exception/doc/synopsis.html svneol=native#text/html
 libs/exception/doc/throw_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/throw_exception_hpp.html svneol=LF#text/html eol=lf
 libs/exception/doc/tuple_operator_shl.html svneol=LF#text/html eol=lf
@@ -8548,6 +8556,7 @@ libs/exception/doc/tutorial_diagnostic_information.html svneol=LF#text/html eol=
 libs/exception/doc/tutorial_enable_error_info.html svneol=LF#text/html eol=lf
 libs/exception/doc/tutorial_exception_ptr.html svneol=LF#text/html eol=lf
 libs/exception/doc/tutorial_transporting_data.html svneol=LF#text/html eol=lf
+libs/exception/doc/types.html svneol=native#text/html
 libs/exception/doc/unknown_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/using_virtual_inheritance_in_exception_types.html svneol=native#text/html
 libs/exception/doc/valid-css.png -text svneol=unset#image/png
@@ -8571,6 +8580,8 @@ libs/exception/test/CMakeLists.txt svneol=native#text/plain
 libs/exception/test/Jamfile.v2 svneol=native#text/plain
 libs/exception/test/cloning_test.cpp svneol=native#text/plain
 libs/exception/test/copy_exception_test.cpp svneol=native#text/plain
+libs/exception/test/current_exception_cast_hpp_test.cpp svneol=native#text/plain
+libs/exception/test/current_exception_cast_test.cpp svneol=native#text/plain
 libs/exception/test/diagnostic_information_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/diagnostic_information_test.cpp svneol=native#text/plain
 libs/exception/test/enable_error_info_test.cpp svneol=native#text/plain
@@ -8590,6 +8601,7 @@ libs/exception/test/helper2.hpp svneol=native#text/plain
 libs/exception/test/info_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/info_tuple_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/is_output_streamable_test.cpp svneol=native#text/plain
+libs/exception/test/no_exceptions_test.cpp svneol=native#text/plain
 libs/exception/test/refcount_ptr_test.cpp svneol=native#text/plain
 libs/exception/test/throw_exception_fail.cpp svneol=native#text/plain
 libs/exception/test/throw_exception_test.cpp svneol=native#text/plain
