@@ -17013,6 +17013,7 @@ libs/property_tree/test/test_xml_parser_spirit.cpp svneol=native#text/plain
 libs/property_tree/test/test_xml_parser_tinyxml.cpp svneol=native#text/plain
 libs/property_tree/test/xml_parser_test_data.hpp svneol=native#text/plain
 libs/proto/CMakeLists.txt svneol=native#text/plain
+libs/proto/doc/CMakeLists.txt svneol=native#text/plain
 libs/proto/doc/Jamfile.v2 svneol=native#text/plain
 libs/proto/doc/acknowledgements.qbk svneol=native#text/plain
 libs/proto/doc/back_end.qbk svneol=native#text/plain
