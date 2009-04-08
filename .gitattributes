@@ -17678,6 +17678,7 @@ libs/python/test/test_builtin_converters.cpp svneol=native#text/plain
 libs/python/test/test_builtin_converters.py svneol=native#text/x-python
 libs/python/test/test_class.hpp svneol=native#text/plain
 libs/python/test/test_cltree.py svneol=native#text/x-python
+libs/python/test/test_overload_resolution.cpp svneol=native#text/plain
 libs/python/test/test_pointer_adoption.cpp svneol=native#text/plain
 libs/python/test/test_pointer_adoption.py svneol=native#text/x-python
 libs/python/test/tuple.cpp svneol=native#text/plain
