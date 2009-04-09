@@ -7421,6 +7421,7 @@ libs/asio/module.cmake svneol=native#text/plain
 libs/asio/test/CMakeLists.txt svneol=native#text/plain
 libs/asio/test/Jamfile svneol=native#text/plain
 libs/asio/test/Jamfile.v2 svneol=native#text/plain
+libs/asio/test/archetypes/io_control_command.hpp svneol=native#text/plain
 libs/asio/test/basic_datagram_socket.cpp svneol=native#text/plain
 libs/asio/test/basic_deadline_timer.cpp svneol=native#text/plain
 libs/asio/test/basic_serial_port.cpp svneol=native#text/plain
