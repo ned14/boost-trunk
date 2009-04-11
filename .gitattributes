@@ -15608,6 +15608,7 @@ libs/mpl/doc/src/refmanual/bitand_.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/bitor_.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/bitxor_.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/bool_.rst svneol=native#text/plain
+libs/mpl/doc/src/refmanual/c_str.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/char_.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/clear.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/contains.rst svneol=native#text/plain
