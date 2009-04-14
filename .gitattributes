@@ -6758,7 +6758,8 @@ boost/xpressive/xpressive_dynamic.hpp svneol=native#text/plain
 boost/xpressive/xpressive_fwd.hpp svneol=native#text/plain
 boost/xpressive/xpressive_static.hpp svneol=native#text/plain
 boost/xpressive/xpressive_typeof.hpp svneol=native#text/plain
-/configure svneol=LF#text/x-sh eol=lf
+/bootstrap.bat svneol=CRLF#text/plain eol=crlf
+/bootstrap.sh svneol=LF#text/x-sh eol=lf
 doc/CMakeLists.txt svneol=native#text/plain
 doc/Jamfile.v2 svneol=native#text/plain
 doc/html/CopyConstructible.html svneol=native#text/html
