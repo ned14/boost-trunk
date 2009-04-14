@@ -4,7 +4,6 @@
 /INSTALL svneol=native#text/plain
 /Jamroot svneol=native#text/plain
 /LICENSE_1_0.txt svneol=native#text/plain
-/README.txt svneol=native#text/plain
 /Welcome.txt svneol=native#text/plain
 /boost-build.jam svneol=native#text/plain
 /boost.css svneol=native#text/css
