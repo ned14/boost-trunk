@@ -18136,6 +18136,7 @@ libs/smart_ptr/test/Jamfile.v2 svneol=native#text/plain
 libs/smart_ptr/test/allocate_shared_esft_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/allocate_shared_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/atomic_count_test.cpp svneol=native#text/plain
+libs/smart_ptr/test/atomic_count_test2.cpp svneol=native#text/plain
 libs/smart_ptr/test/auto_ptr_lv_fail.cpp svneol=native#text/plain
 libs/smart_ptr/test/auto_ptr_rv_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/collector_test.cpp svneol=native#text/plain
