@@ -15594,6 +15594,7 @@ libs/mpl/doc/src/refmanual/Sequences-Intrinsic.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/Sequences-Views.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/Sequences.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/TagDispatchedMetafunction.rst svneol=native#text/plain
+libs/mpl/doc/src/refmanual/Terminology.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/TrivialMetafunction.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/VariadicSequence.rst svneol=native#text/plain
 libs/mpl/doc/src/refmanual/accumulate.rst svneol=native#text/plain
