@@ -4687,6 +4687,7 @@ boost/serialization/array.hpp svneol=native#text/plain
 boost/serialization/assume_abstract.hpp svneol=native#text/plain
 boost/serialization/base_object.hpp svneol=native#text/plain
 boost/serialization/binary_object.hpp svneol=native#text/plain
+boost/serialization/bitset.hpp svneol=native#text/plain
 boost/serialization/collection_size_type.hpp svneol=native#text/plain
 boost/serialization/collection_traits.hpp svneol=native#text/plain
 boost/serialization/collections_load_imp.hpp svneol=native#text/plain
