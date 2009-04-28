@@ -5678,6 +5678,7 @@ boost/spirit/include/karma_string.hpp svneol=native#text/plain
 boost/spirit/include/karma_what.hpp svneol=native#text/plain
 boost/spirit/include/lex.hpp svneol=native#text/plain
 boost/spirit/include/lex_domain.hpp svneol=native#text/plain
+boost/spirit/include/lex_generate_static_lexertl.hpp svneol=native#text/plain
 boost/spirit/include/lex_lexer.hpp svneol=native#text/plain
 boost/spirit/include/lex_lexertl.hpp svneol=native#text/plain
 boost/spirit/include/lex_static_lexertl.hpp svneol=native#text/plain
