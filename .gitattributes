@@ -18404,6 +18404,7 @@ libs/serialization/test/polymorphic_xml_warchive.hpp svneol=native#text/plain
 libs/serialization/test/portable_binary_archive.hpp svneol=native#text/plain
 libs/serialization/test/test_array.cpp svneol=native#text/plain
 libs/serialization/test/test_binary.cpp svneol=native#text/plain
+libs/serialization/test/test_bitset.cpp svneol=native#text/plain
 libs/serialization/test/test_class_info_load.cpp svneol=native#text/plain
 libs/serialization/test/test_class_info_save.cpp svneol=native#text/plain
 libs/serialization/test/test_codecvt_null.cpp svneol=native#text/plain
