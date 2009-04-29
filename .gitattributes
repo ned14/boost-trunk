@@ -7848,7 +7848,6 @@ libs/config/doc/html/boost_config/acknowledgements.html svneol=native#text/html
 libs/config/doc/html/boost_config/boost_macro_reference.html svneol=native#text/html
 libs/config/doc/html/boost_config/guidelines_for_boost_authors.html svneol=native#text/html
 libs/config/doc/html/boost_config/rationale.html svneol=native#text/html
-libs/config/doc/html/boostbook.css svneol=native#text/css
 libs/config/doc/html/index.html svneol=native#text/html
 libs/config/doc/macro_reference.qbk svneol=native#text/plain
 libs/config/doc/rationale.qbk svneol=native#text/plain
