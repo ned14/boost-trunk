@@ -9474,10 +9474,11 @@ libs/gil/CMakeLists.txt svneol=native#text/plain
 libs/gil/doc/adobe_logo.gif -text svneol=unset#image/gif
 libs/gil/doc/adobe_source.css svneol=native#text/css
 libs/gil/doc/boost.png -text svneol=unset#image/png
+libs/gil/doc/build.sh svneol=LF#text/x-sh eol=lf
 libs/gil/doc/doxygen/before_after.dox svneol=native#text/plain
 libs/gil/doc/doxygen/design_guide.dox svneol=native#text/plain
 libs/gil/doc/doxygen/gil_standalone/gil_boost.doxygen svneol=native#text/plain
-libs/gil/doc/doxygen/gil_standalone/header.html svneol=native#text/html
+libs/gil/doc/doxygen/gil_standalone/header_html.txt svneol=native#text/plain
 libs/gil/doc/doxygen/gil_standalone/main.dox svneol=native#text/plain
 libs/gil/doc/doxygen/images/interleaved.jpg -text svneol=unset#image/jpeg
 libs/gil/doc/doxygen/images/mandel.jpg -text svneol=unset#image/jpeg
@@ -10221,7 +10222,6 @@ libs/gil/doc/html/typedefs_8hpp.html svneol=native#text/html
 libs/gil/doc/html/utilities_8hpp.html svneol=native#text/html
 libs/gil/doc/html/variant_8hpp.html svneol=native#text/html
 libs/gil/doc/index.html svneol=native#text/html
-libs/gil/doc/insert_boost_licence.sh svneol=LF#text/x-sh eol=lf
 libs/gil/doc/shorten_file_name.sh svneol=LF#text/x-sh eol=lf
 libs/gil/example/Makefile svneol=native#text/plain
 libs/gil/example/README.txt svneol=native#text/plain
