@@ -21679,6 +21679,7 @@ tools/build/CMake/BoostDocs.cmake svneol=native#text/plain
 tools/build/CMake/BoostTesting.cmake svneol=native#text/plain
 tools/build/CMake/BoostUtils.cmake svneol=native#text/plain
 tools/build/CMake/CMakeLists.txt svneol=native#text/plain
+tools/build/CMake/CompileTest/CMakeLists.txt svneol=native#text/plain
 tools/build/CMake/FindICU.cmake svneol=native#text/plain
 tools/build/CMake/LinkTest/CMakeLists.txt svneol=native#text/plain
 tools/build/CMake/boost_build_slave.py.in svneol=native#text/x-python
