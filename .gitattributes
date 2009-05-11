@@ -12138,6 +12138,7 @@ libs/graph/test/test_properties.hpp svneol=native#text/plain
 libs/graph/test/tiernan_all_cycles.cpp svneol=native#text/plain
 libs/graph/test/transitive_closure_test.cpp svneol=native#text/plain
 libs/graph/test/transitive_closure_test2.cpp svneol=native#text/plain
+libs/graph/test/typestr.hpp svneol=native#text/plain
 libs/graph/test/vector_graph_cc.cpp svneol=native#text/plain
 libs/graph/test/weighted_graph.gr svneol=native#text/plain
 libs/graph_parallel/CMakeLists.txt svneol=native#text/plain
