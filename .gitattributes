@@ -10947,6 +10947,7 @@ libs/graph/test/isomorphism.cpp svneol=native#text/plain
 libs/graph/test/johnson-test.cpp svneol=native#text/plain
 libs/graph/test/king_ordering.cpp svneol=native#text/plain
 libs/graph/test/kolmogorov_max_flow_test.cpp svneol=native#text/plain
+libs/graph/test/labeled_graph.cpp svneol=native#text/plain
 libs/graph/test/layout_test.cpp svneol=native#text/plain
 libs/graph/test/leda_graph_cc.cpp svneol=native#text/plain
 libs/graph/test/lvalue_pmap.cpp svneol=native#text/plain
