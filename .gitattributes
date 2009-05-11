@@ -1800,6 +1800,7 @@ boost/graph/kamada_kawai_spring_layout.hpp svneol=native#text/plain
 boost/graph/king_ordering.hpp svneol=native#text/plain
 boost/graph/kolmogorov_max_flow.hpp svneol=native#text/plain
 boost/graph/kruskal_min_spanning_tree.hpp svneol=native#text/plain
+boost/graph/labeled_graph.hpp svneol=native#text/plain
 boost/graph/leda_graph.hpp svneol=native#text/plain
 boost/graph/make_biconnected_planar.hpp svneol=native#text/plain
 boost/graph/make_connected.hpp svneol=native#text/plain
