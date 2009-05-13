@@ -10689,6 +10689,7 @@ libs/graph/example/kruskal-example.cpp svneol=native#text/plain
 libs/graph/example/kruskal-telephone.cpp svneol=native#text/plain
 libs/graph/example/kruskal.expected svneol=native#text/plain
 libs/graph/example/kuratowski_subgraph.cpp svneol=native#text/plain
+libs/graph/example/labeled_graph.cpp svneol=native#text/plain
 libs/graph/example/last-mod-time.cpp svneol=native#text/plain
 libs/graph/example/leda-concept-check.cpp svneol=native#text/plain
 libs/graph/example/leda-graph-eg.cpp svneol=native#text/plain
