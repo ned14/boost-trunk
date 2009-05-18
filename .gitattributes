@@ -18663,6 +18663,7 @@ libs/serialization/vc7ide/test_object.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_optional.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_polymorphic.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_primitive.vcproj svneol=native#text/xml
+libs/serialization/vc7ide/test_private_base.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_private_ctor.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_recursion.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_recusion.vcproj svneol=native#text/xml
