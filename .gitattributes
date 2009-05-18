@@ -12279,6 +12279,7 @@ libs/graph_parallel/doc/html/metis.html svneol=native#text/html
 libs/graph_parallel/doc/html/mpi_bsp_process_group.html svneol=native#text/plain
 libs/graph_parallel/doc/html/overview.html svneol=native#text/html
 libs/graph_parallel/doc/html/page_rank.html svneol=native#text/html
+libs/graph_parallel/doc/html/pbgl-logo.png -text
 libs/graph_parallel/doc/html/process_group.html svneol=native#text/html
 libs/graph_parallel/doc/html/rmat_generator.html svneol=native#text/html
 libs/graph_parallel/doc/html/scalable_rmat_generator.html svneol=native#text/html
