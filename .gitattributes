@@ -18789,6 +18789,7 @@ libs/signals2/test/invocation_benchmark.cpp svneol=native#text/plain
 libs/signals2/test/mutex_test.cpp svneol=native#text/plain
 libs/signals2/test/ordering_test.cpp svneol=native#text/plain
 libs/signals2/test/regression_test.cpp svneol=native#text/plain
+libs/signals2/test/shared_connection_block_test.cpp svneol=native#text/plain
 libs/signals2/test/signal_n_test.cpp svneol=native#text/plain
 libs/signals2/test/signal_test.cpp svneol=native#text/plain
 libs/signals2/test/signal_type_test.cpp svneol=native#text/plain
