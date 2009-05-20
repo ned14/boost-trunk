@@ -12200,6 +12200,7 @@ libs/graph/test/planar_input_graphs/planar_tree_1_p9.dimacs svneol=native#text/p
 libs/graph/test/property_iter.cpp svneol=native#text/plain
 libs/graph/test/r_c_shortest_paths_test.cpp svneol=native#text/plain
 libs/graph/test/random_matching_test.cpp svneol=native#text/plain
+libs/graph/test/read_propmap.cpp svneol=native#text/plain
 libs/graph/test/regression.cfg svneol=native#text/plain
 libs/graph/test/relaxed_heap_test.cpp svneol=native#text/plain
 libs/graph/test/reverse_graph_cc.cpp svneol=native#text/plain
