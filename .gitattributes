@@ -19492,6 +19492,7 @@ libs/spirit/phoenix/doc/html/phoenix/references.html svneol=native#text/html
 libs/spirit/phoenix/doc/html/phoenix/starter_kit.html svneol=native#text/html
 libs/spirit/phoenix/doc/html/phoenix/wrap_up.html svneol=native#text/html
 libs/spirit/phoenix/doc/users_manual.qbk svneol=native#text/plain
+libs/spirit/phoenix/example/CMakeLists.txt svneol=native#text/plain
 libs/spirit/phoenix/example/Jamfile.v2 svneol=native#text/plain
 libs/spirit/phoenix/example/users_manual/algorithm.cpp svneol=native#text/plain
 libs/spirit/phoenix/example/users_manual/all_odds.cpp svneol=native#text/plain
