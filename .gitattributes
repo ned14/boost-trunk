@@ -14603,6 +14603,7 @@ libs/math/doc/sf_and_dist/roots.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/roots_without_derivatives.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/rounding_func.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/series.qbk svneol=native#text/plain
+libs/math/doc/sf_and_dist/sign.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/sinc.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/spherical_harmonic.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/structure.qbk svneol=native#text/plain
