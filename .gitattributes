@@ -12270,6 +12270,7 @@ libs/intrusive/proj/vc7ide/treap_set/treap_set.vcproj svneol=native#text/xml
 libs/intrusive/proj/vc7ide/unordered_multiset/unordered_multiset.vcproj svneol=native#text/xml
 libs/intrusive/proj/vc7ide/unordered_set/unordered_set.vcproj svneol=native#text/xml
 libs/intrusive/proj/vc7ide/virtual_base/virtual_base.vcproj svneol=native#text/xml
+libs/intrusive/test/CMakeLists.txt svneol=native#text/plain
 libs/intrusive/test/Jamfile.v2 svneol=native#text/plain
 libs/intrusive/test/any_test.cpp svneol=native#text/plain
 libs/intrusive/test/avl_multiset_test.cpp svneol=native#text/plain
