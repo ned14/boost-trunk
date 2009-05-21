@@ -1022,6 +1022,7 @@ boost/functional/forward_adapter.hpp svneol=native#text/plain
 boost/functional/hash.hpp svneol=native#text/plain
 boost/functional/hash/detail/float_functions.hpp svneol=native#text/plain
 boost/functional/hash/detail/hash_float.hpp svneol=native#text/plain
+boost/functional/hash/detail/limits.hpp svneol=native#text/plain
 boost/functional/hash/extensions.hpp svneol=native#text/plain
 boost/functional/hash/hash.hpp svneol=native#text/plain
 boost/functional/hash/hash_fwd.hpp svneol=native#text/plain
