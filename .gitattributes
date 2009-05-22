@@ -13346,6 +13346,7 @@ libs/math/doc/sf_and_dist/distributions/bernoulli.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/beta.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/binomial.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/binomial_example.qbk svneol=native#text/plain
+libs/math/doc/sf_and_dist/distributions/c_sharp.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/cauchy.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/chi_squared.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/chi_squared_examples.qbk svneol=native#text/plain
