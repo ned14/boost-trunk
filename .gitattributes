@@ -20839,6 +20839,7 @@ libs/type_traits/test/is_volatile_test.cpp svneol=native#text/plain
 libs/type_traits/test/make_signed_test.cpp svneol=native#text/plain
 libs/type_traits/test/make_unsigned_test.cpp svneol=native#text/plain
 libs/type_traits/test/promote_basic_test.cpp svneol=native#text/plain
+libs/type_traits/test/promote_enum_msvc_bug_test.cpp svneol=native#text/plain
 libs/type_traits/test/promote_enum_test.cpp svneol=native#text/plain
 libs/type_traits/test/promote_mpl_test.cpp svneol=native#text/plain
 libs/type_traits/test/promote_util.hpp svneol=native#text/plain
