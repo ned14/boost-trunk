@@ -10974,6 +10974,7 @@ libs/graph/quickbook/tour.qbk svneol=native#text/plain
 libs/graph/quickbook/tutorial.qbk svneol=native#text/plain
 libs/graph/src/CMakeLists.txt svneol=native#text/plain
 libs/graph/src/graphml.cpp svneol=native#text/plain
+libs/graph/src/read_graphviz_new.cpp svneol=native#text/plain
 libs/graph/src/read_graphviz_spirit.cpp svneol=native#text/plain
 libs/graph/test/CMakeLists.txt svneol=native#text/plain
 libs/graph/test/Jamfile.v2 svneol=native#text/plain
