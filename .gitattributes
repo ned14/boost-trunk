@@ -6831,6 +6831,7 @@ doc/html/typeof.html svneol=native#text/html
 doc/html/unordered.html svneol=native#text/html
 doc/html/variant.html svneol=native#text/html
 doc/html/xpressive.html svneol=native#text/html
+doc/images/valid-html401.png -text svneol=unset#image/png
 doc/pdf/Jamfile.v2 svneol=native#text/plain
 doc/src/CMakeLists.txt svneol=native#text/plain
 doc/src/boost.xml svneol=native#text/xml
