@@ -1723,6 +1723,7 @@ boost/graph/detail/set_adaptor.hpp svneol=native#text/plain
 boost/graph/detail/shadow_iterator.hpp svneol=native#text/plain
 boost/graph/detail/sparse_ordering.hpp svneol=native#text/plain
 boost/graph/dijkstra_shortest_paths.hpp svneol=native#text/plain
+boost/graph/dijkstra_shortest_paths_no_color_map.hpp svneol=native#text/plain
 boost/graph/dimacs.hpp svneol=native#text/plain
 boost/graph/directed_graph.hpp svneol=native#text/plain
 boost/graph/distributed/adjacency_list.hpp svneol=native#text/plain
