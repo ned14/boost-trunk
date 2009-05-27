@@ -12288,6 +12288,7 @@ libs/graph_parallel/doc/html/local_subgraph.html svneol=native#text/html
 libs/graph_parallel/doc/html/mesh_generator.html svneol=native#text/html
 libs/graph_parallel/doc/html/metis.html svneol=native#text/html
 libs/graph_parallel/doc/html/mpi_bsp_process_group.html svneol=native#text/plain
+libs/graph_parallel/doc/html/non_distributed_betweenness_centrality.html svneol=native#text/plain
 libs/graph_parallel/doc/html/overview.html svneol=native#text/html
 libs/graph_parallel/doc/html/page_rank.html svneol=native#text/html
 libs/graph_parallel/doc/html/pbgl-logo.png -text
@@ -12308,6 +12309,7 @@ libs/graph_parallel/doc/local_subgraph.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/mesh_generator.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/metis.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/mpi_bsp_process_group.rst svneol=native#text/plain
+libs/graph_parallel/doc/non_distributed_betweenness_centrality.rst svneol=native#text/plain
 libs/graph_parallel/doc/overview.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/page_rank.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/process_group.rst svneol=native#text/x-rst
