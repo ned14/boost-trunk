@@ -19617,6 +19617,7 @@ libs/spirit/repository/doc/karma.qbk svneol=native#text/plain
 libs/spirit/repository/doc/karma/confix.qbk svneol=native#text/plain
 libs/spirit/repository/doc/preface.qbk svneol=native#text/plain
 libs/spirit/repository/doc/qi.qbk svneol=native#text/plain
+libs/spirit/repository/doc/repository_template.qbk svneol=native#text/plain
 libs/spirit/repository/doc/spirit2_repository.qbk svneol=native#text/plain
 libs/spirit/repository/example/karma/confix.cpp svneol=native#text/plain
 libs/spirit/repository/test/CMakeLists.txt svneol=native#text/plain
