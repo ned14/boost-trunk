@@ -5788,6 +5788,7 @@ boost/spirit/repository/home/karma.hpp svneol=native#text/plain
 boost/spirit/repository/home/karma/confix.hpp svneol=native#text/plain
 boost/spirit/repository/home/qi.hpp svneol=native#text/plain
 boost/spirit/repository/home/support/confix.hpp svneol=native#text/plain
+boost/spirit/repository/include/karma.hpp svneol=native#text/plain
 boost/spirit/repository/include/karma_confix.hpp svneol=native#text/plain
 boost/spirit/symbols.hpp svneol=native#text/plain
 boost/spirit/symbols/symbols.hpp svneol=native#text/plain
