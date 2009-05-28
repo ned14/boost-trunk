@@ -4,6 +4,7 @@ libs/asio/doc/html
 libs/fusion/test/compile_time/*.test
 libs/iterator/doc/GNUmakefile
 libs/optional/test/bin
+libs/phoenix/doc/html/quickbook_HTML.manifest
 libs/python/pyste/dist/*.pyc
 libs/python/pyste/dist/*.zip
 libs/python/pyste/src/*.pyc
