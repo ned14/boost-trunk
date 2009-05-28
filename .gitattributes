@@ -12228,6 +12228,7 @@ libs/graph/test/serialize.cpp svneol=native#text/plain
 libs/graph/test/stanford_graph_cc.cpp svneol=native#text/plain
 libs/graph/test/subgraph.cpp svneol=native#text/plain
 libs/graph/test/subgraph_bundled.cpp svneol=native#text/plain
+libs/graph/test/subgraph_props.cpp svneol=native#text/plain
 libs/graph/test/test_construction.hpp svneol=native#text/plain
 libs/graph/test/test_destruction.hpp svneol=native#text/plain
 libs/graph/test/test_direction.hpp svneol=native#text/plain
