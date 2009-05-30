@@ -12940,6 +12940,7 @@ libs/iostreams/src/CMakeLists.txt svneol=native#text/plain
 libs/iostreams/src/bzip2.cpp svneol=native#text/plain
 libs/iostreams/src/file_descriptor.cpp svneol=native#text/plain
 libs/iostreams/src/file_times.cpp svneol=native#text/plain
+libs/iostreams/src/gzip.cpp svneol=native#text/plain
 libs/iostreams/src/mapped_file.cpp svneol=native#text/plain
 libs/iostreams/src/zlib.cpp svneol=native#text/plain
 libs/iostreams/test/CMakeLists.txt svneol=native#text/plain
