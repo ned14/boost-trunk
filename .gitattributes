@@ -17396,6 +17396,7 @@ libs/proto/doc/proto.qbk svneol=native#text/plain
 libs/proto/doc/rationale.qbk svneol=native#text/plain
 libs/proto/doc/reference.xml svneol=native#text/xml
 libs/proto/doc/reference/args.xml svneol=native#text/xml
+libs/proto/doc/reference/concepts/BasicPrimitiveTransform.xml svneol=native#text/plain
 libs/proto/doc/reference/concepts/CallableTransform.xml svneol=native#text/xml
 libs/proto/doc/reference/concepts/ObjectTransform.xml svneol=native#text/xml
 libs/proto/doc/reference/concepts/PolymorphicFunctionObject.xml svneol=native#text/xml
