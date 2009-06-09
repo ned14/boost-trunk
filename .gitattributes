@@ -5229,6 +5229,7 @@ boost/spirit/home/karma/string.hpp svneol=native#text/plain
 boost/spirit/home/karma/string/lit.hpp svneol=native#text/plain
 boost/spirit/home/karma/what.hpp svneol=native#text/plain
 boost/spirit/home/lex.hpp svneol=native#text/plain
+boost/spirit/home/lex/argument.hpp svneol=native#text/plain
 boost/spirit/home/lex/detail/sequence_function.hpp svneol=native#text/plain
 boost/spirit/home/lex/domain.hpp svneol=native#text/plain
 boost/spirit/home/lex/lexer.hpp svneol=native#text/plain
