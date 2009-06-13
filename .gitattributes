@@ -13187,6 +13187,7 @@ libs/lambda/test/istreambuf_test.cpp svneol=native#text/plain
 libs/lambda/test/member_pointer_test.cpp svneol=native#text/plain
 libs/lambda/test/operator_tests_simple.cpp svneol=native#text/plain
 libs/lambda/test/phoenix_control_structures.cpp svneol=native#text/plain
+libs/lambda/test/ret_test.cpp svneol=native#text/plain
 libs/lambda/test/rvalue_test.cpp svneol=native#text/plain
 libs/lambda/test/switch_construct.cpp svneol=native#text/plain
 libs/libraries.htm svneol=native#text/html
