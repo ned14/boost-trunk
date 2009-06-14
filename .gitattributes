@@ -1257,6 +1257,7 @@ boost/fusion/functional/adapter/fused.hpp svneol=native#text/plain
 boost/fusion/functional/adapter/fused_function_object.hpp svneol=native#text/plain
 boost/fusion/functional/adapter/fused_procedure.hpp svneol=native#text/plain
 boost/fusion/functional/adapter/limits.hpp svneol=native#text/plain
+boost/fusion/functional/adapter/unfused.hpp svneol=native#text/plain
 boost/fusion/functional/adapter/unfused_typed.hpp svneol=native#text/plain
 boost/fusion/functional/generation.hpp svneol=native#text/plain
 boost/fusion/functional/generation/detail/gen_make_adapter.hpp svneol=native#text/plain
