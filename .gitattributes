@@ -9497,6 +9497,7 @@ libs/fusion/test/functional/make_fused.cpp svneol=native#text/plain
 libs/fusion/test/functional/make_fused_function_object.cpp svneol=native#text/plain
 libs/fusion/test/functional/make_fused_procedure.cpp svneol=native#text/plain
 libs/fusion/test/functional/make_unfused.cpp svneol=native#text/plain
+libs/fusion/test/functional/unfused.cpp svneol=native#text/plain
 libs/fusion/test/functional/unfused_typed.cpp svneol=native#text/plain
 libs/fusion/test/sequence/adapt_assoc_struct.cpp svneol=native#text/plain
 libs/fusion/test/sequence/adapt_struct.cpp svneol=native#text/plain
