@@ -22497,7 +22497,7 @@ tools/inspect/tab_check.hpp svneol=native#text/plain
 tools/inspect/time_string.hpp svneol=native#text/plain
 tools/inspect/unnamed_namespace_check.cpp svneol=native#text/plain
 tools/inspect/unnamed_namespace_check.hpp svneol=native#text/plain
-tools/inspect/wrong_line_ends_test.cpp svneol=native#text/plain
+tools/inspect/wrong_line_ends_test.cpp -text svneol=CR#text/plain
 tools/jam/build_dist.bat svneol=native#text/plain
 tools/jam/build_dist.sh svneol=LF#text/x-sh eol=lf
 tools/jam/doc/bjam.qbk svneol=native#text/plain
