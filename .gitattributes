@@ -12395,6 +12395,7 @@ libs/graph_parallel/doc/unique_rmat_generator.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/vertex_coloring.png -text
 libs/graph_parallel/doc/vertex_list_adaptor.rst svneol=native#text/x-rst
 libs/graph_parallel/example/CMakeLists.txt svneol=native#text/plain
+libs/graph_parallel/example/Jamfile.v2 svneol=native#text/plain
 libs/graph_parallel/example/breadth_first_search.cpp svneol=native#text/plain
 libs/graph_parallel/example/dijkstra_shortest_paths.cpp svneol=native#text/plain
 libs/graph_parallel/module.cmake svneol=native#text/plain
