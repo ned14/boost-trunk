@@ -9113,6 +9113,7 @@ libs/functional/hash/test/link_ext_test.cpp svneol=native#text/plain
 libs/functional/hash/test/link_no_ext_test.cpp svneol=native#text/plain
 libs/functional/hash/test/link_test.cpp svneol=native#text/plain
 libs/functional/hash/test/link_test_2.cpp svneol=native#text/plain
+libs/functional/hash/test/namespace_fail_test.cpp svneol=native#text/plain
 libs/functional/index.html svneol=native#text/html
 libs/functional/mem_fun.html svneol=native#text/html
 libs/functional/module.cmake svneol=native#text/plain
