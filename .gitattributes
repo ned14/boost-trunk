@@ -1814,6 +1814,7 @@ boost/graph/make_connected.hpp svneol=native#text/plain
 boost/graph/make_maximal_planar.hpp svneol=native#text/plain
 boost/graph/matrix_as_graph.hpp svneol=native#text/plain
 boost/graph/max_cardinality_matching.hpp svneol=native#text/plain
+boost/graph/mcgregor_common_subgraphs.hpp svneol=native#text/plain
 boost/graph/mesh_graph_generator.hpp svneol=native#text/plain
 boost/graph/metis.hpp svneol=native#text/plain
 boost/graph/metric_tsp_approx.hpp svneol=native#text/plain
