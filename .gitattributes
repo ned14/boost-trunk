@@ -14606,49 +14606,20 @@ libs/math/doc/sf_and_dist/win32_nmake.mak svneol=native#text/plain
 libs/math/doc/sf_and_dist/zeta.qbk svneol=native#text/plain
 libs/math/dot_net_example/Setupdistex/Release/Setupdistex.msi -text
 libs/math/dot_net_example/Setupdistex/Release/setup.exe -text
-libs/math/dot_net_example/Setupdistex/Setupdistex.vdproj svneol=native#text/plain
 libs/math/dot_net_example/boost_math/AssemblyInfo.cpp svneol=native#text/plain
 libs/math/dot_net_example/boost_math/ReadMe.txt svneol=native#text/plain
 libs/math/dot_net_example/boost_math/Stdafx.cpp svneol=native#text/plain
 libs/math/dot_net_example/boost_math/Stdafx.h svneol=native#text/plain
 libs/math/dot_net_example/boost_math/app.ico -text svneol=unset#image/ico
-libs/math/dot_net_example/boost_math/app.rc svneol=native#text/plain
 libs/math/dot_net_example/boost_math/boost_math.cpp svneol=native#text/plain
 libs/math/dot_net_example/boost_math/boost_math.h svneol=native#text/plain
-libs/math/dot_net_example/boost_math/boost_math.sln svneol=native#text/plain
 libs/math/dot_net_example/boost_math/boost_math.sln.lnk -text
-libs/math/dot_net_example/boost_math/boost_math.vcproj svneol=native#text/plain
 libs/math/dot_net_example/boost_math/resource.h svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/AboutDistEx.resx svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/AboutDistributionExplorer.Designer.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/AboutDistributionExplorer.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/AboutDistributionExplorer.resx svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/ClassDiagram1.cd svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/ClassDiagram2.cd svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/DistexForm.Designer.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/DistexForm.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/DistexForm.resx svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/DistexSplash.Designer.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/DistexSplash.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/DistexSplash.resx svneol=native#text/plain
 libs/math/dot_net_example/distribution_explorer/IconToolkit.ico -text svneol=unset#image/ico
-libs/math/dot_net_example/distribution_explorer/Program.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/Properties/AssemblyInfo.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/Properties/Resources.Designer.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/Properties/Resources.resx svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/Properties/Settings.Designer.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/Properties/Settings.settings svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/Properties/app.manifest svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/Settings.cs svneol=native#text/plain
+libs/math/dot_net_example/distribution_explorer/Properties/app.manifest -text
 libs/math/dot_net_example/distribution_explorer/ToolkitLogo.bmp -text svneol=unset#image/bmp
 libs/math/dot_net_example/distribution_explorer/boost.png -text svneol=unset#image/png
-libs/math/dot_net_example/distribution_explorer/distexAboutBox.Designer.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/distexAboutBox.cs svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/distexAboutBox.resx svneol=native#text/plain
 libs/math/dot_net_example/distribution_explorer/distribution.txt svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/distribution_explorer.csproj svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/distribution_explorer.csproj.user svneol=native#text/plain
-libs/math/dot_net_example/distribution_explorer/distribution_explorer.sln svneol=native#text/plain
 libs/math/dot_net_example/distribution_explorer/distribution_explorer.sln.lnk -text
 libs/math/dot_net_example/distribution_explorer/distribution_explorer.suo -text
 libs/math/example/Jamfile.v2 svneol=native#text/plain
