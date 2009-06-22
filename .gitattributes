@@ -11067,6 +11067,7 @@ libs/graph/test/make_connected_test.cpp svneol=native#text/plain
 libs/graph/test/make_maximal_planar_test.cpp svneol=native#text/plain
 libs/graph/test/matching_test.cpp svneol=native#text/plain
 libs/graph/test/max_flow_test.cpp svneol=native#text/plain
+libs/graph/test/mcgregor_subgraphs_test.cpp svneol=native#text/plain
 libs/graph/test/mean_geodesic.cpp svneol=native#text/plain
 libs/graph/test/metis_test.cpp svneol=native#text/plain
 libs/graph/test/metric_tsp_approx.cpp svneol=native#text/plain
