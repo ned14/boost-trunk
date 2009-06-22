@@ -860,7 +860,6 @@ boost/flyweight/assoc_container_factory_fwd.hpp svneol=native#text/plain
 boost/flyweight/detail/default_value_policy.hpp svneol=native#text/plain
 boost/flyweight/detail/dyn_perfect_fwd.hpp svneol=native#text/plain
 boost/flyweight/detail/flyweight_core.hpp svneol=native#text/plain
-boost/flyweight/detail/handle_factory_adaptor.hpp svneol=native#text/plain
 boost/flyweight/detail/is_placeholder_expr.hpp svneol=native#text/plain
 boost/flyweight/detail/nested_xxx_if_not_ph.hpp svneol=native#text/plain
 boost/flyweight/detail/not_placeholder_expr.hpp svneol=native#text/plain
