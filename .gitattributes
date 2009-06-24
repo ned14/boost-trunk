@@ -19737,7 +19737,10 @@ libs/spirit/repository/doc/html/spirit_repository/karma_confix_generator.html sv
 libs/spirit/repository/doc/html/spirit_repository/preface.html svneol=native#text/html
 libs/spirit/repository/doc/html/spirit_repository/qi_components.html svneol=native#text/html
 libs/spirit/repository/doc/karma.qbk svneol=native#text/plain
+libs/spirit/repository/doc/karma/compound_generators.qbk svneol=native#text/plain
 libs/spirit/repository/doc/karma/confix.qbk svneol=native#text/plain
+libs/spirit/repository/doc/karma/directives.qbk svneol=native#text/plain
+libs/spirit/repository/doc/karma/primitive_generators.qbk svneol=native#text/plain
 libs/spirit/repository/doc/preface.qbk svneol=native#text/plain
 libs/spirit/repository/doc/qi.qbk svneol=native#text/plain
 libs/spirit/repository/doc/repository_template.qbk svneol=native#text/plain
