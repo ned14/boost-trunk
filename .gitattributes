@@ -10823,6 +10823,7 @@ libs/graph/example/max_flow6.dat svneol=native#text/plain
 libs/graph/example/max_flow7.dat svneol=native#text/plain
 libs/graph/example/max_flow8.dat svneol=native#text/plain
 libs/graph/example/max_flow9.dat svneol=native#text/plain
+libs/graph/example/mcgregor_subgraphs_example.cpp svneol=native#text/plain
 libs/graph/example/mean_geodesic.cpp svneol=native#text/plain
 libs/graph/example/miles_span.cpp svneol=native#text/plain
 libs/graph/example/miles_span.expected svneol=native#text/plain
