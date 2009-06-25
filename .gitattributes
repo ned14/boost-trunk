@@ -10590,6 +10590,7 @@ libs/graph/doc/make_connected.html svneol=native#text/html
 libs/graph/doc/make_maximal_planar.html svneol=native#text/html
 libs/graph/doc/math.sty svneol=native#text/plain
 libs/graph/doc/maximum_matching.html svneol=native#text/html
+libs/graph/doc/mcgregor_common_subgraphs.html svneol=native#text/html
 libs/graph/doc/metric_tsp_approx.html svneol=native#text/html
 libs/graph/doc/minimum_degree_ordering.html svneol=native#text/html
 libs/graph/doc/minimum_degree_ordering.w svneol=native#text/plain
