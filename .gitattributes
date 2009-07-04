@@ -19486,6 +19486,7 @@ libs/spirit/doc/qi.qbk svneol=native#text/plain
 libs/spirit/doc/qi/action.qbk svneol=native#text/plain
 libs/spirit/doc/qi/actions.qbk svneol=native#text/plain
 libs/spirit/doc/qi/auxiliary.qbk svneol=native#text/plain
+libs/spirit/doc/qi/basics.qbk svneol=native#text/plain
 libs/spirit/doc/qi/binary.qbk svneol=native#text/plain
 libs/spirit/doc/qi/char.qbk svneol=native#text/plain
 libs/spirit/doc/qi/complex.qbk svneol=native#text/plain
