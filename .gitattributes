@@ -19493,7 +19493,6 @@ libs/spirit/doc/notes/style_guide.qbk svneol=native#text/plain
 libs/spirit/doc/outline.txt svneol=native#text/plain
 libs/spirit/doc/preface.qbk svneol=native#text/plain
 libs/spirit/doc/qi.qbk svneol=native#text/plain
-libs/spirit/doc/qi/Copy[!!-~]of[!!-~]concepts.qbk svneol=native#text/plain
 libs/spirit/doc/qi/action.qbk svneol=native#text/plain
 libs/spirit/doc/qi/actions.qbk svneol=native#text/plain
 libs/spirit/doc/qi/auxiliary.qbk svneol=native#text/plain
