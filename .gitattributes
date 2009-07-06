@@ -19459,6 +19459,7 @@ libs/spirit/doc/html/spirit/what_s_new.html svneol=native#text/html
 libs/spirit/doc/introduction.qbk svneol=native#text/plain
 libs/spirit/doc/karma.qbk svneol=native#text/plain
 libs/spirit/doc/karma/action.qbk svneol=native#text/plain
+libs/spirit/doc/karma/actions.qbk svneol=native#text/plain
 libs/spirit/doc/karma/auxiliary.qbk svneol=native#text/plain
 libs/spirit/doc/karma/binary.qbk svneol=native#text/plain
 libs/spirit/doc/karma/char.qbk svneol=native#text/plain
