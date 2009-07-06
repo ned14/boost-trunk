@@ -19464,6 +19464,7 @@ libs/spirit/doc/karma/actions.qbk svneol=native#text/plain
 libs/spirit/doc/karma/auxiliary.qbk svneol=native#text/plain
 libs/spirit/doc/karma/binary.qbk svneol=native#text/plain
 libs/spirit/doc/karma/char.qbk svneol=native#text/plain
+libs/spirit/doc/karma/concepts.qbk svneol=native#text/plain
 libs/spirit/doc/karma/directive.qbk svneol=native#text/plain
 libs/spirit/doc/karma/nonterminal.qbk svneol=native#text/plain
 libs/spirit/doc/karma/numeric.qbk svneol=native#text/plain
