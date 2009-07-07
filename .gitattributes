@@ -12322,6 +12322,7 @@ libs/graph_parallel/test/distributed_rmat_cc.cpp svneol=native#text/plain
 libs/graph_parallel/test/distributed_rmat_cc_ps.cpp svneol=native#text/plain
 libs/graph_parallel/test/distributed_rmat_pagerank.cpp svneol=native#text/plain
 libs/graph_parallel/test/distributed_shortest_paths_test.cpp svneol=native#text/plain
+libs/graph_parallel/test/distributed_st_connected_test.cpp svneol=native#text/plain
 libs/graph_parallel/test/distributed_strong_components_test.cpp svneol=native#text/plain
 libs/graph_parallel/test/hohberg_biconnected_components_test.cpp svneol=native#text/plain
 libs/graph_parallel/test/mesh_generator_test.cpp svneol=native#text/plain
