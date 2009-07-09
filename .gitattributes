@@ -8651,10 +8651,18 @@ libs/dynamic_bitset/test/CMakeLists.txt svneol=native#text/plain
 libs/exception/CMakeLists.txt svneol=native#text/plain
 libs/exception/doc/BOOST_THROW_EXCEPTION.html svneol=LF#text/html eol=lf
 libs/exception/doc/boost-exception.html svneol=LF#text/html eol=lf
+libs/exception/doc/boost_exception_all_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_current_exception_cast_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_diagnostic_information_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_enable_current_exception_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_enable_error_info_hpp.html svneol=native#text/html
+libs/exception/doc/boost_exception_errinfo_api_function_hpp.html svneol=native#text/html
+libs/exception/doc/boost_exception_errinfo_at_line_hpp.html svneol=native#text/html
+libs/exception/doc/boost_exception_errinfo_errno_hpp.html svneol=native#text/html
+libs/exception/doc/boost_exception_errinfo_file_handle_hpp.html svneol=native#text/html
+libs/exception/doc/boost_exception_errinfo_file_name_hpp.html svneol=native#text/html
+libs/exception/doc/boost_exception_errinfo_file_open_mode_hpp.html svneol=native#text/html
+libs/exception/doc/boost_exception_errinfo_type_info_name_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_error_info_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_exception_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_get_error_info_hpp.html svneol=native#text/html
@@ -8671,6 +8679,13 @@ libs/exception/doc/current_exception_diagnostic_information.html svneol=native#t
 libs/exception/doc/diagnostic_information.html svneol=LF#text/html eol=lf
 libs/exception/doc/enable_current_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/enable_error_info.html svneol=LF#text/html eol=lf
+libs/exception/doc/errinfo_api_function.html svneol=native#text/html
+libs/exception/doc/errinfo_at_line.html svneol=native#text/html
+libs/exception/doc/errinfo_errno.html svneol=native#text/html
+libs/exception/doc/errinfo_file_handle.html svneol=native#text/html
+libs/exception/doc/errinfo_file_name.html svneol=native#text/html
+libs/exception/doc/errinfo_file_open_mode.html svneol=native#text/html
+libs/exception/doc/errinfo_type_info_name.html svneol=native#text/html
 libs/exception/doc/error_info.html svneol=LF#text/html eol=lf
 libs/exception/doc/error_info_error_info.html svneol=LF#text/html eol=lf
 libs/exception/doc/error_info_value.html svneol=LF#text/html eol=lf
