@@ -8731,6 +8731,7 @@ libs/exception/example/Jamfile svneol=native#text/plain
 libs/exception/example/cloning_1.cpp svneol=native#text/plain
 libs/exception/example/cloning_2.cpp svneol=native#text/plain
 libs/exception/example/enable_error_info.cpp svneol=native#text/plain
+libs/exception/example/errinfos.cpp svneol=native#text/plain
 libs/exception/example/error_info_1.cpp svneol=native#text/plain
 libs/exception/example/error_info_2.cpp svneol=native#text/plain
 libs/exception/example/example_io.cpp svneol=native#text/plain
