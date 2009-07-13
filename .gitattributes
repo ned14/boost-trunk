@@ -18833,6 +18833,7 @@ libs/serialization/vc7ide/test_reset_object_addr.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_set.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_shared_ptr.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_shared_ptr_132.vcproj svneol=native#text/xml
+libs/serialization/vc7ide/test_shared_ptr_multi_base.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_simple_class.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_simple_class_ptr.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_singleton.vcproj svneol=native#text/xml
