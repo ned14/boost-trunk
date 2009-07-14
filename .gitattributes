@@ -16192,6 +16192,7 @@ libs/mpl/test/pair_view.cpp svneol=native#text/plain
 libs/mpl/test/partition.cpp svneol=native#text/plain
 libs/mpl/test/pop_front.cpp svneol=native#text/plain
 libs/mpl/test/print.cpp svneol=native#text/plain
+libs/mpl/test/push_back.cpp svneol=native#text/plain
 libs/mpl/test/push_front.cpp svneol=native#text/plain
 libs/mpl/test/quote.cpp svneol=native#text/plain
 libs/mpl/test/range_c.cpp svneol=native#text/plain
