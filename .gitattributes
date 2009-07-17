@@ -187,6 +187,7 @@ boost/archive/detail/polymorphic_oarchive_route.hpp svneol=native#text/plain
 boost/archive/detail/register_archive.hpp svneol=native#text/plain
 boost/archive/detail/utf8_codecvt_facet.hpp svneol=native#text/plain
 boost/archive/dinkumware.hpp svneol=native#text/plain
+boost/archive/impl/archive_serializer_map.ipp svneol=native#text/plain
 boost/archive/impl/basic_binary_iarchive.ipp svneol=native#text/plain
 boost/archive/impl/basic_binary_iprimitive.ipp svneol=native#text/plain
 boost/archive/impl/basic_binary_oarchive.ipp svneol=native#text/plain
