@@ -5559,6 +5559,7 @@ boost/spirit/home/support/make_component.hpp svneol=native#text/plain
 boost/spirit/home/support/meta_compiler.hpp svneol=native#text/plain
 boost/spirit/home/support/modify.hpp svneol=native#text/plain
 boost/spirit/home/support/multi_pass.hpp svneol=native#text/plain
+boost/spirit/home/support/multi_pass_wrapper.hpp svneol=native#text/plain
 boost/spirit/home/support/nonterminal/expand_arg.hpp svneol=native#text/plain
 boost/spirit/home/support/nonterminal/locals.hpp svneol=native#text/plain
 boost/spirit/home/support/safe_bool.hpp svneol=native#text/plain
