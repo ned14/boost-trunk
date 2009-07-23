@@ -19940,7 +19940,6 @@ libs/spirit/test/qi/difference.cpp svneol=native#text/plain
 libs/spirit/test/qi/end.cpp svneol=native#text/plain
 libs/spirit/test/qi/eps.cpp svneol=native#text/plain
 libs/spirit/test/qi/expect.cpp svneol=native#text/plain
-libs/spirit/test/qi/functor.cpp svneol=native#text/plain
 libs/spirit/test/qi/grammar.cpp svneol=native#text/plain
 libs/spirit/test/qi/grammar_fail.cpp svneol=native#text/plain
 libs/spirit/test/qi/int.cpp svneol=native#text/plain
