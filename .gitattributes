@@ -5395,6 +5395,7 @@ boost/spirit/home/qi.hpp svneol=native#text/plain
 boost/spirit/home/qi/action.hpp svneol=native#text/plain
 boost/spirit/home/qi/action/action.hpp svneol=native#text/plain
 boost/spirit/home/qi/auxiliary.hpp svneol=native#text/plain
+boost/spirit/home/qi/auxiliary/attr.hpp svneol=native#text/plain
 boost/spirit/home/qi/auxiliary/eoi.hpp svneol=native#text/plain
 boost/spirit/home/qi/auxiliary/eol.hpp svneol=native#text/plain
 boost/spirit/home/qi/auxiliary/eps.hpp svneol=native#text/plain
