@@ -23251,6 +23251,7 @@ tools/release/diff_trunk_release.bat svneol=native#text/plain
 tools/release/index.html svneol=native#text/html
 tools/release/inspect.sh svneol=LF#text/x-sh eol=lf
 tools/release/inspect_trunk.bat svneol=native#text/plain
+tools/release/linux_user-config.jam svneol=native#text/plain
 tools/release/load_posix.sh svneol=LF#text/x-sh eol=lf
 tools/release/load_windows.sh svneol=LF#text/x-sh eol=lf
 tools/release/make_packages.sh svneol=LF#text/x-sh eol=lf
