@@ -7,4 +7,5 @@
 ===============================================================================/]
 
 [section Qi Parser Directives]
+[include        distinct.qbk]
 [endsect]
