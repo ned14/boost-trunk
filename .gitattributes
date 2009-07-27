@@ -22297,6 +22297,7 @@ tools/build/v2/hacking.txt svneol=native#text/plain
 tools/build/v2/index.html svneol=native#text/html
 tools/build/v2/kernel/boost-build.jam svneol=native#text/plain
 tools/build/v2/kernel/bootstrap.jam svneol=native#text/plain
+tools/build/v2/kernel/bootstrap.py svneol=native#text/x-python
 tools/build/v2/kernel/class.jam svneol=native#text/plain
 tools/build/v2/kernel/errors.jam svneol=native#text/plain
 tools/build/v2/kernel/modules.jam svneol=native#text/plain
