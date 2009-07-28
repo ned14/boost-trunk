@@ -19912,6 +19912,7 @@ libs/spirit/test/karma/eol.cpp svneol=native#text/plain
 libs/spirit/test/karma/eps.cpp svneol=native#text/plain
 libs/spirit/test/karma/format_manip.cpp svneol=native#text/plain
 libs/spirit/test/karma/format_manip_attr.cpp svneol=native#text/plain
+libs/spirit/test/karma/format_pointer_container.cpp svneol=native#text/plain
 libs/spirit/test/karma/functor.cpp svneol=native#text/plain
 libs/spirit/test/karma/generate_attr.cpp svneol=native#text/plain
 libs/spirit/test/karma/grammar.cpp svneol=native#text/plain
