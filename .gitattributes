@@ -18731,6 +18731,7 @@ libs/serialization/test/test_list_ptrs.cpp svneol=native#text/plain
 libs/serialization/test/test_map.cpp svneol=native#text/plain
 libs/serialization/test/test_mi.cpp svneol=native#text/plain
 libs/serialization/test/test_mult_archive_types.cpp svneol=native#text/plain
+libs/serialization/test/test_multiple_inheritance.cpp svneol=native#text/plain
 libs/serialization/test/test_multiple_ptrs.cpp svneol=native#text/plain
 libs/serialization/test/test_new_operator.cpp svneol=native#text/plain
 libs/serialization/test/test_no_rtti.cpp svneol=native#text/plain
