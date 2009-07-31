@@ -18829,6 +18829,7 @@ libs/serialization/vc7ide/test_list_ptrs.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_map.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_mi.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_mult_archive_types.vcproj svneol=native#text/xml
+libs/serialization/vc7ide/test_multiple_inheritance.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_multiple_ptrs.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_new_operator.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_no_rtti.vcproj svneol=native#text/xml
