@@ -5699,6 +5699,7 @@ boost/spirit/include/classic_version.hpp svneol=native#text/plain
 boost/spirit/include/classic_while.hpp svneol=native#text/plain
 boost/spirit/include/karma.hpp svneol=native#text/plain
 boost/spirit/include/karma_action.hpp svneol=native#text/plain
+boost/spirit/include/karma_alternative.hpp svneol=native#text/plain
 boost/spirit/include/karma_auxiliary.hpp svneol=native#text/plain
 boost/spirit/include/karma_binary.hpp svneol=native#text/plain
 boost/spirit/include/karma_char.hpp svneol=native#text/plain
