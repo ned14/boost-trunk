@@ -20,9 +20,12 @@ libs/python/pyste/tests/*.pyc
 libs/python/pyste/tests/.sconsign
 libs/python/pyste/tests/cache
 libs/spirit/build
+libs/spirit/build.vc10
 libs/spirit/doc/html/images/Thumbs.db
 libs/spirit/doc/html/spirit2_HTML.manifest
 libs/spirit/phoenix/doc/html/quickbook_HTML.manifest
+libs/spirit/repository/build
+libs/spirit/repository/doc/html/spirit2_repository_HTML.manifest
 libs/test/build/bin
 libs/test/example/bin
 libs/test/test/auto-link-test/res
