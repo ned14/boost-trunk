@@ -5715,6 +5715,7 @@ boost/spirit/include/karma_lazy.hpp svneol=native#text/plain
 boost/spirit/include/karma_nonterminal.hpp svneol=native#text/plain
 boost/spirit/include/karma_numeric.hpp svneol=native#text/plain
 boost/spirit/include/karma_operator.hpp svneol=native#text/plain
+boost/spirit/include/karma_plus.hpp svneol=native#text/plain
 boost/spirit/include/karma_sequence.hpp svneol=native#text/plain
 boost/spirit/include/karma_stream.hpp svneol=native#text/plain
 boost/spirit/include/karma_string.hpp svneol=native#text/plain
