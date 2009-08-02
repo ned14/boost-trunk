@@ -19494,6 +19494,8 @@ libs/spirit/doc/html/spirit/karma/reference/generator_concepts/unarygenerator.ht
 libs/spirit/doc/html/spirit/karma/reference/karma_basics.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/operator.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/operator/alternative.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/reference/operator/kleene.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/reference/operator/plus.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/operator/sequence.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/tutorials.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/tutorials/karma_attributes.html svneol=native#text/html
