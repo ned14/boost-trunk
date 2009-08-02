@@ -5710,6 +5710,7 @@ boost/spirit/include/karma_eol.hpp svneol=native#text/plain
 boost/spirit/include/karma_eps.hpp svneol=native#text/plain
 boost/spirit/include/karma_generate.hpp svneol=native#text/plain
 boost/spirit/include/karma_generate_attr.hpp svneol=native#text/plain
+boost/spirit/include/karma_kleene.hpp svneol=native#text/plain
 boost/spirit/include/karma_lazy.hpp svneol=native#text/plain
 boost/spirit/include/karma_nonterminal.hpp svneol=native#text/plain
 boost/spirit/include/karma_numeric.hpp svneol=native#text/plain
