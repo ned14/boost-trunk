@@ -5719,6 +5719,7 @@ boost/spirit/include/karma_list.hpp svneol=native#text/plain
 boost/spirit/include/karma_nonterminal.hpp svneol=native#text/plain
 boost/spirit/include/karma_not_predicate.hpp svneol=native#text/plain
 boost/spirit/include/karma_numeric.hpp svneol=native#text/plain
+boost/spirit/include/karma_omit.hpp svneol=native#text/plain
 boost/spirit/include/karma_operator.hpp svneol=native#text/plain
 boost/spirit/include/karma_optional.hpp svneol=native#text/plain
 boost/spirit/include/karma_plus.hpp svneol=native#text/plain
