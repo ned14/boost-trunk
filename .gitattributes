@@ -6275,6 +6275,7 @@ boost/type_traits/is_arithmetic.hpp svneol=native#text/plain
 boost/type_traits/is_array.hpp svneol=native#text/plain
 boost/type_traits/is_base_and_derived.hpp svneol=native#text/plain
 boost/type_traits/is_base_of.hpp svneol=native#text/plain
+boost/type_traits/is_base_of_tr1.hpp svneol=native#text/plain
 boost/type_traits/is_class.hpp svneol=native#text/plain
 boost/type_traits/is_complex.hpp svneol=native#text/plain
 boost/type_traits/is_compound.hpp svneol=native#text/plain
