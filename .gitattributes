@@ -7802,6 +7802,7 @@ libs/bind/test/mem_fn_rv_test.cpp svneol=native#text/plain
 libs/bind/test/mem_fn_stdcall_test.cpp svneol=native#text/plain
 libs/bind/test/mem_fn_test.cpp svneol=native#text/plain
 libs/bind/test/mem_fn_void_test.cpp svneol=native#text/plain
+libs/bind/test/protect_test.cpp svneol=native#text/plain
 libs/bind/test/ref_fn_test.cpp svneol=native#text/plain
 libs/circular_buffer/CMakeLists.txt svneol=native#text/plain
 libs/circular_buffer/doc/Doxyfile svneol=native#text/plain
