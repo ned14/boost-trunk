@@ -7095,6 +7095,7 @@ libs/accumulators/doc/Jamfile.v2 svneol=native#text/plain
 libs/accumulators/doc/accumulators.qbk svneol=native#text/plain
 libs/accumulators/example/CMakeLists.txt svneol=native#text/plain
 libs/accumulators/example/Jamfile.v2 svneol=native#text/plain
+libs/accumulators/example/example.vcproj svneol=native#text/plain
 libs/accumulators/example/main.cpp svneol=native#text/plain
 libs/accumulators/index.html svneol=native#text/html
 libs/accumulators/module.cmake svneol=native#text/plain
