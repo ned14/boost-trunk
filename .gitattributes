@@ -23298,6 +23298,7 @@ tools/regression/test/test-cases/incremental/bjam.log.1 svneol=native#text/plain
 tools/regression/test/test-cases/incremental/expected/results.xml svneol=native#text/xml
 tools/regression/test/test.bat svneol=native#text/plain
 tools/regression/test/test.py svneol=native#text/x-python
+tools/regression/xsl_reports/README.txt svneol=native#text/plain
 tools/regression/xsl_reports/boost_wide_report.py svneol=native#text/x-python
 tools/regression/xsl_reports/boostbook_report.py svneol=native#text/x-python
 tools/regression/xsl_reports/build_results.sh svneol=LF#text/x-sh eol=lf
