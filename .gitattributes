@@ -19596,7 +19596,6 @@ libs/spirit/doc/html/spirit/qi/reference.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary/attr.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/basics.html svneol=native#text/html
-libs/spirit/doc/html/spirit/qi/reference/char_.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive/no_case.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/parser_concepts.html svneol=native#text/html
@@ -19608,9 +19607,6 @@ libs/spirit/doc/html/spirit/qi/reference/parser_concepts/unaryparser.html svneol
 libs/spirit/doc/html/spirit/qi/reference/string.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/string/lit_string.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/string/symbols.html svneol=native#text/html
-libs/spirit/doc/html/spirit/qi/string.html svneol=native#text/html
-libs/spirit/doc/html/spirit/qi/string/lit_string.html svneol=native#text/html
-libs/spirit/doc/html/spirit/qi/string/symbols.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/tutorials.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/tutorials/complex___our_first_complex_parser.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/tutorials/employee___parsing_into_structs.html svneol=native#text/html
