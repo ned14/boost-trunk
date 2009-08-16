@@ -19532,6 +19532,7 @@ libs/spirit/doc/html/spirit/karma/reference/directive.html svneol=native#text/ht
 libs/spirit/doc/html/spirit/karma/reference/directive/alignment.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/directive/buffer.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/directive/omit.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/reference/directive/repeat.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/generator_concepts.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/generator_concepts/binarygenerator.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/generator_concepts/generator.html svneol=native#text/html
