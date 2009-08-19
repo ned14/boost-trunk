@@ -7284,6 +7284,7 @@ libs/asio/doc/Jamfile.v2 svneol=native#text/plain
 libs/asio/doc/asio.qbk svneol=native#text/plain
 libs/asio/doc/doxy2qbk.pl svneol=native#text/x-perl
 libs/asio/doc/examples.qbk svneol=native#text/plain
+libs/asio/doc/history.qbk svneol=native#text/plain
 libs/asio/doc/index.xml svneol=native#text/xml
 libs/asio/doc/noncopyable_dox.txt svneol=native#text/plain
 libs/asio/doc/overview.qbk svneol=native#text/plain
