@@ -10667,6 +10667,7 @@ libs/graph/doc/graph_concepts.html svneol=native#text/html
 libs/graph/doc/graph_theory_review.html svneol=native#text/html
 libs/graph/doc/graph_traits.html svneol=native#text/html
 libs/graph/doc/grid_graph.html svneol=native#text/html
+libs/graph/doc/grid_graph_export_svg.sh svneol=native#text/plain
 libs/graph/doc/gursoy_atun_layout.html svneol=native#text/html
 libs/graph/doc/history.html svneol=native#text/html
 libs/graph/doc/howard_cycle_ratio.html svneol=native#text/html
