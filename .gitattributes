@@ -8825,6 +8825,7 @@ libs/exception/test/errinfo_file_open_mode_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfo_type_info_name_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfos_test.cpp svneol=native#text/plain
 libs/exception/test/errno_test.cpp svneol=native#text/plain
+libs/exception/test/error_info_const_fail.cpp svneol=native#text/plain
 libs/exception/test/error_info_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/error_info_test.cpp svneol=native#text/plain
 libs/exception/test/exception_fail.cpp svneol=native#text/plain
