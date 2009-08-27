@@ -23477,6 +23477,7 @@ tools/release/snapshot_posix.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_windows.bat svneol=native#text/plain
 tools/release/snapshot_windows.sh svneol=LF#text/x-sh eol=lf
 tools/release/strftime.cpp svneol=native#text/plain
+tools/release/upload2sourceforge.bat svneol=native#text/plain
 tools/wave/CMakeLists.txt svneol=native#text/plain
 tools/wave/build/Jamfile.v2 svneol=native#text/plain
 tools/wave/cpp.cpp svneol=native#text/plain
