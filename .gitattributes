@@ -19661,6 +19661,7 @@ libs/spirit/doc/html/spirit/qi/reference/auxiliary/lazy.html svneol=native#text/
 libs/spirit/doc/html/spirit/qi/reference/basics.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/char.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/char/char.html svneol=native#text/html
+libs/spirit/doc/html/spirit/qi/reference/char/char_class.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/char/lit_char_.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive/no_case.html svneol=native#text/html
