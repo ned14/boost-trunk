@@ -6722,7 +6722,6 @@ boost/unordered/detail/insert.hpp svneol=native#text/plain
 boost/unordered/detail/manager.hpp svneol=native#text/plain
 boost/unordered/detail/move.hpp svneol=native#text/plain
 boost/unordered/detail/node.hpp svneol=native#text/plain
-boost/unordered/detail/structure.hpp svneol=native#text/plain
 boost/unordered/detail/table.hpp svneol=native#text/plain
 boost/unordered/detail/util.hpp svneol=native#text/plain
 boost/unordered/unordered_map.hpp svneol=native#text/plain
