@@ -11174,6 +11174,7 @@ libs/graph/test/graphviz_test.cpp svneol=native#text/plain
 libs/graph/test/grid_graph_cc.cpp svneol=native#text/plain
 libs/graph/test/grid_graph_test.cpp svneol=native#text/plain
 libs/graph/test/gursoy_atun_layout_test.cpp svneol=native#text/plain
+libs/graph/test/incremental_components_test.cpp svneol=native#text/plain
 libs/graph/test/index_graph.cpp svneol=native#text/plain
 libs/graph/test/is_straight_line_draw_test.cpp svneol=native#text/plain
 libs/graph/test/isomorphism.cpp svneol=native#text/plain
