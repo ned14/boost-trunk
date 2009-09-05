@@ -22781,7 +22781,6 @@ tools/build/v2/test/v1_testing/lib-err.cpp svneol=native#text/plain
 tools/build/v2/test/v1_testing/lib.cpp svneol=native#text/plain
 tools/build/v2/test/wrapper.py svneol=native#text/x-python
 tools/build/v2/test/wrong_project.py svneol=native#text/x-python
-tools/build/v2/to_merge.sh svneol=native#text/plain
 tools/build/v2/tools/__init__.py svneol=native#text/plain
 tools/build/v2/tools/acc.jam svneol=native#text/plain
 tools/build/v2/tools/bison.jam svneol=native#text/plain
