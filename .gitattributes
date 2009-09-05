@@ -19670,6 +19670,7 @@ libs/spirit/doc/html/spirit/qi/reference/directive.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive/no_case.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/numeric.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/numeric/int.html svneol=native#text/html
+libs/spirit/doc/html/spirit/qi/reference/numeric/real.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/numeric/uint.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/parser_concepts.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/parser_concepts/binaryparser.html svneol=native#text/html
