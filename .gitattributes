@@ -19673,6 +19673,7 @@ libs/spirit/doc/html/spirit/qi/reference/directive/no_case.html svneol=native#te
 libs/spirit/doc/html/spirit/qi/reference/directive/omit.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive/raw.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive/repeat.html svneol=native#text/html
+libs/spirit/doc/html/spirit/qi/reference/directive/skip.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/numeric.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/numeric/int.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/numeric/real.html svneol=native#text/html
