@@ -19,6 +19,10 @@ libs/python/pyste/tests/*.pch
 libs/python/pyste/tests/*.pyc
 libs/python/pyste/tests/.sconsign
 libs/python/pyste/tests/cache
+libs/spirit/benchmarks/qi/Copy[!!-~](2)[!!-~]of[!!-~]real_parser.cpp
+libs/spirit/benchmarks/qi/Copy[!!-~](2)[!!-~]of[!!-~]uint_parser.cpp
+libs/spirit/benchmarks/qi/Copy[!!-~]of[!!-~]real_parser.cpp
+libs/spirit/benchmarks/qi/Copy[!!-~]of[!!-~]uint_parser.cpp
 libs/spirit/build
 libs/spirit/build.vc10
 libs/spirit/classic/doc/theme/Thumbs.db
