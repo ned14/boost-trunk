@@ -6494,6 +6494,7 @@ boost/units/base_units/us/minim.hpp svneol=native#text/plain
 boost/units/base_units/us/ounce.hpp svneol=native#text/plain
 boost/units/base_units/us/pint.hpp svneol=native#text/plain
 boost/units/base_units/us/pound.hpp svneol=native#text/plain
+boost/units/base_units/us/pound_force.hpp svneol=native#text/plain
 boost/units/base_units/us/quart.hpp svneol=native#text/plain
 boost/units/base_units/us/tablespoon.hpp svneol=native#text/plain
 boost/units/base_units/us/teaspoon.hpp svneol=native#text/plain
