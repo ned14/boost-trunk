@@ -16642,6 +16642,7 @@ libs/numeric/ublas/doc/operations_overview.htm svneol=native#text/html
 libs/numeric/ublas/doc/overview.htm svneol=native#text/html
 libs/numeric/ublas/doc/products.htm svneol=native#text/html
 libs/numeric/ublas/doc/range.htm svneol=native#text/html
+libs/numeric/ublas/doc/release_notes.htm svneol=native#text/html
 libs/numeric/ublas/doc/samples/Jamfile.v2 svneol=native#text/plain
 libs/numeric/ublas/doc/samples/banded_adaptor.cpp svneol=native#text/plain
 libs/numeric/ublas/doc/samples/banded_matrix.cpp svneol=native#text/plain
