@@ -19229,7 +19229,6 @@ libs/spirit/doc/html/spirit/lex/abstracts/lexer_static_model.html svneol=native#
 libs/spirit/doc/html/spirit/lex/abstracts/lexer_tokenizing.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/quick_reference.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/reference.html svneol=native#text/html
-libs/spirit/doc/html/spirit/lex/reference/lexer_class.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/reference/token_class.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/reference/tokendef_class.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/reference/tokenset_class.html svneol=native#text/html
