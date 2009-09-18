@@ -19624,6 +19624,7 @@ libs/spirit/doc/html/spirit/karma/tutorials/karma_attributes.html svneol=native#
 libs/spirit/doc/html/spirit/karma/tutorials/karma_complex.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/tutorials/karma_easier_complex.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/tutorials/num_list.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/tutorials/num_matrix.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/tutorials/quick_start.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/tutorials/semantic_actions.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/tutorials/warming_up.html svneol=native#text/html
