@@ -5550,6 +5550,7 @@ boost/spirit/home/support/detail/pow10.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/scoped_enum_emulation.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/sign.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/what_function.hpp svneol=native#text/plain
+boost/spirit/home/support/has_semantic_action.hpp svneol=native#text/plain
 boost/spirit/home/support/info.hpp svneol=native#text/plain
 boost/spirit/home/support/iterators/detail/buf_id_check_policy.hpp svneol=native#text/plain
 boost/spirit/home/support/iterators/detail/combine_policies.hpp svneol=native#text/plain
