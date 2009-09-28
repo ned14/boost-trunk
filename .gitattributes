@@ -19598,6 +19598,7 @@ libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators.html svne
 libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators/action.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators/auxiliary.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators/binary.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators/boolean.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators/char.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators/directives.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators/operators.html svneol=native#text/html
@@ -19635,6 +19636,7 @@ libs/spirit/doc/html/spirit/karma/reference/generator_concepts/primitivegenerato
 libs/spirit/doc/html/spirit/karma/reference/generator_concepts/unarygenerator.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/karma_basics.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/numeric.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/reference/numeric/boolean.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/numeric/real_number.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/numeric/signed_int.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/numeric/unsigned_int.html svneol=native#text/html
@@ -20174,6 +20176,7 @@ libs/spirit/test/karma/actions.cpp svneol=native#text/plain
 libs/spirit/test/karma/alternative.cpp svneol=native#text/plain
 libs/spirit/test/karma/and_predicate.cpp svneol=native#text/plain
 libs/spirit/test/karma/binary.cpp svneol=native#text/plain
+libs/spirit/test/karma/bool.cpp svneol=native#text/plain
 libs/spirit/test/karma/buffer.cpp svneol=native#text/plain
 libs/spirit/test/karma/case_handling.cpp svneol=native#text/plain
 libs/spirit/test/karma/center_alignment.cpp svneol=native#text/plain
