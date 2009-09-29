@@ -19616,6 +19616,7 @@ libs/spirit/doc/html/spirit/karma/quick_reference/primitive_generators/unsigned_
 libs/spirit/doc/html/spirit/karma/quick_reference/semantic_actions.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/auxiliary.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/reference/auxiliary/attr_cast.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/auxiliary/eol.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/auxiliary/eps.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/auxiliary/lazy.html svneol=native#text/html
@@ -20181,6 +20182,7 @@ libs/spirit/test/Jamfile svneol=native#text/plain
 libs/spirit/test/karma/actions.cpp svneol=native#text/plain
 libs/spirit/test/karma/alternative.cpp svneol=native#text/plain
 libs/spirit/test/karma/and_predicate.cpp svneol=native#text/plain
+libs/spirit/test/karma/attribute.cpp svneol=native#text/plain
 libs/spirit/test/karma/binary.cpp svneol=native#text/plain
 libs/spirit/test/karma/bool.cpp svneol=native#text/plain
 libs/spirit/test/karma/buffer.cpp svneol=native#text/plain
