@@ -8716,6 +8716,7 @@ libs/exception/doc/current_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/current_exception_cast.html svneol=LF#text/html eol=lf
 libs/exception/doc/current_exception_diagnostic_information.html svneol=LF#text/html eol=lf
 libs/exception/doc/diagnostic_information.html svneol=LF#text/html eol=lf
+libs/exception/doc/diagnostic_information_what.html svneol=native#text/html
 libs/exception/doc/enable_current_exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/enable_error_info.html svneol=LF#text/html eol=lf
 libs/exception/doc/errinfo_api_function.html svneol=native#text/html
@@ -8797,6 +8798,7 @@ libs/exception/test/errinfo_file_open_mode_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfo_type_info_name_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfos_test.cpp svneol=native#text/plain
 libs/exception/test/errno_test.cpp svneol=native#text/plain
+libs/exception/test/error_info_const_fail.cpp svneol=native#text/plain
 libs/exception/test/error_info_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/error_info_test.cpp svneol=native#text/plain
 libs/exception/test/exception_fail.cpp svneol=native#text/plain
