@@ -16620,6 +16620,7 @@ libs/numeric/ublas/test/Jamfile.v2 svneol=native#text/plain
 libs/numeric/ublas/test/README svneol=native#text/plain
 libs/numeric/ublas/test/common/init.hpp svneol=native#text/plain
 libs/numeric/ublas/test/common/testhelper.hpp svneol=native#text/plain
+libs/numeric/ublas/test/comp_mat_erase.cpp svneol=native#text/plain
 libs/numeric/ublas/test/concepts.cpp svneol=native#text/plain
 libs/numeric/ublas/test/manual/Jamfile.v2 svneol=native#text/plain
 libs/numeric/ublas/test/manual/sp_resize.cpp svneol=native#text/plain
