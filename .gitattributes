@@ -20025,6 +20025,7 @@ libs/spirit/example/qi/num_list1.cpp svneol=native#text/plain
 libs/spirit/example/qi/num_list2.cpp svneol=native#text/plain
 libs/spirit/example/qi/num_list3.cpp svneol=native#text/plain
 libs/spirit/example/qi/num_list4.cpp svneol=native#text/plain
+libs/spirit/example/qi/parse_date.cpp svneol=native#text/plain
 libs/spirit/example/qi/porting_guide_classic.cpp svneol=native#text/plain
 libs/spirit/example/qi/porting_guide_qi.cpp svneol=native#text/plain
 libs/spirit/example/qi/reference.cpp svneol=native#text/plain
