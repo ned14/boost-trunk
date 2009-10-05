@@ -3902,6 +3902,7 @@ boost/numeric/ublas/storage.hpp svneol=native#text/plain
 boost/numeric/ublas/storage_sparse.hpp svneol=native#text/plain
 boost/numeric/ublas/symmetric.hpp svneol=native#text/plain
 boost/numeric/ublas/traits.hpp svneol=native#text/plain
+boost/numeric/ublas/traits/c_array.hpp svneol=native#text/plain
 boost/numeric/ublas/triangular.hpp svneol=native#text/plain
 boost/numeric/ublas/vector.hpp svneol=native#text/plain
 boost/numeric/ublas/vector_expression.hpp svneol=native#text/plain
