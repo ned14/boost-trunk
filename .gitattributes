@@ -5547,6 +5547,7 @@ boost/spirit/home/support/argument.hpp svneol=native#text/plain
 boost/spirit/home/support/assert_msg.hpp svneol=native#text/plain
 boost/spirit/home/support/attributes.hpp svneol=native#text/plain
 boost/spirit/home/support/attributes_fwd.hpp svneol=native#text/plain
+boost/spirit/home/support/auxiliary/attr_cast.hpp svneol=native#text/plain
 boost/spirit/home/support/char_class.hpp svneol=native#text/plain
 boost/spirit/home/support/char_encoding/ascii.hpp svneol=native#text/plain
 boost/spirit/home/support/char_encoding/iso8859_1.hpp svneol=native#text/plain
