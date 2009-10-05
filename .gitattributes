@@ -1595,6 +1595,7 @@ boost/fusion/view/nview/detail/equal_to_impl.hpp svneol=native#text/plain
 boost/fusion/view/nview/detail/next_impl.hpp svneol=native#text/plain
 boost/fusion/view/nview/detail/nview_impl.hpp svneol=native#text/plain
 boost/fusion/view/nview/detail/prior_impl.hpp svneol=native#text/plain
+boost/fusion/view/nview/detail/size_impl.hpp svneol=native#text/plain
 boost/fusion/view/nview/detail/value_at_impl.hpp svneol=native#text/plain
 boost/fusion/view/nview/detail/value_of_impl.hpp svneol=native#text/plain
 boost/fusion/view/nview/nview.hpp svneol=native#text/plain
