@@ -19601,7 +19601,6 @@ libs/spirit/doc/html/images/callouts/6.png -text svneol=unset#image/png
 libs/spirit/doc/html/images/callouts/7.png -text svneol=unset#image/png
 libs/spirit/doc/html/images/callouts/8.png -text svneol=unset#image/png
 libs/spirit/doc/html/images/callouts/9.png -text svneol=unset#image/png
-libs/spirit/doc/html/images/callouts/Thumbs.db -text
 libs/spirit/doc/html/images/caution.png -text svneol=unset#image/png
 libs/spirit/doc/html/images/double_performance.png -text svneol=unset#image/png
 libs/spirit/doc/html/images/flowofcontrol.png -text svneol=unset#image/png
@@ -19635,6 +19634,7 @@ libs/spirit/doc/html/spirit/abstracts/customize.html svneol=native#text/html
 libs/spirit/doc/html/spirit/abstracts/customize/is_container.html svneol=native#text/html
 libs/spirit/doc/html/spirit/abstracts/customize/store_value.html svneol=native#text/html
 libs/spirit/doc/html/spirit/abstracts/customize/store_value/container_value.html svneol=native#text/html
+libs/spirit/doc/html/spirit/abstracts/customize/store_value/push_back.html svneol=native#text/html
 libs/spirit/doc/html/spirit/abstracts/indepth.html svneol=native#text/html
 libs/spirit/doc/html/spirit/abstracts/indepth/parsers_indepth.html svneol=native#text/html
 libs/spirit/doc/html/spirit/abstracts/parsing_expression_grammar.html svneol=native#text/html
