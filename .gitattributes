@@ -7039,6 +7039,7 @@ boost/xpressive/xpressive_typeof.hpp svneol=native#text/plain
 doc/CMakeLists.txt svneol=native#text/plain
 doc/Jamfile.v2 svneol=native#text/plain
 doc/html/CopyConstructible.html svneol=native#text/html
+doc/html/accumulators.html svneol=native#text/html
 doc/html/any.html svneol=native#text/html
 doc/html/array.html svneol=native#text/html
 doc/html/bbv2.html svneol=native#text/html
