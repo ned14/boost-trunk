@@ -19578,6 +19578,7 @@ libs/spirit/classic/test/typeof_support/typeof_utility.cpp svneol=native#text/pl
 libs/spirit/classic/test/while_p_as_parser_tests.cpp svneol=native#text/plain
 libs/spirit/classic/test/while_tests.cpp svneol=native#text/plain
 libs/spirit/doc/Jamfile svneol=native#text/plain
+libs/spirit/doc/Missing.txt svneol=native#text/plain
 libs/spirit/doc/abstracts.qbk svneol=native#text/plain
 libs/spirit/doc/abstracts/attributes.qbk svneol=native#text/plain
 libs/spirit/doc/abstracts/customization_points.qbk svneol=native#text/plain
