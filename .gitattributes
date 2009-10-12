@@ -19960,6 +19960,7 @@ libs/spirit/example/karma/calc2_ast_vm.hpp svneol=native#text/plain
 libs/spirit/example/karma/classify_char.cpp svneol=native#text/plain
 libs/spirit/example/karma/complex_number.cpp svneol=native#text/plain
 libs/spirit/example/karma/complex_number_easier.cpp svneol=native#text/plain
+libs/spirit/example/karma/generate_code.cpp svneol=native#text/plain
 libs/spirit/example/karma/key_value_sequence.cpp svneol=native#text/plain
 libs/spirit/example/karma/mini_xml_karma.cpp svneol=native#text/plain
 libs/spirit/example/karma/num_list1.cpp svneol=native#text/plain
