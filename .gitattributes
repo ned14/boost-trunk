@@ -849,6 +849,7 @@ boost/exception/errinfo_errno.hpp svneol=native#text/plain
 boost/exception/errinfo_file_handle.hpp svneol=native#text/plain
 boost/exception/errinfo_file_name.hpp svneol=native#text/plain
 boost/exception/errinfo_file_open_mode.hpp svneol=native#text/plain
+boost/exception/errinfo_nested_exception.hpp svneol=native#text/plain
 boost/exception/errinfo_type_info_name.hpp svneol=native#text/plain
 boost/exception/error_info.hpp svneol=native#text/plain
 boost/exception/exception.hpp svneol=native#text/plain
@@ -8807,6 +8808,7 @@ libs/exception/doc/boost_exception_errinfo_errno_hpp.html svneol=LF#text/html eo
 libs/exception/doc/boost_exception_errinfo_file_handle_hpp.html svneol=LF#text/html eol=lf
 libs/exception/doc/boost_exception_errinfo_file_name_hpp.html svneol=LF#text/html eol=lf
 libs/exception/doc/boost_exception_errinfo_file_open_mode_hpp.html svneol=LF#text/html eol=lf
+libs/exception/doc/boost_exception_errinfo_nested_exception_hpp.html svneol=native#text/html
 libs/exception/doc/boost_exception_errinfo_type_info_name_hpp.html svneol=LF#text/html eol=lf
 libs/exception/doc/boost_exception_error_info_hpp.html svneol=LF#text/html eol=lf
 libs/exception/doc/boost_exception_exception_hpp.html svneol=LF#text/html eol=lf
@@ -8831,6 +8833,7 @@ libs/exception/doc/errinfo_errno.html svneol=LF#text/html eol=lf
 libs/exception/doc/errinfo_file_handle.html svneol=LF#text/html eol=lf
 libs/exception/doc/errinfo_file_name.html svneol=LF#text/html eol=lf
 libs/exception/doc/errinfo_file_open_mode.html svneol=LF#text/html eol=lf
+libs/exception/doc/errinfo_nested_exception.html svneol=native#text/html
 libs/exception/doc/errinfo_type_info_name.html svneol=LF#text/html eol=lf
 libs/exception/doc/error_info.html svneol=LF#text/html eol=lf
 libs/exception/doc/error_info_error_info.html svneol=LF#text/html eol=lf
@@ -8901,6 +8904,7 @@ libs/exception/test/errinfo_errno_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfo_file_handle_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfo_file_name_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfo_file_open_mode_hpp_test.cpp svneol=native#text/plain
+libs/exception/test/errinfo_nested_exception_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfo_type_info_name_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/errinfos_test.cpp svneol=native#text/plain
 libs/exception/test/errno_test.cpp svneol=native#text/plain
