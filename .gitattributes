@@ -12857,6 +12857,7 @@ libs/intrusive/example/doc_iterator_from_value.cpp svneol=native#text/plain
 libs/intrusive/example/doc_list.cpp svneol=native#text/plain
 libs/intrusive/example/doc_list_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_offset_ptr.cpp svneol=native#text/plain
+libs/intrusive/example/doc_positional_insertion.cpp svneol=native#text/plain
 libs/intrusive/example/doc_rbtree_algorithms.cpp svneol=native#text/plain
 libs/intrusive/example/doc_set.cpp svneol=native#text/plain
 libs/intrusive/example/doc_sg_set.cpp svneol=native#text/plain
