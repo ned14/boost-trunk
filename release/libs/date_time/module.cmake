@@ -1,1 +1,0 @@
-boost_module(date_time DEPENDS algorithm)

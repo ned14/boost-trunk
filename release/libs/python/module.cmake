@@ -1,1 +1,0 @@
-boost_module(python DEPENDS graph)

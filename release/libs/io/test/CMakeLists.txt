@@ -1,3 +1,0 @@
-boost_test_run(ios_state_unit_test DEPENDS boost_unit_test_framework)
-boost_test_run(ios_state_test DEPENDS boost_test_exec_monitor)
-

@@ -1,2 +1,0 @@
-boost_test_run(minmax_element_test)
-boost_test_run(minmax_test)
