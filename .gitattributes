@@ -19303,6 +19303,7 @@ libs/spirit/doc/html/spirit/abstracts/indepth/parsers_indepth.html svneol=native
 libs/spirit/doc/html/spirit/abstracts/parsing_expression_grammar.html svneol=native#text/html
 libs/spirit/doc/html/spirit/abstracts/syntax_diagram.html svneol=native#text/html
 libs/spirit/doc/html/spirit/acknowledgments.html svneol=native#text/html
+libs/spirit/doc/html/spirit/advanced.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/assign_to.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/assign_to/assign_to_attribute_from_iterators.html svneol=native#text/html
@@ -19310,6 +19311,7 @@ libs/spirit/doc/html/spirit/advanced/customize/assign_to/assign_to_attribute_fro
 libs/spirit/doc/html/spirit/advanced/customize/clear_value.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/extract_from.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/is_container.html svneol=native#text/html
+libs/spirit/doc/html/spirit/advanced/customize/iterate.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/iterate/begin_container.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/iterate/compare_iterators.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/iterate/container_iterator.html svneol=native#text/html
