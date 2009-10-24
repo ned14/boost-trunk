@@ -19522,6 +19522,8 @@ libs/spirit/doc/html/spirit/karma/reference/generator_concepts/narygenerator.htm
 libs/spirit/doc/html/spirit/karma/reference/generator_concepts/primitivegenerator.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/generator_concepts/unarygenerator.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/karma_basics.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/reference/nonterminal.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/reference/nonterminal/rule.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/numeric.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/numeric/boolean.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/numeric/real_number.html svneol=native#text/html
