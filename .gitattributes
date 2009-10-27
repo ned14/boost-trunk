@@ -19666,6 +19666,8 @@ libs/spirit/doc/html/spirit/qi/reference/parser_concepts/nonterminal.html svneol
 libs/spirit/doc/html/spirit/qi/reference/parser_concepts/parser.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/parser_concepts/primitiveparser.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/parser_concepts/unaryparser.html svneol=native#text/html
+libs/spirit/doc/html/spirit/qi/reference/stream.html svneol=native#text/html
+libs/spirit/doc/html/spirit/qi/reference/stream/stream.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/string.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/string/string.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/string/symbols.html svneol=native#text/html
