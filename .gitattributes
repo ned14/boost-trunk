@@ -19624,6 +19624,7 @@ libs/spirit/doc/html/spirit/qi/reference.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/action.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary/attr.html svneol=native#text/html
+libs/spirit/doc/html/spirit/qi/reference/auxiliary/attr_cast.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary/eoi.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary/eol.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary/eps.html svneol=native#text/html
