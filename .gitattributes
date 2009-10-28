@@ -19621,6 +19621,7 @@ libs/spirit/doc/html/spirit/qi/quick_reference/qi_parsers/operator.html svneol=n
 libs/spirit/doc/html/spirit/qi/quick_reference/qi_parsers/string.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/quick_reference/semantic_actions.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference.html svneol=native#text/html
+libs/spirit/doc/html/spirit/qi/reference/action.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary/attr.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/auxiliary/eoi.html svneol=native#text/html
