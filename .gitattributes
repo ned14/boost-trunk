@@ -19803,6 +19803,7 @@ libs/spirit/doc/qi/num_list3.qbk svneol=native#text/plain
 libs/spirit/doc/qi/num_list4.qbk svneol=native#text/plain
 libs/spirit/doc/qi/numeric.qbk svneol=native#text/plain
 libs/spirit/doc/qi/operator.qbk svneol=native#text/plain
+libs/spirit/doc/qi/parse_api.qbk svneol=native#text/plain
 libs/spirit/doc/qi/quick_reference.qbk svneol=native#text/plain
 libs/spirit/doc/qi/roman.qbk svneol=native#text/plain
 libs/spirit/doc/qi/stream.qbk svneol=native#text/plain
