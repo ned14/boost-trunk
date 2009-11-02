@@ -5849,6 +5849,7 @@ boost/spirit/include/lex_lexertl.hpp svneol=native#text/plain
 boost/spirit/include/lex_primitives.hpp svneol=native#text/plain
 boost/spirit/include/lex_static_lexertl.hpp svneol=native#text/plain
 boost/spirit/include/lex_tokenize_and_parse.hpp svneol=native#text/plain
+boost/spirit/include/lex_tokenize_and_parse_attr.hpp svneol=native#text/plain
 boost/spirit/include/phoenix.hpp svneol=native#text/plain
 boost/spirit/include/phoenix1.hpp svneol=native#text/plain
 boost/spirit/include/phoenix1_actor.hpp svneol=native#text/plain
