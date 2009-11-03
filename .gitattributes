@@ -19868,6 +19868,7 @@ libs/spirit/example/karma/quick_start1.cpp svneol=native#text/plain
 libs/spirit/example/karma/reference.cpp svneol=native#text/plain
 libs/spirit/example/karma/reorder_struct.cpp svneol=native#text/plain
 libs/spirit/example/lex/Jamfile svneol=native#text/plain
+libs/spirit/example/lex/custom_token_attribute.cpp svneol=native#text/plain
 libs/spirit/example/lex/example.hpp svneol=native#text/plain
 libs/spirit/example/lex/example1.cpp svneol=native#text/plain
 libs/spirit/example/lex/example1.input svneol=native#text/plain
