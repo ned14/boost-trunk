@@ -19630,6 +19630,7 @@ libs/spirit/doc/html/spirit/lex/abstracts/lexer_tokenizing.html svneol=native#te
 libs/spirit/doc/html/spirit/lex/lexer_introduction.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/quick_reference.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/quick_reference/common_notation.html svneol=native#text/html
+libs/spirit/doc/html/spirit/lex/quick_reference/lexer.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/quick_reference/lexers.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/quick_reference/phoenix.html svneol=native#text/html
 libs/spirit/doc/html/spirit/lex/quick_reference/semantic_actions.html svneol=native#text/html
