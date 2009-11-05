@@ -21947,6 +21947,7 @@ libs/xpressive/doc/history.qbk svneol=native#text/plain
 libs/xpressive/doc/installation.qbk svneol=native#text/plain
 libs/xpressive/doc/introduction.qbk svneol=native#text/plain
 libs/xpressive/doc/matching.qbk svneol=native#text/plain
+libs/xpressive/doc/named_captures.qbk svneol=native#text/plain
 libs/xpressive/doc/nyi.qbk svneol=native#text/plain
 libs/xpressive/doc/perf.qbk svneol=native#text/plain
 libs/xpressive/doc/preface.qbk svneol=native#text/plain
