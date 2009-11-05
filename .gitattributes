@@ -10508,7 +10508,6 @@ libs/gil/test/performance.cpp svneol=native#text/plain
 libs/gil/test/pixel.cpp svneol=native#text/plain
 libs/gil/test/pixel_iterator.cpp svneol=native#text/plain
 libs/gil/test/sample_image.cpp svneol=native#text/plain
-libs/graph/LICENSE svneol=native#text/plain
 libs/graph/build/Jamfile.v2 svneol=native#text/plain
 libs/graph/doc/AStarHeuristic.html svneol=native#text/html
 libs/graph/doc/AStarVisitor.html svneol=native#text/html
