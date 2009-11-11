@@ -5334,6 +5334,7 @@ boost/spirit/home/lex/lexer/char_token_def.hpp svneol=native#text/plain
 boost/spirit/home/lex/lexer/lexer.hpp svneol=native#text/plain
 boost/spirit/home/lex/lexer/lexertl/functor.hpp svneol=native#text/plain
 boost/spirit/home/lex/lexer/lexertl/functor_data.hpp svneol=native#text/plain
+boost/spirit/home/lex/lexer/lexertl/generate_static.hpp svneol=native#text/plain
 boost/spirit/home/lex/lexer/lexertl/iterator.hpp svneol=native#text/plain
 boost/spirit/home/lex/lexer/lexertl/iterator_tokenizer.hpp svneol=native#text/plain
 boost/spirit/home/lex/lexer/lexertl/lexer.hpp svneol=native#text/plain
