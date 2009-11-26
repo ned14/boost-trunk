@@ -19865,6 +19865,7 @@ libs/spirit/example/karma/complex_number_easier.cpp svneol=native#text/plain
 libs/spirit/example/karma/customize_counter.cpp svneol=native#text/plain
 libs/spirit/example/karma/customize_embedded_container.cpp svneol=native#text/plain
 libs/spirit/example/karma/customize_use_as_container.cpp svneol=native#text/plain
+libs/spirit/example/karma/escaped_string.cpp svneol=native#text/plain
 libs/spirit/example/karma/generate_code.cpp svneol=native#text/plain
 libs/spirit/example/karma/key_value_sequence.cpp svneol=native#text/plain
 libs/spirit/example/karma/mini_xml_karma.cpp svneol=native#text/plain
