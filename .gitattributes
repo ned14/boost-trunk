@@ -20205,6 +20205,7 @@ libs/spirit/test/karma/right_alignment.cpp svneol=native#text/plain
 libs/spirit/test/karma/rule_fail.cpp svneol=native#text/plain
 libs/spirit/test/karma/sequence.cpp svneol=native#text/plain
 libs/spirit/test/karma/stream.cpp svneol=native#text/plain
+libs/spirit/test/karma/symbols.cpp svneol=native#text/plain
 libs/spirit/test/karma/test.hpp svneol=native#text/plain
 libs/spirit/test/karma/test_attr.hpp svneol=native#text/plain
 libs/spirit/test/karma/test_manip_attr.hpp svneol=native#text/plain
