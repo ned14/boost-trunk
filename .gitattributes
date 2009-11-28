@@ -20580,6 +20580,7 @@ libs/test/src/unit_test_parameters.cpp svneol=native#text/plain
 libs/test/src/unit_test_suite.cpp svneol=native#text/plain
 libs/test/src/xml_log_formatter.cpp svneol=native#text/plain
 libs/test/src/xml_report_formatter.cpp svneol=native#text/plain
+libs/test/test/CMakeLists.txt svneol=native#text/plain
 libs/test/test/Jamfile.v2 svneol=native#text/plain
 libs/test/test/algorithms_test.cpp svneol=native#text/plain
 libs/test/test/auto-link-test/auto_link_with_utf.cpp svneol=native#text/plain
