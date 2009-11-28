@@ -1,5 +1,6 @@
 /bin.v2
 /bjam.exe
+/dist
 libs/asio/doc/html
 libs/fusion/test/compile_time/*.test
 libs/iterator/doc/GNUmakefile
