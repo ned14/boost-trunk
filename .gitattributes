@@ -20255,6 +20255,7 @@ libs/spirit/test/qi/alternative.cpp svneol=native#text/plain
 libs/spirit/test/qi/and_predicate.cpp svneol=native#text/plain
 libs/spirit/test/qi/attr.cpp svneol=native#text/plain
 libs/spirit/test/qi/attribute.cpp svneol=native#text/plain
+libs/spirit/test/qi/auto.cpp svneol=native#text/plain
 libs/spirit/test/qi/binary.cpp svneol=native#text/plain
 libs/spirit/test/qi/bool.cpp svneol=native#text/plain
 libs/spirit/test/qi/char.cpp svneol=native#text/plain
