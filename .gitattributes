@@ -20182,6 +20182,7 @@ libs/spirit/test/karma/actions.cpp svneol=native#text/plain
 libs/spirit/test/karma/alternative.cpp svneol=native#text/plain
 libs/spirit/test/karma/and_predicate.cpp svneol=native#text/plain
 libs/spirit/test/karma/attribute.cpp svneol=native#text/plain
+libs/spirit/test/karma/auto.cpp svneol=native#text/plain
 libs/spirit/test/karma/binary.cpp svneol=native#text/plain
 libs/spirit/test/karma/bool.cpp svneol=native#text/plain
 libs/spirit/test/karma/buffer.cpp svneol=native#text/plain
