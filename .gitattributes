@@ -5285,6 +5285,7 @@ boost/spirit/home/karma/directive/right_alignment.hpp svneol=native#text/plain
 boost/spirit/home/karma/directive/upper_lower_case.hpp svneol=native#text/plain
 boost/spirit/home/karma/directive/verbatim.hpp svneol=native#text/plain
 boost/spirit/home/karma/domain.hpp svneol=native#text/plain
+boost/spirit/home/karma/format.hpp svneol=native#text/plain
 boost/spirit/home/karma/generate.hpp svneol=native#text/plain
 boost/spirit/home/karma/generate_attr.hpp svneol=native#text/plain
 boost/spirit/home/karma/generator.hpp svneol=native#text/plain
