@@ -19884,6 +19884,7 @@ libs/spirit/doc/support/multi_pass.qbk svneol=native#text/plain
 libs/spirit/doc/what_s_new.qbk svneol=native#text/plain
 libs/spirit/example/karma/Jamfile svneol=native#text/plain
 libs/spirit/example/karma/actions.cpp svneol=native#text/plain
+libs/spirit/example/karma/auto_facilities.cpp svneol=native#text/plain
 libs/spirit/example/karma/basic_facilities.cpp svneol=native#text/plain
 libs/spirit/example/karma/calc2_ast.hpp svneol=native#text/plain
 libs/spirit/example/karma/calc2_ast_dump.cpp svneol=native#text/plain
