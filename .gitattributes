@@ -20216,6 +20216,7 @@ libs/spirit/test/karma/case_handling.cpp svneol=native#text/plain
 libs/spirit/test/karma/center_alignment.cpp svneol=native#text/plain
 libs/spirit/test/karma/char.cpp svneol=native#text/plain
 libs/spirit/test/karma/char_class.cpp svneol=native#text/plain
+libs/spirit/test/karma/columns.cpp svneol=native#text/plain
 libs/spirit/test/karma/delimiter.cpp svneol=native#text/plain
 libs/spirit/test/karma/eol.cpp svneol=native#text/plain
 libs/spirit/test/karma/eps.cpp svneol=native#text/plain
