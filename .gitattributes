@@ -7957,6 +7957,7 @@ libs/bind/test/mem_fn_ref_test.cpp svneol=native#text/plain
 libs/bind/test/mem_fn_rv_test.cpp svneol=native#text/plain
 libs/bind/test/mem_fn_stdcall_test.cpp svneol=native#text/plain
 libs/bind/test/mem_fn_test.cpp svneol=native#text/plain
+libs/bind/test/mem_fn_unary_addr_test.cpp svneol=native#text/plain
 libs/bind/test/mem_fn_void_test.cpp svneol=native#text/plain
 libs/bind/test/protect_test.cpp svneol=native#text/plain
 libs/bind/test/ref_fn_test.cpp svneol=native#text/plain
