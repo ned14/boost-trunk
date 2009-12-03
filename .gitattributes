@@ -19160,6 +19160,7 @@ libs/smart_ptr/test/sp_recursive_assign2_rv_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_recursive_assign2_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_recursive_assign_rv_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_recursive_assign_test.cpp svneol=native#text/plain
+libs/smart_ptr/test/sp_typeinfo_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_unary_addr_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/spinlock_pool_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/spinlock_test.cpp svneol=native#text/plain
