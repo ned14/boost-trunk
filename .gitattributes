@@ -1829,6 +1829,7 @@ boost/graph/distributed/strong_components.hpp svneol=native#text/plain
 boost/graph/distributed/two_bit_color_map.hpp svneol=native#text/plain
 boost/graph/distributed/unsafe_serialize.hpp svneol=native#text/plain
 boost/graph/distributed/vertex_list_adaptor.hpp svneol=native#text/plain
+boost/graph/dll_import_export.hpp svneol=native#text/plain
 boost/graph/dominator_tree.hpp svneol=native#text/plain
 boost/graph/eccentricity.hpp svneol=native#text/plain
 boost/graph/edge_connectivity.hpp svneol=native#text/plain
