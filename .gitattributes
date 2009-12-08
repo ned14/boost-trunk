@@ -17500,6 +17500,7 @@ libs/program_options/test/split_test.cpp svneol=native#text/plain
 libs/program_options/test/test_convert.cpp svneol=native#text/plain
 libs/program_options/test/ucs2.txt svneol=native#text/plain
 libs/program_options/test/unicode_test.cpp svneol=native#text/plain
+libs/program_options/test/unrecognized_test.cpp svneol=native#text/plain
 libs/program_options/test/utf8.txt svneol=native#text/plain
 libs/program_options/test/variable_map_test.cpp svneol=native#text/plain
 libs/program_options/test/winmain.cpp svneol=native#text/plain
