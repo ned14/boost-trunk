@@ -7072,6 +7072,7 @@ boost/xpressive/detail/core/matchers.hpp svneol=native#text/plain
 boost/xpressive/detail/core/optimize.hpp svneol=native#text/plain
 boost/xpressive/detail/core/peeker.hpp svneol=native#text/plain
 boost/xpressive/detail/core/quant_style.hpp svneol=native#text/plain
+boost/xpressive/detail/core/regex_domain.hpp svneol=native#text/plain
 boost/xpressive/detail/core/regex_impl.hpp svneol=native#text/plain
 boost/xpressive/detail/core/results_cache.hpp svneol=native#text/plain
 boost/xpressive/detail/core/state.hpp svneol=native#text/plain
