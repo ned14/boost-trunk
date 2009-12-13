@@ -6255,6 +6255,7 @@ boost/test/utils/runtime/interpret_argument_value.hpp svneol=native#text/plain
 boost/test/utils/runtime/parameter.hpp svneol=native#text/plain
 boost/test/utils/runtime/trace.hpp svneol=native#text/plain
 boost/test/utils/runtime/validation.hpp svneol=native#text/plain
+boost/test/utils/setcolor.hpp svneol=native#text/plain
 boost/test/utils/trivial_singleton.hpp svneol=native#text/plain
 boost/test/utils/wrap_stringstream.hpp svneol=native#text/plain
 boost/test/utils/xml_printer.hpp svneol=native#text/plain
