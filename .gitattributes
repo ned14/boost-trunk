@@ -19945,6 +19945,7 @@ libs/spirit/example/karma/num_list3.cpp svneol=native#text/plain
 libs/spirit/example/karma/num_matrix.cpp svneol=native#text/plain
 libs/spirit/example/karma/printf_style_double_format.cpp svneol=native#text/plain
 libs/spirit/example/karma/quick_start1.cpp svneol=native#text/plain
+libs/spirit/example/karma/quoted_strings.cpp svneol=native#text/plain
 libs/spirit/example/karma/reference.cpp svneol=native#text/plain
 libs/spirit/example/karma/reorder_struct.cpp svneol=native#text/plain
 libs/spirit/example/karma/simple_columns_directive.cpp svneol=native#text/plain
