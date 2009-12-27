@@ -19199,6 +19199,7 @@ libs/spirit/benchmarks/karma/int_generator.cpp svneol=native#text/plain
 libs/spirit/benchmarks/karma/real_generator.cpp svneol=native#text/plain
 libs/spirit/benchmarks/karma/sequence_performance.cpp svneol=native#text/plain
 libs/spirit/benchmarks/measure.hpp svneol=native#text/plain
+libs/spirit/benchmarks/qi/Jamfile svneol=native#text/plain
 libs/spirit/benchmarks/qi/int_parser.cpp svneol=native#text/plain
 libs/spirit/benchmarks/qi/real_parser.cpp svneol=native#text/plain
 libs/spirit/classic/change_log.html svneol=native#text/html
