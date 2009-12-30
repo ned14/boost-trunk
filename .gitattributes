@@ -19660,6 +19660,7 @@ libs/spirit/doc/html/spirit/karma/reference/directive/omit.html svneol=native#te
 libs/spirit/doc/html/spirit/karma/reference/directive/repeat.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/directive/upperlower.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/generate_api.html svneol=native#text/html
+libs/spirit/doc/html/spirit/karma/reference/generate_api/create_generator.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/generate_api/iterator_api.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/generate_api/stream_api.html svneol=native#text/html
 libs/spirit/doc/html/spirit/karma/reference/generator_concepts.html svneol=native#text/html
