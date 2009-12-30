@@ -6038,7 +6038,6 @@ boost/spirit/repository/include/karma.hpp svneol=native#text/plain
 boost/spirit/repository/include/karma_confix.hpp svneol=native#text/plain
 boost/spirit/repository/include/karma_directive.hpp svneol=native#text/plain
 boost/spirit/repository/include/karma_nonterminal.hpp svneol=native#text/plain
-boost/spirit/repository/include/karma_string.hpp svneol=native#text/plain
 boost/spirit/repository/include/karma_subrule.hpp svneol=native#text/plain
 boost/spirit/repository/include/qi.hpp svneol=native#text/plain
 boost/spirit/repository/include/qi_confix.hpp svneol=native#text/plain
