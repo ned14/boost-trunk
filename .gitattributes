@@ -7154,6 +7154,7 @@ boost/xpressive/xpressive_typeof.hpp svneol=native#text/plain
 /bootstrap.bat svneol=CRLF#text/plain eol=crlf
 /bootstrap.sh svneol=LF#text/x-sh eol=lf
 doc/Jamfile.v2 svneol=native#text/plain
+doc/html/Assignable.html svneol=native#text/html
 doc/html/CopyConstructible.html svneol=native#text/html
 doc/html/accumulators.html svneol=native#text/html
 doc/html/any.html svneol=native#text/html
