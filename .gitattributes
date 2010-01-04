@@ -8028,6 +8028,7 @@ libs/circular_buffer/test/Jamfile.v2 svneol=native#text/plain
 libs/circular_buffer/test/base_test.cpp svneol=native#text/plain
 libs/circular_buffer/test/bounded_buffer_comparison.cpp svneol=native#text/plain
 libs/circular_buffer/test/common.ipp svneol=native#text/plain
+libs/circular_buffer/test/constant_erase_test.cpp svneol=native#text/plain
 libs/circular_buffer/test/soft_iterator_invalidation.cpp svneol=native#text/plain
 libs/circular_buffer/test/space_optimized_test.cpp svneol=native#text/plain
 libs/circular_buffer/test/test.hpp svneol=native#text/plain
