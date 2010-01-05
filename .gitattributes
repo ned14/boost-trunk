@@ -5979,6 +5979,7 @@ boost/spirit/include/support_ascii.hpp svneol=native#text/plain
 boost/spirit/include/support_attributes.hpp svneol=native#text/plain
 boost/spirit/include/support_char_class.hpp svneol=native#text/plain
 boost/spirit/include/support_iso8859_1.hpp svneol=native#text/plain
+boost/spirit/include/support_istream_iterator.hpp svneol=native#text/plain
 boost/spirit/include/support_locals.hpp svneol=native#text/plain
 boost/spirit/include/support_look_ahead.hpp svneol=native#text/plain
 boost/spirit/include/support_modify.hpp svneol=native#text/plain
