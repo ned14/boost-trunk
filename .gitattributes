@@ -5686,6 +5686,7 @@ boost/spirit/home/support/iterators/istream_iterator.hpp svneol=native#text/plai
 boost/spirit/home/support/iterators/look_ahead.hpp svneol=native#text/plain
 boost/spirit/home/support/iterators/multi_pass.hpp svneol=native#text/plain
 boost/spirit/home/support/iterators/multi_pass_fwd.hpp svneol=native#text/plain
+boost/spirit/home/support/iterators/ostream_iterator.hpp svneol=native#text/plain
 boost/spirit/home/support/lazy.hpp svneol=native#text/plain
 boost/spirit/home/support/make_component.hpp svneol=native#text/plain
 boost/spirit/home/support/meta_compiler.hpp svneol=native#text/plain
