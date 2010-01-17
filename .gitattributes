@@ -15075,6 +15075,7 @@ libs/math/performance/msvc-9-dist.log svneol=native#text/plain
 libs/math/performance/performance_measure.hpp svneol=native#text/plain
 libs/math/performance/required_defines.hpp svneol=native#text/plain
 libs/math/performance/test_beta.cpp svneol=native#text/plain
+libs/math/performance/test_cbrt.cpp svneol=native#text/plain
 libs/math/performance/test_erf.cpp svneol=native#text/plain
 libs/math/performance/test_expm1_log1p.cpp svneol=native#text/plain
 libs/math/performance/test_gamma.cpp svneol=native#text/plain
