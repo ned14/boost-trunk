@@ -9336,6 +9336,7 @@ libs/functional/hash/test/Jamfile.v2 svneol=native#text/plain
 libs/functional/hash/test/compile_time.hpp svneol=native#text/plain
 libs/functional/hash/test/config.hpp svneol=native#text/plain
 libs/functional/hash/test/container_fwd_test.cpp svneol=native#text/plain
+libs/functional/hash/test/container_no_fwd_test.cpp svneol=native#text/plain
 libs/functional/hash/test/extensions_hpp_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_built_in_array_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_complex_test.cpp svneol=native#text/plain
