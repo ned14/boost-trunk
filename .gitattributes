@@ -5597,6 +5597,7 @@ boost/spirit/home/qi/string/tst_map.hpp svneol=native#text/plain
 boost/spirit/home/qi/what.hpp svneol=native#text/plain
 boost/spirit/home/support.hpp svneol=native#text/plain
 boost/spirit/home/support/action_dispatch.hpp svneol=native#text/plain
+boost/spirit/home/support/adapt_class_attributes.hpp svneol=native#text/plain
 boost/spirit/home/support/algorithm/any.hpp svneol=native#text/plain
 boost/spirit/home/support/algorithm/any_if.hpp svneol=native#text/plain
 boost/spirit/home/support/algorithm/any_if_ns.hpp svneol=native#text/plain
