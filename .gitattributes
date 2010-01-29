@@ -9769,6 +9769,7 @@ libs/fusion/test/functional/unfused.cpp svneol=native#text/plain
 libs/fusion/test/functional/unfused_typed.cpp svneol=native#text/plain
 libs/fusion/test/sequence/adapt_assoc_struct.cpp svneol=native#text/plain
 libs/fusion/test/sequence/adapt_class.cpp svneol=native#text/plain
+libs/fusion/test/sequence/adapt_class_named.cpp svneol=native#text/plain
 libs/fusion/test/sequence/adapt_struct.cpp svneol=native#text/plain
 libs/fusion/test/sequence/adapt_struct_named.cpp svneol=native#text/plain
 libs/fusion/test/sequence/array.cpp svneol=native#text/plain
