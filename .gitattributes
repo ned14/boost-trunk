@@ -5979,6 +5979,7 @@ boost/spirit/include/qi_symbols.hpp svneol=native#text/plain
 boost/spirit/include/qi_uint.hpp svneol=native#text/plain
 boost/spirit/include/qi_what.hpp svneol=native#text/plain
 boost/spirit/include/support.hpp svneol=native#text/plain
+boost/spirit/include/support_adapt_class_attributes.hpp svneol=native#text/plain
 boost/spirit/include/support_any.hpp svneol=native#text/plain
 boost/spirit/include/support_any_if.hpp svneol=native#text/plain
 boost/spirit/include/support_any_if_ns.hpp svneol=native#text/plain
