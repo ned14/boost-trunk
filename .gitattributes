@@ -3820,6 +3820,7 @@ boost/multi_index/detail/safe_mode.hpp svneol=native#text/plain
 boost/multi_index/detail/scope_guard.hpp svneol=native#text/plain
 boost/multi_index/detail/seq_index_node.hpp svneol=native#text/plain
 boost/multi_index/detail/seq_index_ops.hpp svneol=native#text/plain
+boost/multi_index/detail/serialization_version.hpp svneol=native#text/plain
 boost/multi_index/detail/uintptr_type.hpp svneol=native#text/plain
 boost/multi_index/detail/unbounded.hpp svneol=native#text/plain
 boost/multi_index/detail/value_compare.hpp svneol=native#text/plain
