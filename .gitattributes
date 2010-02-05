@@ -20417,6 +20417,7 @@ libs/spirit/test/qi/test_manip_attr.hpp svneol=native#text/plain
 libs/spirit/test/qi/tst.cpp svneol=native#text/plain
 libs/spirit/test/qi/uint.cpp svneol=native#text/plain
 libs/spirit/test/support/multi_pass_regression001.cpp svneol=native#text/plain
+libs/spirit/test/support/multi_pass_regression002.cpp svneol=native#text/plain
 libs/spirit/test/test_headers/Jamfile svneol=native#text/plain
 libs/spirit/test/test_headers/main.cpp svneol=native#text/plain
 libs/spirit/test/test_headers/test.cpp svneol=native#text/plain
