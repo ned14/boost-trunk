@@ -19585,6 +19585,7 @@ libs/spirit/doc/advanced/customization_points.qbk svneol=native#text/plain
 libs/spirit/doc/advanced/indepth.qbk svneol=native#text/plain
 libs/spirit/doc/concepts_template.qbk svneol=native#text/plain
 libs/spirit/doc/customization_point_template.qbk svneol=native#text/plain
+libs/spirit/doc/definitions.qbk svneol=native#text/plain
 libs/spirit/doc/faq.qbk svneol=native#text/plain
 libs/spirit/doc/html/images/alert.png -text svneol=unset#image/png
 libs/spirit/doc/html/images/alternative.png -text svneol=unset#image/png
