@@ -5693,6 +5693,7 @@ boost/spirit/home/support/detail/what_function.hpp svneol=native#text/plain
 boost/spirit/home/support/has_semantic_action.hpp svneol=native#text/plain
 boost/spirit/home/support/info.hpp svneol=native#text/plain
 boost/spirit/home/support/iterators/detail/buf_id_check_policy.hpp svneol=native#text/plain
+boost/spirit/home/support/iterators/detail/buffering_input_iterator_policy.hpp svneol=native#text/plain
 boost/spirit/home/support/iterators/detail/combine_policies.hpp svneol=native#text/plain
 boost/spirit/home/support/iterators/detail/first_owner_policy.hpp svneol=native#text/plain
 boost/spirit/home/support/iterators/detail/fixed_size_queue.hpp svneol=native#text/plain
