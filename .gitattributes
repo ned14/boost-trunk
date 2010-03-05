@@ -5623,6 +5623,7 @@ boost/spirit/home/support/auxiliary/attr_cast.hpp svneol=native#text/plain
 boost/spirit/home/support/char_class.hpp svneol=native#text/plain
 boost/spirit/home/support/char_encoding/ascii.hpp svneol=native#text/plain
 boost/spirit/home/support/char_encoding/default.hpp svneol=native#text/plain
+boost/spirit/home/support/char_encoding/default_wide.hpp svneol=native#text/plain
 boost/spirit/home/support/char_encoding/iso8859_1.hpp svneol=native#text/plain
 boost/spirit/home/support/char_encoding/standard.hpp svneol=native#text/plain
 boost/spirit/home/support/char_encoding/standard_wide.hpp svneol=native#text/plain
