@@ -5298,6 +5298,7 @@ boost/spirit/home/karma/directive/buffer.hpp svneol=native#text/plain
 boost/spirit/home/karma/directive/center_alignment.hpp svneol=native#text/plain
 boost/spirit/home/karma/directive/columns.hpp svneol=native#text/plain
 boost/spirit/home/karma/directive/delimit.hpp svneol=native#text/plain
+boost/spirit/home/karma/directive/encoding.hpp svneol=native#text/plain
 boost/spirit/home/karma/directive/left_alignment.hpp svneol=native#text/plain
 boost/spirit/home/karma/directive/maxwidth.hpp svneol=native#text/plain
 boost/spirit/home/karma/directive/no_delimit.hpp svneol=native#text/plain
