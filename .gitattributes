@@ -8975,6 +8975,7 @@ libs/exception/test/error_info_test.cpp svneol=native#text/plain
 libs/exception/test/exception_fail.cpp svneol=native#text/plain
 libs/exception/test/exception_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/exception_ptr_hpp_test.cpp svneol=native#text/plain
+libs/exception/test/exception_ptr_test.cpp svneol=native#text
 libs/exception/test/exception_test.cpp svneol=native#text/plain
 libs/exception/test/get_error_info_hpp_test.cpp svneol=native#text/plain
 libs/exception/test/has_to_string_test.cpp svneol=native#text/plain
