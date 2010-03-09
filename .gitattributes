@@ -4929,6 +4929,7 @@ boost/signals2/detail/unique_lock.hpp svneol=native#text/plain
 boost/signals2/detail/variadic_arg_type.hpp svneol=native#text/plain
 boost/signals2/detail/variadic_slot_invoker.hpp svneol=native#text/plain
 boost/signals2/dummy_mutex.hpp svneol=native#text/plain
+boost/signals2/expired_slot.hpp svneol=native#text/plain
 boost/signals2/last_value.hpp svneol=native#text/plain
 boost/signals2/mutex.hpp svneol=native#text/plain
 boost/signals2/optional_last_value.hpp svneol=native#text/plain
