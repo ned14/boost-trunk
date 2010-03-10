@@ -18940,6 +18940,7 @@ libs/signals2/doc/snippet_extractor.cpp svneol=native#text/plain
 libs/signals2/doc/tests.xml svneol=native#text/xml
 libs/signals2/doc/thread_safety.xml svneol=native#text/plain
 libs/signals2/doc/tutorial.xml svneol=native#text/xml
+libs/signals2/example/Jamfile.v2 svneol=native#text/plain
 libs/signals2/example/custom_combiners.cpp svneol=native#text/plain
 libs/signals2/example/disconnect_and_block.cpp svneol=native#text/plain
 libs/signals2/example/doc_view.cpp svneol=native#text/plain
