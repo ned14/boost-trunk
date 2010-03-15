@@ -7207,6 +7207,7 @@ doc/html/variant.html svneol=native#text/html
 doc/html/xpressive.html svneol=native#text/html
 doc/images/valid-html401.png -text svneol=unset#image/png
 doc/pdf/Jamfile.v2 svneol=native#text/plain
+doc/pdf/build svneol=native#text/plain
 doc/src/boost.xml svneol=native#text/xml
 doc/src/boostbook.css svneol=native#text/css
 doc/src/docutils.css svneol=native#text/css
