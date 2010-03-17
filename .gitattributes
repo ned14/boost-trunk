@@ -20226,6 +20226,7 @@ libs/spirit/optmization/karma/real_generator.cpp svneol=native#text/plain
 libs/spirit/optmization/karma/sequence_performance.cpp svneol=native#text/plain
 libs/spirit/optmization/measure.hpp svneol=native#text/plain
 libs/spirit/optmization/qi/Jamfile svneol=native#text/plain
+libs/spirit/optmization/qi/attr_vs_actions.cpp svneol=native#text/plain
 libs/spirit/optmization/qi/int_parser.cpp svneol=native#text/plain
 libs/spirit/optmization/qi/real_parser.cpp svneol=native#text/plain
 libs/spirit/phoenix/doc/Jamfile.v2 svneol=native#text/plain
