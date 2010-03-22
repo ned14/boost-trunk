@@ -16,3 +16,8 @@ jam/Boost_Jam_3_1_17/src/bin.cygwinx86.debug
 jam/Boost_Jam_3_1_17/src/bin.ntx86
 jam/Boost_Jam_3_1_17/src/bin.ntx86.debug
 jam/Boost_Jam_3_1_17/src/bootstrap
+jam/Boost_Jam_3_1_18/src/bin.cygwinx86
+jam/Boost_Jam_3_1_18/src/bin.cygwinx86.debug
+jam/Boost_Jam_3_1_18/src/bin.ntx86
+jam/Boost_Jam_3_1_18/src/bin.ntx86.debug
+jam/Boost_Jam_3_1_18/src/bootstrap
