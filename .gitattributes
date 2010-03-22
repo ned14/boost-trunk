@@ -11339,7 +11339,6 @@ libs/graph/quickbook/sgi_concepts.qbk svneol=native#text/plain
 libs/graph/quickbook/tutorial.qbk svneol=native#text/plain
 libs/graph/src/graphml.cpp svneol=native#text/plain
 libs/graph/src/read_graphviz_new.cpp svneol=native#text/plain
-libs/graph/src/read_graphviz_spirit.cpp svneol=native#text/plain
 libs/graph/test/Jamfile.v2 svneol=native#text/plain
 libs/graph/test/adj_list_cc.cpp svneol=native#text/plain
 libs/graph/test/adj_list_edge_list_set.cpp svneol=native#text/plain
