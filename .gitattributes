@@ -17553,6 +17553,7 @@ libs/proto/doc/reference/transform/lazy.xml svneol=native#text/xml
 libs/proto/doc/reference/transform/make.xml svneol=native#text/xml
 libs/proto/doc/reference/transform/pass_through.xml svneol=native#text/xml
 libs/proto/doc/reference/transform/when.xml svneol=native#text/xml
+libs/proto/doc/release_notes.qbk svneol=native#text/plain
 libs/proto/doc/resources.qbk svneol=native#text/plain
 libs/proto/example/Jamfile.v2 svneol=native#text/plain
 libs/proto/example/calc1.cpp svneol=native#text/plain
