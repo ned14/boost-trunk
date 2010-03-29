@@ -6134,6 +6134,7 @@ boost/spirit/include/support_look_ahead.hpp svneol=native#text/plain
 boost/spirit/include/support_modify.hpp svneol=native#text/plain
 boost/spirit/include/support_multi_pass.hpp svneol=native#text/plain
 boost/spirit/include/support_multi_pass_fwd.hpp svneol=native#text/plain
+boost/spirit/include/support_ostream_iterator.hpp svneol=native#text/plain
 boost/spirit/include/support_standard.hpp svneol=native#text/plain
 boost/spirit/include/support_standard_wide.hpp svneol=native#text/plain
 boost/spirit/include/support_string_traits.hpp svneol=native#text/plain
