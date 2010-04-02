@@ -1,6 +1,17 @@
 /bin.v2
 /bjam.exe
 libs/asio/doc/html
+libs/graph/test/bootstrap.log
+libs/graph/test/cube-fr.dot
+libs/graph/test/cube.dot
+libs/graph/test/dcsr.dot
+libs/graph/test/disconnected-fr.dot
+libs/graph/test/graphml_test_out.xml
+libs/graph/test/kevin-bacon2.dat
+libs/graph/test/project-config.jam
+libs/graph/test/random.dot
+libs/graph/test/triangular-fr.dot
+libs/graph/test/triangular-kk.dot
 libs/iterator/doc/GNUmakefile
 libs/optional/test/bin
 libs/python/pyste/dist/*.pyc
