@@ -20563,6 +20563,7 @@ libs/spirit/example/karma/calc2_ast_vm.cpp svneol=native#text/plain
 libs/spirit/example/karma/calc2_ast_vm.hpp svneol=native#text/plain
 libs/spirit/example/karma/classify_char.cpp svneol=native#text/plain
 libs/spirit/example/karma/complex_number.cpp svneol=native#text/plain
+libs/spirit/example/karma/complex_number_adapt.cpp svneol=native#text/plain
 libs/spirit/example/karma/complex_number_easier.cpp svneol=native#text/plain
 libs/spirit/example/karma/customize_counter.cpp svneol=native#text/plain
 libs/spirit/example/karma/customize_embedded_container.cpp svneol=native#text/plain
