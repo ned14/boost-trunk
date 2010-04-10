@@ -20691,6 +20691,7 @@ libs/spirit/example/scheme/test/parse_qiexpr/input.txt svneol=native#text/plain
 libs/spirit/example/scheme/test/parse_qiexpr/parse_qi_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/test/parse_qiexpr/parse_qiexpr.cpp svneol=native#text/plain
 libs/spirit/example/scheme/test/scheme.cpp svneol=native#text/plain
+libs/spirit/example/scheme/test/scheme_test.scm svneol=native#text/plain
 libs/spirit/example/scheme/test/sexpr_input_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/test/sexpr_output_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/test/sexpr_test.txt svneol=native#text/plain
