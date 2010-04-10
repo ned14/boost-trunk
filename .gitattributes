@@ -1437,6 +1437,7 @@ boost/fusion/include/pair_tie.hpp svneol=native#text/plain
 boost/fusion/include/pop_back.hpp svneol=native#text/plain
 boost/fusion/include/pop_front.hpp svneol=native#text/plain
 boost/fusion/include/prior.hpp svneol=native#text/plain
+boost/fusion/include/proxy_type.hpp svneol=native#text/plain
 boost/fusion/include/push_back.hpp svneol=native#text/plain
 boost/fusion/include/push_front.hpp svneol=native#text/plain
 boost/fusion/include/query.hpp svneol=native#text/plain
