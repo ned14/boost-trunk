@@ -11085,6 +11085,7 @@ libs/graph/doc/tc-out.gif -text svneol=unset#image/gif
 libs/graph/doc/tc.gif -text svneol=unset#image/gif
 libs/graph/doc/time_stamper.html svneol=native#text/html
 libs/graph/doc/topological_sort.html svneol=native#text/html
+libs/graph/doc/topology.html svneol=native#text/html
 libs/graph/doc/transitive_closure.html svneol=native#text/html
 libs/graph/doc/transitive_closure.w svneol=native#text/plain
 libs/graph/doc/transpose_graph.html svneol=native#text/html
