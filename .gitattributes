@@ -18932,6 +18932,7 @@ libs/range/test/iterator_range.cpp svneol=native#text/plain
 libs/range/test/join.cpp svneol=native#text/plain
 libs/range/test/mfc.cpp svneol=native#text/plain
 libs/range/test/partial_workaround.cpp svneol=native#text/plain
+libs/range/test/pointer_as_iterator.cpp svneol=native#text/plain
 libs/range/test/reversible_range.cpp svneol=native#text/plain
 libs/range/test/std_container.cpp svneol=native#text/plain
 libs/range/test/string.cpp svneol=native#text/plain
