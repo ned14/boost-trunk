@@ -20716,7 +20716,6 @@ libs/spirit/example/scheme/test/sexpr/sexpr_input_test.cpp svneol=native#text/pl
 libs/spirit/example/scheme/test/sexpr/sexpr_output_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/test/sexpr/sexpr_test.txt svneol=native#text/plain
 libs/spirit/example/scheme/test/utree/utree_test.cpp svneol=native#text/plain
-libs/spirit/example/scheme/test/utree_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/todo.txt svneol=native#text/plain
 libs/spirit/example/scheme/utree/detail/utree_detail1.hpp svneol=native#text/plain
 libs/spirit/example/scheme/utree/detail/utree_detail2.hpp svneol=native#text/plain
