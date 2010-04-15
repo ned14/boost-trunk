@@ -20704,6 +20704,7 @@ libs/spirit/example/scheme/qi/qiexpr_parser.hpp svneol=native#text/plain
 libs/spirit/example/scheme/scheme_compiler.hpp svneol=native#text/plain
 libs/spirit/example/scheme/scheme_interpreter.hpp svneol=native#text/plain
 libs/spirit/example/scheme/scheme_intrinsics.hpp svneol=native#text/plain
+libs/spirit/example/scheme/test/Jamfile svneol=native#text/plain
 libs/spirit/example/scheme/test/parse_qiexpr/generate_sexpr_to_ostream.cpp svneol=native#text/plain
 libs/spirit/example/scheme/test/parse_qiexpr/input.txt svneol=native#text/plain
 libs/spirit/example/scheme/test/parse_qiexpr/parse_qi_test.cpp svneol=native#text/plain
