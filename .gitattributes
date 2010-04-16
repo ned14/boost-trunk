@@ -20949,6 +20949,7 @@ libs/spirit/test/karma/generate_attr.cpp svneol=native#text/plain
 libs/spirit/test/karma/grammar.cpp svneol=native#text/plain
 libs/spirit/test/karma/grammar_fail.cpp svneol=native#text/plain
 libs/spirit/test/karma/int_numerics.cpp svneol=native#text/plain
+libs/spirit/test/karma/karma_optional_double.cpp svneol=native#text/plain
 libs/spirit/test/karma/kleene.cpp svneol=native#text/plain
 libs/spirit/test/karma/lazy.cpp svneol=native#text/plain
 libs/spirit/test/karma/left_alignment.cpp svneol=native#text/plain
