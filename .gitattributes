@@ -20697,6 +20697,7 @@ libs/spirit/example/scheme/example/scheme/factorial.scm svneol=native#text/plain
 libs/spirit/example/scheme/example/scheme/factorial1.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/scheme/factorial2.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/sexpr/out.txt svneol=native#text/plain
+libs/spirit/example/scheme/example/sexpr/sexpr_error_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/sexpr/sexpr_input_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/sexpr/sexpr_output_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/sexpr/sexpr_test.txt svneol=native#text/plain
