@@ -20720,6 +20720,7 @@ libs/spirit/example/scheme/scheme/detail/composite_call.hpp svneol=native#text/p
 libs/spirit/example/scheme/scheme/detail/function_call.hpp svneol=native#text/plain
 libs/spirit/example/scheme/scheme/interpreter.hpp svneol=native#text/plain
 libs/spirit/example/scheme/scheme/intrinsics.hpp svneol=native#text/plain
+libs/spirit/example/scheme/support/line_pos_iterator.hpp svneol=native#text/plain
 libs/spirit/example/scheme/test/Jamfile svneol=native#text/plain
 libs/spirit/example/scheme/test/scheme/factorial.scm svneol=native#text/plain
 libs/spirit/example/scheme/test/scheme/scheme_test1.cpp svneol=native#text/plain
