@@ -18852,6 +18852,7 @@ libs/range/test/adaptor_test/reversed_example.cpp svneol=native#text/plain
 libs/range/test/adaptor_test/sliced.cpp svneol=native#text/plain
 libs/range/test/adaptor_test/sliced_example.cpp svneol=native#text/plain
 libs/range/test/adaptor_test/strided.cpp svneol=native#text/plain
+libs/range/test/adaptor_test/strided2.cpp svneol=native#text/plain
 libs/range/test/adaptor_test/strided_example.cpp svneol=native#text/plain
 libs/range/test/adaptor_test/tokenized.cpp svneol=native#text/plain
 libs/range/test/adaptor_test/transformed.cpp svneol=native#text/plain
