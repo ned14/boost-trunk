@@ -20977,6 +20977,7 @@ libs/spirit/test/karma/real_numerics.cpp svneol=native#text/plain
 libs/spirit/test/karma/repeat.cpp svneol=native#text/plain
 libs/spirit/test/karma/right_alignment.cpp svneol=native#text/plain
 libs/spirit/test/karma/rule_fail.cpp svneol=native#text/plain
+libs/spirit/test/karma/semantic_action_attribute.cpp svneol=native#text/plain
 libs/spirit/test/karma/sequence.cpp svneol=native#text/plain
 libs/spirit/test/karma/stream.cpp svneol=native#text/plain
 libs/spirit/test/karma/symbols.cpp svneol=native#text/plain
