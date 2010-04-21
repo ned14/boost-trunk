@@ -1,5 +1,4 @@
 * text=auto !eol
-/CMakeLists.txt svneol=native#text/plain
 /INSTALL svneol=native#text/plain
 /Jamroot svneol=native#text/plain
 /LICENSE_1_0.txt svneol=native#text/plain
