@@ -18553,6 +18553,7 @@ libs/random/test/integrate.hpp svneol=native#text/plain
 libs/random/test/random_test.cpp svneol=native#text/plain
 libs/random/test/statistic_tests.cpp svneol=native#text/plain
 libs/random/test/statistic_tests.hpp svneol=native#text/plain
+libs/random/test/test_random_device.cpp svneol=native#text/plain
 libs/random/test/validate.cpp svneol=native#text/plain
 libs/range/doc/Jamfile.v2 svneol=native#text/plain
 libs/range/doc/boost_range.qbk -text svneol=unset#text/plain
