@@ -20705,11 +20705,12 @@ libs/spirit/example/scheme/example/parse_qiexpr/generate_sexpr_to_ostream.cpp sv
 libs/spirit/example/scheme/example/parse_qiexpr/input.txt svneol=native#text/plain
 libs/spirit/example/scheme/example/parse_qiexpr/parse_qi_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/parse_qiexpr/parse_qiexpr.cpp svneol=native#text/plain
+libs/spirit/example/scheme/example/scheme/call_factorial.scm svneol=native#text/plain
 libs/spirit/example/scheme/example/scheme/factorial.scm svneol=native#text/plain
 libs/spirit/example/scheme/example/scheme/factorial1.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/scheme/factorial2.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/scheme/scheme_error.scm svneol=native#text/plain
-libs/spirit/example/scheme/example/scheme/scheme_test.cpp svneol=native#text/plain
+libs/spirit/example/scheme/example/scheme/try_scheme.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/sexpr/out.txt svneol=native#text/plain
 libs/spirit/example/scheme/example/sexpr/sexpr_error_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/sexpr/sexpr_input_test.cpp svneol=native#text/plain
