@@ -20739,6 +20739,7 @@ libs/spirit/example/scheme/scheme/interpreter.hpp svneol=native#text/plain
 libs/spirit/example/scheme/scheme/intrinsics.hpp svneol=native#text/plain
 libs/spirit/example/scheme/support/line_pos_iterator.hpp svneol=native#text/plain
 libs/spirit/example/scheme/test/Jamfile svneol=native#text/plain
+libs/spirit/example/scheme/test/qi/calc.scm svneol=native#text/plain
 libs/spirit/example/scheme/test/qi/qi_interpreter.cpp svneol=native#text/plain
 libs/spirit/example/scheme/test/scheme/scheme_test.scm svneol=native#text/plain
 libs/spirit/example/scheme/test/scheme/scheme_test1.cpp svneol=native#text/plain
