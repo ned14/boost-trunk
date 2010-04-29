@@ -20736,6 +20736,7 @@ libs/spirit/example/qi/typeof.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/Jamfile svneol=native#text/plain
 libs/spirit/example/scheme/example/generate_qiexpr/generate_qi_test.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/generate_qiexpr/generate_qiexpr.cpp svneol=native#text/plain
+libs/spirit/example/scheme/example/generate_qiexpr/generate_sexpr_to_ostream.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/generate_qiexpr/input.txt svneol=native#text/plain
 libs/spirit/example/scheme/example/parse_qiexpr/generate_sexpr_to_ostream.cpp svneol=native#text/plain
 libs/spirit/example/scheme/example/parse_qiexpr/input.txt svneol=native#text/plain
