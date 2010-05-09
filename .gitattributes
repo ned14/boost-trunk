@@ -2396,7 +2396,6 @@ boost/lambda/detail/actions.hpp svneol=native#text/plain
 boost/lambda/detail/arity_code.hpp svneol=native#text/plain
 boost/lambda/detail/bind_functions.hpp svneol=native#text/plain
 boost/lambda/detail/control_constructs_common.hpp svneol=native#text/plain
-boost/lambda/detail/control_structures_impl.hpp svneol=native#text/plain
 boost/lambda/detail/function_adaptors.hpp svneol=native#text/plain
 boost/lambda/detail/is_instance_of.hpp svneol=native#text/plain
 boost/lambda/detail/lambda_config.hpp svneol=native#text/plain
