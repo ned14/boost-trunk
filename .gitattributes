@@ -639,6 +639,7 @@ boost/config/abi_prefix.hpp svneol=native#text/plain
 boost/config/abi_suffix.hpp svneol=native#text/plain
 boost/config/auto_link.hpp svneol=native#text/plain
 boost/config/compiler/borland.hpp svneol=native#text/plain
+boost/config/compiler/clang.hpp svneol=native#text/plain
 boost/config/compiler/codegear.hpp svneol=native#text/plain
 boost/config/compiler/comeau.hpp svneol=native#text/plain
 boost/config/compiler/common_edg.hpp svneol=native#text/plain
