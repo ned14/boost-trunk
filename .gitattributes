@@ -21519,7 +21519,6 @@ libs/test/docbook/img/post_build_event.jpg -text svneol=unset#image/jpeg
 libs/test/docbook/img/post_build_out.jpg -text svneol=unset#image/jpeg
 libs/test/docbook/img/run_args.jpg -text svneol=unset#image/jpeg
 libs/test/example/Jamfile.v2 svneol=native#text/plain
-libs/test/example/cla/Jamfile svneol=native#text/plain
 libs/test/example/cla/assign_to.cpp svneol=native#text/plain
 libs/test/example/cla/basic_float.cpp svneol=native#text/plain
 libs/test/example/cla/basic_int.cpp svneol=native#text/plain
