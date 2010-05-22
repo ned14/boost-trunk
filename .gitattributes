@@ -21284,6 +21284,7 @@ libs/spirit/test/qi/actions.cpp svneol=native#text/plain
 libs/spirit/test/qi/alternative.cpp svneol=native#text/plain
 libs/spirit/test/qi/and_predicate.cpp svneol=native#text/plain
 libs/spirit/test/qi/attr.cpp svneol=native#text/plain
+libs/spirit/test/qi/attr_with_action.cpp svneol=native#text/plain
 libs/spirit/test/qi/attribute.cpp svneol=native#text/plain
 libs/spirit/test/qi/auto.cpp svneol=native#text/plain
 libs/spirit/test/qi/binary.cpp svneol=native#text/plain
