@@ -4033,6 +4033,7 @@ boost/parameter.hpp svneol=native#text/plain
 boost/parameter/aux_/arg_list.hpp svneol=native#text/plain
 boost/parameter/aux_/cast.hpp svneol=native#text/plain
 boost/parameter/aux_/default.hpp svneol=native#text/plain
+boost/parameter/aux_/is_maybe.hpp svneol=native#text/plain
 boost/parameter/aux_/maybe.hpp svneol=native#text/plain
 boost/parameter/aux_/overloads.hpp svneol=native#text/plain
 boost/parameter/aux_/parameter_requirements.hpp svneol=native#text/plain
