@@ -6373,6 +6373,7 @@ boost/statechart/transition.hpp svneol=native#text/plain
 boost/static_assert.hpp svneol=native#text/plain
 boost/strong_typedef.hpp svneol=native#text/plain
 boost/swap.hpp svneol=native#text/plain
+boost/system/api_config.hpp svneol=native#text/plain
 boost/system/config.hpp svneol=native#text/plain
 boost/system/cygwin_error.hpp svneol=native#text/plain
 boost/system/error_code.hpp svneol=native#text/plain
