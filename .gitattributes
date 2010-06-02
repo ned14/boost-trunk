@@ -9283,7 +9283,9 @@ libs/exception/test/to_string_test.cpp svneol=native#text/plain
 libs/exception/test/unknown_exception_test.cpp svneol=native#text/plain
 libs/filesystem/build/Jamfile.v2 svneol=native#text/plain
 libs/filesystem/change_to_v2.bat svneol=native#text/plain
+libs/filesystem/change_to_v2.sh svneol=LF#text/x-sh eol=lf
 libs/filesystem/change_to_v3.bat svneol=native#text/plain
+libs/filesystem/change_to_v3.sh svneol=LF#text/x-sh eol=lf
 libs/filesystem/doc/design.htm svneol=native#text/html
 libs/filesystem/doc/do-list.htm svneol=native#text/html
 libs/filesystem/doc/faq.htm svneol=native#text/html
@@ -9419,6 +9421,7 @@ libs/filesystem/v3/libs/filesystem/test/operations_unit_test.cpp svneol=native#t
 libs/filesystem/v3/libs/filesystem/test/path_test.cpp svneol=native#text/plain
 libs/filesystem/v3/libs/filesystem/test/path_unit_test.cpp svneol=native#text/plain
 libs/filesystem/version.bat svneol=native#text/plain
+libs/filesystem/version.sh svneol=LF#text/x-sh eol=lf
 libs/flyweight/doc/acknowledgements.html svneol=native#text/html
 libs/flyweight/doc/examples.html svneol=native#text/html
 libs/flyweight/doc/future_work.html svneol=native#text/html
