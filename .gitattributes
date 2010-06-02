@@ -18175,6 +18175,7 @@ libs/polygon/doc/tutorial/nor.layout svneol=native#text/plain
 libs/polygon/doc/tutorial/nor.schematic svneol=native#text/plain
 libs/polygon/doc/tutorial/parse_layout.hpp svneol=native#text/plain
 libs/polygon/doc/tutorial/schematic_database.hpp svneol=native#text/plain
+libs/polygon/index.html svneol=native#text/html
 libs/polygon/test/Jamfile.v2 svneol=native#text/plain
 libs/polygon/test/gtl_boost_unit_test.cpp svneol=native#text/plain
 libs/pool/TODO.txt svneol=native#text/plain
