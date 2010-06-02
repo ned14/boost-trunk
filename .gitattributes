@@ -20509,6 +20509,7 @@ libs/serialization/test/test_derived.cpp svneol=native#text/plain
 libs/serialization/test/test_derived_class.cpp svneol=native#text/plain
 libs/serialization/test/test_derived_class_ptr.cpp svneol=native#text/plain
 libs/serialization/test/test_diamond.cpp svneol=native#text/plain
+libs/serialization/test/test_diamond_complex.cpp svneol=native#text/plain
 libs/serialization/test/test_dll_exported.cpp svneol=native#text/plain
 libs/serialization/test/test_dll_plugin.cpp svneol=native#text/plain
 libs/serialization/test/test_dll_simple.cpp svneol=native#text/plain
