@@ -17015,6 +17015,7 @@ libs/msm/doc/images/state.gif -text svneol=unset#image/gif
 libs/msm/doc/images/terminate.gif -text svneol=unset#image/gif
 libs/msm/doc/images/transition.jpg -text svneol=unset#image/jpeg
 libs/msm/doc/src/msm.xml svneol=native#text/xml
+libs/msm/index.html svneol=native#text/html
 libs/msm/test/Anonymous.cpp svneol=native#text/plain
 libs/msm/test/AnonymousEuml.cpp svneol=native#text/plain
 libs/msm/test/CompositeEuml.cpp svneol=native#text/plain
