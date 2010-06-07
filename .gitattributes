@@ -436,7 +436,6 @@ boost/asio/detail/win_iocp_socket_send_op.hpp svneol=native#text/plain
 boost/asio/detail/win_iocp_socket_service.hpp svneol=native#text/plain
 boost/asio/detail/win_iocp_socket_service_base.hpp svneol=native#text/plain
 boost/asio/detail/win_mutex.hpp svneol=native#text/plain
-boost/asio/detail/win_signal_blocker.hpp svneol=native#text/plain
 boost/asio/detail/win_thread.hpp svneol=native#text/plain
 boost/asio/detail/win_tss_ptr.hpp svneol=native#text/plain
 boost/asio/detail/wince_thread.hpp svneol=native#text/plain
