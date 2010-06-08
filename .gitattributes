@@ -616,6 +616,7 @@ boost/compatibility/cpp_c_headers/cwchar svneol=native#text/plain
 boost/compatibility/cpp_c_headers/cwctype svneol=native#text/plain
 boost/compressed_pair.hpp svneol=native#text/plain
 boost/concept/assert.hpp svneol=native#text/plain
+boost/concept/detail/backward_compatibility.hpp svneol=native#text/plain
 boost/concept/detail/borland.hpp svneol=native#text/plain
 boost/concept/detail/concept_def.hpp svneol=native#text/plain
 boost/concept/detail/concept_undef.hpp svneol=native#text/plain
