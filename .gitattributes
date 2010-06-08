@@ -4056,6 +4056,7 @@ boost/numeric/interval/rounded_transc.hpp svneol=native#text/plain
 boost/numeric/interval/rounding.hpp svneol=native#text/plain
 boost/numeric/interval/transc.hpp svneol=native#text/plain
 boost/numeric/interval/utility.hpp svneol=native#text/plain
+boost/numeric/ublas/assignment.hpp svneol=native#text/plain
 boost/numeric/ublas/banded.hpp svneol=native#text/plain
 boost/numeric/ublas/blas.hpp svneol=native#text/plain
 boost/numeric/ublas/detail/concepts.hpp svneol=native#text/plain
