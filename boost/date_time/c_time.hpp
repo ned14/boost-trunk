@@ -20,12 +20,6 @@
 #include <boost/throw_exception.hpp>
 #include <boost/date_time/compiler_config.hpp>
 
-//Work around libraries that don't put time_t and time in namespace std
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std { using ::time_t; using ::time; using ::localtime;
-                using ::tm;  using ::gmtime; }
-#endif // BOOST_NO_STDC_NAMESPACE
-
 //The following is used to support high precision time clocks
 #ifdef BOOST_HAS_GETTIMEOFDAY
 #include <sys/time.h>

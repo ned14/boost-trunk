@@ -18,17 +18,20 @@
 project boost/date_time
     : requirements
         <define>DATE_TIME_INLINE
-	<link>shared:<define>BOOST_ALL_DYN_LINK=1	
-	<link>static:<define>BOOST_DATE_TIME_STATIC_LINK	
-    : usage-requirements 	
+        <link>shared:<define>BOOST_ALL_DYN_LINK=1
+        <link>static:<define>BOOST_DATE_TIME_STATIC_LINK
+    : usage-requirements
         <define>DATE_TIME_INLINE
         <link>shared:<define>BOOST_DATE_TIME_DYN_LINK=1
     : source-location ../src
     ;
 
-# Base names of the source files for libboost_date_time
-CPP_SOURCES = greg_month greg_weekday date_generators ;
-
-lib boost_date_time : gregorian/$(CPP_SOURCES).cpp ;
+lib boost_date_time :
+    formatter.cpp
+    gregorian/greg_month.cpp
+    gregorian/greg_weekday.cpp
+    gregorian/date_generators.cpp
+    gregorian/greg_month.cpp
+    ;
 
 boost-install boost_date_time ;

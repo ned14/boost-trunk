@@ -74,7 +74,6 @@ namespace local_time{
     typedef date_time::time_zone_base<posix_time::ptime,CharT> base_type;
     typedef typename base_type::string_type string_type;
     typedef CharT char_type;
-    typedef typename base_type::stringstream_type stringstream_type;
     typedef boost::char_separator<char_type, std::char_traits<char_type> > char_separator_type;
     typedef boost::tokenizer<char_separator_type,
                              typename string_type::const_iterator,
@@ -175,6 +174,7 @@ namespace local_time{
     virtual string_type to_posix_string() const
     {
       // std offset dst [offset],start[/time],end[/time] - w/o spaces
+      typedef std::basic_ostringstream< CharT > stringstream_type;
       stringstream_type ss;
       ss.fill('0');
       boost::shared_ptr<dst_calc_rule> no_rules;
@@ -242,6 +242,7 @@ namespace local_time{
      * NOT extracted so the abbreviations are used in their place */
     void calc_zone(const string_type& obj){
       const char_type empty_string[2] = {'\0'};
+      typedef std::basic_ostringstream< CharT > stringstream_type;
       stringstream_type ss(empty_string);
       typename string_type::const_pointer sit = obj.c_str(), obj_end = sit + obj.size();
       string_type l_std_zone_abbrev, l_dst_zone_abbrev;
@@ -451,7 +452,7 @@ namespace local_time{
 #if defined(USE_DATE_TIME_PRE_1_33_FACET_IO)
       s = posix_time::to_simple_string(td);
 #else
-      std::stringstream ss;
+      std::ostringstream ss;
       ss << td;
       s = ss.str();
 #endif
