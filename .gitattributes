@@ -19639,6 +19639,7 @@ libs/random/doc/random_number_generator.qbk svneol=native#text/plain
 libs/random/doc/tutorial.qbk svneol=native#text/plain
 libs/random/example/Jamfile.v2 svneol=native#text/plain
 libs/random/example/die.cpp svneol=native#text/plain
+libs/random/example/password.cpp svneol=native#text/plain
 libs/random/example/random_demo.cpp svneol=native#text/plain
 libs/random/example/weighted_die.cpp svneol=native#text/plain
 libs/random/extra/Jamfile.v2 svneol=native#text/plain
