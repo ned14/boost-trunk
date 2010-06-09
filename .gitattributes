@@ -14020,6 +14020,7 @@ libs/lambda/doc/index.html svneol=native#text/html
 libs/lambda/doc/lambda.xml svneol=native#text/xml
 libs/lambda/index.html svneol=native#text/html
 libs/lambda/test/Jamfile svneol=native#text/plain
+libs/lambda/test/Jamfile.v2 svneol=native#text/plain
 libs/lambda/test/Makefile svneol=native#text/plain
 libs/lambda/test/README_gcc2.9x_users svneol=native#text/plain
 libs/lambda/test/algorithm_test.cpp svneol=native#text/plain
