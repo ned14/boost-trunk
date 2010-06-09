@@ -9418,7 +9418,6 @@ libs/filesystem/v2/test/msvc/wide_test/wide_test.vcproj svneol=native#text/xml
 libs/filesystem/v2/test/operations_test.cpp svneol=native#text/plain
 libs/filesystem/v2/test/path_test.cpp svneol=native#text/plain
 libs/filesystem/v2/test/wide_test.cpp svneol=native#text/plain
-libs/filesystem/v3/boost/filesystem.hpp svneol=native#text/plain
 libs/filesystem/v3/build/Jamfile.v2 svneol=native#text/plain
 libs/filesystem/v3/doc/Jamfile.v2 svneol=native#text/plain
 libs/filesystem/v3/doc/POSIX_filename_encoding.txt svneol=native#text/plain
