@@ -7785,6 +7785,7 @@ libs/algorithm/string/example/trim_example.cpp svneol=native#text/plain
 libs/algorithm/string/index.html svneol=native#text/html
 libs/algorithm/string/test/Jamfile.v2 svneol=native#text/plain
 libs/algorithm/string/test/conv_test.cpp svneol=native#text/plain
+libs/algorithm/string/test/find_format_test.cpp svneol=native#text/plain
 libs/algorithm/string/test/find_test.cpp svneol=native#text/plain
 libs/algorithm/string/test/join_test.cpp svneol=native#text/plain
 libs/algorithm/string/test/predicate_test.cpp svneol=native#text/plain
