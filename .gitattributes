@@ -24645,6 +24645,7 @@ tools/build/v2/test/example_gettext.py svneol=native#text/x-python
 tools/build/v2/test/example_libraries.py svneol=native#text/x-python
 tools/build/v2/test/example_make.py svneol=native#text/x-python
 tools/build/v2/test/example_qt4.py svneol=native#text/x-python
+tools/build/v2/test/exit_status.py svneol=native#text/x-python
 tools/build/v2/test/expansion.py svneol=native#text/x-python
 tools/build/v2/test/explicit.py svneol=native#text/x-python
 tools/build/v2/test/file_name_handling.py svneol=native#text/x-python
