@@ -961,6 +961,7 @@ boost/filesystem.hpp svneol=native#text/plain
 boost/filesystem/config.hpp svneol=native#text/plain
 boost/filesystem/convenience.hpp svneol=native#text/plain
 boost/filesystem/exception.hpp svneol=native#text/plain
+boost/filesystem/fstream.hpp svneol=native#text/plain
 boost/filesystem/operations.hpp svneol=native#text/plain
 boost/filesystem/path.hpp svneol=native#text/plain
 boost/filesystem/v2/config.hpp svneol=native#text/plain
