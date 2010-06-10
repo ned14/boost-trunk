@@ -22481,6 +22481,7 @@ libs/test/doc/html/utf/user-guide/test-output.html svneol=native#text/html
 libs/test/doc/html/utf/user-guide/test-output/BOOST_TEST_CHECKPOINT.html svneol=native#text/html
 libs/test/doc/html/utf/user-guide/test-output/BOOST_TEST_MESSAGE.html svneol=native#text/html
 libs/test/doc/html/utf/user-guide/test-output/BOOST_TEST_PASSPOINT.html svneol=native#text/html
+libs/test/doc/html/utf/user-guide/test-output/FPT.html svneol=native#text/html
 libs/test/doc/html/utf/user-guide/test-output/log-ct-config.html svneol=native#text/html
 libs/test/doc/html/utf/user-guide/test-output/log-hr-format.html svneol=native#text/html
 libs/test/doc/html/utf/user-guide/test-output/log-xml-format.html svneol=native#text/html
