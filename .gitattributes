@@ -1003,6 +1003,7 @@ boost/flyweight/static_holder_fwd.hpp svneol=native#text/plain
 boost/flyweight/tag.hpp svneol=native#text/plain
 boost/flyweight/tracking_tag.hpp svneol=native#text/plain
 boost/foreach.hpp svneol=native#text/plain
+boost/foreach_fwd.hpp svneol=native#text/plain
 boost/format.hpp svneol=native#text/plain
 boost/format/alt_sstream.hpp svneol=native#text/plain
 boost/format/alt_sstream_impl.hpp svneol=native#text/plain
