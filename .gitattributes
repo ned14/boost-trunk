@@ -4467,6 +4467,7 @@ boost/proto/context/null.hpp svneol=native#text/plain
 boost/proto/core.hpp svneol=native#text/plain
 boost/proto/debug.hpp svneol=native#text/plain
 boost/proto/deep_copy.hpp svneol=native#text/plain
+boost/proto/detail/as_expr.hpp svneol=native#text/plain
 boost/proto/detail/as_lvalue.hpp svneol=native#text/plain
 boost/proto/detail/decltype.hpp svneol=native#text/plain
 boost/proto/detail/deduce_domain.hpp svneol=native#text/plain
