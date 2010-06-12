@@ -18970,6 +18970,7 @@ libs/regex/build/gcc.mak svneol=native#text/plain
 libs/regex/build/gcc_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/generic.mak svneol=native#text/plain
 libs/regex/build/generic_gen.sh svneol=LF#text/x-sh eol=lf
+libs/regex/build/has_icu_test.cpp svneol=native#text/plain
 libs/regex/build/sun_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/sunpro.mak svneol=native#text/plain
 libs/regex/build/vc6-stlport.mak svneol=native#text/plain
