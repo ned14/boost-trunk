@@ -136,6 +136,7 @@ libs/date_time/example/posix_time/time_math.cpp svneol=native#text/plain
 libs/date_time/example/posix_time/time_periods.cpp svneol=native#text/plain
 libs/date_time/example/tutorial/io_tutorial.cpp svneol=native#text/plain
 libs/date_time/index.html svneol=native#text/html
+libs/date_time/src/code_convert.cpp svneol=native#text/plain
 libs/date_time/src/date_time.doc svneol=native#text/plain
 libs/date_time/src/formatter.cpp svneol=native#text/plain
 libs/date_time/src/gregorian/date_generators.cpp svneol=native#text/plain

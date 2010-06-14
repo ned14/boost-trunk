@@ -8,6 +8,8 @@
 #include <memory>
 #include <limits>
 #include <vector>
+#include <locale>
+#include <sstream>
 #include <iterator>
 #include <stdexcept>
 #include <boost/throw_exception.hpp>
@@ -25,7 +27,7 @@
 #include <boost/preprocessor/tuple/elem.hpp>
 #include <boost/preprocessor/seq/for_each.hpp>
 #include <boost/date_time/detail/formatter.hpp>
-#include <boost/date_time/string_convert.hpp>
+#include <boost/date_time/detail/code_convert.hpp>
 
 namespace boost {
 
@@ -38,9 +40,23 @@ namespace karma = boost::spirit::karma;
 
 namespace {
 
+    template< typename >
+    struct encoding;
+
+    template< >
+    struct encoding< char >
+    {
+        typedef spirit::char_encoding::standard type;
+    };
+    template< >
+    struct encoding< wchar_t >
+    {
+        typedef spirit::char_encoding::standard_wide type;
+    };
+
     //! A simple trait that allows to use charset-specific Qi parsers in a generic way
-    template< typename CharT >
-    struct charset_parsers;
+    template< typename EncodingT >
+    struct encoding_specific;
 
 #define BOOST_DATE_TIME_CHARSET_PARSERS\
     ((char_type, char_))\
@@ -67,28 +83,28 @@ namespace {
 #define BOOST_DATE_TIME_DECLARE_CHARSET_PARSERS(charset)\
     BOOST_PP_SEQ_FOR_EACH(BOOST_DATE_TIME_DECLARE_CHARSET_PARSER, charset, BOOST_DATE_TIME_CHARSET_PARSERS)
 
-#define BOOST_DATE_TIME_DEFINE_CHARSET_PARSER(r, params, parser)\
-    spirit::BOOST_PP_TUPLE_ELEM(2, 1, params)::BOOST_PP_TUPLE_ELEM(2, 0, parser) const&\
-        charset_parsers< BOOST_PP_TUPLE_ELEM(2, 0, params) >::BOOST_PP_TUPLE_ELEM(2, 1, parser) =\
-            spirit::BOOST_PP_TUPLE_ELEM(2, 1, params)::BOOST_PP_TUPLE_ELEM(2, 1, parser);
+#define BOOST_DATE_TIME_DEFINE_CHARSET_PARSER(r, charset, parser)\
+    spirit::charset::BOOST_PP_TUPLE_ELEM(2, 0, parser) const&\
+        encoding_specific< spirit::char_encoding::charset >::BOOST_PP_TUPLE_ELEM(2, 1, parser) =\
+            spirit::charset::BOOST_PP_TUPLE_ELEM(2, 1, parser);
 
-#define BOOST_DATE_TIME_DEFINE_CHARSET_PARSERS(char_type, charset)\
-    BOOST_PP_SEQ_FOR_EACH(BOOST_DATE_TIME_DEFINE_CHARSET_PARSER, (char_type, charset), BOOST_DATE_TIME_CHARSET_PARSERS)
+#define BOOST_DATE_TIME_DEFINE_CHARSET_PARSERS(charset)\
+    BOOST_PP_SEQ_FOR_EACH(BOOST_DATE_TIME_DEFINE_CHARSET_PARSER, charset, BOOST_DATE_TIME_CHARSET_PARSERS)
 
     template< >
-    struct charset_parsers< char >
+    struct encoding_specific< spirit::char_encoding::standard >
     {
         BOOST_DATE_TIME_DECLARE_CHARSET_PARSERS(standard)
     };
-    BOOST_DATE_TIME_DEFINE_CHARSET_PARSERS(char, standard)
+    BOOST_DATE_TIME_DEFINE_CHARSET_PARSERS(standard)
 
 #ifndef BOOST_NO_STD_WSTRING
     template< >
-    struct charset_parsers< wchar_t >
+    struct encoding_specific< spirit::char_encoding::standard_wide >
     {
         BOOST_DATE_TIME_DECLARE_CHARSET_PARSERS(standard_wide)
     };
-    BOOST_DATE_TIME_DEFINE_CHARSET_PARSERS(wchar_t, standard_wide)
+    BOOST_DATE_TIME_DEFINE_CHARSET_PARSERS(standard_wide)
 #endif // BOOST_NO_STD_WSTRING
 
 #undef BOOST_DATE_TIME_DEFINE_CHARSET_PARSERS
@@ -342,6 +358,25 @@ public:
     typedef delimited3< hours12, minutes, seconds, ':' > h12ms_time;
     typedef delimited3< unrestricted_hours, minutes, seconds, ':' > default_duration;
 
+    //! Formatter based on the standard locale facet
+    struct facet_based
+    {
+        void operator()(common_date_time const& dt, std::locale const& loc, string_type& target)
+        {
+            std::basic_ostringstream< char_type > strm;
+            strm.imbue(loc);
+            std::ostreambuf_iterator< char_type > it(strm);
+            std::use_facet< std::time_put< char_type > >(loc).put(
+                it,
+                strm,
+                static_cast< char_type >(' '), // TODO: pass it from the date_facet and time_facet
+                &dt.get_tm(),
+                target.data(),
+                target.data() + target.size());
+            strm.str().swap(target);
+        }
+    };
+
     //! Sequence of elementary formatters
     typedef intrusive::slist<
         step_base,
@@ -528,7 +563,7 @@ namespace {
         explicit date_time_grammar(collector* p, bool& is_complete) :
             date_time_grammar::base_type(m_Start)
         {
-            typedef charset_parsers< char_type > charset;
+            typedef aux::encoding_specific< typename encoding< char_type >::type > charset;
             typedef format_placeholders< char_type > constants;
             namespace args = phoenix::arg_names;
 
@@ -642,7 +677,7 @@ formatter< CharT > formatter< CharT >::parse(const char_type* b, const char_type
     if (!qi::parse(p, e, grammar) || p != e)
     {
         std::string descr = "Could not parse date/time format specification \"";
-        descr.append(date_time::convert_string_type< char_type, char >(string_type(b, e)));
+        descr.append(date_time::aux::code_convert< char >(string_type(b, e)));
         descr.append("\", stopped at position ");
         std::back_insert_iterator< std::string > it(descr);
         karma::generate(it, karma::uint_, static_cast< std::size_t >(p - b));
@@ -653,6 +688,7 @@ formatter< CharT > formatter< CharT >::parse(const char_type* b, const char_type
     {
         // The parser did not recognize all placeholders. We'll have to pass
         // the formatter output to the standard facet to complete the formatting.
+        formatter.m_pImpl->BOOST_NESTED_TEMPLATE add< typename implementation::facet_based >();
     }
 
     return formatter;

@@ -14,7 +14,7 @@
 #include <boost/date_time/time_zone_names.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/date_time/local_time/dst_transition_day_rules.hpp>
-#include <boost/date_time/string_convert.hpp>
+#include <boost/date_time/detail/code_convert.hpp>
 
 namespace boost {
 
@@ -148,7 +148,7 @@ public:
                 }
             }
             // start/time
-            ss << ',' << date_time::convert_string_type< char, char_type >(dst_calc_rules_->start_rule_as_string()) << '/'
+            ss << ',' << date_time::aux::code_convert< char_type >(dst_calc_rules_->start_rule_as_string()) << '/'
                 << std::setw(2) << dst_offsets_.dst_start_offset_.hours() << ':'
                 << std::setw(2) << dst_offsets_.dst_start_offset_.minutes();
             if (dst_offsets_.dst_start_offset_.seconds() != 0)
@@ -156,7 +156,7 @@ public:
                 ss << ':' << std::setw(2) << dst_offsets_.dst_start_offset_.seconds();
             }
             // end/time
-            ss << ',' << date_time::convert_string_type< char, char_type >(dst_calc_rules_->end_rule_as_string()) << '/'
+            ss << ',' << date_time::aux::code_convert< char_type >(dst_calc_rules_->end_rule_as_string()) << '/'
                 << std::setw(2) << dst_offsets_.dst_end_offset_.hours() << ':'
                 << std::setw(2) << dst_offsets_.dst_end_offset_.minutes();
             if (dst_offsets_.dst_end_offset_.seconds() != 0)

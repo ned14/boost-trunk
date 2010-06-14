@@ -26,7 +26,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/date_time/compiler_config.hpp>
 #include <boost/date_time/date_facet.hpp>
-#include <boost/date_time/string_convert.hpp>
+#include <boost/date_time/detail/code_convert.hpp>
 #include <boost/date_time/special_defs.hpp>
 #include <boost/date_time/time_resolution_traits.hpp> // absolute_value
 
@@ -1251,7 +1251,7 @@ namespace date_time {
         }
         this->m_sv_parser.match(sitr, stream_end, mr);
         if(mr.current_match == match_results::PARSE_ERROR) {
-          std::string tmp = convert_string_type<char_type, char>(mr.cache);
+          std::string tmp = date_time::aux::code_convert<char>(mr.cache);
           boost::throw_exception(std::ios_base::failure("Parse failed. No match found for '" + tmp + "'"));
           BOOST_DATE_TIME_UNREACHABLE_EXPRESSION(return sitr); // should never reach
         }

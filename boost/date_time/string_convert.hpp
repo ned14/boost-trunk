@@ -11,6 +11,8 @@
 #include <string>
 #include <boost/date_time/compiler_config.hpp>
 
+#warning Boost.DateTime: this header is deprecated and will be removed in future releases
+
 namespace boost {
 namespace date_time {
 

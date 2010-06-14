@@ -1,5 +1,5 @@
 # Copyright (c) 2002-2005 CrystalClear Software, Inc.
-# Use, modification and distribution is subject to the 
+# Use, modification and distribution is subject to the
 # Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
 #
@@ -27,6 +27,7 @@ project boost/date_time
     ;
 
 lib boost_date_time :
+    code_convert.cpp
     formatter.cpp
     gregorian/greg_month.cpp
     gregorian/greg_weekday.cpp
