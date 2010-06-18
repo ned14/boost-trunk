@@ -13585,6 +13585,7 @@ libs/intrusive/test/unordered_set_test.cpp svneol=native#text/plain
 libs/intrusive/test/virtual_base_test.cpp svneol=native#text/plain
 libs/io/doc/index.html svneol=native#text/html
 libs/io/doc/ios_state.html svneol=native#text/html
+libs/io/doc/quoted_manip.html svneol=native#text/html
 libs/io/index.html svneol=native#text/html
 libs/io/test/Jamfile.v2 svneol=native#text/plain
 libs/io/test/ios_state_test.cpp svneol=native#text/plain
