@@ -21855,6 +21855,7 @@ libs/system/doc/index.html svneol=native#text/html
 libs/system/doc/reference.html svneol=native#text/html
 libs/system/index.html svneol=native#text/html
 libs/system/src/error_code.cpp svneol=native#text/plain
+libs/system/src/local_free_on_destruction.hpp svneol=native#text/plain
 libs/system/test/Jamfile.v2 svneol=native#text/plain
 libs/system/test/dynamic_link_test.cpp svneol=native#text/plain
 libs/system/test/error_code_test.cpp svneol=native#text/plain
