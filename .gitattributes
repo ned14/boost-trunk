@@ -20185,6 +20185,7 @@ libs/serialization/vc7ide/test_derived.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_derived_class.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_derived_class_ptr.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_diamond.vcproj svneol=native#text/xml
+libs/serialization/vc7ide/test_diamond_complex.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_dll_exported.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_dll_plugin.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/test_dll_simple.vcproj svneol=native#text/xml
