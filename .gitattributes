@@ -17493,6 +17493,7 @@ libs/polygon/doc/tutorial/extract_devices.hpp svneol=native#text/plain
 libs/polygon/doc/tutorial/layout_database.hpp svneol=native#text/plain
 libs/polygon/doc/tutorial/layout_pin.hpp svneol=native#text/plain
 libs/polygon/doc/tutorial/layout_rectangle.hpp svneol=native#text/plain
+libs/polygon/doc/tutorial/minkowski.cpp svneol=native#text/plain
 libs/polygon/doc/tutorial/nand.layout svneol=native#text/plain
 libs/polygon/doc/tutorial/nand.schematic svneol=native#text/plain
 libs/polygon/doc/tutorial/nand_short.layout svneol=native#text/plain
