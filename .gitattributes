@@ -17437,7 +17437,6 @@ libs/parameter/test/unwrap_cv_reference.cpp svneol=native#text/plain
 libs/platform_maintainers.txt svneol=native#text/plain
 libs/polygon/Jamfile.v2 svneol=native#text/plain
 libs/polygon/doc/GTL_boostcon2009.pdf -text svneol=unset#application/pdf
-libs/polygon/doc/GTL_boostcon_draft03.htm svneol=native#text/html
 libs/polygon/doc/GTL_boostcon_draft03.pdf -text svneol=unset#application/pdf
 libs/polygon/doc/analysis.htm svneol=native#text/html
 libs/polygon/doc/gtl_connectivity_extraction.htm svneol=native#text/html
