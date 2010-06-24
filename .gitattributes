@@ -4870,6 +4870,7 @@ boost/random/detail/const_mod.hpp svneol=native#text/plain
 boost/random/detail/disable_warnings.hpp svneol=native#text/plain
 boost/random/detail/enable_warnings.hpp svneol=native#text/plain
 boost/random/detail/iterator_mixin.hpp svneol=native#text/plain
+boost/random/detail/operators.hpp svneol=native#text/plain
 boost/random/detail/pass_through_engine.hpp svneol=native#text/plain
 boost/random/detail/ptr_helper.hpp svneol=native#text/plain
 boost/random/detail/seed.hpp svneol=native#text/plain
