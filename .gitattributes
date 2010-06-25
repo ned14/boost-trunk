@@ -4892,6 +4892,7 @@ boost/random/poisson_distribution.hpp svneol=native#text/plain
 boost/random/random_number_generator.hpp svneol=native#text/plain
 boost/random/ranlux.hpp svneol=native#text/plain
 boost/random/seed_seq.hpp svneol=native#text/plain
+boost/random/shuffle_order.hpp svneol=native#text/plain
 boost/random/shuffle_output.hpp svneol=native#text/plain
 boost/random/subtract_with_carry.hpp svneol=native#text/plain
 boost/random/triangle_distribution.hpp svneol=native#text/plain
