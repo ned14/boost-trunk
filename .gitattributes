@@ -23348,6 +23348,7 @@ libs/xpressive/test/test9.hpp svneol=native#text/plain
 libs/xpressive/test/test9u.cpp svneol=native#text/plain
 libs/xpressive/test/test_actions.cpp svneol=native#text/plain
 libs/xpressive/test/test_assert.cpp svneol=native#text/plain
+libs/xpressive/test/test_assert_with_placeholder.cpp svneol=native#text/plain
 libs/xpressive/test/test_basic_regex.cpp svneol=native#text/plain
 libs/xpressive/test/test_cycles.cpp svneol=native#text/plain
 libs/xpressive/test/test_dynamic.cpp svneol=native#text/plain
