@@ -6957,6 +6957,7 @@ boost/typeof/type_encoding.hpp svneol=native#text/plain
 boost/typeof/type_template_param.hpp svneol=native#text/plain
 boost/typeof/typeof.hpp svneol=native#text/plain
 boost/typeof/typeof_impl.hpp svneol=native#text/plain
+boost/typeof/unsupported.hpp svneol=native#text/plain
 boost/typeof/vector.hpp svneol=native#text/plain
 boost/typeof/vector100.hpp svneol=native#text/plain
 boost/typeof/vector150.hpp svneol=native#text/plain
