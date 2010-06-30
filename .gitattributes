@@ -7640,6 +7640,7 @@ doc/src/images/up.svg -text svneol=unset#image/svg%2Bxml
 doc/src/images/up_disabled.png -text svneol=unset#image/png
 doc/src/images/warning.png -text svneol=unset#image/png
 doc/src/images/warning.svg -text svneol=unset#image/svg%2Bxml
+doc/src/minimal.css svneol=native#text/css
 doc/src/reference.css svneol=native#text/css
 doc/test/HTML4_symbols.qbk svneol=native#text/plain
 doc/test/Jamfile.v2 svneol=native#text/plain
