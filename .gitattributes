@@ -23770,7 +23770,6 @@ libs/xpressive/tools/Jamfile.v2 svneol=native#text/plain
 libs/xpressive/tools/perl2xpr.cpp svneol=native#text/plain
 more/BoostSponsorshipAgreement.pdf -text svneol=unset#application/pdf
 more/blanket-permission.txt svneol=native#text/plain
-more/faq.htm svneol=native#text/html
 more/getting_started.html svneol=native#text/html
 more/getting_started/Jamfile.v2 svneol=native#text/plain
 more/getting_started/detail/binary-head.rst svneol=native#text/plain
