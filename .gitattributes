@@ -11259,6 +11259,7 @@ libs/graph/doc/quick_tour.html svneol=native#text/html
 libs/graph/doc/r_c_shortest_paths.html svneol=native#text/html
 libs/graph/doc/random.html svneol=native#text/html
 libs/graph/doc/random_layout.html svneol=native#text/html
+libs/graph/doc/random_spanning_tree.html svneol=native#text/html
 libs/graph/doc/read_dimacs.html svneol=native#text/html
 libs/graph/doc/read_graphml.html svneol=native#text/html
 libs/graph/doc/read_graphml.rst svneol=native#text/plain
