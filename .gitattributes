@@ -24919,6 +24919,7 @@ tools/quickbook/test/doc-info-3.gold svneol=native#text/plain
 tools/quickbook/test/doc-info-3.quickbook svneol=native#text/plain
 tools/quickbook/test/doc-info-4.gold svneol=native#text/plain
 tools/quickbook/test/doc-info-4.quickbook svneol=native#text/plain
+tools/quickbook/test/empty.quickbook svneol=native#text/plain
 tools/quickbook/test/escape.gold svneol=native#text/plain
 tools/quickbook/test/escape.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-cpp-mismatched-escape.quickbook svneol=native#text/plain
