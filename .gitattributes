@@ -17442,6 +17442,7 @@ libs/numeric/ublas/bench4/bench42.cpp svneol=native#text/plain
 libs/numeric/ublas/bench4/bench43.cpp svneol=native#text/plain
 libs/numeric/ublas/bench5/Jamfile.v2 svneol=native#text/plain
 libs/numeric/ublas/bench5/assignment_bench.cpp svneol=native#text/plain
+libs/numeric/ublas/doc/Doxyfile svneol=native#text/plain
 libs/numeric/ublas/doc/banded.htm svneol=native#text/html
 libs/numeric/ublas/doc/blas.htm svneol=native#text/html
 libs/numeric/ublas/doc/bounded_array.htm svneol=native#text/html
