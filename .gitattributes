@@ -354,6 +354,7 @@ boost/asio/detail/null_mutex.hpp svneol=native#text/plain
 boost/asio/detail/null_signal_blocker.hpp svneol=native#text/plain
 boost/asio/detail/null_thread.hpp svneol=native#text/plain
 boost/asio/detail/null_tss_ptr.hpp svneol=native#text/plain
+boost/asio/detail/object_pool.hpp svneol=native#text/plain
 boost/asio/detail/old_win_sdk_compat.hpp svneol=native#text/plain
 boost/asio/detail/op_queue.hpp svneol=native#text/plain
 boost/asio/detail/operation.hpp svneol=native#text/plain
