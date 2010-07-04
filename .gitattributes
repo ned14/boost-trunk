@@ -295,6 +295,7 @@ boost/asio/detail/event.hpp svneol=native#text/plain
 boost/asio/detail/eventfd_select_interrupter.hpp svneol=native#text/plain
 boost/asio/detail/fd_set_adapter.hpp svneol=native#text/plain
 boost/asio/detail/fenced_block.hpp svneol=native#text/plain
+boost/asio/detail/gcc_arm_fenced_block.hpp svneol=native#text/plain
 boost/asio/detail/gcc_fenced_block.hpp svneol=native#text/plain
 boost/asio/detail/gcc_x86_fenced_block.hpp svneol=native#text/plain
 boost/asio/detail/handler_alloc_helpers.hpp svneol=native#text/plain
