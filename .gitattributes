@@ -18272,6 +18272,7 @@ libs/numeric/ublas/test/num_columns.cpp svneol=native#text/plain
 libs/numeric/ublas/test/num_rows.cpp svneol=native#text/plain
 libs/numeric/ublas/test/placement_new.cpp svneol=native#text/plain
 libs/numeric/ublas/test/size.cpp svneol=native#text/plain
+libs/numeric/ublas/test/sparse_view_test.cpp svneol=native#text/plain
 libs/numeric/ublas/test/test1.cpp svneol=native#text/plain
 libs/numeric/ublas/test/test1.hpp svneol=native#text/plain
 libs/numeric/ublas/test/test11.cpp svneol=native#text/plain
