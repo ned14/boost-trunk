@@ -24527,6 +24527,7 @@ tools/boostbook/xsl/error.xsl svneol=native#text/xml
 tools/boostbook/xsl/fo.xsl svneol=native#text/xml
 tools/boostbook/xsl/function.xsl svneol=native#text/xml
 tools/boostbook/xsl/global.xsl svneol=native#text/xml
+tools/boostbook/xsl/html-base.xsl svneol=native#text/xml
 tools/boostbook/xsl/html-help.xsl svneol=native#text/xml
 tools/boostbook/xsl/html-single.xsl svneol=native#text/xml
 tools/boostbook/xsl/html.xsl svneol=native#text/xml
