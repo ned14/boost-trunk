@@ -17139,6 +17139,7 @@ libs/msm/test/AnonymousEuml.cpp svneol=native#text/plain
 libs/msm/test/CompositeEuml.cpp svneol=native#text/plain
 libs/msm/test/CompositeMachine.cpp svneol=native#text/plain
 libs/msm/test/Constructor.cpp svneol=native#text/plain
+libs/msm/test/Entries.cpp svneol=native#text/plain
 libs/msm/test/History.cpp svneol=native#text/plain
 libs/msm/test/Jamfile.v2 svneol=native#text/plain
 libs/msm/test/OrthogonalDeferred.cpp svneol=native#text/plain
