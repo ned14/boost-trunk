@@ -6350,6 +6350,7 @@ boost/spirit/include/support_any_ns.hpp svneol=native#text/plain
 boost/spirit/include/support_argument.hpp svneol=native#text/plain
 boost/spirit/include/support_ascii.hpp svneol=native#text/plain
 boost/spirit/include/support_attributes.hpp svneol=native#text/plain
+boost/spirit/include/support_attributes_fwd.hpp svneol=native#text/plain
 boost/spirit/include/support_char_class.hpp svneol=native#text/plain
 boost/spirit/include/support_iso8859_1.hpp svneol=native#text/plain
 boost/spirit/include/support_istream_iterator.hpp svneol=native#text/plain
