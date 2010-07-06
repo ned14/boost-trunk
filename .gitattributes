@@ -22164,6 +22164,7 @@ libs/spirit/doc/structure.qbk svneol=native#text/plain
 libs/spirit/doc/support.qbk svneol=native#text/plain
 libs/spirit/doc/support/multi_pass.qbk svneol=native#text/plain
 libs/spirit/doc/what_s_new.qbk svneol=native#text/plain
+libs/spirit/example/Jamfile svneol=native#text/plain
 libs/spirit/example/karma/Jamfile svneol=native#text/plain
 libs/spirit/example/karma/actions.cpp svneol=native#text/plain
 libs/spirit/example/karma/auto_facilities.cpp svneol=native#text/plain
