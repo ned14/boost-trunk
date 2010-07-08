@@ -10120,6 +10120,7 @@ libs/fusion/doc/html/fusion/view/filter_view.html svneol=native#text/html
 libs/fusion/doc/html/fusion/view/iterator_range.html svneol=native#text/html
 libs/fusion/doc/html/fusion/view/joint_view.html svneol=native#text/html
 libs/fusion/doc/html/fusion/view/nview.html svneol=native#text/html
+libs/fusion/doc/html/fusion/view/repetitive_view.html svneol=native#text/html
 libs/fusion/doc/html/fusion/view/reverse_view.html svneol=native#text/html
 libs/fusion/doc/html/fusion/view/single_view.html svneol=native#text/html
 libs/fusion/doc/html/fusion/view/transform_view.html svneol=native#text/html
