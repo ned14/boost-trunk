@@ -9649,6 +9649,7 @@ libs/format/test/Jamfile.v2 svneol=native#text/plain
 libs/format/test/format_test1.cpp svneol=native#text/plain
 libs/format/test/format_test2.cpp svneol=native#text/plain
 libs/format/test/format_test3.cpp svneol=native#text/plain
+libs/format/test/format_test_enum.cpp svneol=native#text/plain
 libs/format/test/format_test_wstring.cpp svneol=native#text/plain
 libs/function/doc/Jamfile.v2 svneol=native#text/plain
 libs/function/doc/faq.xml svneol=native#text/xml
