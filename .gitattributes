@@ -5142,6 +5142,7 @@ boost/serialization/hash_collections_save_imp.hpp svneol=native#text/plain
 boost/serialization/hash_map.hpp svneol=native#text/plain
 boost/serialization/hash_set.hpp svneol=native#text/plain
 boost/serialization/is_bitwise_serializable.hpp svneol=native#text/plain
+boost/serialization/item_version_type.hpp svneol=native#text/plain
 boost/serialization/level.hpp svneol=native#text/plain
 boost/serialization/level_enum.hpp svneol=native#text/plain
 boost/serialization/list.hpp svneol=native#text/plain
