@@ -25889,7 +25889,6 @@ tools/quickbook/test/empty.quickbook svneol=native#text/plain
 tools/quickbook/test/escape.gold svneol=native#text/plain
 tools/quickbook/test/escape.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-cpp-mismatched-escape.quickbook svneol=native#text/plain
-tools/quickbook/test/fail-image_1_5.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-import.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-include.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-parse-error1.quickbook svneol=native#text/plain
