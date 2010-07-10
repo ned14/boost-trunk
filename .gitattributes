@@ -21223,6 +21223,7 @@ libs/smart_ptr/test/intrusive_ptr_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/ip_convertible_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/lw_mutex_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/make_shared_esft_test.cpp svneol=native#text/plain
+libs/smart_ptr/test/make_shared_fp_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/make_shared_perfect_forwarding_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/make_shared_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/pointer_cast_test.cpp svneol=native#text/plain
