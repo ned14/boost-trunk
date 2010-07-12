@@ -20557,6 +20557,7 @@ libs/range/test/test_function/equal_to_x.hpp svneol=native#text/plain
 libs/range/test/test_function/false_predicate.hpp svneol=native#text/plain
 libs/range/test/test_function/greater_than_x.hpp svneol=native#text/plain
 libs/range/test/test_function/multiply_by_x.hpp svneol=native#text/plain
+libs/range/test/test_function/true_predicate.hpp svneol=native#text/plain
 libs/rational/index.html svneol=native#text/html
 libs/rational/rational.html svneol=native#text/html
 libs/rational/test/Jamfile.v2 svneol=native#text/plain
