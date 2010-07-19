@@ -20924,6 +20924,7 @@ libs/serialization/example/demo_xml.hpp svneol=native#text/plain
 libs/serialization/example/demo_xml_load.cpp svneol=native#text/plain
 libs/serialization/example/demo_xml_save.cpp svneol=native#text/plain
 libs/serialization/example/demofile.txt svneol=native#text/plain
+libs/serialization/example/fix_six.cpp svneol=native#text/plain
 libs/serialization/example/log_archive.cpp svneol=native#text/plain
 libs/serialization/example/log_archive.hpp svneol=native#text/plain
 libs/serialization/example/polymorphic_portable_binary_iarchive.cpp svneol=native#text/plain
