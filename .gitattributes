@@ -20743,6 +20743,7 @@ libs/regex/performance/time_localised_boost.cpp svneol=native#text/plain
 libs/regex/performance/time_pcre.cpp svneol=native#text/plain
 libs/regex/performance/time_posix.cpp svneol=native#text/plain
 libs/regex/performance/time_safe_greta.cpp svneol=native#text/plain
+libs/regex/performance/time_std.cpp svneol=native#text/plain
 libs/regex/readme.txt svneol=native#text/plain
 libs/regex/src/c_regex_traits.cpp svneol=native#text/plain
 libs/regex/src/cpp_regex_traits.cpp svneol=native#text/plain
