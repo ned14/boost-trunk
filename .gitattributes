@@ -20282,7 +20282,6 @@ libs/range/doc/html/range/style_guide.html svneol=native#text/html
 libs/range/doc/html/range/upgrade.html svneol=native#text/html
 libs/range/doc/html/range/upgrade/upgrade_from_1_34.html svneol=native#text/html
 libs/range/doc/html/range/upgrade/upgrade_from_1_42.html svneol=native#text/html
-libs/range/doc/html/standalone_HTML.manifest svneol=native#text/plain
 libs/range/doc/introduction.qbk svneol=native#text/plain
 libs/range/doc/mfc_atl.qbk svneol=native#text/plain
 libs/range/doc/mfc_atl.rst svneol=native#text/plain
