@@ -2189,6 +2189,7 @@ boost/interprocess/detail/pointer_type.hpp svneol=native#text/plain
 boost/interprocess/detail/posix_time_types_wrk.hpp svneol=native#text/plain
 boost/interprocess/detail/preprocessor.hpp svneol=native#text/plain
 boost/interprocess/detail/ptime_wrk.hpp svneol=native#text/plain
+boost/interprocess/detail/robust_emulation.hpp svneol=native#text/plain
 boost/interprocess/detail/segment_manager_helper.hpp svneol=native#text/plain
 boost/interprocess/detail/tmp_dir_helpers.hpp svneol=native#text/plain
 boost/interprocess/detail/transform_iterator.hpp svneol=native#text/plain
