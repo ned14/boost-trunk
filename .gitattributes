@@ -2134,6 +2134,7 @@ boost/interprocess/containers/container/detail/node_pool_impl.hpp svneol=native#
 boost/interprocess/containers/container/detail/pair.hpp svneol=native#text/plain
 boost/interprocess/containers/container/detail/pool_common.hpp svneol=native#text/plain
 boost/interprocess/containers/container/detail/preprocessor.hpp svneol=native#text/plain
+boost/interprocess/containers/container/detail/stored_ref.hpp svneol=native#text/plain
 boost/interprocess/containers/container/detail/transform_iterator.hpp svneol=native#text/plain
 boost/interprocess/containers/container/detail/tree.hpp svneol=native#text/plain
 boost/interprocess/containers/container/detail/type_traits.hpp svneol=native#text/plain
