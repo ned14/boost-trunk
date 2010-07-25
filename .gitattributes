@@ -13399,7 +13399,6 @@ libs/interprocess/proj/vc7ide/doc_unordered_map.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/doc_vectorstream.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/doc_where_allocate.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/doc_windows_shared_memory.vcproj svneol=native#text/xml
-libs/interprocess/proj/vc7ide/doc_windows_shared_memory2.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/enable_shared_from_this_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/file_lock_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/file_mapping_test.vcproj svneol=native#text/xml
