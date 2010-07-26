@@ -22483,6 +22483,7 @@ libs/spirit/test/qi/rule.cpp svneol=native#text/plain
 libs/spirit/test/qi/rule_fail.cpp svneol=native#text/plain
 libs/spirit/test/qi/sequence.cpp svneol=native#text/plain
 libs/spirit/test/qi/sequential_or.cpp svneol=native#text/plain
+libs/spirit/test/qi/single_element_sequence_attribute.cpp svneol=native#text/plain
 libs/spirit/test/qi/skip.cpp svneol=native#text/plain
 libs/spirit/test/qi/symbols.cpp svneol=native#text/plain
 libs/spirit/test/qi/terminal_ex.cpp svneol=native#text/plain
