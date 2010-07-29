@@ -13455,7 +13455,6 @@ libs/interprocess/proj/vc7ide/vector_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/vectorstream_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/windows_shared_memory_mapping_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/windows_shared_memory_test.vcproj svneol=native#text/xml
-libs/interprocess/test/CMakeLists.txt svneol=native#text/plain
 libs/interprocess/test/Jamfile.v2 svneol=native#text/plain
 libs/interprocess/test/adaptive_node_pool_test.cpp svneol=native#text/plain
 libs/interprocess/test/adaptive_pool_test.cpp svneol=native#text/plain
