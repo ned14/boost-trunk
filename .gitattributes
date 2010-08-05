@@ -24879,6 +24879,7 @@ tools/build/v2/build/alias.py svneol=native#text/plain
 tools/build/v2/build/build-request.jam svneol=native#text/plain
 tools/build/v2/build/build_request.py svneol=native#text/plain
 tools/build/v2/build/configure.jam svneol=native#text/plain
+tools/build/v2/build/configure.py svneol=native#text/x-python
 tools/build/v2/build/engine.py svneol=native#text/plain
 tools/build/v2/build/errors.py svneol=native#text/plain
 tools/build/v2/build/feature.jam svneol=native#text/plain
