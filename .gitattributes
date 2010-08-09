@@ -7546,6 +7546,7 @@ boost/xpressive/xpressive_dynamic.hpp svneol=native#text/plain
 boost/xpressive/xpressive_fwd.hpp svneol=native#text/plain
 boost/xpressive/xpressive_static.hpp svneol=native#text/plain
 boost/xpressive/xpressive_typeof.hpp svneol=native#text/plain
+/boostcpp.jam svneol=native#text/plain
 /bootstrap.bat svneol=CRLF#text/plain eol=crlf
 /bootstrap.sh svneol=LF#text/x-sh eol=lf
 doc/Jamfile.v2 svneol=native#text/plain
