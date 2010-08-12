@@ -761,6 +761,7 @@ boost/config/platform/macos.hpp svneol=native#text/plain
 boost/config/platform/qnxnto.hpp svneol=native#text/plain
 boost/config/platform/solaris.hpp svneol=native#text/plain
 boost/config/platform/symbian.hpp svneol=native#text/plain
+boost/config/platform/vms.hpp svneol=native#text/plain
 boost/config/platform/vxworks.hpp svneol=native#text/plain
 boost/config/platform/win32.hpp svneol=native#text/plain
 boost/config/posix_features.hpp svneol=native#text/plain
