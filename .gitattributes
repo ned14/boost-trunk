@@ -14124,6 +14124,7 @@ libs/logic/test/tribool_test.cpp svneol=native#text/plain
 libs/maintainers.txt svneol=native#text/plain
 libs/math/build/Jamfile.v2 svneol=native#text/plain
 libs/math/config/Jamfile.v2 svneol=native#text/plain
+libs/math/config/has_gcc_visibility.cpp svneol=native#text/plain
 libs/math/config/has_gmpxx.cpp svneol=native#text/plain
 libs/math/config/has_long_double_support.cpp svneol=native#text/plain
 libs/math/config/has_mpfr_class.cpp svneol=native#text/plain
