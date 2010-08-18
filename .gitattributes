@@ -25779,6 +25779,7 @@ tools/build/v2/util/assert.jam svneol=native#text/plain
 tools/build/v2/util/container.jam svneol=native#text/plain
 tools/build/v2/util/doc.jam svneol=native#text/plain
 tools/build/v2/util/indirect.jam svneol=native#text/plain
+tools/build/v2/util/indirect.py svneol=native#text/x-python
 tools/build/v2/util/logger.py svneol=native#text/plain
 tools/build/v2/util/numbers.jam svneol=native#text/plain
 tools/build/v2/util/option.jam svneol=native#text/plain
