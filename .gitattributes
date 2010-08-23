@@ -22644,6 +22644,7 @@ libs/spirit/test/qi/char.cpp svneol=native#text/plain
 libs/spirit/test/qi/char_class.cpp svneol=native#text/plain
 libs/spirit/test/qi/clear_test.cpp svneol=native#text/plain
 libs/spirit/test/qi/debug.cpp svneol=native#text/plain
+libs/spirit/test/qi/debug_optional.cpp svneol=native#text/plain
 libs/spirit/test/qi/difference.cpp svneol=native#text/plain
 libs/spirit/test/qi/encoding.cpp svneol=native#text/plain
 libs/spirit/test/qi/end.cpp svneol=native#text/plain
