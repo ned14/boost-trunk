@@ -2319,6 +2319,7 @@ boost/intrusive/list.hpp svneol=native#text/plain
 boost/intrusive/list_hook.hpp svneol=native#text/plain
 boost/intrusive/member_value_traits.hpp svneol=native#text/plain
 boost/intrusive/options.hpp svneol=native#text/plain
+boost/intrusive/parent_from_member.hpp svneol=native#text/plain
 boost/intrusive/pointer_plus_bits.hpp svneol=native#text/plain
 boost/intrusive/priority_compare.hpp svneol=native#text/plain
 boost/intrusive/rbtree.hpp svneol=native#text/plain
