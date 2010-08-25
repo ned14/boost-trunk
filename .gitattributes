@@ -5211,6 +5211,7 @@ boost/signals2/connection.hpp svneol=native#text/plain
 boost/signals2/deconstruct.hpp svneol=native#text/plain
 boost/signals2/deconstruct_ptr.hpp svneol=native#text/plain
 boost/signals2/detail/auto_buffer.hpp svneol=native#text/plain
+boost/signals2/detail/foreign_ptr.hpp svneol=native#text/plain
 boost/signals2/detail/lwm_nop.hpp svneol=native#text/plain
 boost/signals2/detail/lwm_pthreads.hpp svneol=native#text/plain
 boost/signals2/detail/lwm_win32_cs.hpp svneol=native#text/plain
