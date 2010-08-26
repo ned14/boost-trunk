@@ -25888,6 +25888,7 @@ tools/quickbook/src/block_grammar.cpp svneol=native#text/plain
 tools/quickbook/src/code_snippet.cpp svneol=native#text/plain
 tools/quickbook/src/collector.cpp svneol=native#text/plain
 tools/quickbook/src/collector.hpp svneol=native#text/plain
+tools/quickbook/src/doc_info_actions.cpp svneol=native#text/plain
 tools/quickbook/src/doc_info_grammar.cpp svneol=native#text/plain
 tools/quickbook/src/grammar.hpp svneol=native#text/plain
 tools/quickbook/src/input_path.cpp svneol=native#text/plain
