@@ -25868,6 +25868,7 @@ tools/quickbook/detail/post_process.cpp svneol=native#text/plain
 tools/quickbook/detail/post_process.hpp svneol=native#text/plain
 tools/quickbook/detail/quickbook.cpp svneol=native#text/plain
 tools/quickbook/detail/quickbook.hpp svneol=native#text/plain
+tools/quickbook/detail/syntax_highlight.cpp svneol=native#text/plain
 tools/quickbook/detail/template_stack.cpp svneol=native#text/plain
 tools/quickbook/detail/template_stack.hpp svneol=native#text/plain
 tools/quickbook/detail/utils.cpp svneol=native#text/plain
