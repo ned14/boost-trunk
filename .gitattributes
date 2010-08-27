@@ -22276,6 +22276,7 @@ libs/spirit/example/qi/calc7/calc7b.hpp svneol=native#text/plain
 libs/spirit/example/qi/calc7/calc7c.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc7/calc7c.hpp svneol=native#text/plain
 libs/spirit/example/qi/complex_number.cpp svneol=native#text/plain
+libs/spirit/example/qi/custom_string.cpp svneol=native#text/plain
 libs/spirit/example/qi/display_attribute_type.cpp svneol=native#text/plain
 libs/spirit/example/qi/display_attribute_type.hpp svneol=native#text/plain
 libs/spirit/example/qi/employee.cpp svneol=native#text/plain
