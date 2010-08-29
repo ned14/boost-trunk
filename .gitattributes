@@ -14260,6 +14260,7 @@ libs/math/doc/sf_and_dist/distributions/fisher.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/gamma.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/hypergeometric.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/inverse_gamma.qbk svneol=native#text/plain
+libs/math/doc/sf_and_dist/distributions/inverse_gamma_example.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/laplace.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/logistic.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/lognormal.qbk svneol=native#text/plain
