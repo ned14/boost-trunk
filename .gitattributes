@@ -20137,6 +20137,7 @@ libs/random/test/test_binomial.cpp svneol=native#text/plain
 libs/random/test/test_binomial_distribution.cpp svneol=native#text/plain
 libs/random/test/test_discrete.cpp svneol=native#text/plain
 libs/random/test/test_discrete_distribution.cpp svneol=native#text/plain
+libs/random/test/test_distribution.ipp svneol=native#text/plain
 libs/random/test/test_extreme_value.cpp svneol=native#text/plain
 libs/random/test/test_extreme_value_distribution.cpp svneol=native#text/plain
 libs/random/test/test_gamma.cpp svneol=native#text/plain
