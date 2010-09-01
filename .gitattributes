@@ -937,6 +937,7 @@ boost/exception.hpp svneol=native#text/plain
 boost/exception/all.hpp svneol=native#text/plain
 boost/exception/current_exception_cast.hpp svneol=native#text/plain
 boost/exception/detail/attribute_noreturn.hpp svneol=native#text/plain
+boost/exception/detail/clone_current_exception.hpp svneol=native#text
 boost/exception/detail/error_info_impl.hpp svneol=native#text/plain
 boost/exception/detail/exception_ptr.hpp svneol=native#text/plain
 boost/exception/detail/is_output_streamable.hpp svneol=native#text/plain
@@ -9282,6 +9283,7 @@ libs/dynamic_bitset/example/example2.cpp svneol=native#text/plain
 libs/dynamic_bitset/example/example3.cpp svneol=native#text/plain
 libs/dynamic_bitset/example/timing_tests.cpp svneol=native#text/plain
 libs/dynamic_bitset/index.html svneol=native#text/html
+libs/exception/build/Jamfile.v2 svneol=native#text/Jamfile
 libs/exception/doc/BOOST_THROW_EXCEPTION.html svneol=LF#text/html eol=lf
 libs/exception/doc/boost-exception.html svneol=LF#text/html eol=lf
 libs/exception/doc/boost_exception_all_hpp.html svneol=LF#text/html eol=lf
@@ -9370,6 +9372,7 @@ libs/exception/example/example_io.cpp svneol=native#text/plain
 libs/exception/example/info_tuple.cpp svneol=native#text/plain
 libs/exception/example/logging.cpp svneol=native#text/plain
 libs/exception/index.html svneol=native#text/html
+libs/exception/src/clone_current_exception_msvc.cpp svneol=native#text
 libs/exception/test/1-throw_exception_test.cpp svneol=native#text/plain
 libs/exception/test/2-throw_exception_no_exceptions_test.cpp svneol=native#text/plain
 libs/exception/test/3-throw_exception_no_integration_test.cpp svneol=native#text/plain
