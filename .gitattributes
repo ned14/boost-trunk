@@ -2808,6 +2808,7 @@ boost/math/tools/test.hpp svneol=native#text/plain
 boost/math/tools/test_data.hpp svneol=native#text/plain
 boost/math/tools/toms748_solve.hpp svneol=native#text/plain
 boost/math/tools/traits.hpp svneol=native#text/plain
+boost/math/tools/tuple.hpp svneol=native#text/plain
 boost/math/tools/user.hpp svneol=native#text/plain
 boost/math/tools/workaround.hpp svneol=native#text/plain
 boost/math/tr1.hpp svneol=native#text/plain
@@ -15264,6 +15265,7 @@ libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/extreme_dist.htm
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/f_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/gamma_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/hypergeometric_dist.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/inverse_gamma_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/laplace_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/logistic_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/lognormal_dist.html svneol=native#text/html
@@ -15310,6 +15312,7 @@ libs/math/doc/sf_and_dist/html/math_toolkit/dist/stat_tut/weg/find_eg.html svneo
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/stat_tut/weg/find_eg/find_location_eg.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/stat_tut/weg/find_eg/find_mean_and_sd_eg.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/stat_tut/weg/find_eg/find_scale_eg.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/dist/stat_tut/weg/inverse_gamma_eg.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/stat_tut/weg/nag_library.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/stat_tut/weg/nccs_eg.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/stat_tut/weg/nccs_eg/nccs_power_eg.html svneol=native#text/html
@@ -15450,6 +15453,7 @@ libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals1/rational.html svn
 libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals1/roots.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals1/roots2.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals1/series_evaluation.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals1/tuples.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals2.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals2/error_test.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals2/minimax.html svneol=native#text/html
@@ -15521,6 +15525,7 @@ libs/math/doc/sf_and_dist/tgamma.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/thread_safety.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/tr1.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/tr1_ref.qbk svneol=native#text/plain
+libs/math/doc/sf_and_dist/tuple.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/win32_nmake.mak svneol=native#text/plain
 libs/math/doc/sf_and_dist/zeta.qbk svneol=native#text/plain
 libs/math/dot_net_example/Setupdistex/Release/Setupdistex.msi -text
@@ -16162,6 +16167,7 @@ libs/math/test/zeta_1_below_data.ipp svneol=native#text/plain
 libs/math/test/zeta_1_up_data.ipp svneol=native#text/plain
 libs/math/test/zeta_data.ipp svneol=native#text/plain
 libs/math/test/zeta_neg_data.ipp svneol=native#text/plain
+libs/math/tools/Jamfile.v2 svneol=native#text/plain
 libs/math/tools/bessel_data.cpp svneol=native#text/plain
 libs/math/tools/beta_data.cpp svneol=native#text/plain
 libs/math/tools/carlson_ellint_data.cpp svneol=native#text/plain
