@@ -2585,6 +2585,7 @@ boost/math/distributions/fisher_f.hpp svneol=native#text/plain
 boost/math/distributions/fwd.hpp svneol=native#text/plain
 boost/math/distributions/gamma.hpp svneol=native#text/plain
 boost/math/distributions/hypergeometric.hpp svneol=native#text/plain
+boost/math/distributions/inverse_chi_squared.hpp svneol=native#text/plain
 boost/math/distributions/inverse_gamma.hpp svneol=native#text/plain
 boost/math/distributions/laplace.hpp svneol=native#text/plain
 boost/math/distributions/logistic.hpp svneol=native#text/plain
