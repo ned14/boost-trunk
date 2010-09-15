@@ -17060,6 +17060,7 @@ libs/msm/doc/HTML/examples/SCComposite.cpp svneol=native#text/plain
 libs/msm/doc/HTML/examples/SCSimple.cpp svneol=native#text/plain
 libs/msm/doc/HTML/examples/SM-2Arg.cpp svneol=native#text/plain
 libs/msm/doc/HTML/examples/Serialize.cpp svneol=native#text/plain
+libs/msm/doc/HTML/examples/SerializeCompositeAndHistory.cpp svneol=native#text/plain
 libs/msm/doc/HTML/examples/SimpleTimer.cpp svneol=native#text/plain
 libs/msm/doc/HTML/examples/SimpleTutorial.cpp svneol=native#text/plain
 libs/msm/doc/HTML/examples/SimpleTutorial2.cpp svneol=native#text/plain
