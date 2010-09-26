@@ -8671,6 +8671,7 @@ libs/config/test/boost_no_iter_construct.ipp svneol=native#text/plain
 libs/config/test/boost_no_lambdas.ipp svneol=native#text/plain
 libs/config/test/boost_no_limits.ipp svneol=native#text/plain
 libs/config/test/boost_no_limits_const_exp.ipp svneol=native#text/plain
+libs/config/test/boost_no_limits_lowest.ipp svneol=native#text/plain
 libs/config/test/boost_no_ll_limits.ipp svneol=native#text/plain
 libs/config/test/boost_no_long_long.ipp svneol=native#text/plain
 libs/config/test/boost_no_mem_func_spec.ipp svneol=native#text/plain
