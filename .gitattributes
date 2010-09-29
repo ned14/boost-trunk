@@ -16132,6 +16132,7 @@ libs/math/test/test_igamma_inva.cpp svneol=native#text/plain
 libs/math/test/test_instantiate1.cpp svneol=native#text/plain
 libs/math/test/test_instantiate2.cpp svneol=native#text/plain
 libs/math/test/test_inv_hyp.cpp svneol=native#text/plain
+libs/math/test/test_inverse_chi_squared_distribution.cpp svneol=native#text/plain
 libs/math/test/test_inverse_gamma_distribution.cpp svneol=native#text/plain
 libs/math/test/test_laguerre.cpp svneol=native#text/plain
 libs/math/test/test_laplace.cpp svneol=native#text/plain
