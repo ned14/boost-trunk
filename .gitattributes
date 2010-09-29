@@ -14302,6 +14302,7 @@ libs/math/doc/sf_and_dist/distributions/find_location_and_scale.qbk svneol=nativ
 libs/math/doc/sf_and_dist/distributions/fisher.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/gamma.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/hypergeometric.qbk svneol=native#text/plain
+libs/math/doc/sf_and_dist/distributions/inverse_chi_squared.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/inverse_gamma.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/inverse_gamma_example.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/distributions/laplace.qbk svneol=native#text/plain
