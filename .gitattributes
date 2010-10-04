@@ -9906,6 +9906,7 @@ libs/fusion/doc/functional.qbk svneol=native#text/plain
 libs/fusion/doc/fusion.qbk svneol=native#text/plain
 libs/fusion/doc/html/fusion/acknowledgements.html svneol=native#text/html
 libs/fusion/doc/html/fusion/adapted.html svneol=native#text/html
+libs/fusion/doc/html/fusion/adapted/adapt_adt.html svneol=native#text/html
 libs/fusion/doc/html/fusion/adapted/adapt_assoc.html svneol=native#text/html
 libs/fusion/doc/html/fusion/adapted/adapt_assoc_struct_named.html svneol=native#text/html
 libs/fusion/doc/html/fusion/adapted/adapt_assoc_tpl_struct.html svneol=native#text/html
