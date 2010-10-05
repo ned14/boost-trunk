@@ -17146,6 +17146,7 @@ libs/multi_array/example/foreach_test.cpp svneol=native#text/plain
 libs/multi_array/example/foreach_test2.cpp svneol=native#text/plain
 libs/multi_array/example/op_paren.cpp svneol=native#text/plain
 libs/multi_array/example/print_array.cpp svneol=native#text/plain
+libs/multi_array/example/resize_from_other.cpp svneol=native#text/plain
 libs/multi_array/example/subview.cpp svneol=native#text/plain
 libs/multi_array/example/subview2.cpp svneol=native#text/plain
 libs/multi_array/index.html svneol=native#text/html
