@@ -17189,6 +17189,7 @@ libs/multi_array/test/range1.cpp svneol=native#text/plain
 libs/multi_array/test/regression.cfg svneol=native#text/plain
 libs/multi_array/test/reshape.cpp svneol=native#text/plain
 libs/multi_array/test/resize.cpp svneol=native#text/plain
+libs/multi_array/test/reverse_view.cpp svneol=native#text/plain
 libs/multi_array/test/slice.cpp svneol=native#text/plain
 libs/multi_array/test/stl_interaction.cpp svneol=native#text/plain
 libs/multi_array/test/storage_order.cpp svneol=native#text/plain
