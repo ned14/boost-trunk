@@ -9579,6 +9579,7 @@ libs/filesystem/v3/test/operations_unit_test.cpp svneol=native#text/plain
 libs/filesystem/v3/test/path_test.cpp svneol=native#text/plain
 libs/filesystem/v3/test/path_unit_test.cpp svneol=native#text/plain
 libs/filesystem/v3/test/test_codecvt.hpp svneol=native#text/plain
+libs/filesystem/v3/test/windows_attributes.cpp svneol=native#text/plain
 libs/flyweight/doc/acknowledgements.html svneol=native#text/html
 libs/flyweight/doc/examples.html svneol=native#text/html
 libs/flyweight/doc/future_work.html svneol=native#text/html
