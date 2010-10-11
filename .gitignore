@@ -1,5 +1,6 @@
 /bin.v2
 /bjam.exe
+/dist
 libs/asio/doc/html
 libs/fusion/doc/html/quickbook_HTML.manifest
 libs/graph/test/bootstrap.log

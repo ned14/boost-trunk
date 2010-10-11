@@ -23830,6 +23830,7 @@ libs/units/boost.css svneol=native#text/css
 libs/units/doc/Jamfile.v2 svneol=native#text/plain
 libs/units/doc/units.qbk svneol=native#text/plain
 libs/units/example/Jamfile.v2 svneol=native#text/plain
+libs/units/example/autoprefixes.cpp svneol=native#text/plain
 libs/units/example/complex.cpp svneol=native#text/plain
 libs/units/example/composite_output.cpp svneol=native#text/plain
 libs/units/example/conversion.cpp svneol=native#text/plain
