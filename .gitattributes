@@ -15658,6 +15658,7 @@ libs/math/example/students_t_example3.cpp svneol=native#text/plain
 libs/math/example/students_t_single_sample.cpp svneol=native#text/plain
 libs/math/example/students_t_two_samples.cpp svneol=native#text/plain
 libs/math/index.html svneol=native#text/html
+libs/math/minimax/Jamfile.v2 svneol=native#text/plain
 libs/math/minimax/f.cpp svneol=native#text/plain
 libs/math/minimax/main.cpp svneol=native#text/plain
 libs/math/octonion/graphics/octonion_blurb1.jpeg -text svneol=unset#image/jpeg
