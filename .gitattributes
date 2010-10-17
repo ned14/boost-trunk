@@ -22712,6 +22712,7 @@ libs/spirit/test/karma/pattern2.cpp svneol=native#text/plain
 libs/spirit/test/karma/pattern3.cpp svneol=native#text/plain
 libs/spirit/test/karma/plus.cpp svneol=native#text/plain
 libs/spirit/test/karma/real_numerics.cpp svneol=native#text/plain
+libs/spirit/test/karma/real_scientific.cpp svneol=native#text/plain
 libs/spirit/test/karma/repeat.cpp svneol=native#text/plain
 libs/spirit/test/karma/right_alignment.cpp svneol=native#text/plain
 libs/spirit/test/karma/rule_fail.cpp svneol=native#text/plain
