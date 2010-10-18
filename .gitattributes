@@ -16210,6 +16210,7 @@ libs/mpi/test/gps_position.hpp svneol=native#text/plain
 libs/mpi/test/graph_topology_test.cpp svneol=native#text/plain
 libs/mpi/test/is_mpi_op_test.cpp svneol=native#text/plain
 libs/mpi/test/nonblocking_test.cpp svneol=native#text/plain
+libs/mpi/test/pointer_test.cpp svneol=native#text/plain
 libs/mpi/test/python/all_gather_test.py svneol=native#text/x-python
 libs/mpi/test/python/all_reduce_test.py svneol=native#text/x-python
 libs/mpi/test/python/all_to_all_test.py svneol=native#text/x-python
