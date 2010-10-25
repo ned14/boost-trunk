@@ -456,6 +456,7 @@ boost/asio/impl/read_until.hpp svneol=native#text/plain
 boost/asio/impl/serial_port_base.hpp svneol=native#text/plain
 boost/asio/impl/serial_port_base.ipp svneol=native#text/plain
 boost/asio/impl/src.cpp svneol=native#text/plain
+boost/asio/impl/src.hpp svneol=native#text/plain
 boost/asio/impl/write.hpp svneol=native#text/plain
 boost/asio/impl/write_at.hpp svneol=native#text/plain
 boost/asio/io_service.hpp svneol=native#text/plain
