@@ -22600,6 +22600,7 @@ libs/spirit/test/qi/raw.cpp svneol=native#text/plain
 libs/spirit/test/qi/real.cpp svneol=native#text/plain
 libs/spirit/test/qi/reorder_test.cpp svneol=native#text/plain
 libs/spirit/test/qi/repeat.cpp svneol=native#text/plain
+libs/spirit/test/qi/repeat_regression.cpp svneol=native#text/plain
 libs/spirit/test/qi/rule.cpp svneol=native#text/plain
 libs/spirit/test/qi/rule_fail.cpp svneol=native#text/plain
 libs/spirit/test/qi/sequence.cpp svneol=native#text/plain
