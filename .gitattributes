@@ -23585,6 +23585,7 @@ libs/type_traits/doc/html/boost_typetraits/reference/aligned_storage.html svneol
 libs/type_traits/doc/html/boost_typetraits/reference/alignment_of.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/reference/common_type.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/reference/common_type_hpp.html svneol=native#text/html
+libs/type_traits/doc/html/boost_typetraits/reference/conditional.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/reference/decay.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/reference/extent.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/reference/floating_point_promotion.html svneol=native#text/html
@@ -24741,6 +24742,8 @@ tools/boostbook/test/doxygen/Jamfile.v2 svneol=native#text/plain
 tools/boostbook/test/doxygen/boost/example.hpp svneol=native#text/plain
 tools/boostbook/test/doxygen/example.xml svneol=native#text/xml
 tools/boostbook/test/more/run-tests.py svneol=native#text/x-python
+tools/boostbook/test/more/tests/book/boostbook.gold svneol=native#text/plain
+tools/boostbook/test/more/tests/book/boostbook.xml svneol=native#text/xml
 tools/boostbook/test/more/tests/libs/array.gold svneol=native#text/plain
 tools/boostbook/test/more/tests/libs/array.xml svneol=native#text/xml
 tools/boostbook/test/more/tests/libs/hash-ref.gold svneol=native#text/plain
