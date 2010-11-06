@@ -21117,6 +21117,7 @@ libs/serialization/vc7ide/demo_xml_save.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/dll_a.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/dll_base.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/dll_derived2.vcproj svneol=native#text/xml
+libs/serialization/vc7ide/fix_six.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/polymorphic_derived2.vcproj svneol=native#text/xml
 libs/serialization/vc7ide/readme.txt svneol=native#text/plain
 libs/serialization/vc7ide/test_array.vcproj svneol=native#text/xml
