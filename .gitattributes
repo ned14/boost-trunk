@@ -1301,6 +1301,7 @@ boost/fusion/container/deque/detail/deque_initial_size.hpp svneol=native#text/pl
 boost/fusion/container/deque/detail/deque_keyed_values.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/deque_keyed_values_call.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/end_impl.hpp svneol=native#text/plain
+boost/fusion/container/deque/detail/is_sequence_impl.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/keyed_element.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/value_at_impl.hpp svneol=native#text/plain
 boost/fusion/container/deque/front_extended_deque.hpp svneol=native#text/plain
