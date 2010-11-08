@@ -4326,6 +4326,7 @@ boost/polygon/detail/iterator_compact_to_points.hpp svneol=native#text/plain
 boost/polygon/detail/iterator_geometry_to_set.hpp svneol=native#text/plain
 boost/polygon/detail/iterator_points_to_compact.hpp svneol=native#text/plain
 boost/polygon/detail/max_cover.hpp svneol=native#text/plain
+boost/polygon/detail/minkowski.hpp svneol=native#text/plain
 boost/polygon/detail/polygon_45_formation.hpp svneol=native#text/plain
 boost/polygon/detail/polygon_45_set_view.hpp svneol=native#text/plain
 boost/polygon/detail/polygon_45_touch.hpp svneol=native#text/plain
