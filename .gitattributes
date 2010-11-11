@@ -13548,6 +13548,7 @@ libs/icl/test/fastest_total_icl_quantifier_cases.hpp svneol=native#text/plain
 libs/icl/test/fastest_total_interval_quantifier_/fastest_total_interval_quantifier.cpp svneol=native#text/plain
 libs/icl/test/fastest_total_interval_quantifier_/vc9_fastest_total_interval_quantifier.vcproj svneol=native#text/xml
 libs/icl/test/fastest_total_interval_quantifier_cases.hpp svneol=native#text/plain
+libs/icl/test/portability.hpp svneol=native#text/plain
 libs/icl/test/test_casual_/test_casual.cpp svneol=native#text/plain
 libs/icl/test/test_casual_/vc9_test_casual.vcproj svneol=native#text/xml
 libs/icl/test/test_changing_interval_defaults_/test_changing_interval_defaults.cpp svneol=native#text/plain
