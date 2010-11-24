@@ -16017,6 +16017,7 @@ libs/math/example/policy_ref_snip6.cpp svneol=native#text/plain
 libs/math/example/policy_ref_snip7.cpp svneol=native#text/plain
 libs/math/example/policy_ref_snip8.cpp svneol=native#text/plain
 libs/math/example/policy_ref_snip9.cpp svneol=native#text/plain
+libs/math/example/root_finding_example.cpp svneol=native#text/plain
 libs/math/example/students_t_example1.cpp svneol=native#text/plain
 libs/math/example/students_t_example2.cpp svneol=native#text/plain
 libs/math/example/students_t_example3.cpp svneol=native#text/plain
