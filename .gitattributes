@@ -14653,6 +14653,7 @@ libs/math/doc/sf_and_dist/building.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/c99_ref.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/common_overviews.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/concepts.qbk svneol=native#text/plain
+libs/math/doc/sf_and_dist/config_macros.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/constants.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/contact_info.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/credits.qbk svneol=native#text/plain
