@@ -16521,6 +16521,7 @@ libs/math/test/test_gamma.cpp svneol=native#text/plain
 libs/math/test/test_gamma_data.ipp svneol=native#text/plain
 libs/math/test/test_gamma_dist.cpp svneol=native#text/plain
 libs/math/test/test_gamma_hooks.hpp svneol=native#text/plain
+libs/math/test/test_geometric.cpp svneol=native#text/plain
 libs/math/test/test_hermite.cpp svneol=native#text/plain
 libs/math/test/test_hypergeometric_dist.cpp svneol=native#text/plain
 libs/math/test/test_ibeta.cpp svneol=native#text/plain
