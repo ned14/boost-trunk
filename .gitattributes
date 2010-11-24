@@ -16544,6 +16544,7 @@ libs/math/test/test_legendre_hooks.hpp svneol=native#text/plain
 libs/math/test/test_logistic_dist.cpp svneol=native#text/plain
 libs/math/test/test_lognormal.cpp svneol=native#text/plain
 libs/math/test/test_long_double_support.cpp svneol=native#text/plain
+libs/math/test/test_math_fwd.cpp svneol=native#text/plain
 libs/math/test/test_minima.cpp svneol=native#text/plain
 libs/math/test/test_nc_beta.cpp svneol=native#text/plain
 libs/math/test/test_nc_chi_squared.cpp svneol=native#text/plain
