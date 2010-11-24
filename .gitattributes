@@ -16575,6 +16575,7 @@ libs/math/test/test_rational_instances/test_rational_real_concept5.cpp svneol=na
 libs/math/test/test_rationals.cpp svneol=native#text/plain
 libs/math/test/test_rayleigh.cpp svneol=native#text/plain
 libs/math/test/test_real_concept.cpp svneol=native#text/plain
+libs/math/test/test_real_concept_neg_bin.cpp svneol=native#text/plain
 libs/math/test/test_remez.cpp svneol=native#text/plain
 libs/math/test/test_roots.cpp svneol=native#text/plain
 libs/math/test/test_round.cpp svneol=native#text/plain
