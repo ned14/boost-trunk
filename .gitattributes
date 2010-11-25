@@ -15567,6 +15567,14 @@ libs/math/doc/sf_and_dist/graphs/gamma_p.svg -text svneol=unset#image/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/gamma_q.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/graphs/gamma_q.svg -text svneol=unset#image/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/generate.sh svneol=LF#text/x-sh eol=lf
+libs/math/doc/sf_and_dist/graphs/geometric_cdf_2.png -text svneol=unset#image/png
+libs/math/doc/sf_and_dist/graphs/geometric_cdf_2.svg svneol=native#text/svg%2Bxml
+libs/math/doc/sf_and_dist/graphs/geometric_cdf_discrete.png -text svneol=unset#image/png
+libs/math/doc/sf_and_dist/graphs/geometric_cdf_discrete.svg svneol=native#text/svg%2Bxml
+libs/math/doc/sf_and_dist/graphs/geometric_pdf_2.png -text svneol=unset#image/png
+libs/math/doc/sf_and_dist/graphs/geometric_pdf_2.svg svneol=native#text/svg%2Bxml
+libs/math/doc/sf_and_dist/graphs/geometric_pdf_discrete.png -text svneol=unset#image/png
+libs/math/doc/sf_and_dist/graphs/geometric_pdf_discrete.svg svneol=native#text/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/hermite.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/graphs/hermite.svg -text svneol=unset#image/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/hyperbolic.png -text svneol=unset#image/png
