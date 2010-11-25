@@ -15694,9 +15694,11 @@ libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/exp_dist.html sv
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/extreme_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/f_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/gamma_dist.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/geometric_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/hypergeometric_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/inverse_chi_squared_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/inverse_gamma_dist.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/inverse_gaussian_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/laplace_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/logistic_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/lognormal_dist.html svneol=native#text/html
@@ -15712,7 +15714,6 @@ libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/rayleigh.html sv
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/students_t_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/triangular_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/uniform_dist.html svneol=native#text/html
-libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/weibull.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/weibull_dist.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/nmp.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/dist/future.html svneol=native#text/html
