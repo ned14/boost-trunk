@@ -16,6 +16,7 @@ libs/graph/test/random.dot
 libs/graph/test/triangular-fr.dot
 libs/graph/test/triangular-kk.dot
 libs/iterator/doc/GNUmakefile
+libs/math/test/*.log
 libs/optional/test/bin
 libs/python/pyste/dist/*.pyc
 libs/python/pyste/dist/*.zip
