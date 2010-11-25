@@ -23162,6 +23162,7 @@ libs/spirit/test/lex/regression006.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression007.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression008.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression009.cpp svneol=native#text/plain
+libs/spirit/test/lex/regression010.cpp svneol=native#text/plain
 libs/spirit/test/lex/semantic_actions.cpp svneol=native#text/plain
 libs/spirit/test/lex/set_token_value.cpp svneol=native#text/plain
 libs/spirit/test/lex/set_token_value_phoenix.cpp svneol=native#text/plain
