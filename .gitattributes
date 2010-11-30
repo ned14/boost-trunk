@@ -916,6 +916,7 @@ boost/detail/lightweight_mutex.hpp svneol=native#text/plain
 boost/detail/lightweight_test.hpp svneol=native#text/plain
 boost/detail/lightweight_thread.hpp svneol=native#text/plain
 boost/detail/limits.hpp svneol=native#text/plain
+boost/detail/main.hpp svneol=native#text/plain
 boost/detail/named_template_params.hpp svneol=native#text/plain
 boost/detail/no_exceptions_support.hpp svneol=native#text/plain
 boost/detail/none_t.hpp svneol=native#text/plain
