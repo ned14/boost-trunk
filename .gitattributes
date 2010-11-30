@@ -23265,6 +23265,7 @@ libs/spirit/test/qi/utree.cpp svneol=native#text/plain
 libs/spirit/test/support/multi_pass_regression001.cpp svneol=native#text/plain
 libs/spirit/test/support/multi_pass_regression002.cpp svneol=native#text/plain
 libs/spirit/test/support/multi_pass_regression003.cpp svneol=native#text/plain
+libs/spirit/test/support/utree_test.cpp svneol=native#text/plain
 libs/spirit/test/test_headers/Jamfile svneol=native#text/plain
 libs/spirit/test/test_headers/main.cpp svneol=native#text/plain
 libs/spirit/test/test_headers/test.cpp svneol=native#text/plain
