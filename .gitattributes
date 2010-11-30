@@ -23260,6 +23260,7 @@ libs/spirit/test/qi/test_attr.hpp svneol=native#text/plain
 libs/spirit/test/qi/test_manip_attr.hpp svneol=native#text/plain
 libs/spirit/test/qi/tst.cpp svneol=native#text/plain
 libs/spirit/test/qi/uint.cpp svneol=native#text/plain
+libs/spirit/test/qi/utree.cpp svneol=native#text/plain
 libs/spirit/test/support/multi_pass_regression001.cpp svneol=native#text/plain
 libs/spirit/test/support/multi_pass_regression002.cpp svneol=native#text/plain
 libs/spirit/test/support/multi_pass_regression003.cpp svneol=native#text/plain
