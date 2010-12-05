@@ -4323,7 +4323,6 @@ boost/pending/fenced_priority_queue.hpp svneol=native#text/plain
 boost/pending/fibonacci_heap.hpp svneol=native#text/plain
 boost/pending/indirect_cmp.hpp svneol=native#text/plain
 boost/pending/integer_log2.hpp svneol=native#text/plain
-boost/pending/integer_range.hpp svneol=native#text/plain
 boost/pending/is_heap.hpp svneol=native#text/plain
 boost/pending/iterator_adaptors.hpp svneol=native#text/plain
 boost/pending/iterator_tests.hpp svneol=native#text/plain
