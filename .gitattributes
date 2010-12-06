@@ -6033,6 +6033,7 @@ boost/spirit/home/qi/detail/permute_function.hpp svneol=native#text/plain
 boost/spirit/home/qi/detail/string_parse.hpp svneol=native#text/plain
 boost/spirit/home/qi/detail/unused_skipper.hpp svneol=native#text/plain
 boost/spirit/home/qi/directive.hpp svneol=native#text/plain
+boost/spirit/home/qi/directive/as_string.hpp svneol=native#text/plain
 boost/spirit/home/qi/directive/encoding.hpp svneol=native#text/plain
 boost/spirit/home/qi/directive/hold.hpp svneol=native#text/plain
 boost/spirit/home/qi/directive/lexeme.hpp svneol=native#text/plain
