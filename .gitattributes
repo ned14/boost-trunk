@@ -13525,6 +13525,7 @@ libs/icl/example/toytime.hpp svneol=native#text/plain
 libs/icl/example/user_groups_/user_groups.cpp svneol=native#text/plain
 libs/icl/example/user_groups_/vc9_user_groups.vcproj svneol=native#text/xml
 libs/icl/example/vc9_icl_examples.sln svneol=native#text/plain
+libs/icl/index.html svneol=native#text/html
 libs/icl/test/Jamfile.v2 svneol=native#text/plain
 libs/icl/test/disable_test_warnings.hpp svneol=native#text/plain
 libs/icl/test/fastest_icl_interval_/fastest_icl_interval.cpp svneol=native#text/plain
