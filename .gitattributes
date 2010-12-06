@@ -23174,6 +23174,7 @@ libs/spirit/test/karma/test.hpp svneol=native#text/plain
 libs/spirit/test/karma/test_attr.hpp svneol=native#text/plain
 libs/spirit/test/karma/test_manip_attr.hpp svneol=native#text/plain
 libs/spirit/test/karma/tricky_alignment.cpp svneol=native#text/plain
+libs/spirit/test/karma/utree.cpp svneol=native#text/plain
 libs/spirit/test/lex/auto_switch_lexerstate.cpp svneol=native#text/plain
 libs/spirit/test/lex/dedent_handling_phoenix.cpp svneol=native#text/plain
 libs/spirit/test/lex/id_type_enum.cpp svneol=native#text/plain
