@@ -16286,6 +16286,7 @@ libs/math/dot_net_example/distribution_explorer/boost.png -text svneol=unset#ima
 libs/math/dot_net_example/distribution_explorer/distribution.txt svneol=native#text/plain
 libs/math/dot_net_example/distribution_explorer/distribution_explorer.sln.lnk -text
 libs/math/dot_net_example/distribution_explorer/distribution_explorer.suo -text
+libs/math/dot_net_example/distribution_explorer/readme.txt svneol=native#text/plain
 libs/math/example/Jamfile.v2 svneol=native#text/plain
 libs/math/example/binomial_coinflip_example.cpp svneol=native#text/plain
 libs/math/example/binomial_confidence_limits.cpp svneol=native#text/plain
