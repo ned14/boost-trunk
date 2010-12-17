@@ -14849,6 +14849,7 @@ libs/math/config/has_gcc_visibility.cpp svneol=native#text/plain
 libs/math/config/has_gmpxx.cpp svneol=native#text/plain
 libs/math/config/has_long_double_support.cpp svneol=native#text/plain
 libs/math/config/has_mpfr_class.cpp svneol=native#text/plain
+libs/math/config/has_mpreal.cpp svneol=native#text/plain
 libs/math/config/has_ntl_rr.cpp svneol=native#text/plain
 libs/math/doc/Jamfile.v2 svneol=native#text/plain
 libs/math/doc/common_factor.html svneol=native#text/html
