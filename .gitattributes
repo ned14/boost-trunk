@@ -20299,6 +20299,7 @@ libs/proto/test/bug2407.cpp svneol=native#text/plain
 libs/proto/test/calculator.cpp svneol=native#text/plain
 libs/proto/test/deduce_domain.cpp svneol=native#text/plain
 libs/proto/test/deep_copy.cpp svneol=native#text/plain
+libs/proto/test/display_expr.cpp svneol=native#text/plain
 libs/proto/test/examples.cpp svneol=native#text/plain
 libs/proto/test/lambda.cpp svneol=native#text/plain
 libs/proto/test/make.cpp svneol=native#text/plain
