@@ -16309,6 +16309,7 @@ libs/math/example/error_handling_example.cpp svneol=native#text/plain
 libs/math/example/error_policies_example.cpp svneol=native#text/plain
 libs/math/example/error_policy_example.cpp svneol=native#text/plain
 libs/math/example/f_test.cpp svneol=native#text/plain
+libs/math/example/factorial_example.cpp svneol=native#text/plain
 libs/math/example/find_location_example.cpp svneol=native#text/plain
 libs/math/example/find_mean_and_sd_normal.cpp svneol=native#text/plain
 libs/math/example/find_root_example.cpp svneol=native#text/plain
