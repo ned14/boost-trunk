@@ -22850,6 +22850,7 @@ libs/spirit/doc/html/spirit/qi/reference/char.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/char/char.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/char/char_class.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive.html svneol=native#text/html
+libs/spirit/doc/html/spirit/qi/reference/directive/hold.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive/lexeme.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive/matches.html svneol=native#text/html
 libs/spirit/doc/html/spirit/qi/reference/directive/no_case.html svneol=native#text/html
