@@ -5082,6 +5082,7 @@ boost/range/adaptor/sliced.hpp svneol=native#text/plain
 boost/range/adaptor/strided.hpp svneol=native#text/plain
 boost/range/adaptor/tokenized.hpp svneol=native#text/plain
 boost/range/adaptor/transformed.hpp svneol=native#text/plain
+boost/range/adaptor/type_erased.hpp svneol=native#text/plain
 boost/range/adaptor/uniqued.hpp svneol=native#text/plain
 boost/range/adaptors.hpp svneol=native#text/plain
 boost/range/algorithm.hpp svneol=native#text/plain
