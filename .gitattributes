@@ -6064,6 +6064,7 @@ boost/spirit/home/qi/nonterminal/detail/parameterized.hpp svneol=native#text/pla
 boost/spirit/home/qi/nonterminal/detail/parser_binder.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/error_handler.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/grammar.hpp svneol=native#text/plain
+boost/spirit/home/qi/nonterminal/nonterminal_fwd.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/rule.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/simple_trace.hpp svneol=native#text/plain
 boost/spirit/home/qi/numeric.hpp svneol=native#text/plain
