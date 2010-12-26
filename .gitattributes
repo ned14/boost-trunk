@@ -5182,6 +5182,7 @@ boost/range/detail/microsoft.hpp svneol=native#text/plain
 boost/range/detail/misc_concept.hpp svneol=native#text/plain
 boost/range/detail/range_return.hpp svneol=native#text/plain
 boost/range/detail/remove_extent.hpp svneol=native#text/plain
+boost/range/detail/safe_bool.hpp svneol=native#text/plain
 boost/range/detail/sfinae.hpp svneol=native#text/plain
 boost/range/detail/size.hpp svneol=native#text/plain
 boost/range/detail/size_type.hpp svneol=native#text/plain
