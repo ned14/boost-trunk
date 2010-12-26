@@ -23542,6 +23542,7 @@ libs/spirit/test/qi/no_case.cpp svneol=native#text/plain
 libs/spirit/test/qi/no_skip.cpp svneol=native#text/plain
 libs/spirit/test/qi/not_predicate.cpp svneol=native#text/plain
 libs/spirit/test/qi/omit.cpp svneol=native#text/plain
+libs/spirit/test/qi/one_element_fusion_sequence.cpp svneol=native#text/plain
 libs/spirit/test/qi/optional.cpp svneol=native#text/plain
 libs/spirit/test/qi/parse_attr.cpp svneol=native#text/plain
 libs/spirit/test/qi/permutation.cpp svneol=native#text/plain
