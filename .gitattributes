@@ -7982,6 +7982,7 @@ libs/array/test/array2.cpp svneol=native#text/plain
 libs/array/test/array3.cpp svneol=native#text/plain
 libs/array/test/array4.cpp svneol=native#text/plain
 libs/array/test/array5.cpp svneol=native#text/plain
+libs/array/test/array6.cpp svneol=native#text/plain
 libs/array/test/print.hpp svneol=native#text/plain
 libs/asio/doc/Jamfile.v2 svneol=native#text/plain
 libs/asio/doc/asio.qbk svneol=native#text/plain
