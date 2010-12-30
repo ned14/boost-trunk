@@ -4,6 +4,16 @@
 libs/asio/doc/html
 libs/fusion/doc/html/quickbook_HTML.manifest
 libs/fusion/test/compile_time/*.test
+libs/geometry/doc/quickbook/bin
+libs/geometry/example/bin
+libs/geometry/test/algorithms/bin
+libs/geometry/test/arithmetic/bin
+libs/geometry/test/core/bin
+libs/geometry/test/iterators/bin
+libs/geometry/test/multi/algorithms/bin
+libs/geometry/test/point_concept/bin
+libs/geometry/test/policies/bin
+libs/geometry/test/strategies/bin
 libs/graph/test/bootstrap.log
 libs/graph/test/cube-fr.dot
 libs/graph/test/cube.dot
