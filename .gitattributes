@@ -11273,9 +11273,7 @@ libs/geometry/doc/html/output_main.png -text
 libs/geometry/doc/html/svg_simplify_country.png -text
 libs/geometry/doc/html/svg_simplify_road.png -text
 libs/geometry/doc/introduction.qbk svneol=native#text/plain
-libs/geometry/doc/make_qbk.bat svneol=native#text/plain
 libs/geometry/doc/make_qbk.py svneol=native#text/x-python
-libs/geometry/doc/make_qbk.sh svneol=native#text/plain
 libs/geometry/doc/matrix.qbk svneol=native#text/plain
 libs/geometry/doc/other/ggl.svg svneol=native#text/plain
 libs/geometry/doc/other/overlay/de9im_polygons.ppt -text svneol=unset#application/vnd.ms-powerpoint
