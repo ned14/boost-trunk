@@ -25040,6 +25040,11 @@ libs/type_traits/doc/html/boost_typetraits/reference/remove_volatile.html svneol
 libs/type_traits/doc/html/boost_typetraits/reference/type_with_alignment.html svneol=native#text/html
 libs/type_traits/doc/html/boost_typetraits/user_defined.html svneol=native#text/html
 libs/type_traits/doc/html/index.html svneol=native#text/html
+libs/type_traits/doc/html/index/s11.html svneol=native#text/html
+libs/type_traits/doc/html/index/s12.html svneol=native#text/html
+libs/type_traits/doc/html/index/s13.html svneol=native#text/html
+libs/type_traits/doc/html/index/s14.html svneol=native#text/html
+libs/type_traits/doc/index.idx svneol=native#text/plain
 libs/type_traits/doc/integral_constant.qbk svneol=native#text/plain
 libs/type_traits/doc/integral_promotion.qbk svneol=native#text/plain
 libs/type_traits/doc/intrinsics.qbk svneol=native#text/plain
