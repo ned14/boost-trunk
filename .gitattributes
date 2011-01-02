@@ -5749,6 +5749,7 @@ boost/ratio/mpl/less.hpp svneol=native#text/plain
 boost/ratio/mpl/less_equal.hpp svneol=native#text/plain
 boost/ratio/mpl/minus.hpp svneol=native#text/plain
 boost/ratio/mpl/not_equal_to.hpp svneol=native#text/plain
+boost/ratio/mpl/numeric_cast.hpp svneol=native#text/plain
 boost/ratio/mpl/plus.hpp svneol=native#text/plain
 boost/ratio/mpl/rational_c_tag.hpp svneol=native#text/plain
 boost/ratio/mpl/times.hpp svneol=native#text/plain
