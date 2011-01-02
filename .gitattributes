@@ -5737,6 +5737,7 @@ boost/range/size_type.hpp svneol=native#text/plain
 boost/range/sub_range.hpp svneol=native#text/plain
 boost/range/value_type.hpp svneol=native#text/plain
 boost/ratio/detail/overflow_helpers.hpp svneol=native#text/plain
+boost/ratio/mpl/rational_c_tag.hpp svneol=native#text/plain
 boost/ratio/ratio.hpp svneol=native#text/plain
 boost/ratio/ratio_fwd.hpp svneol=native#text/plain
 boost/ratio/ratio_io.hpp svneol=native#text/plain
