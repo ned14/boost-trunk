@@ -24089,6 +24089,7 @@ libs/statechart/example/StopWatch/StopWatch2.cpp svneol=native#text/plain
 libs/statechart/index.html svneol=native#text/html
 libs/statechart/test/CustomReactionTest.cpp svneol=native#text/plain
 libs/statechart/test/CustomReactionTest.vcproj svneol=native#text/xml
+libs/statechart/test/DeferralBug.cpp svneol=native#text/plain
 libs/statechart/test/DeferralTest.cpp svneol=native#text/plain
 libs/statechart/test/DeferralTest.vcproj svneol=native#text/xml
 libs/statechart/test/FifoSchedulerTest.cpp svneol=native#text/plain
