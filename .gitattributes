@@ -11416,6 +11416,7 @@ libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/doxygen_xml2qbk.vcproj svne
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/file_to_string.hpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/area.cpp svneol=native#text/plain
+libs/geometry/doc/src/examples/algorithms/area_with_strategy.cpp svneol=native#text/plain
 libs/geometry/example/01_point_example.cpp svneol=native#text/plain
 libs/geometry/example/01_point_example.vcproj svneol=native#text/plain
 libs/geometry/example/02_linestring_example.cpp svneol=native#text/plain
