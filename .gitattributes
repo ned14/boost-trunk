@@ -27828,6 +27828,7 @@ more/writingdoc/template/overview.html svneol=native#text/html
 more/writingdoc/template/rationale.html svneol=native#text/html
 /rst.css svneol=native#text/css
 status/Jamfile.v2 svneol=native#text/plain
+status/boost-no-inspect svneol=native#text/plain
 status/expected_results.xml svneol=native#text/xml
 status/explicit-failures-markup.xml svneol=native#text/xml
 status/explicit-failures.xsd svneol=native#text/xml
