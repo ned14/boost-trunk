@@ -2557,7 +2557,6 @@ boost/graph/iteration_macros_undef.hpp svneol=native#text/plain
 boost/graph/johnson_all_pairs_shortest.hpp svneol=native#text/plain
 boost/graph/kamada_kawai_spring_layout.hpp svneol=native#text/plain
 boost/graph/king_ordering.hpp svneol=native#text/plain
-boost/graph/kolmogorov_max_flow.hpp svneol=native#text/plain
 boost/graph/kruskal_min_spanning_tree.hpp svneol=native#text/plain
 boost/graph/labeled_graph.hpp svneol=native#text/plain
 boost/graph/leda_graph.hpp svneol=native#text/plain
