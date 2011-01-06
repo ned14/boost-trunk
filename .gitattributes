@@ -698,6 +698,7 @@ boost/chrono/detail/inlined/win/chrono.hpp svneol=native#text/plain
 boost/chrono/detail/inlined/win/process_clock.hpp svneol=native#text/plain
 boost/chrono/detail/inlined/win/process_cpu_clocks.hpp svneol=native#text/plain
 boost/chrono/detail/inlined/win/thread_clock.hpp svneol=native#text/plain
+boost/chrono/detail/scan_keyword.hpp svneol=native#text/plain
 boost/chrono/detail/static_assert.hpp svneol=native#text/plain
 boost/chrono/detail/system.hpp svneol=native#text/plain
 boost/chrono/duration.hpp svneol=native#text/plain
