@@ -13029,7 +13029,6 @@ libs/graph/doc/kamada_kawai_spring_layout.html svneol=native#text/html
 libs/graph/doc/kevin_bacon.html svneol=native#text/html
 libs/graph/doc/king_ordering.html svneol=native#text/html
 libs/graph/doc/known_problems.html svneol=native#text/html
-libs/graph/doc/kolmogorov_max_flow.html svneol=native#text/html
 libs/graph/doc/kruskal_min_spanning_tree.html svneol=native#text/html
 libs/graph/doc/layout_tolerance.html svneol=native#text/html
 libs/graph/doc/leda_conversion.html svneol=native#text/html
