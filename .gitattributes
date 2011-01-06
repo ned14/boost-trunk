@@ -23623,6 +23623,7 @@ libs/regex/build/generic_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/has_icu_test.cpp svneol=native#text/plain
 libs/regex/build/sun_gen.sh svneol=LF#text/x-sh eol=lf
 libs/regex/build/sunpro.mak svneol=native#text/plain
+libs/regex/build/vc10.mak svneol=native#text/plain
 libs/regex/build/vc6-stlport.mak svneol=native#text/plain
 libs/regex/build/vc6.mak svneol=native#text/plain
 libs/regex/build/vc7-stlport.mak svneol=native#text/plain
