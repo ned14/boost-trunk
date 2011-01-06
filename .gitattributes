@@ -676,6 +676,7 @@ boost/call_traits.hpp svneol=native#text/plain
 boost/cast.hpp svneol=native#text/plain
 boost/cerrno.hpp svneol=native#text/plain
 boost/checked_delete.hpp svneol=native#text/plain
+boost/chrono.hpp svneol=native#text/plain
 boost/chrono/chrono.hpp svneol=native#text/plain
 boost/chrono/chrono_io.hpp svneol=native#text/plain
 boost/chrono/config.hpp svneol=native#text/plain
