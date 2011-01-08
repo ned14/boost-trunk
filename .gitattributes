@@ -9237,6 +9237,7 @@ libs/bind/test/protect_test.cpp svneol=native#text/plain
 libs/bind/test/ref_fn_test.cpp svneol=native#text/plain
 libs/chrono/build/Jamfile.v2 svneol=native#text/plain
 libs/chrono/doc/Jamfile.v2 svneol=native#text/plain
+libs/chrono/doc/chrono.pdf -text svneol=unset#application/pdf
 libs/chrono/doc/chrono.qbk svneol=native#text/plain
 libs/chrono/doc/time2_demo.html svneol=native#text/html
 libs/chrono/example/await_keystroke.cpp svneol=native#text/plain
