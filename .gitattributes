@@ -9248,6 +9248,7 @@ libs/chrono/example/clock_name.cpp svneol=native#text/plain
 libs/chrono/example/clock_name.hpp svneol=native#text/plain
 libs/chrono/example/cycle_count.cpp svneol=native#text/plain
 libs/chrono/example/explore_limits.cpp svneol=native#text/plain
+libs/chrono/example/french.cpp svneol=native#text/plain
 libs/chrono/example/i_dont_like_the_default_duration_behavior.cpp svneol=native#text/plain
 libs/chrono/example/io_ex1.cpp svneol=native#text/plain
 libs/chrono/example/io_ex2.cpp svneol=native#text/plain
