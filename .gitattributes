@@ -11544,7 +11544,6 @@ libs/geometry/doc/reference/within.qbk svneol=native#text/plain
 libs/geometry/doc/reference/within_crossings_multiply.qbk svneol=native#text/plain
 libs/geometry/doc/reference/within_franklin.qbk svneol=native#text/plain
 libs/geometry/doc/reference/within_winding.qbk svneol=native#text/plain
-libs/geometry/doc/snippets/boost.vsprops svneol=native#text/xml
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/boost.vsprops svneol=native#text/xml
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/contrib/readme.txt svneol=native#text/plain
