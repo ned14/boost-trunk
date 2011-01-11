@@ -25846,6 +25846,7 @@ libs/spirit/test/qi/regression_one_element_fusion_sequence.cpp svneol=native#tex
 libs/spirit/test/qi/regression_one_element_sequence_attribute.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_reorder.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_repeat.cpp svneol=native#text/plain
+libs/spirit/test/qi/regression_transform_assignment.cpp svneol=native#text/plain
 libs/spirit/test/qi/repeat.cpp svneol=native#text/plain
 libs/spirit/test/qi/rule1.cpp svneol=native#text/plain
 libs/spirit/test/qi/rule2.cpp svneol=native#text/x-c%2B%2Bsrc
