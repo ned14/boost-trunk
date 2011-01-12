@@ -912,6 +912,7 @@ boost/detail/is_incrementable.hpp svneol=native#text/plain
 boost/detail/is_xxx.hpp svneol=native#text/plain
 boost/detail/iterator.hpp svneol=native#text/plain
 boost/detail/lcast_precision.hpp svneol=native#text/plain
+boost/detail/lightweight_main.hpp svneol=native#text/plain
 boost/detail/lightweight_mutex.hpp svneol=native#text/plain
 boost/detail/lightweight_test.hpp svneol=native#text/plain
 boost/detail/lightweight_thread.hpp svneol=native#text/plain
