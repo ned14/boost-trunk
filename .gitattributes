@@ -27607,6 +27607,7 @@ tools/release/linux_user-config.jam svneol=native#text/plain
 tools/release/load_posix.sh svneol=LF#text/x-sh eol=lf
 tools/release/load_windows.sh svneol=LF#text/x-sh eol=lf
 tools/release/make_packages.sh svneol=LF#text/x-sh eol=lf
+tools/release/merge2release.bat svneol=native#text/plain
 tools/release/release-mgt-msvc/compare_trees/compare_trees.vcproj svneol=native#text/xml
 tools/release/release-mgt-msvc/msvc.sln svneol=native#text/plain
 tools/release/release-mgt-msvc/strftime/strftime.vcproj svneol=native#text/xml
