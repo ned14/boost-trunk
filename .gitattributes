@@ -936,7 +936,6 @@ boost/detail/compressed_pair.hpp svneol=native#text/plain
 boost/detail/container_fwd.hpp svneol=native#text/plain
 boost/detail/dynamic_bitset.hpp svneol=native#text/plain
 boost/detail/endian.hpp svneol=native#text/plain
-boost/detail/extended_integer.hpp svneol=native#text/plain
 boost/detail/fenv.hpp svneol=native#text/plain
 boost/detail/has_default_constructor.hpp svneol=native#text/plain
 boost/detail/identifier.hpp svneol=native#text/plain
