@@ -10748,6 +10748,7 @@ libs/functional/hash/test/hash_sequence_test.hpp svneol=native#text/plain
 libs/functional/hash/test/hash_set_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_set_test.hpp svneol=native#text/plain
 libs/functional/hash/test/hash_string_test.cpp svneol=native#text/plain
+libs/functional/hash/test/hash_type_index_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_value_array_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_vector_test.cpp svneol=native#text/plain
 libs/functional/hash/test/implicit_fail_test.cpp svneol=native#text/plain
