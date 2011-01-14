@@ -131,6 +131,7 @@ boost/algorithm/string/std/slist_traits.hpp svneol=native#text/plain
 boost/algorithm/string/std/string_traits.hpp svneol=native#text/plain
 boost/algorithm/string/std_containers_traits.hpp svneol=native#text/plain
 boost/algorithm/string/trim.hpp svneol=native#text/plain
+boost/algorithm/string/trim_all.hpp svneol=native#text/plain
 boost/algorithm/string/yes_no_type.hpp svneol=native#text/plain
 boost/algorithm/string_regex.hpp svneol=native#text/plain
 boost/aligned_storage.hpp svneol=native#text/plain
