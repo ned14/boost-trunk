@@ -22491,6 +22491,7 @@ libs/proto/index.html svneol=native#text/html
 libs/proto/test/Jamfile.v2 svneol=native#text/plain
 libs/proto/test/bug2407.cpp svneol=native#text/plain
 libs/proto/test/calculator.cpp svneol=native#text/plain
+libs/proto/test/constrained_ops.cpp svneol=native#text/plain
 libs/proto/test/deduce_domain.cpp svneol=native#text/plain
 libs/proto/test/deep_copy.cpp svneol=native#text/plain
 libs/proto/test/display_expr.cpp svneol=native#text/plain
