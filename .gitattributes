@@ -703,6 +703,7 @@ boost/chrono/detail/scan_keyword.hpp svneol=native#text/plain
 boost/chrono/detail/static_assert.hpp svneol=native#text/plain
 boost/chrono/detail/system.hpp svneol=native#text/plain
 boost/chrono/duration.hpp svneol=native#text/plain
+boost/chrono/include.hpp svneol=native#text/plain
 boost/chrono/process_cpu_clocks.hpp svneol=native#text/plain
 boost/chrono/process_times.hpp svneol=native#text/plain
 boost/chrono/system_clocks.hpp svneol=native#text/plain
