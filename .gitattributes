@@ -11472,7 +11472,6 @@ libs/geometry/doc/ref/geometries/register/point.qbk svneol=native#text/plain
 libs/geometry/doc/reference.qbk svneol=native#text/plain
 libs/geometry/doc/reference/append.qbk svneol=native#text/plain
 libs/geometry/doc/reference/area.qbk svneol=native#text/plain
-libs/geometry/doc/reference/area_by_triangles.qbk svneol=native#text/plain
 libs/geometry/doc/reference/area_huiller.qbk svneol=native#text/plain
 libs/geometry/doc/reference/arithmetic.qbk svneol=native#text/plain
 libs/geometry/doc/reference/assign.qbk svneol=native#text/plain
