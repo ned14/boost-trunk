@@ -34,7 +34,6 @@ libs/spirit/build.vc10
 libs/spirit/classic/doc/theme/Thumbs.db
 libs/spirit/doc/html/images/Thumbs.db
 libs/spirit/doc/html/spirit2_HTML.manifest
-libs/spirit/example/scheme/test/scraps
 libs/spirit/optimization/qi/Copy[!!-~](2)[!!-~]of[!!-~]real_parser.cpp
 libs/spirit/optimization/qi/Copy[!!-~](2)[!!-~]of[!!-~]uint_parser.cpp
 libs/spirit/optimization/qi/Copy[!!-~]of[!!-~]real_parser.cpp
