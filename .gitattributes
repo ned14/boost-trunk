@@ -25750,6 +25750,7 @@ libs/spirit/repository/test/Jamfile svneol=native#text/plain
 libs/spirit/repository/test/karma/confix.cpp svneol=native#text/plain
 libs/spirit/repository/test/karma/subrule.cpp svneol=native#text/plain
 libs/spirit/repository/test/karma/test.hpp svneol=native#text/plain
+libs/spirit/repository/test/qi/advance.cpp svneol=native#text/plain
 libs/spirit/repository/test/qi/confix.cpp svneol=native#text/plain
 libs/spirit/repository/test/qi/distinct.cpp svneol=native#text/plain
 libs/spirit/repository/test/qi/subrule.cpp svneol=native#text/plain
