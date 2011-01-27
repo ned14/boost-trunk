@@ -25028,6 +25028,10 @@ libs/spirit/doc/html/spirit/advanced/customize/iterate/next_iterator.html svneol
 libs/spirit/doc/html/spirit/advanced/customize/store_value.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/store_value/container_value.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/store_value/push_back.html svneol=native#text/html
+libs/spirit/doc/html/spirit/advanced/customize/string_traits.html svneol=native#text/html
+libs/spirit/doc/html/spirit/advanced/customize/string_traits/char_type_of.html svneol=native#text/html
+libs/spirit/doc/html/spirit/advanced/customize/string_traits/extract_c_string.html svneol=native#text/html
+libs/spirit/doc/html/spirit/advanced/customize/string_traits/is_char.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/transform.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/indepth.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/indepth/parsers_indepth.html svneol=native#text/html
