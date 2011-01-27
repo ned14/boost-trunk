@@ -29488,6 +29488,7 @@ tools/release/release-mgt-msvc/compare_trees/compare_trees.vcproj svneol=native#
 tools/release/release-mgt-msvc/msvc.sln svneol=native#text/plain
 tools/release/release-mgt-msvc/strftime/strftime.vcproj svneol=native#text/xml
 tools/release/release_reports.sh svneol=LF#text/x-sh eol=lf
+tools/release/revision_number.bat svneol=native#text/plain
 tools/release/snapshot.bat svneol=native#text/plain
 tools/release/snapshot.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_download_docs.bat svneol=native#text/plain
