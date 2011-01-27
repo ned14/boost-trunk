@@ -25923,6 +25923,7 @@ libs/spirit/test/qi/regression_debug_optional.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_float_fraction.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/qi/regression_fusion_proto_spirit.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_lazy_repeat.cpp svneol=native#text/x-c%2B%2Bsrc
+libs/spirit/test/qi/regression_numeric_alternatives.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/qi/regression_one_element_fusion_sequence.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_one_element_sequence_attribute.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_reorder.cpp svneol=native#text/plain
