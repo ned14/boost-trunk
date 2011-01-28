@@ -25015,6 +25015,7 @@ libs/spirit/doc/html/spirit/advanced/customize/auto/create_generator.html svneol
 libs/spirit/doc/html/spirit/advanced/customize/auto/create_parser.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/clear_value.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/extract_from.html svneol=native#text/html
+libs/spirit/doc/html/spirit/advanced/customize/extract_from_container.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/handles_container.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/is_container.html svneol=native#text/html
 libs/spirit/doc/html/spirit/advanced/customize/is_string.html svneol=native#text/html
@@ -25279,6 +25280,7 @@ libs/spirit/doc/html/spirit/what_s_new/spirit_2_3.html svneol=native#text/html
 libs/spirit/doc/html/spirit/what_s_new/spirit_2_4.html svneol=native#text/html
 libs/spirit/doc/html/spirit/what_s_new/spirit_2_4_1.html svneol=native#text/html
 libs/spirit/doc/html/spirit/what_s_new/spirit_2_4_2.html svneol=native#text/html
+libs/spirit/doc/html/spirit/what_s_new/spirit_2_5.html svneol=native#text/html
 libs/spirit/doc/index.idx svneol=native#text/plain
 libs/spirit/doc/introduction.qbk svneol=native#text/plain
 libs/spirit/doc/karma.qbk svneol=native#text/plain
