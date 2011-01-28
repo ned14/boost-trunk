@@ -25768,6 +25768,7 @@ libs/spirit/repository/test/qi/test.hpp svneol=native#text/plain
 libs/spirit/repository/test/test_headers/Jamfile svneol=native#text/plain
 libs/spirit/repository/test/test_headers/main.cpp svneol=native#text/plain
 libs/spirit/repository/test/test_headers/test.cpp svneol=native#text/plain
+libs/spirit/sublibs svneol=native#text/plain
 libs/spirit/test/Jamfile svneol=native#text/plain
 libs/spirit/test/karma/actions.cpp svneol=native#text/plain
 libs/spirit/test/karma/alternative1.cpp svneol=native#text/plain
