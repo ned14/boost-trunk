@@ -81,11 +81,6 @@ status/boosttmp.*
 status/regression
 status/rng.saved
 status/rng.tmp
-tools/build/v2/engine/src/bin.cygwinx86
-tools/build/v2/engine/src/bin.cygwinx86.debug
-tools/build/v2/engine/src/bin.ntx86
-tools/build/v2/engine/src/bin.ntx86.debug
-tools/build/v2/engine/src/bootstrap
 tools/build/v2/test/*.pyc
 tools/build/v2/test/failed_test
 tools/build/v2/test/test-config.jam
