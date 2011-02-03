@@ -23241,6 +23241,7 @@ libs/random/test/test_triangle.cpp svneol=native#text/plain
 libs/random/test/test_triangle_distribution.cpp svneol=native#text/plain
 libs/random/test/test_uniform_int.cpp svneol=native#text/plain
 libs/random/test/test_uniform_int_distribution.cpp svneol=native#text/plain
+libs/random/test/test_uniform_on_sphere_distribution.cpp svneol=native#text/plain
 libs/random/test/test_uniform_real.cpp svneol=native#text/plain
 libs/random/test/test_uniform_real_distribution.cpp svneol=native#text/plain
 libs/random/test/test_weibull.cpp svneol=native#text/plain
