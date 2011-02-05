@@ -6396,6 +6396,7 @@ boost/spirit/home/karma/detail/generate_auto.hpp svneol=native#text/plain
 boost/spirit/home/karma/detail/generate_to.hpp svneol=native#text/plain
 boost/spirit/home/karma/detail/get_casetag.hpp svneol=native#text/plain
 boost/spirit/home/karma/detail/get_stricttag.hpp svneol=native#text/plain
+boost/spirit/home/karma/detail/indirect_iterator.hpp svneol=native#text/plain
 boost/spirit/home/karma/detail/output_iterator.hpp svneol=native#text/plain
 boost/spirit/home/karma/detail/pass_container.hpp svneol=native#text/plain
 boost/spirit/home/karma/detail/string_compare.hpp svneol=native#text/plain
