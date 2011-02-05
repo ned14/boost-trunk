@@ -19168,6 +19168,7 @@ libs/math/test/test_spherical_harmonic.cpp svneol=native#text/plain
 libs/math/test/test_students_t.cpp svneol=native#text/plain
 libs/math/test/test_tgamma_ratio.cpp svneol=native#text/plain
 libs/math/test/test_toms748_solve.cpp svneol=native#text/plain
+libs/math/test/test_tr1.c svneol=native#text/plain
 libs/math/test/test_tr1.cpp svneol=native#text/plain
 libs/math/test/test_triangular.cpp svneol=native#text/plain
 libs/math/test/test_uniform.cpp svneol=native#text/plain
