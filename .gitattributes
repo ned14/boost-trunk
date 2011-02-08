@@ -23228,6 +23228,7 @@ libs/random/test/test_chi_squared_distribution.cpp svneol=native#text/plain
 libs/random/test/test_discrete.cpp svneol=native#text/plain
 libs/random/test/test_discrete_distribution.cpp svneol=native#text/plain
 libs/random/test/test_distribution.ipp svneol=native#text/plain
+libs/random/test/test_ecuyer1988.cpp svneol=native#text/plain
 libs/random/test/test_exponential.cpp svneol=native#text/plain
 libs/random/test/test_exponential_distribution.cpp svneol=native#text/plain
 libs/random/test/test_extreme_value.cpp svneol=native#text/plain
