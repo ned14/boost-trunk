@@ -26014,6 +26014,7 @@ libs/spirit/test/support/regression_multi_pass_functor.cpp svneol=native#text/pl
 libs/spirit/test/support/regression_multi_pass_parse.cpp svneol=native#text/plain
 libs/spirit/test/support/regression_multi_pass_position_iterator.cpp svneol=native#text/plain
 libs/spirit/test/support/utree.cpp svneol=native#text/plain
+libs/spirit/test/support/utree_debug.cpp svneol=native#text/plain
 libs/spirit/test/test_headers/Jamfile svneol=native#text/plain
 libs/spirit/test/test_headers/main.cpp svneol=native#text/plain
 libs/spirit/test/test_headers/test.cpp svneol=native#text/plain
