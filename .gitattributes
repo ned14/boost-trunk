@@ -23225,6 +23225,7 @@ libs/random/test/test_cauchy.cpp svneol=native#text/plain
 libs/random/test/test_cauchy_distribution.cpp svneol=native#text/plain
 libs/random/test/test_chi_squared.cpp svneol=native#text/plain
 libs/random/test/test_chi_squared_distribution.cpp svneol=native#text/plain
+libs/random/test/test_const_mod.cpp svneol=native#text/plain
 libs/random/test/test_discrete.cpp svneol=native#text/plain
 libs/random/test/test_discrete_distribution.cpp svneol=native#text/plain
 libs/random/test/test_distribution.ipp svneol=native#text/plain
