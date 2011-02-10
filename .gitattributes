@@ -23245,6 +23245,7 @@ libs/random/test/test_geometric_distribution.cpp svneol=native#text/plain
 libs/random/test/test_hellekalek1995.cpp svneol=native#text/plain
 libs/random/test/test_lagged_fibonacci.cpp svneol=native#text/plain
 libs/random/test/test_lagged_fibonacci607.cpp svneol=native#text/plain
+libs/random/test/test_linear_feedback_shift.cpp svneol=native#text/plain
 libs/random/test/test_lognormal.cpp svneol=native#text/plain
 libs/random/test/test_lognormal_distribution.cpp svneol=native#text/plain
 libs/random/test/test_mt19937.cpp svneol=native#text/plain
