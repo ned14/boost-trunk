@@ -16833,6 +16833,7 @@ libs/iostreams/test/execute_test.cpp svneol=native#text/plain
 libs/iostreams/test/file_descriptor_test.cpp svneol=native#text/plain
 libs/iostreams/test/file_test.cpp svneol=native#text/plain
 libs/iostreams/test/filter_test.cpp svneol=native#text/plain
+libs/iostreams/test/filtering_stream_flush_test.hpp svneol=native#text/plain
 libs/iostreams/test/filtering_stream_test.cpp svneol=native#text/plain
 libs/iostreams/test/finite_state_filter_test.cpp svneol=native#text/plain
 libs/iostreams/test/flush_test.cpp svneol=native#text/plain
