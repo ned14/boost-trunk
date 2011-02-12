@@ -5636,6 +5636,7 @@ boost/random/normal_distribution.hpp svneol=native#text/plain
 boost/random/piecewise_constant_distribution.hpp svneol=native#text/plain
 boost/random/piecewise_linear_distribution.hpp svneol=native#text/plain
 boost/random/poisson_distribution.hpp svneol=native#text/plain
+boost/random/random_device.hpp svneol=native#text/plain
 boost/random/random_number_generator.hpp svneol=native#text/plain
 boost/random/ranlux.hpp svneol=native#text/plain
 boost/random/seed_seq.hpp svneol=native#text/plain
