@@ -933,6 +933,7 @@ boost/detail/algorithm.hpp svneol=native#text/plain
 boost/detail/allocator_utilities.hpp svneol=native#text/plain
 boost/detail/atomic_count.hpp svneol=native#text/plain
 boost/detail/binary_search.hpp svneol=native#text/plain
+boost/detail/bitmask.hpp svneol=native#text/plain
 boost/detail/call_traits.hpp svneol=native#text/plain
 boost/detail/catch_exceptions.hpp svneol=native#text/plain
 boost/detail/compressed_pair.hpp svneol=native#text/plain
