@@ -23229,6 +23229,7 @@ libs/random/extra/haertel.hpp svneol=native#text/plain
 libs/random/extra/test_haertel.cpp svneol=native#text/plain
 libs/random/index.html svneol=native#text/html
 libs/random/nondet_random.html svneol=native#text/html
+libs/random/performance/Jamfile.v2 svneol=native#text/plain
 libs/random/performance/generate_table.cpp svneol=native#text/plain
 libs/random/performance/nondet_random_speed.cpp svneol=native#text/plain
 libs/random/performance/random_speed.cpp svneol=native#text/plain
