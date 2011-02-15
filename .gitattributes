@@ -25986,6 +25986,7 @@ libs/spirit/test/lex/state_switcher.cpp svneol=native#text/plain
 libs/spirit/test/lex/test.hpp svneol=native#text/plain
 libs/spirit/test/lex/test_parser.hpp svneol=native#text/plain
 libs/spirit/test/qi/actions.cpp svneol=native#text/plain
+libs/spirit/test/qi/actions2.cpp svneol=native#text/plain
 libs/spirit/test/qi/alternative.cpp svneol=native#text/plain
 libs/spirit/test/qi/and_predicate.cpp svneol=native#text/plain
 libs/spirit/test/qi/attr.cpp svneol=native#text/plain
