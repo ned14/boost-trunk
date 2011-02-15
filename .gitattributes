@@ -29587,6 +29587,7 @@ tools/regression/xsl_reports/xsl/v2/produce_expected_results.xsl svneol=native#t
 tools/regression/xsl_reports/xsl/v2/result_page.xsl svneol=native#text/xml
 tools/regression/xsl_reports/xsl/v2/runners.xsl svneol=native#text/xml
 tools/regression/xsl_reports/xsl/v2/summary_page.xsl svneol=native#text/xml
+tools/release/2release.bat svneol=native#text/plain
 tools/release/build_docs.sh svneol=LF#text/x-sh eol=lf
 tools/release/build_release.sh svneol=LF#text/x-sh eol=lf
 tools/release/build_release_packages.bat svneol=native#text/plain
