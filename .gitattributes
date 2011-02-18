@@ -25563,6 +25563,7 @@ libs/spirit/example/qi/boost_array.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc1.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc2.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc2_ast.cpp svneol=native#text/plain
+libs/spirit/example/qi/calc2_ast2.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc3.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc4.cpp svneol=native#text/plain
 libs/spirit/example/qi/calc4_debug.cpp svneol=native#text/plain
