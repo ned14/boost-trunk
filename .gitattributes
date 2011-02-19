@@ -2376,6 +2376,7 @@ boost/geometry/strategies/within.hpp svneol=native#text/plain
 boost/geometry/util/add_const_if_c.hpp svneol=native#text/plain
 boost/geometry/util/as_range.hpp svneol=native#text/plain
 boost/geometry/util/closure_as_bool.hpp svneol=native#text/plain
+boost/geometry/util/coordinate_cast.hpp svneol=native#text/plain
 boost/geometry/util/copy.hpp svneol=native#text/plain
 boost/geometry/util/ensure_const_reference.hpp svneol=native#text/plain
 boost/geometry/util/for_each_coordinate.hpp svneol=native#text/plain
