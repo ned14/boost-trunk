@@ -2306,6 +2306,7 @@ boost/geometry/multi/algorithms/detail/overlay/self_turn_points.hpp svneol=nativ
 boost/geometry/multi/algorithms/detail/point_on_border.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/detail/sections/range_by_section.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/detail/sections/sectionalize.hpp svneol=native#text/plain
+boost/geometry/multi/algorithms/difference.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/distance.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/envelope.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/equals.hpp svneol=native#text/plain
