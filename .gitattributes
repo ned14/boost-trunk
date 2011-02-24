@@ -24783,6 +24783,7 @@ libs/smart_ptr/test/sp_atomic_mt2_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_atomic_mt_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_atomic_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_convertible_test.cpp svneol=native#text/plain
+libs/smart_ptr/test/sp_hash_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_recursive_assign2_rv_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_recursive_assign2_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/sp_recursive_assign_rv_test.cpp svneol=native#text/plain
