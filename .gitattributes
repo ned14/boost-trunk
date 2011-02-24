@@ -8403,6 +8403,7 @@ doc/html/array.html svneol=native#text/html
 doc/html/bbv2.html svneol=native#text/html
 doc/html/bbv2/installation.html svneol=native#text/html
 doc/html/boost_asio.html svneol=native#text/html
+doc/html/boost_chrono.html svneol=native#text/html
 doc/html/boost_random.html svneol=native#text/html
 doc/html/boost_ratio.html svneol=native#text/html
 doc/html/boost_staticassert.html svneol=native#text/html
