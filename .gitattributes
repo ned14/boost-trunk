@@ -2526,7 +2526,6 @@ boost/graph/detail/incidence_iterator.hpp svneol=native#text/plain
 boost/graph/detail/incremental_components.hpp svneol=native#text/plain
 boost/graph/detail/index.hpp svneol=native#text/plain
 boost/graph/detail/indexed_properties.hpp svneol=native#text/plain
-boost/graph/detail/is_same.hpp svneol=native#text/plain
 boost/graph/detail/labeled_graph_traits.hpp svneol=native#text/plain
 boost/graph/detail/list_base.hpp svneol=native#text/plain
 boost/graph/detail/permutation.hpp svneol=native#text/plain
