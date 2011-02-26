@@ -25665,6 +25665,7 @@ libs/spirit/example/qi/compiler_tutorial/calc3.cpp svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/calc4.cpp svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/calc5.cpp svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/calc6.cpp svneol=native#text/plain
+libs/spirit/example/qi/compiler_tutorial/calc7/annotation.hpp svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/calc7/ast.hpp svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/calc7/compiler.cpp svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/calc7/compiler.hpp svneol=native#text/plain
