@@ -26060,6 +26060,7 @@ libs/spirit/test/qi/not_predicate.cpp svneol=native#text/plain
 libs/spirit/test/qi/omit.cpp svneol=native#text/plain
 libs/spirit/test/qi/optional.cpp svneol=native#text/plain
 libs/spirit/test/qi/parse_attr.cpp svneol=native#text/plain
+libs/spirit/test/qi/pass_container.cpp svneol=native#text/plain
 libs/spirit/test/qi/permutation.cpp svneol=native#text/plain
 libs/spirit/test/qi/plus.cpp svneol=native#text/plain
 libs/spirit/test/qi/range_run.cpp svneol=native#text/plain
