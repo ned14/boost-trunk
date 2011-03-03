@@ -9648,6 +9648,7 @@ libs/filesystem/v3/doc/path_table.cpp svneol=native#text/plain
 libs/filesystem/v3/doc/path_table.txt svneol=native#text/plain
 libs/filesystem/v3/doc/portability_guide.htm svneol=native#text/html
 libs/filesystem/v3/doc/reference.html svneol=native#text/html
+libs/filesystem/v3/doc/release_history.html svneol=native#text/html
 libs/filesystem/v3/doc/tutorial.html svneol=native#text/html
 libs/filesystem/v3/doc/v3.html svneol=native#text/html
 libs/filesystem/v3/doc/v3_design.html svneol=native#text/html
