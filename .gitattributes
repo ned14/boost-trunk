@@ -6731,6 +6731,7 @@ boost/spirit/home/qi/nonterminal/grammar.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/nonterminal_fwd.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/rule.hpp svneol=native#text/plain
 boost/spirit/home/qi/nonterminal/simple_trace.hpp svneol=native#text/plain
+boost/spirit/home/qi/nonterminal/success_handler.hpp svneol=native#text/plain
 boost/spirit/home/qi/numeric.hpp svneol=native#text/plain
 boost/spirit/home/qi/numeric/bool.hpp svneol=native#text/plain
 boost/spirit/home/qi/numeric/bool_policies.hpp svneol=native#text/plain
