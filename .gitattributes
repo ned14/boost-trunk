@@ -11710,6 +11710,7 @@ libs/geometry/doc/src/examples/algorithms/assign_inverse.cpp svneol=native#text/
 libs/geometry/doc/src/examples/algorithms/assign_point_from_index.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/assign_point_to_index.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/assign_with_range.cpp svneol=native#text/plain
+libs/geometry/doc/src/examples/algorithms/clear.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/create_svg_overlay.hpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/create_svg_two.hpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/difference.cpp svneol=native#text/plain
