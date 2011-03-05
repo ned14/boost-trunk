@@ -27781,7 +27781,6 @@ libs/uuid/test/compile_uuid.cpp svneol=native#text/plain
 libs/uuid/test/compile_uuid_generators.cpp svneol=native#text/plain
 libs/uuid/test/compile_uuid_io.cpp svneol=native#text/plain
 libs/uuid/test/compile_uuid_serialize.cpp svneol=native#text/plain
-libs/uuid/test/lightweight_test_ex.hpp svneol=native#text/plain
 libs/uuid/test/test_generators.cpp svneol=native#text/plain
 libs/uuid/test/test_include1.cpp svneol=native#text/plain
 libs/uuid/test/test_include2.cpp svneol=native#text/plain
