@@ -26813,6 +26813,7 @@ libs/spirit/test/lex/semantic_actions.cpp svneol=native#text/plain
 libs/spirit/test/lex/set_token_value.cpp svneol=native#text/plain
 libs/spirit/test/lex/set_token_value_phoenix.cpp svneol=native#text/plain
 libs/spirit/test/lex/state_switcher.cpp svneol=native#text/plain
+libs/spirit/test/lex/string_token_id.cpp svneol=native#text/plain
 libs/spirit/test/lex/test.hpp svneol=native#text/plain
 libs/spirit/test/lex/test_parser.hpp svneol=native#text/plain
 libs/spirit/test/qi/actions.cpp svneol=native#text/plain
