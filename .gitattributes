@@ -11604,6 +11604,7 @@ libs/fusion/test/sequence/zip_view_ignore.cpp svneol=native#text/plain
 libs/fusion/todo.txt svneol=native#text/plain
 libs/geometry/doc/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/about_documentation.qbk svneol=native#text/plain
+libs/geometry/doc/acknowledgments.qbk svneol=native#text/plain
 libs/geometry/doc/concept/box.qbk svneol=native#text/plain
 libs/geometry/doc/concept/linestring.qbk svneol=native#text/plain
 libs/geometry/doc/concept/multi_linestring.qbk svneol=native#text/plain
@@ -11862,6 +11863,7 @@ libs/geometry/doc/html/img/ok.png -text svneol=unset#image/png
 libs/geometry/doc/html/output_main.png -text
 libs/geometry/doc/html/svg_simplify_country.png -text
 libs/geometry/doc/html/svg_simplify_road.png -text
+libs/geometry/doc/imports.qbk svneol=native#text/plain
 libs/geometry/doc/introduction.qbk svneol=native#text/plain
 libs/geometry/doc/make_qbk.py svneol=native#text/x-python
 libs/geometry/doc/matrix.qbk svneol=native#text/plain
@@ -12163,8 +12165,6 @@ libs/geometry/test/algorithms/intersection.vcproj svneol=native#text/plain
 libs/geometry/test/algorithms/intersection_segment.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/intersects.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/intersects.vcproj svneol=native#text/plain
-libs/geometry/test/algorithms/is_convex.cpp svneol=native#text/plain
-libs/geometry/test/algorithms/is_convex.vcproj svneol=native#text/plain
 libs/geometry/test/algorithms/length.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/length.vcproj svneol=native#text/plain
 libs/geometry/test/algorithms/make.cpp svneol=native#text/plain
@@ -12295,6 +12295,8 @@ libs/geometry/test/extensions/algorithms/connect.vcproj svneol=native#text/plain
 libs/geometry/test/extensions/algorithms/dissolve.cpp svneol=native#text/plain
 libs/geometry/test/extensions/algorithms/dissolve.vcproj svneol=native#text/plain
 libs/geometry/test/extensions/algorithms/extension_algorithms.sln svneol=native#text/plain
+libs/geometry/test/extensions/algorithms/is_convex.cpp svneol=native#text/plain
+libs/geometry/test/extensions/algorithms/is_convex.vcproj svneol=native#text/plain
 libs/geometry/test/extensions/algorithms/mark_spikes.cpp svneol=native#text/plain
 libs/geometry/test/extensions/algorithms/mark_spikes.vcproj svneol=native#text/plain
 libs/geometry/test/extensions/algorithms/midpoints.cpp svneol=native#text/plain
