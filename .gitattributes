@@ -12453,7 +12453,6 @@ libs/geometry/test/multi/algorithms/overlay/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test/multi/algorithms/overlay/multi_overlay.sln svneol=native#text/plain
 libs/geometry/test/multi/algorithms/overlay/multi_overlay_cases.hpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/overlay/multi_overlay_common.hpp svneol=native#text/plain
-libs/geometry/test/multi/algorithms/overlay/multi_svg_mapper.hpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/overlay/multi_traverse.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/overlay/multi_traverse.vcproj svneol=native#text/plain
 libs/geometry/test/multi/multi_tests.sln svneol=native#text/plain
