@@ -24118,6 +24118,7 @@ libs/random/test/test_poisson.cpp svneol=native#text/plain
 libs/random/test/test_poisson_distribution.cpp svneol=native#text/plain
 libs/random/test/test_rand48.cpp svneol=native#text/plain
 libs/random/test/test_random_device.cpp svneol=native#text/plain
+libs/random/test/test_random_number_generator.cpp svneol=native#text/plain
 libs/random/test/test_ranlux24.cpp svneol=native#text/plain
 libs/random/test/test_ranlux24_base.cpp svneol=native#text/plain
 libs/random/test/test_ranlux3.cpp svneol=native#text/plain
