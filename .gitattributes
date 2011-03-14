@@ -23921,7 +23921,6 @@ libs/random/doc/nondet_random.qbk svneol=native#text/plain
 libs/random/doc/performance.qbk svneol=native#text/plain
 libs/random/doc/performance_data.qbk svneol=native#text/plain
 libs/random/doc/random.qbk svneol=native#text/plain
-libs/random/doc/random_number_generator.qbk svneol=native#text/plain
 libs/random/doc/tutorial.qbk svneol=native#text/plain
 libs/random/example/Jamfile.v2 svneol=native#text/plain
 libs/random/example/die.cpp svneol=native#text/plain
