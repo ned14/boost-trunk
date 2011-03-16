@@ -11439,6 +11439,7 @@ libs/fusion/test/Jamfile svneol=native#text/plain
 libs/fusion/test/algorithm/all.cpp svneol=native#text/plain
 libs/fusion/test/algorithm/any.cpp svneol=native#text/plain
 libs/fusion/test/algorithm/clear.cpp svneol=native#text/plain
+libs/fusion/test/algorithm/copy.cpp svneol=native#text/plain
 libs/fusion/test/algorithm/count.cpp svneol=native#text/plain
 libs/fusion/test/algorithm/count_if.cpp svneol=native#text/plain
 libs/fusion/test/algorithm/erase.cpp svneol=native#text/plain
