@@ -22213,6 +22213,7 @@ libs/phoenix/example/invert.cpp svneol=native#text/plain
 libs/phoenix/example/lambda.cpp svneol=native#text/plain
 libs/phoenix/example/references.cpp svneol=native#text/plain
 libs/phoenix/example/values.cpp svneol=native#text/plain
+libs/phoenix/index.html svneol=native#text/html
 libs/phoenix/preprocess/preprocess_phoenix.cpp svneol=native#text/plain
 libs/phoenix/preprocess/wave.cfg svneol=native#text/plain
 libs/phoenix/test/Jamfile svneol=native#text/plain
