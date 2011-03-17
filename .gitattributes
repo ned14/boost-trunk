@@ -30062,6 +30062,7 @@ tools/quickbook/src/grammar.hpp svneol=native#text/plain
 tools/quickbook/src/grammar_impl.hpp svneol=native#text/plain
 tools/quickbook/src/input_path.cpp svneol=native#text/plain
 tools/quickbook/src/input_path.hpp svneol=native#text/plain
+tools/quickbook/src/iterator.hpp svneol=native#text/plain
 tools/quickbook/src/main_grammar.cpp svneol=native#text/plain
 tools/quickbook/src/markups.cpp svneol=native#text/plain
 tools/quickbook/src/markups.hpp svneol=native#text/plain
