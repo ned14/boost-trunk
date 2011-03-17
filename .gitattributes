@@ -9642,6 +9642,7 @@ libs/chrono/test/duration/types_pass.cpp svneol=native#text/plain
 libs/chrono/test/intmax_c.cpp svneol=native#text/plain
 libs/chrono/test/rep.h svneol=native#text/plain
 libs/chrono/test/run_timer_test.cpp svneol=native#text/plain
+libs/chrono/test/time_point/arithmetic_ext_pass.cpp svneol=native#text/plain
 libs/chrono/test/time_point/arithmetic_pass.cpp svneol=native#text/plain
 libs/chrono/test/time_point/comparisons/equal_fail.cpp svneol=native#text/plain
 libs/chrono/test/time_point/comparisons/less_fail.cpp svneol=native#text/plain
