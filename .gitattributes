@@ -5889,6 +5889,7 @@ boost/random/detail/enable_warnings.hpp svneol=native#text/plain
 boost/random/detail/generator_seed_seq.hpp svneol=native#text/plain
 boost/random/detail/integer_log2.hpp svneol=native#text/plain
 boost/random/detail/iterator_mixin.hpp svneol=native#text/plain
+boost/random/detail/large_arithmetic.hpp svneol=native#text/plain
 boost/random/detail/operators.hpp svneol=native#text/plain
 boost/random/detail/ptr_helper.hpp svneol=native#text/plain
 boost/random/detail/seed.hpp svneol=native#text/plain
