@@ -30301,6 +30301,7 @@ tools/quickbook/test/templates_1_5.quickbook svneol=native#text/plain
 tools/quickbook/test/unicode-escape.gold svneol=native#text/plain
 tools/quickbook/test/unicode-escape.quickbook svneol=native#text/plain
 tools/quickbook/test/unit/Jamfile.v2 svneol=native#text/plain
+tools/quickbook/test/unit/post_process_test.cpp svneol=native#text/plain
 tools/quickbook/test/unit/values_test.cpp svneol=native#text/plain
 tools/quickbook/test/utf-16be-bom.quickbook svneol=native#text/plain
 tools/quickbook/test/utf-16le-bom.quickbook svneol=native#text/plain
