@@ -30220,6 +30220,7 @@ tools/quickbook/test/escape.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-cpp-mismatched-escape.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-import.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-include.quickbook svneol=native#text/plain
+tools/quickbook/test/fail-mismatched-boostbook-escape.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-parse-error1.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-parse-error2.quickbook svneol=native#text/plain
 tools/quickbook/test/fail-post-process.quickbook svneol=native#text/plain
