@@ -11853,10 +11853,12 @@ libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/sample/src/fruit.cpp svneol
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/sample/src/fruit.hpp svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/sample/src/fruit.sln svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/sample/src/fruit.vcproj svneol=native#text/xml
+libs/geometry/doc/src/docutils/tools/implementation_status/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/implementation_status/implementation_status.cpp svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/implementation_status/implementation_status.hpp svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/implementation_status/implementation_status.sln svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/implementation_status/implementation_status.vcproj svneol=native#text/xml
+libs/geometry/doc/src/docutils/tools/implementation_status/tmp/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/examples/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/append.cpp svneol=native#text/plain
