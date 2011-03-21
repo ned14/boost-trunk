@@ -5218,6 +5218,7 @@ boost/range/size.hpp svneol=native#text/plain
 boost/range/size_type.hpp svneol=native#text/plain
 boost/range/sub_range.hpp svneol=native#text/plain
 boost/range/value_type.hpp svneol=native#text/plain
+boost/ratio.hpp svneol=native#text/plain
 boost/ratio/detail/mpl/abs.hpp svneol=native#text/plain
 boost/ratio/detail/mpl/gcd.hpp svneol=native#text/plain
 boost/ratio/detail/mpl/lcm.hpp svneol=native#text/plain
