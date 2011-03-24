@@ -27488,7 +27488,6 @@ tools/inspect/minmax_check.cpp svneol=native#text/plain
 tools/inspect/minmax_check.hpp svneol=native#text/plain
 tools/inspect/path_name_check.cpp svneol=native#text/plain
 tools/inspect/path_name_check.hpp svneol=native#text/plain
-tools/inspect/run_inspect.sh svneol=LF#text/x-sh eol=lf
 tools/inspect/tab_check.cpp svneol=native#text/plain
 tools/inspect/tab_check.hpp svneol=native#text/plain
 tools/inspect/time_string.hpp svneol=native#text/plain
