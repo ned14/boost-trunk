@@ -2401,6 +2401,7 @@ boost/geometry/strategies/buffer_side.hpp svneol=native#text/plain
 boost/geometry/strategies/cartesian/area_surveyor.hpp svneol=native#text/plain
 boost/geometry/strategies/cartesian/cart_intersect.hpp svneol=native#text/plain
 boost/geometry/strategies/cartesian/centroid_bashein_detmer.hpp svneol=native#text/plain
+boost/geometry/strategies/cartesian/centroid_weighted_length.hpp svneol=native#text/plain
 boost/geometry/strategies/cartesian/distance_projected_point.hpp svneol=native#text/plain
 boost/geometry/strategies/cartesian/distance_pythagoras.hpp svneol=native#text/plain
 boost/geometry/strategies/cartesian/point_in_poly_crossings_multiply.hpp svneol=native#text/plain
