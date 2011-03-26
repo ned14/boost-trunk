@@ -11633,6 +11633,7 @@ libs/geometry/doc/concept/point.qbk svneol=native#text/plain
 libs/geometry/doc/concept/polygon.qbk svneol=native#text/plain
 libs/geometry/doc/concept/ring.qbk svneol=native#text/plain
 libs/geometry/doc/concept/segment.qbk svneol=native#text/plain
+libs/geometry/doc/copyright_note_policy.txt svneol=native#text/plain
 libs/geometry/doc/design_rationale.qbk svneol=native#text/plain
 libs/geometry/doc/doxy/Doxyfile svneol=native#text/plain
 libs/geometry/doc/doxy/doxygen_enhance.py svneol=native#text/x-python
