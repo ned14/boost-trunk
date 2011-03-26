@@ -2391,6 +2391,7 @@ boost/geometry/policies/relate/tupled.hpp svneol=native#text/plain
 boost/geometry/ranges/box_range.hpp svneol=native#text/plain
 boost/geometry/ranges/segment_range.hpp svneol=native#text/plain
 boost/geometry/strategies/agnostic/hull_graham_andrew.hpp svneol=native#text/plain
+boost/geometry/strategies/agnostic/point_in_poly_oriented_winding.hpp svneol=native#text/plain
 boost/geometry/strategies/agnostic/point_in_poly_winding.hpp svneol=native#text/plain
 boost/geometry/strategies/agnostic/simplify_douglas_peucker.hpp svneol=native#text/plain
 boost/geometry/strategies/area.hpp svneol=native#text/plain
