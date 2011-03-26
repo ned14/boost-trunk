@@ -26894,6 +26894,7 @@ libs/spirit/test/qi/rule_fail.cpp svneol=native#text/plain
 libs/spirit/test/qi/sequence.cpp svneol=native#text/plain
 libs/spirit/test/qi/sequential_or.cpp svneol=native#text/plain
 libs/spirit/test/qi/skip.cpp svneol=native#text/plain
+libs/spirit/test/qi/stream.cpp svneol=native#text/plain
 libs/spirit/test/qi/symbols1.cpp svneol=native#text/plain
 libs/spirit/test/qi/symbols2.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/qi/terminal_ex.cpp svneol=native#text/plain
