@@ -2379,7 +2379,6 @@ boost/geometry/multi/geometries/multi_polygon.hpp svneol=native#text/plain
 boost/geometry/multi/iterators/range_type.hpp svneol=native#text/plain
 boost/geometry/multi/multi.hpp svneol=native#text/plain
 boost/geometry/multi/strategies/cartesian/centroid_average.hpp svneol=native#text/plain
-boost/geometry/multi/strategies/centroid.hpp svneol=native#text/plain
 boost/geometry/multi/util/write_dsv.hpp svneol=native#text/plain
 boost/geometry/policies/compare.hpp svneol=native#text/plain
 boost/geometry/policies/relate/de9im.hpp svneol=native#text/plain
