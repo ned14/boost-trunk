@@ -16737,6 +16737,7 @@ libs/interprocess/proj/vc7ide/node_allocator_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/node_pool_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/null_index_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/offset_ptr_test.vcproj svneol=CRLF#text/xml eol=crlf
+libs/interprocess/proj/vc7ide/pair_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/private_adaptive_pool_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/private_node_allocator_test.vcproj svneol=native#text/xml
 libs/interprocess/proj/vc7ide/recursive_mutex_test.vcproj svneol=native#text/xml
@@ -16819,6 +16820,7 @@ libs/interprocess/test/node_pool_test.cpp svneol=native#text/plain
 libs/interprocess/test/node_pool_test.hpp svneol=native#text/plain
 libs/interprocess/test/null_index_test.cpp svneol=native#text/plain
 libs/interprocess/test/offset_ptr_test.cpp svneol=native#text/plain
+libs/interprocess/test/pair_test.cpp svneol=native#text/plain
 libs/interprocess/test/print_container.hpp svneol=native#text/plain
 libs/interprocess/test/private_adaptive_pool_test.cpp svneol=native#text/plain
 libs/interprocess/test/private_node_allocator_test.cpp svneol=native#text/plain
