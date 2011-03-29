@@ -947,6 +947,7 @@ boost/detail/indirect_traits.hpp svneol=native#text/plain
 boost/detail/interlocked.hpp svneol=native#text/plain
 boost/detail/is_function_ref_tester.hpp svneol=native#text/plain
 boost/detail/is_incrementable.hpp svneol=native#text/plain
+boost/detail/is_sorted.hpp svneol=native#text/plain
 boost/detail/is_xxx.hpp svneol=native#text/plain
 boost/detail/iterator.hpp svneol=native#text/plain
 boost/detail/lcast_precision.hpp svneol=native#text/plain
