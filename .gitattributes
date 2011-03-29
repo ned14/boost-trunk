@@ -7096,6 +7096,7 @@ boost/spirit/home/support/detail/get_encoding.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/hold_any.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/integer/cover_operators.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/integer/endian.hpp svneol=native#text/plain
+boost/spirit/home/support/detail/is_spirit_tag.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/char_traits.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/consts.hpp svneol=native#text/plain
 boost/spirit/home/support/detail/lexer/containers/ptr_list.hpp svneol=native#text/plain
