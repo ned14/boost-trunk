@@ -11171,6 +11171,7 @@ libs/geometry/example/with_external_libs/x06_qt_world_mapper.cpp svneol=native#t
 libs/geometry/example/with_external_libs/x06_qt_world_mapper.sln svneol=native#text/plain
 libs/geometry/example/with_external_libs/x06_qt_world_mapper.vcproj svneol=native#text/xml
 libs/geometry/example/with_external_libs/x06_qt_world_mapper_readme.txt svneol=native#text/plain
+libs/geometry/index.html svneol=native#text/html
 libs/geometry/test/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test/algorithms/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test/algorithms/algorithms_tests.sln svneol=native#text/plain
