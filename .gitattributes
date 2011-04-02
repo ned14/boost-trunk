@@ -24541,6 +24541,7 @@ libs/range/test/begin.cpp svneol=native#text/plain
 libs/range/test/combine.cpp svneol=native#text/plain
 libs/range/test/compat2.cpp svneol=native#text/plain
 libs/range/test/compat3.cpp svneol=native#text/plain
+libs/range/test/compile_fail/iterator_range1.cpp svneol=native#text/plain
 libs/range/test/const_ranges.cpp svneol=native#text/plain
 libs/range/test/counting_range.cpp svneol=native#text/plain
 libs/range/test/end.cpp svneol=native#text/plain
