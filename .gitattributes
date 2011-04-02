@@ -2040,6 +2040,7 @@ boost/geometry/geometries/register/ring.hpp svneol=native#text/plain
 boost/geometry/geometries/register/segment.hpp svneol=native#text/plain
 boost/geometry/geometries/ring.hpp svneol=native#text/plain
 boost/geometry/geometries/segment.hpp svneol=native#text/plain
+boost/geometry/geometry.hpp svneol=native#text/plain
 boost/geometry/iterators/base.hpp svneol=native#text/plain
 boost/geometry/iterators/box_iterator.hpp svneol=native#text/plain
 boost/geometry/iterators/circular_iterator.hpp svneol=native#text/plain
