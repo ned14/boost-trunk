@@ -1,6 +1,7 @@
 libs/asio/doc/html
 libs/fusion/doc/html/quickbook_HTML.manifest
 libs/geometry/doc/quickbook/bin
+libs/geometry/example/bin
 libs/graph/test/bootstrap.log
 libs/graph/test/cube-fr.dot
 libs/graph/test/cube.dot
