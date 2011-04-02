@@ -29113,6 +29113,7 @@ tools/boostbook/setup_boostbook.sh svneol=LF#text/x-sh eol=lf
 tools/boostbook/test/Jamfile.v2 svneol=native#text/plain
 tools/boostbook/test/alt.xml svneol=native#text/xml
 tools/boostbook/test/doxygen/Jamfile.v2 svneol=native#text/plain
+tools/boostbook/test/doxygen/autodoc.gold svneol=native#text/xml
 tools/boostbook/test/doxygen/boost/example.hpp svneol=native#text/plain
 tools/boostbook/test/doxygen/example.xml svneol=native#text/xml
 tools/boostbook/test/more/run-tests.py svneol=native#text/x-python
