@@ -28900,7 +28900,6 @@ tools/quickbook/test/snippets/pass_thru.cpp svneol=native#text/plain
 tools/quickbook/test/snippets/pass_thru.gold svneol=native#text/plain
 tools/quickbook/test/snippets/pass_thru.py svneol=native#text/x-python
 tools/quickbook/test/snippets/pass_thru.quickbook svneol=native#text/plain
-tools/quickbook/test/snippets/pass_thru.xml svneol=native#text/xml
 tools/quickbook/test/src/Jamfile.v2 svneol=native#text/plain
 tools/quickbook/test/src/text_diff.cpp svneol=native#text/plain
 tools/quickbook/test/stub.c svneol=native#text/plain
