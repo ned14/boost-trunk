@@ -29106,6 +29106,7 @@ tools/boostbook/doc/documenting.xml svneol=native#text/xml
 tools/boostbook/doc/reference.dtdxml svneol=native#text/xml
 tools/boostbook/doc/reference.xml svneol=native#text/xml
 tools/boostbook/doc/together.xml svneol=native#text/xml
+tools/boostbook/dtd/1.1/boost-no-inspect svneol=native#text/plain+%23+tells+boost+inspect+to+ignore+directory
 tools/boostbook/dtd/1.1/boostbook.dtd svneol=native#text/xml
 tools/boostbook/dtd/boostbook.dtd svneol=native#text/xml
 tools/boostbook/index.html svneol=native#text/html
