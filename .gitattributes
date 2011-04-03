@@ -9951,6 +9951,7 @@ libs/config/test/boost_no_void_returns.ipp svneol=native#text/plain
 libs/config/test/boost_no_wchar_t.ipp svneol=native#text/plain
 libs/config/test/config_info.cpp svneol=native#text/plain
 libs/config/test/config_test.cpp svneol=native#text/plain
+libs/config/test/config_test_c.c svneol=native#text/plain
 libs/config/test/has_2arg_use_facet_fail.cpp svneol=native#text/plain
 libs/config/test/has_2arg_use_facet_pass.cpp svneol=native#text/plain
 libs/config/test/has_bethreads_fail.cpp svneol=native#text/plain
