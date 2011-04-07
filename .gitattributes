@@ -26937,6 +26937,7 @@ libs/spirit/test/qi/utree1.cpp svneol=native#text/plain
 libs/spirit/test/qi/utree2.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/qi/utree3.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/qi/utree4.cpp svneol=native#text/x-c%2B%2Bsrc
+libs/spirit/test/support/regression_multi_pass_error_handler.cpp svneol=native#text/plain
 libs/spirit/test/support/regression_multi_pass_functor.cpp svneol=native#text/plain
 libs/spirit/test/support/regression_multi_pass_parse.cpp svneol=native#text/plain
 libs/spirit/test/support/regression_multi_pass_position_iterator.cpp svneol=native#text/plain
