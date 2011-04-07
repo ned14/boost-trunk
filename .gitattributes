@@ -30399,7 +30399,6 @@ tools/quickbook/test/unicode-escape.quickbook svneol=native#text/plain
 tools/quickbook/test/unit/Jamfile.v2 svneol=native#text/plain
 tools/quickbook/test/unit/iterator_tests.cpp svneol=native#text/plain
 tools/quickbook/test/unit/post_process_test.cpp svneol=native#text/plain
-tools/quickbook/test/unit/symbols_add_null.cpp svneol=native#text/plain
 tools/quickbook/test/unit/symbols_find_null.cpp svneol=native#text/plain
 tools/quickbook/test/unit/symbols_tests.cpp svneol=native#text/plain
 tools/quickbook/test/unit/values_test.cpp svneol=native#text/plain
