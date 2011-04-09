@@ -11776,6 +11776,7 @@ libs/geometry/doc/doxy/doxygen_output/html/x02_numeric_adaptor_example_output.pn
 libs/geometry/doc/doxy/make_documentation.bat svneol=native#text/plain
 libs/geometry/doc/generated/area_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/boost-no-inspect svneol=native#text/plain
+libs/geometry/doc/generated/equals_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/within_status.qbk svneol=native#text/plain
 libs/geometry/doc/geometry.qbk svneol=native#text/plain
 libs/geometry/doc/html/img/algorithms/centroid.png -text svneol=unset#image/png
@@ -11917,6 +11918,7 @@ libs/geometry/doc/src/examples/algorithms/difference.cpp svneol=native#text/plai
 libs/geometry/doc/src/examples/algorithms/difference_inserter.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/distance.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/envelope.cpp svneol=native#text/plain
+libs/geometry/doc/src/examples/algorithms/equals.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/expand.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/for_each_point.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/for_each_point_const.cpp svneol=native#text/plain
