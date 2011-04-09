@@ -30206,7 +30206,6 @@ tools/quickbook/src/quickbook.cpp svneol=native#text/plain
 tools/quickbook/src/quickbook.hpp svneol=native#text/plain
 tools/quickbook/src/scoped.hpp svneol=native#text/plain
 tools/quickbook/src/syntax_highlight.cpp svneol=native#text/plain
-tools/quickbook/src/syntax_highlight.hpp svneol=native#text/plain
 tools/quickbook/src/template_stack.cpp svneol=native#text/plain
 tools/quickbook/src/template_stack.hpp svneol=native#text/plain
 tools/quickbook/src/template_tags.hpp svneol=native#text/plain
