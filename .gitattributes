@@ -4706,7 +4706,6 @@ boost/msm/mpl_graph/adjacency_list_graph.hpp svneol=native#text/plain
 boost/msm/mpl_graph/breadth_first_search.hpp svneol=native#text/plain
 boost/msm/mpl_graph/depth_first_search.hpp svneol=native#text/plain
 boost/msm/mpl_graph/detail/adjacency_list_graph.ipp svneol=native#text/plain
-boost/msm/mpl_graph/detail/as_mpl_map.hpp svneol=native#text/plain
 boost/msm/mpl_graph/detail/graph_implementation_interface.ipp svneol=native#text/plain
 boost/msm/mpl_graph/detail/incidence_list_graph.ipp svneol=native#text/plain
 boost/msm/mpl_graph/incidence_list_graph.hpp svneol=native#text/plain
