@@ -1940,6 +1940,7 @@ boost/geometry/algorithms/clear.hpp svneol=native#text/plain
 boost/geometry/algorithms/comparable_distance.hpp svneol=native#text/plain
 boost/geometry/algorithms/convex_hull.hpp svneol=native#text/plain
 boost/geometry/algorithms/correct.hpp svneol=native#text/plain
+boost/geometry/algorithms/detail/assign_values.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/calculate_null.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/calculate_sum.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/convert.hpp svneol=native#text/plain
