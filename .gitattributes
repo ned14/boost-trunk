@@ -26844,6 +26844,7 @@ libs/spirit/test/karma/real1.cpp svneol=native#text/plain
 libs/spirit/test/karma/real2.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/karma/real3.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/karma/regression_const_real_policies.cpp svneol=native#text/plain
+libs/spirit/test/karma/regression_numerics_adapt_adt.cpp svneol=native#text/plain
 libs/spirit/test/karma/regression_optional_double.cpp svneol=native#text/plain
 libs/spirit/test/karma/regression_real_scientific.cpp svneol=native#text/plain
 libs/spirit/test/karma/regression_semantic_action_attribute.cpp svneol=native#text/plain
