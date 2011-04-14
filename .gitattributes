@@ -24919,6 +24919,7 @@ libs/regex/test/concepts/concept_check.cpp svneol=native#text/plain
 libs/regex/test/concepts/icu_concept_check.cpp svneol=native#text/plain
 libs/regex/test/config_info/regex_config_info.cpp svneol=native#text/plain
 libs/regex/test/named_subexpressions/named_subexpressions_test.cpp svneol=native#text/plain
+libs/regex/test/noeh_test/Jamfile.v2 svneol=native#text/plain
 libs/regex/test/object_cache/object_cache_test.cpp svneol=native#text/plain
 libs/regex/test/pathology/bad_expression_test.cpp svneol=native#text/plain
 libs/regex/test/pathology/recursion_test.cpp svneol=native#text/plain
