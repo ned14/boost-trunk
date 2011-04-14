@@ -26947,6 +26947,7 @@ libs/spirit/test/qi/pass_container2.cpp svneol=native#text/plain
 libs/spirit/test/qi/pass_container3.cpp svneol=native#text/plain
 libs/spirit/test/qi/permutation.cpp svneol=native#text/plain
 libs/spirit/test/qi/plus.cpp svneol=native#text/plain
+libs/spirit/test/qi/radix_test.cpp svneol=native#text/plain
 libs/spirit/test/qi/range_run.cpp svneol=native#text/plain
 libs/spirit/test/qi/raw.cpp svneol=native#text/plain
 libs/spirit/test/qi/real.hpp svneol=native#text/plain
