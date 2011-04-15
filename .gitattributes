@@ -18412,6 +18412,7 @@ libs/math/doc/sf_and_dist/expint.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/factorials.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/faq.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/float_next.qbk svneol=native#text/plain
+libs/math/doc/sf_and_dist/fp_facets.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/fpclassify.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/fraction.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/gamma_derivatives.qbk svneol=native#text/plain
