@@ -18956,6 +18956,7 @@ libs/math/example/find_mean_and_sd_normal.cpp svneol=native#text/plain
 libs/math/example/find_root_example.cpp svneol=native#text/plain
 libs/math/example/find_scale_example.cpp svneol=native#text/plain
 libs/math/example/geometric_examples.cpp svneol=native#text/plain
+libs/math/example/inspect_fp.cpp svneol=native#text/plain
 libs/math/example/inverse_chi_squared_example.cpp svneol=native#text/plain
 libs/math/example/inverse_chi_squared_find_df_example.cpp svneol=native#text/plain
 libs/math/example/inverse_gamma_distribution_example.cpp svneol=native#text/plain
