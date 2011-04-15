@@ -25876,6 +25876,7 @@ libs/spirit/example/qi/custom_string.cpp svneol=native#text/plain
 libs/spirit/example/qi/display_attribute_type.cpp svneol=native#text/plain
 libs/spirit/example/qi/display_attribute_type.hpp svneol=native#text/plain
 libs/spirit/example/qi/employee.cpp svneol=native#text/plain
+libs/spirit/example/qi/german_floating_point.cpp svneol=native#text/plain
 libs/spirit/example/qi/iter_pos.hpp svneol=native#text/plain
 libs/spirit/example/qi/iter_pos_parser.cpp svneol=native#text/plain
 libs/spirit/example/qi/key_value_sequence.cpp svneol=native#text/plain
