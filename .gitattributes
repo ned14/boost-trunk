@@ -18966,6 +18966,7 @@ libs/math/example/neg_binom_confidence_limits.cpp svneol=native#text/plain
 libs/math/example/neg_binomial_sample_sizes.cpp svneol=native#text/plain
 libs/math/example/negative_binomial_example1.cpp svneol=native#text/plain
 libs/math/example/negative_binomial_example2.cpp svneol=native#text/plain
+libs/math/example/nonfinite_signaling_NaN.cpp svneol=native#text/plain
 libs/math/example/normal_misc_examples.cpp svneol=native#text/plain
 libs/math/example/policy_eg_1.cpp svneol=native#text/plain
 libs/math/example/policy_eg_10.cpp svneol=native#text/plain
