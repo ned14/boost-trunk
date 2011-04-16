@@ -11497,6 +11497,7 @@ libs/geometry/doc/doxy/doxygen_output/html/x02_numeric_adaptor_example_output.pn
 libs/geometry/doc/doxy/make_documentation.bat svneol=native#text/plain
 libs/geometry/doc/generated/area_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/boost-no-inspect svneol=native#text/plain
+libs/geometry/doc/generated/distance_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/equals_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/within_status.qbk svneol=native#text/plain
 libs/geometry/doc/geometry.qbk svneol=native#text/plain
