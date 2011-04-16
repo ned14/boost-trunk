@@ -1931,6 +1931,7 @@ boost/fusion/view/zip_view/zip_view.hpp svneol=native#text/plain
 boost/fusion/view/zip_view/zip_view_iterator.hpp svneol=native#text/plain
 boost/fusion/view/zip_view/zip_view_iterator_fwd.hpp svneol=native#text/plain
 boost/generator_iterator.hpp svneol=native#text/plain
+boost/geometry.hpp svneol=native#text/plain
 boost/geometry/algorithms/append.hpp svneol=native#text/plain
 boost/geometry/algorithms/area.hpp svneol=native#text/plain
 boost/geometry/algorithms/assign.hpp svneol=native#text/plain
