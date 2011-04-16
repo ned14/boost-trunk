@@ -25608,6 +25608,7 @@ libs/spirit/doc/html/spirit/repository.html svneol=native#text/html
 libs/spirit/doc/html/spirit/structure.html svneol=native#text/html
 libs/spirit/doc/html/spirit/structure/include.html svneol=native#text/html
 libs/spirit/doc/html/spirit/support.html svneol=native#text/html
+libs/spirit/doc/html/spirit/support/line_pos_iterator.html svneol=native#text/html
 libs/spirit/doc/html/spirit/support/multi_pass.html svneol=native#text/html
 libs/spirit/doc/html/spirit/support/utree.html svneol=native#text/html
 libs/spirit/doc/html/spirit/what_s_new.html svneol=native#text/html
