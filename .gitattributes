@@ -8434,7 +8434,6 @@ boost/unordered/detail/allocator_helpers.hpp svneol=native#text/plain
 boost/unordered/detail/buckets.hpp svneol=native#text/plain
 boost/unordered/detail/equivalent.hpp svneol=native#text/plain
 boost/unordered/detail/extract_key.hpp svneol=native#text/plain
-boost/unordered/detail/fwd.hpp svneol=native#text/plain
 boost/unordered/detail/move.hpp svneol=native#text/plain
 boost/unordered/detail/node.hpp svneol=native#text/plain
 boost/unordered/detail/table.hpp svneol=native#text/plain
