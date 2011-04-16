@@ -1,6 +1,5 @@
 libs/asio/doc/html
 libs/fusion/doc/html/quickbook_HTML.manifest
-libs/geometry/doc/quickbook/bin
 libs/geometry/example/bin
 libs/geometry/test/*.svg
 libs/geometry/test/algorithms/bin
