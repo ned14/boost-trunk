@@ -12248,7 +12248,6 @@ libs/geometry/test/core/ring.cpp svneol=native#text/plain
 libs/geometry/test/core/ring.vcproj svneol=native#text/plain
 libs/geometry/test/core/tag.cpp svneol=native#text/plain
 libs/geometry/test/core/topological_dimension.cpp svneol=native#text/plain
-libs/geometry/test/custom_tests.sln svneol=native#text/plain
 libs/geometry/test/domains/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test/domains/gis/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test/domains/gis/io/Jamfile.v2 svneol=native#text/plain
