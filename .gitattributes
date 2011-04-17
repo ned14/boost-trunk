@@ -2545,6 +2545,7 @@ boost/icl/type_traits/is_discrete.hpp svneol=native#text/plain
 boost/icl/type_traits/is_discrete_interval.hpp svneol=native#text/plain
 boost/icl/type_traits/is_element_container.hpp svneol=native#text/plain
 boost/icl/type_traits/is_icl_container.hpp svneol=native#text/plain
+boost/icl/type_traits/is_increasing.hpp svneol=native#text/plain
 boost/icl/type_traits/is_interval.hpp svneol=native#text/plain
 boost/icl/type_traits/is_interval_container.hpp svneol=native#text/plain
 boost/icl/type_traits/is_interval_joiner.hpp svneol=native#text/plain
