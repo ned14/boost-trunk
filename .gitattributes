@@ -26915,6 +26915,7 @@ libs/spirit/test/karma/test.hpp svneol=native#text/plain
 libs/spirit/test/karma/test_attr.hpp svneol=native#text/plain
 libs/spirit/test/karma/test_manip_attr.hpp svneol=native#text/plain
 libs/spirit/test/karma/tricky_alignment.cpp svneol=native#text/plain
+libs/spirit/test/karma/uint_radix.cpp svneol=native#text/plain
 libs/spirit/test/karma/utree1.cpp svneol=native#text/plain
 libs/spirit/test/karma/utree2.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/karma/utree3.cpp svneol=native#text/x-c%2B%2Bsrc
