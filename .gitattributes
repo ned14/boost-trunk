@@ -3419,6 +3419,7 @@ boost/math/special_functions/log1p.hpp svneol=native#text/plain
 boost/math/special_functions/math_fwd.hpp svneol=native#text/plain
 boost/math/special_functions/modf.hpp svneol=native#text/plain
 boost/math/special_functions/next.hpp svneol=native#text/plain
+boost/math/special_functions/nonfinite_num_facets.hpp svneol=native#text/plain
 boost/math/special_functions/pow.hpp svneol=native#text/plain
 boost/math/special_functions/powm1.hpp svneol=native#text/plain
 boost/math/special_functions/prime.hpp svneol=native#text/plain
