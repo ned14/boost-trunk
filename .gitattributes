@@ -18885,6 +18885,7 @@ libs/math/doc/sf_and_dist/html/math_toolkit/using_udt/dist_concept.html svneol=n
 libs/math/doc/sf_and_dist/html/math_toolkit/using_udt/use_mpfr.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/using_udt/use_ntl.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/utils.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/utils/fp_facets.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/utils/fpclass.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/utils/next_float.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/utils/next_float/float_advance.html svneol=native#text/html
