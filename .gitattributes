@@ -2272,6 +2272,7 @@ boost/geometry/geometries/adapted/boost_array_as_linestring.hpp svneol=native#te
 boost/geometry/geometries/adapted/boost_array_as_ring.hpp svneol=native#text/plain
 boost/geometry/geometries/adapted/boost_array_cartesian.hpp svneol=native#text/plain
 boost/geometry/geometries/adapted/boost_array_geographic.hpp svneol=native#text/plain
+boost/geometry/geometries/adapted/boost_polygon.hpp svneol=native#text/plain
 boost/geometry/geometries/adapted/boost_polygon/box.hpp svneol=native#text/plain
 boost/geometry/geometries/adapted/boost_polygon/hole_iterator.hpp svneol=native#text/plain
 boost/geometry/geometries/adapted/boost_polygon/holes_proxy.hpp svneol=native#text/plain
