@@ -11993,6 +11993,7 @@ libs/geometry/doc/src/examples/core/get_box.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/core/get_point.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/core/point_order.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/core/point_type.cpp svneol=native#text/plain
+libs/geometry/doc/src/examples/core/rings.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/core/set_box.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/core/set_point.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/core/tag.cpp svneol=native#text/plain
