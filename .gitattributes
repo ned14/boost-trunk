@@ -27498,6 +27498,7 @@ libs/type_traits/test/alignment_of_a2_test.cpp svneol=native#text/plain
 libs/type_traits/test/alignment_of_test.cpp svneol=native#text/plain
 libs/type_traits/test/check_integral_constant.hpp svneol=native#text/plain
 libs/type_traits/test/check_type.hpp svneol=native#text/plain
+libs/type_traits/test/common_type_2_test.cpp svneol=native#text/plain
 libs/type_traits/test/common_type_fail.cpp svneol=native#text/plain
 libs/type_traits/test/common_type_test.cpp svneol=native#text/plain
 libs/type_traits/test/conditional_test.cpp svneol=native#text/plain
