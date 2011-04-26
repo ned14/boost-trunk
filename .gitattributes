@@ -8819,6 +8819,7 @@ doc/src/images/important.png -text svneol=unset#image/png
 doc/src/images/important.svg -text svneol=unset#image/svg%2Bxml
 doc/src/images/lena512color.jpg -text svneol=unset#image/jpeg
 doc/src/images/my_image.jpg -text svneol=unset#image/jpeg
+doc/src/images/my_image.png -text svneol=unset#image/png
 doc/src/images/next.png -text svneol=unset#image/png
 doc/src/images/next.svg -text svneol=unset#image/svg%2Bxml
 doc/src/images/next_disabled.png -text svneol=unset#image/png
