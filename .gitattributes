@@ -17549,6 +17549,7 @@ libs/lambda/test/switch_construct.cpp svneol=native#text/plain
 libs/libraries.htm svneol=native#text/html
 libs/logic/doc/Jamfile.v2 svneol=native#text/plain
 libs/logic/doc/tribool.boostbook svneol=native#text/xml
+libs/logic/index.html svneol=native#text/html
 libs/logic/test/Jamfile.v2 svneol=native#text/plain
 libs/logic/test/tribool_io_test.cpp svneol=native#text/plain
 libs/logic/test/tribool_rename_test.cpp svneol=native#text/plain
