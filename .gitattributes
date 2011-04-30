@@ -12042,6 +12042,7 @@ libs/geometry/doc/src/examples/geometries/adapted/c_array.cpp svneol=native#text
 libs/geometry/doc/src/examples/geometries/point.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/geometries/register/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/examples/geometries/register/box.cpp svneol=native#text/plain
+libs/geometry/doc/src/examples/geometries/register/box_2d_4values.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/geometries/register/box_templated.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/geometries/register/point.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/quick_start.cpp svneol=native#text/plain
