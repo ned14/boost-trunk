@@ -26338,6 +26338,7 @@ libs/spirit/test/qi/real2.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/qi/real3.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/qi/real4.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/qi/real5.cpp svneol=native#text/x-c%2B%2Bsrc
+libs/spirit/test/qi/regression_adapt_adt.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_attr_with_action.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_clear.cpp svneol=native#text/plain
 libs/spirit/test/qi/regression_container_attribute.cpp svneol=native#text/plain
