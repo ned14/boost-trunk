@@ -4969,7 +4969,6 @@ boost/pending/relaxed_heap.hpp svneol=native#text/plain
 boost/pending/stringtok.hpp svneol=native#text/plain
 boost/phoenix.hpp svneol=native#text/plain
 boost/phoenix/bind.hpp svneol=native#text/plain
-boost/phoenix/bind/bind.hpp svneol=native#text/plain
 boost/phoenix/bind/bind_function.hpp svneol=native#text/plain
 boost/phoenix/bind/bind_function_object.hpp svneol=native#text/plain
 boost/phoenix/bind/bind_member_function.hpp svneol=native#text/plain
