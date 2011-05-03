@@ -22470,6 +22470,7 @@ libs/phoenix/example/factorial.cpp svneol=native#text/plain
 libs/phoenix/example/find_if.cpp svneol=native#text/plain
 libs/phoenix/example/function.cpp svneol=native#text/plain
 libs/phoenix/example/generator.cpp svneol=native#text/plain
+libs/phoenix/example/identity_transform.cpp svneol=native#text/plain
 libs/phoenix/example/if.cpp svneol=native#text/plain
 libs/phoenix/example/invert.cpp svneol=native#text/plain
 libs/phoenix/example/lambda.cpp svneol=native#text/plain
