@@ -22473,6 +22473,7 @@ libs/phoenix/example/generator.cpp svneol=native#text/plain
 libs/phoenix/example/if.cpp svneol=native#text/plain
 libs/phoenix/example/invert.cpp svneol=native#text/plain
 libs/phoenix/example/lambda.cpp svneol=native#text/plain
+libs/phoenix/example/parallel_for.cpp svneol=native#text/plain
 libs/phoenix/example/references.cpp svneol=native#text/plain
 libs/phoenix/example/values.cpp svneol=native#text/plain
 libs/phoenix/index.html svneol=native#text/html
