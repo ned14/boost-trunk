@@ -4714,6 +4714,7 @@ boost/msm/mpl_graph/incidence_list_graph.hpp svneol=native#text/plain
 boost/msm/mpl_graph/mpl_graph.hpp svneol=native#text/plain
 boost/msm/mpl_graph/mpl_utils.hpp svneol=native#text/plain
 boost/msm/mpl_graph/search_colors.hpp svneol=native#text/plain
+boost/msm/msm_grammar.hpp svneol=native#text/plain
 boost/msm/proto_config.hpp svneol=native#text/plain
 boost/msm/row_tags.hpp svneol=native#text/plain
 boost/multi_array.hpp svneol=native#text/plain
