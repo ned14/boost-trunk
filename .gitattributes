@@ -11864,7 +11864,6 @@ libs/geometry/doc/html/img/algorithms/union.png -text svneol=unset#image/png
 libs/geometry/doc/html/img/algorithms/within.png -text svneol=unset#image/png
 libs/geometry/doc/html/img/nyi.png -text svneol=unset#image/png
 libs/geometry/doc/html/img/ok.png -text svneol=unset#image/png
-libs/geometry/doc/html/output_main.png -text
 libs/geometry/doc/html/svg_simplify_country.png -text
 libs/geometry/doc/html/svg_simplify_road.png -text
 libs/geometry/doc/imports.qbk svneol=native#text/plain
