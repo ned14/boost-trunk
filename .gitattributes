@@ -5650,6 +5650,7 @@ boost/proto/detail/preprocessed/traits.hpp svneol=native#text/plain
 boost/proto/detail/preprocessed/unpack_expr_.hpp svneol=native#text/plain
 boost/proto/detail/preprocessed/vararg_matches_impl.hpp svneol=native#text/plain
 boost/proto/detail/reverse.hpp svneol=native#text/plain
+boost/proto/detail/template_arity.hpp svneol=native#text/plain
 boost/proto/detail/traits.hpp svneol=native#text/plain
 boost/proto/detail/unpack_expr_.hpp svneol=native#text/plain
 boost/proto/detail/vararg_matches_impl.hpp svneol=native#text/plain
