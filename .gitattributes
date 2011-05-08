@@ -11714,6 +11714,7 @@ libs/fusion/todo.txt svneol=native#text/plain
 libs/geometry/doc/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/about_documentation.qbk svneol=native#text/plain
 libs/geometry/doc/acknowledgments.qbk svneol=native#text/plain
+libs/geometry/doc/compiling.qbk svneol=native#text/plain
 libs/geometry/doc/concept/box.qbk svneol=native#text/plain
 libs/geometry/doc/concept/linestring.qbk svneol=native#text/plain
 libs/geometry/doc/concept/multi_linestring.qbk svneol=native#text/plain
