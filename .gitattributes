@@ -54,6 +54,7 @@ msm_phoenix/boost/msm/mpl_graph/search_colors.hpp svneol=native#text/plain
 msm_phoenix/boost/msm/proto_config.hpp svneol=native#text/plain
 msm_phoenix/boost/msm/row_tags.hpp svneol=native#text/plain
 msm_phoenix/libs/example/SimplePhoenix.cpp svneol=native#text/plain
+msm_phoenix/libs/example/logging_functors.h svneol=native#text/plain
 v2_30/boost/msm/lpp/basic_grammar.hpp svneol=native#text/plain
 v2_30/boost/msm/lpp/common_types.hpp svneol=native#text/plain
 v2_30/boost/msm/lpp/function.hpp svneol=native#text/plain
