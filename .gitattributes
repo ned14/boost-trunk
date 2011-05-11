@@ -4685,6 +4685,7 @@ boost/msm/front/euml/euml_typeof.hpp svneol=native#text/plain
 boost/msm/front/euml/guard_grammar.hpp svneol=native#text/plain
 boost/msm/front/euml/iteration.hpp svneol=native#text/plain
 boost/msm/front/euml/operator.hpp svneol=native#text/plain
+boost/msm/front/euml/phoenix_placeholders.hpp svneol=native#text/plain
 boost/msm/front/euml/querying.hpp svneol=native#text/plain
 boost/msm/front/euml/state_grammar.hpp svneol=native#text/plain
 boost/msm/front/euml/stl.hpp svneol=native#text/plain
