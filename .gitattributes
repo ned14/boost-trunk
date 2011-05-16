@@ -3555,6 +3555,7 @@ boost/math/tools/tuple.hpp svneol=native#text/plain
 boost/math/tools/user.hpp svneol=native#text/plain
 boost/math/tools/workaround.hpp svneol=native#text/plain
 boost/math/tr1.hpp svneol=native#text/plain
+boost/math/tr1_c_macros.ipp svneol=native#text/plain
 boost/math_fwd.hpp svneol=native#text/plain
 boost/mem_fn.hpp svneol=native#text/plain
 boost/memory_order.hpp svneol=native#text/plain
