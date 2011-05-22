@@ -24817,6 +24817,7 @@ libs/range/test/test_function/false_predicate.hpp svneol=native#text/plain
 libs/range/test/test_function/greater_than_x.hpp svneol=native#text/plain
 libs/range/test/test_function/multiply_by_x.hpp svneol=native#text/plain
 libs/range/test/test_function/true_predicate.hpp svneol=native#text/plain
+libs/range/test/ticket_5544_terminate_irange.cpp svneol=native#text/plain
 libs/ratio/doc/Jamfile.v2 svneol=native#text/plain
 libs/ratio/doc/ratio.pdf -text svneol=unset#application/pdf
 libs/ratio/doc/ratio.qbk svneol=native#text/plain
