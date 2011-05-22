@@ -30146,6 +30146,7 @@ tools/quickbook/doc/intro.qbk svneol=native#text/plain
 tools/quickbook/doc/phrase.qbk svneol=native#text/plain
 tools/quickbook/doc/quickbook.qbk svneol=native#text/plain
 tools/quickbook/doc/ref.qbk svneol=native#text/plain
+tools/quickbook/doc/structure.qbk svneol=native#text/plain
 tools/quickbook/doc/syntax.qbk svneol=native#text/plain
 tools/quickbook/extra/katepart/install.sh svneol=LF#text/x-sh eol=lf
 tools/quickbook/extra/katepart/katepart.qbk svneol=native#text/plain
