@@ -17436,6 +17436,7 @@ libs/iostreams/test/mapped_file_test.cpp svneol=native#text/plain
 libs/iostreams/test/newline_test.cpp svneol=native#text/plain
 libs/iostreams/test/null_test.cpp svneol=native#text/plain
 libs/iostreams/test/operation_sequence_test.cpp svneol=native#text/plain
+libs/iostreams/test/path_test.cpp svneol=native#text/plain
 libs/iostreams/test/pipeline_test.cpp svneol=native#text/plain
 libs/iostreams/test/putback_test.hpp svneol=native#text/plain
 libs/iostreams/test/read_bidir_filter_test.hpp svneol=native#text/plain
