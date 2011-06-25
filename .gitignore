@@ -1,5 +1,7 @@
 /bin.v2
+/bjam
 /bjam.exe
+/bootstrap.log
 /dist
 libs/asio/doc/html
 libs/fusion/doc/html/quickbook_HTML.manifest
@@ -74,6 +76,7 @@ libs/thread/test/*.pdb
 libs/thread/test/bin
 libs/wave/samples/custom_directives/build/custom_directives
 libs/wave/samples/emit_custom_line_directives/build/emit_custom_line_directives
+/project-config.jam
 /stage
 /stage64
 status/*.log
@@ -81,6 +84,12 @@ status/boosttmp.*
 status/regression
 status/rng.saved
 status/rng.tmp
+tools/build/v2/b2
+tools/build/v2/bin
+tools/build/v2/bjam
+tools/build/v2/bootstrap.log
+tools/build/v2/engine/bin.*
+tools/build/v2/engine/bootstrap
 tools/build/v2/test/*.pyc
 tools/build/v2/test/failed_test
 tools/build/v2/test/test-config.jam
