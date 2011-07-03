@@ -1983,7 +1983,6 @@ boost/geometry/algorithms/detail/overlay/traversal_info.hpp svneol=native#text/p
 boost/geometry/algorithms/detail/overlay/traverse.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/overlay/turn_info.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/overlay/visit_info.hpp svneol=native#text/plain
-boost/geometry/algorithms/detail/overlay/within_util.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/partition.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/point_on_border.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/ring_identifier.hpp svneol=native#text/plain
