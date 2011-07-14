@@ -18173,6 +18173,7 @@ libs/locale/test/test_boundary.cpp svneol=native#text/plain
 libs/locale/test/test_codepage.cpp svneol=native#text/plain
 libs/locale/test/test_codepage_converter.cpp svneol=native#text/plain
 libs/locale/test/test_collate.cpp svneol=native#text/plain
+libs/locale/test/test_config.cpp svneol=native#text/plain
 libs/locale/test/test_convert.cpp svneol=native#text/plain
 libs/locale/test/test_date_time.cpp svneol=native#text/plain
 libs/locale/test/test_formatting.cpp svneol=native#text/plain
