@@ -29993,6 +29993,7 @@ tools/auto_index/doc/students_t_eg_2.png -text svneol=unset#image/png
 tools/auto_index/doc/students_t_eg_3.png -text svneol=unset#image/png
 tools/auto_index/doc/students_t_eg_4.png -text svneol=unset#image/png
 tools/auto_index/include/auto_index_helpers.qbk svneol=native#text/plain
+tools/auto_index/index.html svneol=native#text/html
 tools/auto_index/src/auto_index.cpp svneol=native#text/plain
 tools/auto_index/src/auto_index.hpp svneol=native#text/plain
 tools/auto_index/src/file_scanning.cpp svneol=native#text/plain
