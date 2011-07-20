@@ -10529,6 +10529,8 @@ libs/config/tools/configure.in svneol=LF#text/x-sh eol=lf
 libs/config/tools/generate.cpp svneol=native#text/plain
 libs/conversion/cast.htm svneol=native#text/html
 libs/conversion/cast_test.cpp svneol=native#text/plain
+libs/conversion/doc/Jamfile.v2 svneol=native#text/plain
+libs/conversion/doc/lexical_cast.qbk svneol=native#text/plain
 libs/conversion/index.html svneol=native#text/html
 libs/conversion/lexical_cast.htm svneol=native#text/html
 libs/conversion/lexical_cast_test.cpp svneol=native#text/plain
