@@ -25608,6 +25608,8 @@ libs/regex/doc/html/boost_regex/ref/deprecated_interfaces/regex_format.html svne
 libs/regex/doc/html/boost_regex/ref/deprecated_interfaces/regex_grep.html svneol=native#text/html
 libs/regex/doc/html/boost_regex/ref/deprecated_interfaces/regex_split.html svneol=native#text/html
 libs/regex/doc/html/boost_regex/ref/error_type.html svneol=native#text/html
+libs/regex/doc/html/boost_regex/ref/internal_details.html svneol=native#text/html
+libs/regex/doc/html/boost_regex/ref/internal_details/uni_iter.html svneol=native#text/html
 libs/regex/doc/html/boost_regex/ref/match_flag_type.html svneol=native#text/html
 libs/regex/doc/html/boost_regex/ref/match_results.html svneol=native#text/html
 libs/regex/doc/html/boost_regex/ref/non_std_strings.html svneol=native#text/html
