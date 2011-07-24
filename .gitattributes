@@ -1954,6 +1954,7 @@ boost/geometry/algorithms/correct.hpp svneol=native#text/plain
 boost/geometry/algorithms/covered_by.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/as_range.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/assign_box_corners.hpp svneol=native#text/plain
+boost/geometry/algorithms/detail/assign_indexed_point.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/assign_values.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/calculate_null.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/calculate_sum.hpp svneol=native#text/plain
