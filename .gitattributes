@@ -2325,6 +2325,7 @@ boost/geometry/iterators/ever_circling_iterator.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/area.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/centroid.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/clear.hpp svneol=native#text/plain
+boost/geometry/multi/algorithms/convert.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/correct.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/covered_by.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/detail/for_each_range.hpp svneol=native#text/plain
