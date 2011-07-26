@@ -11032,6 +11032,7 @@ libs/filesystem/v3/test/msvc10/file_status/file_status.vcxproj svneol=native#tex
 libs/filesystem/v3/test/msvc10/filesystem-v3.sln svneol=native#text/plain
 libs/filesystem/v3/test/msvc10/filesystem_dll/filesystem_dll.vcxproj svneol=native#text/xml
 libs/filesystem/v3/test/msvc10/fstream_test/fstream_test.vcxproj svneol=native#text/xml
+libs/filesystem/v3/test/msvc10/locale_info/locale_info.vcxproj svneol=native#text/xml
 libs/filesystem/v3/test/msvc10/long_path_test/long_path_test.vcxproj svneol=native#text/xml
 libs/filesystem/v3/test/msvc10/operations_test/operations_test.vcxproj svneol=native#text/xml
 libs/filesystem/v3/test/msvc10/operations_unit_test/operations_unit_test.vcxproj svneol=native#text/xml
