@@ -3320,7 +3320,6 @@ boost/locale/localization_backend.hpp svneol=native#text/plain
 boost/locale/message.hpp svneol=native#text/plain
 boost/locale/time_zone.hpp svneol=native#text/plain
 boost/locale/utf.hpp svneol=native#text/plain
-boost/locale/utf_encoding.hpp svneol=native#text/plain
 boost/locale/util.hpp svneol=native#text/plain
 boost/logic/tribool.hpp svneol=native#text/plain
 boost/logic/tribool_fwd.hpp svneol=native#text/plain
