@@ -17795,6 +17795,7 @@ libs/libraries.htm svneol=native#text/html
 libs/locale/build/Jamfile.v2 svneol=native#text/plain
 libs/locale/build/has_iconv.cpp svneol=native#text/plain
 libs/locale/build/has_icu_test.cpp svneol=native#text/plain
+libs/locale/build/option.cpp svneol=native#text/plain
 libs/locale/doc/Doxyfile svneol=native#text/plain
 libs/locale/doc/appendix.txt svneol=native#text/plain
 libs/locale/doc/boundary_analysys.txt svneol=native#text/plain
