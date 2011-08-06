@@ -27386,6 +27386,7 @@ libs/spirit/example/qi/compiler_tutorial/conjure3/vm.cpp svneol=native#text/plai
 libs/spirit/example/qi/compiler_tutorial/conjure3/vm.hpp svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/conjure_samples/error.cnj svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/conjure_samples/factorial.cnj svneol=native#text/plain
+libs/spirit/example/qi/compiler_tutorial/conjure_samples/operators.cnj svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/conjure_samples/pow2.cnj svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/conjure_samples/precedence.cnj svneol=native#text/plain
 libs/spirit/example/qi/compiler_tutorial/mini_c/annotation.hpp svneol=native#text/plain
