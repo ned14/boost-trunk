@@ -76,6 +76,7 @@ libs/thread/example/*.pdb
 libs/thread/example/bin
 libs/thread/test/*.pdb
 libs/thread/test/bin
+libs/tti/doc/TTIAcknowledgments.qbk
 libs/wave/samples/custom_directives/build/custom_directives
 libs/wave/samples/emit_custom_line_directives/build/emit_custom_line_directives
 /project-config.jam
