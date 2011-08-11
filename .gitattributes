@@ -1723,6 +1723,7 @@ boost/fusion/iterator/detail/advance.hpp svneol=native#text/plain
 boost/fusion/iterator/detail/distance.hpp svneol=native#text/plain
 boost/fusion/iterator/distance.hpp svneol=native#text/plain
 boost/fusion/iterator/equal_to.hpp svneol=native#text/plain
+boost/fusion/iterator/iterator_adapter.hpp svneol=native#text/plain
 boost/fusion/iterator/iterator_facade.hpp svneol=native#text/plain
 boost/fusion/iterator/key_of.hpp svneol=native#text/plain
 boost/fusion/iterator/mpl.hpp svneol=native#text/plain
