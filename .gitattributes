@@ -1625,6 +1625,7 @@ boost/fusion/include/is_view.hpp svneol=native#text/plain
 boost/fusion/include/iter_fold.hpp svneol=native#text/plain
 boost/fusion/include/iteration.hpp svneol=native#text/plain
 boost/fusion/include/iterator.hpp svneol=native#text/plain
+boost/fusion/include/iterator_adapter.hpp svneol=native#text/plain
 boost/fusion/include/iterator_base.hpp svneol=native#text/plain
 boost/fusion/include/iterator_facade.hpp svneol=native#text/plain
 boost/fusion/include/iterator_range.hpp svneol=native#text/plain
