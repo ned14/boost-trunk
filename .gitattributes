@@ -29740,6 +29740,7 @@ libs/unordered/test/helpers/random_values.hpp svneol=native#text/plain
 libs/unordered/test/helpers/strong.hpp svneol=native#text/plain
 libs/unordered/test/helpers/test.hpp svneol=native#text/plain
 libs/unordered/test/helpers/tracker.hpp svneol=native#text/plain
+libs/unordered/test/objects/cxx11_allocator.hpp svneol=native#text/plain
 libs/unordered/test/objects/exception.hpp svneol=native#text/plain
 libs/unordered/test/objects/fwd.hpp svneol=native#text/plain
 libs/unordered/test/objects/minimal.hpp svneol=native#text/plain
