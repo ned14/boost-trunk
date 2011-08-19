@@ -8221,7 +8221,6 @@ boost/tti/gen/static_mem_data_gen.hpp svneol=native#text/plain
 boost/tti/gen/static_mem_fun_gen.hpp svneol=native#text/plain
 boost/tti/gen/template_gen.hpp svneol=native#text/plain
 boost/tti/gen/template_params_gen.hpp svneol=native#text/plain
-boost/tti/gen/trait_gen.hpp svneol=native#text/plain
 boost/tti/gen/type_gen.hpp svneol=native#text/plain
 boost/tti/gen/vm_template_params_gen.hpp svneol=native#text/plain
 boost/tti/mem_data.hpp svneol=native#text/plain
