@@ -30470,6 +30470,7 @@ tools/quickbook/test/stub.cpp svneol=native#text/plain
 tools/quickbook/test/stub.py svneol=native#text/x-python
 tools/quickbook/test/table_1_3.gold svneol=native#text/plain
 tools/quickbook/test/table_1_3.quickbook svneol=native#text/plain
+tools/quickbook/test/table_1_3.xml svneol=native#text/plain
 tools/quickbook/test/table_1_5.gold svneol=native#text/plain
 tools/quickbook/test/table_1_5.quickbook svneol=native#text/plain
 tools/quickbook/test/template-section.gold svneol=native#text/plain
