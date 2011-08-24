@@ -23312,6 +23312,7 @@ libs/phoenix/test/bind/bind_function_object_tests_phx2.cpp svneol=native#text/pl
 libs/phoenix/test/bind/bind_function_tests.cpp svneol=native#text/plain
 libs/phoenix/test/bind/bind_member_function_tests.cpp svneol=native#text/plain
 libs/phoenix/test/bind/bind_member_variable_tests.cpp svneol=native#text/plain
+libs/phoenix/test/bind/bug5782.cpp svneol=native#text/plain
 libs/phoenix/test/bll_compatibility/algorithm_test.cpp svneol=native#text/plain
 libs/phoenix/test/bll_compatibility/bind_tests_advanced.cpp svneol=native#text/plain
 libs/phoenix/test/bll_compatibility/bind_tests_simple.cpp svneol=native#text/plain
