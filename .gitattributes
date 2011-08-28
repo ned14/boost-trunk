@@ -17077,7 +17077,6 @@ libs/integer/test/static_log2_include_test.cpp svneol=native#text/plain
 libs/integer/test/static_log2_test.cpp svneol=native#text/plain
 libs/integer/test/static_min_max_include_test.cpp svneol=native#text/plain
 libs/integer/test/static_min_max_test.cpp svneol=native#text/plain
-libs/interprocess/Interprocess_sync_windows_emulation.txt svneol=native#text/plain
 libs/interprocess/Jamfile.v2 svneol=native#text/plain
 libs/interprocess/doc/Jamfile.v2 svneol=native#text/plain
 libs/interprocess/doc/html/boostbook.css svneol=native#text/css
