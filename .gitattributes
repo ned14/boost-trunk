@@ -2521,6 +2521,7 @@ boost/geometry/util/math.hpp svneol=native#text/plain
 boost/geometry/util/order_as_direction.hpp svneol=native#text/plain
 boost/geometry/util/parameter_type_of.hpp svneol=native#text/plain
 boost/geometry/util/promote_floating_point.hpp svneol=native#text/plain
+boost/geometry/util/rational.hpp svneol=native#text/plain
 boost/geometry/util/readme.txt svneol=native#text/plain
 boost/geometry/util/select_calculation_type.hpp svneol=native#text/plain
 boost/geometry/util/select_coordinate_type.hpp svneol=native#text/plain
