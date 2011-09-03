@@ -9942,6 +9942,7 @@ libs/chrono/example/io_ex5.cpp svneol=native#text/plain
 libs/chrono/example/manipulate_clock_object.cpp svneol=native#text/plain
 libs/chrono/example/min_time_point.cpp svneol=native#text/plain
 libs/chrono/example/miscellaneous.cpp svneol=native#text/plain
+libs/chrono/example/rounding.cpp svneol=native#text/plain
 libs/chrono/example/run_timer_example.cpp svneol=native#text/plain
 libs/chrono/example/run_timer_example2.cpp svneol=native#text/plain
 libs/chrono/example/runtime_resolution.cpp svneol=native#text/plain
