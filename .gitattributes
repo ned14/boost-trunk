@@ -9959,6 +9959,7 @@ libs/chrono/example/test_special_values.cpp svneol=native#text/plain
 libs/chrono/example/test_thread_clock.cpp svneol=native#text/plain
 libs/chrono/example/time2_demo.cpp svneol=native#text/plain
 libs/chrono/example/time2_demo_output.txt svneol=native#text/plain
+libs/chrono/example/timer.hpp svneol=native#text/plain
 libs/chrono/example/timeval_demo.cpp svneol=native#text/plain
 libs/chrono/example/xtime.cpp svneol=native#text/plain
 libs/chrono/index.html svneol=native#text/html
