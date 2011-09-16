@@ -11631,6 +11631,7 @@ libs/fusion/example/performance/sequence_efficiency.cpp svneol=native#text/plain
 libs/fusion/example/performance/timings.txt svneol=native#text/plain
 libs/fusion/example/performance/zip_efficiency.cpp svneol=native#text/plain
 libs/fusion/index.html svneol=native#text/html
+libs/fusion/preprocess/preprocess.bat svneol=native#text/plain
 libs/fusion/preprocess/preprocess.cpp svneol=native#text/plain
 libs/fusion/preprocess/wave.cfg svneol=native#text/plain
 libs/fusion/test/Jamfile svneol=native#text/plain
