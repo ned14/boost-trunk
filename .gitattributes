@@ -10028,6 +10028,7 @@ libs/chrono/example/run_timer_example2.cpp svneol=native#text/plain
 libs/chrono/example/runtime_resolution.cpp svneol=native#text/plain
 libs/chrono/example/saturating.cpp svneol=native#text/plain
 libs/chrono/example/simulated_thread_interface_demo.cpp svneol=native#text/plain
+libs/chrono/example/stopwatch_example.cpp svneol=native#text/plain
 libs/chrono/example/test_clock.cpp svneol=native#text/plain
 libs/chrono/example/test_clock2.cpp svneol=native#text/plain
 libs/chrono/example/test_duration.cpp svneol=native#text/plain
