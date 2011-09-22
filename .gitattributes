@@ -24439,6 +24439,7 @@ libs/proto/test/make_expr.cpp svneol=native#text/plain
 libs/proto/test/matches.cpp svneol=native#text/plain
 libs/proto/test/mem_ptr.cpp svneol=native#text/plain
 libs/proto/test/noinvoke.cpp svneol=native#text/plain
+libs/proto/test/switch.cpp svneol=native#text/plain
 libs/proto/test/toy_spirit.cpp svneol=native#text/plain
 libs/proto/test/toy_spirit2.cpp svneol=native#text/plain
 libs/ptr_container/doc/Jamfile.v2 svneol=native#text/plain
