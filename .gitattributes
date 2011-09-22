@@ -26412,6 +26412,7 @@ libs/signals/test/ordering_test.cpp svneol=native#text/plain
 libs/signals/test/random_signal_system.cpp svneol=native#text/plain
 libs/signals/test/signal_n_test.cpp svneol=native#text/plain
 libs/signals/test/signal_test.cpp svneol=native#text/plain
+libs/signals/test/swap_test.cpp svneol=native#text/plain
 libs/signals/test/trackable_test.cpp svneol=native#text/plain
 libs/signals2/doc/Jamfile.v2 svneol=native#text/plain
 libs/signals2/doc/examples.xml svneol=native#text/plain
