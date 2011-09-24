@@ -11966,6 +11966,7 @@ libs/fusion/test/sequence/segmented_iterator_range.cpp svneol=native#text/plain
 libs/fusion/test/sequence/set.cpp svneol=native#text/plain
 libs/fusion/test/sequence/single_view.cpp svneol=native#text/plain
 libs/fusion/test/sequence/std_pair.cpp svneol=native#text/plain
+libs/fusion/test/sequence/std_tuple_iterator.cpp svneol=native#text/plain
 libs/fusion/test/sequence/swap.cpp svneol=native#text/plain
 libs/fusion/test/sequence/test_deduce_sequence.cpp svneol=native#text/plain
 libs/fusion/test/sequence/tie.hpp svneol=native#text/plain
