@@ -11765,7 +11765,6 @@ libs/functional/ptr_fun.html svneol=native#text/html
 libs/functional/sublibs svneol=native#text/plain
 libs/functional/test/Jamfile.v2 svneol=native#text/plain
 libs/functional/test/function_test.cpp svneol=native#text/plain
-libs/fusion/changelist.txt svneol=native#text/plain
 libs/fusion/doc/Jamfile svneol=native#text/plain
 libs/fusion/doc/acknowledgements.qbk svneol=native#text/plain
 libs/fusion/doc/adapted.qbk svneol=native#text/plain
