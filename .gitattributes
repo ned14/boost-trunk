@@ -10240,6 +10240,7 @@ libs/chrono/test/io/time_point_output.cpp svneol=native#text/plain
 libs/chrono/test/rep.h svneol=native#text/plain
 libs/chrono/test/run_timer_test.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/basic_stopwatch_laps_accumulator_set_pass.cpp svneol=native#text/plain
+libs/chrono/test/stopwatch/basic_stopwatch_laps_container_pass.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/basic_stopwatch_last_lap_pass.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/basic_stopwatch_pass.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/simple_lightweight_stopwatch_reporter_pass.cpp svneol=native#text/plain
