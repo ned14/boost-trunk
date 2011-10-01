@@ -10178,7 +10178,6 @@ libs/chrono/example/io_ex2.cpp svneol=native#text/plain
 libs/chrono/example/io_ex3.cpp svneol=native#text/plain
 libs/chrono/example/io_ex4.cpp svneol=native#text/plain
 libs/chrono/example/io_ex5.cpp svneol=native#text/plain
-libs/chrono/example/lightweight_stopwatch_reporter_example.cpp svneol=native#text/plain
 libs/chrono/example/manipulate_clock_object.cpp svneol=native#text/plain
 libs/chrono/example/min_time_point.cpp svneol=native#text/plain
 libs/chrono/example/miscellaneous.cpp svneol=native#text/plain
