@@ -762,6 +762,7 @@ boost/chrono/stopwatches/collectors/laps_accumulator_set.hpp svneol=native#text/
 boost/chrono/stopwatches/collectors/laps_sequence_container.hpp svneol=native#text/plain
 boost/chrono/stopwatches/collectors/last_lap.hpp svneol=native#text/plain
 boost/chrono/stopwatches/collectors/no_memory.hpp svneol=native#text/plain
+boost/chrono/stopwatches/dont_start.hpp svneol=native#text/plain
 boost/chrono/stopwatches/formatters/accumulator_set_formatter.hpp svneol=native#text/plain
 boost/chrono/stopwatches/formatters/base_formatter.hpp svneol=native#text/plain
 boost/chrono/stopwatches/formatters/elapsed_formatter.hpp svneol=native#text/plain
