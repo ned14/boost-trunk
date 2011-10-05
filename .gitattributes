@@ -755,6 +755,7 @@ boost/chrono/io/clock_string.hpp svneol=native#text/plain
 boost/chrono/io/duration_io.hpp svneol=native#text/plain
 boost/chrono/io/duration_unit_string.hpp svneol=native#text/plain
 boost/chrono/io/time_point_io.hpp svneol=native#text/plain
+boost/chrono/io/translate.hpp svneol=native#text/plain
 boost/chrono/process_cpu_clocks.hpp svneol=native#text/plain
 boost/chrono/round.hpp svneol=native#text/plain
 boost/chrono/stopwatches.hpp svneol=native#text/plain
