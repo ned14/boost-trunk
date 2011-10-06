@@ -28832,7 +28832,6 @@ libs/timer/doc/original_timer.html svneol=native#text/html
 libs/timer/example/auto_cpu_timer_example.cpp svneol=native#text/plain
 libs/timer/example/timex.cpp svneol=native#text/plain
 libs/timer/index.html svneol=native#text/html
-libs/timer/src/auto_timers.cpp svneol=native#text/plain
 libs/timer/src/auto_timers_construction.cpp svneol=native#text/plain
 libs/timer/src/cpu_timer.cpp svneol=native#text/plain
 libs/timer/test/Jamfile.v2 svneol=native#text/plain
