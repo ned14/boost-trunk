@@ -30001,6 +30001,7 @@ libs/uuid/test/Jamfile.v2 svneol=native#text/plain
 libs/uuid/test/compile_name_generator.cpp svneol=native#text/plain
 libs/uuid/test/compile_nil_generator.cpp svneol=native#text/plain
 libs/uuid/test/compile_random_generator.cpp svneol=native#text/plain
+libs/uuid/test/compile_seed_rng.cpp svneol=native#text/plain
 libs/uuid/test/compile_string_generator.cpp svneol=native#text/plain
 libs/uuid/test/compile_uuid.cpp svneol=native#text/plain
 libs/uuid/test/compile_uuid_generators.cpp svneol=native#text/plain
