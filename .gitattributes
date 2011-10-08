@@ -731,6 +731,7 @@ boost/chrono.hpp svneol=native#text/plain
 boost/chrono/ceil.hpp svneol=native#text/plain
 boost/chrono/chrono.hpp svneol=native#text/plain
 boost/chrono/chrono_io.hpp svneol=native#text/plain
+boost/chrono/clock_string.hpp svneol=native#text/plain
 boost/chrono/config.hpp svneol=native#text/plain
 boost/chrono/detail/inlined/chrono.hpp svneol=native#text/plain
 boost/chrono/detail/inlined/mac/chrono.hpp svneol=native#text/plain
