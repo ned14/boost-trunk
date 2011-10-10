@@ -8203,6 +8203,7 @@ boost/test/results_reporter.hpp svneol=native#text/plain
 boost/test/test_case_template.hpp svneol=native#text/plain
 boost/test/test_exec_monitor.hpp svneol=native#text/plain
 boost/test/test_tools.hpp svneol=native#text/plain
+boost/test/tools/assertion.hpp svneol=native#text/plain
 boost/test/tools/floating_point_comparison.hpp svneol=native#text/plain
 boost/test/tools/impl.hpp -text svneol=native#test/plain
 boost/test/tools/output_test_stream.hpp svneol=native#text/plain
