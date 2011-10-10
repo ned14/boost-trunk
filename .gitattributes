@@ -28747,6 +28747,7 @@ libs/test/test/prg_exec_fail4.cpp svneol=native#text/plain
 libs/test/test/result_report_test.cpp svneol=native#text/plain
 libs/test/test/run_by_name_label_test.cpp svneol=native#text/plain
 libs/test/test/sync_access_test.cpp svneol=native#text/plain
+libs/test/test/test_assertion_construction.cpp svneol=native#text/plain
 libs/test/test/test_case_template_test.cpp svneol=native#text/plain
 libs/test/test/test_files/cfg_file_tst1.cfg svneol=native#text/plain
 libs/test/test/test_files/cfg_file_tst2.cfg svneol=native#text/plain
