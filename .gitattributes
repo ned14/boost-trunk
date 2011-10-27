@@ -20675,6 +20675,7 @@ libs/move/example/doc_move_algorithms.cpp svneol=native#text/plain
 libs/move/example/doc_move_inserter.cpp svneol=native#text/plain
 libs/move/example/doc_move_iterator.cpp svneol=native#text/plain
 libs/move/example/movable.hpp svneol=native#text/plain
+libs/move/index.html svneol=native#text/html
 libs/move/proj/vc7ide/Move.sln svneol=native#text/plain
 libs/move/proj/vc7ide/back_move_inserter_test.vcproj svneol=native#text/xml
 libs/move/proj/vc7ide/construct_forward_test.vcproj svneol=native#text/xml
