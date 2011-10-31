@@ -753,6 +753,7 @@ boost/chrono/detail/system.hpp svneol=native#text/plain
 boost/chrono/duration.hpp svneol=native#text/plain
 boost/chrono/floor.hpp svneol=native#text/plain
 boost/chrono/include.hpp svneol=native#text/plain
+boost/chrono/io/duration_get.hpp svneol=native#text/plain
 boost/chrono/io/duration_io.hpp svneol=native#text/plain
 boost/chrono/io/duration_put.hpp svneol=native#text/plain
 boost/chrono/io/duration_style.hpp svneol=native#text/plain
