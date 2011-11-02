@@ -31587,6 +31587,7 @@ tools/quickbook/src/actions.cpp svneol=native#text/plain
 tools/quickbook/src/actions.hpp svneol=native#text/plain
 tools/quickbook/src/actions_class.cpp svneol=native#text/plain
 tools/quickbook/src/actions_class.hpp svneol=native#text/plain
+tools/quickbook/src/actions_state.hpp svneol=native#text/plain
 tools/quickbook/src/block_element_grammar.cpp svneol=native#text/plain
 tools/quickbook/src/block_tags.hpp svneol=native#text/plain
 tools/quickbook/src/cleanup.hpp svneol=native#text/plain
