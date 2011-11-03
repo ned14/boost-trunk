@@ -11044,6 +11044,7 @@ libs/conversion/test/implicit_cast.cpp svneol=native#text/plain
 libs/conversion/test/implicit_cast_fail.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_abstract_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_containers_test.cpp svneol=native#text/plain
+libs/conversion/test/lexical_cast_empty_input_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_float_types_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_inf_nan_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_loopback_test.cpp svneol=native#text/plain
