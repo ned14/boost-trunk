@@ -27519,6 +27519,7 @@ libs/spirit/repository/doc/qi/seek.qbk svneol=native#text/plain
 libs/spirit/repository/doc/qi/subrule.qbk svneol=native#text/plain
 libs/spirit/repository/doc/repository_template.qbk svneol=native#text/plain
 libs/spirit/repository/doc/spirit2_repository.qbk svneol=native#text/plain
+libs/spirit/repository/doc/what_s_new.qbk svneol=native#text/plain
 libs/spirit/repository/example/karma/Jamfile svneol=native#text/plain
 libs/spirit/repository/example/karma/calc2_ast.hpp svneol=native#text/plain
 libs/spirit/repository/example/karma/calc2_ast_dump_sr.cpp svneol=native#text/plain
