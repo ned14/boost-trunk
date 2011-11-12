@@ -783,6 +783,7 @@ boost/chrono/stopwatches/formatters/times_formatter.hpp svneol=native#text/plain
 boost/chrono/stopwatches/laps_stopwatch.hpp svneol=native#text/plain
 boost/chrono/stopwatches/reporters/clock_default_formatter.hpp svneol=native#text/plain
 boost/chrono/stopwatches/reporters/laps_stopclock.hpp svneol=native#text/plain
+boost/chrono/stopwatches/reporters/laps_stopwatch_default_formatter.hpp svneol=native#text/plain
 boost/chrono/stopwatches/reporters/process_default_formatter.hpp svneol=native#text/plain
 boost/chrono/stopwatches/reporters/stopwatch_reporter.hpp svneol=native#text/plain
 boost/chrono/stopwatches/reporters/stopwatch_reporter_default_formatter.hpp svneol=native#text/plain
