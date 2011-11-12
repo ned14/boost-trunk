@@ -767,6 +767,7 @@ boost/chrono/io/time_point_units.hpp svneol=native#text/plain
 boost/chrono/io/timezone.hpp svneol=native#text/plain
 boost/chrono/io/utility/ios_base_state_ptr.hpp svneol=native#text/plain
 boost/chrono/io/utility/manip_base.hpp svneol=native#text/plain
+boost/chrono/io/utility/to_string.hpp svneol=native#text/plain
 boost/chrono/io_v1/chrono_io.hpp svneol=native#text/plain
 boost/chrono/process_cpu_clocks.hpp svneol=native#text/plain
 boost/chrono/round.hpp svneol=native#text/plain
