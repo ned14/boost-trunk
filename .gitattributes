@@ -31684,6 +31684,7 @@ tools/quickbook/test/doc-info/id1-1.5.gold svneol=native#text/plain
 tools/quickbook/test/doc-info/id1-1.5.quickbook svneol=native#text/plain
 tools/quickbook/test/doc-info/id1-docinfo-no-id.quickbook svneol=native#text/plain
 tools/quickbook/test/doc-info/id1-no-docinfo.quickbook svneol=native#text/plain
+tools/quickbook/test/doc-info/missing_doc_info-1_6-fail.quickbook svneol=native#text/plain
 tools/quickbook/test/doc-info/source-mode-1.4.gold svneol=native#text/plain
 tools/quickbook/test/doc-info/source-mode-1.4.quickbook svneol=native#text/plain
 tools/quickbook/test/doc-info/source-mode-1.5.gold svneol=native#text/plain
