@@ -12300,6 +12300,7 @@ libs/geometry/doc/other/testcases/get_turn_info.ppt -text svneol=unset#applicati
 libs/geometry/doc/other/testcases/get_turn_info.xls -text svneol=unset#application/vnd.ms-excel
 libs/geometry/doc/other/testcases/multi_overlay_cases.ppt -text svneol=unset#application/vnd.ms-powerpoint
 libs/geometry/doc/other/testcases/overlay_cases.ppt -text svneol=unset#application/vnd.ms-powerpoint
+libs/geometry/doc/other/testcases/overlay_line_poly_cases.ppt -text svneol=unset#application/vnd.ms-powerpoint
 libs/geometry/doc/other/testcases/relate.ppt -text svneol=unset#application/vnd.ms-powerpoint
 libs/geometry/doc/other/testcases/strategy_segment_intersection_obsolete.ppt -text svneol=unset#application/vnd.ms-powerpoint
 libs/geometry/doc/quickbook/arithmetic.qbk svneol=native#text/plain
