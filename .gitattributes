@@ -2307,6 +2307,7 @@ boost/geometry/algorithms/detail/overlay/copy_segments.hpp svneol=native#text/pl
 boost/geometry/algorithms/detail/overlay/debug_turn_info.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/overlay/enrich_intersection_points.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/overlay/enrichment_info.hpp svneol=native#text/plain
+boost/geometry/algorithms/detail/overlay/follow.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/overlay/get_intersection_points.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/overlay/get_relative_order.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/overlay/get_ring.hpp svneol=native#text/plain
