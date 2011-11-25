@@ -753,6 +753,7 @@ boost/chrono/detail/system.hpp svneol=native#text/plain
 boost/chrono/duration.hpp svneol=native#text/plain
 boost/chrono/floor.hpp svneol=native#text/plain
 boost/chrono/include.hpp svneol=native#text/plain
+boost/chrono/io_v1/chrono_io.hpp svneol=native#text/plain
 boost/chrono/process_cpu_clocks.hpp svneol=native#text/plain
 boost/chrono/round.hpp svneol=native#text/plain
 boost/chrono/system_clocks.hpp svneol=native#text/plain
