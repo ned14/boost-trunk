@@ -2343,6 +2343,7 @@ boost/geometry/algorithms/intersection.hpp svneol=native#text/plain
 boost/geometry/algorithms/intersects.hpp svneol=native#text/plain
 boost/geometry/algorithms/length.hpp svneol=native#text/plain
 boost/geometry/algorithms/make.hpp svneol=native#text/plain
+boost/geometry/algorithms/not_implemented.hpp svneol=native#text/plain
 boost/geometry/algorithms/num_geometries.hpp svneol=native#text/plain
 boost/geometry/algorithms/num_interior_rings.hpp svneol=native#text/plain
 boost/geometry/algorithms/num_points.hpp svneol=native#text/plain
@@ -12420,6 +12421,7 @@ libs/geometry/doc/src/docutils/tools/implementation_status/implementation_status
 libs/geometry/doc/src/docutils/tools/implementation_status/implementation_status.sln svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/implementation_status/implementation_status.vcproj svneol=native#text/xml
 libs/geometry/doc/src/docutils/tools/implementation_status/tmp/Jamfile.v2 svneol=native#text/plain
+libs/geometry/doc/src/docutils/tools/support_status/support_status.cpp svneol=native#text/plain
 libs/geometry/doc/src/examples/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/examples/algorithms/append.cpp svneol=native#text/plain
