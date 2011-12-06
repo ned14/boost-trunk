@@ -33422,6 +33422,7 @@ tools/quickbook/doc/html/images/extra/katepart/table.text.editor.png -text svneo
 tools/quickbook/doc/quickbook.qbk svneol=native#text/plain
 tools/quickbook/extra/cxx_committee/Jamfile.v2 svneol=native#text/plain
 tools/quickbook/extra/cxx_committee/html/proposal.css svneol=native#text/css
+tools/quickbook/extra/cxx_committee/html/tr2.png -text svneol=unset#image/png
 tools/quickbook/extra/cxx_committee/library_proposal.qbk svneol=native#text/plain
 tools/quickbook/extra/katepart/install.sh svneol=LF#text/x-sh eol=lf
 tools/quickbook/extra/katepart/katepart.qbk svneol=native#text/plain
