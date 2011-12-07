@@ -33451,6 +33451,7 @@ tools/quickbook/doc/introduction.qbk svneol=native#text/plain
 tools/quickbook/doc/phrase.qbk svneol=native#text/plain
 tools/quickbook/doc/quickbook.qbk svneol=native#text/plain
 tools/quickbook/doc/ref.qbk svneol=native#text/plain
+tools/quickbook/doc/structure.qbk svneol=native#text/plain
 tools/quickbook/doc/syntax.qbk svneol=native#text/plain
 tools/quickbook/extra/cxx_committee/Jamfile.v2 svneol=native#text/plain
 tools/quickbook/extra/cxx_committee/html/proposal.css svneol=native#text/css
