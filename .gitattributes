@@ -32962,6 +32962,7 @@ tools/build/v2/test/core-language/test.jam svneol=native#text/plain
 tools/build/v2/test/core_action_status.py svneol=native#text/x-python
 tools/build/v2/test/core_actions_quietly.py svneol=native#text/x-python
 tools/build/v2/test/core_arguments.py svneol=native#text/x-python
+tools/build/v2/test/core_at_file.py svneol=native#text/x-python
 tools/build/v2/test/core_bindrule.py svneol=native#text/x-python
 tools/build/v2/test/core_d12.py svneol=native#text/x-python
 tools/build/v2/test/core_delete_module.py svneol=native#text/x-python
