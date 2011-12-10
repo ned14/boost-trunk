@@ -30317,6 +30317,7 @@ libs/thread/doc/Jamfile.v2 svneol=native#text/plain
 libs/thread/doc/acknowledgements.qbk svneol=native#text/plain
 libs/thread/doc/barrier.qbk svneol=native#text/plain
 libs/thread/doc/changes.qbk svneol=native#text/plain
+libs/thread/doc/compliance.qbk svneol=native#text/plain
 libs/thread/doc/condition_variables.qbk svneol=native#text/plain
 libs/thread/doc/future_ref.qbk svneol=native#text/plain
 libs/thread/doc/futures.qbk svneol=native#text/plain
