@@ -33540,6 +33540,7 @@ tools/quickbook/test/code_snippet-1_1.gold svneol=native#text/plain
 tools/quickbook/test/code_snippet-1_1.quickbook svneol=native#text/plain
 tools/quickbook/test/code_teletype-1_5.gold svneol=native#text/plain
 tools/quickbook/test/code_teletype-1_5.quickbook svneol=native#text/plain
+tools/quickbook/test/code_unclosed_block-1_6-fail.quickbook svneol=native#text/plain
 tools/quickbook/test/command-line/Jamfile.v2 svneol=native#text/plain
 tools/quickbook/test/command-line/basic-1_6.quickbook svneol=native#text/plain
 tools/quickbook/test/command-line/error-fail.quickbook svneol=native#text/plain
