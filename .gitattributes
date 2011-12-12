@@ -29544,6 +29544,7 @@ libs/spirit/test/lex/regression_matlib_generate.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_matlib_generate_switch.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_matlib_static.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_matlib_switch.cpp svneol=native#text/plain
+libs/spirit/test/lex/regression_static_wide_6253.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_syntax_error.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_wide.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_word_count.cpp svneol=native#text/plain
