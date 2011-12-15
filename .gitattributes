@@ -27766,6 +27766,7 @@ libs/regex/doc/syntax_option_type.qbk svneol=native#text/plain
 libs/regex/doc/syntax_perl.qbk svneol=native#text/plain
 libs/regex/doc/thread_safety.qbk svneol=native#text/plain
 libs/regex/doc/unicode.qbk svneol=native#text/plain
+libs/regex/doc/unicode_iterators.qbk svneol=native#text/plain
 libs/regex/doc/vc71-performance.html svneol=native#text/html
 libs/regex/example/Jamfile.v2 svneol=native#text/plain
 libs/regex/example/grep/grep.cpp svneol=native#text/plain
