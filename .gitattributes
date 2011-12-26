@@ -20644,6 +20644,7 @@ libs/math/test/test_igamma_inv.cpp svneol=native#text/plain
 libs/math/test/test_igamma_inv.hpp svneol=native#text/plain
 libs/math/test/test_igamma_inva.cpp svneol=native#text/plain
 libs/math/test/test_igamma_inva.hpp svneol=native#text/plain
+libs/math/test/test_instances.hpp svneol=native#text/plain
 libs/math/test/test_instantiate1.cpp svneol=native#text/plain
 libs/math/test/test_instantiate2.cpp svneol=native#text/plain
 libs/math/test/test_inv_hyp.cpp svneol=native#text/plain
