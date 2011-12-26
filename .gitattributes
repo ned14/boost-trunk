@@ -16954,7 +16954,6 @@ libs/intrusive/example/doc_window.cpp svneol=native#text/plain
 libs/intrusive/index.html svneol=native#text/html
 libs/intrusive/perf/Jamfile.v2 svneol=native#text/plain
 libs/intrusive/perf/perf_list.cpp svneol=native#text/plain
-libs/intrusive/proj/vc7ide/Intrusive.ncb -text
 libs/intrusive/proj/vc7ide/Intrusive.sln svneol=native#text/plain
 libs/intrusive/proj/vc7ide/Intrusive.vcproj svneol=native#text/xml
 libs/intrusive/proj/vc7ide/_intrusivelib/_intrusivelib.vcproj svneol=native#text/xml
