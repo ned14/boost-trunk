@@ -17119,6 +17119,8 @@ libs/icl/test/test_changing_interval_defaults_/vc9_test_changing_interval_defalt
 libs/icl/test/test_combinable_/test_combinable.cpp svneol=native#text/plain
 libs/icl/test/test_combinable_/vc9_test_combinable.vcproj svneol=native#text/xml
 libs/icl/test/test_doc_code_/test_doc_code.cpp svneol=native#text/plain
+libs/icl/test/test_doc_code_/vc10_test_doc_code.vcxproj svneol=native#text/xml
+libs/icl/test/test_doc_code_/vc10_test_doc_code.vcxproj.filters svneol=native#text/xml
 libs/icl/test/test_doc_code_/vc9_test_doc_code.vcproj svneol=native#text/xml
 libs/icl/test/test_functions.hpp svneol=native#text/plain
 libs/icl/test/test_icl_continuous_interval.hpp svneol=native#text/plain
@@ -17208,6 +17210,7 @@ libs/icl/test/test_type_traits_/test_type_traits.cpp svneol=native#text/plain
 libs/icl/test/test_type_traits_/vc9_test_type_traits.vcproj svneol=native#text/xml
 libs/icl/test/test_value_maker.hpp svneol=native#text/plain
 libs/icl/test/unit_test_unwarned.hpp svneol=native#text/plain
+libs/icl/test/vc10_icl_fast_tests.sln svneol=native#text/plain
 libs/icl/test/vc9_icl_fast_tests.sln svneol=native#text/plain
 libs/icl/test/vc9_icl_slow_tests.sln svneol=native#text/plain
 libs/index.html svneol=native#text/html
