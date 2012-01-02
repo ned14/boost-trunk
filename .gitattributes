@@ -30563,6 +30563,7 @@ libs/thread/test/no_implicit_assign_from_lvalue_thread.cpp svneol=native#text/pl
 libs/thread/test/no_implicit_move_from_lvalue_thread.cpp svneol=native#text/plain
 libs/thread/test/shared_mutex_locking_thread.hpp svneol=native#text/plain
 libs/thread/test/test.mcp -text
+libs/thread/test/test_6170.cpp svneol=native#text/plain
 libs/thread/test/test_barrier.cpp svneol=native#text/plain
 libs/thread/test/test_condition.cpp svneol=native#text/plain
 libs/thread/test/test_condition_notify_all.cpp svneol=native#text/plain
