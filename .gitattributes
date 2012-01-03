@@ -8355,6 +8355,7 @@ boost/thread.hpp svneol=native#text/plain
 boost/thread/barrier.hpp svneol=native#text/plain
 boost/thread/condition.hpp svneol=native#text/plain
 boost/thread/condition_variable.hpp svneol=native#text/plain
+boost/thread/cv_status.hpp svneol=native#text/plain
 boost/thread/detail/config.hpp svneol=native#text/plain
 boost/thread/detail/force_cast.hpp svneol=native#text/plain
 boost/thread/detail/move.hpp svneol=native#text/plain
