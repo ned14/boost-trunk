@@ -29074,6 +29074,7 @@ libs/uuid/test/test_string_generator.cpp svneol=native#text/plain
 libs/uuid/test/test_tagging.cpp svneol=native#text/plain
 libs/uuid/test/test_uuid.cpp svneol=native#text/plain
 libs/uuid/test/test_uuid_class.cpp svneol=native#text/plain
+libs/uuid/test/test_uuid_in_map.cpp svneol=native#text/plain
 libs/uuid/test/test_wserialization.cpp svneol=native#text/plain
 libs/uuid/uuid.html svneol=native#text/html
 libs/variant/doc/Jamfile.v2 svneol=native#text/plain
