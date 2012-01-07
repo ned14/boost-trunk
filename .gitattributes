@@ -2397,6 +2397,7 @@ boost/geometry/geometries/ring.hpp svneol=native#text/plain
 boost/geometry/geometries/segment.hpp svneol=native#text/plain
 boost/geometry/geometry.hpp svneol=native#text/plain
 boost/geometry/io/dsv/write.hpp svneol=native#text/plain
+boost/geometry/io/io.hpp svneol=native#text/plain
 boost/geometry/io/wkt/detail/prefix.hpp svneol=native#text/plain
 boost/geometry/io/wkt/detail/wkt_multi.hpp svneol=native#text/plain
 boost/geometry/io/wkt/iomanip.hpp svneol=native#text/plain
