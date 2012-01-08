@@ -20112,6 +20112,7 @@ libs/math/test/nct.ipp svneol=native#text/plain
 libs/math/test/negative_binomial_quantile.ipp svneol=native#text/plain
 libs/math/test/ntl_concept_check.cpp svneol=native#text/plain
 libs/math/test/pch.hpp svneol=native#text/plain
+libs/math/test/pch_light.hpp svneol=native#text/plain
 libs/math/test/poisson_quantile.ipp svneol=native#text/plain
 libs/math/test/pow_test.cpp svneol=native#text/plain
 libs/math/test/powm1_sqrtp1m1_test.cpp svneol=native#text/plain
