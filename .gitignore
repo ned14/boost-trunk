@@ -1,3 +1,10 @@
+/b2
+/b2.exe
+/bin.v2
+/bjam
+/bjam.exe
+/bootstrap.log
+/dist
 libs/asio/doc/html
 libs/fusion/doc/html/quickbook_HTML.manifest
 libs/fusion/test/compile_time/*.test
@@ -70,6 +77,9 @@ libs/thread/test/*.pdb
 libs/thread/test/bin
 libs/wave/samples/custom_directives/build/custom_directives
 libs/wave/samples/emit_custom_line_directives/build/emit_custom_line_directives
+/project-config.jam
+/stage
+/stage64
 status/*.log
 status/boosttmp.*
 status/regression
