@@ -12386,6 +12386,7 @@ libs/geometry/doc/doxy/make_documentation.bat svneol=native#text/plain
 libs/geometry/doc/generated/area_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/boost-no-inspect svneol=native#text/plain
 libs/geometry/doc/generated/clear_status.qbk svneol=native#text/plain
+libs/geometry/doc/generated/convex_hull_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/distance_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/equals_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/within_status.qbk svneol=native#text/plain
