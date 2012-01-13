@@ -13106,6 +13106,7 @@ libs/geometry/test/views/segment_view.vcproj svneol=native#text/xml
 libs/geometry/test/views/views.sln svneol=native#text/plain
 libs/geometry/test_extensions/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test_extensions/algorithms/Jamfile.v2 svneol=native#text/plain
+libs/geometry/test_extensions/algorithms/buffer/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test_extensions/algorithms/buffer/buffer.sln svneol=native#text/plain
 libs/geometry/test_extensions/algorithms/buffer/linestring_buffer.cpp svneol=native#text/plain
 libs/geometry/test_extensions/algorithms/buffer/linestring_buffer.vcproj svneol=native#text/plain
