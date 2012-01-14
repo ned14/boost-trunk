@@ -23145,6 +23145,7 @@ libs/phoenix/test/operator/unary_tests.cpp svneol=native#text/plain
 libs/phoenix/test/regression/bug4853.cpp svneol=native#text/plain
 libs/phoenix/test/regression/bug5626.cpp svneol=native#text/plain
 libs/phoenix/test/regression/bug5968.cpp svneol=native#text/x-c%2B%2Bsrc
+libs/phoenix/test/regression/bug6040.cpp svneol=native#text/plain
 libs/phoenix/test/scope/bug3289.cpp svneol=native#text/plain
 libs/phoenix/test/scope/bug_000008.cpp svneol=native#text/plain
 libs/phoenix/test/scope/dynamic_tests.cpp svneol=native#text/plain
