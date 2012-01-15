@@ -12517,6 +12517,7 @@ libs/geometry/doc/reference/geometries/point.qbk svneol=native#text/plain
 libs/geometry/doc/reference/geometries/register/point.qbk svneol=native#text/plain
 libs/geometry/doc/reference/views/box_view.qbk svneol=native#text/plain
 libs/geometry/doc/reference/views/segment_view.qbk svneol=native#text/plain
+libs/geometry/doc/release_notes.qbk svneol=native#text/plain
 libs/geometry/doc/src/copyright_block.qbk svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/boost.vsprops svneol=native#text/xml
