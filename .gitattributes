@@ -2356,6 +2356,7 @@ boost/geometry/algorithms/detail/point_on_border.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/ring_identifier.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/sections/range_by_section.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/sections/sectionalize.hpp svneol=native#text/plain
+boost/geometry/algorithms/detail/throw_on_empty_input.hpp svneol=native#text/plain
 boost/geometry/algorithms/difference.hpp svneol=native#text/plain
 boost/geometry/algorithms/disjoint.hpp svneol=native#text/plain
 boost/geometry/algorithms/distance.hpp svneol=native#text/plain
