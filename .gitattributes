@@ -23340,6 +23340,7 @@ libs/pool/doc/images/pc2.svg -text svneol=unset#image/svg%2Bxml
 libs/pool/doc/images/pc3.svg -text svneol=unset#image/svg%2Bxml
 libs/pool/doc/images/pc4.svg -text svneol=unset#image/svg%2Bxml
 libs/pool/doc/images/pc5.svg -text svneol=unset#image/svg%2Bxml
+libs/pool/doc/index.html svneol=native#text/html
 libs/pool/doc/index.idx svneol=native#text/plain
 libs/pool/doc/jamfile.v2 svneol=native#text/plain
 libs/pool/doc/pool.pdf -text svneol=unset#application/pdf
