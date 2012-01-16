@@ -20813,6 +20813,7 @@ libs/math/test/sph_bessel_data.ipp svneol=native#text/plain
 libs/math/test/sph_neumann_data.ipp svneol=native#text/plain
 libs/math/test/spherical_harmonic.ipp svneol=native#text/plain
 libs/math/test/std_real_concept_check.cpp svneol=native#text/plain
+libs/math/test/table_type.hpp svneol=native#text/plain
 libs/math/test/test_archive.cpp svneol=native#text/plain
 libs/math/test/test_basic_nonfinite.cpp svneol=native#text/plain
 libs/math/test/test_bernoulli.cpp svneol=native#text/plain
