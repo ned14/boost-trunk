@@ -14397,6 +14397,7 @@ libs/graph/example/graphviz.cpp svneol=native#text/plain
 libs/graph/example/graphviz_example.dot svneol=native#text/plain
 libs/graph/example/graphviz_test.dot svneol=native#text/plain
 libs/graph/example/grid_graph_example.cpp svneol=native#text/plain
+libs/graph/example/grid_graph_properties.cpp svneol=native#text/plain
 libs/graph/example/helper.hpp svneol=native#text/plain
 libs/graph/example/implicit_graph.cpp svneol=native#text/plain
 libs/graph/example/in_edges.cpp svneol=native#text/plain
