@@ -14045,6 +14045,7 @@ libs/graph/doc/dfs_visitor.html svneol=native#text/html
 libs/graph/doc/dijkstra_shortest_paths.html svneol=native#text/html
 libs/graph/doc/dijkstra_shortest_paths_no_color_map.html svneol=native#text/plain
 libs/graph/doc/dijkstra_visitor.html svneol=native#text/html
+libs/graph/doc/directed_graph.html svneol=native#text/html
 libs/graph/doc/distance_recorder.html svneol=native#text/html
 libs/graph/doc/edge_list.html svneol=native#text/html
 libs/graph/doc/edge_predecessor_recorder.html svneol=native#text/html
