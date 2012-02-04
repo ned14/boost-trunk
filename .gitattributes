@@ -2799,6 +2799,7 @@ boost/geometry/strategies/transform/map_transformer.hpp svneol=native#text/plain
 boost/geometry/strategies/transform/matrix_transformers.hpp svneol=native#text/plain
 boost/geometry/strategies/within.hpp svneol=native#text/plain
 boost/geometry/util/add_const_if_c.hpp svneol=native#text/plain
+boost/geometry/util/calculation_type.hpp svneol=native#text/plain
 boost/geometry/util/closure_as_bool.hpp svneol=native#text/plain
 boost/geometry/util/coordinate_cast.hpp svneol=native#text/plain
 boost/geometry/util/for_each_coordinate.hpp svneol=native#text/plain
