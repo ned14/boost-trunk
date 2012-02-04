@@ -16038,7 +16038,6 @@ libs/graph_parallel/doc/process_group.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/rmat_generator.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/scalable_rmat_generator.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/simple_trigger.rst svneol=native#text/x-rst
-libs/graph_parallel/doc/small_world_1_70_6_0p02.png -text
 libs/graph_parallel/doc/sorted_rmat_generator.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/sorted_unique_rmat_generator.rst svneol=native#text/x-rst
 libs/graph_parallel/doc/ssca_generator.rst svneol=native#text/x-rst
