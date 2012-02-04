@@ -2383,6 +2383,7 @@ boost/geometry/algorithms/unique.hpp svneol=native#text/plain
 boost/geometry/algorithms/within.hpp svneol=native#text/plain
 boost/geometry/arithmetic/arithmetic.hpp svneol=native#text/plain
 boost/geometry/arithmetic/cross_product.hpp svneol=native#text/plain
+boost/geometry/arithmetic/determinant.hpp svneol=native#text/plain
 boost/geometry/arithmetic/dot_product.hpp svneol=native#text/plain
 boost/geometry/core/access.hpp svneol=native#text/plain
 boost/geometry/core/closure.hpp svneol=native#text/plain
