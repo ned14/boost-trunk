@@ -1,0 +1,11 @@
+boost_1_49_0/libs/geometry/doc/quickbook/bin
+boost_1_49_0/libs/geometry/example/bin
+boost_1_49_0/libs/geometry/test/*.svg
+boost_1_49_0/libs/geometry/test/algorithms/bin
+boost_1_49_0/libs/geometry/test/arithmetic/bin
+boost_1_49_0/libs/geometry/test/core/bin
+boost_1_49_0/libs/geometry/test/iterators/bin
+boost_1_49_0/libs/geometry/test/multi/algorithms/bin
+boost_1_49_0/libs/geometry/test/point_concept/bin
+boost_1_49_0/libs/geometry/test/policies/bin
+boost_1_49_0/libs/geometry/test/strategies/bin
