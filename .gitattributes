@@ -18537,6 +18537,7 @@ libs/local_function/example/profile_msvc_release.png -text svneol=unset#image/pn
 libs/local_function/example/profile_phoenix.cpp svneol=native#text/plain
 libs/local_function/example/scope_exit.cpp svneol=native#text/plain
 libs/local_function/example/scope_exit.hpp svneol=native#text/plain
+libs/local_function/index.html svneol=native#text/html
 libs/local_function/test/Jamfile.v2 svneol=native#text/plain
 libs/local_function/test/add.cpp svneol=native#text/plain
 libs/local_function/test/add_classifiers.cpp svneol=native#text/plain
