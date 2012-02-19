@@ -2439,7 +2439,6 @@ boost/geometry/core/tag.hpp svneol=native#text/plain
 boost/geometry/core/tag_cast.hpp svneol=native#text/plain
 boost/geometry/core/tags.hpp svneol=native#text/plain
 boost/geometry/core/topological_dimension.hpp svneol=native#text/plain
-boost/geometry/extensions/algorithms/buffer/buffer_appender.hpp svneol=native#text/plain
 boost/geometry/extensions/algorithms/buffer/buffer_inserter.hpp svneol=native#text/plain
 boost/geometry/extensions/algorithms/buffer/buffered_piece_collection.hpp svneol=native#text/plain
 boost/geometry/extensions/algorithms/buffer/buffered_ring.hpp svneol=native#text/plain
