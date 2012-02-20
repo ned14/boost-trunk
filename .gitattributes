@@ -18644,6 +18644,7 @@ libs/local_function/test/add_inline_seq.cpp svneol=native#text/plain
 libs/local_function/test/add_lambda.cpp svneol=native#text/plain
 libs/local_function/test/add_params.cpp svneol=native#text/plain
 libs/local_function/test/add_params_seq.cpp svneol=native#text/plain
+libs/local_function/test/add_seq.cpp svneol=native#text/plain
 libs/local_function/test/add_template.cpp svneol=native#text/plain
 libs/local_function/test/add_template_seq.cpp svneol=native#text/plain
 libs/local_function/test/add_this.cpp svneol=native#text/plain
