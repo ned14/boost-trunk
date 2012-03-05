@@ -2586,6 +2586,7 @@ boost/geometry/extensions/gis/projections/proj/merc.hpp svneol=native#text/plain
 boost/geometry/extensions/gis/projections/proj/mill.hpp svneol=native#text/plain
 boost/geometry/extensions/gis/projections/proj/mod_ster.hpp svneol=native#text/plain
 boost/geometry/extensions/gis/projections/proj/moll.hpp svneol=native#text/plain
+boost/geometry/extensions/gis/projections/proj/natearth.hpp svneol=native#text/plain
 boost/geometry/extensions/gis/projections/proj/nell.hpp svneol=native#text/plain
 boost/geometry/extensions/gis/projections/proj/nell_h.hpp svneol=native#text/plain
 boost/geometry/extensions/gis/projections/proj/nocol.hpp svneol=native#text/plain
