@@ -11165,6 +11165,7 @@ libs/context/example/enumerator/tree.h svneol=native#text/plain
 libs/context/example/exit.cpp svneol=native#text/plain
 libs/context/example/float.cpp svneol=native#text/plain
 libs/context/example/link.cpp svneol=native#text/plain
+libs/context/example/pic.sh svneol=LF#text/x-sh eol=lf
 libs/context/example/swap.cpp svneol=native#text/plain
 libs/context/example/transfer.cpp svneol=native#text/plain
 libs/context/example/unwind.cpp svneol=native#text/plain
