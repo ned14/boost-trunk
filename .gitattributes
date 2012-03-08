@@ -20564,6 +20564,7 @@ libs/math/example/nonfinite_legacy.cpp svneol=native#text/plain
 libs/math/example/nonfinite_loopback_ok.cpp svneol=native#text/plain
 libs/math/example/nonfinite_num_facet.cpp svneol=native#text/plain
 libs/math/example/nonfinite_num_facet_serialization.cpp svneol=native#text/plain
+libs/math/example/nonfinite_num_facet_trap.cpp svneol=native#text/plain
 libs/math/example/nonfinite_serialization_archives.cpp svneol=native#text/plain
 libs/math/example/nonfinite_signaling_NaN.cpp svneol=native#text/plain
 libs/math/example/normal_misc_examples.cpp svneol=native#text/plain
