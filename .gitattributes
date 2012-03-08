@@ -21160,6 +21160,7 @@ libs/math/test/test_ncbeta_hooks.hpp svneol=native#text/plain
 libs/math/test/test_nccs_hooks.hpp svneol=native#text/plain
 libs/math/test/test_negative_binomial.cpp svneol=native#text/plain
 libs/math/test/test_next.cpp svneol=native#text/plain
+libs/math/test/test_nonfinite_io.cpp svneol=native#text/plain
 libs/math/test/test_nonfinite_trap.cpp svneol=native#text/plain
 libs/math/test/test_normal.cpp svneol=native#text/plain
 libs/math/test/test_pareto.cpp svneol=native#text/plain
