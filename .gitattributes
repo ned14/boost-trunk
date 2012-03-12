@@ -6681,6 +6681,7 @@ boost/smart_ptr/detail/sp_counted_base_pt.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_solaris.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_spin.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_sync.hpp svneol=native#text/plain
+boost/smart_ptr/detail/sp_counted_base_vacpp_ppc.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_base_w32.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_counted_impl.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_has_sync.hpp svneol=native#text/plain
