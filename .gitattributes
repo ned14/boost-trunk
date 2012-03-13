@@ -11146,6 +11146,7 @@ libs/context/doc/pdf/x86_64-sysv.pdf -text svneol=unset#application/pdf
 libs/context/doc/performance.qbk svneol=native#text/plain
 libs/context/doc/rationale.qbk svneol=native#text/plain
 libs/context/doc/reference.qbk svneol=native#text/plain
+libs/context/doc/requirements.qbk svneol=native#text/plain
 libs/context/doc/stack_ref.qbk svneol=native#text/plain
 libs/context/doc/tested.qbk svneol=native#text/plain
 libs/context/doc/todo.qbk svneol=native#text/plain
