@@ -28462,6 +28462,7 @@ libs/scope_exit/test/native.cpp svneol=native#text/plain
 libs/scope_exit/test/native_const_error.cpp svneol=native#text/plain
 libs/scope_exit/test/native_cv_error.cpp svneol=native#text/plain
 libs/scope_exit/test/native_this.cpp svneol=native#text/plain
+libs/scope_exit/test/native_this_tpl.cpp svneol=native#text/plain
 libs/scope_exit/test/native_tpl.cpp svneol=native#text/plain
 libs/scope_exit/test/native_tu1.cpp svneol=native#text/plain
 libs/scope_exit/test/native_tu2.cpp svneol=native#text/plain
