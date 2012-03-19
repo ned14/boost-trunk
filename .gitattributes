@@ -24155,6 +24155,7 @@ libs/proto/example/vec3.cpp svneol=native#text/plain
 libs/proto/example/vector.cpp svneol=native#text/plain
 libs/proto/example/virtual_member.cpp svneol=native#text/plain
 libs/proto/index.html svneol=native#text/html
+libs/proto/preprocess/Jamfile.v2 svneol=native#text/plain
 libs/proto/preprocess/preprocess_proto.cpp svneol=native#text/plain
 libs/proto/preprocess/wave.cfg svneol=native#text/plain
 libs/proto/test/Jamfile.v2 svneol=native#text/plain
