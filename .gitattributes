@@ -11596,6 +11596,7 @@ libs/filesystem/doc/portability_guide.htm svneol=native#text/html
 libs/filesystem/doc/reference.html svneol=native#text/html
 libs/filesystem/doc/release_history.html svneol=native#text/html
 libs/filesystem/doc/src/README svneol=native#text/plain
+libs/filesystem/doc/src/boost-no-inspect svneol=native#text/plain
 libs/filesystem/doc/src/boost_snippets.html svneol=native#text/html
 libs/filesystem/doc/src/build.bat svneol=native#text/plain
 libs/filesystem/doc/src/source.html svneol=native#text/html
