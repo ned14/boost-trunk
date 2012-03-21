@@ -11204,6 +11204,7 @@ libs/context/performance/performance_msvc_i386.hpp svneol=native#text/plain
 libs/context/src/asm/fcontext_arm_aapcs_elf_gas.S svneol=native#text/plain
 libs/context/src/asm/fcontext_i386_ms_pe_masm.asm svneol=native#text/plain
 libs/context/src/asm/fcontext_i386_sysv_elf_gas.S svneol=native#text/plain
+libs/context/src/asm/fcontext_i386_sysv_macho_gas.S svneol=native#text/plain
 libs/context/src/asm/fcontext_mips32_o32_elf_gas.S svneol=native#text/plain
 libs/context/src/asm/fcontext_ppc32_sysv_elf_gas.S svneol=native#text/plain
 libs/context/src/asm/fcontext_ppc64_sysv_elf_gas.S svneol=native#text/plain
