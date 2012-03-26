@@ -1205,6 +1205,7 @@ boost/exception/info_tuple.hpp svneol=native#text/plain
 boost/exception/to_string.hpp svneol=native#text/plain
 boost/exception/to_string_stub.hpp svneol=native#text/plain
 boost/exception_ptr.hpp svneol=native#text/plain
+boost/filesystem.hpp svneol=native#text/plain
 boost/filesystem/config.hpp svneol=native#text/plain
 boost/filesystem/convenience.hpp svneol=native#text/plain
 boost/filesystem/detail/utf8_codecvt_facet.hpp svneol=native#text/plain
