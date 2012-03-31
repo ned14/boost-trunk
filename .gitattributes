@@ -30879,6 +30879,7 @@ libs/thread/doc/barrier.qbk svneol=native#text/plain
 libs/thread/doc/changes.qbk svneol=native#text/plain
 libs/thread/doc/compliance.qbk svneol=native#text/plain
 libs/thread/doc/condition_variables.qbk svneol=native#text/plain
+libs/thread/doc/emulations.qbk svneol=native#text/plain
 libs/thread/doc/future_ref.qbk svneol=native#text/plain
 libs/thread/doc/futures.qbk svneol=native#text/plain
 libs/thread/doc/index.html svneol=native#text/html
