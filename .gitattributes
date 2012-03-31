@@ -28436,7 +28436,6 @@ libs/scope_exit/test/tu_test.hpp svneol=native#text/plain
 libs/scope_exit/test/world.cpp svneol=native#text/plain
 libs/scope_exit/test/world_checkpoint.cpp svneol=native#text/plain
 libs/scope_exit/test/world_checkpoint_all.cpp svneol=native#text/plain
-libs/scope_exit/test/world_checkpoint_all_nova.cpp svneol=native#text/plain
 libs/scope_exit/test/world_checkpoint_all_seq.cpp svneol=native#text/plain
 libs/scope_exit/test/world_checkpoint_all_seq_nova.cpp svneol=native#text/plain
 libs/scope_exit/test/world_checkpoint_seq.cpp svneol=native#text/plain
