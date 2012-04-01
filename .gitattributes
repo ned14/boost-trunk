@@ -31134,6 +31134,7 @@ libs/thread/test/threads/this_thread/sleep_for/sleep_for_pass.cpp svneol=native#
 libs/thread/test/threads/this_thread/sleep_until/sleep_until_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/assign/copy_fail.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/assign/move_pass.cpp svneol=native#text/plain
+libs/thread/test/threads/thread/constr/FArgs_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/constr/F_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/constr/FrvalueArgs_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/constr/Frvalue_pass.cpp svneol=native#text/plain
