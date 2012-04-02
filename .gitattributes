@@ -31169,7 +31169,6 @@ libs/thread/tutorial/factorial3.cpp svneol=native#text/plain
 libs/thread/tutorial/helloworld.cpp svneol=native#text/plain
 libs/thread/tutorial/helloworld2.cpp svneol=native#text/plain
 libs/thread/tutorial/helloworld3.cpp svneol=native#text/plain
-libs/thread/tutorial/helloworld4.cpp svneol=native#text/plain
 libs/thread/tutorial/once.cpp svneol=native#text/plain
 libs/thread/tutorial/tss.cpp svneol=native#text/plain
 libs/timer/build/Jamfile.v2 svneol=native#text/plain
