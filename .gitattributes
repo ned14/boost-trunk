@@ -32380,6 +32380,7 @@ libs/unordered/test/helpers/invariants.hpp svneol=native#text/plain
 libs/unordered/test/helpers/list.hpp svneol=native#text/plain
 libs/unordered/test/helpers/memory.hpp svneol=native#text/plain
 libs/unordered/test/helpers/metafunctions.hpp svneol=native#text/plain
+libs/unordered/test/helpers/postfix.hpp svneol=native#text/plain
 libs/unordered/test/helpers/prefix.hpp svneol=native#text/plain
 libs/unordered/test/helpers/random_values.hpp svneol=native#text/plain
 libs/unordered/test/helpers/strong.hpp svneol=native#text/plain
