@@ -23966,6 +23966,7 @@ libs/program_options/test/Jamfile.v2 svneol=native#text/plain
 libs/program_options/test/cmdline_test.cpp svneol=native#text/plain
 libs/program_options/test/config_test.cfg svneol=native#text/plain
 libs/program_options/test/exception_test.cpp svneol=native#text/x-c%2B%2Bsrc
+libs/program_options/test/exception_txt_test.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/program_options/test/minitest.hpp svneol=native#text/plain
 libs/program_options/test/options_description_test.cpp svneol=native#text/plain
 libs/program_options/test/parsers_test.cpp svneol=native#text/plain
