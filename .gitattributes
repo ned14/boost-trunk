@@ -31170,6 +31170,7 @@ libs/thread/test/test_futures.cpp svneol=native#text/plain
 libs/thread/test/test_generic_locks.cpp svneol=native#text/plain
 libs/thread/test/test_hardware_concurrency.cpp svneol=native#text/plain
 libs/thread/test/test_lock_concept.cpp svneol=native#text/plain
+libs/thread/test/test_ml.cpp svneol=native#text/plain
 libs/thread/test/test_move_function.cpp svneol=native#text/plain
 libs/thread/test/test_mutex.cpp svneol=native#text/plain
 libs/thread/test/test_once.cpp svneol=native#text/plain
