@@ -3723,7 +3723,6 @@ boost/local_function/aux_/preprocessor/traits/decl_sign_/sign.hpp svneol=native#
 boost/local_function/aux_/preprocessor/traits/decl_sign_/validate.hpp svneol=native#text/plain
 boost/local_function/aux_/preprocessor/traits/decl_sign_/validate_/defaults.hpp svneol=native#text/plain
 boost/local_function/aux_/preprocessor/traits/decl_sign_/validate_/this.hpp svneol=native#text/plain
-boost/local_function/aux_/preprocessor/traits/name.hpp svneol=native#text/plain
 boost/local_function/aux_/preprocessor/traits/param.hpp svneol=native#text/plain
 boost/local_function/aux_/symbol.hpp svneol=native#text/plain
 boost/local_function/config.hpp svneol=native#text/plain
