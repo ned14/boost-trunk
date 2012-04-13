@@ -12017,7 +12017,6 @@ libs/functional/overloaded_function/test/functor.cpp svneol=native#text/plain
 libs/functional/overloaded_function/test/identity.hpp svneol=native#text/plain
 libs/functional/overloaded_function/test/make_call.cpp svneol=native#text/plain
 libs/functional/overloaded_function/test/make_decl.cpp svneol=native#text/plain
-libs/functional/overloaded_function/test/sun_bug.cpp svneol=native#text/plain
 libs/functional/ptr_fun.html svneol=native#text/html
 libs/functional/sublibs svneol=native#text/plain
 libs/functional/test/Jamfile.v2 svneol=native#text/plain
