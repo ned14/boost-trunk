@@ -15966,6 +15966,7 @@ libs/graph/test/transitive_closure_test.cpp svneol=native#text/plain
 libs/graph/test/transitive_closure_test2.cpp svneol=native#text/plain
 libs/graph/test/two_graphs_common_spanning_trees_test.cpp svneol=native#text/plain
 libs/graph/test/typestr.hpp svneol=native#text/plain
+libs/graph/test/undirected_dfs.cpp svneol=native#text/plain
 libs/graph/test/vector_graph_cc.cpp svneol=native#text/plain
 libs/graph/test/weighted_graph.gr svneol=native#text/plain
 libs/graph_parallel/build/Jamfile.v2 svneol=native#text/plain
