@@ -20510,6 +20510,7 @@ libs/math/doc/sf_and_dist/math.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/minima.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/minimax.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/overview.qbk svneol=native#text/plain
+libs/math/doc/sf_and_dist/owens_t.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/performance.qbk svneol=native#text/plain
 libs/math/doc/sf_and_dist/plot_owens_3d_xyp.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/plot_owens_t.png -text svneol=unset#image/png
