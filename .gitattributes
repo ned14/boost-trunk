@@ -19926,6 +19926,7 @@ libs/math/doc/sf_and_dist/equations/skew_normal_mean.png -text svneol=unset#imag
 libs/math/doc/sf_and_dist/equations/skew_normal_mean.svg svneol=native#text/svg%2Bxml
 libs/math/doc/sf_and_dist/equations/skew_normal_pdf.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/equations/skew_normal_pdf.svg svneol=native#text/svg%2Bxml
+libs/math/doc/sf_and_dist/equations/skew_normal_pdf0.mml svneol=native#text/xml
 libs/math/doc/sf_and_dist/equations/skew_normal_pdf0.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/equations/skew_normal_pdf0.svg svneol=native#text/svg%2Bxml
 libs/math/doc/sf_and_dist/equations/skew_normal_skewness.png -text svneol=unset#image/png
