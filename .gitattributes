@@ -19885,6 +19885,7 @@ libs/math/doc/sf_and_dist/equations/normal_cdf.svg svneol=native#text/svg%2Bxml
 libs/math/doc/sf_and_dist/equations/normal_ref1.mml svneol=native#text/xml
 libs/math/doc/sf_and_dist/equations/normal_ref1.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/equations/normal_ref1.svg -text svneol=unset#image/svg%2Bxml
+libs/math/doc/sf_and_dist/equations/owens_t.mml svneol=native#text/xml
 libs/math/doc/sf_and_dist/equations/owens_t.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/equations/owens_t.svg svneol=native#text/svg%2Bxml
 libs/math/doc/sf_and_dist/equations/poisson_ref1.mml svneol=native#text/xml
