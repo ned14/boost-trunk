@@ -11161,6 +11161,7 @@ libs/context/doc/fcontext.qbk svneol=native#text/plain
 libs/context/doc/overview.qbk svneol=native#text/plain
 libs/context/doc/pdf/arm-aapcs.pdf -text svneol=unset#application/pdf
 libs/context/doc/pdf/arm-linux-aapcs.pdf -text svneol=unset#application/pdf
+libs/context/doc/pdf/calling-conventions.pdf -text svneol=unset#application/pdf
 libs/context/doc/pdf/iso_c99.pdf -text svneol=unset#application/pdf
 libs/context/doc/pdf/mips-o32.pdf -text svneol=unset#application/pdf
 libs/context/doc/pdf/ppc32-sysv.pdf -text svneol=unset#application/pdf
