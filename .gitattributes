@@ -11685,6 +11685,7 @@ libs/filesystem/test/operations_test.cpp svneol=native#text/plain
 libs/filesystem/test/operations_unit_test.cpp svneol=native#text/plain
 libs/filesystem/test/path_test.cpp svneol=native#text/plain
 libs/filesystem/test/path_unit_test.cpp svneol=native#text/plain
+libs/filesystem/test/sample_test.cpp svneol=native#text/plain
 libs/filesystem/test/test_codecvt.hpp svneol=native#text/plain
 libs/filesystem/test/windows_attributes.cpp svneol=native#text/plain
 libs/filesystem/tools/backup.bat svneol=native#text/plain
