@@ -11168,6 +11168,7 @@ libs/context/config/arm.cpp svneol=native#text/plain
 libs/context/config/mips1.cpp svneol=native#text/plain
 libs/context/config/power.cpp svneol=native#text/plain
 libs/context/config/x86.cpp svneol=native#text/plain
+libs/context/doc/Jamfile.v2 svneol=native#text/plain
 libs/context/doc/acknowledgements.qbk svneol=native#text/plain
 libs/context/doc/config.qbk svneol=native#text/plain
 libs/context/doc/context.qbk svneol=native#text/plain
