@@ -1523,6 +1523,7 @@ boost/fusion/container/deque/detail/begin_impl.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/convert_impl.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/cpp03_deque.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/cpp03_deque_fwd.hpp svneol=native#text/plain
+boost/fusion/container/deque/detail/cpp03_deque_keyed_values.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/cpp11_deque_keyed_values.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/deque_forward_ctor.hpp svneol=native#text/plain
 boost/fusion/container/deque/detail/deque_initial_size.hpp svneol=native#text/plain
