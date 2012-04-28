@@ -7,6 +7,7 @@
 /dist
 libs/asio/doc/html
 libs/config/doc/html/standalone_HTML.manifest
+libs/functional/overloaded_function/doc/html/doc_HTML.manifest
 libs/functional/overloaded_function/doc/reference.xml
 libs/fusion/doc/html/quickbook_HTML.manifest
 libs/fusion/test/compile_time/*.test
@@ -33,6 +34,7 @@ libs/graph/test/random.dot
 libs/graph/test/triangular-fr.dot
 libs/graph/test/triangular-kk.dot
 libs/iterator/doc/GNUmakefile
+libs/local_function/doc/html/doc_HTML.manifest
 libs/local_function/doc/reference.xml
 libs/math/test/*.log
 libs/optional/test/bin
@@ -51,6 +53,7 @@ libs/python/pyste/tests/*.pch
 libs/python/pyste/tests/*.pyc
 libs/python/pyste/tests/.sconsign
 libs/python/pyste/tests/cache
+libs/scope_exit/doc/html/doc_HTML.manifest
 libs/scope_exit/doc/reference.xml
 libs/spirit/build
 libs/spirit/build.vc10
