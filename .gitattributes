@@ -11669,6 +11669,7 @@ libs/filesystem/test/fstream_test.cpp svneol=native#text/plain
 libs/filesystem/test/large_file_support_test.cpp svneol=native#text/plain
 libs/filesystem/test/locale_info.cpp svneol=native#text/plain
 libs/filesystem/test/long_path_test.cpp svneol=native#text/plain
+libs/filesystem/test/macro_default_test.cpp svneol=native#text/plain
 libs/filesystem/test/msvc10/common.props svneol=native#text/xml
 libs/filesystem/test/msvc10/convenience_test/convenience_test.vcxproj svneol=native#text/xml
 libs/filesystem/test/msvc10/deprecated_test/deprecated_test.vcxproj svneol=native#text/xml
