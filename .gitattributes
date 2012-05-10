@@ -8354,7 +8354,6 @@ boost/thread/detail/force_cast.hpp svneol=native#text/plain
 boost/thread/detail/memory.hpp svneol=native#text/plain
 boost/thread/detail/move.hpp svneol=native#text/plain
 boost/thread/detail/platform.hpp svneol=native#text/plain
-boost/thread/detail/scoped_enum.hpp svneol=native#text/plain
 boost/thread/detail/singleton.hpp svneol=native#text/plain
 boost/thread/detail/thread.hpp svneol=native#text/plain
 boost/thread/detail/thread_group.hpp svneol=native#text/plain
