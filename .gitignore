@@ -6,6 +6,7 @@
 /bootstrap.log
 /dist
 libs/asio/doc/html
+libs/config/doc/html/standalone_HTML.manifest
 libs/fusion/doc/html/quickbook_HTML.manifest
 libs/fusion/test/compile_time/*.test
 libs/geometry/example/bin
