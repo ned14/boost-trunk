@@ -2139,6 +2139,7 @@ boost/fusion/sequence/io/in.hpp svneol=native#text/plain
 boost/fusion/sequence/io/out.hpp svneol=native#text/plain
 boost/fusion/sequence/sequence_facade.hpp svneol=native#text/plain
 boost/fusion/support.hpp svneol=native#text/plain
+boost/fusion/support/as_const.hpp svneol=native#text/plain
 boost/fusion/support/category_of.hpp svneol=native#text/plain
 boost/fusion/support/deduce.hpp svneol=native#text/plain
 boost/fusion/support/deduce_sequence.hpp svneol=native#text/plain
