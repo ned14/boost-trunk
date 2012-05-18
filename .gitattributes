@@ -22467,6 +22467,7 @@ libs/msm/doc/PDF/msm.pdf -text svneol=unset#application/pdf
 libs/msm/doc/images/AnnexA.jpg -text svneol=unset#image/jpeg
 libs/msm/doc/images/Anonymous.jpg -text svneol=unset#image/jpeg
 libs/msm/doc/images/CompositeTutorial.jpg -text svneol=unset#image/jpeg
+libs/msm/doc/images/Defer.jpg -text svneol=unset#image/jpeg
 libs/msm/doc/images/FlagsTutorial.jpg -text svneol=unset#image/jpeg
 libs/msm/doc/images/HistoryTutorial.jpg -text svneol=unset#image/jpeg
 libs/msm/doc/images/Orthogonal-deferred.jpg -text svneol=unset#image/jpeg
