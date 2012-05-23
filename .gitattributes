@@ -18578,7 +18578,6 @@ libs/local_function/test/goto_error_seq.cpp svneol=native#text/plain
 libs/local_function/test/goto_error_seq_nova.cpp svneol=native#text/plain
 libs/local_function/test/goto_seq.cpp svneol=native#text/plain
 libs/local_function/test/goto_seq_nova.cpp svneol=native#text/plain
-libs/local_function/test/locals_as_tparams.cpp svneol=native#text/plain
 libs/local_function/test/macro_commas.cpp svneol=native#text/plain
 libs/local_function/test/macro_commas_seq.cpp svneol=native#text/plain
 libs/local_function/test/macro_commas_seq_nova.cpp svneol=native#text/plain
