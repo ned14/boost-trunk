@@ -11218,6 +11218,7 @@ libs/context/performance/cycle.hpp svneol=native#text/plain
 libs/context/performance/cycle_i386.hpp svneol=native#text/plain
 libs/context/performance/cycle_x86-64.hpp svneol=native#text/plain
 libs/context/performance/performance.cpp svneol=native#text/plain
+libs/context/performance/zeit.hpp svneol=native#text/plain
 libs/context/src/asm/fcontext_arm_aapcs_elf_gas.S svneol=native#text/plain
 libs/context/src/asm/fcontext_i386_ms_pe_masm.asm svneol=native#text/plain
 libs/context/src/asm/fcontext_i386_sysv_elf_gas.S svneol=native#text/plain
