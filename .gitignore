@@ -7,6 +7,8 @@
 /dist
 libs/asio/doc/html
 libs/config/doc/html/standalone_HTML.manifest
+libs/functional/overloaded_function/doc/html/doc_HTML.manifest
+libs/functional/overloaded_function/doc/reference.xml
 libs/fusion/doc/html/quickbook_HTML.manifest
 libs/fusion/test/compile_time/*.test
 libs/geometry/example/bin
@@ -31,6 +33,8 @@ libs/graph/test/random.dot
 libs/graph/test/triangular-fr.dot
 libs/graph/test/triangular-kk.dot
 libs/iterator/doc/GNUmakefile
+libs/local_function/doc/html/doc_HTML.manifest
+libs/local_function/doc/reference.xml
 libs/math/test/*.log
 libs/optional/test/bin
 libs/python/pyste/dist/*.pyc
@@ -48,6 +52,8 @@ libs/python/pyste/tests/*.pch
 libs/python/pyste/tests/*.pyc
 libs/python/pyste/tests/.sconsign
 libs/python/pyste/tests/cache
+libs/scope_exit/doc/html/doc_HTML.manifest
+libs/scope_exit/doc/reference.xml
 libs/spirit/build
 libs/spirit/build.vc10
 libs/spirit/classic/doc/theme/Thumbs.db
@@ -76,6 +82,8 @@ libs/thread/example/*.pdb
 libs/thread/example/bin
 libs/thread/test/*.pdb
 libs/thread/test/bin
+libs/utility/identity_type/doc/html/index.docbook
+libs/utility/identity_type/doc/reference.xml
 libs/wave/samples/custom_directives/build/custom_directives
 libs/wave/samples/emit_custom_line_directives/build/emit_custom_line_directives
 /project-config.jam
