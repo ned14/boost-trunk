@@ -35301,6 +35301,7 @@ tools/release/build_release.sh svneol=LF#text/x-sh eol=lf
 tools/release/build_release_packages.bat svneol=native#text/plain
 tools/release/build_release_packages.sh svneol=LF#text/x-sh eol=lf
 tools/release/index.html svneol=native#text/html
+tools/release/inspect.py svneol=native#text/x-python
 tools/release/inspect.sh svneol=LF#text/x-sh eol=lf
 tools/release/inspect_trunk.bat svneol=native#text/plain
 tools/release/linux_user-config.jam svneol=native#text/plain
