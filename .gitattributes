@@ -2408,6 +2408,7 @@ boost/geometry/algorithms/perimeter.hpp svneol=native#text/plain
 boost/geometry/algorithms/reverse.hpp svneol=native#text/plain
 boost/geometry/algorithms/simplify.hpp svneol=native#text/plain
 boost/geometry/algorithms/sym_difference.hpp svneol=native#text/plain
+boost/geometry/algorithms/touches.hpp svneol=native#text/plain
 boost/geometry/algorithms/transform.hpp svneol=native#text/plain
 boost/geometry/algorithms/union.hpp svneol=native#text/plain
 boost/geometry/algorithms/unique.hpp svneol=native#text/plain
