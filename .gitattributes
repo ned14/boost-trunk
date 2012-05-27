@@ -2346,6 +2346,7 @@ boost/geometry/algorithms/detail/convert_point_to_point.hpp svneol=native#text/p
 boost/geometry/algorithms/detail/disjoint.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/equals/collect_vectors.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/for_each_range.hpp svneol=native#text/plain
+boost/geometry/algorithms/detail/get_left_turns.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/has_self_intersections.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/not.hpp svneol=native#text/plain
 boost/geometry/algorithms/detail/occupation_info.hpp svneol=native#text/plain
