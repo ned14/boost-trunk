@@ -34326,6 +34326,7 @@ tools/build/v2/test/core_parallel_multifile_actions_1.py svneol=native#text/x-py
 tools/build/v2/test/core_parallel_multifile_actions_2.py svneol=native#text/x-python
 tools/build/v2/test/core_typecheck.py svneol=native#text/x-python
 tools/build/v2/test/core_update_now.py svneol=native#text/x-python
+tools/build/v2/test/core_variables_in_actions.py svneol=native#text/x-python
 tools/build/v2/test/core_varnames.py svneol=native#text/x-python
 tools/build/v2/test/custom_generator.py svneol=native#text/x-python
 tools/build/v2/test/default_build.py svneol=native#text/x-python
