@@ -12543,6 +12543,7 @@ libs/geometry/doc/reference/algorithms/reverse.qbk svneol=native#text/plain
 libs/geometry/doc/reference/algorithms/simplify.qbk svneol=native#text/plain
 libs/geometry/doc/reference/algorithms/simplify_inserter.qbk svneol=native#text/plain
 libs/geometry/doc/reference/algorithms/sym_difference.qbk svneol=native#text/plain
+libs/geometry/doc/reference/algorithms/touches.qbk svneol=native#text/plain
 libs/geometry/doc/reference/algorithms/transform.qbk svneol=native#text/plain
 libs/geometry/doc/reference/algorithms/transform_with_strategy.qbk svneol=native#text/plain
 libs/geometry/doc/reference/algorithms/union.qbk svneol=native#text/plain
