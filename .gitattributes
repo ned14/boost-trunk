@@ -5182,6 +5182,7 @@ boost/msm/back/queue_container_deque.hpp svneol=native#text/plain
 boost/msm/back/state_machine.hpp svneol=native#text/plain
 boost/msm/back/tools.hpp svneol=native#text/plain
 boost/msm/common.hpp svneol=native#text/plain
+boost/msm/event_traits.hpp svneol=native#text/plain
 boost/msm/front/common_states.hpp svneol=native#text/plain
 boost/msm/front/completion_event.hpp svneol=native#text/plain
 boost/msm/front/detail/common_states.hpp svneol=native#text/plain
