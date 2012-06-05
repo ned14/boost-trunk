@@ -12458,6 +12458,7 @@ libs/geometry/doc/generated/correct_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/covered_by_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/disjoint_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/distance_status.qbk svneol=native#text/plain
+libs/geometry/doc/generated/envelope_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/equals_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/within_status.qbk svneol=native#text/plain
 libs/geometry/doc/geometry.qbk svneol=native#text/plain
