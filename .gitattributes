@@ -12462,6 +12462,7 @@ libs/geometry/doc/generated/distance_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/envelope_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/equals_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/expand_status.qbk svneol=native#text/plain
+libs/geometry/doc/generated/overlaps_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/within_status.qbk svneol=native#text/plain
 libs/geometry/doc/geometry.qbk svneol=native#text/plain
 libs/geometry/doc/html/img/algorithms/centroid.png -text svneol=unset#image/png
