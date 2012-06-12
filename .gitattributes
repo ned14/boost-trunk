@@ -20564,6 +20564,7 @@ libs/math/doc/sf_and_dist/html/math_toolkit/special/inv_hyper/asinh.html svneol=
 libs/math/doc/sf_and_dist/html/math_toolkit/special/inv_hyper/atanh.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/inv_hyper/inv_hyper_over.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/jacobi.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/special/jacobi/jac_over.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/jacobi/jacobi_cd.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/jacobi/jacobi_cn.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/jacobi/jacobi_cs.html svneol=native#text/html
