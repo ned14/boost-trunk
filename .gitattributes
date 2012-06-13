@@ -34318,6 +34318,7 @@ tools/build/v2/test/builtin_split_by_characters.py svneol=native#text/x-python
 tools/build/v2/test/c_file.py svneol=native#text/x-python
 tools/build/v2/test/chain.py svneol=native#text/x-python
 tools/build/v2/test/clean.py svneol=native#text/x-python
+tools/build/v2/test/collect_debug_info.py svneol=native#text/x-python
 tools/build/v2/test/composite.py svneol=native#text/x-python
 tools/build/v2/test/conditionals.py svneol=native#text/x-python
 tools/build/v2/test/conditionals2.py svneol=native#text/x-python
