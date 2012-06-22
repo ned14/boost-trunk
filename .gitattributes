@@ -10458,6 +10458,7 @@ libs/chrono/test/stopwatch/basic_stopwatch_reporter_laps_accumulator_set_pass.cp
 libs/chrono/test/stopwatch/basic_stopwatch_reporter_pass.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/laps_stopclock_laps_accumulator_set_pass.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/laps_stopclock_pass.cpp svneol=native#text/plain
+libs/chrono/test/stopwatch/simple_stopclock_pass.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/simple_stopwatch_pass.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/simple_stopwatch_reporter_pass.cpp svneol=native#text/plain
 libs/chrono/test/stopwatch/suspendable_stopwatch_pass.cpp svneol=native#text/plain
