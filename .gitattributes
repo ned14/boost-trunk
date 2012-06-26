@@ -12270,6 +12270,7 @@ libs/fusion/test/sequence/map_tie.cpp svneol=native#text/plain
 libs/fusion/test/sequence/misc.hpp svneol=native#text/plain
 libs/fusion/test/sequence/mutate.hpp svneol=native#text/plain
 libs/fusion/test/sequence/nview.cpp svneol=native#text/plain
+libs/fusion/test/sequence/ref_vector.cpp svneol=native#text/plain
 libs/fusion/test/sequence/repetitive_view.cpp svneol=native#text/plain
 libs/fusion/test/sequence/reverse_view.cpp svneol=native#text/plain
 libs/fusion/test/sequence/segmented_iterator_range.cpp svneol=native#text/plain
