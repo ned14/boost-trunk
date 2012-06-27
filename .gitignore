@@ -101,6 +101,7 @@ tools/build/v2/b2.exe
 tools/build/v2/bin
 tools/build/v2/bjam
 tools/build/v2/bjam.exe
+tools/build/v2/bootstrap
 tools/build/v2/bootstrap.log
 tools/build/v2/engine/bin.*
 tools/build/v2/engine/bootstrap
