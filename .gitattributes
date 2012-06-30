@@ -11216,6 +11216,7 @@ libs/context/example/Jamfile.v2 svneol=native#text/plain
 libs/context/example/exit.cpp svneol=native#text/plain
 libs/context/example/jump.cpp svneol=native#text/plain
 libs/context/example/transfer.cpp svneol=native#text/plain
+libs/context/index.html svneol=native#text/html
 libs/context/performance/Jamfile.v2 svneol=native#text/plain
 libs/context/performance/bind_processor.hpp svneol=native#text/plain
 libs/context/performance/bind_processor_aix.cpp svneol=native#text/plain
