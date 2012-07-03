@@ -29933,7 +29933,6 @@ libs/thread/src/future.cpp svneol=native#text/plain
 libs/thread/src/pthread/once.cpp svneol=native#text/plain
 libs/thread/src/pthread/thread.cpp svneol=native#text/plain
 libs/thread/src/pthread/timeconv.inl svneol=native#text/plain
-libs/thread/src/shared_mutex.cpp svneol=native#text/plain
 libs/thread/src/tss_null.cpp svneol=native#text/plain
 libs/thread/src/win32/thread.cpp svneol=native#text/plain
 libs/thread/src/win32/timeconv.inl svneol=native#text/plain
