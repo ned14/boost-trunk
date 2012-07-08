@@ -34476,7 +34476,6 @@ libs/unordered/test/exception/erase_exception_tests.cpp svneol=native#text/plain
 libs/unordered/test/exception/insert_exception_tests.cpp svneol=native#text/plain
 libs/unordered/test/exception/rehash_exception_tests.cpp svneol=native#text/plain
 libs/unordered/test/exception/swap_exception_tests.cpp svneol=native#text/plain
-libs/unordered/test/helpers/allocator.hpp svneol=native#text/plain
 libs/unordered/test/helpers/check_return_type.hpp svneol=native#text/plain
 libs/unordered/test/helpers/count.hpp svneol=native#text/plain
 libs/unordered/test/helpers/equivalent.hpp svneol=native#text/plain
