@@ -9748,6 +9748,7 @@ libs/algorithm/test/search_fail3.cpp svneol=native#text/plain
 libs/algorithm/test/search_test1.cpp svneol=native#text/plain
 libs/algorithm/test/search_test2.cpp svneol=native#text/plain
 libs/algorithm/test/search_test3.cpp svneol=native#text/plain
+libs/algorithm/test/search_test4.cpp svneol=native#text/plain
 libs/algorithm/test/search_test_data/0001.corpus -text svneol=unset#application/octet-stream
 libs/algorithm/test/search_test_data/0001b.pat -text svneol=unset#application/octet-stream
 libs/algorithm/test/search_test_data/0001e.pat -text svneol=unset#application/octet-stream
