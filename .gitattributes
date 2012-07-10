@@ -36885,33 +36885,22 @@ tools/regression/xsl_reports/xsl/v2/summary_page.xsl svneol=native#text/xml
 tools/release/2release.bat svneol=native#text/plain
 tools/release/README svneol=native#text/plain
 tools/release/bjam_warnings.bat svneol=native#text/plain
-tools/release/build_docs.sh svneol=LF#text/x-sh eol=lf
-tools/release/build_release.sh svneol=LF#text/x-sh eol=lf
 tools/release/build_release_packages.bat svneol=native#text/plain
-tools/release/build_release_packages.sh svneol=LF#text/x-sh eol=lf
 tools/release/index.html svneol=native#text/html
 tools/release/inspect.py svneol=native#text/x-python
 tools/release/linux_user-config.jam svneol=native#text/plain
-tools/release/load_posix.sh svneol=LF#text/x-sh eol=lf
-tools/release/load_windows.sh svneol=LF#text/x-sh eol=lf
-tools/release/make_packages.sh svneol=LF#text/x-sh eol=lf
 tools/release/merge2release.bash svneol=native#text/plain
 tools/release/merge2release.bat svneol=native#text/plain
 tools/release/merge_release_cycle_init.bat svneol=native#text/plain
 tools/release/release-mgt-msvc/compare_trees/compare_trees.vcproj svneol=native#text/xml
 tools/release/release-mgt-msvc/msvc.sln svneol=native#text/plain
 tools/release/release-mgt-msvc/strftime/strftime.vcproj svneol=native#text/xml
-tools/release/release_reports.sh svneol=LF#text/x-sh eol=lf
 tools/release/revision_number.bat svneol=native#text/plain
 tools/release/snapshot.bat svneol=native#text/plain
-tools/release/snapshot.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_download_docs.bat svneol=native#text/plain
-tools/release/snapshot_inspect.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_inspection.bat svneol=native#text/plain
 tools/release/snapshot_posix.bat svneol=native#text/plain
-tools/release/snapshot_posix.sh svneol=LF#text/x-sh eol=lf
 tools/release/snapshot_windows.bat svneol=native#text/plain
-tools/release/snapshot_windows.sh svneol=LF#text/x-sh eol=lf
 tools/release/strftime.cpp svneol=native#text/plain
 tools/release/unmerged.bat svneol=native#text/plain
 tools/release/unmerged_all.bat svneol=native#text/plain
