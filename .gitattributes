@@ -11695,6 +11695,7 @@ libs/filesystem/doc/src/README svneol=native#text/plain
 libs/filesystem/doc/src/boost-no-inspect svneol=native#text/plain
 libs/filesystem/doc/src/boost_snippets.html svneol=native#text/html
 libs/filesystem/doc/src/build.bat svneol=native#text/plain
+libs/filesystem/doc/src/hoist.bat svneol=native#text/plain
 libs/filesystem/doc/src/source.html svneol=native#text/html
 libs/filesystem/doc/src/tr2_snippets.html svneol=native#text/html
 libs/filesystem/doc/tutorial.html svneol=native#text/html
