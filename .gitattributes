@@ -384,6 +384,7 @@ boost/asio/detail/impl/win_thread.ipp svneol=native#text/plain
 boost/asio/detail/impl/win_tss_ptr.ipp svneol=native#text/plain
 boost/asio/detail/impl/winsock_init.ipp svneol=native#text/plain
 boost/asio/detail/io_control.hpp svneol=native#text/plain
+boost/asio/detail/keyword_tss_ptr.hpp svneol=native#text/plain
 boost/asio/detail/kqueue_reactor.hpp svneol=native#text/plain
 boost/asio/detail/kqueue_reactor_fwd.hpp svneol=native#text/plain
 boost/asio/detail/local_free_on_block_exit.hpp svneol=native#text/plain
