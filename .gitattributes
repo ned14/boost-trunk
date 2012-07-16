@@ -946,6 +946,7 @@ boost/container/flat_set.hpp svneol=native#text/plain
 boost/container/list.hpp svneol=native#text/plain
 boost/container/map.hpp svneol=native#text/plain
 boost/container/scoped_allocator.hpp svneol=native#text/plain
+boost/container/scoped_allocator_fwd.hpp svneol=native#text/plain
 boost/container/set.hpp svneol=native#text/plain
 boost/container/slist.hpp svneol=native#text/plain
 boost/container/stable_vector.hpp svneol=native#text/plain
