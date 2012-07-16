@@ -11672,6 +11672,7 @@ libs/functional/hash/test/hash_sequence_test.hpp svneol=native#text/plain
 libs/functional/hash/test/hash_set_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_set_test.hpp svneol=native#text/plain
 libs/functional/hash/test/hash_std_array_test.cpp svneol=native#text/plain
+libs/functional/hash/test/hash_std_smart_ptr_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_std_tuple_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_string_test.cpp svneol=native#text/plain
 libs/functional/hash/test/hash_type_index_test.cpp svneol=native#text/plain
