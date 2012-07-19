@@ -36108,6 +36108,7 @@ tools/build/v2/test/relative_sources.py svneol=native#text/x-python
 tools/build/v2/test/remove_requirement.py svneol=native#text/x-python
 tools/build/v2/test/rescan_header.py svneol=native#text/x-python
 tools/build/v2/test/resolution.py svneol=native#text/x-python
+tools/build/v2/test/scanner_causing_rebuilds.py svneol=native#text/x-python
 tools/build/v2/test/searched_lib.py svneol=native#text/x-python
 tools/build/v2/test/skipping.py svneol=native#text/x-python
 tools/build/v2/test/sort_rule.py svneol=native#text/x-python
