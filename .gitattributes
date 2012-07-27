@@ -36131,7 +36131,6 @@ tools/build/v2/test/startup/no-bootstrap3/boost-build.jam svneol=native#text/pla
 tools/build/v2/test/startup_v2.py svneol=native#text/x-python
 tools/build/v2/test/static_and_shared_library.py svneol=native#text/x-python
 tools/build/v2/test/suffix.py svneol=native#text/x-python
-tools/build/v2/test/svn_tree.py svneol=native#text/x-python
 tools/build/v2/test/symlink.py svneol=native#text/x-python
 tools/build/v2/test/tag.py svneol=native#text/x-python
 tools/build/v2/test/template.py svneol=native#text/x-python
