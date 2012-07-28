@@ -35094,6 +35094,7 @@ libs/wave/test/testwave/testfiles/t_9_019.hpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_020.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_021.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/t_9_022.cpp svneol=native#text/plain
+libs/wave/test/testwave/testfiles/t_9_023.cpp svneol=native#text/plain
 libs/wave/test/testwave/testfiles/test.cfg svneol=native#text/plain
 libs/wave/test/testwave/testwave.cpp svneol=native#text/plain
 libs/wave/test/testwave/testwave_app.cpp svneol=native#text/plain
