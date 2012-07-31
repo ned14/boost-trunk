@@ -36927,6 +36927,7 @@ tools/release/release-mgt-msvc/msvc.sln svneol=native#text/plain
 tools/release/release-mgt-msvc/strftime/strftime.vcproj svneol=native#text/xml
 tools/release/revision_number.bat svneol=native#text/plain
 tools/release/snapshot.bat svneol=native#text/plain
+tools/release/snapshot.py svneol=native#text/plain
 tools/release/snapshot_download_docs.bat svneol=native#text/plain
 tools/release/snapshot_inspection.bat svneol=native#text/plain
 tools/release/snapshot_posix.bat svneol=native#text/plain
