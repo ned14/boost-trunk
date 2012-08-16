@@ -20679,6 +20679,7 @@ libs/math/test/ncbeta_big.ipp svneol=native#text/plain
 libs/math/test/nccs.ipp svneol=native#text/plain
 libs/math/test/nccs_big.ipp svneol=native#text/plain
 libs/math/test/nct.ipp svneol=native#text/plain
+libs/math/test/nct_small_delta.ipp svneol=native#text/plain
 libs/math/test/negative_binomial_quantile.ipp svneol=native#text/plain
 libs/math/test/ntl_concept_check.cpp svneol=native#text/plain
 libs/math/test/owens_t.ipp svneol=native#text/plain
