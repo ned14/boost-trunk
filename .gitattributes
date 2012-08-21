@@ -19705,6 +19705,7 @@ libs/math/doc/sf_and_dist/graphs/nc_beta_pdf.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/graphs/nc_beta_pdf.svg -text svneol=unset#image/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/nc_f_pdf.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/graphs/nc_f_pdf.svg -text svneol=unset#image/svg%2Bxml
+libs/math/doc/sf_and_dist/graphs/nc_t_cdf.svg svneol=native#text/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/nc_t_pdf.png -text svneol=unset#image/png
 libs/math/doc/sf_and_dist/graphs/nc_t_pdf.svg -text svneol=unset#image/svg%2Bxml
 libs/math/doc/sf_and_dist/graphs/nccs_pdf.png -text svneol=unset#image/png
