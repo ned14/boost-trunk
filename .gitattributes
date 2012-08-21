@@ -31099,6 +31099,7 @@ libs/thread/test/test_2309.cpp svneol=native#text/plain
 libs/thread/test/test_2501.cpp svneol=native#text/plain
 libs/thread/test/test_2741.cpp svneol=native#text/plain
 libs/thread/test/test_3628.cpp svneol=native#text/plain
+libs/thread/test/test_3837.cpp svneol=native#text/plain
 libs/thread/test/test_4521.cpp svneol=native#text/plain
 libs/thread/test/test_4648.cpp svneol=native#text/plain
 libs/thread/test/test_4882.cpp svneol=native#text/plain
