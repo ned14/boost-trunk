@@ -30427,6 +30427,7 @@ libs/system/test/initialization_test.cpp svneol=native#text/plain
 libs/system/test/system_error_test.cpp svneol=native#text/plain
 libs/system/test/system_msvc/common.vsprops svneol=native#text/xml
 libs/system/test/system_msvc/error_code_test/error_code_test.vcproj svneol=native#text/xml
+libs/system/test/system_msvc/system_dll/system_dll.vcxproj svneol=native#text/xml
 libs/system/test/system_msvc/system_msvc.sln svneol=native#text/plain
 libs/system/test/throw_test.cpp svneol=native#text/plain
 libs/test/Jamfile.v2 svneol=native#text/plain
