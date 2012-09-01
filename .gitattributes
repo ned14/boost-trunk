@@ -12379,7 +12379,6 @@ libs/fusion/test/sequence/vector_value_at.cpp svneol=native#text/plain
 libs/fusion/test/sequence/zip_view.cpp svneol=native#text/plain
 libs/fusion/test/sequence/zip_view2.cpp svneol=native#text/plain
 libs/fusion/test/sequence/zip_view_ignore.cpp svneol=native#text/plain
-libs/fusion/todo.txt svneol=native#text/plain
 libs/geometry/doc/Jamfile.v2 svneol=native#text/plain
 libs/geometry/doc/about_documentation.qbk svneol=native#text/plain
 libs/geometry/doc/acknowledgments.qbk svneol=native#text/plain
