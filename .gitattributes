@@ -30965,6 +30965,7 @@ libs/thread/test/sync/conditions/condition_variable_any/wait_for_pred_pass.cpp s
 libs/thread/test/sync/conditions/condition_variable_any/wait_until_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/conditions/condition_variable_any/wait_until_pred_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/conditions/cv_status/cv_status_pass.cpp svneol=native#text/plain
+libs/thread/test/sync/conditions/notify_all_at_thread_exit_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/async/async_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/future/copy_assign_fail.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/future/copy_ctor_fail.cpp svneol=native#text/plain
@@ -31200,6 +31201,8 @@ libs/thread/test/threads/thread/members/join_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/members/joinable_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/members/native_handle_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/members/swap_pass.cpp svneol=native#text/plain
+libs/thread/test/threads/thread/members/try_join_for_pass.cpp svneol=native#text/plain
+libs/thread/test/threads/thread/members/try_join_until_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/non_members/swap_pass.cpp svneol=native#text/plain
 libs/thread/test/threads/thread/static/hardware_concurrency_pass.cpp svneol=native#text/plain
 libs/thread/test/util.inl svneol=native#text/plain
