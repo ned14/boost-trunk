@@ -18507,7 +18507,6 @@ libs/locale/test/test_winapi_convert.cpp svneol=native#text/plain
 libs/locale/test/test_winapi_formatting.cpp svneol=native#text/plain
 libs/locale/tools/cross-compile-gettext.sh svneol=LF#text/x-sh eol=lf
 libs/lockfree/doc/Jamfile.v2 svneol=native#text/plain
-libs/lockfree/doc/boostbook.css svneol=native#text/css
 libs/lockfree/doc/lockfree.qbk svneol=native#text/plain
 libs/lockfree/examples/Jamfile.v2 svneol=native#text/plain
 libs/lockfree/examples/queue.cpp svneol=native#text/plain
