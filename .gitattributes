@@ -5904,6 +5904,7 @@ boost/polygon/rectangle_traits.hpp svneol=native#text/plain
 boost/polygon/segment_concept.hpp svneol=native#text/plain
 boost/polygon/segment_data.hpp svneol=native#text/plain
 boost/polygon/segment_traits.hpp svneol=native#text/plain
+boost/polygon/segment_utils.hpp svneol=native#text/plain
 boost/polygon/transform.hpp svneol=native#text/plain
 boost/polygon/voronoi.hpp svneol=native#text/plain
 boost/polygon/voronoi_builder.hpp svneol=native#text/plain
