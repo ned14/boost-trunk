@@ -25273,6 +25273,7 @@ libs/numeric/ublas/test/test_complex_norms.cpp svneol=native#text/plain
 libs/numeric/ublas/test/test_coordinate_matrix_sort.cpp svneol=native#text/plain
 libs/numeric/ublas/test/test_inplace_solve.cpp svneol=native#text/plain
 libs/numeric/ublas/test/test_lu.cpp svneol=native#text/plain
+libs/numeric/ublas/test/test_ticket7296.cpp svneol=native#text/plain
 libs/numeric/ublas/test/test_triangular.cpp svneol=native#text/plain
 libs/numeric/ublas/test/triangular_access.cpp svneol=native#text/plain
 libs/numeric/ublas/test/triangular_layout.cpp svneol=native#text/plain
