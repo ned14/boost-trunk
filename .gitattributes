@@ -26012,6 +26012,7 @@ libs/polygon/index.html svneol=native#text/html
 libs/polygon/test/Jamfile.v2 svneol=native#text/plain
 libs/polygon/test/gtl_boost_unit_test.cpp svneol=native#text/plain
 libs/polygon/test/polygon_segment_test.cpp svneol=native#text/plain
+libs/polygon/test/skeleton_predicates_test.cpp svneol=native#text/plain
 libs/polygon/test/voronoi_builder_test.cpp svneol=native#text/plain
 libs/polygon/test/voronoi_ctypes_test.cpp svneol=native#text/plain
 libs/polygon/test/voronoi_diagram_test.cpp svneol=native#text/plain
