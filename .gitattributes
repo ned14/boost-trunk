@@ -5865,6 +5865,7 @@ boost/polygon/detail/property_merge.hpp svneol=native#text/plain
 boost/polygon/detail/property_merge_45.hpp svneol=native#text/plain
 boost/polygon/detail/rectangle_formation.hpp svneol=native#text/plain
 boost/polygon/detail/scan_arbitrary.hpp svneol=native#text/plain
+boost/polygon/detail/skeleton_detail.hpp svneol=native#text/plain
 boost/polygon/detail/skeleton_predicates.hpp svneol=native#text/plain
 boost/polygon/detail/transform_detail.hpp svneol=native#text/plain
 boost/polygon/detail/voronoi_ctypes.hpp svneol=native#text/plain
