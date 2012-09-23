@@ -9378,6 +9378,7 @@ libs/algorithm/test/Jamfile.v2 svneol=native#text/plain
 libs/algorithm/test/all_of_test.cpp svneol=native#text/plain
 libs/algorithm/test/any_of_test.cpp svneol=native#text/plain
 libs/algorithm/test/clamp_test.cpp svneol=native#text/plain
+libs/algorithm/test/copy_if_test1.cpp svneol=native#text/plain
 libs/algorithm/test/copy_n_test1.cpp svneol=native#text/plain
 libs/algorithm/test/empty_search_test.cpp svneol=native#text/plain
 libs/algorithm/test/find_if_not_test1.cpp svneol=native#text/plain
