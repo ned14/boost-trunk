@@ -12554,6 +12554,7 @@ libs/geometry/doc/generated/append_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/area_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/boost-no-inspect svneol=native#text/plain
 libs/geometry/doc/generated/buffer_status.qbk svneol=native#text/plain
+libs/geometry/doc/generated/centroid_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/clear_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/convert_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/convex_hull_status.qbk svneol=native#text/plain
