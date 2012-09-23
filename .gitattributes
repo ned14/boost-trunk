@@ -12565,6 +12565,7 @@ libs/geometry/doc/generated/equals_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/expand_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/length_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/overlaps_status.qbk svneol=native#text/plain
+libs/geometry/doc/generated/perimeter_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/simplify_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/transform_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/unique_status.qbk svneol=native#text/plain
