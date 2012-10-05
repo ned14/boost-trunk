@@ -30883,8 +30883,8 @@ libs/test/test/test_files/cfg_file_tst6.cfg svneol=native#text/plain
 libs/test/test/test_files/cfg_file_tst7.cfg svneol=native#text/plain
 libs/test/test/test_files/errors_handling_test.pattern svneol=native#text/plain
 libs/test/test/test_files/errors_handling_test.pattern2 svneol=native#text/plain
-libs/test/test/test_files/ifstream_line_iterator.tst1 svneol=native#text/plain
-libs/test/test/test_files/ifstream_line_iterator.tst2 svneol=native#text/plain
+libs/test/test/test_files/ifstream_line_iterator.tst1 svneol=LF#text/plain eol=lf
+libs/test/test/test_files/ifstream_line_iterator.tst2 svneol=LF#text/plain eol=lf
 libs/test/test/test_files/par_alias1.cfg svneol=native#text/plain
 libs/test/test/test_files/par_alias2.cfg svneol=native#text/plain
 libs/test/test/test_files/par_alias3.cfg svneol=native#text/plain
