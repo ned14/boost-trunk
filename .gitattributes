@@ -3673,6 +3673,7 @@ boost/iterator/detail/config_undef.hpp svneol=native#text/plain
 boost/iterator/detail/enable_if.hpp svneol=native#text/plain
 boost/iterator/detail/facade_iterator_category.hpp svneol=native#text/plain
 boost/iterator/detail/minimum_category.hpp svneol=native#text/plain
+boost/iterator/detail/operator_brackets_dispatch.hpp svneol=native#text/plain
 boost/iterator/filter_iterator.hpp svneol=native#text/plain
 boost/iterator/function_input_iterator.hpp svneol=native#text/html
 boost/iterator/indirect_iterator.hpp svneol=native#text/plain
