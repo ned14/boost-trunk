@@ -14917,6 +14917,7 @@ libs/graph/test/eccentricity.cpp svneol=native#text/plain
 libs/graph/test/edge_list_cc.cpp svneol=native#text/plain
 libs/graph/test/filter_graph_vp_test.cpp svneol=native#text/plain
 libs/graph/test/filtered_graph_cc.cpp svneol=native#text/plain
+libs/graph/test/filtered_graph_properties_dijkstra.cpp svneol=native#text/plain
 libs/graph/test/floyd_warshall_test.cpp svneol=native#text/plain
 libs/graph/test/generator_test.cpp svneol=native#text/plain
 libs/graph/test/graph.cpp svneol=native#text/plain
