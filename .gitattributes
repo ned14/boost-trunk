@@ -12571,6 +12571,7 @@ libs/geometry/doc/generated/expand_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/for_each_point_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/for_each_segment_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/length_status.qbk svneol=native#text/plain
+libs/geometry/doc/generated/num_geometries_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/overlaps_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/perimeter_status.qbk svneol=native#text/plain
 libs/geometry/doc/generated/simplify_status.qbk svneol=native#text/plain
