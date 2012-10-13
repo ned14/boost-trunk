@@ -33919,6 +33919,7 @@ tools/build/v2/test/load_dir.py svneol=native#text/x-python
 tools/build/v2/test/load_order.py svneol=native#text/x-python
 tools/build/v2/test/loop.py svneol=native#text/x-python
 tools/build/v2/test/make_rule.py svneol=native#text/x-python
+tools/build/v2/test/message.py svneol=native#text/x-python
 tools/build/v2/test/module_actions.py svneol=native#text/x-python
 tools/build/v2/test/ndebug.py svneol=native#text/x-python
 tools/build/v2/test/no_type.py svneol=native#text/x-python
