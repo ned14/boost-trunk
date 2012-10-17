@@ -29795,6 +29795,7 @@ libs/spirit/example/qi/json/detail/value_impl.hpp svneol=native#text/plain
 libs/spirit/example/qi/json/io.hpp svneol=native#text/plain
 libs/spirit/example/qi/json/parser/grammar.hpp svneol=native#text/plain
 libs/spirit/example/qi/json/parser/grammar_def.hpp svneol=native#text/plain
+libs/spirit/example/qi/json/test.cpp svneol=native#text/plain
 libs/spirit/example/qi/json/util.hpp svneol=native#text/plain
 libs/spirit/example/qi/json/value.hpp svneol=native#text/plain
 libs/spirit/example/qi/key_value_sequence.cpp svneol=native#text/plain
