@@ -8462,6 +8462,7 @@ boost/thread/lock_guard.hpp svneol=native#text/plain
 boost/thread/lock_options.hpp svneol=native#text/plain
 boost/thread/lock_traits.hpp svneol=native#text/plain
 boost/thread/lock_types.hpp svneol=native#text/plain
+boost/thread/lockable_adapter.hpp svneol=native#text/plain
 boost/thread/lockable_concepts.hpp svneol=native#text/plain
 boost/thread/lockable_traits.hpp svneol=native#text/plain
 boost/thread/locks.hpp svneol=native#text/plain
