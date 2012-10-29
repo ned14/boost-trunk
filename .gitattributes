@@ -31037,6 +31037,7 @@ libs/thread/example/future_then.cpp svneol=native#text/plain
 libs/thread/example/make_future.cpp svneol=native#text/plain
 libs/thread/example/monitor.cpp svneol=native#text/plain
 libs/thread/example/mutex.cpp svneol=native#text/plain
+libs/thread/example/not_interleaved.cpp svneol=native#text/plain
 libs/thread/example/once.cpp svneol=native#text/plain
 libs/thread/example/recursive_mutex.cpp svneol=native#text/plain
 libs/thread/example/scoped_thread.cpp svneol=native#text/plain
