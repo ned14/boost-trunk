@@ -31103,6 +31103,7 @@ libs/thread/test/sync/futures/future/get_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/future/move_assign_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/future/move_ctor_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/future/share_pass.cpp svneol=native#text/plain
+libs/thread/test/sync/futures/future/then_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/packaged_task/alloc_ctor_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/packaged_task/copy_assign_fail.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/packaged_task/copy_ctor_fail.cpp svneol=native#text/plain
