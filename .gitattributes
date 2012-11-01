@@ -8270,6 +8270,7 @@ boost/test/data/monomorphic.hpp svneol=native#text/plain
 boost/test/data/monomorphic/array.hpp svneol=native#text/plain
 boost/test/data/monomorphic/collection.hpp svneol=native#text/plain
 boost/test/data/monomorphic/dataset.hpp svneol=native#text/plain
+boost/test/data/monomorphic/fwd.hpp svneol=native#text/plain
 boost/test/data/monomorphic/generate.hpp svneol=native#text/plain
 boost/test/data/monomorphic/generators.hpp svneol=native#text/plain
 boost/test/data/monomorphic/generators/keywords.hpp svneol=native#text/plain
