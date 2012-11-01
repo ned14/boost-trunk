@@ -8379,7 +8379,6 @@ boost/test/utils/iterator/token_iterator.hpp svneol=native#text/plain
 boost/test/utils/lazy_ostream.hpp svneol=native#text/plain
 boost/test/utils/named_params.hpp svneol=native#text/plain
 boost/test/utils/nullstream.hpp svneol=native#text/plain
-boost/test/utils/pp_variadic.hpp svneol=native#text/plain
 boost/test/utils/rtti.hpp svneol=native#text/plain
 boost/test/utils/runtime/argument.hpp svneol=native#text/plain
 boost/test/utils/runtime/cla/argument_factory.hpp svneol=native#text/plain
