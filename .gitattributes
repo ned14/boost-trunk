@@ -31170,6 +31170,7 @@ libs/thread/test/sync/futures/packaged_task/default_ctor_pass.cpp svneol=native#
 libs/thread/test/sync/futures/packaged_task/dtor_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/packaged_task/func_ctor_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/packaged_task/get_future_pass.cpp svneol=native#text/plain
+libs/thread/test/sync/futures/packaged_task/make_ready_at_thread_exit_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/packaged_task/member_swap_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/packaged_task/move_assign_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/packaged_task/move_ctor_pass.cpp svneol=native#text/plain
