@@ -7154,6 +7154,7 @@ boost/smart_ptr/enable_shared_from_this.hpp svneol=native#text/plain
 boost/smart_ptr/intrusive_ptr.hpp svneol=native#text/plain
 boost/smart_ptr/make_shared.hpp svneol=native#text/plain
 boost/smart_ptr/make_shared_array.hpp svneol=native#text/plain
+boost/smart_ptr/make_shared_object.hpp svneol=native#text/plain
 boost/smart_ptr/owner_less.hpp svneol=native#text/plain
 boost/smart_ptr/scoped_array.hpp svneol=native#text/plain
 boost/smart_ptr/scoped_ptr.hpp svneol=native#text/plain
