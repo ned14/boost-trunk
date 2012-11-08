@@ -8381,6 +8381,7 @@ boost/test/utils/class_properties.hpp svneol=native#text/plain
 boost/test/utils/custom_manip.hpp svneol=native#text/plain
 boost/test/utils/fixed_mapping.hpp svneol=native#text/plain
 boost/test/utils/foreach.hpp svneol=native#text/plain
+boost/test/utils/is_forward_iterable.hpp svneol=native#text/plain
 boost/test/utils/iterator/ifstream_line_iterator.hpp svneol=native#text/plain
 boost/test/utils/iterator/input_iterator_facade.hpp svneol=native#text/plain
 boost/test/utils/iterator/istream_line_iterator.hpp svneol=native#text/plain
