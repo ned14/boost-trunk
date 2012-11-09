@@ -29100,6 +29100,7 @@ libs/smart_ptr/sp_techniques.html svneol=native#text/html
 libs/smart_ptr/src/sp_collector.cpp svneol=native#text/plain
 libs/smart_ptr/src/sp_debug_hooks.cpp svneol=native#text/plain
 libs/smart_ptr/test/Jamfile.v2 svneol=native#text/plain
+libs/smart_ptr/test/allocate_shared_array_args_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/allocate_shared_array_create_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/allocate_shared_array_esft_test.cpp svneol=native#text/plain
 libs/smart_ptr/test/allocate_shared_array_test.cpp svneol=native#text/plain
