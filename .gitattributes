@@ -31388,6 +31388,7 @@ libs/thread/test/test_6174.cpp svneol=native#text/plain
 libs/thread/test/test_7160.cpp svneol=native#text/plain
 libs/thread/test/test_7328.cpp svneol=native#text/plain
 libs/thread/test/test_7571.cpp svneol=native#text/plain
+libs/thread/test/test_7665.cpp svneol=native#text/plain
 libs/thread/test/test_barrier.cpp svneol=native#text/plain
 libs/thread/test/test_condition.cpp svneol=native#text/plain
 libs/thread/test/test_condition_notify_all.cpp svneol=native#text/plain
