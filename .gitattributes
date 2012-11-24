@@ -977,6 +977,7 @@ boost/container/detail/adaptive_node_pool_impl.hpp svneol=native#text/plain
 boost/container/detail/advanced_insert_int.hpp svneol=native#text/plain
 boost/container/detail/algorithms.hpp svneol=native#text/plain
 boost/container/detail/allocation_type.hpp svneol=native#text/plain
+boost/container/detail/allocator_version_traits.hpp svneol=native#text/plain
 boost/container/detail/config_begin.hpp svneol=native#text/plain
 boost/container/detail/config_end.hpp svneol=native#text/plain
 boost/container/detail/destroyers.hpp svneol=native#text/plain
