@@ -22610,6 +22610,7 @@ libs/multiprecision/example/mpfr_snips.cpp svneol=native#text/plain
 libs/multiprecision/example/random_snips.cpp svneol=native#text/plain
 libs/multiprecision/example/safe_prime.cpp svneol=native#text/plain
 libs/multiprecision/example/tommath_snips.cpp svneol=native#text/plain
+libs/multiprecision/index.html svneol=native#text/html
 libs/multiprecision/performance/Jamfile.v2 svneol=native#text/plain
 libs/multiprecision/performance/arithmetic_backend.hpp svneol=native#text/plain
 libs/multiprecision/performance/delaunay_test.cpp svneol=native#text/plain
