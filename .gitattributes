@@ -11546,7 +11546,6 @@ libs/context/src/asm/make_ppc64_sysv_elf_gas.S svneol=native#text/plain
 libs/context/src/asm/make_x86_64_ms_pe_masm.asm svneol=native#text/plain
 libs/context/src/asm/make_x86_64_sysv_elf_gas.S svneol=native#text/plain
 libs/context/src/asm/make_x86_64_sysv_macho_gas.S svneol=native#text/plain
-libs/context/src/fcontext.cpp svneol=native#text/plain
 libs/context/src/seh.cpp svneol=native#text/plain
 libs/context/test/Jamfile.v2 svneol=native#text/plain
 libs/context/test/test_context.cpp svneol=native#text/plain
