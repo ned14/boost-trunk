@@ -22922,6 +22922,7 @@ libs/numeric/odeint/doc/html/solar_system.jpg -text
 libs/numeric/odeint/doc/literature.qbk svneol=native#text/plain
 libs/numeric/odeint/doc/make_controlled_table.qbk svneol=native#text/plain
 libs/numeric/odeint/doc/make_dense_output_table.qbk svneol=native#text/plain
+libs/numeric/odeint/doc/odeint.idx svneol=native#text/plain
 libs/numeric/odeint/doc/odeint.qbk svneol=native#text/plain
 libs/numeric/odeint/doc/range_table.qbk svneol=native#text/plain
 libs/numeric/odeint/doc/stepper_table.qbk svneol=native#text/plain
