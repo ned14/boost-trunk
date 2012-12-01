@@ -31813,6 +31813,7 @@ libs/thread/example/shared_monitor.cpp svneol=native#text/plain
 libs/thread/example/shared_mutex.cpp svneol=native#text/plain
 libs/thread/example/starvephil.cpp svneol=native#text/plain
 libs/thread/example/strict_lock.cpp svneol=native#text/plain
+libs/thread/example/synchronized_person.cpp svneol=native#text/plain
 libs/thread/example/synchronized_value.cpp svneol=native#text/plain
 libs/thread/example/tennis.cpp svneol=native#text/plain
 libs/thread/example/thread.cpp svneol=native#text/plain
