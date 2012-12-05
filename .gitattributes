@@ -23032,6 +23032,7 @@ libs/numeric/odeint/examples/ublas/lorenz_ublas.cpp svneol=native#text/plain
 libs/numeric/odeint/examples/van_der_pol_stiff.cpp svneol=native#text/plain
 libs/numeric/odeint/examples/vexcl/Jamfile.v2 svneol=native#text/plain
 libs/numeric/odeint/examples/vexcl/lorenz_ensemble.cpp svneol=native#text/plain
+libs/numeric/odeint/index.html svneol=native#text/html
 libs/numeric/odeint/performance/Jamfile.v2 svneol=native#text/plain
 libs/numeric/odeint/performance/const_step_iterator.cpp svneol=native#text/plain
 libs/numeric/odeint/performance/fusion_algebra.hpp svneol=native#text/plain
