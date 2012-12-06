@@ -31001,6 +31001,7 @@ libs/spirit/test/karma/regression_optional_double.cpp svneol=native#text/plain
 libs/spirit/test/karma/regression_real_0.cpp svneol=native#text/plain
 libs/spirit/test/karma/regression_real_scientific.cpp svneol=native#text/plain
 libs/spirit/test/karma/regression_semantic_action_attribute.cpp svneol=native#text/plain
+libs/spirit/test/karma/regression_unicode_char.cpp svneol=native#text/plain
 libs/spirit/test/karma/repeat1.cpp svneol=native#text/plain
 libs/spirit/test/karma/repeat2.cpp svneol=native#text/x-c%2B%2Bsrc
 libs/spirit/test/karma/right_alignment.cpp svneol=native#text/plain
