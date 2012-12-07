@@ -28428,6 +28428,7 @@ libs/thread/test/sync/conditions/condition_variable/dtor_pass.cpp svneol=native#
 libs/thread/test/sync/conditions/condition_variable/native_handle_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/conditions/condition_variable/wait_for_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/conditions/condition_variable/wait_for_pred_pass.cpp svneol=native#text/plain
+libs/thread/test/sync/conditions/condition_variable/wait_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/conditions/condition_variable/wait_until_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/conditions/condition_variable/wait_until_pred_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/conditions/condition_variable_any/assign_fail.cpp svneol=native#text/plain
