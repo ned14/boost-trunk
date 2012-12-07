@@ -10442,6 +10442,7 @@ libs/atomic/doc/atomic.hpp svneol=native#text/plain
 libs/atomic/doc/atomic.qbk svneol=native#text/plain
 libs/atomic/doc/examples.qbk svneol=native#text/plain
 libs/atomic/doc/platform.qbk svneol=native#text/plain
+libs/atomic/index.html svneol=native#text/html
 libs/atomic/src/lockpool.cpp svneol=native#text/plain
 libs/atomic/test/Jamfile.v2 svneol=native#text/plain
 libs/atomic/test/api_test_helpers.hpp svneol=native#text/plain
