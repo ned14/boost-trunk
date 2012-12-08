@@ -8621,6 +8621,7 @@ boost/thread/detail/delete.hpp svneol=native#text/plain
 boost/thread/detail/force_cast.hpp svneol=native#text/plain
 boost/thread/detail/invoke.hpp svneol=native#text/plain
 boost/thread/detail/is_convertible.hpp svneol=native#text/plain
+boost/thread/detail/lockable_wrapper.hpp svneol=native#text/plain
 boost/thread/detail/log.hpp svneol=native#text/plain
 boost/thread/detail/make_tuple_indices.hpp svneol=native#text/plain
 boost/thread/detail/memory.hpp svneol=native#text/plain
