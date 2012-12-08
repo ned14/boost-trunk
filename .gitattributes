@@ -6852,6 +6852,7 @@ boost/smart_ptr/bad_weak_ptr.hpp svneol=native#text/plain
 boost/smart_ptr/detail/allocate_array_helper.hpp svneol=native#text/plain
 boost/smart_ptr/detail/array_deleter.hpp svneol=native#text/plain
 boost/smart_ptr/detail/array_traits.hpp svneol=native#text/plain
+boost/smart_ptr/detail/array_utility.hpp svneol=native#text/plain
 boost/smart_ptr/detail/atomic_count.hpp svneol=native#text/plain
 boost/smart_ptr/detail/atomic_count_gcc.hpp svneol=native#text/plain
 boost/smart_ptr/detail/atomic_count_gcc_x86.hpp svneol=native#text/plain
