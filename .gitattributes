@@ -10536,6 +10536,7 @@ libs/bimap/doc/html/images/people/mafalda.png -text svneol=unset#image/png
 libs/bimap/doc/html/images/people/matias.png -text svneol=unset#image/png
 libs/bimap/doc/html/images/space.png -text svneol=unset#image/png
 libs/bimap/doc/html/index.html svneol=native#text/html
+libs/bimap/doc/html/standalone_HTML.manifest svneol=native#text/plain
 libs/bimap/doc/introduction.qbk svneol=native#text/plain
 libs/bimap/doc/jamfile.v2 svneol=native#text/plain
 libs/bimap/doc/performance.qbk svneol=native#text/plain
