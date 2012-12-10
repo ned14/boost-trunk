@@ -8637,6 +8637,7 @@ boost/thread/exceptions.hpp svneol=native#text/plain
 boost/thread/externally_locked.hpp svneol=native#text/plain
 boost/thread/externally_locked_stream.hpp svneol=native#text/plain
 boost/thread/future.hpp svneol=native#text/plain
+boost/thread/future_error_code.hpp svneol=native#text/plain
 boost/thread/is_locked_by_this_thread.hpp svneol=native#text/plain
 boost/thread/lock_algorithms.hpp svneol=native#text/plain
 boost/thread/lock_concepts.hpp svneol=native#text/plain
