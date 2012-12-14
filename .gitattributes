@@ -13473,6 +13473,7 @@ libs/geometry/test/multi/algorithms/multi_for_each.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_for_each.vcproj svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_intersection.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_intersection.vcproj svneol=native#text/plain
+libs/geometry/test/multi/algorithms/multi_intersects.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_length.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_length.vcproj svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_num_geometries.cpp svneol=native#text/plain
