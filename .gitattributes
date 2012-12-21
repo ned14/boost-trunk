@@ -29203,6 +29203,7 @@ libs/thread/example/monitor.cpp svneol=native#text/plain
 libs/thread/example/mutex.cpp svneol=native#text/plain
 libs/thread/example/not_interleaved.cpp svneol=native#text/plain
 libs/thread/example/once.cpp svneol=native#text/plain
+libs/thread/example/perf_condition_variable.cpp svneol=native#text/plain
 libs/thread/example/recursive_mutex.cpp svneol=native#text/plain
 libs/thread/example/scoped_thread.cpp svneol=native#text/plain
 libs/thread/example/shared_monitor.cpp svneol=native#text/plain
