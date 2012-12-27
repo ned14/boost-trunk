@@ -20405,11 +20405,13 @@ libs/math/doc/sf_and_dist/html/math_toolkit/special/jacobi/jacobi_sn.html svneol
 libs/math/doc/sf_and_dist/html/math_toolkit/special/owens_t.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/powers.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/cbrt.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/cos_pi.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/ct_pow.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/expm1.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/hypot.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/log1p.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/powm1.html svneol=native#text/html
+libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/sin_pi.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/powers/sqrt1pm1.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta.html svneol=native#text/html
 libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta/beta_derivative.html svneol=native#text/html
