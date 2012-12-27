@@ -17011,6 +17011,8 @@ libs/icl/test/cmp_clang_ttp_passing_/vc10_cmp_clang_ttp_passing.vcxproj.filters 
 libs/icl/test/cmp_clang_ttp_passing_/vc9_cmp_clang_ttp_passing.vcproj svneol=native#text/xml
 libs/icl/test/cmp_msvc_value_born_error_/cmp_msvc_value_born_error.cpp svneol=native#text/plain
 libs/icl/test/disable_test_warnings.hpp svneol=native#text/plain
+libs/icl/test/ex_boost_party_/ex_boost_party.cpp svneol=native#text/plain
+libs/icl/test/ex_boost_party_/vc10_ex_boost_party.vcxproj svneol=native#text/xml
 libs/icl/test/fast_stat_interval_map_/fast_stat_interval_map.cpp svneol=native#text/plain
 libs/icl/test/fast_stat_interval_map_/vc10_fast_stat_interval_map.vcxproj svneol=native#text/xml
 libs/icl/test/fast_stat_interval_map_/vc10_fast_stat_interval_map.vcxproj.filters svneol=native#text/xml
