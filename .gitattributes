@@ -13466,6 +13466,7 @@ libs/geometry/test/multi/algorithms/multi_area.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_area.vcproj svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_centroid.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_centroid.vcproj svneol=native#text/plain
+libs/geometry/test/multi/algorithms/multi_clear.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_convert.cpp svneol=native#text/plain
 libs/geometry/test/multi/algorithms/multi_convert.vcproj svneol=native#text/xml
 libs/geometry/test/multi/algorithms/multi_convex_hull.cpp svneol=native#text/plain
