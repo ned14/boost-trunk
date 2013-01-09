@@ -7057,6 +7057,7 @@ boost/smart_ptr/detail/sp_counted_impl.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_forward.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_has_sync.hpp svneol=native#text/plain
 boost/smart_ptr/detail/sp_if_array.hpp svneol=native#text/plain
+boost/smart_ptr/detail/sp_nullptr_t.hpp svneol=native#text/plain
 boost/smart_ptr/detail/spinlock.hpp svneol=native#text/plain
 boost/smart_ptr/detail/spinlock_gcc_arm.hpp svneol=native#text/plain
 boost/smart_ptr/detail/spinlock_nt.hpp svneol=native#text/plain
