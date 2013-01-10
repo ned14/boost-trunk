@@ -22888,6 +22888,7 @@ libs/multiprecision/test/test_arithmetic_mpf_50.cpp svneol=native#text/plain
 libs/multiprecision/test/test_arithmetic_mpfi_50.cpp svneol=native#text/plain
 libs/multiprecision/test/test_arithmetic_mpfr.cpp svneol=native#text/plain
 libs/multiprecision/test/test_arithmetic_mpfr_50.cpp svneol=native#text/plain
+libs/multiprecision/test/test_arithmetic_mpfr_50_static.cpp svneol=native#text/plain
 libs/multiprecision/test/test_arithmetic_mpq.cpp svneol=native#text/plain
 libs/multiprecision/test/test_arithmetic_mpz.cpp svneol=native#text/plain
 libs/multiprecision/test/test_arithmetic_mpz_br.cpp svneol=native#text/plain
