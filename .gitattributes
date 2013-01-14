@@ -33334,6 +33334,7 @@ libs/utility/current_function_test.cpp svneol=native#text/plain
 libs/utility/doc/Jamfile.v2 svneol=native#text/plain
 libs/utility/doc/declval.qbk svneol=native#text/plain
 libs/utility/doc/html/declval.html svneol=native#text/html
+libs/utility/doc/html/string_ref.html svneol=native#text/plain
 libs/utility/doc/string_ref.qbk svneol=native#text/plain
 libs/utility/enable_if.html svneol=native#text/html
 libs/utility/enable_if/test/Jamfile.v2 svneol=native#text/plain
