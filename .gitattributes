@@ -22643,6 +22643,7 @@ libs/multiprecision/doc/debugger3.png -text svneol=unset#image/png
 libs/multiprecision/doc/debugger4.png -text svneol=unset#image/png
 libs/multiprecision/doc/debugger5.png -text svneol=unset#image/png
 libs/multiprecision/doc/debugger6.png -text svneol=unset#image/png
+libs/multiprecision/doc/debugger7.png -text
 libs/multiprecision/doc/floating_point_eg1.mml svneol=native#text/xml
 libs/multiprecision/doc/floating_point_eg1.png -text svneol=unset#image/png
 libs/multiprecision/doc/floating_point_eg1.svg -text svneol=unset#image/svg%2Bxml
