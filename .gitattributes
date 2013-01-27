@@ -8702,6 +8702,7 @@ boost/thread/thread_functors.hpp svneol=native#text/plain
 boost/thread/thread_guard.hpp svneol=native#text/plain
 boost/thread/thread_time.hpp svneol=native#text/plain
 boost/thread/tss.hpp svneol=native#text/plain
+boost/thread/v2/shared_mutex.hpp svneol=native#text/plain
 boost/thread/v2/thread.hpp svneol=native#text/plain
 boost/thread/win32/basic_recursive_mutex.hpp svneol=native#text/plain
 boost/thread/win32/basic_timed_mutex.hpp svneol=native#text/plain
