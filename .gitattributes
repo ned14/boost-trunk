@@ -20596,6 +20596,7 @@ libs/math/dot_net_example/distribution_explorer/distribution_explorer.sln.lnk -t
 libs/math/dot_net_example/distribution_explorer/distribution_explorer.suo -text
 libs/math/dot_net_example/distribution_explorer/readme.txt svneol=native#text/plain
 libs/math/example/Jamfile.v2 svneol=native#text/plain
+libs/math/example/bessel_zeros_example.cpp svneol=native#text/plain
 libs/math/example/binomial_coinflip_example.cpp svneol=native#text/plain
 libs/math/example/binomial_confidence_limits.cpp svneol=native#text/plain
 libs/math/example/binomial_example_nag.cpp svneol=native#text/plain
