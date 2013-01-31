@@ -20641,6 +20641,7 @@ libs/math/example/nonfinite_num_facet_trap.cpp svneol=native#text/plain
 libs/math/example/nonfinite_serialization_archives.cpp svneol=native#text/plain
 libs/math/example/nonfinite_signaling_NaN.cpp svneol=native#text/plain
 libs/math/example/normal_misc_examples.cpp svneol=native#text/plain
+libs/math/example/numerical_derivative_example.cpp svneol=native#text/plain
 libs/math/example/owens_t_example.cpp svneol=native#text/plain
 libs/math/example/policy_eg_1.cpp svneol=native#text/plain
 libs/math/example/policy_eg_10.cpp svneol=native#text/plain
