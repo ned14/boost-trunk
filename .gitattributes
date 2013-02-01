@@ -21154,6 +21154,7 @@ libs/math/test/test_airy.cpp svneol=native#text/plain
 libs/math/test/test_archive.cpp svneol=native#text/plain
 libs/math/test/test_basic_nonfinite.cpp svneol=native#text/plain
 libs/math/test/test_bernoulli.cpp svneol=native#text/plain
+libs/math/test/test_bessel_airy_zeros.cpp svneol=native#text/plain
 libs/math/test/test_bessel_hooks.hpp svneol=native#text/plain
 libs/math/test/test_bessel_i.cpp svneol=native#text/plain
 libs/math/test/test_bessel_i.hpp svneol=native#text/plain
