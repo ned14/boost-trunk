@@ -1818,6 +1818,7 @@ boost/fusion/container/map/detail/cpp03/value_of_impl.hpp svneol=native#text/pla
 boost/fusion/container/map/detail/end_impl.hpp svneol=native#text/plain
 boost/fusion/container/map/detail/map_impl.hpp svneol=native#text/plain
 boost/fusion/container/map/detail/map_index.hpp svneol=native#text/plain
+boost/fusion/container/map/detail/value_at_impl.hpp svneol=native#text/plain
 boost/fusion/container/map/detail/value_at_key_impl.hpp svneol=native#text/plain
 boost/fusion/container/map/map.hpp svneol=native#text/plain
 boost/fusion/container/map/map_fwd.hpp svneol=native#text/plain
