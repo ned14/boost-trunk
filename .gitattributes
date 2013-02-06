@@ -8729,6 +8729,7 @@ boost/thread/testable_mutex.hpp svneol=native#text/plain
 boost/thread/thread.hpp svneol=native#text/plain
 boost/thread/thread_functors.hpp svneol=native#text/plain
 boost/thread/thread_guard.hpp svneol=native#text/plain
+boost/thread/thread_only.hpp svneol=native#text/plain
 boost/thread/thread_time.hpp svneol=native#text/plain
 boost/thread/tss.hpp svneol=native#text/plain
 boost/thread/v2/shared_mutex.hpp svneol=native#text/plain
