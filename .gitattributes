@@ -10097,6 +10097,7 @@ libs/array/test/array4.cpp svneol=native#text/plain
 libs/array/test/array5.cpp svneol=native#text/plain
 libs/array/test/array6.cpp svneol=native#text/plain
 libs/array/test/array7.cpp svneol=native#text/plain
+libs/array/test/array_constexpr.cpp svneol=native#text/plain
 libs/array/test/array_getfail1.cpp svneol=native#text/plain
 libs/array/test/array_getfail2.cpp svneol=native#text/plain
 libs/array/test/array_hash.cpp svneol=native#text/plain
