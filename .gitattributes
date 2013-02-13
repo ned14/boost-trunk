@@ -32098,6 +32098,7 @@ tools/build/v2/test/qt5/qtscripttools.cpp svneol=native#text/x-c%2B%2Bsrc
 tools/build/v2/test/qt5/qtsql.cpp svneol=native#text/x-c%2B%2Bsrc
 tools/build/v2/test/qt5/qtsvg.cpp svneol=native#text/x-c%2B%2Bsrc
 tools/build/v2/test/qt5/qttest.cpp svneol=native#text/x-c%2B%2Bsrc
+tools/build/v2/test/qt5/qtwebkit.cpp svneol=native#text/x-c%2B%2Bsrc
 tools/build/v2/test/qt5/qtwebkitwidgets.cpp svneol=native#text/x-c%2B%2Bsrc
 tools/build/v2/test/qt5/qtwidgets.cpp svneol=native#text/x-c%2B%2Bsrc
 tools/build/v2/test/qt5/qtxml.cpp svneol=native#text/x-c%2B%2Bsrc
