@@ -12174,6 +12174,7 @@ libs/filesystem/test/msvc10/operations_test/operations_test.vcxproj svneol=nativ
 libs/filesystem/test/msvc10/operations_unit_test/operations_unit_test.vcxproj svneol=native#text/xml
 libs/filesystem/test/msvc10/path_test/path_test.vcxproj svneol=native#text/xml
 libs/filesystem/test/msvc10/path_test_static/path_test_static.vcxproj svneol=native#text/xml
+libs/filesystem/test/msvc10/path_timings/path_timings.vcxproj svneol=native#text/xml
 libs/filesystem/test/msvc10/path_unit_test/path_unit_test.vcxproj svneol=native#text/xml
 libs/filesystem/test/msvc10/stems/stems.vcxproj svneol=native#text/xml
 libs/filesystem/test/msvc10/system_dll/system_dll.vcxproj svneol=native#text/xml
@@ -12190,6 +12191,7 @@ libs/filesystem/test/msvc10/windows_attributes/windows_attributes.vcxproj svneol
 libs/filesystem/test/operations_test.cpp svneol=native#text/plain
 libs/filesystem/test/operations_unit_test.cpp svneol=native#text/plain
 libs/filesystem/test/path_test.cpp svneol=native#text/plain
+libs/filesystem/test/path_times.cpp svneol=native#text/plain
 libs/filesystem/test/path_unit_test.cpp svneol=native#text/plain
 libs/filesystem/test/sample_test.cpp svneol=native#text/plain
 libs/filesystem/test/test_codecvt.hpp svneol=native#text/plain
