@@ -20771,6 +20771,7 @@ libs/math/example/students_t_example2.cpp svneol=native#text/plain
 libs/math/example/students_t_example3.cpp svneol=native#text/plain
 libs/math/example/students_t_single_sample.cpp svneol=native#text/plain
 libs/math/example/students_t_two_samples.cpp svneol=native#text/plain
+libs/math/example/test_cpp_float_close_fraction.cpp svneol=native#text/plain
 libs/math/example/test_nonfinite_loopback.cpp svneol=native#text/plain
 libs/math/index.html svneol=native#text/html
 libs/math/minimax/Jamfile.v2 svneol=native#text/plain
