@@ -23093,6 +23093,7 @@ libs/multiprecision/test/test_constexpr.cpp svneol=native#text/plain
 libs/multiprecision/test/test_cos.cpp svneol=native#text/plain
 libs/multiprecision/test/test_cosh.cpp svneol=native#text/plain
 libs/multiprecision/test/test_cpp_dec_float_conv.cpp svneol=native#text/plain
+libs/multiprecision/test/test_cpp_dec_float_round.cpp svneol=native#text/plain
 libs/multiprecision/test/test_cpp_int.cpp svneol=native#text/plain
 libs/multiprecision/test/test_cpp_int_conv.cpp svneol=native#text/plain
 libs/multiprecision/test/test_exp.cpp svneol=native#text/plain
