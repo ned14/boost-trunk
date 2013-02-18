@@ -24,6 +24,7 @@ libs/geometry/test/multi/algorithms/bin
 libs/geometry/test/point_concept/bin
 libs/geometry/test/policies/bin
 libs/geometry/test/strategies/bin
+libs/gil/io/test_images/png/PngSuite
 libs/graph/test/bootstrap.log
 libs/graph/test/cube-fr.dot
 libs/graph/test/cube.dot
