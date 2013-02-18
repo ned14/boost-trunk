@@ -35781,6 +35781,7 @@ tools/regression/src/detail/tiny_xml.cpp svneol=native#text/plain
 tools/regression/src/detail/tiny_xml.hpp svneol=native#text/plain
 tools/regression/src/detail/tiny_xml_test.cpp svneol=native#text/plain
 tools/regression/src/detail/tiny_xml_test.txt svneol=native#text/plain
+tools/regression/src/git.py svneol=native#text/x-python
 tools/regression/src/library_status.cpp svneol=native#text/plain
 tools/regression/src/library_test.bat svneol=native#text/plain
 tools/regression/src/library_test.sh svneol=LF#text/x-sh eol=lf
