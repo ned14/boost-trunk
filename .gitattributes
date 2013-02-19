@@ -12257,6 +12257,7 @@ libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp svneol=native#
 libs/filesystem/test/issues/readme.txt svneol=native#text/plain
 libs/filesystem/test/large_file_support_test.cpp svneol=native#text/plain
 libs/filesystem/test/locale_info.cpp svneol=native#text/plain
+libs/filesystem/test/locale_multithread_test.cpp svneol=native#text/plain
 libs/filesystem/test/long_path_test.cpp svneol=native#text/plain
 libs/filesystem/test/macro_default_test.cpp svneol=native#text/plain
 libs/filesystem/test/msvc10/common.props svneol=native#text/xml
