@@ -35915,6 +35915,7 @@ tools/quickbook/test/unicode_escape-1_5.gold svneol=native#text/plain
 tools/quickbook/test/unicode_escape-1_5.quickbook svneol=native#text/plain
 tools/quickbook/test/unit/Jamfile.v2 svneol=native#text/plain
 tools/quickbook/test/unit/post_process_test.cpp svneol=native#text/plain
+tools/quickbook/test/unit/source_map_test.cpp svneol=native#text/plain
 tools/quickbook/test/unit/symbols_find_null.cpp svneol=native#text/plain
 tools/quickbook/test/unit/symbols_tests.cpp svneol=native#text/plain
 tools/quickbook/test/unit/values_test.cpp svneol=native#text/plain
