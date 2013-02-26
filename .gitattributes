@@ -23188,6 +23188,7 @@ libs/multiprecision/test/compile_fail/conv_fail_55.cpp svneol=native#text/plain
 libs/multiprecision/test/compile_fail/conv_fail_56.cpp svneol=native#text/plain
 libs/multiprecision/test/compile_fail/conv_fail_57.cpp svneol=native#text/plain
 libs/multiprecision/test/compile_fail/conv_fail_58.cpp svneol=native#text/plain
+libs/multiprecision/test/compile_fail/conv_fail_59.cpp svneol=native#text/plain
 libs/multiprecision/test/compile_fail/cpp_int_complement.cpp svneol=native#text/plain
 libs/multiprecision/test/compile_fail/cpp_int_negate_1.cpp svneol=native#text/plain
 libs/multiprecision/test/compile_fail/cpp_int_negate_2.cpp svneol=native#text/plain
