@@ -9576,6 +9576,7 @@ libs/algorithm/doc/any_of.qbk svneol=native#text/plain
 libs/algorithm/doc/boyer_moore.qbk svneol=native#text/plain
 libs/algorithm/doc/boyer_moore_horspool.qbk svneol=native#text/plain
 libs/algorithm/doc/clamp-hpp.qbk svneol=native#text/plain
+libs/algorithm/doc/gather.qbk svneol=native#text/plain
 libs/algorithm/doc/hex.qbk svneol=native#text/plain
 libs/algorithm/doc/is_partitioned.qbk svneol=native#text/plain
 libs/algorithm/doc/knuth_morris_pratt.qbk svneol=native#text/plain
