@@ -104,6 +104,7 @@ boost/algorithm/cxx11/none_of.hpp svneol=native#text/plain
 boost/algorithm/cxx11/one_of.hpp svneol=native#text/plain
 boost/algorithm/cxx11/partition_copy.hpp svneol=native#text/plain
 boost/algorithm/cxx11/partition_point.hpp svneol=native#text/plain
+boost/algorithm/gather.hpp svneol=native#text/plain
 boost/algorithm/hex.hpp svneol=native#text/plain
 boost/algorithm/minmax.hpp svneol=native#text/plain
 boost/algorithm/minmax_element.hpp svneol=native#text/plain
