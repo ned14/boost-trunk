@@ -2734,7 +2734,11 @@ boost/geometry/extensions/nsphere/geometries/concepts/nsphere_concept.hpp svneol
 boost/geometry/extensions/nsphere/geometries/nsphere.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/nsphere.hpp svneol=native#text/plain
 boost/geometry/extensions/strategies/buffer.hpp svneol=native#text/plain
+boost/geometry/extensions/strategies/buffer_distance_asymmetric.hpp svneol=native#text/plain
+boost/geometry/extensions/strategies/buffer_distance_symmetric.hpp svneol=native#text/plain
+boost/geometry/extensions/strategies/buffer_join_miter.hpp svneol=native#text/plain
 boost/geometry/extensions/strategies/buffer_join_round.hpp svneol=native#text/plain
+boost/geometry/extensions/strategies/buffer_join_round_by_divide.hpp svneol=native#text/plain
 boost/geometry/extensions/strategies/buffer_side.hpp svneol=native#text/plain
 boost/geometry/extensions/strategies/parse.hpp svneol=native#text/plain
 boost/geometry/extensions/util/get_cs_as_radian.hpp svneol=native#text/plain
