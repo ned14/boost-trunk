@@ -20915,7 +20915,10 @@ libs/math/dot_net_example/distribution_explorer/distribution_explorer.sln.lnk -t
 libs/math/dot_net_example/distribution_explorer/distribution_explorer.suo -text
 libs/math/dot_net_example/distribution_explorer/readme.txt svneol=native#text/plain
 libs/math/example/Jamfile.v2 svneol=native#text/plain
+libs/math/example/bessel_errors_example.cpp svneol=native#text/plain
 libs/math/example/bessel_zeros_example.cpp svneol=native#text/plain
+libs/math/example/bessel_zeros_example_1.cpp svneol=native#text/plain
+libs/math/example/bessel_zeros_interator_example.cpp svneol=native#text/plain
 libs/math/example/big_seventh.cpp svneol=native#text/plain
 libs/math/example/binomial_coinflip_example.cpp svneol=native#text/plain
 libs/math/example/binomial_confidence_limits.cpp svneol=native#text/plain
@@ -20952,6 +20955,7 @@ libs/math/example/neg_binom_confidence_limits.cpp svneol=native#text/plain
 libs/math/example/neg_binomial_sample_sizes.cpp svneol=native#text/plain
 libs/math/example/negative_binomial_example1.cpp svneol=native#text/plain
 libs/math/example/negative_binomial_example2.cpp svneol=native#text/plain
+libs/math/example/neumann_zeros_example_1.cpp svneol=native#text/plain
 libs/math/example/nonfinite_facet_simple.cpp svneol=native#text/plain
 libs/math/example/nonfinite_facet_sstream.cpp svneol=native#text/plain
 libs/math/example/nonfinite_legacy.cpp svneol=native#text/plain
