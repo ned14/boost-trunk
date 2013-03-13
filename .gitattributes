@@ -20968,6 +20968,7 @@ libs/math/dot_net_example/distribution_explorer/distribution_explorer.sln.lnk -t
 libs/math/dot_net_example/distribution_explorer/distribution_explorer.suo -text
 libs/math/dot_net_example/distribution_explorer/readme.txt svneol=native#text/plain
 libs/math/example/Jamfile.v2 svneol=native#text/plain
+libs/math/example/airy_zeros_example.cpp svneol=native#text/plain
 libs/math/example/bessel_errors_example.cpp svneol=native#text/plain
 libs/math/example/bessel_zeros_example.cpp svneol=native#text/plain
 libs/math/example/bessel_zeros_example_1.cpp svneol=native#text/plain
