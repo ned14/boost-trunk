@@ -5574,6 +5574,7 @@ boost/multiprecision/detail/no_et_ops.hpp svneol=native#text/plain
 boost/multiprecision/detail/number_base.hpp svneol=native#text/plain
 boost/multiprecision/detail/number_compare.hpp svneol=native#text/plain
 boost/multiprecision/detail/rebind.hpp svneol=native#text/plain
+boost/multiprecision/detail/ublas_interop.hpp svneol=native#text/plain
 boost/multiprecision/detail/utype_helper.hpp svneol=native#text/plain
 boost/multiprecision/gmp.hpp svneol=native#text/plain
 boost/multiprecision/integer.hpp svneol=native#text/plain
