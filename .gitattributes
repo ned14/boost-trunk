@@ -14843,6 +14843,7 @@ libs/gil/numeric/doc/jamfile.v2 svneol=native#text/plain
 libs/gil/numeric/doc/numeric.qbk svneol=native#text/plain
 libs/gil/numeric/test/Jamfile.v2 svneol=native#text/plain
 libs/gil/numeric/test/numeric.cpp svneol=native#text/plain
+libs/gil/numeric/test/test.cpp svneol=native#text/plain
 libs/gil/test/Jamfile.v2 svneol=native#text/plain
 libs/gil/test/Makefile svneol=native#text/plain
 libs/gil/test/channel.cpp svneol=native#text/plain
