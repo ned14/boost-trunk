@@ -78,6 +78,7 @@ libs/thread/example/*.pdb
 libs/thread/example/bin
 libs/thread/test/*.pdb
 libs/thread/test/bin
+libs/type_traits/doc/html/standalone_HTML.manifest
 libs/utility/identity_type/doc/html/index.docbook
 libs/utility/identity_type/doc/reference.xml
 libs/wave/samples/custom_directives/build/custom_directives
