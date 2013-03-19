@@ -14874,6 +14874,7 @@ libs/gil/toolbox/test/is_similar.cpp svneol=native#text/plain
 libs/gil/toolbox/test/lab_test.cpp svneol=native#text/plain
 libs/gil/toolbox/test/pixel_bit_size.cpp svneol=native#text/plain
 libs/gil/toolbox/test/rgb_to_luminance.cpp svneol=native#text/plain
+libs/gil/toolbox/test/subsampled_image.cpp svneol=native#text/plain
 libs/gil/toolbox/test/test.cpp svneol=native#text/plain
 libs/gil/toolbox/test/xyz_test.cpp svneol=native#text/plain
 libs/graph/build/Jamfile.v2 svneol=native#text/plain
