@@ -3093,6 +3093,7 @@ boost/gil/extension/toolbox/color_spaces/ycbcr.hpp svneol=native#text/plain
 boost/gil/extension/toolbox/dynamic_images.hpp svneol=native#text/plain
 boost/gil/extension/toolbox/image_types.hpp svneol=native#text/plain
 boost/gil/extension/toolbox/image_types/indexed_image.hpp svneol=native#text/plain
+boost/gil/extension/toolbox/image_types/subsampled_image.hpp svneol=native#text/plain
 boost/gil/extension/toolbox/metafunctions.hpp svneol=native#text/plain
 boost/gil/extension/toolbox/metafunctions/channel_type.hpp svneol=native#text/plain
 boost/gil/extension/toolbox/metafunctions/channel_view.hpp svneol=native#text/plain
