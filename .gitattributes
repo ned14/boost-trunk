@@ -9047,7 +9047,6 @@ boost/tti/has_static_member_function.hpp svneol=native#text/plain
 boost/tti/has_template.hpp svneol=native#text/plain
 boost/tti/has_type.hpp svneol=native#text/plain
 boost/tti/member_type.hpp svneol=native#text/plain
-boost/tti/mf/mf_member_type.hpp svneol=native#text/plain
 boost/tti/tti.hpp svneol=native#text/plain
 boost/tuple/detail/tuple_basic.hpp svneol=native#text/plain
 boost/tuple/detail/tuple_basic_no_partial_spec.hpp svneol=native#text/plain
