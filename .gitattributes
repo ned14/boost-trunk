@@ -18303,6 +18303,7 @@ libs/lockfree/test/queue_fixedsize_stress_test.cpp svneol=native#text/plain
 libs/lockfree/test/queue_interprocess_test.cpp svneol=native#text/plain
 libs/lockfree/test/queue_test.cpp svneol=native#text/plain
 libs/lockfree/test/queue_unbounded_stress_test.cpp svneol=native#text/plain
+libs/lockfree/test/spsc_queue_stress_test.cpp svneol=native#text/plain
 libs/lockfree/test/spsc_queue_test.cpp svneol=native#text/plain
 libs/lockfree/test/stack_bounded_stress_test.cpp svneol=native#text/plain
 libs/lockfree/test/stack_fixedsize_stress_test.cpp svneol=native#text/plain
