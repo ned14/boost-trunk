@@ -11750,6 +11750,7 @@ libs/container/test/expand_bwd_test_template.hpp svneol=native#text/plain
 libs/container/test/flat_tree_test.cpp svneol=native#text/plain
 libs/container/test/heap_allocator_v1.hpp svneol=native#text/plain
 libs/container/test/input_from_forward_iterator.hpp svneol=native#text/plain
+libs/container/test/insert_test.hpp svneol=native#text/plain
 libs/container/test/list_test.cpp svneol=native#text/plain
 libs/container/test/list_test.hpp svneol=native#text/plain
 libs/container/test/map_test.hpp svneol=native#text/plain
