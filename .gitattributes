@@ -14837,7 +14837,7 @@ libs/gil/io/test_images/targa/24BPP_compressed.tga -text
 libs/gil/io/test_images/targa/24BPP_uncompressed.tga -text
 libs/gil/io/test_images/targa/32BPP_compressed.tga -text
 libs/gil/io/test_images/targa/32BPP_uncompressed.tga -text
-libs/gil/io/test_images/targa/fileformat.info/readme.txt svneol=native#text/plain
+libs/gil/io/test_images/targa/fileformat_info/readme.txt svneol=native#text/plain
 libs/gil/io/test_images/tiff/graphicmagick/readme.txt svneol=native#text/plain
 libs/gil/io/test_images/tiff/libtiffpic/readme.txt svneol=native#text/plain
 libs/gil/io/test_images/tiff/test.tif -text svneol=unset#image/tiff
