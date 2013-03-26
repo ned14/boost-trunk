@@ -14764,6 +14764,7 @@ libs/gil/io/doc/html/gil/io/using_io.html svneol=native#text/html
 libs/gil/io/doc/html/index.html svneol=native#text/html
 libs/gil/io/doc/io.qbk svneol=native#text/plain
 libs/gil/io/doc/jamfile.v2 svneol=native#text/plain
+libs/gil/io/index.html svneol=native#text/html
 libs/gil/io/test/Jamfile.v2 svneol=native#text/plain
 libs/gil/io/test/all_formats_test.cpp svneol=native#text/plain
 libs/gil/io/test/bmp_old_test.cpp svneol=native#text/plain
