@@ -13821,7 +13821,6 @@ libs/geometry/test/index/algorithms/test_margin.hpp svneol=native#text/plain
 libs/geometry/test/index/algorithms/test_union_content.hpp svneol=native#text/plain
 libs/geometry/test/index/algorithms/union_content.cpp svneol=native#text/plain
 libs/geometry/test/index/geometry_index_test_common.hpp svneol=native#text/plain
-libs/geometry/test/index/geometry_test_common.hpp svneol=native#text/plain
 libs/geometry/test/index/rtree/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test/index/rtree/exceptions/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test/index/rtree/exceptions/rtree_exceptions.cpp svneol=native#text/plain
