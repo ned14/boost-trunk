@@ -11928,6 +11928,7 @@ libs/conversion/test/lexical_cast_abstract_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_arrays_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_containers_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_empty_input_test.cpp svneol=native#text/plain
+libs/conversion/test/lexical_cast_filesystem_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_float_types_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_inf_nan_test.cpp svneol=native#text/plain
 libs/conversion/test/lexical_cast_integral_types_test.cpp svneol=native#text/plain
