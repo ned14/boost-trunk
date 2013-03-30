@@ -13,6 +13,9 @@ libs/fusion/doc/html/quickbook_HTML.manifest
 libs/fusion/preprocess
 libs/fusion/test/compile_time/*.test
 libs/fusion/test/temp.tmp
+libs/geometry/doc/index/html/geometry_index-doc_HTML.manifest
+libs/geometry/doc/index/html_by_doxygen
+libs/geometry/doc/index/xml
 libs/geometry/doc/quickbook/bin
 libs/geometry/example/bin
 libs/geometry/test/*.svg
