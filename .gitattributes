@@ -2844,6 +2844,7 @@ boost/geometry/index/detail/rtree/visitors/spatial_query.hpp svneol=native#text/
 boost/geometry/index/detail/tags.hpp svneol=native#text/plain
 boost/geometry/index/detail/translator.hpp svneol=native#text/plain
 boost/geometry/index/detail/tuples.hpp svneol=native#text/plain
+boost/geometry/index/detail/utilities.hpp svneol=native#text/plain
 boost/geometry/index/detail/varray.hpp svneol=native#text/plain
 boost/geometry/index/distance_predicates.hpp svneol=native#text/plain
 boost/geometry/index/equal_to.hpp svneol=native#text/plain
