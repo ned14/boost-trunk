@@ -23274,6 +23274,7 @@ libs/multi_index/test/test_update.cpp svneol=native#text/plain
 libs/multi_index/test/test_update.hpp svneol=native#text/plain
 libs/multi_index/test/test_update_main.cpp svneol=native#text/plain
 libs/multiprecision/config/Jamfile.v2 svneol=native#text/plain
+libs/multiprecision/config/has_float128.cpp svneol=native#text/plain
 libs/multiprecision/config/has_gmp.cpp svneol=native#text/plain
 libs/multiprecision/config/has_mpfi.cpp svneol=native#text/plain
 libs/multiprecision/config/has_mpfr.cpp svneol=native#text/plain
