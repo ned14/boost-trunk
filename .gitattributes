@@ -35479,6 +35479,7 @@ tools/build/v2/release_procedure.txt svneol=native#text/plain
 tools/build/v2/roll.sh svneol=LF#text/x-sh eol=lf
 tools/build/v2/site-config.jam svneol=native#text/plain
 tools/build/v2/test/BoostBuild.py svneol=native#text/x-python
+tools/build/v2/test/MockToolset.py svneol=native#text/x-python
 tools/build/v2/test/TestCmd.py svneol=native#text/x-python
 tools/build/v2/test/abs_workdir.py svneol=native#text/x-python
 tools/build/v2/test/absolute_sources.py svneol=native#text/x-python
@@ -35740,6 +35741,7 @@ tools/build/v2/test/use_requirements.py svneol=native#text/x-python
 tools/build/v2/test/using.py svneol=native#text/x-python
 tools/build/v2/test/wrapper.py svneol=native#text/x-python
 tools/build/v2/test/wrong_project.py svneol=native#text/x-python
+tools/build/v2/test/zlib.py svneol=native#text/x-python
 tools/build/v2/to_merge.sh svneol=native#text/plain
 tools/build/v2/tools/__init__.py svneol=native#text/plain
 tools/build/v2/tools/acc.jam svneol=native#text/plain
