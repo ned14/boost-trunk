@@ -27321,6 +27321,7 @@ libs/polygon/doc/images/refinements.png -text svneol=unset#image/png
 libs/polygon/doc/images/rover.jpg -text svneol=unset#image/jpeg
 libs/polygon/doc/images/vlsi.jpg -text svneol=unset#image/jpeg
 libs/polygon/doc/images/voronoi.png -text svneol=unset#image/png
+libs/polygon/doc/images/voronoi1.png -text svneol=unset#image/png
 libs/polygon/doc/images/voronoi2.png -text svneol=unset#image/png
 libs/polygon/doc/images/voronoi3.png -text svneol=unset#image/png
 libs/polygon/doc/images/voronoi4.png -text svneol=unset#image/png
