@@ -11451,6 +11451,7 @@ libs/config/test/abi/abi_test.hpp svneol=native#text/plain
 libs/config/test/abi/main.cpp svneol=native#text/plain
 libs/config/test/all/Jamfile.v2 svneol=native#text/plain
 libs/config/test/all/options_v2.jam svneol=native#text/plain
+libs/config/test/boost_fallthrough_test.cpp svneol=native#text/plain
 libs/config/test/boost_has_2arg_use_facet.ipp svneol=native#text/plain
 libs/config/test/boost_has_bethreads.ipp svneol=native#text/plain
 libs/config/test/boost_has_clock_gettime.ipp svneol=native#text/plain
