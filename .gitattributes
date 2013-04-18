@@ -9165,6 +9165,7 @@ boost/thread/pthread/once_atomic.hpp svneol=native#text/plain
 boost/thread/pthread/pthread_mutex_scoped_lock.hpp svneol=native#text/plain
 boost/thread/pthread/recursive_mutex.hpp svneol=native#text/plain
 boost/thread/pthread/shared_mutex.hpp svneol=native#text/plain
+boost/thread/pthread/shared_mutex_assert.hpp svneol=native#text/plain
 boost/thread/pthread/thread_data.hpp svneol=native#text/plain
 boost/thread/pthread/thread_heap_alloc.hpp svneol=native#text/plain
 boost/thread/pthread/timespec.hpp svneol=native#text/plain
