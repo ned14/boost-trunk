@@ -10560,6 +10560,7 @@ libs/algorithm/test/search_test_data/0002f.pat -text svneol=unset#application/oc
 libs/algorithm/test/search_test_data/0002n.pat -text svneol=unset#application/octet-stream
 libs/algorithm/test/wrapper_test1.cpp svneol=native#text/plain
 libs/any/any_test.cpp svneol=native#text/plain
+libs/any/doc/Jamfile.v2 svneol=native#text/plain
 libs/any/doc/any.xml svneol=native#text/xml
 libs/any/index.html svneol=native#text/html
 libs/any/test.hpp svneol=native#text/plain
