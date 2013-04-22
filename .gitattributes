@@ -15300,6 +15300,7 @@ libs/gil/test/image.cpp svneol=native#text/plain
 libs/gil/test/performance.cpp svneol=native#text/plain
 libs/gil/test/pixel.cpp svneol=native#text/plain
 libs/gil/test/pixel_iterator.cpp svneol=native#text/plain
+libs/gil/test/recreate_image.cpp svneol=native#text/plain
 libs/gil/test/sample_image.cpp svneol=native#text/plain
 libs/gil/test/test.cpp svneol=native#text/plain
 libs/gil/toolbox/doc/jamfile.v2 svneol=native#text/plain
