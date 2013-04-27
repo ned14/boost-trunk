@@ -13881,6 +13881,7 @@ libs/geometry/index/example/3d_benchmark.cpp svneol=native#text/plain
 libs/geometry/index/example/benchmark.cpp svneol=native#text/plain
 libs/geometry/index/example/benchmark2.cpp svneol=native#text/plain
 libs/geometry/index/example/benchmark3.cpp svneol=native#text/plain
+libs/geometry/index/example/benchmark_experimental.cpp svneol=native#text/plain
 libs/geometry/index/example/glut_vis.cpp svneol=native#text/plain
 libs/geometry/index/example/random_test.cpp svneol=native#text/plain
 libs/geometry/index/test/Jamfile.v2 svneol=native#text/plain
