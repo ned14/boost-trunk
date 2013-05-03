@@ -2835,6 +2835,7 @@ boost/geometry/index/detail/rtree/node/static_visitor.hpp svneol=native#text/pla
 boost/geometry/index/detail/rtree/options.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/quadratic/quadratic.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/quadratic/redistribute_elements.hpp svneol=native#text/plain
+boost/geometry/index/detail/rtree/query_iterators.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/rstar/choose_next_node.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/rstar/insert.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/rstar/redistribute_elements.hpp svneol=native#text/plain
