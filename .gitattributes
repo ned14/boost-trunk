@@ -13910,6 +13910,7 @@ libs/geometry/index/test/algorithms/intersection_content.cpp svneol=native#text/
 libs/geometry/index/test/algorithms/is_valid.cpp svneol=native#text/plain
 libs/geometry/index/test/algorithms/margin.cpp svneol=native#text/plain
 libs/geometry/index/test/algorithms/minmaxdist.cpp svneol=native#text/plain
+libs/geometry/index/test/algorithms/segment_intersection.cpp svneol=native#text/plain
 libs/geometry/index/test/algorithms/test_content.hpp svneol=native#text/plain
 libs/geometry/index/test/algorithms/test_intersection_content.hpp svneol=native#text/plain
 libs/geometry/index/test/algorithms/test_margin.hpp svneol=native#text/plain
