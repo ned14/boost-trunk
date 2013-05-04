@@ -2805,6 +2805,7 @@ boost/geometry/index/detail/algorithms/intersection_content.hpp svneol=native#te
 boost/geometry/index/detail/algorithms/is_valid.hpp svneol=native#text/plain
 boost/geometry/index/detail/algorithms/margin.hpp svneol=native#text/plain
 boost/geometry/index/detail/algorithms/minmaxdist.hpp svneol=native#text/plain
+boost/geometry/index/detail/algorithms/path_intersection.hpp svneol=native#text/plain
 boost/geometry/index/detail/algorithms/segment_intersection.hpp svneol=native#text/plain
 boost/geometry/index/detail/algorithms/smallest_for_indexable.hpp svneol=native#text/plain
 boost/geometry/index/detail/algorithms/sum_for_indexable.hpp svneol=native#text/plain
