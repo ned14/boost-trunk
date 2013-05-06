@@ -4157,6 +4157,7 @@ boost/log/detail/function_traits.hpp svneol=native#text/plain
 boost/log/detail/generate_overloads.hpp svneol=native#text/plain
 boost/log/detail/header.hpp svneol=native#text/plain
 boost/log/detail/id.hpp svneol=native#text/plain
+boost/log/detail/intptr_t.hpp svneol=native#text/plain
 boost/log/detail/light_function.hpp svneol=native#text/plain
 boost/log/detail/light_function_pp.hpp svneol=native#text/plain
 boost/log/detail/light_rw_mutex.hpp svneol=native#text/plain
