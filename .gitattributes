@@ -13501,6 +13501,7 @@ libs/geometry/doc/index/rtree.qbk svneol=native#text/plain
 libs/geometry/doc/index/rtree/creation.qbk svneol=native#text/plain
 libs/geometry/doc/index/rtree/examples.qbk svneol=native#text/plain
 libs/geometry/doc/index/rtree/exception_safety.qbk svneol=native#text/plain
+libs/geometry/doc/index/rtree/experimental.qbk svneol=native#text/plain
 libs/geometry/doc/index/rtree/introduction.qbk svneol=native#text/plain
 libs/geometry/doc/index/rtree/query.qbk svneol=native#text/plain
 libs/geometry/doc/index/rtree/quickstart.qbk svneol=native#text/plain
