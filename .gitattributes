@@ -19758,7 +19758,7 @@ libs/lockfree/test/tagged_ptr_test.cpp svneol=native#text/plain
 libs/lockfree/test/test_common.hpp svneol=native#text/plain
 libs/lockfree/test/test_helpers.hpp svneol=native#text/plain
 libs/log/build/Jamfile.v2 svneol=native#text/plain
-libs/log/build/architecture.jam svneol=native#text/plain
+libs/log/build/log-architecture.jam svneol=native#text/plain
 libs/log/doc/Design.dia -text
 libs/log/doc/Design.png -text svneol=unset#image/png
 libs/log/doc/Jamfile.v2 svneol=native#text/plain
