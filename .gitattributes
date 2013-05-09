@@ -13488,6 +13488,7 @@ libs/geometry/doc/html/img/index/rtree/intersects_ring.png -text svneol=unset#im
 libs/geometry/doc/html/img/index/rtree/knn.png -text svneol=unset#image/png
 libs/geometry/doc/html/img/index/rtree/linear.png -text svneol=unset#image/png
 libs/geometry/doc/html/img/index/rtree/overlaps.png -text svneol=unset#image/png
+libs/geometry/doc/html/img/index/rtree/path.png -text svneol=unset#image/png
 libs/geometry/doc/html/img/index/rtree/quadratic.png -text svneol=unset#image/png
 libs/geometry/doc/html/img/index/rtree/rstar.png -text svneol=unset#image/png
 libs/geometry/doc/html/img/index/rtree/within.png -text svneol=unset#image/png
