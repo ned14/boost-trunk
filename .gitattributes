@@ -2819,6 +2819,7 @@ boost/geometry/index/detail/config_end.hpp svneol=native#text/plain
 boost/geometry/index/detail/distance_predicates.hpp svneol=native#text/plain
 boost/geometry/index/detail/exception.hpp svneol=native#text/plain
 boost/geometry/index/detail/indexable.hpp svneol=native#text/plain
+boost/geometry/index/detail/meta.hpp svneol=native#text/plain
 boost/geometry/index/detail/predicates.hpp svneol=native#text/plain
 boost/geometry/index/detail/pushable_array.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/adaptors.hpp svneol=native#text/plain
