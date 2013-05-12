@@ -33744,6 +33744,7 @@ libs/tti/doc/tti_tests.qbk svneol=native#text/plain
 libs/tti/doc/tti_to_do.qbk svneol=native#text/plain
 libs/tti/doc/tti_using_mm.qbk svneol=native#text/plain
 libs/tti/doc/tti_why.qbk svneol=native#text/plain
+libs/tti/index.html svneol=native#text/html
 libs/tti/test/Jamfile.v2 svneol=native#text/plain
 libs/tti/test/test_has_data.cpp svneol=native#text/plain
 libs/tti/test/test_has_data.hpp svneol=native#text/plain
