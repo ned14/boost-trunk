@@ -32267,6 +32267,7 @@ libs/spirit/test/lex/regression_file_iterator1.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_file_iterator2.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_file_iterator3.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_file_iterator4.cpp svneol=native#text/plain
+libs/spirit/test/lex/regression_less_8563.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_matlib_dynamic.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_matlib_generate.cpp svneol=native#text/plain
 libs/spirit/test/lex/regression_matlib_generate_switch.cpp svneol=native#text/plain
