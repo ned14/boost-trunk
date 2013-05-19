@@ -36980,6 +36980,7 @@ tools/quickbook/test/versions/templates-inc-1_5.quickbook svneol=native#text/pla
 tools/quickbook/test/versions/versions-1_6.gold svneol=native#text/plain
 tools/quickbook/test/versions/versions-1_6.quickbook svneol=native#text/plain
 tools/quickbook/test/xinclude/Jamfile.v2 svneol=native#text/plain
+tools/quickbook/test/xinclude/sub/boost-no-inspect svneol=native#text/plain+%23+tells+boost+inspect+to+ignore+directory
 tools/quickbook/test/xinclude/sub/stub.xml svneol=native#text/xml
 tools/quickbook/test/xinclude/xinclude-1_1-alt.gold svneol=native#text/plain
 tools/quickbook/test/xinclude/xinclude-1_1.gold svneol=native#text/plain
