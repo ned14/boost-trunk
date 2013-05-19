@@ -80,6 +80,7 @@ libs/thread/example/*.pdb
 libs/thread/example/bin
 libs/thread/test/*.pdb
 libs/thread/test/bin
+libs/tti/doc/TTIAcknowledgments.qbk
 libs/type_traits/doc/html/standalone_HTML.manifest
 libs/utility/identity_type/doc/html/index.docbook
 libs/utility/identity_type/doc/reference.xml
