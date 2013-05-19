@@ -33858,7 +33858,6 @@ libs/tti/doc/tti_detail_has_member_function.qbk svneol=native#text/plain
 libs/tti/doc/tti_detail_has_static_member_data.qbk svneol=native#text/plain
 libs/tti/doc/tti_detail_has_static_member_function.qbk svneol=native#text/plain
 libs/tti/doc/tti_detail_has_template.qbk svneol=native#text/plain
-libs/tti/doc/tti_detail_has_template_check_params.qbk svneol=native#text/plain
 libs/tti/doc/tti_detail_has_type.qbk svneol=native#text/plain
 libs/tti/doc/tti_func_templates.qbk svneol=native#text/plain
 libs/tti/doc/tti_functionality.qbk svneol=native#text/plain
