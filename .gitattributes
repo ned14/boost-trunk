@@ -105,7 +105,6 @@ boost/algorithm/cxx11/one_of.hpp svneol=native#text/plain
 boost/algorithm/cxx11/partition_copy.hpp svneol=native#text/plain
 boost/algorithm/cxx11/partition_point.hpp svneol=native#text/plain
 boost/algorithm/cxx14/equal.hpp svneol=native#text/plain
-boost/algorithm/cxx14/is_permutation.hpp svneol=native#text/plain
 boost/algorithm/cxx14/mismatch.hpp svneol=native#text/plain
 boost/algorithm/gather.hpp svneol=native#text/plain
 boost/algorithm/hex.hpp svneol=native#text/plain
