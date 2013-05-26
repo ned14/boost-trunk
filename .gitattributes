@@ -34849,6 +34849,7 @@ libs/utility/test/next_prior_test.cpp svneol=native#text/plain
 libs/utility/test/result_of_test.cpp svneol=native#text/plain
 libs/utility/test/string_ref_test1.cpp svneol=native#text/plain
 libs/utility/test/string_ref_test2.cpp svneol=native#text/plain
+libs/utility/test/string_ref_test_io.cpp svneol=native#text/plain
 libs/utility/throw_exception.html svneol=native#text/html
 libs/utility/utility.htm svneol=native#text/html
 libs/utility/value_init.htm svneol=native#text/html
