@@ -10023,6 +10023,7 @@ boost/utility/identity_type.hpp svneol=native#text/plain
 boost/utility/in_place_factory.hpp svneol=native#text/plain
 boost/utility/result_of.hpp svneol=native#text/plain
 boost/utility/string_ref.hpp svneol=native#text/plain
+boost/utility/string_ref_fwd.hpp svneol=native#text/plain
 boost/utility/swap.hpp svneol=native#text/plain
 boost/utility/typed_in_place_factory.hpp svneol=native#text/plain
 boost/utility/value_init.hpp svneol=native#text/plain
