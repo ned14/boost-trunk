@@ -10546,6 +10546,7 @@ libs/algorithm/doc/equal.qbk svneol=native#text/plain
 libs/algorithm/doc/gather.qbk svneol=native#text/plain
 libs/algorithm/doc/hex.qbk svneol=native#text/plain
 libs/algorithm/doc/is_partitioned.qbk svneol=native#text/plain
+libs/algorithm/doc/is_permutation.qbk svneol=native#text/plain
 libs/algorithm/doc/knuth_morris_pratt.qbk svneol=native#text/plain
 libs/algorithm/doc/mismatch.qbk svneol=native#text/plain
 libs/algorithm/doc/none_of.qbk svneol=native#text/plain
