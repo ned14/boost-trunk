@@ -33403,6 +33403,7 @@ libs/thread/test/sync/futures/shared_future/dtor_pass.cpp svneol=native#text/pla
 libs/thread/test/sync/futures/shared_future/get_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/shared_future/move_assign_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/shared_future/move_ctor_pass.cpp svneol=native#text/plain
+libs/thread/test/sync/futures/shared_future/then_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/shared_future/wait_for_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/shared_future/wait_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/futures/shared_future/wait_until_pass.cpp svneol=native#text/plain
