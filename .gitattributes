@@ -14041,6 +14041,7 @@ libs/geometry/example_extensions/units/08_units_example.cpp svneol=native#text/p
 libs/geometry/example_extensions/units/08_units_example.vcproj svneol=native#text/xml
 libs/geometry/index.html svneol=native#text/html
 libs/geometry/index/example/3d_benchmark.cpp svneol=native#text/plain
+libs/geometry/index/example/Jamfile.v2 svneol=native#text/plain
 libs/geometry/index/example/benchmark.cpp svneol=native#text/plain
 libs/geometry/index/example/benchmark2.cpp svneol=native#text/plain
 libs/geometry/index/example/benchmark3.cpp svneol=native#text/plain
