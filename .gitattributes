@@ -11537,6 +11537,14 @@ libs/circular_buffer/doc/space_optimized.png -text svneol=unset#image/png
 libs/circular_buffer/doc/space_optimized.xslt svneol=native#text/xml
 libs/circular_buffer/doc/update_srcdoc.sh svneol=LF#text/x-sh eol=lf
 libs/circular_buffer/doc/update_srcdoc.xslt svneol=native#text/xml
+libs/circular_buffer/example/bounded_buffer_comparison.cpp svneol=native#text/plain
+libs/circular_buffer/example/circular_buffer_bound_example.cpp svneol=native#text/plain
+libs/circular_buffer/example/circular_buffer_example.cpp svneol=native#text/plain
+libs/circular_buffer/example/circular_buffer_examples.bat svneol=native#text/plain
+libs/circular_buffer/example/circular_buffer_examples_06-Jun-2013_1300.log svneol=native#text/plain
+libs/circular_buffer/example/circular_buffer_iter_example.cpp svneol=native#text/plain
+libs/circular_buffer/example/circular_buffer_sum_example.cpp svneol=native#text/plain
+libs/circular_buffer/example/jamfile.v2 svneol=native#text/plain
 libs/circular_buffer/index.html svneol=native#text/html
 libs/circular_buffer/test/Jamfile.v2 svneol=native#text/plain
 libs/circular_buffer/test/base_test.cpp svneol=native#text/plain
