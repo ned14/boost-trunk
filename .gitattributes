@@ -11541,7 +11541,6 @@ libs/circular_buffer/example/bounded_buffer_comparison.cpp svneol=native#text/pl
 libs/circular_buffer/example/circular_buffer_bound_example.cpp svneol=native#text/plain
 libs/circular_buffer/example/circular_buffer_example.cpp svneol=native#text/plain
 libs/circular_buffer/example/circular_buffer_examples.bat svneol=native#text/plain
-libs/circular_buffer/example/circular_buffer_examples_06-Jun-2013_1300.log svneol=native#text/plain
 libs/circular_buffer/example/circular_buffer_iter_example.cpp svneol=native#text/plain
 libs/circular_buffer/example/circular_buffer_sum_example.cpp svneol=native#text/plain
 libs/circular_buffer/example/jamfile.v2 svneol=native#text/plain
