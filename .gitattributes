@@ -9287,6 +9287,7 @@ boost/thread/win32/basic_recursive_mutex.hpp svneol=native#text/plain
 boost/thread/win32/basic_timed_mutex.hpp svneol=native#text/plain
 boost/thread/win32/condition_variable.hpp svneol=native#text/plain
 boost/thread/win32/interlocked_read.hpp svneol=native#text/plain
+boost/thread/win32/mfc_thread_init.hpp svneol=native#text/plain
 boost/thread/win32/mutex.hpp svneol=native#text/plain
 boost/thread/win32/once.hpp svneol=native#text/plain
 boost/thread/win32/recursive_mutex.hpp svneol=native#text/plain
