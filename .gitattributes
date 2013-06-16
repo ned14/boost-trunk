@@ -682,6 +682,7 @@ boost/assign/std/vector.hpp svneol=native#text/plain
 boost/atomic.hpp svneol=native#text/plain
 boost/atomic/atomic.hpp svneol=native#text/plain
 boost/atomic/detail/base.hpp svneol=native#text/plain
+boost/atomic/detail/cas128strong.hpp svneol=native#text/plain
 boost/atomic/detail/cas32strong.hpp svneol=native#text/plain
 boost/atomic/detail/cas32weak.hpp svneol=native#text/plain
 boost/atomic/detail/cas64strong-ptr.hpp svneol=native#text/plain
