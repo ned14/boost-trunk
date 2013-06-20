@@ -2807,6 +2807,7 @@ boost/geometry/extensions/nsphere/index/detail/indexable.hpp svneol=native#text/
 boost/geometry/extensions/nsphere/index/indexable.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/nsphere.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/strategies/cartesian/nsphere_in_box.hpp svneol=native#text/plain
+boost/geometry/extensions/nsphere/strategies/cartesian/point_in_nsphere.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/views/center_view.hpp svneol=native#text/plain
 boost/geometry/extensions/strategies/buffer.hpp svneol=native#text/plain
 boost/geometry/extensions/strategies/buffer_distance_asymmetric.hpp svneol=native#text/plain
