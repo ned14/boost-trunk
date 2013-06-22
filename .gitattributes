@@ -2809,6 +2809,7 @@ boost/geometry/extensions/nsphere/index/detail/algorithms/is_valid.hpp svneol=na
 boost/geometry/extensions/nsphere/index/detail/algorithms/margin.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/index/detail/indexable.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/index/detail/rtree/linear/redistribute_elements.hpp svneol=native#text/plain
+boost/geometry/extensions/nsphere/index/detail/rtree/rstar/redistribute_elements.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/index/indexable.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/nsphere.hpp svneol=native#text/plain
 boost/geometry/extensions/nsphere/strategies/cartesian/nsphere_in_box.hpp svneol=native#text/plain
