@@ -22290,6 +22290,7 @@ libs/math/test/compile_test/distribution_concept_check.cpp svneol=native#text/pl
 libs/math/test/compile_test/generate.sh svneol=LF#text/x-sh eol=lf
 libs/math/test/compile_test/instantiate.hpp svneol=native#text/plain
 libs/math/test/compile_test/main.cpp svneol=native#text/plain
+libs/math/test/compile_test/poison.hpp svneol=native#text/plain
 libs/math/test/compile_test/sf_airy_incl_test.cpp svneol=native#text/plain
 libs/math/test/compile_test/sf_bessel_incl_test.cpp svneol=native#text/plain
 libs/math/test/compile_test/sf_beta_incl_test.cpp svneol=native#text/plain
