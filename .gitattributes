@@ -10325,6 +10325,7 @@ doc/html/boost_tr1.html svneol=native#text/html
 doc/html/boost_typeerasure.html svneol=native#text/html
 doc/html/boostbook.html svneol=native#text/html
 doc/html/chrono.html svneol=native#text/html
+doc/html/circular_buffer.html svneol=native#text/html
 doc/html/container.html svneol=native#text/html
 doc/html/date_time.html svneol=native#text/html
 doc/html/date_time/date_time_io.html svneol=native#text/html
