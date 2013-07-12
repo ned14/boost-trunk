@@ -4247,6 +4247,7 @@ boost/log/detail/light_function_pp.hpp svneol=native#text/plain
 boost/log/detail/light_rw_mutex.hpp svneol=native#text/plain
 boost/log/detail/locking_ptr.hpp svneol=native#text/plain
 boost/log/detail/locks.hpp svneol=native#text/plain
+boost/log/detail/malloc_aligned.hpp svneol=native#text/plain
 boost/log/detail/named_scope_fmt_pp.hpp svneol=native#text/plain
 boost/log/detail/native_typeof.hpp svneol=native#text/plain
 boost/log/detail/parameter_tools.hpp svneol=native#text/plain
