@@ -14180,6 +14180,7 @@ libs/geometry/index/example/benchmark3.cpp svneol=native#text/plain
 libs/geometry/index/example/benchmark_experimental.cpp svneol=native#text/plain
 libs/geometry/index/example/glut_vis.cpp svneol=native#text/plain
 libs/geometry/index/example/random_test.cpp svneol=native#text/plain
+libs/geometry/index/example/serialize.cpp svneol=native#text/plain
 libs/geometry/index/test/Jamfile.v2 svneol=native#text/plain
 libs/geometry/index/test/algorithms/Jamfile.v2 svneol=native#text/plain
 libs/geometry/index/test/algorithms/content.cpp svneol=native#text/plain
