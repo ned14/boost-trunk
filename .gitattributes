@@ -2935,6 +2935,7 @@ boost/geometry/index/detail/rtree/visitors/insert.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/visitors/is_leaf.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/visitors/remove.hpp svneol=native#text/plain
 boost/geometry/index/detail/rtree/visitors/spatial_query.hpp svneol=native#text/plain
+boost/geometry/index/detail/serialization.hpp svneol=native#text/plain
 boost/geometry/index/detail/tags.hpp svneol=native#text/plain
 boost/geometry/index/detail/translator.hpp svneol=native#text/plain
 boost/geometry/index/detail/tuples.hpp svneol=native#text/plain
