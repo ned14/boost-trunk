@@ -21978,6 +21978,7 @@ libs/math/example/policy_ref_snip9.cpp svneol=native#text/plain
 libs/math/example/root_finding_example.cpp svneol=native#text/plain
 libs/math/example/sines.hpp svneol=native#text/plain
 libs/math/example/skew_normal_example.cpp svneol=native#text/plain
+libs/math/example/special_data.cpp svneol=native#text/plain
 libs/math/example/students_t_example1.cpp svneol=native#text/plain
 libs/math/example/students_t_example2.cpp svneol=native#text/plain
 libs/math/example/students_t_example3.cpp svneol=native#text/plain
