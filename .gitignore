@@ -43,6 +43,7 @@ libs/local_function/doc/html/doc_HTML.manifest
 libs/local_function/doc/reference.xml
 libs/math/test/*.log
 libs/optional/test/bin
+libs/predef/doc/html/standalone_HTML.manifest
 libs/python/pyste/dist/*.pyc
 libs/python/pyste/dist/*.zip
 libs/python/pyste/src/*.pyc
