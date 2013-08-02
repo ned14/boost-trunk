@@ -22698,6 +22698,7 @@ libs/math/test/test_jacobi.hpp svneol=native#text/plain
 libs/math/test/test_laguerre.cpp svneol=native#text/plain
 libs/math/test/test_laguerre.hpp svneol=native#text/plain
 libs/math/test/test_laplace.cpp svneol=native#text/plain
+libs/math/test/test_ldouble_simple.cpp svneol=native#text/plain
 libs/math/test/test_legacy_nonfinite.cpp svneol=native#text/plain
 libs/math/test/test_legendre.cpp svneol=native#text/plain
 libs/math/test/test_legendre.hpp svneol=native#text/plain
