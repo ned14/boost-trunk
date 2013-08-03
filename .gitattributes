@@ -20198,6 +20198,7 @@ libs/log/src/global_logger_storage.cpp svneol=native#text/plain
 libs/log/src/init_from_settings.cpp svneol=native#text/plain
 libs/log/src/init_from_stream.cpp svneol=native#text/plain
 libs/log/src/light_rw_mutex.cpp svneol=native#text/plain
+libs/log/src/matches_relation_factory.cpp svneol=native#text/plain
 libs/log/src/named_scope.cpp svneol=native#text/plain
 libs/log/src/named_scope_format_parser.cpp svneol=native#text/plain
 libs/log/src/once_block.cpp svneol=native#text/plain
