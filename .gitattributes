@@ -5974,6 +5974,7 @@ boost/multiprecision/cpp_int/limits.hpp svneol=native#text/plain
 boost/multiprecision/cpp_int/literals.hpp svneol=native#text/plain
 boost/multiprecision/cpp_int/misc.hpp svneol=native#text/plain
 boost/multiprecision/cpp_int/multiply.hpp svneol=native#text/plain
+boost/multiprecision/cpp_int/serialize.hpp svneol=native#text/plain
 boost/multiprecision/cpp_int/value_pack.hpp svneol=native#text/plain
 boost/multiprecision/debug_adaptor.hpp svneol=native#text/plain
 boost/multiprecision/detail/big_lanczos.hpp svneol=native#text/plain
