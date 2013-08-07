@@ -24427,6 +24427,7 @@ libs/multiprecision/test/test_cpp_int_conv.cpp svneol=native#text/plain
 libs/multiprecision/test/test_cpp_int_deserial.cpp svneol=native#text/plain
 libs/multiprecision/test/test_cpp_int_lit.cpp svneol=native#text/plain
 libs/multiprecision/test/test_cpp_int_serial.cpp svneol=native#text/plain
+libs/multiprecision/test/test_cpp_rat_serial.cpp svneol=native#text/plain
 libs/multiprecision/test/test_exp.cpp svneol=native#text/plain
 libs/multiprecision/test/test_fixed_int.cpp svneol=native#text/plain
 libs/multiprecision/test/test_float_io.cpp svneol=native#text/plain
