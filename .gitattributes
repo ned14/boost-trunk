@@ -21995,7 +21995,7 @@ libs/math/dot_net_example/boost_math/boost_math.h svneol=native#text/plain
 libs/math/dot_net_example/boost_math/boost_math.sln.lnk -text
 libs/math/dot_net_example/boost_math/resource.h svneol=native#text/plain
 libs/math/dot_net_example/distribution_explorer/IconToolkit.ico -text svneol=unset#image/ico
-libs/math/dot_net_example/distribution_explorer/Properties/app.manifest -text
+libs/math/dot_net_example/distribution_explorer/Properties/app.manifest svneol=native#text/x-xml
 libs/math/dot_net_example/distribution_explorer/ToolkitLogo.bmp -text svneol=unset#image/bmp
 libs/math/dot_net_example/distribution_explorer/boost.png -text svneol=unset#image/png
 libs/math/dot_net_example/distribution_explorer/distribution.txt svneol=native#text/plain
