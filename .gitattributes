@@ -14324,6 +14324,7 @@ libs/geometry/test/algorithms/overlay/get_turns.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/overlay_cases.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/overlay_common.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/relative_order.cpp svneol=native#text/plain
+libs/geometry/test/algorithms/overlay/robustness/Jamfile.v2 svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/robustness/interior_triangles.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/robustness/intersection_pies.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/robustness/intersection_stars.cpp svneol=native#text/plain
