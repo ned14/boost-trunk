@@ -14302,6 +14302,7 @@ libs/geometry/test/algorithms/detail/sections/Jamfile.v2 svneol=native#text/plai
 libs/geometry/test/algorithms/detail/sections/range_by_section.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/detail/sections/sectionalize.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/difference.cpp svneol=native#text/plain
+libs/geometry/test/algorithms/difference_spike.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/disjoint.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/distance.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/envelope.cpp svneol=native#text/plain
