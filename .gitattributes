@@ -19998,6 +19998,7 @@ libs/log/test/run/form_format.cpp svneol=native#text/plain
 libs/log/test/run/form_if.cpp svneol=native#text/plain
 libs/log/test/run/form_message.cpp svneol=native#text/plain
 libs/log/test/run/form_named_scope.cpp svneol=native#text/plain
+libs/log/test/run/setup_filter_parser.cpp svneol=native#text/plain
 libs/log/test/run/unhandled_exception_count.cpp svneol=native#text/plain
 libs/log/test/run/unhandled_exception_count_np.cpp svneol=native#text/plain
 libs/log/test/run/util_dynamic_type_disp.cpp svneol=native#text/plain
