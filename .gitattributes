@@ -9140,6 +9140,7 @@ boost/sync/detail/lockable_wrapper.hpp svneol=native#text/plain
 boost/sync/locks.hpp svneol=native#text/plain
 boost/sync/locks/lock_guard.hpp svneol=native#text/plain
 boost/sync/locks/lock_options.hpp svneol=native#text/plain
+boost/sync/locks/shared_lock_guard.hpp svneol=native#text/plain
 boost/sync/locks/unique_lock.hpp svneol=native#text/plain
 boost/system/api_config.hpp svneol=native#text/plain
 boost/system/config.hpp svneol=native#text/plain
