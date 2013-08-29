@@ -2942,7 +2942,6 @@ boost/geometry/index/detail/serialization.hpp svneol=native#text/plain
 boost/geometry/index/detail/tags.hpp svneol=native#text/plain
 boost/geometry/index/detail/translator.hpp svneol=native#text/plain
 boost/geometry/index/detail/tuples.hpp svneol=native#text/plain
-boost/geometry/index/detail/type_erased_iterators.hpp svneol=native#text/plain
 boost/geometry/index/detail/utilities.hpp svneol=native#text/plain
 boost/geometry/index/detail/varray.hpp svneol=native#text/plain
 boost/geometry/index/detail/varray_detail.hpp svneol=native#text/plain
