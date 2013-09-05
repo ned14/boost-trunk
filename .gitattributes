@@ -17353,6 +17353,7 @@ libs/graph/test/property_iter.cpp svneol=native#text/plain
 libs/graph/test/r_c_shortest_paths_test.cpp svneol=native#text/plain
 libs/graph/test/random_matching_test.cpp svneol=native#text/plain
 libs/graph/test/random_spanning_tree_test.cpp svneol=native#text/plain
+libs/graph/test/rcsp_custom_vertex_id.cpp svneol=native#text/plain
 libs/graph/test/read_propmap.cpp svneol=native#text/plain
 libs/graph/test/regression.cfg svneol=native#text/plain
 libs/graph/test/relaxed_heap_test.cpp svneol=native#text/plain
