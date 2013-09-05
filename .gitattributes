@@ -22601,6 +22601,7 @@ libs/math/tools/log1p_expm1_data.cpp svneol=native#text/plain
 libs/math/tools/process_perf_results.cpp svneol=native#text/plain
 libs/math/tools/rational_tests.cpp svneol=native#text/plain
 libs/math/tools/spherical_harmonic_data.cpp svneol=native#text/plain
+libs/math/tools/tgamma_large_data.cpp svneol=native#text/plain
 libs/math/tools/tgamma_ratio_data.cpp svneol=native#text/plain
 libs/math/tools/zeta_data.cpp svneol=native#text/plain
 libs/math/vc71_fix/Jamfile.v2 svneol=native#text/plain
