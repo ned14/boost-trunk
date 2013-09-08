@@ -36722,6 +36722,9 @@ tools/quickbook/examples/simple-boostbook/Jamfile.v2 svneol=native#text/plain
 tools/quickbook/examples/simple-boostbook/simple.xml svneol=native#text/xml
 tools/quickbook/examples/simple-quickbook/Jamfile.v2 svneol=native#text/plain
 tools/quickbook/examples/simple-quickbook/simple.qbk svneol=native#text/plain
+tools/quickbook/examples/standalone-quickbook/Jamfile.v2 svneol=native#text/plain
+tools/quickbook/examples/standalone-quickbook/Jamroot.jam svneol=native#text/plain
+tools/quickbook/examples/standalone-quickbook/simple.qbk svneol=native#text/plain
 tools/quickbook/extra/katepart/install.sh svneol=LF#text/x-sh eol=lf
 tools/quickbook/extra/katepart/katepart.qbk svneol=native#text/plain
 tools/quickbook/extra/katepart/syntax/boost_hs_boost.xml svneol=native#text/xml
