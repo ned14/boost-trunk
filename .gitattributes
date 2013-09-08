@@ -30677,6 +30677,7 @@ libs/thread/test/sync/mutual_exclusion/sync_bounded_queue/multi_thread_pass.cpp 
 libs/thread/test/sync/mutual_exclusion/sync_bounded_queue/single_thread_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/mutual_exclusion/sync_queue/multi_thread_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/mutual_exclusion/sync_queue/single_thread_pass.cpp svneol=native#text/plain
+libs/thread/test/sync/mutual_exclusion/synchronized_value/call_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/mutual_exclusion/synchronized_value/copy_T_assign_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/mutual_exclusion/synchronized_value/copy_T_ctor_pass.cpp svneol=native#text/plain
 libs/thread/test/sync/mutual_exclusion/synchronized_value/copy_assign_pass.cpp svneol=native#text/plain
