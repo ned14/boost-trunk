@@ -36687,6 +36687,7 @@ tools/quickbook/doc/boost-doc-tools/boost-doc-tools.qbk svneol=native#text/plain
 tools/quickbook/doc/boost-doc-tools/images/documentation-toolchain.png -text svneol=unset#image/png
 tools/quickbook/doc/boost-doc-tools/install.qbk svneol=native#text/plain
 tools/quickbook/doc/boost-doc-tools/intro.qbk svneol=native#text/plain
+tools/quickbook/doc/boost-doc-tools/parameters.qbk svneol=native#text/plain
 tools/quickbook/doc/boost-doc-tools/pdfs.qbk svneol=native#text/plain
 tools/quickbook/doc/change_log.qbk svneol=native#text/plain
 tools/quickbook/doc/doc-guide.qbk svneol=native#text/plain
