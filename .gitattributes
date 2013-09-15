@@ -12399,7 +12399,6 @@ libs/container/test/static_vector_test.hpp svneol=native#text/plain
 libs/container/test/string_test.cpp svneol=native#text/plain
 libs/container/test/throw_exception_test.cpp svneol=native#text/plain
 libs/container/test/tree_test.cpp svneol=native#text/plain
-libs/container/test/util.hpp svneol=native#text/plain
 libs/container/test/vector_test.cpp svneol=native#text/plain
 libs/container/test/vector_test.hpp svneol=native#text/plain
 libs/context/build/Jamfile.v2 svneol=native#text/plain
