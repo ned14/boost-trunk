@@ -30352,6 +30352,7 @@ libs/range/test/reversible_range.cpp svneol=native#text/plain
 libs/range/test/std_container.cpp svneol=native#text/plain
 libs/range/test/string.cpp svneol=native#text/plain
 libs/range/test/sub_range.cpp svneol=native#text/plain
+libs/range/test/test_driver/range_overload_test_driver.hpp svneol=native#text/plain
 libs/range/test/test_driver/range_return_test_driver.hpp svneol=native#text/plain
 libs/range/test/test_function/check_equal_fn.hpp svneol=native#text/plain
 libs/range/test/test_function/counted_function.hpp svneol=native#text/plain
