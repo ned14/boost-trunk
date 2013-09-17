@@ -482,6 +482,7 @@ boost/asio/detail/timer_scheduler.hpp svneol=native#text/plain
 boost/asio/detail/timer_scheduler_fwd.hpp svneol=native#text/plain
 boost/asio/detail/tss_ptr.hpp svneol=native#text/plain
 boost/asio/detail/type_traits.hpp svneol=native#text/plain
+boost/asio/detail/variadic_templates.hpp svneol=native#text/plain
 boost/asio/detail/wait_handler.hpp svneol=native#text/plain
 boost/asio/detail/wait_op.hpp svneol=native#text/plain
 boost/asio/detail/weak_ptr.hpp svneol=native#text/plain
