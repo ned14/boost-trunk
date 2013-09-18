@@ -9159,6 +9159,7 @@ boost/strong_typedef.hpp svneol=native#text/plain
 boost/swap.hpp svneol=native#text/plain
 boost/sync/detail/config.hpp svneol=native#text/plain
 boost/sync/detail/event/event_emulation.hpp svneol=native#text/plain
+boost/sync/detail/event/event_mach.hpp svneol=native#text/plain
 boost/sync/detail/event/event_windows.hpp svneol=native#text/plain
 boost/sync/detail/footer.hpp svneol=native#text/plain
 boost/sync/detail/header.hpp svneol=native#text/plain
