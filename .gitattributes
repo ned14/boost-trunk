@@ -9177,6 +9177,7 @@ boost/sync/detail/mutexes/mutex_posix.hpp svneol=native#text/plain
 boost/sync/detail/mutexes/mutex_windows.hpp svneol=native#text/plain
 boost/sync/detail/mutexes/timed_mutex_posix.hpp svneol=native#text/plain
 boost/sync/detail/mutexes/timed_mutex_windows.hpp svneol=native#text/plain
+boost/sync/detail/pause.hpp svneol=native#text/plain
 boost/sync/detail/pthread.hpp svneol=native#text/plain
 boost/sync/detail/pthread_mutex_locks.hpp svneol=native#text/plain
 boost/sync/detail/semaphore/semaphore_dispatch.hpp svneol=native#text/plain
