@@ -9166,6 +9166,7 @@ boost/sync/condition_variables/cv_status.hpp svneol=native#text/plain
 boost/sync/detail/atomic.hpp svneol=native#text/plain
 boost/sync/detail/condition_variables/condition_variable_posix.hpp svneol=native#text/plain
 boost/sync/detail/config.hpp svneol=native#text/plain
+boost/sync/detail/event/event_autoreset_semaphore.hpp svneol=native#text/plain
 boost/sync/detail/event/event_emulation.hpp svneol=native#text/plain
 boost/sync/detail/event/event_futex.hpp svneol=native#text/plain
 boost/sync/detail/event/event_mach.hpp svneol=native#text/plain
