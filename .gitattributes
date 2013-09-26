@@ -713,6 +713,7 @@ boost/atomic/detail/gcc-sparcv9.hpp svneol=native#text/plain
 boost/atomic/detail/gcc-x86.hpp svneol=native#text/plain
 boost/atomic/detail/generic-cas.hpp svneol=native#text/plain
 boost/atomic/detail/interlocked.hpp svneol=native#text/plain
+boost/atomic/detail/link.hpp svneol=native#text/plain
 boost/atomic/detail/linux-arm.hpp svneol=native#text/plain
 boost/atomic/detail/lockpool.hpp svneol=native#text/plain
 boost/atomic/detail/platform.hpp svneol=native#text/plain
