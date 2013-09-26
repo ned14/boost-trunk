@@ -12267,6 +12267,7 @@ libs/config/tools/Jamfile.v2 svneol=native#text/plain
 libs/config/tools/configure.in svneol=LF#text/x-sh eol=lf
 libs/config/tools/generate.cpp svneol=native#text/plain
 libs/container/bench/Jamfile.v2 svneol=native#text/plain
+libs/container/bench/bench_set.cpp svneol=native#text/plain
 libs/container/bench/bench_static_vector.cpp svneol=native#text/plain
 libs/container/bench/detail/varray.hpp svneol=native#text/plain
 libs/container/bench/detail/varray_concept.hpp svneol=native#text/plain
@@ -12284,6 +12285,7 @@ libs/container/example/doc_type_erasure.cpp svneol=native#text/plain
 libs/container/index.html svneol=native#text/html
 libs/container/proj/to-do.txt svneol=native#text/plain
 libs/container/proj/vc7ide/allocator_traits_test.vcproj svneol=native#text/xml
+libs/container/proj/vc7ide/bench_set.vcproj svneol=native#text/xml
 libs/container/proj/vc7ide/bench_static_vector.vcproj svneol=native#text/xml
 libs/container/proj/vc7ide/container.sln svneol=native#text/plain
 libs/container/proj/vc7ide/container.vcproj svneol=native#text/xml
