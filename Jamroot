@@ -143,6 +143,7 @@ local all-headers =
 for dir in $(all-headers)
 {
     link-directory $(dir)-headers : libs/$(dir)/include/boost : <location>. ;
+    explicit $(dir)-headers ;
 }
 
 local numeric-headers =
@@ -151,9 +152,13 @@ local numeric-headers =
 for dir in $(numeric-headers)
 {
     link-directory numeric-$(dir)-headers : libs/numeric/$(dir)/include/boost : <location>. ;
+    explicit numeric-$(dir)-headers ;
 }
 
-BOOST_MODULARLAYOUT = $(all-headers) $(numeric-headers) ;
+if $(all-headers)
+{
+    constant BOOST_MODULARLAYOUT : $(all-headers) $(numeric-headers) ;
+}
 if $(BOOST_MODULARLAYOUT)
 {
     echo modularized layout build ;
