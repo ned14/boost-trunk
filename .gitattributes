@@ -35017,6 +35017,7 @@ libs/variant/test/test8.cpp svneol=native#text/plain
 libs/variant/test/variant_comparison_test.cpp svneol=native#text/plain
 libs/variant/test/variant_multivisit_test.cpp svneol=native#text/plain
 libs/variant/test/variant_reference_test.cpp svneol=native#text/plain
+libs/variant/test/variant_swap_test.cpp svneol=native#text/plain
 libs/variant/test/variant_visit_test.cpp svneol=native#text/plain
 libs/wave/ChangeLog svneol=native#text/plain
 libs/wave/build/Jamfile.v2 svneol=native#text/plain
