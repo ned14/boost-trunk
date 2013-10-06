@@ -27838,24 +27838,8 @@ libs/phoenix/test/stdlib/cmath.cpp svneol=native#text/plain
 libs/platform_maintainers.txt svneol=native#text/plain
 libs/polygon/Jamfile.v2 svneol=native#text/plain
 libs/polygon/benchmark/Jamfile.v2 svneol=native#text/plain
-libs/polygon/benchmark/benchmark_results/benchmark_points.txt svneol=native#text/plain
-libs/polygon/benchmark/benchmark_results/benchmark_segments.txt svneol=native#text/plain
-libs/polygon/benchmark/benchmark_results/plots/benchmark_points_10.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_points_100.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_points_1000.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_points_10000.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_points_100000.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_points_1000000.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_points_all.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_points_memory.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_segments_10.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_segments_100.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_segments_1000.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_segments_10000.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_segments_100000.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_segments_1000000.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_segments_all.png -text svneol=unset#image/png
-libs/polygon/benchmark/benchmark_results/plots/benchmark_segments_memory.png -text svneol=unset#image/png
+libs/polygon/benchmark/benchmark_results/plots/benchmark_points.png -text
+libs/polygon/benchmark/benchmark_results/plots/benchmark_segments.png -text
 libs/polygon/benchmark/input_data/voronoi_point.txt svneol=native#text/plain
 libs/polygon/benchmark/input_data/voronoi_segment.txt svneol=native#text/plain
 libs/polygon/benchmark/voronoi_benchmark.cpp svneol=native#text/plain
