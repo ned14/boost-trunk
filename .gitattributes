@@ -9076,6 +9076,7 @@ boost/sync/detail/futex.hpp svneol=native#text/plain
 boost/sync/detail/header.hpp svneol=native#text/plain
 boost/sync/detail/interlocked.hpp svneol=native#text/plain
 boost/sync/detail/lockable_wrapper.hpp svneol=native#text/plain
+boost/sync/detail/mutexes/basic_mutex_windows.hpp svneol=native#text/plain
 boost/sync/detail/mutexes/mutex_posix.hpp svneol=native#text/plain
 boost/sync/detail/mutexes/mutex_windows.hpp svneol=native#text/plain
 boost/sync/detail/mutexes/timed_mutex_posix.hpp svneol=native#text/plain
