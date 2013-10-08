@@ -9090,6 +9090,7 @@ boost/sync/detail/semaphore/semaphore_mach.hpp svneol=native#text/plain
 boost/sync/detail/semaphore/semaphore_posix.hpp svneol=native#text/plain
 boost/sync/detail/semaphore/semaphore_windows.hpp svneol=native#text/plain
 boost/sync/detail/system_error.hpp svneol=native#text/plain
+boost/sync/detail/throw_exception.hpp svneol=native#text/plain
 boost/sync/detail/time_traits.hpp svneol=native#text/plain
 boost/sync/detail/time_units.hpp svneol=native#text/plain
 boost/sync/detail/waitable_timer.hpp svneol=native#text/plain
