@@ -9100,6 +9100,7 @@ boost/sync/exceptions.hpp svneol=native#text/plain
 boost/sync/exceptions/lock_error.hpp svneol=native#text/plain
 boost/sync/exceptions/resource_error.hpp svneol=native#text/plain
 boost/sync/exceptions/runtime_exception.hpp svneol=native#text/plain
+boost/sync/exceptions/wait_error.hpp svneol=native#text/plain
 boost/sync/locks.hpp svneol=native#text/plain
 boost/sync/locks/lock_guard.hpp svneol=native#text/plain
 boost/sync/locks/lock_guard_fwd.hpp svneol=native#text/plain
