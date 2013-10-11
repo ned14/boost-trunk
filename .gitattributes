@@ -977,7 +977,6 @@ boost/config/compiler/hp_acc.hpp svneol=native#text/plain
 boost/config/compiler/intel.hpp svneol=native#text/plain
 boost/config/compiler/kai.hpp svneol=native#text/plain
 boost/config/compiler/metrowerks.hpp svneol=native#text/plain
-boost/config/compiler/mpw.hpp svneol=native#text/plain
 boost/config/compiler/nvcc.hpp svneol=native#text/plain
 boost/config/compiler/pathscale.hpp svneol=native#text/plain
 boost/config/compiler/pgi.hpp svneol=native#text/plain
