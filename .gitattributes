@@ -14335,6 +14335,7 @@ libs/geometry/test/algorithms/overlay/robustness/recursive_polygons.cpp svneol=n
 libs/geometry/test/algorithms/overlay/robustness/star_comb.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/robustness/star_comb.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/robustness/test_overlay_p_q.hpp svneol=native#text/plain
+libs/geometry/test/algorithms/overlay/robustness/ticket_9081.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/select_rings.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/self_intersection_points.cpp svneol=native#text/plain
 libs/geometry/test/algorithms/overlay/split_rings.cpp svneol=native#text/plain
