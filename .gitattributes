@@ -33149,6 +33149,7 @@ libs/thread/example/executor.cpp svneol=native#text/plain
 libs/thread/example/future_fallback_to.cpp svneol=native#text/plain
 libs/thread/example/future_then.cpp svneol=native#text/plain
 libs/thread/example/future_unwrap.cpp svneol=native#text/plain
+libs/thread/example/future_when_all.cpp svneol=native#text/plain
 libs/thread/example/lambda_future.cpp svneol=native#text/plain
 libs/thread/example/make_future.cpp svneol=native#text/plain
 libs/thread/example/monitor.cpp svneol=native#text/plain
