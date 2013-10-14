@@ -1274,6 +1274,7 @@ boost/detail/winapi/GetProcessTimes.hpp svneol=native#text/plain
 boost/detail/winapi/GetThreadTimes.hpp svneol=native#text/plain
 boost/detail/winapi/LocalFree.hpp svneol=native#text/plain
 boost/detail/winapi/basic_types.hpp svneol=native#text/plain
+boost/detail/winapi/config.hpp svneol=native#text/plain
 boost/detail/winapi/directory_management.hpp svneol=native#text/plain
 boost/detail/winapi/dll.hpp svneol=native#text/plain
 boost/detail/winapi/error_handling.hpp svneol=native#text/plain
