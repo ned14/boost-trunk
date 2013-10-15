@@ -9040,6 +9040,7 @@ boost/sync/detail/weak_linkage.hpp svneol=native#text/plain
 boost/sync/event.hpp svneol=native#text/plain
 boost/sync/exceptions.hpp svneol=native#text/plain
 boost/sync/exceptions/lock_error.hpp svneol=native#text/plain
+boost/sync/exceptions/overflow_error.hpp svneol=native#text/plain
 boost/sync/exceptions/resource_error.hpp svneol=native#text/plain
 boost/sync/exceptions/runtime_exception.hpp svneol=native#text/plain
 boost/sync/exceptions/wait_error.hpp svneol=native#text/plain
