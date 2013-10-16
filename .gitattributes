@@ -3088,6 +3088,7 @@ boost/geometry/strategies/covered_by.hpp svneol=native#text/plain
 boost/geometry/strategies/default_area_result.hpp svneol=native#text/plain
 boost/geometry/strategies/default_distance_result.hpp svneol=native#text/plain
 boost/geometry/strategies/default_length_result.hpp svneol=native#text/plain
+boost/geometry/strategies/default_strategy.hpp svneol=native#text/plain
 boost/geometry/strategies/distance.hpp svneol=native#text/plain
 boost/geometry/strategies/intersection.hpp svneol=native#text/plain
 boost/geometry/strategies/intersection_result.hpp svneol=native#text/plain
