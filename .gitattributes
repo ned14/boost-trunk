@@ -6952,6 +6952,7 @@ boost/property_map/parallel/parallel_property_maps.hpp svneol=native#text/plain
 boost/property_map/parallel/process_group.hpp svneol=native#text/plain
 boost/property_map/parallel/simple_trigger.hpp svneol=native#text/plain
 boost/property_map/parallel/unsafe_serialize.hpp svneol=native#text/plain
+boost/property_map/parallel/vector_property_map.hpp svneol=native#text/plain
 boost/property_map/property_map.hpp svneol=native#text/plain
 boost/property_map/property_map_iterator.hpp svneol=native#text/plain
 boost/property_map/shared_array_property_map.hpp svneol=native#text/plain
