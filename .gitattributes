@@ -10574,6 +10574,7 @@ doc/test/test_HTML4_symbols.qbk svneol=native#text/plain
 doc/test/weighted_tail_quantile.hpp svneol=native#text/plain
 /index.htm svneol=native#text/html
 /index.html svneol=native#text/html
+libs/Jamfile.v2 svneol=native#text/plain
 libs/accumulators/doc/Jamfile.v2 svneol=native#text/plain
 libs/accumulators/doc/accumulators.qbk svneol=native#text/plain
 libs/accumulators/example/Jamfile.v2 svneol=native#text/plain
