@@ -14308,6 +14308,7 @@ libs/geometry/test/algorithms/test_area.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_centroid.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_convert.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_convex_hull.hpp svneol=native#text/plain
+libs/geometry/test/algorithms/test_correct.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_covered_by.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_difference.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_distance.hpp svneol=native#text/plain
