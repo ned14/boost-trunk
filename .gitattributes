@@ -9309,6 +9309,7 @@ boost/thread/detail/thread_group.hpp svneol=native#text/plain
 boost/thread/detail/thread_heap_alloc.hpp svneol=native#text/plain
 boost/thread/detail/thread_interruption.hpp svneol=native#text/plain
 boost/thread/detail/tss_hooks.hpp svneol=native#text/plain
+boost/thread/detail/work.hpp svneol=native#text/plain
 boost/thread/exceptions.hpp svneol=native#text/plain
 boost/thread/executor.hpp svneol=native#text/plain
 boost/thread/externally_locked.hpp svneol=native#text/plain
