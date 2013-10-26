@@ -9086,6 +9086,7 @@ boost/sync/support/boost_chrono.hpp svneol=native#text/plain
 boost/sync/support/boost_date_time.hpp svneol=native#text/plain
 boost/sync/support/posix_time.hpp svneol=native#text/plain
 boost/sync/support/std_chrono.hpp svneol=native#text/plain
+boost/sync/thread_specific/at_thread_exit.hpp svneol=native#text/plain
 boost/sync/thread_specific/thread_specific_ptr.hpp svneol=native#text/plain
 boost/sync/traits/is_condition_variable_compatible.hpp svneol=native#text/plain
 boost/system/api_config.hpp svneol=native#text/plain
