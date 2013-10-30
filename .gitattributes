@@ -14328,6 +14328,7 @@ libs/geometry/test/algorithms/test_convex_hull.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_correct.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_covered_by.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_difference.hpp svneol=native#text/plain
+libs/geometry/test/algorithms/test_disjoint.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_distance.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_envelope.hpp svneol=native#text/plain
 libs/geometry/test/algorithms/test_equals.hpp svneol=native#text/plain
