@@ -33551,6 +33551,7 @@ libs/thread/test/test_8960.cpp svneol=native#text/plain
 libs/thread/test/test_9079_a.cpp svneol=native#text/plain
 libs/thread/test/test_9079_b.cpp svneol=native#text/plain
 libs/thread/test/test_9192.cpp svneol=native#text/plain
+libs/thread/test/test_9303.cpp svneol=native#text/plain
 libs/thread/test/test_9319.cpp svneol=native#text/plain
 libs/thread/test/test_barrier.cpp svneol=native#text/plain
 libs/thread/test/test_barrier_size_fct.cpp svneol=native#text/plain
