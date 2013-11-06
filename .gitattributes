@@ -2982,6 +2982,7 @@ boost/geometry/multi/algorithms/clear.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/convert.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/correct.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/covered_by.hpp svneol=native#text/plain
+boost/geometry/multi/algorithms/detail/extreme_points.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/detail/for_each_range.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/detail/modify.hpp svneol=native#text/plain
 boost/geometry/multi/algorithms/detail/modify_with_predicate.hpp svneol=native#text/plain
