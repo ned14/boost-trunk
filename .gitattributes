@@ -20005,6 +20005,7 @@ libs/log/test/run/unhandled_exception_count_np.cpp svneol=native#text/plain
 libs/log/test/run/util_dynamic_type_disp.cpp svneol=native#text/plain
 libs/log/test/run/util_exception_handler.cpp svneol=native#text/plain
 libs/log/test/run/util_formatting_ostream.cpp svneol=native#text/plain
+libs/log/test/run/util_manip_add_value.cpp svneol=native#text/plain
 libs/log/test/run/util_manip_dump.cpp svneol=native#text/plain
 libs/log/test/run/util_once_block.cpp svneol=native#text/plain
 libs/log/test/run/util_static_type_disp.cpp svneol=native#text/plain
