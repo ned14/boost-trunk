@@ -9282,6 +9282,7 @@ boost/test/utils/wrap_stringstream.hpp svneol=native#text/plain
 boost/test/utils/xml_printer.hpp svneol=native#text/plain
 boost/thread.hpp svneol=native#text/plain
 boost/thread/barrier.hpp svneol=native#text/plain
+boost/thread/caller_context.hpp svneol=native#text/plain
 boost/thread/completion_latch.hpp svneol=native#text/plain
 boost/thread/condition.hpp svneol=native#text/plain
 boost/thread/condition_variable.hpp svneol=native#text/plain
