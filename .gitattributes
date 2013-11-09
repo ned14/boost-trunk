@@ -30321,6 +30321,7 @@ libs/ratio/test/ratio_arithmetic/ratio_divide_fail.cpp svneol=native#text/plain
 libs/ratio/test/ratio_arithmetic/ratio_divide_pass.cpp svneol=native#text/plain
 libs/ratio/test/ratio_arithmetic/ratio_multiply_fail.cpp svneol=native#text/plain
 libs/ratio/test/ratio_arithmetic/ratio_multiply_pass.cpp svneol=native#text/plain
+libs/ratio/test/ratio_arithmetic/ratio_power_pass.cpp svneol=native#text/plain
 libs/ratio/test/ratio_arithmetic/ratio_subtract_fail.cpp svneol=native#text/plain
 libs/ratio/test/ratio_arithmetic/ratio_subtract_pass.cpp svneol=native#text/plain
 libs/ratio/test/ratio_comparison/ratio_equal_pass.cpp svneol=native#text/plain
