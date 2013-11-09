@@ -28941,6 +28941,7 @@ libs/property_map/doc/iterator_property_map.html svneol=native#text/html
 libs/property_map/doc/property_map.html svneol=native#text/html
 libs/property_map/doc/ref_property_map.html svneol=native#text/html
 libs/property_map/doc/shared_array_property_map.html svneol=native#text/html
+libs/property_map/doc/static_property_map.html svneol=native#text/html
 libs/property_map/doc/transform_value_property_map.html svneol=native#text/html
 libs/property_map/doc/vector_property_map.html svneol=native#text/html
 libs/property_map/example/compose_property_map_example.cpp svneol=native#text/plain
