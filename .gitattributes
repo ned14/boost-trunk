@@ -1250,7 +1250,6 @@ boost/detail/select_type.hpp svneol=native#text/plain
 boost/detail/sp_typeinfo.hpp svneol=native#text/plain
 boost/detail/templated_streams.hpp svneol=native#text/plain
 boost/detail/utf8_codecvt_facet.hpp svneol=native#text/plain
-boost/detail/utf8_codecvt_facet.ipp svneol=native#text/plain
 boost/detail/winapi/GetCurrentProcess.hpp svneol=native#text/plain
 boost/detail/winapi/GetCurrentThread.hpp svneol=native#text/plain
 boost/detail/winapi/GetLastError.hpp svneol=native#text/plain
