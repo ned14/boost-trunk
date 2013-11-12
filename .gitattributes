@@ -36690,6 +36690,7 @@ tools/quickbook/src/state.hpp svneol=native#text/plain
 tools/quickbook/src/state_save.hpp svneol=native#text/plain
 tools/quickbook/src/symbols.hpp svneol=native#text/plain
 tools/quickbook/src/syntax_highlight.cpp svneol=native#text/plain
+tools/quickbook/src/syntax_highlight.hpp svneol=native#text/plain
 tools/quickbook/src/template_stack.cpp svneol=native#text/plain
 tools/quickbook/src/template_stack.hpp svneol=native#text/plain
 tools/quickbook/src/template_tags.hpp svneol=native#text/plain
