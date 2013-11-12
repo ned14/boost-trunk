@@ -1205,6 +1205,7 @@ boost/detail/allocator_utilities.hpp svneol=native#text/plain
 boost/detail/atomic_count.hpp svneol=native#text/plain
 boost/detail/atomic_redef_macros.hpp svneol=native#text/plain
 boost/detail/atomic_undef_macros.hpp svneol=native#text/plain
+boost/detail/basic_pointerbuf.hpp svneol=native#text/plain
 boost/detail/binary_search.hpp svneol=native#text/plain
 boost/detail/bitmask.hpp svneol=native#text/plain
 boost/detail/call_traits.hpp svneol=native#text/plain
