@@ -37022,6 +37022,7 @@ tools/quickbook/test/templates-1_6-fail1.quickbook svneol=native#text/plain
 tools/quickbook/test/templates-1_6.gold svneol=native#text/plain
 tools/quickbook/test/templates-1_6.quickbook svneol=native#text/plain
 tools/quickbook/test/templates-1_7-fail1.quickbook svneol=native#text/plain
+tools/quickbook/test/templates-1_7-fail2.quickbook svneol=native#text/plain
 tools/quickbook/test/templates-1_7.gold svneol=native#text/plain
 tools/quickbook/test/templates-1_7.quickbook svneol=native#text/plain
 tools/quickbook/test/unicode_escape-1_5.gold svneol=native#text/plain
