@@ -36933,6 +36933,7 @@ tools/quickbook/test/include2-1_6.gold svneol=native#text/plain
 tools/quickbook/test/include2-1_6.quickbook svneol=native#text/plain
 tools/quickbook/test/include_invalid_path1-1_7-fail.quickbook svneol=native#text/plain
 tools/quickbook/test/include_invalid_path2-1_7-fail.quickbook svneol=native#text/plain
+tools/quickbook/test/include_invalid_path3-1_7-fail.quickbook svneol=native#text/plain
 tools/quickbook/test/include_win_path-1_6-fail.quickbook svneol=native#text/plain
 tools/quickbook/test/link-1_1.gold svneol=native#text/plain
 tools/quickbook/test/link-1_1.quickbook svneol=native#text/plain
