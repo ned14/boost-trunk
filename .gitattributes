@@ -34800,6 +34800,7 @@ libs/utility/doc/Jamfile.v2 svneol=native#text/plain
 libs/utility/doc/declval.qbk svneol=native#text/plain
 libs/utility/doc/explicit_operator_bool.qbk svneol=native#text/plain
 libs/utility/doc/html/declval.html svneol=native#text/html
+libs/utility/doc/html/explicit_operator_bool.html svneol=native#text/html
 libs/utility/doc/html/string_ref.html svneol=native#text/plain
 libs/utility/doc/string_ref.qbk svneol=native#text/plain
 libs/utility/enable_if.html svneol=native#text/html
