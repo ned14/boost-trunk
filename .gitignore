@@ -16,6 +16,8 @@ libs/fusion/test/temp.tmp
 libs/geometry/doc/index/html_by_doxygen
 libs/geometry/doc/index/xml
 libs/geometry/doc/quickbook/bin
+libs/geometry/doc/src/docutils/tools/support_status/*.suo
+libs/geometry/doc/src/docutils/tools/support_status/*.user
 libs/geometry/example/bin
 libs/geometry/test/*.svg
 libs/geometry/test/algorithms/bin
